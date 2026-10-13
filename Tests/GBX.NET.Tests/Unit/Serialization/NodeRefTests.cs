@@ -72,7 +72,7 @@ public class NodeRefTests
         await Assert.That(reference.State).IsEqualTo(NodeRefState.Failed);
         await Assert.That(reference.Resource).IsSameReferenceAs(resource);
         await Assert.That(reference.CachedNode).IsNull();
-        await Assert.That(reference.Error).IsTypeOf<NotSupportedException>();
+        await Assert.That(reference.Exception).IsTypeOf<NotSupportedException>();
     }
 
     [Test]
@@ -252,7 +252,7 @@ public class NodeRefTests
         await Assert.That(() => reference.Resolve()).Throws<InvalidDataException>();
         await Assert.That(() => reference.TryResolve(out _)).Throws<InvalidDataException>();
         await Assert.That(reference.State).IsEqualTo(NodeRefState.Failed);
-        await Assert.That(reference.Error).IsSameReferenceAs(failure);
+        await Assert.That(reference.Exception).IsSameReferenceAs(failure);
         await Assert.That(calls).IsEqualTo(1);
     }
 
@@ -268,7 +268,7 @@ public class NodeRefTests
         incompatible.Descriptor = file;
         compatible.Descriptor = file;
         await Assert.That(() => incompatible.Resolve()).Throws<InvalidCastException>();
-        await Assert.That(incompatible.Error!.Message).Contains("Expected CPlugMaterial,");
+        await Assert.That(incompatible.Exception!.Message).Contains("Expected CPlugMaterial,");
         await Assert.That(incompatible.State).IsEqualTo(NodeRefState.Failed);
         await Assert.That(incompatible.CachedNode).IsNull();
         await Assert.That(((NodeRef)incompatible).CachedNode).IsNull();
@@ -454,12 +454,12 @@ public class NodeRefTests
         file.FilePath = "new.Gbx";
 
         await Assert.That(general.CachedNode).IsNull();
-        await Assert.That(material.Error).IsNull();
+        await Assert.That(material.Exception).IsNull();
         await Assert.That(general.State).IsEqualTo(NodeRefState.Unresolved);
         await Assert.That(material.State).IsEqualTo(NodeRefState.Unresolved);
         await Assert.That(await material.ResolveAsync()).IsSameReferenceAs(replacement);
         await Assert.That(general.Resolve()).IsSameReferenceAs(replacement);
-        await Assert.That(material.Error).IsNull();
+        await Assert.That(material.Exception).IsNull();
         await Assert.That(calls).IsEqualTo(1);
         await Assert.That(general.File).IsSameReferenceAs(file);
         await Assert.That(material.File).IsSameReferenceAs(file);
@@ -498,7 +498,7 @@ public class NodeRefTests
         file.FilePath = "new.Gbx";
 
         await Assert.That(reference.State).IsEqualTo(NodeRefState.Unresolved);
-        await Assert.That(reference.Error).IsNull();
+        await Assert.That(reference.Exception).IsNull();
         await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(node);
     }
 
@@ -661,7 +661,7 @@ public class NodeRefTests
         await Assert.That(general.Retry()).IsSameReferenceAs(replacement);
         await Assert.That(material.State).IsEqualTo(NodeRefState.Unresolved);
         await Assert.That(material.Resolve()).IsSameReferenceAs(replacement);
-        await Assert.That(material.Error).IsNull();
+        await Assert.That(material.Exception).IsNull();
     }
 
     [Test]

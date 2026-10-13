@@ -75,7 +75,7 @@ public class NodeRefApiTests
         await Assert.That(reference.Descriptor).IsSameReferenceAs(descriptor);
         await Assert.That(reference.Node).IsSameReferenceAs(node);
         await Assert.That(reference.State).IsEqualTo(NodeRefState.Resolved);
-        await Assert.That(reference.Error).IsNull();
+        await Assert.That(reference.Exception).IsNull();
         await Assert.That(calls).IsEqualTo(1);
 
         reference.Node = null;
@@ -156,7 +156,7 @@ public class NodeRefApiTests
 
         await Assert.That(reference.State).IsEqualTo(NodeRefState.Failed);
         await Assert.That(reference.CachedNode).IsNull();
-        await Assert.That(reference.Error).IsTypeOf<InvalidCastException>();
+        await Assert.That(reference.Exception).IsTypeOf<InvalidCastException>();
         await Assert.That(() => reference.Node).Throws<InvalidCastException>();
         await Assert.That(() => typed.Node).Throws<InvalidCastException>();
     }
@@ -239,7 +239,7 @@ public class NodeRefApiTests
         await Assert.That(async () => await reference.ResolveAsync()).Throws<InvalidDataException>();
         await Assert.That(async () => await reference.ResolveAsync()).Throws<InvalidDataException>();
         await Assert.That(() => reference.Node).Throws<InvalidDataException>();
-        await Assert.That(reference.Error).IsSameReferenceAs(failure);
+        await Assert.That(reference.Exception).IsSameReferenceAs(failure);
         await Assert.That(calls).IsEqualTo(1);
     }
 

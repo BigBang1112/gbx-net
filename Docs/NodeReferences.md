@@ -16,7 +16,7 @@ reference.Descriptor = replacementFile;
 var edition = item.EntityModelEdition;
 ```
 
-`Descriptor`, `File`, `Resource`, `Kind`, `State`, and `Error` never start resolution. `Descriptor.RefTable` exposes the table that owns an external descriptor. An unavailable external file retains its descriptor and has `Missing` state, so it remains distinct from an absent reference.
+`Descriptor`, `File`, `Resource`, `Kind`, `State`, and `Exception` never start resolution. `Descriptor.RefTable` exposes the table that owns an external descriptor. An unavailable external file retains its descriptor and has `Missing` state, so it remains distinct from an absent reference.
 
 Assigning an owner's node property or a reference handle's `Node` stores an embedded node and clears its external descriptor. Assigning `Descriptor` stores an external reference without loading it and invalidates the member's cached node. Assigning `null` to either property clears the reference. `CopyFrom` copies reference storage into an existing handle without resolving either node. A captured handle remains attached to its owning member after reassignment. Assignments through an untyped handle still validate its declared node type before replacing stored data.
 

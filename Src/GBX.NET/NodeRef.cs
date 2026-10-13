@@ -94,9 +94,9 @@ public abstract class NodeRef
     internal abstract CMwNod? CachedNodeCore { get; }
 
     /// <summary>
-    /// The cached resolver or node-type error, if any.
+    /// The cached resolver or node-type exception, if any.
     /// </summary>
-    public abstract Exception? Error { get; }
+    public abstract Exception? Exception { get; }
 
     /// <summary>
     /// Resolves the node, returning null for an absent or missing node. Other errors propagate.

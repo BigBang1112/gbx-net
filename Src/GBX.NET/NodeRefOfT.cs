@@ -87,7 +87,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
 
     internal override CMwNod? CachedNodeCore => CachedNode;
 
-    public override Exception? Error
+    public override Exception? Exception
     {
         get
         {
@@ -99,7 +99,7 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
                 }
 
                 var snapshot = source.Resolution.Snapshot();
-                return validatedGeneration == snapshot.Generation ? error?.SourceException ?? snapshot.Error : snapshot.Error;
+                return validatedGeneration == snapshot.Generation ? error?.SourceException ?? snapshot.Exception : snapshot.Exception;
             }
         }
     }
