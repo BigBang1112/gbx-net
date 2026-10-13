@@ -15,8 +15,10 @@ internal sealed class NodeRefLoadContext
 
     public static NodeRefLoadContext Create(string path, CMwNod node)
     {
-        var ancestors = current.Value is { } parent ? new Dictionary<string, Entry>(parent.ancestors, pathComparer) :
-            new Dictionary<string, Entry>(pathComparer);
+        var ancestors = current.Value is not null
+            ? new Dictionary<string, Entry>(current.Value.ancestors, pathComparer)
+            : new Dictionary<string, Entry>(pathComparer);
+
         var owner = new Entry(node);
         ancestors[Path.GetFullPath(path)] = owner;
         return new(ancestors, owner);

@@ -6,6 +6,7 @@ using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Serialization;
 
+[Category("Unit")]
 public class NodeRefTests
 {
     [Test]
@@ -270,7 +271,36 @@ public class NodeRefTests
         await Assert.That(() => incompatible.Resolve()).Throws<InvalidCastException>();
         await Assert.That(incompatible.Error!.Message).Contains("Expected CPlugMaterial,");
         await Assert.That(incompatible.State).IsEqualTo(NodeRefState.Failed);
+        await Assert.That(incompatible.CachedTarget).IsNull();
+        await Assert.That(((NodeRef)incompatible).CachedTarget).IsNull();
         await Assert.That(compatible.Resolve()).IsSameReferenceAs(target);
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task AsyncResolutionPrefersAsyncResolversAndFallsBackToSyncResolvers(bool hasAsyncResolver)
+    {
+        var table = new GbxRefTable();
+        var syncTarget = new CPlugCrystal();
+        var asyncTarget = new CPlugCrystal();
+        var syncCalls = 0;
+        var asyncCalls = 0;
+        table.ExternalNodes["dependency.Gbx"] = () => { syncCalls++; return syncTarget.ToGbx(); };
+        if (hasAsyncResolver)
+        {
+            table.ExternalNodesAsync["dependency.Gbx"] = _ => { asyncCalls++; return Task.FromResult(asyncTarget.ToGbx()); };
+        }
+        var reference = new NodeRef<CMwNod>();
+        reference.SetExternal(new GbxRefTableFile(table, 0, true, "dependency.Gbx"));
+        var target = hasAsyncResolver ? asyncTarget : syncTarget;
+
+        await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(target);
+        await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(target);
+        await Assert.That(reference.Resolve()).IsSameReferenceAs(target);
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Resolved);
+        await Assert.That(syncCalls).IsEqualTo(hasAsyncResolver ? 0 : 1);
+        await Assert.That(asyncCalls).IsEqualTo(hasAsyncResolver ? 1 : 0);
     }
 
     [Test]
@@ -404,6 +434,217 @@ public class NodeRefTests
     }
 
     [Test]
+    public async Task FilePathSetter_ChangedPath_InvalidatesSharedTargetsAndTypeErrors()
+    {
+        var table = new GbxRefTable();
+        var original = new CPlugCrystal();
+        var replacement = new CPlugMaterial();
+        var calls = 0;
+        table.ExternalNodes["old.Gbx"] = () => original.ToGbx();
+        table.ExternalNodes["new.Gbx"] = () => { calls++; return replacement.ToGbx(); };
+        var file = new GbxRefTableFile(table, 0, true, "old.Gbx");
+        var general = new NodeRef<CMwNod>();
+        var material = new NodeRef<CPlugMaterial>();
+        general.SetExternal(file);
+        material.SetExternal(file);
+        await Assert.That(general.Resolve()).IsSameReferenceAs(original);
+        await Assert.That(() => material.Resolve()).Throws<InvalidCastException>();
+
+        file.FilePath = "new.Gbx";
+
+        await Assert.That(general.CachedTarget).IsNull();
+        await Assert.That(material.Error).IsNull();
+        await Assert.That(general.State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(material.State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(await material.ResolveAsync()).IsSameReferenceAs(replacement);
+        await Assert.That(general.Resolve()).IsSameReferenceAs(replacement);
+        await Assert.That(material.Error).IsNull();
+        await Assert.That(calls).IsEqualTo(1);
+        await Assert.That(general.File).IsSameReferenceAs(file);
+        await Assert.That(material.File).IsSameReferenceAs(file);
+    }
+
+    [Test]
+    public async Task FilePathSetter_ChangedPath_InvalidatesMissingResolution()
+    {
+        var table = new GbxRefTable();
+        var target = new CPlugCrystal();
+        table.ExternalNodes["new.Gbx"] = () => target.ToGbx();
+        var file = new GbxRefTableFile(table, 0, true, "missing.Gbx");
+        var reference = new NodeRef<CMwNod>();
+        reference.SetExternal(file);
+        await Assert.That(await reference.ResolveAsync()).IsNull();
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Missing);
+
+        file.FilePath = "new.Gbx";
+
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(reference.Resolve()).IsSameReferenceAs(target);
+    }
+
+    [Test]
+    public async Task FilePathSetter_ChangedPath_InvalidatesFailedResolution()
+    {
+        var table = new GbxRefTable();
+        var target = new CPlugCrystal();
+        table.ExternalNodes["bad.Gbx"] = () => throw new InvalidDataException("Malformed dependency");
+        table.ExternalNodes["new.Gbx"] = () => target.ToGbx();
+        var file = new GbxRefTableFile(table, 0, true, "bad.Gbx");
+        var reference = new NodeRef<CMwNod>();
+        reference.SetExternal(file);
+        await Assert.That(() => reference.Resolve()).Throws<InvalidDataException>();
+
+        file.FilePath = "new.Gbx";
+
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Unresolved);
+        await Assert.That(reference.Error).IsNull();
+        await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(target);
+    }
+
+    [Test]
+    public async Task FilePathSetter_SameOrNullPath_PreservesCachedResolution()
+    {
+        var table = new GbxRefTable();
+        var target = new CPlugCrystal();
+        var calls = 0;
+        table.ExternalNodes["same.Gbx"] = () => { calls++; return target.ToGbx(); };
+        var file = new GbxRefTableFile(table, 0, true, "same.Gbx");
+        var reference = new NodeRef<CMwNod>();
+        reference.SetExternal(file);
+        await Assert.That(reference.Resolve()).IsSameReferenceAs(target);
+
+        file.FilePath = new string("same.Gbx".ToCharArray());
+        await Assert.That(() => file.FilePath = null!).Throws<ArgumentNullException>();
+
+        await Assert.That(file.FilePath).IsEqualTo("same.Gbx");
+        await Assert.That(reference.CachedTarget).IsSameReferenceAs(target);
+        await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(target);
+        await Assert.That(calls).IsEqualTo(1);
+    }
+
+    [Test]
+    public async Task FilePathSetter_Resolving_RejectsChangeWithoutAffectingLoad()
+    {
+        var table = new GbxRefTable();
+        var source = new TaskCompletionSource<Gbx>(TaskCreationOptions.RunContinuationsAsynchronously);
+        table.ExternalNodesAsync["old.Gbx"] = _ => source.Task;
+        var file = new GbxRefTableFile(table, 0, true, "old.Gbx");
+        var reference = new NodeRef<CMwNod>();
+        reference.SetExternal(file);
+        var loading = reference.ResolveAsync();
+
+        file.FilePath = "old.Gbx";
+        await Assert.That(() => file.FilePath = "new.Gbx").Throws<InvalidOperationException>();
+        await Assert.That(() => ((NodeRef)reference).Reset()).Throws<InvalidOperationException>();
+        await Assert.That(file.FilePath).IsEqualTo("old.Gbx");
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Resolving);
+        var target = new CPlugCrystal();
+        source.SetResult(target.ToGbx());
+        await Assert.That(await loading).IsSameReferenceAs(target);
+        await Assert.That(reference.CachedTarget).IsSameReferenceAs(target);
+
+        file.FilePath = "new.Gbx";
+        await Assert.That(reference.CachedTarget).IsNull();
+        await Assert.That(reference.State).IsEqualTo(NodeRefState.Unresolved);
+    }
+
+    [Test]
+    public async Task FilePathSetter_ChangedPath_SavesTheNewPathWithoutResolving()
+    {
+        var file = new GbxRefTableFile(new GbxRefTable(), 32, true, "old.Gbx");
+        var owner = new CGameItemModel();
+        owner.CreateChunk<CGameItemModel.Chunk2E002019>().Version = 15;
+        owner.References.EntityModelEdition.SetExternal(file);
+        file.FilePath = "assets/new.Gbx";
+        using var stream = new MemoryStream();
+
+        owner.ToGbx(GbxHeaderBasic.Create(compressionOfBody: GbxCompression.Uncompressed)).Save(stream);
+
+        stream.Position = 0;
+        var parsed = Gbx.Parse(stream);
+        var restored = (CGameItemModel)parsed.Node!;
+        await Assert.That(restored.References.EntityModelEdition.File!.FilePath.Replace('\\', '/')).IsEqualTo("assets/new.Gbx");
+        await Assert.That(owner.References.EntityModelEdition.State).IsEqualTo(NodeRefState.Unresolved);
+    }
+
+    [Test]
+    public async Task External_ChangedFilePath_InvalidatesTheSeededNode()
+    {
+        var table = new GbxRefTable();
+        var original = new CPlugCrystal();
+        var replacement = new CPlugCrystal();
+        table.ExternalNodes["new.Gbx"] = () => replacement.ToGbx();
+        var file = new GbxRefTableFile(table, 0, true, "old.Gbx");
+#pragma warning disable CS0618
+        var external = new External<CPlugCrystal>(original, file);
+#pragma warning restore CS0618
+        await Assert.That(external.Node).IsSameReferenceAs(original);
+
+        file.FilePath = "new.Gbx";
+
+        await Assert.That(external.Node).IsSameReferenceAs(replacement);
+        file.FilePath = "missing.Gbx";
+        await Assert.That(external.Node).IsNull();
+    }
+
+    [Test]
+    public async Task External_Resolution_UsesTheSameCacheAsNodeRef()
+    {
+        var table = new GbxRefTable();
+        var target = new CPlugCrystal();
+        var calls = 0;
+        table.ExternalNodes["shared.Gbx"] = () => { calls++; return target.ToGbx(); };
+        var file = new GbxRefTableFile(table, 0, true, "shared.Gbx");
+#pragma warning disable CS0618
+        var external = new External<CPlugCrystal>(null, file);
+#pragma warning restore CS0618
+        var reference = new NodeRef<CPlugCrystal>();
+        reference.SetExternal(file);
+
+        await Assert.That(external.Node).IsSameReferenceAs(target);
+        await Assert.That(await reference.ResolveAsync()).IsSameReferenceAs(target);
+        await Assert.That(external.Node).IsSameReferenceAs(target);
+        await Assert.That(calls).IsEqualTo(1);
+        var copy = external with { Node = null };
+        await Assert.That(copy.File).IsNull();
+        await Assert.That(copy.Node).IsNull();
+        await Assert.That(external.File).IsSameReferenceAs(file);
+        await Assert.That(external.Node).IsSameReferenceAs(target);
+        await Assert.That(reference.CachedTarget).IsSameReferenceAs(target);
+    }
+
+    [Test]
+    public async Task DeepClone_ResolvedSharedDescriptor_PreservesTheClonedCacheAndIndependentPath()
+    {
+        var table = new GbxRefTable();
+        var target = new CPlugCrystal();
+        table.ExternalNodes["old.Gbx"] = () => target.ToGbx();
+        var file = new GbxRefTableFile(table, 0, true, "old.Gbx");
+        var first = new NodeRef<CMwNod>();
+        var second = new NodeRef<CPlugCrystal>();
+        first.SetExternal(file);
+        second.SetExternal(file);
+        first.Resolve();
+        second.Resolve();
+        var context = new DeepCloneContext();
+
+        var clonedFirst = context.Clone(first)!;
+        var clonedSecond = context.Clone(second)!;
+        file.FilePath = "new.Gbx";
+
+        await Assert.That(clonedFirst.State).IsEqualTo(NodeRefState.Resolved);
+        await Assert.That(clonedFirst.CachedTarget).IsNotSameReferenceAs(target);
+        await Assert.That(clonedFirst.CachedTarget).IsTypeOf<CPlugCrystal>();
+        await Assert.That(clonedSecond.CachedTarget).IsSameReferenceAs(clonedFirst.CachedTarget);
+        await Assert.That(clonedFirst.File).IsSameReferenceAs(clonedSecond.File);
+        await Assert.That(clonedFirst.File!.FilePath).IsEqualTo("old.Gbx");
+        await Assert.That(first.CachedTarget).IsNull();
+        clonedFirst.File.FilePath = "missing.Gbx";
+        await Assert.That(clonedFirst.CachedTarget).IsNull();
+        await Assert.That(clonedSecond.CachedTarget).IsNull();
+    }
+
+    [Test]
     public async Task SharedRetryInvalidatesMemberTypeErrorsAndCachedTargets()
     {
         var table = new GbxRefTable();
@@ -479,7 +720,7 @@ public class NodeRefTests
         var source = new GbxRefTable { FileSystemPath = Path.Combine(root, "source"), AncestorLevel = 1 };
         var destination = new GbxRefTable { FileSystemPath = Path.Combine(root, "output"), AncestorLevel = 0 };
         var file = new GbxRefTableFile(source, 32, true, "assets/dependency.Gbx");
-        var imported = destination.ImportFile(file);
+        var imported = destination.Import(file);
         await Assert.That(imported.GetFullPath()).IsEqualTo(file.GetFullPath());
         await Assert.That(file.FilePath).IsEqualTo("assets/dependency.Gbx");
         await Assert.That(imported.Flags).IsEqualTo(32);

@@ -2,7 +2,8 @@
 
 public abstract class GbxRefTableNode : IDeepCloneable
 {
-    protected internal GbxRefTable RefTable { get; }
+    /// <summary>The table that owns this descriptor and supplies its read settings and external resolvers.</summary>
+    public GbxRefTable RefTable { get; }
     internal NodeRefResolution Resolution { get; } = new();
 
     public int Flags { get; }

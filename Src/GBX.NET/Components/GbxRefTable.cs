@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-#if NET8_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
 #endif
 
 namespace GBX.NET.Components;
@@ -9,9 +7,15 @@ namespace GBX.NET.Components;
 public sealed class GbxRefTable : IDeepCloneable
 {
     private GbxReadSettings readSettings;
+    private IDictionary<string, Func<Gbx>> externalNodes = new Dictionary<string, Func<Gbx>>();
+    private IDictionary<string, Func<CancellationToken, Task<Gbx>>> externalNodesAsync = new Dictionary<string, Func<CancellationToken, Task<Gbx>>>();
+
+    /// <summary>Settings used to parse external files and propagated to their reference tables.</summary>
     public GbxReadSettings ReadSettings { get => readSettings; init => readSettings = value; }
+
     internal NodeRefLoadContext? LoadContext { get; set; }
     internal bool InferAncestorLevelOnWrite { get; set; }
+
     public int AncestorLevel { get; set; }
 
     /// <summary>
@@ -24,8 +28,34 @@ public sealed class GbxRefTable : IDeepCloneable
     /// </summary>
     public IReadOnlyCollection<UnlinkedGbxRefTableResource> Resources { get; internal set; } = [];
 
-    public Dictionary<string, Func<Gbx>> ExternalNodes { get; set; } = [];
-    public Dictionary<string, Func<CancellationToken, Task<Gbx>>> ExternalNodesAsync { get; set; } = [];
+    /// <summary>Synchronous file resolvers, keyed by descriptor path, used when no file-system path is configured.</summary>
+    public IDictionary<string, Func<Gbx>> ExternalNodes
+    {
+        get => externalNodes;
+        set => externalNodes = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    /// <summary>Asynchronous file resolvers. Async resolution prefers these and falls back to <see cref="ExternalNodes"/>.</summary>
+    /// <remarks>Canceling one waiter does not cancel a shared load. The resolver receives <see cref="CancellationToken.None"/>.</remarks>
+    public IDictionary<string, Func<CancellationToken, Task<Gbx>>> ExternalNodesAsync
+    {
+        get => externalNodesAsync;
+        set => externalNodesAsync = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    /// <summary>Creates a file descriptor owned by this table without resolving it or adding it to the header preview.</summary>
+    public GbxRefTableFile CreateFile(string filePath, int flags = 0, bool useFile = true)
+    {
+        if ((flags & 4) != 0) throw new ArgumentException("A file descriptor cannot have the resource flag.", nameof(flags));
+        return new(this, flags, useFile, filePath);
+    }
+
+    /// <summary>Creates a resource descriptor owned by this table without resolving it or adding it to the header preview.</summary>
+    public GbxRefTableResource CreateResource(int resourceIndex, int flags = 4, bool useFile = true)
+    {
+        if ((flags & 4) == 0) throw new ArgumentException("A resource descriptor must have the resource flag.", nameof(flags));
+        return new(this, flags, useFile, resourceIndex);
+    }
 
     internal CMwNod? ResolveNode(GbxRefTableFile file)
     {
@@ -62,12 +92,7 @@ public sealed class GbxRefTable : IDeepCloneable
                 return LoadedNode(await resolve(CancellationToken.None).ConfigureAwait(false));
             }
 
-            if (ExternalNodes.ContainsKey(file.FilePath))
-            {
-                throw new NotSupportedException("This reference has a synchronous resolver. Configure ExternalNodesAsync for asynchronous access.");
-            }
-
-            return null;
+            return ExternalNodes.TryGetValue(file.FilePath, out var resolveSync) ? LoadedNode(resolveSync()) : null;
         }
 
         var path = FindFilePath(file);
@@ -100,6 +125,10 @@ public sealed class GbxRefTable : IDeepCloneable
         }
     }
 
+    /// <summary>
+    /// Returns the resolved node and propagates this table's read settings to its reference table.
+    /// Shares the external resolvers when the child has no file-system path so it can resolve nested dependencies.
+    /// </summary>
     private CMwNod LoadedNode(Gbx gbx)
     {
         var node = gbx.Node ?? throw new NotSupportedException($"Cannot resolve Gbx class 0x{gbx.Header.ClassId:X8}.");
@@ -159,14 +188,30 @@ public sealed class GbxRefTable : IDeepCloneable
             : Path.Combine(FileSystemPath, ancestor, filePath);
     }
 
-    public string GetFilePath(GbxRefTableFile file) => GetFilePath(file.FilePath);
-    public string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath(file.FilePath);
+    /// <summary>Combines this table's location and ancestor level with a descriptor's file path.</summary>
+    public string GetFilePath(GbxRefTableFile file) => GetFilePath((file ?? throw new ArgumentNullException(nameof(file))).FilePath);
+    /// <summary>Combines this table's location and ancestor level with a header-preview file path.</summary>
+    public string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath((file ?? throw new ArgumentNullException(nameof(file))).FilePath);
 
+    /// <summary>Gets the absolute path of a file descriptor relative to this table.</summary>
     public string GetFullFilePath(GbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
+    /// <summary>Gets the absolute path of a header-preview file relative to this table.</summary>
     public string GetFullFilePath(UnlinkedGbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
 
+    /// <summary>Copies a file or resource descriptor into this table. File paths are rebased without modifying the source.</summary>
+    public GbxRefTableNode Import(GbxRefTableNode descriptor)
+    {
+        if (descriptor is null) throw new ArgumentNullException(nameof(descriptor));
+        return descriptor switch
+        {
+            GbxRefTableFile file => Import(file),
+            GbxRefTableResource resource => Import(resource),
+            _ => throw new NotSupportedException("Unknown reference descriptor.")
+        };
+    }
+
     /// <summary>Copies a descriptor into this table, rebasing its path without modifying the source.</summary>
-    public GbxRefTableFile ImportFile(GbxRefTableFile file)
+    public GbxRefTableFile Import(GbxRefTableFile file)
     {
         if (file is null)
         {
@@ -206,7 +251,8 @@ public sealed class GbxRefTable : IDeepCloneable
         return new(this, file.Flags, file.UseFile, path);
     }
 
-    public GbxRefTableResource ImportResource(GbxRefTableResource resource)
+    /// <summary>Copies a resource descriptor into this table without resolving it or modifying the source.</summary>
+    public GbxRefTableResource Import(GbxRefTableResource resource)
     {
         if (resource is null)
         {
@@ -219,94 +265,6 @@ public sealed class GbxRefTable : IDeepCloneable
         }
         
         return new(this, resource.Flags, resource.UseFile, resource.ResourceIndex);
-    }
-
-    // TODO: should also have async variant in the future
-    public CMwNod? LoadNode(GbxRefTableFile file, GbxReadSettings settings = default, bool exceptions = false)
-    {
-        if (file is null)
-        {
-            throw new ArgumentNullException(nameof(file));
-        }
-
-        var logger = settings.Logger;
-
-        if (FileSystemPath is not null)
-        {
-            var filePath = GetFilePath(file);
-
-            if (!File.Exists(filePath))
-            {
-#if NET5_0_OR_GREATER
-                if (OperatingSystem.IsWindows())
-                {
-                    logger?.LogWarning("File not found: {FilePath}", filePath);
-                    return default;
-                }
-#endif
-
-                var directory = Path.GetDirectoryName(filePath);
-                if (string.IsNullOrEmpty(directory) || !Directory.Exists(directory))
-                {
-                    logger?.LogWarning("Directory not found: {Directory}", directory);
-                    logger?.LogWarning("File not found: {FilePath}", filePath);
-                    return default;
-                }
-
-                var fileName = Path.GetFileName(filePath);
-
-                filePath = Directory.EnumerateFiles(directory)
-                    .FirstOrDefault(f => string.Equals(Path.GetFileName(f), fileName, StringComparison.OrdinalIgnoreCase));
-
-                if (filePath is null)
-                {
-                    logger?.LogWarning("File not found in directory {Directory}: {FileName}", directory, fileName);
-                    return default;
-                }
-            }
-
-            logger?.LogDebug("Loading node from file: {FilePath}", filePath);
-
-            var scope = logger?.BeginScope("{FilePath}", Path.GetFileName(file.FilePath));
-
-            try
-            {
-                var gbx = Gbx.Parse(filePath, settings);
-
-                scope?.Dispose();
-
-                if (gbx.Node is null)
-                {
-                    logger?.LogWarning("Failed to load node from file: {FilePath} ({Gbx})", filePath, gbx);
-                }
-
-                return gbx.Node;
-            }
-            catch (Exception ex)
-            {
-                scope?.Dispose();
-                logger?.LogError(ex, "Failed to load node from file: {FilePath}", filePath);
-
-                if (exceptions)
-                {
-                    throw;
-                }
-
-                return default;
-            }
-        }
-
-        if (ExternalNodes?.TryGetValue(file.FilePath, out var nodFunc) == true)
-        {
-            return nodFunc();
-        }
-
-        return default;
-    }
-
-    public T? LoadNode<T>(GbxRefTableFile file, GbxReadSettings settings = default, bool exceptions = false) where T : CMwNod
-    {
-        return LoadNode(file, settings, exceptions) as T;
     }
 
     internal static GbxRefTable? Parse(GbxReader reader, GbxHeader header, string? fileSystemPath)

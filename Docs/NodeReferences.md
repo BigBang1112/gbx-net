@@ -16,11 +16,32 @@ reference.SetExternal(replacementFile);
 var edition = item.EntityModelEdition;
 ```
 
-`File`, `Resource`, `Kind`, `State`, `Error`, and `CachedTarget` never start resolution. An unavailable external file retains its descriptor and has `Missing` state, so it remains distinct from an absent reference.
+`Descriptor`, `File`, `Resource`, `Kind`, `State`, `Error`, and `CachedTarget` never start resolution. `Descriptor.RefTable` exposes the table that owns an external descriptor. An unavailable external file retains its descriptor and has `Missing` state, so it remains distinct from an absent reference.
 
 Assigning a node property stores an embedded node and clears its external descriptor. Assigning `null` clears the reference. `SetExternal` replaces the descriptor and invalidates the member's cached target. `CopyFrom` copies reference storage into an existing handle without resolving either target. A captured handle remains attached to its owning member after reassignment.
 
-File descriptors have immutable paths. Create a replacement `GbxRefTableFile` to change a path, then use `SetExternal`. `GbxRefTable.ImportFile` copies a descriptor into another table and rebases its path when both filesystem locations are known. Importing a descriptor never modifies its source table.
+Changing `GbxRefTableFile.FilePath` invalidates the shared target, missing result, and errors for every handle using that descriptor. Assigning the same path preserves the cache. Null paths and changes during resolution are rejected. To change only one handle, create a replacement descriptor and use `SetExternal`.
+
+`Clear()` removes the target and descriptor from one handle. `Reset()` keeps the descriptor and invalidates its shared resolution cache without loading anything. Other handles using that descriptor also see the invalidation. A descriptor cannot be reset while its load is running.
+
+## Reference tables
+
+Create descriptors through a table, then attach them to a stored reference:
+
+```cs
+var table = new GbxRefTable();
+var file = table.CreateFile("dependency.Gbx");
+var resource = table.CreateResource(resourceIndex: 42);
+reference.SetExternal(file);
+```
+
+`CreateFile` and `CreateResource` provide the usual flags and `UseFile` defaults. They do not load a target or add entries to the header preview. `SetExternal` accepts the common `GbxRefTableNode` type, so metadata tools can work with either descriptor kind.
+
+`destinationTable.Import(descriptor)` copies a descriptor into another table. The typed overloads retain the file or resource type. File paths are rebased when both filesystem locations are known, and importing never modifies the source. Rebasing that needs an unknown filesystem location throws an exception.
+
+`Files` and `Resources` contain unlinked header-preview entries. Changing those entries affects saves with a raw body. Normal saves rebuild the table from the descriptors stored in the node's references.
+
+Configure `ReadSettings` and `FileSystemPath` when constructing a table. The synchronous and asynchronous resolver maps accept `IDictionary` implementations and can be populated or replaced. Changing a resolver or `AncestorLevel` does not invalidate existing cached results. Use `Reset` or `Retry` on the affected handles when you want to resolve their descriptors with the changed table settings.
 
 ## Resolution
 
@@ -37,12 +58,20 @@ else
 }
 
 var resolved = await reference.ResolveAsync(cancellationToken);
-var (success, target) = await reference.TryResolveAsync(cancellationToken);
+var result = await reference.TryResolveAsync(cancellationToken);
+if (result.Success)
+{
+    Console.WriteLine(result.Target);
+}
 ```
 
-Filesystem resolution retains the owner's read settings. For custom resolution, synchronous calls use `GbxRefTable.ExternalNodes` and asynchronous calls use `ExternalNodesAsync`. Configure the appropriate resolver instead of blocking asynchronous access on a synchronous callback.
+`TryResolveAsync` returns `NodeRefResolveResult<T>`, with `Success` and `Target` properties. Its default value represents an absent target. Resolver, type, and cancellation errors propagate. Neither public resolution method nor its result exposes cache generations.
 
-References to one table entry share a load. Success, missing targets, and errors are cached until `Retry`, `RetryAsync`, or descriptor replacement. Retrying a shared entry invalidates its members' previous type checks. Canceling an asynchronous waiter leaves the shared load available to other callers.
+Filesystem resolution retains the owner's read settings. For custom resolution, synchronous calls use `GbxRefTable.ExternalNodes`. Asynchronous calls prefer `ExternalNodesAsync` and fall back to `ExternalNodes`. A synchronous fallback runs directly and can block until it returns. A synchronous call with only an asynchronous resolver throws `NotSupportedException`.
+
+Tools can use the same resolution, retry, reset, and clear methods on an untyped `NodeRef`, including the handles returned by `EnumerateReferences()`. Resolution through an untyped handle still checks the stored handle's declared target type.
+
+References to one table entry share a load. Success, missing targets, and errors are cached until `Reset`, `Retry`, `RetryAsync`, or a path change. Replacing a descriptor attaches the handle to that descriptor's cache. Retrying a shared entry invalidates its members' previous type checks. Canceling an asynchronous waiter leaves the shared load available to other callers. Resolver callbacks receive `CancellationToken.None` because an individual waiter's token does not control the shared load.
 
 External resources retain their index, flags, and table identity. They can be inspected, cloned, and written. Resolving a resource currently throws `NotSupportedException`.
 
@@ -54,7 +83,14 @@ Node-reference collections use `NodeRefList<T>`. Indexing, enumeration, and `Cop
 var first = item.NadeoSkinFids?[0];
 var firstReference = item.References.NadeoSkinFids[0];
 Console.WriteLine(firstReference.File?.FilePath);
+
+foreach (var stored in item.NadeoSkinFids!.References)
+{
+    Console.WriteLine(stored.Descriptor);
+}
 ```
+
+`NodeRefList<T>.References` is an enumerable read-only view of the stored handles. Enumerating it does not resolve targets. `AddReference` and `InsertReference` copy reference storage into a new element handle without loading anything.
 
 An owner's collection metadata view follows replacement of the whole collection. An element handle keeps its entry identity when an element is removed or its index changes. Fixed collections allow element replacement and reject structural changes. `ToArray` creates a resolved snapshot and does not retain external metadata.
 
@@ -76,6 +112,8 @@ Scalar node properties keep their nullable node types. Node-reference arrays, li
 
 Arrays and lists of embedded nodes can initialize a reference collection. An obsolete conversion from an `External<T>[]` retains its descriptors. Use the typed metadata view for new code, and use an explicit resolved snapshot when an ordinary array is needed.
 
+The old `GbxRefTable.LoadNode` overloads, `GbxRefTableFile.GetNode(ref ...)`, and `External<T>.GetNode(settings)` have been removed. Use a stored reference's `Resolve` or `ResolveAsync`, and configure its table's `ReadSettings`. `ImportFile` and `ImportResource` are replaced by the `Import` overloads. Async try-resolution now returns a named result instead of a tuple.
+
 Handwritten serializers use `ReadNodeRef`, `WriteNodeRef`, and combined `GbxReaderWriter.NodeRef`. Collections use the corresponding `ListNodeRef` operations. These APIs preserve descriptors for every node reference. Direct nodes, meta references, and inline archives keep their own wire formats.
 
 Pass an existing handle to `ReadNodeRef`, or pass `null` to create one. `ReadListNodeRef<T>()` reads a length-prefixed list and retains descriptors. Supplying a length omits the length prefix and creates a fixed-size list:
@@ -87,4 +125,4 @@ writer.WriteNodeRef(reference);
 writer.WriteListNodeRef(refs);
 ```
 
-The [design document](ReferenceTableFileForAnyNode.md) describes the storage and migration decisions. [The Native AOT smoke application](../Tests/GBX.NET.AotSmoke/Program.cs) checks reference access, serialization, cloning, aliases, resources, and missing targets.
+The [design document](Designs/ReferenceTableFileForAnyNode.md) describes the storage and migration decisions.

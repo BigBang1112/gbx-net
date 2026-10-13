@@ -16,6 +16,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
 
     public NodeRefList(IEnumerable<T?> nodes)
     {
+        if (nodes is null) throw new ArgumentNullException(nameof(nodes));
         foreach (var node in nodes) Add(node);
     }
 
@@ -50,26 +51,34 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
         set => refs[index].SetEmbedded(value);
     }
 
+    /// <summary>Gets the stored handle without resolving its target.</summary>
     public NodeRef<T> GetReference(int index) => refs[index];
+    /// <summary>A read-only collection of stored handles. Inspecting or enumerating it does not resolve targets.</summary>
     public ReferenceView References => new(this);
 
-    public readonly struct ReferenceView
+    public readonly struct ReferenceView : IReadOnlyList<NodeRef<T>>
     {
         private readonly NodeRefList<T> owner;
         internal ReferenceView(NodeRefList<T> owner) => this.owner = owner;
         public int Count => owner.Count;
         public NodeRef<T> this[int index] => owner.GetReference(index);
+        public IEnumerator<NodeRef<T>> GetEnumerator() => owner.refs.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
+    /// <summary>Appends a copy of the stored reference without resolving it. The new element owns its own handle.</summary>
     public void AddReference(NodeRef<T> reference)
+        => InsertReference(Count, reference);
+
+    /// <summary>Inserts a copy of the stored reference without resolving it. Fixed-size collections reject insertion.</summary>
+    public void InsertReference(int index, NodeRef<T> reference)
     {
         EnsureVariableSize();
         if (reference is null) throw new ArgumentNullException(nameof(reference));
         // Each element owns its handle even when descriptors or targets are shared.
         var entry = new NodeRef<T>();
-        if (reference.Descriptor is { } descriptor) entry.SetDescriptor(descriptor);
-        else entry.SetEmbedded(reference.CachedTarget);
-        refs.Add(entry);
+        entry.CopyFrom(reference);
+        refs.Insert(index, entry);
     }
 
     public void Add(T? item) => Insert(Count, item);

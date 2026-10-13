@@ -5,39 +5,51 @@ namespace GBX.NET;
 [Obsolete("Use NodeRef<T> or NodeRefList<T> to preserve reference metadata.")]
 public sealed record External<T> : IDeepCloneable where T : CMwNod
 {
-    private T? node;
-    internal T? CachedTarget => node;
+    private NodeRef<T> reference = new();
+    internal T? CachedTarget => reference.CachedTarget;
 
     public T? Node
     {
-        get => File?.GetNode(ref node) ?? node;
-        set => node = value;
+        get => reference.Resolve();
+        set => reference.SetEmbedded(value);
     }
 
-    public GbxRefTableFile? File { get; set; }
+    public GbxRefTableFile? File
+    {
+        get => reference.File;
+        set
+        {
+            if (ReferenceEquals(value, reference.File)) return;
+            if (value is null) reference.SetEmbedded(reference.CachedTarget);
+            else reference.SetExternal(value);
+        }
+    }
 
     public External(T? node, GbxRefTableFile? file)
     {
         Node = node;
         File = file;
+        
+        if (node is not null && file is not null)
+        {
+            file.Resolution.Seed(node);
+            reference.Resolve();
+        }
     }
 
-    public T? GetNode(GbxReadSettings settings = default) => File?.GetNode(ref node, settings) ?? node;
-
-    internal NodeRef<T> ToNodeRef()
+    private External(External<T> original)
     {
-        var reference = new NodeRef<T>();
-        if (File is { } file) reference.SetExternal(file);
-        else reference.SetEmbedded(node);
-        return reference;
+        reference = new();
+        reference.CopyFrom(original.reference);
     }
+
+    internal NodeRef<T> ToNodeRef() => reference;
 
     object IDeepCloneable.DeepClone(DeepCloneContext context)
     {
         var clone = new External<T>(null, null);
         context.Register(this, clone);
-        clone.node = context.Clone(node);
-        clone.File = context.Clone(File);
+        clone.reference = context.Clone(reference)!;
         return clone;
     }
 }

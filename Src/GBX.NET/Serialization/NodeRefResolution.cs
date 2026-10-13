@@ -8,28 +8,52 @@ internal sealed class NodeRefResolution
     private static readonly AsyncLocal<HashSet<GbxRefTableNode>?> resolving = new();
     private readonly object sync = new();
     private Task<CMwNod?>? task;
+    private CMwNod? target;
     private ExceptionDispatchInfo? error;
     private NodeRefState state;
     private int generation;
 
-    public NodeRefState State { get { lock (sync) return state; } }
-    public int Generation { get { lock (sync) return generation; } }
-    public Exception? Error { get { lock (sync) return error?.SourceException; } }
-    public CMwNod? CachedTarget { get { lock (sync) return state == NodeRefState.Resolved ? task!.GetAwaiter().GetResult() : null; } }
+    internal int Generation
+    {
+        get
+        { 
+            lock (sync)
+            {
+                return generation;
+            }
+        }
+    }
 
-    public void Seed(CMwNod target)
+    internal CMwNod? CachedTarget
+    {
+        get
+        {
+            lock (sync)
+            {
+                return target;
+            }
+        }
+    }
+
+    internal NodeRefResolutionSnapshot Snapshot()
+    {
+        lock (sync) return new(generation, state, target, error?.SourceException);
+    }
+
+    internal void Seed(CMwNod target)
     {
         lock (sync)
         {
+            ResetCore();
             task = Task.FromResult<CMwNod?>(target);
-            generation++;
+            this.target = target;
             state = NodeRefState.Resolved;
         }
     }
 
-    public CMwNod? Resolve(GbxRefTableNode descriptor)
+    internal NodeRefResolutionResult Resolve(GbxRefTableNode descriptor)
     {
-        var (pending, completion) = Begin(descriptor);
+        var (pending, completion, generation) = Begin(descriptor);
 
         if (completion is not null)
         {
@@ -49,12 +73,12 @@ internal sealed class NodeRefResolution
             }
         }
 
-        return pending.GetAwaiter().GetResult();
+        return new(pending.GetAwaiter().GetResult(), generation);
     }
 
-    public async Task<CMwNod?> ResolveAsync(GbxRefTableNode descriptor, CancellationToken cancellationToken)
+    internal async Task<NodeRefResolutionResult> ResolveAsync(GbxRefTableNode descriptor, CancellationToken cancellationToken)
     {
-        var (pending, completion) = Begin(descriptor);
+        var (pending, completion, generation) = Begin(descriptor);
 
         if (completion is not null)
         {
@@ -63,7 +87,7 @@ internal sealed class NodeRefResolution
 
         if (!cancellationToken.CanBeCanceled)
         {
-            return await pending.ConfigureAwait(false);
+            return new(await pending.ConfigureAwait(false), generation);
         }
 
         var canceled = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -76,10 +100,10 @@ internal sealed class NodeRefResolution
             }
         }
 
-        return await pending.ConfigureAwait(false);
+        return new(await pending.ConfigureAwait(false), generation);
     }
 
-    private (Task<CMwNod?> Task, TaskCompletionSource<CMwNod?>? Completion) Begin(GbxRefTableNode descriptor)
+    private (Task<CMwNod?> Task, TaskCompletionSource<CMwNod?>? Completion, int Generation) Begin(GbxRefTableNode descriptor)
     {
         if (resolving.Value?.Contains(descriptor) == true)
         {
@@ -90,7 +114,7 @@ internal sealed class NodeRefResolution
         {
             if (task is not null)
             {
-                return (task, null);
+                return (task, null, generation);
             }
 
             var completion = new TaskCompletionSource<CMwNod?>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -98,7 +122,7 @@ internal sealed class NodeRefResolution
             task = completion.Task;
             state = NodeRefState.Resolving;
 
-            return (task, completion);
+            return (task, completion, generation);
         }
     }
 
@@ -131,10 +155,10 @@ internal sealed class NodeRefResolution
     {
         lock (sync)
         {
+            target = node;
             state = node is null ? NodeRefState.Missing : NodeRefState.Resolved;
+            completion.SetResult(node);
         }
-
-        completion.SetResult(node);
     }
 
     private void Fail(TaskCompletionSource<CMwNod?> completion, Exception exception)
@@ -143,24 +167,37 @@ internal sealed class NodeRefResolution
         {
             error = ExceptionDispatchInfo.Capture(exception);
             state = NodeRefState.Failed;
+            completion.SetException(exception);
         }
-
-        completion.SetException(exception);
     }
 
-    public void Reset()
+    internal void Reset()
+    {
+        lock (sync) ResetCore();
+    }
+
+    internal void Update<T>(ref T field, T value)
     {
         lock (sync)
         {
-            if (state == NodeRefState.Resolving)
-            {
-                throw new InvalidOperationException("Cannot retry a reference while it is resolving.");
-            }
-
-            task = null;
-            generation++;
-            error = null;
-            state = NodeRefState.Unresolved;
+            if (EqualityComparer<T>.Default.Equals(field, value)) return;
+            // Keep metadata changes atomic with cache invalidation and the start of a load.
+            ResetCore();
+            field = value;
         }
+    }
+
+    private void ResetCore()
+    {
+        if (state == NodeRefState.Resolving)
+        {
+            throw new InvalidOperationException("Cannot change or retry a reference while it is resolving.");
+        }
+
+        task = null;
+        target = null;
+        generation++;
+        error = null;
+        state = NodeRefState.Unresolved;
     }
 }

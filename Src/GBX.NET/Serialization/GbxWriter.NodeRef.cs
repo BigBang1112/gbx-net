@@ -8,8 +8,12 @@ public partial class GbxWriter
     {
         var value = nodeRef?.CachedTarget;
         var descriptor = nodeRef?.Descriptor;
+
         if (descriptor is not null && encapsulation is not null)
+        {
             throw new NotSupportedException("External references cannot be written in an encapsulated context.");
+        }
+
         if (descriptor is not null && ReferenceTable is not null)
         {
             if (ReferenceTable.InferAncestorLevelOnWrite)
@@ -17,17 +21,14 @@ public partial class GbxWriter
                 ReferenceTable.AncestorLevel = descriptor.RefTable.AncestorLevel;
                 ReferenceTable.InferAncestorLevelOnWrite = false;
             }
+
             importedRefs ??= [];
             if (!importedRefs.TryGetValue(descriptor, out var imported))
             {
-                imported = descriptor switch
-                {
-                    GbxRefTableFile file => ReferenceTable.ImportFile(file),
-                    GbxRefTableResource resource => ReferenceTable.ImportResource(resource),
-                    _ => throw new NotSupportedException("Unknown reference descriptor.")
-                };
+                imported = ReferenceTable.Import(descriptor);
                 importedRefs.Add(descriptor, imported);
             }
+
             descriptor = imported;
         }
         
@@ -52,6 +53,7 @@ public partial class GbxWriter
             {
                 nextNodeIndex = NodeDict.Values.Max() + 1;
             }
+
             index = nextNodeIndex++;
 
             NodeDict[key] = index;
@@ -86,10 +88,21 @@ public partial class GbxWriter
     public void WriteListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
     {
         var count = length ?? references?.Count ?? 0;
-        if (count < 0) throw new ArgumentOutOfRangeException(nameof(length));
-        if (!length.HasValue) Write(count);
+
+        if (count < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (!length.HasValue)
+        {
+            Write(count);
+        }
+
         for (var i = 0; i < count; i++)
+        {
             WriteNodeRef(references is not null && i < references.Count ? references.GetReference(i) : null);
+        }
     }
 
     public void WriteListNodeRef_deprec<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
@@ -101,9 +114,20 @@ public partial class GbxWriter
     public void WriteJaggedArrayNodeRef<T>(NodeRefList<T>[]? references, int? innerLength = null, int? outerLength = null) where T : CMwNod
     {
         var count = outerLength ?? references?.Length ?? 0;
-        if (count < 0) throw new ArgumentOutOfRangeException(nameof(outerLength));
-        if (!outerLength.HasValue) Write(count);
+
+        if (count < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(outerLength));
+        }
+
+        if (!outerLength.HasValue)
+        {
+            Write(count);
+        }
+        
         for (var i = 0; i < count; i++)
+        {
             WriteListNodeRef(references is not null && i < references.Length ? references[i] : null, innerLength);
+        }
     }
 }

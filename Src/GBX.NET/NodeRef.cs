@@ -1,5 +1,8 @@
 using GBX.NET.Components;
 using System.Runtime.ExceptionServices;
+#if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 namespace GBX.NET;
 
@@ -23,14 +26,70 @@ public enum NodeRefState
 /// <summary>A stored node reference. Inspecting its metadata never resolves its target.</summary>
 public abstract class NodeRef
 {
+    private protected NodeRef() { }
+
+    /// <summary>How the reference is stored, independently of whether its target has been resolved.</summary>
     public abstract NodeRefKind Kind { get; }
+    /// <summary>The current resolution state. Inspecting it does not load the target.</summary>
     public abstract NodeRefState State { get; }
-    public abstract GbxRefTableFile? File { get; }
-    public abstract GbxRefTableResource? Resource { get; }
+    /// <summary>The external descriptor, or null for an embedded or absent reference.</summary>
+    public abstract GbxRefTableNode? Descriptor { get; }
+    /// <summary>The external file descriptor, if this reference points to a file.</summary>
+    public GbxRefTableFile? File => Descriptor as GbxRefTableFile;
+    /// <summary>The external resource descriptor, if this reference points to a resource.</summary>
+    public GbxRefTableResource? Resource => Descriptor as GbxRefTableResource;
+    /// <summary>The already validated target, or null. This property never starts resolution.</summary>
     public CMwNod? CachedTarget => CachedTargetCore;
     internal abstract CMwNod? CachedTargetCore { get; }
+    /// <summary>The cached resolver or target-type error, if any.</summary>
     public abstract Exception? Error { get; }
-    internal abstract GbxRefTableNode? Descriptor { get; }
+
+    /// <summary>Stores a file or resource descriptor without loading its target. Handles share the descriptor's resolution cache.</summary>
+    public abstract void SetExternal(GbxRefTableNode descriptor);
+
+    /// <summary>Resolves the target, returning null for an absent or missing target. Other errors propagate.</summary>
+    public CMwNod? Resolve() => ResolveCore();
+    internal abstract CMwNod? ResolveCore();
+
+    /// <summary>Resolves the target asynchronously. Cancellation stops this waiter without canceling a shared load.</summary>
+    public Task<CMwNod?> ResolveAsync(CancellationToken cancellationToken = default) => ResolveAsyncCore(cancellationToken);
+    internal abstract Task<CMwNod?> ResolveAsyncCore(CancellationToken cancellationToken);
+
+    /// <summary>Returns whether a target was found. Resolver and type errors still propagate.</summary>
+#if NET8_0_OR_GREATER
+    public bool TryResolve([NotNullWhen(true)] out CMwNod? value)
+#else
+    public bool TryResolve(out CMwNod? value)
+#endif
+    {
+        value = Resolve();
+        return value is not null;
+    }
+
+    /// <summary>Returns a named outcome for asynchronous resolution. Resolver and type errors still propagate.</summary>
+    public async Task<NodeRefResolveResult<CMwNod>> TryResolveAsync(CancellationToken cancellationToken = default)
+        => new(await ResolveAsync(cancellationToken).ConfigureAwait(false));
+
+    /// <summary>Clears this handle without changing other handles that share its external descriptor.</summary>
+    public abstract void Clear();
+
+    /// <summary>Invalidates the descriptor's shared cache without loading its target. Active loads cannot be reset.</summary>
+    public abstract void Reset();
+
+    /// <summary>Invalidates the shared cache and resolves the target again.</summary>
+    public CMwNod? Retry()
+    {
+        Reset();
+        return Resolve();
+    }
+
+    /// <summary>Invalidates the shared cache and resolves the target again asynchronously.</summary>
+    public async Task<CMwNod?> RetryAsync(CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        Reset();
+        return await ResolveAsync(cancellationToken).ConfigureAwait(false);
+    }
 }
 
 /// <summary>Stores an embedded target or an external descriptor independently of resolution.</summary>
@@ -57,19 +116,41 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
             lock (sync)
             {
                 if (descriptor is not { } source) return target is null ? NodeRefState.Unresolved : NodeRefState.Resolved;
-                if (error is not null && validatedGeneration == source.Resolution.Generation) return NodeRefState.Failed;
-                var state = source.Resolution.State;
-                return state == NodeRefState.Resolved && validatedGeneration != source.Resolution.Generation ? NodeRefState.Unresolved : state;
+                var snapshot = source.Resolution.Snapshot();
+                if (error is not null && validatedGeneration == snapshot.Generation) return NodeRefState.Failed;
+                return snapshot.State == NodeRefState.Resolved && validatedGeneration != snapshot.Generation ? NodeRefState.Unresolved : snapshot.State;
             }
         }
     }
-    public override GbxRefTableFile? File { get { lock (sync) return descriptor as GbxRefTableFile; } }
-    public override GbxRefTableResource? Resource { get { lock (sync) return descriptor as GbxRefTableResource; } }
-    public new T? CachedTarget { get { lock (sync) return descriptor is null || validatedGeneration == descriptor.Resolution.Generation ? target : null; } }
+    /// <inheritdoc cref="NodeRef.CachedTarget"/>
+    public new T? CachedTarget
+    {
+        get
+        {
+            lock (sync)
+            {
+                if (descriptor is not { } source) return target;
+                var snapshot = source.Resolution.Snapshot();
+                return validatedGeneration == snapshot.Generation && error is null ? (T?)snapshot.Target : null;
+            }
+        }
+    }
     internal override CMwNod? CachedTargetCore => CachedTarget;
-    public override Exception? Error { get { lock (sync) return descriptor is { } source && validatedGeneration != source.Resolution.Generation ? source.Resolution.Error : error?.SourceException ?? descriptor?.Resolution.Error; } }
-    internal override GbxRefTableNode? Descriptor { get { lock (sync) return descriptor; } }
+    public override Exception? Error
+    {
+        get
+        {
+            lock (sync)
+            {
+                if (descriptor is not { } source) return error?.SourceException;
+                var snapshot = source.Resolution.Snapshot();
+                return validatedGeneration == snapshot.Generation ? error?.SourceException ?? snapshot.Error : snapshot.Error;
+            }
+        }
+    }
+    public override GbxRefTableNode? Descriptor { get { lock (sync) return descriptor; } }
 
+    /// <summary>Stores an embedded target and clears the external descriptor. Null clears the reference.</summary>
     public void SetEmbedded(T? value)
     {
         lock (sync)
@@ -82,15 +163,23 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         }
     }
 
-    public void SetExternal(GbxRefTableFile file) => SetDescriptor(file ?? throw new ArgumentNullException(nameof(file)));
-    public void SetExternal(GbxRefTableResource resource) => SetDescriptor(resource ?? throw new ArgumentNullException(nameof(resource)));
+    /// <inheritdoc/>
+    public override void SetExternal(GbxRefTableNode descriptor) => SetDescriptor(descriptor ?? throw new ArgumentNullException(nameof(descriptor)));
 
+    /// <summary>Copies stored reference metadata or an embedded target without resolving it. This handle retains its identity.</summary>
     public void CopyFrom(NodeRef<T> reference)
     {
         if (reference is null) throw new ArgumentNullException(nameof(reference));
         if (ReferenceEquals(reference, this)) return;
-        if (reference.Descriptor is { } source) SetDescriptor(source);
-        else SetEmbedded(reference.CachedTarget);
+        GbxRefTableNode? source;
+        T? embedded;
+        lock (reference.sync)
+        {
+            source = reference.descriptor;
+            embedded = reference.target;
+        }
+        if (source is not null) SetDescriptor(source);
+        else SetEmbedded(embedded);
     }
 
     internal void SetDescriptor(GbxRefTableNode value)
@@ -111,48 +200,68 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         else throw new InvalidCastException($"Expected {typeof(T).Name}, received Gbx class 0x{value.GetId():X8}.");
     }
 
-    public T? Resolve()
+    /// <inheritdoc cref="NodeRef.Resolve"/>
+    public new T? Resolve()
     {
-        var (source, version, generation, embedded) = Snapshot();
+        var (source, version, embedded) = Snapshot();
         if (source is null) return embedded;
-        return Validate(source, source.Resolution.Resolve(source), version, generation);
+        var result = source.Resolution.Resolve(source);
+        return Validate(source, result.Target, version, result.Generation);
     }
 
+    internal override CMwNod? ResolveCore() => Resolve();
+
+    /// <inheritdoc cref="NodeRef.TryResolve"/>
+#if NET8_0_OR_GREATER
+    public bool TryResolve([NotNullWhen(true)] out T? value)
+#else
     public bool TryResolve(out T? value)
+#endif
     {
         value = Resolve();
         return value is not null;
     }
 
-    public async Task<T?> ResolveAsync(CancellationToken cancellationToken = default)
+    /// <inheritdoc cref="NodeRef.ResolveAsync"/>
+    public new async Task<T?> ResolveAsync(CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        var (source, version, generation, embedded) = Snapshot();
+        var (source, version, embedded) = Snapshot();
         if (source is null) return embedded;
-        var value = await source.Resolution.ResolveAsync(source, cancellationToken).ConfigureAwait(false);
-        return Validate(source, value, version, generation);
+        var result = await source.Resolution.ResolveAsync(source, cancellationToken).ConfigureAwait(false);
+        return Validate(source, result.Target, version, result.Generation);
     }
 
-    public async Task<(bool Success, T? Target)> TryResolveAsync(CancellationToken cancellationToken = default)
+    internal override async Task<CMwNod?> ResolveAsyncCore(CancellationToken cancellationToken)
+        => await ResolveAsync(cancellationToken).ConfigureAwait(false);
+
+    /// <inheritdoc cref="NodeRef.TryResolveAsync"/>
+    public new async Task<NodeRefResolveResult<T>> TryResolveAsync(CancellationToken cancellationToken = default)
     {
         var value = await ResolveAsync(cancellationToken).ConfigureAwait(false);
-        return (value is not null, value);
+        return new(value);
     }
 
-    public T? Retry()
+    /// <inheritdoc cref="NodeRef.Retry"/>
+    public new T? Retry()
     {
         Reset();
         return Resolve();
     }
 
-    public async Task<T?> RetryAsync(CancellationToken cancellationToken = default)
+    /// <inheritdoc cref="NodeRef.RetryAsync"/>
+    public new async Task<T?> RetryAsync(CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
         Reset();
         return await ResolveAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    private void Reset()
+    /// <inheritdoc/>
+    public override void Clear() => SetEmbedded(null);
+
+    /// <inheritdoc/>
+    public override void Reset()
     {
         lock (sync)
         {
@@ -165,13 +274,13 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         }
     }
 
-    private (GbxRefTableNode? Source, long Version, int Generation, T? Embedded) Snapshot()
+    private (GbxRefTableNode? Source, long Version, T? Embedded) Snapshot()
     {
         lock (sync)
         {
             var generation = descriptor?.Resolution.Generation ?? -1;
             if (validatedGeneration == generation) error?.Throw();
-            return (descriptor, revision, generation, target);
+            return (descriptor, revision, target);
         }
     }
 
@@ -196,7 +305,6 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         {
             if (ReferenceEquals(descriptor, source) && revision == version && source.Resolution.Generation == generation)
             {
-                target = typed;
                 error = null;
                 validatedGeneration = generation;
             }
@@ -209,8 +317,8 @@ public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
         var clone = new NodeRef<T>();
         context.Register(this, clone);
         if (descriptor is not null) clone.descriptor = context.Clone(descriptor);
-        if (descriptor is null || State == NodeRefState.Resolved) clone.target = context.Clone(target);
-        if (clone.target is not null && clone.descriptor is not null) clone.validatedGeneration = clone.descriptor.Resolution.Generation;
+        if (descriptor is null) clone.target = context.Clone(target);
+        else if (State == NodeRefState.Resolved) clone.validatedGeneration = clone.descriptor!.Resolution.Generation;
         return clone;
     }
 }
