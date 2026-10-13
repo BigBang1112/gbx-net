@@ -34,18 +34,44 @@ public partial class CMwCmdBlock : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x01030000;
 
-    private CMwCmdScript[]? cmds;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CMwCmdScript>? cmds;
     [AppliedWithChunk<Chunk01030004>]
-    public CMwCmdScript[]? Cmds
+    public NodeRefList<CMwCmdScript>? Cmds
     {
-        get => this.cmds;
-        set => this.cmds = value;
+        get => cmds;
+        set => cmds = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMwCmdBlock owner;
+        internal NodeRefView(CMwCmdBlock owner) => this.owner = owner;
+        public CmdsReferenceView Cmds => new(owner);
+    }
+    public readonly struct CmdsReferenceView
+    {
+        private readonly CMwCmdBlock owner;
+        internal CmdsReferenceView(CMwCmdBlock owner) => this.owner = owner;
+        public int Count => owner.cmds?.Count ?? 0;
+        public NodeRef<CMwCmdScript> this[int index] => (owner.cmds ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (cmds is not null)
+        {
+            for (var i = 0; i < cmds.Count; i++) yield return new("Cmds" + "[" + i + "]", cmds.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMwCmdBlock)clone).cmds = context.CloneArray(this.cmds)!;
+        ((CMwCmdBlock)clone).cmds = context.Clone(this.cmds)!;
     }
 
     public CMwCmdBlock()
@@ -66,7 +92,7 @@ public partial class CMwCmdBlock : CMwNod, IClass
 
         public override void ReadWrite(CMwCmdBlock n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CMwCmdScript>(ref n.cmds!);
+            n.cmds = rw.ListNodeRef<CMwCmdScript>(n.cmds);
         }
     }
 

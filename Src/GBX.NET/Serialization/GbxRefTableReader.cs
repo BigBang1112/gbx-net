@@ -35,6 +35,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
         var refTable = new GbxRefTable
         {
             AncestorLevel = reader.ReadInt32(),
+            ReadSettings = Settings,
             FileSystemPath = fileSystemPath
         };
 
@@ -110,7 +111,7 @@ internal sealed class GbxRefTableReader(GbxReader reader, GbxHeader header, stri
             logger?.LogTrace("Dir: {Dir}", subDir);
 
             yield return subDir;
-            
+
             foreach (var dir in ReadChildren(subDir))
             {
                 yield return dir;

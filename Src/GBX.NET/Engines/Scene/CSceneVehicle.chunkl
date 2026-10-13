@@ -2,8 +2,8 @@
 - inherits: CSceneMobil
 
 0x000 [VSK5, TMF]
-  CPlugVehiclePhyTunings VehicleTunings (external)
-  CMwRefBuffer VehicleMaterials (external)
+  CPlugVehiclePhyTunings VehicleTunings
+  CMwRefBuffer VehicleMaterials
   CSceneVehicleEnvironment Environment
   CMwNod
-  CPlugVehicleVisModelShared VehicleStruct (external)
+  CPlugVehicleVisModelShared VehicleStruct

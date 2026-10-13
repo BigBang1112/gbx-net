@@ -1,16 +1,16 @@
 CGameObjectPhyModel 0x2E006000
 
 0x000
-  CPlugSurface TriggerShapeFid (external)
+  CPlugSurface TriggerShapeFid
   CPlugTriggerAction[] Triggers (version: 5)
-  CMwNod (external) // Deprecated CPlugAnimFile.
+  CMwNod // Deprecated CPlugAnimFile.
 
 0x001 [MP3, TMT, MP4.v21, TM2020.v26]
   version
   v10-
-    CPlugSurface MoveShapeFid (external)
-    CPlugSurface HitShapeFid (external)
-    CPlugSurface TriggerShapeFid (external)
+    CPlugSurface MoveShapeFid
+    CPlugSurface HitShapeFid
+    CPlugSurface TriggerShapeFid
   v8+
     int TriggerActionVersion = 5
   v7-
@@ -18,7 +18,7 @@ CGameObjectPhyModel 0x2E006000
   v8+
     CPlugTriggerAction[] Triggers (version: n.TriggerActionVersion)
   v13-
-    CMwNod U03 (external) // Deprecated CPlugAnimFile.
+    CMwNod U03 // Deprecated CPlugAnimFile.
   v2+
     string MoveShape
   v4+
@@ -44,25 +44,25 @@ CGameObjectPhyModel 0x2E006000
     if Version < 13 || ActionModel == null || ActionModel.Length == 0
       CGameActionModel[] Actions (direct) // Count followed by chunk bodies, without reference indices or class IDs.
   v21+
-    CMwNod U01 (external) // DoFid: an external file reference.
+    CMwNod U01 // DoFid: an external file reference.
   v11+
-    if Version >= 21 && (U01 != null || U01File != null)
-      CMwNod U27 (external) // Deprecated CPlugSurface, present whenever the file reference exists.
+    if Version >= 21 && (U01 != null)
+      CMwNod U27 // Deprecated CPlugSurface, present whenever the file reference exists.
     else
       if MoveShape == null || MoveShape.Length == 0
-        CPlugSurface MoveShapeFid (external)
+        CPlugSurface MoveShapeFid
     if HitShape == null || HitShape.Length == 0
-      CPlugSurface HitShapeFid (external)
+      CPlugSurface HitShapeFid
     if TriggerShape == null || TriggerShape.Length == 0
-      CPlugSurface TriggerShapeFid (external)
+      CPlugSurface TriggerShapeFid
   v12+
     string U14
     if U14 == null || U14.Length == 0
-      CMwNod U15 (external) // CPlugSolid.
+      CMwNod U15 // CPlugSolid.
   v15+
     int U19
   v16+
-    CMwNod SpecialProperties (external) // CPlugCharPhySpecialProperty.
+    CMwNod SpecialProperties // CPlugCharPhySpecialProperty.
   v17+
     int<EPersistence> Persistence = EPersistence.NeverRemove
   v18+
@@ -93,10 +93,10 @@ CGameObjectPhyModel 0x2E006000
   v24+
     bool MagnetEnabled
   v25=
-    CMwNod U26 (external) // Removed in version 26.
+    CMwNod U26 // Removed in version 26.
 
 0x002 (skippable)
-  CMwNod (external)
+  CMwNod
 
 0x003 [MP4, TM2020]
   bool U01 (write: "n.DynaModel is not null")
@@ -105,7 +105,7 @@ CGameObjectPhyModel 0x2E006000
 
 0x004
   version
-  CMwNod (external)
+  CMwNod
   vec3
 
 0x005 [TM2020.v3]

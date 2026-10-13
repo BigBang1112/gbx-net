@@ -283,7 +283,7 @@ public partial class CPlugShader
 
             rw.DataUInt64(ref U01);
             rw.Single(ref n.lightMapQuality);
-            rw.NodeRef<CPlugMaterialFx>(ref n.materialFx, ref n.materialFxFile);
+            rw.NodeRef(n.materialFxRef);
             rw.UInt16(ref n.visibleIdFlags);
 
             if (rw.Reader is not null)
@@ -312,9 +312,6 @@ public partial class CPlugShader
         [Obsolete("Use ExternalShader instead.")]
         public CMwNod? U01 { get => ExternalShader; set => ExternalShader = (CPlugShader?)value; }
 
-        [Obsolete("Use ExternalShaderFile instead.")]
-        public GbxRefTableFile? U01File { get => ExternalShaderFile; set => ExternalShaderFile = value; }
-
         [Obsolete("Use HasShader instead.")]
         public bool U02 { get => HasShader; set => HasShader = value; }
 
@@ -327,9 +324,6 @@ public partial class CPlugShader
     {
         [Obsolete("Use ExternalShader instead.")]
         public CMwNod? U01 { get => ExternalShader; set => ExternalShader = (CPlugShader?)value; }
-
-        [Obsolete("Use ExternalShaderFile instead.")]
-        public GbxRefTableFile? U01File { get => ExternalShaderFile; set => ExternalShaderFile = value; }
 
         [Obsolete("Use Shader instead.")]
         public CMwNod? U02 { get => Shader; set => Shader = (CPlugShader?)value; }

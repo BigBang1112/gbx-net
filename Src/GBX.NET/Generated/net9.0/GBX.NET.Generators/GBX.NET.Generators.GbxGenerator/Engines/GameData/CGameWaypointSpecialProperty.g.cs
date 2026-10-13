@@ -34,6 +34,8 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E009000;
 
+    internal override uint GetId() => Id;
+
     private int spawn;
     [AppliedWithChunk<Chunk2E009000>(1, 1)]
     public int Spawn

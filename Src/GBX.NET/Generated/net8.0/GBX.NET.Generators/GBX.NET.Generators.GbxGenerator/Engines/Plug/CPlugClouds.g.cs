@@ -34,13 +34,15 @@ public partial class CPlugClouds : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09180000;
 
-    private External<CPlugSolid>[]? solidFids;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugSolid>? solidFids;
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
-    public External<CPlugSolid>[]? SolidFids
+    public NodeRefList<CPlugSolid>? SolidFids
     {
-        get => this.solidFids;
-        set => this.solidFids = value;
+        get => solidFids;
+        set => solidFids = value;
     }
 
     private float bottomNearZ;
@@ -61,41 +63,23 @@ public partial class CPlugClouds : CMwNod, IClass
         set => this.bottomFarZ = value;
     }
 
-    private CPlugFileImg? imageColorMin;
+    private NodeRef<CPlugFileImg> imageColorMinRef = new();
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMin
     {
-        get => this.imageColorMinFile?.GetNode(ref this.imageColorMin) ?? this.imageColorMin;
-        set => this.imageColorMin = value;
-    }
-    private Components.GbxRefTableFile? imageColorMinFile;
-
-    public Components.GbxRefTableFile? ImageColorMinFile
-    {
-        get => imageColorMinFile;
-        set => imageColorMinFile = value;
+        get => imageColorMinRef.Resolve();
+        set => imageColorMinRef.SetEmbedded(value);
     }
 
-    public CPlugFileImg? GetImageColorMin(GbxReadSettings settings = default, bool exceptions = false) => imageColorMinFile?.GetNode(ref imageColorMin, settings, exceptions) ?? imageColorMin;
-
-    private CPlugFileImg? imageColorMax;
+    private NodeRef<CPlugFileImg> imageColorMaxRef = new();
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMax
     {
-        get => this.imageColorMaxFile?.GetNode(ref this.imageColorMax) ?? this.imageColorMax;
-        set => this.imageColorMax = value;
+        get => imageColorMaxRef.Resolve();
+        set => imageColorMaxRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? imageColorMaxFile;
-
-    public Components.GbxRefTableFile? ImageColorMaxFile
-    {
-        get => imageColorMaxFile;
-        set => imageColorMaxFile = value;
-    }
-
-    public CPlugFileImg? GetImageColorMax(GbxReadSettings settings = default, bool exceptions = false) => imageColorMaxFile?.GetNode(ref imageColorMax, settings, exceptions) ?? imageColorMax;
 
     private int lighting;
     [AppliedWithChunk<Chunk09180000>]
@@ -138,14 +122,42 @@ public partial class CPlugClouds : CMwNod, IClass
         set => this.speedScale = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugClouds owner;
+        internal NodeRefView(CPlugClouds owner) => this.owner = owner;
+        public SolidFidsReferenceView SolidFids => new(owner);
+        public NodeRef<CPlugFileImg> ImageColorMin => owner.imageColorMinRef;
+        public NodeRef<CPlugFileImg> ImageColorMax => owner.imageColorMaxRef;
+    }
+    public readonly struct SolidFidsReferenceView
+    {
+        private readonly CPlugClouds owner;
+        internal SolidFidsReferenceView(CPlugClouds owner) => this.owner = owner;
+        public int Count => owner.solidFids?.Count ?? 0;
+        public NodeRef<CPlugSolid> this[int index] => (owner.solidFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (solidFids is not null)
+        {
+            for (var i = 0; i < solidFids.Count; i++) yield return new("SolidFids" + "[" + i + "]", solidFids.GetReference(i));
+        }
+        yield return new("ImageColorMin", imageColorMinRef);
+        yield return new("ImageColorMax", imageColorMaxRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugClouds)clone).solidFids = context.CloneArray(this.solidFids)!;
+        ((CPlugClouds)clone).solidFids = context.Clone(this.solidFids)!;
         ((CPlugClouds)clone).bottomNearZ = context.Clone(this.bottomNearZ)!;
         ((CPlugClouds)clone).bottomFarZ = context.Clone(this.bottomFarZ)!;
-        ((CPlugClouds)clone).imageColorMin = context.Clone(this.imageColorMin)!;
-        ((CPlugClouds)clone).imageColorMax = context.Clone(this.imageColorMax)!;
+        ((CPlugClouds)clone).imageColorMinRef = context.Clone(this.imageColorMinRef)!;
+        ((CPlugClouds)clone).imageColorMaxRef = context.Clone(this.imageColorMaxRef)!;
         ((CPlugClouds)clone).lighting = context.Clone(this.lighting)!;
         ((CPlugClouds)clone).pointHeights = context.CloneArray(this.pointHeights)!;
         ((CPlugClouds)clone).heightCenter = context.Clone(this.heightCenter)!;
@@ -169,11 +181,11 @@ public partial class CPlugClouds : CMwNod, IClass
 
         public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CPlugSolid>(ref n.solidFids!);
+            n.solidFids = rw.ListNodeRef<CPlugSolid>(n.solidFids);
             rw.Single(ref n.bottomNearZ);
             rw.Single(ref n.bottomFarZ);
-            rw.NodeRef<CPlugFileImg>(ref n.imageColorMin, ref n.imageColorMinFile);
-            rw.NodeRef<CPlugFileImg>(ref n.imageColorMax, ref n.imageColorMaxFile);
+            rw.NodeRef(n.imageColorMinRef);
+            rw.NodeRef(n.imageColorMaxRef);
             rw.Int32(ref n.lighting);
         }
     }

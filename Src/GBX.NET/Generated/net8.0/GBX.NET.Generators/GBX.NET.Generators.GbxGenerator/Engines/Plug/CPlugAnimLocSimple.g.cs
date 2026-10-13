@@ -34,6 +34,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F8000;
 
+    internal override uint GetId() => Id;
+
     private int rotPeriod;
     [AppliedWithChunk<Chunk090F8000>]
     public int RotPeriod

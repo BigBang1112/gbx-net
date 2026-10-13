@@ -14,7 +14,7 @@ CPlugBitmapRenderCubeMap 0x09088000
   float MinDistToUpdate = 1f
 
 0x003 // image-space bitmap and distance
-  CPlugBitmap BitmapImageSpace (external)
+  CPlugBitmap BitmapImageSpace
   float BitmapImageSpaceDistToCenter
 
 0x004 (base: 0x003) [TMF, TMT, MP4, TM2020] // image-space bitmap and scaling

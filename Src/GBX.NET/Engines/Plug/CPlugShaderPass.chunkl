@@ -2,52 +2,52 @@ CPlugShaderPass 0x09067000
 - inherits: CPlug
 
 0x000
-  CPlugFileGPU VertexShader (external)
-  CPlugFileGPU PixelShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU VertexShader
+  CPlugFileGPU PixelShader
+  if VertexShader != null
     vec4[] VertexFxValues = empty
 
 0x001
-  CPlugFileGPU VertexShader (external)
+  CPlugFileGPU VertexShader
   CMwNod UnusedShader
-  CPlugFileGPU PixelShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU PixelShader
+  if VertexShader != null
     vec4[] VertexFxValues = empty
 
 0x002
   int BlendSrc = 1
   int BlendDst
-  CPlugFileGPU VertexShader (external)
+  CPlugFileGPU VertexShader
   CMwNod UnusedShader
-  CPlugFileGPU PixelShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU PixelShader
+  if VertexShader != null
     vec4[] VertexFxValues = empty
 
-0x003 
+0x003
   int BlendSrc = 1
   int BlendDst
   int CullMode
-  CPlugFileGPU VertexShader (external)
+  CPlugFileGPU VertexShader
   CMwNod UnusedShader
-  CPlugFileGPU PixelShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU PixelShader
+  if VertexShader != null
     vec4[] VertexFxValues = empty
 
 0x004 (base: 0x003)
   base
-  if PixelShaderFile != null || PixelShader != null
+  if PixelShader != null
     vec4[] PixelFxValues = empty
 
 0x005 [TM10, TMPU] // blending, culling and GPU effects
   int BlendSrc = 1
   int BlendDst
   int CullMode
-  CPlugFileGPU VertexShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU VertexShader
+  if VertexShader != null
     GpuLoadFx[] VertexLoadFxs = empty (version: 0)
     vec4[] VertexFxValues = empty
-  CPlugFileGPU PixelShader (external)
-  if PixelShaderFile != null || PixelShader != null
+  CPlugFileGPU PixelShader
+  if PixelShader != null
     GpuLoadFx[] PixelLoadFxs = empty (version: 0)
     vec4[] PixelFxValues = empty
 
@@ -58,12 +58,12 @@ CPlugShaderPass 0x09067000
   datauint Flags = 1
 
 0x008 [TMSX, TMNESWC] // vertex and pixel GPU effects
-  CPlugFileGPU VertexShader (external)
-  if VertexShaderFile != null || VertexShader != null
+  CPlugFileGPU VertexShader
+  if VertexShader != null
     GpuLoadFx[] VertexLoadFxs = empty (version: 0)
     vec4[] VertexFxValues = empty
-  CPlugFileGPU PixelShader (external)
-  if PixelShaderFile != null || PixelShader != null
+  CPlugFileGPU PixelShader
+  if PixelShader != null
     GpuLoadFx[] PixelLoadFxs = empty (version: 0)
     vec4[] PixelFxValues = empty
 
@@ -95,9 +95,9 @@ CPlugShaderPass 0x09067000
   Sampler[] GeometrySamplers = empty
 
 archive PipelineGpu
-  bool HasExternalFile (write: "FileGpuFile is not null")
-  CPlugFileGPU FileGpu (external)
-  if FileGpuFile != null || FileGpu != null
+  bool HasExternalFile (write: "References.FileGpu.Kind == NodeRefKind.ExternalFile")
+  CPlugFileGPU FileGpu
+  if FileGpu != null
     GpuLoadFx[] GpuLoadFxs = empty (version: 0)
     vec4[] FxValues = empty
 
@@ -109,5 +109,5 @@ archive GpuLoadFx
   int ValueIndex // First four-component constant in FxValues.
 
 archive Sampler
-  CPlugBitmap Bitmap (external)
+  CPlugBitmap Bitmap
   id Name

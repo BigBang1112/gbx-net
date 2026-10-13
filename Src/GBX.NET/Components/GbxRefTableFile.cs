@@ -2,7 +2,7 @@
 
 public sealed class GbxRefTableFile : GbxRefTableNode
 {
-    public string FilePath { get; set; }
+    public string FilePath { get; }
 
     public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string filePath) : base(refTable, flags, useFile)
     {
@@ -28,4 +28,7 @@ public sealed class GbxRefTableFile : GbxRefTableNode
     {
         return RefTable.GetFullFilePath(this);
     }
+
+    internal override CMwNod? ResolveTarget() => RefTable.ResolveNode(this);
+    internal override Task<CMwNod?> ResolveTargetAsync() => RefTable.ResolveNodeAsync(this);
 }

@@ -34,9 +34,68 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03093000;
 
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CGameCtnGhost>? ghosts;
+
+    private NodeRef<CGameCtnMediaClip> clipRef = new();
+
+    private NodeRef<CCtnMediaBlockEventTrackMania> eventsRef = new();
+
+    private NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> simpleEventsDisplayRef = new();
+
+    private NodeRef<CGameReplayObjectVisData> sceneryObjectsRef = new();
+
+    private NodeRef<CPlugEntRecordData> recordDataRef = new();
+
+    private NodeRef<CGameCtnChallengeParameters> challengeParametersRef = new();
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnReplayRecord owner;
+        internal NodeRefView(CGameCtnReplayRecord owner) => this.owner = owner;
+        public GhostsReferenceView Ghosts => new(owner);
+        public NodeRef<CGameCtnMediaClip> Clip => owner.clipRef;
+        public NodeRef<CCtnMediaBlockEventTrackMania> Events => owner.eventsRef;
+        public NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> SimpleEventsDisplay => owner.simpleEventsDisplayRef;
+        public NodeRef<CGameReplayObjectVisData> SceneryObjects => owner.sceneryObjectsRef;
+        public NodeRef<CPlugEntRecordData> RecordData => owner.recordDataRef;
+        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => owner.challengeParametersRef;
+    }
+    public readonly struct GhostsReferenceView
+    {
+        private readonly CGameCtnReplayRecord owner;
+        internal GhostsReferenceView(CGameCtnReplayRecord owner) => this.owner = owner;
+        public int Count => owner.ghosts?.Count ?? 0;
+        public NodeRef<CGameCtnGhost> this[int index] => (owner.ghosts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (ghosts is not null)
+        {
+            for (var i = 0; i < ghosts.Count; i++) yield return new("Ghosts" + "[" + i + "]", ghosts.GetReference(i));
+        }
+        yield return new("Clip", clipRef);
+        yield return new("Events", eventsRef);
+        yield return new("SimpleEventsDisplay", simpleEventsDisplayRef);
+        yield return new("SceneryObjects", sceneryObjectsRef);
+        yield return new("RecordData", recordDataRef);
+        yield return new("ChallengeParameters", challengeParametersRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameCtnReplayRecord)clone).ghosts = context.Clone(this.ghosts)!;
+        ((CGameCtnReplayRecord)clone).clipRef = context.Clone(this.clipRef)!;
+        ((CGameCtnReplayRecord)clone).eventsRef = context.Clone(this.eventsRef)!;
+        ((CGameCtnReplayRecord)clone).simpleEventsDisplayRef = context.Clone(this.simpleEventsDisplayRef)!;
+        ((CGameCtnReplayRecord)clone).sceneryObjectsRef = context.Clone(this.sceneryObjectsRef)!;
+        ((CGameCtnReplayRecord)clone).recordDataRef = context.Clone(this.recordDataRef)!;
+        ((CGameCtnReplayRecord)clone).challengeParametersRef = context.Clone(this.challengeParametersRef)!;
         ((CGameCtnReplayRecord)clone).challenge = context.Clone(this.challenge)!;
         ((CGameCtnReplayRecord)clone).MapInfo = context.Clone(this.MapInfo)!;
         ((CGameCtnReplayRecord)clone).Time = context.Clone(this.Time)!;
@@ -50,11 +109,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         ((CGameCtnReplayRecord)clone).AuthorZone = context.Clone(this.AuthorZone)!;
         ((CGameCtnReplayRecord)clone).AuthorExtraInfo = context.Clone(this.AuthorExtraInfo)!;
         ((CGameCtnReplayRecord)clone).ChallengeGbxData = context.Clone(this.ChallengeGbxData)!;
-        ((CGameCtnReplayRecord)clone).Ghosts = context.Clone(this.Ghosts)!;
-        ((CGameCtnReplayRecord)clone).Clip = context.Clone(this.Clip)!;
-        ((CGameCtnReplayRecord)clone).RecordData = context.Clone(this.RecordData)!;
-        ((CGameCtnReplayRecord)clone).Events = context.Clone(this.Events)!;
-        ((CGameCtnReplayRecord)clone).SimpleEventsDisplay = context.Clone(this.SimpleEventsDisplay)!;
         ((CGameCtnReplayRecord)clone).EventsDuration = context.Clone(this.EventsDuration)!;
         ((CGameCtnReplayRecord)clone).SceneryVortexKeys = context.Clone(this.SceneryVortexKeys)!;
         ((CGameCtnReplayRecord)clone).SceneryCapturableCount = context.Clone(this.SceneryCapturableCount)!;
@@ -62,12 +116,10 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         ((CGameCtnReplayRecord)clone).InterfaceScriptInfos = context.Clone(this.InterfaceScriptInfos)!;
         ((CGameCtnReplayRecord)clone).Inputs = context.Clone(this.Inputs)!;
         ((CGameCtnReplayRecord)clone).EntDataSceneUIdsToGhosts = context.Clone(this.EntDataSceneUIdsToGhosts)!;
-        ((CGameCtnReplayRecord)clone).ChallengeParameters = context.Clone(this.ChallengeParameters)!;
         ((CGameCtnReplayRecord)clone).ActionModels = context.Clone(this.ActionModels)!;
         ((CGameCtnReplayRecord)clone).ActionNames = context.Clone(this.ActionNames)!;
         ((CGameCtnReplayRecord)clone).ItemNames = context.Clone(this.ItemNames)!;
         ((CGameCtnReplayRecord)clone).ItemSkins = context.Clone(this.ItemSkins)!;
-        ((CGameCtnReplayRecord)clone).SceneryObjects = context.Clone(this.SceneryObjects)!;
         ((CGameCtnReplayRecord)clone).BonusBumpKeys = context.Clone(this.BonusBumpKeys)!;
     }
 
@@ -190,7 +242,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03093005)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03093005)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk03093005)clone).U02 = context.CloneArray(this.U02, row0 => context.CloneArray(row0)!)!;
         }
     }
 
@@ -222,7 +274,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03093008)clone).ExeVersion = context.Clone(this.ExeVersion)!;
-            ((Chunk03093008)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk03093008)clone).U01 = context.CloneArray(this.U01, row0 => context.CloneArray(row0)!)!;
         }
     }
 
@@ -246,10 +298,34 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x0309300A;
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0309300A owner;
+            internal NodeRefView(Chunk0309300A owner) => this.owner = owner;
+            public U01ReferenceView U01 => new(owner);
+        }
+        public readonly struct U01ReferenceView
+        {
+            private readonly Chunk0309300A owner;
+            internal U01ReferenceView(Chunk0309300A owner) => this.owner = owner;
+            public int Count => owner.U01?.Count ?? 0;
+            public NodeRef<CGameCtnMediaTrack> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+            }
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309300A)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0309300A)clone).U01 = context.Clone(this.U01)!;
         }
     }
 
@@ -261,10 +337,31 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x0309300B;
 
+        private NodeRef<CMwNod> HumanTimeToGameTimeFuncRef = new();
+        public CMwNod? HumanTimeToGameTimeFunc
+        {
+            get => HumanTimeToGameTimeFuncRef.Resolve();
+            set => HumanTimeToGameTimeFuncRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0309300B owner;
+            internal NodeRefView(Chunk0309300B owner) => this.owner = owner;
+            public NodeRef<CMwNod> HumanTimeToGameTimeFunc => owner.HumanTimeToGameTimeFuncRef;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("HumanTimeToGameTimeFunc", HumanTimeToGameTimeFuncRef);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309300B)clone).HumanTimeToGameTimeFunc = context.Clone(this.HumanTimeToGameTimeFunc)!;
+            ((Chunk0309300B)clone).HumanTimeToGameTimeFuncRef = context.Clone(this.HumanTimeToGameTimeFuncRef)!;
         }
     }
 
@@ -381,7 +478,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093013)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk03093013)clone).U01 = context.CloneArray(this.U01, row0 => context.CloneArray(row0)!)!;
         }
     }
 
@@ -426,12 +523,51 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x03093016;
 
+        private NodeRef<CPlugDataTape> U01Ref = new();
+        public CPlugDataTape? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugDataTape> U02Ref = new();
+        public CPlugDataTape? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugDataTape> U03Ref = new();
+        public CPlugDataTape? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03093016 owner;
+            internal NodeRefView(Chunk03093016 owner) => this.owner = owner;
+            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
+            public NodeRef<CPlugDataTape> U03 => owner.U03Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield return new("U02", U02Ref);
+            yield return new("U03", U03Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093016)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03093016)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03093016)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03093016)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03093016)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk03093016)clone).U03Ref = context.Clone(this.U03Ref)!;
         }
     }
 
@@ -443,12 +579,51 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x03093017;
 
+        private NodeRef<CPlugDataTape> U01Ref = new();
+        public CPlugDataTape? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugDataTape> U02Ref = new();
+        public CPlugDataTape? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugDataTape> U03Ref = new();
+        public CPlugDataTape? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03093017 owner;
+            internal NodeRefView(Chunk03093017 owner) => this.owner = owner;
+            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
+            public NodeRef<CPlugDataTape> U03 => owner.U03Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield return new("U02", U02Ref);
+            yield return new("U03", U03Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093017)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03093017)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03093017)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03093017)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03093017)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk03093017)clone).U03Ref = context.Clone(this.U03Ref)!;
         }
     }
 
@@ -494,10 +669,31 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x0309301A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        private NodeRef<CPlugDataTape> U02Ref = new();
+        public CPlugDataTape? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0309301A owner;
+            internal NodeRefView(Chunk0309301A owner) => this.owner = owner;
+            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", U02Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309301A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0309301A)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
     }
 
@@ -631,7 +827,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093022)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk03093022)clone).U01 = context.CloneArray(this.U01, row0 => context.CloneArray(row0)!)!;
             ((Chunk03093022)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -646,10 +842,31 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x03093023;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        private NodeRef<CPlugDataTape> U01Ref = new();
+        public CPlugDataTape? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03093023 owner;
+            internal NodeRefView(Chunk03093023 owner) => this.owner = owner;
+            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093023)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093023)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk03093023)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -664,10 +881,31 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x03093024;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
+        private NodeRef<CPlugDataTape> U01Ref = new();
+        public CPlugDataTape? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03093024 owner;
+            internal NodeRefView(Chunk03093024 owner) => this.owner = owner;
+            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093024)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03093024)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk03093024)clone).Version = context.Clone(this.Version)!;
         }
     }

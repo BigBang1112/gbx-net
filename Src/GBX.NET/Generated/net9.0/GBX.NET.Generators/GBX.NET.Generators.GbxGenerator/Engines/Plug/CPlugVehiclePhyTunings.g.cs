@@ -34,12 +34,14 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090EC000;
 
-    private CPlugVehiclePhyTuning[]? tuning;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugVehiclePhyTuning>? tuning;
     [AppliedWithChunk<Chunk090EC000>]
-    public CPlugVehiclePhyTuning[]? Tuning
+    public NodeRefList<CPlugVehiclePhyTuning>? Tuning
     {
-        get => this.tuning;
-        set => this.tuning = value;
+        get => tuning;
+        set => tuning = value;
     }
 
     private int tuningIndex;
@@ -50,10 +52,34 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
         set => this.tuningIndex = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehiclePhyTunings owner;
+        internal NodeRefView(CPlugVehiclePhyTunings owner) => this.owner = owner;
+        public TuningReferenceView Tuning => new(owner);
+    }
+    public readonly struct TuningReferenceView
+    {
+        private readonly CPlugVehiclePhyTunings owner;
+        internal TuningReferenceView(CPlugVehiclePhyTunings owner) => this.owner = owner;
+        public int Count => owner.tuning?.Count ?? 0;
+        public NodeRef<CPlugVehiclePhyTuning> this[int index] => (owner.tuning ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (tuning is not null)
+        {
+            for (var i = 0; i < tuning.Count; i++) yield return new("Tuning" + "[" + i + "]", tuning.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVehiclePhyTunings)clone).tuning = context.CloneArray(this.tuning)!;
+        ((CPlugVehiclePhyTunings)clone).tuning = context.Clone(this.tuning)!;
         ((CPlugVehiclePhyTunings)clone).tuningIndex = context.Clone(this.tuningIndex)!;
     }
 
@@ -75,7 +101,7 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehiclePhyTunings n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugVehiclePhyTuning>(ref n.tuning!);
+            n.tuning = rw.ListNodeRef_deprec<CPlugVehiclePhyTuning>(n.tuning);
             rw.Int32(ref n.tuningIndex);
         }
     }

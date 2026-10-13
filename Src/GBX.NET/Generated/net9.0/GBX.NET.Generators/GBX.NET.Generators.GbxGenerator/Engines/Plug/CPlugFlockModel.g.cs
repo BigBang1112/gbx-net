@@ -34,6 +34,8 @@ public partial class CPlugFlockModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090E5000;
 
+    internal override uint GetId() => Id;
+
     private float range;
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Range
@@ -170,22 +172,13 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.flockType = value;
     }
 
-    private CMwNod? animFileFid;
+    private NodeRef<CMwNod> animFileFidRef = new();
     [AppliedWithChunk<Chunk090E5000>(3, 5)]
     public CMwNod? AnimFileFid
     {
-        get => this.animFileFidFile?.GetNode(ref this.animFileFid) ?? this.animFileFid;
-        set => this.animFileFid = value;
+        get => animFileFidRef.Resolve();
+        set => animFileFidRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? animFileFidFile;
-
-    public Components.GbxRefTableFile? AnimFileFidFile
-    {
-        get => animFileFidFile;
-        set => animFileFidFile = value;
-    }
-
-    public CMwNod? GetAnimFileFid(GbxReadSettings settings = default, bool exceptions = false) => animFileFidFile?.GetNode(ref animFileFid, settings, exceptions) ?? animFileFid;
 
     private int defSpawnCount;
     [AppliedWithChunk<Chunk090E5000>(4, 5)]
@@ -195,39 +188,21 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.defSpawnCount = value;
     }
 
-    private CMwNod? birdModel;
+    private NodeRef<CMwNod> birdModelRef = new();
     [AppliedWithChunk<Chunk090E5000>(5, 5)]
     public CMwNod? BirdModel
     {
-        get => this.birdModelFile?.GetNode(ref this.birdModel) ?? this.birdModel;
-        set => this.birdModel = value;
-    }
-    private Components.GbxRefTableFile? birdModelFile;
-
-    public Components.GbxRefTableFile? BirdModelFile
-    {
-        get => birdModelFile;
-        set => birdModelFile = value;
+        get => birdModelRef.Resolve();
+        set => birdModelRef.SetEmbedded(value);
     }
 
-    public CMwNod? GetBirdModel(GbxReadSettings settings = default, bool exceptions = false) => birdModelFile?.GetNode(ref birdModel, settings, exceptions) ?? birdModel;
-
-    private CMwNod? birdModelFid;
+    private NodeRef<CMwNod> birdModelFidRef = new();
     [AppliedWithChunk<Chunk090E5001>]
     public CMwNod? BirdModelFid
     {
-        get => this.birdModelFidFile?.GetNode(ref this.birdModelFid) ?? this.birdModelFid;
-        set => this.birdModelFid = value;
+        get => birdModelFidRef.Resolve();
+        set => birdModelFidRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? birdModelFidFile;
-
-    public Components.GbxRefTableFile? BirdModelFidFile
-    {
-        get => birdModelFidFile;
-        set => birdModelFidFile = value;
-    }
-
-    public CMwNod? GetBirdModelFid(GbxReadSettings settings = default, bool exceptions = false) => birdModelFidFile?.GetNode(ref birdModelFid, settings, exceptions) ?? birdModelFid;
 
     private int animPeriod;
     [AppliedWithChunk<Chunk090E5001>]
@@ -285,29 +260,42 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.animFlappingEnd = value;
     }
 
-    private CPlugSound? soundLoop;
+    private NodeRef<CPlugSound> soundLoopRef = new();
     [AppliedWithChunk<Chunk090E5002>]
     public CPlugSound? SoundLoop
     {
-        get => this.soundLoopFile?.GetNode(ref this.soundLoop) ?? this.soundLoop;
-        set => this.soundLoop = value;
-    }
-    private Components.GbxRefTableFile? soundLoopFile;
-
-    public Components.GbxRefTableFile? SoundLoopFile
-    {
-        get => soundLoopFile;
-        set => soundLoopFile = value;
+        get => soundLoopRef.Resolve();
+        set => soundLoopRef.SetEmbedded(value);
     }
 
-    public CPlugSound? GetSoundLoop(GbxReadSettings settings = default, bool exceptions = false) => soundLoopFile?.GetNode(ref soundLoop, settings, exceptions) ?? soundLoop;
-
-    private CPlugSound? soundEventTakeOff;
+    private NodeRef<CPlugSound> soundEventTakeOffRef = new();
     [AppliedWithChunk<Chunk090E5002>(2)]
     public CPlugSound? SoundEventTakeOff
     {
-        get => this.soundEventTakeOff;
-        set => this.soundEventTakeOff = value;
+        get => soundEventTakeOffRef.Resolve();
+        set => soundEventTakeOffRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugFlockModel owner;
+        internal NodeRefView(CPlugFlockModel owner) => this.owner = owner;
+        public NodeRef<CMwNod> AnimFileFid => owner.animFileFidRef;
+        public NodeRef<CMwNod> BirdModel => owner.birdModelRef;
+        public NodeRef<CMwNod> BirdModelFid => owner.birdModelFidRef;
+        public NodeRef<CPlugSound> SoundLoop => owner.soundLoopRef;
+        public NodeRef<CPlugSound> SoundEventTakeOff => owner.soundEventTakeOffRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("AnimFileFid", animFileFidRef);
+        yield return new("BirdModel", birdModelRef);
+        yield return new("BirdModelFid", birdModelFidRef);
+        yield return new("SoundLoop", soundLoopRef);
+        yield return new("SoundEventTakeOff", soundEventTakeOffRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -330,10 +318,10 @@ public partial class CPlugFlockModel : CMwNod, IClass
         ((CPlugFlockModel)clone).kGroundAvoid = context.Clone(this.kGroundAvoid)!;
         ((CPlugFlockModel)clone).standingDuration = context.Clone(this.standingDuration)!;
         ((CPlugFlockModel)clone).flockType = context.Clone(this.flockType)!;
-        ((CPlugFlockModel)clone).animFileFid = context.Clone(this.animFileFid)!;
+        ((CPlugFlockModel)clone).animFileFidRef = context.Clone(this.animFileFidRef)!;
         ((CPlugFlockModel)clone).defSpawnCount = context.Clone(this.defSpawnCount)!;
-        ((CPlugFlockModel)clone).birdModel = context.Clone(this.birdModel)!;
-        ((CPlugFlockModel)clone).birdModelFid = context.Clone(this.birdModelFid)!;
+        ((CPlugFlockModel)clone).birdModelRef = context.Clone(this.birdModelRef)!;
+        ((CPlugFlockModel)clone).birdModelFidRef = context.Clone(this.birdModelFidRef)!;
         ((CPlugFlockModel)clone).animPeriod = context.Clone(this.animPeriod)!;
         ((CPlugFlockModel)clone).animStandingStart = context.Clone(this.animStandingStart)!;
         ((CPlugFlockModel)clone).animStandingEnd = context.Clone(this.animStandingEnd)!;
@@ -341,8 +329,8 @@ public partial class CPlugFlockModel : CMwNod, IClass
         ((CPlugFlockModel)clone).animGlidingEnd = context.Clone(this.animGlidingEnd)!;
         ((CPlugFlockModel)clone).animFlappingStart = context.Clone(this.animFlappingStart)!;
         ((CPlugFlockModel)clone).animFlappingEnd = context.Clone(this.animFlappingEnd)!;
-        ((CPlugFlockModel)clone).soundLoop = context.Clone(this.soundLoop)!;
-        ((CPlugFlockModel)clone).soundEventTakeOff = context.Clone(this.soundEventTakeOff)!;
+        ((CPlugFlockModel)clone).soundLoopRef = context.Clone(this.soundLoopRef)!;
+        ((CPlugFlockModel)clone).soundEventTakeOffRef = context.Clone(this.soundEventTakeOffRef)!;
     }
 
     public CPlugFlockModel()
@@ -395,7 +383,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef<CMwNod>(ref n.animFileFid, ref n.animFileFidFile);
+                        rw.NodeRef(n.animFileFidRef);
 
                         if (Version >= 4)
                         {
@@ -403,7 +391,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
                             if (Version >= 5)
                             {
-                                rw.NodeRef<CMwNod>(ref n.birdModel, ref n.birdModelFile);
+                                rw.NodeRef(n.birdModelRef);
                             }
                         }
                     }
@@ -429,7 +417,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CMwNod>(ref n.birdModelFid, ref n.birdModelFidFile);
+            rw.NodeRef(n.birdModelFidRef);
             rw.Int32(ref n.animPeriod);
 
             if (Version >= 2)
@@ -461,11 +449,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSound>(ref n.soundLoop, ref n.soundLoopFile);
+            rw.NodeRef(n.soundLoopRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef<CPlugSound>(ref n.soundEventTakeOff);
+                rw.NodeRef(n.soundEventTakeOffRef);
             }
         }
     }

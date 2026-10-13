@@ -2,7 +2,7 @@ CPlugTree 0x0904F000
 - inherits: CPlug
 
 property bool HasModel
-  get = ModelSolidFile != null || ModelSolid != null
+  get = ModelSolid != null
 
 property bool IsCustomBBox
   get = (Flags & 0x80000) != 0
@@ -20,7 +20,7 @@ property bool IsCustomBBox
 
 0x00D (demonstration: partial) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // plug ID and model
   id PlugId = empty
-  CPlugSolid ModelSolid (external)
+  CPlugSolid ModelSolid
   if HasModel
     id ModelPlugId
 
@@ -28,7 +28,7 @@ property bool IsCustomBBox
   if HasModel
     return
   CPlugVisual Visual
-  CPlug Shader (external)
+  CPlug Shader
   CPlug Surface
 
 0x010 // legacy flags and location
@@ -39,13 +39,13 @@ property bool IsCustomBBox
   Flags = (Flags ^ 0x4000) | 0xA800
 
 0x011 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // FuncTree
-  CFuncTree FuncTree (external)
+  CFuncTree FuncTree
 
 0x012 // legacy visual, shader, surface and generator
   if HasModel
     return
   CPlugVisual Visual
-  CPlug Shader (external)
+  CPlug Shader
   CPlug Surface
   CPlugTreeGenerator Generator
 
@@ -71,7 +71,7 @@ property bool IsCustomBBox
   if HasModel
     return
   CPlugVisual Visual
-  CPlug Shader (external)
+  CPlug Shader
   CPlug Surface
   CPlugTreeGenerator Generator
 

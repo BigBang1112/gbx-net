@@ -34,6 +34,8 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
     [Hexadecimal]
     public static new uint Id => 0x03340000;
 
+    internal override uint GetId() => Id;
+
     private string? verticalClipGroupId;
     [AppliedWithChunk<Chunk03340000>]
     public string? VerticalClipGroupId

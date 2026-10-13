@@ -34,6 +34,8 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A083000;
 
+    internal override uint GetId() => Id;
+
     private uint[]? stops;
     [AppliedWithChunk<Chunk0A083002>]
     public uint[]? Stops

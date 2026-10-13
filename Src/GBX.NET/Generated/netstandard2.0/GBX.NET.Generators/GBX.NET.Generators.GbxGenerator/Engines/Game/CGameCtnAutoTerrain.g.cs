@@ -34,6 +34,8 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03120000;
 
+    internal override uint GetId() => Id;
+
     private Int3 offset;
     [AppliedWithChunk<Chunk03120001>]
     public Int3 Offset
@@ -42,19 +44,33 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
         set => this.offset = value;
     }
 
-    private CGameCtnZoneGenealogy? genealogy;
+    private NodeRef<CGameCtnZoneGenealogy> genealogyRef = new();
     [AppliedWithChunk<Chunk03120001>]
     public CGameCtnZoneGenealogy? Genealogy
     {
-        get => this.genealogy;
-        set => this.genealogy = value;
+        get => genealogyRef.Resolve();
+        set => genealogyRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnAutoTerrain owner;
+        internal NodeRefView(CGameCtnAutoTerrain owner) => this.owner = owner;
+        public NodeRef<CGameCtnZoneGenealogy> Genealogy => owner.genealogyRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Genealogy", genealogyRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnAutoTerrain)clone).offset = context.Clone(this.offset)!;
-        ((CGameCtnAutoTerrain)clone).genealogy = context.Clone(this.genealogy)!;
+        ((CGameCtnAutoTerrain)clone).genealogyRef = context.Clone(this.genealogyRef)!;
     }
 
     public CGameCtnAutoTerrain()
@@ -76,7 +92,7 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
         public override void ReadWrite(CGameCtnAutoTerrain n, GbxReaderWriter rw)
         {
             rw.Int3(ref n.offset);
-            rw.NodeRef<CGameCtnZoneGenealogy>(ref n.genealogy);
+            rw.NodeRef(n.genealogyRef);
         }
     }
 

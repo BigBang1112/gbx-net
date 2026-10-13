@@ -34,6 +34,8 @@ public partial class CGameTurbineModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E010000;
 
+    internal override uint GetId() => Id;
+
     private Iso4 loc;
     [AppliedWithChunk<Chunk2E010000>]
     public Iso4 Loc

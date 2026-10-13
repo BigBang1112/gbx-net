@@ -176,12 +176,32 @@ internal sealed class SerializationWriter
                 case ComputedAssignment assignment:
                     if (mode == SerializationMode.Write) break;
                     if (mode == SerializationMode.ReadWrite) code.Open("if (rw.Reader is not null)");
+                    var sourceSyntax = SyntaxFactory.ParseExpression(ChunkLParser.WriteExpression(assignment.Expression));
+                    while (sourceSyntax is ParenthesizedExpressionSyntax parentheses) sourceSyntax = parentheses.Expression;
+                    var sourceName = sourceSyntax switch
+                    {
+                        IdentifierNameSyntax identifier => identifier.Identifier.ValueText,
+                        MemberAccessExpressionSyntax { Expression: ThisExpressionSyntax, Name: IdentifierNameSyntax member } => member.Identifier.ValueText,
+                        MemberAccessExpressionSyntax { Expression: IdentifierNameSyntax { Identifier.ValueText: "n" }, Name: IdentifierNameSyntax member } when chunk => member.Identifier.ValueText,
+                        _ => null
+                    };
+                    if (sourceName is not null && StoredReferenceIdentifier(assignment.TargetName) is { } copyTarget && StoredReferenceIdentifier(sourceName) is { } copySource &&
+                        ReferenceElement(assignment.TargetName) == ReferenceElement(sourceName))
+                    {
+                        code.Line(copyTarget + ".CopyFrom(" + copySource + ");");
+                        if (mode == SerializationMode.ReadWrite) code.Close();
+                        break;
+                    }
                     var assignmentField = scope.FindField(assignment.TargetName) ??
                         layout.Scope.FindField(assignment.TargetName);
                     var assignmentProperty = layout.FindProperty(assignment.TargetName);
                     var assignmentType = assignmentField is not null ? WireTypes.CSharp(assignmentField.Declaration) :
                         assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
-                    code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
+                    if (CachedReferenceIdentifier(assignment.TargetName) is { } assignmentHandle &&
+                        ReferenceFieldByName(assignment.TargetName)?.Name != assignment.TargetName)
+                        code.Line(assignmentHandle + ".SetEmbedded(" + Expression(assignment.Expression, assignmentType) + ");");
+                    else
+                        code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
                     if (mode == SerializationMode.ReadWrite) code.Close();
                     break;
 
@@ -261,18 +281,54 @@ internal sealed class SerializationWriter
             (!SyntaxOverlap.Has(owner.Existing, field.Name) || SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@')));
         var target = prefix + (hasBacking ? backing : property);
         var storedField = !field.IsLocal && owner.Occurrences.TryGetValue(declaration, out var shared) ? shared : field;
+        if (declaration.Type.Name == "CFuncKeysReal" && storedField.StorageDeclaration.Type.Name == "PlugCurve")
+        {
+            if (mode == SerializationMode.ReadWrite) code.Line($"{target} = rw.ReadableWritable<PlugCurve>({target}, version: -1);");
+            else
+            {
+                code.Line($"using (var curveRw = new GbxReaderWriter({(mode == SerializationMode.Read ? "r" : "w")}))");
+                code.Line($"    {target} = curveRw.ReadableWritable<PlugCurve>({target}, version: -1);");
+            }
+            return;
+        }
+        if (storedField.StorageDeclaration.Type.ArrayDimensions == 1 &&
+            ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes) &&
+            !ReferenceModel.IsNode(declaration, layout, layouts, existingTypes) && IsArchive(declaration))
+        {
+            var options = declaration.Type.FixedArrayCount is { Length: > 0 } count ? ", length: " + ExpressionText(count) : "";
+            if (LayoutModel.Attribute(declaration.Attributes, "version") is { } archiveVersion) options += ", version: " + ExpressionText(archiveVersion);
+            if (LayoutModel.Has(declaration.Attributes, "deprec")) options += ", deprec: true";
+            if (mode == SerializationMode.ReadWrite) code.Line($"{target} = rw.EmbeddedNodeRefList({target}{options});");
+            else
+            {
+                code.Line($"using (var referenceRw = new GbxReaderWriter({(mode == SerializationMode.Read ? "r" : "w")}))");
+                code.Line($"    {target} = referenceRw.EmbeddedNodeRefList({target}{options});");
+            }
+            return;
+        }
+        if (!field.IsLocal && storedField.StorageDeclaration.Type.ArrayDimensions == 0 &&
+            ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes)) hasBacking = false;
+        if (ReferenceModel.IsNode(declaration, layout, layouts, existingTypes) &&
+            ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes))
+        {
+            ReferenceField(declaration, storedField, field.IsLocal, prefix, target);
+            if (field.IsLocal) locals.Peek()[field.Name] = field;
+            return;
+        }
+        var embeddedHandle = !field.IsLocal && storedField.StorageDeclaration.Type.ArrayDimensions == 0 &&
+            ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes) &&
+            !SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@'))
+            ? prefix + ReferenceModel.Handle(storedField, chunk && storedField.IsUnknown) : null;
+        if (embeddedHandle is not null) target = embeddedHandle + ".CachedTarget";
+        string Assign(string value) => embeddedHandle is null
+            ? (field.IsLocal ? "var " : "") + target + " = " + value + ";"
+            : embeddedHandle + ".SetEmbedded(" + value + ");";
         var storageType = (field.IsLocal ? null : SyntaxOverlap.MemberType(owner.Existing, (hasBacking ? backing : property).TrimStart('@'))) ??
             WireTypes.CSharp(storedField.StorageDeclaration) +
             (!field.IsLocal && WireTypes.Nullable(storedField) ? "?" : "");
         if (field.IsLocal && WireTypes.Nullable(field))
         {
             storageType += "?";
-        }
-        var external = LayoutModel.Has(declaration.Attributes, "external") && declaration.Type.ArrayDimensions == 0;
-
-        if (field.IsLocal && external)
-        {
-            code.Line($"Components.GbxRefTableFile? {property.TrimStart('@')}File = null;");
         }
 
         var method = Method(declaration, storageType, mode);
@@ -312,11 +368,6 @@ internal sealed class SerializationWriter
             arguments.Add("byteLengthPrefix: true");
         }
 
-        if (external)
-        {
-            arguments.Add((mode == SerializationMode.Read ? "out " : mode == SerializationMode.ReadWrite ? "ref " : "") + prefix + (field.IsLocal ? property : backing).TrimStart('@') + "File");
-        }
-
         var argumentSuffix = arguments.Count == 0 ? "" : ", " + string.Join(", ", arguments);
 
         if (mode == SerializationMode.Read)
@@ -326,7 +377,7 @@ internal sealed class SerializationWriter
                 SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(WireTypes.CSharp(declaration)) &&
                     (WireTypes.Value(declaration.Type.Name) || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 ? "(" + storageType + ")" : "";
 
-            code.Line($"{(field.IsLocal ? "var " : "")}{target} = {cast}r.Read{readMethod}({string.Join(", ", arguments)});");
+            code.Line(Assign($"{cast}r.Read{readMethod}({string.Join(", ", arguments)})"));
         }
         else if (mode == SerializationMode.Write)
         {
@@ -373,15 +424,13 @@ internal sealed class SerializationWriter
             var wireType = WireTypes.Map(declaration.Type.Name, declaration.Attributes);
             var conversion = (numeric || !WireTypes.Primitive(declaration.Type.Name)) && declaration.Type.ArrayDimensions == 0 && SyntaxOverlap.Normalize(storageType) != SyntaxOverlap.Normalize(wireType);
             var value = write is null ? target : WriteArgument(write);
-            var assignment = (field.IsLocal ? "var " : "") + target;
-
             if (conversion)
             {
-                code.Line($"{assignment} = ({storageType})rw.{method}(({wireType}{(storageType.EndsWith("?", StringComparison.Ordinal) ? "?" : "")}){value}{argumentSuffix});");
+                code.Line(Assign($"({storageType})rw.{method}(({wireType}{(storageType.EndsWith("?", StringComparison.Ordinal) ? "?" : "")}){value}{argumentSuffix})"));
             }
             else if (declaration.Type.Name is "systemtime" or "filetime" or "unixtime" or "timeofday")
             {
-                code.Line($"{assignment} = rw.{method}({value}{argumentSuffix}){(storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")};");
+                code.Line(Assign($"rw.{method}({value}{argumentSuffix}){(storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")}"));
             }
             else if (hasBacking && write is null)
             {
@@ -391,7 +440,7 @@ internal sealed class SerializationWriter
             {
                 var cast = write is not null && declaration.Type.ArrayDimensions == 0 && ((numeric && storageType != "int") || declaration.Type.CastTarget is not null)
                     ? "(" + storageType + ")" : "";
-                code.Line($"{assignment} = rw.{method}({cast}{value}{argumentSuffix});");
+                code.Line(Assign($"rw.{method}({cast}{value}{argumentSuffix})"));
             }
         }
         if (field.IsLocal) locals.Peek()[field.Name] = field;
@@ -399,6 +448,59 @@ internal sealed class SerializationWriter
 
     private string WriteArgument(string expression)
         => "(rw.Writer is null ? default : (" + ExpressionText(expression) + "))";
+
+    private void ReferenceField(FieldDeclaration declaration, FieldModel field, bool local, string prefix, string target)
+    {
+        var scalar = declaration.Type.ArrayDimensions == 0;
+        var name = WireTypes.Map(declaration.Type.Name);
+        if (scalar)
+        {
+            var handle = prefix + ReferenceModel.Handle(field, chunk && field.IsUnknown);
+            if (local)
+            {
+                handle = SyntaxOverlap.Backing(field.Name).TrimStart('@') + "Ref";
+                code.Line($"var {handle} = new NodeRef<{name}>();");
+            }
+            var owner = chunk && !field.IsUnknown ? layout.Scope : scope;
+            var customStorage = local ? null : SyntaxOverlap.MemberType(owner.Existing, SyntaxOverlap.Backing(field.Name).TrimStart('@'));
+            var converted = customStorage is not null && SyntaxOverlap.Normalize(customStorage.TrimEnd('?')) != name;
+            if (converted && mode != SerializationMode.Read)
+            {
+                if (mode == SerializationMode.ReadWrite) code.Line($"if (rw.Writer is not null && {handle}.Descriptor is null) {handle}.SetEmbedded(({name}?){target});");
+                else code.Line($"if ({handle}.Descriptor is null) {handle}.SetEmbedded(({name}?){target});");
+            }
+            code.Line(mode switch
+            {
+                SerializationMode.Read => $"r.ReadNodeRef({handle});",
+                SerializationMode.Write => $"w.WriteNodeRef({handle});",
+                _ => $"rw.NodeRef({handle});"
+            });
+            if (converted && mode != SerializationMode.Write)
+            {
+                var assignment = $"{target} = ({customStorage}){handle}.CachedTarget;";
+                code.Line(mode == SerializationMode.ReadWrite ? "if (rw.Reader is not null) " + assignment : assignment);
+            }
+            if (local) code.Line($"var {target} = {handle}.CachedTarget;");
+            return;
+        }
+
+        var arguments = declaration.Type.FixedArrayCount is { Length: > 0 } length
+            ? declaration.Type.ArrayDimensions > 1 ? "innerLength: " + ExpressionText(length, nullSafeCount: true) :
+                ExpressionText(length, nullSafeCount: true) : "";
+        var method = declaration.Type.ArrayDimensions > 1 ? "JaggedArrayNodeRef" :
+            "ListNodeRef" + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
+        var suffix = arguments.Length == 0 ? "" : ", " + arguments;
+        var readArguments = declaration.Type.FixedArrayCount is { Length: > 0 } readLength
+            ? declaration.Type.ArrayDimensions > 1 ? "fixedSize: true, innerLength: " + ExpressionText(readLength, nullSafeCount: true) :
+                "length: " + ExpressionText(readLength, nullSafeCount: true)
+            : declaration.Type.ArrayDimensions > 1 ? "fixedSize: false" : "";
+        code.Line(mode switch
+        {
+            SerializationMode.Read => $"{(local ? "var " : "")}{target} = r.Read{method}<{name}>({readArguments});",
+            SerializationMode.Write => $"w.Write{method}({target}{suffix});",
+            _ => $"{(local ? "var " : "")}{target} = rw.{method}<{name}>({(local ? "null" : target)}{suffix});"
+        });
+    }
 
     private string Method(FieldDeclaration field, string storageType, SerializationMode mode)
     {
@@ -433,7 +535,7 @@ internal sealed class SerializationWriter
 
             if (!WireTypes.Primitive(jaggedName))
             {
-                return "JaggedArray" + (LayoutModel.Has(field.Attributes, "external") ? "External" : "") + "NodeRef<" + jaggedName + ">";
+                return "JaggedArrayNodeRef<" + jaggedName + ">";
             }
 
             return jaggedName switch
@@ -480,11 +582,6 @@ internal sealed class SerializationWriter
         if (collection)
         {
             var prefix = list ? "List" : "Array";
-
-            if (LayoutModel.Has(field.Attributes, "external") && mode != SerializationMode.ReadWrite)
-            {
-                prefix += "External";
-            }
 
             if (WireTypes.Value(name) && name != "optimizedint")
             {
@@ -619,7 +716,45 @@ internal sealed class SerializationWriter
             expression = SyntaxFactory.ParseExpression(owner.Identifier.Text + "?." + member.Identifier.Text + " ?? 0");
         }
 
-        return new IdentifierRewriter(Identifier, IsTimeInt32).Visit(expression)!.ToString();
+        return new IdentifierRewriter(DataIdentifier, IsTimeInt32, ReferenceIdentifier,
+            CachedReferenceIdentifier).Visit(expression)!.ToString();
+    }
+
+    private FieldModel? ReferenceFieldByName(string name) => scope.FindField(name) ?? layout.Scope.FindField(name) ??
+        scope.Fields.Concat(layout.Scope.Fields).FirstOrDefault(x => SyntaxOverlap.Backing(x.Name).TrimStart('@') == name);
+
+    private string? ReferenceElement(string name) => ReferenceFieldByName(name) is { } field ? ReferenceModel.Element(field) : null;
+
+    private string? StoredReferenceIdentifier(string name)
+    {
+        if (FindLocal(name) is not null) return null;
+        var field = ReferenceFieldByName(name);
+        if (field is null || field.StorageDeclaration.Type.ArrayDimensions != 0 ||
+            !ReferenceModel.IsNode(field.StorageDeclaration, layout, layouts, existingTypes)) return null;
+        return (chunk && !field.IsUnknown ? "n." : "") + ReferenceModel.Handle(field, chunk && field.IsUnknown);
+    }
+
+    private string DataIdentifier(string name)
+    {
+        if (CachedReferenceIdentifier(name) is { } handle) return handle + ".CachedTarget";
+        return Identifier(name);
+    }
+
+    private string? CachedReferenceIdentifier(string name)
+    {
+        if (mode == SerializationMode.None && (ReferenceFieldByName(name)?.Name == name ||
+            SyntaxOverlap.Has(scope.Existing, name) || SyntaxOverlap.Has(layout.Existing, name))) return null;
+        return StoredReferenceIdentifier(name);
+    }
+
+    private string? ReferenceIdentifier(string name)
+    {
+        var local = FindLocal(name);
+        var field = local ?? scope.FindField(name) ?? layout.Scope.FindField(name);
+        if (field is null || field.StorageDeclaration.Type.ArrayDimensions != 0 ||
+            !ReferenceModel.IsNode(field.StorageDeclaration, layout, layouts, existingTypes)) return null;
+        var prefix = local is not null ? "" : chunk && !field.IsUnknown ? "n." : "";
+        return prefix + ReferenceModel.Handle(field, local is null && chunk && field.IsUnknown);
     }
 
     private FieldModel? FindLocal(string name)
@@ -664,7 +799,7 @@ internal sealed class SerializationWriter
             return SyntaxOverlap.Escape(name);
         }
 
-        if (layout.Scope.HasFieldOrFile(name) ||
+        if (layout.Scope.FindField(name) is not null ||
             layout.FindProperty(name) is not null || SyntaxOverlap.Has(layout.Existing, name))
         {
             return "n." + SyntaxOverlap.Escape(name);

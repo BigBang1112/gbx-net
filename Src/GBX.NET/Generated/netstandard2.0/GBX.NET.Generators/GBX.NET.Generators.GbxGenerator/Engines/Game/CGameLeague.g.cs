@@ -34,6 +34,8 @@ public partial class CGameLeague : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0308E000;
 
+    internal override uint GetId() => Id;
+
     private string? path;
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]

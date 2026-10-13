@@ -34,6 +34,8 @@ public partial class CSceneLight : CScenePoc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A00B000;
 
+    internal override uint GetId() => Id;
+
     private CHmsLight? light;
     [AppliedWithChunk<Chunk0A00B000>]
     public CHmsLight? Light

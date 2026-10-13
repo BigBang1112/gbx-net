@@ -34,6 +34,8 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090BB000;
 
+    internal override uint GetId() => Id;
+
     private int fileVersion;
     [AppliedWithChunk<HeaderChunk090BB000>]
     public int FileVersion
@@ -41,6 +43,8 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         get => this.fileVersion;
         set => this.fileVersion = value;
     }
+
+    private NodeRef<CPlugSkel> skelRef = new();
 
     private FakeOccProj[]? fakeOccProjs;
     [AppliedWithChunk<Chunk090BB002>]
@@ -50,24 +54,86 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         set => this.fakeOccProjs = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugSolid2Model owner;
+        internal NodeRefView(CPlugSolid2Model owner) => this.owner = owner;
+        public VisualsReferenceView Visuals => new(owner);
+        public MaterialsReferenceView Materials => new(owner);
+        public NodeRef<CPlugSkel> Skel => owner.skelRef;
+        public MaterialInstsReferenceView MaterialInsts => new(owner);
+        public LightUserModelsReferenceView LightUserModels => new(owner);
+    }
+    public readonly struct VisualsReferenceView
+    {
+        private readonly CPlugSolid2Model owner;
+        internal VisualsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
+        public int Count => owner.visuals?.Count ?? 0;
+        public NodeRef<CPlugVisual> this[int index] => (owner.visuals ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct MaterialsReferenceView
+    {
+        private readonly CPlugSolid2Model owner;
+        internal MaterialsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
+        public int Count => owner.materials?.Count ?? 0;
+        public NodeRef<CPlugMaterial> this[int index] => (owner.materials ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct MaterialInstsReferenceView
+    {
+        private readonly CPlugSolid2Model owner;
+        internal MaterialInstsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
+        public int Count => owner.materialInsts?.Count ?? 0;
+        public NodeRef<CPlugMaterialUserInst> this[int index] => (owner.materialInsts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct LightUserModelsReferenceView
+    {
+        private readonly CPlugSolid2Model owner;
+        internal LightUserModelsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
+        public int Count => owner.lightUserModels?.Count ?? 0;
+        public NodeRef<CPlugLightUserModel> this[int index] => (owner.lightUserModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (visuals is not null)
+        {
+            for (var i = 0; i < visuals.Count; i++) yield return new("Visuals" + "[" + i + "]", visuals.GetReference(i));
+        }
+        if (materials is not null)
+        {
+            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.GetReference(i));
+        }
+        yield return new("Skel", skelRef);
+        if (materialInsts is not null)
+        {
+            for (var i = 0; i < materialInsts.Count; i++) yield return new("MaterialInsts" + "[" + i + "]", materialInsts.GetReference(i));
+        }
+        if (lightUserModels is not null)
+        {
+            for (var i = 0; i < lightUserModels.Count; i++) yield return new("LightUserModels" + "[" + i + "]", lightUserModels.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugSolid2Model)clone).fileVersion = context.Clone(this.fileVersion)!;
+        ((CPlugSolid2Model)clone).visuals = context.Clone(this.visuals)!;
+        ((CPlugSolid2Model)clone).materials = context.Clone(this.materials)!;
+        ((CPlugSolid2Model)clone).skelRef = context.Clone(this.skelRef)!;
+        ((CPlugSolid2Model)clone).materialInsts = context.Clone(this.materialInsts)!;
+        ((CPlugSolid2Model)clone).lightUserModels = context.Clone(this.lightUserModels)!;
         ((CPlugSolid2Model)clone).fakeOccProjs = context.CloneArray(this.fakeOccProjs)!;
         ((CPlugSolid2Model)clone).shadedGeoms = context.CloneArray(this.shadedGeoms)!;
-        ((CPlugSolid2Model)clone).visuals = context.CloneArray(this.visuals)!;
         ((CPlugSolid2Model)clone).materialIds = context.CloneArray(this.materialIds)!;
-        ((CPlugSolid2Model)clone).materials = context.CloneArray(this.materials)!;
-        ((CPlugSolid2Model)clone).skel = context.Clone(this.skel)!;
         ((CPlugSolid2Model)clone).lodMaxDistAtFov90 = context.CloneArray(this.lodMaxDistAtFov90)!;
         ((CPlugSolid2Model)clone).visCstType = context.Clone(this.visCstType)!;
         ((CPlugSolid2Model)clone).preLightGenerator = context.Clone(this.preLightGenerator)!;
         ((CPlugSolid2Model)clone).fileWriteTime = context.Clone(this.fileWriteTime)!;
         ((CPlugSolid2Model)clone).materialsFolderName = context.Clone(this.materialsFolderName)!;
         ((CPlugSolid2Model)clone).lights = context.CloneArray(this.lights)!;
-        ((CPlugSolid2Model)clone).materialInsts = context.CloneArray(this.materialInsts)!;
-        ((CPlugSolid2Model)clone).lightUserModels = context.CloneArray(this.lightUserModels)!;
         ((CPlugSolid2Model)clone).lightInsts = context.CloneArray(this.lightInsts)!;
         ((CPlugSolid2Model)clone).damageZone = context.Clone(this.damageZone)!;
         ((CPlugSolid2Model)clone).flags = context.Clone(this.flags)!;
@@ -107,9 +173,31 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         public override uint Id => 0x090BB000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
+        private NodeRef<CMwNod> U14Ref = new();
+        public CMwNod? U14
+        {
+            get => U14Ref.Resolve();
+            set => U14Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090BB000 owner;
+            internal NodeRefView(Chunk090BB000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U14 => owner.U14Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U14", U14Ref);
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk090BB000)clone).U14Ref = context.Clone(this.U14Ref)!;
             ((Chunk090BB000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090BB000)clone).U02 = context.CloneArray(this.U02)!;
             ((Chunk090BB000)clone).U03 = context.Clone(this.U03)!;
@@ -123,7 +211,6 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             ((Chunk090BB000)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090BB000)clone).U12 = context.CloneArray(this.U12)!;
             ((Chunk090BB000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090BB000)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090BB000)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090BB000)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090BB000)clone).U17 = context.Clone(this.U17)!;
@@ -420,21 +507,12 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.u02 = value;
         }
 
-        private CPlugLight? u03;
+        private NodeRef<CPlugLight> u03Ref = new();
         public CPlugLight? U03
         {
-            get => this.u03File?.GetNode(ref this.u03) ?? this.u03;
-            set => this.u03 = value;
+            get => u03Ref.Resolve();
+            set => u03Ref.SetEmbedded(value);
         }
-        private Components.GbxRefTableFile? u03File;
-
-        public Components.GbxRefTableFile? U03File
-        {
-            get => u03File;
-            set => u03File = value;
-        }
-
-        public CPlugLight? GetU03(GbxReadSettings settings = default, bool exceptions = false) => u03File?.GetNode(ref u03, settings, exceptions) ?? u03;
 
         private string? u04;
         public string? U04
@@ -541,6 +619,19 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.u18 = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Light owner;
+            internal NodeRefView(Light owner) => this.owner = owner;
+            public NodeRef<CPlugLight> U03 => owner.u03Ref;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U03", u03Ref);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Light)MemberwiseClone();
@@ -553,7 +644,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         {
             ((Light)clone).u01 = context.Clone(this.u01)!;
             ((Light)clone).u02 = context.Clone(this.u02)!;
-            ((Light)clone).u03 = context.Clone(this.u03)!;
+            ((Light)clone).u03Ref = context.Clone(this.u03Ref)!;
             ((Light)clone).u04 = context.Clone(this.u04)!;
             ((Light)clone).u05 = context.Clone(this.u05)!;
             ((Light)clone).u06 = context.Clone(this.u06)!;
@@ -578,7 +669,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
             if (U02)
             {
-                rw.NodeRef<CPlugLight>(ref this.u03, ref this.u03File);
+                rw.NodeRef(this.u03Ref);
             }
 
             if (!U02)
@@ -682,11 +773,24 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.materialName = value;
         }
 
-        private CPlugMaterialUserInst? materialUserInst;
+        private NodeRef<CPlugMaterialUserInst> materialUserInstRef = new();
         public CPlugMaterialUserInst? MaterialUserInst
         {
-            get => this.materialUserInst;
-            set => this.materialUserInst = value;
+            get => materialUserInstRef.Resolve();
+            set => materialUserInstRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Material owner;
+            internal NodeRefView(Material owner) => this.owner = owner;
+            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => owner.materialUserInstRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("MaterialUserInst", materialUserInstRef);
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -700,7 +804,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Material)clone).materialName = context.Clone(this.materialName)!;
-            ((Material)clone).materialUserInst = context.Clone(this.materialUserInst)!;
+            ((Material)clone).materialUserInstRef = context.Clone(this.materialUserInstRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -709,7 +813,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
             if (MaterialName== null || MaterialName== "")
             {
-                rw.NodeRef<CPlugMaterialUserInst>(ref this.materialUserInst);
+                rw.NodeRef(this.materialUserInstRef);
             }
         }
 

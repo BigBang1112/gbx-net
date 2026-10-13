@@ -34,7 +34,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0907E000;
 
-    private CPlugBitmap? bitmap;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugBitmap> bitmapRef = new();
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -49,18 +51,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [AppliedWithChunk<Chunk0907E00B>]
     public CPlugBitmap? Bitmap
     {
-        get => this.bitmapFile?.GetNode(ref this.bitmap) ?? this.bitmap;
-        set => this.bitmap = value;
+        get => bitmapRef.Resolve();
+        set => bitmapRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? bitmapFile;
-
-    public Components.GbxRefTableFile? BitmapFile
-    {
-        get => bitmapFile;
-        set => bitmapFile = value;
-    }
-
-    public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
 
     private ETexFilter wantedFiltering;
     [AppliedWithChunk<Chunk0907E000>]
@@ -169,10 +162,24 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         set => this.flags = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapSampler owner;
+        internal NodeRefView(CPlugBitmapSampler owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> Bitmap => owner.bitmapRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Bitmap", bitmapRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapSampler)clone).bitmap = context.Clone(this.bitmap)!;
+        ((CPlugBitmapSampler)clone).bitmapRef = context.Clone(this.bitmapRef)!;
         ((CPlugBitmapSampler)clone).wantedFiltering = context.Clone(this.wantedFiltering)!;
         ((CPlugBitmapSampler)clone).texAddressU = context.Clone(this.texAddressU)!;
         ((CPlugBitmapSampler)clone).texAddressV = context.Clone(this.texAddressV)!;
@@ -218,7 +225,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.NodeRef(n.bitmapRef);
             rw.EnumInt32<ETexFilter>(ref n.wantedFiltering);
             rw.EnumInt32<ETexAddress>(ref n.texAddressU);
             rw.EnumInt32<ETexAddress>(ref n.texAddressV);
@@ -241,7 +248,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.NodeRef(n.bitmapRef);
             rw.DataUInt32(ref n.legacyFlags);
             rw.Single(ref n.mipMapLodBias);
         }
@@ -424,7 +431,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         {
             rw.VersionInt32(this);
             rw.Id(ref n.name);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+            rw.NodeRef(n.bitmapRef);
             rw.DataUInt32(ref n.flags);
             rw.Single(ref n.mipMapLodBias);
 

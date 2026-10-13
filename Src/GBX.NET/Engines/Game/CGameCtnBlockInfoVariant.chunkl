@@ -34,8 +34,8 @@ CGameCtnBlockInfoVariant 0x0315B000
     CSceneMobil
     CSceneMobil
   v2+
-    CPlugSolid HelperSolidFid (external)
-    CPlugSolid FacultativeHelperSolidFid (external)
+    CPlugSolid HelperSolidFid
+    CPlugSolid FacultativeHelperSolidFid
     v3+
       int
 
@@ -43,33 +43,33 @@ CGameCtnBlockInfoVariant 0x0315B000
   version
   v8-
     CMwNod
-  CMwNod ScreenInteractionTriggerSolid (external)
-  CMwNod WaypointTriggerSolid (external)
+  CMwNod ScreenInteractionTriggerSolid
+  CMwNod WaypointTriggerSolid
   v11+
-    CMwNod (external) // WaypointTriggerShape?
-    CMwNod (external) // ScreenInteractionTriggerShape?
+    CMwNod // WaypointTriggerShape?
+    CMwNod // ScreenInteractionTriggerShape?
   v8-
     int
   v2+
-    CGameGateModel Gate (external)
+    CGameGateModel Gate
     v3+
       CGameTeleporterModel Teleporter
       v5+
         CGameCaptureZoneModel
         v6+
-          CGameTurbineModel Turbine (external)
+          CGameTurbineModel Turbine
           v7+
-            CPlugFlockModel FlockModel (external)
-            if FlockModel != null || FlockModelFile != null
+            CPlugFlockModel FlockModel
+            if FlockModel != null
               FlockEmitterState FlockEmmiter
             v8+
-              CGameSpawnModel SpawnModel (external)
+              CGameSpawnModel SpawnModel
               v10+
                 CPlugEntitySpawner[] EntitySpawners
 
 0x007 [MP3.v0, TMT.v0, MP4.v0, TM2020]
   version
-  CPlugProbe Probe (external)
+  CPlugProbe Probe
 
 0x008 [TMT.v0, MP4.v1, TM2020]
   version
@@ -141,7 +141,7 @@ enum EVariantBaseType
   Generator
 
 archive PlacedPillarParam
-  CMwNod (external)
+  CMwNod
   int
   int
   int

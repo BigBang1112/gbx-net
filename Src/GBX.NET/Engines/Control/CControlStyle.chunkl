@@ -3,7 +3,7 @@ CControlStyle 0x07017000
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwCmdBlockMain FocusGainedScript
   CMwCmdBlockMain FocusLostScript
-  CPlugSound FocusSound (external)
+  CPlugSound FocusSound
   CMwNod
   CMwNod
 
@@ -29,10 +29,10 @@ CControlStyle 0x07017000
   float EnumIconHeight
 
 0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
-  CPlugSound ActionSound (external)
+  CPlugSound ActionSound
   float ButtonIconWidth
   float ButtonIconHeight
-  CFuncEnum ButtonDefaultIcons (external)
+  CFuncEnum ButtonDefaultIcons
 
 0x010 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CPlugSound EnumSound
@@ -41,7 +41,7 @@ CControlStyle 0x07017000
   float EnumIconWidth
   float EnumIconHeight
   int EnumForceDisplayType
-  CFuncEnum EnumForceIcons (external)
+  CFuncEnum EnumForceIcons
 
 0x014 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   bool QuadIsLines
@@ -63,7 +63,7 @@ CControlStyle 0x07017000
   vec2 Quad_UvBottomRight
 
 0x016 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CControlEffectMaster EffectMaster (external)
+  CControlEffectMaster EffectMaster
 
 0x017 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool QuadIsLines
@@ -81,7 +81,7 @@ CControlStyle 0x07017000
   vec4 LineGradientColor1
 
 0x01B [VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CPlugFont Font (external)
+  CPlugFont Font
   float
   float
   STextSettings_ColorAndChars
@@ -94,15 +94,15 @@ CControlStyle 0x07017000
   float SliderCursorWidth
   float SliderCursorHeight
   CPlugSound SliderSound
-  CFuncEnum SliderBarIcons (external)
-  CFuncEnum SliderCursorIcons (external)
+  CFuncEnum SliderBarIcons
+  CFuncEnum SliderCursorIcons
 
 0x01D [VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool FocusAreaEnable
-  CPlugMaterial FocusAreaMaterial (external)
-  CPlugMaterial FocusAreaMaterialReadOnly (external)
-  CPlugMaterial FocusAreaMaterialSelected (external)
-  CPlugMaterial FocusAreaMaterialFocused (external)
+  CPlugMaterial FocusAreaMaterial
+  CPlugMaterial FocusAreaMaterialReadOnly
+  CPlugMaterial FocusAreaMaterialSelected
+  CPlugMaterial FocusAreaMaterialFocused
   float FocusAreaMinWidth
   float FocusAreaMinHeight
   float FocusAreaXMargin

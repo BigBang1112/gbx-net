@@ -34,6 +34,8 @@ public partial class CPlugBulletModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090CD000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

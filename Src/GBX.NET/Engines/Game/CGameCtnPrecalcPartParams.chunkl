@@ -11,13 +11,13 @@ CGameCtnPrecalcPartParams 0x0311C000
   float LeafMotionFreq = 10
   float LeafMotionScale = 1
   v2+
-    CPlugSurface CollSurf (external)
+    CPlugSurface CollSurf
   int IterCount = 500
   float TimeStep = 0.01f
   int RandValSeed = 15000
   vec3 PhyZoneGravity = (0, -4, 0)
   vec3 PhyZoneWind = (0, 0, 2)
-  CPlugDecalModel DecalModel (external)
+  CPlugDecalModel DecalModel
   float DecalSizeBase = 0.3f
   float DecalSizeVar = 0.1f
   float DecalBoxDepth = 0.05f

@@ -34,6 +34,8 @@ public partial class CPlugFileText : CPlugFile, IClass, IReadableWritable, IRead
     [Hexadecimal]
     public static new uint Id => 0x09041000;
 
+    internal override uint GetId() => Id;
+
     private string? text;
     public string? Text
     {

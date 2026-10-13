@@ -34,6 +34,8 @@ public partial class CGameNod : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03008000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk03008000>]
     public string? Name

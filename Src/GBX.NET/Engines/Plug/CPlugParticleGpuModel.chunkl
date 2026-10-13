@@ -30,11 +30,11 @@ CPlugParticleGpuModel 0x090C6000
   version
   float U01
   v6-
-    CPlugBitmap Bitmap (external)
+    CPlugBitmap Bitmap
   v7+
     bool U02
     if !U02
-      CPlugBitmap Bitmap (external)
+      CPlugBitmap Bitmap
     if U02
       string
     v8+

@@ -34,6 +34,8 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E002000;
 
+    internal override uint GetId() => Id;
+
     private EItemType itemType;
     [AppliedWithChunk<HeaderChunk2E002000>]
     public EItemType ItemType
@@ -42,56 +44,38 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.itemType = value;
     }
 
-    private CSceneMobil? vehicle;
+    private NodeRef<CSceneMobil> vehicleRef = new();
     [AppliedWithChunk<Chunk2E002000>]
     public CSceneMobil? Vehicle
     {
-        get => this.vehicleFile?.GetNode(ref this.vehicle) ?? this.vehicle;
-        set => this.vehicle = value;
-    }
-    private Components.GbxRefTableFile? vehicleFile;
-
-    public Components.GbxRefTableFile? VehicleFile
-    {
-        get => vehicleFile;
-        set => vehicleFile = value;
+        get => vehicleRef.Resolve();
+        set => vehicleRef.SetEmbedded(value);
     }
 
-    public CSceneMobil? GetVehicle(GbxReadSettings settings = default, bool exceptions = false) => vehicleFile?.GetNode(ref vehicle, settings, exceptions) ?? vehicle;
-
-    private CPlugGameSkin? gameSkin;
+    private NodeRef<CPlugGameSkin> gameSkinRef = new();
     [AppliedWithChunk<Chunk2E002001>]
     public CPlugGameSkin? GameSkin
     {
-        get => this.gameSkin;
-        set => this.gameSkin = value;
+        get => gameSkinRef.Resolve();
+        set => gameSkinRef.SetEmbedded(value);
     }
 
-    private CScene2d? raceInterfaceFid;
+    private NodeRef<CScene2d> raceInterfaceFidRef = new();
     [AppliedWithChunk<Chunk2E002002>]
     [AppliedWithChunk<Chunk2E00200C>]
     public CScene2d? RaceInterfaceFid
     {
-        get => this.raceInterfaceFid;
-        set => this.raceInterfaceFid = value;
+        get => raceInterfaceFidRef.Resolve();
+        set => raceInterfaceFidRef.SetEmbedded(value);
     }
 
-    private CPlugSolid? lowQualitySolid;
+    private NodeRef<CPlugSolid> lowQualitySolidRef = new();
     [AppliedWithChunk<Chunk2E002003>]
     public CPlugSolid? LowQualitySolid
     {
-        get => this.lowQualitySolidFile?.GetNode(ref this.lowQualitySolid) ?? this.lowQualitySolid;
-        set => this.lowQualitySolid = value;
+        get => lowQualitySolidRef.Resolve();
+        set => lowQualitySolidRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? lowQualitySolidFile;
-
-    public Components.GbxRefTableFile? LowQualitySolidFile
-    {
-        get => lowQualitySolidFile;
-        set => lowQualitySolidFile = value;
-    }
-
-    public CPlugSolid? GetLowQualitySolid(GbxReadSettings settings = default, bool exceptions = false) => lowQualitySolidFile?.GetNode(ref lowQualitySolid, settings, exceptions) ?? lowQualitySolid;
 
     private int defaultCamIndex;
     [AppliedWithChunk<Chunk2E002006>]
@@ -101,257 +85,140 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.defaultCamIndex = value;
     }
 
-    private CPlugMaterial? materialSkin;
+    private NodeRef<CPlugMaterial> materialSkinRef = new();
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugMaterial? MaterialSkin
     {
-        get => this.materialSkinFile?.GetNode(ref this.materialSkin) ?? this.materialSkin;
-        set => this.materialSkin = value;
-    }
-    private Components.GbxRefTableFile? materialSkinFile;
-
-    public Components.GbxRefTableFile? MaterialSkinFile
-    {
-        get => materialSkinFile;
-        set => materialSkinFile = value;
+        get => materialSkinRef.Resolve();
+        set => materialSkinRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetMaterialSkin(GbxReadSettings settings = default, bool exceptions = false) => materialSkinFile?.GetNode(ref materialSkin, settings, exceptions) ?? materialSkin;
-
-    private CPlugMaterial? materialGlass;
+    private NodeRef<CPlugMaterial> materialGlassRef = new();
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugMaterial? MaterialGlass
     {
-        get => this.materialGlassFile?.GetNode(ref this.materialGlass) ?? this.materialGlass;
-        set => this.materialGlass = value;
-    }
-    private Components.GbxRefTableFile? materialGlassFile;
-
-    public Components.GbxRefTableFile? MaterialGlassFile
-    {
-        get => materialGlassFile;
-        set => materialGlassFile = value;
+        get => materialGlassRef.Resolve();
+        set => materialGlassRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetMaterialGlass(GbxReadSettings settings = default, bool exceptions = false) => materialGlassFile?.GetNode(ref materialGlass, settings, exceptions) ?? materialGlass;
-
-    private CPlugMaterial? materialDetails;
+    private NodeRef<CPlugMaterial> materialDetailsRef = new();
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugMaterial? MaterialDetails
     {
-        get => this.materialDetailsFile?.GetNode(ref this.materialDetails) ?? this.materialDetails;
-        set => this.materialDetails = value;
-    }
-    private Components.GbxRefTableFile? materialDetailsFile;
-
-    public Components.GbxRefTableFile? MaterialDetailsFile
-    {
-        get => materialDetailsFile;
-        set => materialDetailsFile = value;
+        get => materialDetailsRef.Resolve();
+        set => materialDetailsRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetMaterialDetails(GbxReadSettings settings = default, bool exceptions = false) => materialDetailsFile?.GetNode(ref materialDetails, settings, exceptions) ?? materialDetails;
-
-    private External<CMwNod>?[]? nadeoSkinFids;
+    private NodeRefList<CMwNod>? nadeoSkinFids;
     [AppliedWithChunk<Chunk2E002008>]
-    public External<CMwNod>?[]? NadeoSkinFids
+    public NodeRefList<CMwNod>? NadeoSkinFids
     {
-        get => this.nadeoSkinFids;
-        set => this.nadeoSkinFids = value;
+        get => nadeoSkinFids;
+        set => nadeoSkinFids = value;
     }
 
-    private External<CMwNod>[]? cameras;
+    private NodeRefList<CMwNod>? cameras;
     [AppliedWithChunk<Chunk2E002009>]
-    public External<CMwNod>[]? Cameras
+    public NodeRefList<CMwNod>? Cameras
     {
-        get => this.cameras;
-        set => this.cameras = value;
+        get => cameras;
+        set => cameras = value;
     }
 
-    private CPlugDecoratorSolid? decoratorSolid;
+    private NodeRef<CPlugDecoratorSolid> decoratorSolidRef = new();
     [AppliedWithChunk<Chunk2E00200A>]
     public CPlugDecoratorSolid? DecoratorSolid
     {
-        get => this.decoratorSolidFile?.GetNode(ref this.decoratorSolid) ?? this.decoratorSolid;
-        set => this.decoratorSolid = value;
-    }
-    private Components.GbxRefTableFile? decoratorSolidFile;
-
-    public Components.GbxRefTableFile? DecoratorSolidFile
-    {
-        get => decoratorSolidFile;
-        set => decoratorSolidFile = value;
+        get => decoratorSolidRef.Resolve();
+        set => decoratorSolidRef.SetEmbedded(value);
     }
 
-    public CPlugDecoratorSolid? GetDecoratorSolid(GbxReadSettings settings = default, bool exceptions = false) => decoratorSolidFile?.GetNode(ref decoratorSolid, settings, exceptions) ?? decoratorSolid;
-
-    private CPlugMaterial? stemMaterial;
+    private NodeRef<CPlugMaterial> stemMaterialRef = new();
     [AppliedWithChunk<Chunk2E00200B>]
     public CPlugMaterial? StemMaterial
     {
-        get => this.stemMaterialFile?.GetNode(ref this.stemMaterial) ?? this.stemMaterial;
-        set => this.stemMaterial = value;
-    }
-    private Components.GbxRefTableFile? stemMaterialFile;
-
-    public Components.GbxRefTableFile? StemMaterialFile
-    {
-        get => stemMaterialFile;
-        set => stemMaterialFile = value;
+        get => stemMaterialRef.Resolve();
+        set => stemMaterialRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetStemMaterial(GbxReadSettings settings = default, bool exceptions = false) => stemMaterialFile?.GetNode(ref stemMaterial, settings, exceptions) ?? stemMaterial;
-
-    private CPlugMaterial? stemBumpMaterial;
+    private NodeRef<CPlugMaterial> stemBumpMaterialRef = new();
     [AppliedWithChunk<Chunk2E00200B>]
     public CPlugMaterial? StemBumpMaterial
     {
-        get => this.stemBumpMaterialFile?.GetNode(ref this.stemBumpMaterial) ?? this.stemBumpMaterial;
-        set => this.stemBumpMaterial = value;
-    }
-    private Components.GbxRefTableFile? stemBumpMaterialFile;
-
-    public Components.GbxRefTableFile? StemBumpMaterialFile
-    {
-        get => stemBumpMaterialFile;
-        set => stemBumpMaterialFile = value;
+        get => stemBumpMaterialRef.Resolve();
+        set => stemBumpMaterialRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetStemBumpMaterial(GbxReadSettings settings = default, bool exceptions = false) => stemBumpMaterialFile?.GetNode(ref stemBumpMaterial, settings, exceptions) ?? stemBumpMaterial;
-
-    private CMwNod[]? forcedSkinsFids;
+    private NodeRefList<CMwNod>? forcedSkinsFids;
     [AppliedWithChunk<Chunk2E00200D>]
-    public CMwNod[]? ForcedSkinsFids
+    public NodeRefList<CMwNod>? ForcedSkinsFids
     {
-        get => this.forcedSkinsFids;
-        set => this.forcedSkinsFids = value;
+        get => forcedSkinsFids;
+        set => forcedSkinsFids = value;
     }
 
-    private CPlugMaterial? materialPilot;
+    private NodeRef<CPlugMaterial> materialPilotRef = new();
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugMaterial? MaterialPilot
     {
-        get => this.materialPilotFile?.GetNode(ref this.materialPilot) ?? this.materialPilot;
-        set => this.materialPilot = value;
-    }
-    private Components.GbxRefTableFile? materialPilotFile;
-
-    public Components.GbxRefTableFile? MaterialPilotFile
-    {
-        get => materialPilotFile;
-        set => materialPilotFile = value;
+        get => materialPilotRef.Resolve();
+        set => materialPilotRef.SetEmbedded(value);
     }
 
-    public CPlugMaterial? GetMaterialPilot(GbxReadSettings settings = default, bool exceptions = false) => materialPilotFile?.GetNode(ref materialPilot, settings, exceptions) ?? materialPilot;
-
-    private CPlugBitmap? bannerProfileFid;
+    private NodeRef<CPlugBitmap> bannerProfileFidRef = new();
     [AppliedWithChunk<Chunk2E002010>]
     public CPlugBitmap? BannerProfileFid
     {
-        get => this.bannerProfileFidFile?.GetNode(ref this.bannerProfileFid) ?? this.bannerProfileFid;
-        set => this.bannerProfileFid = value;
-    }
-    private Components.GbxRefTableFile? bannerProfileFidFile;
-
-    public Components.GbxRefTableFile? BannerProfileFidFile
-    {
-        get => bannerProfileFidFile;
-        set => bannerProfileFidFile = value;
+        get => bannerProfileFidRef.Resolve();
+        set => bannerProfileFidRef.SetEmbedded(value);
     }
 
-    public CPlugBitmap? GetBannerProfileFid(GbxReadSettings settings = default, bool exceptions = false) => bannerProfileFidFile?.GetNode(ref bannerProfileFid, settings, exceptions) ?? bannerProfileFid;
-
-    private CPlugLight? frontLight;
+    private NodeRef<CPlugLight> frontLightRef = new();
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? FrontLight
     {
-        get => this.frontLightFile?.GetNode(ref this.frontLight) ?? this.frontLight;
-        set => this.frontLight = value;
-    }
-    private Components.GbxRefTableFile? frontLightFile;
-
-    public Components.GbxRefTableFile? FrontLightFile
-    {
-        get => frontLightFile;
-        set => frontLightFile = value;
+        get => frontLightRef.Resolve();
+        set => frontLightRef.SetEmbedded(value);
     }
 
-    public CPlugLight? GetFrontLight(GbxReadSettings settings = default, bool exceptions = false) => frontLightFile?.GetNode(ref frontLight, settings, exceptions) ?? frontLight;
-
-    private CPlugLight? frontLightSmall;
+    private NodeRef<CPlugLight> frontLightSmallRef = new();
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? FrontLightSmall
     {
-        get => this.frontLightSmallFile?.GetNode(ref this.frontLightSmall) ?? this.frontLightSmall;
-        set => this.frontLightSmall = value;
-    }
-    private Components.GbxRefTableFile? frontLightSmallFile;
-
-    public Components.GbxRefTableFile? FrontLightSmallFile
-    {
-        get => frontLightSmallFile;
-        set => frontLightSmallFile = value;
+        get => frontLightSmallRef.Resolve();
+        set => frontLightSmallRef.SetEmbedded(value);
     }
 
-    public CPlugLight? GetFrontLightSmall(GbxReadSettings settings = default, bool exceptions = false) => frontLightSmallFile?.GetNode(ref frontLightSmall, settings, exceptions) ?? frontLightSmall;
-
-    private CPlugLight? rearLight;
+    private NodeRef<CPlugLight> rearLightRef = new();
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? RearLight
     {
-        get => this.rearLightFile?.GetNode(ref this.rearLight) ?? this.rearLight;
-        set => this.rearLight = value;
-    }
-    private Components.GbxRefTableFile? rearLightFile;
-
-    public Components.GbxRefTableFile? RearLightFile
-    {
-        get => rearLightFile;
-        set => rearLightFile = value;
+        get => rearLightRef.Resolve();
+        set => rearLightRef.SetEmbedded(value);
     }
 
-    public CPlugLight? GetRearLight(GbxReadSettings settings = default, bool exceptions = false) => rearLightFile?.GetNode(ref rearLight, settings, exceptions) ?? rearLight;
-
-    private CPlugLight? projShadow;
+    private NodeRef<CPlugLight> projShadowRef = new();
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? ProjShadow
     {
-        get => this.projShadowFile?.GetNode(ref this.projShadow) ?? this.projShadow;
-        set => this.projShadow = value;
-    }
-    private Components.GbxRefTableFile? projShadowFile;
-
-    public Components.GbxRefTableFile? ProjShadowFile
-    {
-        get => projShadowFile;
-        set => projShadowFile = value;
+        get => projShadowRef.Resolve();
+        set => projShadowRef.SetEmbedded(value);
     }
 
-    public CPlugLight? GetProjShadow(GbxReadSettings settings = default, bool exceptions = false) => projShadowFile?.GetNode(ref projShadow, settings, exceptions) ?? projShadow;
-
-    private CPlugLight? projFront;
+    private NodeRef<CPlugLight> projFrontRef = new();
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? ProjFront
     {
-        get => this.projFrontFile?.GetNode(ref this.projFront) ?? this.projFront;
-        set => this.projFront = value;
+        get => projFrontRef.Resolve();
+        set => projFrontRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? projFrontFile;
-
-    public Components.GbxRefTableFile? ProjFrontFile
-    {
-        get => projFrontFile;
-        set => projFrontFile = value;
-    }
-
-    public CPlugLight? GetProjFront(GbxReadSettings settings = default, bool exceptions = false) => projFrontFile?.GetNode(ref projFront, settings, exceptions) ?? projFront;
 
     private Vec3 groundPoint;
     [AppliedWithChunk<Chunk2E002012>]
@@ -393,22 +260,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.orbitalPreviewAngle = value;
     }
 
-    private CPlugAudioEnvironment? audioEnvironmentInCar;
+    private NodeRef<CPlugAudioEnvironment> audioEnvironmentInCarRef = new();
     [AppliedWithChunk<Chunk2E002013>]
     public CPlugAudioEnvironment? AudioEnvironmentInCar
     {
-        get => this.audioEnvironmentInCarFile?.GetNode(ref this.audioEnvironmentInCar) ?? this.audioEnvironmentInCar;
-        set => this.audioEnvironmentInCar = value;
+        get => audioEnvironmentInCarRef.Resolve();
+        set => audioEnvironmentInCarRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? audioEnvironmentInCarFile;
-
-    public Components.GbxRefTableFile? AudioEnvironmentInCarFile
-    {
-        get => audioEnvironmentInCarFile;
-        set => audioEnvironmentInCarFile = value;
-    }
-
-    public CPlugAudioEnvironment? GetAudioEnvironmentInCar(GbxReadSettings settings = default, bool exceptions = false) => audioEnvironmentInCarFile?.GetNode(ref audioEnvironmentInCar, settings, exceptions) ?? audioEnvironmentInCar;
 
     private EItemType itemTypeE;
     [AppliedWithChunk<Chunk2E002015>]
@@ -418,34 +276,20 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.itemTypeE = value;
     }
 
-    private CMwNod? phyModelCustom;
+    private NodeRef<CMwNod> phyModelCustomRef = new();
     [AppliedWithChunk<Chunk2E002019>]
     public CMwNod? PhyModelCustom
     {
-        get => this.phyModelCustomFile?.GetNode(ref this.phyModelCustom) ?? this.phyModelCustom;
-        set => this.phyModelCustom = value;
-    }
-    private Components.GbxRefTableFile? phyModelCustomFile;
-
-    public Components.GbxRefTableFile? PhyModelCustomFile
-    {
-        get => phyModelCustomFile;
-        set => phyModelCustomFile = value;
+        get => phyModelCustomRef.Resolve();
+        set => phyModelCustomRef.SetEmbedded(value);
     }
 
-    private CMwNod? visModelCustom;
+    private NodeRef<CMwNod> visModelCustomRef = new();
     [AppliedWithChunk<Chunk2E002019>]
     public CMwNod? VisModelCustom
     {
-        get => this.visModelCustomFile?.GetNode(ref this.visModelCustom) ?? this.visModelCustom;
-        set => this.visModelCustom = value;
-    }
-    private Components.GbxRefTableFile? visModelCustomFile;
-
-    public Components.GbxRefTableFile? VisModelCustomFile
-    {
-        get => visModelCustomFile;
-        set => visModelCustomFile = value;
+        get => visModelCustomRef.Resolve();
+        set => visModelCustomRef.SetEmbedded(value);
     }
 
     private string? defaultWeaponName;
@@ -456,12 +300,12 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.defaultWeaponName = value;
     }
 
-    private CGameActionModel[]? actions;
+    private NodeRefList<CGameActionModel>? actions;
     [AppliedWithChunk<Chunk2E002019>(6)]
-    public CGameActionModel[]? Actions
+    public NodeRefList<CGameActionModel>? Actions
     {
-        get => this.actions;
-        set => this.actions = value;
+        get => actions;
+        set => actions = value;
     }
 
     private EDefaultCam defaultCam;
@@ -472,71 +316,48 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.defaultCam = value;
     }
 
-    private CMwNod? entityModelEdition;
+    private NodeRef<CMwNod> entityModelEditionRef = new();
     /// <summary>
     /// CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
     /// </summary>
     [AppliedWithChunk<Chunk2E002019>(8)]
     public CMwNod? EntityModelEdition
     {
-        get => this.entityModelEditionFile?.GetNode(ref this.entityModelEdition) ?? this.entityModelEdition;
-        set => this.entityModelEdition = value;
-    }
-    private Components.GbxRefTableFile? entityModelEditionFile;
-
-    public Components.GbxRefTableFile? EntityModelEditionFile
-    {
-        get => entityModelEditionFile;
-        set => entityModelEditionFile = value;
+        get => entityModelEditionRef.Resolve();
+        set => entityModelEditionRef.SetEmbedded(value);
     }
 
-    private CMwNod? entityModel;
+    private NodeRef<CMwNod> entityModelRef = new();
     [AppliedWithChunk<Chunk2E002019>(8)]
     public CMwNod? EntityModel
     {
-        get => this.entityModel;
-        set => this.entityModel = value;
+        get => entityModelRef.Resolve();
+        set => entityModelRef.SetEmbedded(value);
     }
 
-    private CPlugVFXFile? vFX;
+    private NodeRef<CPlugVFXFile> vFXRef = new();
     [AppliedWithChunk<Chunk2E002019>(13)]
     public CPlugVFXFile? VFX
     {
-        get => this.vFX;
-        set => this.vFX = value;
+        get => vFXRef.Resolve();
+        set => vFXRef.SetEmbedded(value);
     }
 
-    private CPlugGameSkinAndFolder? materialModifier;
+    private NodeRef<CPlugGameSkinAndFolder> materialModifierRef = new();
     [AppliedWithChunk<Chunk2E002019>(15)]
     public CPlugGameSkinAndFolder? MaterialModifier
     {
-        get => this.materialModifierFile?.GetNode(ref this.materialModifier) ?? this.materialModifier;
-        set => this.materialModifier = value;
-    }
-    private Components.GbxRefTableFile? materialModifierFile;
-
-    public Components.GbxRefTableFile? MaterialModifierFile
-    {
-        get => materialModifierFile;
-        set => materialModifierFile = value;
+        get => materialModifierRef.Resolve();
+        set => materialModifierRef.SetEmbedded(value);
     }
 
-    private CGameItemPlacementParam? defaultPlacement;
+    private NodeRef<CGameItemPlacementParam> defaultPlacementRef = new();
     [AppliedWithChunk<Chunk2E00201C>(5)]
     public CGameItemPlacementParam? DefaultPlacement
     {
-        get => this.defaultPlacementFile?.GetNode(ref this.defaultPlacement) ?? this.defaultPlacement;
-        set => this.defaultPlacement = value;
+        get => defaultPlacementRef.Resolve();
+        set => defaultPlacementRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? defaultPlacementFile;
-
-    public Components.GbxRefTableFile? DefaultPlacementFile
-    {
-        get => defaultPlacementFile;
-        set => defaultPlacementFile = value;
-    }
-
-    public CGameItemPlacementParam? GetDefaultPlacement(GbxReadSettings settings = default, bool exceptions = false) => defaultPlacementFile?.GetNode(ref defaultPlacement, settings, exceptions) ?? defaultPlacement;
 
     private string? archetypeRef;
     [AppliedWithChunk<Chunk2E00201E>(2)]
@@ -546,12 +367,12 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.archetypeRef = value;
     }
 
-    private CGameItemModel? archetypeFid;
+    private NodeRef<CGameItemModel> archetypeFidRef = new();
     [AppliedWithChunk<Chunk2E00201E>(5)]
     public CGameItemModel? ArchetypeFid
     {
-        get => this.archetypeFid;
-        set => this.archetypeFid = value;
+        get => archetypeFidRef.Resolve();
+        set => archetypeFidRef.SetEmbedded(value);
     }
 
     private EWaypointType waypointType;
@@ -586,50 +407,166 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => this.itemGroupElements = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CGameItemModel owner;
+        internal NodeRefView(CGameItemModel owner) => this.owner = owner;
+        public NodeRef<CSceneMobil> Vehicle => owner.vehicleRef;
+        public NodeRef<CPlugGameSkin> GameSkin => owner.gameSkinRef;
+        public NodeRef<CScene2d> RaceInterfaceFid => owner.raceInterfaceFidRef;
+        public NodeRef<CPlugSolid> LowQualitySolid => owner.lowQualitySolidRef;
+        public NodeRef<CPlugMaterial> MaterialSkin => owner.materialSkinRef;
+        public NodeRef<CPlugMaterial> MaterialGlass => owner.materialGlassRef;
+        public NodeRef<CPlugMaterial> MaterialDetails => owner.materialDetailsRef;
+        public NadeoSkinFidsReferenceView NadeoSkinFids => new(owner);
+        public CamerasReferenceView Cameras => new(owner);
+        public NodeRef<CPlugDecoratorSolid> DecoratorSolid => owner.decoratorSolidRef;
+        public NodeRef<CPlugMaterial> StemMaterial => owner.stemMaterialRef;
+        public NodeRef<CPlugMaterial> StemBumpMaterial => owner.stemBumpMaterialRef;
+        public ForcedSkinsFidsReferenceView ForcedSkinsFids => new(owner);
+        public NodeRef<CPlugMaterial> MaterialPilot => owner.materialPilotRef;
+        public NodeRef<CPlugBitmap> BannerProfileFid => owner.bannerProfileFidRef;
+        public NodeRef<CPlugLight> FrontLight => owner.frontLightRef;
+        public NodeRef<CPlugLight> FrontLightSmall => owner.frontLightSmallRef;
+        public NodeRef<CPlugLight> RearLight => owner.rearLightRef;
+        public NodeRef<CPlugLight> ProjShadow => owner.projShadowRef;
+        public NodeRef<CPlugLight> ProjFront => owner.projFrontRef;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvironmentInCar => owner.audioEnvironmentInCarRef;
+        public NodeRef<CMwNod> PhyModelCustom => owner.phyModelCustomRef;
+        public NodeRef<CMwNod> VisModelCustom => owner.visModelCustomRef;
+        public ActionsReferenceView Actions => new(owner);
+        public NodeRef<CMwNod> EntityModelEdition => owner.entityModelEditionRef;
+        public NodeRef<CMwNod> EntityModel => owner.entityModelRef;
+        public NodeRef<CPlugVFXFile> VFX => owner.vFXRef;
+        public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => owner.materialModifierRef;
+        public NodeRef<CGameItemPlacementParam> DefaultPlacement => owner.defaultPlacementRef;
+        public NodeRef<CGameItemModel> ArchetypeFid => owner.archetypeFidRef;
+        public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
+        public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
+        public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
+        public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
+    }
+    public readonly struct NadeoSkinFidsReferenceView
+    {
+        private readonly CGameItemModel owner;
+        internal NadeoSkinFidsReferenceView(CGameItemModel owner) => this.owner = owner;
+        public int Count => owner.nadeoSkinFids?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.nadeoSkinFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct CamerasReferenceView
+    {
+        private readonly CGameItemModel owner;
+        internal CamerasReferenceView(CGameItemModel owner) => this.owner = owner;
+        public int Count => owner.cameras?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.cameras ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct ForcedSkinsFidsReferenceView
+    {
+        private readonly CGameItemModel owner;
+        internal ForcedSkinsFidsReferenceView(CGameItemModel owner) => this.owner = owner;
+        public int Count => owner.forcedSkinsFids?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.forcedSkinsFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct ActionsReferenceView
+    {
+        private readonly CGameItemModel owner;
+        internal ActionsReferenceView(CGameItemModel owner) => this.owner = owner;
+        public int Count => owner.actions?.Count ?? 0;
+        public NodeRef<CGameActionModel> this[int index] => (owner.actions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Vehicle", vehicleRef);
+        yield return new("GameSkin", gameSkinRef);
+        yield return new("RaceInterfaceFid", raceInterfaceFidRef);
+        yield return new("LowQualitySolid", lowQualitySolidRef);
+        yield return new("MaterialSkin", materialSkinRef);
+        yield return new("MaterialGlass", materialGlassRef);
+        yield return new("MaterialDetails", materialDetailsRef);
+        if (nadeoSkinFids is not null)
+        {
+            for (var i = 0; i < nadeoSkinFids.Count; i++) yield return new("NadeoSkinFids" + "[" + i + "]", nadeoSkinFids.GetReference(i));
+        }
+        if (cameras is not null)
+        {
+            for (var i = 0; i < cameras.Count; i++) yield return new("Cameras" + "[" + i + "]", cameras.GetReference(i));
+        }
+        yield return new("DecoratorSolid", decoratorSolidRef);
+        yield return new("StemMaterial", stemMaterialRef);
+        yield return new("StemBumpMaterial", stemBumpMaterialRef);
+        if (forcedSkinsFids is not null)
+        {
+            for (var i = 0; i < forcedSkinsFids.Count; i++) yield return new("ForcedSkinsFids" + "[" + i + "]", forcedSkinsFids.GetReference(i));
+        }
+        yield return new("MaterialPilot", materialPilotRef);
+        yield return new("BannerProfileFid", bannerProfileFidRef);
+        yield return new("FrontLight", frontLightRef);
+        yield return new("FrontLightSmall", frontLightSmallRef);
+        yield return new("RearLight", rearLightRef);
+        yield return new("ProjShadow", projShadowRef);
+        yield return new("ProjFront", projFrontRef);
+        yield return new("AudioEnvironmentInCar", audioEnvironmentInCarRef);
+        yield return new("PhyModelCustom", phyModelCustomRef);
+        yield return new("VisModelCustom", visModelCustomRef);
+        if (actions is not null)
+        {
+            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.GetReference(i));
+        }
+        yield return new("EntityModelEdition", entityModelEditionRef);
+        yield return new("EntityModel", entityModelRef);
+        yield return new("VFX", vFXRef);
+        yield return new("MaterialModifier", materialModifierRef);
+        yield return new("DefaultPlacement", defaultPlacementRef);
+        yield return new("ArchetypeFid", archetypeFidRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameItemModel)clone).itemType = context.Clone(this.itemType)!;
-        ((CGameItemModel)clone).vehicle = context.Clone(this.vehicle)!;
-        ((CGameItemModel)clone).gameSkin = context.Clone(this.gameSkin)!;
-        ((CGameItemModel)clone).raceInterfaceFid = context.Clone(this.raceInterfaceFid)!;
-        ((CGameItemModel)clone).lowQualitySolid = context.Clone(this.lowQualitySolid)!;
+        ((CGameItemModel)clone).vehicleRef = context.Clone(this.vehicleRef)!;
+        ((CGameItemModel)clone).gameSkinRef = context.Clone(this.gameSkinRef)!;
+        ((CGameItemModel)clone).raceInterfaceFidRef = context.Clone(this.raceInterfaceFidRef)!;
+        ((CGameItemModel)clone).lowQualitySolidRef = context.Clone(this.lowQualitySolidRef)!;
         ((CGameItemModel)clone).defaultCamIndex = context.Clone(this.defaultCamIndex)!;
-        ((CGameItemModel)clone).materialSkin = context.Clone(this.materialSkin)!;
-        ((CGameItemModel)clone).materialGlass = context.Clone(this.materialGlass)!;
-        ((CGameItemModel)clone).materialDetails = context.Clone(this.materialDetails)!;
-        ((CGameItemModel)clone).nadeoSkinFids = context.CloneArray(this.nadeoSkinFids)!;
-        ((CGameItemModel)clone).cameras = context.CloneArray(this.cameras)!;
-        ((CGameItemModel)clone).decoratorSolid = context.Clone(this.decoratorSolid)!;
-        ((CGameItemModel)clone).stemMaterial = context.Clone(this.stemMaterial)!;
-        ((CGameItemModel)clone).stemBumpMaterial = context.Clone(this.stemBumpMaterial)!;
-        ((CGameItemModel)clone).forcedSkinsFids = context.CloneArray(this.forcedSkinsFids)!;
-        ((CGameItemModel)clone).materialPilot = context.Clone(this.materialPilot)!;
-        ((CGameItemModel)clone).bannerProfileFid = context.Clone(this.bannerProfileFid)!;
-        ((CGameItemModel)clone).frontLight = context.Clone(this.frontLight)!;
-        ((CGameItemModel)clone).frontLightSmall = context.Clone(this.frontLightSmall)!;
-        ((CGameItemModel)clone).rearLight = context.Clone(this.rearLight)!;
-        ((CGameItemModel)clone).projShadow = context.Clone(this.projShadow)!;
-        ((CGameItemModel)clone).projFront = context.Clone(this.projFront)!;
+        ((CGameItemModel)clone).materialSkinRef = context.Clone(this.materialSkinRef)!;
+        ((CGameItemModel)clone).materialGlassRef = context.Clone(this.materialGlassRef)!;
+        ((CGameItemModel)clone).materialDetailsRef = context.Clone(this.materialDetailsRef)!;
+        ((CGameItemModel)clone).nadeoSkinFids = context.Clone(this.nadeoSkinFids)!;
+        ((CGameItemModel)clone).cameras = context.Clone(this.cameras)!;
+        ((CGameItemModel)clone).decoratorSolidRef = context.Clone(this.decoratorSolidRef)!;
+        ((CGameItemModel)clone).stemMaterialRef = context.Clone(this.stemMaterialRef)!;
+        ((CGameItemModel)clone).stemBumpMaterialRef = context.Clone(this.stemBumpMaterialRef)!;
+        ((CGameItemModel)clone).forcedSkinsFids = context.Clone(this.forcedSkinsFids)!;
+        ((CGameItemModel)clone).materialPilotRef = context.Clone(this.materialPilotRef)!;
+        ((CGameItemModel)clone).bannerProfileFidRef = context.Clone(this.bannerProfileFidRef)!;
+        ((CGameItemModel)clone).frontLightRef = context.Clone(this.frontLightRef)!;
+        ((CGameItemModel)clone).frontLightSmallRef = context.Clone(this.frontLightSmallRef)!;
+        ((CGameItemModel)clone).rearLightRef = context.Clone(this.rearLightRef)!;
+        ((CGameItemModel)clone).projShadowRef = context.Clone(this.projShadowRef)!;
+        ((CGameItemModel)clone).projFrontRef = context.Clone(this.projFrontRef)!;
         ((CGameItemModel)clone).groundPoint = context.Clone(this.groundPoint)!;
         ((CGameItemModel)clone).painterGroundMargin = context.Clone(this.painterGroundMargin)!;
         ((CGameItemModel)clone).orbitalCenterHeightFromGround = context.Clone(this.orbitalCenterHeightFromGround)!;
         ((CGameItemModel)clone).orbitalRadiusBase = context.Clone(this.orbitalRadiusBase)!;
         ((CGameItemModel)clone).orbitalPreviewAngle = context.Clone(this.orbitalPreviewAngle)!;
-        ((CGameItemModel)clone).audioEnvironmentInCar = context.Clone(this.audioEnvironmentInCar)!;
+        ((CGameItemModel)clone).audioEnvironmentInCarRef = context.Clone(this.audioEnvironmentInCarRef)!;
         ((CGameItemModel)clone).itemTypeE = context.Clone(this.itemTypeE)!;
-        ((CGameItemModel)clone).phyModelCustom = context.Clone(this.phyModelCustom)!;
-        ((CGameItemModel)clone).visModelCustom = context.Clone(this.visModelCustom)!;
+        ((CGameItemModel)clone).phyModelCustomRef = context.Clone(this.phyModelCustomRef)!;
+        ((CGameItemModel)clone).visModelCustomRef = context.Clone(this.visModelCustomRef)!;
         ((CGameItemModel)clone).defaultWeaponName = context.Clone(this.defaultWeaponName)!;
-        ((CGameItemModel)clone).actions = context.CloneArray(this.actions)!;
+        ((CGameItemModel)clone).actions = context.Clone(this.actions)!;
         ((CGameItemModel)clone).defaultCam = context.Clone(this.defaultCam)!;
-        ((CGameItemModel)clone).entityModelEdition = context.Clone(this.entityModelEdition)!;
-        ((CGameItemModel)clone).entityModel = context.Clone(this.entityModel)!;
-        ((CGameItemModel)clone).vFX = context.Clone(this.vFX)!;
-        ((CGameItemModel)clone).materialModifier = context.Clone(this.materialModifier)!;
-        ((CGameItemModel)clone).defaultPlacement = context.Clone(this.defaultPlacement)!;
+        ((CGameItemModel)clone).entityModelEditionRef = context.Clone(this.entityModelEditionRef)!;
+        ((CGameItemModel)clone).entityModelRef = context.Clone(this.entityModelRef)!;
+        ((CGameItemModel)clone).vFXRef = context.Clone(this.vFXRef)!;
+        ((CGameItemModel)clone).materialModifierRef = context.Clone(this.materialModifierRef)!;
+        ((CGameItemModel)clone).defaultPlacementRef = context.Clone(this.defaultPlacementRef)!;
         ((CGameItemModel)clone).archetypeRef = context.Clone(this.archetypeRef)!;
-        ((CGameItemModel)clone).archetypeFid = context.Clone(this.archetypeFid)!;
+        ((CGameItemModel)clone).archetypeFidRef = context.Clone(this.archetypeFidRef)!;
         ((CGameItemModel)clone).waypointType = context.Clone(this.waypointType)!;
         ((CGameItemModel)clone).disableLightmap = context.Clone(this.disableLightmap)!;
         ((CGameItemModel)clone).iconFid = context.Clone(this.iconFid)!;
@@ -694,7 +631,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneMobil>(ref n.vehicle, ref n.vehicleFile);
+            rw.NodeRef(n.vehicleRef);
         }
     }
 
@@ -712,7 +649,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugGameSkin>(ref n.gameSkin);
+            rw.NodeRef(n.gameSkinRef);
         }
     }
 
@@ -733,7 +670,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CScene2d>(ref n.raceInterfaceFid);
+            rw.NodeRef(n.raceInterfaceFidRef);
         }
     }
 
@@ -754,7 +691,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSolid>(ref n.lowQualitySolid, ref n.lowQualitySolidFile);
+            rw.NodeRef(n.lowQualitySolidRef);
         }
     }
 
@@ -764,17 +701,37 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         public override uint Id => 0x2E002004;
         public override GameVersion GameVersion => GameVersion.TMSX;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E002004 owner;
+            internal NodeRefView(Chunk2E002004 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E002004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E002004)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -816,9 +773,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMaterial>(ref n.materialSkin, ref n.materialSkinFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialGlass, ref n.materialGlassFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialDetails, ref n.materialDetailsFile);
+            rw.NodeRef(n.materialSkinRef);
+            rw.NodeRef(n.materialGlassRef);
+            rw.NodeRef(n.materialDetailsRef);
         }
     }
 
@@ -839,7 +796,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CMwNod>(ref n.nadeoSkinFids!);
+            n.nadeoSkinFids = rw.ListNodeRef<CMwNod>(n.nadeoSkinFids);
         }
     }
 
@@ -860,7 +817,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CMwNod>(ref n.cameras!);
+            n.cameras = rw.ListNodeRef_deprec<CMwNod>(n.cameras);
         }
     }
 
@@ -881,7 +838,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugDecoratorSolid>(ref n.decoratorSolid, ref n.decoratorSolidFile);
+            rw.NodeRef(n.decoratorSolidRef);
         }
     }
 
@@ -902,8 +859,8 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMaterial>(ref n.stemMaterial, ref n.stemMaterialFile);
-            rw.NodeRef<CPlugMaterial>(ref n.stemBumpMaterial, ref n.stemBumpMaterialFile);
+            rw.NodeRef(n.stemMaterialRef);
+            rw.NodeRef(n.stemBumpMaterialRef);
         }
     }
 
@@ -924,7 +881,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CScene2d>(ref n.raceInterfaceFid);
+            rw.NodeRef(n.raceInterfaceFidRef);
         }
     }
 
@@ -942,7 +899,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CMwNod>(ref n.forcedSkinsFids!);
+            n.forcedSkinsFids = rw.ListNodeRef<CMwNod>(n.forcedSkinsFids);
         }
     }
 
@@ -963,10 +920,10 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMaterial>(ref n.materialSkin, ref n.materialSkinFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialGlass, ref n.materialGlassFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialDetails, ref n.materialDetailsFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialPilot, ref n.materialPilotFile);
+            rw.NodeRef(n.materialSkinRef);
+            rw.NodeRef(n.materialGlassRef);
+            rw.NodeRef(n.materialDetailsRef);
+            rw.NodeRef(n.materialPilotRef);
         }
     }
 
@@ -984,7 +941,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bannerProfileFid, ref n.bannerProfileFidFile);
+            rw.NodeRef(n.bannerProfileFidRef);
         }
     }
 
@@ -1005,15 +962,15 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMaterial>(ref n.materialSkin, ref n.materialSkinFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialGlass, ref n.materialGlassFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialDetails, ref n.materialDetailsFile);
-            rw.NodeRef<CPlugMaterial>(ref n.materialPilot, ref n.materialPilotFile);
-            rw.NodeRef<CPlugLight>(ref n.frontLight, ref n.frontLightFile);
-            rw.NodeRef<CPlugLight>(ref n.frontLightSmall, ref n.frontLightSmallFile);
-            rw.NodeRef<CPlugLight>(ref n.rearLight, ref n.rearLightFile);
-            rw.NodeRef<CPlugLight>(ref n.projShadow, ref n.projShadowFile);
-            rw.NodeRef<CPlugLight>(ref n.projFront, ref n.projFrontFile);
+            rw.NodeRef(n.materialSkinRef);
+            rw.NodeRef(n.materialGlassRef);
+            rw.NodeRef(n.materialDetailsRef);
+            rw.NodeRef(n.materialPilotRef);
+            rw.NodeRef(n.frontLightRef);
+            rw.NodeRef(n.frontLightSmallRef);
+            rw.NodeRef(n.rearLightRef);
+            rw.NodeRef(n.projShadowRef);
+            rw.NodeRef(n.projFrontRef);
         }
     }
 
@@ -1053,7 +1010,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvironmentInCar, ref n.audioEnvironmentInCarFile);
+            rw.NodeRef(n.audioEnvironmentInCarRef);
         }
     }
 
@@ -1061,17 +1018,37 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     public partial class Chunk2E002014 : Chunk<CGameItemModel>
     {
         public override uint Id => 0x2E002014;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E002014 owner;
+            internal NodeRefView(Chunk2E002014 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E002014)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E002014)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -1121,24 +1098,24 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             {
                 if (Version <= 8)
                 {
-                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
-                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                    rw.NodeRef(n.phyModelCustomRef);
+                    rw.NodeRef(n.visModelCustomRef);
                 }
             }
             else if (n.ItemType== EItemType.Vehicle)
             {
                 if (Version <= 9)
                 {
-                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
-                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                    rw.NodeRef(n.phyModelCustomRef);
+                    rw.NodeRef(n.visModelCustomRef);
                 }
             }
             else if (n.ItemType!= EItemType.Block)
             {
                 if (Version <= 11)
                 {
-                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, ref n.phyModelCustomFile);
-                    rw.NodeRef<CMwNod>(ref n.visModelCustom, ref n.visModelCustomFile);
+                    rw.NodeRef(n.phyModelCustomRef);
+                    rw.NodeRef(n.visModelCustomRef);
                 }
             }
 
@@ -1149,31 +1126,31 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
             if (Version >= 4)
             {
-                if (n.phyModelCustom != null)
+                if (n.References.PhyModelCustom.Kind != NodeRefKind.None)
                 {
                     var phyModelCustomIndex = rw.Int32((rw.Writer is null ? default : (- 1)));
                 }
                 else
                 {
-                    rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                    rw.NodeRef(n.phyModelCustomRef);
                 }
             }
 
             if (Version >= 5)
             {
-                if (n.visModelCustom != null)
+                if (n.References.VisModelCustom.Kind != NodeRefKind.None)
                 {
                     var visModelCustomIndex = rw.Int32((rw.Writer is null ? default : (- 1)));
                 }
                 else
                 {
-                    rw.NodeRef<CMwNod>(ref n.visModelCustom);
+                    rw.NodeRef(n.visModelCustomRef);
                 }
             }
 
             if (Version >= 6)
             {
-                rw.ArrayNodeRef<CGameActionModel>(ref n.actions!);
+                n.actions = rw.ListNodeRef<CGameActionModel>(n.actions);
             }
 
             if (Version >= 7)
@@ -1183,27 +1160,27 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
             if (Version >= 8)
             {
-                rw.NodeRef<CMwNod>(ref n.entityModelEdition, ref n.entityModelEditionFile);
+                rw.NodeRef(n.entityModelEditionRef);
 
-                if (n.entityModelEdition == null && n.EntityModelEditionFile== null)
+                if (n.References.EntityModelEdition.Kind == NodeRefKind.None)
                 {
                     if (n.ItemType== EItemType.Block)
                     {
                         throw new Exception("EntityModel cannot exist for Block");
                     }
 
-                    rw.NodeRef<CMwNod>(ref n.entityModel);
+                    rw.NodeRef(n.entityModelRef);
                 }
             }
 
             if (Version >= 13)
             {
-                rw.NodeRef<CPlugVFXFile>(ref n.vFX);
+                rw.NodeRef(n.vFXRef);
             }
 
             if (Version >= 15)
             {
-                rw.NodeRef<CPlugGameSkinAndFolder>(ref n.materialModifier, ref n.materialModifierFile);
+                rw.NodeRef(n.materialModifierRef);
             }
         }
     }
@@ -1214,17 +1191,37 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         public override uint Id => 0x2E00201A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E00201A owner;
+            internal NodeRefView(Chunk2E00201A owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E00201A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E00201A)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -1234,17 +1231,37 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         public override uint Id => 0x2E00201B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E00201B owner;
+            internal NodeRefView(Chunk2E00201B owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E00201B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E00201B)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -1301,7 +1318,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
             if (Version >= 5)
             {
-                rw.NodeRef<CGameItemPlacementParam>(ref n.defaultPlacement, ref n.defaultPlacementFile);
+                rw.NodeRef(n.defaultPlacementRef);
                 return;
             }
 
@@ -1387,7 +1404,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 {
                     if (n.ArchetypeRef== null || n.ArchetypeRef== "")
                     {
-                        rw.NodeRef<CGameItemModel>(ref n.archetypeFid);
+                        rw.NodeRef(n.archetypeFidRef);
                     }
 
                     if (Version >= 6)
@@ -1417,10 +1434,30 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public int? U04;
         public short? U05;
         public Iso4 U06;
-        public CMwNod? U07;
+
+        private NodeRef<CMwNod> U07Ref = new();
+        public CMwNod? U07
+        {
+            get => U07Ref.Resolve();
+            set => U07Ref.SetEmbedded(value);
+        }
         public byte? U08;
         public int? U09;
         public int? U10;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E00201F owner;
+            internal NodeRefView(Chunk2E00201F owner) => this.owner = owner;
+            public NodeRef<CMwNod> U07 => owner.U07Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U07", U07Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1432,7 +1469,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             ((Chunk2E00201F)clone).U04 = context.Clone(this.U04)!;
             ((Chunk2E00201F)clone).U05 = context.Clone(this.U05)!;
             ((Chunk2E00201F)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk2E00201F)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk2E00201F)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk2E00201F)clone).U08 = context.Clone(this.U08)!;
             ((Chunk2E00201F)clone).U09 = context.Clone(this.U09)!;
             ((Chunk2E00201F)clone).U10 = context.Clone(this.U10)!;
@@ -1477,7 +1514,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
                 {
                     if (Version <= 12)
                     {
-                        rw.NodeRef<CMwNod>(ref U07);
+                        rw.NodeRef(U07Ref);
                     }
 
                     if (Version >= 11)
@@ -1503,15 +1540,38 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod> U02Ref = new();
+        /// <summary>
+        /// CPlugFileImg
+        /// </summary>
+        public CMwNod? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
         public bool U03;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E002020 owner;
+            internal NodeRefView(Chunk2E002020 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U02 => owner.U02Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", U02Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E002020)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E002020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E002020)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E002020)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk2E002020)clone).U03 = context.Clone(this.U03)!;
         }
 
@@ -1522,7 +1582,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             if (Version <= 1)
             {
                 rw.String(ref U01);
-                rw.NodeRef<CMwNod>(ref U02);
+                rw.NodeRef(U02Ref);
                 return;
             }
 
@@ -1722,11 +1782,24 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             set => this.itemRef = value;
         }
 
-        private CGameItemModel? item;
+        private NodeRef<CGameItemModel> itemNodeRef = new();
         public CGameItemModel? Item
         {
-            get => this.item;
-            set => this.item = value;
+            get => itemNodeRef.Resolve();
+            set => itemNodeRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly ItemGroupElement owner;
+            internal NodeRefView(ItemGroupElement owner) => this.owner = owner;
+            public NodeRef<CGameItemModel> Item => owner.itemNodeRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Item", itemNodeRef);
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1741,7 +1814,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         {
             ((ItemGroupElement)clone).location = context.Clone(this.location)!;
             ((ItemGroupElement)clone).itemRef = context.Clone(this.itemRef)!;
-            ((ItemGroupElement)clone).item = context.Clone(this.item)!;
+            ((ItemGroupElement)clone).itemNodeRef = context.Clone(this.itemNodeRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -1751,7 +1824,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
             if (ItemRef== null || ItemRef== "")
             {
-                rw.NodeRef<CGameItemModel>(ref this.item);
+                rw.NodeRef(this.itemNodeRef);
             }
         }
 

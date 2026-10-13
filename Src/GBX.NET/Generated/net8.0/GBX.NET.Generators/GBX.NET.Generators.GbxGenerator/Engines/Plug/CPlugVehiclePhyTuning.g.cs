@@ -34,6 +34,8 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090EB000;
 
+    internal override uint GetId() => Id;
+
     private string name = string.Empty;
     [AppliedWithChunk<Chunk090EB000>]
     public string Name
@@ -70,13 +72,33 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     {
         public override uint Id => 0x090EB000;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CFuncKeysReal? U01;
+
+        private NodeRef<CFuncKeysReal> U01Ref = new();
+        public CFuncKeysReal? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
         public float U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090EB000 owner;
+            internal NodeRefView(Chunk090EB000 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090EB000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090EB000)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090EB000)clone).U02 = context.Clone(this.U02)!;
         }
     }

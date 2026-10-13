@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_GameStats : CGamePlayerProfileChunk
     [Hexadecimal]
     public static new uint Id => 0x03147000;
 
+    internal override uint GetId() => Id;
+
     private int totalTimePlay;
     [AppliedWithChunk<Chunk03147000>]
     public int TotalTimePlay

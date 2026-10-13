@@ -37,7 +37,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
         await Assert.That(node.MinDistToUpdate).IsEqualTo(offset == 2 ? 2.5f : 1f);
         await Assert.That(node.Flags).IsEqualTo(offset == 1 ? 0x8000005Fu : 0u);
         await Assert.That(node.BitmapImageSpace).IsNull();
-        await Assert.That(node.BitmapImageSpaceFile).IsNull();
+        await Assert.That(node.References.BitmapImageSpace.File).IsNull();
         await Assert.That(node.BitmapImageSpaceDistToCenter).IsEqualTo(offset >= 3 ? -3.5f : 0f);
         await Assert.That(node.BitmapImageSpaceScaleHeight).IsEqualTo(offset == 4 ? 4.5f : 1f);
         using var saved = new MemoryStream();
@@ -90,7 +90,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
         using (var rw = new GbxReaderWriter(reader)) chunk.ReadWrite(node, rw);
         await Assert.That(payload.Position).IsEqualTo(payload.Length);
         await Assert.That(node.BitmapImageSpace).IsNotNull();
-        await Assert.That(node.BitmapImageSpaceFile).IsNull();
+        await Assert.That(node.References.BitmapImageSpace.File).IsNull();
         await Assert.That(node.BitmapImageSpaceDistToCenter).IsEqualTo(2.5f);
         await Assert.That(node.BitmapImageSpaceScaleHeight).IsEqualTo(offset == 4 ? 3.5f : 1f);
         using var saved = new MemoryStream();

@@ -34,6 +34,8 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x09058000;
 
+    internal override uint GetId() => Id;
+
     private EHemiLayout hemiLayout;
     [AppliedWithChunk<Chunk09058000>]
     [AppliedWithChunk<Chunk09058001>]

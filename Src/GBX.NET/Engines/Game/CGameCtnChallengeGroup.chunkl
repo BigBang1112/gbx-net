@@ -4,9 +4,9 @@ CGameCtnChallengeGroup 0x0308F000
   int NbBronzeRequired
   int NbSilverRequired
   int NbGoldRequired
-  CGameCtnChallenge[] MapFiles (external, list)
+  CGameCtnChallenge[] MapFiles (list)
 
-0x001 [TM10, TMPU] // medal requirements + map identifiers 
+0x001 [TM10, TMPU] // medal requirements + map identifiers
   int NbBronzeRequired
   int NbSilverRequired
   int NbGoldRequired
@@ -21,7 +21,7 @@ CGameCtnChallengeGroup 0x0308F000
   int AllGoldValue [TM10 = 300, TMPU = 300]
 
 0x004 // legacy file list
-  CMwNod[] Files (external, list)
+  CMwNod[] Files (list)
 
 0x005 [TMSX, TMNESWC, VSK5] // LinkedCampaign
   CGameCtnCampaign LinkedCampaign
@@ -29,7 +29,7 @@ CGameCtnChallengeGroup 0x0308F000
 0x006 [TMSX, TMNESWC, VSK5, TMF] // map identifiers or map files
   bool UsesMapFiles = false
   if UsesMapFiles
-    CGameCtnChallenge[] MapFiles (external, list)
+    CGameCtnChallenge[] MapFiles (list)
   else
     MapInfo[] MapInfos (list)
 
@@ -42,7 +42,7 @@ CGameCtnChallengeGroup 0x0308F000
   int NbGoldCupRequired
 
 0x008 [TMSX] // AssociatedCollection
-  CGameCtnCollection AssociatedCollection (external)
+  CGameCtnCollection AssociatedCollection
 
 0x009 [TMNESWC, VSK5] // AssociatedCollectionId
   id AssociatedCollectionId

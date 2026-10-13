@@ -34,12 +34,28 @@ public partial class CGameCtnBlockInfoMobilLink : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03192000;
 
+    internal override uint GetId() => Id;
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnBlockInfoMobilLink owner;
+        internal NodeRefView(CGameCtnBlockInfoMobilLink owner) => this.owner = owner;
+        public NodeRef<CGameObjectModel> Model => owner.modelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Model", modelRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnBlockInfoMobilLink)clone).version = context.Clone(this.version)!;
         ((CGameCtnBlockInfoMobilLink)clone).socketId = context.Clone(this.socketId)!;
-        ((CGameCtnBlockInfoMobilLink)clone).model = context.Clone(this.model)!;
+        ((CGameCtnBlockInfoMobilLink)clone).modelRef = context.Clone(this.modelRef)!;
     }
 
     public CGameCtnBlockInfoMobilLink()

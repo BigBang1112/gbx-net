@@ -34,22 +34,15 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     [Hexadecimal]
     public static new uint Id => 0x0314D000;
 
-    private CGameCtnBlockInfoTransition? blockInfoTransition;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameCtnBlockInfoTransition> blockInfoTransitionRef = new();
     [AppliedWithChunk<Chunk0314D000>]
     public CGameCtnBlockInfoTransition? BlockInfoTransition
     {
-        get => this.blockInfoTransitionFile?.GetNode(ref this.blockInfoTransition) ?? this.blockInfoTransition;
-        set => this.blockInfoTransition = value;
+        get => blockInfoTransitionRef.Resolve();
+        set => blockInfoTransitionRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? blockInfoTransitionFile;
-
-    public Components.GbxRefTableFile? BlockInfoTransitionFile
-    {
-        get => blockInfoTransitionFile;
-        set => blockInfoTransitionFile = value;
-    }
-
-    public CGameCtnBlockInfoTransition? GetBlockInfoTransition(GbxReadSettings settings = default, bool exceptions = false) => blockInfoTransitionFile?.GetNode(ref blockInfoTransition, settings, exceptions) ?? blockInfoTransition;
 
     private string? replacementZoneId;
     [AppliedWithChunk<Chunk0314D005>]
@@ -123,10 +116,24 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         set => this.genealogy_West = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnZoneTransition owner;
+        internal NodeRefView(CGameCtnZoneTransition owner) => this.owner = owner;
+        public NodeRef<CGameCtnBlockInfoTransition> BlockInfoTransition => owner.blockInfoTransitionRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BlockInfoTransition", blockInfoTransitionRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnZoneTransition)clone).blockInfoTransition = context.Clone(this.blockInfoTransition)!;
+        ((CGameCtnZoneTransition)clone).blockInfoTransitionRef = context.Clone(this.blockInfoTransitionRef)!;
         ((CGameCtnZoneTransition)clone).replacementZoneId = context.Clone(this.replacementZoneId)!;
         ((CGameCtnZoneTransition)clone).border_North = context.Clone(this.border_North)!;
         ((CGameCtnZoneTransition)clone).genealogy_North = context.Clone(this.genealogy_North)!;
@@ -156,7 +163,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnBlockInfoTransition>(ref n.blockInfoTransition, ref n.blockInfoTransitionFile);
+            rw.NodeRef(n.blockInfoTransitionRef);
         }
     }
 

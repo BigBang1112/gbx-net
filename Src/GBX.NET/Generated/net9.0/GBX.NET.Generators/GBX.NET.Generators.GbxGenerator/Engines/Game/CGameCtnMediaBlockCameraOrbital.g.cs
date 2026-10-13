@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
     [Hexadecimal]
     public static new uint Id => 0x030A0000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030A0000>]
     [AppliedWithChunk<Chunk030A0001>]

@@ -34,25 +34,18 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A05E000;
 
-    private CPlugShader? leafShader;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugShader> leafShaderRef = new();
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
     public CPlugShader? LeafShader
     {
-        get => this.leafShaderFile?.GetNode(ref this.leafShader) ?? this.leafShader;
-        set => this.leafShader = value;
+        get => leafShaderRef.Resolve();
+        set => leafShaderRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? leafShaderFile;
-
-    public Components.GbxRefTableFile? LeafShaderFile
-    {
-        get => leafShaderFile;
-        set => leafShaderFile = value;
-    }
-
-    public CPlugShader? GetLeafShader(GbxReadSettings settings = default, bool exceptions = false) => leafShaderFile?.GetNode(ref leafShader, settings, exceptions) ?? leafShader;
 
     private float leafRadiusBase;
     [AppliedWithChunk<Chunk0A05E000>]
@@ -217,10 +210,27 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         set => this.curvature = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CSceneMobilLeaves owner;
+        internal NodeRefView(CSceneMobilLeaves owner) => this.owner = owner;
+        public NodeRef<CPlugShader> LeafShader => owner.leafShaderRef;
+        public CSceneMobil.ObjectLinkReferenceView ObjectLink => ((CSceneMobil)owner).References.ObjectLink;
+        public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneMobil)owner).References.MessageHandler;
+        public NodeRef<CMotion> Motion => ((CSceneMobil)owner).References.Motion;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("LeafShader", leafShaderRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneMobilLeaves)clone).leafShader = context.Clone(this.leafShader)!;
+        ((CSceneMobilLeaves)clone).leafShaderRef = context.Clone(this.leafShaderRef)!;
         ((CSceneMobilLeaves)clone).leafRadiusBase = context.Clone(this.leafRadiusBase)!;
         ((CSceneMobilLeaves)clone).leafRadiusRandom = context.Clone(this.leafRadiusRandom)!;
         ((CSceneMobilLeaves)clone).leafMaxCount = context.Clone(this.leafMaxCount)!;
@@ -275,7 +285,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
+            rw.NodeRef(n.leafShaderRef);
             rw.Single(ref n.leafRadiusBase);
             rw.Single(ref n.leafRadiusRandom);
             rw.Single(ref U01);
@@ -309,7 +319,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
+            rw.NodeRef(n.leafShaderRef);
             rw.Single(ref n.leafRadiusBase);
             rw.Single(ref n.leafRadiusRandom);
             rw.Int32(ref n.leafMaxCount);
@@ -339,7 +349,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
+            rw.NodeRef(n.leafShaderRef);
             rw.Single(ref n.leafRadiusBase);
             rw.Single(ref n.leafRadiusRandom);
             rw.Int32(ref n.leafMaxCount);
@@ -370,7 +380,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
 
         public override void ReadWrite(CSceneMobilLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.leafShader, ref n.leafShaderFile);
+            rw.NodeRef(n.leafShaderRef);
             rw.Single(ref n.leafRadiusBase);
             rw.Single(ref n.leafRadiusRandom);
             rw.Int32(ref n.leafMaxCount);

@@ -34,12 +34,14 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
     [Hexadecimal]
     public static new uint Id => 0x05006000;
 
-    private CFuncSkel? skel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CFuncSkel> skelRef = new();
     [AppliedWithChunk<Chunk05006000>]
     public CFuncSkel? Skel
     {
-        get => this.skel;
-        set => this.skel = value;
+        get => skelRef.Resolve();
+        set => skelRef.SetEmbedded(value);
     }
 
     private Loc[][]? locations;
@@ -50,11 +52,25 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
         set => this.locations = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncKeysSkel owner;
+        internal NodeRefView(CFuncKeysSkel owner) => this.owner = owner;
+        public NodeRef<CFuncSkel> Skel => owner.skelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Skel", skelRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CFuncKeysSkel)clone).skel = context.Clone(this.skel)!;
-        ((CFuncKeysSkel)clone).locations = context.CloneArray(this.locations)!;
+        ((CFuncKeysSkel)clone).skelRef = context.Clone(this.skelRef)!;
+        ((CFuncKeysSkel)clone).locations = context.CloneArray(this.locations, row0 => context.CloneArray(row0)!)!;
     }
 
     public CFuncKeysSkel()
@@ -75,7 +91,7 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
 
         public override void ReadWrite(CFuncKeysSkel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncSkel>(ref n.skel);
+            rw.NodeRef(n.skelRef);
         }
     }
 
@@ -93,7 +109,7 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
 
         public override void ReadWrite(CFuncKeysSkel n, GbxReaderWriter rw)
         {
-            rw.JaggedArrayReadableWritable<Loc>(ref n.locations!, n.Skel?.BonesCount?? 0);
+            rw.JaggedArrayReadableWritable<Loc>(ref n.locations!, n.skelRef.CachedTarget?.BonesCount?? 0);
         }
     }
 

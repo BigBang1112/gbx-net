@@ -6,7 +6,7 @@ CPlugParticleGpuSpawn 0x090C5000
     int
   v1+
     ParticleGpuSpawn Spawn
-  
+
 archive ParticleGpuSpawn
   version = 4
   int U01

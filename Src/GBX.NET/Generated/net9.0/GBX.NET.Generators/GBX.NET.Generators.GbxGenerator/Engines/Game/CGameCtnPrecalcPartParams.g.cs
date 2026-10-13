@@ -34,6 +34,8 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0311C000;
 
+    internal override uint GetId() => Id;
+
     private float fluidFriction = 0.5f;
     [AppliedWithChunk<Chunk0311C000>]
     public float FluidFriction
@@ -98,22 +100,13 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         set => this.leafMotionScale = value;
     }
 
-    private CPlugSurface? collSurf;
+    private NodeRef<CPlugSurface> collSurfRef = new();
     [AppliedWithChunk<Chunk0311C000>(2)]
     public CPlugSurface? CollSurf
     {
-        get => this.collSurfFile?.GetNode(ref this.collSurf) ?? this.collSurf;
-        set => this.collSurf = value;
+        get => collSurfRef.Resolve();
+        set => collSurfRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? collSurfFile;
-
-    public Components.GbxRefTableFile? CollSurfFile
-    {
-        get => collSurfFile;
-        set => collSurfFile = value;
-    }
-
-    public CPlugSurface? GetCollSurf(GbxReadSettings settings = default, bool exceptions = false) => collSurfFile?.GetNode(ref collSurf, settings, exceptions) ?? collSurf;
 
     private int iterCount = 500;
     [AppliedWithChunk<Chunk0311C000>]
@@ -155,22 +148,13 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         set => this.phyZoneWind = value;
     }
 
-    private CPlugDecalModel? decalModel;
+    private NodeRef<CPlugDecalModel> decalModelRef = new();
     [AppliedWithChunk<Chunk0311C000>]
     public CPlugDecalModel? DecalModel
     {
-        get => this.decalModelFile?.GetNode(ref this.decalModel) ?? this.decalModel;
-        set => this.decalModel = value;
+        get => decalModelRef.Resolve();
+        set => decalModelRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? decalModelFile;
-
-    public Components.GbxRefTableFile? DecalModelFile
-    {
-        get => decalModelFile;
-        set => decalModelFile = value;
-    }
-
-    public CPlugDecalModel? GetDecalModel(GbxReadSettings settings = default, bool exceptions = false) => decalModelFile?.GetNode(ref decalModel, settings, exceptions) ?? decalModel;
 
     private float decalSizeBase = 0.3f;
     [AppliedWithChunk<Chunk0311C000>]
@@ -196,6 +180,22 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         set => this.decalBoxDepth = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnPrecalcPartParams owner;
+        internal NodeRefView(CGameCtnPrecalcPartParams owner) => this.owner = owner;
+        public NodeRef<CPlugSurface> CollSurf => owner.collSurfRef;
+        public NodeRef<CPlugDecalModel> DecalModel => owner.decalModelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("CollSurf", collSurfRef);
+        yield return new("DecalModel", decalModelRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -207,13 +207,13 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         ((CGameCtnPrecalcPartParams)clone).leafMotion = context.Clone(this.leafMotion)!;
         ((CGameCtnPrecalcPartParams)clone).leafMotionFreq = context.Clone(this.leafMotionFreq)!;
         ((CGameCtnPrecalcPartParams)clone).leafMotionScale = context.Clone(this.leafMotionScale)!;
-        ((CGameCtnPrecalcPartParams)clone).collSurf = context.Clone(this.collSurf)!;
+        ((CGameCtnPrecalcPartParams)clone).collSurfRef = context.Clone(this.collSurfRef)!;
         ((CGameCtnPrecalcPartParams)clone).iterCount = context.Clone(this.iterCount)!;
         ((CGameCtnPrecalcPartParams)clone).timeStep = context.Clone(this.timeStep)!;
         ((CGameCtnPrecalcPartParams)clone).randValSeed = context.Clone(this.randValSeed)!;
         ((CGameCtnPrecalcPartParams)clone).phyZoneGravity = context.Clone(this.phyZoneGravity)!;
         ((CGameCtnPrecalcPartParams)clone).phyZoneWind = context.Clone(this.phyZoneWind)!;
-        ((CGameCtnPrecalcPartParams)clone).decalModel = context.Clone(this.decalModel)!;
+        ((CGameCtnPrecalcPartParams)clone).decalModelRef = context.Clone(this.decalModelRef)!;
         ((CGameCtnPrecalcPartParams)clone).decalSizeBase = context.Clone(this.decalSizeBase)!;
         ((CGameCtnPrecalcPartParams)clone).decalSizeVar = context.Clone(this.decalSizeVar)!;
         ((CGameCtnPrecalcPartParams)clone).decalBoxDepth = context.Clone(this.decalBoxDepth)!;
@@ -266,7 +266,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef<CPlugSurface>(ref n.collSurf, ref n.collSurfFile);
+                rw.NodeRef(n.collSurfRef);
             }
 
             rw.Int32(ref n.iterCount);
@@ -274,7 +274,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
             rw.Int32(ref n.randValSeed);
             rw.Vec3(ref n.phyZoneGravity);
             rw.Vec3(ref n.phyZoneWind);
-            rw.NodeRef<CPlugDecalModel>(ref n.decalModel, ref n.decalModelFile);
+            rw.NodeRef(n.decalModelRef);
             rw.Single(ref n.decalSizeBase);
             rw.Single(ref n.decalSizeVar);
             rw.Single(ref n.decalBoxDepth);

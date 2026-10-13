@@ -52,7 +52,7 @@ public class CPlugBitmapRenderLayoutTests
         if (offset is 1 or 4 or 5 or 6 or 7 or 9 or 11 or 16)
         {
             await Assert.That(node.BitmapClear).IsNull();
-            await Assert.That(node.BitmapClearFile).IsNull();
+            await Assert.That(node.References.BitmapClear.File).IsNull();
             await Assert.That(node.BitmapClearUV).IsEqualTo(new Vec2(-1.25f, 2.5f));
         }
         if (offset is 2 or 3)
@@ -75,7 +75,7 @@ public class CPlugBitmapRenderLayoutTests
         if (offset == 12)
         {
             await Assert.That(node.RenderSub).IsNull();
-            await Assert.That(node.RenderSubFile).IsNull();
+            await Assert.That(node.References.RenderSub.File).IsNull();
         }
         if (offset is 13 or 14 or 15) await Assert.That(node.RenderFlags2).IsEqualTo(0xF1350246u);
         using var saved = new MemoryStream();
@@ -177,7 +177,7 @@ public class CPlugBitmapRenderLayoutTests
             chunk.ReadWrite(node, rw);
         }
         await Assert.That(payload.Position).IsEqualTo(payload.Length);
-        if (external) await Assert.That(offset == 12 ? node.RenderSubFile : node.BitmapClearFile).IsSameReferenceAs(file);
+        if (external) await Assert.That(offset == 12 ? node.References.RenderSub.File : node.References.BitmapClear.File).IsSameReferenceAs(file);
         else if (offset == 12) await Assert.That(node.RenderSub).IsNotNull();
         else await Assert.That(node.BitmapClear).IsNotNull();
         using var saved = new MemoryStream();
@@ -212,10 +212,10 @@ public class CPlugBitmapRenderLayoutTests
         await Assert.That(node.RenderPathFails).IsEqualTo(CPlugBitmapRender.ERenderPathFails.Hide);
         await Assert.That(node.FogCustomFarZ).IsEqualTo(50f);
         await Assert.That(node.BitmapClear).IsNull();
-        await Assert.That(node.BitmapClearFile).IsNull();
+        await Assert.That(node.References.BitmapClear.File).IsNull();
         await Assert.That(node.BitmapClearUV).IsEqualTo(new Vec2(0, 0));
         await Assert.That(node.RenderSub).IsNull();
-        await Assert.That(node.RenderSubFile).IsNull();
+        await Assert.That(node.References.RenderSub.File).IsNull();
     }
 
     private static Chunk<CPlugBitmapRender> CreateChunk(int offset) => offset switch

@@ -34,6 +34,8 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06022000;
 
+    internal override uint GetId() => Id;
+
     private string? challengeIdLegacy;
     [AppliedWithChunk<Chunk06022000>]
     [AppliedWithChunk<Chunk06022001>]
@@ -1786,7 +1788,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             ((SMapping)clone).zlibData5Decompressed3 = context.CloneArray(this.zlibData5Decompressed3)!;
             ((SMapping)clone).zlibData5Decompressed4 = context.CloneArray(this.zlibData5Decompressed4)!;
             ((SMapping)clone).zlibData6 = context.Clone(this.zlibData6)!;
-            ((SMapping)clone).zlibData6Decompressed = context.CloneArray(this.zlibData6Decompressed)!;
+            ((SMapping)clone).zlibData6Decompressed = context.CloneArray(this.zlibData6Decompressed, row0 => context.CloneArray(row0)!)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

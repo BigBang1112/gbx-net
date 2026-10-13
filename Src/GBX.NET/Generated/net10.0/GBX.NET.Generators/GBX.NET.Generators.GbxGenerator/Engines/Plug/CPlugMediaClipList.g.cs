@@ -34,18 +34,44 @@ public partial class CPlugMediaClipList : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09189000;
 
-    private External<CMwNod>[]? mediaClipFids;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CMwNod>? mediaClipFids;
     [AppliedWithChunk<Chunk09189000>]
-    public External<CMwNod>[]? MediaClipFids
+    public NodeRefList<CMwNod>? MediaClipFids
     {
-        get => this.mediaClipFids;
-        set => this.mediaClipFids = value;
+        get => mediaClipFids;
+        set => mediaClipFids = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugMediaClipList owner;
+        internal NodeRefView(CPlugMediaClipList owner) => this.owner = owner;
+        public MediaClipFidsReferenceView MediaClipFids => new(owner);
+    }
+    public readonly struct MediaClipFidsReferenceView
+    {
+        private readonly CPlugMediaClipList owner;
+        internal MediaClipFidsReferenceView(CPlugMediaClipList owner) => this.owner = owner;
+        public int Count => owner.mediaClipFids?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.mediaClipFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (mediaClipFids is not null)
+        {
+            for (var i = 0; i < mediaClipFids.Count; i++) yield return new("MediaClipFids" + "[" + i + "]", mediaClipFids.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugMediaClipList)clone).mediaClipFids = context.CloneArray(this.mediaClipFids)!;
+        ((CPlugMediaClipList)clone).mediaClipFids = context.Clone(this.mediaClipFids)!;
     }
 
     public CPlugMediaClipList()
@@ -69,7 +95,7 @@ public partial class CPlugMediaClipList : CMwNod, IClass
         public override void ReadWrite(CPlugMediaClipList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CMwNod>(ref n.mediaClipFids!);
+            n.mediaClipFids = rw.ListNodeRef<CMwNod>(n.mediaClipFids);
         }
     }
 

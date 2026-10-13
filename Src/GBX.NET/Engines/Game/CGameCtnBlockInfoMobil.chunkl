@@ -1,7 +1,7 @@
 CGameCtnBlockInfoMobil 0x03122000
 
 0x000 // legacy mobil and frequency
-  CSceneMobil OldMobil (external)
+  CSceneMobil OldMobil
   int SolidFrequency = 1
 
 0x001 // legacy solid decals
@@ -16,7 +16,7 @@ CGameCtnBlockInfoMobil 0x03122000
   v0..1
     bool (write: false) // Legacy reference kind, native writers select OldMobil
     if !U01
-      CSceneMobil OldMobil (external)
+      CSceneMobil OldMobil
     else
       CMwNod // Discarded legacy reference
   int SolidFrequency = 1
@@ -26,13 +26,13 @@ CGameCtnBlockInfoMobil 0x03122000
       vec3 GeomTranslation
       vec3 GeomRotation
   v2+
-    CPlugSolid SolidFid (external)
-    if SolidFid == null && SolidFidFile == null
-      CSceneMobil OldMobil (external)
+    CPlugSolid SolidFid
+    if SolidFid == null
+      CSceneMobil OldMobil
   v14+
-    CPlugPrefab PrefabFid (external)
+    CPlugPrefab PrefabFid
   v3+
-    CPlugSolid OldSolidAggreg (external)
+    CPlugSolid OldSolidAggreg
   v4..5
     CPlugPolyLine3[] LegacyRailPolylines
     if LegacyRailPolylines != null && LegacyRailPolylines.Length > 0
@@ -40,9 +40,9 @@ CGameCtnBlockInfoMobil 0x03122000
   v5..10
     bool // Discarded legacy rail flag
   v6+
-    CPlugPath RailPath (external)
+    CPlugPath RailPath
   v7..22
-    CPlugPath TrafficPath (external)
+    CPlugPath TrafficPath
   v15+
     CPlugRecastPolyMeshData RecastPolyMeshData
   v8..12
@@ -83,7 +83,7 @@ CGameCtnBlockInfoMobil 0x03122000
     else
       CPlugPlacementPatch[] PlacementPatches
   v21+
-    CMwNod (external) // Additional external mobil asset
+    CMwNod // Additional external mobil asset
 
 0x004 [MP3, TMT, MP4, TM2020] // DynaLinks
   version

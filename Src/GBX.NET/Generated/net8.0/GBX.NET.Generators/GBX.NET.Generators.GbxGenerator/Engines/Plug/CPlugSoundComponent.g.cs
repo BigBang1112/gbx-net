@@ -34,25 +34,18 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0908F000;
 
-    private CMwNod? plugFile;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod> plugFileRef = new();
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
     [AppliedWithChunk<Chunk0908F000>]
     public CMwNod? PlugFile
     {
-        get => this.plugFileFile?.GetNode(ref this.plugFile) ?? this.plugFile;
-        set => this.plugFile = value;
+        get => plugFileRef.Resolve();
+        set => plugFileRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? plugFileFile;
-
-    public Components.GbxRefTableFile? PlugFileFile
-    {
-        get => plugFileFile;
-        set => plugFileFile = value;
-    }
-
-    public CMwNod? GetPlugFile(GbxReadSettings settings = default, bool exceptions = false) => plugFileFile?.GetNode(ref plugFile, settings, exceptions) ?? plugFile;
 
     private float minVolume;
     [AppliedWithChunk<Chunk0908F000>]
@@ -162,10 +155,24 @@ public partial class CPlugSoundComponent : CMwNod, IClass
         set => this.pitchShiftEndSpeedKmh = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugSoundComponent owner;
+        internal NodeRefView(CPlugSoundComponent owner) => this.owner = owner;
+        public NodeRef<CMwNod> PlugFile => owner.plugFileRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlugFile", plugFileRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugSoundComponent)clone).plugFile = context.Clone(this.plugFile)!;
+        ((CPlugSoundComponent)clone).plugFileRef = context.Clone(this.plugFileRef)!;
         ((CPlugSoundComponent)clone).minVolume = context.Clone(this.minVolume)!;
         ((CPlugSoundComponent)clone).maxVolume = context.Clone(this.maxVolume)!;
         ((CPlugSoundComponent)clone).fadeInStartSpeedKmh = context.Clone(this.fadeInStartSpeedKmh)!;
@@ -234,7 +241,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
 
         public override void ReadWrite(CPlugSoundComponent n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.plugFile, ref n.plugFileFile);
+            rw.NodeRef(n.plugFileRef);
             rw.Single(ref n.minVolume);
             rw.Single(ref n.maxVolume);
             rw.Single(ref n.fadeInStartSpeedKmh);

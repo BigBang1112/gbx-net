@@ -64,7 +64,7 @@ archive Material
   v1+
     string MaterialName
     if MaterialName == null || MaterialName == ""
-      CPlugMaterialUserInst MaterialUserInst (external)
+      CPlugMaterialUserInst MaterialUserInst
   v0=
     CPlugMaterialUserInst MaterialUserInst (direct)
 

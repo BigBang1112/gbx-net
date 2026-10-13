@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x030A8000;
 
+    internal override uint GetId() => Id;
+
     private string? text;
     [AppliedWithChunk<Chunk030A8001>]
     public string? Text
@@ -42,12 +44,12 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
         set => this.text = value;
     }
 
-    private CControlEffectSimi? effect;
+    private NodeRef<CControlEffectSimi> effectRef = new();
     [AppliedWithChunk<Chunk030A8001>]
     public CControlEffectSimi? Effect
     {
-        get => this.effect;
-        set => this.effect = value;
+        get => effectRef.Resolve();
+        set => effectRef.SetEmbedded(value);
     }
 
     private Vec3 color;
@@ -58,11 +60,25 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
         set => this.color = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockText owner;
+        internal NodeRefView(CGameCtnMediaBlockText owner) => this.owner = owner;
+        public NodeRef<CControlEffectSimi> Effect => owner.effectRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Effect", effectRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockText)clone).text = context.Clone(this.text)!;
-        ((CGameCtnMediaBlockText)clone).effect = context.Clone(this.effect)!;
+        ((CGameCtnMediaBlockText)clone).effectRef = context.Clone(this.effectRef)!;
         ((CGameCtnMediaBlockText)clone).color = context.Clone(this.color)!;
     }
 
@@ -88,7 +104,7 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
         public override void ReadWrite(CGameCtnMediaBlockText n, GbxReaderWriter rw)
         {
             rw.String(ref n.text);
-            rw.NodeRef<CControlEffectSimi>(ref n.effect);
+            rw.NodeRef(n.effectRef);
         }
     }
 

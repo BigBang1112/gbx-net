@@ -2,7 +2,7 @@ CGameCtnZoneTransition 0x0314D000
 - inherits: CGameCtnZone
 
 0x000 [MP3, TMT, MP4, TM2020]
-  CGameCtnBlockInfoTransition BlockInfoTransition (external)
+  CGameCtnBlockInfoTransition BlockInfoTransition
 
 0x005 [MP3, TMT, MP4, TM2020]
   version

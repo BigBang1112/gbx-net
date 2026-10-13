@@ -34,6 +34,8 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
     [Hexadecimal]
     public static new uint Id => 0x24087000;
 
+    internal override uint GetId() => Id;
+
     private float slerpSpeed;
     [AppliedWithChunk<Chunk24087000>]
     public float SlerpSpeed
@@ -546,28 +548,46 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         set => this.eventBurningRadiusTimeDown = value;
     }
 
-    private CFuncKeysReal? slerpSpeedModulationFromSpeed;
+    private NodeRef<CFuncKeysReal> slerpSpeedModulationFromSpeedRef = new();
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? SlerpSpeedModulationFromSpeed
     {
-        get => this.slerpSpeedModulationFromSpeed;
-        set => this.slerpSpeedModulationFromSpeed = value;
+        get => slerpSpeedModulationFromSpeedRef.Resolve();
+        set => slerpSpeedModulationFromSpeedRef.SetEmbedded(value);
     }
 
-    private CFuncKeysReal? lookAtFactorFromUpSpeedRatio;
+    private NodeRef<CFuncKeysReal> lookAtFactorFromUpSpeedRatioRef = new();
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? LookAtFactorFromUpSpeedRatio
     {
-        get => this.lookAtFactorFromUpSpeedRatio;
-        set => this.lookAtFactorFromUpSpeedRatio = value;
+        get => lookAtFactorFromUpSpeedRatioRef.Resolve();
+        set => lookAtFactorFromUpSpeedRatioRef.SetEmbedded(value);
     }
 
-    private CFuncKeysReal? flyingLookDownFactorFromSpeedRatio;
+    private NodeRef<CFuncKeysReal> flyingLookDownFactorFromSpeedRatioRef = new();
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? FlyingLookDownFactorFromSpeedRatio
     {
-        get => this.flyingLookDownFactorFromSpeedRatio;
-        set => this.flyingLookDownFactorFromSpeedRatio = value;
+        get => flyingLookDownFactorFromSpeedRatioRef.Resolve();
+        set => flyingLookDownFactorFromSpeedRatioRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameControlCameraTrackManiaRace3 owner;
+        internal NodeRefView(CGameControlCameraTrackManiaRace3 owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> SlerpSpeedModulationFromSpeed => owner.slerpSpeedModulationFromSpeedRef;
+        public NodeRef<CFuncKeysReal> LookAtFactorFromUpSpeedRatio => owner.lookAtFactorFromUpSpeedRatioRef;
+        public NodeRef<CFuncKeysReal> FlyingLookDownFactorFromSpeedRatio => owner.flyingLookDownFactorFromSpeedRatioRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("SlerpSpeedModulationFromSpeed", slerpSpeedModulationFromSpeedRef);
+        yield return new("LookAtFactorFromUpSpeedRatio", lookAtFactorFromUpSpeedRatioRef);
+        yield return new("FlyingLookDownFactorFromSpeedRatio", flyingLookDownFactorFromSpeedRatioRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -637,9 +657,9 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusDelta = context.Clone(this.eventBurningRadiusDelta)!;
         ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusTimeUp = context.Clone(this.eventBurningRadiusTimeUp)!;
         ((CGameControlCameraTrackManiaRace3)clone).eventBurningRadiusTimeDown = context.Clone(this.eventBurningRadiusTimeDown)!;
-        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedModulationFromSpeed = context.Clone(this.slerpSpeedModulationFromSpeed)!;
-        ((CGameControlCameraTrackManiaRace3)clone).lookAtFactorFromUpSpeedRatio = context.Clone(this.lookAtFactorFromUpSpeedRatio)!;
-        ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorFromSpeedRatio = context.Clone(this.flyingLookDownFactorFromSpeedRatio)!;
+        ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedModulationFromSpeedRef = context.Clone(this.slerpSpeedModulationFromSpeedRef)!;
+        ((CGameControlCameraTrackManiaRace3)clone).lookAtFactorFromUpSpeedRatioRef = context.Clone(this.lookAtFactorFromUpSpeedRatioRef)!;
+        ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorFromSpeedRatioRef = context.Clone(this.flyingLookDownFactorFromSpeedRatioRef)!;
     }
 
     public CGameControlCameraTrackManiaRace3()
@@ -727,9 +747,9 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
             rw.Single(ref n.eventBurningRadiusDelta);
             rw.Int32(ref n.eventBurningRadiusTimeUp);
             rw.Int32(ref n.eventBurningRadiusTimeDown);
-            rw.NodeRef<CFuncKeysReal>(ref n.slerpSpeedModulationFromSpeed);
-            rw.NodeRef<CFuncKeysReal>(ref n.lookAtFactorFromUpSpeedRatio);
-            rw.NodeRef<CFuncKeysReal>(ref n.flyingLookDownFactorFromSpeedRatio);
+            rw.NodeRef(n.slerpSpeedModulationFromSpeedRef);
+            rw.NodeRef(n.lookAtFactorFromUpSpeedRatioRef);
+            rw.NodeRef(n.flyingLookDownFactorFromSpeedRatioRef);
         }
     }
 

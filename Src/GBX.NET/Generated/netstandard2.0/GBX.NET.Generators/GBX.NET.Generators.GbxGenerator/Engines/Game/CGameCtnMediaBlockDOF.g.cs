@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, IClass, CGameCt
     [Hexadecimal]
     public static new uint Id => 0x03126000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03126000>]
     [AppliedWithChunk<Chunk03126001>]

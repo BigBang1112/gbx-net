@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, IClass, CGam
     [Hexadecimal]
     public static new uint Id => 0x030A9000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk030A9000>]
     public TimeSingle Start

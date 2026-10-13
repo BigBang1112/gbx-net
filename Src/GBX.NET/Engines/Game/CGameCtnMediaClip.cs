@@ -5,8 +5,8 @@ public partial class CGameCtnMediaClip
     private string? name;
     public partial string? Name { get => name; set => name = value; }
 
-    private List<CGameCtnMediaTrack>? tracks;
-    public partial List<CGameCtnMediaTrack> Tracks
+    private NodeRefList<CGameCtnMediaTrack>? tracks;
+    public partial NodeRefList<CGameCtnMediaTrack> Tracks
     {
         get => tracks ??= [];
         set => tracks = value;

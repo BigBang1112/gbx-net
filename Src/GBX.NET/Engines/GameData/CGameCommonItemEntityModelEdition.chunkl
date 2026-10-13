@@ -3,14 +3,14 @@ CGameCommonItemEntityModelEdition 0x2E026000
 0x000 [MP4, TM2020.v8]
   version
   int<EItemType> ItemType
-  CPlugCrystal MeshCrystal (external)
+  CPlugCrystal MeshCrystal
   string SolidRef
   if SolidRef == null || SolidRef.Length == 0
-    CPlugSolid Solid (external)
+    CPlugSolid Solid
   ImageRef[] Images
   SpriteParam[] SpriteParams
-  CPlugParticleEmitterModel DestroyParticleModel (external)
-  CPlugAnimLocSimple LocAnim (external)
+  CPlugParticleEmitterModel DestroyParticleModel
+  CPlugAnimLocSimple LocAnim
   LightBallStateSimple[] LightBallStates // Native CFixedDynArray capacity is one.
   string ParticleModelAliveRef
   if ParticleModelAliveRef != null && ParticleModelAliveRef.Length > 0
@@ -28,20 +28,20 @@ CGameCommonItemEntityModelEdition 0x2E026000
     if Version >= 3 || ItemType == EItemType.Ornament || ItemType == EItemType.Spot
       bool UseMeshAsMoveShape = true
       if !UseMeshAsMoveShape
-        CPlugCrystal CustomMoveShapeCrystal (external)
+        CPlugCrystal CustomMoveShapeCrystal
   v3+
     if ItemType == EItemType.PickUp
       float Mass = 1
   bool UseMeshAsHitShape = true
   if !UseMeshAsHitShape
-    CPlugCrystal CustomHitShapeCrystal (external)
+    CPlugCrystal CustomHitShapeCrystal
   if ItemType == EItemType.PickUp
     bool UseMeshAsTriggerShape = true
     if !UseMeshAsTriggerShape
-      CPlugCrystal CustomTriggerShapeCrystal (external)
-    CGameActionModel PickupActionModel (external)
+      CPlugCrystal CustomTriggerShapeCrystal
+    CGameActionModel PickupActionModel
   if ItemType == EItemType.Spot
-    CGameActionModel[] TriggeredActions (external)
+    CGameActionModel[] TriggeredActions
     int TriggerActionVersion = 5
     CPlugTriggerAction[] Triggers (version: n.TriggerActionVersion)
   bool HasDynaPointModel (local, write: "n.DynaPointModel is not null")
@@ -56,9 +56,9 @@ CGameCommonItemEntityModelEdition 0x2E026000
     int InventoryItemClass
     int InventoryOccupation = 1000
   v1-
-    CPlugSolid2Model (external) // Deprecated mesh reference.
+    CPlugSolid2Model // Deprecated mesh reference.
   v6..7
-    CMwNod (external) // Deprecated reference.
+    CMwNod // Deprecated reference.
   v7+
     if ItemType == EItemType.PickUp
       int
@@ -70,7 +70,7 @@ CGameCommonItemEntityModelEdition 0x2E026000
 archive ImageRef
   string Ref
   if Ref == null || Ref.Length == 0
-    CPlugFileImg Image (external)
+    CPlugFileImg Image
 
 archive SpriteParam
   vec3

@@ -34,6 +34,8 @@ public partial class CPlugPrefab : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09145000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -51,6 +53,21 @@ public partial class CPlugPrefab : CMwNod, IClass
 
     public partial class EntRef : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private NodeRef<CMwNod> modelRef = new();
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly EntRef owner;
+            internal NodeRefView(EntRef owner) => this.owner = owner;
+            public NodeRef<CMwNod> Model => owner.modelRef;
+        }
+        public IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Model", modelRef);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (EntRef)MemberwiseClone();
@@ -61,8 +78,7 @@ public partial class CPlugPrefab : CMwNod, IClass
 
         internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((EntRef)clone).model = context.Clone(this.model)!;
-            ((EntRef)clone).modelFile = context.Clone(this.modelFile)!;
+            ((EntRef)clone).modelRef = context.Clone(this.modelRef)!;
             ((EntRef)clone).rotation = context.Clone(this.rotation)!;
             ((EntRef)clone).position = context.Clone(this.position)!;
             ((EntRef)clone).@params = context.Clone(this.@params)!;

@@ -407,10 +407,6 @@ partial interface IGbxReaderWriter
     void NodeRef<T>([NotNullIfNotNull(nameof(value))] ref T? value) where T : GBX.NET.IClass;
 
     [return: NotNullIfNotNull(nameof(value))]
-    T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.IClass;
-    void NodeRef<T>([NotNullIfNotNull(nameof(value))] ref T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.IClass;
-
-    [return: NotNullIfNotNull(nameof(value))]
     T? Node<T>(T? value = default) where T : GBX.NET.IClass, new();
     void Node<T>([NotNullIfNotNull(nameof(value))] ref T? value) where T : GBX.NET.IClass, new();
 
@@ -540,18 +536,6 @@ partial interface IGbxReaderWriter
     [return: NotNullIfNotNull(nameof(value))]
     T?[][]? JaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
     void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
-
-    [return: NotNullIfNotNull(nameof(value))]
-    System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass;
-
-    [return: NotNullIfNotNull(nameof(value))]
-    System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value = default) where T : GBX.NET.IClass;
-    void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value) where T : GBX.NET.IClass;
-
-    [return: NotNullIfNotNull(nameof(value))]
-    System.Collections.Generic.List<T?>? ListNodeRef_deprec<T>(System.Collections.Generic.List<T?>? value = default) where T : GBX.NET.IClass;
-    void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value) where T : GBX.NET.IClass;
 
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
@@ -1857,16 +1841,6 @@ partial class GbxReaderWriter
     public void NodeRef<T>([NotNullIfNotNull(nameof(value))] ref T? value) where T : GBX.NET.IClass => value = NodeRef(value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.IClass
-    {
-        if (Reader is not null) value = Reader.ReadNodeRef<T>(out file);
-        Writer?.WriteNodeRef(value, file);
-        return value;
-    }
-
-    public void NodeRef<T>([NotNullIfNotNull(nameof(value))] ref T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.IClass => value = NodeRef(value, ref file);
-
-    [return: NotNullIfNotNull(nameof(value))]
     public T? Node<T>(T? value = default) where T : GBX.NET.IClass, new()
     {
         if (Reader is not null) value = Reader.ReadNode<T>();
@@ -2215,36 +2189,6 @@ partial class GbxReaderWriter
     }
 
     public void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass => value = JaggedArrayNodeRef(value, innerLength, outerLength);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass
-    {
-        if (Reader is not null) value = Reader.ReadListNodeRef<T>(length);
-        Writer?.WriteListNodeRef(value, length);
-        return value;
-    }
-
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value, int length) where T : GBX.NET.IClass => value = ListNodeRef(value, length);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Collections.Generic.List<T?>? ListNodeRef<T>(System.Collections.Generic.List<T?>? value = default) where T : GBX.NET.IClass
-    {
-        if (Reader is not null) value = Reader.ReadListNodeRef<T>();
-        Writer?.WriteListNodeRef(value);
-        return value;
-    }
-
-    public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value) where T : GBX.NET.IClass => value = ListNodeRef(value);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public System.Collections.Generic.List<T?>? ListNodeRef_deprec<T>(System.Collections.Generic.List<T?>? value = default) where T : GBX.NET.IClass
-    {
-        if (Reader is not null) value = Reader.ReadListNodeRef_deprec<T>();
-        Writer?.WriteListNodeRef_deprec(value);
-        return value;
-    }
-
-    public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<T?>? value) where T : GBX.NET.IClass => value = ListNodeRef_deprec(value);
 
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod

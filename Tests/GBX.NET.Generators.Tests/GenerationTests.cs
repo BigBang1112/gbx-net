@@ -9,6 +9,454 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    public async Task SkipsReferenceViewsOnNodesAndArchivesWithoutReferences()
+    {
+        var (result, compilation) = Run("", true, new[]
+        {
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03044000
+                0x001
+                  int Value
+                """),
+            new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                - inherits: Base
+                0x001
+                  int OtherValue
+                archive Entry
+                  int Value
+                """)
+        });
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        foreach (var source in result.GeneratedSources.Where(x => x.HintName.StartsWith("Engines/")))
+        {
+            await Assert.That(source.SyntaxTree.GetRoot().DescendantNodes().OfType<PropertyDeclarationSyntax>()
+                .Where(x => x.Identifier.ValueText == "References")).IsEmpty();
+            await Assert.That(source.SyntaxTree.GetRoot().DescendantNodes().OfType<StructDeclarationSyntax>()
+                .Where(x => x.Identifier.ValueText == "NodeRefView")).IsEmpty();
+            await Assert.That(source.SyntaxTree.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>()
+                .Where(x => x.Identifier.ValueText == "EnumerateReferences")).IsEmpty();
+        }
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task NodeViewsOnlyHideBaseViewsWhenReferencesExist(bool baseHasReferences)
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Middle
+            {
+                public static GBX.NET.NodeRef<CMwNod> Verify(Leaf node) => node.References.Target;
+            }
+            """, true, new[]
+        {
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03044000
+                """ + (baseHasReferences ? "\n0x001\n  node Target" : "")),
+            new Text("Engines/Game/Middle.chunkl", """
+                Middle 0x03045000
+                - inherits: Base
+                """),
+            new Text("Engines/Game/Leaf.chunkl", """
+                Leaf 0x03046000
+                - inherits: Middle
+                0x001
+                """ + (baseHasReferences ? "\n  node OtherTarget" : "\n  node Target"))
+        });
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var middle = result.GeneratedSources.Single(x => x.HintName.EndsWith("Middle.g.cs")).SyntaxTree.GetRoot();
+        await Assert.That(middle.DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "References")).IsEmpty();
+        var leaf = result.GeneratedSources.Single(x => x.HintName.EndsWith("Leaf.g.cs")).SourceText.ToString();
+        await Assert.That(leaf).Contains(baseHasReferences ? "public new NodeRefView References" : "public NodeRefView References");
+        if (baseHasReferences)
+            await Assert.That(leaf).Contains("public NodeRef<CMwNod> Target => ((Middle)owner).References.Target;");
+    }
+
+    [Test]
+    public async Task NodesWithHandwrittenReferencesKeepTheirViews()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                private NodeRef<CMwNod> targetRef = new();
+            }
+            """, new Text("Engines/Game/Example.chunkl", "Example 0x03043000"), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(Engine(result).ToString()).Contains("public NodeRef<CMwNod> Target => owner.targetRef;");
+        await Assert.That(Engine(result).ToString()).Contains("public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()");
+    }
+
+    [Test]
+    public async Task ScalarNodePropertiesUseOnlyReferenceFields()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              node Target
+            archive Entry
+              node Target
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).GetRoot();
+        await Assert.That(generated.DescendantNodes().OfType<PropertyDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "target")).IsEmpty();
+        await Assert.That(generated.ToString()).Contains("private NodeRef<CMwNod> targetRef = new();");
+        await Assert.That(generated.ToString()).Contains("get => targetRef.Resolve();");
+        await Assert.That(generated.ToString()).Contains("rw.NodeRef(n.targetRef);");
+        await Assert.That(generated.ToString()).Contains("rw.NodeRef(this.targetRef);");
+    }
+
+    [Test]
+    public async Task NodeDefaultsAndComputedAccessorsWorkWithoutPrivateAliases()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public static CMwNod InitialTarget { get; } = new();
+                public static bool Verify()
+                {
+                    var node = new Example(GBX.NET.GameVersion.TM10);
+                    if (!ReferenceEquals(node.Target, InitialTarget)) return false;
+                    var target = new CMwNod();
+                    node.CachedTarget = target;
+                    return ReferenceEquals(node.Target, target) && ReferenceEquals(node.CachedTarget, target);
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                property node? CachedTarget
+                  get = target
+                  set
+                    target = value
+                0x001
+                  node Target [TM10 = InitialTarget]
+                """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("get => targetRef.CachedTarget;");
+        await Assert.That(generated).Contains("targetRef.SetEmbedded(value);");
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That((bool)type.GetMethod("Verify")!.Invoke(null, null)!).IsTrue();
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task MixedDirectNodesUseReferenceFieldsWithoutAliases(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game
+            {
+                public class Referenced : CMwNod { }
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043002 { }
+                }
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public T ReadNode<T>() where T : GBX.NET.Engines.Game.CMwNod, new() => new();
+                }
+                public partial class GbxWriter
+                {
+                    public void WriteNode<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public T Node<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod, new() => value ?? new();
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                0x001
+                  Referenced Target
+                0x002
+                  Referenced Target (direct)
+                """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        if (structureKind == 0)
+            await Assert.That(generated).Contains("n.targetRef.SetEmbedded(rw.Node<Referenced>(n.targetRef.CachedTarget));");
+        else
+        {
+            await Assert.That(generated).Contains("n.targetRef.SetEmbedded(r.ReadNode<Referenced>());");
+            await Assert.That(generated).Contains("w.WriteNode<Referenced>(n.targetRef.CachedTarget);");
+        }
+    }
+
+    [Test]
+    public async Task SkipsReferenceMembersOnChunksWithoutTheirOwnReferences()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int U01
+            0x002
+              node Target
+            0x003
+              node U01
+            0x004 (base: 0x001)
+              node U02
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
+        foreach (var name in new[] { "Chunk03043001", "Chunk03043002" })
+        {
+            var chunk = classes.Single(x => x.Identifier.ValueText == name);
+            await Assert.That(chunk.Members.OfType<PropertyDeclarationSyntax>().Where(x => x.Identifier.ValueText == "References")).IsEmpty();
+            await Assert.That(chunk.Members.OfType<StructDeclarationSyntax>().Where(x => x.Identifier.ValueText == "NodeRefView")).IsEmpty();
+            await Assert.That(chunk.Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText == "EnumerateReferences")).IsEmpty();
+        }
+        foreach (var name in new[] { "Chunk03043003", "Chunk03043004" })
+        {
+            var chunk = classes.Single(x => x.Identifier.ValueText == name);
+            await Assert.That(chunk.Members.OfType<PropertyDeclarationSyntax>().Where(x => x.Identifier.ValueText == "References")).Contains(x => !x.Modifiers.Any(SyntaxKind.NewKeyword));
+            await Assert.That(chunk.Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText == "EnumerateReferences")).IsNotEmpty();
+        }
+    }
+
+    [Test]
+    public async Task SkippedChunkViewsStillExposeInheritedReferences()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              node U01
+            0x002 (base: 0x001)
+              int U02
+            0x003 (base: 0x002)
+              node U03
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
+        var middle = classes.Single(x => x.Identifier.ValueText == "Chunk03043002");
+        await Assert.That(middle.Members.OfType<PropertyDeclarationSyntax>().Where(x => x.Identifier.ValueText == "References")).IsEmpty();
+        var leaf = classes.Single(x => x.Identifier.ValueText == "Chunk03043003").ToString();
+        await Assert.That(leaf).Contains("public new NodeRefView References");
+        await Assert.That(leaf).Contains("public NodeRef<CMwNod> U01 => ((Chunk03043002)owner).References.U01;");
+        await Assert.That(leaf).Contains("public NodeRef<CMwNod> U03 => owner.U03Ref;");
+    }
+
+    [Test]
+    public async Task GeneratesChunkViewsForHandwrittenReferenceFields()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public partial class Chunk03043001
+                    {
+                        private NodeRef<CMwNod> targetRef = new();
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                0x001
+                  int U01
+                """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var chunk = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "Chunk03043001").ToString();
+        await Assert.That(chunk).Contains("public NodeRef<CMwNod> Target => owner.targetRef;");
+        await Assert.That(chunk).Contains("public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()");
+    }
+
+    [Test]
+    public async Task GeneratedGetIdUsesRuntimeClassAndIsInheritedByApplicationSubclasses()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                public class CustomChild : Child { }
+                public partial class Child
+                {
+                    public static uint Verify()
+                    {
+                        CMwNod node = new CustomChild();
+                        return node.GetId();
+                    }
+                }
+            }
+            """, true, new[]
+        {
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03044000
+                - abstract
+                """),
+            new Text("Engines/Game/Child.chunkl", """
+                Child 0x03045000
+                - inherits: Base
+                """)
+        });
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = result.GeneratedSources.Single(x => x.HintName.EndsWith("Child.g.cs")).SourceText.ToString();
+        await Assert.That(generated).Contains("internal override uint GetId() => Id;");
+        await Assert.That(generated).DoesNotContain("RuntimeClassId");
+        using var stream = new MemoryStream();
+        await Assert.That(compilation.Emit(stream).Success).IsTrue();
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Child")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, null)).IsEqualTo(0x03045000u);
+    }
+
+    [Test]
+    public async Task GeneratesTypedReferenceViewsAndPreservesInheritance()
+    {
+        var (result, compilation) = Run("", true, new[]
+        {
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03044000
+                - abstract
+                0x001
+                  node Target
+                """),
+            new Text("Engines/Game/Child.chunkl", """
+                Child 0x03045000
+                - inherits: Base
+                0x001
+                  node[] Targets
+                  node[][] Rows
+                archive Entry
+                  node Target
+                """)
+        });
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = result.GeneratedSources.Single(x => x.HintName.EndsWith("Child.g.cs")).SourceText.ToString();
+        await Assert.That(generated).Contains("public new readonly struct NodeRefView");
+        await Assert.That(generated).Contains("public NodeRef<CMwNod> Target => ((Base)owner).References.Target");
+        await Assert.That(generated).Contains("public NodeRefList<CMwNod>.ReferenceView this[int index]");
+        await Assert.That(generated).Contains("n.targets = rw.ListNodeRef<CMwNod>(n.targets)");
+        await Assert.That(generated).Contains("rw.NodeRef(this.targetRef)");
+        await Assert.That(generated).DoesNotContain("External<");
+        await Assert.That(generated).DoesNotContain("TargetFile");
+        await Assert.That(generated).DoesNotContain("GetTarget(");
+    }
+
+    [Test]
+    public async Task PreservesHandwrittenReferenceEnumeration()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public override System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, GBX.NET.NodeRef>> EnumerateReferences()
+                    {
+                        yield return new("Target", References.Target);
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+                Example 0x03043000
+                0x001
+                  node Target
+                """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .Where(x => x.Identifier.ValueText == "EnumerateReferences" && x.Parent is ClassDeclarationSyntax { Identifier.ValueText: "Example" })).IsEmpty();
+        await Assert.That(Engine(result).ToString()).Contains("public NodeRef<CMwNod> Target");
+    }
+
+    [Test]
+    public async Task ReferenceHandleNamesAvoidExistingRefProperties()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              node Mesh
+              int MeshRef
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("private NodeRef<CMwNod> meshNodeRef");
+        await Assert.That(generated).Contains("private int meshRef");
+        await Assert.That(generated).Contains("public NodeRef<CMwNod> Mesh => owner.meshNodeRef");
+        await Assert.That(generated).Contains("rw.NodeRef(n.meshNodeRef)");
+    }
+
+    [Test]
+    [Arguments("Source")]
+    [Arguments("n.Source")]
+    [Arguments("(n.source)")]
+    public async Task ReferenceAssignmentsCopyDescriptorsWithoutReadingTargets(string source)
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001
+              node Source
+              Target = {{source}}
+            0x002
+              node Target
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("n.targetRef.CopyFrom(n.sourceRef)");
+        await Assert.That(generated).DoesNotContain("n.Target =");
+    }
+
+    [Test]
+    public async Task ReferencePresenceConditionsUseStoredKindInsteadOfResolvingNodeGetters()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              node Target
+              if Target == null
+                int Absent
+              if n.Target != null
+                int Present
+              bool HasTarget (local, write: "n.Target is not null")
+              if Target is null
+                int Missing
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("if (n.targetRef.Kind == NodeRefKind.None)");
+        await Assert.That(generated).Contains("if (n.targetRef.Kind != NodeRefKind.None)");
+        await Assert.That(generated).Contains("rw.NodeRef(n.targetRef)");
+        await Assert.That(generated).Contains("n.targetRef.Kind != NodeRefKind.None");
+        await Assert.That(generated).DoesNotContain("n.Target is not null");
+    }
+
+    [Test]
+    [Arguments("References")]
+    [Arguments("NodeRefView")]
+    [Arguments("EnumerateReferences")]
+    public async Task ReportsReservedReferenceMemberNames(string name)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  int {name}\n"));
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("reserved"));
+        await Assert.That(result.GeneratedSources.Where(x => x.HintName.StartsWith("Engines/"))).IsEmpty();
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     public async Task SerializesNodeReferencesThroughSharedBackingTypes(int structureKind)
@@ -56,12 +504,13 @@ public class GenerationTests
         await Assert.That(generated).Contains("public Shared? Curve");
         if (structureKind == 0)
         {
-            await Assert.That(generated).Contains("n.curve = (Shared?)rw.NodeRef<Legacy>((Legacy?)n.curve)");
+            await Assert.That(generated).Contains("rw.NodeRef(n.curveRef)");
+            await Assert.That(generated).Contains("n.curve = (Shared?)n.curveRef.CachedTarget");
         }
         else
         {
-            await Assert.That(generated).Contains("n.curve = (Shared?)r.ReadNodeRef<Legacy>()");
-            await Assert.That(generated).Contains("w.WriteNodeRef<Legacy>((Legacy)n.curve)");
+            await Assert.That(generated).Contains("r.ReadNodeRef(n.curveRef)");
+            await Assert.That(generated).Contains("w.WriteNodeRef(n.curveRef)");
         }
     }
 
@@ -96,6 +545,7 @@ public class GenerationTests
                 {
                     public T? NodeRef<T>(T? value) where T : GBX.NET.Engines.Game.CMwNod => value;
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public T? ReadableWritable<T>(T? value, int version = 0) where T : class, IReadableWritable, new() => value;
                 }
             }
             """, new Text("Engines/Game/Example.chunkl", """
@@ -111,7 +561,7 @@ public class GenerationTests
         var generated = Engine(result).GetText().ToString();
         await Assert.That(generated).Contains("private PlugCurve? curve;");
         await Assert.That(generated).Contains("public PlugCurve? Curve");
-        await Assert.That(generated).Contains("n.curve = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.curve);");
+        await Assert.That(generated).Contains("n.curve = rw.ReadableWritable<PlugCurve>(n.curve, version: -1);");
         await Assert.That(generated).Contains("rw.ReadableWritable<PlugCurve>(ref n.curve);");
     }
 
@@ -152,6 +602,7 @@ public class GenerationTests
                 public partial class GbxReaderWriter
                 {
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public T? ReadableWritable<T>(T? value, int version = 0) where T : class, IReadableWritable, new() => value;
                     public void ArrayReadableWritable<T>(ref T[]? value, int version = 0) where T : IReadableWritable, new() { }
                     public void ListReadableWritable<T>(ref System.Collections.Generic.List<T>? value, int version = 0) where T : IReadableWritable, new() { }
                 }
@@ -378,7 +829,7 @@ public class GenerationTests
             """), compile: true);
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
-        var constructors = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>()
+        var constructors = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax)
             .Where(x => x.ParameterList.Parameters.Count == 1).ToArray();
         var constant = constructors.Single(x => x.Identifier.ValueText == "Chunk03043001");
         await Assert.That(constant.Body!.Statements.Count).IsEqualTo(1);
@@ -444,7 +895,7 @@ public class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
         var root = Engine(result).GetRoot();
-        var constructors = root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().ToArray();
+        var constructors = root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax).ToArray();
         await Assert.That(constructors.Count(x => x.ParameterList.Parameters.Count == 1)).IsEqualTo(2);
         await Assert.That(constructors.Single(x => x.Identifier.ValueText == "Example").ParameterList.Parameters).IsEmpty();
         using var stream = new MemoryStream();
@@ -481,7 +932,7 @@ public class GenerationTests
             """), compile: true);
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
-        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>())
+        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax))
             .All(x => x.Identifier.ValueText == "Example");
         using var stream = new MemoryStream();
         var emitted = compilation.Emit(stream);
@@ -518,7 +969,7 @@ public class GenerationTests
             """), compile: true);
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
-        var constructor = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>()
+        var constructor = Engine(result).GetRoot().DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax)
             .Single(x => x.ParameterList.Parameters.Count == 1);
         var branches = constructor.Body!.Statements.OfType<IfStatementSyntax>().ToArray();
         await Assert.That(branches.Length).IsEqualTo(2);
@@ -619,6 +1070,7 @@ public class GenerationTests
                 {
                     public void TimeInt32(ref TmEssentials.TimeInt32 value) { }
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public T? ReadableWritable<T>(T? value, int version = 0) where T : class, IReadableWritable, new() => value;
                 }
             }
             namespace GBX.NET.Engines.Game
@@ -722,7 +1174,7 @@ public class GenerationTests
         await Assert.That(unknown.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 7)]");
         var child = root.DescendantNodes().OfType<PropertyDeclarationSyntax>().Single(x => x.Identifier.ValueText == "Value");
         await Assert.That(child.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 12)]");
-        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Count(x => x.ParameterList.Parameters.Count == 1)).IsEqualTo(3);
+        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax).Count(x => x.ParameterList.Parameters.Count == 1)).IsEqualTo(3);
         await Assert.That(root.DescendantNodes().OfType<ClassDeclarationSyntax>().SelectMany(x => x.AttributeLists).SelectMany(x => x.Attributes))
             .All(x => x.Name.ToString() != "GameVersionDefault");
 
@@ -777,7 +1229,7 @@ public class GenerationTests
             await Assert.That(property.AttributeLists.ToString()).Contains("[GameVersionDefault(GameVersion.TM10,");
         }
         await Assert.That(root.ToString()).Contains("[GameVersionDefault(GameVersion.TM10, 20)]");
-        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>()).IsEmpty();
+        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax)).IsEmpty();
         using var stream = new MemoryStream();
         var emitted = compilation.Emit(stream);
         await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
@@ -1153,6 +1605,7 @@ public class GenerationTests
                 public partial class GbxReaderWriter
                 {
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public T? ReadableWritable<T>(T? value, int version = 0) where T : class, IReadableWritable, new() => value;
                 }
             }
             """;
@@ -1472,7 +1925,7 @@ public class GenerationTests
               versionb (write: 3)
               short Count (local, write: 2)
               int Event (local, write: 1)
-              CMwNod Node (local, external, write: null)
+              CMwNod Node (local, write: null)
               int[Count] Items (local, write: "new int[Count]")
               int Value (write: Event)
             """), compile: true);
@@ -1483,8 +1936,8 @@ public class GenerationTests
         await Assert.That(generated).Contains("Version = rw.Byte((rw.Writer is null ? default : (3)));");
         await Assert.That(generated).Contains("var count = rw.Int16((short)(rw.Writer is null ? default : (2)));");
         await Assert.That(generated).Contains("var @event = rw.Int32((rw.Writer is null ? default : (1)));");
-        await Assert.That(generated).Contains("Components.GbxRefTableFile? nodeFile = null;");
-        await Assert.That(generated).Contains("var node = rw.NodeRef<CMwNod>((rw.Writer is null ? default : (null)), ref nodeFile);");
+        await Assert.That(generated).Contains("var nodeRef = new NodeRef<CMwNod>();");
+        await Assert.That(generated).Contains("rw.NodeRef(nodeRef);");
         await Assert.That(generated).Contains("var items = rw.Array<int>((rw.Writer is null ? default : (new int[count])), count);");
         await Assert.That(generated).Contains("n.value = rw.Int32((rw.Writer is null ? default : (@event)));");
         await Assert.That(generated).DoesNotContain("if (rw.Reader is not null)");
@@ -1680,7 +2133,7 @@ public class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
         var root = Engine(result).GetRoot();
-        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>()).IsEmpty();
+        await Assert.That(root.DescendantNodes().OfType<ConstructorDeclarationSyntax>().Where(x => x.Parent is ClassDeclarationSyntax)).IsEmpty();
         await Assert.That(root.DescendantNodes().OfType<PropertyDeclarationSyntax>()).DoesNotContain(x => x.Identifier.ValueText == "Custom");
         await Assert.That(root.DescendantNodes().OfType<FieldDeclarationSyntax>())
             .DoesNotContain(x => x.Declaration.Variables.Any(v => v.Identifier.ValueText == "count"));
@@ -1838,7 +2291,8 @@ public class GenerationTests
               id[][] Ids
               string[][] Names
               Example[][] Nodes
-              Example[][] ExternalNodes (external)
+              Example[][] ExternalNodes
+              Example[2][] FixedNodes
               Item[][] Rows
 
             archive Item
@@ -1851,8 +2305,9 @@ public class GenerationTests
         await Assert.That(generated).Contains("rw.JaggedArray<int>(ref n.values!)");
         await Assert.That(generated).Contains("rw.JaggedArrayId(ref n.ids!)");
         await Assert.That(generated).Contains("rw.JaggedArrayString(ref n.names!)");
-        await Assert.That(generated).Contains("rw.JaggedArrayNodeRef<Example>(ref n.nodes!)");
-        await Assert.That(generated).Contains("rw.JaggedArrayExternalNodeRef<Example>(ref n.externalNodes!)");
+        await Assert.That(generated).Contains("n.nodes = rw.JaggedArrayNodeRef<Example>(n.nodes)");
+        await Assert.That(generated).Contains("n.externalNodes = rw.JaggedArrayNodeRef<Example>(n.externalNodes)");
+        await Assert.That(generated).Contains("n.fixedNodes = rw.JaggedArrayNodeRef<Example>(n.fixedNodes, innerLength: 2)");
         await Assert.That(generated).Contains("rw.JaggedArrayReadableWritable<Item>(ref n.rows!)");
     }
 
@@ -2298,6 +2753,7 @@ public class GenerationTests
                 public partial class GbxReaderWriter
                 {
                     public void ReadableWritable<T>(ref T? value, int version = 0) where T : class, IReadableWritable, new() { }
+                    public T? ReadableWritable<T>(T? value, int version = 0) where T : class, IReadableWritable, new() => value;
                     public void ArrayReadableWritable<T>(ref T[]? value, int version = 0) where T : IReadableWritable, new() { }
                     public void ListReadableWritable<T>(ref System.Collections.Generic.List<T>? value, int version = 0) where T : IReadableWritable, new() { }
                 }
@@ -2650,6 +3106,25 @@ public class GenerationTests
             public interface IClass { }
             public interface IVersionable { int Version { get; set; } }
             public class External<T> where T : GBX.NET.Engines.Game.CMwNod { }
+            public enum NodeRefKind { None, Embedded, ExternalFile, ExternalResource }
+            public abstract class NodeRef { }
+            public class NodeRef<T> : NodeRef where T : GBX.NET.Engines.Game.CMwNod
+            {
+                public NodeRefKind Kind { get; private set; }
+                public T? CachedTarget { get; private set; }
+                public GBX.NET.Components.GbxRefTableFile? File { get; private set; }
+                public object? Descriptor => File;
+                public T? Resolve() => CachedTarget;
+                public void SetEmbedded(T? value) { CachedTarget = value; File = null; Kind = value is null ? NodeRefKind.None : NodeRefKind.Embedded; }
+                public void SetExternal(GBX.NET.Components.GbxRefTableFile file) { File = file; CachedTarget = null; Kind = NodeRefKind.ExternalFile; }
+                public void CopyFrom(NodeRef<T> reference) { if (reference.File is { } file) SetExternal(file); else SetEmbedded(reference.CachedTarget); }
+            }
+            public class NodeRefList<T> : System.Collections.Generic.List<T?> where T : GBX.NET.Engines.Game.CMwNod
+            {
+                public NodeRef<T> GetReference(int index) => new();
+                public ReferenceView References => new();
+                public readonly struct ReferenceView { public NodeRef<T> this[int index] => new(); }
+            }
         }
         namespace GBX.NET.Attributes
         {
@@ -2679,12 +3154,20 @@ public class GenerationTests
         {
             public partial class GbxReader(params int[] values)
             {
+                public void ReadNodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod { }
+                public GBX.NET.NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod => new();
+                public GBX.NET.NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod => new();
+                public GBX.NET.NodeRefList<T>[] ReadJaggedArrayNodeRef<T>(bool fixedSize, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod => [];
                 private readonly System.Collections.Generic.Queue<int> values = new(values);
                 public int ReadInt32() => values.Dequeue();
                 public T[] ReadArray<T>(int length) where T : struct => new T[length];
             }
             public partial class GbxWriter
             {
+                public void WriteNodeRef(GBX.NET.NodeRef nodeRef) { }
+                public void WriteListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod { }
+                public void WriteListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod { }
+                public void WriteJaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod { }
                 public System.Collections.Generic.List<int> Values { get; } = new();
                 public void Write(int value) => Values.Add(value);
                 public void WriteArray<T>(T[]? value, int length) where T : struct { }
@@ -2698,6 +3181,7 @@ public class GenerationTests
                 public void Register(object source, object clone) { }
                 public T Clone<T>(T source) => source;
                 public T[] CloneArray<T>(T[] source) => source;
+                public T[] CloneArray<T>(T[] source, System.Func<T, T> cloneElement) => source;
                 public System.Collections.Generic.List<T> CloneList<T>(System.Collections.Generic.IEnumerable<T> source) => new(source);
                 public System.Collections.Generic.Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>> source) where TKey : notnull => new();
                 public System.Collections.Generic.SortedDictionary<TKey, TValue> CloneSortedDictionary<TKey, TValue>(System.Collections.Generic.SortedDictionary<TKey, TValue> source) where TKey : notnull => new(source.Comparer);
@@ -2705,6 +3189,10 @@ public class GenerationTests
             }
             public partial class GbxReaderWriter : System.IDisposable
             {
+                public void NodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod { }
+                public GBX.NET.NodeRefList<T>? ListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
+                public GBX.NET.NodeRefList<T>? ListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
+                public GBX.NET.NodeRefList<T>[]? JaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
                 public GbxReaderWriter() { }
                 public GbxReader? Reader { get; }
                 public GbxWriter? Writer { get; }
@@ -2713,7 +3201,6 @@ public class GenerationTests
                 public GbxReaderWriter(GbxReader reader, GbxWriter writer) { Reader = reader; Writer = writer; }
                 public int Byte(int value) => Int32(value);
                 public short Int16(short value) => (short)Int32(value);
-                public T? NodeRef<T>(T? value, ref GBX.NET.Components.GbxRefTableFile? file) where T : GBX.NET.Engines.Game.CMwNod => value;
                 public void Int32(ref int value) { value = Int32(value); }
                 public void EnumInt32<T>(ref T value) where T : struct, System.Enum
                 {
@@ -2724,6 +3211,7 @@ public class GenerationTests
                     if (Reader is not null) value = Reader.ReadInt32() != 0;
                     Writer?.Write(value.GetValueOrDefault() ? 1 : 0);
                 }
+                public bool Boolean(bool value) => Int32(value ? 1 : 0) != 0;
                 public int Int32(int value)
                 {
                     if (Reader is not null) value = Reader.ReadInt32();
@@ -2754,6 +3242,7 @@ public class GenerationTests
             public interface IChunk { }
             public class Chunk : IChunk
             {
+                public virtual System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, GBX.NET.NodeRef>> EnumerateReferences() => [];
                 internal virtual void DeepCloneFields(Chunk clone, GBX.NET.Serialization.DeepCloneContext context) { }
             }
             public class Chunk<T> : Chunk
@@ -2769,6 +3258,8 @@ public class GenerationTests
         {
             public class CMwNod : GBX.NET.IClass
             {
+                internal virtual uint GetId() => 0;
+                public virtual System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, GBX.NET.NodeRef>> EnumerateReferences() => [];
                 internal virtual GBX.NET.Serialization.Chunking.IChunk? NewChunk(uint id) => null;
                 internal virtual void DeepCloneFields(CMwNod clone, GBX.NET.Serialization.DeepCloneContext context) { }
             }

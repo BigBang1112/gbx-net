@@ -34,30 +34,23 @@ public partial class CGameObjectModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E01D000;
 
-    private CGameObjectPhyModel? phy;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameObjectPhyModel> phyRef = new();
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectPhyModel? Phy
     {
-        get => this.phy;
-        set => this.phy = value;
+        get => phyRef.Resolve();
+        set => phyRef.SetEmbedded(value);
     }
 
-    private CGameObjectVisModel? vis;
+    private NodeRef<CGameObjectVisModel> visRef = new();
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectVisModel? Vis
     {
-        get => this.visFile?.GetNode(ref this.vis) ?? this.vis;
-        set => this.vis = value;
+        get => visRef.Resolve();
+        set => visRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? visFile;
-
-    public Components.GbxRefTableFile? VisFile
-    {
-        get => visFile;
-        set => visFile = value;
-    }
-
-    public CGameObjectVisModel? GetVis(GbxReadSettings settings = default, bool exceptions = false) => visFile?.GetNode(ref vis, settings, exceptions) ?? vis;
 
     private string? inventoryName;
     [AppliedWithChunk<Chunk2E01D000>(1)]
@@ -91,20 +84,20 @@ public partial class CGameObjectModel : CMwNod, IClass
         set => this.inventoryOccupation = value;
     }
 
-    private CGameObjectModel? slaveHealDome;
+    private NodeRef<CGameObjectModel> slaveHealDomeRef = new();
     [AppliedWithChunk<Chunk2E01D000>(2)]
     public CGameObjectModel? SlaveHealDome
     {
-        get => this.slaveHealDome;
-        set => this.slaveHealDome = value;
+        get => slaveHealDomeRef.Resolve();
+        set => slaveHealDomeRef.SetEmbedded(value);
     }
 
-    private CGameObjectModel? slaveShieldDome;
+    private NodeRef<CGameObjectModel> slaveShieldDomeRef = new();
     [AppliedWithChunk<Chunk2E01D000>(3)]
     public CGameObjectModel? SlaveShieldDome
     {
-        get => this.slaveShieldDome;
-        set => this.slaveShieldDome = value;
+        get => slaveShieldDomeRef.Resolve();
+        set => slaveShieldDomeRef.SetEmbedded(value);
     }
 
     private string? scriptId;
@@ -115,17 +108,37 @@ public partial class CGameObjectModel : CMwNod, IClass
         set => this.scriptId = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameObjectModel owner;
+        internal NodeRefView(CGameObjectModel owner) => this.owner = owner;
+        public NodeRef<CGameObjectPhyModel> Phy => owner.phyRef;
+        public NodeRef<CGameObjectVisModel> Vis => owner.visRef;
+        public NodeRef<CGameObjectModel> SlaveHealDome => owner.slaveHealDomeRef;
+        public NodeRef<CGameObjectModel> SlaveShieldDome => owner.slaveShieldDomeRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Phy", phyRef);
+        yield return new("Vis", visRef);
+        yield return new("SlaveHealDome", slaveHealDomeRef);
+        yield return new("SlaveShieldDome", slaveShieldDomeRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameObjectModel)clone).phy = context.Clone(this.phy)!;
-        ((CGameObjectModel)clone).vis = context.Clone(this.vis)!;
+        ((CGameObjectModel)clone).phyRef = context.Clone(this.phyRef)!;
+        ((CGameObjectModel)clone).visRef = context.Clone(this.visRef)!;
         ((CGameObjectModel)clone).inventoryName = context.Clone(this.inventoryName)!;
         ((CGameObjectModel)clone).inventoryDescription = context.Clone(this.inventoryDescription)!;
         ((CGameObjectModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
         ((CGameObjectModel)clone).inventoryOccupation = context.Clone(this.inventoryOccupation)!;
-        ((CGameObjectModel)clone).slaveHealDome = context.Clone(this.slaveHealDome)!;
-        ((CGameObjectModel)clone).slaveShieldDome = context.Clone(this.slaveShieldDome)!;
+        ((CGameObjectModel)clone).slaveHealDomeRef = context.Clone(this.slaveHealDomeRef)!;
+        ((CGameObjectModel)clone).slaveShieldDomeRef = context.Clone(this.slaveShieldDomeRef)!;
         ((CGameObjectModel)clone).scriptId = context.Clone(this.scriptId)!;
     }
 
@@ -152,8 +165,8 @@ public partial class CGameObjectModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameObjectPhyModel>(ref n.phy);
-            rw.NodeRef<CGameObjectVisModel>(ref n.vis, ref n.visFile);
+            rw.NodeRef(n.phyRef);
+            rw.NodeRef(n.visRef);
 
             if (Version >= 1)
             {
@@ -165,11 +178,11 @@ public partial class CGameObjectModel : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef<CGameObjectModel>(ref n.slaveHealDome);
+                    rw.NodeRef(n.slaveHealDomeRef);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef<CGameObjectModel>(ref n.slaveShieldDome);
+                        rw.NodeRef(n.slaveShieldDomeRef);
 
                         if (Version >= 4)
                         {

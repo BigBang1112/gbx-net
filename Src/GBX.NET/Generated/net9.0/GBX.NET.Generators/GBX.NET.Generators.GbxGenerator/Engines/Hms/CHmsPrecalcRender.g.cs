@@ -34,6 +34,8 @@ public partial class CHmsPrecalcRender : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06011000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

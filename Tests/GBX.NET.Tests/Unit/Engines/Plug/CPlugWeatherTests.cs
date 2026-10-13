@@ -45,10 +45,10 @@ public class CPlugWeatherTests
 
         if (offset is 0 or 1 or 2 or 3 or 4 or 5 or 8 or 9 or 11)
         {
-            await Assert.That(node.MaterialSky_NightFile!.FilePath).IsEqualTo("Night.Material.Gbx");
-            await Assert.That(node.MaterialSky_SunFallFile!.FilePath).IsEqualTo("SunFall.Material.Gbx");
-            await Assert.That(node.MaterialSea0File!.FilePath).IsEqualTo("Sea0.Material.Gbx");
-            await Assert.That(node.MaterialSea1File!.FilePath).IsEqualTo(offset == 11 ? "Sea1.Material.Gbx" : "Sea0.Material.Gbx");
+            await Assert.That(node.References.MaterialSky_Night.File!.FilePath).IsEqualTo("Night.Material.Gbx");
+            await Assert.That(node.References.MaterialSky_SunFall.File!.FilePath).IsEqualTo("SunFall.Material.Gbx");
+            await Assert.That(node.References.MaterialSea0.File!.FilePath).IsEqualTo("Sea0.Material.Gbx");
+            await Assert.That(node.References.MaterialSea1.File!.FilePath).IsEqualTo(offset == 11 ? "Sea1.Material.Gbx" : "Sea0.Material.Gbx");
         }
         if (offset is 0 or 1 or 2 or 3 or 4 or 5 or 8 or 9 or 10 or 12 or 14)
         {
@@ -59,7 +59,7 @@ public class CPlugWeatherTests
             await Assert.That(node.FogFlags).IsEqualTo(13u);
             await Assert.That(node.DayFogColor).IsEqualTo(offset <= 3 ? node.FogRGB : new Vec3(1.1f, 1.2f, 1.3f));
             await Assert.That(node.DayFogFlags).IsEqualTo(offset <= 3 ? 13u : 6u);
-            await Assert.That(node.ImageLightAmbFile!.FilePath).IsEqualTo("Ambient.Image.Gbx");
+            await Assert.That(node.References.ImageLightAmb.File!.FilePath).IsEqualTo("Ambient.Image.Gbx");
         }
         if (offset is 6 or 13)
         {
@@ -78,27 +78,27 @@ public class CPlugWeatherTests
         if (offset is 16 or 18 or 21)
         {
             await Assert.That(node.Clouds!.SolidFids!.Length).IsEqualTo(2);
-            await Assert.That(node.Clouds.SolidFids[1].File!.FilePath).IsEqualTo("Cloud2.Solid.Gbx");
+            await Assert.That(node.Clouds.References.SolidFids[1].File!.FilePath).IsEqualTo("Cloud2.Solid.Gbx");
             await Assert.That(node.Clouds.BottomNearZ).IsEqualTo(1200.5f);
             await Assert.That(node.Clouds.BottomFarZ).IsEqualTo(offset == 16 ? 1200.5f : 2400.5f);
             if (offset != 16)
             {
-                await Assert.That(node.Clouds.ImageColorMaxFile!.FilePath).IsEqualTo("CloudMax.Image.Gbx");
+                await Assert.That(node.Clouds.References.ImageColorMax.File!.FilePath).IsEqualTo("CloudMax.Image.Gbx");
             }
             if (offset == 21) await Assert.That(node.Clouds.Lighting).IsEqualTo(3);
         }
         if (offset == 14)
         {
-            await Assert.That(node.BitmapFlareMoonFile!.FilePath).IsEqualTo("Moon.Bitmap.Gbx");
+            await Assert.That(node.References.BitmapFlareMoon.File!.FilePath).IsEqualTo("Moon.Bitmap.Gbx");
             await Assert.That(node.FlareAngularSizeSun).IsEqualTo(15.5f);
             await Assert.That(node.CameraFarZ).IsEqualTo(45000.5f);
-            await Assert.That(node.BitmapRainFidFile!.FilePath).IsEqualTo("Rain.Bitmap.Gbx");
-            await Assert.That(node.SceneFxFidFile!.FilePath).IsEqualTo("SceneFx.Gbx");
+            await Assert.That(node.References.BitmapRainFid.File!.FilePath).IsEqualTo("Rain.Bitmap.Gbx");
+            await Assert.That(node.References.SceneFxFid.File!.FilePath).IsEqualTo("SceneFx.Gbx");
         }
         if (offset == 24)
         {
             await Assert.That(((IVersionable)chunk).Version).IsEqualTo(1);
-            await Assert.That(node.EmitterInFogFile!.FilePath).IsEqualTo("Fog.Emitter.Gbx");
+            await Assert.That(node.References.EmitterInFog.File!.FilePath).IsEqualTo("Fog.Emitter.Gbx");
         }
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
@@ -166,13 +166,13 @@ public class CPlugWeatherTests
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0);
-        payload.Reference("Fog.Emitter.Gbx");
+        payload.NodeRef("Fog.Emitter.Gbx");
         payload.Finish();
         var node = new CPlugWeather();
         var chunk = new CPlugWeather.Chunk0917E018();
         payload.Read(rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(0);
-        await Assert.That(node.EmitterInFogFile!.FilePath).IsEqualTo("Fog.Emitter.Gbx");
+        await Assert.That(node.References.EmitterInFog.File!.FilePath).IsEqualTo("Fog.Emitter.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
 
@@ -210,7 +210,7 @@ public class CPlugWeatherTests
         payload.Finish();
         CPlugWeather? node = null;
         payload.Read(rw => node = rw.NodeRef<CPlugWeather>());
-        await Assert.That(node!.MaterialSea1File!.FilePath).IsEqualTo("Sea1.Material.Gbx");
+        await Assert.That(node!.References.MaterialSea1.File!.FilePath).IsEqualTo("Sea1.Material.Gbx");
         await Assert.That(node.Chunks.Single().Id).IsEqualTo(0x0917E00Bu);
 
         using var saved = new MemoryStream();
@@ -261,8 +261,8 @@ public class CPlugWeatherTests
                 WriteUnknowns(writer);
                 writer.Write(1);
                 writer.Write(45000.5f);
-                if (offset >= 8) payload.Reference("Rain.Bitmap.Gbx");
-                if (offset == 9) payload.Reference("SceneFx.Gbx");
+                if (offset >= 8) payload.NodeRef("Rain.Bitmap.Gbx");
+                if (offset == 9) payload.NodeRef("SceneFx.Gbx");
                 break;
             case 6:
             case 13:
@@ -279,18 +279,18 @@ public class CPlugWeatherTests
                 WriteLights(payload);
                 if (offset == 14)
                 {
-                    payload.Reference("Moon.Image.Gbx");
-                    payload.Reference("Sun.Bitmap.Gbx");
-                    payload.Reference("Moon.Bitmap.Gbx");
+                    payload.NodeRef("Moon.Image.Gbx");
+                    payload.NodeRef("Sun.Bitmap.Gbx");
+                    payload.NodeRef("Moon.Bitmap.Gbx");
                     writer.Write(15.5f);
                     writer.Write(16.5f);
                 }
                 WriteUnknowns(writer);
                 if (offset != 14) writer.Write(1);
                 writer.Write(45000.5f);
-                payload.Reference("Rain.Bitmap.Gbx");
-                payload.Reference("SceneFx.Gbx");
-                if (offset == 12) payload.Reference("Moon.Image.Gbx");
+                payload.NodeRef("Rain.Bitmap.Gbx");
+                payload.NodeRef("SceneFx.Gbx");
+                if (offset == 12) payload.NodeRef("Moon.Image.Gbx");
                 break;
             case 11:
                 WriteMaterials(payload, paired: false, twoSeas: true);
@@ -301,26 +301,26 @@ public class CPlugWeatherTests
             case 20:
             case 22:
             case 23:
-                payload.Reference("Resource.Gbx");
+                payload.NodeRef("Resource.Gbx");
                 break;
             case 16:
             case 18:
             case 21:
                 writer.Write(2);
-                payload.Reference("Cloud1.Solid.Gbx");
-                payload.Reference("Cloud2.Solid.Gbx");
+                payload.NodeRef("Cloud1.Solid.Gbx");
+                payload.NodeRef("Cloud2.Solid.Gbx");
                 writer.Write(1200.5f);
                 if (offset != 16)
                 {
                     writer.Write(2400.5f);
-                    payload.Reference("CloudMin.Image.Gbx");
-                    payload.Reference("CloudMax.Image.Gbx");
+                    payload.NodeRef("CloudMin.Image.Gbx");
+                    payload.NodeRef("CloudMax.Image.Gbx");
                 }
                 if (offset == 21) writer.Write(3);
                 break;
             case 24:
                 writer.Write(1);
-                payload.Reference("Fog.Emitter.Gbx");
+                payload.NodeRef("Fog.Emitter.Gbx");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(offset));
@@ -332,17 +332,17 @@ public class CPlugWeatherTests
         var skies = new[] { "Night", "SunRise", "Day", "SunFall" };
         for (var i = 0; i < skies.Length; i++)
         {
-            payload.Reference(skies[i] + ".Material.Gbx");
-            if (paired) payload.Reference(i == 3 ? "Sea0.Material.Gbx" : "LegacySea" + i + ".Material.Gbx");
+            payload.NodeRef(skies[i] + ".Material.Gbx");
+            if (paired) payload.NodeRef(i == 3 ? "Sea0.Material.Gbx" : "LegacySea" + i + ".Material.Gbx");
         }
-        if (!paired) payload.Reference("Sea0.Material.Gbx");
-        if (twoSeas) payload.Reference("Sea1.Material.Gbx");
+        if (!paired) payload.NodeRef("Sea0.Material.Gbx");
+        if (twoSeas) payload.NodeRef("Sea1.Material.Gbx");
     }
 
     private static void WriteLights(ObjectModelPayload payload)
     {
-        payload.Reference("Ambient.Image.Gbx");
-        payload.Reference("Sun.Image.Gbx");
+        payload.NodeRef("Ambient.Image.Gbx");
+        payload.NodeRef("Sun.Image.Gbx");
     }
 
     private static void WriteFog(GbxWriter writer, bool day, uint flags)

@@ -5,7 +5,7 @@ CPlugVertexStream 0x09056000
   version
   int VertexCount
   uint Flags = 3
-  CPlugVertexStream StreamModel (external)
+  CPlugVertexStream StreamModel
   if VertexCount > 0 && StreamModel == null
     DataDecl[] DataDecls
     v1+

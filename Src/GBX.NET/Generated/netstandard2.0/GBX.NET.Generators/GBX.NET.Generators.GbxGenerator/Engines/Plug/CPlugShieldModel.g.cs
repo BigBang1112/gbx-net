@@ -34,28 +34,30 @@ public partial class CPlugShieldModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09111000;
 
-    private CPlugSound? shieldActiveSound;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSound> shieldActiveSoundRef = new();
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldActiveSound
     {
-        get => this.shieldActiveSound;
-        set => this.shieldActiveSound = value;
+        get => shieldActiveSoundRef.Resolve();
+        set => shieldActiveSoundRef.SetEmbedded(value);
     }
 
-    private CPlugSound? shieldTouchSound;
+    private NodeRef<CPlugSound> shieldTouchSoundRef = new();
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldTouchSound
     {
-        get => this.shieldTouchSound;
-        set => this.shieldTouchSound = value;
+        get => shieldTouchSoundRef.Resolve();
+        set => shieldTouchSoundRef.SetEmbedded(value);
     }
 
-    private CPlugSound? shieldDestroySound;
+    private NodeRef<CPlugSound> shieldDestroySoundRef = new();
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldDestroySound
     {
-        get => this.shieldDestroySound;
-        set => this.shieldDestroySound = value;
+        get => shieldDestroySoundRef.Resolve();
+        set => shieldDestroySoundRef.SetEmbedded(value);
     }
 
     private string? shieldTouchParticleRef;
@@ -66,12 +68,12 @@ public partial class CPlugShieldModel : CMwNod, IClass
         set => this.shieldTouchParticleRef = value;
     }
 
-    private CPlugParticleEmitterModel? shieldTouchParticle;
+    private NodeRef<CPlugParticleEmitterModel> shieldTouchParticleNodeRef = new();
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugParticleEmitterModel? ShieldTouchParticle
     {
-        get => this.shieldTouchParticle;
-        set => this.shieldTouchParticle = value;
+        get => shieldTouchParticleNodeRef.Resolve();
+        set => shieldTouchParticleNodeRef.SetEmbedded(value);
     }
 
     private int textureNotches;
@@ -130,12 +132,12 @@ public partial class CPlugShieldModel : CMwNod, IClass
         set => this.shapeRef = value;
     }
 
-    private CPlugSurface? shape;
+    private NodeRef<CPlugSurface> shapeNodeRef = new();
     [AppliedWithChunk<Chunk09111000>]
     public CPlugSurface? Shape
     {
-        get => this.shape;
-        set => this.shape = value;
+        get => shapeNodeRef.Resolve();
+        set => shapeNodeRef.SetEmbedded(value);
     }
 
     private string? shapeVisModelRef;
@@ -146,22 +148,46 @@ public partial class CPlugShieldModel : CMwNod, IClass
         set => this.shapeVisModelRef = value;
     }
 
-    private CPlugSolid2Model? shapeVisModel;
+    private NodeRef<CPlugSolid2Model> shapeVisModelNodeRef = new();
     [AppliedWithChunk<Chunk09111000>]
     public CPlugSolid2Model? ShapeVisModel
     {
-        get => this.shapeVisModel;
-        set => this.shapeVisModel = value;
+        get => shapeVisModelNodeRef.Resolve();
+        set => shapeVisModelNodeRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugShieldModel owner;
+        internal NodeRefView(CPlugShieldModel owner) => this.owner = owner;
+        public NodeRef<CPlugSound> ShieldActiveSound => owner.shieldActiveSoundRef;
+        public NodeRef<CPlugSound> ShieldTouchSound => owner.shieldTouchSoundRef;
+        public NodeRef<CPlugSound> ShieldDestroySound => owner.shieldDestroySoundRef;
+        public NodeRef<CPlugParticleEmitterModel> ShieldTouchParticle => owner.shieldTouchParticleNodeRef;
+        public NodeRef<CPlugSurface> Shape => owner.shapeNodeRef;
+        public NodeRef<CPlugSolid2Model> ShapeVisModel => owner.shapeVisModelNodeRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("ShieldActiveSound", shieldActiveSoundRef);
+        yield return new("ShieldTouchSound", shieldTouchSoundRef);
+        yield return new("ShieldDestroySound", shieldDestroySoundRef);
+        yield return new("ShieldTouchParticle", shieldTouchParticleNodeRef);
+        yield return new("Shape", shapeNodeRef);
+        yield return new("ShapeVisModel", shapeVisModelNodeRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugShieldModel)clone).shieldActiveSound = context.Clone(this.shieldActiveSound)!;
-        ((CPlugShieldModel)clone).shieldTouchSound = context.Clone(this.shieldTouchSound)!;
-        ((CPlugShieldModel)clone).shieldDestroySound = context.Clone(this.shieldDestroySound)!;
+        ((CPlugShieldModel)clone).shieldActiveSoundRef = context.Clone(this.shieldActiveSoundRef)!;
+        ((CPlugShieldModel)clone).shieldTouchSoundRef = context.Clone(this.shieldTouchSoundRef)!;
+        ((CPlugShieldModel)clone).shieldDestroySoundRef = context.Clone(this.shieldDestroySoundRef)!;
         ((CPlugShieldModel)clone).shieldTouchParticleRef = context.Clone(this.shieldTouchParticleRef)!;
-        ((CPlugShieldModel)clone).shieldTouchParticle = context.Clone(this.shieldTouchParticle)!;
+        ((CPlugShieldModel)clone).shieldTouchParticleNodeRef = context.Clone(this.shieldTouchParticleNodeRef)!;
         ((CPlugShieldModel)clone).textureNotches = context.Clone(this.textureNotches)!;
         ((CPlugShieldModel)clone).relativePos = context.Clone(this.relativePos)!;
         ((CPlugShieldModel)clone).needActivation = context.Clone(this.needActivation)!;
@@ -169,9 +195,9 @@ public partial class CPlugShieldModel : CMwNod, IClass
         ((CPlugShieldModel)clone).shieldArmor = context.Clone(this.shieldArmor)!;
         ((CPlugShieldModel)clone).shieldDuration = context.Clone(this.shieldDuration)!;
         ((CPlugShieldModel)clone).shapeRef = context.Clone(this.shapeRef)!;
-        ((CPlugShieldModel)clone).shape = context.Clone(this.shape)!;
+        ((CPlugShieldModel)clone).shapeNodeRef = context.Clone(this.shapeNodeRef)!;
         ((CPlugShieldModel)clone).shapeVisModelRef = context.Clone(this.shapeVisModelRef)!;
-        ((CPlugShieldModel)clone).shapeVisModel = context.Clone(this.shapeVisModel)!;
+        ((CPlugShieldModel)clone).shapeVisModelNodeRef = context.Clone(this.shapeVisModelNodeRef)!;
     }
 
     public CPlugShieldModel()
@@ -212,14 +238,14 @@ public partial class CPlugShieldModel : CMwNod, IClass
 
             if (Version >= 7)
             {
-                rw.NodeRef<CPlugSound>(ref n.shieldActiveSound);
-                rw.NodeRef<CPlugSound>(ref n.shieldTouchSound);
-                rw.NodeRef<CPlugSound>(ref n.shieldDestroySound);
+                rw.NodeRef(n.shieldActiveSoundRef);
+                rw.NodeRef(n.shieldTouchSoundRef);
+                rw.NodeRef(n.shieldDestroySoundRef);
                 rw.String(ref n.shieldTouchParticleRef);
 
                 if (n.ShieldTouchParticleRef== null || n.ShieldTouchParticleRef== "")
                 {
-                    rw.NodeRef<CPlugParticleEmitterModel>(ref n.shieldTouchParticle);
+                    rw.NodeRef(n.shieldTouchParticleNodeRef);
                 }
             }
 
@@ -264,14 +290,14 @@ public partial class CPlugShieldModel : CMwNod, IClass
 
             if (n.ShapeRef== null || n.ShapeRef== "")
             {
-                rw.NodeRef<CPlugSurface>(ref n.shape);
+                rw.NodeRef(n.shapeNodeRef);
             }
 
             rw.String(ref n.shapeVisModelRef);
 
             if (n.ShapeVisModelRef== null || n.ShapeVisModelRef== "")
             {
-                rw.NodeRef<CPlugSolid2Model>(ref n.shapeVisModel);
+                rw.NodeRef(n.shapeVisModelNodeRef);
             }
         }
     }

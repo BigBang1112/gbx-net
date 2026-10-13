@@ -37,6 +37,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E001000;
 
+    internal override uint GetId() => Id;
+
     [AppliedWithChunk<HeaderChunk2E001003>]
     [AppliedWithChunk<Chunk2E001002>]
     [AppliedWithChunk<Chunk2E00100B>]
@@ -127,18 +129,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.defaultSkinName = value;
     }
 
+    private NodeRef<CMwNod> iconFidRef = new();
     [AppliedWithChunk<Chunk2E001003>]
     [AppliedWithChunk<Chunk2E001004>]
     [AppliedWithChunk<Chunk2E001009>]
     public partial CMwNod? IconFid { get; set; }
-
-    public Components.GbxRefTableFile? IconFidFile
-    {
-        get => iconFidFile;
-        set => iconFidFile = value;
-    }
-
-    public CMwNod? GetIconFid(GbxReadSettings settings = default, bool exceptions = false) => iconFidFile?.GetNode(ref iconFid, settings, exceptions) ?? iconFid;
 
     private bool isInternal;
     [AppliedWithChunk<Chunk2E001005>]
@@ -201,56 +196,29 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.skinDirectory = value;
     }
 
-    private CPlugFileZip? defaultSkin;
+    private NodeRef<CPlugFileZip> defaultSkinRef = new();
     [AppliedWithChunk<Chunk2E001010>]
     public CPlugFileZip? DefaultSkin
     {
-        get => this.defaultSkinFile?.GetNode(ref this.defaultSkin) ?? this.defaultSkin;
-        set => this.defaultSkin = value;
-    }
-    private Components.GbxRefTableFile? defaultSkinFile;
-
-    public Components.GbxRefTableFile? DefaultSkinFile
-    {
-        get => defaultSkinFile;
-        set => defaultSkinFile = value;
+        get => defaultSkinRef.Resolve();
+        set => defaultSkinRef.SetEmbedded(value);
     }
 
-    public CPlugFileZip? GetDefaultSkin(GbxReadSettings settings = default, bool exceptions = false) => defaultSkinFile?.GetNode(ref defaultSkin, settings, exceptions) ?? defaultSkin;
-
-    private CMwNod? modelKitDb;
+    private NodeRef<CMwNod> modelKitDbRef = new();
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDb
     {
-        get => this.modelKitDbFile?.GetNode(ref this.modelKitDb) ?? this.modelKitDb;
-        set => this.modelKitDb = value;
-    }
-    private Components.GbxRefTableFile? modelKitDbFile;
-
-    public Components.GbxRefTableFile? ModelKitDbFile
-    {
-        get => modelKitDbFile;
-        set => modelKitDbFile = value;
+        get => modelKitDbRef.Resolve();
+        set => modelKitDbRef.SetEmbedded(value);
     }
 
-    public CMwNod? GetModelKitDb(GbxReadSettings settings = default, bool exceptions = false) => modelKitDbFile?.GetNode(ref modelKitDb, settings, exceptions) ?? modelKitDb;
-
-    private CMwNod? modelKitDbRelease;
+    private NodeRef<CMwNod> modelKitDbReleaseRef = new();
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDbRelease
     {
-        get => this.modelKitDbReleaseFile?.GetNode(ref this.modelKitDbRelease) ?? this.modelKitDbRelease;
-        set => this.modelKitDbRelease = value;
+        get => modelKitDbReleaseRef.Resolve();
+        set => modelKitDbReleaseRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? modelKitDbReleaseFile;
-
-    public Components.GbxRefTableFile? ModelKitDbReleaseFile
-    {
-        get => modelKitDbReleaseFile;
-        set => modelKitDbReleaseFile = value;
-    }
-
-    public CMwNod? GetModelKitDbRelease(GbxReadSettings settings = default, bool exceptions = false) => modelKitDbReleaseFile?.GetNode(ref modelKitDbRelease, settings, exceptions) ?? modelKitDbRelease;
 
     private bool isAdvanced;
     [AppliedWithChunk<Chunk2E001011>]
@@ -268,6 +236,26 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.iconPhase01 = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnCollector owner;
+        internal NodeRefView(CGameCtnCollector owner) => this.owner = owner;
+        public NodeRef<CMwNod> IconFid => owner.iconFidRef;
+        public NodeRef<CPlugFileZip> DefaultSkin => owner.defaultSkinRef;
+        public NodeRef<CMwNod> ModelKitDb => owner.modelKitDbRef;
+        public NodeRef<CMwNod> ModelKitDbRelease => owner.modelKitDbReleaseRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("IconFid", iconFidRef);
+        yield return new("DefaultSkin", defaultSkinRef);
+        yield return new("ModelKitDb", modelKitDbRef);
+        yield return new("ModelKitDbRelease", modelKitDbReleaseRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -278,6 +266,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).prodState = context.Clone(this.prodState)!;
         ((CGameCtnCollector)clone).lightmapComputeTime = context.Clone(this.lightmapComputeTime)!;
         ((CGameCtnCollector)clone).defaultSkinName = context.Clone(this.defaultSkinName)!;
+        ((CGameCtnCollector)clone).iconFidRef = context.Clone(this.iconFidRef)!;
         ((CGameCtnCollector)clone).isInternal = context.Clone(this.isInternal)!;
         ((CGameCtnCollector)clone).skinKind = context.Clone(this.skinKind)!;
         ((CGameCtnCollector)clone).needUnlock = context.Clone(this.needUnlock)!;
@@ -285,9 +274,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).iconUseAutoRender = context.Clone(this.iconUseAutoRender)!;
         ((CGameCtnCollector)clone).iconQuarterRotationY = context.Clone(this.iconQuarterRotationY)!;
         ((CGameCtnCollector)clone).skinDirectory = context.Clone(this.skinDirectory)!;
-        ((CGameCtnCollector)clone).defaultSkin = context.Clone(this.defaultSkin)!;
-        ((CGameCtnCollector)clone).modelKitDb = context.Clone(this.modelKitDb)!;
-        ((CGameCtnCollector)clone).modelKitDbRelease = context.Clone(this.modelKitDbRelease)!;
+        ((CGameCtnCollector)clone).defaultSkinRef = context.Clone(this.defaultSkinRef)!;
+        ((CGameCtnCollector)clone).modelKitDbRef = context.Clone(this.modelKitDbRef)!;
+        ((CGameCtnCollector)clone).modelKitDbReleaseRef = context.Clone(this.modelKitDbReleaseRef)!;
         ((CGameCtnCollector)clone).isAdvanced = context.Clone(this.isAdvanced)!;
         ((CGameCtnCollector)clone).iconPhase01 = context.Clone(this.iconPhase01)!;
         ((CGameCtnCollector)clone).ident = context.Clone(this.ident)!;
@@ -295,8 +284,6 @@ public partial class CGameCtnCollector : CMwNod, IClass
         ((CGameCtnCollector)clone).catalogPosition = context.Clone(this.catalogPosition)!;
         ((CGameCtnCollector)clone).nbAvailableMin = context.Clone(this.nbAvailableMin)!;
         ((CGameCtnCollector)clone).nbAvailableMax = context.Clone(this.nbAvailableMax)!;
-        ((CGameCtnCollector)clone).iconFid = context.Clone(this.iconFid)!;
-        ((CGameCtnCollector)clone).iconFidFile = context.Clone(this.iconFidFile)!;
         ((CGameCtnCollector)clone).Icon = context.Clone(this.Icon)!;
         ((CGameCtnCollector)clone).IconWebP = context.CloneArray(this.IconWebP)!;
     }
@@ -499,19 +486,38 @@ public partial class CGameCtnCollector : CMwNod, IClass
     public partial class Chunk2E001000 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001000;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E001000 owner;
+            internal NodeRefView(Chunk2E001000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E001000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E001000)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -522,19 +528,41 @@ public partial class CGameCtnCollector : CMwNod, IClass
     public partial class Chunk2E001001 : Chunk<CGameCtnCollector>
     {
         public override uint Id => 0x2E001001;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        /// <summary>
+        /// CMwRefBuffer in TMF, CPlugFileImg in MP4
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E001001 owner;
+            internal NodeRefView(Chunk2E001001 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E001001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E001001)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -575,11 +603,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+                rw.NodeRef(n.iconFidRef);
             }
         }
     }
@@ -604,11 +632,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+                rw.NodeRef(n.iconFidRef);
             }
 
             rw.Boolean(ref U01);
@@ -685,18 +713,37 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         public override uint Id => 0x2E001008;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CPlugGameSkin? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CPlugGameSkin> U01Ref = new();
+        public CPlugGameSkin? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E001008 owner;
+            internal NodeRefView(Chunk2E001008 owner) => this.owner = owner;
+            public NodeRef<CPlugGameSkin> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E001008)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E001008)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugGameSkin>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -715,11 +762,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.IconFid is not null || n.IconFidFile is not null)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef<CMwNod>(ref n.iconFid, ref n.iconFidFile);
+                rw.NodeRef(n.iconFidRef);
             }
 
             rw.Id(ref n.parentCollectorId);
@@ -857,9 +904,31 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override uint Id => 0x2E001010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        /// <summary>
+        /// CPlugFileZip
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
         public string? U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E001010 owner;
+            internal NodeRefView(Chunk2E001010 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         public Chunk2E001010() : this(GameVersion.Unspecified)
         {
@@ -881,14 +950,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E001010)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E001010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E001010)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk2E001010)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugFileZip>(ref n.defaultSkin, ref n.defaultSkinFile);
+            rw.NodeRef(n.defaultSkinRef);
 
             if (Version >= 1)
             {
@@ -899,7 +968,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
             {
                 if (n.SkinDirectory== null || n.SkinDirectory== "")
                 {
-                    rw.NodeRef<CMwNod>(ref U01, ref U01File);
+                    rw.NodeRef(U01Ref);
                 }
             }
 
@@ -912,8 +981,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.NodeRef<CMwNod>(ref n.modelKitDb, ref n.modelKitDbFile);
-                    rw.NodeRef<CMwNod>(ref n.modelKitDbRelease, ref n.modelKitDbReleaseFile);
+                    rw.NodeRef(n.modelKitDbRef);
+                    rw.NodeRef(n.modelKitDbReleaseRef);
                 }
             }
         }

@@ -34,6 +34,8 @@ public abstract partial class CScenePoc : CSceneObject, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A009000;
 
+    internal override uint GetId() => Id;
+
     private bool isActive;
     [AppliedWithChunk<Chunk0A009000>]
     public bool IsActive

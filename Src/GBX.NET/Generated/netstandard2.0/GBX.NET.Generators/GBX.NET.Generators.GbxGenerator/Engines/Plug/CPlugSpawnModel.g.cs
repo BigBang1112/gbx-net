@@ -34,6 +34,8 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0917A000;
 
+    internal override uint GetId() => Id;
+
     private Iso4 loc;
     [AppliedWithChunk<Chunk0917A000>]
     public Iso4 Loc

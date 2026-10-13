@@ -34,72 +34,70 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A060000;
 
-    private CPlugVehiclePhyTunings? vehicleTunings;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugVehiclePhyTunings> vehicleTuningsRef = new();
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehiclePhyTunings? VehicleTunings
     {
-        get => this.vehicleTuningsFile?.GetNode(ref this.vehicleTunings) ?? this.vehicleTunings;
-        set => this.vehicleTunings = value;
-    }
-    private Components.GbxRefTableFile? vehicleTuningsFile;
-
-    public Components.GbxRefTableFile? VehicleTuningsFile
-    {
-        get => vehicleTuningsFile;
-        set => vehicleTuningsFile = value;
+        get => vehicleTuningsRef.Resolve();
+        set => vehicleTuningsRef.SetEmbedded(value);
     }
 
-    public CPlugVehiclePhyTunings? GetVehicleTunings(GbxReadSettings settings = default, bool exceptions = false) => vehicleTuningsFile?.GetNode(ref vehicleTunings, settings, exceptions) ?? vehicleTunings;
-
-    private CMwRefBuffer? vehicleMaterials;
+    private NodeRef<CMwRefBuffer> vehicleMaterialsRef = new();
     [AppliedWithChunk<Chunk0A060000>]
     public CMwRefBuffer? VehicleMaterials
     {
-        get => this.vehicleMaterialsFile?.GetNode(ref this.vehicleMaterials) ?? this.vehicleMaterials;
-        set => this.vehicleMaterials = value;
-    }
-    private Components.GbxRefTableFile? vehicleMaterialsFile;
-
-    public Components.GbxRefTableFile? VehicleMaterialsFile
-    {
-        get => vehicleMaterialsFile;
-        set => vehicleMaterialsFile = value;
+        get => vehicleMaterialsRef.Resolve();
+        set => vehicleMaterialsRef.SetEmbedded(value);
     }
 
-    public CMwRefBuffer? GetVehicleMaterials(GbxReadSettings settings = default, bool exceptions = false) => vehicleMaterialsFile?.GetNode(ref vehicleMaterials, settings, exceptions) ?? vehicleMaterials;
-
-    private CSceneVehicleEnvironment? environment;
+    private NodeRef<CSceneVehicleEnvironment> environmentRef = new();
     [AppliedWithChunk<Chunk0A060000>]
     public CSceneVehicleEnvironment? Environment
     {
-        get => this.environment;
-        set => this.environment = value;
+        get => environmentRef.Resolve();
+        set => environmentRef.SetEmbedded(value);
     }
 
-    private CPlugVehicleVisModelShared? vehicleStruct;
+    private NodeRef<CPlugVehicleVisModelShared> vehicleStructRef = new();
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehicleVisModelShared? VehicleStruct
     {
-        get => this.vehicleStructFile?.GetNode(ref this.vehicleStruct) ?? this.vehicleStruct;
-        set => this.vehicleStruct = value;
+        get => vehicleStructRef.Resolve();
+        set => vehicleStructRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? vehicleStructFile;
 
-    public Components.GbxRefTableFile? VehicleStructFile
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
     {
-        get => vehicleStructFile;
-        set => vehicleStructFile = value;
+        private readonly CSceneVehicle owner;
+        internal NodeRefView(CSceneVehicle owner) => this.owner = owner;
+        public NodeRef<CPlugVehiclePhyTunings> VehicleTunings => owner.vehicleTuningsRef;
+        public NodeRef<CMwRefBuffer> VehicleMaterials => owner.vehicleMaterialsRef;
+        public NodeRef<CSceneVehicleEnvironment> Environment => owner.environmentRef;
+        public NodeRef<CPlugVehicleVisModelShared> VehicleStruct => owner.vehicleStructRef;
+        public CSceneMobil.ObjectLinkReferenceView ObjectLink => ((CSceneMobil)owner).References.ObjectLink;
+        public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneMobil)owner).References.MessageHandler;
+        public NodeRef<CMotion> Motion => ((CSceneMobil)owner).References.Motion;
     }
-
-    public CPlugVehicleVisModelShared? GetVehicleStruct(GbxReadSettings settings = default, bool exceptions = false) => vehicleStructFile?.GetNode(ref vehicleStruct, settings, exceptions) ?? vehicleStruct;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("VehicleTunings", vehicleTuningsRef);
+        yield return new("VehicleMaterials", vehicleMaterialsRef);
+        yield return new("Environment", environmentRef);
+        yield return new("VehicleStruct", vehicleStructRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneVehicle)clone).vehicleTunings = context.Clone(this.vehicleTunings)!;
-        ((CSceneVehicle)clone).vehicleMaterials = context.Clone(this.vehicleMaterials)!;
-        ((CSceneVehicle)clone).environment = context.Clone(this.environment)!;
-        ((CSceneVehicle)clone).vehicleStruct = context.Clone(this.vehicleStruct)!;
+        ((CSceneVehicle)clone).vehicleTuningsRef = context.Clone(this.vehicleTuningsRef)!;
+        ((CSceneVehicle)clone).vehicleMaterialsRef = context.Clone(this.vehicleMaterialsRef)!;
+        ((CSceneVehicle)clone).environmentRef = context.Clone(this.environmentRef)!;
+        ((CSceneVehicle)clone).vehicleStructRef = context.Clone(this.vehicleStructRef)!;
     }
 
     public CSceneVehicle()
@@ -112,21 +110,41 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     {
         public override uint Id => 0x0A060000;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A060000 owner;
+            internal NodeRefView(Chunk0A060000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0A060000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A060000)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CSceneVehicle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugVehiclePhyTunings>(ref n.vehicleTunings, ref n.vehicleTuningsFile);
-            rw.NodeRef<CMwRefBuffer>(ref n.vehicleMaterials, ref n.vehicleMaterialsFile);
-            rw.NodeRef<CSceneVehicleEnvironment>(ref n.environment);
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CPlugVehicleVisModelShared>(ref n.vehicleStruct, ref n.vehicleStructFile);
+            rw.NodeRef(n.vehicleTuningsRef);
+            rw.NodeRef(n.vehicleMaterialsRef);
+            rw.NodeRef(n.environmentRef);
+            rw.NodeRef(U01Ref);
+            rw.NodeRef(n.vehicleStructRef);
         }
     }
 

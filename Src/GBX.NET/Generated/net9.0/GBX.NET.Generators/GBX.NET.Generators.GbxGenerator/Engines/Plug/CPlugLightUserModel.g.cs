@@ -34,6 +34,8 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F9000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 color;
     [AppliedWithChunk<Chunk090F9000>]
     public Vec3 Color

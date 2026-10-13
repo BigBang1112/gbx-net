@@ -6,17 +6,16 @@ archive
     bool IsStatic
   v11+ (archive)
     bool DynamizeOnSpawn
-  CPlugSolid2Model Mesh (external)
-  CPlugSurface DynaShape (external)
+  CPlugSolid2Model Mesh
+  CPlugSurface DynaShape
   v0..2 (archive)
-    CPlugDynaModel* DynaModel (external)
+    CPlugDynaModel* DynaModel
     if dynaModel != null
       Mass = dynaModel.LinearMass
   v0= (archive)
     staticShape = dynaShape
-    staticShapeFile = dynaShapeFile
   v1+ (archive)
-    CPlugSurface StaticShape (external)
+    CPlugSurface StaticShape
   v2+ (archive)
     float BreakSpeedKmh = 100
   v3+ (archive)
@@ -36,7 +35,7 @@ archive
     int U08
     int U09
   v7+ (archive)
-    CPlugAnimLocSimple LocAnim (external)
+    CPlugAnimLocSimple LocAnim
   v8+ (archive)
     int U10
   v10+ (archive)
@@ -46,4 +45,4 @@ archive
   v12= (archive)
     int U11
   v13+ (archive)
-    CPlugDynaWaterModel* WaterModel (external)
+    CPlugDynaWaterModel* WaterModel

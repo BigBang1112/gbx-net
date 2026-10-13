@@ -37,6 +37,8 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0305B000;
 
+    internal override uint GetId() => Id;
+
     private string? tip;
     [AppliedWithChunk<Chunk0305B001>]
     [AppliedWithChunk<Chunk0305B00A>]
@@ -105,7 +107,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     [AppliedWithChunk<Chunk0305B00B>]
-    public partial CGameCtnGhost?[]? LegacyValidateGhosts { get; set; }
+    public partial NodeRefList<CGameCtnGhost>? LegacyValidateGhosts { get; set; }
 
     private string? mapType;
     [AppliedWithChunk<Chunk0305B00C>]
@@ -125,13 +127,13 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.mapStyle = value;
     }
 
-    private CGameCtnGhost? raceValidateGhost;
+    private NodeRef<CGameCtnGhost> raceValidateGhostRef = new();
     [AppliedWithChunk<Chunk0305B00D>]
     [AppliedWithChunk<Chunk0305B00F>]
     public CGameCtnGhost? RaceValidateGhost
     {
-        get => this.raceValidateGhost;
-        set => this.raceValidateGhost = value;
+        get => raceValidateGhostRef.Resolve();
+        set => raceValidateGhostRef.SetEmbedded(value);
     }
 
     private bool isValidatedForScriptModes;
@@ -140,6 +142,32 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         get => this.isValidatedForScriptModes;
         set => this.isValidatedForScriptModes = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnChallengeParameters owner;
+        internal NodeRefView(CGameCtnChallengeParameters owner) => this.owner = owner;
+        public LegacyValidateGhostsReferenceView LegacyValidateGhosts => new(owner);
+        public NodeRef<CGameCtnGhost> RaceValidateGhost => owner.raceValidateGhostRef;
+    }
+    public readonly struct LegacyValidateGhostsReferenceView
+    {
+        private readonly CGameCtnChallengeParameters owner;
+        internal LegacyValidateGhostsReferenceView(CGameCtnChallengeParameters owner) => this.owner = owner;
+        public int Count => owner.legacyValidateGhosts?.Count ?? 0;
+        public NodeRef<CGameCtnGhost> this[int index] => (owner.legacyValidateGhosts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (legacyValidateGhosts is not null)
+        {
+            for (var i = 0; i < legacyValidateGhosts.Count; i++) yield return new("LegacyValidateGhosts" + "[" + i + "]", legacyValidateGhosts.GetReference(i));
+        }
+        yield return new("RaceValidateGhost", raceValidateGhostRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -152,12 +180,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         ((CGameCtnChallengeParameters)clone).authorTime = context.Clone(this.authorTime)!;
         ((CGameCtnChallengeParameters)clone).timeLimit = context.Clone(this.timeLimit)!;
         ((CGameCtnChallengeParameters)clone).authorScore = context.Clone(this.authorScore)!;
+        ((CGameCtnChallengeParameters)clone).legacyValidateGhosts = context.Clone(this.legacyValidateGhosts)!;
         ((CGameCtnChallengeParameters)clone).mapType = context.Clone(this.mapType)!;
         ((CGameCtnChallengeParameters)clone).mapStyle = context.Clone(this.mapStyle)!;
-        ((CGameCtnChallengeParameters)clone).raceValidateGhost = context.Clone(this.raceValidateGhost)!;
+        ((CGameCtnChallengeParameters)clone).raceValidateGhostRef = context.Clone(this.raceValidateGhostRef)!;
         ((CGameCtnChallengeParameters)clone).isValidatedForScriptModes = context.Clone(this.isValidatedForScriptModes)!;
         ((CGameCtnChallengeParameters)clone).items = context.CloneArray(this.items)!;
-        ((CGameCtnChallengeParameters)clone).legacyValidateGhosts = context.CloneArray(this.legacyValidateGhosts)!;
     }
 
     public CGameCtnChallengeParameters()
@@ -480,7 +508,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnGhost>(ref n.legacyValidateGhosts!);
+            n.legacyValidateGhosts = rw.ListNodeRef_deprec<CGameCtnGhost>(n.legacyValidateGhosts);
         }
     }
 
@@ -524,7 +552,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
+            rw.NodeRef(n.raceValidateGhostRef);
         }
     }
 
@@ -570,7 +598,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         {
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
+                rw.NodeRef(n.raceValidateGhostRef);
             });
         }
     }

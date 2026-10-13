@@ -34,6 +34,8 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0903A000;
 
+    internal override uint GetId() => Id;
+
     private Bitmap[]? textures;
     [AppliedWithChunk<Chunk0903A006>]
     [AppliedWithChunk<Chunk0903A013>]
@@ -273,18 +275,37 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     {
         public override uint Id => 0x0903A010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
-        public CPlugBitmap? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CPlugBitmap> U01Ref = new();
+        public CPlugBitmap? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0903A010 owner;
+            internal NodeRefView(Chunk0903A010 owner) => this.owner = owner;
+            public NodeRef<CPlugBitmap> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0903A010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0903A010)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CPlugMaterialCustom n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -314,17 +335,37 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     {
         public override uint Id => 0x0903A012;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0903A012 owner;
+            internal NodeRefView(Chunk0903A012 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0903A012)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0903A012)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CPlugMaterialCustom n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -478,21 +519,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
             set => this.u01 = value;
         }
 
-        private CMwNod? texture;
+        private NodeRef<CMwNod> textureRef = new();
         public CMwNod? Texture
         {
-            get => this.textureFile?.GetNode(ref this.texture) ?? this.texture;
-            set => this.texture = value;
+            get => textureRef.Resolve();
+            set => textureRef.SetEmbedded(value);
         }
-        private Components.GbxRefTableFile? textureFile;
-
-        public Components.GbxRefTableFile? TextureFile
-        {
-            get => textureFile;
-            set => textureFile = value;
-        }
-
-        public CMwNod? GetTexture(GbxReadSettings settings = default, bool exceptions = false) => textureFile?.GetNode(ref texture, settings, exceptions) ?? texture;
 
         private int u02;
         public int U02
@@ -508,6 +540,19 @@ public partial class CPlugMaterialCustom : CPlug, IClass
             set => this.u03 = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Bitmap owner;
+            internal NodeRefView(Bitmap owner) => this.owner = owner;
+            public NodeRef<CMwNod> Texture => owner.textureRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Texture", textureRef);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Bitmap)MemberwiseClone();
@@ -520,7 +565,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             ((Bitmap)clone).name = context.Clone(this.name)!;
             ((Bitmap)clone).u01 = context.Clone(this.u01)!;
-            ((Bitmap)clone).texture = context.Clone(this.texture)!;
+            ((Bitmap)clone).textureRef = context.Clone(this.textureRef)!;
             ((Bitmap)clone).u02 = context.Clone(this.u02)!;
             ((Bitmap)clone).u03 = context.Clone(this.u03)!;
         }
@@ -529,7 +574,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             rw.Id(ref this.name);
             rw.Int32(ref this.u01);
-            rw.NodeRef<CMwNod>(ref this.texture, ref this.textureFile);
+            rw.NodeRef(this.textureRef);
 
             if (v >= 1)
             {
@@ -565,7 +610,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             ((GpuFx)clone).U01 = context.Clone(this.U01)!;
             ((GpuFx)clone).U02 = context.Clone(this.U02)!;
-            ((GpuFx)clone).U03 = context.CloneArray(this.U03)!;
+            ((GpuFx)clone).U03 = context.CloneArray(this.U03, row0 => context.CloneArray(row0)!)!;
         }
     }
 

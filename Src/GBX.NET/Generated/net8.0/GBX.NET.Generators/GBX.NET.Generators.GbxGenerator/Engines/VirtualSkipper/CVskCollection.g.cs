@@ -34,6 +34,8 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     [Hexadecimal]
     public static new uint Id => 0x21085000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -49,20 +51,48 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     {
         public override uint Id => 0x21085000;
         public override GameVersion GameVersion => GameVersion.VSK5;
-        public CMwNod? U01;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CMwNod> U02Ref = new();
+        public CMwNod? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk21085000 owner;
+            internal NodeRefView(Chunk21085000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U02 => owner.U02Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield return new("U02", U02Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk21085000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk21085000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk21085000)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk21085000)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CVskCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
+            rw.NodeRef(U01Ref);
+            rw.NodeRef(U02Ref);
         }
     }
 

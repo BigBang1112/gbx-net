@@ -33,9 +33,7 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     CMwNod? NodeRef(CMwNod? value = default);
     void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value);
-    [return: NotNullIfNotNull(nameof(value))]
-    CMwNod? NodeRef(CMwNod? value, ref Components.GbxRefTableFile? file);
-    void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file);
+    void NodeRef<T>(NodeRef<T> reference) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
@@ -305,16 +303,6 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     }
 
     public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value) => value = NodeRef(value);
-
-    [return: NotNullIfNotNull(nameof(value))]
-    public CMwNod? NodeRef(CMwNod? value, ref Components.GbxRefTableFile? file)
-    {
-        if (Reader is not null) value = (CMwNod?)Reader.ReadNodeRef(out file);
-        Writer?.WriteNodeRef(value, file);
-        return value;
-    }
-
-    public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value, ref Components.GbxRefTableFile? file) => value = NodeRef(value, ref file);
 
     [return: NotNullIfNotNull(nameof(value))]
     public External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(value, length);

@@ -34,6 +34,8 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     [Hexadecimal]
     public static new uint Id => 0x0306E000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 radiusScale;
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]

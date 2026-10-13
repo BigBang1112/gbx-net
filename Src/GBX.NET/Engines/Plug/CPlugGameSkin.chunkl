@@ -50,3 +50,4 @@ archive HeaderFid
     bool MipMaps
 
 archive Fid
+  CMwNod Node

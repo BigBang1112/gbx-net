@@ -31,11 +31,8 @@ public partial class CPlugPrefab : IVersionable
 
     public sealed partial class EntRef
     {
-        private CMwNod? model;
-        public CMwNod? Model { get => modelFile?.GetNode(ref model) ?? model; set => model = value; }
-        private Components.GbxRefTableFile? modelFile;
-        public Components.GbxRefTableFile? ModelFile { get => modelFile; set => modelFile = value; }
-        public CMwNod? GetModel(GbxReadSettings settings = default, bool exceptions = false) => modelFile?.GetNode(ref model, settings, exceptions);
+
+        public CMwNod? Model { get => modelRef.Resolve(); set => modelRef.SetEmbedded(value); }
 
         private Quat rotation;
         public Quat Rotation { get => rotation; set => rotation = value; }
@@ -51,7 +48,7 @@ public partial class CPlugPrefab : IVersionable
 
         public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(ref model, ref modelFile);
+            rw.NodeRef(modelRef);
             rw.Quat(ref rotation);
             rw.Vec3(ref position);
 

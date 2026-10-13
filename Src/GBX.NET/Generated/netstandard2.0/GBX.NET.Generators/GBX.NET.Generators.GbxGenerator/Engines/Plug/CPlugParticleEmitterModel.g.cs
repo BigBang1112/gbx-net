@@ -34,12 +34,14 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B3000;
 
-    private External<CPlugParticleEmitterSubModel>[]? particleEmitterSubModels;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugParticleEmitterSubModel>? particleEmitterSubModels;
     [AppliedWithChunk<Chunk090B3000>]
-    public External<CPlugParticleEmitterSubModel>[]? ParticleEmitterSubModels
+    public NodeRefList<CPlugParticleEmitterSubModel>? ParticleEmitterSubModels
     {
-        get => this.particleEmitterSubModels;
-        set => this.particleEmitterSubModels = value;
+        get => particleEmitterSubModels;
+        set => particleEmitterSubModels = value;
     }
 
     private bool isSplashMode;
@@ -58,10 +60,34 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         set => this.shadowMapTexelSize = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugParticleEmitterModel owner;
+        internal NodeRefView(CPlugParticleEmitterModel owner) => this.owner = owner;
+        public ParticleEmitterSubModelsReferenceView ParticleEmitterSubModels => new(owner);
+    }
+    public readonly struct ParticleEmitterSubModelsReferenceView
+    {
+        private readonly CPlugParticleEmitterModel owner;
+        internal ParticleEmitterSubModelsReferenceView(CPlugParticleEmitterModel owner) => this.owner = owner;
+        public int Count => owner.particleEmitterSubModels?.Count ?? 0;
+        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.particleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (particleEmitterSubModels is not null)
+        {
+            for (var i = 0; i < particleEmitterSubModels.Count; i++) yield return new("ParticleEmitterSubModels" + "[" + i + "]", particleEmitterSubModels.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugParticleEmitterModel)clone).particleEmitterSubModels = context.CloneArray(this.particleEmitterSubModels)!;
+        ((CPlugParticleEmitterModel)clone).particleEmitterSubModels = context.Clone(this.particleEmitterSubModels)!;
         ((CPlugParticleEmitterModel)clone).isSplashMode = context.Clone(this.isSplashMode)!;
         ((CPlugParticleEmitterModel)clone).shadowMapTexelSize = context.Clone(this.shadowMapTexelSize)!;
     }
@@ -84,7 +110,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugParticleEmitterSubModel>(ref n.particleEmitterSubModels!);
+            n.particleEmitterSubModels = rw.ListNodeRef_deprec<CPlugParticleEmitterSubModel>(n.particleEmitterSubModels);
         }
     }
 

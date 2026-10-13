@@ -34,27 +34,34 @@ public partial class CPlugFxLightning : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090D8000;
 
-    private CPlugSound? sound;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSound> soundRef = new();
     [AppliedWithChunk<Chunk090D8000>]
     public CPlugSound? Sound
     {
-        get => this.soundFile?.GetNode(ref this.sound) ?? this.sound;
-        set => this.sound = value;
+        get => soundRef.Resolve();
+        set => soundRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? soundFile;
 
-    public Components.GbxRefTableFile? SoundFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => soundFile;
-        set => soundFile = value;
+        private readonly CPlugFxLightning owner;
+        internal NodeRefView(CPlugFxLightning owner) => this.owner = owner;
+        public NodeRef<CPlugSound> Sound => owner.soundRef;
     }
-
-    public CPlugSound? GetSound(GbxReadSettings settings = default, bool exceptions = false) => soundFile?.GetNode(ref sound, settings, exceptions) ?? sound;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Sound", soundRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugFxLightning)clone).sound = context.Clone(this.sound)!;
+        ((CPlugFxLightning)clone).soundRef = context.Clone(this.soundRef)!;
     }
 
     public CPlugFxLightning()
@@ -68,7 +75,8 @@ public partial class CPlugFxLightning : CPlug, IClass
         public override uint Id => 0x090D8000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public External<CFuncKeysReal>[]? U01;
+
+        public NodeRefList<CFuncKeysReal>? U01;
         public float U02;
         public float U03;
         public float U04;
@@ -78,11 +86,35 @@ public partial class CPlugFxLightning : CPlug, IClass
         public float U08;
         public float U09;
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090D8000 owner;
+            internal NodeRefView(Chunk090D8000 owner) => this.owner = owner;
+            public U01ReferenceView U01 => new(owner);
+        }
+        public readonly struct U01ReferenceView
+        {
+            private readonly Chunk090D8000 owner;
+            internal U01ReferenceView(Chunk090D8000 owner) => this.owner = owner;
+            public int Count => owner.U01?.Count ?? 0;
+            public NodeRef<CFuncKeysReal> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+            }
+            yield break;
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090D8000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090D8000)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090D8000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090D8000)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090D8000)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090D8000)clone).U04 = context.Clone(this.U04)!;
@@ -96,8 +128,8 @@ public partial class CPlugFxLightning : CPlug, IClass
         public override void ReadWrite(CPlugFxLightning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSound>(ref n.sound, ref n.soundFile);
-            rw.ArrayNodeRef_deprec<CFuncKeysReal>(ref U01!);
+            rw.NodeRef(n.soundRef);
+            U01 = rw.ListNodeRef_deprec<CFuncKeysReal>(U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);

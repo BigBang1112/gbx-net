@@ -34,6 +34,8 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
     [Hexadecimal]
     public static new uint Id => 0x0904A000;
 
+    internal override uint GetId() => Id;
+
     private Vertex2D[] vertices2D = [];
     [AppliedWithChunk<Chunk0904A000>]
     public Vertex2D[] Vertices2D

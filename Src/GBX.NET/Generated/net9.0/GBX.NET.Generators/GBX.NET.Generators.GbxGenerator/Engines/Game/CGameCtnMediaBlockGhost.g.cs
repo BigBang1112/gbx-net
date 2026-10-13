@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     [Hexadecimal]
     public static new uint Id => 0x030E5000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
@@ -54,14 +56,14 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         set => this.end = value;
     }
 
-    private CGameCtnGhost? ghostModel;
+    private NodeRef<CGameCtnGhost> ghostModelRef = new();
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>]
     public CGameCtnGhost? GhostModel
     {
-        get => this.ghostModel;
-        set => this.ghostModel = value;
+        get => ghostModelRef.Resolve();
+        set => ghostModelRef.SetEmbedded(value);
     }
 
     private float startOffset;
@@ -113,12 +115,26 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         set => this.trailIntensity = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockGhost owner;
+        internal NodeRefView(CGameCtnMediaBlockGhost owner) => this.owner = owner;
+        public NodeRef<CGameCtnGhost> GhostModel => owner.ghostModelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("GhostModel", ghostModelRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockGhost)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockGhost)clone).end = context.Clone(this.end)!;
-        ((CGameCtnMediaBlockGhost)clone).ghostModel = context.Clone(this.ghostModel)!;
+        ((CGameCtnMediaBlockGhost)clone).ghostModelRef = context.Clone(this.ghostModelRef)!;
         ((CGameCtnMediaBlockGhost)clone).startOffset = context.Clone(this.startOffset)!;
         ((CGameCtnMediaBlockGhost)clone).keys = context.CloneList(this.keys)!;
         ((CGameCtnMediaBlockGhost)clone).noDamage = context.Clone(this.noDamage)!;
@@ -159,7 +175,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+            rw.NodeRef(n.ghostModelRef);
         }
     }
 
@@ -179,7 +195,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+            rw.NodeRef(n.ghostModelRef);
             rw.Single(ref n.startOffset);
         }
     }
@@ -225,7 +241,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
                 rw.TimeSingle(ref n.end);
             }
 
-            rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+            rw.NodeRef(n.ghostModelRef);
             rw.Single(ref n.startOffset);
             rw.Boolean(ref n.noDamage);
 

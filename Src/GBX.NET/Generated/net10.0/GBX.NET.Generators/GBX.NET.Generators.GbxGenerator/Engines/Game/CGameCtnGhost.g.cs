@@ -37,6 +37,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     [Hexadecimal]
     public static new uint Id => 0x03092000;
 
+    internal override uint GetId() => Id;
+
     private int appearanceVersion;
     [AppliedWithChunk<Chunk03092000>(9)]
     public int AppearanceVersion
@@ -132,12 +134,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.recordingContext = value;
     }
 
-    private CPlugEntRecordData? recordData;
+    private NodeRef<CPlugEntRecordData> recordDataRef = new();
     [AppliedWithChunk<Chunk03092000>(5)]
     public CPlugEntRecordData? RecordData
     {
-        get => this.recordData;
-        set => this.recordData = value;
+        get => recordDataRef.Resolve();
+        set => recordDataRef.SetEmbedded(value);
     }
 
     private string? ghostTrigram;
@@ -467,12 +469,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.ghostUid128 = value;
     }
 
-    private CPlugTimedPixelArray[]? screenCaptures;
+    private NodeRefList<CPlugTimedPixelArray>? screenCaptures;
     [AppliedWithChunk<Chunk03092027>]
-    public CPlugTimedPixelArray[]? ScreenCaptures
+    public NodeRefList<CPlugTimedPixelArray>? ScreenCaptures
     {
-        get => this.screenCaptures;
-        set => this.screenCaptures = value;
+        get => screenCaptures;
+        set => screenCaptures = value;
     }
 
     private int[]? screenCaptureKeyframeIndices;
@@ -483,12 +485,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.screenCaptureKeyframeIndices = value;
     }
 
-    private CPlugTimedPixelArray[]? screenCaptures_Difference;
+    private NodeRefList<CPlugTimedPixelArray>? screenCaptures_Difference;
     [AppliedWithChunk<Chunk03092027>(3)]
-    public CPlugTimedPixelArray[]? ScreenCaptures_Difference
+    public NodeRefList<CPlugTimedPixelArray>? ScreenCaptures_Difference
     {
-        get => this.screenCaptures_Difference;
-        set => this.screenCaptures_Difference = value;
+        get => screenCaptures_Difference;
+        set => screenCaptures_Difference = value;
     }
 
     private string? validate_TitleId;
@@ -594,6 +596,44 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.walltimeEndTimestamp = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnGhost owner;
+        internal NodeRefView(CGameCtnGhost owner) => this.owner = owner;
+        public NodeRef<CPlugEntRecordData> RecordData => owner.recordDataRef;
+        public ScreenCapturesReferenceView ScreenCaptures => new(owner);
+        public ScreenCaptures_DifferenceReferenceView ScreenCaptures_Difference => new(owner);
+    }
+    public readonly struct ScreenCapturesReferenceView
+    {
+        private readonly CGameCtnGhost owner;
+        internal ScreenCapturesReferenceView(CGameCtnGhost owner) => this.owner = owner;
+        public int Count => owner.screenCaptures?.Count ?? 0;
+        public NodeRef<CPlugTimedPixelArray> this[int index] => (owner.screenCaptures ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct ScreenCaptures_DifferenceReferenceView
+    {
+        private readonly CGameCtnGhost owner;
+        internal ScreenCaptures_DifferenceReferenceView(CGameCtnGhost owner) => this.owner = owner;
+        public int Count => owner.screenCaptures_Difference?.Count ?? 0;
+        public NodeRef<CPlugTimedPixelArray> this[int index] => (owner.screenCaptures_Difference ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("RecordData", recordDataRef);
+        if (screenCaptures is not null)
+        {
+            for (var i = 0; i < screenCaptures.Count; i++) yield return new("ScreenCaptures" + "[" + i + "]", screenCaptures.GetReference(i));
+        }
+        if (screenCaptures_Difference is not null)
+        {
+            for (var i = 0; i < screenCaptures_Difference.Count; i++) yield return new("ScreenCaptures_Difference" + "[" + i + "]", screenCaptures_Difference.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -607,7 +647,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).ghostNickname = context.Clone(this.ghostNickname)!;
         ((CGameCtnGhost)clone).ghostAvatarName = context.Clone(this.ghostAvatarName)!;
         ((CGameCtnGhost)clone).recordingContext = context.Clone(this.recordingContext)!;
-        ((CGameCtnGhost)clone).recordData = context.Clone(this.recordData)!;
+        ((CGameCtnGhost)clone).recordDataRef = context.Clone(this.recordDataRef)!;
         ((CGameCtnGhost)clone).ghostTrigram = context.Clone(this.ghostTrigram)!;
         ((CGameCtnGhost)clone).ghostCountryPath = context.Clone(this.ghostCountryPath)!;
         ((CGameCtnGhost)clone).ghostClubTag = context.Clone(this.ghostClubTag)!;
@@ -645,9 +685,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).matchReplaySeparators = context.CloneArray(this.matchReplaySeparators)!;
         ((CGameCtnGhost)clone).steeringWheelSensitivity = context.Clone(this.steeringWheelSensitivity)!;
         ((CGameCtnGhost)clone).ghostUid128 = context.Clone(this.ghostUid128)!;
-        ((CGameCtnGhost)clone).screenCaptures = context.CloneArray(this.screenCaptures)!;
+        ((CGameCtnGhost)clone).screenCaptures = context.Clone(this.screenCaptures)!;
         ((CGameCtnGhost)clone).screenCaptureKeyframeIndices = context.CloneArray(this.screenCaptureKeyframeIndices)!;
-        ((CGameCtnGhost)clone).screenCaptures_Difference = context.CloneArray(this.screenCaptures_Difference)!;
+        ((CGameCtnGhost)clone).screenCaptures_Difference = context.Clone(this.screenCaptures_Difference)!;
         ((CGameCtnGhost)clone).validate_TitleId = context.Clone(this.validate_TitleId)!;
         ((CGameCtnGhost)clone).validate_TitleChecksum = context.Clone(this.validate_TitleChecksum)!;
         ((CGameCtnGhost)clone).validate_ScopeType = context.Clone(this.validate_ScopeType)!;
@@ -764,7 +804,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                     if (Version >= 5)
                     {
-                        rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
+                        rw.NodeRef(n.recordDataRef);
                         rw.Array<int>(ref U02!);
 
                         if (Version >= 6)
@@ -1557,7 +1597,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugTimedPixelArray>(ref n.screenCaptures!);
+            n.screenCaptures = rw.ListNodeRef<CPlugTimedPixelArray>(n.screenCaptures);
 
             if (Version >= 1)
             {
@@ -1565,7 +1605,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                 if (Version >= 3)
                 {
-                    rw.ArrayNodeRef<CPlugTimedPixelArray>(ref n.screenCaptures_Difference!);
+                    n.screenCaptures_Difference = rw.ListNodeRef<CPlugTimedPixelArray>(n.screenCaptures_Difference);
                 }
             }
         }

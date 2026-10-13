@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     [Hexadecimal]
     public static new uint Id => 0x0314A000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk0314A000>]
     public List<Key>? Keys

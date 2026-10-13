@@ -168,7 +168,7 @@ public class CGameItemPlacementParamLayoutTests
             await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
             await Assert.That(payload.Position).IsEqualTo(payload.Length);
         }
-        await Assert.That(node.PlacementClassFile).IsSameReferenceAs(file);
+        await Assert.That(node.References.PlacementClass.File).IsSameReferenceAs(file);
         await AssertRoundTrip(payload, rw =>
         {
             if (legacyChunk) new CGameItemPlacementParam.Chunk2E020003 { Version = 4 }.ReadWrite(node, rw);

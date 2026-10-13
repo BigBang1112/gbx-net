@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
     [Hexadecimal]
     public static new uint Id => 0x030AB000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030AB000>]
     public List<Key>? Keys

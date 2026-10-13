@@ -34,6 +34,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
     [Hexadecimal]
     public static new uint Id => 0x09103000;
 
+    internal override uint GetId() => Id;
+
     private string? bulletName;
     public string? BulletName
     {
@@ -223,18 +225,18 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         set => this.bulletShootingSound = value;
     }
 
-    private CPlugParticleEmitterSubModel[]? aliveParticleEmitterSubModels;
-    public CPlugParticleEmitterSubModel[]? AliveParticleEmitterSubModels
+    private NodeRefList<CPlugParticleEmitterSubModel>? aliveParticleEmitterSubModels;
+    public NodeRefList<CPlugParticleEmitterSubModel>? AliveParticleEmitterSubModels
     {
-        get => this.aliveParticleEmitterSubModels;
-        set => this.aliveParticleEmitterSubModels = value;
+        get => aliveParticleEmitterSubModels;
+        set => aliveParticleEmitterSubModels = value;
     }
 
-    private CPlugParticleEmitterSubModel[]? explosionParticleEmitterSubModels;
-    public CPlugParticleEmitterSubModel[]? ExplosionParticleEmitterSubModels
+    private NodeRefList<CPlugParticleEmitterSubModel>? explosionParticleEmitterSubModels;
+    public NodeRefList<CPlugParticleEmitterSubModel>? ExplosionParticleEmitterSubModels
     {
-        get => this.explosionParticleEmitterSubModels;
-        set => this.explosionParticleEmitterSubModels = value;
+        get => explosionParticleEmitterSubModels;
+        set => explosionParticleEmitterSubModels = value;
     }
 
     private float u05;
@@ -545,6 +547,42 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         set => this.u17 = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugCustomBulletModel owner;
+        internal NodeRefView(CPlugCustomBulletModel owner) => this.owner = owner;
+        public AliveParticleEmitterSubModelsReferenceView AliveParticleEmitterSubModels => new(owner);
+        public ExplosionParticleEmitterSubModelsReferenceView ExplosionParticleEmitterSubModels => new(owner);
+    }
+    public readonly struct AliveParticleEmitterSubModelsReferenceView
+    {
+        private readonly CPlugCustomBulletModel owner;
+        internal AliveParticleEmitterSubModelsReferenceView(CPlugCustomBulletModel owner) => this.owner = owner;
+        public int Count => owner.aliveParticleEmitterSubModels?.Count ?? 0;
+        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.aliveParticleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct ExplosionParticleEmitterSubModelsReferenceView
+    {
+        private readonly CPlugCustomBulletModel owner;
+        internal ExplosionParticleEmitterSubModelsReferenceView(CPlugCustomBulletModel owner) => this.owner = owner;
+        public int Count => owner.explosionParticleEmitterSubModels?.Count ?? 0;
+        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.explosionParticleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (aliveParticleEmitterSubModels is not null)
+        {
+            for (var i = 0; i < aliveParticleEmitterSubModels.Count; i++) yield return new("AliveParticleEmitterSubModels" + "[" + i + "]", aliveParticleEmitterSubModels.GetReference(i));
+        }
+        if (explosionParticleEmitterSubModels is not null)
+        {
+            for (var i = 0; i < explosionParticleEmitterSubModels.Count; i++) yield return new("ExplosionParticleEmitterSubModels" + "[" + i + "]", explosionParticleEmitterSubModels.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -575,8 +613,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         ((CPlugCustomBulletModel)clone).bulletAliveSound = context.Clone(this.bulletAliveSound)!;
         ((CPlugCustomBulletModel)clone).bulletExplosionSound = context.Clone(this.bulletExplosionSound)!;
         ((CPlugCustomBulletModel)clone).bulletShootingSound = context.Clone(this.bulletShootingSound)!;
-        ((CPlugCustomBulletModel)clone).aliveParticleEmitterSubModels = context.CloneArray(this.aliveParticleEmitterSubModels)!;
-        ((CPlugCustomBulletModel)clone).explosionParticleEmitterSubModels = context.CloneArray(this.explosionParticleEmitterSubModels)!;
+        ((CPlugCustomBulletModel)clone).aliveParticleEmitterSubModels = context.Clone(this.aliveParticleEmitterSubModels)!;
+        ((CPlugCustomBulletModel)clone).explosionParticleEmitterSubModels = context.Clone(this.explosionParticleEmitterSubModels)!;
         ((CPlugCustomBulletModel)clone).u05 = context.Clone(this.u05)!;
         ((CPlugCustomBulletModel)clone).u06 = context.Clone(this.u06)!;
         ((CPlugCustomBulletModel)clone).u07 = context.Clone(this.u07)!;
@@ -656,8 +694,8 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         rw.Id(ref this.bulletAliveSound);
         rw.Id(ref this.bulletExplosionSound);
         rw.Id(ref this.bulletShootingSound);
-        rw.ArrayNodeRef_deprec<CPlugParticleEmitterSubModel>(ref this.aliveParticleEmitterSubModels!);
-        rw.ArrayNodeRef_deprec<CPlugParticleEmitterSubModel>(ref this.explosionParticleEmitterSubModels!);
+        this.aliveParticleEmitterSubModels = rw.ListNodeRef_deprec<CPlugParticleEmitterSubModel>(this.aliveParticleEmitterSubModels);
+        this.explosionParticleEmitterSubModels = rw.ListNodeRef_deprec<CPlugParticleEmitterSubModel>(this.explosionParticleEmitterSubModels);
 
         if (v >= 1)
         {

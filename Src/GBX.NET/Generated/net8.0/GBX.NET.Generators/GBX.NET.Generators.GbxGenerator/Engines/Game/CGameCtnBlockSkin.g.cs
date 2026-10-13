@@ -34,6 +34,8 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03059000;
 
+    internal override uint GetId() => Id;
+
     private string? text;
     [AppliedWithChunk<Chunk03059000>]
     [AppliedWithChunk<Chunk03059001>]

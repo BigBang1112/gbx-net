@@ -34,6 +34,8 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x0909F000;
 
+    internal override uint GetId() => Id;
+
     private float fovY;
     [AppliedWithChunk<Chunk0909F000>]
     public float FovY
@@ -50,29 +52,36 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
         set => this.opacity = value;
     }
 
-    private CPlugBitmap? bitmapToModulate;
+    private NodeRef<CPlugBitmap> bitmapToModulateRef = new();
     [AppliedWithChunk<Chunk0909F000>]
     public CPlugBitmap? BitmapToModulate
     {
-        get => this.bitmapToModulateFile?.GetNode(ref this.bitmapToModulate) ?? this.bitmapToModulate;
-        set => this.bitmapToModulate = value;
+        get => bitmapToModulateRef.Resolve();
+        set => bitmapToModulateRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? bitmapToModulateFile;
 
-    public Components.GbxRefTableFile? BitmapToModulateFile
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
     {
-        get => bitmapToModulateFile;
-        set => bitmapToModulateFile = value;
+        private readonly CPlugBitmapRenderLightOcc owner;
+        internal NodeRefView(CPlugBitmapRenderLightOcc owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapToModulate => owner.bitmapToModulateRef;
+        public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
     }
-
-    public CPlugBitmap? GetBitmapToModulate(GbxReadSettings settings = default, bool exceptions = false) => bitmapToModulateFile?.GetNode(ref bitmapToModulate, settings, exceptions) ?? bitmapToModulate;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BitmapToModulate", bitmapToModulateRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugBitmapRenderLightOcc)clone).fovY = context.Clone(this.fovY)!;
         ((CPlugBitmapRenderLightOcc)clone).opacity = context.Clone(this.opacity)!;
-        ((CPlugBitmapRenderLightOcc)clone).bitmapToModulate = context.Clone(this.bitmapToModulate)!;
+        ((CPlugBitmapRenderLightOcc)clone).bitmapToModulateRef = context.Clone(this.bitmapToModulateRef)!;
     }
 
     public CPlugBitmapRenderLightOcc()
@@ -95,7 +104,7 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
         {
             rw.Single(ref n.fovY);
             rw.Single(ref n.opacity);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapToModulate, ref n.bitmapToModulateFile);
+            rw.NodeRef(n.bitmapToModulateRef);
         }
     }
 

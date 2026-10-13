@@ -84,8 +84,7 @@ public partial interface IGbxReader : IDisposable
     PackDesc ReadPackDesc();
     T? ReadNodeRef<T>() where T : IClass;
     [IgnoreForCodeGeneration] IClass? ReadNodeRef();
-    T? ReadNodeRef<T>(out GbxRefTableFile? file) where T : IClass;
-    [IgnoreForCodeGeneration] IClass? ReadNodeRef(out GbxRefTableFile? file);
+    [IgnoreForCodeGeneration] NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod;
     T? ReadNode<T>() where T : IClass, new();
     T? ReadMetaRef<T>() where T : IClass;
     TimeInt32 ReadTimeInt32();
@@ -132,9 +131,8 @@ public partial interface IGbxReader : IDisposable
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
     T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass;
-    List<T?> ReadListNodeRef<T>(int length) where T : IClass;
-    List<T?> ReadListNodeRef<T>() where T : IClass;
-    List<T?> ReadListNodeRef_deprec<T>() where T : IClass;
+    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod;
+    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
@@ -396,7 +394,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
     }
-    
+
     public BigInteger ReadBigInt(int byteLength)
     {
         if (byteLength == 0)
@@ -725,7 +723,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             },
             _ => throw new SerializationModeNotSupportedException(Mode),
         };
-        
+
         bool GbxBinary()
         {
             var booleanAsInt = base.ReadUInt32();
@@ -846,7 +844,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             default:
                 throw new SerializationModeNotSupportedException(Mode);
         }
-        
+
     }
 
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
@@ -1022,9 +1020,9 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new PackDesc(filePath, checksum, locatorUrl);
     }
 
-    public T? ReadNodeRef<T>(out GbxRefTableFile? file) where T : IClass
+    public T? ReadNodeRef<T>() where T : IClass
     {
-        var node = ReadNodeRef(out file);
+        var node = ReadNodeRef();
 
         if (node is null)
         {
@@ -1040,104 +1038,17 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     }
 
     [IgnoreForCodeGeneration]
-    public IClass? ReadNodeRef(out GbxRefTableFile? file)
-    {
-        var index = default(int?);
-
-        if (encapsulation is null)
-        {
-            index = ReadInt32();
-
-            if (index == -1)
-            {
-                file = null;
-                return default;
-            }
-
-            if (NodeDict.TryGetValue(index.Value, out var existingNode))
-            {
-                logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
-
-                if (existingNode is GbxRefTableFile nodeFile)
-                {
-                    file = nodeFile;
-                    return default;
-                }
-
-                file = null;
-                return (IClass)existingNode;
-            }
-
-            if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
-            {
-                logger?.LogDebug("NodeRef #{Index}: {ExternalNode} (external)", index.Value, externalNode);
-
-                file = externalNode as GbxRefTableFile;
-                return default;
-            }
-        }
-
-        file = null;
-
-        var rawClassId = ReadUInt32();
-
-        if (encapsulation is not null && rawClassId == uint.MaxValue)
-        {
-            return default;
-        }
-
-        var classId = ClassManager.Wrap(rawClassId);
-
-        if (logger is not null)
-        {
-            if (classId == rawClassId)
-            {
-                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName})", index, classId, ClassManager.GetName(classId));
-            }
-            else
-            {
-                logger.LogDebug("NodeRef #{Index}: 0x{ClassId:X8} ({ClassName}, raw: 0x{RawClassId:X8})", index, classId, ClassManager.GetName(classId), rawClassId);
-            }
-        }
-
-        var node = ClassManager.New(classId) ?? throw new Exception($"Unknown class ID: 0x{classId:X8} ({ClassManager.GetName(classId) ?? "unknown class name"})");
-
-        if (index.HasValue)
-        {
-            if (logger is not null && NodeDict.TryGetValue(index.Value, out var existingNode))
-            {
-                logger.LogWarning("NodeRef #{Index}: {ExistingNode} (existing was overwriten!)", index.Value, existingNode);
-            }
-
-            NodeDict[index.Value] = node;
-        }
-
-        return ReadNode(node);
-    }
-
-    public T? ReadNodeRef<T>() where T : IClass
-    {
-        var node = ReadNodeRef<T>(out var file);
-
-        if (file is not null)
-        {
-            logger?.LogWarning("Reference table file discard: {File} {StackTrace}", file, Environment.StackTrace);
-        }
-
-        return node;
-    }
-
-    [IgnoreForCodeGeneration]
     public IClass? ReadNodeRef()
     {
-        var node = ReadNodeRef(out var file);
-
-        if (file is not null)
+        var reference = ReadNodeRef<CMwNod>(null);
+        if (reference.Resource is not null)
+            throw new NotSupportedException("Use the NodeRef<T> overload of ReadNodeRef to retain external resources.");
+        if (reference.File is { } file)
         {
             logger?.LogWarning("Reference table file discard: {File} {StackTrace}", file, Environment.StackTrace);
         }
 
-        return node;
+        return reference.CachedTarget;
     }
 
     public T? ReadNode<T>() where T : IClass, new()
@@ -1450,16 +1361,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         {
             return [];
         }
-        
+
         EnsureValidLength(length);
-        
+
         var array = new Vec3[length];
-        
+
         for (int i = 0; i < length; i++)
         {
             array[i] = ReadVec3_10b();
         }
-        
+
         return array;
     }
 
@@ -1696,31 +1607,12 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass
         => ReadJaggedArrayRows(length => ReadArrayNodeRef<T>(length), innerLength, outerLength);
 
-    public List<T?> ReadListNodeRef<T>(int length) where T : IClass
+    private External<T> ReadExternalNodeRef<T>() where T : CMwNod
     {
-        if (length == 0)
-        {
-            return [];
-        }
-
-        EnsureValidLength(length);
-
-        var list = new List<T?>(length);
-
-        for (var i = 0; i < length; i++)
-        {
-            list.Add(ReadNodeRef<T>());
-        }
-
-        return list;
-    }
-
-    public List<T?> ReadListNodeRef<T>() where T : IClass => ReadListNodeRef<T>(ReadInt32());
-
-    public List<T?> ReadListNodeRef_deprec<T>() where T : IClass
-    {
-        ReadDeprecVersion();
-        return ReadListNodeRef<T>();
+        var reference = ReadNodeRef<T>(null);
+        if (reference.Resource is not null)
+            throw new NotSupportedException("Use NodeRef<T> or NodeRefList<T> to retain external resources.");
+        return new(reference.CachedTarget, reference.File);
     }
 
     public External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod
@@ -1736,8 +1628,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         for (var i = 0; i < length; i++)
         {
-            var node = ReadNodeRef<T>(out var file);
-            array[i] = new(node, file);
+            array[i] = ReadExternalNodeRef<T>();
         }
 
         return array;
@@ -1767,8 +1658,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         for (var i = 0; i < length; i++)
         {
-            var node = ReadNodeRef<T>(out var file);
-            list.Add(new(node, file));
+            list.Add(ReadExternalNodeRef<T>());
         }
 
         return list;

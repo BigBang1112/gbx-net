@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     [Hexadecimal]
     public static new uint Id => 0x0312A000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk0312A000>]
     [AppliedWithChunk<Chunk0312A001>]
@@ -52,12 +54,12 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         set => this.end = value;
     }
 
-    private CPlugFileTextScript? script;
+    private NodeRef<CPlugFileTextScript> scriptRef = new();
     [AppliedWithChunk<Chunk0312A000>]
     public CPlugFileTextScript? Script
     {
-        get => this.script;
-        set => this.script = value;
+        get => scriptRef.Resolve();
+        set => scriptRef.SetEmbedded(value);
     }
 
     private string? manialinkUrl;
@@ -68,12 +70,26 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         set => this.manialinkUrl = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockManialink owner;
+        internal NodeRefView(CGameCtnMediaBlockManialink owner) => this.owner = owner;
+        public NodeRef<CPlugFileTextScript> Script => owner.scriptRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Script", scriptRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockManialink)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockManialink)clone).end = context.Clone(this.end)!;
-        ((CGameCtnMediaBlockManialink)clone).script = context.Clone(this.script)!;
+        ((CGameCtnMediaBlockManialink)clone).scriptRef = context.Clone(this.scriptRef)!;
         ((CGameCtnMediaBlockManialink)clone).manialinkUrl = context.Clone(this.manialinkUrl)!;
     }
 
@@ -107,7 +123,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CPlugFileTextScript>(ref n.script);
+            rw.NodeRef(n.scriptRef);
         }
     }
 

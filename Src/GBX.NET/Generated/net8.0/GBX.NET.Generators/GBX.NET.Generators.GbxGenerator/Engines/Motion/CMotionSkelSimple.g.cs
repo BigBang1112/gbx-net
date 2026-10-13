@@ -34,18 +34,34 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x08036000;
 
-    private CFuncSkelValues? skelValues;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CFuncSkelValues> skelValuesRef = new();
     [AppliedWithChunk<Chunk08036000>]
     public CFuncSkelValues? SkelValues
     {
-        get => this.skelValues;
-        set => this.skelValues = value;
+        get => skelValuesRef.Resolve();
+        set => skelValuesRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionSkelSimple owner;
+        internal NodeRefView(CMotionSkelSimple owner) => this.owner = owner;
+        public NodeRef<CFuncSkelValues> SkelValues => owner.skelValuesRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("SkelValues", skelValuesRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionSkelSimple)clone).skelValues = context.Clone(this.skelValues)!;
+        ((CMotionSkelSimple)clone).skelValuesRef = context.Clone(this.skelValuesRef)!;
     }
 
     public CMotionSkelSimple()
@@ -66,7 +82,7 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionSkelSimple n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncSkelValues>(ref n.skelValues);
+            rw.NodeRef(n.skelValuesRef);
         }
     }
 

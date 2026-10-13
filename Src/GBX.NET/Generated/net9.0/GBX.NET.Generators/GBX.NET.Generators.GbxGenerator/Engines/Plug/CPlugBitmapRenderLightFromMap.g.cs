@@ -34,6 +34,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x09021000;
 
+    internal override uint GetId() => Id;
+
     private int objectCountPerAxisMin;
     [AppliedWithChunk<Chunk09021001>]
     public int ObjectCountPerAxisMin

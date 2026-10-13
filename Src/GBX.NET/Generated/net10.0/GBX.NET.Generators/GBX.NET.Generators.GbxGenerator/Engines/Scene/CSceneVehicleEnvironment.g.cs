@@ -34,18 +34,44 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A033000;
 
-    private External<CPlugMaterial>[]? materials;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugMaterial>? materials;
     [AppliedWithChunk<Chunk0A033002>]
-    public External<CPlugMaterial>[]? Materials
+    public NodeRefList<CPlugMaterial>? Materials
     {
-        get => this.materials;
-        set => this.materials = value;
+        get => materials;
+        set => materials = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneVehicleEnvironment owner;
+        internal NodeRefView(CSceneVehicleEnvironment owner) => this.owner = owner;
+        public MaterialsReferenceView Materials => new(owner);
+    }
+    public readonly struct MaterialsReferenceView
+    {
+        private readonly CSceneVehicleEnvironment owner;
+        internal MaterialsReferenceView(CSceneVehicleEnvironment owner) => this.owner = owner;
+        public int Count => owner.materials?.Count ?? 0;
+        public NodeRef<CPlugMaterial> this[int index] => (owner.materials ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (materials is not null)
+        {
+            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneVehicleEnvironment)clone).materials = context.CloneArray(this.materials)!;
+        ((CSceneVehicleEnvironment)clone).materials = context.Clone(this.materials)!;
     }
 
     public CSceneVehicleEnvironment()
@@ -86,7 +112,7 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
 
         public override void ReadWrite(CSceneVehicleEnvironment n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CPlugMaterial>(ref n.materials!);
+            n.materials = rw.ListNodeRef<CPlugMaterial>(n.materials);
         }
     }
 

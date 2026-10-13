@@ -130,29 +130,29 @@ public partial class CGameCtnReplayRecord
     /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
     [AppliedWithChunk<Chunk03093004>]
     [AppliedWithChunk<Chunk03093014>]
-    public ImmutableList<CGameCtnGhost>? Ghosts { get; private set; }
+    public NodeRefList<CGameCtnGhost>? Ghosts {  get => ghosts; private set => ghosts = value; }
 
     /// <summary>
     /// MediaTracker clip of the replay.
     /// </summary>
     [AppliedWithChunk<Chunk0309300C>]
     [AppliedWithChunk<Chunk03093015>]
-    public CGameCtnMediaClip? Clip { get; private set; }
+    public CGameCtnMediaClip? Clip {  get => clipRef.Resolve(); private set => clipRef.SetEmbedded(value); }
 
     [AppliedWithChunk<Chunk03093024>(1)]
-    public CPlugEntRecordData? RecordData { get; private set; }
+    public CPlugEntRecordData? RecordData {  get => recordDataRef.Resolve(); private set => recordDataRef.SetEmbedded(value); }
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
     [AppliedWithChunk<Chunk0309300E>]
-    public CCtnMediaBlockEventTrackMania? Events { get; private set; }
+    public CCtnMediaBlockEventTrackMania? Events {  get => eventsRef.Resolve(); private set => eventsRef.SetEmbedded(value); }
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
     [AppliedWithChunk<Chunk03093010>]
-    public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay { get; private set; }
+    public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay {  get => simpleEventsDisplayRef.Resolve(); private set => simpleEventsDisplayRef.SetEmbedded(value); }
 
     /// <summary>
     /// Duration of events in the replay (range of detected inputs). This can be <see cref="TimeInt32.Zero"/> if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
@@ -184,7 +184,7 @@ public partial class CGameCtnReplayRecord
     public ImmutableList<EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts { get; private set; }
 
     [AppliedWithChunk<Chunk03093029>]
-    public CGameCtnChallengeParameters? ChallengeParameters { get; private set; }
+    public CGameCtnChallengeParameters? ChallengeParameters {  get => challengeParametersRef.Resolve(); private set => challengeParametersRef.SetEmbedded(value); }
 
     [AppliedWithChunk<Chunk0309301E>]
     public ImmutableList<CGameActionModel>? ActionModels { get; private set; }
@@ -199,7 +199,7 @@ public partial class CGameCtnReplayRecord
     public ImmutableList<PackDesc>? ItemSkins { get; private set; }
 
     [AppliedWithChunk<Chunk0309301F>(1, 1)]
-    public CGameReplayObjectVisData? SceneryObjects { get; private set; }
+    public CGameReplayObjectVisData? SceneryObjects {  get => sceneryObjectsRef.Resolve(); private set => sceneryObjectsRef.SetEmbedded(value); }
 
     [AppliedWithChunk<Chunk03093023>(0, 0)]
     public ImmutableList<BonusBumpKey>? BonusBumpKeys { get; private set; }
@@ -367,7 +367,7 @@ public partial class CGameCtnReplayRecord
 
             // All control names available in the game
             Span<string> inputNames = new string[r.ReadInt32()];
-            
+
             for (var i = 0; i < inputNames.Length; i++)
             {
                 // Maybe bindings
@@ -418,7 +418,7 @@ public partial class CGameCtnReplayRecord
         {
             Version = r.ReadInt32();
 
-            n.Ghosts = ImmutableList.Create(r.ReadArrayNodeRef_deprec<CGameCtnGhost>())!;
+            n.Ghosts = r.ReadListNodeRef_deprec<CGameCtnGhost>();
 
             U01 = r.ReadInt32(); // CGameReplayObjectVisData something, millisecond length of something (usually record time + 0.5s)
             U02 = ImmutableArray.Create(r.ReadArray<long>()); // SRecordUnit/SOldShowTime array
@@ -477,22 +477,21 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk0309300A
     {
-        public CGameCtnMediaTrack?[]? U01;
+        public NodeRefList<CGameCtnMediaTrack>? U01;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            U01 = r.ReadArrayNodeRef_deprec<CGameCtnMediaTrack>();
+            U01 = r.ReadListNodeRef_deprec<CGameCtnMediaTrack>();
         }
     }
 
     public partial class Chunk0309300B
     {
         // CFuncSegment in the native archive; its class layout is not supported yet.
-        public CMwNod? HumanTimeToGameTimeFunc;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            HumanTimeToGameTimeFunc = r.ReadNodeRef<CMwNod>();
+            r.ReadNodeRef(HumanTimeToGameTimeFuncRef);
         }
     }
 
@@ -500,7 +499,7 @@ public partial class CGameCtnReplayRecord
     {
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
+            r.ReadNodeRef(n.clipRef);
         }
     }
 
@@ -562,7 +561,7 @@ public partial class CGameCtnReplayRecord
     {
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Events = r.ReadNodeRef<CCtnMediaBlockEventTrackMania>();
+            r.ReadNodeRef(n.eventsRef);
         }
     }
 
@@ -595,7 +594,7 @@ public partial class CGameCtnReplayRecord
     {
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.SimpleEventsDisplay = r.ReadNodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>();
+            r.ReadNodeRef(n.simpleEventsDisplayRef);
         }
     }
 
@@ -635,7 +634,7 @@ public partial class CGameCtnReplayRecord
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Ghosts = ImmutableList.Create(r.ReadArrayNodeRef_deprec<CGameCtnGhost>())!;
+            n.Ghosts = r.ReadListNodeRef_deprec<CGameCtnGhost>();
             r.ReadInt32(); // always zero
             U01 = ImmutableArray.Create(r.ReadArray<long>()); // SRecordUnit/SOldShowTime array
         }
@@ -645,37 +644,31 @@ public partial class CGameCtnReplayRecord
     {
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
+            r.ReadNodeRef(n.clipRef);
         }
     }
 
     public partial class Chunk03093016
     {
-        public CPlugDataTape? U01;
-        public CPlugDataTape? U02;
-        public CPlugDataTape? U03;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            U01 = r.ReadNodeRef<CPlugDataTape>();
-            U02 = r.ReadNodeRef<CPlugDataTape>();
-            U03 = r.ReadNodeRef<CPlugDataTape>();
+            r.ReadNodeRef(U01Ref);
+            r.ReadNodeRef(U02Ref);
+            r.ReadNodeRef(U03Ref);
         }
     }
 
     public partial class Chunk03093017
     {
-        public CPlugDataTape? U01;
-        public CPlugDataTape? U02;
-        public CPlugDataTape? U03;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             r.ReadEncapsulated(inner =>
             {
-                U01 = inner.ReadNodeRef<CPlugDataTape>();
-                U02 = inner.ReadNodeRef<CPlugDataTape>();
-                U03 = inner.ReadNodeRef<CPlugDataTape>();
+                inner.ReadNodeRef(U01Ref);
+                inner.ReadNodeRef(U02Ref);
+                inner.ReadNodeRef(U03Ref);
             });
         }
     }
@@ -713,12 +706,11 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk0309301A
     {
-        public CPlugDataTape? U02;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             base.Read(n, r);
-            U02 = r.ReadNodeRef<CPlugDataTape>();
+            r.ReadNodeRef(U02Ref);
             n.SceneryCapturableCount = r.ReadInt32();
         }
     }
@@ -827,7 +819,7 @@ public partial class CGameCtnReplayRecord
                     U01 = r.ReadArrayReadable<AnchoredObjectInfo>();
                     break;
                 case 1:
-                    n.SceneryObjects = r.ReadNodeRef<CGameReplayObjectVisData>();
+                    r.ReadNodeRef(n.sceneryObjectsRef);
                     break;
                 default:
                     throw new ChunkVersionNotSupportedException(Version);
@@ -909,7 +901,6 @@ public partial class CGameCtnReplayRecord
     public partial class Chunk03093023 : IVersionable
     {
         public int Version { get; set; }
-        public CPlugDataTape? U01;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
@@ -919,7 +910,7 @@ public partial class CGameCtnReplayRecord
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            U01 = r.ReadNodeRef<CPlugDataTape>();
+            r.ReadNodeRef(U01Ref);
             n.BonusBumpKeys = r.ReadArrayReadable<BonusBumpKey>().ToImmutableList();
         }
     }
@@ -928,15 +919,13 @@ public partial class CGameCtnReplayRecord
     {
         public int Version { get; set; }
 
-        public CPlugDataTape? U01;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadNodeRef<CPlugDataTape>();
+            r.ReadNodeRef(U01Ref);
             if (Version >= 1)
             {
-                n.RecordData = r.ReadNodeRef<CPlugEntRecordData>();
+                r.ReadNodeRef(n.recordDataRef);
             }
         }
     }
@@ -1007,7 +996,7 @@ public partial class CGameCtnReplayRecord
     {
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            n.ChallengeParameters = r.ReadNodeRef<CGameCtnChallengeParameters>();
+            r.ReadNodeRef(n.challengeParametersRef);
         }
     }
 

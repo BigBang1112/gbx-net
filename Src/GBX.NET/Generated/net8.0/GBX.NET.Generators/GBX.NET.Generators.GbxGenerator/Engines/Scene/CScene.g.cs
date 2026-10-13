@@ -34,20 +34,22 @@ public abstract partial class CScene : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A001000;
 
-    private CSceneConfig? sceneConfig;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CSceneConfig> sceneConfigRef = new();
     [AppliedWithChunk<Chunk0A001003>]
     public CSceneConfig? SceneConfig
     {
-        get => this.sceneConfig;
-        set => this.sceneConfig = value;
+        get => sceneConfigRef.Resolve();
+        set => sceneConfigRef.SetEmbedded(value);
     }
 
-    private External<CMotionManager>[]? motionManagerModels;
+    private NodeRefList<CMotionManager>? motionManagerModels;
     [AppliedWithChunk<Chunk0A001005>]
-    public External<CMotionManager>[]? MotionManagerModels
+    public NodeRefList<CMotionManager>? MotionManagerModels
     {
-        get => this.motionManagerModels;
-        set => this.motionManagerModels = value;
+        get => motionManagerModels;
+        set => motionManagerModels = value;
     }
 
     private OldSceneMobil[]? oldMobils;
@@ -58,11 +60,37 @@ public abstract partial class CScene : CMwNod, IClass
         set => this.oldMobils = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CScene owner;
+        internal NodeRefView(CScene owner) => this.owner = owner;
+        public NodeRef<CSceneConfig> SceneConfig => owner.sceneConfigRef;
+        public MotionManagerModelsReferenceView MotionManagerModels => new(owner);
+    }
+    public readonly struct MotionManagerModelsReferenceView
+    {
+        private readonly CScene owner;
+        internal MotionManagerModelsReferenceView(CScene owner) => this.owner = owner;
+        public int Count => owner.motionManagerModels?.Count ?? 0;
+        public NodeRef<CMotionManager> this[int index] => (owner.motionManagerModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("SceneConfig", sceneConfigRef);
+        if (motionManagerModels is not null)
+        {
+            for (var i = 0; i < motionManagerModels.Count; i++) yield return new("MotionManagerModels" + "[" + i + "]", motionManagerModels.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CScene)clone).sceneConfig = context.Clone(this.sceneConfig)!;
-        ((CScene)clone).motionManagerModels = context.CloneArray(this.motionManagerModels)!;
+        ((CScene)clone).sceneConfigRef = context.Clone(this.sceneConfigRef)!;
+        ((CScene)clone).motionManagerModels = context.Clone(this.motionManagerModels)!;
         ((CScene)clone).oldMobils = context.CloneArray(this.oldMobils)!;
     }
 
@@ -84,7 +112,7 @@ public abstract partial class CScene : CMwNod, IClass
 
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneConfig>(ref n.sceneConfig);
+            rw.NodeRef(n.sceneConfigRef);
         }
     }
 
@@ -122,7 +150,7 @@ public abstract partial class CScene : CMwNod, IClass
 
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CMotionManager>(ref n.motionManagerModels!);
+            n.motionManagerModels = rw.ListNodeRef_deprec<CMotionManager>(n.motionManagerModels);
         }
     }
 
@@ -147,37 +175,34 @@ public abstract partial class CScene : CMwNod, IClass
 
     public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CMwNod? u01;
+        private NodeRef<CMwNod> u01Ref = new();
         public CMwNod? U01
         {
-            get => this.u01File?.GetNode(ref this.u01) ?? this.u01;
-            set => this.u01 = value;
-        }
-        private Components.GbxRefTableFile? u01File;
-
-        public Components.GbxRefTableFile? U01File
-        {
-            get => u01File;
-            set => u01File = value;
+            get => u01Ref.Resolve();
+            set => u01Ref.SetEmbedded(value);
         }
 
-        public CMwNod? GetU01(GbxReadSettings settings = default, bool exceptions = false) => u01File?.GetNode(ref u01, settings, exceptions) ?? u01;
-
-        private CMwNod? u02;
+        private NodeRef<CMwNod> u02Ref = new();
         public CMwNod? U02
         {
-            get => this.u02File?.GetNode(ref this.u02) ?? this.u02;
-            set => this.u02 = value;
+            get => u02Ref.Resolve();
+            set => u02Ref.SetEmbedded(value);
         }
-        private Components.GbxRefTableFile? u02File;
 
-        public Components.GbxRefTableFile? U02File
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
         {
-            get => u02File;
-            set => u02File = value;
+            private readonly OldSceneMobil owner;
+            internal NodeRefView(OldSceneMobil owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.u01Ref;
+            public NodeRef<CMwNod> U02 => owner.u02Ref;
         }
-
-        public CMwNod? GetU02(GbxReadSettings settings = default, bool exceptions = false) => u02File?.GetNode(ref u02, settings, exceptions) ?? u02;
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U01", u01Ref);
+            yield return new("U02", u02Ref);
+            yield break;
+        }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -189,14 +214,14 @@ public abstract partial class CScene : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((OldSceneMobil)clone).u01 = context.Clone(this.u01)!;
-            ((OldSceneMobil)clone).u02 = context.Clone(this.u02)!;
+            ((OldSceneMobil)clone).u01Ref = context.Clone(this.u01Ref)!;
+            ((OldSceneMobil)clone).u02Ref = context.Clone(this.u02Ref)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef<CMwNod>(ref this.u01, ref this.u01File);
-            rw.NodeRef<CMwNod>(ref this.u02, ref this.u02File);
+            rw.NodeRef(this.u01Ref);
+            rw.NodeRef(this.u02Ref);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

@@ -176,9 +176,9 @@ internal static class ObjExporter
             }
 
             string materialName;
-            if (t.ShaderFile is not null)
+            if (t.References.Shader.File is not null)
             {
-                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+                materialName = GbxPath.GetFileNameWithoutExtension(t.References.Shader.File.FilePath);
             }
             else if (t.Shader is not null)
             {
@@ -321,9 +321,9 @@ internal static class ObjExporter
             }
 
             string materialName;
-            if (t.ShaderFile is not null)
+            if (t.References.Shader.File is not null)
             {
-                materialName = GbxPath.GetFileNameWithoutExtension(t.ShaderFile.FilePath);
+                materialName = GbxPath.GetFileNameWithoutExtension(t.References.Shader.File.FilePath);
             }
             else if (t.Shader is not null)
             {
@@ -522,14 +522,14 @@ internal static class ObjExporter
             {
                 continue;
             }
-            
+
             if (visual.IndexBuffer is null)
             {
                 continue;
             }
 
             var materialName = GetMaterialName(solid, geom.MaterialIndex);
-            
+
             objWriter.WriteLine("g {0}", materialName);
             objWriter.WriteLine("usemtl {0}", materialName);
 
@@ -542,12 +542,12 @@ internal static class ObjExporter
                 {
                     continue;
                 }
-                
+
                 if (triangleCounter % 3 == 0)
                 {
                     objWriter.Write('f');
                 }
-                
+
                 var v = positions?[index] ?? visual.Vertices[index].Position;
 
                 var uv = visual.TexCoords.Length == 0
@@ -581,10 +581,10 @@ internal static class ObjExporter
         {
             return customMaterials[materialIndex].MaterialUserInst?.Link ?? "Unknown";
         }
-        
+
         if (solid.Materials is { Length: > 0 } materialsArray)
         {
-            return GbxPath.GetFileNameWithoutExtension(materialsArray[materialIndex].File?.FilePath) ?? "Unknown";
+            return GbxPath.GetFileNameWithoutExtension(materialsArray.GetReference(materialIndex).File?.FilePath) ?? "Unknown";
         }
 
         if (solid.MaterialInsts is { Length: > 0 } materialInsts)

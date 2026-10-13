@@ -34,6 +34,8 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09086000;
 
+    internal override uint GetId() => Id;
+
     private uint clearColor;
     /// <summary>
     /// Packed ARGB clear color.
@@ -72,7 +74,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.legacyRenderFlags = value;
     }
 
-    private CPlugBitmap? bitmapClear;
+    private NodeRef<CPlugBitmap> bitmapClearRef = new();
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
     [AppliedWithChunk<Chunk09086005>]
@@ -83,18 +85,9 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [AppliedWithChunk<Chunk09086010>]
     public CPlugBitmap? BitmapClear
     {
-        get => this.bitmapClearFile?.GetNode(ref this.bitmapClear) ?? this.bitmapClear;
-        set => this.bitmapClear = value;
+        get => bitmapClearRef.Resolve();
+        set => bitmapClearRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? bitmapClearFile;
-
-    public Components.GbxRefTableFile? BitmapClearFile
-    {
-        get => bitmapClearFile;
-        set => bitmapClearFile = value;
-    }
-
-    public CPlugBitmap? GetBitmapClear(GbxReadSettings settings = default, bool exceptions = false) => bitmapClearFile?.GetNode(ref bitmapClear, settings, exceptions) ?? bitmapClear;
 
     private Vec2? bitmapClearUV;
     [AppliedWithChunk<Chunk09086001>]
@@ -207,22 +200,13 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.renderFlags = value;
     }
 
-    private CPlugBitmapRenderSub? renderSub;
+    private NodeRef<CPlugBitmapRenderSub> renderSubRef = new();
     [AppliedWithChunk<Chunk0908600C>]
     public CPlugBitmapRenderSub? RenderSub
     {
-        get => this.renderSubFile?.GetNode(ref this.renderSub) ?? this.renderSub;
-        set => this.renderSub = value;
+        get => renderSubRef.Resolve();
+        set => renderSubRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? renderSubFile;
-
-    public Components.GbxRefTableFile? RenderSubFile
-    {
-        get => renderSubFile;
-        set => renderSubFile = value;
-    }
-
-    public CPlugBitmapRenderSub? GetRenderSub(GbxReadSettings settings = default, bool exceptions = false) => renderSubFile?.GetNode(ref renderSub, settings, exceptions) ?? renderSub;
 
     private uint renderFlags2;
     /// <summary>
@@ -239,12 +223,28 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.renderFlags2 = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapRender owner;
+        internal NodeRefView(CPlugBitmapRender owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapClear => owner.bitmapClearRef;
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => owner.renderSubRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BitmapClear", bitmapClearRef);
+        yield return new("RenderSub", renderSubRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugBitmapRender)clone).clearColor = context.Clone(this.clearColor)!;
         ((CPlugBitmapRender)clone).legacyRenderFlags = context.Clone(this.legacyRenderFlags)!;
-        ((CPlugBitmapRender)clone).bitmapClear = context.Clone(this.bitmapClear)!;
+        ((CPlugBitmapRender)clone).bitmapClearRef = context.Clone(this.bitmapClearRef)!;
         ((CPlugBitmapRender)clone).bitmapClearUV = context.Clone(this.bitmapClearUV)!;
         ((CPlugBitmapRender)clone).sVIdMask = context.Clone(this.sVIdMask)!;
         ((CPlugBitmapRender)clone).sVIdRef = context.Clone(this.sVIdRef)!;
@@ -254,7 +254,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         ((CPlugBitmapRender)clone).renderPathFails = context.Clone(this.renderPathFails)!;
         ((CPlugBitmapRender)clone).fogCustomFarZ = context.Clone(this.fogCustomFarZ)!;
         ((CPlugBitmapRender)clone).renderFlags = context.Clone(this.renderFlags)!;
-        ((CPlugBitmapRender)clone).renderSub = context.Clone(this.renderSub)!;
+        ((CPlugBitmapRender)clone).renderSubRef = context.Clone(this.renderSubRef)!;
         ((CPlugBitmapRender)clone).renderFlags2 = context.Clone(this.renderFlags2)!;
     }
 
@@ -351,7 +351,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapClear, ref n.bitmapClearFile);
+            rw.NodeRef(n.bitmapClearRef);
             rw.Vec2(ref n.bitmapClearUV);
         }
     }
@@ -536,7 +536,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         {
             rw.UInt32(ref n.clearColor);
             rw.DataUInt32(ref n.renderFlags);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapClear, ref n.bitmapClearFile);
+            rw.NodeRef(n.bitmapClearRef);
             rw.Vec2(ref n.bitmapClearUV);
         }
     }
@@ -558,7 +558,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmapRenderSub>(ref n.renderSub, ref n.renderSubFile);
+            rw.NodeRef(n.renderSubRef);
         }
     }
 

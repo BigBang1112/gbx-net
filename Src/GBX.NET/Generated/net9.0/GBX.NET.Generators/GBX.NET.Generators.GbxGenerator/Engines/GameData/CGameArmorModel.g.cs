@@ -34,6 +34,8 @@ public partial class CGameArmorModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E00D000;
 
+    internal override uint GetId() => Id;
+
     private int armorMax;
     [AppliedWithChunk<Chunk2E00D000>]
     public int ArmorMax

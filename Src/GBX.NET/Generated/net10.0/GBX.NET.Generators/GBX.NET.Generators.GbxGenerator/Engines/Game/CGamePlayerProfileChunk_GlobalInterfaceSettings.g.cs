@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     [Hexadecimal]
     public static new uint Id => 0x03179000;
 
+    internal override uint GetId() => Id;
+
     private SPluginSettings[]? pluginSettings;
     [AppliedWithChunk<Chunk03179001>]
     public SPluginSettings[]? PluginSettings

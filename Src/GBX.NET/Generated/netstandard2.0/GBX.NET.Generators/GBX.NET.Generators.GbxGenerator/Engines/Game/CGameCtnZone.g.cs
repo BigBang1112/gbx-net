@@ -34,6 +34,8 @@ public partial class CGameCtnZone : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0305C000;
 
+    internal override uint GetId() => Id;
+
     private int height;
     [AppliedWithChunk<Chunk0305C003>]
     [AppliedWithChunk<Chunk0305C008>]

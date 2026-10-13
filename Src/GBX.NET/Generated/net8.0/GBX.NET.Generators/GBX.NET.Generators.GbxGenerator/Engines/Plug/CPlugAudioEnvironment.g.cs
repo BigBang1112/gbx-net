@@ -34,6 +34,8 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     [Hexadecimal]
     public static new uint Id => 0x09039000;
 
+    internal override uint GetId() => Id;
+
     private EEAXPreset eAXPreset;
     [AppliedWithChunk<Chunk09039000>]
     public EEAXPreset EAXPreset

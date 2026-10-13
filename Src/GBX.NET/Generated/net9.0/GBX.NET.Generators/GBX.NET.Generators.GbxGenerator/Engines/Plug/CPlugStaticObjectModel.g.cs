@@ -34,6 +34,8 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     [Hexadecimal]
     public static new uint Id => 0x09159000;
 
+    internal override uint GetId() => Id;
+
     private int version;
     public int Version
     {
@@ -41,21 +43,12 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         set => this.version = value;
     }
 
-    private CPlugSolid2Model? mesh;
+    private NodeRef<CPlugSolid2Model> meshRef = new();
     public CPlugSolid2Model? Mesh
     {
-        get => this.meshFile?.GetNode(ref this.mesh) ?? this.mesh;
-        set => this.mesh = value;
+        get => meshRef.Resolve();
+        set => meshRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? meshFile;
-
-    public Components.GbxRefTableFile? MeshFile
-    {
-        get => meshFile;
-        set => meshFile = value;
-    }
-
-    public CPlugSolid2Model? GetMesh(GbxReadSettings settings = default, bool exceptions = false) => meshFile?.GetNode(ref mesh, settings, exceptions) ?? mesh;
 
     private bool isMeshCollidable;
     public bool IsMeshCollidable
@@ -64,29 +57,36 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         set => this.isMeshCollidable = value;
     }
 
-    private CPlugSurface? shape;
+    private NodeRef<CPlugSurface> shapeRef = new();
     public CPlugSurface? Shape
     {
-        get => this.shapeFile?.GetNode(ref this.shape) ?? this.shape;
-        set => this.shape = value;
+        get => shapeRef.Resolve();
+        set => shapeRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? shapeFile;
 
-    public Components.GbxRefTableFile? ShapeFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => shapeFile;
-        set => shapeFile = value;
+        private readonly CPlugStaticObjectModel owner;
+        internal NodeRefView(CPlugStaticObjectModel owner) => this.owner = owner;
+        public NodeRef<CPlugSolid2Model> Mesh => owner.meshRef;
+        public NodeRef<CPlugSurface> Shape => owner.shapeRef;
     }
-
-    public CPlugSurface? GetShape(GbxReadSettings settings = default, bool exceptions = false) => shapeFile?.GetNode(ref shape, settings, exceptions) ?? shape;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Mesh", meshRef);
+        yield return new("Shape", shapeRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugStaticObjectModel)clone).version = context.Clone(this.version)!;
-        ((CPlugStaticObjectModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugStaticObjectModel)clone).meshRef = context.Clone(this.meshRef)!;
         ((CPlugStaticObjectModel)clone).isMeshCollidable = context.Clone(this.isMeshCollidable)!;
-        ((CPlugStaticObjectModel)clone).shape = context.Clone(this.shape)!;
+        ((CPlugStaticObjectModel)clone).shapeRef = context.Clone(this.shapeRef)!;
     }
 
     public CPlugStaticObjectModel()
@@ -96,12 +96,12 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.Int32(ref this.version);
-        rw.NodeRef<CPlugSolid2Model>(ref this.mesh, ref this.meshFile);
+        rw.NodeRef(this.meshRef);
         rw.Boolean(ref this.isMeshCollidable, asByte: true);
 
         if (!IsMeshCollidable)
         {
-            rw.NodeRef<CPlugSurface>(ref this.shape, ref this.shapeFile);
+            rw.NodeRef(this.shapeRef);
         }
     }
 

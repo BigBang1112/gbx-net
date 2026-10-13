@@ -34,6 +34,8 @@ public partial class CPlugTurret : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0910F000;
 
+    internal override uint GetId() => Id;
+
     private string? skelRef;
     [AppliedWithChunk<Chunk0910F000>(5)]
     public string? SkelRef
@@ -42,12 +44,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.skelRef = value;
     }
 
-    private CPlugSkel? skel;
+    private NodeRef<CPlugSkel> skelNodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugSkel? Skel
     {
-        get => this.skel;
-        set => this.skel = value;
+        get => skelNodeRef.Resolve();
+        set => skelNodeRef.SetEmbedded(value);
     }
 
     private string? bulletModelRef;
@@ -58,12 +60,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.bulletModelRef = value;
     }
 
-    private CPlugBulletModel? bulletModel;
+    private NodeRef<CPlugBulletModel> bulletModelNodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugBulletModel? BulletModel
     {
-        get => this.bulletModel;
-        set => this.bulletModel = value;
+        get => bulletModelNodeRef.Resolve();
+        set => bulletModelNodeRef.SetEmbedded(value);
     }
 
     private string? meshRef;
@@ -74,12 +76,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.meshRef = value;
     }
 
-    private CPlugSolid2Model? mesh;
+    private NodeRef<CPlugSolid2Model> meshNodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(6)]
     public CPlugSolid2Model? Mesh
     {
-        get => this.mesh;
-        set => this.mesh = value;
+        get => meshNodeRef.Resolve();
+        set => meshNodeRef.SetEmbedded(value);
     }
 
     private string? visEntFxRef;
@@ -90,12 +92,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.visEntFxRef = value;
     }
 
-    private CPlugVisEntFxModel? visEntFx;
+    private NodeRef<CPlugVisEntFxModel> visEntFxNodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(7)]
     public CPlugVisEntFxModel? VisEntFx
     {
-        get => this.visEntFx;
-        set => this.visEntFx = value;
+        get => visEntFxNodeRef.Resolve();
+        set => visEntFxNodeRef.SetEmbedded(value);
     }
 
     private string? shapeRef;
@@ -106,12 +108,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.shapeRef = value;
     }
 
-    private CPlugSurface? shape;
+    private NodeRef<CPlugSurface> shapeNodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(8)]
     public CPlugSurface? Shape
     {
-        get => this.shape;
-        set => this.shape = value;
+        get => shapeNodeRef.Resolve();
+        set => shapeNodeRef.SetEmbedded(value);
     }
 
     private string? joint0Name;
@@ -314,12 +316,12 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.rotateSound1Ref = value;
     }
 
-    private CMwNod? rotateSound1;
+    private NodeRef<CMwNod> rotateSound1NodeRef = new();
     [AppliedWithChunk<Chunk0910F000>(13)]
     public CMwNod? RotateSound1
     {
-        get => this.rotateSound1;
-        set => this.rotateSound1 = value;
+        get => rotateSound1NodeRef.Resolve();
+        set => rotateSound1NodeRef.SetEmbedded(value);
     }
 
     private float joint0NextJointUpdateAngleMaxDeg;
@@ -394,27 +396,53 @@ public partial class CPlugTurret : CMwNod, IClass
         set => this.isControllable = value;
     }
 
-    private CPlugParticleEmitterModel? onFireParticle;
+    private NodeRef<CPlugParticleEmitterModel> onFireParticleRef = new();
     [AppliedWithChunk<Chunk0910F000>(19)]
     public CPlugParticleEmitterModel? OnFireParticle
     {
-        get => this.onFireParticle;
-        set => this.onFireParticle = value;
+        get => onFireParticleRef.Resolve();
+        set => onFireParticleRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugTurret owner;
+        internal NodeRefView(CPlugTurret owner) => this.owner = owner;
+        public NodeRef<CPlugSkel> Skel => owner.skelNodeRef;
+        public NodeRef<CPlugBulletModel> BulletModel => owner.bulletModelNodeRef;
+        public NodeRef<CPlugSolid2Model> Mesh => owner.meshNodeRef;
+        public NodeRef<CPlugVisEntFxModel> VisEntFx => owner.visEntFxNodeRef;
+        public NodeRef<CPlugSurface> Shape => owner.shapeNodeRef;
+        public NodeRef<CMwNod> RotateSound1 => owner.rotateSound1NodeRef;
+        public NodeRef<CPlugParticleEmitterModel> OnFireParticle => owner.onFireParticleRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Skel", skelNodeRef);
+        yield return new("BulletModel", bulletModelNodeRef);
+        yield return new("Mesh", meshNodeRef);
+        yield return new("VisEntFx", visEntFxNodeRef);
+        yield return new("Shape", shapeNodeRef);
+        yield return new("RotateSound1", rotateSound1NodeRef);
+        yield return new("OnFireParticle", onFireParticleRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugTurret)clone).skelRef = context.Clone(this.skelRef)!;
-        ((CPlugTurret)clone).skel = context.Clone(this.skel)!;
+        ((CPlugTurret)clone).skelNodeRef = context.Clone(this.skelNodeRef)!;
         ((CPlugTurret)clone).bulletModelRef = context.Clone(this.bulletModelRef)!;
-        ((CPlugTurret)clone).bulletModel = context.Clone(this.bulletModel)!;
+        ((CPlugTurret)clone).bulletModelNodeRef = context.Clone(this.bulletModelNodeRef)!;
         ((CPlugTurret)clone).meshRef = context.Clone(this.meshRef)!;
-        ((CPlugTurret)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugTurret)clone).meshNodeRef = context.Clone(this.meshNodeRef)!;
         ((CPlugTurret)clone).visEntFxRef = context.Clone(this.visEntFxRef)!;
-        ((CPlugTurret)clone).visEntFx = context.Clone(this.visEntFx)!;
+        ((CPlugTurret)clone).visEntFxNodeRef = context.Clone(this.visEntFxNodeRef)!;
         ((CPlugTurret)clone).shapeRef = context.Clone(this.shapeRef)!;
-        ((CPlugTurret)clone).shape = context.Clone(this.shape)!;
+        ((CPlugTurret)clone).shapeNodeRef = context.Clone(this.shapeNodeRef)!;
         ((CPlugTurret)clone).joint0Name = context.Clone(this.joint0Name)!;
         ((CPlugTurret)clone).joint1Name = context.Clone(this.joint1Name)!;
         ((CPlugTurret)clone).jointFireName = context.Clone(this.jointFireName)!;
@@ -440,7 +468,7 @@ public partial class CPlugTurret : CMwNod, IClass
         ((CPlugTurret)clone).fixedAngleMaxDeg = context.Clone(this.fixedAngleMaxDeg)!;
         ((CPlugTurret)clone).firePeriodMs = context.Clone(this.firePeriodMs)!;
         ((CPlugTurret)clone).rotateSound1Ref = context.Clone(this.rotateSound1Ref)!;
-        ((CPlugTurret)clone).rotateSound1 = context.Clone(this.rotateSound1)!;
+        ((CPlugTurret)clone).rotateSound1NodeRef = context.Clone(this.rotateSound1NodeRef)!;
         ((CPlugTurret)clone).joint0NextJointUpdateAngleMaxDeg = context.Clone(this.joint0NextJointUpdateAngleMaxDeg)!;
         ((CPlugTurret)clone).joint1NextJointUpdateAngleMaxDeg = context.Clone(this.joint1NextJointUpdateAngleMaxDeg)!;
         ((CPlugTurret)clone).aimFireMaxDist = context.Clone(this.aimFireMaxDist)!;
@@ -450,7 +478,7 @@ public partial class CPlugTurret : CMwNod, IClass
         ((CPlugTurret)clone).lifeOnArmorEmtpy = context.Clone(this.lifeOnArmorEmtpy)!;
         ((CPlugTurret)clone).lifeDisabledDuration = context.Clone(this.lifeDisabledDuration)!;
         ((CPlugTurret)clone).isControllable = context.Clone(this.isControllable)!;
-        ((CPlugTurret)clone).onFireParticle = context.Clone(this.onFireParticle)!;
+        ((CPlugTurret)clone).onFireParticleRef = context.Clone(this.onFireParticleRef)!;
     }
 
     public CPlugTurret()
@@ -525,14 +553,14 @@ public partial class CPlugTurret : CMwNod, IClass
 
                 if (n.SkelRef== null || n.SkelRef== "")
                 {
-                    rw.NodeRef<CPlugSkel>(ref n.skel);
+                    rw.NodeRef(n.skelNodeRef);
                 }
 
                 rw.String(ref n.bulletModelRef);
 
                 if (n.BulletModelRef== null || n.BulletModelRef== "")
                 {
-                    rw.NodeRef<CPlugBulletModel>(ref n.bulletModel);
+                    rw.NodeRef(n.bulletModelNodeRef);
                 }
 
                 if (Version >= 6)
@@ -541,7 +569,7 @@ public partial class CPlugTurret : CMwNod, IClass
 
                     if (n.MeshRef== null || n.MeshRef== "")
                     {
-                        rw.NodeRef<CPlugSolid2Model>(ref n.mesh);
+                        rw.NodeRef(n.meshNodeRef);
                     }
 
                     if (Version >= 7)
@@ -550,7 +578,7 @@ public partial class CPlugTurret : CMwNod, IClass
 
                         if (n.VisEntFxRef== null || n.VisEntFxRef== "")
                         {
-                            rw.NodeRef<CPlugVisEntFxModel>(ref n.visEntFx);
+                            rw.NodeRef(n.visEntFxNodeRef);
                         }
 
                         if (Version >= 8)
@@ -559,7 +587,7 @@ public partial class CPlugTurret : CMwNod, IClass
 
                             if (n.ShapeRef== null || n.ShapeRef== "")
                             {
-                                rw.NodeRef<CPlugSurface>(ref n.shape);
+                                rw.NodeRef(n.shapeNodeRef);
                             }
 
                             if (Version >= 9)
@@ -605,7 +633,7 @@ public partial class CPlugTurret : CMwNod, IClass
 
                                                 if (n.RotateSound1Ref== null || n.RotateSound1Ref== "")
                                                 {
-                                                    rw.NodeRef<CMwNod>(ref n.rotateSound1);
+                                                    rw.NodeRef(n.rotateSound1NodeRef);
                                                 }
 
                                                 if (Version >= 14)
@@ -634,7 +662,7 @@ public partial class CPlugTurret : CMwNod, IClass
 
                                                                     if (Version >= 19)
                                                                     {
-                                                                        rw.NodeRef<CPlugParticleEmitterModel>(ref n.onFireParticle);
+                                                                        rw.NodeRef(n.onFireParticleRef);
                                                                     }
                                                                 }
                                                             }

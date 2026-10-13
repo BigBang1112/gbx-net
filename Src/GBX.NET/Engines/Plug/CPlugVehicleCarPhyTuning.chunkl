@@ -716,15 +716,15 @@ CPlugVehicleCarPhyTuning 0x090ED000
   version
   v5+
     throw
-  CPlugCamControlModel[] CameraModels (deprec, external)
+  CPlugCamControlModel[] CameraModels (deprec)
   v1+
-    CPlugCamControlModel[] CameraModels_Console (deprec, external)
+    CPlugCamControlModel[] CameraModels_Console (deprec)
     v2+
-      CPlugCamControlModel CamModelRear (external)
+      CPlugCamControlModel CamModelRear
       v3+
-        CPlugCamControlModel CamModelIronSight (external)
+        CPlugCamControlModel CamModelIronSight
         v4+
-          CPlugCamControlModel[] (external)
+          CPlugCamControlModel[]
 
 0x094 [MP3, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
   version
@@ -840,7 +840,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x09A [TMT.v0, MP4.v0, TM2020.v0] // GearBox
   version
-  CPlugVehicleGearBox GearBox (external)
+  CPlugVehicleGearBox GearBox
 
 0x09B [TMT.v3, MP4.v3, TM2020.v5] // jump, catch-up and big-car settings
   version

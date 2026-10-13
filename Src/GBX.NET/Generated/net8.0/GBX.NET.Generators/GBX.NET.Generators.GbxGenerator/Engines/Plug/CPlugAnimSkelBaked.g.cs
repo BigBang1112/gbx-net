@@ -34,6 +34,8 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09132000;
 
+    internal override uint GetId() => Id;
+
     private int flagsVersion;
     [AppliedWithChunk<Chunk09132000>]
     public int FlagsVersion
@@ -58,12 +60,12 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
         set => this.timing = value;
     }
 
-    private CPlugAnimSkelJointGroup? jointGroup;
+    private NodeRef<CPlugAnimSkelJointGroup> jointGroupRef = new();
     [AppliedWithChunk<Chunk09132000>]
     public CPlugAnimSkelJointGroup? JointGroup
     {
-        get => this.jointGroup;
-        set => this.jointGroup = value;
+        get => jointGroupRef.Resolve();
+        set => jointGroupRef.SetEmbedded(value);
     }
 
     private TransQuat[]? localJointsData;
@@ -114,13 +116,27 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
         set => this.floatChannelData = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAnimSkelBaked owner;
+        internal NodeRefView(CPlugAnimSkelBaked owner) => this.owner = owner;
+        public NodeRef<CPlugAnimSkelJointGroup> JointGroup => owner.jointGroupRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("JointGroup", jointGroupRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugAnimSkelBaked)clone).flagsVersion = context.Clone(this.flagsVersion)!;
         ((CPlugAnimSkelBaked)clone).timingVersion = context.Clone(this.timingVersion)!;
         ((CPlugAnimSkelBaked)clone).timing = context.Clone(this.timing)!;
-        ((CPlugAnimSkelBaked)clone).jointGroup = context.Clone(this.jointGroup)!;
+        ((CPlugAnimSkelBaked)clone).jointGroupRef = context.Clone(this.jointGroupRef)!;
         ((CPlugAnimSkelBaked)clone).localJointsData = context.CloneArray(this.localJointsData)!;
         ((CPlugAnimSkelBaked)clone).legacyData = context.Clone(this.legacyData)!;
         ((CPlugAnimSkelBaked)clone).flags = context.Clone(this.flags)!;
@@ -154,7 +170,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
             rw.Int32(ref n.flagsVersion);
             rw.Int32(ref n.timingVersion);
             rw.ReadableWritable<TimingFixedPeriod>(ref n.timing, version: n. TimingVersion);
-            rw.NodeRef<CPlugAnimSkelJointGroup>(ref n.jointGroup);
+            rw.NodeRef(n.jointGroupRef);
             rw.Array<TransQuat>(ref n.localJointsData!);
 
             if (Version == 1)

@@ -34,41 +34,25 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03039000;
 
-    private CPlugAudioEnvironment? audioEnvOutsideOpen;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugAudioEnvironment> audioEnvOutsideOpenRef = new();
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideOpen
     {
-        get => this.audioEnvOutsideOpenFile?.GetNode(ref this.audioEnvOutsideOpen) ?? this.audioEnvOutsideOpen;
-        set => this.audioEnvOutsideOpen = value;
-    }
-    private Components.GbxRefTableFile? audioEnvOutsideOpenFile;
-
-    public Components.GbxRefTableFile? AudioEnvOutsideOpenFile
-    {
-        get => audioEnvOutsideOpenFile;
-        set => audioEnvOutsideOpenFile = value;
+        get => audioEnvOutsideOpenRef.Resolve();
+        set => audioEnvOutsideOpenRef.SetEmbedded(value);
     }
 
-    public CPlugAudioEnvironment? GetAudioEnvOutsideOpen(GbxReadSettings settings = default, bool exceptions = false) => audioEnvOutsideOpenFile?.GetNode(ref audioEnvOutsideOpen, settings, exceptions) ?? audioEnvOutsideOpen;
-
-    private CPlugAudioEnvironment? audioEnvOutsideEnclosed;
+    private NodeRef<CPlugAudioEnvironment> audioEnvOutsideEnclosedRef = new();
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideEnclosed
     {
-        get => this.audioEnvOutsideEnclosedFile?.GetNode(ref this.audioEnvOutsideEnclosed) ?? this.audioEnvOutsideEnclosed;
-        set => this.audioEnvOutsideEnclosed = value;
+        get => audioEnvOutsideEnclosedRef.Resolve();
+        set => audioEnvOutsideEnclosedRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? audioEnvOutsideEnclosedFile;
-
-    public Components.GbxRefTableFile? AudioEnvOutsideEnclosedFile
-    {
-        get => audioEnvOutsideEnclosedFile;
-        set => audioEnvOutsideEnclosedFile = value;
-    }
-
-    public CPlugAudioEnvironment? GetAudioEnvOutsideEnclosed(GbxReadSettings settings = default, bool exceptions = false) => audioEnvOutsideEnclosedFile?.GetNode(ref audioEnvOutsideEnclosed, settings, exceptions) ?? audioEnvOutsideEnclosed;
 
     private float soundAttenuationInEditor;
     [AppliedWithChunk<Chunk03039002>]
@@ -78,362 +62,173 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => this.soundAttenuationInEditor = value;
     }
 
-    private CPlugAudioBalance? audioBalance_PlaygroundLoud;
+    private NodeRef<CPlugAudioBalance> audioBalance_PlaygroundLoudRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_PlaygroundLoud
     {
-        get => this.audioBalance_PlaygroundLoudFile?.GetNode(ref this.audioBalance_PlaygroundLoud) ?? this.audioBalance_PlaygroundLoud;
-        set => this.audioBalance_PlaygroundLoud = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_PlaygroundLoudFile;
-
-    public Components.GbxRefTableFile? AudioBalance_PlaygroundLoudFile
-    {
-        get => audioBalance_PlaygroundLoudFile;
-        set => audioBalance_PlaygroundLoudFile = value;
+        get => audioBalance_PlaygroundLoudRef.Resolve();
+        set => audioBalance_PlaygroundLoudRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_PlaygroundLoud(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_PlaygroundLoudFile?.GetNode(ref audioBalance_PlaygroundLoud, settings, exceptions) ?? audioBalance_PlaygroundLoud;
-
-    private CPlugAudioBalance? audioBalance_ReplayLoud;
+    private NodeRef<CPlugAudioBalance> audioBalance_ReplayLoudRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_ReplayLoud
     {
-        get => this.audioBalance_ReplayLoudFile?.GetNode(ref this.audioBalance_ReplayLoud) ?? this.audioBalance_ReplayLoud;
-        set => this.audioBalance_ReplayLoud = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_ReplayLoudFile;
-
-    public Components.GbxRefTableFile? AudioBalance_ReplayLoudFile
-    {
-        get => audioBalance_ReplayLoudFile;
-        set => audioBalance_ReplayLoudFile = value;
+        get => audioBalance_ReplayLoudRef.Resolve();
+        set => audioBalance_ReplayLoudRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_ReplayLoud(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_ReplayLoudFile?.GetNode(ref audioBalance_ReplayLoud, settings, exceptions) ?? audioBalance_ReplayLoud;
-
-    private CPlugAudioBalance? audioBalance_Podium;
+    private NodeRef<CPlugAudioBalance> audioBalance_PodiumRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_Podium
     {
-        get => this.audioBalance_PodiumFile?.GetNode(ref this.audioBalance_Podium) ?? this.audioBalance_Podium;
-        set => this.audioBalance_Podium = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_PodiumFile;
-
-    public Components.GbxRefTableFile? AudioBalance_PodiumFile
-    {
-        get => audioBalance_PodiumFile;
-        set => audioBalance_PodiumFile = value;
+        get => audioBalance_PodiumRef.Resolve();
+        set => audioBalance_PodiumRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_Podium(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_PodiumFile?.GetNode(ref audioBalance_Podium, settings, exceptions) ?? audioBalance_Podium;
-
-    private CPlugAudioBalance? audioBalance_PlaygroundSoft;
+    private NodeRef<CPlugAudioBalance> audioBalance_PlaygroundSoftRef = new();
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_PlaygroundSoft
     {
-        get => this.audioBalance_PlaygroundSoftFile?.GetNode(ref this.audioBalance_PlaygroundSoft) ?? this.audioBalance_PlaygroundSoft;
-        set => this.audioBalance_PlaygroundSoft = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_PlaygroundSoftFile;
-
-    public Components.GbxRefTableFile? AudioBalance_PlaygroundSoftFile
-    {
-        get => audioBalance_PlaygroundSoftFile;
-        set => audioBalance_PlaygroundSoftFile = value;
+        get => audioBalance_PlaygroundSoftRef.Resolve();
+        set => audioBalance_PlaygroundSoftRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_PlaygroundSoft(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_PlaygroundSoftFile?.GetNode(ref audioBalance_PlaygroundSoft, settings, exceptions) ?? audioBalance_PlaygroundSoft;
-
-    private CPlugAudioBalance? audioBalance_ReplaySoft;
+    private NodeRef<CPlugAudioBalance> audioBalance_ReplaySoftRef = new();
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_ReplaySoft
     {
-        get => this.audioBalance_ReplaySoftFile?.GetNode(ref this.audioBalance_ReplaySoft) ?? this.audioBalance_ReplaySoft;
-        set => this.audioBalance_ReplaySoft = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_ReplaySoftFile;
-
-    public Components.GbxRefTableFile? AudioBalance_ReplaySoftFile
-    {
-        get => audioBalance_ReplaySoftFile;
-        set => audioBalance_ReplaySoftFile = value;
+        get => audioBalance_ReplaySoftRef.Resolve();
+        set => audioBalance_ReplaySoftRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_ReplaySoft(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_ReplaySoftFile?.GetNode(ref audioBalance_ReplaySoft, settings, exceptions) ?? audioBalance_ReplaySoft;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtStartLine;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtStartLineRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtStartLine
     {
-        get => this.audioBalance_TM_EvtStartLineFile?.GetNode(ref this.audioBalance_TM_EvtStartLine) ?? this.audioBalance_TM_EvtStartLine;
-        set => this.audioBalance_TM_EvtStartLine = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtStartLineFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtStartLineFile
-    {
-        get => audioBalance_TM_EvtStartLineFile;
-        set => audioBalance_TM_EvtStartLineFile = value;
+        get => audioBalance_TM_EvtStartLineRef.Resolve();
+        set => audioBalance_TM_EvtStartLineRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtStartLine(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtStartLineFile?.GetNode(ref audioBalance_TM_EvtStartLine, settings, exceptions) ?? audioBalance_TM_EvtStartLine;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtCheckpoint;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtCheckpointRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCheckpoint
     {
-        get => this.audioBalance_TM_EvtCheckpointFile?.GetNode(ref this.audioBalance_TM_EvtCheckpoint) ?? this.audioBalance_TM_EvtCheckpoint;
-        set => this.audioBalance_TM_EvtCheckpoint = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtCheckpointFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtCheckpointFile
-    {
-        get => audioBalance_TM_EvtCheckpointFile;
-        set => audioBalance_TM_EvtCheckpointFile = value;
+        get => audioBalance_TM_EvtCheckpointRef.Resolve();
+        set => audioBalance_TM_EvtCheckpointRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtCheckpoint(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtCheckpointFile?.GetNode(ref audioBalance_TM_EvtCheckpoint, settings, exceptions) ?? audioBalance_TM_EvtCheckpoint;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtRespawn;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtRespawnRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtRespawn
     {
-        get => this.audioBalance_TM_EvtRespawnFile?.GetNode(ref this.audioBalance_TM_EvtRespawn) ?? this.audioBalance_TM_EvtRespawn;
-        set => this.audioBalance_TM_EvtRespawn = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtRespawnFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtRespawnFile
-    {
-        get => audioBalance_TM_EvtRespawnFile;
-        set => audioBalance_TM_EvtRespawnFile = value;
+        get => audioBalance_TM_EvtRespawnRef.Resolve();
+        set => audioBalance_TM_EvtRespawnRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtRespawn(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtRespawnFile?.GetNode(ref audioBalance_TM_EvtRespawn, settings, exceptions) ?? audioBalance_TM_EvtRespawn;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtCrash;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtCrashRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCrash
     {
-        get => this.audioBalance_TM_EvtCrashFile?.GetNode(ref this.audioBalance_TM_EvtCrash) ?? this.audioBalance_TM_EvtCrash;
-        set => this.audioBalance_TM_EvtCrash = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtCrashFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtCrashFile
-    {
-        get => audioBalance_TM_EvtCrashFile;
-        set => audioBalance_TM_EvtCrashFile = value;
+        get => audioBalance_TM_EvtCrashRef.Resolve();
+        set => audioBalance_TM_EvtCrashRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtCrash(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtCrashFile?.GetNode(ref audioBalance_TM_EvtCrash, settings, exceptions) ?? audioBalance_TM_EvtCrash;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtFlying;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtFlyingRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtFlying
     {
-        get => this.audioBalance_TM_EvtFlyingFile?.GetNode(ref this.audioBalance_TM_EvtFlying) ?? this.audioBalance_TM_EvtFlying;
-        set => this.audioBalance_TM_EvtFlying = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtFlyingFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtFlyingFile
-    {
-        get => audioBalance_TM_EvtFlyingFile;
-        set => audioBalance_TM_EvtFlyingFile = value;
+        get => audioBalance_TM_EvtFlyingRef.Resolve();
+        set => audioBalance_TM_EvtFlyingRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtFlying(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtFlyingFile?.GetNode(ref audioBalance_TM_EvtFlying, settings, exceptions) ?? audioBalance_TM_EvtFlying;
-
-    private CPlugAudioBalance? audioBalance_TM_EvtSwimming;
+    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtSwimmingRef = new();
     [AppliedWithChunk<Chunk03039003>(7)]
     public CPlugAudioBalance? AudioBalance_TM_EvtSwimming
     {
-        get => this.audioBalance_TM_EvtSwimmingFile?.GetNode(ref this.audioBalance_TM_EvtSwimming) ?? this.audioBalance_TM_EvtSwimming;
-        set => this.audioBalance_TM_EvtSwimming = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_TM_EvtSwimmingFile;
-
-    public Components.GbxRefTableFile? AudioBalance_TM_EvtSwimmingFile
-    {
-        get => audioBalance_TM_EvtSwimmingFile;
-        set => audioBalance_TM_EvtSwimmingFile = value;
+        get => audioBalance_TM_EvtSwimmingRef.Resolve();
+        set => audioBalance_TM_EvtSwimmingRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_TM_EvtSwimming(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_TM_EvtSwimmingFile?.GetNode(ref audioBalance_TM_EvtSwimming, settings, exceptions) ?? audioBalance_TM_EvtSwimming;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtSpawn;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtSpawnRef = new();
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_SM_EvtSpawn
     {
-        get => this.audioBalance_SM_EvtSpawnFile?.GetNode(ref this.audioBalance_SM_EvtSpawn) ?? this.audioBalance_SM_EvtSpawn;
-        set => this.audioBalance_SM_EvtSpawn = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtSpawnFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtSpawnFile
-    {
-        get => audioBalance_SM_EvtSpawnFile;
-        set => audioBalance_SM_EvtSpawnFile = value;
+        get => audioBalance_SM_EvtSpawnRef.Resolve();
+        set => audioBalance_SM_EvtSpawnRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtSpawn(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtSpawnFile?.GetNode(ref audioBalance_SM_EvtSpawn, settings, exceptions) ?? audioBalance_SM_EvtSpawn;
-
-    private CPlugAudioBalance? audioBalance_Overlay_Underground;
+    private NodeRef<CPlugAudioBalance> audioBalance_Overlay_UndergroundRef = new();
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Underground
     {
-        get => this.audioBalance_Overlay_UndergroundFile?.GetNode(ref this.audioBalance_Overlay_Underground) ?? this.audioBalance_Overlay_Underground;
-        set => this.audioBalance_Overlay_Underground = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_Overlay_UndergroundFile;
-
-    public Components.GbxRefTableFile? AudioBalance_Overlay_UndergroundFile
-    {
-        get => audioBalance_Overlay_UndergroundFile;
-        set => audioBalance_Overlay_UndergroundFile = value;
+        get => audioBalance_Overlay_UndergroundRef.Resolve();
+        set => audioBalance_Overlay_UndergroundRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_Overlay_Underground(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_Overlay_UndergroundFile?.GetNode(ref audioBalance_Overlay_Underground, settings, exceptions) ?? audioBalance_Overlay_Underground;
-
-    private CPlugAudioBalance? audioBalance_Overlay_Far;
+    private NodeRef<CPlugAudioBalance> audioBalance_Overlay_FarRef = new();
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Far
     {
-        get => this.audioBalance_Overlay_FarFile?.GetNode(ref this.audioBalance_Overlay_Far) ?? this.audioBalance_Overlay_Far;
-        set => this.audioBalance_Overlay_Far = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_Overlay_FarFile;
-
-    public Components.GbxRefTableFile? AudioBalance_Overlay_FarFile
-    {
-        get => audioBalance_Overlay_FarFile;
-        set => audioBalance_Overlay_FarFile = value;
+        get => audioBalance_Overlay_FarRef.Resolve();
+        set => audioBalance_Overlay_FarRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_Overlay_Far(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_Overlay_FarFile?.GetNode(ref audioBalance_Overlay_Far, settings, exceptions) ?? audioBalance_Overlay_Far;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtUnspawn;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtUnspawnRef = new();
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtUnspawn
     {
-        get => this.audioBalance_SM_EvtUnspawnFile?.GetNode(ref this.audioBalance_SM_EvtUnspawn) ?? this.audioBalance_SM_EvtUnspawn;
-        set => this.audioBalance_SM_EvtUnspawn = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtUnspawnFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtUnspawnFile
-    {
-        get => audioBalance_SM_EvtUnspawnFile;
-        set => audioBalance_SM_EvtUnspawnFile = value;
+        get => audioBalance_SM_EvtUnspawnRef.Resolve();
+        set => audioBalance_SM_EvtUnspawnRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtUnspawn(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtUnspawnFile?.GetNode(ref audioBalance_SM_EvtUnspawn, settings, exceptions) ?? audioBalance_SM_EvtUnspawn;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtHit;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtHitRef = new();
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHit
     {
-        get => this.audioBalance_SM_EvtHitFile?.GetNode(ref this.audioBalance_SM_EvtHit) ?? this.audioBalance_SM_EvtHit;
-        set => this.audioBalance_SM_EvtHit = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtHitFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtHitFile
-    {
-        get => audioBalance_SM_EvtHitFile;
-        set => audioBalance_SM_EvtHitFile = value;
+        get => audioBalance_SM_EvtHitRef.Resolve();
+        set => audioBalance_SM_EvtHitRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtHit(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtHitFile?.GetNode(ref audioBalance_SM_EvtHit, settings, exceptions) ?? audioBalance_SM_EvtHit;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtFire;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtFireRef = new();
     [AppliedWithChunk<Chunk03039003>(3)]
     public CPlugAudioBalance? AudioBalance_SM_EvtFire
     {
-        get => this.audioBalance_SM_EvtFireFile?.GetNode(ref this.audioBalance_SM_EvtFire) ?? this.audioBalance_SM_EvtFire;
-        set => this.audioBalance_SM_EvtFire = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtFireFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtFireFile
-    {
-        get => audioBalance_SM_EvtFireFile;
-        set => audioBalance_SM_EvtFireFile = value;
+        get => audioBalance_SM_EvtFireRef.Resolve();
+        set => audioBalance_SM_EvtFireRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtFire(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtFireFile?.GetNode(ref audioBalance_SM_EvtFire, settings, exceptions) ?? audioBalance_SM_EvtFire;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtHitEliminated;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtHitEliminatedRef = new();
     [AppliedWithChunk<Chunk03039003>(4)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHitEliminated
     {
-        get => this.audioBalance_SM_EvtHitEliminatedFile?.GetNode(ref this.audioBalance_SM_EvtHitEliminated) ?? this.audioBalance_SM_EvtHitEliminated;
-        set => this.audioBalance_SM_EvtHitEliminated = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtHitEliminatedFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtHitEliminatedFile
-    {
-        get => audioBalance_SM_EvtHitEliminatedFile;
-        set => audioBalance_SM_EvtHitEliminatedFile = value;
+        get => audioBalance_SM_EvtHitEliminatedRef.Resolve();
+        set => audioBalance_SM_EvtHitEliminatedRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtHitEliminated(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtHitEliminatedFile?.GetNode(ref audioBalance_SM_EvtHitEliminated, settings, exceptions) ?? audioBalance_SM_EvtHitEliminated;
-
-    private CPlugAudioBalance? audioBalance_SM_EvtBulletTime;
+    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtBulletTimeRef = new();
     [AppliedWithChunk<Chunk03039003>(8)]
     public CPlugAudioBalance? AudioBalance_SM_EvtBulletTime
     {
-        get => this.audioBalance_SM_EvtBulletTimeFile?.GetNode(ref this.audioBalance_SM_EvtBulletTime) ?? this.audioBalance_SM_EvtBulletTime;
-        set => this.audioBalance_SM_EvtBulletTime = value;
-    }
-    private Components.GbxRefTableFile? audioBalance_SM_EvtBulletTimeFile;
-
-    public Components.GbxRefTableFile? AudioBalance_SM_EvtBulletTimeFile
-    {
-        get => audioBalance_SM_EvtBulletTimeFile;
-        set => audioBalance_SM_EvtBulletTimeFile = value;
+        get => audioBalance_SM_EvtBulletTimeRef.Resolve();
+        set => audioBalance_SM_EvtBulletTimeRef.SetEmbedded(value);
     }
 
-    public CPlugAudioBalance? GetAudioBalance_SM_EvtBulletTime(GbxReadSettings settings = default, bool exceptions = false) => audioBalance_SM_EvtBulletTimeFile?.GetNode(ref audioBalance_SM_EvtBulletTime, settings, exceptions) ?? audioBalance_SM_EvtBulletTime;
-
-    private CPlugAudioEnvironment? audioEnvUndergroundOpen;
+    private NodeRef<CPlugAudioEnvironment> audioEnvUndergroundOpenRef = new();
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundOpen
     {
-        get => this.audioEnvUndergroundOpenFile?.GetNode(ref this.audioEnvUndergroundOpen) ?? this.audioEnvUndergroundOpen;
-        set => this.audioEnvUndergroundOpen = value;
-    }
-    private Components.GbxRefTableFile? audioEnvUndergroundOpenFile;
-
-    public Components.GbxRefTableFile? AudioEnvUndergroundOpenFile
-    {
-        get => audioEnvUndergroundOpenFile;
-        set => audioEnvUndergroundOpenFile = value;
+        get => audioEnvUndergroundOpenRef.Resolve();
+        set => audioEnvUndergroundOpenRef.SetEmbedded(value);
     }
 
-    public CPlugAudioEnvironment? GetAudioEnvUndergroundOpen(GbxReadSettings settings = default, bool exceptions = false) => audioEnvUndergroundOpenFile?.GetNode(ref audioEnvUndergroundOpen, settings, exceptions) ?? audioEnvUndergroundOpen;
-
-    private CPlugAudioEnvironment? audioEnvUndergroundEnclosed;
+    private NodeRef<CPlugAudioEnvironment> audioEnvUndergroundEnclosedRef = new();
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundEnclosed
     {
-        get => this.audioEnvUndergroundEnclosedFile?.GetNode(ref this.audioEnvUndergroundEnclosed) ?? this.audioEnvUndergroundEnclosed;
-        set => this.audioEnvUndergroundEnclosed = value;
+        get => audioEnvUndergroundEnclosedRef.Resolve();
+        set => audioEnvUndergroundEnclosedRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? audioEnvUndergroundEnclosedFile;
-
-    public Components.GbxRefTableFile? AudioEnvUndergroundEnclosedFile
-    {
-        get => audioEnvUndergroundEnclosedFile;
-        set => audioEnvUndergroundEnclosedFile = value;
-    }
-
-    public CPlugAudioEnvironment? GetAudioEnvUndergroundEnclosed(GbxReadSettings settings = default, bool exceptions = false) => audioEnvUndergroundEnclosedFile?.GetNode(ref audioEnvUndergroundEnclosed, settings, exceptions) ?? audioEnvUndergroundEnclosed;
 
     private float cameraWooshMinSpeedKmh;
     [AppliedWithChunk<Chunk03039005>]
@@ -467,55 +262,106 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => this.reverbMaterialGains = value;
     }
 
-    private CPlugFileText? modifierXmlFile;
+    private NodeRef<CPlugFileText> modifierXmlFileRef = new();
     [AppliedWithChunk<Chunk03039006>]
     public CPlugFileText? ModifierXmlFile
     {
-        get => this.modifierXmlFileFile?.GetNode(ref this.modifierXmlFile) ?? this.modifierXmlFile;
-        set => this.modifierXmlFile = value;
+        get => modifierXmlFileRef.Resolve();
+        set => modifierXmlFileRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? modifierXmlFileFile;
 
-    public Components.GbxRefTableFile? ModifierXmlFileFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => modifierXmlFileFile;
-        set => modifierXmlFileFile = value;
+        private readonly CGameCtnDecorationAudio owner;
+        internal NodeRefView(CGameCtnDecorationAudio owner) => this.owner = owner;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideOpen => owner.audioEnvOutsideOpenRef;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideEnclosed => owner.audioEnvOutsideEnclosedRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundLoud => owner.audioBalance_PlaygroundLoudRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_ReplayLoud => owner.audioBalance_ReplayLoudRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_Podium => owner.audioBalance_PodiumRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundSoft => owner.audioBalance_PlaygroundSoftRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_ReplaySoft => owner.audioBalance_ReplaySoftRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtStartLine => owner.audioBalance_TM_EvtStartLineRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCheckpoint => owner.audioBalance_TM_EvtCheckpointRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtRespawn => owner.audioBalance_TM_EvtRespawnRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCrash => owner.audioBalance_TM_EvtCrashRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtFlying => owner.audioBalance_TM_EvtFlyingRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtSwimming => owner.audioBalance_TM_EvtSwimmingRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtSpawn => owner.audioBalance_SM_EvtSpawnRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Underground => owner.audioBalance_Overlay_UndergroundRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Far => owner.audioBalance_Overlay_FarRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtUnspawn => owner.audioBalance_SM_EvtUnspawnRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHit => owner.audioBalance_SM_EvtHitRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtFire => owner.audioBalance_SM_EvtFireRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHitEliminated => owner.audioBalance_SM_EvtHitEliminatedRef;
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtBulletTime => owner.audioBalance_SM_EvtBulletTimeRef;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundOpen => owner.audioEnvUndergroundOpenRef;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundEnclosed => owner.audioEnvUndergroundEnclosedRef;
+        public NodeRef<CPlugFileText> ModifierXmlFile => owner.modifierXmlFileRef;
     }
-
-    public CPlugFileText? GetModifierXmlFile(GbxReadSettings settings = default, bool exceptions = false) => modifierXmlFileFile?.GetNode(ref modifierXmlFile, settings, exceptions) ?? modifierXmlFile;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("AudioEnvOutsideOpen", audioEnvOutsideOpenRef);
+        yield return new("AudioEnvOutsideEnclosed", audioEnvOutsideEnclosedRef);
+        yield return new("AudioBalance_PlaygroundLoud", audioBalance_PlaygroundLoudRef);
+        yield return new("AudioBalance_ReplayLoud", audioBalance_ReplayLoudRef);
+        yield return new("AudioBalance_Podium", audioBalance_PodiumRef);
+        yield return new("AudioBalance_PlaygroundSoft", audioBalance_PlaygroundSoftRef);
+        yield return new("AudioBalance_ReplaySoft", audioBalance_ReplaySoftRef);
+        yield return new("AudioBalance_TM_EvtStartLine", audioBalance_TM_EvtStartLineRef);
+        yield return new("AudioBalance_TM_EvtCheckpoint", audioBalance_TM_EvtCheckpointRef);
+        yield return new("AudioBalance_TM_EvtRespawn", audioBalance_TM_EvtRespawnRef);
+        yield return new("AudioBalance_TM_EvtCrash", audioBalance_TM_EvtCrashRef);
+        yield return new("AudioBalance_TM_EvtFlying", audioBalance_TM_EvtFlyingRef);
+        yield return new("AudioBalance_TM_EvtSwimming", audioBalance_TM_EvtSwimmingRef);
+        yield return new("AudioBalance_SM_EvtSpawn", audioBalance_SM_EvtSpawnRef);
+        yield return new("AudioBalance_Overlay_Underground", audioBalance_Overlay_UndergroundRef);
+        yield return new("AudioBalance_Overlay_Far", audioBalance_Overlay_FarRef);
+        yield return new("AudioBalance_SM_EvtUnspawn", audioBalance_SM_EvtUnspawnRef);
+        yield return new("AudioBalance_SM_EvtHit", audioBalance_SM_EvtHitRef);
+        yield return new("AudioBalance_SM_EvtFire", audioBalance_SM_EvtFireRef);
+        yield return new("AudioBalance_SM_EvtHitEliminated", audioBalance_SM_EvtHitEliminatedRef);
+        yield return new("AudioBalance_SM_EvtBulletTime", audioBalance_SM_EvtBulletTimeRef);
+        yield return new("AudioEnvUndergroundOpen", audioEnvUndergroundOpenRef);
+        yield return new("AudioEnvUndergroundEnclosed", audioEnvUndergroundEnclosedRef);
+        yield return new("ModifierXmlFile", modifierXmlFileRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnDecorationAudio)clone).audioEnvOutsideOpen = context.Clone(this.audioEnvOutsideOpen)!;
-        ((CGameCtnDecorationAudio)clone).audioEnvOutsideEnclosed = context.Clone(this.audioEnvOutsideEnclosed)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvOutsideOpenRef = context.Clone(this.audioEnvOutsideOpenRef)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvOutsideEnclosedRef = context.Clone(this.audioEnvOutsideEnclosedRef)!;
         ((CGameCtnDecorationAudio)clone).soundAttenuationInEditor = context.Clone(this.soundAttenuationInEditor)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundLoud = context.Clone(this.audioBalance_PlaygroundLoud)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_ReplayLoud = context.Clone(this.audioBalance_ReplayLoud)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_Podium = context.Clone(this.audioBalance_Podium)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundSoft = context.Clone(this.audioBalance_PlaygroundSoft)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_ReplaySoft = context.Clone(this.audioBalance_ReplaySoft)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtStartLine = context.Clone(this.audioBalance_TM_EvtStartLine)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCheckpoint = context.Clone(this.audioBalance_TM_EvtCheckpoint)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtRespawn = context.Clone(this.audioBalance_TM_EvtRespawn)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCrash = context.Clone(this.audioBalance_TM_EvtCrash)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtFlying = context.Clone(this.audioBalance_TM_EvtFlying)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtSwimming = context.Clone(this.audioBalance_TM_EvtSwimming)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtSpawn = context.Clone(this.audioBalance_SM_EvtSpawn)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_Underground = context.Clone(this.audioBalance_Overlay_Underground)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_Far = context.Clone(this.audioBalance_Overlay_Far)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtUnspawn = context.Clone(this.audioBalance_SM_EvtUnspawn)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHit = context.Clone(this.audioBalance_SM_EvtHit)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtFire = context.Clone(this.audioBalance_SM_EvtFire)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHitEliminated = context.Clone(this.audioBalance_SM_EvtHitEliminated)!;
-        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtBulletTime = context.Clone(this.audioBalance_SM_EvtBulletTime)!;
-        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundOpen = context.Clone(this.audioEnvUndergroundOpen)!;
-        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundEnclosed = context.Clone(this.audioEnvUndergroundEnclosed)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundLoudRef = context.Clone(this.audioBalance_PlaygroundLoudRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_ReplayLoudRef = context.Clone(this.audioBalance_ReplayLoudRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_PodiumRef = context.Clone(this.audioBalance_PodiumRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_PlaygroundSoftRef = context.Clone(this.audioBalance_PlaygroundSoftRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_ReplaySoftRef = context.Clone(this.audioBalance_ReplaySoftRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtStartLineRef = context.Clone(this.audioBalance_TM_EvtStartLineRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCheckpointRef = context.Clone(this.audioBalance_TM_EvtCheckpointRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtRespawnRef = context.Clone(this.audioBalance_TM_EvtRespawnRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtCrashRef = context.Clone(this.audioBalance_TM_EvtCrashRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtFlyingRef = context.Clone(this.audioBalance_TM_EvtFlyingRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_TM_EvtSwimmingRef = context.Clone(this.audioBalance_TM_EvtSwimmingRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtSpawnRef = context.Clone(this.audioBalance_SM_EvtSpawnRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_UndergroundRef = context.Clone(this.audioBalance_Overlay_UndergroundRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_Overlay_FarRef = context.Clone(this.audioBalance_Overlay_FarRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtUnspawnRef = context.Clone(this.audioBalance_SM_EvtUnspawnRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHitRef = context.Clone(this.audioBalance_SM_EvtHitRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtFireRef = context.Clone(this.audioBalance_SM_EvtFireRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHitEliminatedRef = context.Clone(this.audioBalance_SM_EvtHitEliminatedRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtBulletTimeRef = context.Clone(this.audioBalance_SM_EvtBulletTimeRef)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundOpenRef = context.Clone(this.audioEnvUndergroundOpenRef)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvUndergroundEnclosedRef = context.Clone(this.audioEnvUndergroundEnclosedRef)!;
         ((CGameCtnDecorationAudio)clone).cameraWooshMinSpeedKmh = context.Clone(this.cameraWooshMinSpeedKmh)!;
         ((CGameCtnDecorationAudio)clone).reverbMinBlockDist = context.Clone(this.reverbMinBlockDist)!;
         ((CGameCtnDecorationAudio)clone).reverbMaxBlockDist = context.Clone(this.reverbMaxBlockDist)!;
         ((CGameCtnDecorationAudio)clone).reverbMaterialGains = context.CloneArray(this.reverbMaterialGains)!;
-        ((CGameCtnDecorationAudio)clone).modifierXmlFile = context.Clone(this.modifierXmlFile)!;
+        ((CGameCtnDecorationAudio)clone).modifierXmlFileRef = context.Clone(this.modifierXmlFileRef)!;
         ((CGameCtnDecorationAudio)clone).Sounds = context.CloneDictionary(this.Sounds)!;
         ((CGameCtnDecorationAudio)clone).Musics = context.CloneDictionary(this.Musics)!;
     }
@@ -551,8 +397,8 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvOutsideOpen, ref n.audioEnvOutsideOpenFile);
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvOutsideEnclosed, ref n.audioEnvOutsideEnclosedFile);
+            rw.NodeRef(n.audioEnvOutsideOpenRef);
+            rw.NodeRef(n.audioEnvOutsideEnclosedRef);
         }
     }
 
@@ -581,25 +427,93 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override uint Id => 0x03039003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugAudioBalance? U01;
-        public CPlugAudioBalance? U02;
-        public CPlugAudioBalance? U03;
-        public CPlugAudioBalance? U04;
-        public CPlugAudioBalance? U05;
-        public CPlugAudioBalance? U06;
-        public CPlugAudioBalance? U07;
+
+        private NodeRef<CPlugAudioBalance> U01Ref = new();
+        public CPlugAudioBalance? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U02Ref = new();
+        public CPlugAudioBalance? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U03Ref = new();
+        public CPlugAudioBalance? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U04Ref = new();
+        public CPlugAudioBalance? U04
+        {
+            get => U04Ref.Resolve();
+            set => U04Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U05Ref = new();
+        public CPlugAudioBalance? U05
+        {
+            get => U05Ref.Resolve();
+            set => U05Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U06Ref = new();
+        public CPlugAudioBalance? U06
+        {
+            get => U06Ref.Resolve();
+            set => U06Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CPlugAudioBalance> U07Ref = new();
+        public CPlugAudioBalance? U07
+        {
+            get => U07Ref.Resolve();
+            set => U07Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03039003 owner;
+            internal NodeRefView(Chunk03039003 owner) => this.owner = owner;
+            public NodeRef<CPlugAudioBalance> U01 => owner.U01Ref;
+            public NodeRef<CPlugAudioBalance> U02 => owner.U02Ref;
+            public NodeRef<CPlugAudioBalance> U03 => owner.U03Ref;
+            public NodeRef<CPlugAudioBalance> U04 => owner.U04Ref;
+            public NodeRef<CPlugAudioBalance> U05 => owner.U05Ref;
+            public NodeRef<CPlugAudioBalance> U06 => owner.U06Ref;
+            public NodeRef<CPlugAudioBalance> U07 => owner.U07Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield return new("U02", U02Ref);
+            yield return new("U03", U03Ref);
+            yield return new("U04", U04Ref);
+            yield return new("U05", U05Ref);
+            yield return new("U06", U06Ref);
+            yield return new("U07", U07Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03039003)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03039003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03039003)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03039003)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03039003)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk03039003)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk03039003)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03039003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk03039003)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03039003)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk03039003)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk03039003)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk03039003)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk03039003)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk03039003)clone).U07Ref = context.Clone(this.U07Ref)!;
         }
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
@@ -610,68 +524,68 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
             {
                 if (Version <= 3)
                 {
-                    rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_PlaygroundLoud, ref n.audioBalance_PlaygroundLoudFile);
-                    rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_PlaygroundLoud, ref n.audioBalance_PlaygroundLoudFile);
+                    rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
+                    rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
                 }
             }
 
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_PlaygroundLoud, ref n.audioBalance_PlaygroundLoudFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_ReplayLoud, ref n.audioBalance_ReplayLoudFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_Podium, ref n.audioBalance_PodiumFile);
+            rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
+            rw.NodeRef(n.audioBalance_ReplayLoudRef);
+            rw.NodeRef(n.audioBalance_PodiumRef);
 
             if (Version >= 6)
             {
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_PlaygroundSoft, ref n.audioBalance_PlaygroundSoftFile);
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_ReplaySoft, ref n.audioBalance_ReplaySoftFile);
+                rw.NodeRef(n.audioBalance_PlaygroundSoftRef);
+                rw.NodeRef(n.audioBalance_ReplaySoftRef);
             }
 
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtStartLine, ref n.audioBalance_TM_EvtStartLineFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtCheckpoint, ref n.audioBalance_TM_EvtCheckpointFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtRespawn, ref n.audioBalance_TM_EvtRespawnFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtCrash, ref n.audioBalance_TM_EvtCrashFile);
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtFlying, ref n.audioBalance_TM_EvtFlyingFile);
+            rw.NodeRef(n.audioBalance_TM_EvtStartLineRef);
+            rw.NodeRef(n.audioBalance_TM_EvtCheckpointRef);
+            rw.NodeRef(n.audioBalance_TM_EvtRespawnRef);
+            rw.NodeRef(n.audioBalance_TM_EvtCrashRef);
+            rw.NodeRef(n.audioBalance_TM_EvtFlyingRef);
 
             if (Version >= 7)
             {
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_TM_EvtSwimming, ref n.audioBalance_TM_EvtSwimmingFile);
+                rw.NodeRef(n.audioBalance_TM_EvtSwimmingRef);
             }
 
-            rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtSpawn, ref n.audioBalance_SM_EvtSpawnFile);
+            rw.NodeRef(n.audioBalance_SM_EvtSpawnRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_Overlay_Underground, ref n.audioBalance_Overlay_UndergroundFile);
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_Overlay_Far, ref n.audioBalance_Overlay_FarFile);
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtUnspawn, ref n.audioBalance_SM_EvtUnspawnFile);
-                rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtHit, ref n.audioBalance_SM_EvtHitFile);
+                rw.NodeRef(n.audioBalance_Overlay_UndergroundRef);
+                rw.NodeRef(n.audioBalance_Overlay_FarRef);
+                rw.NodeRef(n.audioBalance_SM_EvtUnspawnRef);
+                rw.NodeRef(n.audioBalance_SM_EvtHitRef);
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtFire, ref n.audioBalance_SM_EvtFireFile);
+                    rw.NodeRef(n.audioBalance_SM_EvtFireRef);
 
                     if (Version >= 4)
                     {
-                        rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtHitEliminated, ref n.audioBalance_SM_EvtHitEliminatedFile);
+                        rw.NodeRef(n.audioBalance_SM_EvtHitEliminatedRef);
 
                         if (Version >= 5)
                         {
                             if (Version == 5)
                             {
-                                rw.NodeRef<CPlugAudioBalance>(ref U01);
-                                rw.NodeRef<CPlugAudioBalance>(ref U02);
-                                rw.NodeRef<CPlugAudioBalance>(ref U03);
-                                rw.NodeRef<CPlugAudioBalance>(ref U04);
-                                rw.NodeRef<CPlugAudioBalance>(ref U05);
-                                rw.NodeRef<CPlugAudioBalance>(ref U06);
+                                rw.NodeRef(U01Ref);
+                                rw.NodeRef(U02Ref);
+                                rw.NodeRef(U03Ref);
+                                rw.NodeRef(U04Ref);
+                                rw.NodeRef(U05Ref);
+                                rw.NodeRef(U06Ref);
                             }
 
                             if (Version >= 6)
                             {
-                                rw.NodeRef<CPlugAudioBalance>(ref U07);
+                                rw.NodeRef(U07Ref);
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef<CPlugAudioBalance>(ref n.audioBalance_SM_EvtBulletTime, ref n.audioBalance_SM_EvtBulletTimeFile);
+                                    rw.NodeRef(n.audioBalance_SM_EvtBulletTimeRef);
                                 }
                             }
                         }
@@ -698,10 +612,10 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvOutsideOpen, ref n.audioEnvOutsideOpenFile);
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvOutsideEnclosed, ref n.audioEnvOutsideEnclosedFile);
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvUndergroundOpen, ref n.audioEnvUndergroundOpenFile);
-            rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvUndergroundEnclosed, ref n.audioEnvUndergroundEnclosedFile);
+            rw.NodeRef(n.audioEnvOutsideOpenRef);
+            rw.NodeRef(n.audioEnvOutsideEnclosedRef);
+            rw.NodeRef(n.audioEnvUndergroundOpenRef);
+            rw.NodeRef(n.audioEnvUndergroundEnclosedRef);
         }
     }
 
@@ -749,7 +663,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugFileText>(ref n.modifierXmlFile, ref n.modifierXmlFileFile);
+            rw.NodeRef(n.modifierXmlFileRef);
         }
     }
 

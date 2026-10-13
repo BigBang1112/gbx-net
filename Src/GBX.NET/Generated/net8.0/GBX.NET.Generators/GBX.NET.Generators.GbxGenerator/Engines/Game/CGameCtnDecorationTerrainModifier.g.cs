@@ -34,22 +34,15 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0303C000;
 
-    private CPlugGameSkin? remapping;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugGameSkin> remappingRef = new();
     [AppliedWithChunk<Chunk0303C000>]
     public CPlugGameSkin? Remapping
     {
-        get => this.remappingFile?.GetNode(ref this.remapping) ?? this.remapping;
-        set => this.remapping = value;
+        get => remappingRef.Resolve();
+        set => remappingRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? remappingFile;
-
-    public Components.GbxRefTableFile? RemappingFile
-    {
-        get => remappingFile;
-        set => remappingFile = value;
-    }
-
-    public CPlugGameSkin? GetRemapping(GbxReadSettings settings = default, bool exceptions = false) => remappingFile?.GetNode(ref remapping, settings, exceptions) ?? remapping;
 
     private string? remapFolder;
     [AppliedWithChunk<Chunk0303C000>]
@@ -67,10 +60,24 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
         set => this.idName = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnDecorationTerrainModifier owner;
+        internal NodeRefView(CGameCtnDecorationTerrainModifier owner) => this.owner = owner;
+        public NodeRef<CPlugGameSkin> Remapping => owner.remappingRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Remapping", remappingRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnDecorationTerrainModifier)clone).remapping = context.Clone(this.remapping)!;
+        ((CGameCtnDecorationTerrainModifier)clone).remappingRef = context.Clone(this.remappingRef)!;
         ((CGameCtnDecorationTerrainModifier)clone).remapFolder = context.Clone(this.remapFolder)!;
         ((CGameCtnDecorationTerrainModifier)clone).idName = context.Clone(this.idName)!;
     }
@@ -93,7 +100,7 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationTerrainModifier n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugGameSkin>(ref n.remapping, ref n.remappingFile);
+            rw.NodeRef(n.remappingRef);
             rw.String(ref n.remapFolder);
         }
     }

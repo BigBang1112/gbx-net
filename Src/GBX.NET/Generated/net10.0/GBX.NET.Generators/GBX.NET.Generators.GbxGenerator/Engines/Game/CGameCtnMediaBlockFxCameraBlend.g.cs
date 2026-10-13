@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
     [Hexadecimal]
     public static new uint Id => 0x0316D000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk0316D000>]
     public List<Key>? Keys

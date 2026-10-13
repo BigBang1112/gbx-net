@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     [Hexadecimal]
     public static new uint Id => 0x03161000;
 
+    internal override uint GetId() => Id;
+
     private string script = string.Empty;
     [AppliedWithChunk<Chunk03161000>]
     public string Script

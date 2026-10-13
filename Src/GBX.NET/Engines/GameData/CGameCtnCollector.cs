@@ -46,9 +46,7 @@ public partial class CGameCtnCollector
     [AppliedWithChunk<HeaderChunk2E001004>]
     public byte[]? IconWebP { get; set; }
 
-    private CMwNod? iconFid;
-    private GbxRefTableFile? iconFidFile;
-    public partial CMwNod? IconFid { get => iconFid; set => iconFid = value; }
+    public partial CMwNod? IconFid { get => iconFidRef.Resolve(); set => iconFidRef.SetEmbedded(value); }
 
     public partial class HeaderChunk2E001004
     {

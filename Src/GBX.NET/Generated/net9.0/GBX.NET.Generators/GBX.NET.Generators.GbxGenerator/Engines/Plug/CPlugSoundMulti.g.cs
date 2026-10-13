@@ -34,22 +34,15 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     [Hexadecimal]
     public static new uint Id => 0x09064000;
 
-    private CMwNod? additionalSounds;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod> additionalSoundsRef = new();
     [AppliedWithChunk<Chunk09064000>]
     public CMwNod? AdditionalSounds
     {
-        get => this.additionalSoundsFile?.GetNode(ref this.additionalSounds) ?? this.additionalSounds;
-        set => this.additionalSounds = value;
+        get => additionalSoundsRef.Resolve();
+        set => additionalSoundsRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? additionalSoundsFile;
-
-    public Components.GbxRefTableFile? AdditionalSoundsFile
-    {
-        get => additionalSoundsFile;
-        set => additionalSoundsFile = value;
-    }
-
-    public CMwNod? GetAdditionalSounds(GbxReadSettings settings = default, bool exceptions = false) => additionalSoundsFile?.GetNode(ref additionalSounds, settings, exceptions) ?? additionalSounds;
 
     private ESoundInputMapping inputMapping;
     [AppliedWithChunk<Chunk09064000>]
@@ -61,12 +54,12 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         set => this.inputMapping = value;
     }
 
-    private External<CMwNod>[]? additionalSounds2;
+    private NodeRefList<CMwNod>? additionalSounds2;
     [AppliedWithChunk<Chunk09064001>]
-    public External<CMwNod>[]? AdditionalSounds2
+    public NodeRefList<CMwNod>? AdditionalSounds2
     {
-        get => this.additionalSounds2;
-        set => this.additionalSounds2 = value;
+        get => additionalSounds2;
+        set => additionalSounds2 = value;
     }
 
     private float pitchVariancePos;
@@ -117,36 +110,62 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         set => this.preferedDistances = value;
     }
 
-    private CFuncKeysReal? volumeFromInput;
+    private NodeRef<CFuncKeysReal> volumeFromInputRef = new();
     [AppliedWithChunk<Chunk09064003>(1)]
     public CFuncKeysReal? VolumeFromInput
     {
-        get => this.volumeFromInputFile?.GetNode(ref this.volumeFromInput) ?? this.volumeFromInput;
-        set => this.volumeFromInput = value;
+        get => volumeFromInputRef.Resolve();
+        set => volumeFromInputRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? volumeFromInputFile;
 
-    public Components.GbxRefTableFile? VolumeFromInputFile
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
     {
-        get => volumeFromInputFile;
-        set => volumeFromInputFile = value;
+        private readonly CPlugSoundMulti owner;
+        internal NodeRefView(CPlugSoundMulti owner) => this.owner = owner;
+        public NodeRef<CMwNod> AdditionalSounds => owner.additionalSoundsRef;
+        public AdditionalSounds2ReferenceView AdditionalSounds2 => new(owner);
+        public NodeRef<CFuncKeysReal> VolumeFromInput => owner.volumeFromInputRef;
+        public NodeRef<CMwNod> PlugFile => ((CPlugSound)owner).References.PlugFile;
+        public NodeRef<CFuncKeysReal> VolumeFromDistance => ((CPlugSound)owner).References.VolumeFromDistance;
+        public NodeRef<CFuncKeysReal> PitchFromDistance => ((CPlugSound)owner).References.PitchFromDistance;
+        public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => ((CPlugSound)owner).References.VolumeFormSpeedKmh;
+        public CPlugSound.OldSubSourcesReferenceView OldSubSources => ((CPlugSound)owner).References.OldSubSources;
+        public NodeRef<CPlugSound> BackingSound => ((CPlugSound)owner).References.BackingSound;
+        public NodeRef<CPlugSound> FocusedSound => ((CPlugSound)owner).References.FocusedSound;
     }
-
-    public CFuncKeysReal? GetVolumeFromInput(GbxReadSettings settings = default, bool exceptions = false) => volumeFromInputFile?.GetNode(ref volumeFromInput, settings, exceptions) ?? volumeFromInput;
+    public readonly struct AdditionalSounds2ReferenceView
+    {
+        private readonly CPlugSoundMulti owner;
+        internal AdditionalSounds2ReferenceView(CPlugSoundMulti owner) => this.owner = owner;
+        public int Count => owner.additionalSounds2?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.additionalSounds2 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("AdditionalSounds", additionalSoundsRef);
+        if (additionalSounds2 is not null)
+        {
+            for (var i = 0; i < additionalSounds2.Count; i++) yield return new("AdditionalSounds2" + "[" + i + "]", additionalSounds2.GetReference(i));
+        }
+        yield return new("VolumeFromInput", volumeFromInputRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugSoundMulti)clone).additionalSounds = context.Clone(this.additionalSounds)!;
+        ((CPlugSoundMulti)clone).additionalSoundsRef = context.Clone(this.additionalSoundsRef)!;
         ((CPlugSoundMulti)clone).inputMapping = context.Clone(this.inputMapping)!;
-        ((CPlugSoundMulti)clone).additionalSounds2 = context.CloneArray(this.additionalSounds2)!;
+        ((CPlugSoundMulti)clone).additionalSounds2 = context.Clone(this.additionalSounds2)!;
         ((CPlugSoundMulti)clone).pitchVariancePos = context.Clone(this.pitchVariancePos)!;
         ((CPlugSoundMulti)clone).volumeVariance = context.Clone(this.volumeVariance)!;
         ((CPlugSoundMulti)clone).avoidDuplicates = context.Clone(this.avoidDuplicates)!;
         ((CPlugSoundMulti)clone).alternateParity = context.Clone(this.alternateParity)!;
         ((CPlugSoundMulti)clone).pitchVarianceNeg = context.Clone(this.pitchVarianceNeg)!;
         ((CPlugSoundMulti)clone).preferedDistances = context.CloneArray(this.preferedDistances)!;
-        ((CPlugSoundMulti)clone).volumeFromInput = context.Clone(this.volumeFromInput)!;
+        ((CPlugSoundMulti)clone).volumeFromInputRef = context.Clone(this.volumeFromInputRef)!;
     }
 
     public CPlugSoundMulti()
@@ -167,7 +186,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.additionalSounds, ref n.additionalSoundsFile);
+            rw.NodeRef(n.additionalSoundsRef);
             rw.EnumInt32<ESoundInputMapping>(ref n.inputMapping);
         }
     }
@@ -186,7 +205,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CMwNod>(ref n.additionalSounds2!);
+            n.additionalSounds2 = rw.ListNodeRef_deprec<CMwNod>(n.additionalSounds2);
             rw.EnumInt32<ESoundInputMapping>(ref n.inputMapping);
         }
     }
@@ -252,7 +271,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef<CFuncKeysReal>(ref n.volumeFromInput, ref n.volumeFromInputFile);
+                rw.NodeRef(n.volumeFromInputRef);
 
                 if (Version >= 2)
                 {

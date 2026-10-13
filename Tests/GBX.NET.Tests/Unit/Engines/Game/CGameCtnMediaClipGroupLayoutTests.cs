@@ -1,3 +1,4 @@
+using GBX.NET.Components;
 using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
@@ -8,6 +9,54 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 [Category("Unit")]
 public class CGameCtnMediaClipGroupLayoutTests
 {
+    [Test]
+    public async Task CombinedClipEntriesKeepExternalDescriptorsWithoutResolvingDuringWriteOrClone()
+    {
+        var calls = 0;
+        var table = new GbxRefTable();
+        table.ExternalNodes["Stored.Clip.Gbx"] = () =>
+        {
+            calls++;
+            return new CGameCtnMediaClip { Name = "Resolved" }.ToGbx();
+        };
+        var file = new GbxRefTableFile(table, 0, true, "Stored.Clip.Gbx");
+        var group = new CGameCtnMediaClipGroup
+        {
+            Clips =
+            [
+                new(null, new() { RefCoord = (1, 2, 3) }),
+                new(null, new() { RefCoord = (4, 5, 6) })
+            ]
+        };
+        foreach (var pair in group.Clips) pair.References.Clip!.SetExternal(file);
+
+        using var output = new MemoryStream();
+        using var writer = new GbxWriter(output);
+        var chunk = new CGameCtnMediaClipGroup.Chunk0307A003();
+        chunk.Write(group, writer);
+#pragma warning disable GBXNET10001
+        var clone = (CGameCtnMediaClipGroup)group.DeepClone();
+#pragma warning restore GBXNET10001
+        await Assert.That(calls).IsEqualTo(0);
+        await Assert.That(group.EnumerateReferences().Count()).IsEqualTo(2);
+        await Assert.That(clone.Clips[0].References.Clip!.File!.FilePath).IsEqualTo(file.FilePath);
+        await Assert.That(clone.Clips[0].References.Clip!.File).IsSameReferenceAs(clone.Clips[1].References.Clip!.File);
+        await Assert.That(clone.Clips[0].Trigger).IsNotSameReferenceAs(group.Clips[0].Trigger);
+
+        output.Position = 0;
+        using var reader = new GbxReader(output);
+        reader.LoadRefTable(writer.NodeDict.Where(x => x.Key is GbxRefTableNode)
+            .ToDictionary(x => x.Value, x => (GbxRefTableNode)x.Key));
+        var restored = new CGameCtnMediaClipGroup();
+        chunk.Read(restored, reader);
+        await Assert.That(calls).IsEqualTo(0);
+        await Assert.That(restored.Clips[0].References.Clip!.File).IsSameReferenceAs(restored.Clips[1].References.Clip!.File);
+        await Assert.That(restored.Clips[0].Trigger.RefCoord).IsEqualTo(new Int3(1, 2, 3));
+        await Assert.That(restored.Clips[1].Clip!.Name).IsEqualTo("Resolved");
+        await Assert.That(calls).IsEqualTo(1);
+        await Assert.That(restored.Clips[1].References.Clip!.State).IsEqualTo(NodeRefState.Resolved);
+    }
+
     [Test]
     [Arguments(0, false)]
     [Arguments(1, false)]

@@ -34,6 +34,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x0310D000;
 
+    internal override uint GetId() => Id;
+
     private List<BlockSpawn>? blockSpawns;
     [AppliedWithChunk<Chunk0310D000>]
     public List<BlockSpawn>? BlockSpawns
@@ -58,20 +60,20 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.cardEventsSpawns = value;
     }
 
-    private CGameCtnAnchoredObject[]? legacyAnchoredObjects;
+    private NodeRefList<CGameCtnAnchoredObject>? legacyAnchoredObjects;
     [AppliedWithChunk<Chunk0310D003>]
-    public CGameCtnAnchoredObject[]? LegacyAnchoredObjects
+    public NodeRefList<CGameCtnAnchoredObject>? LegacyAnchoredObjects
     {
-        get => this.legacyAnchoredObjects;
-        set => this.legacyAnchoredObjects = value;
+        get => legacyAnchoredObjects;
+        set => legacyAnchoredObjects = value;
     }
 
-    private CGameCtnMacroBlockInfo[]? legacyMacroBlocks;
+    private NodeRefList<CGameCtnMacroBlockInfo>? legacyMacroBlocks;
     [AppliedWithChunk<Chunk0310D004>]
-    public CGameCtnMacroBlockInfo[]? LegacyMacroBlocks
+    public NodeRefList<CGameCtnMacroBlockInfo>? LegacyMacroBlocks
     {
-        get => this.legacyMacroBlocks;
-        set => this.legacyMacroBlocks = value;
+        get => legacyMacroBlocks;
+        set => legacyMacroBlocks = value;
     }
 
     private string[]? legacyDecalModelPaths;
@@ -98,30 +100,30 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.sceneDecals = value;
     }
 
-    private CGameCtnMediaClipGroup? clipGroupInGame;
+    private NodeRef<CGameCtnMediaClipGroup> clipGroupInGameRef = new();
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
     {
-        get => this.clipGroupInGame;
-        set => this.clipGroupInGame = value;
+        get => clipGroupInGameRef.Resolve();
+        set => clipGroupInGameRef.SetEmbedded(value);
     }
 
-    private CGameCtnMediaClipGroup? clipGroupEndRace;
+    private NodeRef<CGameCtnMediaClipGroup> clipGroupEndRaceRef = new();
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
     {
-        get => this.clipGroupEndRace;
-        set => this.clipGroupEndRace = value;
+        get => clipGroupEndRaceRef.Resolve();
+        set => clipGroupEndRaceRef.SetEmbedded(value);
     }
 
-    private CGameCtnAutoTerrain[]? autoTerrains;
+    private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
     [AppliedWithChunk<Chunk0310D008>]
-    public CGameCtnAutoTerrain[]? AutoTerrains
+    public NodeRefList<CGameCtnAutoTerrain>? AutoTerrains
     {
-        get => this.autoTerrains;
-        set => this.autoTerrains = value;
+        get => autoTerrains;
+        set => autoTerrains = value;
     }
 
     private CScriptTraitsMetadata? scriptMetadata;
@@ -204,20 +206,76 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.clipTriggerSize = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CGameCtnMacroBlockInfo owner;
+        internal NodeRefView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
+        public LegacyAnchoredObjectsReferenceView LegacyAnchoredObjects => new(owner);
+        public LegacyMacroBlocksReferenceView LegacyMacroBlocks => new(owner);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => owner.clipGroupInGameRef;
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => owner.clipGroupEndRaceRef;
+        public AutoTerrainsReferenceView AutoTerrains => new(owner);
+        public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
+        public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
+        public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
+        public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
+    }
+    public readonly struct LegacyAnchoredObjectsReferenceView
+    {
+        private readonly CGameCtnMacroBlockInfo owner;
+        internal LegacyAnchoredObjectsReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
+        public int Count => owner.legacyAnchoredObjects?.Count ?? 0;
+        public NodeRef<CGameCtnAnchoredObject> this[int index] => (owner.legacyAnchoredObjects ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct LegacyMacroBlocksReferenceView
+    {
+        private readonly CGameCtnMacroBlockInfo owner;
+        internal LegacyMacroBlocksReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
+        public int Count => owner.legacyMacroBlocks?.Count ?? 0;
+        public NodeRef<CGameCtnMacroBlockInfo> this[int index] => (owner.legacyMacroBlocks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct AutoTerrainsReferenceView
+    {
+        private readonly CGameCtnMacroBlockInfo owner;
+        internal AutoTerrainsReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
+        public int Count => owner.autoTerrains?.Count ?? 0;
+        public NodeRef<CGameCtnAutoTerrain> this[int index] => (owner.autoTerrains ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (legacyAnchoredObjects is not null)
+        {
+            for (var i = 0; i < legacyAnchoredObjects.Count; i++) yield return new("LegacyAnchoredObjects" + "[" + i + "]", legacyAnchoredObjects.GetReference(i));
+        }
+        if (legacyMacroBlocks is not null)
+        {
+            for (var i = 0; i < legacyMacroBlocks.Count; i++) yield return new("LegacyMacroBlocks" + "[" + i + "]", legacyMacroBlocks.GetReference(i));
+        }
+        yield return new("ClipGroupInGame", clipGroupInGameRef);
+        yield return new("ClipGroupEndRace", clipGroupEndRaceRef);
+        if (autoTerrains is not null)
+        {
+            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMacroBlockInfo)clone).blockSpawns = context.CloneList(this.blockSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).blockSkinSpawns = context.CloneList(this.blockSkinSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).cardEventsSpawns = context.CloneList(this.cardEventsSpawns)!;
-        ((CGameCtnMacroBlockInfo)clone).legacyAnchoredObjects = context.CloneArray(this.legacyAnchoredObjects)!;
-        ((CGameCtnMacroBlockInfo)clone).legacyMacroBlocks = context.CloneArray(this.legacyMacroBlocks)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyAnchoredObjects = context.Clone(this.legacyAnchoredObjects)!;
+        ((CGameCtnMacroBlockInfo)clone).legacyMacroBlocks = context.Clone(this.legacyMacroBlocks)!;
         ((CGameCtnMacroBlockInfo)clone).legacyDecalModelPaths = context.CloneArray(this.legacyDecalModelPaths)!;
         ((CGameCtnMacroBlockInfo)clone).legacyDecals = context.CloneArray(this.legacyDecals)!;
         ((CGameCtnMacroBlockInfo)clone).sceneDecals = context.CloneArray(this.sceneDecals)!;
-        ((CGameCtnMacroBlockInfo)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
-        ((CGameCtnMacroBlockInfo)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
-        ((CGameCtnMacroBlockInfo)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
+        ((CGameCtnMacroBlockInfo)clone).clipGroupInGameRef = context.Clone(this.clipGroupInGameRef)!;
+        ((CGameCtnMacroBlockInfo)clone).clipGroupEndRaceRef = context.Clone(this.clipGroupEndRaceRef)!;
+        ((CGameCtnMacroBlockInfo)clone).autoTerrains = context.Clone(this.autoTerrains)!;
         ((CGameCtnMacroBlockInfo)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
         ((CGameCtnMacroBlockInfo)clone).objectSpawns = context.CloneList(this.objectSpawns)!;
         ((CGameCtnMacroBlockInfo)clone).objectNeighbourPairsLegacy = context.CloneArray(this.objectNeighbourPairsLegacy)!;
@@ -312,7 +370,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnAnchoredObject>(ref n.legacyAnchoredObjects!);
+            n.legacyAnchoredObjects = rw.ListNodeRef_deprec<CGameCtnAnchoredObject>(n.legacyAnchoredObjects);
         }
     }
 
@@ -331,7 +389,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnMacroBlockInfo>(ref n.legacyMacroBlocks!);
+            n.legacyMacroBlocks = rw.ListNodeRef_deprec<CGameCtnMacroBlockInfo>(n.legacyMacroBlocks);
         }
     }
 
@@ -381,21 +439,41 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D007;
         public override GameVersion GameVersion => GameVersion.MP3;
         public int U01 = 3;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod> U02Ref = new();
+        public CMwNod? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0310D007 owner;
+            internal NodeRefView(Chunk0310D007 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U02 => owner.U02Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", U02Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D007)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0310D007)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0310D007)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
-            rw.NodeRef<CMwNod>(ref U02);
+            rw.NodeRef(n.clipGroupInGameRef);
+            rw.NodeRef(n.clipGroupEndRaceRef);
+            rw.NodeRef(U02Ref);
         }
     }
 
@@ -417,7 +495,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnAutoTerrain>(ref n.autoTerrains!);
+            n.autoTerrains = rw.ListNodeRef_deprec<CGameCtnAutoTerrain>(n.autoTerrains);
             rw.Int32(ref U01);
             rw.Int32(ref U02);
         }
@@ -430,17 +508,42 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     public partial class Chunk0310D009 : Chunk<CGameCtnMacroBlockInfo>
     {
         public override uint Id => 0x0310D009;
-        public CMwNod[]? U01;
+
+        public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0310D009 owner;
+            internal NodeRefView(Chunk0310D009 owner) => this.owner = owner;
+            public U01ReferenceView U01 => new(owner);
+        }
+        public readonly struct U01ReferenceView
+        {
+            private readonly Chunk0310D009 owner;
+            internal U01ReferenceView(Chunk0310D009 owner) => this.owner = owner;
+            public int Count => owner.U01?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0310D009)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0310D009)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CMwNod>(ref U01!);
+            U01 = rw.ListNodeRef_deprec<CMwNod>(U01);
         }
     }
 
@@ -496,14 +599,91 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D00C;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwNod[]? U01;
-        public CPlugSpline3D[]? U02;
-        public CMwNod[]? U03;
-        public CMwNod[]? U04;
+
+        public NodeRefList<CMwNod>? U01;
+
+        public NodeRefList<CPlugSpline3D>? U02;
+
+        public NodeRefList<CMwNod>? U03;
+
+        public NodeRefList<CMwNod>? U04;
         public int U05;
         public int U06;
         public int U07;
-        public CMwNod[]? U08;
+
+        public NodeRefList<CMwNod>? U08;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0310D00C owner;
+            internal NodeRefView(Chunk0310D00C owner) => this.owner = owner;
+            public U01ReferenceView U01 => new(owner);
+            public U02ReferenceView U02 => new(owner);
+            public U03ReferenceView U03 => new(owner);
+            public U04ReferenceView U04 => new(owner);
+            public U08ReferenceView U08 => new(owner);
+        }
+        public readonly struct U01ReferenceView
+        {
+            private readonly Chunk0310D00C owner;
+            internal U01ReferenceView(Chunk0310D00C owner) => this.owner = owner;
+            public int Count => owner.U01?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U02ReferenceView
+        {
+            private readonly Chunk0310D00C owner;
+            internal U02ReferenceView(Chunk0310D00C owner) => this.owner = owner;
+            public int Count => owner.U02?.Count ?? 0;
+            public NodeRef<CPlugSpline3D> this[int index] => (owner.U02 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U03ReferenceView
+        {
+            private readonly Chunk0310D00C owner;
+            internal U03ReferenceView(Chunk0310D00C owner) => this.owner = owner;
+            public int Count => owner.U03?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.U03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U04ReferenceView
+        {
+            private readonly Chunk0310D00C owner;
+            internal U04ReferenceView(Chunk0310D00C owner) => this.owner = owner;
+            public int Count => owner.U04?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.U04 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U08ReferenceView
+        {
+            private readonly Chunk0310D00C owner;
+            internal U08ReferenceView(Chunk0310D00C owner) => this.owner = owner;
+            public int Count => owner.U08?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.U08 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+            }
+            if (U02 is not null)
+            {
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
+            }
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
+            }
+            if (U04 is not null)
+            {
+                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.GetReference(i));
+            }
+            if (U08 is not null)
+            {
+                for (var i = 0; i < U08.Count; i++) yield return new("U08" + "[" + i + "]", U08.GetReference(i));
+            }
+            yield break;
+        }
 
         public Chunk0310D00C() : this(GameVersion.Unspecified)
         {
@@ -521,14 +701,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0310D00C)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0310D00C)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0310D00C)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk0310D00C)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk0310D00C)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0310D00C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0310D00C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0310D00C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0310D00C)clone).U04 = context.Clone(this.U04)!;
             ((Chunk0310D00C)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0310D00C)clone).U06 = context.Clone(this.U06)!;
             ((Chunk0310D00C)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk0310D00C)clone).U08 = context.CloneArray(this.U08)!;
+            ((Chunk0310D00C)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
@@ -537,10 +717,10 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
             if (Version == 0)
             {
-                rw.ArrayNodeRef_deprec<CMwNod>(ref U01!);
-                rw.ArrayNodeRef_deprec<CPlugSpline3D>(ref U02!);
-                rw.ArrayNodeRef_deprec<CMwNod>(ref U03!);
-                rw.ArrayNodeRef_deprec<CMwNod>(ref U04!);
+                U01 = rw.ListNodeRef_deprec<CMwNod>(U01);
+                U02 = rw.ListNodeRef_deprec<CPlugSpline3D>(U02);
+                U03 = rw.ListNodeRef_deprec<CMwNod>(U03);
+                U04 = rw.ListNodeRef_deprec<CMwNod>(U04);
                 rw.Int32(ref U05);
                 rw.Int32(ref U06);
                 rw.Int32(ref U07);
@@ -552,7 +732,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                 return;
             }
 
-            rw.ArrayNodeRef_deprec<CMwNod>(ref U08!);
+            U08 = rw.ListNodeRef_deprec<CMwNod>(U08);
         }
     }
 
@@ -694,8 +874,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             {
                 rw.Int3(ref n.clipOffset);
                 rw.Int3(ref n.clipTriggerSize);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-                rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+                rw.NodeRef(n.clipGroupInGameRef);
+                rw.NodeRef(n.clipGroupEndRaceRef);
             });
         }
     }
@@ -774,18 +954,18 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.yawPitchRoll = value;
         }
 
-        private CGameWaypointSpecialProperty? waypoint;
+        private NodeRef<CGameWaypointSpecialProperty> waypointRef = new();
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => this.waypoint;
-            set => this.waypoint = value;
+            get => waypointRef.Resolve();
+            set => waypointRef.SetEmbedded(value);
         }
 
-        private CGameCtnChallenge? challenge;
+        private NodeRef<CGameCtnChallenge> challengeRef = new();
         public CGameCtnChallenge? Challenge
         {
-            get => this.challenge;
-            set => this.challenge = value;
+            get => challengeRef.Resolve();
+            set => challengeRef.SetEmbedded(value);
         }
 
         private byte color;
@@ -800,6 +980,21 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             get => this.lightmapQuality;
             set => this.lightmapQuality = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly BlockSpawn owner;
+            internal NodeRefView(BlockSpawn owner) => this.owner = owner;
+            public NodeRef<CGameWaypointSpecialProperty> Waypoint => owner.waypointRef;
+            public NodeRef<CGameCtnChallenge> Challenge => owner.challengeRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Waypoint", waypointRef);
+            yield return new("Challenge", challengeRef);
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -823,8 +1018,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             ((BlockSpawn)clone).flags = context.Clone(this.flags)!;
             ((BlockSpawn)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
             ((BlockSpawn)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
-            ((BlockSpawn)clone).waypoint = context.Clone(this.waypoint)!;
-            ((BlockSpawn)clone).challenge = context.Clone(this.challenge)!;
+            ((BlockSpawn)clone).waypointRef = context.Clone(this.waypointRef)!;
+            ((BlockSpawn)clone).challengeRef = context.Clone(this.challengeRef)!;
             ((BlockSpawn)clone).color = context.Clone(this.color)!;
             ((BlockSpawn)clone).lightmapQuality = context.Clone(this.lightmapQuality)!;
         }
@@ -875,13 +1070,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                         }
                     }
 
-                    rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
+                    rw.NodeRef(this.waypointRef);
 
                     if (Version >= 4)
                     {
                         if (Version <= 5)
                         {
-                            rw.NodeRef<CGameCtnChallenge>(ref this.challenge);
+                            rw.NodeRef(this.challengeRef);
                         }
 
                         if (Version >= 7)
@@ -915,11 +1110,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     {
         public int Version { get; set; }
 
-        private CGameCtnBlockSkin? skin;
+        private NodeRef<CGameCtnBlockSkin> skinRef = new();
         public CGameCtnBlockSkin? Skin
         {
-            get => this.skin;
-            set => this.skin = value;
+            get => skinRef.Resolve();
+            set => skinRef.SetEmbedded(value);
         }
 
         private Int3 coord;
@@ -936,6 +1131,19 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.blockSpawnIndex = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly BlockSkinSpawn owner;
+            internal NodeRefView(BlockSkinSpawn owner) => this.owner = owner;
+            public NodeRef<CGameCtnBlockSkin> Skin => owner.skinRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Skin", skinRef);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (BlockSkinSpawn)MemberwiseClone();
@@ -947,7 +1155,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((BlockSkinSpawn)clone).Version = context.Clone(this.Version)!;
-            ((BlockSkinSpawn)clone).skin = context.Clone(this.skin)!;
+            ((BlockSkinSpawn)clone).skinRef = context.Clone(this.skinRef)!;
             ((BlockSkinSpawn)clone).coord = context.Clone(this.coord)!;
             ((BlockSkinSpawn)clone).blockSpawnIndex = context.Clone(this.blockSpawnIndex)!;
         }
@@ -955,7 +1163,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnBlockSkin>(ref this.skin);
+            rw.NodeRef(this.skinRef);
 
             if (Version == 0)
             {
@@ -1113,11 +1321,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.pivotPosition = value;
         }
 
-        private CGameWaypointSpecialProperty? waypoint;
+        private NodeRef<CGameWaypointSpecialProperty> waypointRef = new();
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => this.waypoint;
-            set => this.waypoint = value;
+            get => waypointRef.Resolve();
+            set => waypointRef.SetEmbedded(value);
         }
 
         private float scale = 1;
@@ -1190,6 +1398,19 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.u10 = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly ObjectSpawn owner;
+            internal NodeRefView(ObjectSpawn owner) => this.owner = owner;
+            public NodeRef<CGameWaypointSpecialProperty> Waypoint => owner.waypointRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Waypoint", waypointRef);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (ObjectSpawn)MemberwiseClone();
@@ -1212,7 +1433,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             ((ObjectSpawn)clone).u02 = context.Clone(this.u02)!;
             ((ObjectSpawn)clone).flags = context.Clone(this.flags)!;
             ((ObjectSpawn)clone).pivotPosition = context.Clone(this.pivotPosition)!;
-            ((ObjectSpawn)clone).waypoint = context.Clone(this.waypoint)!;
+            ((ObjectSpawn)clone).waypointRef = context.Clone(this.waypointRef)!;
             ((ObjectSpawn)clone).scale = context.Clone(this.scale)!;
             ((ObjectSpawn)clone).u04 = context.Clone(this.u04)!;
             ((ObjectSpawn)clone).color = context.Clone(this.color)!;
@@ -1275,7 +1496,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
                     if (Version >= 8)
                     {
-                        rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypoint);
+                        rw.NodeRef(this.waypointRef);
 
                         if (Version >= 9)
                         {

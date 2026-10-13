@@ -34,6 +34,8 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03028000;
 
+    internal override uint GetId() => Id;
+
     private string? receiverLogin;
     [AppliedWithChunk<Chunk03028000>]
     public string? ReceiverLogin

@@ -34,6 +34,8 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     [Hexadecimal]
     public static new uint Id => 0x07010000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk07010001>]
     [AppliedWithChunk<Chunk07010002>]

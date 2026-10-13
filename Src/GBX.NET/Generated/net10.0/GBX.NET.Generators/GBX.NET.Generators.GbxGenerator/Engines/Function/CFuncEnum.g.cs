@@ -34,6 +34,8 @@ public partial class CFuncEnum : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0500E000;
 
+    internal override uint GetId() => Id;
+
     private int wantedCount;
     [AppliedWithChunk<Chunk0500E005>]
     public int WantedCount
@@ -42,12 +44,12 @@ public partial class CFuncEnum : CFunc, IClass
         set => this.wantedCount = value;
     }
 
-    private External<CPlug>[]? values;
+    private NodeRefList<CPlug>? values;
     [AppliedWithChunk<Chunk0500E005>]
-    public External<CPlug>[]? Values
+    public NodeRefList<CPlug>? Values
     {
-        get => this.values;
-        set => this.values = value;
+        get => values;
+        set => values = value;
     }
 
     private string? name;
@@ -90,22 +92,13 @@ public partial class CFuncEnum : CFunc, IClass
         set => this.maxTexCoord = value;
     }
 
-    private CMwRefBuffer? iconIndexs;
+    private NodeRef<CMwRefBuffer> iconIndexsRef = new();
     [AppliedWithChunk<Chunk0500E006>]
     public CMwRefBuffer? IconIndexs
     {
-        get => this.iconIndexsFile?.GetNode(ref this.iconIndexs) ?? this.iconIndexs;
-        set => this.iconIndexs = value;
+        get => iconIndexsRef.Resolve();
+        set => iconIndexsRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? iconIndexsFile;
-
-    public Components.GbxRefTableFile? IconIndexsFile
-    {
-        get => iconIndexsFile;
-        set => iconIndexsFile = value;
-    }
-
-    public CMwRefBuffer? GetIconIndexs(GbxReadSettings settings = default, bool exceptions = false) => iconIndexsFile?.GetNode(ref iconIndexs, settings, exceptions) ?? iconIndexs;
 
     private Vec2 texSize;
     [AppliedWithChunk<Chunk0500E007>]
@@ -115,17 +108,43 @@ public partial class CFuncEnum : CFunc, IClass
         set => this.texSize = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncEnum owner;
+        internal NodeRefView(CFuncEnum owner) => this.owner = owner;
+        public ValuesReferenceView Values => new(owner);
+        public NodeRef<CMwRefBuffer> IconIndexs => owner.iconIndexsRef;
+    }
+    public readonly struct ValuesReferenceView
+    {
+        private readonly CFuncEnum owner;
+        internal ValuesReferenceView(CFuncEnum owner) => this.owner = owner;
+        public int Count => owner.values?.Count ?? 0;
+        public NodeRef<CPlug> this[int index] => (owner.values ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (values is not null)
+        {
+            for (var i = 0; i < values.Count; i++) yield return new("Values" + "[" + i + "]", values.GetReference(i));
+        }
+        yield return new("IconIndexs", iconIndexsRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CFuncEnum)clone).wantedCount = context.Clone(this.wantedCount)!;
-        ((CFuncEnum)clone).values = context.CloneArray(this.values)!;
+        ((CFuncEnum)clone).values = context.Clone(this.values)!;
         ((CFuncEnum)clone).name = context.Clone(this.name)!;
         ((CFuncEnum)clone).atlas = context.Clone(this.atlas)!;
         ((CFuncEnum)clone).valuesAtlasYx = context.CloneArray(this.valuesAtlasYx)!;
         ((CFuncEnum)clone).minTexCoord = context.Clone(this.minTexCoord)!;
         ((CFuncEnum)clone).maxTexCoord = context.Clone(this.maxTexCoord)!;
-        ((CFuncEnum)clone).iconIndexs = context.Clone(this.iconIndexs)!;
+        ((CFuncEnum)clone).iconIndexsRef = context.Clone(this.iconIndexsRef)!;
         ((CFuncEnum)clone).texSize = context.Clone(this.texSize)!;
     }
 
@@ -148,7 +167,7 @@ public partial class CFuncEnum : CFunc, IClass
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.wantedCount);
-            rw.ArrayNodeRef<CPlug>(ref n.values!);
+            n.values = rw.ListNodeRef<CPlug>(n.values);
             rw.Id(ref n.name);
             rw.Int2(ref n.atlas);
             rw.Array<int>(ref n.valuesAtlasYx!);
@@ -171,7 +190,7 @@ public partial class CFuncEnum : CFunc, IClass
 
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwRefBuffer>(ref n.iconIndexs, ref n.iconIndexsFile);
+            rw.NodeRef(n.iconIndexsRef);
         }
     }
 

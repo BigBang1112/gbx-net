@@ -34,6 +34,8 @@ public partial class CPlugImageArray : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0914C000;
 
+    internal override uint GetId() => Id;
+
     private string? folder;
     [AppliedWithChunk<Chunk0914C000>]
     public string? Folder
@@ -50,12 +52,12 @@ public partial class CPlugImageArray : CMwNod, IClass
         set => this.layers = value;
     }
 
-    private CMwNod? material_VId;
+    private NodeRef<CMwNod> material_VIdRef = new();
     [AppliedWithChunk<Chunk0914C000>(4)]
     public CMwNod? Material_VId
     {
-        get => this.material_VId;
-        set => this.material_VId = value;
+        get => material_VIdRef.Resolve();
+        set => material_VIdRef.SetEmbedded(value);
     }
 
     private float maskScale;
@@ -74,12 +76,26 @@ public partial class CPlugImageArray : CMwNod, IClass
         set => this.folder_TextureDecals = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugImageArray owner;
+        internal NodeRefView(CPlugImageArray owner) => this.owner = owner;
+        public NodeRef<CMwNod> Material_VId => owner.material_VIdRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Material_VId", material_VIdRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugImageArray)clone).folder = context.Clone(this.folder)!;
         ((CPlugImageArray)clone).layers = context.CloneArray(this.layers)!;
-        ((CPlugImageArray)clone).material_VId = context.Clone(this.material_VId)!;
+        ((CPlugImageArray)clone).material_VIdRef = context.Clone(this.material_VIdRef)!;
         ((CPlugImageArray)clone).maskScale = context.Clone(this.maskScale)!;
         ((CPlugImageArray)clone).folder_TextureDecals = context.Clone(this.folder_TextureDecals)!;
     }
@@ -112,7 +128,7 @@ public partial class CPlugImageArray : CMwNod, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef<CMwNod>(ref n.material_VId);
+                rw.NodeRef(n.material_VIdRef);
 
                 if (Version >= 5)
                 {

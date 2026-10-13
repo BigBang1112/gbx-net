@@ -70,9 +70,9 @@ public class CGameObjectPhyModelLayoutTests
         writer.Write(version);
         if (version < 11)
         {
-            payload.Reference("Move.Shape.Gbx");
-            payload.Reference("Hit.Shape.Gbx");
-            payload.Reference("Trigger.Shape.Gbx");
+            payload.NodeRef("Move.Shape.Gbx");
+            payload.NodeRef("Hit.Shape.Gbx");
+            payload.NodeRef("Trigger.Shape.Gbx");
         }
 
         var triggerVersion = version < 8 ? 0 : version % 6;
@@ -80,7 +80,7 @@ public class CGameObjectPhyModelLayoutTests
         writer.Write(2);
         WriteTrigger(writer, triggerVersion, "TriggerA");
         WriteTrigger(writer, triggerVersion, "TriggerB");
-        if (version < 14) payload.Reference("Deprecated.Anim.Gbx");
+        if (version < 14) payload.NodeRef("Deprecated.Anim.Gbx");
         if (version >= 2) writer.Write(paths ? "Move.Shape.Gbx" : "");
         if (version >= 4) writer.Write(paths ? "Hit.Shape.Gbx" : "");
         if (version >= 3)
@@ -111,26 +111,26 @@ public class CGameObjectPhyModelLayoutTests
         }
         if (version >= 21)
         {
-            if (paths) payload.Reference("Move.Fid.Gbx");
+            if (paths) payload.NodeRef("Move.Fid.Gbx");
             else writer.Write(-1);
         }
         if (version >= 11)
         {
-            if (version >= 21 && paths) payload.Reference("Deprecated.Shape.Gbx");
-            else if (!paths) payload.Reference("Move.Shape.Gbx");
+            if (version >= 21 && paths) payload.NodeRef("Deprecated.Shape.Gbx");
+            else if (!paths) payload.NodeRef("Move.Shape.Gbx");
             if (!paths)
             {
-                payload.Reference("Hit.Shape.Gbx");
-                payload.Reference("Trigger.Shape.Gbx");
+                payload.NodeRef("Hit.Shape.Gbx");
+                payload.NodeRef("Trigger.Shape.Gbx");
             }
         }
         if (version >= 12)
         {
             writer.Write(paths ? "Solid.Gbx" : "");
-            if (!paths) payload.Reference("Solid.Gbx");
+            if (!paths) payload.NodeRef("Solid.Gbx");
         }
         if (version >= 15) writer.Write(123);
-        if (version >= 16) payload.Reference("SpecialProperties.Gbx");
+        if (version >= 16) payload.NodeRef("SpecialProperties.Gbx");
         if (version >= 17) writer.Write(2); // EPersistence.NeverRemove.
         if (version >= 18)
         {
@@ -156,7 +156,7 @@ public class CGameObjectPhyModelLayoutTests
         if (version >= 20) writer.Write(false);
         if (version >= 23) writer.Write(true);
         if (version >= 24) writer.Write(false);
-        if (version == 25) payload.Reference("Version25Only.Gbx");
+        if (version == 25) payload.NodeRef("Version25Only.Gbx");
         payload.Finish();
 
         var node = new CGameObjectPhyModel();
@@ -189,11 +189,11 @@ public class CGameObjectPhyModelLayoutTests
         }
         if (version >= 21 && paths)
         {
-            await Assert.That(chunk.U01File!.FilePath).IsEqualTo("Move.Fid.Gbx");
-            await Assert.That(chunk.U27File!.FilePath).IsEqualTo("Deprecated.Shape.Gbx");
+            await Assert.That(chunk.References.U01.File!.FilePath).IsEqualTo("Move.Fid.Gbx");
+            await Assert.That(chunk.References.U27.File!.FilePath).IsEqualTo("Deprecated.Shape.Gbx");
         }
         if (version >= 22) await Assert.That(chunk.U17).IsEqualTo(!paths);
-        if (version == 25) await Assert.That(chunk.U26File!.FilePath).IsEqualTo("Version25Only.Gbx");
+        if (version == 25) await Assert.That(chunk.References.U26.File!.FilePath).IsEqualTo("Version25Only.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
 
@@ -213,7 +213,7 @@ public class CGameObjectPhyModelLayoutTests
         if (version >= 1) writer.Write(false);
         if (version >= 2) writer.Write((byte)7);
         if (version >= 3) writer.Write(true);
-        if (version >= 4) payload.Reference("Water.Gbx");
+        if (version >= 4) payload.NodeRef("Water.Gbx");
         payload.Finish();
 
         var node = new CGameObjectPhyModel();
@@ -228,7 +228,7 @@ public class CGameObjectPhyModelLayoutTests
         await Assert.That(node.DynaModel.UseTMSimulation).IsEqualTo(version == 0);
         await Assert.That((byte)node.DynaModel.SleepingMethod).IsEqualTo((byte)(version >= 2 ? 7 : 1));
         await Assert.That(node.DynaModel.EnableSubStepping).IsEqualTo(version >= 3);
-        if (version >= 4) await Assert.That(node.DynaModel.WaterModelFile!.FilePath).IsEqualTo("Water.Gbx");
+        if (version >= 4) await Assert.That(node.DynaModel.References.WaterModel.File!.FilePath).IsEqualTo("Water.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
 
@@ -277,19 +277,19 @@ public class CGameObjectPhyModelLayoutTests
         var node = new CGameObjectPhyModel();
         using (var payload = new ObjectModelPayload())
         {
-            payload.Reference("LegacyTrigger.Gbx");
+            payload.NodeRef("LegacyTrigger.Gbx");
             payload.Writer.Write(1);
             WriteTrigger(payload.Writer, 5, "Legacy");
-            payload.Reference("LegacyAnimation.Gbx");
+            payload.NodeRef("LegacyAnimation.Gbx");
             payload.Finish();
             var chunk = new CGameObjectPhyModel.Chunk2E006000();
             payload.Read(rw => chunk.ReadWrite(node, rw));
-            await Assert.That(node.TriggerShapeFidFile!.FilePath).IsEqualTo("LegacyTrigger.Gbx");
+            await Assert.That(node.References.TriggerShapeFid.File!.FilePath).IsEqualTo("LegacyTrigger.Gbx");
             await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
         }
         using (var payload = new ObjectModelPayload())
         {
-            payload.Reference("Deprecated.Gbx");
+            payload.NodeRef("Deprecated.Gbx");
             payload.Finish();
             var chunk = new CGameObjectPhyModel.Chunk2E006002();
             payload.Read(rw => chunk.ReadWrite(node, rw));
@@ -298,7 +298,7 @@ public class CGameObjectPhyModelLayoutTests
         using (var payload = new ObjectModelPayload())
         {
             payload.Writer.Write(0);
-            payload.Reference("Deprecated.Gbx");
+            payload.NodeRef("Deprecated.Gbx");
             payload.Writer.Write(new Vec3(1, 2, 3));
             payload.Finish();
             var chunk = new CGameObjectPhyModel.Chunk2E006004();
@@ -355,7 +355,7 @@ internal sealed class ObjectModelPayload : IDisposable
         Writer = new GbxWriter(stream);
     }
 
-    public GbxRefTableFile Reference(string path)
+    public GbxRefTableFile NodeRef(string path)
     {
         var file = new GbxRefTableFile(refTable, 0, true, path);
         var index = files.Count + 1;

@@ -65,13 +65,13 @@ public class CGameObjectVisModelLayoutTests
             writer.Write(456);
             writer.Write(7.5f);
         }
-        if (version < 8) payload.Reference("LegacyMesh.Gbx");
+        if (version < 8) payload.NodeRef("LegacyMesh.Gbx");
         if (version >= 9)
         {
             writer.Write(paths ? "Mesh.Gbx" : "");
-            if (!paths) payload.Reference("Mesh.Gbx");
+            if (!paths) payload.NodeRef("Mesh.Gbx");
         }
-        if (version < 18) payload.Reference("Deprecated.Anim.Gbx");
+        if (version < 18) payload.NodeRef("Deprecated.Anim.Gbx");
         if (version >= 2)
         {
             if (version < 9) writer.Write(paths ? "Mesh.Gbx" : "");
@@ -84,10 +84,10 @@ public class CGameObjectVisModelLayoutTests
             else if (version == 5)
             {
                 writer.Write(2);
-                payload.Reference("AnimationA.Gbx");
-                payload.Reference("AnimationB.Gbx");
+                payload.NodeRef("AnimationA.Gbx");
+                payload.NodeRef("AnimationB.Gbx");
             }
-            else payload.Reference("Animation.Gbx");
+            else payload.NodeRef("Animation.Gbx");
 
             writer.Write(1);
             writer.Write(0); // SPlugLightBallStateSimple archive version.
@@ -114,13 +114,13 @@ public class CGameObjectVisModelLayoutTests
             writer.Write(paths ? "Smash.Particle.Gbx" : "");
             if (paths) writer.WriteIdAsString("Smash");
         }
-        if (version == 8 && !paths) payload.Reference("Mesh.Gbx");
+        if (version == 8 && !paths) payload.NodeRef("Mesh.Gbx");
         if (version >= 13)
         {
             writer.Write(2); // Image references use a path with a node reference fallback.
             writer.Write("SpriteA.dds");
             writer.Write("");
-            payload.Reference("SpriteB.Gbx");
+            payload.NodeRef("SpriteB.Gbx");
             writer.Write(2); // Inline sprite parameters.
             writer.Write(new Vec3(1, 2, 3));
             writer.Write(true);
@@ -132,17 +132,17 @@ public class CGameObjectVisModelLayoutTests
         if (version >= 14)
         {
             writer.Write(paths ? "Solid.Gbx" : "");
-            if (!paths) payload.Reference("Solid.Gbx");
+            if (!paths) payload.NodeRef("Solid.Gbx");
         }
         if (version == 15) writer.Write("Version15Only");
-        if (version >= 16) payload.Reference("Destroy.Particle.Gbx");
+        if (version >= 16) payload.NodeRef("Destroy.Particle.Gbx");
         if (version >= 19) writer.Write(12.5f);
         if (version >= 20)
         {
             writer.Write(paths ? "Effects.Gbx" : "");
-            if (!paths) payload.Reference("Effects.Gbx");
+            if (!paths) payload.NodeRef("Effects.Gbx");
         }
-        if (version >= 21) payload.Reference("Mesh.Fid.Gbx");
+        if (version >= 21) payload.NodeRef("Mesh.Fid.Gbx");
         if (version >= 22) writer.Write(new Vec3(0.25f, 0.5f, 0.75f));
         payload.Finish();
 
@@ -169,20 +169,20 @@ public class CGameObjectVisModelLayoutTests
             else if (version == 5)
             {
                 await Assert.That(node.LegacyLocAnimRefs!.Length).IsEqualTo(2);
-                await Assert.That(node.LegacyLocAnimRefs[1].File!.FilePath).IsEqualTo("AnimationB.Gbx");
+                await Assert.That(node.References.LegacyLocAnimRefs[1].File!.FilePath).IsEqualTo("AnimationB.Gbx");
             }
-            else await Assert.That(node.LocAnimFile!.FilePath).IsEqualTo("Animation.Gbx");
+            else await Assert.That(node.References.LocAnim.File!.FilePath).IsEqualTo("Animation.Gbx");
         }
         if (version >= 13)
         {
             await Assert.That(chunk.U08).IsEqualTo(2);
             await Assert.That(chunk.U09).IsEqualTo(2);
-            await Assert.That(node.Images![1].ImageFile!.FilePath).IsEqualTo("SpriteB.Gbx");
+            await Assert.That(node.Images![1].References.Image.File!.FilePath).IsEqualTo("SpriteB.Gbx");
             await Assert.That(node.SpriteParams![1].U01).IsEqualTo(new Vec3(5, 6, 7));
             await Assert.That(node.SpriteParams[1].U03).IsEqualTo(8.5f);
         }
         if (version == 15) await Assert.That(chunk.U26).IsEqualTo("Version15Only");
-        if (version >= 21) await Assert.That(node.MeshShadedFidFile!.FilePath).IsEqualTo("Mesh.Fid.Gbx");
+        if (version >= 21) await Assert.That(node.References.MeshShadedFid.File!.FilePath).IsEqualTo("Mesh.Fid.Gbx");
         if (version >= 22) await Assert.That(node.DomeShaderColor).IsEqualTo(new Vec3(0.25f, 0.5f, 0.75f));
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
@@ -209,12 +209,12 @@ public class CGameObjectVisModelLayoutTests
         var node = new CGameObjectVisModel();
         using (var payload = new ObjectModelPayload())
         {
-            payload.Reference("LegacyMesh.Gbx");
-            payload.Reference("Deprecated.Anim.Gbx");
+            payload.NodeRef("LegacyMesh.Gbx");
+            payload.NodeRef("Deprecated.Anim.Gbx");
             payload.Finish();
             var chunk = new CGameObjectVisModel.Chunk2E007000();
             payload.Read(rw => chunk.ReadWrite(node, rw));
-            await Assert.That(node.MeshShadedFile!.FilePath).IsEqualTo("LegacyMesh.Gbx");
+            await Assert.That(node.References.MeshShaded.File!.FilePath).IsEqualTo("LegacyMesh.Gbx");
             await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
         }
         using (var payload = new ObjectModelPayload())
@@ -231,7 +231,7 @@ public class CGameObjectVisModelLayoutTests
         }
         using (var payload = new ObjectModelPayload())
         {
-            payload.Reference("Deprecated.Gbx");
+            payload.NodeRef("Deprecated.Gbx");
             payload.Finish();
             var chunk = new CGameObjectVisModel.Chunk2E007003();
             payload.Read(rw => chunk.ReadWrite(node, rw));

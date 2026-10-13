@@ -34,6 +34,8 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09147000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk09147000>]
     public string? Name

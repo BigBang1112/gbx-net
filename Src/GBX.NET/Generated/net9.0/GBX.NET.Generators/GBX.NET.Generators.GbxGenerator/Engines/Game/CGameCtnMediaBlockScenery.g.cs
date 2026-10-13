@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     [Hexadecimal]
     public static new uint Id => 0x03188000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03188000>]
     public List<Key>? Keys
@@ -53,12 +55,26 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         set => this.capturableCount = value;
     }
 
-    private CPlugDataTape? dataTape;
+    private NodeRef<CPlugDataTape> dataTapeRef = new();
     [AppliedWithChunk<Chunk03188001>]
     public CPlugDataTape? DataTape
     {
-        get => this.dataTape;
-        set => this.dataTape = value;
+        get => dataTapeRef.Resolve();
+        set => dataTapeRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockScenery owner;
+        internal NodeRefView(CGameCtnMediaBlockScenery owner) => this.owner = owner;
+        public NodeRef<CPlugDataTape> DataTape => owner.dataTapeRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DataTape", dataTapeRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -66,7 +82,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockScenery)clone).keys = context.CloneList(this.keys)!;
         ((CGameCtnMediaBlockScenery)clone).capturableCount = context.Clone(this.capturableCount)!;
-        ((CGameCtnMediaBlockScenery)clone).dataTape = context.Clone(this.dataTape)!;
+        ((CGameCtnMediaBlockScenery)clone).dataTapeRef = context.Clone(this.dataTapeRef)!;
     }
 
     public CGameCtnMediaBlockScenery()
@@ -114,7 +130,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         {
             rw.VersionInt32(this);
             rw.Int32(ref n.capturableCount);
-            rw.NodeRef<CPlugDataTape>(ref n.dataTape);
+            rw.NodeRef(n.dataTapeRef);
         }
     }
 

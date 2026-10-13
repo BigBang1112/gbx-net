@@ -47,16 +47,18 @@ internal static class GameDefaultsWriter
 
         foreach (var field in StoredFields(scope, chunk))
         {
+            var scalarNode = field.StorageDeclaration.Type.ArrayDimensions == 0 &&
+                ReferenceModel.IsNode(field.StorageDeclaration, layout, layouts, existingTypes);
             var entries = new Dictionary<string, string>(StringComparer.Ordinal);
             foreach (var declaration in field.Occurrences.OrderBy(static d => d.Position.Start.Line).ThenBy(static d => d.Position.Start.Column))
             {
                 var values = declaration.GameDefaults.Select(d => (Game: d.Game, Value: ChunkLParser.WriteExpression(d.Value),
-                    Statement: Assignment(layout, scope, field, d.Value, writer, chunk)));
+                    Statement: Assignment(layout, scope, field, d.Value, writer, chunk, scalarNode)));
                 if (field.IsVersion)
                     values = values.Concat(scope.ChunkVersions.Select(static d => (Game: d.Key,
                         Value: d.Value.ToString(CultureInfo.InvariantCulture), Statement: "Version = " + d.Value.ToString(CultureInfo.InvariantCulture) + ";")));
                 if (declaration.DefaultValue is { } fallback)
-                    values = values.Prepend(("", ChunkLParser.WriteExpression(fallback), Assignment(layout, scope, field, fallback, writer, chunk)));
+                    values = values.Prepend(("", ChunkLParser.WriteExpression(fallback), Assignment(layout, scope, field, fallback, writer, chunk, scalarNode)));
                 foreach (var (game, value, statement) in values)
                 {
                     if (entries.TryGetValue(game, out var previous))
@@ -141,7 +143,7 @@ internal static class GameDefaultsWriter
     }
 
     private static string Assignment(LayoutModel layout, ScopeModel scope, FieldModel field, Expression value,
-        SerializationWriter writer, bool chunk)
+        SerializationWriter writer, bool chunk, bool scalarNode)
     {
         var type = field.IsVersion ? "int" : WireTypes.CSharp(field.Declaration) + (WireTypes.Nullable(field) ? "?" : "");
         var expression = EngineWriter.Default(layout, type, field.Declaration, value)!;
@@ -154,7 +156,8 @@ internal static class GameDefaultsWriter
         var target = SyntaxOverlap.Escape(field.Name);
         var backing = SyntaxOverlap.Backing(field.Name);
         if (!chunk && !field.IsVersion && (!SyntaxOverlap.Has(scope.Existing, field.Name) ||
-            SyntaxOverlap.Has(scope.Existing, backing.TrimStart('@'))))
+            SyntaxOverlap.Has(scope.Existing, backing.TrimStart('@'))) &&
+            (!scalarNode || SyntaxOverlap.Has(scope.Existing, backing.TrimStart('@'))))
             target = backing;
         return target + " = " + expression + ";";
     }

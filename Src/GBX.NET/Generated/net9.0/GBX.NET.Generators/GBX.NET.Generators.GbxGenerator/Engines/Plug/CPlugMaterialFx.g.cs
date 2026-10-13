@@ -34,6 +34,8 @@ public abstract partial class CPlugMaterialFx : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0907A000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

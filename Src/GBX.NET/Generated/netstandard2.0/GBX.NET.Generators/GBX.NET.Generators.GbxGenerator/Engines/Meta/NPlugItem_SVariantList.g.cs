@@ -34,6 +34,8 @@ public partial class NPlugItem_SVariantList : CMwNod, IClass, IReadableWritable,
     [Hexadecimal]
     public static new uint Id => 0x2F0BC000;
 
+    internal override uint GetId() => Id;
+
     private NPlugItem_SVariant[]? variants;
     public NPlugItem_SVariant[]? Variants
     {

@@ -34,6 +34,8 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E020000;
 
+    internal override uint GetId() => Id;
+
     private short flags = 1;
     [AppliedWithChunk<Chunk2E020000>]
     public short Flags
@@ -138,22 +140,27 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         set => this.magnetLocs = value;
     }
 
-    private NPlugItemPlacement_SClass? placementClass;
+    private NodeRef<NPlugItemPlacement_SClass> placementClassRef = new();
     [AppliedWithChunk<Chunk2E020005>]
     public NPlugItemPlacement_SClass? PlacementClass
     {
-        get => this.placementClassFile?.GetNode(ref this.placementClass) ?? this.placementClass;
-        set => this.placementClass = value;
+        get => placementClassRef.Resolve();
+        set => placementClassRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? placementClassFile;
 
-    public Components.GbxRefTableFile? PlacementClassFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => placementClassFile;
-        set => placementClassFile = value;
+        private readonly CGameItemPlacementParam owner;
+        internal NodeRefView(CGameItemPlacementParam owner) => this.owner = owner;
+        public NodeRef<NPlugItemPlacement_SClass> PlacementClass => owner.placementClassRef;
     }
-
-    public NPlugItemPlacement_SClass? GetPlacementClass(GbxReadSettings settings = default, bool exceptions = false) => placementClassFile?.GetNode(ref placementClass, settings, exceptions) ?? placementClass;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlacementClass", placementClassRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
@@ -171,7 +178,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         ((CGameItemPlacementParam)clone).pivotPositions = context.CloneArray(this.pivotPositions)!;
         ((CGameItemPlacementParam)clone).pivotRotations = context.CloneArray(this.pivotRotations)!;
         ((CGameItemPlacementParam)clone).magnetLocs = context.CloneArray(this.magnetLocs)!;
-        ((CGameItemPlacementParam)clone).placementClass = context.Clone(this.placementClass)!;
+        ((CGameItemPlacementParam)clone).placementClassRef = context.Clone(this.placementClassRef)!;
     }
 
     public CGameItemPlacementParam()
@@ -290,7 +297,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
 
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
-            rw.NodeRef<NPlugItemPlacement_SClass>(ref n.placementClass, ref n.placementClassFile);
+            rw.NodeRef(n.placementClassRef);
         }
     }
 

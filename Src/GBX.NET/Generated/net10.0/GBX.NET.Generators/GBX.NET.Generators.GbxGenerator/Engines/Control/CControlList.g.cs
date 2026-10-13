@@ -34,6 +34,8 @@ public partial class CControlList : CControlContainer, IClass
     [Hexadecimal]
     public static new uint Id => 0x0700F000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -96,10 +98,30 @@ public partial class CControlList : CControlContainer, IClass
         public int U04;
         public bool U05;
         public string? U06;
-        public CMwNod? U07;
+
+        private NodeRef<CMwNod> U07Ref = new();
+        public CMwNod? U07
+        {
+            get => U07Ref.Resolve();
+            set => U07Ref.SetEmbedded(value);
+        }
         public float U08;
         public float U09;
         public bool U10;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0700F00A owner;
+            internal NodeRefView(Chunk0700F00A owner) => this.owner = owner;
+            public NodeRef<CMwNod> U07 => owner.U07Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U07", U07Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -110,7 +132,7 @@ public partial class CControlList : CControlContainer, IClass
             ((Chunk0700F00A)clone).U04 = context.Clone(this.U04)!;
             ((Chunk0700F00A)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0700F00A)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk0700F00A)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0700F00A)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk0700F00A)clone).U08 = context.Clone(this.U08)!;
             ((Chunk0700F00A)clone).U09 = context.Clone(this.U09)!;
             ((Chunk0700F00A)clone).U10 = context.Clone(this.U10)!;
@@ -127,7 +149,7 @@ public partial class CControlList : CControlContainer, IClass
 
             if (U06== null || U06== "")
             {
-                rw.NodeRef<CMwNod>(ref U07);
+                rw.NodeRef(U07Ref);
             }
 
             rw.Single(ref U08);
@@ -152,11 +174,11 @@ public partial class CControlList : CControlContainer, IClass
             set => this.u02 = value;
         }
 
-        private CMwNod? u03;
+        private NodeRef<CMwNod> u03Ref = new();
         public CMwNod? U03
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => u03Ref.Resolve();
+            set => u03Ref.SetEmbedded(value);
         }
 
         private string? u04;
@@ -173,6 +195,19 @@ public partial class CControlList : CControlContainer, IClass
             set => this.u05 = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Unknown owner;
+            internal NodeRefView(Unknown owner) => this.owner = owner;
+            public NodeRef<CMwNod> U03 => owner.u03Ref;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U03", u03Ref);
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Unknown)MemberwiseClone();
@@ -185,7 +220,7 @@ public partial class CControlList : CControlContainer, IClass
         {
             ((Unknown)clone).u01 = context.Clone(this.u01)!;
             ((Unknown)clone).u02 = context.Clone(this.u02)!;
-            ((Unknown)clone).u03 = context.Clone(this.u03)!;
+            ((Unknown)clone).u03Ref = context.Clone(this.u03Ref)!;
             ((Unknown)clone).u04 = context.Clone(this.u04)!;
             ((Unknown)clone).u05 = context.Clone(this.u05)!;
         }
@@ -194,7 +229,7 @@ public partial class CControlList : CControlContainer, IClass
         {
             rw.String(ref this.u01);
             rw.Single(ref this.u02);
-            rw.NodeRef<CMwNod>(ref this.u03);
+            rw.NodeRef(this.u03Ref);
             rw.Id(ref this.u04);
             rw.Boolean(ref this.u05);
         }

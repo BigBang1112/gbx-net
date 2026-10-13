@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     [Hexadecimal]
     public static new uint Id => 0x03163000;
 
+    internal override uint GetId() => Id;
+
     private PluginInfo[]? pluginInfos;
     [AppliedWithChunk<Chunk03163000>]
     public PluginInfo[]? PluginInfos

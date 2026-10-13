@@ -34,6 +34,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     [Hexadecimal]
     public static new uint Id => 0x090ED000;
 
+    internal override uint GetId() => Id;
+
     private float steerRadiusMin = 1f;
     [AppliedWithChunk<Chunk090ED000>]
     public float SteerRadiusMin
@@ -1073,12 +1075,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.waterAngularFriction = value;
     }
 
-    private CFuncKeysReal? waterSplashFromSpeed;
+    private NodeRef<CFuncKeysReal> waterSplashFromSpeedRef = new();
     [AppliedWithChunk<Chunk090ED048>]
     public CFuncKeysReal? WaterSplashFromSpeed
     {
-        get => this.waterSplashFromSpeed;
-        set => this.waterSplashFromSpeed = value;
+        get => waterSplashFromSpeedRef.Resolve();
+        set => waterSplashFromSpeedRef.SetEmbedded(value);
     }
 
     private PlugCurve? modulationFromWheelCompression;
@@ -1263,12 +1265,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.m6SpeedLimitNegTakeOffRear = value;
     }
 
-    private CFuncKeysReal? brakeHeatSpeedFromFBrake;
+    private NodeRef<CFuncKeysReal> brakeHeatSpeedFromFBrakeRef = new();
     [AppliedWithChunk<Chunk090ED05B>]
     public CFuncKeysReal? BrakeHeatSpeedFromFBrake
     {
-        get => this.brakeHeatSpeedFromFBrake;
-        set => this.brakeHeatSpeedFromFBrake = value;
+        get => brakeHeatSpeedFromFBrakeRef.Resolve();
+        set => brakeHeatSpeedFromFBrakeRef.SetEmbedded(value);
     }
 
     private float brakeCoolingSpeed;
@@ -2504,55 +2506,37 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.magneticHackDamperForceAllways = value;
     }
 
-    private External<CPlugCamControlModel>[]? cameraModels;
+    private NodeRefList<CPlugCamControlModel>? cameraModels;
     [AppliedWithChunk<Chunk090ED08E>]
-    public External<CPlugCamControlModel>[]? CameraModels
+    public NodeRefList<CPlugCamControlModel>? CameraModels
     {
-        get => this.cameraModels;
-        set => this.cameraModels = value;
+        get => cameraModels;
+        set => cameraModels = value;
     }
 
-    private External<CPlugCamControlModel>[]? cameraModels_Console;
+    private NodeRefList<CPlugCamControlModel>? cameraModels_Console;
     [AppliedWithChunk<Chunk090ED08E>(1)]
-    public External<CPlugCamControlModel>[]? CameraModels_Console
+    public NodeRefList<CPlugCamControlModel>? CameraModels_Console
     {
-        get => this.cameraModels_Console;
-        set => this.cameraModels_Console = value;
+        get => cameraModels_Console;
+        set => cameraModels_Console = value;
     }
 
-    private CPlugCamControlModel? camModelRear;
+    private NodeRef<CPlugCamControlModel> camModelRearRef = new();
     [AppliedWithChunk<Chunk090ED08E>(2)]
     public CPlugCamControlModel? CamModelRear
     {
-        get => this.camModelRearFile?.GetNode(ref this.camModelRear) ?? this.camModelRear;
-        set => this.camModelRear = value;
-    }
-    private Components.GbxRefTableFile? camModelRearFile;
-
-    public Components.GbxRefTableFile? CamModelRearFile
-    {
-        get => camModelRearFile;
-        set => camModelRearFile = value;
+        get => camModelRearRef.Resolve();
+        set => camModelRearRef.SetEmbedded(value);
     }
 
-    public CPlugCamControlModel? GetCamModelRear(GbxReadSettings settings = default, bool exceptions = false) => camModelRearFile?.GetNode(ref camModelRear, settings, exceptions) ?? camModelRear;
-
-    private CPlugCamControlModel? camModelIronSight;
+    private NodeRef<CPlugCamControlModel> camModelIronSightRef = new();
     [AppliedWithChunk<Chunk090ED08E>(3)]
     public CPlugCamControlModel? CamModelIronSight
     {
-        get => this.camModelIronSightFile?.GetNode(ref this.camModelIronSight) ?? this.camModelIronSight;
-        set => this.camModelIronSight = value;
+        get => camModelIronSightRef.Resolve();
+        set => camModelIronSightRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? camModelIronSightFile;
-
-    public Components.GbxRefTableFile? CamModelIronSightFile
-    {
-        get => camModelIronSightFile;
-        set => camModelIronSightFile = value;
-    }
-
-    public CPlugCamControlModel? GetCamModelIronSight(GbxReadSettings settings = default, bool exceptions = false) => camModelIronSightFile?.GetNode(ref camModelIronSight, settings, exceptions) ?? camModelIronSight;
 
     private PlugCurve? turboYellowConstantFromSpeed;
     [AppliedWithChunk<Chunk090ED094>]
@@ -2706,12 +2690,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.noBodyBottomFriction = value;
     }
 
-    private CMwRefBuffer? materials;
+    private NodeRef<CMwRefBuffer> materialsRef = new();
     [AppliedWithChunk<Chunk090ED097>(2)]
     public CMwRefBuffer? Materials
     {
-        get => this.materials;
-        set => this.materials = value;
+        get => materialsRef.Resolve();
+        set => materialsRef.SetEmbedded(value);
     }
 
     private float aerialForce_AngleMinDeg = 80f;
@@ -2786,30 +2770,21 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.aerialMove_UseVehicleUp = value;
     }
 
-    private CPlugVehicleCarPhyShape? shape;
+    private NodeRef<CPlugVehicleCarPhyShape> shapeRef = new();
     [AppliedWithChunk<Chunk090ED099>]
     public CPlugVehicleCarPhyShape? Shape
     {
-        get => this.shape;
-        set => this.shape = value;
+        get => shapeRef.Resolve();
+        set => shapeRef.SetEmbedded(value);
     }
 
-    private CPlugVehicleGearBox? gearBox;
+    private NodeRef<CPlugVehicleGearBox> gearBoxRef = new();
     [AppliedWithChunk<Chunk090ED09A>]
     public CPlugVehicleGearBox? GearBox
     {
-        get => this.gearBoxFile?.GetNode(ref this.gearBox) ?? this.gearBox;
-        set => this.gearBox = value;
+        get => gearBoxRef.Resolve();
+        set => gearBoxRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? gearBoxFile;
-
-    public Components.GbxRefTableFile? GearBoxFile
-    {
-        get => gearBoxFile;
-        set => gearBoxFile = value;
-    }
-
-    public CPlugVehicleGearBox? GetGearBox(GbxReadSettings settings = default, bool exceptions = false) => gearBoxFile?.GetNode(ref gearBox, settings, exceptions) ?? gearBox;
 
     private float jumpClassicImpulseY = 25.0f;
     [AppliedWithChunk<Chunk090ED09B>]
@@ -3035,6 +3010,56 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         set => this.hookPos = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleCarPhyTuning owner;
+        internal NodeRefView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> WaterSplashFromSpeed => owner.waterSplashFromSpeedRef;
+        public NodeRef<CFuncKeysReal> BrakeHeatSpeedFromFBrake => owner.brakeHeatSpeedFromFBrakeRef;
+        public CameraModelsReferenceView CameraModels => new(owner);
+        public CameraModels_ConsoleReferenceView CameraModels_Console => new(owner);
+        public NodeRef<CPlugCamControlModel> CamModelRear => owner.camModelRearRef;
+        public NodeRef<CPlugCamControlModel> CamModelIronSight => owner.camModelIronSightRef;
+        public NodeRef<CMwRefBuffer> Materials => owner.materialsRef;
+        public NodeRef<CPlugVehicleCarPhyShape> Shape => owner.shapeRef;
+        public NodeRef<CPlugVehicleGearBox> GearBox => owner.gearBoxRef;
+    }
+    public readonly struct CameraModelsReferenceView
+    {
+        private readonly CPlugVehicleCarPhyTuning owner;
+        internal CameraModelsReferenceView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
+        public int Count => owner.cameraModels?.Count ?? 0;
+        public NodeRef<CPlugCamControlModel> this[int index] => (owner.cameraModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct CameraModels_ConsoleReferenceView
+    {
+        private readonly CPlugVehicleCarPhyTuning owner;
+        internal CameraModels_ConsoleReferenceView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
+        public int Count => owner.cameraModels_Console?.Count ?? 0;
+        public NodeRef<CPlugCamControlModel> this[int index] => (owner.cameraModels_Console ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("WaterSplashFromSpeed", waterSplashFromSpeedRef);
+        yield return new("BrakeHeatSpeedFromFBrake", brakeHeatSpeedFromFBrakeRef);
+        if (cameraModels is not null)
+        {
+            for (var i = 0; i < cameraModels.Count; i++) yield return new("CameraModels" + "[" + i + "]", cameraModels.GetReference(i));
+        }
+        if (cameraModels_Console is not null)
+        {
+            for (var i = 0; i < cameraModels_Console.Count; i++) yield return new("CameraModels_Console" + "[" + i + "]", cameraModels_Console.GetReference(i));
+        }
+        yield return new("CamModelRear", camModelRearRef);
+        yield return new("CamModelIronSight", camModelIronSightRef);
+        yield return new("Materials", materialsRef);
+        yield return new("Shape", shapeRef);
+        yield return new("GearBox", gearBoxRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -3160,7 +3185,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).waterFrictionFromSpeed = context.Clone(this.waterFrictionFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).waterReboundFromSpeedRatio = context.Clone(this.waterReboundFromSpeedRatio)!;
         ((CPlugVehicleCarPhyTuning)clone).waterAngularFriction = context.Clone(this.waterAngularFriction)!;
-        ((CPlugVehicleCarPhyTuning)clone).waterSplashFromSpeed = context.Clone(this.waterSplashFromSpeed)!;
+        ((CPlugVehicleCarPhyTuning)clone).waterSplashFromSpeedRef = context.Clone(this.waterSplashFromSpeedRef)!;
         ((CPlugVehicleCarPhyTuning)clone).modulationFromWheelCompression = context.Clone(this.modulationFromWheelCompression)!;
         ((CPlugVehicleCarPhyTuning)clone).m6InertialMass = context.Clone(this.m6InertialMass)!;
         ((CPlugVehicleCarPhyTuning)clone).m6ForceEpsilon = context.Clone(this.m6ForceEpsilon)!;
@@ -3183,7 +3208,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitPositiveForTakeOffRear = context.Clone(this.m6SpeedLimitPositiveForTakeOffRear)!;
         ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitNegForTakeOffFront = context.Clone(this.m6SpeedLimitNegForTakeOffFront)!;
         ((CPlugVehicleCarPhyTuning)clone).m6SpeedLimitNegTakeOffRear = context.Clone(this.m6SpeedLimitNegTakeOffRear)!;
-        ((CPlugVehicleCarPhyTuning)clone).brakeHeatSpeedFromFBrake = context.Clone(this.brakeHeatSpeedFromFBrake)!;
+        ((CPlugVehicleCarPhyTuning)clone).brakeHeatSpeedFromFBrakeRef = context.Clone(this.brakeHeatSpeedFromFBrakeRef)!;
         ((CPlugVehicleCarPhyTuning)clone).brakeCoolingSpeed = context.Clone(this.brakeCoolingSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxRear = context.Clone(this.m6BrakeMaxRear)!;
         ((CPlugVehicleCarPhyTuning)clone).m6BrakeMaxDynamicRear = context.Clone(this.m6BrakeMaxDynamicRear)!;
@@ -3333,10 +3358,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).afterJumpOrientationForceCoef = context.Clone(this.afterJumpOrientationForceCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).afterJumpOrientationAngularSpeedThreshold = context.Clone(this.afterJumpOrientationAngularSpeedThreshold)!;
         ((CPlugVehicleCarPhyTuning)clone).magneticHackDamperForceAllways = context.Clone(this.magneticHackDamperForceAllways)!;
-        ((CPlugVehicleCarPhyTuning)clone).cameraModels = context.CloneArray(this.cameraModels)!;
-        ((CPlugVehicleCarPhyTuning)clone).cameraModels_Console = context.CloneArray(this.cameraModels_Console)!;
-        ((CPlugVehicleCarPhyTuning)clone).camModelRear = context.Clone(this.camModelRear)!;
-        ((CPlugVehicleCarPhyTuning)clone).camModelIronSight = context.Clone(this.camModelIronSight)!;
+        ((CPlugVehicleCarPhyTuning)clone).cameraModels = context.Clone(this.cameraModels)!;
+        ((CPlugVehicleCarPhyTuning)clone).cameraModels_Console = context.Clone(this.cameraModels_Console)!;
+        ((CPlugVehicleCarPhyTuning)clone).camModelRearRef = context.Clone(this.camModelRearRef)!;
+        ((CPlugVehicleCarPhyTuning)clone).camModelIronSightRef = context.Clone(this.camModelIronSightRef)!;
         ((CPlugVehicleCarPhyTuning)clone).turboYellowConstantFromSpeed = context.Clone(this.turboYellowConstantFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).turboRedConstantFromSpeed = context.Clone(this.turboRedConstantFromSpeed)!;
         ((CPlugVehicleCarPhyTuning)clone).turboYellowConstantDuration = context.Clone(this.turboYellowConstantDuration)!;
@@ -3356,7 +3381,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).takeOffBoost_Enable = context.Clone(this.takeOffBoost_Enable)!;
         ((CPlugVehicleCarPhyTuning)clone).takeOffBoost_MaxRPMCoef = context.Clone(this.takeOffBoost_MaxRPMCoef)!;
         ((CPlugVehicleCarPhyTuning)clone).noBodyBottomFriction = context.Clone(this.noBodyBottomFriction)!;
-        ((CPlugVehicleCarPhyTuning)clone).materials = context.Clone(this.materials)!;
+        ((CPlugVehicleCarPhyTuning)clone).materialsRef = context.Clone(this.materialsRef)!;
         ((CPlugVehicleCarPhyTuning)clone).aerialForce_AngleMinDeg = context.Clone(this.aerialForce_AngleMinDeg)!;
         ((CPlugVehicleCarPhyTuning)clone).aerialForce_Duration = context.Clone(this.aerialForce_Duration)!;
         ((CPlugVehicleCarPhyTuning)clone).aerialForce_Base = context.Clone(this.aerialForce_Base)!;
@@ -3366,8 +3391,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         ((CPlugVehicleCarPhyTuning)clone).aerialMove_SpeedMin = context.Clone(this.aerialMove_SpeedMin)!;
         ((CPlugVehicleCarPhyTuning)clone).aerialMove_SpeedMax = context.Clone(this.aerialMove_SpeedMax)!;
         ((CPlugVehicleCarPhyTuning)clone).aerialMove_UseVehicleUp = context.Clone(this.aerialMove_UseVehicleUp)!;
-        ((CPlugVehicleCarPhyTuning)clone).shape = context.Clone(this.shape)!;
-        ((CPlugVehicleCarPhyTuning)clone).gearBox = context.Clone(this.gearBox)!;
+        ((CPlugVehicleCarPhyTuning)clone).shapeRef = context.Clone(this.shapeRef)!;
+        ((CPlugVehicleCarPhyTuning)clone).gearBoxRef = context.Clone(this.gearBoxRef)!;
         ((CPlugVehicleCarPhyTuning)clone).jumpClassicImpulseY = context.Clone(this.jumpClassicImpulseY)!;
         ((CPlugVehicleCarPhyTuning)clone).jumpClassicImpulseZ = context.Clone(this.jumpClassicImpulseZ)!;
         ((CPlugVehicleCarPhyTuning)clone).jumpProgressiveImpulseY = context.Clone(this.jumpProgressiveImpulseY)!;
@@ -4166,7 +4191,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.accelCurve = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.accelCurve);
+            n.accelCurve = rw.ReadableWritable<PlugCurve>(n.accelCurve, version: -1);
         }
     }
 
@@ -4229,7 +4254,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
-            n.maxSideFriction = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.maxSideFriction);
+            n.maxSideFriction = rw.ReadableWritable<PlugCurve>(n.maxSideFriction, version: -1);
             rw.Single(ref n.maxSideFrictionSliding);
             rw.Single(ref U02);
             rw.Single(ref n.groundSlowDownBase);
@@ -4252,7 +4277,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.sideFriction1);
-            n.rolloverLateral = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.rolloverLateral);
+            n.rolloverLateral = rw.ReadableWritable<PlugCurve>(n.rolloverLateral, version: -1);
         }
     }
 
@@ -4270,7 +4295,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.lateralContactSlowDown = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.lateralContactSlowDown);
+            n.lateralContactSlowDown = rw.ReadableWritable<PlugCurve>(n.lateralContactSlowDown, version: -1);
         }
     }
 
@@ -4288,7 +4313,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.steerSlowDown = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.steerSlowDown);
+            n.steerSlowDown = rw.ReadableWritable<PlugCurve>(n.steerSlowDown, version: -1);
             rw.Single(ref n.sideFriction2);
             rw.Single(ref n.rubberBallElasticity);
             rw.Int32(ref n.steerSlowDownFadeInDuration);
@@ -4309,7 +4334,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.rolloverLateralFromAngle = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.rolloverLateralFromAngle);
+            n.rolloverLateralFromAngle = rw.ReadableWritable<PlugCurve>(n.rolloverLateralFromAngle, version: -1);
             rw.Single(ref n.airControlMaxAngularSpeedY);
             rw.Single(ref n.brakeCoef);
             rw.Single(ref n.brakeMax);
@@ -4389,7 +4414,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.steerDriveTorque = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.steerDriveTorque);
+            n.steerDriveTorque = rw.ReadableWritable<PlugCurve>(n.steerDriveTorque, version: -1);
         }
     }
 
@@ -4508,7 +4533,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref n.m4LateralFrictionSquareForce);
             rw.Single(ref n.m4LateralFrictionTorque);
             rw.Single(ref n.m4LateralFrictionForce);
-            n.m4SteerRadiusFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m4SteerRadiusFromSpeed);
+            n.m4SteerRadiusFromSpeed = rw.ReadableWritable<PlugCurve>(n.m4SteerRadiusFromSpeed, version: -1);
         }
     }
 
@@ -4526,7 +4551,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.m4MaxFrictionTorqueFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m4MaxFrictionTorqueFromSpeed);
+            n.m4MaxFrictionTorqueFromSpeed = rw.ReadableWritable<PlugCurve>(n.m4MaxFrictionTorqueFromSpeed, version: -1);
         }
     }
 
@@ -4545,7 +4570,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m4MaxFrictionTorqueWhenSlippingCoef);
-            n.m4MaxFrictionForceFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m4MaxFrictionForceFromSpeed);
+            n.m4MaxFrictionForceFromSpeed = rw.ReadableWritable<PlugCurve>(n.m4MaxFrictionForceFromSpeed, version: -1);
             rw.Single(ref n.m4MaxFrictionForceWhenSlipping);
             rw.Single(ref n.m4SteerRadiusWhenSlippingCoef);
         }
@@ -4641,7 +4666,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.m5SlippingAccelCurve = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m5SlippingAccelCurve);
+            n.m5SlippingAccelCurve = rw.ReadableWritable<PlugCurve>(n.m5SlippingAccelCurve, version: -1);
         }
     }
 
@@ -4677,7 +4702,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.m5SteerCoefFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m5SteerCoefFromSpeed);
+            n.m5SteerCoefFromSpeed = rw.ReadableWritable<PlugCurve>(n.m5SteerCoefFromSpeed, version: -1);
         }
     }
 
@@ -4695,7 +4720,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.m5SmoothInputSteerDurationFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m5SmoothInputSteerDurationFromSpeed);
+            n.m5SmoothInputSteerDurationFromSpeed = rw.ReadableWritable<PlugCurve>(n.m5SmoothInputSteerDurationFromSpeed, version: -1);
         }
     }
 
@@ -4815,9 +4840,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref n.waterGravity);
             rw.Single(ref n.waterReboundMinHSpeed);
             rw.Single(ref n.waterBumpMinSpeed);
-            n.waterBumpSlowDownFromSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.waterBumpSlowDownFromSpeedRatio);
-            n.waterFrictionFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.waterFrictionFromSpeed);
-            n.waterReboundFromSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.waterReboundFromSpeedRatio);
+            n.waterBumpSlowDownFromSpeedRatio = rw.ReadableWritable<PlugCurve>(n.waterBumpSlowDownFromSpeedRatio, version: -1);
+            n.waterFrictionFromSpeed = rw.ReadableWritable<PlugCurve>(n.waterFrictionFromSpeed, version: -1);
+            n.waterReboundFromSpeedRatio = rw.ReadableWritable<PlugCurve>(n.waterReboundFromSpeedRatio, version: -1);
         }
     }
 
@@ -4853,7 +4878,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncKeysReal>(ref n.waterSplashFromSpeed);
+            rw.NodeRef(n.waterSplashFromSpeedRef);
         }
     }
 
@@ -4871,7 +4896,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.modulationFromWheelCompression = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.modulationFromWheelCompression);
+            n.modulationFromWheelCompression = rw.ReadableWritable<PlugCurve>(n.modulationFromWheelCompression, version: -1);
         }
     }
 
@@ -4946,7 +4971,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Single(ref n.m6MaxSpeed4Burnout);
-            n.m6BurnoutRadius = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m6BurnoutRadius);
+            n.m6BurnoutRadius = rw.ReadableWritable<PlugCurve>(n.m6BurnoutRadius, version: -1);
         }
     }
 
@@ -4982,7 +5007,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.m6RolloverLateralFromSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m6RolloverLateralFromSpeedRatio);
+            n.m6RolloverLateralFromSpeedRatio = rw.ReadableWritable<PlugCurve>(n.m6RolloverLateralFromSpeedRatio, version: -1);
         }
     }
 
@@ -5115,7 +5140,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncKeysReal>(ref n.brakeHeatSpeedFromFBrake);
+            rw.NodeRef(n.brakeHeatSpeedFromFBrakeRef);
             rw.Single(ref n.brakeCoolingSpeed);
         }
     }
@@ -5155,8 +5180,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             rw.Single(ref n.m6InertialMass);
             rw.Single(ref n.m6MaxDiffBtwnPropulsionAndSpeed);
-            n.accelCurveRear = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.accelCurveRear);
-            n.m6BurnoutLateralSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m6BurnoutLateralSpeed);
+            n.accelCurveRear = rw.ReadableWritable<PlugCurve>(n.accelCurveRear, version: -1);
+            n.m6BurnoutLateralSpeed = rw.ReadableWritable<PlugCurve>(n.m6BurnoutLateralSpeed, version: -1);
             rw.Single(ref n.m6BurnoutLateralSpeedCoeff);
             rw.Single(ref n.m6MinSpeed4Burnout);
             rw.Single(ref n.m6BurnoutSteerCoeff);
@@ -5174,8 +5199,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref n.m6BrakeSmokeIntensity);
             rw.Single(ref n.m6BurnoutSmokeVelocity);
             rw.Single(ref n.m6BurnoutSmokeIntensity);
-            n.m6BurnoutRolloverFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m6BurnoutRolloverFromSpeed);
-            n.m6DonutRolloverFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.m6DonutRolloverFromSpeed);
+            n.m6BurnoutRolloverFromSpeed = rw.ReadableWritable<PlugCurve>(n.m6BurnoutRolloverFromSpeed, version: -1);
+            n.m6DonutRolloverFromSpeed = rw.ReadableWritable<PlugCurve>(n.m6DonutRolloverFromSpeed, version: -1);
             rw.Single(ref n.m6MaxDiffBtwGroundNormal);
             rw.Single(ref n.m6BurnoutWheelAngularRotation);
             rw.Single(ref n.m6MaxPosAngle4Burnout);
@@ -5203,7 +5228,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.airControlZCoefFromAngularSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.airControlZCoefFromAngularSpeed);
+            n.airControlZCoefFromAngularSpeed = rw.ReadableWritable<PlugCurve>(n.airControlZCoefFromAngularSpeed, version: -1);
         }
     }
 
@@ -5261,7 +5286,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
-            n.visualSteerAngleFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.visualSteerAngleFromSpeed);
+            n.visualSteerAngleFromSpeed = rw.ReadableWritable<PlugCurve>(n.visualSteerAngleFromSpeed, version: -1);
         }
     }
 
@@ -5450,7 +5475,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Single(ref U02);
             rw.Single(ref n.brakeTorqueCoef);
             rw.Single(ref n.accelTorqueCoef);
-            n.drifting_InputSteerRadiusFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.drifting_InputSteerRadiusFromSpeed);
+            n.drifting_InputSteerRadiusFromSpeed = rw.ReadableWritable<PlugCurve>(n.drifting_InputSteerRadiusFromSpeed, version: -1);
         }
     }
 
@@ -5479,24 +5504,52 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED079;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public bool U01;
-        public CFuncKeysReal? U02;
-        public CFuncKeysReal? U03;
+
+        private NodeRef<CFuncKeysReal> U02Ref = new();
+        public CFuncKeysReal? U02
+        {
+            get => U02Ref.Resolve();
+            set => U02Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U03Ref = new();
+        public CFuncKeysReal? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
         public float U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED079 owner;
+            internal NodeRefView(Chunk090ED079 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U02 => owner.U02Ref;
+            public NodeRef<CFuncKeysReal> U03 => owner.U03Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", U02Ref);
+            yield return new("U03", U03Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED079)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090ED079)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED079)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED079)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090ED079)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090ED079)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            rw.NodeRef<CFuncKeysReal>(ref U02);
-            rw.NodeRef<CFuncKeysReal>(ref U03);
+            rw.NodeRef(U02Ref);
+            rw.NodeRef(U03Ref);
             rw.Single(ref U04);
         }
     }
@@ -5540,10 +5593,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            n.drifting_VehicleLateralForce_FromVehicleLateralSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.drifting_VehicleLateralForce_FromVehicleLateralSpeed);
-            n.drifting_BackCoefIntensityFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.drifting_BackCoefIntensityFromSpeed);
-            n.drifting_WheelLateralForce_FromWheelLateralSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.drifting_WheelLateralForce_FromWheelLateralSpeed);
-            n.drifting_BackCoefFromSlipAngle = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.drifting_BackCoefFromSlipAngle);
+            n.drifting_VehicleLateralForce_FromVehicleLateralSpeed = rw.ReadableWritable<PlugCurve>(n.drifting_VehicleLateralForce_FromVehicleLateralSpeed, version: -1);
+            n.drifting_BackCoefIntensityFromSpeed = rw.ReadableWritable<PlugCurve>(n.drifting_BackCoefIntensityFromSpeed, version: -1);
+            n.drifting_WheelLateralForce_FromWheelLateralSpeed = rw.ReadableWritable<PlugCurve>(n.drifting_WheelLateralForce_FromWheelLateralSpeed, version: -1);
+            n.drifting_BackCoefFromSlipAngle = rw.ReadableWritable<PlugCurve>(n.drifting_BackCoefFromSlipAngle, version: -1);
         }
     }
 
@@ -5653,9 +5706,29 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED089;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CFuncKeysReal? U01;
+
+        private NodeRef<CFuncKeysReal> U01Ref = new();
+        public CFuncKeysReal? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
         public float? U02;
         public float? U03;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED089 owner;
+            internal NodeRefView(Chunk090ED089 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         public Chunk090ED089() : this(GameVersion.Unspecified)
         {
@@ -5681,7 +5754,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED089)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED089)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090ED089)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090ED089)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090ED089)clone).U03 = context.Clone(this.U03)!;
         }
@@ -5693,7 +5766,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version <= 2)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U01);
+                rw.NodeRef(U01Ref);
             }
 
             if (Version >= 2)
@@ -5842,11 +5915,29 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
         public float? U01;
         public float? U02;
-        public CFuncKeysReal? U03;
+
+        private NodeRef<CFuncKeysReal> U03Ref = new();
+        public CFuncKeysReal? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
         public float U04;
-        public CFuncKeysReal? U05;
+
+        private NodeRef<CFuncKeysReal> U05Ref = new();
+        public CFuncKeysReal? U05
+        {
+            get => U05Ref.Resolve();
+            set => U05Ref.SetEmbedded(value);
+        }
         public float U06;
-        public CFuncKeysReal? U07;
+
+        private NodeRef<CFuncKeysReal> U07Ref = new();
+        public CFuncKeysReal? U07
+        {
+            get => U07Ref.Resolve();
+            set => U07Ref.SetEmbedded(value);
+        }
         public float U08;
         public float U09;
         public int U10;
@@ -5856,16 +5947,82 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U14;
         public float U15;
         public float U16;
-        public CFuncKeysReal? U17;
-        public CFuncKeysReal? U18;
-        public CFuncKeysReal? U19;
-        public CFuncKeysReal? U20;
+
+        private NodeRef<CFuncKeysReal> U17Ref = new();
+        public CFuncKeysReal? U17
+        {
+            get => U17Ref.Resolve();
+            set => U17Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U18Ref = new();
+        public CFuncKeysReal? U18
+        {
+            get => U18Ref.Resolve();
+            set => U18Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U19Ref = new();
+        public CFuncKeysReal? U19
+        {
+            get => U19Ref.Resolve();
+            set => U19Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U20Ref = new();
+        public CFuncKeysReal? U20
+        {
+            get => U20Ref.Resolve();
+            set => U20Ref.SetEmbedded(value);
+        }
         public float U21;
-        public CFuncKeysReal? U22;
+
+        private NodeRef<CFuncKeysReal> U22Ref = new();
+        public CFuncKeysReal? U22
+        {
+            get => U22Ref.Resolve();
+            set => U22Ref.SetEmbedded(value);
+        }
         public float U23;
         public bool U24;
         public PlugCurve? U25;
-        public CFuncKeysReal? U26;
+
+        private NodeRef<CFuncKeysReal> U26Ref = new();
+        public CFuncKeysReal? U26
+        {
+            get => U26Ref.Resolve();
+            set => U26Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED08B owner;
+            internal NodeRefView(Chunk090ED08B owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U03 => owner.U03Ref;
+            public NodeRef<CFuncKeysReal> U05 => owner.U05Ref;
+            public NodeRef<CFuncKeysReal> U07 => owner.U07Ref;
+            public NodeRef<CFuncKeysReal> U17 => owner.U17Ref;
+            public NodeRef<CFuncKeysReal> U18 => owner.U18Ref;
+            public NodeRef<CFuncKeysReal> U19 => owner.U19Ref;
+            public NodeRef<CFuncKeysReal> U20 => owner.U20Ref;
+            public NodeRef<CFuncKeysReal> U22 => owner.U22Ref;
+            public NodeRef<CFuncKeysReal> U26 => owner.U26Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U03", U03Ref);
+            yield return new("U05", U05Ref);
+            yield return new("U07", U07Ref);
+            yield return new("U17", U17Ref);
+            yield return new("U18", U18Ref);
+            yield return new("U19", U19Ref);
+            yield return new("U20", U20Ref);
+            yield return new("U22", U22Ref);
+            yield return new("U26", U26Ref);
+            yield break;
+        }
 
         public Chunk090ED08B() : this(GameVersion.Unspecified)
         {
@@ -5895,11 +6052,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED08B)clone).Version = context.Clone(this.Version)!;
             ((Chunk090ED08B)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090ED08B)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090ED08B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090ED08B)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090ED08B)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED08B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED08B)clone).U05Ref = context.Clone(this.U05Ref)!;
             ((Chunk090ED08B)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090ED08B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090ED08B)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk090ED08B)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090ED08B)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090ED08B)clone).U10 = context.Clone(this.U10)!;
@@ -5909,16 +6066,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED08B)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090ED08B)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090ED08B)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090ED08B)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090ED08B)clone).U18 = context.Clone(this.U18)!;
-            ((Chunk090ED08B)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090ED08B)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED08B)clone).U17Ref = context.Clone(this.U17Ref)!;
+            ((Chunk090ED08B)clone).U18Ref = context.Clone(this.U18Ref)!;
+            ((Chunk090ED08B)clone).U19Ref = context.Clone(this.U19Ref)!;
+            ((Chunk090ED08B)clone).U20Ref = context.Clone(this.U20Ref)!;
             ((Chunk090ED08B)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090ED08B)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090ED08B)clone).U22Ref = context.Clone(this.U22Ref)!;
             ((Chunk090ED08B)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090ED08B)clone).U24 = context.Clone(this.U24)!;
             ((Chunk090ED08B)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090ED08B)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090ED08B)clone).U26Ref = context.Clone(this.U26Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -5933,7 +6090,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             if (Version <= 10)
             {
                 rw.Single(ref U02);
-                rw.NodeRef<CFuncKeysReal>(ref U03);
+                rw.NodeRef(U03Ref);
             }
 
             if (Version <= 9)
@@ -5943,7 +6100,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version <= 8)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U05);
+                rw.NodeRef(U05Ref);
             }
 
             rw.Single(ref n.rollover);
@@ -5955,7 +6112,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version <= 10)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U07);
+                rw.NodeRef(U07Ref);
             }
 
             if (Version >= 1)
@@ -6094,14 +6251,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                                 rw.Single(ref U14);
                                                                                                 rw.Single(ref U15);
                                                                                                 rw.Single(ref U16);
-                                                                                                rw.NodeRef<CFuncKeysReal>(ref U17);
+                                                                                                rw.NodeRef(U17Ref);
                                                                                             }
 
                                                                                             if (Version >= 28)
                                                                                             {
                                                                                                 if (Version <= 33)
                                                                                                 {
-                                                                                                    rw.NodeRef<CFuncKeysReal>(ref U18);
+                                                                                                    rw.NodeRef(U18Ref);
                                                                                                 }
 
                                                                                                 if (Version >= 29)
@@ -6114,18 +6271,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                                     {
                                                                                                         if (Version >= 30)
                                                                                                         {
-                                                                                                            rw.NodeRef<CFuncKeysReal>(ref U19);
+                                                                                                            rw.NodeRef(U19Ref);
                                                                                                         }
 
                                                                                                         if (Version >= 31)
                                                                                                         {
-                                                                                                            rw.NodeRef<CFuncKeysReal>(ref U20);
+                                                                                                            rw.NodeRef(U20Ref);
                                                                                                         }
 
                                                                                                         if (Version >= 32)
                                                                                                         {
                                                                                                             rw.Single(ref U21);
-                                                                                                            rw.NodeRef<CFuncKeysReal>(ref U22);
+                                                                                                            rw.NodeRef(U22Ref);
                                                                                                         }
                                                                                                     }
 
@@ -6137,7 +6294,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                                                                                                         {
                                                                                                             rw.Boolean(ref U24);
                                                                                                             rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 37);
-                                                                                                            rw.NodeRef<CFuncKeysReal>(ref U26);
+                                                                                                            rw.NodeRef(U26Ref);
                                                                                                         }
                                                                                                     }
                                                                                                 }
@@ -6311,7 +6468,32 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override uint Id => 0x090ED08E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public External<CPlugCamControlModel>[]? U01;
+
+        public NodeRefList<CPlugCamControlModel>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED08E owner;
+            internal NodeRefView(Chunk090ED08E owner) => this.owner = owner;
+            public U01ReferenceView U01 => new(owner);
+        }
+        public readonly struct U01ReferenceView
+        {
+            private readonly Chunk090ED08E owner;
+            internal U01ReferenceView(Chunk090ED08E owner) => this.owner = owner;
+            public int Count => owner.U01?.Count ?? 0;
+            public NodeRef<CPlugCamControlModel> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+            }
+            yield break;
+        }
 
         public Chunk090ED08E() : this(GameVersion.Unspecified)
         {
@@ -6337,7 +6519,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090ED08E)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090ED08E)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090ED08E)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -6349,23 +6531,23 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                 throw new NotSupportedException();
             }
 
-            rw.ArrayNodeRef_deprec<CPlugCamControlModel>(ref n.cameraModels!);
+            n.cameraModels = rw.ListNodeRef_deprec<CPlugCamControlModel>(n.cameraModels);
 
             if (Version >= 1)
             {
-                rw.ArrayNodeRef_deprec<CPlugCamControlModel>(ref n.cameraModels_Console!);
+                n.cameraModels_Console = rw.ListNodeRef_deprec<CPlugCamControlModel>(n.cameraModels_Console);
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef<CPlugCamControlModel>(ref n.camModelRear, ref n.camModelRearFile);
+                    rw.NodeRef(n.camModelRearRef);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef<CPlugCamControlModel>(ref n.camModelIronSight, ref n.camModelIronSightFile);
+                        rw.NodeRef(n.camModelIronSightRef);
 
                         if (Version >= 4)
                         {
-                            rw.ArrayNodeRef<CPlugCamControlModel>(ref U01!);
+                            U01 = rw.ListNodeRef<CPlugCamControlModel>(U01);
                         }
                     }
                 }
@@ -6709,7 +6891,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef<CMwRefBuffer>(ref n.materials);
+                rw.NodeRef(n.materialsRef);
             }
         }
     }
@@ -6794,7 +6976,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehicleCarPhyShape>(ref n.shape);
+            rw.NodeRef(n.shapeRef);
         }
     }
 
@@ -6830,7 +7012,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehicleGearBox>(ref n.gearBox, ref n.gearBoxFile);
+            rw.NodeRef(n.gearBoxRef);
         }
     }
 
@@ -6933,16 +7115,40 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U04;
         public float? U05;
         public float? U06;
-        public CFuncKeysReal? U07;
-        public CFuncKeysReal? U08;
-        public CFuncKeysReal? U09;
+
+        private NodeRef<CFuncKeysReal> U07Ref = new();
+        public CFuncKeysReal? U07
+        {
+            get => U07Ref.Resolve();
+            set => U07Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U08Ref = new();
+        public CFuncKeysReal? U08
+        {
+            get => U08Ref.Resolve();
+            set => U08Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U09Ref = new();
+        public CFuncKeysReal? U09
+        {
+            get => U09Ref.Resolve();
+            set => U09Ref.SetEmbedded(value);
+        }
         public PlugCurve? U10;
         public PlugCurve? U11;
         public PlugCurve? U12;
         public PlugCurve? U13;
         public float? U14;
         public float? U15;
-        public CFuncKeysReal? U16;
+
+        private NodeRef<CFuncKeysReal> U16Ref = new();
+        public CFuncKeysReal? U16
+        {
+            get => U16Ref.Resolve();
+            set => U16Ref.SetEmbedded(value);
+        }
         public float? U17;
         public PlugCurve? U18;
         public float? U19;
@@ -6962,6 +7168,26 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U33;
         public PlugCurve? U34;
         public float? U35;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED09C owner;
+            internal NodeRefView(Chunk090ED09C owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U07 => owner.U07Ref;
+            public NodeRef<CFuncKeysReal> U08 => owner.U08Ref;
+            public NodeRef<CFuncKeysReal> U09 => owner.U09Ref;
+            public NodeRef<CFuncKeysReal> U16 => owner.U16Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U07", U07Ref);
+            yield return new("U08", U08Ref);
+            yield return new("U09", U09Ref);
+            yield return new("U16", U16Ref);
+            yield break;
+        }
 
         public Chunk090ED09C() : this(GameVersion.Unspecified)
         {
@@ -6989,16 +7215,16 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED09C)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090ED09C)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090ED09C)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090ED09C)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090ED09C)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090ED09C)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090ED09C)clone).U07Ref = context.Clone(this.U07Ref)!;
+            ((Chunk090ED09C)clone).U08Ref = context.Clone(this.U08Ref)!;
+            ((Chunk090ED09C)clone).U09Ref = context.Clone(this.U09Ref)!;
             ((Chunk090ED09C)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090ED09C)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090ED09C)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090ED09C)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090ED09C)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090ED09C)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090ED09C)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED09C)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk090ED09C)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090ED09C)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090ED09C)clone).U19 = context.Clone(this.U19)!;
@@ -7038,9 +7264,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             rw.Single(ref U05);
             rw.Single(ref U06);
-            rw.NodeRef<CFuncKeysReal>(ref U07);
-            rw.NodeRef<CFuncKeysReal>(ref U08);
-            rw.NodeRef<CFuncKeysReal>(ref U09);
+            rw.NodeRef(U07Ref);
+            rw.NodeRef(U08Ref);
+            rw.NodeRef(U09Ref);
             rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 21);
             rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 21);
 
@@ -7062,7 +7288,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U16);
+                rw.NodeRef(U16Ref);
 
                 if (Version >= 5)
                 {
@@ -7195,7 +7421,27 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float? U48;
         public PlugCurve? U49;
         public float? U50;
-        public CPlugDynaWaterModel? U51;
+
+        private NodeRef<CPlugDynaWaterModel> U51Ref = new();
+        public CPlugDynaWaterModel? U51
+        {
+            get => U51Ref.Resolve();
+            set => U51Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED09D owner;
+            internal NodeRefView(Chunk090ED09D owner) => this.owner = owner;
+            public NodeRef<CPlugDynaWaterModel> U51 => owner.U51Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U51", U51Ref);
+            yield break;
+        }
 
         public Chunk090ED09D() : this(GameVersion.Unspecified)
         {
@@ -7267,7 +7513,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED09D)clone).U48 = context.Clone(this.U48)!;
             ((Chunk090ED09D)clone).U49 = context.Clone(this.U49)!;
             ((Chunk090ED09D)clone).U50 = context.Clone(this.U50)!;
-            ((Chunk090ED09D)clone).U51 = context.Clone(this.U51)!;
+            ((Chunk090ED09D)clone).U51Ref = context.Clone(this.U51Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
@@ -7417,7 +7663,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 20)
             {
-                rw.NodeRef<CPlugDynaWaterModel>(ref U51);
+                rw.NodeRef(U51Ref);
             }
         }
     }
@@ -7942,14 +8188,32 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U08;
         public float U09;
         public float U10;
-        public CFuncKeysReal? U11;
+
+        private NodeRef<CFuncKeysReal> U11Ref = new();
+        public CFuncKeysReal? U11
+        {
+            get => U11Ref.Resolve();
+            set => U11Ref.SetEmbedded(value);
+        }
         public float U12;
         public int U13;
         public int U14;
         public int U15;
         public int U16;
-        public CFuncKeysReal? U17;
-        public CFuncKeysReal? U18;
+
+        private NodeRef<CFuncKeysReal> U17Ref = new();
+        public CFuncKeysReal? U17
+        {
+            get => U17Ref.Resolve();
+            set => U17Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U18Ref = new();
+        public CFuncKeysReal? U18
+        {
+            get => U18Ref.Resolve();
+            set => U18Ref.SetEmbedded(value);
+        }
         public PlugCurve? U19;
         public PlugCurve? U20;
         public int U21;
@@ -7961,6 +8225,24 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U27;
         public PlugCurve? U28;
         public PlugCurve? U29;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED0A3 owner;
+            internal NodeRefView(Chunk090ED0A3 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U11 => owner.U11Ref;
+            public NodeRef<CFuncKeysReal> U17 => owner.U17Ref;
+            public NodeRef<CFuncKeysReal> U18 => owner.U18Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U11", U11Ref);
+            yield return new("U17", U17Ref);
+            yield return new("U18", U18Ref);
+            yield break;
+        }
 
         public Chunk090ED0A3() : this(GameVersion.Unspecified)
         {
@@ -7988,14 +8270,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A3)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090ED0A3)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090ED0A3)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090ED0A3)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090ED0A3)clone).U11Ref = context.Clone(this.U11Ref)!;
             ((Chunk090ED0A3)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090ED0A3)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090ED0A3)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090ED0A3)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090ED0A3)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090ED0A3)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090ED0A3)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090ED0A3)clone).U17Ref = context.Clone(this.U17Ref)!;
+            ((Chunk090ED0A3)clone).U18Ref = context.Clone(this.U18Ref)!;
             ((Chunk090ED0A3)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090ED0A3)clone).U20 = context.Clone(this.U20)!;
             ((Chunk090ED0A3)clone).U21 = context.Clone(this.U21)!;
@@ -8034,7 +8316,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                         if (Version >= 4)
                         {
-                            rw.NodeRef<CFuncKeysReal>(ref U11);
+                            rw.NodeRef(U11Ref);
                             rw.Single(ref U12);
                             rw.Int32(ref U13);
                             rw.Int32(ref U14);
@@ -8043,8 +8325,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
                             if (Version >= 5)
                             {
                                 rw.Int32(ref U16);
-                                rw.NodeRef<CFuncKeysReal>(ref U17);
-                                rw.NodeRef<CFuncKeysReal>(ref U18);
+                                rw.NodeRef(U17Ref);
+                                rw.NodeRef(U18Ref);
                                 rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 13);
                                 rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 13);
 
@@ -8611,7 +8893,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U17;
         public int U18;
         public int U19;
-        public CFuncKeysReal? U20;
+
+        private NodeRef<CFuncKeysReal> U20Ref = new();
+        public CFuncKeysReal? U20
+        {
+            get => U20Ref.Resolve();
+            set => U20Ref.SetEmbedded(value);
+        }
         public int U21;
         public PlugCurve? U22;
         public PlugCurve? U23;
@@ -8630,6 +8918,20 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U36;
         public float U37;
         public float U38;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED0A7 owner;
+            internal NodeRefView(Chunk090ED0A7 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U20 => owner.U20Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U20", U20Ref);
+            yield break;
+        }
 
         public Chunk090ED0A7() : this(GameVersion.Unspecified)
         {
@@ -8666,7 +8968,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0A7)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090ED0A7)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090ED0A7)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090ED0A7)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090ED0A7)clone).U20Ref = context.Clone(this.U20Ref)!;
             ((Chunk090ED0A7)clone).U21 = context.Clone(this.U21)!;
             ((Chunk090ED0A7)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090ED0A7)clone).U23 = context.Clone(this.U23)!;
@@ -8732,7 +9034,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U20);
+                rw.NodeRef(U20Ref);
             }
 
             if (Version >= 7)
@@ -9112,18 +9414,42 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int U02;
         public float U03;
         public int U04;
-        public CFuncKeysReal? U05;
+
+        private NodeRef<CFuncKeysReal> U05Ref = new();
+        public CFuncKeysReal? U05
+        {
+            get => U05Ref.Resolve();
+            set => U05Ref.SetEmbedded(value);
+        }
         public int U06;
         public int U07;
         public int U08;
         public int U09;
-        public CFuncKeysReal? U10;
+
+        private NodeRef<CFuncKeysReal> U10Ref = new();
+        public CFuncKeysReal? U10
+        {
+            get => U10Ref.Resolve();
+            set => U10Ref.SetEmbedded(value);
+        }
         public PlugCurve? U11;
         public int U12;
         public int U13;
-        public CFuncKeysReal? U14;
+
+        private NodeRef<CFuncKeysReal> U14Ref = new();
+        public CFuncKeysReal? U14
+        {
+            get => U14Ref.Resolve();
+            set => U14Ref.SetEmbedded(value);
+        }
         public PlugCurve? U15;
-        public CFuncKeysReal? U16;
+
+        private NodeRef<CFuncKeysReal> U16Ref = new();
+        public CFuncKeysReal? U16
+        {
+            get => U16Ref.Resolve();
+            set => U16Ref.SetEmbedded(value);
+        }
         public PlugCurve? U17;
         public PlugCurve? U18;
         public PlugCurve? U19;
@@ -9137,11 +9463,47 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public float U27;
         public float U28;
         public PlugCurve? U29;
-        public CFuncKeysReal? U30;
-        public CFuncKeysReal? U31;
+
+        private NodeRef<CFuncKeysReal> U30Ref = new();
+        public CFuncKeysReal? U30
+        {
+            get => U30Ref.Resolve();
+            set => U30Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CFuncKeysReal> U31Ref = new();
+        public CFuncKeysReal? U31
+        {
+            get => U31Ref.Resolve();
+            set => U31Ref.SetEmbedded(value);
+        }
         public PlugCurve? U32;
         public float U33;
         public int U34;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED0AD owner;
+            internal NodeRefView(Chunk090ED0AD owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U05 => owner.U05Ref;
+            public NodeRef<CFuncKeysReal> U10 => owner.U10Ref;
+            public NodeRef<CFuncKeysReal> U14 => owner.U14Ref;
+            public NodeRef<CFuncKeysReal> U16 => owner.U16Ref;
+            public NodeRef<CFuncKeysReal> U30 => owner.U30Ref;
+            public NodeRef<CFuncKeysReal> U31 => owner.U31Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U05", U05Ref);
+            yield return new("U10", U10Ref);
+            yield return new("U14", U14Ref);
+            yield return new("U16", U16Ref);
+            yield return new("U30", U30Ref);
+            yield return new("U31", U31Ref);
+            yield break;
+        }
 
         public Chunk090ED0AD() : this(GameVersion.Unspecified)
         {
@@ -9163,18 +9525,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0AD)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090ED0AD)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090ED0AD)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090ED0AD)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090ED0AD)clone).U05Ref = context.Clone(this.U05Ref)!;
             ((Chunk090ED0AD)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090ED0AD)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090ED0AD)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090ED0AD)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090ED0AD)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090ED0AD)clone).U10Ref = context.Clone(this.U10Ref)!;
             ((Chunk090ED0AD)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090ED0AD)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090ED0AD)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090ED0AD)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090ED0AD)clone).U14Ref = context.Clone(this.U14Ref)!;
             ((Chunk090ED0AD)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090ED0AD)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090ED0AD)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk090ED0AD)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090ED0AD)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090ED0AD)clone).U19 = context.Clone(this.U19)!;
@@ -9188,8 +9550,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             ((Chunk090ED0AD)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090ED0AD)clone).U28 = context.Clone(this.U28)!;
             ((Chunk090ED0AD)clone).U29 = context.Clone(this.U29)!;
-            ((Chunk090ED0AD)clone).U30 = context.Clone(this.U30)!;
-            ((Chunk090ED0AD)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090ED0AD)clone).U30Ref = context.Clone(this.U30Ref)!;
+            ((Chunk090ED0AD)clone).U31Ref = context.Clone(this.U31Ref)!;
             ((Chunk090ED0AD)clone).U32 = context.Clone(this.U32)!;
             ((Chunk090ED0AD)clone).U33 = context.Clone(this.U33)!;
             ((Chunk090ED0AD)clone).U34 = context.Clone(this.U34)!;
@@ -9202,18 +9564,18 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
             rw.Int32(ref U02);
             rw.Single(ref U03);
             rw.Int32(ref U04);
-            rw.NodeRef<CFuncKeysReal>(ref U05);
+            rw.NodeRef(U05Ref);
             rw.Int32(ref U06);
             rw.Int32(ref U07);
             rw.Int32(ref U08);
             rw.Int32(ref U09);
-            rw.NodeRef<CFuncKeysReal>(ref U10);
+            rw.NodeRef(U10Ref);
             rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 10);
             rw.Int32(ref U12);
             rw.Int32(ref U13);
-            rw.NodeRef<CFuncKeysReal>(ref U14);
+            rw.NodeRef(U14Ref);
             rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 10);
-            rw.NodeRef<CFuncKeysReal>(ref U16);
+            rw.NodeRef(U16Ref);
 
             if (Version >= 1)
             {
@@ -9254,8 +9616,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
             if (Version >= 7)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U30);
-                rw.NodeRef<CFuncKeysReal>(ref U31);
+                rw.NodeRef(U30Ref);
+                rw.NodeRef(U31Ref);
             }
 
             if (Version >= 8)

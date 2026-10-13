@@ -34,6 +34,8 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03101000;
 
+    internal override uint GetId() => Id;
+
     private Ident itemModel = Ident.Empty;
     [AppliedWithChunk<Chunk03101002>]
     public Ident ItemModel
@@ -74,12 +76,12 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.absolutePositionInMap = value;
     }
 
-    private CGameWaypointSpecialProperty? waypointSpecialProperty;
+    private NodeRef<CGameWaypointSpecialProperty> waypointSpecialPropertyRef = new();
     [AppliedWithChunk<Chunk03101002>]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
-        get => this.waypointSpecialProperty;
-        set => this.waypointSpecialProperty = value;
+        get => waypointSpecialPropertyRef.Resolve();
+        set => waypointSpecialPropertyRef.SetEmbedded(value);
     }
 
     private short flags;
@@ -114,6 +116,20 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.packDesc = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnAnchoredObject owner;
+        internal NodeRefView(CGameCtnAnchoredObject owner) => this.owner = owner;
+        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => owner.waypointSpecialPropertyRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("WaypointSpecialProperty", waypointSpecialPropertyRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -122,7 +138,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         ((CGameCtnAnchoredObject)clone).blockUnitCoord = context.Clone(this.blockUnitCoord)!;
         ((CGameCtnAnchoredObject)clone).anchorTreeId = context.Clone(this.anchorTreeId)!;
         ((CGameCtnAnchoredObject)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
-        ((CGameCtnAnchoredObject)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
+        ((CGameCtnAnchoredObject)clone).waypointSpecialPropertyRef = context.Clone(this.waypointSpecialPropertyRef)!;
         ((CGameCtnAnchoredObject)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnAnchoredObject)clone).pivotPosition = context.Clone(this.pivotPosition)!;
         ((CGameCtnAnchoredObject)clone).scale = context.Clone(this.scale)!;
@@ -170,7 +186,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
             rw.Byte3(ref n.blockUnitCoord);
             rw.Id(ref n.anchorTreeId);
             rw.Vec3(ref n.absolutePositionInMap);
-            rw.NodeRef<CGameWaypointSpecialProperty>(ref n.waypointSpecialProperty);
+            rw.NodeRef(n.waypointSpecialPropertyRef);
 
             if (Version <= 4)
             {

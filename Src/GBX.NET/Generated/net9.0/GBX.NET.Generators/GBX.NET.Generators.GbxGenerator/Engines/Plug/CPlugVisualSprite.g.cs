@@ -34,6 +34,8 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     [Hexadecimal]
     public static new uint Id => 0x09010000;
 
+    internal override uint GetId() => Id;
+
     private uint spriteFlags;
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]

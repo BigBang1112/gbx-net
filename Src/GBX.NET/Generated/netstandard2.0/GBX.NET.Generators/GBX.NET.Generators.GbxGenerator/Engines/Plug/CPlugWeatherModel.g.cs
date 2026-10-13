@@ -34,81 +34,88 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090BF000;
 
-    private CPlugWeather[]? weathers;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugWeather>? weathers;
     [AppliedWithChunk<Chunk090BF001>]
-    public CPlugWeather[]? Weathers
+    public NodeRefList<CPlugWeather>? Weathers
     {
-        get => this.weathers;
-        set => this.weathers = value;
+        get => weathers;
+        set => weathers = value;
     }
 
-    private CPlugBitmap? bitmapSpecularDir;
+    private NodeRef<CPlugBitmap> bitmapSpecularDirRef = new();
     [AppliedWithChunk<Chunk090BF001>]
     public CPlugBitmap? BitmapSpecularDir
     {
-        get => this.bitmapSpecularDir;
-        set => this.bitmapSpecularDir = value;
+        get => bitmapSpecularDirRef.Resolve();
+        set => bitmapSpecularDirRef.SetEmbedded(value);
     }
 
-    private CFuncDayTime? funcDayTime;
+    private NodeRef<CFuncDayTime> funcDayTimeRef = new();
     [AppliedWithChunk<Chunk090BF002>]
     public CFuncDayTime? FuncDayTime
     {
-        get => this.funcDayTimeFile?.GetNode(ref this.funcDayTime) ?? this.funcDayTime;
-        set => this.funcDayTime = value;
-    }
-    private Components.GbxRefTableFile? funcDayTimeFile;
-
-    public Components.GbxRefTableFile? FuncDayTimeFile
-    {
-        get => funcDayTimeFile;
-        set => funcDayTimeFile = value;
+        get => funcDayTimeRef.Resolve();
+        set => funcDayTimeRef.SetEmbedded(value);
     }
 
-    public CFuncDayTime? GetFuncDayTime(GbxReadSettings settings = default, bool exceptions = false) => funcDayTimeFile?.GetNode(ref funcDayTime, settings, exceptions) ?? funcDayTime;
-
-    private CPlugBitmap? bitmapWaterFog;
+    private NodeRef<CPlugBitmap> bitmapWaterFogRef = new();
     [AppliedWithChunk<Chunk090BF003>]
     public CPlugBitmap? BitmapWaterFog
     {
-        get => this.bitmapWaterFogFile?.GetNode(ref this.bitmapWaterFog) ?? this.bitmapWaterFog;
-        set => this.bitmapWaterFog = value;
-    }
-    private Components.GbxRefTableFile? bitmapWaterFogFile;
-
-    public Components.GbxRefTableFile? BitmapWaterFogFile
-    {
-        get => bitmapWaterFogFile;
-        set => bitmapWaterFogFile = value;
+        get => bitmapWaterFogRef.Resolve();
+        set => bitmapWaterFogRef.SetEmbedded(value);
     }
 
-    public CPlugBitmap? GetBitmapWaterFog(GbxReadSettings settings = default, bool exceptions = false) => bitmapWaterFogFile?.GetNode(ref bitmapWaterFog, settings, exceptions) ?? bitmapWaterFog;
-
-    private CPlugMoodSetting? moodSetting;
+    private NodeRef<CPlugMoodSetting> moodSettingRef = new();
     [AppliedWithChunk<Chunk090BF004>]
     public CPlugMoodSetting? MoodSetting
     {
-        get => this.moodSettingFile?.GetNode(ref this.moodSetting) ?? this.moodSetting;
-        set => this.moodSetting = value;
+        get => moodSettingRef.Resolve();
+        set => moodSettingRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? moodSettingFile;
 
-    public Components.GbxRefTableFile? MoodSettingFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => moodSettingFile;
-        set => moodSettingFile = value;
+        private readonly CPlugWeatherModel owner;
+        internal NodeRefView(CPlugWeatherModel owner) => this.owner = owner;
+        public WeathersReferenceView Weathers => new(owner);
+        public NodeRef<CPlugBitmap> BitmapSpecularDir => owner.bitmapSpecularDirRef;
+        public NodeRef<CFuncDayTime> FuncDayTime => owner.funcDayTimeRef;
+        public NodeRef<CPlugBitmap> BitmapWaterFog => owner.bitmapWaterFogRef;
+        public NodeRef<CPlugMoodSetting> MoodSetting => owner.moodSettingRef;
     }
-
-    public CPlugMoodSetting? GetMoodSetting(GbxReadSettings settings = default, bool exceptions = false) => moodSettingFile?.GetNode(ref moodSetting, settings, exceptions) ?? moodSetting;
+    public readonly struct WeathersReferenceView
+    {
+        private readonly CPlugWeatherModel owner;
+        internal WeathersReferenceView(CPlugWeatherModel owner) => this.owner = owner;
+        public int Count => owner.weathers?.Count ?? 0;
+        public NodeRef<CPlugWeather> this[int index] => (owner.weathers ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (weathers is not null)
+        {
+            for (var i = 0; i < weathers.Count; i++) yield return new("Weathers" + "[" + i + "]", weathers.GetReference(i));
+        }
+        yield return new("BitmapSpecularDir", bitmapSpecularDirRef);
+        yield return new("FuncDayTime", funcDayTimeRef);
+        yield return new("BitmapWaterFog", bitmapWaterFogRef);
+        yield return new("MoodSetting", moodSettingRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugWeatherModel)clone).weathers = context.CloneArray(this.weathers)!;
-        ((CPlugWeatherModel)clone).bitmapSpecularDir = context.Clone(this.bitmapSpecularDir)!;
-        ((CPlugWeatherModel)clone).funcDayTime = context.Clone(this.funcDayTime)!;
-        ((CPlugWeatherModel)clone).bitmapWaterFog = context.Clone(this.bitmapWaterFog)!;
-        ((CPlugWeatherModel)clone).moodSetting = context.Clone(this.moodSetting)!;
+        ((CPlugWeatherModel)clone).weathers = context.Clone(this.weathers)!;
+        ((CPlugWeatherModel)clone).bitmapSpecularDirRef = context.Clone(this.bitmapSpecularDirRef)!;
+        ((CPlugWeatherModel)clone).funcDayTimeRef = context.Clone(this.funcDayTimeRef)!;
+        ((CPlugWeatherModel)clone).bitmapWaterFogRef = context.Clone(this.bitmapWaterFogRef)!;
+        ((CPlugWeatherModel)clone).moodSettingRef = context.Clone(this.moodSettingRef)!;
     }
 
     public CPlugWeatherModel()
@@ -129,8 +136,8 @@ public partial class CPlugWeatherModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugWeather>(ref n.weathers!);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapSpecularDir);
+            n.weathers = rw.ListNodeRef_deprec<CPlugWeather>(n.weathers);
+            rw.NodeRef(n.bitmapSpecularDirRef);
         }
     }
 
@@ -148,7 +155,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncDayTime>(ref n.funcDayTime, ref n.funcDayTimeFile);
+            rw.NodeRef(n.funcDayTimeRef);
         }
     }
 
@@ -166,7 +173,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapWaterFog, ref n.bitmapWaterFogFile);
+            rw.NodeRef(n.bitmapWaterFogRef);
         }
     }
 
@@ -184,7 +191,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeatherModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMoodSetting>(ref n.moodSetting, ref n.moodSettingFile);
+            rw.NodeRef(n.moodSettingRef);
         }
     }
 

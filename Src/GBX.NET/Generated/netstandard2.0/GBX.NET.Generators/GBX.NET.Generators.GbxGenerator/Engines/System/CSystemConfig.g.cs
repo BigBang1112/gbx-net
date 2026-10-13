@@ -34,6 +34,8 @@ public partial class CSystemConfig : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0B005000;
 
+    internal override uint GetId() => Id;
+
     private int displayResolutionPreset;
     [AppliedWithChunk<Chunk0B005000>]
     public int DisplayResolutionPreset

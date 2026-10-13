@@ -34,6 +34,8 @@ public partial class CGameHighScore : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03047000;
 
+    internal override uint GetId() => Id;
+
     private int time;
     [AppliedWithChunk<Chunk03047002>]
     public int Time

@@ -34,6 +34,8 @@ public partial class CFuncColorGradient : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x05038000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 keyFrameValue0;
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]

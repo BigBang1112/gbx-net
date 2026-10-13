@@ -34,6 +34,8 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     [Hexadecimal]
     public static new uint Id => 0x090EF000;
 
+    internal override uint GetId() => Id;
+
     private float slerpSpeed = 5.0f;
     [AppliedWithChunk<Chunk090EF000>]
     [AppliedWithChunk<Chunk090EF005>]
@@ -879,9 +881,9 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
             rw.Single(ref n.eventBurningRadiusDelta);
             rw.Int32(ref n.eventBurningRadiusTimeUp);
             rw.Int32(ref n.eventBurningRadiusTimeDown);
-            n.slerpSpeedModulationFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.slerpSpeedModulationFromSpeed);
-            n.lookAtFactorFromUpSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.lookAtFactorFromUpSpeedRatio);
-            n.flyingLookDownFactorFromSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.flyingLookDownFactorFromSpeedRatio);
+            n.slerpSpeedModulationFromSpeed = rw.ReadableWritable<PlugCurve>(n.slerpSpeedModulationFromSpeed, version: -1);
+            n.lookAtFactorFromUpSpeedRatio = rw.ReadableWritable<PlugCurve>(n.lookAtFactorFromUpSpeedRatio, version: -1);
+            n.flyingLookDownFactorFromSpeedRatio = rw.ReadableWritable<PlugCurve>(n.flyingLookDownFactorFromSpeedRatio, version: -1);
             if (rw.Reader is not null)
             {
                 n.FlyDurationBeforeFlyingBehavior = 100;

@@ -34,6 +34,8 @@ public partial class CGameCtnBlockInfoVariantAir : CGameCtnBlockInfoVariant, ICl
     [Hexadecimal]
     public static new uint Id => 0x0315D000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

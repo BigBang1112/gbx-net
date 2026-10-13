@@ -8,7 +8,7 @@ CGameItemModel 0x2E002000
   version
 
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
-  CSceneMobil Vehicle (external)
+  CSceneMobil Vehicle
 
 0x001 [TM10, TMPU]
   CPlugGameSkin GameSkin
@@ -17,7 +17,7 @@ CGameItemModel 0x2E002000
   CScene2d RaceInterfaceFid
 
 0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // LowQualitySolid
-  CPlugSolid LowQualitySolid (external)
+  CPlugSolid LowQualitySolid
 
 0x004 [TMSX]
   CMwNod
@@ -26,22 +26,22 @@ CGameItemModel 0x2E002000
   int DefaultCamIndex
 
 0x007 [TMSX] // old materials
-  CPlugMaterial MaterialSkin (external)
-  CPlugMaterial MaterialGlass (external)
-  CPlugMaterial MaterialDetails (external)
+  CPlugMaterial MaterialSkin
+  CPlugMaterial MaterialGlass
+  CPlugMaterial MaterialDetails
 
 0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Nadeo skin fids
-  CMwNod?[] NadeoSkinFids (external)
+  CMwNod?[] NadeoSkinFids
 
 0x009 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Cameras
-  CMwNod[] Cameras (deprec, external)
+  CMwNod[] Cameras (deprec)
 
 0x00A [TMNESWC, VSK5, TMF, MP3] // DecoratorSolid
-  CPlugDecoratorSolid DecoratorSolid (external)
+  CPlugDecoratorSolid DecoratorSolid
 
 0x00B [TMNESWC, VSK5, TMF] // stem materials
-  CPlugMaterial StemMaterial (external)
-  CPlugMaterial StemBumpMaterial (external)
+  CPlugMaterial StemMaterial
+  CPlugMaterial StemBumpMaterial
 
 0x00C [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // race interface fid
   CScene2d RaceInterfaceFid
@@ -50,24 +50,24 @@ CGameItemModel 0x2E002000
   CMwNod[] ForcedSkinsFids
 
 0x00E [TMNESWC] // StadiumCar materials
-  CPlugMaterial MaterialSkin (external)
-  CPlugMaterial MaterialGlass (external)
-  CPlugMaterial MaterialDetails (external)
-  CPlugMaterial MaterialPilot (external)
+  CPlugMaterial MaterialSkin
+  CPlugMaterial MaterialGlass
+  CPlugMaterial MaterialDetails
+  CPlugMaterial MaterialPilot
 
 0x010 (BannerProfileFid) [VSK5, TMF]
-  CPlugBitmap BannerProfileFid (external)
+  CPlugBitmap BannerProfileFid
 
 0x011 [VSK5, TMF] // materials
-  CPlugMaterial MaterialSkin (external)
-  CPlugMaterial MaterialGlass (external)
-  CPlugMaterial MaterialDetails (external)
-  CPlugMaterial MaterialPilot (external)
-  CPlugLight FrontLight (external)
-  CPlugLight FrontLightSmall (external)
-  CPlugLight RearLight (external)
-  CPlugLight ProjShadow (external)
-  CPlugLight ProjFront (external)
+  CPlugMaterial MaterialSkin
+  CPlugMaterial MaterialGlass
+  CPlugMaterial MaterialDetails
+  CPlugMaterial MaterialPilot
+  CPlugLight FrontLight
+  CPlugLight FrontLightSmall
+  CPlugLight RearLight
+  CPlugLight ProjShadow
+  CPlugLight ProjFront
 
 0x012 [VSK5, TMF, MP3, TMT, MP4, TM2020]
   vec3 GroundPoint
@@ -77,7 +77,7 @@ CGameItemModel 0x2E002000
   float OrbitalPreviewAngle
 
 0x013 (AudioEnvironmentInCar) [TMF, MP3, TMT, MP4]
-  CPlugAudioEnvironment AudioEnvironmentInCar (external)
+  CPlugAudioEnvironment AudioEnvironmentInCar
 
 0x014
   CMwNod
@@ -89,25 +89,25 @@ CGameItemModel 0x2E002000
   version
   if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
     v8-
-      CMwNod PhyModelCustom (external)
-      CMwNod VisModelCustom (external)
+      CMwNod PhyModelCustom
+      CMwNod VisModelCustom
   else if ItemType == EItemType.Vehicle
     v9-
-      CMwNod PhyModelCustom (external)
-      CMwNod VisModelCustom (external)
+      CMwNod PhyModelCustom
+      CMwNod VisModelCustom
   else if ItemType != EItemType.Block
     v11-
-      CMwNod PhyModelCustom (external)
-      CMwNod VisModelCustom (external)
+      CMwNod PhyModelCustom
+      CMwNod VisModelCustom
   v3+
     id DefaultWeaponName
   v4+
-    if n.phyModelCustom != null
+    if n.References.PhyModelCustom.Kind != NodeRefKind.None
       int PhyModelCustomIndex (local, write: -1)
     else
       CMwNod PhyModelCustom
   v5+
-    if n.visModelCustom != null
+    if n.References.VisModelCustom.Kind != NodeRefKind.None
       int VisModelCustomIndex (local, write: -1)
     else
       CMwNod VisModelCustom
@@ -116,15 +116,15 @@ CGameItemModel 0x2E002000
   v7+
     int<EDefaultCam> DefaultCam
   v8+
-    CMwNod EntityModelEdition (external) // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
-    if n.entityModelEdition == null && EntityModelEditionFile == null
+    CMwNod EntityModelEdition // CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
+    if n.References.EntityModelEdition.Kind == NodeRefKind.None
       if ItemType == EItemType.Block
         throw (type: Exception, message: EntityModel cannot exist for Block)
       CMwNod EntityModel
   v13+
     CPlugVFXFile VFX
   v15+
-    CPlugGameSkinAndFolder MaterialModifier (external)
+    CPlugGameSkinAndFolder MaterialModifier
 
 0x01A [MP3, TMT, MP4, TM2020]
   CMwNod
@@ -135,7 +135,7 @@ CGameItemModel 0x2E002000
 0x01C [MP3, TMT, MP4, TM2020] // default placement
   version
   v5+
-    CGameItemPlacementParam DefaultPlacement (external)
+    CGameItemPlacementParam DefaultPlacement
     return
   vec3[]
   v1+

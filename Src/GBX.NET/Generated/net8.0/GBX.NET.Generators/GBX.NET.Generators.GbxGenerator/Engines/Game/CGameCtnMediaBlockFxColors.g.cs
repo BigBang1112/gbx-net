@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
     [Hexadecimal]
     public static new uint Id => 0x03080000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03080000>]
     [AppliedWithChunk<Chunk03080001>]

@@ -34,18 +34,34 @@ public partial class CMotionWeather : CMotionManaged, IClass
     [Hexadecimal]
     public static new uint Id => 0x08054000;
 
-    private CMwNod? legacyModel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod> legacyModelRef = new();
     [AppliedWithChunk<Chunk08054000>]
     public CMwNod? LegacyModel
     {
-        get => this.legacyModel;
-        set => this.legacyModel = value;
+        get => legacyModelRef.Resolve();
+        set => legacyModelRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionWeather owner;
+        internal NodeRefView(CMotionWeather owner) => this.owner = owner;
+        public NodeRef<CMwNod> LegacyModel => owner.legacyModelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("LegacyModel", legacyModelRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionWeather)clone).legacyModel = context.Clone(this.legacyModel)!;
+        ((CMotionWeather)clone).legacyModelRef = context.Clone(this.legacyModelRef)!;
     }
 
     public CMotionWeather()
@@ -66,7 +82,7 @@ public partial class CMotionWeather : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.legacyModel);
+            rw.NodeRef(n.legacyModelRef);
         }
     }
 

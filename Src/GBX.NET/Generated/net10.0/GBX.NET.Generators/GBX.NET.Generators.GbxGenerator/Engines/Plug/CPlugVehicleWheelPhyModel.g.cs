@@ -34,6 +34,8 @@ public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritab
     [Hexadecimal]
     public static new uint Id => 0x0912E000;
 
+    internal override uint GetId() => Id;
+
     private bool isDriving;
     public bool IsDriving
     {

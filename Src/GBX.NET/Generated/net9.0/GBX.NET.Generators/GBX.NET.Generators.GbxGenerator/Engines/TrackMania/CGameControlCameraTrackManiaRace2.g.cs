@@ -34,6 +34,8 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     [Hexadecimal]
     public static new uint Id => 0x24086000;
 
+    internal override uint GetId() => Id;
+
     private float inputGasDistDelta;
     [AppliedWithChunk<Chunk24086000>]
     public float InputGasDistDelta
@@ -474,28 +476,28 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
         set => this.maxDeltaFovStep = value;
     }
 
-    private CFuncKeysReal? lookAtFactorFromUpSpeedRatio;
+    private NodeRef<CFuncKeysReal> lookAtFactorFromUpSpeedRatioRef = new();
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? LookAtFactorFromUpSpeedRatio
     {
-        get => this.lookAtFactorFromUpSpeedRatio;
-        set => this.lookAtFactorFromUpSpeedRatio = value;
+        get => lookAtFactorFromUpSpeedRatioRef.Resolve();
+        set => lookAtFactorFromUpSpeedRatioRef.SetEmbedded(value);
     }
 
-    private CFuncKeysReal? yawFromSpeed;
+    private NodeRef<CFuncKeysReal> yawFromSpeedRef = new();
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? YawFromSpeed
     {
-        get => this.yawFromSpeed;
-        set => this.yawFromSpeed = value;
+        get => yawFromSpeedRef.Resolve();
+        set => yawFromSpeedRef.SetEmbedded(value);
     }
 
-    private CFuncKeysReal? rollFromSpeed;
+    private NodeRef<CFuncKeysReal> rollFromSpeedRef = new();
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? RollFromSpeed
     {
-        get => this.rollFromSpeed;
-        set => this.rollFromSpeed = value;
+        get => rollFromSpeedRef.Resolve();
+        set => rollFromSpeedRef.SetEmbedded(value);
     }
 
     private float deltaDistDamperKi;
@@ -536,6 +538,24 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     {
         get => this.isRollFromInput;
         set => this.isRollFromInput = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameControlCameraTrackManiaRace2 owner;
+        internal NodeRefView(CGameControlCameraTrackManiaRace2 owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> LookAtFactorFromUpSpeedRatio => owner.lookAtFactorFromUpSpeedRatioRef;
+        public NodeRef<CFuncKeysReal> YawFromSpeed => owner.yawFromSpeedRef;
+        public NodeRef<CFuncKeysReal> RollFromSpeed => owner.rollFromSpeedRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("LookAtFactorFromUpSpeedRatio", lookAtFactorFromUpSpeedRatioRef);
+        yield return new("YawFromSpeed", yawFromSpeedRef);
+        yield return new("RollFromSpeed", rollFromSpeedRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -596,9 +616,9 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
         ((CGameControlCameraTrackManiaRace2)clone).inputNoSteerDurationBeforeReset = context.Clone(this.inputNoSteerDurationBeforeReset)!;
         ((CGameControlCameraTrackManiaRace2)clone).maxDeltaPlaneDistStep = context.Clone(this.maxDeltaPlaneDistStep)!;
         ((CGameControlCameraTrackManiaRace2)clone).maxDeltaFovStep = context.Clone(this.maxDeltaFovStep)!;
-        ((CGameControlCameraTrackManiaRace2)clone).lookAtFactorFromUpSpeedRatio = context.Clone(this.lookAtFactorFromUpSpeedRatio)!;
-        ((CGameControlCameraTrackManiaRace2)clone).yawFromSpeed = context.Clone(this.yawFromSpeed)!;
-        ((CGameControlCameraTrackManiaRace2)clone).rollFromSpeed = context.Clone(this.rollFromSpeed)!;
+        ((CGameControlCameraTrackManiaRace2)clone).lookAtFactorFromUpSpeedRatioRef = context.Clone(this.lookAtFactorFromUpSpeedRatioRef)!;
+        ((CGameControlCameraTrackManiaRace2)clone).yawFromSpeedRef = context.Clone(this.yawFromSpeedRef)!;
+        ((CGameControlCameraTrackManiaRace2)clone).rollFromSpeedRef = context.Clone(this.rollFromSpeedRef)!;
         ((CGameControlCameraTrackManiaRace2)clone).deltaDistDamperKi = context.Clone(this.deltaDistDamperKi)!;
         ((CGameControlCameraTrackManiaRace2)clone).deltaDistDamperKa = context.Clone(this.deltaDistDamperKa)!;
         ((CGameControlCameraTrackManiaRace2)clone).deltaLookAtFactorDamperKi = context.Clone(this.deltaLookAtFactorDamperKi)!;
@@ -679,9 +699,9 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
             rw.Int32(ref n.inputNoSteerDurationBeforeReset);
             rw.Single(ref n.maxDeltaPlaneDistStep);
             rw.Single(ref n.maxDeltaFovStep);
-            rw.NodeRef<CFuncKeysReal>(ref n.lookAtFactorFromUpSpeedRatio);
-            rw.NodeRef<CFuncKeysReal>(ref n.yawFromSpeed);
-            rw.NodeRef<CFuncKeysReal>(ref n.rollFromSpeed);
+            rw.NodeRef(n.lookAtFactorFromUpSpeedRatioRef);
+            rw.NodeRef(n.yawFromSpeedRef);
+            rw.NodeRef(n.rollFromSpeedRef);
             rw.Single(ref n.deltaDistDamperKi);
             rw.Single(ref n.deltaDistDamperKa);
             rw.Single(ref n.deltaLookAtFactorDamperKi);

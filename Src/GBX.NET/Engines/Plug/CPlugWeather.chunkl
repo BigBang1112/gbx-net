@@ -10,13 +10,13 @@ property bool FogByVertex
 
 0x000 // Legacy materials, lighting and fog
   id
-  CPlugMaterial MaterialSky_Night (external)
-  CPlugMaterial MaterialSky_SunRise (external)
-  CPlugMaterial MaterialSky_Day (external)
-  CPlugMaterial MaterialSky_SunFall (external)
-  CPlugMaterial MaterialSea0 (external)
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
+  CPlugMaterial MaterialSky_Night
+  CPlugMaterial MaterialSky_SunRise
+  CPlugMaterial MaterialSky_Day
+  CPlugMaterial MaterialSky_SunFall
+  CPlugMaterial MaterialSea0
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
   vec3 FogRGB = (1, 1, 1)
   float FogLinearStart
   float FogLinearEnd = 1
@@ -27,7 +27,7 @@ property bool FogByVertex
   float
   float
   MaterialSea1 = n.materialSea0
-  MaterialSea1File = MaterialSea0File
+
   DayFogColor = FogRGB
   DayFogStart = FogLinearStart
   DayFogEnd = FogLinearEnd
@@ -36,13 +36,13 @@ property bool FogByVertex
 
 0x001 // Legacy materials, lighting and fog
   id
-  CPlugMaterial MaterialSky_Night (external)
-  CPlugMaterial MaterialSky_SunRise (external)
-  CPlugMaterial MaterialSky_Day (external)
-  CPlugMaterial MaterialSky_SunFall (external)
-  CPlugMaterial MaterialSea0 (external)
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
+  CPlugMaterial MaterialSky_Night
+  CPlugMaterial MaterialSky_SunRise
+  CPlugMaterial MaterialSky_Day
+  CPlugMaterial MaterialSky_SunFall
+  CPlugMaterial MaterialSea0
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
   vec3 FogRGB = (1, 1, 1)
   float FogLinearStart
   float FogLinearEnd = 1
@@ -54,7 +54,7 @@ property bool FogByVertex
   float
   bool
   MaterialSea1 = n.materialSea0
-  MaterialSea1File = MaterialSea0File
+
   DayFogColor = FogRGB
   DayFogStart = FogLinearStart
   DayFogEnd = FogLinearEnd
@@ -63,16 +63,16 @@ property bool FogByVertex
 
 0x002 // Legacy paired sky and sea materials
   id
-  CPlugMaterial MaterialSky_Night (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_SunRise (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_Day (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_SunFall (external)
-  CPlugMaterial MaterialSea0 (external)
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
+  CPlugMaterial MaterialSky_Night
+  CPlugMaterial
+  CPlugMaterial MaterialSky_SunRise
+  CPlugMaterial
+  CPlugMaterial MaterialSky_Day
+  CPlugMaterial
+  CPlugMaterial MaterialSky_SunFall
+  CPlugMaterial MaterialSea0
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
   vec3 FogRGB = (1, 1, 1)
   float FogLinearStart
   float FogLinearEnd = 1
@@ -84,7 +84,7 @@ property bool FogByVertex
   float
   bool
   MaterialSea1 = n.materialSea0
-  MaterialSea1File = MaterialSea0File
+
   DayFogColor = FogRGB
   DayFogStart = FogLinearStart
   DayFogEnd = FogLinearEnd
@@ -100,14 +100,14 @@ property bool FogByVertex
 
 0x005 // Legacy paired materials and day fog
   id
-  CPlugMaterial MaterialSky_Night (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_SunRise (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_Day (external)
-  CPlugMaterial (external)
-  CPlugMaterial MaterialSky_SunFall (external)
-  CPlugMaterial MaterialSea0 (external)
+  CPlugMaterial MaterialSky_Night
+  CPlugMaterial
+  CPlugMaterial MaterialSky_SunRise
+  CPlugMaterial
+  CPlugMaterial MaterialSky_Day
+  CPlugMaterial
+  CPlugMaterial MaterialSky_SunFall
+  CPlugMaterial MaterialSea0
   vec3 FogRGB = (1, 1, 1)
   float FogLinearStart
   float FogLinearEnd = 1
@@ -120,15 +120,15 @@ property bool FogByVertex
   float DayFogDensity = 1
   uint DayFogFlags = 6 (write: "DayFogFlags & 0xF")
   DayFogFlags = DayFogFlags & 0xF
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
   float
   float
   float
   bool
   float CameraFarZ = 31000
   MaterialSea1 = n.materialSea0
-  MaterialSea1File = MaterialSea0File
+
 
 0x006 // Sea reflection and water colors
   float SeaTwkReflecIntensNight
@@ -142,11 +142,11 @@ property bool FogByVertex
 
 0x008 (base: 0x005)
   base
-  CPlugBitmap BitmapRainFid (external)
+  CPlugBitmap BitmapRainFid
 
 0x009 (base: 0x008)
   base
-  CMwNod SceneFxFid (external)
+  CMwNod SceneFxFid
 
 0x00A // Legacy lighting, fog and effects
   vec3 FogRGB = (1, 1, 1)
@@ -162,27 +162,27 @@ property bool FogByVertex
   uint DayFogFlags = 6 (write: "DayFogFlags & 0xF")
   DayFogFlags = DayFogFlags & 0xF
   id
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
   float
   float
   float
   bool
   float CameraFarZ = 31000
-  CPlugBitmap BitmapRainFid (external)
-  CMwNod SceneFxFid (external)
+  CPlugBitmap BitmapRainFid
+  CMwNod SceneFxFid
 
 0x00B [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Sky and sea materials
-  CPlugMaterial MaterialSky_Night (external)
-  CPlugMaterial MaterialSky_SunRise (external)
-  CPlugMaterial MaterialSky_Day (external)
-  CPlugMaterial MaterialSky_SunFall (external)
-  CPlugMaterial MaterialSea0 (external)
-  CPlugMaterial MaterialSea1 (external)
+  CPlugMaterial MaterialSky_Night
+  CPlugMaterial MaterialSky_SunRise
+  CPlugMaterial MaterialSky_Day
+  CPlugMaterial MaterialSky_SunFall
+  CPlugMaterial MaterialSea0
+  CPlugMaterial MaterialSea1
 
 0x00C (base: 0x00A)
   base
-  CPlugFileImg ImageLightDirMoon (external)
+  CPlugFileImg ImageLightDirMoon
 
 0x00D (base: 0x006) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Sea reflection and water colors
   base
@@ -207,49 +207,49 @@ property bool FogByVertex
   uint DayFogFlags = 6 (write: "DayFogFlags & 0xF")
   DayFogFlags = DayFogFlags & 0xF
   id
-  CPlugFileImg ImageLightAmb (external)
-  CPlugFileImg ImageLightDirSun (external)
-  CPlugFileImg ImageLightDirMoon (external)
-  CPlugBitmap BitmapFlareSun (external)
-  CPlugBitmap BitmapFlareMoon (external)
+  CPlugFileImg ImageLightAmb
+  CPlugFileImg ImageLightDirSun
+  CPlugFileImg ImageLightDirMoon
+  CPlugBitmap BitmapFlareSun
+  CPlugBitmap BitmapFlareMoon
   float FlareAngularSizeSun = 20
   float FlareAngularSizeMoon = 5
   float
   float
   float
   float CameraFarZ = 31000
-  CPlugBitmap BitmapRainFid (external)
-  CMwNod SceneFxFid (external)
+  CPlugBitmap BitmapRainFid
+  CMwNod SceneFxFid
 
 0x00F [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // ImageLightDirDblSided
-  CPlugFileImg ImageLightDirDblSided (external)
+  CPlugFileImg ImageLightDirDblSided
 
 0x010 // Legacy cloud solids and near distance
 
 0x011 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // BitmapSkyGradV
-  CPlugBitmap BitmapSkyGradV (external)
+  CPlugBitmap BitmapSkyGradV
 
 0x012 (base: 0x010) // Legacy cloud far distance and colors
   base
 
 0x013 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // ImageFogColor
-  CPlugFileImg ImageFogColor (external)
+  CPlugFileImg ImageFogColor
 
 0x014 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // ImageSeaColor
-  CPlugFileImg ImageSeaColor (external)
+  CPlugFileImg ImageSeaColor
 
 0x015 (base: 0x012) // Legacy cloud lighting
   base
 
 0x016 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Clouds
-  CPlugClouds Clouds (external)
+  CPlugClouds Clouds
 
 0x017 [VSK5, TMF, MP3, TMT, MP4, TM2020] // FogBlender
-  GxFogBlender FogBlender (external)
+  GxFogBlender FogBlender
 
 0x018 [TM2020.v1] // EmitterInFog
   version
-  CPlugParticleEmitterModel EmitterInFog (external)
+  CPlugParticleEmitterModel EmitterInFog
 
 enum EGxFogFormula
   None

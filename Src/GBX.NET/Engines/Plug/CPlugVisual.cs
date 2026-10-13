@@ -16,7 +16,11 @@ public partial class CPlugVisual
         set => Count = value;
     }
 
-    public List<CPlugVertexStream> VertexStreams { get; set; } = [];
+    public partial NodeRefList<CPlugVertexStream> VertexStreams
+    {
+        get => vertexStreams ??= [];
+        set => vertexStreams = value;
+    }
     public TexCoordSet[] TexCoords { get; set; } = [];
     public BoxAligned BoundingBox { get; set; } = new(0, 0, 0, -1, -1, -1);
     public SSkinData? SkinData { get; set; }
@@ -180,7 +184,7 @@ public partial class CPlugVisual
         {
             Indices = rw.Array(Indices)!;
             BoneCount = rw.Int32(Bones.Length);
-            VertexStream = rw.NodeRef(VertexStream);
+            rw.NodeRef(References.VertexStream);
             Bones = rw.ArrayId(Bones, BoneCount)!;
         }
     }

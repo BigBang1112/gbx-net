@@ -1,9 +1,9 @@
 CPlugParticleEmitterSubModel 0x090B2000
 
 0x011 [TMSX, TMNESWC, VSK5, TMF]
-  CPlugMaterial Material (external)
-  if Material == null && MaterialFile == null
-    CPlugShader Shader (external)
+  CPlugMaterial Material
+  if Material == null
+    CPlugShader Shader
   float SizeBirthRatioXY
   vec2 SpritePivotPoint
   float
@@ -167,14 +167,14 @@ CPlugParticleEmitterSubModel 0x090B2000
   int
   bool
   float
-  CPlugMaterial Material (external)
-  if Material == null && MaterialFile == null
-    CPlugShader Shader (external)
+  CPlugMaterial Material
+  if Material == null
+    CPlugShader Shader
   v4-
     CPlugVisual Visual
   v6+
     string
-  CPlugSolid2Model Solid2Model (external)
+  CPlugSolid2Model Solid2Model
   v7+
     iso4
   vec2

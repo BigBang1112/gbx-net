@@ -110,7 +110,7 @@ public class CGameCtnBlockInfoLayoutTests
         node.Read(rw);
 
         await Assert.That(node.PrecalcPartParams).IsNull();
-        await Assert.That(node.PrecalcPartParamsFile).IsEqualTo(file);
+        await Assert.That(node.References.PrecalcPartParams.File).IsEqualTo(file);
         await Assert.That(node.PrecalcPartLoc).IsEqualTo(location);
         await Assert.That(input.Position).IsEqualTo(input.Length);
 
@@ -215,9 +215,9 @@ public class CGameCtnBlockInfoLayoutTests
         node.Read(rw);
 
         await Assert.That(node.BlockInfoModelFid).IsNull();
-        await Assert.That(node.BlockInfoModelFidFile).IsEqualTo(external ? modelFile : null);
-        await Assert.That(node.MaterialModifierFile).IsEqualTo(external ? modifierFile : null);
-        await Assert.That(node.MaterialModifier2File).IsEqualTo(external && version >= 1 ? modifier2File : null);
+        await Assert.That(node.References.BlockInfoModelFid.File).IsEqualTo(external ? modelFile : null);
+        await Assert.That(node.References.MaterialModifier.File).IsEqualTo(external ? modifierFile : null);
+        await Assert.That(node.References.MaterialModifier2.File).IsEqualTo(external && version >= 1 ? modifier2File : null);
         await Assert.That(input.Position).IsEqualTo(input.Length);
 
         using var output = new MemoryStream();

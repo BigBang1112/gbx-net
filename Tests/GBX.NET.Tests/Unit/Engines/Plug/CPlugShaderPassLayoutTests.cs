@@ -37,7 +37,7 @@ public class CPlugShaderPassLayoutTests
             await Assert.That(reader.ReadInt32()).IsEqualTo(0x11223344);
         }
         await Assert.That(pipeline.HasExternalFile).IsEqualTo(referenceKind == 2);
-        if (referenceKind == 2) await Assert.That(pipeline.FileGpuFile).IsSameReferenceAs(file);
+        if (referenceKind == 2) await Assert.That(pipeline.References.FileGpu.File).IsSameReferenceAs(file);
         else await Assert.That(pipeline.FileGpu is null).IsEqualTo(referenceKind == 0);
         await Assert.That(pipeline.GpuLoadFxs.Length).IsEqualTo(referenceKind == 0 ? 0 : 1);
         if (referenceKind != 0)

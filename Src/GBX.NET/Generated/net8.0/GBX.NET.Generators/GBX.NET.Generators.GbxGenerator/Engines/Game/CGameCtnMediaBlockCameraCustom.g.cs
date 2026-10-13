@@ -37,6 +37,8 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     [Hexadecimal]
     public static new uint Id => 0x030A2000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030A2000>]
     [AppliedWithChunk<Chunk030A2001>]

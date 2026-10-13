@@ -34,6 +34,8 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     [Hexadecimal]
     public static new uint Id => 0x09003000;
 
+    internal override uint GetId() => Id;
+
     private int generateMode;
     [AppliedWithChunk<Chunk09003002>]
     public int GenerateMode
@@ -358,21 +360,25 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.materialName = value;
         }
 
-        private CPlugMaterialUserInst? materialUserInst;
+        private NodeRef<CPlugMaterialUserInst> materialUserInstRef = new();
         public CPlugMaterialUserInst? MaterialUserInst
         {
-            get => this.materialUserInstFile?.GetNode(ref this.materialUserInst) ?? this.materialUserInst;
-            set => this.materialUserInst = value;
+            get => materialUserInstRef.Resolve();
+            set => materialUserInstRef.SetEmbedded(value);
         }
-        private Components.GbxRefTableFile? materialUserInstFile;
 
-        public Components.GbxRefTableFile? MaterialUserInstFile
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
         {
-            get => materialUserInstFile;
-            set => materialUserInstFile = value;
+            private readonly Material owner;
+            internal NodeRefView(Material owner) => this.owner = owner;
+            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => owner.materialUserInstRef;
         }
-
-        public CPlugMaterialUserInst? GetMaterialUserInst(GbxReadSettings settings = default, bool exceptions = false) => materialUserInstFile?.GetNode(ref materialUserInst, settings, exceptions) ?? materialUserInst;
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("MaterialUserInst", materialUserInstRef);
+            yield break;
+        }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -385,7 +391,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Material)clone).materialName = context.Clone(this.materialName)!;
-            ((Material)clone).materialUserInst = context.Clone(this.materialUserInst)!;
+            ((Material)clone).materialUserInstRef = context.Clone(this.materialUserInstRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -396,13 +402,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
 
                 if (MaterialName== null || MaterialName== "")
                 {
-                    rw.NodeRef<CPlugMaterialUserInst>(ref this.materialUserInst, ref this.materialUserInstFile);
+                    rw.NodeRef(this.materialUserInstRef);
                 }
             }
 
             if (v == 0)
             {
-                rw.Node<CPlugMaterialUserInst>(ref this.materialUserInst);
+                this.materialUserInstRef.SetEmbedded(rw.Node<CPlugMaterialUserInst>(this.materialUserInstRef.CachedTarget));
             }
         }
 
@@ -1177,14 +1183,37 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u02 = value;
         }
 
-        private CPlugVisual[]? u03;
+        private NodeRefList<CPlugVisual>? u03;
         /// <summary>
         /// legacy transition visuals
         /// </summary>
-        public CPlugVisual[]? U03
+        public NodeRefList<CPlugVisual>? U03
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => u03;
+            set => u03 = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly BorderTransitionLayer owner;
+            internal NodeRefView(BorderTransitionLayer owner) => this.owner = owner;
+            public U03ReferenceView U03 => new(owner);
+        }
+        public readonly struct U03ReferenceView
+        {
+            private readonly BorderTransitionLayer owner;
+            internal U03ReferenceView(BorderTransitionLayer owner) => this.owner = owner;
+            public int Count => owner.u03?.Count ?? 0;
+            public NodeRef<CPlugVisual> this[int index] => (owner.u03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            if (u03 is not null)
+            {
+                for (var i = 0; i < u03.Count; i++) yield return new("U03" + "[" + i + "]", u03.GetReference(i));
+            }
+            yield break;
         }
 
         internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
@@ -1193,7 +1222,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             ((BorderTransitionLayer)clone).borderTransitionVersion = context.Clone(this.borderTransitionVersion)!;
             ((BorderTransitionLayer)clone).u01 = context.Clone(this.u01)!;
             ((BorderTransitionLayer)clone).u02 = context.Clone(this.u02)!;
-            ((BorderTransitionLayer)clone).u03 = context.CloneArray(this.u03)!;
+            ((BorderTransitionLayer)clone).u03 = context.Clone(this.u03)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -1202,7 +1231,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             this.borderTransitionVersion = r.ReadInt32();
             this.u01 = r.ReadSingle();
             this.u02 = r.ReadSingle();
-            this.u03 = r.ReadArrayNodeRef<CPlugVisual>();
+            this.u03 = r.ReadListNodeRef<CPlugVisual>();
         }
 
         public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)
@@ -1211,7 +1240,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             w.Write(this.borderTransitionVersion);
             w.Write(this.u01);
             w.Write(this.u02);
-            w.WriteArrayNodeRef<CPlugVisual>(this.u03);
+            w.WriteListNodeRef(this.u03);
         }
     }
 
@@ -1491,11 +1520,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.lightVersion = value;
         }
 
-        private CPlugLightUserModel[]? lights;
-        public CPlugLightUserModel[]? Lights
+        private NodeRefList<CPlugLightUserModel>? lights;
+        public NodeRefList<CPlugLightUserModel>? Lights
         {
-            get => this.lights;
-            set => this.lights = value;
+            get => lights;
+            set => lights = value;
         }
 
         private LightPos[]? lightPositions;
@@ -1505,11 +1534,34 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.lightPositions = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly LightLayer owner;
+            internal NodeRefView(LightLayer owner) => this.owner = owner;
+            public LightsReferenceView Lights => new(owner);
+        }
+        public readonly struct LightsReferenceView
+        {
+            private readonly LightLayer owner;
+            internal LightsReferenceView(LightLayer owner) => this.owner = owner;
+            public int Count => owner.lights?.Count ?? 0;
+            public NodeRef<CPlugLightUserModel> this[int index] => (owner.lights ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            if (lights is not null)
+            {
+                for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.GetReference(i));
+            }
+            yield break;
+        }
+
         internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             base.DeepCloneArchiveFields(clone, context);
             ((LightLayer)clone).lightVersion = context.Clone(this.lightVersion)!;
-            ((LightLayer)clone).lights = context.CloneArray(this.lights)!;
+            ((LightLayer)clone).lights = context.Clone(this.lights)!;
             ((LightLayer)clone).lightPositions = context.CloneArray(this.lightPositions)!;
         }
 
@@ -1517,7 +1569,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             base.Read(r, n, v);
             this.lightVersion = r.ReadInt32();
-            this.lights = r.ReadArrayNodeRef<CPlugLightUserModel>();
+            this.lights = r.ReadListNodeRef<CPlugLightUserModel>();
             this.lightPositions = r.ReadArrayReadable<LightPos>(version: v);
         }
 
@@ -1525,7 +1577,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             base.Write(w, n, v);
             w.Write(this.lightVersion);
-            w.WriteArrayNodeRef<CPlugLightUserModel>(this.lights);
+            w.WriteListNodeRef(this.lights);
             w.WriteArrayWritable<LightPos>(this.lightPositions, version: v);
         }
     }
@@ -1605,11 +1657,24 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u01 = value;
         }
 
-        private CPlugParticleEmitterModel? particleEmitter;
+        private NodeRef<CPlugParticleEmitterModel> particleEmitterRef = new();
         public CPlugParticleEmitterModel? ParticleEmitter
         {
-            get => this.particleEmitter;
-            set => this.particleEmitter = value;
+            get => particleEmitterRef.Resolve();
+            set => particleEmitterRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly ParticleEmitterLayer owner;
+            internal NodeRefView(ParticleEmitterLayer owner) => this.owner = owner;
+            public NodeRef<CPlugParticleEmitterModel> ParticleEmitter => owner.particleEmitterRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("ParticleEmitter", particleEmitterRef);
+            yield break;
         }
 
         internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
@@ -1620,7 +1685,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             ((ParticleEmitterLayer)clone).rotation = context.Clone(this.rotation)!;
             ((ParticleEmitterLayer)clone).scale = context.Clone(this.scale)!;
             ((ParticleEmitterLayer)clone).u01 = context.Clone(this.u01)!;
-            ((ParticleEmitterLayer)clone).particleEmitter = context.Clone(this.particleEmitter)!;
+            ((ParticleEmitterLayer)clone).particleEmitterRef = context.Clone(this.particleEmitterRef)!;
         }
 
         public override void Read(GbxReader r, CPlugCrystal n, int v = 0)
@@ -1631,7 +1696,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             this.rotation = r.ReadVec3();
             this.scale = r.ReadVec3();
             this.u01 = r.ReadSingle();
-            this.particleEmitter = r.ReadNodeRef<CPlugParticleEmitterModel>();
+            r.ReadNodeRef(this.particleEmitterRef);
         }
 
         public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)
@@ -1642,7 +1707,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             w.Write(this.rotation);
             w.Write(this.scale);
             w.Write(this.u01);
-            w.WriteNodeRef<CPlugParticleEmitterModel>(this.particleEmitter);
+            w.WriteNodeRef(this.particleEmitterRef);
         }
     }
 

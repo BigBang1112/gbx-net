@@ -34,6 +34,8 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03151000;
 
+    internal override uint GetId() => Id;
+
     private string? compatibleZoneId;
     [AppliedWithChunk<Chunk03151000>]
     public string? CompatibleZoneId

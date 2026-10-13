@@ -34,26 +34,33 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
     [Hexadecimal]
     public static new uint Id => 0x0917B000;
 
-    private CPlugPrefab? prefab;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugPrefab> prefabRef = new();
     public CPlugPrefab? Prefab
     {
-        get => this.prefabFile?.GetNode(ref this.prefab) ?? this.prefab;
-        set => this.prefab = value;
+        get => prefabRef.Resolve();
+        set => prefabRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? prefabFile;
 
-    public Components.GbxRefTableFile? PrefabFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => prefabFile;
-        set => prefabFile = value;
+        private readonly CPlugEditorHelper owner;
+        internal NodeRefView(CPlugEditorHelper owner) => this.owner = owner;
+        public NodeRef<CPlugPrefab> Prefab => owner.prefabRef;
     }
-
-    public CPlugPrefab? GetPrefab(GbxReadSettings settings = default, bool exceptions = false) => prefabFile?.GetNode(ref prefab, settings, exceptions) ?? prefab;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Prefab", prefabRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugEditorHelper)clone).prefab = context.Clone(this.prefab)!;
+        ((CPlugEditorHelper)clone).prefabRef = context.Clone(this.prefabRef)!;
         ((CPlugEditorHelper)clone).Version = context.Clone(this.Version)!;
     }
 
@@ -64,7 +71,7 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.NodeRef<CPlugPrefab>(ref this.prefab, ref this.prefabFile);
+        rw.NodeRef(this.prefabRef);
     }
 
     public virtual void Read(GbxReader r, int v = 0)

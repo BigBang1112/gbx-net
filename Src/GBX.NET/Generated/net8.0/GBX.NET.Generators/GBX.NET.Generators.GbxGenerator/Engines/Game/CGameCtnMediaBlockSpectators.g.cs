@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
     [Hexadecimal]
     public static new uint Id => 0x030EB000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030EB000>]
     public List<Key>? Keys

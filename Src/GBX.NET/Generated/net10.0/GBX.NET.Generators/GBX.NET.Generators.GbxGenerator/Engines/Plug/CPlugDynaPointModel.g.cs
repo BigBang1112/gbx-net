@@ -34,6 +34,8 @@ public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IR
     [Hexadecimal]
     public static new uint Id => 0x090D7000;
 
+    internal override uint GetId() => Id;
+
     public int Version { get; set; }
 
     private Vec3 center;

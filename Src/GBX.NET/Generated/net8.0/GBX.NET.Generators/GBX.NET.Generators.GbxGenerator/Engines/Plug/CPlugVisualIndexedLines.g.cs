@@ -34,6 +34,8 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     [Hexadecimal]
     public static new uint Id => 0x09009000;
 
+    internal override uint GetId() => Id;
+
     private ERenderMode renderMode;
     [AppliedWithChunk<Chunk09009001>]
     public ERenderMode RenderMode

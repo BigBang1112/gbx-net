@@ -34,6 +34,8 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     [Hexadecimal]
     public static new uint Id => 0x24092000;
 
+    internal override uint GetId() => Id;
+
     private bool stuntFigures;
     [AppliedWithChunk<Chunk24092001>]
     public bool StuntFigures

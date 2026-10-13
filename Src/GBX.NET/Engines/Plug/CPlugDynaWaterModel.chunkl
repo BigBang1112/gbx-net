@@ -15,4 +15,4 @@ archive
   PlugCurve U08 (version: v - 1)
   float U09 = 1
   v3+
-    CPlugSurface Surface (external)
+    CPlugSurface Surface

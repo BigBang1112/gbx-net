@@ -34,6 +34,8 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03060000;
 
+    internal override uint GetId() => Id;
+
     private int videoFps = 30;
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]

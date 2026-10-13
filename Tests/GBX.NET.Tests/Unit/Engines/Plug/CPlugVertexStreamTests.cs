@@ -168,12 +168,12 @@ public class CPlugVertexStreamTests
         payload.Writer.Write(version);
         payload.Writer.Write(27);
         payload.Writer.Write(0x12345678u);
-        payload.Reference("Shared.VertexStream.Gbx");
+        payload.NodeRef("Shared.VertexStream.Gbx");
         payload.Finish();
         var node = new CPlugVertexStream();
         var chunk = new CPlugVertexStream.Chunk09056000();
         payload.Read(rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.StreamModelFile!.FilePath).IsEqualTo("Shared.VertexStream.Gbx");
+        await Assert.That(node.References.StreamModel.File!.FilePath).IsEqualTo("Shared.VertexStream.Gbx");
         await Assert.That(node.DataDecls).IsNull();
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }

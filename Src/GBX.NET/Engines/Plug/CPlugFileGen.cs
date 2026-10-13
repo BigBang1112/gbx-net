@@ -78,7 +78,7 @@ public partial class CPlugFileGen : IVersionable
         if (v >= 0) rw.Array<float>(ref realParams);
         if (v >= 3) rw.String(ref script);
         if (v >= 4) rw.ArrayNode<CFuncKeysReal>(ref functions);
-        if (v >= 6) rw.ArrayNodeRef<CPlugFileImg>(ref inputImages);
+        if (v >= 6) rw.ListNodeRef(ref inputImages);
         if (GenKind == (int)EGenKind.Pixels) rw.Data(ref pixelData, PixelDataLength);
     }
 

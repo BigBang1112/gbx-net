@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     [Hexadecimal]
     public static new uint Id => 0x03130000;
 
+    internal override uint GetId() => Id;
+
     private VehicleProfile[]? vehicleProfiles;
     [AppliedWithChunk<Chunk03130002>]
     public VehicleProfile[]? VehicleProfiles

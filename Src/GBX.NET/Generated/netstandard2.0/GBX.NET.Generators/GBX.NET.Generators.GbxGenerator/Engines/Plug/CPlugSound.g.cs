@@ -34,25 +34,18 @@ public partial class CPlugSound : CPlugAudio, IClass
     [Hexadecimal]
     public static new uint Id => 0x0901A000;
 
-    private CMwNod? plugFile;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod> plugFileRef = new();
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
     [AppliedWithChunk<Chunk0901A000>]
     public CMwNod? PlugFile
     {
-        get => this.plugFileFile?.GetNode(ref this.plugFile) ?? this.plugFile;
-        set => this.plugFile = value;
+        get => plugFileRef.Resolve();
+        set => plugFileRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? plugFileFile;
-
-    public Components.GbxRefTableFile? PlugFileFile
-    {
-        get => plugFileFile;
-        set => plugFileFile = value;
-    }
-
-    public CMwNod? GetPlugFile(GbxReadSettings settings = default, bool exceptions = false) => plugFileFile?.GetNode(ref plugFile, settings, exceptions) ?? plugFile;
 
     private EMode mode;
     [AppliedWithChunk<Chunk0901A009>]
@@ -313,12 +306,12 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.maxDistance = value;
     }
 
-    private CFuncKeysReal? volumeFromDistance;
+    private NodeRef<CFuncKeysReal> volumeFromDistanceRef = new();
     [AppliedWithChunk<Chunk0901A00F>(2)]
     public CFuncKeysReal? VolumeFromDistance
     {
-        get => this.volumeFromDistance;
-        set => this.volumeFromDistance = value;
+        get => volumeFromDistanceRef.Resolve();
+        set => volumeFromDistanceRef.SetEmbedded(value);
     }
 
     private int roomFxSend;
@@ -345,20 +338,20 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.ignoreSourceProperties = value;
     }
 
-    private CFuncKeysReal? pitchFromDistance;
+    private NodeRef<CFuncKeysReal> pitchFromDistanceRef = new();
     [AppliedWithChunk<Chunk0901A00F>(8)]
     public CFuncKeysReal? PitchFromDistance
     {
-        get => this.pitchFromDistance;
-        set => this.pitchFromDistance = value;
+        get => pitchFromDistanceRef.Resolve();
+        set => pitchFromDistanceRef.SetEmbedded(value);
     }
 
-    private CFuncKeysReal? volumeFormSpeedKmh;
+    private NodeRef<CFuncKeysReal> volumeFormSpeedKmhRef = new();
     [AppliedWithChunk<Chunk0901A00F>(9)]
     public CFuncKeysReal? VolumeFormSpeedKmh
     {
-        get => this.volumeFormSpeedKmh;
-        set => this.volumeFormSpeedKmh = value;
+        get => volumeFormSpeedKmhRef.Resolve();
+        set => volumeFormSpeedKmhRef.SetEmbedded(value);
     }
 
     private float radius;
@@ -377,52 +370,70 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.panAngleDeg = value;
     }
 
-    private CPlugSound[]? oldSubSources;
+    private NodeRefList<CPlugSound>? oldSubSources;
     [AppliedWithChunk<Chunk0901A010>]
-    public CPlugSound[]? OldSubSources
+    public NodeRefList<CPlugSound>? OldSubSources
     {
-        get => this.oldSubSources;
-        set => this.oldSubSources = value;
+        get => oldSubSources;
+        set => oldSubSources = value;
     }
 
-    private CPlugSound? backingSound;
+    private NodeRef<CPlugSound> backingSoundRef = new();
     [AppliedWithChunk<Chunk0901A012>]
     public CPlugSound? BackingSound
     {
-        get => this.backingSoundFile?.GetNode(ref this.backingSound) ?? this.backingSound;
-        set => this.backingSound = value;
-    }
-    private Components.GbxRefTableFile? backingSoundFile;
-
-    public Components.GbxRefTableFile? BackingSoundFile
-    {
-        get => backingSoundFile;
-        set => backingSoundFile = value;
+        get => backingSoundRef.Resolve();
+        set => backingSoundRef.SetEmbedded(value);
     }
 
-    public CPlugSound? GetBackingSound(GbxReadSettings settings = default, bool exceptions = false) => backingSoundFile?.GetNode(ref backingSound, settings, exceptions) ?? backingSound;
-
-    private CPlugSound? focusedSound;
+    private NodeRef<CPlugSound> focusedSoundRef = new();
     [AppliedWithChunk<Chunk0901A013>]
     public CPlugSound? FocusedSound
     {
-        get => this.focusedSoundFile?.GetNode(ref this.focusedSound) ?? this.focusedSound;
-        set => this.focusedSound = value;
+        get => focusedSoundRef.Resolve();
+        set => focusedSoundRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? focusedSoundFile;
 
-    public Components.GbxRefTableFile? FocusedSoundFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => focusedSoundFile;
-        set => focusedSoundFile = value;
+        private readonly CPlugSound owner;
+        internal NodeRefView(CPlugSound owner) => this.owner = owner;
+        public NodeRef<CMwNod> PlugFile => owner.plugFileRef;
+        public NodeRef<CFuncKeysReal> VolumeFromDistance => owner.volumeFromDistanceRef;
+        public NodeRef<CFuncKeysReal> PitchFromDistance => owner.pitchFromDistanceRef;
+        public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => owner.volumeFormSpeedKmhRef;
+        public OldSubSourcesReferenceView OldSubSources => new(owner);
+        public NodeRef<CPlugSound> BackingSound => owner.backingSoundRef;
+        public NodeRef<CPlugSound> FocusedSound => owner.focusedSoundRef;
     }
-
-    public CPlugSound? GetFocusedSound(GbxReadSettings settings = default, bool exceptions = false) => focusedSoundFile?.GetNode(ref focusedSound, settings, exceptions) ?? focusedSound;
+    public readonly struct OldSubSourcesReferenceView
+    {
+        private readonly CPlugSound owner;
+        internal OldSubSourcesReferenceView(CPlugSound owner) => this.owner = owner;
+        public int Count => owner.oldSubSources?.Count ?? 0;
+        public NodeRef<CPlugSound> this[int index] => (owner.oldSubSources ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlugFile", plugFileRef);
+        yield return new("VolumeFromDistance", volumeFromDistanceRef);
+        yield return new("PitchFromDistance", pitchFromDistanceRef);
+        yield return new("VolumeFormSpeedKmh", volumeFormSpeedKmhRef);
+        if (oldSubSources is not null)
+        {
+            for (var i = 0; i < oldSubSources.Count; i++) yield return new("OldSubSources" + "[" + i + "]", oldSubSources.GetReference(i));
+        }
+        yield return new("BackingSound", backingSoundRef);
+        yield return new("FocusedSound", focusedSoundRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugSound)clone).plugFile = context.Clone(this.plugFile)!;
+        ((CPlugSound)clone).plugFileRef = context.Clone(this.plugFileRef)!;
         ((CPlugSound)clone).mode = context.Clone(this.mode)!;
         ((CPlugSound)clone).volume = context.Clone(this.volume)!;
         ((CPlugSound)clone).isLooping = context.Clone(this.isLooping)!;
@@ -453,17 +464,17 @@ public partial class CPlugSound : CPlugAudio, IClass
         ((CPlugSound)clone).fadePlayDuration = context.Clone(this.fadePlayDuration)!;
         ((CPlugSound)clone).groupDuplicate = context.Clone(this.groupDuplicate)!;
         ((CPlugSound)clone).maxDistance = context.Clone(this.maxDistance)!;
-        ((CPlugSound)clone).volumeFromDistance = context.Clone(this.volumeFromDistance)!;
+        ((CPlugSound)clone).volumeFromDistanceRef = context.Clone(this.volumeFromDistanceRef)!;
         ((CPlugSound)clone).roomFxSend = context.Clone(this.roomFxSend)!;
         ((CPlugSound)clone).pitchFromDistMode = context.Clone(this.pitchFromDistMode)!;
         ((CPlugSound)clone).ignoreSourceProperties = context.Clone(this.ignoreSourceProperties)!;
-        ((CPlugSound)clone).pitchFromDistance = context.Clone(this.pitchFromDistance)!;
-        ((CPlugSound)clone).volumeFormSpeedKmh = context.Clone(this.volumeFormSpeedKmh)!;
+        ((CPlugSound)clone).pitchFromDistanceRef = context.Clone(this.pitchFromDistanceRef)!;
+        ((CPlugSound)clone).volumeFormSpeedKmhRef = context.Clone(this.volumeFormSpeedKmhRef)!;
         ((CPlugSound)clone).radius = context.Clone(this.radius)!;
         ((CPlugSound)clone).panAngleDeg = context.Clone(this.panAngleDeg)!;
-        ((CPlugSound)clone).oldSubSources = context.CloneArray(this.oldSubSources)!;
-        ((CPlugSound)clone).backingSound = context.Clone(this.backingSound)!;
-        ((CPlugSound)clone).focusedSound = context.Clone(this.focusedSound)!;
+        ((CPlugSound)clone).oldSubSources = context.Clone(this.oldSubSources)!;
+        ((CPlugSound)clone).backingSoundRef = context.Clone(this.backingSoundRef)!;
+        ((CPlugSound)clone).focusedSoundRef = context.Clone(this.focusedSoundRef)!;
     }
 
     public CPlugSound()
@@ -484,7 +495,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.plugFile, ref n.plugFileFile);
+            rw.NodeRef(n.plugFileRef);
         }
     }
 
@@ -717,7 +728,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef<CFuncKeysReal>(ref n.volumeFromDistance);
+                    rw.NodeRef(n.volumeFromDistanceRef);
 
                     if (Version >= 3)
                     {
@@ -735,11 +746,11 @@ public partial class CPlugSound : CPlugAudio, IClass
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef<CFuncKeysReal>(ref n.pitchFromDistance);
+                                    rw.NodeRef(n.pitchFromDistanceRef);
 
                                     if (Version >= 9)
                                     {
-                                        rw.NodeRef<CFuncKeysReal>(ref n.volumeFormSpeedKmh);
+                                        rw.NodeRef(n.volumeFormSpeedKmhRef);
 
                                         if (Version >= 10)
                                         {
@@ -782,7 +793,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef_deprec<CPlugSound>(ref n.oldSubSources!);
+            n.oldSubSources = rw.ListNodeRef_deprec<CPlugSound>(n.oldSubSources);
         }
     }
 
@@ -827,7 +838,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSound>(ref n.backingSound, ref n.backingSoundFile);
+            rw.NodeRef(n.backingSoundRef);
         }
     }
 
@@ -848,7 +859,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSound>(ref n.focusedSound, ref n.focusedSoundFile);
+            rw.NodeRef(n.focusedSoundRef);
         }
     }
 

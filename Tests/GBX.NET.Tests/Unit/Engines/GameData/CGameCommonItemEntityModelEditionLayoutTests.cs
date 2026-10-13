@@ -39,12 +39,12 @@ public class CGameCommonItemEntityModelEditionLayoutTests
 
         await Assert.That(chunk.Version).IsEqualTo(version);
         await Assert.That(node.ItemType).IsEqualTo(itemType);
-        await Assert.That(node.MeshCrystalFile!.FilePath).IsEqualTo("Mesh.Gbx");
+        await Assert.That(node.References.MeshCrystal.File!.FilePath).IsEqualTo("Mesh.Gbx");
         await Assert.That(node.Images!.Length).IsEqualTo(details ? 2 : 0);
         await Assert.That(node.SpriteParams!.Length).IsEqualTo(details ? 1 : 0);
         await Assert.That(node.LightBallStates!.Length).IsEqualTo(details ? 1 : 0);
-        await Assert.That(node.DestroyParticleModelFile!.FilePath).IsEqualTo("Destroy.Gbx");
-        await Assert.That(node.LocAnimFile!.FilePath).IsEqualTo("LocAnim.Gbx");
+        await Assert.That(node.References.DestroyParticleModel.File!.FilePath).IsEqualTo("Destroy.Gbx");
+        await Assert.That(node.References.LocAnim.File!.FilePath).IsEqualTo("LocAnim.Gbx");
         await Assert.That(node.ParticleModelAliveRef).IsEqualTo(details ? "Alive.Particle.Gbx" : "");
         await Assert.That(node.SoundRefPermanent).IsEqualTo("Permanent");
         await Assert.That(node.SoundLocPermanent.Translation).IsEqualTo(new Vec3(4, 5, 6));
@@ -59,17 +59,17 @@ public class CGameCommonItemEntityModelEditionLayoutTests
             await Assert.That(node.DynaPointModel.Friction).IsEqualTo(0.8f);
             await Assert.That(node.DynaPointModel.Restitution).IsEqualTo(0.5f);
             await Assert.That(node.DynaPointModel.GravityCoef).IsEqualTo(1f);
-            await Assert.That(node.Images[0].ImageFile!.FilePath).IsEqualTo("Image.Gbx");
+            await Assert.That(node.Images[0].References.Image.File!.FilePath).IsEqualTo("Image.Gbx");
             await Assert.That(node.Images[1].Ref).IsEqualTo("Skin.dds");
             await Assert.That(node.SpriteParams[0].U01).IsEqualTo(new Vec3(1, 2, 3));
             await Assert.That(node.LightBallStates[0].Version).IsEqualTo(0);
             await Assert.That(node.LightBallStates[0].U08).IsEqualTo(7f);
             await Assert.That(node.ParticleModelAlivePos).IsEqualTo(new Vec3(7, 8, 9));
-            await Assert.That(node.CustomHitShapeCrystalFile!.FilePath).IsEqualTo("Hit.Gbx");
+            await Assert.That(node.References.CustomHitShapeCrystal.File!.FilePath).IsEqualTo("Hit.Gbx");
         }
         if (itemType == CGameCommonItemEntityModelEdition.EItemType.PickUp)
         {
-            await Assert.That(node.PickupActionModelFile!.FilePath).IsEqualTo("Pickup.Gbx");
+            await Assert.That(node.References.PickupActionModel.File!.FilePath).IsEqualTo("Pickup.Gbx");
             await Assert.That(node.Mass).IsEqualTo(version >= 3 ? 2.5f : 1f);
             if (version >= 7) await Assert.That(chunk.U04).IsEqualTo(unchecked((int)0x87654321));
         }
@@ -78,7 +78,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
             await Assert.That(node.TriggeredActions!.Length).IsEqualTo(details ? 1 : 0);
             await Assert.That(node.TriggerActionVersion).IsEqualTo(5);
             await Assert.That(node.Triggers!.Length).IsEqualTo(details ? 1 : 0);
-            if (details) await Assert.That(node.TriggeredActions[0].File!.FilePath).IsEqualTo("Triggered.Gbx");
+            if (details) await Assert.That(node.References.TriggeredActions[0].File!.FilePath).IsEqualTo("Triggered.Gbx");
         }
         if (version < 4) await Assert.That(node.SpawnLoc.Translation).IsEqualTo(new Vec3(10, 11, 12));
         if (version >= 1)
@@ -155,7 +155,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
         var refTable = new GbxRefTable();
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
-        void Reference(string path)
+        void NodeRef(string path)
         {
             var index = files.Count + 1;
             files.Add(index, new GbxRefTableFile(refTable, 0, true, path));
@@ -164,14 +164,14 @@ public class CGameCommonItemEntityModelEditionLayoutTests
 
         writer.Write(version);
         writer.Write((int)itemType);
-        Reference("Mesh.Gbx");
+        NodeRef("Mesh.Gbx");
         writer.Write(details ? "LegacySolid.Gbx" : "");
-        if (!details) Reference("Solid.Gbx");
+        if (!details) NodeRef("Solid.Gbx");
         writer.Write(details ? 2 : 0);
         if (details)
         {
             writer.Write("");
-            Reference("Image.Gbx");
+            NodeRef("Image.Gbx");
             writer.Write("Skin.dds");
         }
         writer.Write(details ? 1 : 0);
@@ -181,8 +181,8 @@ public class CGameCommonItemEntityModelEditionLayoutTests
             writer.Write(true);
             writer.Write(0.25f);
         }
-        Reference("Destroy.Gbx");
-        Reference("LocAnim.Gbx");
+        NodeRef("Destroy.Gbx");
+        NodeRef("LocAnim.Gbx");
         writer.Write(details ? 1 : 0);
         if (details)
         {
@@ -198,21 +198,21 @@ public class CGameCommonItemEntityModelEditionLayoutTests
         if (version < 5 && (version >= 3 || itemType is CGameCommonItemEntityModelEdition.EItemType.Ornament or CGameCommonItemEntityModelEdition.EItemType.Spot))
         {
             writer.Write(!details);
-            if (details) Reference("Move.Gbx");
+            if (details) NodeRef("Move.Gbx");
         }
         if (version >= 3 && itemType == CGameCommonItemEntityModelEdition.EItemType.PickUp) writer.Write(2.5f);
         writer.Write(!details);
-        if (details) Reference("Hit.Gbx");
+        if (details) NodeRef("Hit.Gbx");
         if (itemType == CGameCommonItemEntityModelEdition.EItemType.PickUp)
         {
             writer.Write(!details);
-            if (details) Reference("TriggerShape.Gbx");
-            Reference("Pickup.Gbx");
+            if (details) NodeRef("TriggerShape.Gbx");
+            NodeRef("Pickup.Gbx");
         }
         if (itemType == CGameCommonItemEntityModelEdition.EItemType.Spot)
         {
             writer.Write(details ? 1 : 0);
-            if (details) Reference("Triggered.Gbx");
+            if (details) NodeRef("Triggered.Gbx");
             writer.Write(triggerVersion);
             writer.Write(details ? 1 : 0);
             if (details)
@@ -245,8 +245,8 @@ public class CGameCommonItemEntityModelEditionLayoutTests
             writer.Write(2);
             writer.Write(1234);
         }
-        if (version < 2) Reference("DeprecatedMesh.Gbx");
-        if (version is 6 or 7) Reference("Deprecated.Gbx");
+        if (version < 2) NodeRef("DeprecatedMesh.Gbx");
+        if (version is 6 or 7) NodeRef("Deprecated.Gbx");
         if (version >= 7 && itemType == CGameCommonItemEntityModelEdition.EItemType.PickUp) writer.Write(unchecked((int)0x87654321));
         writer.Write(0x11223344);
         return stream.ToArray();

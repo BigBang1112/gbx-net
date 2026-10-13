@@ -34,27 +34,34 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090C6000;
 
-    private CPlugBitmap? bitmap;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugBitmap> bitmapRef = new();
     [AppliedWithChunk<Chunk090C6002>]
     public CPlugBitmap? Bitmap
     {
-        get => this.bitmapFile?.GetNode(ref this.bitmap) ?? this.bitmap;
-        set => this.bitmap = value;
+        get => bitmapRef.Resolve();
+        set => bitmapRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? bitmapFile;
 
-    public Components.GbxRefTableFile? BitmapFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => bitmapFile;
-        set => bitmapFile = value;
+        private readonly CPlugParticleGpuModel owner;
+        internal NodeRefView(CPlugParticleGpuModel owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> Bitmap => owner.bitmapRef;
     }
-
-    public CPlugBitmap? GetBitmap(GbxReadSettings settings = default, bool exceptions = false) => bitmapFile?.GetNode(ref bitmap, settings, exceptions) ?? bitmap;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Bitmap", bitmapRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugParticleGpuModel)clone).bitmap = context.Clone(this.bitmap)!;
+        ((CPlugParticleGpuModel)clone).bitmapRef = context.Clone(this.bitmapRef)!;
     }
 
     public CPlugParticleGpuModel()
@@ -194,7 +201,13 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U18;
         public bool U19;
         public float U20;
-        public CPlugBitmap? U21;
+
+        private NodeRef<CPlugBitmap> U21Ref = new();
+        public CPlugBitmap? U21
+        {
+            get => U21Ref.Resolve();
+            set => U21Ref.SetEmbedded(value);
+        }
         public bool U22;
         public bool U23;
         public bool U24;
@@ -204,6 +217,20 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U28;
         public float U29;
         public bool U30;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090C6002 owner;
+            internal NodeRefView(Chunk090C6002 owner) => this.owner = owner;
+            public NodeRef<CPlugBitmap> U21 => owner.U21Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U21", U21Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -229,7 +256,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
             ((Chunk090C6002)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090C6002)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090C6002)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090C6002)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C6002)clone).U21Ref = context.Clone(this.U21Ref)!;
             ((Chunk090C6002)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090C6002)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090C6002)clone).U24 = context.Clone(this.U24)!;
@@ -248,7 +275,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
             if (Version <= 6)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+                rw.NodeRef(n.bitmapRef);
             }
 
             if (Version >= 7)
@@ -257,7 +284,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
                 if (!U02)
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.bitmap, ref n.bitmapFile);
+                    rw.NodeRef(n.bitmapRef);
                 }
 
                 if (U02)
@@ -312,7 +339,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
                         if (Version >= 9)
                         {
-                            rw.NodeRef<CPlugBitmap>(ref U21);
+                            rw.NodeRef(U21Ref);
                             rw.Boolean(ref U22);
                             rw.Boolean(ref U23);
                             rw.Boolean(ref U24);

@@ -34,6 +34,8 @@ public abstract partial class CGameCtnMediaBlockCameraEffect : CGameCtnMediaBloc
     [Hexadecimal]
     public static new uint Id => 0x030A3000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     [Hexadecimal]
     public static new uint Id => 0x0325E000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk0325E000>]
     public TimeSingle Start
@@ -50,12 +52,26 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
         set => this.end = value;
     }
 
-    private CPlugDataTape? dataTape;
+    private NodeRef<CPlugDataTape> dataTapeRef = new();
     [AppliedWithChunk<Chunk0325E000>]
     public CPlugDataTape? DataTape
     {
-        get => this.dataTape;
-        set => this.dataTape = value;
+        get => dataTapeRef.Resolve();
+        set => dataTapeRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockCheatEmptyCars owner;
+        internal NodeRefView(CGameCtnMediaBlockCheatEmptyCars owner) => this.owner = owner;
+        public NodeRef<CPlugDataTape> DataTape => owner.dataTapeRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DataTape", dataTapeRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -63,7 +79,7 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockCheatEmptyCars)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockCheatEmptyCars)clone).end = context.Clone(this.end)!;
-        ((CGameCtnMediaBlockCheatEmptyCars)clone).dataTape = context.Clone(this.dataTape)!;
+        ((CGameCtnMediaBlockCheatEmptyCars)clone).dataTapeRef = context.Clone(this.dataTapeRef)!;
     }
 
     public CGameCtnMediaBlockCheatEmptyCars()
@@ -98,7 +114,7 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CPlugDataTape>(ref n.dataTape);
+            rw.NodeRef(n.dataTapeRef);
         }
     }
 

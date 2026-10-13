@@ -34,6 +34,8 @@ public abstract partial class CMotion : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x08001000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk08001000>]
     public string? Name

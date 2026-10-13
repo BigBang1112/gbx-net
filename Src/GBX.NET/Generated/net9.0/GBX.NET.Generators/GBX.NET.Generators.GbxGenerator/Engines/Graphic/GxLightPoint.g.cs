@@ -34,6 +34,8 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     [Hexadecimal]
     public static new uint Id => 0x04003000;
 
+    internal override uint GetId() => Id;
+
     private float flareSize;
     [AppliedWithChunk<Chunk04003003>]
     [AppliedWithChunk<Chunk04003004>]

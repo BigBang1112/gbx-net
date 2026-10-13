@@ -34,6 +34,8 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     [Hexadecimal]
     public static new uint Id => 0x0905E000;
 
+    internal override uint GetId() => Id;
+
     private float edMaxSpeedKmh = 500f;
     [AppliedWithChunk<Chunk0905E000>]
     [AppliedWithChunk<Chunk0905E003>]
@@ -223,69 +225,52 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
 
     public partial class MaterialSound : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CPlugFileSnd? smallImpact;
+        private NodeRef<CPlugFileSnd> smallImpactRef = new();
         public CPlugFileSnd? SmallImpact
         {
-            get => this.smallImpactFile?.GetNode(ref this.smallImpact) ?? this.smallImpact;
-            set => this.smallImpact = value;
-        }
-        private Components.GbxRefTableFile? smallImpactFile;
-
-        public Components.GbxRefTableFile? SmallImpactFile
-        {
-            get => smallImpactFile;
-            set => smallImpactFile = value;
+            get => smallImpactRef.Resolve();
+            set => smallImpactRef.SetEmbedded(value);
         }
 
-        public CPlugFileSnd? GetSmallImpact(GbxReadSettings settings = default, bool exceptions = false) => smallImpactFile?.GetNode(ref smallImpact, settings, exceptions) ?? smallImpact;
-
-        private CPlugFileSnd? bigImpact;
+        private NodeRef<CPlugFileSnd> bigImpactRef = new();
         public CPlugFileSnd? BigImpact
         {
-            get => this.bigImpactFile?.GetNode(ref this.bigImpact) ?? this.bigImpact;
-            set => this.bigImpact = value;
-        }
-        private Components.GbxRefTableFile? bigImpactFile;
-
-        public Components.GbxRefTableFile? BigImpactFile
-        {
-            get => bigImpactFile;
-            set => bigImpactFile = value;
+            get => bigImpactRef.Resolve();
+            set => bigImpactRef.SetEmbedded(value);
         }
 
-        public CPlugFileSnd? GetBigImpact(GbxReadSettings settings = default, bool exceptions = false) => bigImpactFile?.GetNode(ref bigImpact, settings, exceptions) ?? bigImpact;
-
-        private CPlugSoundComponent? texture;
+        private NodeRef<CPlugSoundComponent> textureRef = new();
         public CPlugSoundComponent? Texture
         {
-            get => this.textureFile?.GetNode(ref this.texture) ?? this.texture;
-            set => this.texture = value;
-        }
-        private Components.GbxRefTableFile? textureFile;
-
-        public Components.GbxRefTableFile? TextureFile
-        {
-            get => textureFile;
-            set => textureFile = value;
+            get => textureRef.Resolve();
+            set => textureRef.SetEmbedded(value);
         }
 
-        public CPlugSoundComponent? GetTexture(GbxReadSettings settings = default, bool exceptions = false) => textureFile?.GetNode(ref texture, settings, exceptions) ?? texture;
-
-        private CPlugSoundComponent? skid;
+        private NodeRef<CPlugSoundComponent> skidRef = new();
         public CPlugSoundComponent? Skid
         {
-            get => this.skidFile?.GetNode(ref this.skid) ?? this.skid;
-            set => this.skid = value;
+            get => skidRef.Resolve();
+            set => skidRef.SetEmbedded(value);
         }
-        private Components.GbxRefTableFile? skidFile;
 
-        public Components.GbxRefTableFile? SkidFile
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
         {
-            get => skidFile;
-            set => skidFile = value;
+            private readonly MaterialSound owner;
+            internal NodeRefView(MaterialSound owner) => this.owner = owner;
+            public NodeRef<CPlugFileSnd> SmallImpact => owner.smallImpactRef;
+            public NodeRef<CPlugFileSnd> BigImpact => owner.bigImpactRef;
+            public NodeRef<CPlugSoundComponent> Texture => owner.textureRef;
+            public NodeRef<CPlugSoundComponent> Skid => owner.skidRef;
         }
-
-        public CPlugSoundComponent? GetSkid(GbxReadSettings settings = default, bool exceptions = false) => skidFile?.GetNode(ref skid, settings, exceptions) ?? skid;
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("SmallImpact", smallImpactRef);
+            yield return new("BigImpact", bigImpactRef);
+            yield return new("Texture", textureRef);
+            yield return new("Skid", skidRef);
+            yield break;
+        }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -297,22 +282,22 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((MaterialSound)clone).smallImpact = context.Clone(this.smallImpact)!;
-            ((MaterialSound)clone).bigImpact = context.Clone(this.bigImpact)!;
-            ((MaterialSound)clone).texture = context.Clone(this.texture)!;
-            ((MaterialSound)clone).skid = context.Clone(this.skid)!;
+            ((MaterialSound)clone).smallImpactRef = context.Clone(this.smallImpactRef)!;
+            ((MaterialSound)clone).bigImpactRef = context.Clone(this.bigImpactRef)!;
+            ((MaterialSound)clone).textureRef = context.Clone(this.textureRef)!;
+            ((MaterialSound)clone).skidRef = context.Clone(this.skidRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             if (v == 0)
             {
-                rw.NodeRef<CPlugFileSnd>(ref this.smallImpact, ref this.smallImpactFile);
-                rw.NodeRef<CPlugFileSnd>(ref this.bigImpact, ref this.bigImpactFile);
+                rw.NodeRef(this.smallImpactRef);
+                rw.NodeRef(this.bigImpactRef);
             }
 
-            rw.NodeRef<CPlugSoundComponent>(ref this.texture, ref this.textureFile);
-            rw.NodeRef<CPlugSoundComponent>(ref this.skid, ref this.skidFile);
+            rw.NodeRef(this.textureRef);
+            rw.NodeRef(this.skidRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

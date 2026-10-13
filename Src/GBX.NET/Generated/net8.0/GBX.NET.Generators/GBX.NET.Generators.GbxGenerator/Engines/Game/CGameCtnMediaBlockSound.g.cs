@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     [Hexadecimal]
     public static new uint Id => 0x030A7000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk030A7000>]
     public TimeSingle Start

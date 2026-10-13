@@ -4,35 +4,55 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnBlockInfoMobil
 {
-    private CPlugRoadChunk?[]? LegacyRoadChunks
+    private NodeRefList<CPlugRoadChunk>? LegacyRoadChunks
     {
-        get => RoadChunks;
+        get => WidenRoadChunks(RoadChunks);
         set => RoadChunks = ConvertRoadChunks<CPlugRoadChunkTraffic>(value);
     }
 
-    private CPlugRoadChunk?[]? LegacyCitizenRoadChunks
+    private NodeRefList<CPlugRoadChunk>? LegacyCitizenRoadChunks
     {
-        get => CitizenRoadChunks;
+        get => WidenRoadChunks(CitizenRoadChunks);
         set => CitizenRoadChunks = ConvertRoadChunks<CPlugRoadChunkCitizen>(value);
     }
 
-    private CPlugRoadChunk?[]? LegacyPlacementPatches
+    private NodeRefList<CPlugRoadChunk>? LegacyPlacementPatches
     {
-        get => PlacementPatches;
+        get => WidenRoadChunks(PlacementPatches);
         set => PlacementPatches = ConvertRoadChunks<CPlugPlacementPatch>(value);
     }
 
     // Native legacy readers change the road chunk's class while retaining its payload.
-    private static T[]? ConvertRoadChunks<T>(CPlugRoadChunk?[]? chunks) where T : CPlugRoadChunk, new()
+    private static NodeRefList<CPlugRoadChunk>? WidenRoadChunks<T>(NodeRefList<T>? chunks) where T : CPlugRoadChunk
     {
         if (chunks is null) return null;
-        if (chunks is T[] typedChunks) return typedChunks;
+        var result = new NodeRefList<CPlugRoadChunk>();
+        for (var i = 0; i < chunks.Count; i++)
+        {
+            var source = chunks.GetReference(i);
+            var reference = new NodeRef<CPlugRoadChunk>();
+            if (source.Descriptor is { } descriptor) reference.SetDescriptor(descriptor);
+            else reference.SetEmbedded(source.CachedTarget);
+            result.AddReference(reference);
+        }
+        return result;
+    }
 
-        var converted = new T[chunks.Length];
+    private static NodeRefList<T>? ConvertRoadChunks<T>(NodeRefList<CPlugRoadChunk>? chunks) where T : CPlugRoadChunk, new()
+    {
+        if (chunks is null) return null;
+        var converted = new NodeRefList<T>();
         var nodes = new Dictionary<CPlugRoadChunk, T>();
         for (var i = 0; i < chunks.Length; i++)
         {
-            var source = chunks[i];
+            var reference = chunks.GetReference(i);
+            converted.Add(null);
+            if (reference.Descriptor is { } descriptor)
+            {
+                converted.GetReference(i).SetDescriptor(descriptor);
+                continue;
+            }
+            var source = reference.CachedTarget;
             if (source is null) continue;
             if (source is T typed)
             {

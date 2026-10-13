@@ -7,8 +7,7 @@ public partial class CPlugSurface
     private int surfVersion;
     public int SurfVersion { get => surfVersion; set => surfVersion = value; }
 
-    private CPlugSkel? skel;
-    public CPlugSkel? Skel { get => skel; set => skel = value; }
+    public CPlugSkel? Skel { get => skelRef.Resolve(); set => skelRef.SetEmbedded(value); }
 
     private SurfMaterial[] materials = [];
     [AppliedWithChunk<Chunk0900C000>]
@@ -70,7 +69,7 @@ public partial class CPlugSurface
 
             if (Version >= 1)
             {
-                rw.NodeRef<CPlugSkel>(ref n.skel);
+                rw.NodeRef(n.skelRef);
             }
 
             if (Version >= 5)
@@ -175,19 +174,16 @@ public partial class CPlugSurface
 
     public sealed partial class SurfMaterial
     {
-        private CPlugMaterial? material;
-        public CPlugMaterial? Material { get => materialFile?.GetNode(ref material) ?? material; set => material = value; }
-        private Components.GbxRefTableFile? materialFile;
-        public Components.GbxRefTableFile? MaterialFile { get => materialFile; set => materialFile = value; }
-        public CPlugMaterial? GetMaterial(GbxReadSettings settings = default, bool exceptions = false) => materialFile?.GetNode(ref material, settings, exceptions) ?? material;
+
+        public CPlugMaterial? Material { get => materialRef.Resolve(); set => materialRef.SetEmbedded(value); }
 
         public MaterialId? SurfaceId { get; set; }
 
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(material is not null || materialFile is not null))
+            if (rw.Boolean(materialRef.Kind != NodeRefKind.None))
             {
-                rw.NodeRef<CPlugMaterial>(ref material, ref materialFile);
+                rw.NodeRef(materialRef);
             }
             else
             {
@@ -403,7 +399,7 @@ public partial class CPlugSurface
                     Vertices = r.ReadArray<Vec3>();
                     Triangles = r.ReadArray<Triangle>(); // GmSurfMeshTri
                     break;
-            } 
+            }
         }
 
         public void Write(GbxWriter w, int version = 0)

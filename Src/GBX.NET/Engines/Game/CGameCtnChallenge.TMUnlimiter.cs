@@ -10,11 +10,11 @@ public partial class CGameCtnChallenge
     {
         base.Read(rw);
 
-        if (tempOldTMUnlimiterClipData is not null && clipGroupInGame is not null)
+        if (tempOldTMUnlimiterClipData is not null && clipGroupInGameRef.CachedTarget is not null)
         {
             foreach (var clipData in tempOldTMUnlimiterClipData)
             {
-                clipGroupInGame.Clips[clipData.Key].Clip.TMUnlimiterData = clipData.Value;
+                clipGroupInGameRef.CachedTarget.Clips[clipData.Key].Clip!.TMUnlimiterData = clipData.Value;
             }
 
             tempOldTMUnlimiterClipData = null;
@@ -154,11 +154,11 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            w.Write(n.clipGroupInGame?.Clips.Count(x => x.Clip.TMUnlimiterData is not null) ?? 0);
+            w.Write(n.clipGroupInGameRef.CachedTarget?.Clips.Count(x => x.Clip?.TMUnlimiterData is not null) ?? 0);
 
-            foreach (var (clip, i) in n.clipGroupInGame?.Clips
-                .Select((clip, i) => (clip.Clip, i))
-                .Where(x => x.Clip.TMUnlimiterData is not null) ?? [])
+            foreach (var (clip, i) in n.clipGroupInGameRef.CachedTarget?.Clips
+                .Select((clipTrigger, i) => (clip: clipTrigger.Clip, i))
+                .Where(x => x.clip?.TMUnlimiterData is not null) ?? [])
             {
                 w.Write(i);
 
@@ -524,11 +524,11 @@ public partial class CGameCtnChallenge
         {
             n.TMUnlimiterData = new()
             {
-                FakeBlocks = n.blocks
+                FakeBlocks = n.blocks?.GetEmbeddedTargets().ToList()!
             };
 
             var blockCount = r.ReadInt32();
-            n.blocks = new List<CGameCtnBlock>(blockCount);
+            n.blocks = new NodeRefList<CGameCtnBlock>();
 
             for (var i = 0; i < blockCount; i++)
             {
@@ -617,14 +617,14 @@ public partial class CGameCtnChallenge
                 {
                     case 0: // Parameter Set
                         var parameterSet = parameterSets[r.ReadInt32()];
-                        n.clipGroupInGame?.Clips[mediaClipIndex].Clip.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = parameterSet
                         };
                         break;
                     case 1: // Legacy Script
                         var legacyScript = legacyScripts[r.ReadInt32()];
-                        n.clipGroupInGame?.Clips[mediaClipIndex].Clip.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = legacyScript
                         };
@@ -666,10 +666,10 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            var clips = n.clipGroupInGame?.Clips ?? [];
+            var clips = n.clipGroupInGameRef.CachedTarget?.Clips.Select(x => x.Clip).ToList() ?? [];
 
             var legacyScripts = clips
-                .Select(x => x.Clip.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
+                .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
                 .Where(x => x is not null)
                 .Distinct()
                 .ToList();
@@ -682,7 +682,7 @@ public partial class CGameCtnChallenge
             }
 
             var parameterSets = clips
-                .Select(x => x.Clip.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)
+                .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyParameterSet)
                 .Where(x => x is not null)
                 .Distinct()
                 .ToList();
@@ -707,8 +707,8 @@ public partial class CGameCtnChallenge
             }
 
             var mappedClips = clips
-                .Select((x, i) => (x.Clip, i))
-                .Where(x => x.Clip.TMUnlimiterData?.Resource is not null)
+                .Select((x, i) => (x, i))
+                .Where(x => x.x?.TMUnlimiterData?.Resource is not null)
                 .ToList();
 
             w.Write(mappedClips.Count);
@@ -956,14 +956,14 @@ public partial class CGameCtnChallenge
         }
 
         private static void ReadBlocks(
-            CGameCtnChallenge n, 
-            TMUnlimiter tmUnlimiter, 
-            GbxReader r, 
+            CGameCtnChallenge n,
+            TMUnlimiter tmUnlimiter,
+            GbxReader r,
             List<TMUnlimiter.EmbeddedBlockData> embeddedBlockData,
             List<TMUnlimiter.TriggerGroup> allTriggerGroups,
             List<TMUnlimiter.BlockGroup> allBlockGroups)
         {
-            tmUnlimiter.FakeBlocks = n.blocks;
+            tmUnlimiter.FakeBlocks = n.blocks?.GetEmbeddedTargets().ToList()!;
 
             var blockCount = r.ReadInt32();
             n.blocks = [];
@@ -994,7 +994,7 @@ public partial class CGameCtnChallenge
                         break;
                     case 2: // external block
                         var externalBlock = new TMUnlimiter.ExternalBlock(
-                            Name: r.ReadIdAsString(), 
+                            Name: r.ReadIdAsString(),
                             Author: r.ReadIdAsString())
                         {
                             Coord = r.ReadInt3(),
@@ -1030,14 +1030,14 @@ public partial class CGameCtnChallenge
 
                             ReadBlockPositionalProperties(r, block, tmUnlimiterBlock, flags2);
 
-                            if ((flags2 & (1 << 4)) != 0) // isOriginOffsetApplied  
+                            if ((flags2 & (1 << 4)) != 0) // isOriginOffsetApplied
                             {
                                 var originOffset = r.ReadVec3();
                                 block?.TMUnlimiterData?.OriginOffset = originOffset;
                                 tmUnlimiterBlock?.OriginOffset = originOffset;
                             }
 
-                            if ((flags2 & (1 << 5)) != 0) // isInBlockGroups  
+                            if ((flags2 & (1 << 5)) != 0) // isInBlockGroups
                             {
                                 var mappedBlockGroups = r.ReadArray<int>()
                                     .Select(index => allBlockGroups[index])
@@ -1152,7 +1152,7 @@ public partial class CGameCtnChallenge
             if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
             {
                 block.Author = r.ReadIdAsString();
-                block.Skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+                r.ReadNodeRef(block.References.Skin);
             }
 
             return block;
@@ -1160,28 +1160,28 @@ public partial class CGameCtnChallenge
 
         private static void ReadBlockPositionalProperties(GbxReader r, CGameCtnBlock? block, TMUnlimiter.Block? tmUnlimiterBlock, ushort flags)
         {
-            if ((flags & 1) != 0) // isOffsetApplied  
+            if ((flags & 1) != 0) // isOffsetApplied
             {
                 var offset = r.ReadVec3();
                 block?.TMUnlimiterData?.Offset = offset;
                 tmUnlimiterBlock?.Offset = offset;
             }
 
-            if ((flags & (1 << 1)) != 0) // isRotationApplied  
+            if ((flags & (1 << 1)) != 0) // isRotationApplied
             {
                 var rotation = r.ReadVec3();
                 block?.TMUnlimiterData?.Rotation = rotation;
                 tmUnlimiterBlock?.Rotation = rotation;
             }
 
-            if ((flags & (1 << 2)) != 0) // isScaleApplied  
+            if ((flags & (1 << 2)) != 0) // isScaleApplied
             {
                 var scale = r.ReadVec3();
                 block?.TMUnlimiterData?.Scale = scale;
                 tmUnlimiterBlock?.Scale = scale;
             }
 
-            if ((flags & (1 << 3)) != 0) // isMotionApplied  
+            if ((flags & (1 << 3)) != 0) // isMotionApplied
             {
                 var flags3 = r.ReadByte();
 
@@ -1190,7 +1190,7 @@ public partial class CGameCtnChallenge
                     WaveType = flags3 & 7
                 };
 
-                if ((flags3 & (1 << 3)) == 0) // not isManuallyControlled  
+                if ((flags3 & (1 << 3)) == 0) // not isManuallyControlled
                 {
                     motion.Points = r.ReadListReadable<TMUnlimiter.MotionPoint>();
                 }
@@ -1274,7 +1274,7 @@ public partial class CGameCtnChallenge
             if ((block.Flags & (1 << 15)) != 0) // hasAuthorAndSkin
             {
                 w.WriteIdAsString(block.Author ?? "");
-                w.WriteNodeRef(block.Skin);
+                w.WriteNodeRef(block.References.Skin);
             }
         }
 
@@ -2106,24 +2106,44 @@ public partial class CGameCtnChallenge
             }
         }
 
-        public class SubVariation : IReadable, IWritable
+        public class SubVariation : IReadable, IWritable, IDeepCloneable
         {
-            public CPlugTree? Tree { get; set; }
-            public CPlugTree? TriggerTree { get; set; }
+            private NodeRef<CPlugTree> treeRef = new();
+            private NodeRef<CPlugTree> triggerTreeRef = new();
+            public CPlugTree? Tree { get => treeRef.Resolve(); set => treeRef.SetEmbedded(value); }
+            public CPlugTree? TriggerTree { get => triggerTreeRef.Resolve(); set => triggerTreeRef.SetEmbedded(value); }
             public byte? PreLightGenTileCountU { get; set; }
+            public NodeRefView References => new(this);
+
+            public readonly struct NodeRefView
+            {
+                private readonly SubVariation owner;
+                internal NodeRefView(SubVariation owner) => this.owner = owner;
+                public NodeRef<CPlugTree> Tree => owner.treeRef;
+                public NodeRef<CPlugTree> TriggerTree => owner.triggerTreeRef;
+            }
+
+            object IDeepCloneable.DeepClone(DeepCloneContext context)
+            {
+                var clone = (SubVariation)MemberwiseClone();
+                context.Register(this, clone);
+                clone.treeRef = context.Clone(treeRef)!;
+                clone.triggerTreeRef = context.Clone(triggerTreeRef)!;
+                return clone;
+            }
 
             public void Read(GbxReader r, int v = 0)
             {
                 var waypointType = (CGameItemModel.EWaypointType)(v & 0xF);
                 var ver = (v >> 4) & 0xF;
 
-                Tree = r.ReadNodeRef<CPlugTree>();
+                r.ReadNodeRef(treeRef);
 
                 if (waypointType is CGameItemModel.EWaypointType.Finish
                                  or CGameItemModel.EWaypointType.Checkpoint
                                  or CGameItemModel.EWaypointType.StartFinish)
                 {
-                    TriggerTree = r.ReadNodeRef<CPlugTree>();
+                    r.ReadNodeRef(triggerTreeRef);
                 }
 
                 if (ver >= 2)
@@ -2137,13 +2157,13 @@ public partial class CGameCtnChallenge
                 var waypointType = (CGameItemModel.EWaypointType)(v & 0xF);
                 var ver = (v >> 4) & 0xF;
 
-                w.WriteNodeRef(Tree);
+                w.WriteNodeRef(treeRef);
 
                 if (waypointType is CGameItemModel.EWaypointType.Finish
                                  or CGameItemModel.EWaypointType.Checkpoint
                                  or CGameItemModel.EWaypointType.StartFinish)
                 {
-                    w.WriteNodeRef(TriggerTree);
+                    w.WriteNodeRef(triggerTreeRef);
                 }
 
                 if (ver >= 2)

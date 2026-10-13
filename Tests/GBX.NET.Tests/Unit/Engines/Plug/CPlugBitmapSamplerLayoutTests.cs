@@ -53,7 +53,7 @@ public class CPlugBitmapSamplerLayoutTests
         }
         await Assert.That(node.Name).IsEqualTo(offset >= 2 ? "Sampler" : null);
         await Assert.That(node.Bitmap).IsNull();
-        await Assert.That(node.BitmapFile).IsNull();
+        await Assert.That(node.References.Bitmap.File).IsNull();
         await Assert.That(offset == 11 ? node.Flags : node.LegacyFlags).IsEqualTo(flags);
         await Assert.That(node.MipMapLodBias).IsEqualTo(-1.25f);
         await Assert.That(node.BorderColor).IsEqualTo(hasBorder ? 0x80402010u : 0u);

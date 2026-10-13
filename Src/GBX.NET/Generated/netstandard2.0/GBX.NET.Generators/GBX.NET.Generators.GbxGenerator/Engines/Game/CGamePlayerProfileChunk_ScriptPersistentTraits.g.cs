@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
     [Hexadecimal]
     public static new uint Id => 0x03170000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

@@ -22,7 +22,7 @@ CPlugBeamEmitterSubModel 0x09105000
     int Helix_MaxHelixCount
   v7+
     v9-
-      CPlugMaterial[] AdditionalMaterials (external)
+      CPlugMaterial[] AdditionalMaterials
   v8+
     float LightningDistStep
     float LightningMaxJitterDistPerStep
@@ -37,7 +37,7 @@ CPlugBeamEmitterSubModel 0x09105000
     if MaterialsAsStrings
       string[] AdditionalMaterialPaths
     else
-      CPlugMaterial[] AdditionalMaterials (external)
+      CPlugMaterial[] AdditionalMaterials
   v11+
     float DoubleHelix_StartAngle
     bool DoubleHelix_ClockWise
@@ -71,7 +71,7 @@ CPlugBeamEmitterSubModel 0x09105000
   if MaterialsAsStrings
     string MaterialPath
   else
-    CPlugMaterial Material (external)
+    CPlugMaterial Material
   float Radius
   int DisplayType
   v1+

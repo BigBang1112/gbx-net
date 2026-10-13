@@ -34,6 +34,8 @@ public partial class CGameSlotVis : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x032E3000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

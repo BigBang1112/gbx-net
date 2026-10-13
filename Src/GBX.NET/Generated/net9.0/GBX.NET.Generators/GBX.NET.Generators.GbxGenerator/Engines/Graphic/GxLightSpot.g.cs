@@ -34,6 +34,8 @@ public partial class GxLightSpot : GxLightBall, IClass
     [Hexadecimal]
     public static new uint Id => 0x0400B000;
 
+    internal override uint GetId() => Id;
+
     private float angleInner = 30;
     [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]

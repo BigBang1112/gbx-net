@@ -2,7 +2,7 @@ CSceneMobilLeaves 0x0A05E000
 - inherits: CSceneMobil
 
 0x000
-  CPlugShader LeafShader (external)
+  CPlugShader LeafShader
   float LeafRadiusBase
   float LeafRadiusRandom
   float
@@ -23,7 +23,7 @@ CSceneMobilLeaves 0x0A05E000
   float
 
 0x001
-  CPlugShader LeafShader (external)
+  CPlugShader LeafShader
   float LeafRadiusBase
   float LeafRadiusRandom
   int LeafMaxCount
@@ -40,7 +40,7 @@ CSceneMobilLeaves 0x0A05E000
   float FarZ
 
 0x002
-  CPlugShader LeafShader (external)
+  CPlugShader LeafShader
   float LeafRadiusBase
   float LeafRadiusRandom
   int LeafMaxCount
@@ -56,7 +56,7 @@ CSceneMobilLeaves 0x0A05E000
   float RespawnPeriod
 
 0x003 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
-  CPlugShader LeafShader (external)
+  CPlugShader LeafShader
   float LeafRadiusBase
   float LeafRadiusRandom
   int LeafMaxCount

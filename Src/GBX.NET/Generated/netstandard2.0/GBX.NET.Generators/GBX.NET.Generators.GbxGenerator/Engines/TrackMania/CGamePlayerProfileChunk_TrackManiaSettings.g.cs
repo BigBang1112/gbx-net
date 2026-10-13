@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     [Hexadecimal]
     public static new uint Id => 0x240D5000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

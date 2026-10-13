@@ -34,6 +34,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0308F000;
 
+    internal override uint GetId() => Id;
+
     private int nbBronzeRequired;
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F001>]
@@ -61,13 +63,13 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.nbGoldRequired = value;
     }
 
-    private List<External<CGameCtnChallenge>>? mapFiles;
+    private NodeRefList<CGameCtnChallenge>? mapFiles;
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F006>]
-    public List<External<CGameCtnChallenge>>? MapFiles
+    public NodeRefList<CGameCtnChallenge>? MapFiles
     {
-        get => this.mapFiles;
-        set => this.mapFiles = value;
+        get => mapFiles;
+        set => mapFiles = value;
     }
 
     private List<MapInfo>? mapInfos;
@@ -119,20 +121,20 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.allGoldValue = value;
     }
 
-    private List<External<CMwNod>>? files;
+    private NodeRefList<CMwNod>? files;
     [AppliedWithChunk<Chunk0308F004>]
-    public List<External<CMwNod>>? Files
+    public NodeRefList<CMwNod>? Files
     {
-        get => this.files;
-        set => this.files = value;
+        get => files;
+        set => files = value;
     }
 
-    private CGameCtnCampaign? linkedCampaign;
+    private NodeRef<CGameCtnCampaign> linkedCampaignRef = new();
     [AppliedWithChunk<Chunk0308F005>]
     public CGameCtnCampaign? LinkedCampaign
     {
-        get => this.linkedCampaign;
-        set => this.linkedCampaign = value;
+        get => linkedCampaignRef.Resolve();
+        set => linkedCampaignRef.SetEmbedded(value);
     }
 
     private bool usesMapFiles;
@@ -191,22 +193,13 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.nbGoldCupRequired = value;
     }
 
-    private CGameCtnCollection? associatedCollection;
+    private NodeRef<CGameCtnCollection> associatedCollectionRef = new();
     [AppliedWithChunk<Chunk0308F008>]
     public CGameCtnCollection? AssociatedCollection
     {
-        get => this.associatedCollectionFile?.GetNode(ref this.associatedCollection) ?? this.associatedCollection;
-        set => this.associatedCollection = value;
+        get => associatedCollectionRef.Resolve();
+        set => associatedCollectionRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? associatedCollectionFile;
-
-    public Components.GbxRefTableFile? AssociatedCollectionFile
-    {
-        get => associatedCollectionFile;
-        set => associatedCollectionFile = value;
-    }
-
-    public CGameCtnCollection? GetAssociatedCollection(GbxReadSettings settings = default, bool exceptions = false) => associatedCollectionFile?.GetNode(ref associatedCollection, settings, exceptions) ?? associatedCollection;
 
     private string? associatedCollectionId;
     [AppliedWithChunk<Chunk0308F009>]
@@ -216,20 +209,60 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.associatedCollectionId = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnChallengeGroup owner;
+        internal NodeRefView(CGameCtnChallengeGroup owner) => this.owner = owner;
+        public MapFilesReferenceView MapFiles => new(owner);
+        public FilesReferenceView Files => new(owner);
+        public NodeRef<CGameCtnCampaign> LinkedCampaign => owner.linkedCampaignRef;
+        public NodeRef<CGameCtnCollection> AssociatedCollection => owner.associatedCollectionRef;
+    }
+    public readonly struct MapFilesReferenceView
+    {
+        private readonly CGameCtnChallengeGroup owner;
+        internal MapFilesReferenceView(CGameCtnChallengeGroup owner) => this.owner = owner;
+        public int Count => owner.mapFiles?.Count ?? 0;
+        public NodeRef<CGameCtnChallenge> this[int index] => (owner.mapFiles ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public readonly struct FilesReferenceView
+    {
+        private readonly CGameCtnChallengeGroup owner;
+        internal FilesReferenceView(CGameCtnChallengeGroup owner) => this.owner = owner;
+        public int Count => owner.files?.Count ?? 0;
+        public NodeRef<CMwNod> this[int index] => (owner.files ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (mapFiles is not null)
+        {
+            for (var i = 0; i < mapFiles.Count; i++) yield return new("MapFiles" + "[" + i + "]", mapFiles.GetReference(i));
+        }
+        if (files is not null)
+        {
+            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.GetReference(i));
+        }
+        yield return new("LinkedCampaign", linkedCampaignRef);
+        yield return new("AssociatedCollection", associatedCollectionRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnChallengeGroup)clone).nbBronzeRequired = context.Clone(this.nbBronzeRequired)!;
         ((CGameCtnChallengeGroup)clone).nbSilverRequired = context.Clone(this.nbSilverRequired)!;
         ((CGameCtnChallengeGroup)clone).nbGoldRequired = context.Clone(this.nbGoldRequired)!;
-        ((CGameCtnChallengeGroup)clone).mapFiles = context.CloneList(this.mapFiles)!;
+        ((CGameCtnChallengeGroup)clone).mapFiles = context.Clone(this.mapFiles)!;
         ((CGameCtnChallengeGroup)clone).mapInfos = context.CloneList(this.mapInfos)!;
         ((CGameCtnChallengeGroup)clone).name = context.Clone(this.name)!;
         ((CGameCtnChallengeGroup)clone).allBronzeValue = context.Clone(this.allBronzeValue)!;
         ((CGameCtnChallengeGroup)clone).allSilverValue = context.Clone(this.allSilverValue)!;
         ((CGameCtnChallengeGroup)clone).allGoldValue = context.Clone(this.allGoldValue)!;
-        ((CGameCtnChallengeGroup)clone).files = context.CloneList(this.files)!;
-        ((CGameCtnChallengeGroup)clone).linkedCampaign = context.Clone(this.linkedCampaign)!;
+        ((CGameCtnChallengeGroup)clone).files = context.Clone(this.files)!;
+        ((CGameCtnChallengeGroup)clone).linkedCampaignRef = context.Clone(this.linkedCampaignRef)!;
         ((CGameCtnChallengeGroup)clone).usesMapFiles = context.Clone(this.usesMapFiles)!;
         ((CGameCtnChallengeGroup)clone).nbBronzeMedalRequired = context.Clone(this.nbBronzeMedalRequired)!;
         ((CGameCtnChallengeGroup)clone).nbSilverMedalRequired = context.Clone(this.nbSilverMedalRequired)!;
@@ -237,7 +270,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         ((CGameCtnChallengeGroup)clone).nbBronzeCupRequired = context.Clone(this.nbBronzeCupRequired)!;
         ((CGameCtnChallengeGroup)clone).nbSilverCupRequired = context.Clone(this.nbSilverCupRequired)!;
         ((CGameCtnChallengeGroup)clone).nbGoldCupRequired = context.Clone(this.nbGoldCupRequired)!;
-        ((CGameCtnChallengeGroup)clone).associatedCollection = context.Clone(this.associatedCollection)!;
+        ((CGameCtnChallengeGroup)clone).associatedCollectionRef = context.Clone(this.associatedCollectionRef)!;
         ((CGameCtnChallengeGroup)clone).associatedCollectionId = context.Clone(this.associatedCollectionId)!;
     }
 
@@ -277,14 +310,14 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
             rw.Int32(ref n.nbBronzeRequired);
             rw.Int32(ref n.nbSilverRequired);
             rw.Int32(ref n.nbGoldRequired);
-            rw.ListNodeRef<CGameCtnChallenge>(ref n.mapFiles!);
+            n.mapFiles = rw.ListNodeRef<CGameCtnChallenge>(n.mapFiles);
         }
     }
 
     /// <summary>
     /// medal requirements + map identifiers
     /// </summary>
-    [Chunk(0x0308F001, "medal requirements + map identifiers ")]
+    [Chunk(0x0308F001, "medal requirements + map identifiers")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0308F001 : Chunk<CGameCtnChallengeGroup>
     {
@@ -364,7 +397,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef<CMwNod>(ref n.files!);
+            n.files = rw.ListNodeRef<CMwNod>(n.files);
         }
     }
 
@@ -385,7 +418,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnCampaign>(ref n.linkedCampaign);
+            rw.NodeRef(n.linkedCampaignRef);
         }
     }
 
@@ -410,7 +443,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
             if (n.UsesMapFiles)
             {
-                rw.ListNodeRef<CGameCtnChallenge>(ref n.mapFiles!);
+                n.mapFiles = rw.ListNodeRef<CGameCtnChallenge>(n.mapFiles);
             }
             else
             {
@@ -462,7 +495,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnCollection>(ref n.associatedCollection, ref n.associatedCollectionFile);
+            rw.NodeRef(n.associatedCollectionRef);
         }
     }
 

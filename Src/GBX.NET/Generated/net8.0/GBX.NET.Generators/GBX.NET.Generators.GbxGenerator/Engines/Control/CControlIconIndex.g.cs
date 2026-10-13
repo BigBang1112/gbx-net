@@ -34,6 +34,8 @@ public partial class CControlIconIndex : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0702B000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]

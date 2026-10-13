@@ -34,18 +34,44 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090A3000;
 
-    private CPlugDecoratorTree[]? treeDecorators;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugDecoratorTree>? treeDecorators;
     [AppliedWithChunk<Chunk090A3000>]
-    public CPlugDecoratorTree[]? TreeDecorators
+    public NodeRefList<CPlugDecoratorTree>? TreeDecorators
     {
-        get => this.treeDecorators;
-        set => this.treeDecorators = value;
+        get => treeDecorators;
+        set => treeDecorators = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugDecoratorSolid owner;
+        internal NodeRefView(CPlugDecoratorSolid owner) => this.owner = owner;
+        public TreeDecoratorsReferenceView TreeDecorators => new(owner);
+    }
+    public readonly struct TreeDecoratorsReferenceView
+    {
+        private readonly CPlugDecoratorSolid owner;
+        internal TreeDecoratorsReferenceView(CPlugDecoratorSolid owner) => this.owner = owner;
+        public int Count => owner.treeDecorators?.Count ?? 0;
+        public NodeRef<CPlugDecoratorTree> this[int index] => (owner.treeDecorators ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (treeDecorators is not null)
+        {
+            for (var i = 0; i < treeDecorators.Count; i++) yield return new("TreeDecorators" + "[" + i + "]", treeDecorators.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugDecoratorSolid)clone).treeDecorators = context.CloneArray(this.treeDecorators)!;
+        ((CPlugDecoratorSolid)clone).treeDecorators = context.Clone(this.treeDecorators)!;
     }
 
     public CPlugDecoratorSolid()
@@ -66,7 +92,7 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
 
         public override void ReadWrite(CPlugDecoratorSolid n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugDecoratorTree>(ref n.treeDecorators!);
+            n.treeDecorators = rw.ListNodeRef_deprec<CPlugDecoratorTree>(n.treeDecorators);
         }
     }
 

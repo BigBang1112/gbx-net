@@ -191,8 +191,8 @@ public partial class CGameCtnChallenge :
     private Ident decoration = Ident.Empty;
     public partial Ident Decoration { get => decoration; set => decoration = value; }
 
-    private List<CGameCtnBlock>? blocks;
-    public partial List<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
+    private NodeRefList<CGameCtnBlock>? blocks;
+    public partial NodeRefList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
     public partial int? NbBlocks { get => Blocks?.Count; }
 
@@ -226,28 +226,28 @@ public partial class CGameCtnChallenge :
     private readonly object LightmapCacheDataLock = new();
 #endif
 
-    private CHmsLightMapCache? lightmapCache;
     /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
     public partial CHmsLightMapCache? LightmapCache
     {
         get
         {
             // Lightmap cache is not compressed in version 1 and below
-            if (lightmapCache is not null || LightmapVersion < 2) return lightmapCache;
-            if (LightmapCacheData is null || LightmapCacheData.Parsed) return lightmapCache;
+            if (lightmapCacheRef.Descriptor is not null) return lightmapCacheRef.Resolve();
+            if (lightmapCacheRef.CachedTarget is not null || LightmapVersion < 2) return lightmapCacheRef.CachedTarget;
+            if (LightmapCacheData is null || LightmapCacheData.Parsed) return lightmapCacheRef.CachedTarget;
 
             lock (LightmapCacheDataLock)
             {
-                if (lightmapCache is not null) return lightmapCache;
+                if (lightmapCacheRef.CachedTarget is not null) return lightmapCacheRef.CachedTarget;
                 ParseLightMapCacheSmall(); // sets lightmapCache and LightmapCacheData.Parsed to true
-                return lightmapCache;
+                return lightmapCacheRef.CachedTarget;
             }
         }
         set
         {
             lock (LightmapCacheDataLock)
             {
-                lightmapCache = value;
+                lightmapCacheRef.SetEmbedded(value);
             }
         }
     }
@@ -299,8 +299,8 @@ public partial class CGameCtnChallenge :
         }
     }
 
-    private List<CGameCtnAnchoredObject>? anchoredObjects;
-    public partial List<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
+    private NodeRefList<CGameCtnAnchoredObject>? anchoredObjects;
+    public partial NodeRefList<CGameCtnAnchoredObject>? AnchoredObjects { get => anchoredObjects; set => anchoredObjects = value; }
 
 #if NET9_0_OR_GREATER
     private readonly Lock ZoneGenealogyDataLock = new();
@@ -310,8 +310,8 @@ public partial class CGameCtnChallenge :
 
     public RawData? ZoneGenealogyData { get; set; }
 
-    private List<CGameCtnZoneGenealogy>? zoneGenealogy;
-    public partial List<CGameCtnZoneGenealogy>? ZoneGenealogy
+    private NodeRefList<CGameCtnZoneGenealogy>? zoneGenealogy;
+    public partial NodeRefList<CGameCtnZoneGenealogy>? ZoneGenealogy
     {
         get
         {
@@ -352,8 +352,8 @@ public partial class CGameCtnChallenge :
 
     public partial int? NbBakedBlocks { get => bakedBlocks?.Count; }
 
-    private List<CGameCtnBlock>? bakedBlocks;
-    public partial List<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
+    private NodeRefList<CGameCtnBlock>? bakedBlocks;
+    public partial NodeRefList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
     private List<SBakedClipsAdditionalData>? bakedClipsAdditionalData;
     public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get => bakedClipsAdditionalData; set => bakedClipsAdditionalData = value; }
@@ -404,7 +404,7 @@ public partial class CGameCtnChallenge :
     }
 
     // poss to generate
-    List<CGameCtnBlock> IGameCtnChallenge.Blocks
+    NodeRefList<CGameCtnBlock> IGameCtnChallenge.Blocks
     {
         get => Blocks ?? throw new MemberNullException(nameof(Blocks));
         set => Blocks = value;
@@ -527,7 +527,7 @@ public partial class CGameCtnChallenge :
 
         using var ms = new MemoryStream(EmbeddedZipData);
         using var zip = new ZipArchive(ms, ZipArchiveMode.Read);
-        
+
         Directory.CreateDirectory(destinationDirectoryName);
 
         foreach (var entry in zip.Entries)
@@ -538,7 +538,7 @@ public partial class CGameCtnChallenge :
             }
 
             var destinationPath = Path.Combine(destinationDirectoryName, entry.FullName);
-            
+
             var directoryPath = Path.GetDirectoryName(destinationPath);
             if (!string.IsNullOrEmpty(directoryPath))
             {
@@ -1025,8 +1025,8 @@ public partial class CGameCtnChallenge :
         void AppendMediaTrackerDeps(StringBuilder sb)
         {
             foreach (var block in ClipIntro?.Tracks
-                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
-                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip.Tracks) ?? [])
+                .Concat(ClipGroupInGame?.Clips.SelectMany(x => x.Clip?.Tracks) ?? [])
+                .Concat(ClipGroupEndRace?.Clips.SelectMany(x => x.Clip?.Tracks) ?? [])
                 .Concat(ClipGlobal?.Tracks ?? [])
                 .Concat(ClipAmbiance?.Tracks ?? [])
                 .SelectMany(x => x.Blocks) ?? [])
@@ -1217,7 +1217,7 @@ public partial class CGameCtnChallenge :
             Version = r.ReadInt32();
 
             var nbBlocks = r.ReadInt32();
-            n.blocks = new List<CGameCtnBlock>(nbBlocks);
+            n.blocks = new NodeRefList<CGameCtnBlock>();
 
             for (var i = 0; i < nbBlocks; i++)
             {
@@ -1251,7 +1251,7 @@ public partial class CGameCtnChallenge :
                     return;
                 }
 
-                w.WriteListWritable(n.blocks, version: Version);
+                w.WriteListWritable(n.blocks?.GetEmbeddedTargets().ToList(), version: Version);
                 return;
             }
 
@@ -1262,7 +1262,7 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            foreach (var block in n.blocks)
+            foreach (var block in n.blocks.GetEmbeddedTargets())
             {
                 try
                 {
@@ -1290,7 +1290,9 @@ public partial class CGameCtnChallenge :
             using var rw = new GbxReaderWriter(r);
 
             lightmapCacheSmall = new CHmsLightMapCache.Small();
-            lightmapCacheSmall.ReadWrite(LightmapVersion.Value, ref lightmapCache, lightmapFrames, rw);
+            var cache = lightmapCacheRef.CachedTarget;
+            lightmapCacheSmall.ReadWrite(LightmapVersion.Value, ref cache, lightmapFrames, rw);
+            lightmapCacheRef.SetEmbedded(cache);
 
             LightmapCacheData.Parsed = true;
         }
@@ -1321,7 +1323,7 @@ public partial class CGameCtnChallenge :
 
             if (n.LightmapVersion < 2)
             {
-                rw.NodeRef<CHmsLightMapCache>(ref n.lightmapCache);
+                rw.NodeRef(n.lightmapCacheRef);
                 throw new NotSupportedException("Lightmap version <2 is not supported.");
             }
 
@@ -1385,7 +1387,8 @@ public partial class CGameCtnChallenge :
                 w.WriteZlibData(n.LightmapCacheData, w =>
                 {
                     using var rw = new GbxReaderWriter(w);
-                    (n.LightmapCacheSmall ?? new()).ReadWrite(n.LightmapVersion.Value, ref n.lightmapCache, n.lightmapFrames, rw);
+                    var cache = n.lightmapCacheRef.CachedTarget;
+                    (n.LightmapCacheSmall ?? new()).ReadWrite(n.LightmapVersion.Value, ref cache, n.lightmapFrames, rw);
                 });
             }
         }
@@ -1509,7 +1512,7 @@ public partial class CGameCtnChallenge :
 
             w.WriteEncapsulated(w =>
             {
-                w.WriteListNodeRef_deprec((n.anchoredObjects ?? [])!);
+                w.WriteListNodeRef_deprec(n.anchoredObjects);
 
                 var itemDict = new Dictionary<CGameCtnAnchoredObject, int>();
 
@@ -1659,7 +1662,7 @@ public partial class CGameCtnChallenge :
         {
             w.WriteEncapsulated(n.ZoneGenealogyData, w =>
             {
-                w.WriteListNodeRef<CGameCtnZoneGenealogy>(n.ZoneGenealogy!);
+                w.WriteListNodeRef(n.ZoneGenealogy);
             });
         }
     }
@@ -1682,7 +1685,7 @@ public partial class CGameCtnChallenge :
             BlocksVersion = r.ReadInt32();
 
             var nbBakedBlocks = r.ReadInt32();
-            n.bakedBlocks = new List<CGameCtnBlock>(nbBakedBlocks);
+            n.bakedBlocks = new NodeRefList<CGameCtnBlock>();
 
             for (var i = 0; i < nbBakedBlocks; i++)
             {
@@ -1703,7 +1706,7 @@ public partial class CGameCtnChallenge :
 
             if (BlocksVersion < 6)
             {
-                w.WriteListWritable(n.bakedBlocks, version: BlocksVersion);
+                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedTargets().ToList(), version: BlocksVersion);
             }
             else
             {
@@ -1711,7 +1714,7 @@ public partial class CGameCtnChallenge :
 
                 if (n.bakedBlocks is not null)
                 {
-                    foreach (var block in n.bakedBlocks)
+                    foreach (var block in n.bakedBlocks.GetEmbeddedTargets())
                     {
                         try
                         {
@@ -1734,7 +1737,6 @@ public partial class CGameCtnChallenge :
 
     [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class SBakedClipsAdditionalData;
-
 
     public partial class Chunk0304304F : IVersionable
     {

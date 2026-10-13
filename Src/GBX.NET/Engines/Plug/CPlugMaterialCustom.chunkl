@@ -38,7 +38,7 @@ CPlugMaterialCustom 0x0903A000
       DefineNat[]
 
 0x010 [MP3, TMT]
-  CPlugBitmap (external)
+  CPlugBitmap
 
 0x011 (skippable) [MP3, TMT, MP4, TM2020]
   int
@@ -78,7 +78,7 @@ CPlugMaterialCustom 0x0903A000
 archive Bitmap
   id Name
   int
-  CMwNod Texture (external)
+  CMwNod Texture
   v1+
     int
     int

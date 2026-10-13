@@ -34,6 +34,8 @@ public partial class CPlugAnimClip : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09135000;
 
+    internal override uint GetId() => Id;
+
     private int flagsVersion;
     [AppliedWithChunk<Chunk09135000>]
     public int FlagsVersion
@@ -50,20 +52,20 @@ public partial class CPlugAnimClip : CMwNod, IClass
         set => this.name = value;
     }
 
-    private CPlugAnimSkelBaked? baked;
+    private NodeRef<CPlugAnimSkelBaked> bakedRef = new();
     [AppliedWithChunk<Chunk09135000>]
     public CPlugAnimSkelBaked? Baked
     {
-        get => this.baked;
-        set => this.baked = value;
+        get => bakedRef.Resolve();
+        set => bakedRef.SetEmbedded(value);
     }
 
-    private CPlugAnimSkelEdition? edition;
+    private NodeRef<CPlugAnimSkelEdition> editionRef = new();
     [AppliedWithChunk<Chunk09135000>(2)]
     public CPlugAnimSkelEdition? Edition
     {
-        get => this.edition;
-        set => this.edition = value;
+        get => editionRef.Resolve();
+        set => editionRef.SetEmbedded(value);
     }
 
     private ClipFlags? flags;
@@ -74,13 +76,29 @@ public partial class CPlugAnimClip : CMwNod, IClass
         set => this.flags = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAnimClip owner;
+        internal NodeRefView(CPlugAnimClip owner) => this.owner = owner;
+        public NodeRef<CPlugAnimSkelBaked> Baked => owner.bakedRef;
+        public NodeRef<CPlugAnimSkelEdition> Edition => owner.editionRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Baked", bakedRef);
+        yield return new("Edition", editionRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugAnimClip)clone).flagsVersion = context.Clone(this.flagsVersion)!;
         ((CPlugAnimClip)clone).name = context.Clone(this.name)!;
-        ((CPlugAnimClip)clone).baked = context.Clone(this.baked)!;
-        ((CPlugAnimClip)clone).edition = context.Clone(this.edition)!;
+        ((CPlugAnimClip)clone).bakedRef = context.Clone(this.bakedRef)!;
+        ((CPlugAnimClip)clone).editionRef = context.Clone(this.editionRef)!;
         ((CPlugAnimClip)clone).flags = context.Clone(this.flags)!;
     }
 
@@ -122,11 +140,11 @@ public partial class CPlugAnimClip : CMwNod, IClass
             rw.VersionInt32(this);
             rw.Int32(ref n.flagsVersion);
             rw.Id(ref n.name);
-            rw.NodeRef<CPlugAnimSkelBaked>(ref n.baked);
+            rw.NodeRef(n.bakedRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef<CPlugAnimSkelEdition>(ref n.edition);
+                rw.NodeRef(n.editionRef);
             }
 
             if (Version >= 3)

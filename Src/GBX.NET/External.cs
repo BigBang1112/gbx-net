@@ -2,9 +2,11 @@
 
 namespace GBX.NET;
 
-public sealed record External<T> where T : CMwNod
+[Obsolete("Use NodeRef<T> or NodeRefList<T> to preserve reference metadata.")]
+public sealed record External<T> : IDeepCloneable where T : CMwNod
 {
     private T? node;
+    internal T? CachedTarget => node;
 
     public T? Node
     {
@@ -21,4 +23,21 @@ public sealed record External<T> where T : CMwNod
     }
 
     public T? GetNode(GbxReadSettings settings = default) => File?.GetNode(ref node, settings) ?? node;
+
+    internal NodeRef<T> ToNodeRef()
+    {
+        var reference = new NodeRef<T>();
+        if (File is { } file) reference.SetExternal(file);
+        else reference.SetEmbedded(node);
+        return reference;
+    }
+
+    object IDeepCloneable.DeepClone(DeepCloneContext context)
+    {
+        var clone = new External<T>(null, null);
+        context.Register(this, clone);
+        clone.node = context.Clone(node);
+        clone.File = context.Clone(File);
+        return clone;
+    }
 }

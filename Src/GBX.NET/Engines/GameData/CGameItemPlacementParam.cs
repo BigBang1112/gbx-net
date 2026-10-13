@@ -93,24 +93,29 @@ public partial class CGameItemPlacementParam
 
             if (Version >= 4)
             {
-                rw.NodeRef(ref n.placementClass, ref n.placementClassFile);
+                rw.NodeRef(n.placementClassRef);
                 return;
             }
 
             if (Version == 3)
             {
-                rw.ReadableWritable(ref n.placementClass);
+                n.placementClassRef.SetEmbedded(rw.ReadableWritable(n.placementClassRef.CachedTarget));
                 return;
             }
 
             // The owning placement parameter defaults this flag to true before legacy chunks run.
-            n.placementClass ??= new NPlugItemPlacement_SClass { AlignToInterior = true };
-            n.placementClass.SizeGroup = rw.Id(n.placementClass.SizeGroup);
-            n.placementClass.CompatibleGroupsIds = rw.ArrayId(n.placementClass.CompatibleGroupsIds);
-            n.placementClass.AlwaysUp = rw.Boolean(n.placementClass.AlwaysUp);
+            var placementClass = n.placementClassRef.CachedTarget;
+            if (placementClass is null)
+            {
+                placementClass = new NPlugItemPlacement_SClass { AlignToInterior = true };
+                n.placementClassRef.SetEmbedded(placementClass);
+            }
+            placementClass.SizeGroup = rw.Id(placementClass.SizeGroup);
+            placementClass.CompatibleGroupsIds = rw.ArrayId(placementClass.CompatibleGroupsIds);
+            placementClass.AlwaysUp = rw.Boolean(placementClass.AlwaysUp);
             if (Version >= 1)
             {
-                n.placementClass.AlignToInterior = rw.Boolean(n.placementClass.AlignToInterior);
+                placementClass.AlignToInterior = rw.Boolean(placementClass.AlignToInterior);
             }
         }
     }

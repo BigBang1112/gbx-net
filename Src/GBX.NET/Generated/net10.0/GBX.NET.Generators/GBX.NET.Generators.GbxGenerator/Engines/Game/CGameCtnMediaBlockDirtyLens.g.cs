@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
     [Hexadecimal]
     public static new uint Id => 0x03165000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03165000>]
     public List<Key>? Keys

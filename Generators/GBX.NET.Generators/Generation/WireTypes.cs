@@ -147,11 +147,6 @@ internal static class WireTypes
         var element = Cast(type) ?? Map(type.Name, attributes);
         var array = type.ArrayDimensions > 0;
 
-        if (array && LayoutModel.Has(attributes, "external"))
-        {
-            element = "External<" + element + ">";
-        }
-
         if (array)
         {
             if (type.IsNullable)

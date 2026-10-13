@@ -34,6 +34,16 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E006000;
 
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSurface> triggerShapeFidRef = new();
+
+    private NodeRef<CPlugSurface> moveShapeFidRef = new();
+
+    private NodeRef<CPlugSurface> hitShapeFidRef = new();
+
+    private NodeRef<CMwNod> specialPropertiesRef = new();
+
     private CPlugDynaModel? dynaModel;
     [AppliedWithChunk<Chunk2E006003>]
     public CPlugDynaModel? DynaModel
@@ -82,21 +92,39 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         set => this.staminaThrowCost = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameObjectPhyModel owner;
+        internal NodeRefView(CGameObjectPhyModel owner) => this.owner = owner;
+        public NodeRef<CPlugSurface> TriggerShapeFid => owner.triggerShapeFidRef;
+        public NodeRef<CPlugSurface> MoveShapeFid => owner.moveShapeFidRef;
+        public NodeRef<CPlugSurface> HitShapeFid => owner.hitShapeFidRef;
+        public NodeRef<CMwNod> SpecialProperties => owner.specialPropertiesRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("TriggerShapeFid", triggerShapeFidRef);
+        yield return new("MoveShapeFid", moveShapeFidRef);
+        yield return new("HitShapeFid", hitShapeFidRef);
+        yield return new("SpecialProperties", specialPropertiesRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameObjectPhyModel)clone).triggerShapeFidRef = context.Clone(this.triggerShapeFidRef)!;
+        ((CGameObjectPhyModel)clone).moveShapeFidRef = context.Clone(this.moveShapeFidRef)!;
+        ((CGameObjectPhyModel)clone).hitShapeFidRef = context.Clone(this.hitShapeFidRef)!;
+        ((CGameObjectPhyModel)clone).specialPropertiesRef = context.Clone(this.specialPropertiesRef)!;
         ((CGameObjectPhyModel)clone).dynaModel = context.Clone(this.dynaModel)!;
         ((CGameObjectPhyModel)clone).throwableEnabled = context.Clone(this.throwableEnabled)!;
         ((CGameObjectPhyModel)clone).throwableDamageCoef = context.Clone(this.throwableDamageCoef)!;
         ((CGameObjectPhyModel)clone).throwableStunnedDuration = context.Clone(this.throwableStunnedDuration)!;
         ((CGameObjectPhyModel)clone).throwableCooldownBetweenTakeAndThrow = context.Clone(this.throwableCooldownBetweenTakeAndThrow)!;
         ((CGameObjectPhyModel)clone).staminaThrowCost = context.Clone(this.staminaThrowCost)!;
-        ((CGameObjectPhyModel)clone).moveShapeFid = context.Clone(this.moveShapeFid)!;
-        ((CGameObjectPhyModel)clone).moveShapeFidFile = context.Clone(this.moveShapeFidFile)!;
-        ((CGameObjectPhyModel)clone).hitShapeFid = context.Clone(this.hitShapeFid)!;
-        ((CGameObjectPhyModel)clone).hitShapeFidFile = context.Clone(this.hitShapeFidFile)!;
-        ((CGameObjectPhyModel)clone).triggerShapeFid = context.Clone(this.triggerShapeFid)!;
-        ((CGameObjectPhyModel)clone).triggerShapeFidFile = context.Clone(this.triggerShapeFidFile)!;
         ((CGameObjectPhyModel)clone).triggerActionVersion = context.Clone(this.triggerActionVersion)!;
         ((CGameObjectPhyModel)clone).triggers = context.CloneArray(this.triggers)!;
         ((CGameObjectPhyModel)clone).moveShape = context.Clone(this.moveShape)!;
@@ -106,8 +134,6 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         ((CGameObjectPhyModel)clone).triggerShape = context.Clone(this.triggerShape)!;
         ((CGameObjectPhyModel)clone).actionModel = context.Clone(this.actionModel)!;
         ((CGameObjectPhyModel)clone).actions = context.CloneArray(this.actions)!;
-        ((CGameObjectPhyModel)clone).specialProperties = context.Clone(this.specialProperties)!;
-        ((CGameObjectPhyModel)clone).specialPropertiesFile = context.Clone(this.specialPropertiesFile)!;
         ((CGameObjectPhyModel)clone).persistence = context.Clone(this.persistence)!;
         ((CGameObjectPhyModel)clone).canStopEnemy = context.Clone(this.canStopEnemy)!;
         ((CGameObjectPhyModel)clone).canStopEnemyBullet = context.Clone(this.canStopEnemyBullet)!;
@@ -135,20 +161,42 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     public partial class Chunk2E006000 : Chunk<CGameObjectPhyModel>
     {
         public override uint Id => 0x2E006000;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        /// <summary>
+        /// Deprecated CPlugAnimFile.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E006000 owner;
+            internal NodeRefView(Chunk2E006000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E006000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E006000)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSurface>(ref n.triggerShapeFid, ref n.triggerShapeFidFile);
+            rw.NodeRef(n.triggerShapeFidRef);
             rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.triggers!, version: 5);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -158,12 +206,78 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         public override uint Id => 0x2E006001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public Components.GbxRefTableFile? U03File;
-        public Components.GbxRefTableFile? U01File;
-        public CMwNod? U27;
-        public Components.GbxRefTableFile? U27File;
-        public Components.GbxRefTableFile? U15File;
-        public Components.GbxRefTableFile? U26File;
+
+        private NodeRef<CMwNod> U03Ref = new();
+        /// <summary>
+        /// Deprecated CPlugAnimFile.
+        /// </summary>
+        public CMwNod? U03
+        {
+            get => U03Ref.Resolve();
+            set => U03Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CMwNod> U01Ref = new();
+        /// <summary>
+        /// DoFid: an external file reference.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CMwNod> U27Ref = new();
+        /// <summary>
+        /// Deprecated CPlugSurface, present whenever the file reference exists.
+        /// </summary>
+        public CMwNod? U27
+        {
+            get => U27Ref.Resolve();
+            set => U27Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CMwNod> U15Ref = new();
+        /// <summary>
+        /// CPlugSolid.
+        /// </summary>
+        public CMwNod? U15
+        {
+            get => U15Ref.Resolve();
+            set => U15Ref.SetEmbedded(value);
+        }
+
+        private NodeRef<CMwNod> U26Ref = new();
+        /// <summary>
+        /// Removed in version 26.
+        /// </summary>
+        public CMwNod? U26
+        {
+            get => U26Ref.Resolve();
+            set => U26Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E006001 owner;
+            internal NodeRefView(Chunk2E006001 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U03 => owner.U03Ref;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U27 => owner.U27Ref;
+            public NodeRef<CMwNod> U15 => owner.U15Ref;
+            public NodeRef<CMwNod> U26 => owner.U26Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U03", U03Ref);
+            yield return new("U01", U01Ref);
+            yield return new("U27", U27Ref);
+            yield return new("U15", U15Ref);
+            yield return new("U26", U26Ref);
+            yield break;
+        }
 
         public Chunk2E006001() : this(GameVersion.Unspecified)
         {
@@ -185,13 +299,13 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E006001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E006001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E006001)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk2E006001)clone).U09 = context.Clone(this.U09)!;
             ((Chunk2E006001)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk2E006001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk2E006001)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk2E006001)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk2E006001)clone).U27Ref = context.Clone(this.U27Ref)!;
             ((Chunk2E006001)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk2E006001)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk2E006001)clone).U15Ref = context.Clone(this.U15Ref)!;
             ((Chunk2E006001)clone).U19 = context.Clone(this.U19)!;
             ((Chunk2E006001)clone).U20 = context.Clone(this.U20)!;
             ((Chunk2E006001)clone).U21 = context.Clone(this.U21)!;
@@ -199,7 +313,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
             ((Chunk2E006001)clone).U23 = context.Clone(this.U23)!;
             ((Chunk2E006001)clone).U24 = context.Clone(this.U24)!;
             ((Chunk2E006001)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk2E006001)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk2E006001)clone).U26Ref = context.Clone(this.U26Ref)!;
         }
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
@@ -208,9 +322,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version <= 10)
             {
-                rw.NodeRef<CPlugSurface>(ref n.moveShapeFid, ref n.moveShapeFidFile);
-                rw.NodeRef<CPlugSurface>(ref n.hitShapeFid, ref n.hitShapeFidFile);
-                rw.NodeRef<CPlugSurface>(ref n.triggerShapeFid, ref n.triggerShapeFidFile);
+                rw.NodeRef(n.moveShapeFidRef);
+                rw.NodeRef(n.hitShapeFidRef);
+                rw.NodeRef(n.triggerShapeFidRef);
             }
 
             if (Version >= 8)
@@ -230,7 +344,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version <= 13)
             {
-                rw.NodeRef<CMwNod>(ref U03, ref U03File);
+                rw.NodeRef(U03Ref);
             }
 
             if (Version >= 2)
@@ -296,31 +410,31 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version >= 21)
             {
-                rw.NodeRef<CMwNod>(ref U01, ref U01File);
+                rw.NodeRef(U01Ref);
             }
 
             if (Version >= 11)
             {
-                if (Version>= 21 && (U01!= null || U01File!= null))
+                if (Version>= 21 && (U01Ref.Kind != NodeRefKind.None))
                 {
-                    rw.NodeRef<CMwNod>(ref U27, ref U27File);
+                    rw.NodeRef(U27Ref);
                 }
                 else
                 {
                     if (n.MoveShape== null || n.MoveShape.Length == 0)
                     {
-                        rw.NodeRef<CPlugSurface>(ref n.moveShapeFid, ref n.moveShapeFidFile);
+                        rw.NodeRef(n.moveShapeFidRef);
                     }
                 }
 
                 if (n.HitShape== null || n.HitShape.Length == 0)
                 {
-                    rw.NodeRef<CPlugSurface>(ref n.hitShapeFid, ref n.hitShapeFidFile);
+                    rw.NodeRef(n.hitShapeFidRef);
                 }
 
                 if (n.TriggerShape== null || n.TriggerShape.Length == 0)
                 {
-                    rw.NodeRef<CPlugSurface>(ref n.triggerShapeFid, ref n.triggerShapeFidFile);
+                    rw.NodeRef(n.triggerShapeFidRef);
                 }
             }
 
@@ -330,7 +444,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
                 if (U14== null || U14.Length == 0)
                 {
-                    rw.NodeRef<CMwNod>(ref U15, ref U15File);
+                    rw.NodeRef(U15Ref);
                 }
             }
 
@@ -341,7 +455,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version >= 16)
             {
-                rw.NodeRef<CMwNod>(ref n.specialProperties, ref n.specialPropertiesFile);
+                rw.NodeRef(n.specialPropertiesRef);
             }
 
             if (Version >= 17)
@@ -393,7 +507,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version == 25)
             {
-                rw.NodeRef<CMwNod>(ref U26, ref U26File);
+                rw.NodeRef(U26Ref);
             }
         }
     }
@@ -402,18 +516,37 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     public partial class Chunk2E006002 : SkippableChunk<CGameObjectPhyModel>
     {
         public override uint Id => 0x2E006002;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E006002 owner;
+            internal NodeRefView(Chunk2E006002 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E006002)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E006002)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
         }
     }
 
@@ -447,22 +580,41 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         public override uint Id => 0x2E006004;
         public int Version { get; set; }
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod> U01Ref = new();
+        public CMwNod? U01
+        {
+            get => U01Ref.Resolve();
+            set => U01Ref.SetEmbedded(value);
+        }
         public Vec3 U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E006004 owner;
+            internal NodeRefView(Chunk2E006004 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.U01Ref;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", U01Ref);
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E006004)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E006004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E006004)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk2E006004)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(U01Ref);
             rw.Vec3(ref U02);
         }
     }

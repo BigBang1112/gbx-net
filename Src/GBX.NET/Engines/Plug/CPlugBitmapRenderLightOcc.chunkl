@@ -4,4 +4,4 @@ CPlugBitmapRenderLightOcc 0x0909F000
 0x000 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   float FovY
   float Opacity
-  CPlugBitmap BitmapToModulate (external)
+  CPlugBitmap BitmapToModulate

@@ -34,6 +34,8 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     [Hexadecimal]
     public static new uint Id => 0x24085000;
 
+    internal override uint GetId() => Id;
+
     private float coneAperture;
     [AppliedWithChunk<Chunk24085000>]
     public float ConeAperture

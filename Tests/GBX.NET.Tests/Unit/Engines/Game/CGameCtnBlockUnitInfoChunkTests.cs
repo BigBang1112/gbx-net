@@ -64,9 +64,9 @@ public class CGameCtnBlockUnitInfoChunkTests
         for (var direction = 0; direction < counts.Length; direction++)
         {
             await Assert.That(directions[direction].Length).IsEqualTo(counts[direction]);
-            foreach (var clip in directions[direction])
+            for (var index = 0; index < directions[direction].Count; index++)
             {
-                await Assert.That(clip.File).IsEqualTo((GbxRefTableFile)files[nextIndex++]);
+                await Assert.That(directions[direction].GetReference(index).File).IsEqualTo((GbxRefTableFile)files[nextIndex++]);
             }
         }
         if (version >= 2)

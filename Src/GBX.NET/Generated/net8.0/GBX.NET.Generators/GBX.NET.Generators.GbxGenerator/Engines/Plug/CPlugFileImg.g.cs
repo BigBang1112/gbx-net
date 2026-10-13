@@ -34,6 +34,8 @@ public abstract partial class CPlugFileImg : CPlugFile, IClass
     [Hexadecimal]
     public static new uint Id => 0x09025000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

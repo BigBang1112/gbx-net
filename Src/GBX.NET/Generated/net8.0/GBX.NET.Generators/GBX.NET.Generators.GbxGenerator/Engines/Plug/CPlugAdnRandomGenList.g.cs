@@ -34,18 +34,44 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09157000;
 
-    private CPlugAdnRandomGen[]? datas;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugAdnRandomGen>? datas;
     [AppliedWithChunk<Chunk09157000>]
-    public CPlugAdnRandomGen[]? Datas
+    public NodeRefList<CPlugAdnRandomGen>? Datas
     {
-        get => this.datas;
-        set => this.datas = value;
+        get => datas;
+        set => datas = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAdnRandomGenList owner;
+        internal NodeRefView(CPlugAdnRandomGenList owner) => this.owner = owner;
+        public DatasReferenceView Datas => new(owner);
+    }
+    public readonly struct DatasReferenceView
+    {
+        private readonly CPlugAdnRandomGenList owner;
+        internal DatasReferenceView(CPlugAdnRandomGenList owner) => this.owner = owner;
+        public int Count => owner.datas?.Count ?? 0;
+        public NodeRef<CPlugAdnRandomGen> this[int index] => (owner.datas ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (datas is not null)
+        {
+            for (var i = 0; i < datas.Count; i++) yield return new("Datas" + "[" + i + "]", datas.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugAdnRandomGenList)clone).datas = context.CloneArray(this.datas)!;
+        ((CPlugAdnRandomGenList)clone).datas = context.Clone(this.datas)!;
     }
 
     public CPlugAdnRandomGenList()
@@ -84,7 +110,7 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
         public override void ReadWrite(CPlugAdnRandomGenList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugAdnRandomGen>(ref n.datas!);
+            n.datas = rw.ListNodeRef<CPlugAdnRandomGen>(n.datas);
         }
     }
 

@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     [Hexadecimal]
     public static new uint Id => 0x03148000;
 
+    internal override uint GetId() => Id;
+
     private SChallengeStats[]? challengeStats;
     [AppliedWithChunk<Chunk03148001>]
     public SChallengeStats[]? ChallengeStats

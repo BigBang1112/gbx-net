@@ -34,22 +34,15 @@ public partial class CSceneObjectLink : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A014000;
 
-    private CSceneMobil? mobil;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CSceneMobil> mobilRef = new();
     [AppliedWithChunk<Chunk0A014001>]
     public CSceneMobil? Mobil
     {
-        get => this.mobilFile?.GetNode(ref this.mobil) ?? this.mobil;
-        set => this.mobil = value;
+        get => mobilRef.Resolve();
+        set => mobilRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? mobilFile;
-
-    public Components.GbxRefTableFile? MobilFile
-    {
-        get => mobilFile;
-        set => mobilFile = value;
-    }
-
-    public CSceneMobil? GetMobil(GbxReadSettings settings = default, bool exceptions = false) => mobilFile?.GetNode(ref mobil, settings, exceptions) ?? mobil;
 
     private string? name;
     [AppliedWithChunk<Chunk0A014001>]
@@ -59,13 +52,13 @@ public partial class CSceneObjectLink : CMwNod, IClass
         set => this.name = value;
     }
 
-    private CSceneObject? @object;
+    private NodeRef<CSceneObject> objectRef = new();
     [AppliedWithChunk<Chunk0A014001>]
     [AppliedWithChunk<Chunk0A00F000>]
     public CSceneObject? Object
     {
-        get => this.@object;
-        set => this.@object = value;
+        get => objectRef.Resolve();
+        set => objectRef.SetEmbedded(value);
     }
 
     private Iso4 relativeLocation;
@@ -85,12 +78,28 @@ public partial class CSceneObjectLink : CMwNod, IClass
         set => this.mobilTreeId = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneObjectLink owner;
+        internal NodeRefView(CSceneObjectLink owner) => this.owner = owner;
+        public NodeRef<CSceneMobil> Mobil => owner.mobilRef;
+        public NodeRef<CSceneObject> Object => owner.objectRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Mobil", mobilRef);
+        yield return new("Object", objectRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneObjectLink)clone).mobil = context.Clone(this.mobil)!;
+        ((CSceneObjectLink)clone).mobilRef = context.Clone(this.mobilRef)!;
         ((CSceneObjectLink)clone).name = context.Clone(this.name)!;
-        ((CSceneObjectLink)clone).@object = context.Clone(this.@object)!;
+        ((CSceneObjectLink)clone).objectRef = context.Clone(this.objectRef)!;
         ((CSceneObjectLink)clone).relativeLocation = context.Clone(this.relativeLocation)!;
         ((CSceneObjectLink)clone).mobilTreeId = context.Clone(this.mobilTreeId)!;
     }
@@ -113,7 +122,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
         public override void ReadWrite(CSceneObjectLink n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneObject>(ref n.@object);
+            rw.NodeRef(n.objectRef);
             rw.Iso4(ref n.relativeLocation);
             rw.Boolean(ref U01);
         }
@@ -205,7 +214,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
             if (U01)
             {
-                rw.NodeRef<CSceneMobil>(ref n.mobil, ref n.mobilFile);
+                rw.NodeRef(n.mobilRef);
                 rw.Int32(ref U02);
 
                 if (U02== 2)
@@ -219,7 +228,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
             if (!U01)
             {
-                rw.NodeRef<CSceneObject>(ref n.@object);
+                rw.NodeRef(n.objectRef);
             }
 
             rw.Iso4(ref n.relativeLocation);

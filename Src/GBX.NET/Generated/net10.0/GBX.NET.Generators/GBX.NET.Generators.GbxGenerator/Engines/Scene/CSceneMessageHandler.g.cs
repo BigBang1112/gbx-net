@@ -34,45 +34,45 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A01F000;
 
-    private CMwNod? onClickScript;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod> onClickScriptRef = new();
     [AppliedWithChunk<Chunk0A01F000>]
     public CMwNod? OnClickScript
     {
-        get => this.onClickScriptFile?.GetNode(ref this.onClickScript) ?? this.onClickScript;
-        set => this.onClickScript = value;
-    }
-    private Components.GbxRefTableFile? onClickScriptFile;
-
-    public Components.GbxRefTableFile? OnClickScriptFile
-    {
-        get => onClickScriptFile;
-        set => onClickScriptFile = value;
+        get => onClickScriptRef.Resolve();
+        set => onClickScriptRef.SetEmbedded(value);
     }
 
-    public CMwNod? GetOnClickScript(GbxReadSettings settings = default, bool exceptions = false) => onClickScriptFile?.GetNode(ref onClickScript, settings, exceptions) ?? onClickScript;
-
-    private CMwNod? onContactScript;
+    private NodeRef<CMwNod> onContactScriptRef = new();
     [AppliedWithChunk<Chunk0A01F001>]
     public CMwNod? OnContactScript
     {
-        get => this.onContactScriptFile?.GetNode(ref this.onContactScript) ?? this.onContactScript;
-        set => this.onContactScript = value;
+        get => onContactScriptRef.Resolve();
+        set => onContactScriptRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? onContactScriptFile;
 
-    public Components.GbxRefTableFile? OnContactScriptFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => onContactScriptFile;
-        set => onContactScriptFile = value;
+        private readonly CSceneMessageHandler owner;
+        internal NodeRefView(CSceneMessageHandler owner) => this.owner = owner;
+        public NodeRef<CMwNod> OnClickScript => owner.onClickScriptRef;
+        public NodeRef<CMwNod> OnContactScript => owner.onContactScriptRef;
     }
-
-    public CMwNod? GetOnContactScript(GbxReadSettings settings = default, bool exceptions = false) => onContactScriptFile?.GetNode(ref onContactScript, settings, exceptions) ?? onContactScript;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("OnClickScript", onClickScriptRef);
+        yield return new("OnContactScript", onContactScriptRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneMessageHandler)clone).onClickScript = context.Clone(this.onClickScript)!;
-        ((CSceneMessageHandler)clone).onContactScript = context.Clone(this.onContactScript)!;
+        ((CSceneMessageHandler)clone).onClickScriptRef = context.Clone(this.onClickScriptRef)!;
+        ((CSceneMessageHandler)clone).onContactScriptRef = context.Clone(this.onContactScriptRef)!;
     }
 
     public CSceneMessageHandler()
@@ -93,7 +93,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.onClickScript, ref n.onClickScriptFile);
+            rw.NodeRef(n.onClickScriptRef);
         }
     }
 
@@ -111,7 +111,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.onContactScript, ref n.onContactScriptFile);
+            rw.NodeRef(n.onContactScriptRef);
         }
     }
 

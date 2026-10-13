@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
     [Hexadecimal]
     public static new uint Id => 0x030A6000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030A6000>]
     [AppliedWithChunk<Chunk030A6001>]

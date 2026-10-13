@@ -34,6 +34,8 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x031A8000;
 
+    internal override uint GetId() => Id;
+
     private List<ObjectVisKey>? keys;
     [AppliedWithChunk<Chunk031A8000>]
     public List<ObjectVisKey>? Keys

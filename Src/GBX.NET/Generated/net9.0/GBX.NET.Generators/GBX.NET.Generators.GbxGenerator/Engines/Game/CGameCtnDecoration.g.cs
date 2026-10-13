@@ -34,108 +34,56 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     [Hexadecimal]
     public static new uint Id => 0x03038000;
 
-    private CGameCtnDecorationSize? decoSize;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameCtnDecorationSize> decoSizeRef = new();
     [AppliedWithChunk<Chunk03038011>]
     public CGameCtnDecorationSize? DecoSize
     {
-        get => this.decoSizeFile?.GetNode(ref this.decoSize) ?? this.decoSize;
-        set => this.decoSize = value;
-    }
-    private Components.GbxRefTableFile? decoSizeFile;
-
-    public Components.GbxRefTableFile? DecoSizeFile
-    {
-        get => decoSizeFile;
-        set => decoSizeFile = value;
+        get => decoSizeRef.Resolve();
+        set => decoSizeRef.SetEmbedded(value);
     }
 
-    public CGameCtnDecorationSize? GetDecoSize(GbxReadSettings settings = default, bool exceptions = false) => decoSizeFile?.GetNode(ref decoSize, settings, exceptions) ?? decoSize;
-
-    private CGameCtnDecorationAudio? decoAudio;
+    private NodeRef<CGameCtnDecorationAudio> decoAudioRef = new();
     [AppliedWithChunk<Chunk03038012>]
     [AppliedWithChunk<Chunk03038019>]
     public CGameCtnDecorationAudio? DecoAudio
     {
-        get => this.decoAudioFile?.GetNode(ref this.decoAudio) ?? this.decoAudio;
-        set => this.decoAudio = value;
-    }
-    private Components.GbxRefTableFile? decoAudioFile;
-
-    public Components.GbxRefTableFile? DecoAudioFile
-    {
-        get => decoAudioFile;
-        set => decoAudioFile = value;
+        get => decoAudioRef.Resolve();
+        set => decoAudioRef.SetEmbedded(value);
     }
 
-    public CGameCtnDecorationAudio? GetDecoAudio(GbxReadSettings settings = default, bool exceptions = false) => decoAudioFile?.GetNode(ref decoAudio, settings, exceptions) ?? decoAudio;
-
-    private CGameCtnDecorationMood? decoMood;
+    private NodeRef<CGameCtnDecorationMood> decoMoodRef = new();
     [AppliedWithChunk<Chunk03038013>]
     public CGameCtnDecorationMood? DecoMood
     {
-        get => this.decoMoodFile?.GetNode(ref this.decoMood) ?? this.decoMood;
-        set => this.decoMood = value;
-    }
-    private Components.GbxRefTableFile? decoMoodFile;
-
-    public Components.GbxRefTableFile? DecoMoodFile
-    {
-        get => decoMoodFile;
-        set => decoMoodFile = value;
+        get => decoMoodRef.Resolve();
+        set => decoMoodRef.SetEmbedded(value);
     }
 
-    public CGameCtnDecorationMood? GetDecoMood(GbxReadSettings settings = default, bool exceptions = false) => decoMoodFile?.GetNode(ref decoMood, settings, exceptions) ?? decoMood;
-
-    private CPlugDecoratorSolid? decoratorSolidWarp;
+    private NodeRef<CPlugDecoratorSolid> decoratorSolidWarpRef = new();
     [AppliedWithChunk<Chunk03038014>]
     public CPlugDecoratorSolid? DecoratorSolidWarp
     {
-        get => this.decoratorSolidWarpFile?.GetNode(ref this.decoratorSolidWarp) ?? this.decoratorSolidWarp;
-        set => this.decoratorSolidWarp = value;
-    }
-    private Components.GbxRefTableFile? decoratorSolidWarpFile;
-
-    public Components.GbxRefTableFile? DecoratorSolidWarpFile
-    {
-        get => decoratorSolidWarpFile;
-        set => decoratorSolidWarpFile = value;
+        get => decoratorSolidWarpRef.Resolve();
+        set => decoratorSolidWarpRef.SetEmbedded(value);
     }
 
-    public CPlugDecoratorSolid? GetDecoratorSolidWarp(GbxReadSettings settings = default, bool exceptions = false) => decoratorSolidWarpFile?.GetNode(ref decoratorSolidWarp, settings, exceptions) ?? decoratorSolidWarp;
-
-    private CGameCtnDecorationTerrainModifier? terrainModifierCovered;
+    private NodeRef<CGameCtnDecorationTerrainModifier> terrainModifierCoveredRef = new();
     [AppliedWithChunk<Chunk03038015>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierCovered
     {
-        get => this.terrainModifierCoveredFile?.GetNode(ref this.terrainModifierCovered) ?? this.terrainModifierCovered;
-        set => this.terrainModifierCovered = value;
-    }
-    private Components.GbxRefTableFile? terrainModifierCoveredFile;
-
-    public Components.GbxRefTableFile? TerrainModifierCoveredFile
-    {
-        get => terrainModifierCoveredFile;
-        set => terrainModifierCoveredFile = value;
+        get => terrainModifierCoveredRef.Resolve();
+        set => terrainModifierCoveredRef.SetEmbedded(value);
     }
 
-    public CGameCtnDecorationTerrainModifier? GetTerrainModifierCovered(GbxReadSettings settings = default, bool exceptions = false) => terrainModifierCoveredFile?.GetNode(ref terrainModifierCovered, settings, exceptions) ?? terrainModifierCovered;
-
-    private CGameCtnDecorationTerrainModifier? terrainModifierBase;
+    private NodeRef<CGameCtnDecorationTerrainModifier> terrainModifierBaseRef = new();
     [AppliedWithChunk<Chunk03038016>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierBase
     {
-        get => this.terrainModifierBaseFile?.GetNode(ref this.terrainModifierBase) ?? this.terrainModifierBase;
-        set => this.terrainModifierBase = value;
+        get => terrainModifierBaseRef.Resolve();
+        set => terrainModifierBaseRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? terrainModifierBaseFile;
-
-    public Components.GbxRefTableFile? TerrainModifierBaseFile
-    {
-        get => terrainModifierBaseFile;
-        set => terrainModifierBaseFile = value;
-    }
-
-    public CGameCtnDecorationTerrainModifier? GetTerrainModifierBase(GbxReadSettings settings = default, bool exceptions = false) => terrainModifierBaseFile?.GetNode(ref terrainModifierBase, settings, exceptions) ?? terrainModifierBase;
 
     private string? decorationZoneFrontierId;
     [AppliedWithChunk<Chunk03038017>]
@@ -153,22 +101,13 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         set => this.isWaterOutsidePlayField = value;
     }
 
-    private CPlugGameSkin? vehicleFxSkin;
+    private NodeRef<CPlugGameSkin> vehicleFxSkinRef = new();
     [AppliedWithChunk<Chunk03038018>]
     public CPlugGameSkin? VehicleFxSkin
     {
-        get => this.vehicleFxSkinFile?.GetNode(ref this.vehicleFxSkin) ?? this.vehicleFxSkin;
-        set => this.vehicleFxSkin = value;
+        get => vehicleFxSkinRef.Resolve();
+        set => vehicleFxSkinRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? vehicleFxSkinFile;
-
-    public Components.GbxRefTableFile? VehicleFxSkinFile
-    {
-        get => vehicleFxSkinFile;
-        set => vehicleFxSkinFile = value;
-    }
-
-    public CPlugGameSkin? GetVehicleFxSkin(GbxReadSettings settings = default, bool exceptions = false) => vehicleFxSkinFile?.GetNode(ref vehicleFxSkin, settings, exceptions) ?? vehicleFxSkin;
 
     private string? vehicleFxFolder;
     [AppliedWithChunk<Chunk03038018>]
@@ -178,85 +117,96 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         set => this.vehicleFxFolder = value;
     }
 
-    private CPlugSound? decoAudioAmbient;
+    private NodeRef<CPlugSound> decoAudioAmbientRef = new();
     [AppliedWithChunk<Chunk03038019>(1)]
     public CPlugSound? DecoAudioAmbient
     {
-        get => this.decoAudioAmbientFile?.GetNode(ref this.decoAudioAmbient) ?? this.decoAudioAmbient;
-        set => this.decoAudioAmbient = value;
-    }
-    private Components.GbxRefTableFile? decoAudioAmbientFile;
-
-    public Components.GbxRefTableFile? DecoAudioAmbientFile
-    {
-        get => decoAudioAmbientFile;
-        set => decoAudioAmbientFile = value;
+        get => decoAudioAmbientRef.Resolve();
+        set => decoAudioAmbientRef.SetEmbedded(value);
     }
 
-    public CPlugSound? GetDecoAudioAmbient(GbxReadSettings settings = default, bool exceptions = false) => decoAudioAmbientFile?.GetNode(ref decoAudioAmbient, settings, exceptions) ?? decoAudioAmbient;
-
-    private CGameCtnDecorationMaterialModifiers? decoMaterialModifiers;
+    private NodeRef<CGameCtnDecorationMaterialModifiers> decoMaterialModifiersRef = new();
     [AppliedWithChunk<Chunk0303801A>]
     public CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers
     {
-        get => this.decoMaterialModifiers;
-        set => this.decoMaterialModifiers = value;
+        get => decoMaterialModifiersRef.Resolve();
+        set => decoMaterialModifiersRef.SetEmbedded(value);
     }
 
-    private CGameCtnChallenge? decoMap;
+    private NodeRef<CGameCtnChallenge> decoMapRef = new();
     [AppliedWithChunk<Chunk0303801B>]
     public CGameCtnChallenge? DecoMap
     {
-        get => this.decoMapFile?.GetNode(ref this.decoMap) ?? this.decoMap;
-        set => this.decoMap = value;
-    }
-    private Components.GbxRefTableFile? decoMapFile;
-
-    public Components.GbxRefTableFile? DecoMapFile
-    {
-        get => decoMapFile;
-        set => decoMapFile = value;
+        get => decoMapRef.Resolve();
+        set => decoMapRef.SetEmbedded(value);
     }
 
-    public CGameCtnChallenge? GetDecoMap(GbxReadSettings settings = default, bool exceptions = false) => decoMapFile?.GetNode(ref decoMap, settings, exceptions) ?? decoMap;
-
-    private CMwNod? decoMapLightMap;
+    private NodeRef<CMwNod> decoMapLightMapRef = new();
     /// <summary>
     /// Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
     /// </summary>
     [AppliedWithChunk<Chunk0303801B>(1)]
     public CMwNod? DecoMapLightMap
     {
-        get => this.decoMapLightMapFile?.GetNode(ref this.decoMapLightMap) ?? this.decoMapLightMap;
-        set => this.decoMapLightMap = value;
+        get => decoMapLightMapRef.Resolve();
+        set => decoMapLightMapRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? decoMapLightMapFile;
 
-    public Components.GbxRefTableFile? DecoMapLightMapFile
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
     {
-        get => decoMapLightMapFile;
-        set => decoMapLightMapFile = value;
+        private readonly CGameCtnDecoration owner;
+        internal NodeRefView(CGameCtnDecoration owner) => this.owner = owner;
+        public NodeRef<CGameCtnDecorationSize> DecoSize => owner.decoSizeRef;
+        public NodeRef<CGameCtnDecorationAudio> DecoAudio => owner.decoAudioRef;
+        public NodeRef<CGameCtnDecorationMood> DecoMood => owner.decoMoodRef;
+        public NodeRef<CPlugDecoratorSolid> DecoratorSolidWarp => owner.decoratorSolidWarpRef;
+        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierCovered => owner.terrainModifierCoveredRef;
+        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierBase => owner.terrainModifierBaseRef;
+        public NodeRef<CPlugGameSkin> VehicleFxSkin => owner.vehicleFxSkinRef;
+        public NodeRef<CPlugSound> DecoAudioAmbient => owner.decoAudioAmbientRef;
+        public NodeRef<CGameCtnDecorationMaterialModifiers> DecoMaterialModifiers => owner.decoMaterialModifiersRef;
+        public NodeRef<CGameCtnChallenge> DecoMap => owner.decoMapRef;
+        public NodeRef<CMwNod> DecoMapLightMap => owner.decoMapLightMapRef;
+        public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
+        public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
+        public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
+        public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
     }
-
-    public CMwNod? GetDecoMapLightMap(GbxReadSettings settings = default, bool exceptions = false) => decoMapLightMapFile?.GetNode(ref decoMapLightMap, settings, exceptions) ?? decoMapLightMap;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DecoSize", decoSizeRef);
+        yield return new("DecoAudio", decoAudioRef);
+        yield return new("DecoMood", decoMoodRef);
+        yield return new("DecoratorSolidWarp", decoratorSolidWarpRef);
+        yield return new("TerrainModifierCovered", terrainModifierCoveredRef);
+        yield return new("TerrainModifierBase", terrainModifierBaseRef);
+        yield return new("VehicleFxSkin", vehicleFxSkinRef);
+        yield return new("DecoAudioAmbient", decoAudioAmbientRef);
+        yield return new("DecoMaterialModifiers", decoMaterialModifiersRef);
+        yield return new("DecoMap", decoMapRef);
+        yield return new("DecoMapLightMap", decoMapLightMapRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnDecoration)clone).decoSize = context.Clone(this.decoSize)!;
-        ((CGameCtnDecoration)clone).decoAudio = context.Clone(this.decoAudio)!;
-        ((CGameCtnDecoration)clone).decoMood = context.Clone(this.decoMood)!;
-        ((CGameCtnDecoration)clone).decoratorSolidWarp = context.Clone(this.decoratorSolidWarp)!;
-        ((CGameCtnDecoration)clone).terrainModifierCovered = context.Clone(this.terrainModifierCovered)!;
-        ((CGameCtnDecoration)clone).terrainModifierBase = context.Clone(this.terrainModifierBase)!;
+        ((CGameCtnDecoration)clone).decoSizeRef = context.Clone(this.decoSizeRef)!;
+        ((CGameCtnDecoration)clone).decoAudioRef = context.Clone(this.decoAudioRef)!;
+        ((CGameCtnDecoration)clone).decoMoodRef = context.Clone(this.decoMoodRef)!;
+        ((CGameCtnDecoration)clone).decoratorSolidWarpRef = context.Clone(this.decoratorSolidWarpRef)!;
+        ((CGameCtnDecoration)clone).terrainModifierCoveredRef = context.Clone(this.terrainModifierCoveredRef)!;
+        ((CGameCtnDecoration)clone).terrainModifierBaseRef = context.Clone(this.terrainModifierBaseRef)!;
         ((CGameCtnDecoration)clone).decorationZoneFrontierId = context.Clone(this.decorationZoneFrontierId)!;
         ((CGameCtnDecoration)clone).isWaterOutsidePlayField = context.Clone(this.isWaterOutsidePlayField)!;
-        ((CGameCtnDecoration)clone).vehicleFxSkin = context.Clone(this.vehicleFxSkin)!;
+        ((CGameCtnDecoration)clone).vehicleFxSkinRef = context.Clone(this.vehicleFxSkinRef)!;
         ((CGameCtnDecoration)clone).vehicleFxFolder = context.Clone(this.vehicleFxFolder)!;
-        ((CGameCtnDecoration)clone).decoAudioAmbient = context.Clone(this.decoAudioAmbient)!;
-        ((CGameCtnDecoration)clone).decoMaterialModifiers = context.Clone(this.decoMaterialModifiers)!;
-        ((CGameCtnDecoration)clone).decoMap = context.Clone(this.decoMap)!;
-        ((CGameCtnDecoration)clone).decoMapLightMap = context.Clone(this.decoMapLightMap)!;
+        ((CGameCtnDecoration)clone).decoAudioAmbientRef = context.Clone(this.decoAudioAmbientRef)!;
+        ((CGameCtnDecoration)clone).decoMaterialModifiersRef = context.Clone(this.decoMaterialModifiersRef)!;
+        ((CGameCtnDecoration)clone).decoMapRef = context.Clone(this.decoMapRef)!;
+        ((CGameCtnDecoration)clone).decoMapLightMapRef = context.Clone(this.decoMapLightMapRef)!;
         ((CGameCtnDecoration)clone).RemapFolder = context.Clone(this.RemapFolder)!;
         ((CGameCtnDecoration)clone).Remapping = context.Clone(this.Remapping)!;
     }
@@ -318,7 +268,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize, ref n.decoSizeFile);
+            rw.NodeRef(n.decoSizeRef);
         }
     }
 
@@ -339,7 +289,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationAudio>(ref n.decoAudio, ref n.decoAudioFile);
+            rw.NodeRef(n.decoAudioRef);
         }
     }
 
@@ -360,7 +310,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood, ref n.decoMoodFile);
+            rw.NodeRef(n.decoMoodRef);
         }
     }
 
@@ -381,7 +331,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugDecoratorSolid>(ref n.decoratorSolidWarp, ref n.decoratorSolidWarpFile);
+            rw.NodeRef(n.decoratorSolidWarpRef);
         }
     }
 
@@ -402,7 +352,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierCovered, ref n.terrainModifierCoveredFile);
+            rw.NodeRef(n.terrainModifierCoveredRef);
         }
     }
 
@@ -423,7 +373,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierBase, ref n.terrainModifierBaseFile);
+            rw.NodeRef(n.terrainModifierBaseRef);
         }
     }
 
@@ -470,7 +420,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugGameSkin>(ref n.vehicleFxSkin, ref n.vehicleFxSkinFile);
+            rw.NodeRef(n.vehicleFxSkinRef);
             rw.String(ref n.vehicleFxFolder);
         }
     }
@@ -492,11 +442,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnDecorationAudio>(ref n.decoAudio, ref n.decoAudioFile);
+            rw.NodeRef(n.decoAudioRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef<CPlugSound>(ref n.decoAudioAmbient, ref n.decoAudioAmbientFile);
+                rw.NodeRef(n.decoAudioAmbientRef);
             }
         }
     }
@@ -518,7 +468,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnDecorationMaterialModifiers>(ref n.decoMaterialModifiers);
+            rw.NodeRef(n.decoMaterialModifiersRef);
         }
     }
 
@@ -539,11 +489,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnChallenge>(ref n.decoMap, ref n.decoMapFile);
+            rw.NodeRef(n.decoMapRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef<CMwNod>(ref n.decoMapLightMap, ref n.decoMapLightMapFile);
+                rw.NodeRef(n.decoMapLightMapRef);
             }
         }
     }

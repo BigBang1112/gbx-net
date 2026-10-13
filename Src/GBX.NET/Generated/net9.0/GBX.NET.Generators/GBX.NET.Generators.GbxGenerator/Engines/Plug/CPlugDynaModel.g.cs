@@ -34,6 +34,8 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     [Hexadecimal]
     public static new uint Id => 0x0912F000;
 
+    internal override uint GetId() => Id;
+
     public int Version { get; set; } = 4;
 
     private float linearMass = 1;
@@ -92,21 +94,26 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
         set => this.enableSubStepping = value;
     }
 
-    private CPlugDynaWaterModel? waterModel;
+    private NodeRef<CPlugDynaWaterModel> waterModelRef = new();
     public CPlugDynaWaterModel? WaterModel
     {
-        get => this.waterModelFile?.GetNode(ref this.waterModel) ?? this.waterModel;
-        set => this.waterModel = value;
+        get => waterModelRef.Resolve();
+        set => waterModelRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? waterModelFile;
 
-    public Components.GbxRefTableFile? WaterModelFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => waterModelFile;
-        set => waterModelFile = value;
+        private readonly CPlugDynaModel owner;
+        internal NodeRefView(CPlugDynaModel owner) => this.owner = owner;
+        public NodeRef<CPlugDynaWaterModel> WaterModel => owner.waterModelRef;
     }
-
-    public CPlugDynaWaterModel? GetWaterModel(GbxReadSettings settings = default, bool exceptions = false) => waterModelFile?.GetNode(ref waterModel, settings, exceptions) ?? waterModel;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("WaterModel", waterModelRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
@@ -120,7 +127,7 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
         ((CPlugDynaModel)clone).useTMSimulation = context.Clone(this.useTMSimulation)!;
         ((CPlugDynaModel)clone).sleepingMethod = context.Clone(this.sleepingMethod)!;
         ((CPlugDynaModel)clone).enableSubStepping = context.Clone(this.enableSubStepping)!;
-        ((CPlugDynaModel)clone).waterModel = context.Clone(this.waterModel)!;
+        ((CPlugDynaModel)clone).waterModelRef = context.Clone(this.waterModelRef)!;
     }
 
     public CPlugDynaModel()
@@ -177,7 +184,7 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
         if (Version >= 4)
         {
-            rw.NodeRef<CPlugDynaWaterModel>(ref this.waterModel, ref this.waterModelFile);
+            rw.NodeRef(this.waterModelRef);
         }
     }
 

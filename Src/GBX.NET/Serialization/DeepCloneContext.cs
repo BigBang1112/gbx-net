@@ -70,12 +70,12 @@ internal sealed class DeepCloneContext
                 Clone(arrayType.KeyType)!, Clone(arrayType.ValueType)!);
         }
 
-        if (source.GetType().IsValueType || source is Uri || source is Type || source is System.Threading.Tasks.Task)
+        if (source is ValueType || source is Uri || source is Type || source is System.Threading.Tasks.Task)
         {
             return source;
         }
 
-        throw new NotSupportedException($"Deep cloning {source.GetType()} is not supported.");
+        throw new NotSupportedException("Deep cloning this value is not supported. Supply an explicit clone implementation.");
     }
 
     public CMwNod CloneNode(CMwNod source)
@@ -112,13 +112,20 @@ internal sealed class DeepCloneContext
     }
 
     public T[]? CloneArray<T>(T[]? source)
+        => CloneArray(source, item => Clone(item)!);
+
+    public T[]? CloneArray<T>(T[]? source, Func<T, T> cloneElement)
     {
         if (source is null)
         {
             return null;
         }
 
-        return (T[])CloneArrayCore(source);
+        if (clones.TryGetValue(source, out var existing)) return (T[])existing;
+        var clone = new T[source.Length];
+        Register(source, clone);
+        for (var i = 0; i < source.Length; i++) clone[i] = cloneElement(source[i]);
+        return clone;
     }
 
     private Array CloneArrayCore(Array source)
@@ -131,11 +138,7 @@ internal sealed class DeepCloneContext
         var clone = (Array)source.Clone();
         Register(source, clone);
 
-        var elementType = source.GetType().GetElementType();
-        if (elementType?.IsPrimitive != true && elementType?.IsEnum != true && elementType != typeof(string))
-        {
-            CloneArrayElements(source, clone, 0, new int[source.Rank]);
-        }
+        CloneArrayElements(source, clone, 0, new int[source.Rank]);
 
         return clone;
     }
@@ -250,7 +253,7 @@ internal sealed class DeepCloneContext
         return clone;
     }
 
-    private sealed class ReferenceComparer : IEqualityComparer<object>
+    internal sealed class ReferenceComparer : IEqualityComparer<object>
     {
         public static readonly ReferenceComparer Instance = new();
 

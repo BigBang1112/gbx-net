@@ -3,7 +3,7 @@ NPlugTrigger_SWaypoint 0x09178000
 archive
   version
   int<EGameItemWaypointType> Type
-  CPlugSurface TriggerShape (external)
+  CPlugSurface TriggerShape
   bool NoRespawn
 
 enum EGameItemWaypointType

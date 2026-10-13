@@ -5,6 +5,9 @@ public sealed class GbxRefTableResource(GbxRefTable refTable, int flags, bool us
 {
     public int ResourceIndex { get; } = resourceIndex;
 
+    internal override CMwNod? ResolveTarget()
+        => throw new NotSupportedException("External resource resolution is not supported.");
+
     public override string ToString()
     {
         return $"Index: {ResourceIndex}, Flags: {Flags}, UseFile: {UseFile}";

@@ -34,6 +34,8 @@ public partial class CGameUserProfile : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x031CC000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 badgeColor = (1, 0, 0);
     [AppliedWithChunk<Chunk031CC000>]
     public Vec3 BadgeColor
@@ -106,21 +108,21 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => this.contextMapRecordsForProfile = value;
     }
 
-    private CInputBindingsConfig[]? inputBindingsConfigs;
+    private NodeRefList<CInputBindingsConfig>? inputBindingsConfigs;
     [AppliedWithChunk<Chunk031CC007>(0, 0)]
     [AppliedWithChunk<Chunk031CC007>(2)]
-    public CInputBindingsConfig[]? InputBindingsConfigs
+    public NodeRefList<CInputBindingsConfig>? InputBindingsConfigs
     {
-        get => this.inputBindingsConfigs;
-        set => this.inputBindingsConfigs = value;
+        get => inputBindingsConfigs;
+        set => inputBindingsConfigs = value;
     }
 
-    private CInputBindingsConfig? inputBindingsConfig;
+    private NodeRef<CInputBindingsConfig> inputBindingsConfigRef = new();
     [AppliedWithChunk<Chunk031CC007>(1, 1)]
     public CInputBindingsConfig? InputBindingsConfig
     {
-        get => this.inputBindingsConfig;
-        set => this.inputBindingsConfig = value;
+        get => inputBindingsConfigRef.Resolve();
+        set => inputBindingsConfigRef.SetEmbedded(value);
     }
 
     private float rumbleIntensity = 1;
@@ -299,6 +301,32 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => this.shootParamsScreenshot = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameUserProfile owner;
+        internal NodeRefView(CGameUserProfile owner) => this.owner = owner;
+        public InputBindingsConfigsReferenceView InputBindingsConfigs => new(owner);
+        public NodeRef<CInputBindingsConfig> InputBindingsConfig => owner.inputBindingsConfigRef;
+    }
+    public readonly struct InputBindingsConfigsReferenceView
+    {
+        private readonly CGameUserProfile owner;
+        internal InputBindingsConfigsReferenceView(CGameUserProfile owner) => this.owner = owner;
+        public int Count => owner.inputBindingsConfigs?.Count ?? 0;
+        public NodeRef<CInputBindingsConfig> this[int index] => (owner.inputBindingsConfigs ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (inputBindingsConfigs is not null)
+        {
+            for (var i = 0; i < inputBindingsConfigs.Count; i++) yield return new("InputBindingsConfigs" + "[" + i + "]", inputBindingsConfigs.GetReference(i));
+        }
+        yield return new("InputBindingsConfig", inputBindingsConfigRef);
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -311,8 +339,8 @@ public partial class CGameUserProfile : CMwNod, IClass
         ((CGameUserProfile)clone).scriptPersistentTraits = context.Clone(this.scriptPersistentTraits)!;
         ((CGameUserProfile)clone).contextTimes = context.CloneArray(this.contextTimes)!;
         ((CGameUserProfile)clone).contextMapRecordsForProfile = context.CloneArray(this.contextMapRecordsForProfile)!;
-        ((CGameUserProfile)clone).inputBindingsConfigs = context.CloneArray(this.inputBindingsConfigs)!;
-        ((CGameUserProfile)clone).inputBindingsConfig = context.Clone(this.inputBindingsConfig)!;
+        ((CGameUserProfile)clone).inputBindingsConfigs = context.Clone(this.inputBindingsConfigs)!;
+        ((CGameUserProfile)clone).inputBindingsConfigRef = context.Clone(this.inputBindingsConfigRef)!;
         ((CGameUserProfile)clone).rumbleIntensity = context.Clone(this.rumbleIntensity)!;
         ((CGameUserProfile)clone).centerSpringIntensity = context.Clone(this.centerSpringIntensity)!;
         ((CGameUserProfile)clone).mouseLookInvertY = context.Clone(this.mouseLookInvertY)!;
@@ -735,17 +763,17 @@ public partial class CGameUserProfile : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.ArrayNodeRef<CInputBindingsConfig>(ref n.inputBindingsConfigs!);
+                n.inputBindingsConfigs = rw.ListNodeRef<CInputBindingsConfig>(n.inputBindingsConfigs);
             }
 
             if (Version == 1)
             {
-                rw.NodeRef<CInputBindingsConfig>(ref n.inputBindingsConfig);
+                rw.NodeRef(n.inputBindingsConfigRef);
             }
 
             if (Version >= 2)
             {
-                rw.ArrayNodeRef<CInputBindingsConfig>(ref n.inputBindingsConfigs!);
+                n.inputBindingsConfigs = rw.ListNodeRef<CInputBindingsConfig>(n.inputBindingsConfigs);
             }
 
             rw.Single(ref n.rumbleIntensity);

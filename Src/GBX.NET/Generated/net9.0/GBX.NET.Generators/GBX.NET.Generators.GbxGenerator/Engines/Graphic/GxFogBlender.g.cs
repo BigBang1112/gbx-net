@@ -34,6 +34,8 @@ public partial class GxFogBlender : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04008000;
 
+    internal override uint GetId() => Id;
+
     private bool enabled = true;
     [AppliedWithChunk<Chunk04008000>]
     public bool Enabled
@@ -105,11 +107,24 @@ public partial class GxFogBlender : CMwNod, IClass
             set => this.time = value;
         }
 
-        private GxFog? fog;
+        private NodeRef<GxFog> fogRef = new();
         public GxFog? Fog
         {
-            get => this.fog;
-            set => this.fog = value;
+            get => fogRef.Resolve();
+            set => fogRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Key owner;
+            internal NodeRefView(Key owner) => this.owner = owner;
+            public NodeRef<GxFog> Fog => owner.fogRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Fog", fogRef);
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -123,13 +138,13 @@ public partial class GxFogBlender : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Key)clone).time = context.Clone(this.time)!;
-            ((Key)clone).fog = context.Clone(this.fog)!;
+            ((Key)clone).fogRef = context.Clone(this.fogRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.NodeRef<GxFog>(ref this.fog);
+            rw.NodeRef(this.fogRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

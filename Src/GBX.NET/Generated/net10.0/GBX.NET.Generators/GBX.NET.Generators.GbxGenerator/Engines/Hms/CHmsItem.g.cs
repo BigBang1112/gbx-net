@@ -34,6 +34,8 @@ public partial class CHmsItem : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06003000;
 
+    internal override uint GetId() => Id;
+
     private bool collisionEnabledLegacy;
     /// <summary>
     /// Obsolete collision-group switch, used by TMF
@@ -83,23 +85,23 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.dynamicTypeLegacy = value;
     }
 
-    private CPlugSolid? solid;
+    private NodeRef<CPlugSolid> solidRef = new();
     [AppliedWithChunk<Chunk06003001>]
     public CPlugSolid? Solid
     {
-        get => this.solid;
-        set => this.solid = value;
+        get => solidRef.Resolve();
+        set => solidRef.SetEmbedded(value);
     }
 
-    private CHmsPortal[] portals = default!;
+    private NodeRefList<CHmsPortal>? portals = new();
     /// <summary>
     /// Native readers discard these portals after loading
     /// </summary>
     [AppliedWithChunk<Chunk06003002>]
-    public CHmsPortal[] Portals
+    public NodeRefList<CHmsPortal>? Portals
     {
-        get => this.portals;
-        set => this.portals = value;
+        get => portals;
+        set => portals = value;
     }
 
     private bool castsShadowLegacy;
@@ -190,14 +192,40 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.flagsItem = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CHmsItem owner;
+        internal NodeRefView(CHmsItem owner) => this.owner = owner;
+        public NodeRef<CPlugSolid> Solid => owner.solidRef;
+        public PortalsReferenceView Portals => new(owner);
+    }
+    public readonly struct PortalsReferenceView
+    {
+        private readonly CHmsItem owner;
+        internal PortalsReferenceView(CHmsItem owner) => this.owner = owner;
+        public int Count => owner.portals?.Count ?? 0;
+        public NodeRef<CHmsPortal> this[int index] => (owner.portals ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Solid", solidRef);
+        if (portals is not null)
+        {
+            for (var i = 0; i < portals.Count; i++) yield return new("Portals" + "[" + i + "]", portals.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CHmsItem)clone).collisionEnabledLegacy = context.Clone(this.collisionEnabledLegacy)!;
         ((CHmsItem)clone).contactInterestLegacy = context.Clone(this.contactInterestLegacy)!;
         ((CHmsItem)clone).dynamicTypeLegacy = context.Clone(this.dynamicTypeLegacy)!;
-        ((CHmsItem)clone).solid = context.Clone(this.solid)!;
-        ((CHmsItem)clone).portals = context.CloneArray(this.portals)!;
+        ((CHmsItem)clone).solidRef = context.Clone(this.solidRef)!;
+        ((CHmsItem)clone).portals = context.Clone(this.portals)!;
         ((CHmsItem)clone).castsShadowLegacy = context.Clone(this.castsShadowLegacy)!;
         ((CHmsItem)clone).countShadowTexCastedLegacy = context.Clone(this.countShadowTexCastedLegacy)!;
         ((CHmsItem)clone).isBackgroundLegacy = context.Clone(this.isBackgroundLegacy)!;
@@ -929,7 +957,7 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSolid>(ref n.solid);
+            rw.NodeRef(n.solidRef);
         }
     }
 
@@ -945,7 +973,7 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CHmsPortal>(ref n.portals!);
+            n.portals = rw.ListNodeRef<CHmsPortal>(n.portals);
         }
     }
 

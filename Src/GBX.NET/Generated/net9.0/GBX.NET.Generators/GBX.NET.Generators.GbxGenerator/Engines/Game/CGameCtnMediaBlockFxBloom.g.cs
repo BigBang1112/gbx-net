@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, IClass, C
     [Hexadecimal]
     public static new uint Id => 0x03083000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03083000>]
     public TimeSingle Start

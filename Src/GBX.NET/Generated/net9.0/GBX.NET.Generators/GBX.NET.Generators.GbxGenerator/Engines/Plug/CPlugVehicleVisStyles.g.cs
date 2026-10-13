@@ -34,12 +34,14 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09146000;
 
-    private CPlugVehicleVisStyleRandomGroup[]? randomGroups;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugVehicleVisStyleRandomGroup>? randomGroups;
     [AppliedWithChunk<Chunk09146000>]
-    public CPlugVehicleVisStyleRandomGroup[]? RandomGroups
+    public NodeRefList<CPlugVehicleVisStyleRandomGroup>? RandomGroups
     {
-        get => this.randomGroups;
-        set => this.randomGroups = value;
+        get => randomGroups;
+        set => randomGroups = value;
     }
 
     private string? unwantedTrafficVehiclesMatchName;
@@ -50,10 +52,34 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
         set => this.unwantedTrafficVehiclesMatchName = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleVisStyles owner;
+        internal NodeRefView(CPlugVehicleVisStyles owner) => this.owner = owner;
+        public RandomGroupsReferenceView RandomGroups => new(owner);
+    }
+    public readonly struct RandomGroupsReferenceView
+    {
+        private readonly CPlugVehicleVisStyles owner;
+        internal RandomGroupsReferenceView(CPlugVehicleVisStyles owner) => this.owner = owner;
+        public int Count => owner.randomGroups?.Count ?? 0;
+        public NodeRef<CPlugVehicleVisStyleRandomGroup> this[int index] => (owner.randomGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (randomGroups is not null)
+        {
+            for (var i = 0; i < randomGroups.Count; i++) yield return new("RandomGroups" + "[" + i + "]", randomGroups.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVehicleVisStyles)clone).randomGroups = context.CloneArray(this.randomGroups)!;
+        ((CPlugVehicleVisStyles)clone).randomGroups = context.Clone(this.randomGroups)!;
         ((CPlugVehicleVisStyles)clone).unwantedTrafficVehiclesMatchName = context.Clone(this.unwantedTrafficVehiclesMatchName)!;
     }
 
@@ -93,7 +119,7 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisStyles n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugVehicleVisStyleRandomGroup>(ref n.randomGroups!);
+            n.randomGroups = rw.ListNodeRef<CPlugVehicleVisStyleRandomGroup>(n.randomGroups);
 
             if (Version >= 1)
             {

@@ -34,6 +34,8 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0B013000;
 
+    internal override uint GetId() => Id;
+
     private Int2 screenSizeFS;
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]

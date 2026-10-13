@@ -34,12 +34,14 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A081000;
 
-    private CSceneVehicleCarMarksModelSub[]? models;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CSceneVehicleCarMarksModelSub>? models;
     [AppliedWithChunk<Chunk0A081000>]
-    public CSceneVehicleCarMarksModelSub[]? Models
+    public NodeRefList<CSceneVehicleCarMarksModelSub>? Models
     {
-        get => this.models;
-        set => this.models = value;
+        get => models;
+        set => models = value;
     }
 
     private bool disabled;
@@ -50,10 +52,34 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
         set => this.disabled = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneVehicleCarMarksModel owner;
+        internal NodeRefView(CSceneVehicleCarMarksModel owner) => this.owner = owner;
+        public ModelsReferenceView Models => new(owner);
+    }
+    public readonly struct ModelsReferenceView
+    {
+        private readonly CSceneVehicleCarMarksModel owner;
+        internal ModelsReferenceView(CSceneVehicleCarMarksModel owner) => this.owner = owner;
+        public int Count => owner.models?.Count ?? 0;
+        public NodeRef<CSceneVehicleCarMarksModelSub> this[int index] => (owner.models ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (models is not null)
+        {
+            for (var i = 0; i < models.Count; i++) yield return new("Models" + "[" + i + "]", models.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneVehicleCarMarksModel)clone).models = context.CloneArray(this.models)!;
+        ((CSceneVehicleCarMarksModel)clone).models = context.Clone(this.models)!;
         ((CSceneVehicleCarMarksModel)clone).disabled = context.Clone(this.disabled)!;
     }
 
@@ -78,7 +104,7 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
 
         public override void ReadWrite(CSceneVehicleCarMarksModel n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CSceneVehicleCarMarksModelSub>(ref n.models!);
+            n.models = rw.ListNodeRef_deprec<CSceneVehicleCarMarksModelSub>(n.models);
         }
     }
 

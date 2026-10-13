@@ -34,6 +34,8 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
     [Hexadecimal]
     public static new uint Id => 0x0915F000;
 
+    internal override uint GetId() => Id;
+
     private float gravity;
     public float Gravity
     {
@@ -97,21 +99,26 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u09 = value;
     }
 
-    private CPlugSurface? surface;
+    private NodeRef<CPlugSurface> surfaceRef = new();
     public CPlugSurface? Surface
     {
-        get => this.surfaceFile?.GetNode(ref this.surface) ?? this.surface;
-        set => this.surface = value;
+        get => surfaceRef.Resolve();
+        set => surfaceRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? surfaceFile;
 
-    public Components.GbxRefTableFile? SurfaceFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => surfaceFile;
-        set => surfaceFile = value;
+        private readonly CPlugDynaWaterModel owner;
+        internal NodeRefView(CPlugDynaWaterModel owner) => this.owner = owner;
+        public NodeRef<CPlugSurface> Surface => owner.surfaceRef;
     }
-
-    public CPlugSurface? GetSurface(GbxReadSettings settings = default, bool exceptions = false) => surfaceFile?.GetNode(ref surface, settings, exceptions) ?? surface;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Surface", surfaceRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
@@ -125,7 +132,7 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         ((CPlugDynaWaterModel)clone).u07 = context.Clone(this.u07)!;
         ((CPlugDynaWaterModel)clone).u08 = context.Clone(this.u08)!;
         ((CPlugDynaWaterModel)clone).u09 = context.Clone(this.u09)!;
-        ((CPlugDynaWaterModel)clone).surface = context.Clone(this.surface)!;
+        ((CPlugDynaWaterModel)clone).surfaceRef = context.Clone(this.surfaceRef)!;
     }
 
     public virtual void Read(GbxReader r, int v = 0)

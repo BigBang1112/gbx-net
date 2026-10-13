@@ -34,6 +34,8 @@ public partial class GxLight : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04001000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 color;
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]

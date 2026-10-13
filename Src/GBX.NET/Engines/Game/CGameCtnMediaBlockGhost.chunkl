@@ -28,7 +28,7 @@ CGameCtnMediaBlockGhost 0x030E5000
       bool ForceHue
   v5+
     float TrailIntensity
- 
+
 archive Key (inherits: IKey)
   float Time (time)
   v3-

@@ -34,6 +34,8 @@ public partial class CFuncKeys : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x05002000;
 
+    internal override uint GetId() => Id;
+
     private float[]? xs;
     [AppliedWithChunk<Chunk05002001>]
     public float[]? Xs

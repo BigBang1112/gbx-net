@@ -34,6 +34,8 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     [Hexadecimal]
     public static new uint Id => 0x09134000;
 
+    internal override uint GetId() => Id;
+
     private int flagsVersion;
     [AppliedWithChunk<Chunk09134000>]
     public int FlagsVersion
@@ -42,19 +44,33 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
         set => this.flagsVersion = value;
     }
 
-    private CPlugSkel? skel;
+    private NodeRef<CPlugSkel> skelRef = new();
     [AppliedWithChunk<Chunk09134000>]
     public CPlugSkel? Skel
     {
-        get => this.skel;
-        set => this.skel = value;
+        get => skelRef.Resolve();
+        set => skelRef.SetEmbedded(value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAnimSkelEdition owner;
+        internal NodeRefView(CPlugAnimSkelEdition owner) => this.owner = owner;
+        public NodeRef<CPlugSkel> Skel => owner.skelRef;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Skel", skelRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugAnimSkelEdition)clone).flagsVersion = context.Clone(this.flagsVersion)!;
-        ((CPlugAnimSkelEdition)clone).skel = context.Clone(this.skel)!;
+        ((CPlugAnimSkelEdition)clone).skelRef = context.Clone(this.skelRef)!;
         ((CPlugAnimSkelEdition)clone).legacyData = context.Clone(this.legacyData)!;
         ((CPlugAnimSkelEdition)clone).flags = context.Clone(this.flags)!;
         ((CPlugAnimSkelEdition)clone).duration = context.Clone(this.duration)!;

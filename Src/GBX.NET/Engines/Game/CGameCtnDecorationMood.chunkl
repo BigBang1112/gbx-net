@@ -9,7 +9,7 @@ CGameCtnDecorationMood 0x0303A000
 
 0x001 [TMSX, TMNESWC, VSK5, TMF]
   float RemappedStartDayTime
-  CPlugGameSkin? Remapping (external)
+  CPlugGameSkin? Remapping
   string? RemapFolder
 
 0x002 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
@@ -23,10 +23,10 @@ CGameCtnDecorationMood 0x0303A000
   bool SolidLightAreSkinned
 
 0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CHmsLightMap HmsLightMap (external)
+  CHmsLightMap HmsLightMap
 
 0x005 [TMF, MP3, TMT, MP4, TM2020]
-  CHmsAmbientOcc HmsAmbientOcc (external)
+  CHmsAmbientOcc HmsAmbientOcc
 
 0x006
   float SunMoonIntensity
@@ -51,22 +51,22 @@ CGameCtnDecorationMood 0x0303A000
   v1+
     bool WaterReflectFakeCube
     v2+
-      CPlugFxHdrScales_Tech3 FxHdrScalesT3 (external)
+      CPlugFxHdrScales_Tech3 FxHdrScalesT3
       v3+
-        CPlugMoodBlender MoodBlender (external)
+        CPlugMoodBlender MoodBlender
 
 0x012 [MP3, TMT, MP4, TM2020]
   version
   float RemappedStartDayTime
   bool IsNight
-  CPlugGameSkin Remapping (external)
+  CPlugGameSkin Remapping
   string RemapFolder
   bool EnableStars
-  CFuncCloudsSolids CloudsSolids (external)
-  CPlugFxLightning FxLightning (external)
-  CPlugFxWindOnDecal FxWindOnDecal (external)
+  CFuncCloudsSolids CloudsSolids
+  CPlugFxLightning FxLightning
+  CPlugFxWindOnDecal FxWindOnDecal
   v1+
-    CPlugFxWindOnTreeSprite FxWindOnTreeSprite (external)
+    CPlugFxWindOnTreeSprite FxWindOnTreeSprite
 
 0x013 [MP3, TMT, MP4, TM2020]
   version

@@ -37,6 +37,8 @@ public partial class CGamePlayerScore : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0308D000;
 
+    internal override uint GetId() => Id;
+
     private string? playerName;
     [AppliedWithChunk<Chunk0308D000>]
     [AppliedWithChunk<Chunk0308D001>]
@@ -119,14 +121,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.campaignRecordsStates = value;
     }
 
-    private CGamePlayerOfficialScores? playerOfficialScores;
+    private NodeRef<CGamePlayerOfficialScores> playerOfficialScoresRef = new();
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
     public CGamePlayerOfficialScores? PlayerOfficialScores
     {
-        get => this.playerOfficialScores;
-        set => this.playerOfficialScores = value;
+        get => playerOfficialScoresRef.Resolve();
+        set => playerOfficialScoresRef.SetEmbedded(value);
     }
 
     private TrainingMedalsScore[]? trainingMedalsScores;
@@ -139,14 +141,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.trainingMedalsScores = value;
     }
 
-    private CGameCampaignPlayerScores[]? campaignPlayerScores;
+    private NodeRefList<CGameCampaignPlayerScores>? campaignPlayerScores;
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
-    public CGameCampaignPlayerScores[]? CampaignPlayerScores
+    public NodeRefList<CGameCampaignPlayerScores>? CampaignPlayerScores
     {
-        get => this.campaignPlayerScores;
-        set => this.campaignPlayerScores = value;
+        get => campaignPlayerScores;
+        set => campaignPlayerScores = value;
     }
 
     private LadderMatchResult[]? ladderMatchResults;
@@ -438,6 +440,32 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.submittedFinishCount = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerScore owner;
+        internal NodeRefView(CGamePlayerScore owner) => this.owner = owner;
+        public NodeRef<CGamePlayerOfficialScores> PlayerOfficialScores => owner.playerOfficialScoresRef;
+        public CampaignPlayerScoresReferenceView CampaignPlayerScores => new(owner);
+    }
+    public readonly struct CampaignPlayerScoresReferenceView
+    {
+        private readonly CGamePlayerScore owner;
+        internal CampaignPlayerScoresReferenceView(CGamePlayerScore owner) => this.owner = owner;
+        public int Count => owner.campaignPlayerScores?.Count ?? 0;
+        public NodeRef<CGameCampaignPlayerScores> this[int index] => (owner.campaignPlayerScores ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlayerOfficialScores", playerOfficialScoresRef);
+        if (campaignPlayerScores is not null)
+        {
+            for (var i = 0; i < campaignPlayerScores.Count; i++) yield return new("CampaignPlayerScores" + "[" + i + "]", campaignPlayerScores.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -449,9 +477,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         ((CGamePlayerScore)clone).survivalScores = context.CloneArray(this.survivalScores)!;
         ((CGamePlayerScore)clone).survivalScoresVersion = context.Clone(this.survivalScoresVersion)!;
         ((CGamePlayerScore)clone).campaignRecordsStates = context.CloneArray(this.campaignRecordsStates)!;
-        ((CGamePlayerScore)clone).playerOfficialScores = context.Clone(this.playerOfficialScores)!;
+        ((CGamePlayerScore)clone).playerOfficialScoresRef = context.Clone(this.playerOfficialScoresRef)!;
         ((CGamePlayerScore)clone).trainingMedalsScores = context.CloneArray(this.trainingMedalsScores)!;
-        ((CGamePlayerScore)clone).campaignPlayerScores = context.CloneArray(this.campaignPlayerScores)!;
+        ((CGamePlayerScore)clone).campaignPlayerScores = context.Clone(this.campaignPlayerScores)!;
         ((CGamePlayerScore)clone).ladderMatchResults = context.CloneArray(this.ladderMatchResults)!;
         ((CGamePlayerScore)clone).campaignRecordsStateVersion = context.Clone(this.campaignRecordsStateVersion)!;
         ((CGamePlayerScore)clone).soloRaceTimeSeconds = context.Clone(this.soloRaceTimeSeconds)!;
@@ -702,9 +730,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGamePlayerOfficialScores>(ref n.playerOfficialScores);
+            rw.NodeRef(n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
-            rw.ArrayNodeRef_deprec<CGameCampaignPlayerScores>(ref n.campaignPlayerScores!);
+            n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
             U01 = rw.SystemTime(U01);
         }
     }
@@ -741,9 +769,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGamePlayerOfficialScores>(ref n.playerOfficialScores);
+            rw.NodeRef(n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
-            rw.ArrayNodeRef_deprec<CGameCampaignPlayerScores>(ref n.campaignPlayerScores!);
+            n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
             U01 = rw.SystemTime(U01);
             U02 = rw.SystemTime(U02);
         }
@@ -763,9 +791,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGamePlayerOfficialScores>(ref n.playerOfficialScores);
+            rw.NodeRef(n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
-            rw.ArrayNodeRef_deprec<CGameCampaignPlayerScores>(ref n.campaignPlayerScores!);
+            n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
         }
     }
 
@@ -1308,39 +1336,39 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public int Version { get; set; } = 5;
 
-        private CMwNod? u01;
+        private NodeRef<CMwNod> u01Ref = new();
         public CMwNod? U01
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => u01Ref.Resolve();
+            set => u01Ref.SetEmbedded(value);
         }
 
-        private CMwNod? u02;
+        private NodeRef<CMwNod> u02Ref = new();
         public CMwNod? U02
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => u02Ref.Resolve();
+            set => u02Ref.SetEmbedded(value);
         }
 
-        private CMwNod? u03;
+        private NodeRef<CMwNod> u03Ref = new();
         public CMwNod? U03
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => u03Ref.Resolve();
+            set => u03Ref.SetEmbedded(value);
         }
 
-        private CMwNod? u04;
+        private NodeRef<CMwNod> u04Ref = new();
         public CMwNod? U04
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => u04Ref.Resolve();
+            set => u04Ref.SetEmbedded(value);
         }
 
-        private CGameHighScore[]? u05;
-        public CGameHighScore[]? U05
+        private NodeRefList<CGameHighScore>? u05;
+        public NodeRefList<CGameHighScore>? U05
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => u05;
+            set => u05 = value;
         }
 
         private int u06;
@@ -1364,18 +1392,18 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.u08 = value;
         }
 
-        private CMwNod[]? u09;
-        public CMwNod[]? U09
+        private NodeRefList<CMwNod>? u09;
+        public NodeRefList<CMwNod>? U09
         {
-            get => this.u09;
-            set => this.u09 = value;
+            get => u09;
+            set => u09 = value;
         }
 
-        private CGameHighScore[]? u10;
-        public CGameHighScore[]? U10
+        private NodeRefList<CGameHighScore>? u10;
+        public NodeRefList<CGameHighScore>? U10
         {
-            get => this.u10;
-            set => this.u10 = value;
+            get => u10;
+            set => u10 = value;
         }
 
         private string? u11;
@@ -1383,6 +1411,61 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             get => this.u11;
             set => this.u11 = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly DeprecatedChallengeLeagueScore owner;
+            internal NodeRefView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => owner.u01Ref;
+            public NodeRef<CMwNod> U02 => owner.u02Ref;
+            public NodeRef<CMwNod> U03 => owner.u03Ref;
+            public NodeRef<CMwNod> U04 => owner.u04Ref;
+            public U05ReferenceView U05 => new(owner);
+            public U09ReferenceView U09 => new(owner);
+            public U10ReferenceView U10 => new(owner);
+        }
+        public readonly struct U05ReferenceView
+        {
+            private readonly DeprecatedChallengeLeagueScore owner;
+            internal U05ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
+            public int Count => owner.u05?.Count ?? 0;
+            public NodeRef<CGameHighScore> this[int index] => (owner.u05 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U09ReferenceView
+        {
+            private readonly DeprecatedChallengeLeagueScore owner;
+            internal U09ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
+            public int Count => owner.u09?.Count ?? 0;
+            public NodeRef<CMwNod> this[int index] => (owner.u09 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public readonly struct U10ReferenceView
+        {
+            private readonly DeprecatedChallengeLeagueScore owner;
+            internal U10ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
+            public int Count => owner.u10?.Count ?? 0;
+            public NodeRef<CGameHighScore> this[int index] => (owner.u10 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U01", u01Ref);
+            yield return new("U02", u02Ref);
+            yield return new("U03", u03Ref);
+            yield return new("U04", u04Ref);
+            if (u05 is not null)
+            {
+                for (var i = 0; i < u05.Count; i++) yield return new("U05" + "[" + i + "]", u05.GetReference(i));
+            }
+            if (u09 is not null)
+            {
+                for (var i = 0; i < u09.Count; i++) yield return new("U09" + "[" + i + "]", u09.GetReference(i));
+            }
+            if (u10 is not null)
+            {
+                for (var i = 0; i < u10.Count; i++) yield return new("U10" + "[" + i + "]", u10.GetReference(i));
+            }
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1396,16 +1479,16 @@ public partial class CGamePlayerScore : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((DeprecatedChallengeLeagueScore)clone).Version = context.Clone(this.Version)!;
-            ((DeprecatedChallengeLeagueScore)clone).u01 = context.Clone(this.u01)!;
-            ((DeprecatedChallengeLeagueScore)clone).u02 = context.Clone(this.u02)!;
-            ((DeprecatedChallengeLeagueScore)clone).u03 = context.Clone(this.u03)!;
-            ((DeprecatedChallengeLeagueScore)clone).u04 = context.Clone(this.u04)!;
-            ((DeprecatedChallengeLeagueScore)clone).u05 = context.CloneArray(this.u05)!;
+            ((DeprecatedChallengeLeagueScore)clone).u01Ref = context.Clone(this.u01Ref)!;
+            ((DeprecatedChallengeLeagueScore)clone).u02Ref = context.Clone(this.u02Ref)!;
+            ((DeprecatedChallengeLeagueScore)clone).u03Ref = context.Clone(this.u03Ref)!;
+            ((DeprecatedChallengeLeagueScore)clone).u04Ref = context.Clone(this.u04Ref)!;
+            ((DeprecatedChallengeLeagueScore)clone).u05 = context.Clone(this.u05)!;
             ((DeprecatedChallengeLeagueScore)clone).u06 = context.Clone(this.u06)!;
             ((DeprecatedChallengeLeagueScore)clone).u07 = context.Clone(this.u07)!;
             ((DeprecatedChallengeLeagueScore)clone).u08 = context.Clone(this.u08)!;
-            ((DeprecatedChallengeLeagueScore)clone).u09 = context.CloneArray(this.u09)!;
-            ((DeprecatedChallengeLeagueScore)clone).u10 = context.CloneArray(this.u10)!;
+            ((DeprecatedChallengeLeagueScore)clone).u09 = context.Clone(this.u09)!;
+            ((DeprecatedChallengeLeagueScore)clone).u10 = context.Clone(this.u10)!;
             ((DeprecatedChallengeLeagueScore)clone).u11 = context.Clone(this.u11)!;
         }
 
@@ -1415,15 +1498,15 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.NodeRef<CMwNod>(ref this.u01);
-                rw.NodeRef<CMwNod>(ref this.u02);
+                rw.NodeRef(this.u01Ref);
+                rw.NodeRef(this.u02Ref);
             }
 
             if (Version == 4)
             {
-                rw.NodeRef<CMwNod>(ref this.u03);
-                rw.NodeRef<CMwNod>(ref this.u04);
-                rw.ArrayNodeRef_deprec<CGameHighScore>(ref this.u05!);
+                rw.NodeRef(this.u03Ref);
+                rw.NodeRef(this.u04Ref);
+                this.u05 = rw.ListNodeRef_deprec<CGameHighScore>(this.u05);
             }
 
             if (Version <= 3)
@@ -1434,12 +1517,12 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
                 if (Version <= 1)
                 {
-                    rw.ArrayNodeRef_deprec<CMwNod>(ref this.u09!);
+                    this.u09 = rw.ListNodeRef_deprec<CMwNod>(this.u09);
                 }
 
                 if (Version >= 2)
                 {
-                    rw.ArrayNodeRef_deprec<CGameHighScore>(ref this.u10!);
+                    this.u10 = rw.ListNodeRef_deprec<CGameHighScore>(this.u10);
                 }
 
                 if (Version >= 3)
@@ -1758,11 +1841,24 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.playMode = value;
         }
 
-        private CGamePlayerOfficialScores? score;
+        private NodeRef<CGamePlayerOfficialScores> scoreRef = new();
         public CGamePlayerOfficialScores? Score
         {
-            get => this.score;
-            set => this.score = value;
+            get => scoreRef.Resolve();
+            set => scoreRef.SetEmbedded(value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly TrainingMedalsScore owner;
+            internal NodeRefView(TrainingMedalsScore owner) => this.owner = owner;
+            public NodeRef<CGamePlayerOfficialScores> Score => owner.scoreRef;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Score", scoreRef);
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1777,14 +1873,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             ((TrainingMedalsScore)clone).campaignId = context.Clone(this.campaignId)!;
             ((TrainingMedalsScore)clone).playMode = context.Clone(this.playMode)!;
-            ((TrainingMedalsScore)clone).score = context.Clone(this.score)!;
+            ((TrainingMedalsScore)clone).scoreRef = context.Clone(this.scoreRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.campaignId);
             rw.EnumInt32<CGameCtnChallenge.PlayMode>(ref this.playMode);
-            rw.NodeRef<CGamePlayerOfficialScores>(ref this.score);
+            rw.NodeRef(this.scoreRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

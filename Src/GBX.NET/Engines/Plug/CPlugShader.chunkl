@@ -9,7 +9,7 @@ CPlugShader 0x09002000
   dataulong
 
 0x007 [MP3, TMT, MP4, TM2020] // shader function and passes
-  CFuncShader FuncShader (external)
+  CFuncShader FuncShader
   CPlugShaderPass[] Passes = empty
   CPlugBitmapApply SolidWiredApply
 
@@ -29,29 +29,29 @@ CPlugShader 0x09002000
 0x00C
   datauint
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
 
 0x00D
   dataulong
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
 
 0x00E (base: 0x007) [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   base
-  CPlugShader[] LegacyCustomShaders = empty (external)
+  CPlugShader[] LegacyCustomShaders = empty
 
 0x00F (base: 0x00D)
 
 0x010 [TM10, TMPU]
   dataulong
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
   ushort VisibleIdFlags = 1
 
 0x011
   dataulong
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
   ushort VisibleIdFlags = 1
 
 0x012 (base: 0x011)
@@ -61,13 +61,13 @@ CPlugShader 0x09002000
 0x014 [TMSX]
   dataulong
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
   ushort VisibleIdFlags = 1
 
 0x015 [TMNESWC, VSK5] // requirements and visibility
   dataulong RequirementFlags = 0x0000FFF030039800 [TMF = 0x0000FFF0B003F800, TM2020 = 0x0000FFF00C007800]
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
   ushort VisibleIdFlags = 1
 
 0x016 (base: 0x015) [TMF, MP3]
@@ -88,11 +88,11 @@ CPlugShader 0x09002000
 
 0x01C [MP3, TMT.v1, MP4.v1, TM2020.v1] // GPU shader file
   version
-  CPlugFileText* (external)
+  CPlugFileText*
   if Version == 0
-    CPlugFileGPUV GPU (external)
+    CPlugFileGPUV GPU
   if Version >= 1
-    CPlugFileGPUV* GPU (external)
+    CPlugFileGPUV* GPU
 
 0x01D [MP3, TMT, MP4, TM2020]
   datauint
@@ -111,12 +111,12 @@ CPlugShader 0x09002000
   if Version >= 3
     datauint
   float LightMapQuality
-  CPlugMaterialFx MaterialFx (external)
+  CPlugMaterialFx MaterialFx
   ushort VisibleIdFlags = 1
 
 archive ShaderCustom
-  CPlugShader ExternalShader (external)
-  if ExternalShader == null && ExternalShaderFile == null
+  CPlugShader ExternalShader
+  if ExternalShader == null
     if v < 0
       CPlugShader Shader
     if v >= 0

@@ -34,12 +34,14 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     [Hexadecimal]
     public static new uint Id => 0x0315C000;
 
-    private CGameCtnAutoTerrain[]? autoTerrains;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
     [AppliedWithChunk<Chunk0315C001>]
-    public CGameCtnAutoTerrain[]? AutoTerrains
+    public NodeRefList<CGameCtnAutoTerrain>? AutoTerrains
     {
-        get => this.autoTerrains;
-        set => this.autoTerrains = value;
+        get => autoTerrains;
+        set => autoTerrains = value;
     }
 
     private int autoTerrainHeightOffset;
@@ -58,10 +60,48 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         set => this.autoTerrainPlaceType = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CGameCtnBlockInfoVariantGround owner;
+        internal NodeRefView(CGameCtnBlockInfoVariantGround owner) => this.owner = owner;
+        public AutoTerrainsReferenceView AutoTerrains => new(owner);
+        public CGameCtnBlockInfoVariant.BlockUnitModelsReferenceView BlockUnitModels => ((CGameCtnBlockInfoVariant)owner).References.BlockUnitModels;
+        public CGameCtnBlockInfoVariant.MobilsReferenceView Mobils => ((CGameCtnBlockInfoVariant)owner).References.Mobils;
+        public NodeRef<CPlugSolid> HelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.HelperSolidFid;
+        public NodeRef<CPlugSolid> FacultativeHelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.FacultativeHelperSolidFid;
+        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.ScreenInteractionTriggerSolid;
+        public NodeRef<CMwNod> WaypointTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.WaypointTriggerSolid;
+        public NodeRef<CGameGateModel> Gate => ((CGameCtnBlockInfoVariant)owner).References.Gate;
+        public NodeRef<CGameTeleporterModel> Teleporter => ((CGameCtnBlockInfoVariant)owner).References.Teleporter;
+        public NodeRef<CGameTurbineModel> Turbine => ((CGameCtnBlockInfoVariant)owner).References.Turbine;
+        public NodeRef<CPlugFlockModel> FlockModel => ((CGameCtnBlockInfoVariant)owner).References.FlockModel;
+        public NodeRef<CGameSpawnModel> SpawnModel => ((CGameCtnBlockInfoVariant)owner).References.SpawnModel;
+        public CGameCtnBlockInfoVariant.EntitySpawnersReferenceView EntitySpawners => ((CGameCtnBlockInfoVariant)owner).References.EntitySpawners;
+        public NodeRef<CPlugProbe> Probe => ((CGameCtnBlockInfoVariant)owner).References.Probe;
+        public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => ((CGameCtnBlockInfoVariant)owner).References.CompoundModel;
+    }
+    public readonly struct AutoTerrainsReferenceView
+    {
+        private readonly CGameCtnBlockInfoVariantGround owner;
+        internal AutoTerrainsReferenceView(CGameCtnBlockInfoVariantGround owner) => this.owner = owner;
+        public int Count => owner.autoTerrains?.Count ?? 0;
+        public NodeRef<CGameCtnAutoTerrain> this[int index] => (owner.autoTerrains ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (autoTerrains is not null)
+        {
+            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.GetReference(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnBlockInfoVariantGround)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
+        ((CGameCtnBlockInfoVariantGround)clone).autoTerrains = context.Clone(this.autoTerrains)!;
         ((CGameCtnBlockInfoVariantGround)clone).autoTerrainHeightOffset = context.Clone(this.autoTerrainHeightOffset)!;
         ((CGameCtnBlockInfoVariantGround)clone).autoTerrainPlaceType = context.Clone(this.autoTerrainPlaceType)!;
     }
@@ -103,7 +143,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         public override void ReadWrite(CGameCtnBlockInfoVariantGround n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef_deprec<CGameCtnAutoTerrain>(ref n.autoTerrains!);
+            n.autoTerrains = rw.ListNodeRef_deprec<CGameCtnAutoTerrain>(n.autoTerrains);
             rw.Int32(ref n.autoTerrainHeightOffset);
             rw.EnumInt32<EAutoTerrainPlaceType>(ref n.autoTerrainPlaceType);
         }

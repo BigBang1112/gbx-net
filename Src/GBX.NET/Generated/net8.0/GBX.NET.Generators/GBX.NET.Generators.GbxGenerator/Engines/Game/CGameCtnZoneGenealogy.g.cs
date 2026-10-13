@@ -34,6 +34,8 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0311D000;
 
+    internal override uint GetId() => Id;
+
     private int currentIndex;
     [AppliedWithChunk<Chunk0311D001>]
     [AppliedWithChunk<Chunk0311D002>]

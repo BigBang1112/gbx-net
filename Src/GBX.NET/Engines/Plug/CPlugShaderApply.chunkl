@@ -44,7 +44,7 @@ CPlugShaderApply 0x09026000
 
 0x011 [MP3, TMT.v0, MP4.v0, TM2020.v0] // BitmapApplyArray
   version
-  CPlugBitmapApplyArray BitmapApplyArray (external)
+  CPlugBitmapApplyArray BitmapApplyArray
 
 0x012 (base: 0x00A) [TM2020.v0] // apply fields
   version

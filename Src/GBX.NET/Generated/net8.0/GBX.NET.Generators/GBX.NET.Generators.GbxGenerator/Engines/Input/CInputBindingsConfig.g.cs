@@ -34,6 +34,8 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x13006000;
 
+    internal override uint GetId() => Id;
+
     private string name = "";
     [AppliedWithChunk<Chunk13006000>]
     [AppliedWithChunk<Chunk13006002>]

@@ -8,13 +8,13 @@ CGameCtnDecorationSize 0x0303B000
 0x001 [TMSX, TMNESWC, VSK5, TMF]
   int BaseHeightBase
   int3 Size
-  CSceneLayout Scene (external)
+  CSceneLayout Scene
 
 0x002 [MP3, TMT, MP4, TM2020]
   int BaseHeightBase
   int3 Size
   bool OffsetBlockY
-  CSceneLayout Scene (external)
+  CSceneLayout Scene
 
 0x003 (skippable) [MP3, TMT, MP4, TM2020]
   version

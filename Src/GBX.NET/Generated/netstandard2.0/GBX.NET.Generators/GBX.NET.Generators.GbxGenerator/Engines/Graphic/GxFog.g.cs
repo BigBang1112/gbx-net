@@ -34,6 +34,8 @@ public partial class GxFog : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x04004000;
 
+    internal override uint GetId() => Id;
+
     private bool enabled = true;
     [AppliedWithChunk<Chunk04004000>]
     public bool Enabled

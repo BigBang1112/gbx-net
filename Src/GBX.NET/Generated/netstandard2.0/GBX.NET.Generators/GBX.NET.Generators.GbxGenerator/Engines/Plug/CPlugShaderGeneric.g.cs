@@ -34,6 +34,8 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     [Hexadecimal]
     public static new uint Id => 0x09004000;
 
+    internal override uint GetId() => Id;
+
     private SMaterial? material;
     [AppliedWithChunk<Chunk09004000>]
     [AppliedWithChunk<Chunk09004001>]

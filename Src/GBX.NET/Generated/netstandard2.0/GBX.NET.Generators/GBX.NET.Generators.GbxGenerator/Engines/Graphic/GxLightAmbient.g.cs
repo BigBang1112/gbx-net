@@ -34,6 +34,8 @@ public partial class GxLightAmbient : GxLight, IClass
     [Hexadecimal]
     public static new uint Id => 0x04005000;
 
+    internal override uint GetId() => Id;
+
     private float shadeMinY;
     [AppliedWithChunk<Chunk04005000>]
     public float ShadeMinY

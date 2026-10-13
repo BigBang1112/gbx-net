@@ -28,7 +28,7 @@ public class CGameCommonItemEntityModelLayoutTests
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
         {
-            GbxRefTableFile Reference(string path)
+            GbxRefTableFile NodeRef(string path)
             {
                 var file = new GbxRefTableFile(refTable, 0, true, path);
                 var index = files.Count + 1;
@@ -40,8 +40,8 @@ public class CGameCommonItemEntityModelLayoutTests
             writer.Write(version);
             if (version == 0)
             {
-                phyFile = Reference("Physics.Gbx");
-                visFile = Reference("Visual.Gbx");
+                phyFile = NodeRef("Physics.Gbx");
+                visFile = NodeRef("Visual.Gbx");
             }
             else if (version == 3)
             {
@@ -50,17 +50,17 @@ public class CGameCommonItemEntityModelLayoutTests
             }
             else
             {
-                staticFile = Reference("Static.Gbx");
+                staticFile = NodeRef("Static.Gbx");
             }
 
             if (version >= 2)
             {
-                triggerFile = Reference("Trigger.Gbx");
+                triggerFile = NodeRef("Trigger.Gbx");
                 writer.Write(Iso4.Identity);
-                particleFile = Reference("Particle.Gbx");
+                particleFile = NodeRef("Particle.Gbx");
                 writer.Write(1);
-                actionFile = Reference("Action.Gbx");
-                if (version < 6) Reference("Deprecated.Gbx");
+                actionFile = NodeRef("Action.Gbx");
+                if (version < 6) NodeRef("Deprecated.Gbx");
                 foreach (var sound in new[] { "Spawn", "Unspawn", "Grab", "Smashed", "Permanent" }) writer.Write(sound);
                 writer.Write(Iso4.Identity);
                 writer.Write(lightCount);
@@ -87,14 +87,14 @@ public class CGameCommonItemEntityModelLayoutTests
         }
 
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(node.PhyModelFile).IsSameReferenceAs(phyFile);
-        await Assert.That(node.VisModelFile).IsSameReferenceAs(visFile);
-        await Assert.That(node.StaticObjectFile).IsSameReferenceAs(staticFile);
-        await Assert.That(node.TriggerShapeFile).IsSameReferenceAs(triggerFile);
-        await Assert.That(node.ParticleEmitterModelFile).IsSameReferenceAs(particleFile);
+        await Assert.That(node.References.PhyModel.File).IsSameReferenceAs(phyFile);
+        await Assert.That(node.References.VisModel.File).IsSameReferenceAs(visFile);
+        await Assert.That(node.References.StaticObject.File).IsSameReferenceAs(staticFile);
+        await Assert.That(node.References.TriggerShape.File).IsSameReferenceAs(triggerFile);
+        await Assert.That(node.References.ParticleEmitterModel.File).IsSameReferenceAs(particleFile);
         if (version >= 2)
         {
-            await Assert.That(node.Actions![0].File).IsSameReferenceAs(actionFile);
+            await Assert.That(node.References.Actions[0].File).IsSameReferenceAs(actionFile);
             await Assert.That(node.SpawnLoc).IsEqualTo(Iso4.Identity);
             await Assert.That(node.SoundRefSpawn).IsEqualTo("Spawn");
             await Assert.That(node.SoundRefPermanent).IsEqualTo("Permanent");

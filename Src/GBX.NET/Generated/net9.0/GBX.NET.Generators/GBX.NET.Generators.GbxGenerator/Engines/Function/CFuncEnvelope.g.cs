@@ -34,6 +34,8 @@ public partial class CFuncEnvelope : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x05036000;
 
+    internal override uint GetId() => Id;
+
     private float keyFrameValue0;
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFrameValue0

@@ -34,216 +34,153 @@ public partial class CControlEffectMaster : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0701C000;
 
-    private CControlEffect? focusEffect;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CControlEffect> focusEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusEffect
     {
-        get => this.focusEffectFile?.GetNode(ref this.focusEffect) ?? this.focusEffect;
-        set => this.focusEffect = value;
-    }
-    private Components.GbxRefTableFile? focusEffectFile;
-
-    public Components.GbxRefTableFile? FocusEffectFile
-    {
-        get => focusEffectFile;
-        set => focusEffectFile = value;
+        get => focusEffectRef.Resolve();
+        set => focusEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetFocusEffect(GbxReadSettings settings = default, bool exceptions = false) => focusEffectFile?.GetNode(ref focusEffect, settings, exceptions) ?? focusEffect;
-
-    private CControlEffect? focusGainedEffect;
+    private NodeRef<CControlEffect> focusGainedEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedEffect
     {
-        get => this.focusGainedEffectFile?.GetNode(ref this.focusGainedEffect) ?? this.focusGainedEffect;
-        set => this.focusGainedEffect = value;
-    }
-    private Components.GbxRefTableFile? focusGainedEffectFile;
-
-    public Components.GbxRefTableFile? FocusGainedEffectFile
-    {
-        get => focusGainedEffectFile;
-        set => focusGainedEffectFile = value;
+        get => focusGainedEffectRef.Resolve();
+        set => focusGainedEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetFocusGainedEffect(GbxReadSettings settings = default, bool exceptions = false) => focusGainedEffectFile?.GetNode(ref focusGainedEffect, settings, exceptions) ?? focusGainedEffect;
-
-    private CControlEffect? focusLostEffect;
+    private NodeRef<CControlEffect> focusLostEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostEffect
     {
-        get => this.focusLostEffectFile?.GetNode(ref this.focusLostEffect) ?? this.focusLostEffect;
-        set => this.focusLostEffect = value;
-    }
-    private Components.GbxRefTableFile? focusLostEffectFile;
-
-    public Components.GbxRefTableFile? FocusLostEffectFile
-    {
-        get => focusLostEffectFile;
-        set => focusLostEffectFile = value;
+        get => focusLostEffectRef.Resolve();
+        set => focusLostEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetFocusLostEffect(GbxReadSettings settings = default, bool exceptions = false) => focusLostEffectFile?.GetNode(ref focusLostEffect, settings, exceptions) ?? focusLostEffect;
-
-    private CControlEffect? focusGainedByAnotherEffect;
+    private NodeRef<CControlEffect> focusGainedByAnotherEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedByAnotherEffect
     {
-        get => this.focusGainedByAnotherEffectFile?.GetNode(ref this.focusGainedByAnotherEffect) ?? this.focusGainedByAnotherEffect;
-        set => this.focusGainedByAnotherEffect = value;
-    }
-    private Components.GbxRefTableFile? focusGainedByAnotherEffectFile;
-
-    public Components.GbxRefTableFile? FocusGainedByAnotherEffectFile
-    {
-        get => focusGainedByAnotherEffectFile;
-        set => focusGainedByAnotherEffectFile = value;
+        get => focusGainedByAnotherEffectRef.Resolve();
+        set => focusGainedByAnotherEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetFocusGainedByAnotherEffect(GbxReadSettings settings = default, bool exceptions = false) => focusGainedByAnotherEffectFile?.GetNode(ref focusGainedByAnotherEffect, settings, exceptions) ?? focusGainedByAnotherEffect;
-
-    private CControlEffect? focusLostByAnotherEffect;
+    private NodeRef<CControlEffect> focusLostByAnotherEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostByAnotherEffect
     {
-        get => this.focusLostByAnotherEffectFile?.GetNode(ref this.focusLostByAnotherEffect) ?? this.focusLostByAnotherEffect;
-        set => this.focusLostByAnotherEffect = value;
-    }
-    private Components.GbxRefTableFile? focusLostByAnotherEffectFile;
-
-    public Components.GbxRefTableFile? FocusLostByAnotherEffectFile
-    {
-        get => focusLostByAnotherEffectFile;
-        set => focusLostByAnotherEffectFile = value;
+        get => focusLostByAnotherEffectRef.Resolve();
+        set => focusLostByAnotherEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetFocusLostByAnotherEffect(GbxReadSettings settings = default, bool exceptions = false) => focusLostByAnotherEffectFile?.GetNode(ref focusLostByAnotherEffect, settings, exceptions) ?? focusLostByAnotherEffect;
-
-    private CControlEffect? sleepingEffect;
+    private NodeRef<CControlEffect> sleepingEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? SleepingEffect
     {
-        get => this.sleepingEffectFile?.GetNode(ref this.sleepingEffect) ?? this.sleepingEffect;
-        set => this.sleepingEffect = value;
-    }
-    private Components.GbxRefTableFile? sleepingEffectFile;
-
-    public Components.GbxRefTableFile? SleepingEffectFile
-    {
-        get => sleepingEffectFile;
-        set => sleepingEffectFile = value;
+        get => sleepingEffectRef.Resolve();
+        set => sleepingEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetSleepingEffect(GbxReadSettings settings = default, bool exceptions = false) => sleepingEffectFile?.GetNode(ref sleepingEffect, settings, exceptions) ?? sleepingEffect;
-
-    private CControlEffect? showingEffect;
+    private NodeRef<CControlEffect> showingEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ShowingEffect
     {
-        get => this.showingEffectFile?.GetNode(ref this.showingEffect) ?? this.showingEffect;
-        set => this.showingEffect = value;
-    }
-    private Components.GbxRefTableFile? showingEffectFile;
-
-    public Components.GbxRefTableFile? ShowingEffectFile
-    {
-        get => showingEffectFile;
-        set => showingEffectFile = value;
+        get => showingEffectRef.Resolve();
+        set => showingEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetShowingEffect(GbxReadSettings settings = default, bool exceptions = false) => showingEffectFile?.GetNode(ref showingEffect, settings, exceptions) ?? showingEffect;
-
-    private CControlEffect? hidingEffect;
+    private NodeRef<CControlEffect> hidingEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? HidingEffect
     {
-        get => this.hidingEffectFile?.GetNode(ref this.hidingEffect) ?? this.hidingEffect;
-        set => this.hidingEffect = value;
-    }
-    private Components.GbxRefTableFile? hidingEffectFile;
-
-    public Components.GbxRefTableFile? HidingEffectFile
-    {
-        get => hidingEffectFile;
-        set => hidingEffectFile = value;
+        get => hidingEffectRef.Resolve();
+        set => hidingEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetHidingEffect(GbxReadSettings settings = default, bool exceptions = false) => hidingEffectFile?.GetNode(ref hidingEffect, settings, exceptions) ?? hidingEffect;
-
-    private CControlEffect? actionEffect;
+    private NodeRef<CControlEffect> actionEffectRef = new();
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ActionEffect
     {
-        get => this.actionEffectFile?.GetNode(ref this.actionEffect) ?? this.actionEffect;
-        set => this.actionEffect = value;
-    }
-    private Components.GbxRefTableFile? actionEffectFile;
-
-    public Components.GbxRefTableFile? ActionEffectFile
-    {
-        get => actionEffectFile;
-        set => actionEffectFile = value;
+        get => actionEffectRef.Resolve();
+        set => actionEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetActionEffect(GbxReadSettings settings = default, bool exceptions = false) => actionEffectFile?.GetNode(ref actionEffect, settings, exceptions) ?? actionEffect;
-
-    private CControlEffect? managedEffect;
+    private NodeRef<CControlEffect> managedEffectRef = new();
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ManagedEffect
     {
-        get => this.managedEffectFile?.GetNode(ref this.managedEffect) ?? this.managedEffect;
-        set => this.managedEffect = value;
-    }
-    private Components.GbxRefTableFile? managedEffectFile;
-
-    public Components.GbxRefTableFile? ManagedEffectFile
-    {
-        get => managedEffectFile;
-        set => managedEffectFile = value;
+        get => managedEffectRef.Resolve();
+        set => managedEffectRef.SetEmbedded(value);
     }
 
-    public CControlEffect? GetManagedEffect(GbxReadSettings settings = default, bool exceptions = false) => managedEffectFile?.GetNode(ref managedEffect, settings, exceptions) ?? managedEffect;
-
-    private CMwRefBuffer? specialEffect;
+    private NodeRef<CMwRefBuffer> specialEffectRef = new();
     [AppliedWithChunk<Chunk0701C003>]
     public CMwRefBuffer? SpecialEffect
     {
-        get => this.specialEffectFile?.GetNode(ref this.specialEffect) ?? this.specialEffect;
-        set => this.specialEffect = value;
+        get => specialEffectRef.Resolve();
+        set => specialEffectRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? specialEffectFile;
 
-    public Components.GbxRefTableFile? SpecialEffectFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => specialEffectFile;
-        set => specialEffectFile = value;
+        private readonly CControlEffectMaster owner;
+        internal NodeRefView(CControlEffectMaster owner) => this.owner = owner;
+        public NodeRef<CControlEffect> FocusEffect => owner.focusEffectRef;
+        public NodeRef<CControlEffect> FocusGainedEffect => owner.focusGainedEffectRef;
+        public NodeRef<CControlEffect> FocusLostEffect => owner.focusLostEffectRef;
+        public NodeRef<CControlEffect> FocusGainedByAnotherEffect => owner.focusGainedByAnotherEffectRef;
+        public NodeRef<CControlEffect> FocusLostByAnotherEffect => owner.focusLostByAnotherEffectRef;
+        public NodeRef<CControlEffect> SleepingEffect => owner.sleepingEffectRef;
+        public NodeRef<CControlEffect> ShowingEffect => owner.showingEffectRef;
+        public NodeRef<CControlEffect> HidingEffect => owner.hidingEffectRef;
+        public NodeRef<CControlEffect> ActionEffect => owner.actionEffectRef;
+        public NodeRef<CControlEffect> ManagedEffect => owner.managedEffectRef;
+        public NodeRef<CMwRefBuffer> SpecialEffect => owner.specialEffectRef;
     }
-
-    public CMwRefBuffer? GetSpecialEffect(GbxReadSettings settings = default, bool exceptions = false) => specialEffectFile?.GetNode(ref specialEffect, settings, exceptions) ?? specialEffect;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("FocusEffect", focusEffectRef);
+        yield return new("FocusGainedEffect", focusGainedEffectRef);
+        yield return new("FocusLostEffect", focusLostEffectRef);
+        yield return new("FocusGainedByAnotherEffect", focusGainedByAnotherEffectRef);
+        yield return new("FocusLostByAnotherEffect", focusLostByAnotherEffectRef);
+        yield return new("SleepingEffect", sleepingEffectRef);
+        yield return new("ShowingEffect", showingEffectRef);
+        yield return new("HidingEffect", hidingEffectRef);
+        yield return new("ActionEffect", actionEffectRef);
+        yield return new("ManagedEffect", managedEffectRef);
+        yield return new("SpecialEffect", specialEffectRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CControlEffectMaster)clone).focusEffect = context.Clone(this.focusEffect)!;
-        ((CControlEffectMaster)clone).focusGainedEffect = context.Clone(this.focusGainedEffect)!;
-        ((CControlEffectMaster)clone).focusLostEffect = context.Clone(this.focusLostEffect)!;
-        ((CControlEffectMaster)clone).focusGainedByAnotherEffect = context.Clone(this.focusGainedByAnotherEffect)!;
-        ((CControlEffectMaster)clone).focusLostByAnotherEffect = context.Clone(this.focusLostByAnotherEffect)!;
-        ((CControlEffectMaster)clone).sleepingEffect = context.Clone(this.sleepingEffect)!;
-        ((CControlEffectMaster)clone).showingEffect = context.Clone(this.showingEffect)!;
-        ((CControlEffectMaster)clone).hidingEffect = context.Clone(this.hidingEffect)!;
-        ((CControlEffectMaster)clone).actionEffect = context.Clone(this.actionEffect)!;
-        ((CControlEffectMaster)clone).managedEffect = context.Clone(this.managedEffect)!;
-        ((CControlEffectMaster)clone).specialEffect = context.Clone(this.specialEffect)!;
+        ((CControlEffectMaster)clone).focusEffectRef = context.Clone(this.focusEffectRef)!;
+        ((CControlEffectMaster)clone).focusGainedEffectRef = context.Clone(this.focusGainedEffectRef)!;
+        ((CControlEffectMaster)clone).focusLostEffectRef = context.Clone(this.focusLostEffectRef)!;
+        ((CControlEffectMaster)clone).focusGainedByAnotherEffectRef = context.Clone(this.focusGainedByAnotherEffectRef)!;
+        ((CControlEffectMaster)clone).focusLostByAnotherEffectRef = context.Clone(this.focusLostByAnotherEffectRef)!;
+        ((CControlEffectMaster)clone).sleepingEffectRef = context.Clone(this.sleepingEffectRef)!;
+        ((CControlEffectMaster)clone).showingEffectRef = context.Clone(this.showingEffectRef)!;
+        ((CControlEffectMaster)clone).hidingEffectRef = context.Clone(this.hidingEffectRef)!;
+        ((CControlEffectMaster)clone).actionEffectRef = context.Clone(this.actionEffectRef)!;
+        ((CControlEffectMaster)clone).managedEffectRef = context.Clone(this.managedEffectRef)!;
+        ((CControlEffectMaster)clone).specialEffectRef = context.Clone(this.specialEffectRef)!;
     }
 
     public CControlEffectMaster()
@@ -262,15 +199,15 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CControlEffect>(ref n.focusEffect, ref n.focusEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusGainedEffect, ref n.focusGainedEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusLostEffect, ref n.focusLostEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusGainedByAnotherEffect, ref n.focusGainedByAnotherEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusLostByAnotherEffect, ref n.focusLostByAnotherEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.sleepingEffect, ref n.sleepingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.showingEffect, ref n.showingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.hidingEffect, ref n.hidingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.actionEffect, ref n.actionEffectFile);
+            rw.NodeRef(n.focusEffectRef);
+            rw.NodeRef(n.focusGainedEffectRef);
+            rw.NodeRef(n.focusLostEffectRef);
+            rw.NodeRef(n.focusGainedByAnotherEffectRef);
+            rw.NodeRef(n.focusLostByAnotherEffectRef);
+            rw.NodeRef(n.sleepingEffectRef);
+            rw.NodeRef(n.showingEffectRef);
+            rw.NodeRef(n.hidingEffectRef);
+            rw.NodeRef(n.actionEffectRef);
         }
     }
 
@@ -309,16 +246,16 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CControlEffect>(ref n.focusEffect, ref n.focusEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusGainedEffect, ref n.focusGainedEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusLostEffect, ref n.focusLostEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusGainedByAnotherEffect, ref n.focusGainedByAnotherEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.focusLostByAnotherEffect, ref n.focusLostByAnotherEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.sleepingEffect, ref n.sleepingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.showingEffect, ref n.showingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.hidingEffect, ref n.hidingEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.actionEffect, ref n.actionEffectFile);
-            rw.NodeRef<CControlEffect>(ref n.managedEffect, ref n.managedEffectFile);
+            rw.NodeRef(n.focusEffectRef);
+            rw.NodeRef(n.focusGainedEffectRef);
+            rw.NodeRef(n.focusLostEffectRef);
+            rw.NodeRef(n.focusGainedByAnotherEffectRef);
+            rw.NodeRef(n.focusLostByAnotherEffectRef);
+            rw.NodeRef(n.sleepingEffectRef);
+            rw.NodeRef(n.showingEffectRef);
+            rw.NodeRef(n.hidingEffectRef);
+            rw.NodeRef(n.actionEffectRef);
+            rw.NodeRef(n.managedEffectRef);
         }
     }
 
@@ -336,7 +273,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwRefBuffer>(ref n.specialEffect, ref n.specialEffectFile);
+            rw.NodeRef(n.specialEffectRef);
         }
     }
 

@@ -34,27 +34,42 @@ public partial class CPlugTreeLight : CPlugTree, IClass
     [Hexadecimal]
     public static new uint Id => 0x09062000;
 
-    private CPlugLight? plugLight;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugLight> plugLightRef = new();
     [AppliedWithChunk<Chunk09062004>]
     public CPlugLight? PlugLight
     {
-        get => this.plugLightFile?.GetNode(ref this.plugLight) ?? this.plugLight;
-        set => this.plugLight = value;
+        get => plugLightRef.Resolve();
+        set => plugLightRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? plugLightFile;
 
-    public Components.GbxRefTableFile? PlugLightFile
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
     {
-        get => plugLightFile;
-        set => plugLightFile = value;
+        private readonly CPlugTreeLight owner;
+        internal NodeRefView(CPlugTreeLight owner) => this.owner = owner;
+        public NodeRef<CPlugLight> PlugLight => owner.plugLightRef;
+        public CPlugTree.ChildrenReferenceView Children => ((CPlugTree)owner).References.Children;
+        public NodeRef<CPlugSolid> ModelSolid => ((CPlugTree)owner).References.ModelSolid;
+        public NodeRef<CPlugVisual> Visual => ((CPlugTree)owner).References.Visual;
+        public NodeRef<CPlug> Shader => ((CPlugTree)owner).References.Shader;
+        public NodeRef<CPlug> Surface => ((CPlugTree)owner).References.Surface;
+        public NodeRef<CFuncTree> FuncTree => ((CPlugTree)owner).References.FuncTree;
+        public NodeRef<CPlugTreeGenerator> Generator => ((CPlugTree)owner).References.Generator;
+        public NodeRef<CMwRefBuffer> RefBuffer => ((CPlugTree)owner).References.RefBuffer;
     }
-
-    public CPlugLight? GetPlugLight(GbxReadSettings settings = default, bool exceptions = false) => plugLightFile?.GetNode(ref plugLight, settings, exceptions) ?? plugLight;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlugLight", plugLightRef);
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugTreeLight)clone).plugLight = context.Clone(this.plugLight)!;
+        ((CPlugTreeLight)clone).plugLightRef = context.Clone(this.plugLightRef)!;
     }
 
     public CPlugTreeLight()
@@ -75,7 +90,7 @@ public partial class CPlugTreeLight : CPlugTree, IClass
 
         public override void ReadWrite(CPlugTreeLight n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugLight>(ref n.plugLight, ref n.plugLightFile);
+            rw.NodeRef(n.plugLightRef);
         }
     }
 

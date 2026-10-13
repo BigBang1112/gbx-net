@@ -34,6 +34,8 @@ public partial class CScene2d : CScene, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A002000;
 
+    internal override uint GetId() => Id;
+
     private Rect overlay;
     [AppliedWithChunk<Chunk0A002000>]
     public Rect Overlay
@@ -42,19 +44,35 @@ public partial class CScene2d : CScene, IClass
         set => this.overlay = value;
     }
 
-    private CSceneSector? sector;
+    private NodeRef<CSceneSector> sectorRef = new();
     [AppliedWithChunk<Chunk0A002000>]
     public CSceneSector? Sector
     {
-        get => this.sector;
-        set => this.sector = value;
+        get => sectorRef.Resolve();
+        set => sectorRef.SetEmbedded(value);
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CScene2d owner;
+        internal NodeRefView(CScene2d owner) => this.owner = owner;
+        public NodeRef<CSceneSector> Sector => owner.sectorRef;
+        public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
+        public CScene.MotionManagerModelsReferenceView MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Sector", sectorRef);
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CScene2d)clone).overlay = context.Clone(this.overlay)!;
-        ((CScene2d)clone).sector = context.Clone(this.sector)!;
+        ((CScene2d)clone).sectorRef = context.Clone(this.sectorRef)!;
     }
 
     public CScene2d()
@@ -76,7 +94,7 @@ public partial class CScene2d : CScene, IClass
         public override void ReadWrite(CScene2d n, GbxReaderWriter rw)
         {
             rw.Rect(ref n.overlay);
-            rw.NodeRef<CSceneSector>(ref n.sector);
+            rw.NodeRef(n.sectorRef);
         }
     }
 

@@ -34,22 +34,15 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     [Hexadecimal]
     public static new uint Id => 0x0305E000;
 
-    private CGameCtnBlockInfoFrontier? blockInfoFrontier;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameCtnBlockInfoFrontier> blockInfoFrontierRef = new();
     [AppliedWithChunk<Chunk0305E001>]
     public CGameCtnBlockInfoFrontier? BlockInfoFrontier
     {
-        get => this.blockInfoFrontierFile?.GetNode(ref this.blockInfoFrontier) ?? this.blockInfoFrontier;
-        set => this.blockInfoFrontier = value;
+        get => blockInfoFrontierRef.Resolve();
+        set => blockInfoFrontierRef.SetEmbedded(value);
     }
-    private Components.GbxRefTableFile? blockInfoFrontierFile;
-
-    public Components.GbxRefTableFile? BlockInfoFrontierFile
-    {
-        get => blockInfoFrontierFile;
-        set => blockInfoFrontierFile = value;
-    }
-
-    public CGameCtnBlockInfoFrontier? GetBlockInfoFrontier(GbxReadSettings settings = default, bool exceptions = false) => blockInfoFrontierFile?.GetNode(ref blockInfoFrontier, settings, exceptions) ?? blockInfoFrontier;
 
     private string? parentZoneId;
     [AppliedWithChunk<Chunk0305E001>]
@@ -109,18 +102,44 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         set => this.frontierStraightMiddle_AcceptPylons = value;
     }
 
-    private CGameCtnZoneFusionInfo[]? compatibleZones;
+    private NodeRefList<CGameCtnZoneFusionInfo>? compatibleZones;
     [AppliedWithChunk<Chunk0305E005>]
-    public CGameCtnZoneFusionInfo[]? CompatibleZones
+    public NodeRefList<CGameCtnZoneFusionInfo>? CompatibleZones
     {
-        get => this.compatibleZones;
-        set => this.compatibleZones = value;
+        get => compatibleZones;
+        set => compatibleZones = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnZoneFrontier owner;
+        internal NodeRefView(CGameCtnZoneFrontier owner) => this.owner = owner;
+        public NodeRef<CGameCtnBlockInfoFrontier> BlockInfoFrontier => owner.blockInfoFrontierRef;
+        public CompatibleZonesReferenceView CompatibleZones => new(owner);
+    }
+    public readonly struct CompatibleZonesReferenceView
+    {
+        private readonly CGameCtnZoneFrontier owner;
+        internal CompatibleZonesReferenceView(CGameCtnZoneFrontier owner) => this.owner = owner;
+        public int Count => owner.compatibleZones?.Count ?? 0;
+        public NodeRef<CGameCtnZoneFusionInfo> this[int index] => (owner.compatibleZones ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BlockInfoFrontier", blockInfoFrontierRef);
+        if (compatibleZones is not null)
+        {
+            for (var i = 0; i < compatibleZones.Count; i++) yield return new("CompatibleZones" + "[" + i + "]", compatibleZones.GetReference(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnZoneFrontier)clone).blockInfoFrontier = context.Clone(this.blockInfoFrontier)!;
+        ((CGameCtnZoneFrontier)clone).blockInfoFrontierRef = context.Clone(this.blockInfoFrontierRef)!;
         ((CGameCtnZoneFrontier)clone).parentZoneId = context.Clone(this.parentZoneId)!;
         ((CGameCtnZoneFrontier)clone).childZoneId = context.Clone(this.childZoneId)!;
         ((CGameCtnZoneFrontier)clone).blockYOffsetFromParent = context.Clone(this.blockYOffsetFromParent)!;
@@ -128,7 +147,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         ((CGameCtnZoneFrontier)clone).frontierChildBorder_AcceptPylons = context.Clone(this.frontierChildBorder_AcceptPylons)!;
         ((CGameCtnZoneFrontier)clone).frontierTransitionMiddle_AcceptPylons = context.Clone(this.frontierTransitionMiddle_AcceptPylons)!;
         ((CGameCtnZoneFrontier)clone).frontierStraightMiddle_AcceptPylons = context.Clone(this.frontierStraightMiddle_AcceptPylons)!;
-        ((CGameCtnZoneFrontier)clone).compatibleZones = context.CloneArray(this.compatibleZones)!;
+        ((CGameCtnZoneFrontier)clone).compatibleZones = context.Clone(this.compatibleZones)!;
     }
 
     public CGameCtnZoneFrontier()
@@ -149,7 +168,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnBlockInfoFrontier>(ref n.blockInfoFrontier, ref n.blockInfoFrontierFile);
+            rw.NodeRef(n.blockInfoFrontierRef);
             rw.Id(ref n.parentZoneId);
             rw.Id(ref n.childZoneId);
         }
@@ -229,7 +248,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnZoneFusionInfo>(ref n.compatibleZones!);
+            n.compatibleZones = rw.ListNodeRef_deprec<CGameCtnZoneFusionInfo>(n.compatibleZones);
         }
     }
 

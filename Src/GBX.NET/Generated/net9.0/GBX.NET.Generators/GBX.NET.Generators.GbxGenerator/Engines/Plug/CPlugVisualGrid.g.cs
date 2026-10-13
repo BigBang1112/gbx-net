@@ -34,6 +34,8 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     [Hexadecimal]
     public static new uint Id => 0x0903B000;
 
+    internal override uint GetId() => Id;
+
     private int nbPointX;
     [AppliedWithChunk<Chunk0903B000>]
     public int NbPointX

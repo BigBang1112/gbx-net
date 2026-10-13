@@ -34,6 +34,8 @@ public partial class CFuncKeysNatural : CFuncKeys, IClass
     [Hexadecimal]
     public static new uint Id => 0x05030000;
 
+    internal override uint GetId() => Id;
+
     private int[]? naturals;
     [AppliedWithChunk<Chunk05030000>]
     public int[]? Naturals

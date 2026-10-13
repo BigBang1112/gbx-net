@@ -34,6 +34,8 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06026000;
 
+    internal override uint GetId() => Id;
+
     private float imageRadius;
     [GameVersionDefault(GameVersion.TMF, 0.024f)]
     [GameVersionDefault(GameVersion.MP3, 0.024f)]

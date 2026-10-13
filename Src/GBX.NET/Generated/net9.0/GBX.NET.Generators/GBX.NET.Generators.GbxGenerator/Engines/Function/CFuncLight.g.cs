@@ -34,6 +34,8 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x05018000;
 
+    internal override uint GetId() => Id;
+
     private EFctType fctType;
     [AppliedWithChunk<Chunk05018000>]
     public EFctType FctType

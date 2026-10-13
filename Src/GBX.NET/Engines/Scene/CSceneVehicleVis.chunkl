@@ -4,7 +4,7 @@ enum ReactorBoostLvl
   None
   Lvl1
   Lvl2
-    
+
 enum ReactorBoostType
   None
   Up
