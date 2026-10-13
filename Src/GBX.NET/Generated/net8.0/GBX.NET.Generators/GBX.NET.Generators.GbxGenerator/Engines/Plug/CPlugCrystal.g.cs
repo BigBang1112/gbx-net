@@ -1192,6 +1192,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             get => u03;
             set => u03 = value;
         }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly BorderTransitionLayer owner;
+            internal NodeRefView(BorderTransitionLayer owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CPlugVisual>>? U03 => owner.u03?.References;
+        }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             if (u03 is not null)
@@ -1517,6 +1525,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             get => this.lightPositions;
             set => this.lightPositions = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly LightLayer owner;
+            internal NodeRefView(LightLayer owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CPlugLightUserModel>>? Lights => owner.lights?.References;
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

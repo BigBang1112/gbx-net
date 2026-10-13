@@ -537,6 +537,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     {
         private readonly CPlugBeamEmitterSubModel owner;
         internal NodeRefView(CPlugBeamEmitterSubModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugMaterial>>? AdditionalMaterials => owner.additionalMaterials?.References;
         public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

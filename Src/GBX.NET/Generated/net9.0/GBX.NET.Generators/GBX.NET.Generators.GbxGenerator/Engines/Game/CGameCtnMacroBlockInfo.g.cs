@@ -211,8 +211,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     {
         private readonly CGameCtnMacroBlockInfo owner;
         internal NodeRefView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnAnchoredObject>>? LegacyAnchoredObjects => owner.legacyAnchoredObjects?.References;
+        public IReadOnlyList<NodeRef<CGameCtnMacroBlockInfo>>? LegacyMacroBlocks => owner.legacyMacroBlocks?.References;
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => NodeRef.GetOrCreate(ref owner.clipGroupInGameRef);
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
+        public IReadOnlyList<NodeRef<CGameCtnAutoTerrain>>? AutoTerrains => owner.autoTerrains?.References;
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
@@ -486,6 +489,14 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D009;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0310D009 owner;
+            internal NodeRefView(Chunk0310D009 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -573,6 +584,18 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public int U07;
 
         public NodeRefList<CMwNod>? U08;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0310D00C owner;
+            internal NodeRefView(Chunk0310D00C owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CPlugSpline3D>>? U02 => owner.U02?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U04 => owner.U04?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U08 => owner.U08?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -51,6 +51,14 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
         get => this.tuningIndex;
         set => this.tuningIndex = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehiclePhyTunings owner;
+        internal NodeRefView(CPlugVehiclePhyTunings owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugVehiclePhyTuning>>? Tuning => owner.tuning?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

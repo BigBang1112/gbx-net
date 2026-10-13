@@ -59,6 +59,14 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         get => this.matterId;
         set => this.matterId = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapDecals owner;
+        internal NodeRefView(CPlugBitmapDecals owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugDecalModel>>? DecalModels => owner.decalModels?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

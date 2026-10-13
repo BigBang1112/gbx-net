@@ -73,6 +73,8 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     {
         private readonly CGameCampaignsScoresManager owner;
         internal NodeRefView(CGameCampaignsScoresManager owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameChallengeScores>>? ChallengeScores => owner.challengeScores?.References;
+        public IReadOnlyList<NodeRef<CGameCampaignScores>>? CampaignScores => owner.campaignScores?.References;
         public NodeRef<CGameGeneralScores> GeneralScores => NodeRef.GetOrCreate(ref owner.generalScoresRef);
         public NodeRef<CGameSkillScoreComputer> SkillScoreComputer => NodeRef.GetOrCreate(ref owner.skillScoreComputerRef);
     }

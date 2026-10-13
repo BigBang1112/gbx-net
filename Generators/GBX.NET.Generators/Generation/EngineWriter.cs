@@ -480,54 +480,35 @@ internal static class EngineWriter
         var baseScope = baseName is not null && layouts.TryGetValue(baseName, out var parent) ? parent.Scope :
             baseName is not null && layout.Archives.TryGetValue(baseName, out var archive) ? archive :
             baseName is not null ? layout.Chunks.FirstOrDefault(x => x.Name == baseName)?.Scope : null;
-        var inheritedFields = baseScope is not null
-            ? InheritedReferences(layout, baseName!, baseScope, layouts, existingTypes).Where(x => !chunk || x.IsUnknown).ToArray()
+        var inheritedMembers = baseScope is not null
+            ? InheritedReferences(layout, baseName!, baseScope, chunk, layouts, existingTypes).ToArray()
             : [];
-        var inherited = baseScope is not null && (inheritedFields.Length > 0 || HasHandwrittenReferences(baseScope));
-        var scalarFields = fields.Where(static x => x.StorageDeclaration.Type.ArrayDimensions == 0).ToArray();
-        if (scalarFields.Length > 0 || HasHandwrittenReferences(scope))
+        var inherited = inheritedMembers.Length > 0;
+        var members = ReferenceMembers(fields, scope, chunk).ToArray();
+        var modifier = inherited ? "new " : "";
+        code.BlankLine();
+        code.Line($"public {modifier}NodeRefView References => new(this);");
+        code.Open($"public {modifier}readonly struct NodeRefView");
+        code.Line($"private readonly {className} owner;");
+        code.Line($"internal NodeRefView({className} owner) => this.owner = owner;");
+        foreach (var member in members)
         {
-            var modifier = inheritedFields.Any(static x => x.StorageDeclaration.Type.ArrayDimensions == 0) ||
-                baseScope is not null && HasHandwrittenReferences(baseScope) ? "new " : "";
-            code.BlankLine();
-            code.Line($"public {modifier}NodeRefView References => new(this);");
-            code.Open($"public {modifier}readonly struct NodeRefView");
-            code.Line($"private readonly {className} owner;");
-            code.Line($"internal NodeRefView({className} owner) => this.owner = owner;");
-            foreach (var field in scalarFields)
+            var access = "owner." + member.Storage;
+            var value = member.Dimensions switch
             {
-                var name = SyntaxOverlap.Escape(field.Name);
-                code.Line($"public NodeRef<{ReferenceModel.Element(field)}> {name} => NodeRef.GetOrCreate(ref owner.{ReferenceModel.Handle(field, chunk)});");
-            }
-            if (scope.Existing is not null)
-            {
-                foreach (var declaration in scope.Existing.Fields)
-                {
-                    if (NodeReferenceType(declaration.Declaration.Type) is not { } referenceType) continue;
-                    foreach (var variable in declaration.Declaration.Variables)
-                    {
-                        var handle = variable.Identifier.ValueText;
-                        if (!handle.EndsWith("Ref", StringComparison.Ordinal))
-                            throw new InvalidOperationException("A handwritten NodeRef field must end in Ref: " + handle);
-                        var name = handle.Substring(0, handle.Length - "Ref".Length);
-                        name = char.ToUpperInvariant(name[0]) + name.Substring(1);
-                        if (fields.Any(x => x.Name == name)) continue;
-                        code.Line($"public NodeRef<{referenceType.TypeArgumentList.Arguments[0]}> {SyntaxOverlap.Escape(name)} => NodeRef.GetOrCreate(ref owner.{SyntaxOverlap.Escape(handle)});");
-                    }
-                }
-            }
-            if (baseScope is not null)
-            {
-                foreach (var field in inheritedFields.Where(static x => x.StorageDeclaration.Type.ArrayDimensions == 0))
-                {
-                    if (fields.Any(x => x.Name == field.Name)) throw new InvalidOperationException("Ambiguous inherited reference: " + field.Name);
-                    var name = SyntaxOverlap.Escape(field.Name);
-                    var type = $"NodeRef<{ReferenceModel.Element(field)}>";
-                    code.Line($"public {type} {name} => (({baseName})owner).References.{name};");
-                }
-            }
-            code.Close();
+                0 => $"NodeRef.GetOrCreate(ref {access})",
+                1 => access + "?.References",
+                _ => $"{access} is {{ }} rows ? Array.ConvertAll(rows, static row => row?.References) : null"
+            };
+            code.Line($"public {ReferenceViewType(member.Element, member.Dimensions)} {SyntaxOverlap.Escape(member.Name)} => {value};");
         }
+        foreach (var member in inheritedMembers)
+        {
+            if (members.Any(x => x.Name == member.Name)) throw new InvalidOperationException("Ambiguous inherited reference: " + member.Name);
+            var name = SyntaxOverlap.Escape(member.Name);
+            code.Line($"public {ReferenceViewType(member.Element, member.Dimensions)} {name} => (({baseName})owner).References.{name};");
+        }
+        code.Close();
 
         if (SyntaxOverlap.Has(scope.Existing, "EnumerateReferences")) return;
 
@@ -535,16 +516,16 @@ internal static class EngineWriter
         var sealedOwner = scope.Existing?.Declarations.Any(static x => x.Modifiers.Any(SyntaxKind.SealedKeyword)) == true;
         code.Open($"public {(overrides ? "override " : sealedOwner ? "" : "virtual ")}IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()");
         if (overrides) code.Line("foreach (var reference in base.EnumerateReferences()) yield return reference;");
-        foreach (var field in fields)
+        foreach (var member in members)
         {
-            var name = SymbolDisplay.FormatLiteral(field.Name, true);
-            if (field.StorageDeclaration.Type.ArrayDimensions == 0)
-                code.Line($"yield return new({name}, NodeRef.GetOrCreate(ref {ReferenceModel.Handle(field, chunk)}));");
+            var name = SymbolDisplay.FormatLiteral(member.Name, true);
+            if (member.Dimensions == 0)
+                code.Line($"yield return new({name}, NodeRef.GetOrCreate(ref {member.Storage}));");
             else
             {
-                var backing = chunk ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name);
+                var backing = member.Storage;
                 code.Open($"if ({backing} is not null)");
-                if (field.StorageDeclaration.Type.ArrayDimensions == 1)
+                if (member.Dimensions == 1)
                     code.Line($"for (var i = 0; i < {backing}.Count; i++) yield return new({name} + \"[\" + i + \"]\", {backing}.Get(i));");
                 else
                 {
@@ -556,46 +537,86 @@ internal static class EngineWriter
                 code.Close();
             }
         }
-        if (scope.Existing is not null)
-        {
-            foreach (var declaration in scope.Existing.Fields)
-            {
-                if (NodeReferenceType(declaration.Declaration.Type) is null) continue;
-                foreach (var variable in declaration.Declaration.Variables)
-                {
-                    var handle = variable.Identifier.ValueText;
-                    if (fields.Any(x => ReferenceModel.Handle(x, chunk) == handle)) continue;
-                    var name = handle.Substring(0, handle.Length - "Ref".Length);
-                    name = char.ToUpperInvariant(name[0]) + name.Substring(1);
-                    code.Line($"yield return new({SymbolDisplay.FormatLiteral(name, true)}, NodeRef.GetOrCreate(ref {SyntaxOverlap.Escape(handle)}));");
-                }
-            }
-        }
         code.Line("yield break;");
         code.Close();
     }
 
     private static bool HasHandwrittenReferences(ScopeModel scope) => scope.Existing?.Fields.Any(static field =>
-        NodeReferenceType(field.Declaration.Type) is not null) == true;
+        NodeReferenceType(field.Declaration.Type) is not null || NodeReferenceType(field.Declaration.Type, "NodeRefList") is not null) == true;
 
-    private static GenericNameSyntax? NodeReferenceType(TypeSyntax type)
+    private static GenericNameSyntax? NodeReferenceType(TypeSyntax type, string name = "NodeRef")
     {
         if (type is NullableTypeSyntax nullable) type = nullable.ElementType;
-        return type is GenericNameSyntax { Identifier.ValueText: "NodeRef" } reference ? reference : null;
+        var reference = type switch
+        {
+            GenericNameSyntax generic => generic,
+            QualifiedNameSyntax qualified => qualified.Right as GenericNameSyntax,
+            AliasQualifiedNameSyntax alias => alias.Name as GenericNameSyntax,
+            _ => null
+        };
+        return reference?.Identifier.ValueText == name ? reference : null;
     }
 
-    private static IEnumerable<FieldModel> InheritedReferences(LayoutModel layout, string baseName, ScopeModel scope,
+    private static string ReferenceViewType(string element, int dimensions) => dimensions switch
+    {
+        0 => $"NodeRef<{element}>",
+        1 => $"IReadOnlyList<NodeRef<{element}>>?",
+        _ => $"IReadOnlyList<IReadOnlyList<NodeRef<{element}>>?>?"
+    };
+
+    private static IEnumerable<(string Name, string Element, string Storage, int Dimensions)> ReferenceMembers(
+        IReadOnlyList<FieldModel> fields, ScopeModel scope, bool chunk)
+    {
+        foreach (var field in fields)
+        {
+            var dimensions = field.StorageDeclaration.Type.ArrayDimensions;
+            var storage = dimensions == 0 ? ReferenceModel.Handle(field, chunk) :
+                chunk ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name);
+            yield return (field.Name, ReferenceModel.Element(field), storage, dimensions);
+        }
+
+        if (scope.Existing is null) yield break;
+
+        foreach (var declaration in scope.Existing.Fields)
+        {
+            var reference = NodeReferenceType(declaration.Declaration.Type);
+            var list = NodeReferenceType(declaration.Declaration.Type, "NodeRefList");
+            if (reference is null && list is null) continue;
+
+            foreach (var variable in declaration.Declaration.Variables)
+            {
+                var storage = variable.Identifier.ValueText;
+                if (reference is not null && !storage.EndsWith("Ref", StringComparison.Ordinal))
+                    throw new InvalidOperationException("A handwritten NodeRef field must end in Ref: " + storage);
+                var name = reference is null ? storage : storage.Substring(0, storage.Length - "Ref".Length);
+                name = char.ToUpperInvariant(name[0]) + name.Substring(1);
+                if (fields.Any(x => x.Name == name || (x.StorageDeclaration.Type.ArrayDimensions == 0
+                    ? ReferenceModel.Handle(x, chunk)
+                    : chunk ? SyntaxOverlap.Escape(x.Name) : SyntaxOverlap.Backing(x.Name)).TrimStart('@') == storage)) continue;
+                yield return (name, (reference ?? list)!.TypeArgumentList.Arguments[0].ToString(), SyntaxOverlap.Escape(storage), reference is null ? 1 : 0);
+            }
+        }
+    }
+
+    private static IEnumerable<(string Name, string Element, string Storage, int Dimensions)> InheritedReferences(
+        LayoutModel layout, string baseName, ScopeModel scope, bool chunk,
         IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes)
     {
-        foreach (var field in scope.Fields.Where(x => ReferenceModel.IsNode(x.StorageDeclaration, layout, layouts, existingTypes) &&
-            !x.Occurrences.Any(static d => LayoutModel.Has(d.Attributes, "inherited")))) yield return field;
+        var fields = scope.Fields.Where(x => (!chunk || x.IsUnknown) &&
+            ReferenceModel.IsNode(x.StorageDeclaration, layout, layouts, existingTypes) &&
+            !x.Occurrences.Any(static d => LayoutModel.Has(d.Attributes, "inherited"))).ToArray();
+        foreach (var member in ReferenceMembers(fields, scope, chunk)) yield return member;
         if (layouts.TryGetValue(baseName, out var parent) && parent.BaseName is not null && layouts.TryGetValue(parent.BaseName, out var ancestor))
-            foreach (var field in InheritedReferences(layout, ancestor.Name, ancestor.Scope, layouts, existingTypes)) yield return field;
+            foreach (var member in InheritedReferences(layout, ancestor.Name, ancestor.Scope, chunk, layouts, existingTypes)) yield return member;
         else if (LayoutModel.Attribute(scope.Attributes, "base") is { } chunkBase)
         {
             var chunkName = "Chunk" + (LayoutModel.Hex(chunkBase) <= 0xFFF ? LayoutModel.Hex(chunkBase) | layout.Id : LayoutModel.Hex(chunkBase)).ToString("X8");
             if (layout.Chunks.FirstOrDefault(x => x.Name == chunkName)?.Scope is { } ancestorScope)
-                foreach (var field in InheritedReferences(layout, chunkName, ancestorScope, layouts, existingTypes)) yield return field;
+                foreach (var member in InheritedReferences(layout, chunkName, ancestorScope, chunk, layouts, existingTypes)) yield return member;
+        }
+        else if (LayoutModel.Attribute(scope.Attributes, "inherits") is { } archiveBase && layout.Archives.TryGetValue(archiveBase, out var archiveScope))
+        {
+            foreach (var member in InheritedReferences(layout, archiveBase, archiveScope, chunk, layouts, existingTypes)) yield return member;
         }
     }
 

@@ -51,6 +51,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
         internal NodeRefView(CPlugVisual3D owner) => this.owner = owner;
         public NodeRef<CMwNod> BlendShapes => NodeRef.GetOrCreate(ref owner.blendShapesRef);
         public NodeRef<CMwNod> FuncVisual => ((CPlugVisual)owner).References.FuncVisual;
+        public IReadOnlyList<NodeRef<CPlugVertexStream>>? VertexStreams => ((CPlugVisual)owner).References.VertexStreams;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

@@ -127,6 +127,7 @@ public partial class CPlugClouds : CMwNod, IClass
     {
         private readonly CPlugClouds owner;
         internal NodeRefView(CPlugClouds owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugSolid>>? SolidFids => owner.solidFids?.References;
         public NodeRef<CPlugFileImg> ImageColorMin => NodeRef.GetOrCreate(ref owner.imageColorMinRef);
         public NodeRef<CPlugFileImg> ImageColorMax => NodeRef.GetOrCreate(ref owner.imageColorMaxRef);
     }

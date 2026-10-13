@@ -103,6 +103,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
         private readonly CGameCtnMediaTrack owner;
         internal NodeRefView(CGameCtnMediaTrack owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnMediaBlock>>? Blocks => owner.blocks?.References;
         public NodeRef<CGameCtnGhost> LegacyGhostModel => NodeRef.GetOrCreate(ref owner.legacyGhostModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

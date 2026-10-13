@@ -3017,6 +3017,8 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         internal NodeRefView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
         public NodeRef<CFuncKeysReal> WaterSplashFromSpeed => NodeRef.GetOrCreate(ref owner.waterSplashFromSpeedRef);
         public NodeRef<CFuncKeysReal> BrakeHeatSpeedFromFBrake => NodeRef.GetOrCreate(ref owner.brakeHeatSpeedFromFBrakeRef);
+        public IReadOnlyList<NodeRef<CPlugCamControlModel>>? CameraModels => owner.cameraModels?.References;
+        public IReadOnlyList<NodeRef<CPlugCamControlModel>>? CameraModels_Console => owner.cameraModels_Console?.References;
         public NodeRef<CPlugCamControlModel> CamModelRear => NodeRef.GetOrCreate(ref owner.camModelRearRef);
         public NodeRef<CPlugCamControlModel> CamModelIronSight => NodeRef.GetOrCreate(ref owner.camModelIronSightRef);
         public NodeRef<CMwRefBuffer> Materials => NodeRef.GetOrCreate(ref owner.materialsRef);
@@ -6454,6 +6456,14 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
 
         public NodeRefList<CPlugCamControlModel>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090ED08E owner;
+            internal NodeRefView(Chunk090ED08E owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CPlugCamControlModel>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;

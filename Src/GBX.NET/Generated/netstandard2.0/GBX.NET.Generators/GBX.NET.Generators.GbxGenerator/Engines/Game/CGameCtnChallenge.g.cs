@@ -737,6 +737,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         private readonly CGameCtnChallenge owner;
         internal NodeRefView(CGameCtnChallenge owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnBlock>>? Blocks => owner.blocks?.References;
         public NodeRef<CGameCtnCollectorList> BlockStock => NodeRef.GetOrCreate(ref owner.blockStockRef);
         public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
         public NodeRef<CGameCtnMediaClip> ClipIntro => NodeRef.GetOrCreate(ref owner.clipIntroRef);
@@ -744,9 +745,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
         public NodeRef<CGameCtnMediaClip> ClipGlobal => NodeRef.GetOrCreate(ref owner.clipGlobalRef);
         public NodeRef<CHmsLightMapCache> LightmapCache => NodeRef.GetOrCreate(ref owner.lightmapCacheRef);
+        public IReadOnlyList<NodeRef<CSceneVehicleCarMarksSamples>>? CarMarksBuffer => owner.carMarksBuffer?.References;
+        public IReadOnlyList<NodeRef<CGameCtnAnchoredObject>>? AnchoredObjects => owner.anchoredObjects?.References;
+        public IReadOnlyList<NodeRef<CGameCtnZoneGenealogy>>? ZoneGenealogy => owner.zoneGenealogy?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlock>>? BakedBlocks => owner.bakedBlocks?.References;
         public NodeRef<CGameCtnMediaClip> ClipPodium => NodeRef.GetOrCreate(ref owner.clipPodiumRef);
         public NodeRef<CGameCtnMediaClip> ClipAmbiance => NodeRef.GetOrCreate(ref owner.clipAmbianceRef);
         public NodeRef<CPlugAnimFile> ChallengeAnimation => NodeRef.GetOrCreate(ref owner.challengeAnimationRef);
+        public IReadOnlyList<NodeRef<CGameCtnMediaClipGroup>>? ClipGroups => owner.clipGroups?.References;
         public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => NodeRef.GetOrCreate(ref owner.launchedCheckpointsRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -2353,6 +2359,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public NodeRefList<CMwNod>? U03;
 
         public NodeRefList<CMwNod>? U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0304304D owner;
+            internal NodeRefView(Chunk0304304D owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U02 => owner.U02?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U04 => owner.U04?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -3529,6 +3546,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             get => nodes;
             set => nodes = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly MacroblockReferences owner;
+            internal NodeRefView(MacroblockReferences owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? Nodes => owner.nodes?.References;
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

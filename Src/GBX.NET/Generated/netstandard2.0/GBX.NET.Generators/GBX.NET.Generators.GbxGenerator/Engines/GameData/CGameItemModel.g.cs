@@ -419,9 +419,12 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugMaterial> MaterialSkin => NodeRef.GetOrCreate(ref owner.materialSkinRef);
         public NodeRef<CPlugMaterial> MaterialGlass => NodeRef.GetOrCreate(ref owner.materialGlassRef);
         public NodeRef<CPlugMaterial> MaterialDetails => NodeRef.GetOrCreate(ref owner.materialDetailsRef);
+        public IReadOnlyList<NodeRef<CMwNod>>? NadeoSkinFids => owner.nadeoSkinFids?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? Cameras => owner.cameras?.References;
         public NodeRef<CPlugDecoratorSolid> DecoratorSolid => NodeRef.GetOrCreate(ref owner.decoratorSolidRef);
         public NodeRef<CPlugMaterial> StemMaterial => NodeRef.GetOrCreate(ref owner.stemMaterialRef);
         public NodeRef<CPlugMaterial> StemBumpMaterial => NodeRef.GetOrCreate(ref owner.stemBumpMaterialRef);
+        public IReadOnlyList<NodeRef<CMwNod>>? ForcedSkinsFids => owner.forcedSkinsFids?.References;
         public NodeRef<CPlugMaterial> MaterialPilot => NodeRef.GetOrCreate(ref owner.materialPilotRef);
         public NodeRef<CPlugBitmap> BannerProfileFid => NodeRef.GetOrCreate(ref owner.bannerProfileFidRef);
         public NodeRef<CPlugLight> FrontLight => NodeRef.GetOrCreate(ref owner.frontLightRef);
@@ -432,6 +435,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugAudioEnvironment> AudioEnvironmentInCar => NodeRef.GetOrCreate(ref owner.audioEnvironmentInCarRef);
         public NodeRef<CMwNod> PhyModelCustom => NodeRef.GetOrCreate(ref owner.phyModelCustomRef);
         public NodeRef<CMwNod> VisModelCustom => NodeRef.GetOrCreate(ref owner.visModelCustomRef);
+        public IReadOnlyList<NodeRef<CGameActionModel>>? Actions => owner.actions?.References;
         public NodeRef<CMwNod> EntityModelEdition => NodeRef.GetOrCreate(ref owner.entityModelEditionRef);
         public NodeRef<CMwNod> EntityModel => NodeRef.GetOrCreate(ref owner.entityModelRef);
         public NodeRef<CPlugVFXFile> VFX => NodeRef.GetOrCreate(ref owner.vFXRef);

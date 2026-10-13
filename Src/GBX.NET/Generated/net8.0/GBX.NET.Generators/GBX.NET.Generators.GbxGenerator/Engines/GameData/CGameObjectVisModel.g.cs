@@ -141,6 +141,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         private readonly CGameObjectVisModel owner;
         internal NodeRefView(CGameObjectVisModel owner) => this.owner = owner;
         public NodeRef<CPlugSolid2Model> MeshShaded => NodeRef.GetOrCreate(ref owner.meshShadedRef);
+        public IReadOnlyList<NodeRef<CPlugAnimLocSimple>>? LegacyLocAnimRefs => owner.legacyLocAnimRefs?.References;
         public NodeRef<CPlugAnimLocSimple> LocAnim => NodeRef.GetOrCreate(ref owner.locAnimRef);
         public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidNodeRef);
         public NodeRef<CMwNod> MeshShadedFid => NodeRef.GetOrCreate(ref owner.meshShadedFidRef);

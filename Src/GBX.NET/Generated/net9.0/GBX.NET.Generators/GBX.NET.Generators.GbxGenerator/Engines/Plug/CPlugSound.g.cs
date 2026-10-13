@@ -403,6 +403,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public NodeRef<CFuncKeysReal> VolumeFromDistance => NodeRef.GetOrCreate(ref owner.volumeFromDistanceRef);
         public NodeRef<CFuncKeysReal> PitchFromDistance => NodeRef.GetOrCreate(ref owner.pitchFromDistanceRef);
         public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => NodeRef.GetOrCreate(ref owner.volumeFormSpeedKmhRef);
+        public IReadOnlyList<NodeRef<CPlugSound>>? OldSubSources => owner.oldSubSources?.References;
         public NodeRef<CPlugSound> BackingSound => NodeRef.GetOrCreate(ref owner.backingSoundRef);
         public NodeRef<CPlugSound> FocusedSound => NodeRef.GetOrCreate(ref owner.focusedSoundRef);
     }

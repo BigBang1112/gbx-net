@@ -113,6 +113,7 @@ public partial class CFuncEnum : CFunc, IClass
     {
         private readonly CFuncEnum owner;
         internal NodeRefView(CFuncEnum owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlug>>? Values => owner.values?.References;
         public NodeRef<CMwRefBuffer> IconIndexs => NodeRef.GetOrCreate(ref owner.iconIndexsRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

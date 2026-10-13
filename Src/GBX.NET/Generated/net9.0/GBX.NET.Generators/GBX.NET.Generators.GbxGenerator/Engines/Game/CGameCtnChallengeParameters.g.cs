@@ -149,6 +149,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         private readonly CGameCtnChallengeParameters owner;
         internal NodeRefView(CGameCtnChallengeParameters owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnGhost>>? LegacyValidateGhosts => owner.legacyValidateGhosts?.References;
         public NodeRef<CGameCtnGhost> RaceValidateGhost => NodeRef.GetOrCreate(ref owner.raceValidateGhostRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

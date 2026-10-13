@@ -43,6 +43,14 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
         get => treeDecorators;
         set => treeDecorators = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugDecoratorSolid owner;
+        internal NodeRefView(CPlugDecoratorSolid owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugDecoratorTree>>? TreeDecorators => owner.treeDecorators?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

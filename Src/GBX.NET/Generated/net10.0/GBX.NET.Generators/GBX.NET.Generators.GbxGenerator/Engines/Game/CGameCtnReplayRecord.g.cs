@@ -55,6 +55,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         private readonly CGameCtnReplayRecord owner;
         internal NodeRefView(CGameCtnReplayRecord owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnGhost>>? Ghosts => owner.ghosts?.References;
         public NodeRef<CGameCtnMediaClip> Clip => NodeRef.GetOrCreate(ref owner.clipRef);
         public NodeRef<CCtnMediaBlockEventTrackMania> Events => NodeRef.GetOrCreate(ref owner.eventsRef);
         public NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> SimpleEventsDisplay => NodeRef.GetOrCreate(ref owner.simpleEventsDisplayRef);
@@ -290,6 +291,13 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x0309300A;
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0309300A owner;
+            internal NodeRefView(Chunk0309300A owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameCtnMediaTrack>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -251,6 +251,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     {
         private readonly CPlugCustomBeamModel owner;
         internal NodeRefView(CPlugCustomBeamModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugBeamEmitterSubModel>>? U01 => owner.u01?.References;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterSubModel>>? U02 => owner.u02?.References;
         public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

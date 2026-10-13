@@ -113,6 +113,7 @@ public partial class CMotionPlayer : CMotion, IClass
         internal NodeRefView(CMotionPlayer owner) => this.owner = owner;
         public NodeRef<CMotionCmdBase> Base => NodeRef.GetOrCreate(ref owner.baseRef);
         public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
+        public IReadOnlyList<NodeRef<CMotionTrack>>? Tracks => owner.tracks?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

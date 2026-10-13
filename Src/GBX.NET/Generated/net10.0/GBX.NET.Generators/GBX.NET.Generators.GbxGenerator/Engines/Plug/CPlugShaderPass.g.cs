@@ -243,6 +243,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         public NodeRef<CPlugFileGPU> VertexShader => NodeRef.GetOrCreate(ref owner.vertexShaderRef);
         public NodeRef<CPlugFileGPU> PixelShader => NodeRef.GetOrCreate(ref owner.pixelShaderRef);
         public NodeRef<CMwNod> UnusedShader => NodeRef.GetOrCreate(ref owner.unusedShaderRef);
+        public IReadOnlyList<NodeRef<CPlugBitmapSampler>>? VertexTextures => owner.vertexTextures?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

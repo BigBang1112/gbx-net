@@ -59,6 +59,28 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         get => this.autoTerrainPlaceType;
         set => this.autoTerrainPlaceType = value;
     }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CGameCtnBlockInfoVariantGround owner;
+        internal NodeRefView(CGameCtnBlockInfoVariantGround owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnAutoTerrain>>? AutoTerrains => owner.autoTerrains?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? BlockUnitModels => ((CGameCtnBlockInfoVariant)owner).References.BlockUnitModels;
+        public IReadOnlyList<IReadOnlyList<NodeRef<CGameCtnBlockInfoMobil>>?>? Mobils => ((CGameCtnBlockInfoVariant)owner).References.Mobils;
+        public NodeRef<CPlugSolid> HelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.HelperSolidFid;
+        public NodeRef<CPlugSolid> FacultativeHelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.FacultativeHelperSolidFid;
+        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.ScreenInteractionTriggerSolid;
+        public NodeRef<CMwNod> WaypointTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.WaypointTriggerSolid;
+        public NodeRef<CGameGateModel> Gate => ((CGameCtnBlockInfoVariant)owner).References.Gate;
+        public NodeRef<CGameTeleporterModel> Teleporter => ((CGameCtnBlockInfoVariant)owner).References.Teleporter;
+        public NodeRef<CGameTurbineModel> Turbine => ((CGameCtnBlockInfoVariant)owner).References.Turbine;
+        public NodeRef<CPlugFlockModel> FlockModel => ((CGameCtnBlockInfoVariant)owner).References.FlockModel;
+        public NodeRef<CGameSpawnModel> SpawnModel => ((CGameCtnBlockInfoVariant)owner).References.SpawnModel;
+        public IReadOnlyList<NodeRef<CPlugEntitySpawner>>? EntitySpawners => ((CGameCtnBlockInfoVariant)owner).References.EntitySpawners;
+        public NodeRef<CPlugProbe> Probe => ((CGameCtnBlockInfoVariant)owner).References.Probe;
+        public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => ((CGameCtnBlockInfoVariant)owner).References.CompoundModel;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

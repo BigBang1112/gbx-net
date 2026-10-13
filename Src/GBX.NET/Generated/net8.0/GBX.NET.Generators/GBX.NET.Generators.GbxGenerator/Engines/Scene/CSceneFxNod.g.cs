@@ -58,6 +58,7 @@ public partial class CSceneFxNod : CMwNod, IClass
         private readonly CSceneFxNod owner;
         internal NodeRefView(CSceneFxNod owner) => this.owner = owner;
         public NodeRef<CSceneFx> Fx => NodeRef.GetOrCreate(ref owner.fxRef);
+        public IReadOnlyList<NodeRef<CSceneFxNod>>? NodInputs => owner.nodInputs?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

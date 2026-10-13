@@ -446,6 +446,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         private readonly CGamePlayerScore owner;
         internal NodeRefView(CGamePlayerScore owner) => this.owner = owner;
         public NodeRef<CGamePlayerOfficialScores> PlayerOfficialScores => NodeRef.GetOrCreate(ref owner.playerOfficialScoresRef);
+        public IReadOnlyList<NodeRef<CGameCampaignPlayerScores>>? CampaignPlayerScores => owner.campaignPlayerScores?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -1414,6 +1415,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
             public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
+            public IReadOnlyList<NodeRef<CGameHighScore>>? U05 => owner.u05?.References;
+            public IReadOnlyList<NodeRef<CMwNod>>? U09 => owner.u09?.References;
+            public IReadOnlyList<NodeRef<CGameHighScore>>? U10 => owner.u10?.References;
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

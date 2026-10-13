@@ -253,13 +253,24 @@ public partial class CSceneLayout : CScene, IClass
     {
         private readonly CSceneLayout owner;
         internal NodeRefView(CSceneLayout owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CSceneSector>>? Sectors => owner.sectors?.References;
+        public IReadOnlyList<NodeRef<CSceneLight>>? Lights => owner.lights?.References;
+        public IReadOnlyList<NodeRef<CSceneObject>>? Sounds => owner.sounds?.References;
+        public IReadOnlyList<NodeRef<CSceneObject>>? Locations => owner.locations?.References;
+        public IReadOnlyList<NodeRef<CSceneObject>>? Fields => owner.fields?.References;
+        public IReadOnlyList<NodeRef<CSceneGate>>? Gates => owner.gates?.References;
+        public IReadOnlyList<NodeRef<CScenePath>>? Paths => owner.paths?.References;
         public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
+        public IReadOnlyList<NodeRef<CSceneTrafficPath>>? TrafficPaths => owner.trafficPaths?.References;
         public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
+        public IReadOnlyList<NodeRef<CSceneObject>>? Objects => owner.objects?.References;
+        public IReadOnlyList<NodeRef<CPlugWeatherModel>>? WeatherModels => owner.weatherModels?.References;
         public NodeRef<CPlugWeatherModel> WeatherModel => NodeRef.GetOrCreate(ref owner.weatherModelRef);
         public NodeRef<CPlugBitmap> BitmapWaterFog => NodeRef.GetOrCreate(ref owner.bitmapWaterFogRef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
+        public IReadOnlyList<NodeRef<CMotionManager>>? MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -439,6 +450,14 @@ public partial class CSceneLayout : CScene, IClass
 
         public NodeRefList<CSceneObject>? U01;
         public SceneLoc[]? U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A003018 owner;
+            internal NodeRefView(Chunk0A003018 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -546,6 +565,14 @@ public partial class CSceneLayout : CScene, IClass
         public SceneLoc[]? U02;
         public int U03;
         public int U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A00301B owner;
+            internal NodeRefView(Chunk0A00301B owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -626,6 +653,7 @@ public partial class CSceneLayout : CScene, IClass
             private readonly Chunk0A00301C owner;
             internal NodeRefView(Chunk0A00301C owner) => this.owner = owner;
             public NodeRef<CSceneConfig> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public IReadOnlyList<NodeRef<CSceneLocation>>? U05 => owner.U05?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

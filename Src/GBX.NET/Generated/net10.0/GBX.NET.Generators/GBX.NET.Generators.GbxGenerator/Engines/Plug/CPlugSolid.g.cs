@@ -563,6 +563,8 @@ public partial class CPlugSolid : CPlug, IClass
         {
             private readonly Chunk09005019 owner;
             internal NodeRefView(Chunk09005019 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CPlugSound>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CPlugParticleEmitterModel>>? U02 => owner.U02?.References;
             public NodeRef<CPlugPath> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

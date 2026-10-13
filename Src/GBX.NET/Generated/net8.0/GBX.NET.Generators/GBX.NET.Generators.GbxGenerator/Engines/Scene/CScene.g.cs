@@ -66,6 +66,7 @@ public abstract partial class CScene : CMwNod, IClass
         private readonly CScene owner;
         internal NodeRefView(CScene owner) => this.owner = owner;
         public NodeRef<CSceneConfig> SceneConfig => NodeRef.GetOrCreate(ref owner.sceneConfigRef);
+        public IReadOnlyList<NodeRef<CMotionManager>>? MotionManagerModels => owner.motionManagerModels?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

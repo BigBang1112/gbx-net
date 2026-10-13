@@ -43,6 +43,14 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
         get => materials;
         set => materials = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneVehicleEnvironment owner;
+        internal NodeRefView(CSceneVehicleEnvironment owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugMaterial>>? Materials => owner.materials?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

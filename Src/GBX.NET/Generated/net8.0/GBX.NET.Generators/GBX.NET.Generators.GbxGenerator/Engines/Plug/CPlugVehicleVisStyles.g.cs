@@ -51,6 +51,14 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
         get => this.unwantedTrafficVehiclesMatchName;
         set => this.unwantedTrafficVehiclesMatchName = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleVisStyles owner;
+        internal NodeRefView(CPlugVehicleVisStyles owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugVehicleVisStyleRandomGroup>>? RandomGroups => owner.randomGroups?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

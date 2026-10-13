@@ -295,6 +295,8 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     {
         private readonly CGameCtnBlockInfoVariant owner;
         internal NodeRefView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? BlockUnitModels => owner.blockUnitModels?.References;
+        public IReadOnlyList<IReadOnlyList<NodeRef<CGameCtnBlockInfoMobil>>?>? Mobils => owner.mobils is { } rows ? Array.ConvertAll(rows, static row => row?.References) : null;
         public NodeRef<CPlugSolid> HelperSolidFid => NodeRef.GetOrCreate(ref owner.helperSolidFidRef);
         public NodeRef<CPlugSolid> FacultativeHelperSolidFid => NodeRef.GetOrCreate(ref owner.facultativeHelperSolidFidRef);
         public NodeRef<CMwNod> ScreenInteractionTriggerSolid => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerSolidRef);
@@ -304,6 +306,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public NodeRef<CGameTurbineModel> Turbine => NodeRef.GetOrCreate(ref owner.turbineRef);
         public NodeRef<CPlugFlockModel> FlockModel => NodeRef.GetOrCreate(ref owner.flockModelRef);
         public NodeRef<CGameSpawnModel> SpawnModel => NodeRef.GetOrCreate(ref owner.spawnModelRef);
+        public IReadOnlyList<NodeRef<CPlugEntitySpawner>>? EntitySpawners => owner.entitySpawners?.References;
         public NodeRef<CPlugProbe> Probe => NodeRef.GetOrCreate(ref owner.probeRef);
         public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => NodeRef.GetOrCreate(ref owner.compoundModelRef);
     }

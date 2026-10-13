@@ -219,6 +219,8 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     {
         private readonly CPlugShaderApply owner;
         internal NodeRefView(CPlugShaderApply owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugBitmapAddress>>? BitmapAddresses => owner.bitmapAddresses?.References;
+        public IReadOnlyList<NodeRef<CPlugBitmapAddress>>? UnusedBitmapAddresses => owner.unusedBitmapAddresses?.References;
         public NodeRef<CPlugBitmapApplyArray> BitmapApplyArray => NodeRef.GetOrCreate(ref owner.bitmapApplyArrayRef);
         public NodeRef<CPlugBitmapAddress> Diffuse => NodeRef.GetOrCreate(ref owner.diffuseRef);
         public NodeRef<CPlugBitmapAddress> LightMap => NodeRef.GetOrCreate(ref owner.lightMapRef);
@@ -226,8 +228,10 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         public NodeRef<CPlugBitmapAddress> SelfIllum => NodeRef.GetOrCreate(ref owner.selfIllumRef);
         public NodeRef<CPlugBitmapAddress> EnvMap => NodeRef.GetOrCreate(ref owner.envMapRef);
         public NodeRef<CFuncShader> FuncShader => ((CPlugShaderGeneric)owner).References.FuncShader;
+        public IReadOnlyList<NodeRef<CPlugShaderPass>>? Passes => ((CPlugShaderGeneric)owner).References.Passes;
         public NodeRef<CPlugBitmapApply> SolidWiredApply => ((CPlugShaderGeneric)owner).References.SolidWiredApply;
         public NodeRef<CPlugMaterialFx> MaterialFx => ((CPlugShaderGeneric)owner).References.MaterialFx;
+        public IReadOnlyList<NodeRef<CPlugShader>>? LegacyCustomShaders => ((CPlugShaderGeneric)owner).References.LegacyCustomShaders;
         public NodeRef<CPlugFileGPUV> GPU => ((CPlugShaderGeneric)owner).References.GPU;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

@@ -59,6 +59,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         get => vehicleEmitters;
         set => vehicleEmitters = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleVisModelShared owner;
+        internal NodeRefView(CPlugVehicleVisModelShared owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugVehicleMaterialGroup>>? VehicleMaterialGroups => owner.vehicleMaterialGroups?.References;
+        public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? VehicleEmitters => owner.vehicleEmitters?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -521,6 +530,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             internal NodeRefView(Chunk090E801E owner) => this.owner = owner;
             public NodeRef<CPlugMaterial> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CPlugMaterial> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CPlugMaterial>>? U03 => owner.U03?.References;
             public NodeRef<CPlugMaterial> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public NodeRef<CPlugMaterial> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugMaterial> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
@@ -792,6 +802,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugParticleEmitterModel> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CPlugParticleEmitterModel> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public NodeRef<CPlugParticleEmitterModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public IReadOnlyList<NodeRef<CPlugVehicleVisEmitterModel>>? U06 => owner.U06?.References;
             public NodeRef<CPlugParticleEmitterModel> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
             public NodeRef<CPlugParticleEmitterModel> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
             public NodeRef<CPlugVisEntFxModel> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);

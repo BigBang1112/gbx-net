@@ -85,6 +85,14 @@ public partial class CPlugFxLightning : CPlug, IClass
         public float U07;
         public float U08;
         public float U09;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090D8000 owner;
+            internal NodeRefView(Chunk090D8000 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CFuncKeysReal>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;

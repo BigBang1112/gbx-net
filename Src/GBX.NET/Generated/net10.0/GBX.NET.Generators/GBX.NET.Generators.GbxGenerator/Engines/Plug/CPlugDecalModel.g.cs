@@ -260,6 +260,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         public NodeRef<CPlugBitmap> Icon => NodeRef.GetOrCreate(ref owner.iconRef);
         public NodeRef<CPlugBitmap> Sprite3dBitmap => NodeRef.GetOrCreate(ref owner.sprite3dBitmapRef);
         public NodeRef<CMwNod> Svg => NodeRef.GetOrCreate(ref owner.svgNodeRef);
+        public IReadOnlyList<NodeRef<CPlugDecalModel>>? DecalModels => owner.decalModels?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

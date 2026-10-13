@@ -83,10 +83,10 @@ Node-reference collections use `NodeRefList<T>`. Indexing, enumeration, and `Cop
 
 ```cs
 var first = item.NadeoSkinFids?[0];
-var firstReference = item.NadeoSkinFids!.Get(0);
-Console.WriteLine(firstReference.File?.FilePath);
+var firstReference = item.References.NadeoSkinFids?[0];
+Console.WriteLine(firstReference?.File?.FilePath);
 
-foreach (var stored in item.NadeoSkinFids.EnumerateReferences())
+foreach (var stored in item.References.NadeoSkinFids ?? [])
 {
     Console.WriteLine(stored.Descriptor);
 }
@@ -94,11 +94,13 @@ foreach (var stored in item.NadeoSkinFids.EnumerateReferences())
 
 `Get(index)` returns an element's handle, and `EnumerateReferences()` iterates the stored handles without loading nodes. `Add(node)` and `Insert(index, node)` store embedded nodes, while overloads taking `NodeRef<T>` copy reference storage into a new element handle without loading anything.
 
+The owner's `References` view exposes collections as `IReadOnlyList<NodeRef<T>>?`. Indexing and enumerating these lists return stored handles without resolving nodes. Each list uses a cached read-only wrapper that follows insertion and removal. The handles themselves remain writable. A null collection returns null without creating a list.
+
 With C# 13 or later, [overload resolution priority](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-13.0/overload-resolution-priority) makes `Add(null)` and `Insert(index, null)` select the node overload and create an absent reference. Earlier compilers need an explicit node type, such as `Add((T?)null)`, to distinguish the overloads. Passing a typed null handle throws `ArgumentNullException`.
 
 Accessing an owner's collection property returns its current list without resolving elements. A captured list remains that list if the owner replaces it. An element handle keeps its entry identity when an element is removed or its index changes. Reference lists allow insertion and removal regardless of the wire format's length. `ToArray` creates a resolved snapshot and does not retain external metadata.
 
-Generated scalar views also cover references in chunks and named archives. Jagged reference collections expose each row as a `NodeRefList<T>`, with `Get` and `EnumerateReferences` for its element metadata. Handwritten dictionary serializers such as `CGameCtnDecorationAudio.Sounds` and `Musics` keep `NodeRef<T>` values directly.
+Generated views also cover references in chunks and named archives. Jagged reference collections expose each row's handle list through `References`, projecting the current rows on access without resolving nodes. Each row's wrapper remains live for its source list. Handwritten dictionary serializers such as `CGameCtnDecorationAudio.Sounds` and `Musics` keep `NodeRef<T>` values directly.
 
 `CGameCtnMediaClipGroup.Clips` keeps its combined `List<ClipTrigger>` API. Each pair exposes its clip metadata through `pair.References.Clip` and keeps the trigger with its clip when entries are reordered.
 

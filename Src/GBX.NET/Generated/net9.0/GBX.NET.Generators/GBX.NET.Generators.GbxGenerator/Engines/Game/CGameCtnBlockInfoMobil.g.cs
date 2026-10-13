@@ -267,14 +267,23 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         private readonly CGameCtnBlockInfoMobil owner;
         internal NodeRefView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
         public NodeRef<CSceneMobil> OldMobil => NodeRef.GetOrCreate(ref owner.oldMobilRef);
+        public IReadOnlyList<NodeRef<CGameCtnSolidDecals>>? SolidDecals => owner.solidDecals?.References;
         public NodeRef<CPlugSolid> SolidFid => NodeRef.GetOrCreate(ref owner.solidFidRef);
         public NodeRef<CPlugPrefab> PrefabFid => NodeRef.GetOrCreate(ref owner.prefabFidRef);
         public NodeRef<CPlugSolid> OldSolidAggreg => NodeRef.GetOrCreate(ref owner.oldSolidAggregRef);
+        public IReadOnlyList<NodeRef<CPlugPolyLine3>>? LegacyRailPolylines => owner.legacyRailPolylines?.References;
         public NodeRef<CPlugPath> RailPath => NodeRef.GetOrCreate(ref owner.railPathRef);
         public NodeRef<CPlugPath> TrafficPath => NodeRef.GetOrCreate(ref owner.trafficPathRef);
         public NodeRef<CPlugRecastPolyMeshData> RecastPolyMeshData => NodeRef.GetOrCreate(ref owner.recastPolyMeshDataRef);
+        public IReadOnlyList<NodeRef<CPlugRoadChunk>>? LegacyRoadChunks => owner.legacyRoadChunks?.References;
+        public IReadOnlyList<NodeRef<CPlugRoadChunkTraffic>>? RoadChunks => owner.roadChunks?.References;
         public NodeRef<CPlugPath> CitizenNetworkPath => NodeRef.GetOrCreate(ref owner.citizenNetworkPathRef);
+        public IReadOnlyList<NodeRef<CPlugRoadChunk>>? LegacyCitizenRoadChunks => owner.legacyCitizenRoadChunks?.References;
+        public IReadOnlyList<NodeRef<CPlugRoadChunkCitizen>>? CitizenRoadChunks => owner.citizenRoadChunks?.References;
         public NodeRef<CPlugVFXFile> VFXs => NodeRef.GetOrCreate(ref owner.vFXsRef);
+        public IReadOnlyList<NodeRef<CPlugRoadChunk>>? LegacyPlacementPatches => owner.legacyPlacementPatches?.References;
+        public IReadOnlyList<NodeRef<CPlugPlacementPatch>>? PlacementPatches => owner.placementPatches?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoMobilLink>>? DynaLinks => owner.dynaLinks?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

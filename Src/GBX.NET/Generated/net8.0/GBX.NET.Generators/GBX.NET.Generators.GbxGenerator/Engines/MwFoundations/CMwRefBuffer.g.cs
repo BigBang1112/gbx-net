@@ -67,6 +67,14 @@ public partial class CMwRefBuffer : CMwNod, IClass
         get => this.bufferId;
         set => this.bufferId = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMwRefBuffer owner;
+        internal NodeRefView(CMwRefBuffer owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CMwNod>>? Nods => owner.nods?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

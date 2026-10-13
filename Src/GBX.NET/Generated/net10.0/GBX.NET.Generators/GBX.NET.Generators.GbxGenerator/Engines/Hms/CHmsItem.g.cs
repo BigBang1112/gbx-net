@@ -198,6 +198,7 @@ public partial class CHmsItem : CMwNod, IClass
         private readonly CHmsItem owner;
         internal NodeRefView(CHmsItem owner) => this.owner = owner;
         public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidRef);
+        public IReadOnlyList<NodeRef<CHmsPortal>>? Portals => owner.portals?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

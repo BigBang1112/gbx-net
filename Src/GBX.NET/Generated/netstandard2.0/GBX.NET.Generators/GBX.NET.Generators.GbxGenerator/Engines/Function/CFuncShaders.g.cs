@@ -43,6 +43,14 @@ public partial class CFuncShaders : CFuncShader, IClass
         get => funcShaders;
         set => funcShaders = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncShaders owner;
+        internal NodeRefView(CFuncShaders owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CFuncShader>>? FuncShaders => owner.funcShaders?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

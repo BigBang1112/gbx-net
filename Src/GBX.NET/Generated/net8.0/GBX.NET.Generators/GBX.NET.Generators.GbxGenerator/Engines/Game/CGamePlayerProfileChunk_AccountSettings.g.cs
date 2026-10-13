@@ -544,6 +544,16 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         get => this.steamId;
         set => this.steamId = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerProfileChunk_AccountSettings owner;
+        internal NodeRefView(CGamePlayerProfileChunk_AccountSettings owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? InboxMessages => owner.inboxMessages?.References;
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? ReadMessages => owner.readMessages?.References;
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? OutboxMessages => owner.outboxMessages?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -135,6 +135,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         private readonly CGameCtnMediaClip owner;
         internal NodeRefView(CGameCtnMediaClip owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnMediaTrack>>? Tracks => owner.tracks?.References;
         public NodeRef<CScene> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

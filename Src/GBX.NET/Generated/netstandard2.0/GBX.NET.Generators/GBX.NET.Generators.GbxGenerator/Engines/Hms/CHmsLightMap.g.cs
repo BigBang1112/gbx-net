@@ -295,6 +295,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         internal NodeRefView(CHmsLightMap owner) => this.owner = owner;
         public NodeRef<CPlugPointsInSphereOpt> PointsInSphereOpt => NodeRef.GetOrCreate(ref owner.pointsInSphereOptRef);
         public NodeRef<CHmsLightMapMood> Mood => NodeRef.GetOrCreate(ref owner.moodRef);
+        public IReadOnlyList<NodeRef<CPlugBitmap>>? BitmapLightSumBumpLegacy => owner.bitmapLightSumBumpLegacy?.References;
         public NodeRef<CPlugBitmap> BitmapSM_ColorPeeled => NodeRef.GetOrCreate(ref owner.bitmapSM_ColorPeeledRef);
         public NodeRef<CPlugBitmap> BitmapLM_ILightInput => NodeRef.GetOrCreate(ref owner.bitmapLM_ILightInputRef);
         public NodeRef<CPlugBitmap> BitmapLM_ILightDir => NodeRef.GetOrCreate(ref owner.bitmapLM_ILightDirRef);
@@ -415,6 +416,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             internal NodeRefView(Chunk06021000 owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -561,6 +563,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             internal NodeRefView(Chunk06021004 owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -654,6 +657,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021007;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021007 owner;
+            internal NodeRefView(Chunk06021007 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -761,6 +772,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             internal NodeRefView(Chunk0602100A owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -800,6 +812,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x0602100B;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0602100B owner;
+            internal NodeRefView(Chunk0602100B owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -943,6 +963,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             internal NodeRefView(Chunk06021010 owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -982,6 +1003,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021011;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021011 owner;
+            internal NodeRefView(Chunk06021011 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1085,6 +1114,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021015;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021015 owner;
+            internal NodeRefView(Chunk06021015 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1115,6 +1152,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021016 owner;
+            internal NodeRefView(Chunk06021016 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1163,6 +1208,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021018;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021018 owner;
+            internal NodeRefView(Chunk06021018 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1235,6 +1288,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x0602101A;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0602101A owner;
+            internal NodeRefView(Chunk0602101A owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1277,6 +1338,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             private readonly Chunk0602101B owner;
             internal NodeRefView(Chunk0602101B owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U02 => owner.U02?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -1359,6 +1421,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x0602101E;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0602101E owner;
+            internal NodeRefView(Chunk0602101E owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1427,6 +1497,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021020;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021020 owner;
+            internal NodeRefView(Chunk06021020 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1456,6 +1534,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021021;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021021 owner;
+            internal NodeRefView(Chunk06021021 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1617,6 +1703,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
 
         public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk06021028 owner;
+            internal NodeRefView(Chunk06021028 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -1840,6 +1934,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             internal NodeRefView(Chunk0602102A owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugFileGPU> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
         }
@@ -1924,6 +2019,7 @@ public partial class CHmsLightMap : CMwNod, IClass
             private readonly Chunk0602102B owner;
             internal NodeRefView(Chunk0602102B owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public IReadOnlyList<NodeRef<CMwNod>>? U02 => owner.U02?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

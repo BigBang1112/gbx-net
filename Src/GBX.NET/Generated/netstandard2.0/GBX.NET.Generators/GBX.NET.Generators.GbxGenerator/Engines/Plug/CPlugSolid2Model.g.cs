@@ -59,7 +59,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     {
         private readonly CPlugSolid2Model owner;
         internal NodeRefView(CPlugSolid2Model owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugVisual>>? Visuals => owner.visuals?.References;
+        public IReadOnlyList<NodeRef<CPlugMaterial>>? Materials => owner.materials?.References;
         public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
+        public IReadOnlyList<NodeRef<CPlugMaterialUserInst>>? MaterialInsts => owner.materialInsts?.References;
+        public IReadOnlyList<NodeRef<CPlugLightUserModel>>? LightUserModels => owner.lightUserModels?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

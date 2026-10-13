@@ -54,6 +54,14 @@ public partial class CPlugPath : CMwNod, IClass
         get => this.lineGroups;
         set => this.lineGroups = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugPath owner;
+        internal NodeRefView(CPlugPath owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugPolyLine3>>? PolyLines => owner.polyLines?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

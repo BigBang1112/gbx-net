@@ -81,6 +81,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     {
         private readonly CPlugWeatherModel owner;
         internal NodeRefView(CPlugWeatherModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugWeather>>? Weathers => owner.weathers?.References;
         public NodeRef<CPlugBitmap> BitmapSpecularDir => NodeRef.GetOrCreate(ref owner.bitmapSpecularDirRef);
         public NodeRef<CFuncDayTime> FuncDayTime => NodeRef.GetOrCreate(ref owner.funcDayTimeRef);
         public NodeRef<CPlugBitmap> BitmapWaterFog => NodeRef.GetOrCreate(ref owner.bitmapWaterFogRef);

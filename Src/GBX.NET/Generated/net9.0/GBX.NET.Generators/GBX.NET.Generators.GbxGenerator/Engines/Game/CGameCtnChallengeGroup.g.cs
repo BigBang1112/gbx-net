@@ -214,6 +214,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         private readonly CGameCtnChallengeGroup owner;
         internal NodeRefView(CGameCtnChallengeGroup owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnChallenge>>? MapFiles => owner.mapFiles?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? Files => owner.files?.References;
         public NodeRef<CGameCtnCampaign> LinkedCampaign => NodeRef.GetOrCreate(ref owner.linkedCampaignRef);
         public NodeRef<CGameCtnCollection> AssociatedCollection => NodeRef.GetOrCreate(ref owner.associatedCollectionRef);
     }

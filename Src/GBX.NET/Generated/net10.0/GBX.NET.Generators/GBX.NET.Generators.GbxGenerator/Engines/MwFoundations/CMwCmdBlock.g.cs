@@ -43,6 +43,14 @@ public partial class CMwCmdBlock : CMwNod, IClass
         get => cmds;
         set => cmds = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMwCmdBlock owner;
+        internal NodeRefView(CMwCmdBlock owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CMwCmdScript>>? Cmds => owner.cmds?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -389,6 +389,7 @@ public partial class CPlugMaterial : CPlug, IClass
         {
             private readonly Chunk09079015 owner;
             internal NodeRefView(Chunk09079015 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CPlugMaterialColorTargetTable>>? U03 => owner.U03?.References;
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

@@ -171,6 +171,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
         public NodeRef<CMwNod> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
         public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel => NodeRef.GetOrCreate(ref owner.particleEmitterModelRef);
+        public IReadOnlyList<NodeRef<CGameActionModel>>? Actions => owner.actions?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

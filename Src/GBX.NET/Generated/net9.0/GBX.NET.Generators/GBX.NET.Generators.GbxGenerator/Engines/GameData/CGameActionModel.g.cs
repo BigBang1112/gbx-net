@@ -361,7 +361,9 @@ public partial class CGameActionModel : CMwNod, IClass
     {
         private readonly CGameActionModel owner;
         internal NodeRefView(CGameActionModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugBulletModel>>? BulletModels_Nadeo => owner.bulletModels_Nadeo?.References;
         public NodeRef<CPlugShieldModel> ShieldModel => NodeRef.GetOrCreate(ref owner.shieldModelRef);
+        public IReadOnlyList<NodeRef<CPlugBulletModel>>? BulletModels => owner.bulletModels?.References;
         public NodeRef<CPlugAnimFile> Anim => NodeRef.GetOrCreate(ref owner.animRef);
         public NodeRef<CPlugFileTextScript> LegacyScript => NodeRef.GetOrCreate(ref owner.legacyScriptRef);
         public NodeRef<CPlugScriptWithSettings> Script => NodeRef.GetOrCreate(ref owner.scriptRef);

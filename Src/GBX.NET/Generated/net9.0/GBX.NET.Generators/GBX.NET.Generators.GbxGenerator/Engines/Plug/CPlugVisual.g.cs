@@ -113,6 +113,7 @@ public partial class CPlugVisual : CPlug, IClass
         private readonly CPlugVisual owner;
         internal NodeRefView(CPlugVisual owner) => this.owner = owner;
         public NodeRef<CMwNod> FuncVisual => NodeRef.GetOrCreate(ref owner.funcVisualRef);
+        public IReadOnlyList<NodeRef<CPlugVertexStream>>? VertexStreams => owner.vertexStreams?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

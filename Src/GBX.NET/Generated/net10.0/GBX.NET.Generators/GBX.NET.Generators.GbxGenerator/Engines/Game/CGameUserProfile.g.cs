@@ -306,6 +306,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     {
         private readonly CGameUserProfile owner;
         internal NodeRefView(CGameUserProfile owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CInputBindingsConfig>>? InputBindingsConfigs => owner.inputBindingsConfigs?.References;
         public NodeRef<CInputBindingsConfig> InputBindingsConfig => NodeRef.GetOrCreate(ref owner.inputBindingsConfigRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

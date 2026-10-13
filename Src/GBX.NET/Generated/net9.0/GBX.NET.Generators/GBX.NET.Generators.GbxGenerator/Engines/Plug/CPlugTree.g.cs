@@ -165,6 +165,7 @@ public partial class CPlugTree : CPlug, IClass
     {
         private readonly CPlugTree owner;
         internal NodeRefView(CPlugTree owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugTree>>? Children => owner.children?.References;
         public NodeRef<CPlugSolid> ModelSolid => NodeRef.GetOrCreate(ref owner.modelSolidRef);
         public NodeRef<CPlugVisual> Visual => NodeRef.GetOrCreate(ref owner.visualRef);
         public NodeRef<CPlug> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);

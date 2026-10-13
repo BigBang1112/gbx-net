@@ -92,6 +92,14 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
         get => this.pixelData;
         set => this.pixelData = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugFileGen owner;
+        internal NodeRefView(CPlugFileGen owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugFileImg>>? InputImages => owner.inputImages?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

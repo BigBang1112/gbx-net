@@ -1208,12 +1208,15 @@ public partial class CGameCtnCollection : CMwNod, IClass
     {
         private readonly CGameCtnCollection owner;
         internal NodeRefView(CGameCtnCollection owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnZone>>? CompleteZoneList => owner.completeZoneList?.References;
         public NodeRef<CGameCtnZone> DefaultZone => NodeRef.GetOrCreate(ref owner.defaultZoneRef);
         public NodeRef<CGameCtnDecoration> DefaultDecoration => NodeRef.GetOrCreate(ref owner.defaultDecorationRef);
         public NodeRef<CPlugBitmap> IconFid => NodeRef.GetOrCreate(ref owner.iconFidRef);
         public NodeRef<CPlugBitmap> IconSmallFid => NodeRef.GetOrCreate(ref owner.iconSmallFidRef);
         public NodeRef<CPlugBitmap> MapFid => NodeRef.GetOrCreate(ref owner.mapFidRef);
         public NodeRef<CPlugBitmap> LoadScreenFid => NodeRef.GetOrCreate(ref owner.loadScreenFidRef);
+        public IReadOnlyList<NodeRef<CGameCtnDecorationTerrainModifier>>? ReplacementTerrainModifiers => owner.replacementTerrainModifiers?.References;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterModel>>? ParticleEmitterModelsFids => owner.particleEmitterModelsFids?.References;
         public NodeRef<CGameCtnDecoration> LegacyDecoration => NodeRef.GetOrCreate(ref owner.legacyDecorationRef);
         public NodeRef<CSceneVehicleCarMarksModel> MarksModel => NodeRef.GetOrCreate(ref owner.marksModelRef);
         public NodeRef<CFuncShaderLayerUV> FidFuncShaderCloudsX2 => NodeRef.GetOrCreate(ref owner.fidFuncShaderCloudsX2Ref);

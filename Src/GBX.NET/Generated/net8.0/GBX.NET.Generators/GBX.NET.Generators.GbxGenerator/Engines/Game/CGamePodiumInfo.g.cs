@@ -43,6 +43,14 @@ public partial class CGamePodiumInfo : CMwNod, IClass
         get => mediaClipFids;
         set => mediaClipFids = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePodiumInfo owner;
+        internal NodeRefView(CGamePodiumInfo owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CMwNod>>? MediaClipFids => owner.mediaClipFids?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -546,6 +546,15 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         get => this.u17;
         set => this.u17 = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugCustomBulletModel owner;
+        internal NodeRefView(CPlugCustomBulletModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterSubModel>>? AliveParticleEmitterSubModels => owner.aliveParticleEmitterSubModels?.References;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterSubModel>>? ExplosionParticleEmitterSubModels => owner.explosionParticleEmitterSubModels?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

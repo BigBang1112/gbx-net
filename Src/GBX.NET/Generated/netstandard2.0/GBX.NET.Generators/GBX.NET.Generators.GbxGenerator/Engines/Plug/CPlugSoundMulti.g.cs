@@ -124,11 +124,13 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         private readonly CPlugSoundMulti owner;
         internal NodeRefView(CPlugSoundMulti owner) => this.owner = owner;
         public NodeRef<CMwNod> AdditionalSounds => NodeRef.GetOrCreate(ref owner.additionalSoundsRef);
+        public IReadOnlyList<NodeRef<CMwNod>>? AdditionalSounds2 => owner.additionalSounds2?.References;
         public NodeRef<CFuncKeysReal> VolumeFromInput => NodeRef.GetOrCreate(ref owner.volumeFromInputRef);
         public NodeRef<CMwNod> PlugFile => ((CPlugSound)owner).References.PlugFile;
         public NodeRef<CFuncKeysReal> VolumeFromDistance => ((CPlugSound)owner).References.VolumeFromDistance;
         public NodeRef<CFuncKeysReal> PitchFromDistance => ((CPlugSound)owner).References.PitchFromDistance;
         public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => ((CPlugSound)owner).References.VolumeFormSpeedKmh;
+        public IReadOnlyList<NodeRef<CPlugSound>>? OldSubSources => ((CPlugSound)owner).References.OldSubSources;
         public NodeRef<CPlugSound> BackingSound => ((CPlugSound)owner).References.BackingSound;
         public NodeRef<CPlugSound> FocusedSound => ((CPlugSound)owner).References.FocusedSound;
     }

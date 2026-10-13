@@ -43,6 +43,14 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
         get => datas;
         set => datas = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAdnRandomGenList owner;
+        internal NodeRefView(CPlugAdnRandomGenList owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugAdnRandomGen>>? Datas => owner.datas?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

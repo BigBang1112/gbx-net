@@ -43,6 +43,14 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
         get => bitmapAddresses;
         set => bitmapAddresses = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapApplyArray owner;
+        internal NodeRefView(CPlugBitmapApplyArray owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugBitmapAddress>>? BitmapAddresses => owner.bitmapAddresses?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

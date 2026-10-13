@@ -308,6 +308,20 @@ public partial class CPlugAnimFile : CMwNod, IClass
         get => clips;
         set => clips = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAnimFile owner;
+        internal NodeRefView(CPlugAnimFile owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugAnimPoseGroup>>? PoseGroups => owner.poseGroups?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimPoseGrid>>? PoseGrids => owner.poseGrids?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimGraph>>? Graphs => owner.graphs?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimGraphStack>>? GraphStacks => owner.graphStacks?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimVariantGroup>>? VariantGroups => owner.variantGroups?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimSkelEditionPose>>? EditionPoses => owner.editionPoses?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimClip>>? Clips => owner.clips?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

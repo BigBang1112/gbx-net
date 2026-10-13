@@ -70,6 +70,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
         private readonly CPlugBitmapShader owner;
         internal NodeRefView(CPlugBitmapShader owner) => this.owner = owner;
         public NodeRef<CPlugShader> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
+        public IReadOnlyList<NodeRef<CPlugBitmap>>? LegacyBitmaps => owner.legacyBitmaps?.References;
         public NodeRef<CPlugBitmap> BitmapToSwap => NodeRef.GetOrCreate(ref owner.bitmapToSwapRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

@@ -602,6 +602,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         private readonly CGameCtnGhost owner;
         internal NodeRefView(CGameCtnGhost owner) => this.owner = owner;
         public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
+        public IReadOnlyList<NodeRef<CPlugTimedPixelArray>>? ScreenCaptures => owner.screenCaptures?.References;
+        public IReadOnlyList<NodeRef<CPlugTimedPixelArray>>? ScreenCaptures_Difference => owner.screenCaptures_Difference?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

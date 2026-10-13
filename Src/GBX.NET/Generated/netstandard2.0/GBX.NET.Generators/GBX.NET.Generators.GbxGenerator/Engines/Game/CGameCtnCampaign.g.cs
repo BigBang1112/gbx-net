@@ -145,6 +145,14 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         get => this.officialRecordEnabled;
         set => this.officialRecordEnabled = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnCampaign owner;
+        internal NodeRefView(CGameCtnCampaign owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnChallengeGroup>>? ChallengeGroups => owner.challengeGroups?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

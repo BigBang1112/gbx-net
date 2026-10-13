@@ -51,6 +51,14 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
         get => this.disabled;
         set => this.disabled = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneVehicleCarMarksModel owner;
+        internal NodeRefView(CSceneVehicleCarMarksModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CSceneVehicleCarMarksModelSub>>? Models => owner.models?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

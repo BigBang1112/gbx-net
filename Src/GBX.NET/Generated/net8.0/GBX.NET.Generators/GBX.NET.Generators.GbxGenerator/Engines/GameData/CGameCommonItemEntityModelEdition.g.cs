@@ -343,6 +343,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public NodeRef<CPlugCrystal> CustomHitShapeCrystal => NodeRef.GetOrCreate(ref owner.customHitShapeCrystalRef);
         public NodeRef<CPlugCrystal> CustomTriggerShapeCrystal => NodeRef.GetOrCreate(ref owner.customTriggerShapeCrystalRef);
         public NodeRef<CGameActionModel> PickupActionModel => NodeRef.GetOrCreate(ref owner.pickupActionModelRef);
+        public IReadOnlyList<NodeRef<CGameActionModel>>? TriggeredActions => owner.triggeredActions?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

@@ -67,6 +67,15 @@ public partial class CGameAdvertising : CGameNod, IClass
         get => this.radial_Config;
         set => this.radial_Config = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameAdvertising owner;
+        internal NodeRefView(CGameAdvertising owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CMwNod>>? Files => owner.files?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? FilesOrig => owner.filesOrig?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

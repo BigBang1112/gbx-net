@@ -884,8 +884,13 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         private readonly CGamePlayerProfile owner;
         internal NodeRefView(CGamePlayerProfile owner) => this.owner = owner;
         public NodeRef<CInputBindingsConfig> BindingsForCompatConfig => NodeRef.GetOrCreate(ref owner.bindingsForCompatConfigRef);
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? InboxMessages => owner.inboxMessages?.References;
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? ReadMessages => owner.readMessages?.References;
+        public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? OutboxMessages => owner.outboxMessages?.References;
         public NodeRef<CInputBindingsConfig> BindingsConfig => NodeRef.GetOrCreate(ref owner.bindingsConfigRef);
+        public IReadOnlyList<NodeRef<CGameLeague>>? Leagues => owner.leagues?.References;
         public NodeRef<CGameCtnMediaShootParams> ShootParams => NodeRef.GetOrCreate(ref owner.shootParamsRef);
+        public IReadOnlyList<NodeRef<CGameCtnCampaign>>? CustomCampaigns => owner.customCampaigns?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -2878,6 +2883,14 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C046;
 
         public NodeRefList<CGameNetOnlineMessage>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0308C046 owner;
+            internal NodeRefView(Chunk0308C046 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameNetOnlineMessage>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -3865,6 +3878,14 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C070;
 
         public NodeRefList<CInputBindingsConfig>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0308C070 owner;
+            internal NodeRefView(Chunk0308C070 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CInputBindingsConfig>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -3911,6 +3932,14 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C072;
 
         public NodeRefList<CGameCtnCampaign>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0308C072 owner;
+            internal NodeRefView(Chunk0308C072 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameCtnCampaign>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -4222,6 +4251,14 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         public NodeRefList<CGameCtnChallenge>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk240B5004 owner;
+            internal NodeRefView(Chunk240B5004 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameCtnChallenge>>? U01 => owner.U01?.References;
+        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;

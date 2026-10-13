@@ -44,6 +44,14 @@ public partial class CMotions : CMotion, IClass
         get => motions;
         set => motions = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotions owner;
+        internal NodeRefView(CMotions owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CMotion>>? Motions => owner.motions?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

@@ -65,6 +65,7 @@ public partial class CSceneMobil : CSceneObject, IClass
     {
         private readonly CSceneMobil owner;
         internal NodeRefView(CSceneMobil owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLink => owner.objectLink?.References;
         public NodeRef<CSceneMessageHandler> MessageHandler => NodeRef.GetOrCreate(ref owner.messageHandlerRef);
         public NodeRef<CMotion> Motion => ((CSceneObject)owner).References.Motion;
     }

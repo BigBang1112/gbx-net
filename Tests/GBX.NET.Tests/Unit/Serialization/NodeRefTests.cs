@@ -1,4 +1,5 @@
 using GBX.NET.Components;
+using GBX.NET.Engines.Game;
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Engines.Plug;
@@ -338,6 +339,83 @@ public class NodeRefTests
         await loading;
         await Assert.That(reference.CachedNode).IsSameReferenceAs(replacement);
         await Assert.That(reference.Kind).IsEqualTo(NodeRefKind.Embedded);
+    }
+
+    [Test]
+    public async Task CollectionReferenceViewExposesLiveReadOnlyHandlesWithoutResolving()
+    {
+        var owner = new CGameItemModel();
+        var view = owner.References;
+        await Assert.That(view.NadeoSkinFids).IsNull();
+        await Assert.That(owner.NadeoSkinFids).IsNull();
+
+        var calls = 0;
+        var table = new GbxRefTable();
+        table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
+        var file = table.CreateFile("unloaded.Gbx");
+        var nodes = new NodeRefList<CMwNod> { null, null };
+        nodes.Get(0).Descriptor = file;
+        owner.NadeoSkinFids = nodes;
+        var handles = view.NadeoSkinFids!;
+
+        await Assert.That(view.NadeoSkinFids).IsSameReferenceAs(handles);
+        await Assert.That(handles[0]).IsSameReferenceAs(nodes.Get(0));
+        await Assert.That(handles[0].File).IsSameReferenceAs(file);
+        var stored = handles.ToArray();
+        await Assert.That(stored.Length).IsEqualTo(nodes.Count);
+        for (var i = 0; i < stored.Length; i++)
+        {
+            await Assert.That(stored[i]).IsSameReferenceAs(nodes.Get(i));
+        }
+        var readOnly = (System.Collections.IList)handles;
+        await Assert.That(readOnly.IsReadOnly).IsTrue();
+        await Assert.That(() => readOnly.Add(new NodeRef<CMwNod>())).Throws<NotSupportedException>();
+        await Assert.That(() => readOnly[0] = new NodeRef<CMwNod>()).Throws<NotSupportedException>();
+
+        nodes.Add(null);
+        await Assert.That(handles.Count).IsEqualTo(3);
+        var retained = handles[0];
+        nodes.RemoveAt(0);
+        await Assert.That(handles.Count).IsEqualTo(2);
+        await Assert.That(handles[0]).IsSameReferenceAs(nodes.Get(0));
+        await Assert.That(retained.File).IsSameReferenceAs(file);
+        handles[0].Descriptor = file;
+        await Assert.That(nodes.Get(0).File).IsSameReferenceAs(file);
+
+        owner.NadeoSkinFids = new NodeRefList<CMwNod> { null };
+        await Assert.That(view.NadeoSkinFids![0]).IsSameReferenceAs(owner.NadeoSkinFids.Get(0));
+        await Assert.That(view.NadeoSkinFids).IsNotSameReferenceAs(handles);
+        await Assert.That(handles.Count).IsEqualTo(2);
+        owner.NadeoSkinFids = null;
+        await Assert.That(view.NadeoSkinFids).IsNull();
+        await Assert.That(calls).IsEqualTo(0);
+    }
+
+    [Test]
+    public async Task JaggedCollectionReferenceViewExposesCurrentRowsWithoutResolving()
+    {
+        var calls = 0;
+        var table = new GbxRefTable();
+        table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
+        var file = table.CreateFile("unloaded.Gbx");
+        var row = new NodeRefList<CGameCtnBlockInfoMobil> { null };
+        row.Get(0).Descriptor = file;
+        var owner = new CGameCtnBlockInfoVariant { Mobils = [row, null!] };
+        var view = owner.References;
+        var handles = view.Mobils!;
+
+        await Assert.That(handles.Count).IsEqualTo(2);
+        await Assert.That(handles[0]![0]).IsSameReferenceAs(row.Get(0));
+        await Assert.That(handles[0]![0].File).IsSameReferenceAs(file);
+        await Assert.That(handles[1]).IsNull();
+        row.Add(null);
+        await Assert.That(handles[0]!.Count).IsEqualTo(2);
+        owner.Mobils[1] = new NodeRefList<CGameCtnBlockInfoMobil> { null };
+        var current = view.Mobils!;
+        await Assert.That(current[0]).IsSameReferenceAs(handles[0]);
+        await Assert.That(current[1]![0]).IsSameReferenceAs(owner.Mobils[1].Get(0));
+        await Assert.That(handles[1]).IsNull();
+        await Assert.That(calls).IsEqualTo(0);
     }
 
     [Test]

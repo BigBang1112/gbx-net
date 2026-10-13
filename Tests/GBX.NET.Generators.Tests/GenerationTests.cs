@@ -467,6 +467,7 @@ public class GenerationTests
                 - abstract
                 0x001
                   node Target
+                  node[] InheritedTargets
                 """),
             new Text("Engines/Game/Child.chunkl", """
                 Child 0x03045000
@@ -482,7 +483,11 @@ public class GenerationTests
         await AssertNoErrors(compilation);
         var generated = result.GeneratedSources.Single(x => x.HintName.EndsWith("Child.g.cs")).SourceText.ToString();
         await Assert.That(generated).DoesNotContain("ReferenceView");
-        await Assert.That(generated).DoesNotContain("public new readonly struct NodeRefView");
+        await Assert.That(generated).Contains("public new readonly struct NodeRefView");
+        await Assert.That(generated).Contains("public IReadOnlyList<NodeRef<CMwNod>>? Targets => owner.targets?.References;");
+        await Assert.That(generated).Contains("public IReadOnlyList<IReadOnlyList<NodeRef<CMwNod>>?>? Rows");
+        await Assert.That(generated).Contains("Array.ConvertAll(rows, static row => row?.References)");
+        await Assert.That(generated).Contains("InheritedTargets => ((Base)owner).References.InheritedTargets;");
         await Assert.That(generated).Contains("targets.Get(i)");
         await Assert.That(generated).Contains("n.targets = rw.ListNodeRef<CMwNod>(n.targets)");
         await Assert.That(generated).Contains("rw.NodeRef(ref this.targetRef)");
@@ -492,7 +497,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CollectionReferencesDoNotGenerateViews()
+    public async Task CollectionReferencesExposeHandleLists()
     {
         var (result, compilation) = Run("", true, new[]
         {
@@ -503,6 +508,8 @@ public class GenerationTests
                   node[] Nodes
                 archive Entry
                   node[][] Rows
+                0x002
+                  node[]
                 """),
             new Text("Engines/Game/Child.chunkl", """
                 Child 0x03045000
@@ -515,12 +522,78 @@ public class GenerationTests
         await AssertNoErrors(compilation);
         var baseSource = result.GeneratedSources.Single(x => x.HintName.EndsWith("Base.g.cs")).SourceText.ToString();
         var childSource = result.GeneratedSources.Single(x => x.HintName.EndsWith("Child.g.cs")).SourceText.ToString();
-        await Assert.That(baseSource).DoesNotContain("NodeRefView");
+        await Assert.That(baseSource).Contains("public IReadOnlyList<NodeRef<CMwNod>>? Nodes => owner.nodes?.References;");
+        await Assert.That(baseSource).Contains("public IReadOnlyList<IReadOnlyList<NodeRef<CMwNod>>?>? Rows");
+        await Assert.That(baseSource).Contains("public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;");
         await Assert.That(baseSource).DoesNotContain("ReferenceView");
         await Assert.That(baseSource).Contains("nodes.Get(i)");
         await Assert.That(baseSource).Contains("rows[i].Get(j)");
-        await Assert.That(childSource).Contains("public NodeRefView References => new(this)");
+        await Assert.That(childSource).Contains("public new NodeRefView References => new(this)");
+        await Assert.That(childSource).Contains("Nodes => ((Base)owner).References.Nodes;");
         await Assert.That(childSource).Contains("foreach (var reference in base.EnumerateReferences())");
+    }
+
+    [Test]
+    public async Task HandwrittenReferenceListsAreExposedAndPreservedThroughInheritance()
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Base
+            {
+                private GBX.NET.NodeRefList<CMwNod>? extraNodes;
+            }
+            public partial class Child
+            {
+                private GBX.NET.NodeRefList<CMwNod>? otherNodes;
+                public static System.Collections.Generic.IReadOnlyList<GBX.NET.NodeRef<CMwNod>>? Verify(Child node)
+                    => node.References.ExtraNodes;
+            }
+            """, true, new[]
+        {
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03044000
+                - abstract
+                0x001
+                  int Value
+                """),
+            new Text("Engines/Game/Child.chunkl", """
+                Child 0x03045000
+                - inherits: Base
+                0x001
+                  int OtherValue
+                """)
+        });
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var baseSource = result.GeneratedSources.Single(x => x.HintName.EndsWith("Base.g.cs")).SourceText.ToString();
+        var childSource = result.GeneratedSources.Single(x => x.HintName.EndsWith("Child.g.cs")).SourceText.ToString();
+        await Assert.That(baseSource).Contains("ExtraNodes => owner.extraNodes?.References;");
+        await Assert.That(baseSource).Contains("extraNodes.Get(i)");
+        await Assert.That(childSource).Contains("OtherNodes => owner.otherNodes?.References;");
+        await Assert.That(childSource).Contains("ExtraNodes => ((Base)owner).References.ExtraNodes;");
+        await Assert.That(childSource).Contains("foreach (var reference in base.EnumerateReferences())");
+    }
+
+    [Test]
+    public async Task ArchiveReferenceListsArePreservedThroughMultipleInheritanceLevels()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value
+            archive EntryBase
+              node[] Nodes
+            archive EntryMiddle (inherits: EntryBase)
+              node Target
+            archive EntryDerived (inherits: EntryMiddle)
+              node Other
+            """), compile: true);
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("Nodes => ((EntryBase)owner).References.Nodes;");
+        await Assert.That(generated).Contains("Nodes => ((EntryMiddle)owner).References.Nodes;");
+        await Assert.That(generated).Contains("Target => ((EntryMiddle)owner).References.Target;");
     }
 
     [Test]
@@ -3310,6 +3383,7 @@ public class GenerationTests
             }
             public class NodeRefList<T> : System.Collections.Generic.List<T?> where T : GBX.NET.Engines.Game.CMwNod
             {
+                internal System.Collections.Generic.IReadOnlyList<NodeRef<T>> References => [];
                 public NodeRef<T> Get(int index) => new();
                 public System.Collections.Generic.IEnumerable<NodeRef<T>> EnumerateReferences() => [];
             }

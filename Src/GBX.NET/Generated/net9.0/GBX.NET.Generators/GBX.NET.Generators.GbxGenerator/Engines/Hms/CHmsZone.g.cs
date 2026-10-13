@@ -144,6 +144,8 @@ public partial class CHmsZone : CMwNod, IClass
     {
         private readonly CHmsZone owner;
         internal NodeRefView(CHmsZone owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CHmsFogPlane>>? FogPlanes => owner.fogPlanes?.References;
+        public IReadOnlyList<NodeRef<CHmsPrecalcRender>>? PrecalcRenders => owner.precalcRenders?.References;
         public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
     }

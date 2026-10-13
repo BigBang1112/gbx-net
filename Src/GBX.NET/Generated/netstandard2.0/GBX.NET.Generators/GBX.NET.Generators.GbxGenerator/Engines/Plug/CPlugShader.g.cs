@@ -193,8 +193,10 @@ public partial class CPlugShader : CPlug, IClass
         private readonly CPlugShader owner;
         internal NodeRefView(CPlugShader owner) => this.owner = owner;
         public NodeRef<CFuncShader> FuncShader => NodeRef.GetOrCreate(ref owner.funcShaderRef);
+        public IReadOnlyList<NodeRef<CPlugShaderPass>>? Passes => owner.passes?.References;
         public NodeRef<CPlugBitmapApply> SolidWiredApply => NodeRef.GetOrCreate(ref owner.solidWiredApplyRef);
         public NodeRef<CPlugMaterialFx> MaterialFx => NodeRef.GetOrCreate(ref owner.materialFxRef);
+        public IReadOnlyList<NodeRef<CPlugShader>>? LegacyCustomShaders => owner.legacyCustomShaders?.References;
         public NodeRef<CPlugFileGPUV> GPU => NodeRef.GetOrCreate(ref owner.gPURef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()

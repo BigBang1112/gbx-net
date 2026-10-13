@@ -110,6 +110,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             private readonly Chunk2E01C000 owner;
             internal NodeRefView(Chunk2E01C000 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameObjectModel>>? U01 => owner.U01?.References;
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -164,6 +165,14 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             get => actions;
             set => actions = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly ItemOccupantSlotModel owner;
+            internal NodeRefView(ItemOccupantSlotModel owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CGameActionModel>>? Actions => owner.actions?.References;
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {

@@ -157,5 +157,5 @@ public abstract class NodeRef
     /// <summary>
     /// Describes the external descriptor or embedded node without resolving it. An absent reference returns "null".
     /// </summary>
-    public override string ToString() => Descriptor?.ToString() ?? CachedNode?.ToString() ?? "null";
+    public override string ToString() => Descriptor?.ToString() ?? CachedNode?.ToString() ?? "None";
 }

@@ -59,6 +59,14 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         get => this.shadowMapTexelSize;
         set => this.shadowMapTexelSize = value;
     }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugParticleEmitterModel owner;
+        internal NodeRefView(CPlugParticleEmitterModel owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterSubModel>>? ParticleEmitterSubModels => owner.particleEmitterSubModels?.References;
+    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;

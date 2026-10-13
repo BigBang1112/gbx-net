@@ -59,6 +59,7 @@ public partial class CScene2d : CScene, IClass
         internal NodeRefView(CScene2d owner) => this.owner = owner;
         public NodeRef<CSceneSector> Sector => NodeRef.GetOrCreate(ref owner.sectorRef);
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
+        public IReadOnlyList<NodeRef<CMotionManager>>? MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

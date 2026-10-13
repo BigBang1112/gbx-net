@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 
 namespace GBX.NET;
@@ -9,6 +10,9 @@ namespace GBX.NET;
 public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepCloneable where T : CMwNod
 {
     private readonly List<NodeRef<T>> references = [];
+    private ReadOnlyCollection<NodeRef<T>>? referenceView;
+
+    internal IReadOnlyList<NodeRef<T>> References => referenceView ??= references.AsReadOnly();
 
     public bool IsReadOnly => false;
     public int Count => references.Count;

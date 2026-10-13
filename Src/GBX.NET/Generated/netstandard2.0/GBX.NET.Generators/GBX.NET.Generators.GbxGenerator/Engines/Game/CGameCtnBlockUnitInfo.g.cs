@@ -254,6 +254,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     {
         private readonly CGameCtnBlockUnitInfo owner;
         internal NodeRefView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? Clips => owner.clips?.References;
         public NodeRef<CGameCtnBlockInfo> ReplacementBlockInfo => NodeRef.GetOrCreate(ref owner.replacementBlockInfoRef);
         public NodeRef<CGameCtnBlockInfoPylon> PylonNorth => NodeRef.GetOrCreate(ref owner.pylonNorthRef);
         public NodeRef<CGameCtnBlockInfoPylon> PylonEast => NodeRef.GetOrCreate(ref owner.pylonEastRef);
@@ -261,6 +262,12 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public NodeRef<CGameCtnBlockInfoPylon> PylonWest => NodeRef.GetOrCreate(ref owner.pylonWestRef);
         public NodeRef<CGameCtnBlockInfoClip> BottomClip => NodeRef.GetOrCreate(ref owner.bottomClipRef);
         public NodeRef<CGameCtnBlockInfoClip> TopClip => NodeRef.GetOrCreate(ref owner.topClipRef);
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsNorth => owner.clipsNorth?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsEast => owner.clipsEast?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsSouth => owner.clipsSouth?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsWest => owner.clipsWest?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsTop => owner.clipsTop?.References;
+        public IReadOnlyList<NodeRef<CGameCtnBlockInfoClip>>? ClipsBottom => owner.clipsBottom?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

@@ -116,6 +116,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         private readonly CGameCtnZoneFrontier owner;
         internal NodeRefView(CGameCtnZoneFrontier owner) => this.owner = owner;
         public NodeRef<CGameCtnBlockInfoFrontier> BlockInfoFrontier => NodeRef.GetOrCreate(ref owner.blockInfoFrontierRef);
+        public IReadOnlyList<NodeRef<CGameCtnZoneFusionInfo>>? CompatibleZones => owner.compatibleZones?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {

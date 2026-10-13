@@ -633,6 +633,7 @@ public partial class CPlugBitmap : CPlug, IClass
         public NodeRef<CPlugBitmapDecals> Decals => NodeRef.GetOrCreate(ref owner.decalsRef);
         public NodeRef<CPlugFileImg> GrassIdImage => NodeRef.GetOrCreate(ref owner.grassIdImageRef);
         public NodeRef<CPlugImageArray> ImageArray => NodeRef.GetOrCreate(ref owner.imageArrayRef);
+        public IReadOnlyList<NodeRef<CPlugFileImg>>? ImageArrayFids => owner.imageArrayFids?.References;
         public NodeRef<CPlugBitmapArray> BitmapArray => NodeRef.GetOrCreate(ref owner.bitmapArrayRef);
         public NodeRef<CMwNod> GrassMatterArray => NodeRef.GetOrCreate(ref owner.grassMatterArrayRef);
         public NodeRef<CPlugFileImg> LegacyImage => NodeRef.GetOrCreate(ref owner.legacyImageRef);
