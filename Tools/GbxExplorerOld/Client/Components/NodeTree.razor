@@ -66,11 +66,11 @@
         type = type.BaseType;
     }
 
-    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable enumerable)
+    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable)
     {
         //cachedList ??= ;
 
-        <Virtualize Context="item" Items="enumerable.Cast<object>().Select((x, i) => (x, i)).ToList()" ItemSize="32" OverscanCount="16">
+        <Virtualize Context="item" Items="NodeReferenceMetadata.GetItems(Object).Cast<object>().Select((x, i) => (x, i)).ToList()" ItemSize="32" OverscanCount="16">
             <li>
                 <!-- Sends the item to the tree branch, copying the depth. Counter is assigned as Id atm -->
                 <NodeTreeElement Depth="Depth" Value="item.x" Id="item.i" Tree="this" />
