@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     [Hexadecimal]
     public static new uint Id => 0x0312C000;
 
+    internal override uint GetId() => Id;
+
     private string? description;
     [SupportsFormatting]
     [AppliedWithChunk<Chunk0312C001>]
@@ -185,28 +187,28 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.receivedMessagesSystemTime = value;
     }
 
-    private CGameNetOnlineMessage[]? inboxMessages;
+    private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
     [AppliedWithChunk<Chunk0312C005>]
-    public CGameNetOnlineMessage[]? InboxMessages
+    public NodeRefList<CGameNetOnlineMessage>? InboxMessages
     {
-        get => this.inboxMessages;
-        set => this.inboxMessages = value;
+        get => inboxMessages;
+        set => inboxMessages = value;
     }
 
-    private CGameNetOnlineMessage[]? readMessages;
+    private NodeRefList<CGameNetOnlineMessage>? readMessages;
     [AppliedWithChunk<Chunk0312C005>]
-    public CGameNetOnlineMessage[]? ReadMessages
+    public NodeRefList<CGameNetOnlineMessage>? ReadMessages
     {
-        get => this.readMessages;
-        set => this.readMessages = value;
+        get => readMessages;
+        set => readMessages = value;
     }
 
-    private CGameNetOnlineMessage[]? outboxMessages;
+    private NodeRefList<CGameNetOnlineMessage>? outboxMessages;
     [AppliedWithChunk<Chunk0312C005>]
-    public CGameNetOnlineMessage[]? OutboxMessages
+    public NodeRefList<CGameNetOnlineMessage>? OutboxMessages
     {
-        get => this.outboxMessages;
-        set => this.outboxMessages = value;
+        get => outboxMessages;
+        set => outboxMessages = value;
     }
 
     private byte flags2;
@@ -265,7 +267,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int buddyArchiveVersion = 5;
-    [AppliedWithChunk<Chunk0312C003>]
     public int BuddyArchiveVersion
     {
         get => this.buddyArchiveVersion;
@@ -543,6 +544,23 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         get => this.steamId;
         set => this.steamId = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (inboxMessages is not null)
+        {
+            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.Get(i));
+        }
+        if (readMessages is not null)
+        {
+            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.Get(i));
+        }
+        if (outboxMessages is not null)
+        {
+            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
@@ -566,9 +584,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).legacyBuddyArchiveVersion = context.Clone(this.legacyBuddyArchiveVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).buddies = context.CloneArray(this.buddies)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).receivedMessagesSystemTime = context.Clone(this.receivedMessagesSystemTime)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).inboxMessages = context.CloneArray(this.inboxMessages)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).readMessages = context.CloneArray(this.readMessages)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).outboxMessages = context.CloneArray(this.outboxMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).inboxMessages = context.Clone(this.inboxMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).readMessages = context.Clone(this.readMessages)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).outboxMessages = context.Clone(this.outboxMessages)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).flags2 = context.Clone(this.flags2)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).u05 = context.Clone(this.u05)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).avatarName = context.Clone(this.avatarName)!;
@@ -666,9 +684,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             rw.Int32(ref this.legacyBuddyArchiveVersion);
             rw.ArrayReadableWritable<CGameBuddy>(ref this.buddies!, version: LegacyBuddyArchiveVersion);
             rw.UInt64(ref this.receivedMessagesSystemTime);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref this.inboxMessages!);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref this.readMessages!);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref this.outboxMessages!);
+            this.inboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.inboxMessages);
+            this.readMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.readMessages);
+            this.outboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(this.outboxMessages);
             rw.Byte(ref this.flags2);
         }
 
@@ -877,10 +895,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public string? U01;
-        public string[]? U02;
-        public byte[]? U03;
+        public int BuddyArchiveVersion;
+        public string? U02;
+        public string[]? U03;
         public byte[]? U04;
+        public byte[]? U05;
 
         public Chunk0312C003() : this(GameVersion.Unspecified)
         {
@@ -892,44 +911,47 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             {
                 Version = 7;
             }
+
+            BuddyArchiveVersion = 5;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0312C003)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0312C003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0312C003)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0312C003)clone).BuddyArchiveVersion = context.Clone(this.BuddyArchiveVersion)!;
+            ((Chunk0312C003)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0312C003)clone).U03 = context.CloneArray(this.U03)!;
             ((Chunk0312C003)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0312C003)clone).U05 = context.CloneArray(this.U05)!;
         }
 
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref n.buddyArchiveVersion);
-            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies!, version: n.BuddyArchiveVersion);
+            rw.Int32(ref BuddyArchiveVersion);
+            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies!, version: BuddyArchiveVersion);
 
             if (Version >= 3)
             {
-                rw.String(ref U01);
+                rw.String(ref U02);
             }
 
             if (Version == 4)
             {
-                rw.ArrayString(ref U02!);
+                rw.ArrayString(ref U03!);
             }
 
             if (!n.IsOnlineSaveArchivation)
             {
                 if (Version >= 6)
                 {
-                    rw.Data(ref U03);
+                    rw.Data(ref U04);
                 }
 
                 if (Version >= 7)
                 {
-                    rw.Data(ref U04);
+                    rw.Data(ref U05);
                 }
             }
         }
@@ -1008,9 +1030,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             if (Version <= 1)
             {
                 n.receivedMessagesAt = rw.SystemTime(n.receivedMessagesAt);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
-                rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
+                n.inboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.inboxMessages);
+                n.readMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.readMessages);
+                n.outboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.outboxMessages);
             }
 
             if (Version >= 2)
@@ -1018,9 +1040,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
                 rw.Encapsulated(rw =>
                 {
                     n.receivedMessagesAt = rw.SystemTime(n.receivedMessagesAt);
-                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
-                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
-                    rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
+                    n.inboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.inboxMessages);
+                    n.readMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.readMessages);
+                    n.outboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.outboxMessages);
                 });
             }
         }

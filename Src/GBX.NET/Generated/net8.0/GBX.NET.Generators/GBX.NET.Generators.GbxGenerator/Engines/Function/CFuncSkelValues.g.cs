@@ -34,12 +34,14 @@ public partial class CFuncSkelValues : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x05007000;
 
-    private CFuncSkel? skel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CFuncSkel>? skelRef;
     [AppliedWithChunk<Chunk05007000>]
     public CFuncSkel? Skel
     {
-        get => this.skel;
-        set => this.skel = value;
+        get => skelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skelRef, value);
     }
 
     private CFuncKeysSkel.Loc[]? locations;
@@ -50,10 +52,24 @@ public partial class CFuncSkelValues : CMwNod, IClass
         set => this.locations = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CFuncSkelValues owner;
+        internal NodeRefView(CFuncSkelValues owner) => this.owner = owner;
+        public NodeRef<CFuncSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CFuncSkelValues)clone).skel = context.Clone(this.skel)!;
+        ((CFuncSkelValues)clone).skelRef = context.Clone(this.skelRef)!;
         ((CFuncSkelValues)clone).locations = context.CloneArray(this.locations)!;
     }
 
@@ -75,11 +91,11 @@ public partial class CFuncSkelValues : CMwNod, IClass
 
         public override void ReadWrite(CFuncSkelValues n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CFuncSkel>(ref n.skel);
+            rw.NodeRef(ref n.skelRef);
 
-            if (n.Skel!= null)
+            if ((n.skelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.Skel?.BonesCount?? 0);
+                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.skelRef?.CachedNode?.BonesCount?? 0);
             }
         }
     }

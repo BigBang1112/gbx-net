@@ -28,7 +28,7 @@ CPlugSoundSurface 0x0905E000
 
 archive MaterialSound // Array index corresponds to CPlugSurface.MaterialId.
   v0=
-    CPlugFileSnd SmallImpact (external)
-    CPlugFileSnd BigImpact (external)
-  CPlugSoundComponent Texture (external)
-  CPlugSoundComponent Skid (external)
+    CPlugFileSnd SmallImpact
+    CPlugFileSnd BigImpact
+  CPlugSoundComponent Texture
+  CPlugSoundComponent Skid

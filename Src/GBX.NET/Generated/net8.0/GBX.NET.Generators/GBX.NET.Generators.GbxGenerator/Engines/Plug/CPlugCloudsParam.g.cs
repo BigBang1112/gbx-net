@@ -34,6 +34,8 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09182000;
 
+    internal override uint GetId() => Id;
+
     private EHeightCenter heightCenter;
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]

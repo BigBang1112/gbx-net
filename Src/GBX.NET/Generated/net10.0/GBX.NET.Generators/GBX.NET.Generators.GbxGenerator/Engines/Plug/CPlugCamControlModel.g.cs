@@ -34,18 +34,34 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0910C000;
 
-    private CPlugCamShakeModel? shake;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugCamShakeModel>? shakeRef;
     [AppliedWithChunk<Chunk0910C000>]
     public CPlugCamShakeModel? Shake
     {
-        get => this.shake;
-        set => this.shake = value;
+        get => shakeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shakeRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugCamControlModel owner;
+        internal NodeRefView(CPlugCamControlModel owner) => this.owner = owner;
+        public NodeRef<CPlugCamShakeModel> Shake => NodeRef.GetOrCreate(ref owner.shakeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Shake", NodeRef.GetOrCreate(ref shakeRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugCamControlModel)clone).shake = context.Clone(this.shake)!;
+        ((CPlugCamControlModel)clone).shakeRef = context.Clone(this.shakeRef)!;
     }
 
     public CPlugCamControlModel()
@@ -69,7 +85,7 @@ public partial class CPlugCamControlModel : CMwNod, IClass
         public override void ReadWrite(CPlugCamControlModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugCamShakeModel>(ref n.shake);
+            rw.NodeRef(ref n.shakeRef);
         }
     }
 

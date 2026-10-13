@@ -2,9 +2,9 @@ CPlugVehicleVisEmitterModel 0x090E6000
 
 0x000 // Legacy single model and translation
   int
-  CPlugParticleEmitterModel ParticleEmitterModel1 (external)
+  CPlugParticleEmitterModel ParticleEmitterModel1
   ParticleEmitterModel2 = ParticleEmitterModel1
-  ParticleEmitterModel2File = ParticleEmitterModel1File
+
   int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
   int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
   int MaterialGroupIndex = -1
@@ -22,9 +22,9 @@ CPlugVehicleVisEmitterModel 0x090E6000
 
 0x001 // Legacy single model and transform
   int
-  CPlugParticleEmitterModel ParticleEmitterModel1 (external)
+  CPlugParticleEmitterModel ParticleEmitterModel1
   ParticleEmitterModel2 = ParticleEmitterModel1
-  ParticleEmitterModel2File = ParticleEmitterModel1File
+
   int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
   int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
   int MaterialGroupIndex = -1
@@ -49,9 +49,9 @@ CPlugVehicleVisEmitterModel 0x090E6000
 
 0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020] // Quality models and emission settings
   int
-  CPlugParticleEmitterModel ParticleEmitterModel0 (external) // Visual quality index 0.
-  CPlugParticleEmitterModel ParticleEmitterModel1 (external) // Visual quality index 1.
-  CPlugParticleEmitterModel ParticleEmitterModel2 (external) // Visual quality index 2.
+  CPlugParticleEmitterModel ParticleEmitterModel0 // Visual quality index 0.
+  CPlugParticleEmitterModel ParticleEmitterModel1 // Visual quality index 1.
+  CPlugParticleEmitterModel ParticleEmitterModel2 // Visual quality index 2.
   int WheelIndex [TMF = -1, VSK5 = -1] // Obsolete wheel attachment.
   int VisualHandlerIndex [TMF = -1, VSK5 = -1] // Obsolete visual attachment.
   int MaterialGroupIndex = -1
@@ -71,7 +71,7 @@ CPlugVehicleVisEmitterModel 0x090E6000
   bool OnlyWhenAllWheelsSliding
 
 0x006 [MP3, TMT, MP4, TM2020] // ParticleEmitterModelShoot
-  CPlugParticleEmitterModel ParticleEmitterModelShoot (external) // Used when rendering videos.
+  CPlugParticleEmitterModel ParticleEmitterModelShoot // Used when rendering videos.
 
 0x007 [TM2020.v0] // Additional emission flag
   version

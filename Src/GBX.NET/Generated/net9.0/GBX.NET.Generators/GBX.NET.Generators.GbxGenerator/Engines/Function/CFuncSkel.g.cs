@@ -34,6 +34,8 @@ public partial class CFuncSkel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x05005000;
 
+    internal override uint GetId() => Id;
+
     private string[]? bones;
     [AppliedWithChunk<Chunk05005002>]
     public string[]? Bones

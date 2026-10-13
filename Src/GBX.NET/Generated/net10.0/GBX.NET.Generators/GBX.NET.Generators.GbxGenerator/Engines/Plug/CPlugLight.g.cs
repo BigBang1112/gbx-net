@@ -34,60 +34,44 @@ public partial class CPlugLight : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0901D000;
 
-    private GxLight? light;
+    internal override uint GetId() => Id;
+
+    private NodeRef<GxLight>? lightRef;
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     [AppliedWithChunk<Chunk0901D004>]
     public GxLight? Light
     {
-        get => this.light;
-        set => this.light = value;
+        get => lightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightRef, value);
     }
 
-    private CFuncLight? funcLight;
+    private NodeRef<CFuncLight>? funcLightRef;
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CFuncLight? FuncLight
     {
-        get => this.funcLight;
-        set => this.funcLight = value;
+        get => funcLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref funcLightRef, value);
     }
 
-    private CPlugBitmap? bitmapFlare;
+    private NodeRef<CPlugBitmap>? bitmapFlareRef;
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CPlugBitmap? BitmapFlare
     {
-        get => this.bitmapFlareFile?.GetNode(ref this.bitmapFlare) ?? this.bitmapFlare;
-        set => this.bitmapFlare = value;
-    }
-    private Components.GbxRefTableFile? bitmapFlareFile;
-
-    public Components.GbxRefTableFile? BitmapFlareFile
-    {
-        get => bitmapFlareFile;
-        set => bitmapFlareFile = value;
+        get => bitmapFlareRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFlareRef, value);
     }
 
-    public CPlugBitmap? GetBitmapFlare(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareFile?.GetNode(ref bitmapFlare, settings, exceptions) ?? bitmapFlare;
-
-    private CPlugBitmap? bitmapProjector;
+    private NodeRef<CPlugBitmap>? bitmapProjectorRef;
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CPlugBitmap? BitmapProjector
     {
-        get => this.bitmapProjectorFile?.GetNode(ref this.bitmapProjector) ?? this.bitmapProjector;
-        set => this.bitmapProjector = value;
+        get => bitmapProjectorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapProjectorRef, value);
     }
-    private Components.GbxRefTableFile? bitmapProjectorFile;
-
-    public Components.GbxRefTableFile? BitmapProjectorFile
-    {
-        get => bitmapProjectorFile;
-        set => bitmapProjectorFile = value;
-    }
-
-    public CPlugBitmap? GetBitmapProjector(GbxReadSettings settings = default, bool exceptions = false) => bitmapProjectorFile?.GetNode(ref bitmapProjector, settings, exceptions) ?? bitmapProjector;
 
     private EFlags flags;
     [AppliedWithChunk<Chunk0901D002>]
@@ -97,22 +81,13 @@ public partial class CPlugLight : CPlug, IClass
         set => this.flags = value;
     }
 
-    private CPlugFileImg? imageAnim;
+    private NodeRef<CPlugFileImg>? imageAnimRef;
     [AppliedWithChunk<Chunk0901D003>]
     public CPlugFileImg? ImageAnim
     {
-        get => this.imageAnimFile?.GetNode(ref this.imageAnim) ?? this.imageAnim;
-        set => this.imageAnim = value;
+        get => imageAnimRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageAnimRef, value);
     }
-    private Components.GbxRefTableFile? imageAnimFile;
-
-    public Components.GbxRefTableFile? ImageAnimFile
-    {
-        get => imageAnimFile;
-        set => imageAnimFile = value;
-    }
-
-    public CPlugFileImg? GetImageAnim(GbxReadSettings settings = default, bool exceptions = false) => imageAnimFile?.GetNode(ref imageAnim, settings, exceptions) ?? imageAnim;
 
     private float animPeriodMin;
     [AppliedWithChunk<Chunk0901D003>]
@@ -138,15 +113,37 @@ public partial class CPlugLight : CPlug, IClass
         set => this.animTimerName = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugLight owner;
+        internal NodeRefView(CPlugLight owner) => this.owner = owner;
+        public NodeRef<GxLight> Light => NodeRef.GetOrCreate(ref owner.lightRef);
+        public NodeRef<CFuncLight> FuncLight => NodeRef.GetOrCreate(ref owner.funcLightRef);
+        public NodeRef<CPlugBitmap> BitmapFlare => NodeRef.GetOrCreate(ref owner.bitmapFlareRef);
+        public NodeRef<CPlugBitmap> BitmapProjector => NodeRef.GetOrCreate(ref owner.bitmapProjectorRef);
+        public NodeRef<CPlugFileImg> ImageAnim => NodeRef.GetOrCreate(ref owner.imageAnimRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Light", NodeRef.GetOrCreate(ref lightRef));
+        yield return new("FuncLight", NodeRef.GetOrCreate(ref funcLightRef));
+        yield return new("BitmapFlare", NodeRef.GetOrCreate(ref bitmapFlareRef));
+        yield return new("BitmapProjector", NodeRef.GetOrCreate(ref bitmapProjectorRef));
+        yield return new("ImageAnim", NodeRef.GetOrCreate(ref imageAnimRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugLight)clone).light = context.Clone(this.light)!;
-        ((CPlugLight)clone).funcLight = context.Clone(this.funcLight)!;
-        ((CPlugLight)clone).bitmapFlare = context.Clone(this.bitmapFlare)!;
-        ((CPlugLight)clone).bitmapProjector = context.Clone(this.bitmapProjector)!;
+        ((CPlugLight)clone).lightRef = context.Clone(this.lightRef)!;
+        ((CPlugLight)clone).funcLightRef = context.Clone(this.funcLightRef)!;
+        ((CPlugLight)clone).bitmapFlareRef = context.Clone(this.bitmapFlareRef)!;
+        ((CPlugLight)clone).bitmapProjectorRef = context.Clone(this.bitmapProjectorRef)!;
         ((CPlugLight)clone).flags = context.Clone(this.flags)!;
-        ((CPlugLight)clone).imageAnim = context.Clone(this.imageAnim)!;
+        ((CPlugLight)clone).imageAnimRef = context.Clone(this.imageAnimRef)!;
         ((CPlugLight)clone).animPeriodMin = context.Clone(this.animPeriodMin)!;
         ((CPlugLight)clone).animPeriodMax = context.Clone(this.animPeriodMax)!;
         ((CPlugLight)clone).animTimerName = context.Clone(this.animTimerName)!;
@@ -170,10 +167,10 @@ public partial class CPlugLight : CPlug, IClass
 
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
-            rw.NodeRef<GxLight>(ref n.light);
-            rw.NodeRef<CFuncLight>(ref n.funcLight);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapFlare, ref n.bitmapFlareFile);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapProjector, ref n.bitmapProjectorFile);
+            rw.NodeRef(ref n.lightRef);
+            rw.NodeRef(ref n.funcLightRef);
+            rw.NodeRef(ref n.bitmapFlareRef);
+            rw.NodeRef(ref n.bitmapProjectorRef);
         }
     }
 
@@ -213,7 +210,7 @@ public partial class CPlugLight : CPlug, IClass
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugFileImg>(ref n.imageAnim, ref n.imageAnimFile);
+            rw.NodeRef(ref n.imageAnimRef);
             rw.Single(ref n.animPeriodMin);
             rw.Single(ref n.animPeriodMax);
 
@@ -251,7 +248,7 @@ public partial class CPlugLight : CPlug, IClass
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<GxLight>(ref n.light);
+            rw.NodeRef(ref n.lightRef);
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);

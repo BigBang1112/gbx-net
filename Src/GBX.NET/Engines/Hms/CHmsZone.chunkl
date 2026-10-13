@@ -28,11 +28,11 @@ property bool FogByVertex
   CHmsPrecalcRender[] PrecalcRenders (deprec)
 
 0x006 [VSK5, TMF]
-  CPlugBitmap BitmapCubeReflectHardSpecA (external)
+  CPlugBitmap BitmapCubeReflectHardSpecA
 
 0x008 [MP3, TMT, MP4, TM2020]
-  CPlugBitmap BitmapCubeReflectHardSpecA (external)
-  CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+  CPlugBitmap BitmapCubeReflectHardSpecA
+  CPlugBitmap BitmapCubeReflectHdrAlpha2
 
 enum EGxFogFormula
   None

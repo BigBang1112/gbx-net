@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     [Hexadecimal]
     public static new uint Id => 0x03129000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03129000>]
     [AppliedWithChunk<Chunk03085000>]

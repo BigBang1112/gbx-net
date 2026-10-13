@@ -34,6 +34,8 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     [Hexadecimal]
     public static new uint Id => 0x03055000;
 
+    internal override uint GetId() => Id;
+
     private float pylonOffset;
     [AppliedWithChunk<Chunk03055002>]
     public float PylonOffset
@@ -85,23 +87,59 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     {
         public override uint Id => 0x03055000;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public CMwNod? U01;
-        public CMwNod? U02;
-        public CMwNod? U03;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U03Ref;
+        public CMwNod? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03055000 owner;
+            internal NodeRefView(Chunk03055000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03055000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03055000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03055000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk03055000)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03055000)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk03055000)clone).U03Ref = context.Clone(this.U03Ref)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoPylon n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
-            rw.NodeRef<CMwNod>(ref U03);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
         }
     }
 

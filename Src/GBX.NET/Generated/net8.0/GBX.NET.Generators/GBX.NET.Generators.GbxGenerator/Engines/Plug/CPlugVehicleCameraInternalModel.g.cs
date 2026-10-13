@@ -34,6 +34,8 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     [Hexadecimal]
     public static new uint Id => 0x090F7000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk090F7000>]
     public string? Name

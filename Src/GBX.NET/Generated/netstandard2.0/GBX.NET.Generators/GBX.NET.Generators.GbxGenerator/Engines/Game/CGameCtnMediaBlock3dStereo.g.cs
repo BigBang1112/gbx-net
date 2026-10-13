@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, IClass, CG
     [Hexadecimal]
     public static new uint Id => 0x03024000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03024000>]
     public List<Key>? Keys

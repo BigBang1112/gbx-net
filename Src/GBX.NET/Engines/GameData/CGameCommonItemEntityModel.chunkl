@@ -3,23 +3,23 @@ CGameCommonItemEntityModel 0x2E027000
 0x000 [MP4, TM2020.v6]
   version
   v0=
-    CMwNod PhyModel (external) // CGameObjectPhyModel
-    CMwNod VisModel (external) // CGameObjectVisModel
+    CMwNod PhyModel // CGameObjectPhyModel
+    CMwNod VisModel // CGameObjectVisModel
   v3=
     string
     string
   v1+
     v2-
-      CPlugStaticObjectModel* StaticObject (external)
+      CPlugStaticObjectModel* StaticObject
   v4+
-    CPlugStaticObjectModel* StaticObject (external)
+    CPlugStaticObjectModel* StaticObject
   v2+
-    CMwNod TriggerShape (external) // CPlugSurface
+    CMwNod TriggerShape // CPlugSurface
     iso4 SpawnLoc = Iso4.Identity
-    CPlugParticleEmitterModel ParticleEmitterModel (external)
-    CGameActionModel[] Actions (external)
+    CPlugParticleEmitterModel ParticleEmitterModel
+    CGameActionModel[] Actions
     v5-
-      CMwNod (external) // Deprecated CMwNod reference.
+      CMwNod // Deprecated CMwNod reference.
     string SoundRefSpawn
     string SoundRefUnspawn
     string SoundRefGrab

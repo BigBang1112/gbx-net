@@ -27,7 +27,7 @@ CGameItemPlacementParam 0x2E020000
   MagnetLoc[] MagnetLocs
 
 0x005 (skippable) [TM2020]
-  NPlugItemPlacement_SClass* PlacementClass (external)
+  NPlugItemPlacement_SClass* PlacementClass
 
 archive MagnetLoc
   vec3 Position

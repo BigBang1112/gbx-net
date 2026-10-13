@@ -34,6 +34,8 @@ public partial class CSceneSoundSource : CScenePoc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A00E000;
 
+    internal override uint GetId() => Id;
+
     private CHmsSoundSource? soundSource;
     /// <summary>
     /// Gliding/AfterBurnout/Burnout

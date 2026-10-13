@@ -34,99 +34,78 @@ public partial class CGameGateModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E00B000;
 
-    private CGameArmorModel? armor;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameArmorModel>? armorRef;
     [AppliedWithChunk<Chunk2E00B000>]
     public CGameArmorModel? Armor
     {
-        get => this.armorFile?.GetNode(ref this.armor) ?? this.armor;
-        set => this.armor = value;
-    }
-    private Components.GbxRefTableFile? armorFile;
-
-    public Components.GbxRefTableFile? ArmorFile
-    {
-        get => armorFile;
-        set => armorFile = value;
+        get => armorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref armorRef, value);
     }
 
-    public CGameArmorModel? GetArmor(GbxReadSettings settings = default, bool exceptions = false) => armorFile?.GetNode(ref armor, settings, exceptions) ?? armor;
-
-    private CPlugSurface? shape;
+    private NodeRef<CPlugSurface>? shapeRef;
     [AppliedWithChunk<Chunk2E00B000>]
     public CPlugSurface? Shape
     {
-        get => this.shapeFile?.GetNode(ref this.shape) ?? this.shape;
-        set => this.shape = value;
-    }
-    private Components.GbxRefTableFile? shapeFile;
-
-    public Components.GbxRefTableFile? ShapeFile
-    {
-        get => shapeFile;
-        set => shapeFile = value;
+        get => shapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shapeRef, value);
     }
 
-    public CPlugSurface? GetShape(GbxReadSettings settings = default, bool exceptions = false) => shapeFile?.GetNode(ref shape, settings, exceptions) ?? shape;
-
-    private CPlugSound? gateOpenSound;
+    private NodeRef<CPlugSound>? gateOpenSoundRef;
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateOpenSound
     {
-        get => this.gateOpenSoundFile?.GetNode(ref this.gateOpenSound) ?? this.gateOpenSound;
-        set => this.gateOpenSound = value;
-    }
-    private Components.GbxRefTableFile? gateOpenSoundFile;
-
-    public Components.GbxRefTableFile? GateOpenSoundFile
-    {
-        get => gateOpenSoundFile;
-        set => gateOpenSoundFile = value;
+        get => gateOpenSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateOpenSoundRef, value);
     }
 
-    public CPlugSound? GetGateOpenSound(GbxReadSettings settings = default, bool exceptions = false) => gateOpenSoundFile?.GetNode(ref gateOpenSound, settings, exceptions) ?? gateOpenSound;
-
-    private CPlugSound? gateCloseSound;
+    private NodeRef<CPlugSound>? gateCloseSoundRef;
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateCloseSound
     {
-        get => this.gateCloseSoundFile?.GetNode(ref this.gateCloseSound) ?? this.gateCloseSound;
-        set => this.gateCloseSound = value;
-    }
-    private Components.GbxRefTableFile? gateCloseSoundFile;
-
-    public Components.GbxRefTableFile? GateCloseSoundFile
-    {
-        get => gateCloseSoundFile;
-        set => gateCloseSoundFile = value;
+        get => gateCloseSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateCloseSoundRef, value);
     }
 
-    public CPlugSound? GetGateCloseSound(GbxReadSettings settings = default, bool exceptions = false) => gateCloseSoundFile?.GetNode(ref gateCloseSound, settings, exceptions) ?? gateCloseSound;
-
-    private CPlugSound? gateSound;
+    private NodeRef<CPlugSound>? gateSoundRef;
     [AppliedWithChunk<Chunk2E00B001>(1)]
     public CPlugSound? GateSound
     {
-        get => this.gateSoundFile?.GetNode(ref this.gateSound) ?? this.gateSound;
-        set => this.gateSound = value;
+        get => gateSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateSoundRef, value);
     }
-    private Components.GbxRefTableFile? gateSoundFile;
 
-    public Components.GbxRefTableFile? GateSoundFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => gateSoundFile;
-        set => gateSoundFile = value;
+        private readonly CGameGateModel owner;
+        internal NodeRefView(CGameGateModel owner) => this.owner = owner;
+        public NodeRef<CGameArmorModel> Armor => NodeRef.GetOrCreate(ref owner.armorRef);
+        public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
+        public NodeRef<CPlugSound> GateOpenSound => NodeRef.GetOrCreate(ref owner.gateOpenSoundRef);
+        public NodeRef<CPlugSound> GateCloseSound => NodeRef.GetOrCreate(ref owner.gateCloseSoundRef);
+        public NodeRef<CPlugSound> GateSound => NodeRef.GetOrCreate(ref owner.gateSoundRef);
     }
-
-    public CPlugSound? GetGateSound(GbxReadSettings settings = default, bool exceptions = false) => gateSoundFile?.GetNode(ref gateSound, settings, exceptions) ?? gateSound;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Armor", NodeRef.GetOrCreate(ref armorRef));
+        yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
+        yield return new("GateOpenSound", NodeRef.GetOrCreate(ref gateOpenSoundRef));
+        yield return new("GateCloseSound", NodeRef.GetOrCreate(ref gateCloseSoundRef));
+        yield return new("GateSound", NodeRef.GetOrCreate(ref gateSoundRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameGateModel)clone).armor = context.Clone(this.armor)!;
-        ((CGameGateModel)clone).shape = context.Clone(this.shape)!;
-        ((CGameGateModel)clone).gateOpenSound = context.Clone(this.gateOpenSound)!;
-        ((CGameGateModel)clone).gateCloseSound = context.Clone(this.gateCloseSound)!;
-        ((CGameGateModel)clone).gateSound = context.Clone(this.gateSound)!;
+        ((CGameGateModel)clone).armorRef = context.Clone(this.armorRef)!;
+        ((CGameGateModel)clone).shapeRef = context.Clone(this.shapeRef)!;
+        ((CGameGateModel)clone).gateOpenSoundRef = context.Clone(this.gateOpenSoundRef)!;
+        ((CGameGateModel)clone).gateCloseSoundRef = context.Clone(this.gateCloseSoundRef)!;
+        ((CGameGateModel)clone).gateSoundRef = context.Clone(this.gateSoundRef)!;
     }
 
     public CGameGateModel()
@@ -150,8 +129,8 @@ public partial class CGameGateModel : CMwNod, IClass
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameArmorModel>(ref n.armor, ref n.armorFile);
-            rw.NodeRef<CPlugSurface>(ref n.shape, ref n.shapeFile);
+            rw.NodeRef(ref n.armorRef);
+            rw.NodeRef(ref n.shapeRef);
         }
     }
 
@@ -172,12 +151,12 @@ public partial class CGameGateModel : CMwNod, IClass
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSound>(ref n.gateOpenSound, ref n.gateOpenSoundFile);
-            rw.NodeRef<CPlugSound>(ref n.gateCloseSound, ref n.gateCloseSoundFile);
+            rw.NodeRef(ref n.gateOpenSoundRef);
+            rw.NodeRef(ref n.gateCloseSoundRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef<CPlugSound>(ref n.gateSound, ref n.gateSoundFile);
+                rw.NodeRef(ref n.gateSoundRef);
             }
         }
     }

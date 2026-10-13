@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     [Hexadecimal]
     public static new uint Id => 0x03166000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03166000>]
     public TimeSingle Start

@@ -34,6 +34,8 @@ public partial class CFuncDayTime : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x05045000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

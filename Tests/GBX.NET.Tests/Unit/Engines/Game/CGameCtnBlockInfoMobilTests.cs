@@ -157,8 +157,8 @@ public class CGameCtnBlockInfoMobilTests
         };
         await Verify(payload.ToArray(), payload.ToArray(), rw => chunk.ReadWrite(node, rw));
         if (offset == 0) await Assert.That(node.SolidFrequency).IsEqualTo(19);
-        if (offset == 1) await Assert.That(node.SolidDecals?.Length).IsEqualTo(1);
-        if (offset == 4) await Assert.That(node.DynaLinks?.Length).IsEqualTo(1);
+        if (offset == 1) await Assert.That(node.SolidDecals?.Count).IsEqualTo(1);
+        if (offset == 4) await Assert.That(node.DynaLinks?.Count).IsEqualTo(1);
     }
 
     [Test]
@@ -175,11 +175,11 @@ public class CGameCtnBlockInfoMobilTests
             NativePayload(version, reading: false, nonemptyLists: true), rw => chunk.ReadWrite(node, rw));
         if (version <= 5)
         {
-            await Assert.That(node.LegacyRailPolylines?.Length).IsEqualTo(1);
-            await Assert.That(node.RailPath?.PolyLines?.Length).IsEqualTo(1);
+            await Assert.That(node.LegacyRailPolylines?.Count).IsEqualTo(1);
+            await Assert.That(node.RailPath?.PolyLines?.Count).IsEqualTo(1);
         }
-        if (version >= 17) await Assert.That(node.CitizenRoadChunks?.Length).IsEqualTo(1);
-        if (version >= 20) await Assert.That(node.PlacementPatches?.Length).IsEqualTo(1);
+        if (version >= 17) await Assert.That(node.CitizenRoadChunks?.Count).IsEqualTo(1);
+        if (version >= 20) await Assert.That(node.PlacementPatches?.Count).IsEqualTo(1);
     }
 
     [Test]
@@ -232,8 +232,9 @@ public class CGameCtnBlockInfoMobilTests
         if (version >= 20) await VerifyRoadReferences(restored.PlacementPatches);
     }
 
-    private static async Task VerifyRoadReferences(CPlugRoadChunk[]? roads)
+    private static async Task VerifyRoadReferences(IEnumerable<CPlugRoadChunk?>? references)
     {
+        var roads = references?.ToArray();
         await Assert.That(roads?.Length).IsEqualTo(3);
         await Assert.That(ReferenceEquals(roads![0], roads[1])).IsTrue();
         await Assert.That(roads[2]).IsNull();

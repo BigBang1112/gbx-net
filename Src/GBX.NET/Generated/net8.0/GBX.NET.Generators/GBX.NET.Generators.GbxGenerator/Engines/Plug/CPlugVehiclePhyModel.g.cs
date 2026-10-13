@@ -34,46 +34,30 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090EA000;
 
-    private CMwRefBuffer? refBuffer;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwRefBuffer>? refBufferRef;
     [AppliedWithChunk<Chunk090EA002>]
     public CMwRefBuffer? RefBuffer
     {
-        get => this.refBufferFile?.GetNode(ref this.refBuffer) ?? this.refBuffer;
-        set => this.refBuffer = value;
-    }
-    private Components.GbxRefTableFile? refBufferFile;
-
-    public Components.GbxRefTableFile? RefBufferFile
-    {
-        get => refBufferFile;
-        set => refBufferFile = value;
+        get => refBufferRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref refBufferRef, value);
     }
 
-    public CMwRefBuffer? GetRefBuffer(GbxReadSettings settings = default, bool exceptions = false) => refBufferFile?.GetNode(ref refBuffer, settings, exceptions) ?? refBuffer;
-
-    private CPlugVehiclePhyTunings? tunings;
+    private NodeRef<CPlugVehiclePhyTunings>? tuningsRef;
     [AppliedWithChunk<Chunk090EA003>]
     public CPlugVehiclePhyTunings? Tunings
     {
-        get => this.tuningsFile?.GetNode(ref this.tunings) ?? this.tunings;
-        set => this.tunings = value;
-    }
-    private Components.GbxRefTableFile? tuningsFile;
-
-    public Components.GbxRefTableFile? TuningsFile
-    {
-        get => tuningsFile;
-        set => tuningsFile = value;
+        get => tuningsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref tuningsRef, value);
     }
 
-    public CPlugVehiclePhyTunings? GetTunings(GbxReadSettings settings = default, bool exceptions = false) => tuningsFile?.GetNode(ref tunings, settings, exceptions) ?? tunings;
-
-    private CPlugVehicleCarPhyShape? phyShape;
+    private NodeRef<CPlugVehicleCarPhyShape>? phyShapeRef;
     [AppliedWithChunk<Chunk090EA008>]
     public CPlugVehicleCarPhyShape? PhyShape
     {
-        get => this.phyShape;
-        set => this.phyShape = value;
+        get => phyShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyShapeRef, value);
     }
 
     private OccupantSlot[]? occupantSlots;
@@ -84,12 +68,30 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         set => this.occupantSlots = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehiclePhyModel owner;
+        internal NodeRefView(CPlugVehiclePhyModel owner) => this.owner = owner;
+        public NodeRef<CMwRefBuffer> RefBuffer => NodeRef.GetOrCreate(ref owner.refBufferRef);
+        public NodeRef<CPlugVehiclePhyTunings> Tunings => NodeRef.GetOrCreate(ref owner.tuningsRef);
+        public NodeRef<CPlugVehicleCarPhyShape> PhyShape => NodeRef.GetOrCreate(ref owner.phyShapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("RefBuffer", NodeRef.GetOrCreate(ref refBufferRef));
+        yield return new("Tunings", NodeRef.GetOrCreate(ref tuningsRef));
+        yield return new("PhyShape", NodeRef.GetOrCreate(ref phyShapeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVehiclePhyModel)clone).refBuffer = context.Clone(this.refBuffer)!;
-        ((CPlugVehiclePhyModel)clone).tunings = context.Clone(this.tunings)!;
-        ((CPlugVehiclePhyModel)clone).phyShape = context.Clone(this.phyShape)!;
+        ((CPlugVehiclePhyModel)clone).refBufferRef = context.Clone(this.refBufferRef)!;
+        ((CPlugVehiclePhyModel)clone).tuningsRef = context.Clone(this.tuningsRef)!;
+        ((CPlugVehiclePhyModel)clone).phyShapeRef = context.Clone(this.phyShapeRef)!;
         ((CPlugVehiclePhyModel)clone).occupantSlots = context.CloneArray(this.occupantSlots)!;
     }
 
@@ -111,7 +113,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwRefBuffer>(ref n.refBuffer, ref n.refBufferFile);
+            rw.NodeRef(ref n.refBufferRef);
         }
     }
 
@@ -129,7 +131,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugVehiclePhyTunings>(ref n.tunings, ref n.tuningsFile);
+            rw.NodeRef(ref n.tuningsRef);
         }
     }
 
@@ -156,7 +158,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehicleCarPhyShape>(ref n.phyShape);
+            rw.NodeRef(ref n.phyShapeRef);
 
             if (Version >= 1)
             {
@@ -190,16 +192,43 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public override uint Id => 0x090EA009;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwRefBuffer? U01;
-        public CMwRefBuffer? U02;
-        public Components.GbxRefTableFile? U02File;
+
+        private NodeRef<CMwRefBuffer>? U01Ref;
+        public CMwRefBuffer? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwRefBuffer>? U02Ref;
+        public CMwRefBuffer? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090EA009 owner;
+            internal NodeRefView(Chunk090EA009 owner) => this.owner = owner;
+            public NodeRef<CMwRefBuffer> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwRefBuffer> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090EA009)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090EA009)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090EA009)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090EA009)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090EA009)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
@@ -208,8 +237,8 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
             if (Version <= 1)
             {
-                rw.NodeRef<CMwRefBuffer>(ref U01);
-                rw.NodeRef<CMwRefBuffer>(ref U02, ref U02File);
+                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
             }
         }
     }

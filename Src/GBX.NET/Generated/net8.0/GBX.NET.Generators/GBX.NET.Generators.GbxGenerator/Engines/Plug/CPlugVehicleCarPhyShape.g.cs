@@ -34,22 +34,15 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0910E000;
 
-    private CPlugSurface? moveShape;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSurface>? moveShapeRef;
     [AppliedWithChunk<Chunk0910E000>(1)]
     public CPlugSurface? MoveShape
     {
-        get => this.moveShapeFile?.GetNode(ref this.moveShape) ?? this.moveShape;
-        set => this.moveShape = value;
+        get => moveShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moveShapeRef, value);
     }
-    private Components.GbxRefTableFile? moveShapeFile;
-
-    public Components.GbxRefTableFile? MoveShapeFile
-    {
-        get => moveShapeFile;
-        set => moveShapeFile = value;
-    }
-
-    public CPlugSurface? GetMoveShape(GbxReadSettings settings = default, bool exceptions = false) => moveShapeFile?.GetNode(ref moveShape, settings, exceptions) ?? moveShape;
 
     private BoxAligned carVsCarShapeBox;
     [AppliedWithChunk<Chunk0910E000>]
@@ -59,10 +52,24 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         set => this.carVsCarShapeBox = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleCarPhyShape owner;
+        internal NodeRefView(CPlugVehicleCarPhyShape owner) => this.owner = owner;
+        public NodeRef<CPlugSurface> MoveShape => NodeRef.GetOrCreate(ref owner.moveShapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("MoveShape", NodeRef.GetOrCreate(ref moveShapeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVehicleCarPhyShape)clone).moveShape = context.Clone(this.moveShape)!;
+        ((CPlugVehicleCarPhyShape)clone).moveShapeRef = context.Clone(this.moveShapeRef)!;
         ((CPlugVehicleCarPhyShape)clone).carVsCarShapeBox = context.Clone(this.carVsCarShapeBox)!;
     }
 
@@ -78,7 +85,13 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-        public CPlugSolid? U02;
+
+        private NodeRef<CPlugSolid>? U02Ref;
+        public CPlugSolid? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
         public CPlugVehicleWheelPhyModel[]? U04;
         public BoxAligned U05;
         public bool U06;
@@ -108,18 +121,64 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         public float U31;
         public float U32;
         public string? U33;
-        public CPlugSurface? U34;
+
+        private NodeRef<CPlugSurface>? U34Ref;
+        public CPlugSurface? U34
+        {
+            get => U34Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U34Ref, value);
+        }
         public Vec3[]? U35;
-        public CPlugSurface? U36;
-        public CPlugSurface? U37;
-        public CPlugSurface? U38;
+
+        private NodeRef<CPlugSurface>? U36Ref;
+        public CPlugSurface? U36
+        {
+            get => U36Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U36Ref, value);
+        }
+
+        private NodeRef<CPlugSurface>? U37Ref;
+        public CPlugSurface? U37
+        {
+            get => U37Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U37Ref, value);
+        }
+
+        private NodeRef<CPlugSurface>? U38Ref;
+        public CPlugSurface? U38
+        {
+            get => U38Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U38Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0910E000 owner;
+            internal NodeRefView(Chunk0910E000 owner) => this.owner = owner;
+            public NodeRef<CPlugSolid> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugSurface> U34 => NodeRef.GetOrCreate(ref owner.U34Ref);
+            public NodeRef<CPlugSurface> U36 => NodeRef.GetOrCreate(ref owner.U36Ref);
+            public NodeRef<CPlugSurface> U37 => NodeRef.GetOrCreate(ref owner.U37Ref);
+            public NodeRef<CPlugSurface> U38 => NodeRef.GetOrCreate(ref owner.U38Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U34", NodeRef.GetOrCreate(ref U34Ref));
+            yield return new("U36", NodeRef.GetOrCreate(ref U36Ref));
+            yield return new("U37", NodeRef.GetOrCreate(ref U37Ref));
+            yield return new("U38", NodeRef.GetOrCreate(ref U38Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0910E000)clone).Version = context.Clone(this.Version)!;
             ((Chunk0910E000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0910E000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0910E000)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk0910E000)clone).U04 = context.CloneArray(this.U04)!;
             ((Chunk0910E000)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0910E000)clone).U06 = context.Clone(this.U06)!;
@@ -149,24 +208,24 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
             ((Chunk0910E000)clone).U31 = context.Clone(this.U31)!;
             ((Chunk0910E000)clone).U32 = context.Clone(this.U32)!;
             ((Chunk0910E000)clone).U33 = context.Clone(this.U33)!;
-            ((Chunk0910E000)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk0910E000)clone).U34Ref = context.Clone(this.U34Ref)!;
             ((Chunk0910E000)clone).U35 = context.CloneArray(this.U35)!;
-            ((Chunk0910E000)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk0910E000)clone).U37 = context.Clone(this.U37)!;
-            ((Chunk0910E000)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk0910E000)clone).U36Ref = context.Clone(this.U36Ref)!;
+            ((Chunk0910E000)clone).U37Ref = context.Clone(this.U37Ref)!;
+            ((Chunk0910E000)clone).U38Ref = context.Clone(this.U38Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleCarPhyShape n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
             rw.Single(ref U01);
-            rw.NodeRef<CPlugSolid>(ref U02);
+            rw.NodeRef(ref U02Ref);
 
             if (Version >= 1)
             {
-                if (U02== null)
+                if ((U02Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
-                    rw.NodeRef<CPlugSurface>(ref n.moveShape, ref n.moveShapeFile);
+                    rw.NodeRef(ref n.moveShapeRef);
                 }
             }
 
@@ -209,7 +268,7 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
 
                     if (U33== null || U33== "")
                     {
-                        rw.NodeRef<CPlugSurface>(ref U34);
+                        rw.NodeRef(ref U34Ref);
                     }
 
                     if (Version >= 4)
@@ -218,12 +277,12 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
 
                         if (Version >= 5)
                         {
-                            rw.NodeRef<CPlugSurface>(ref U36);
+                            rw.NodeRef(ref U36Ref);
 
                             if (Version >= 6)
                             {
-                                rw.NodeRef<CPlugSurface>(ref U37);
-                                rw.NodeRef<CPlugSurface>(ref U38);
+                                rw.NodeRef(ref U37Ref);
+                                rw.NodeRef(ref U38Ref);
                             }
                         }
                     }

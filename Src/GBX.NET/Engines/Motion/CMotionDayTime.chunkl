@@ -3,5 +3,5 @@ CMotionDayTime 0x08055000
 
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwNod LegacyModel
-  CPlugMaterial DayMaterial (external)
-  CPlugMaterial NightMaterial (external)
+  CPlugMaterial DayMaterial
+  CPlugMaterial NightMaterial

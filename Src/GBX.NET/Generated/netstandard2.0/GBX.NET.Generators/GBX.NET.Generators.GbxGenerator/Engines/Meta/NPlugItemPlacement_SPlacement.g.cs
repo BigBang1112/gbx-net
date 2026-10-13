@@ -34,6 +34,8 @@ public partial class NPlugItemPlacement_SPlacement : SMetaPtr, IClass, IReadable
     [Hexadecimal]
     public static new uint Id => 0x2F0A9000;
 
+    internal override uint GetId() => Id;
+
     private int iLayout;
     public int ILayout
     {

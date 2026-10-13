@@ -34,23 +34,16 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     [Hexadecimal]
     public static new uint Id => 0x0804C000;
 
-    private CMotionManagerLeaves? managerModel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMotionManagerLeaves>? managerModelRef;
     [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public CMotionManagerLeaves? ManagerModel
     {
-        get => this.managerModelFile?.GetNode(ref this.managerModel) ?? this.managerModel;
-        set => this.managerModel = value;
+        get => managerModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref managerModelRef, value);
     }
-    private Components.GbxRefTableFile? managerModelFile;
-
-    public Components.GbxRefTableFile? ManagerModelFile
-    {
-        get => managerModelFile;
-        set => managerModelFile = value;
-    }
-
-    public CMotionManagerLeaves? GetManagerModel(GbxReadSettings settings = default, bool exceptions = false) => managerModelFile?.GetNode(ref managerModel, settings, exceptions) ?? managerModel;
 
     private Vec3 pos;
     [AppliedWithChunk<Chunk0804C000>]
@@ -77,10 +70,24 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
         set => this.radius = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionEmitterLeaves owner;
+        internal NodeRefView(CMotionEmitterLeaves owner) => this.owner = owner;
+        public NodeRef<CMotionManagerLeaves> ManagerModel => NodeRef.GetOrCreate(ref owner.managerModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("ManagerModel", NodeRef.GetOrCreate(ref managerModelRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionEmitterLeaves)clone).managerModel = context.Clone(this.managerModel)!;
+        ((CMotionEmitterLeaves)clone).managerModelRef = context.Clone(this.managerModelRef)!;
         ((CMotionEmitterLeaves)clone).pos = context.Clone(this.pos)!;
         ((CMotionEmitterLeaves)clone).uniformRadiusLegacy = context.Clone(this.uniformRadiusLegacy)!;
         ((CMotionEmitterLeaves)clone).radius = context.Clone(this.radius)!;
@@ -102,7 +109,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMotionManagerLeaves>(ref n.managerModel, ref n.managerModelFile);
+            rw.NodeRef(ref n.managerModelRef);
             rw.Vec3(ref n.pos);
             rw.Single(ref n.uniformRadiusLegacy);
             if (rw.Reader is not null)
@@ -126,7 +133,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMotionManagerLeaves>(ref n.managerModel, ref n.managerModelFile);
+            rw.NodeRef(ref n.managerModelRef);
             rw.Vec3(ref n.pos);
             rw.Vec3(ref n.radius);
         }

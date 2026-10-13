@@ -34,58 +34,60 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     [Hexadecimal]
     public static new uint Id => 0x0600C000;
 
-    private GxLight? mainGxLight;
+    internal override uint GetId() => Id;
+
+    private NodeRef<GxLight>? mainGxLightRef;
     [AppliedWithChunk<Chunk0600C000>]
     [AppliedWithChunk<Chunk0600C001>]
     [AppliedWithChunk<Chunk0600C002>]
     [AppliedWithChunk<Chunk0600C003>]
     public GxLight? MainGxLight
     {
-        get => this.mainGxLight;
-        set => this.mainGxLight = value;
+        get => mainGxLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mainGxLightRef, value);
     }
 
-    private CPlugBitmap? bitmapFlare;
+    private NodeRef<CPlugBitmap>? bitmapFlareRef;
     [AppliedWithChunk<Chunk0600C002>]
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapFlare
     {
-        get => this.bitmapFlareFile?.GetNode(ref this.bitmapFlare) ?? this.bitmapFlare;
-        set => this.bitmapFlare = value;
-    }
-    private Components.GbxRefTableFile? bitmapFlareFile;
-
-    public Components.GbxRefTableFile? BitmapFlareFile
-    {
-        get => bitmapFlareFile;
-        set => bitmapFlareFile = value;
+        get => bitmapFlareRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFlareRef, value);
     }
 
-    public CPlugBitmap? GetBitmapFlare(GbxReadSettings settings = default, bool exceptions = false) => bitmapFlareFile?.GetNode(ref bitmapFlare, settings, exceptions) ?? bitmapFlare;
-
-    private CPlugBitmap? bitmapSprite;
+    private NodeRef<CPlugBitmap>? bitmapSpriteRef;
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapSprite
     {
-        get => this.bitmapSpriteFile?.GetNode(ref this.bitmapSprite) ?? this.bitmapSprite;
-        set => this.bitmapSprite = value;
+        get => bitmapSpriteRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSpriteRef, value);
     }
-    private Components.GbxRefTableFile? bitmapSpriteFile;
 
-    public Components.GbxRefTableFile? BitmapSpriteFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => bitmapSpriteFile;
-        set => bitmapSpriteFile = value;
+        private readonly CHmsLight owner;
+        internal NodeRefView(CHmsLight owner) => this.owner = owner;
+        public NodeRef<GxLight> MainGxLight => NodeRef.GetOrCreate(ref owner.mainGxLightRef);
+        public NodeRef<CPlugBitmap> BitmapFlare => NodeRef.GetOrCreate(ref owner.bitmapFlareRef);
+        public NodeRef<CPlugBitmap> BitmapSprite => NodeRef.GetOrCreate(ref owner.bitmapSpriteRef);
     }
-
-    public CPlugBitmap? GetBitmapSprite(GbxReadSettings settings = default, bool exceptions = false) => bitmapSpriteFile?.GetNode(ref bitmapSprite, settings, exceptions) ?? bitmapSprite;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("MainGxLight", NodeRef.GetOrCreate(ref mainGxLightRef));
+        yield return new("BitmapFlare", NodeRef.GetOrCreate(ref bitmapFlareRef));
+        yield return new("BitmapSprite", NodeRef.GetOrCreate(ref bitmapSpriteRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CHmsLight)clone).mainGxLight = context.Clone(this.mainGxLight)!;
-        ((CHmsLight)clone).bitmapFlare = context.Clone(this.bitmapFlare)!;
-        ((CHmsLight)clone).bitmapSprite = context.Clone(this.bitmapSprite)!;
+        ((CHmsLight)clone).mainGxLightRef = context.Clone(this.mainGxLightRef)!;
+        ((CHmsLight)clone).bitmapFlareRef = context.Clone(this.bitmapFlareRef)!;
+        ((CHmsLight)clone).bitmapSpriteRef = context.Clone(this.bitmapSpriteRef)!;
     }
 
     public CHmsLight()
@@ -107,7 +109,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef<GxLight>(ref n.mainGxLight);
+            rw.NodeRef(ref n.mainGxLightRef);
         }
     }
 
@@ -140,7 +142,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapFlare, ref n.bitmapFlareFile);
+            rw.NodeRef(ref n.bitmapFlareRef);
         }
     }
 
@@ -159,7 +161,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapSprite, ref n.bitmapSpriteFile);
+            rw.NodeRef(ref n.bitmapSpriteRef);
         }
     }
 

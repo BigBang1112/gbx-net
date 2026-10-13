@@ -34,12 +34,14 @@ public partial class CPlugMaterial : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09079000;
 
-    private CPlugMaterialCustom? customMaterial;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugMaterialCustom>? customMaterialRef;
     [AppliedWithChunk<Chunk09079007>]
     public CPlugMaterialCustom? CustomMaterial
     {
-        get => this.customMaterial;
-        set => this.customMaterial = value;
+        get => customMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref customMaterialRef, value);
     }
 
     private CPlugSurface.MaterialId surfaceId;
@@ -51,22 +53,13 @@ public partial class CPlugMaterial : CPlug, IClass
         set => this.surfaceId = value;
     }
 
-    private CPlug? shader;
+    private NodeRef<CPlug>? shaderRef;
     [AppliedWithChunk<Chunk09079015>]
     public CPlug? Shader
     {
-        get => this.shaderFile?.GetNode(ref this.shader) ?? this.shader;
-        set => this.shader = value;
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
-    private Components.GbxRefTableFile? shaderFile;
-
-    public Components.GbxRefTableFile? ShaderFile
-    {
-        get => shaderFile;
-        set => shaderFile = value;
-    }
-
-    public CPlug? GetShader(GbxReadSettings settings = default, bool exceptions = false) => shaderFile?.GetNode(ref shader, settings, exceptions) ?? shader;
 
     private CPlugSurface.GameplayId gameplayId;
     [AppliedWithChunk<Chunk09079017>(1)]
@@ -76,12 +69,28 @@ public partial class CPlugMaterial : CPlug, IClass
         set => this.gameplayId = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugMaterial owner;
+        internal NodeRefView(CPlugMaterial owner) => this.owner = owner;
+        public NodeRef<CPlugMaterialCustom> CustomMaterial => NodeRef.GetOrCreate(ref owner.customMaterialRef);
+        public NodeRef<CPlug> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("CustomMaterial", NodeRef.GetOrCreate(ref customMaterialRef));
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugMaterial)clone).customMaterial = context.Clone(this.customMaterial)!;
+        ((CPlugMaterial)clone).customMaterialRef = context.Clone(this.customMaterialRef)!;
         ((CPlugMaterial)clone).surfaceId = context.Clone(this.surfaceId)!;
-        ((CPlugMaterial)clone).shader = context.Clone(this.shader)!;
+        ((CPlugMaterial)clone).shaderRef = context.Clone(this.shaderRef)!;
         ((CPlugMaterial)clone).gameplayId = context.Clone(this.gameplayId)!;
         ((CPlugMaterial)clone).deviceMaterials = context.CloneArray(this.deviceMaterials)!;
     }
@@ -96,17 +105,37 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         public override uint Id => 0x09079001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk09079001 owner;
+            internal NodeRefView(Chunk09079001 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09079001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09079001)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -162,7 +191,7 @@ public partial class CPlugMaterial : CPlug, IClass
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugMaterialCustom>(ref n.customMaterial);
+            rw.NodeRef(ref n.customMaterialRef);
         }
     }
 
@@ -345,8 +374,33 @@ public partial class CPlugMaterial : CPlug, IClass
         public int Version { get; set; }
         public int[]? U01;
         public int U02;
-        public External<CPlugMaterialColorTargetTable>[]? U03;
-        public CMwNod? U04;
+
+        public NodeRefList<CPlugMaterialColorTargetTable>? U03;
+
+        private NodeRef<CMwNod>? U04Ref;
+        public CMwNod? U04
+        {
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk09079015 owner;
+            internal NodeRefView(Chunk09079015 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
+            }
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -354,16 +408,16 @@ public partial class CPlugMaterial : CPlug, IClass
             ((Chunk09079015)clone).Version = context.Clone(this.Version)!;
             ((Chunk09079015)clone).U01 = context.CloneArray(this.U01)!;
             ((Chunk09079015)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09079015)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk09079015)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk09079015)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09079015)clone).U04Ref = context.Clone(this.U04Ref)!;
         }
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderFile);
+            rw.NodeRef(ref n.shaderRef);
 
-            if (n.Shader== null && n.ShaderFile== null)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<DeviceMat>(ref n.deviceMaterials!, version: 0x015);
                 rw.Array<int>(ref U01!);
@@ -374,13 +428,13 @@ public partial class CPlugMaterial : CPlug, IClass
                 }
             }
 
-            if (n.Shader!= null || n.ShaderFile!= null)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                rw.ArrayNodeRef<CPlugMaterialColorTargetTable>(ref U03!);
+                U03 = rw.ListNodeRef<CPlugMaterialColorTargetTable>(U03);
 
                 if (Version >= 7)
                 {
-                    rw.NodeRef<CMwNod>(ref U04);
+                    rw.NodeRef(ref U04Ref);
                 }
             }
         }
@@ -484,53 +538,43 @@ public partial class CPlugMaterial : CPlug, IClass
             set => this.u03 = value;
         }
 
-        private CPlugShader? shader1;
+        private NodeRef<CPlugShader>? shader1Ref;
         public CPlugShader? Shader1
         {
-            get => this.shader1File?.GetNode(ref this.shader1) ?? this.shader1;
-            set => this.shader1 = value;
-        }
-        private Components.GbxRefTableFile? shader1File;
-
-        public Components.GbxRefTableFile? Shader1File
-        {
-            get => shader1File;
-            set => shader1File = value;
+            get => shader1Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader1Ref, value);
         }
 
-        public CPlugShader? GetShader1(GbxReadSettings settings = default, bool exceptions = false) => shader1File?.GetNode(ref shader1, settings, exceptions) ?? shader1;
-
-        private CPlugShader? shader2;
+        private NodeRef<CPlugShader>? shader2Ref;
         public CPlugShader? Shader2
         {
-            get => this.shader2File?.GetNode(ref this.shader2) ?? this.shader2;
-            set => this.shader2 = value;
-        }
-        private Components.GbxRefTableFile? shader2File;
-
-        public Components.GbxRefTableFile? Shader2File
-        {
-            get => shader2File;
-            set => shader2File = value;
+            get => shader2Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader2Ref, value);
         }
 
-        public CPlugShader? GetShader2(GbxReadSettings settings = default, bool exceptions = false) => shader2File?.GetNode(ref shader2, settings, exceptions) ?? shader2;
-
-        private CPlugShader? shader3;
+        private NodeRef<CPlugShader>? shader3Ref;
         public CPlugShader? Shader3
         {
-            get => this.shader3File?.GetNode(ref this.shader3) ?? this.shader3;
-            set => this.shader3 = value;
+            get => shader3Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader3Ref, value);
         }
-        private Components.GbxRefTableFile? shader3File;
 
-        public Components.GbxRefTableFile? Shader3File
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
         {
-            get => shader3File;
-            set => shader3File = value;
+            private readonly DeviceMat owner;
+            internal NodeRefView(DeviceMat owner) => this.owner = owner;
+            public NodeRef<CPlugShader> Shader1 => NodeRef.GetOrCreate(ref owner.shader1Ref);
+            public NodeRef<CPlugShader> Shader2 => NodeRef.GetOrCreate(ref owner.shader2Ref);
+            public NodeRef<CPlugShader> Shader3 => NodeRef.GetOrCreate(ref owner.shader3Ref);
         }
-
-        public CPlugShader? GetShader3(GbxReadSettings settings = default, bool exceptions = false) => shader3File?.GetNode(ref shader3, settings, exceptions) ?? shader3;
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Shader1", NodeRef.GetOrCreate(ref shader1Ref));
+            yield return new("Shader2", NodeRef.GetOrCreate(ref shader2Ref));
+            yield return new("Shader3", NodeRef.GetOrCreate(ref shader3Ref));
+            yield break;
+        }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -545,9 +589,9 @@ public partial class CPlugMaterial : CPlug, IClass
             ((DeviceMat)clone).u01 = context.Clone(this.u01)!;
             ((DeviceMat)clone).u02 = context.Clone(this.u02)!;
             ((DeviceMat)clone).u03 = context.Clone(this.u03)!;
-            ((DeviceMat)clone).shader1 = context.Clone(this.shader1)!;
-            ((DeviceMat)clone).shader2 = context.Clone(this.shader2)!;
-            ((DeviceMat)clone).shader3 = context.Clone(this.shader3)!;
+            ((DeviceMat)clone).shader1Ref = context.Clone(this.shader1Ref)!;
+            ((DeviceMat)clone).shader2Ref = context.Clone(this.shader2Ref)!;
+            ((DeviceMat)clone).shader3Ref = context.Clone(this.shader3Ref)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -560,12 +604,12 @@ public partial class CPlugMaterial : CPlug, IClass
                 rw.Boolean(ref this.u03);
             }
 
-            rw.NodeRef<CPlugShader>(ref this.shader1, ref this.shader1File);
+            rw.NodeRef(ref this.shader1Ref);
 
             if (v >= 9)
             {
-                rw.NodeRef<CPlugShader>(ref this.shader2, ref this.shader2File);
-                rw.NodeRef<CPlugShader>(ref this.shader3, ref this.shader3File);
+                rw.NodeRef(ref this.shader2Ref);
+                rw.NodeRef(ref this.shader3Ref);
             }
         }
 

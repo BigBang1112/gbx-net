@@ -34,6 +34,8 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03095000;
 
+    internal override uint GetId() => Id;
+
     private TransactionalNatural? globalScore;
     [AppliedWithChunk<Chunk03095000>]
     [AppliedWithChunk<Chunk03095001>]
@@ -132,11 +134,24 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
             set => this.u01 = value;
         }
 
-        private CGameHighScore? score;
+        private NodeRef<CGameHighScore>? scoreRef;
         public CGameHighScore? Score
         {
-            get => this.score;
-            set => this.score = value;
+            get => scoreRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref scoreRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly FilteredPlayerRank owner;
+            internal NodeRefView(FilteredPlayerRank owner) => this.owner = owner;
+            public NodeRef<CGameHighScore> Score => NodeRef.GetOrCreate(ref owner.scoreRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Score", NodeRef.GetOrCreate(ref scoreRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -151,14 +166,14 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
         {
             ((FilteredPlayerRank)clone).zone = context.Clone(this.zone)!;
             ((FilteredPlayerRank)clone).u01 = context.Clone(this.u01)!;
-            ((FilteredPlayerRank)clone).score = context.Clone(this.score)!;
+            ((FilteredPlayerRank)clone).scoreRef = context.Clone(this.scoreRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.String(ref this.zone);
             rw.Boolean(ref this.u01);
-            rw.NodeRef<CGameHighScore>(ref this.score);
+            rw.NodeRef(ref this.scoreRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

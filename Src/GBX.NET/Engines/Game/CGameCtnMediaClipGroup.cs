@@ -3,13 +3,44 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMediaClipGroup
 {
-    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger) : IDeepCloneable
+    public readonly record struct ClipTrigger(CGameCtnMediaClip? Clip, Trigger Trigger) : IDeepCloneable
     {
-        object IDeepCloneable.DeepClone(DeepCloneContext context) => new ClipTrigger(context.Clone(Clip)!, context.Clone(Trigger)!);
+        private readonly NodeRef<CGameCtnMediaClip>? clipRef = CreateRef(Clip);
+
+        public CGameCtnMediaClip? Clip
+        {
+            get => clipRef?.Resolve();
+            init => clipRef = CreateRef(value);
+        }
+
+        public NodeRefView References => new(this);
+
+        private ClipTrigger(NodeRef<CGameCtnMediaClip>? reference, Trigger trigger) : this((CGameCtnMediaClip?)null, trigger)
+        {
+            clipRef = reference;
+        }
+
+        private static NodeRef<CGameCtnMediaClip> CreateRef(CGameCtnMediaClip? clip)
+        {
+            var reference = new NodeRef<CGameCtnMediaClip>();
+            reference.Node = clip;
+            return reference;
+        }
+
+        public readonly struct NodeRefView
+        {
+            private readonly ClipTrigger owner;
+            internal NodeRefView(ClipTrigger owner) => this.owner = owner;
+            public NodeRef<CGameCtnMediaClip>? Clip => owner.clipRef;
+        }
+
+        internal static ClipTrigger FromReference(NodeRef<CGameCtnMediaClip> reference, Trigger trigger) => new(reference, trigger);
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context) => new ClipTrigger(context.Clone(clipRef), context.Clone(Trigger)!);
     }
 
     private List<ClipTrigger>? clips;
-    public partial List<ClipTrigger> Clips
+    public List<ClipTrigger> Clips
     {
         get => clips ??= [];
         set => clips = value;
@@ -17,28 +48,36 @@ public partial class CGameCtnMediaClipGroup
 
     private static void ReadClips(CGameCtnMediaClipGroup n, GbxReader r, int version)
     {
-        Span<CGameCtnMediaClip?> clipBuffer = r.ReadArrayNodeRef_deprec<CGameCtnMediaClip>();
+        var clipBuffer = r.ReadListNodeRef_deprec<CGameCtnMediaClip>();
         Span<Trigger> triggerBuffer = r.ReadArrayReadable<Trigger>(version: version);
 
-        n.Clips = new List<ClipTrigger>(clipBuffer.Length);
+        n.Clips = new List<ClipTrigger>(clipBuffer.Count);
 
-        for (var i = 0; i < clipBuffer.Length; i++)
+        for (var i = 0; i < clipBuffer.Count; i++)
         {
-            var clip = clipBuffer[i];
-
-            if (clip is null)
-            {
-                // log warning
-            }
-
-            n.Clips.Add(new ClipTrigger(clip!, triggerBuffer[i]));
+            n.Clips.Add(ClipTrigger.FromReference(clipBuffer.Get(i), triggerBuffer[i]));
         }
     }
 
     private static void WriteClips(CGameCtnMediaClipGroup n, GbxWriter w, int version)
     {
-        w.WriteListNodeRef_deprec(n.Clips.Select(x => x.Clip).ToList()!);
+        w.WriteDeprecVersion();
+        w.Write(n.Clips.Count);
+        foreach (var pair in n.Clips)
+        {
+            w.WriteNodeRef(pair.References.Clip);
+        }
         w.WriteListWritable(n.Clips.Select(x => x.Trigger).ToList(), version: version);
+    }
+
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        for (var i = 0; i < Clips.Count; i++)
+        {
+            if (Clips[i].References.Clip is { } reference)
+                yield return new($"Clips[{i}].Clip", reference);
+        }
     }
 
     public partial class Chunk0307A000

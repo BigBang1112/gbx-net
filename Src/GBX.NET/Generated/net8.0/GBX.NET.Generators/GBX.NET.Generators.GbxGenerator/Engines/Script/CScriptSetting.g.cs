@@ -34,6 +34,8 @@ public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadab
     [Hexadecimal]
     public static new uint Id => 0x11000000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     public string? Name
     {

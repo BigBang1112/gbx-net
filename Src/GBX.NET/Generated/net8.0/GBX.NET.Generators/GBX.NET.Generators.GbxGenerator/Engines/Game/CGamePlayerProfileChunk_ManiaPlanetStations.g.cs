@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     [Hexadecimal]
     public static new uint Id => 0x03180000;
 
+    internal override uint GetId() => Id;
+
     private OldGameStationDesc[]? oldStations;
     [AppliedWithChunk<Chunk03180000>]
     public OldGameStationDesc[]? OldStations

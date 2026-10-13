@@ -27,7 +27,10 @@ public class CGameCtnBlockInfoMobilLinkTests
             if (version == 0)
             {
                 writer.WriteNodeRef(phy);
-                writer.WriteNodeRef(visFile is null ? vis : null, visFile);
+                var reference = new NodeRef<CGameObjectVisModel>();
+                if (visFile is not null) reference.Descriptor = visFile;
+                else reference.Node = vis;
+                writer.WriteNodeRef(reference);
             }
             else
             {
@@ -51,7 +54,7 @@ public class CGameCtnBlockInfoMobilLinkTests
         await Assert.That(restored.SocketId).IsEqualTo("Socket");
         await Assert.That(restored.Model).IsNotNull();
         await Assert.That(restored.Model!.Phy).IsNotNull();
-        await Assert.That(restored.Model.VisFile).IsEqualTo(visFile);
+        await Assert.That(restored.Model.References.Vis.File).IsEqualTo(visFile);
         if (externalVis)
         {
             await Assert.That(restored.Model.Vis).IsNull();

@@ -63,13 +63,13 @@ public class CGameCtnPrecalcPartParamsChunkTests
         await Assert.That(node.LeafMotion).IsFalse();
         await Assert.That(node.LeafMotionFreq).IsEqualTo(3f);
         await Assert.That(node.LeafMotionScale).IsEqualTo(4f);
-        await Assert.That(node.CollSurfFile).IsEqualTo(collisionFile);
+        await Assert.That(node.References.CollSurf.File).IsEqualTo(collisionFile);
         await Assert.That(node.IterCount).IsEqualTo(42);
         await Assert.That(node.TimeStep).IsEqualTo(0.02f);
         await Assert.That(node.RandValSeed).IsEqualTo(123);
         await Assert.That(node.PhyZoneGravity).IsEqualTo(new Vec3(1, -2, 3));
         await Assert.That(node.PhyZoneWind).IsEqualTo(new Vec3(4, 5, 6));
-        await Assert.That(node.DecalModelFile).IsEqualTo(decalFile);
+        await Assert.That(node.References.DecalModel.File).IsEqualTo(decalFile);
         await Assert.That(node.DecalSizeBase).IsEqualTo(0.4f);
         await Assert.That(node.DecalSizeVar).IsEqualTo(0.2f);
         await Assert.That(node.DecalBoxDepth).IsEqualTo(0.1f);

@@ -5,12 +5,12 @@ constructor
   CatalogPosition = -1
 
 0x000 (skippable) // legacy symmetrical clip
-  CGameCtnCollector LegacySymmetricalClip (external)
+  CGameCtnCollector LegacySymmetricalClip
   if LegacySymmetricalClip != null
     SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 
 0x001 // legacy symmetrical clip
-  CGameCtnCollector LegacySymmetricalClip (external)
+  CGameCtnCollector LegacySymmetricalClip
   if LegacySymmetricalClip != null
     SymmetricalClipId = LegacySymmetricalClip.Ident.Id
 

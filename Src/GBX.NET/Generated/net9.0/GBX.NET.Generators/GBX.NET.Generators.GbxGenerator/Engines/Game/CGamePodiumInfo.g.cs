@@ -34,18 +34,29 @@ public partial class CGamePodiumInfo : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03168000;
 
-    private External<CMwNod>[]? mediaClipFids;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CMwNod>? mediaClipFids;
     [AppliedWithChunk<Chunk03168000>]
-    public External<CMwNod>[]? MediaClipFids
+    public NodeRefList<CMwNod>? MediaClipFids
     {
-        get => this.mediaClipFids;
-        set => this.mediaClipFids = value;
+        get => mediaClipFids;
+        set => mediaClipFids = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (mediaClipFids is not null)
+        {
+            for (var i = 0; i < mediaClipFids.Count; i++) yield return new("MediaClipFids" + "[" + i + "]", mediaClipFids.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGamePodiumInfo)clone).mediaClipFids = context.CloneArray(this.mediaClipFids)!;
+        ((CGamePodiumInfo)clone).mediaClipFids = context.Clone(this.mediaClipFids)!;
     }
 
     public CGamePodiumInfo()
@@ -69,7 +80,7 @@ public partial class CGamePodiumInfo : CMwNod, IClass
         public override void ReadWrite(CGamePodiumInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CMwNod>(ref n.mediaClipFids!);
+            n.mediaClipFids = rw.ListNodeRef<CMwNod>(n.mediaClipFids);
         }
     }
 

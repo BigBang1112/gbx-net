@@ -34,19 +34,30 @@ public partial class CMotions : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x08028000;
 
-    private List<CMotion> motions = new();
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CMotion>? motions = new();
     [AppliedWithChunk<Chunk08028000>]
     [AppliedWithChunk<Chunk08028001>]
-    public List<CMotion> Motions
+    public NodeRefList<CMotion>? Motions
     {
-        get => this.motions;
-        set => this.motions = value;
+        get => motions;
+        set => motions = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (motions is not null)
+        {
+            for (var i = 0; i < motions.Count; i++) yield return new("Motions" + "[" + i + "]", motions.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotions)clone).motions = context.CloneList(this.motions)!;
+        ((CMotions)clone).motions = context.Clone(this.motions)!;
     }
 
     public CMotions()
@@ -65,7 +76,7 @@ public partial class CMotions : CMotion, IClass
 
         public override void ReadWrite(CMotions n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef<CMotion>(ref n.motions!);
+            n.motions = rw.ListNodeRef<CMotion>(n.motions);
         }
     }
 
@@ -83,7 +94,7 @@ public partial class CMotions : CMotion, IClass
 
         public override void ReadWrite(CMotions n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef<CMotion>(ref n.motions!);
+            n.motions = rw.ListNodeRef<CMotion>(n.motions);
         }
     }
 

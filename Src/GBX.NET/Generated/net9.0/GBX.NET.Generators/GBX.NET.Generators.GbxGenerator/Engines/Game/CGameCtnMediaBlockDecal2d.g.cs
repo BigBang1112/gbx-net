@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     [Hexadecimal]
     public static new uint Id => 0x031AA000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk031AA000>]
     public TimeSingle Start

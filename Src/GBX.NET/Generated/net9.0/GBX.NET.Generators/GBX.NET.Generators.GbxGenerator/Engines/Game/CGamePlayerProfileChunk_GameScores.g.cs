@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     [Hexadecimal]
     public static new uint Id => 0x03146000;
 
+    internal override uint GetId() => Id;
+
     private STrainingMedalsScores[]? trainingMedalsScores;
     [AppliedWithChunk<Chunk03146000>]
     public STrainingMedalsScores[]? TrainingMedalsScores
@@ -41,6 +43,10 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         get => this.trainingMedalsScores;
         set => this.trainingMedalsScores = value;
     }
+
+    private NodeRef<CGamePlayerOfficialScores>? officialScores1Ref;
+
+    private NodeRef<CGamePlayerOfficialScores>? officialScores2Ref;
 
     private LadderMatchResult[]? ladderMatchResults;
     [AppliedWithChunk<Chunk03146005>]
@@ -50,13 +56,29 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         set => this.ladderMatchResults = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerProfileChunk_GameScores owner;
+        internal NodeRefView(CGamePlayerProfileChunk_GameScores owner) => this.owner = owner;
+        public NodeRef<CGamePlayerOfficialScores> OfficialScores1 => NodeRef.GetOrCreate(ref owner.officialScores1Ref);
+        public NodeRef<CGamePlayerOfficialScores> OfficialScores2 => NodeRef.GetOrCreate(ref owner.officialScores2Ref);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("OfficialScores1", NodeRef.GetOrCreate(ref officialScores1Ref));
+        yield return new("OfficialScores2", NodeRef.GetOrCreate(ref officialScores2Ref));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGamePlayerProfileChunk_GameScores)clone).trainingMedalsScores = context.CloneArray(this.trainingMedalsScores)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).officialScores1Ref = context.Clone(this.officialScores1Ref)!;
+        ((CGamePlayerProfileChunk_GameScores)clone).officialScores2Ref = context.Clone(this.officialScores2Ref)!;
         ((CGamePlayerProfileChunk_GameScores)clone).ladderMatchResults = context.CloneArray(this.ladderMatchResults)!;
-        ((CGamePlayerProfileChunk_GameScores)clone).officialScores1 = context.Clone(this.officialScores1)!;
-        ((CGamePlayerProfileChunk_GameScores)clone).officialScores2 = context.Clone(this.officialScores2)!;
     }
 
     public CGamePlayerProfileChunk_GameScores()
@@ -104,7 +126,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CGamePlayerOfficialScores>(ref n.officialScores1);
+                rw.NodeRef(ref n.officialScores1Ref);
             });
         }
     }
@@ -129,7 +151,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CGamePlayerOfficialScores>(ref n.officialScores2);
+                rw.NodeRef(ref n.officialScores2Ref);
             });
         }
     }
@@ -157,6 +179,21 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
     public partial class STrainingMedalsScores : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private NodeRef<CGamePlayerOfficialScores>? officialScoresRef;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly STrainingMedalsScores owner;
+            internal NodeRefView(STrainingMedalsScores owner) => this.owner = owner;
+            public NodeRef<CGamePlayerOfficialScores> OfficialScores => NodeRef.GetOrCreate(ref owner.officialScoresRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("OfficialScores", NodeRef.GetOrCreate(ref officialScoresRef));
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (STrainingMedalsScores)MemberwiseClone();
@@ -167,9 +204,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((STrainingMedalsScores)clone).officialScoresRef = context.Clone(this.officialScoresRef)!;
             ((STrainingMedalsScores)clone).u01 = context.Clone(this.u01)!;
             ((STrainingMedalsScores)clone).u02 = context.Clone(this.u02)!;
-            ((STrainingMedalsScores)clone).officialScores = context.Clone(this.officialScores)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -179,7 +216,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CGamePlayerOfficialScores>(ref this.officialScores);
+                rw.NodeRef(ref this.officialScoresRef);
             });
         }
 

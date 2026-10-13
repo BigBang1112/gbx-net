@@ -71,14 +71,14 @@ public class CGameItemModelChunkTests
         chunk.ReadWrite(node, rw);
 
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(node.PhyModelCustomFile).IsEqualTo(legacyModels ? phyFile : null);
-        await Assert.That(node.VisModelCustomFile).IsEqualTo(legacyModels ? visFile : null);
+        await Assert.That(node.References.PhyModelCustom.File).IsEqualTo(legacyModels ? phyFile : null);
+        await Assert.That(node.References.VisModelCustom.File).IsEqualTo(legacyModels ? visFile : null);
         await Assert.That(node.DefaultWeaponName).IsEqualTo(version >= 3 ? "Weapon" : null);
         if (version >= 6) await Assert.That(node.Actions).IsEmpty();
         await Assert.That(node.DefaultCam).IsEqualTo(version >= 7 ? CGameItemModel.EDefaultCam.Behind : default);
-        await Assert.That(node.EntityModelEditionFile).IsEqualTo(version >= 8 ? editionFile : null);
+        await Assert.That(node.References.EntityModelEdition.File).IsEqualTo(version >= 8 ? editionFile : null);
         await Assert.That(node.EntityModel).IsNull();
-        await Assert.That(node.MaterialModifierFile).IsEqualTo(version >= 15 ? materialFile : null);
+        await Assert.That(node.References.MaterialModifier.File).IsEqualTo(version >= 15 ? materialFile : null);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x11223344);
         await Assert.That(stream.Position).IsEqualTo(stream.Length);
     }

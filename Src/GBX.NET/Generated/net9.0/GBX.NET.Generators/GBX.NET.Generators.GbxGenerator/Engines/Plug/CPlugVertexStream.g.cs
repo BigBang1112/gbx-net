@@ -34,6 +34,8 @@ public partial class CPlugVertexStream : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09056000;
 
+    internal override uint GetId() => Id;
+
     private int vertexCount;
     [AppliedWithChunk<Chunk09056000>]
     public int VertexCount
@@ -50,22 +52,13 @@ public partial class CPlugVertexStream : CPlug, IClass
         set => this.flags = value;
     }
 
-    private CPlugVertexStream? streamModel;
+    private NodeRef<CPlugVertexStream>? streamModelRef;
     [AppliedWithChunk<Chunk09056000>]
     public CPlugVertexStream? StreamModel
     {
-        get => this.streamModelFile?.GetNode(ref this.streamModel) ?? this.streamModel;
-        set => this.streamModel = value;
+        get => streamModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref streamModelRef, value);
     }
-    private Components.GbxRefTableFile? streamModelFile;
-
-    public Components.GbxRefTableFile? StreamModelFile
-    {
-        get => streamModelFile;
-        set => streamModelFile = value;
-    }
-
-    public CPlugVertexStream? GetStreamModel(GbxReadSettings settings = default, bool exceptions = false) => streamModelFile?.GetNode(ref streamModel, settings, exceptions) ?? streamModel;
 
     private DataDecl[]? dataDecls;
     [AppliedWithChunk<Chunk09056000>]
@@ -83,12 +76,26 @@ public partial class CPlugVertexStream : CPlug, IClass
         set => this.compressLocalFloat3 = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVertexStream owner;
+        internal NodeRefView(CPlugVertexStream owner) => this.owner = owner;
+        public NodeRef<CPlugVertexStream> StreamModel => NodeRef.GetOrCreate(ref owner.streamModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("StreamModel", NodeRef.GetOrCreate(ref streamModelRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugVertexStream)clone).vertexCount = context.Clone(this.vertexCount)!;
         ((CPlugVertexStream)clone).flags = context.Clone(this.flags)!;
-        ((CPlugVertexStream)clone).streamModel = context.Clone(this.streamModel)!;
+        ((CPlugVertexStream)clone).streamModelRef = context.Clone(this.streamModelRef)!;
         ((CPlugVertexStream)clone).dataDecls = context.CloneArray(this.dataDecls)!;
         ((CPlugVertexStream)clone).compressLocalFloat3 = context.Clone(this.compressLocalFloat3)!;
         ((CPlugVertexStream)clone).uvs = context.CloneSortedDictionary(this.uvs)!;

@@ -13,11 +13,11 @@ constructor
   bool IsPillar
   int<ESelection> Selection
   int
-  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockInfoClassic Pillar
   CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
   CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
-  CSceneMobil[][] GroundMobils (external)
-  CSceneMobil[][] AirMobils (external)
+  CSceneMobil[][] GroundMobils
+  CSceneMobil[][] AirMobils
   byte
   int
   short
@@ -62,14 +62,14 @@ constructor
   bool NoRespawn
 
 0x012 // screen interaction triggers
-  CSceneMobil ScreenInteractionTriggerGround (external)
-  CSceneMobil ScreenInteractionTriggerAir (external)
+  CSceneMobil ScreenInteractionTriggerGround
+  CSceneMobil ScreenInteractionTriggerAir
 
 0x013 [MP3, TMT, MP4, TM2020] // IconAutoUseGround
   bool IconAutoUseGround
 
 0x015 [MP3, TMT] // precalculated particle parameters and location
-  CGameCtnPrecalcPartParams PrecalcPartParams (external)
+  CGameCtnPrecalcPartParams PrecalcPartParams
   iso4 PrecalcPartLoc = Iso4.Identity
 
 0x017 [MP3, TMT, MP4, TM2020] // block flag
@@ -86,13 +86,13 @@ constructor
   int
   bool IsPillar
   int
-  CGameCtnBlockInfoClassic Pillar (external)
+  CGameCtnBlockInfoClassic Pillar
   CGameCtnBlockUnitInfo?[] GroundBlockUnitInfos
   CGameCtnBlockUnitInfo?[] AirBlockUnitInfos
 
 0x01E // legacy block info mobils
-  CGameCtnBlockInfoMobil[][] GroundBlockInfoMobils (external)
-  CGameCtnBlockInfoMobil[][] AirBlockInfoMobils (external)
+  CGameCtnBlockInfoMobil[][] GroundBlockInfoMobils
+  CGameCtnBlockInfoMobil[][] AirBlockInfoMobils
 
 0x01F // CharPhySpecialProperty
   CPlugCharPhySpecialProperty CharPhySpecialProperty
@@ -116,20 +116,20 @@ constructor
       MaterialModifierPlacementTag MatModifierPlacementTag
 
 0x021 // legacy symmetry reference, direction and flags
-  CMwNod (external)
+  CMwNod
   int<Direction> Dir
   SymmetryFlags SymmetryGround
   SymmetryFlags SymmetryAir
 
 0x022 [TMT, MP4, TM2020] // IconMacroBlockInfo
-  CGameCtnMacroBlockInfo IconMacroBlockInfo (external)
+  CGameCtnMacroBlockInfo IconMacroBlockInfo
 
 0x023 [MP3, TMT, MP4, TM2020] // base variants
   CGameCtnBlockInfoVariantGround VariantBaseGround (direct)
   CGameCtnBlockInfoVariantAir VariantBaseAir (direct)
 
 0x024 // legacy symmetry reference and direction
-  CMwNod (external)
+  CMwNod
   int<Direction> Dir
 
 0x026 [MP3, TMT, MP4, TM2020] // WayPointType
@@ -143,20 +143,20 @@ constructor
   int<Direction> Dir
 
 0x029 [MP3, TMT, MP4, TM2020] // FogVolumeBox
-  CPlugFogVolumeBox FogVolumeBox (external)
+  CPlugFogVolumeBox FogVolumeBox
 
 0x02A [MP3.v1, TMT.v1, MP4.v2, TM2020.v3] // sounds and locations
   version
-  CPlugSound Sound1 (external)
+  CPlugSound Sound1
   v1+
-    CPlugSound Sound2 (external)
+    CPlugSound Sound2
     v2-
       iso4 Sound1Loc = Iso4.Identity
       iso4 Sound2Loc = Iso4.Identity
     v3+
-      if Sound1 != null || Sound1File != null
+      if Sound1 != null
         iso4 Sound1Loc = Iso4.Identity
-      if Sound2 != null || Sound2File != null
+      if Sound2 != null
         iso4 Sound2Loc = Iso4.Identity
 
 0x02B [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // BaseType
@@ -183,10 +183,10 @@ constructor
 
 0x031 [TM2020.v1] // block model and material modifiers
   version
-  CGameCtnBlockInfo BlockInfoModelFid (external) // Source model copied when the concrete block classes match
-  CPlugGameSkinAndFolder MaterialModifier (external)
+  CGameCtnBlockInfo BlockInfoModelFid // Source model copied when the concrete block classes match
+  CPlugGameSkinAndFolder MaterialModifier
   v1+
-    CPlugGameSkinAndFolder MaterialModifier2 (external)
+    CPlugGameSkinAndFolder MaterialModifier2
 
 archive SymmetryFlags
   version

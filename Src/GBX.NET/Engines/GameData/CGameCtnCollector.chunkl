@@ -55,26 +55,26 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
 0x000 // legacy icon node
   string PageName
-  CMwNod (external)
+  CMwNod
 
 0x001 // legacy icon image
   string PageName
-  CMwNod (external) // CMwRefBuffer in TMF, CPlugFileImg in MP4
+  CMwNod // CMwRefBuffer in TMF, CPlugFileImg in MP4
 
 0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5] // Ident
   ident Ident
 
 0x003 // legacy icon fid
   string PageName
-  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
+  bool HasIconFid (local, write: "n.IconFid is not null")
   if HasIconFid
-    CMwNod IconFid (external)
+    CMwNod IconFid
 
 0x004 [TM10, TMPU] // legacy page and icon
   string PageName
-  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
+  bool HasIconFid (local, write: "n.IconFid is not null")
   if HasIconFid
-    CMwNod IconFid (external)
+    CMwNod IconFid
   bool
 
 0x005 // legacy catalog availability
@@ -96,13 +96,13 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
   int NbAvailableMax
 
 0x008 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CPlugGameSkin (external)
+  CPlugGameSkin
 
 0x009 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   string PageName
-  bool HasIconFid (local, write: "n.IconFid is not null || n.IconFidFile is not null")
+  bool HasIconFid (local, write: "n.IconFid is not null")
   if HasIconFid
-    CMwNod IconFid (external)
+    CMwNod IconFid
   id ParentCollectorId
 
 0x00A [VSK5, TMF]
@@ -126,18 +126,18 @@ CGameCtnCollector 0x2E001000 // Collector. Something that can have an icon.
 
 0x010 [MP3.v2, TMT.v2, MP4.v2, TM2020.v4]
   version
-  CPlugFileZip DefaultSkin (external)
+  CPlugFileZip DefaultSkin
   v1+
     string SkinDirectory
   v2+
     if SkinDirectory == null || SkinDirectory == ""
-      CMwNod (external) // CPlugFileZip
+      CMwNod // CPlugFileZip
   if rw.Reader != null && !rw.Reader.IsRelease || rw.Writer != null && !rw.Writer.IsRelease
     v3+
       string // folder path, archived with DoFolderAsString
     v4+
-      CMwNod ModelKitDb (external)
-      CMwNod ModelKitDbRelease (external)
+      CMwNod ModelKitDb
+      CMwNod ModelKitDbRelease
 
 0x011 [MP3.v0, TMT.v1, MP4.v1, TM2020.v1]
   version

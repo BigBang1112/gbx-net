@@ -34,6 +34,8 @@ public partial class CPlugTriggerAction : CMwNod, IClass, IReadableWritable, IRe
     [Hexadecimal]
     public static new uint Id => 0x09104000;
 
+    internal override uint GetId() => Id;
+
     private int u01;
     public int U01
     {

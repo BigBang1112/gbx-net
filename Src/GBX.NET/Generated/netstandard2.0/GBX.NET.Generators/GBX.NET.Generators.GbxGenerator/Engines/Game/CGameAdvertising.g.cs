@@ -34,20 +34,22 @@ public partial class CGameAdvertising : CGameNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0303D000;
 
-    private External<CMwNod>[]? files;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CMwNod>? files;
     [AppliedWithChunk<Chunk0303D001>]
-    public External<CMwNod>[]? Files
+    public NodeRefList<CMwNod>? Files
     {
-        get => this.files;
-        set => this.files = value;
+        get => files;
+        set => files = value;
     }
 
-    private External<CMwNod>[]? filesOrig;
+    private NodeRefList<CMwNod>? filesOrig;
     [AppliedWithChunk<Chunk0303D002>]
-    public External<CMwNod>[]? FilesOrig
+    public NodeRefList<CMwNod>? FilesOrig
     {
-        get => this.filesOrig;
-        set => this.filesOrig = value;
+        get => filesOrig;
+        set => filesOrig = value;
     }
 
     private EMode mode;
@@ -65,12 +67,25 @@ public partial class CGameAdvertising : CGameNod, IClass
         get => this.radial_Config;
         set => this.radial_Config = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (files is not null)
+        {
+            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.Get(i));
+        }
+        if (filesOrig is not null)
+        {
+            for (var i = 0; i < filesOrig.Count; i++) yield return new("FilesOrig" + "[" + i + "]", filesOrig.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameAdvertising)clone).files = context.CloneArray(this.files)!;
-        ((CGameAdvertising)clone).filesOrig = context.CloneArray(this.filesOrig)!;
+        ((CGameAdvertising)clone).files = context.Clone(this.files)!;
+        ((CGameAdvertising)clone).filesOrig = context.Clone(this.filesOrig)!;
         ((CGameAdvertising)clone).mode = context.Clone(this.mode)!;
         ((CGameAdvertising)clone).radial_Config = context.Clone(this.radial_Config)!;
     }
@@ -93,7 +108,7 @@ public partial class CGameAdvertising : CGameNod, IClass
 
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CMwNod>(ref n.files!);
+            n.files = rw.ListNodeRef<CMwNod>(n.files);
         }
     }
 
@@ -111,7 +126,7 @@ public partial class CGameAdvertising : CGameNod, IClass
 
         public override void ReadWrite(CGameAdvertising n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CMwNod>(ref n.filesOrig!);
+            n.filesOrig = rw.ListNodeRef<CMwNod>(n.filesOrig);
         }
     }
 

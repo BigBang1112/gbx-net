@@ -34,6 +34,8 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x030EA000;
 
+    internal override uint GetId() => Id;
+
     private string? campaignId;
     [AppliedWithChunk<Chunk030EA001>]
     public string? CampaignId

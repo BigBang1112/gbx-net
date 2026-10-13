@@ -34,6 +34,8 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0911E000;
 
+    internal override uint GetId() => Id;
+
     private float accelCoef;
     [AppliedWithChunk<Chunk0911E000>]
     public float AccelCoef

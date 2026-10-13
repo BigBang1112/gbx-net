@@ -34,6 +34,8 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     [Hexadecimal]
     public static new uint Id => 0x2407F000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk2407F000>]
     [AppliedWithChunk<Chunk2407F001>]

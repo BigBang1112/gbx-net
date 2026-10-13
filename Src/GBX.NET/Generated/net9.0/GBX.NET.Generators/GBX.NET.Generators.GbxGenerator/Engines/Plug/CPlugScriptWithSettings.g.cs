@@ -34,12 +34,14 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09083000;
 
-    private CPlugFileTextScript? script;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugFileTextScript>? scriptRef;
     [AppliedWithChunk<Chunk09083000>]
     public CPlugFileTextScript? Script
     {
-        get => this.script;
-        set => this.script = value;
+        get => scriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref scriptRef, value);
     }
 
     private int settingsVersion;
@@ -58,10 +60,24 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
         set => this.settings = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugScriptWithSettings owner;
+        internal NodeRefView(CPlugScriptWithSettings owner) => this.owner = owner;
+        public NodeRef<CPlugFileTextScript> Script => NodeRef.GetOrCreate(ref owner.scriptRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Script", NodeRef.GetOrCreate(ref scriptRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugScriptWithSettings)clone).script = context.Clone(this.script)!;
+        ((CPlugScriptWithSettings)clone).scriptRef = context.Clone(this.scriptRef)!;
         ((CPlugScriptWithSettings)clone).settingsVersion = context.Clone(this.settingsVersion)!;
         ((CPlugScriptWithSettings)clone).settings = context.CloneArray(this.settings)!;
     }
@@ -87,7 +103,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
 
         public override void ReadWrite(CPlugScriptWithSettings n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugFileTextScript>(ref n.script);
+            rw.NodeRef(ref n.scriptRef);
             var settingCount = rw.Int32((rw.Writer is null ? default : (n.Settings?.Length?? 0)));
             rw.Int32(ref n.settingsVersion);
 

@@ -34,6 +34,8 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A082000;
 
+    internal override uint GetId() => Id;
+
     private float sampleMinDist = 2f;
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
@@ -78,15 +80,15 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
         set => this.texVPerMeter = value;
     }
 
-    private CPlugMaterial? material;
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
     public CPlugMaterial? Material
     {
-        get => this.material;
-        set => this.material = value;
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
     private bool legacyFlag;
@@ -222,6 +224,20 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
         set => this.alphaMax = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneVehicleCarMarksModelSub owner;
+        internal NodeRefView(CSceneVehicleCarMarksModelSub owner) => this.owner = owner;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -229,7 +245,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
         ((CSceneVehicleCarMarksModelSub)clone).width = context.Clone(this.width)!;
         ((CSceneVehicleCarMarksModelSub)clone).groundOffset = context.Clone(this.groundOffset)!;
         ((CSceneVehicleCarMarksModelSub)clone).texVPerMeter = context.Clone(this.texVPerMeter)!;
-        ((CSceneVehicleCarMarksModelSub)clone).material = context.Clone(this.material)!;
+        ((CSceneVehicleCarMarksModelSub)clone).materialRef = context.Clone(this.materialRef)!;
         ((CSceneVehicleCarMarksModelSub)clone).legacyFlag = context.Clone(this.legacyFlag)!;
         ((CSceneVehicleCarMarksModelSub)clone).fadeDist = context.Clone(this.fadeDist)!;
         ((CSceneVehicleCarMarksModelSub)clone).alpha = context.Clone(this.alpha)!;
@@ -269,7 +285,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
             rw.Single(ref n.width);
             rw.Single(ref n.groundOffset);
             rw.Single(ref n.texVPerMeter);
-            rw.NodeRef<CPlugMaterial>(ref n.material);
+            rw.NodeRef(ref n.materialRef);
         }
     }
 
@@ -300,7 +316,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
             rw.Boolean(ref n.condSliding);
             rw.Byte(ref n.condMaterialId);
             rw.Single(ref n.condForceXGreaterThan);
-            rw.NodeRef<CPlugMaterial>(ref n.material);
+            rw.NodeRef(ref n.materialRef);
         }
     }
 

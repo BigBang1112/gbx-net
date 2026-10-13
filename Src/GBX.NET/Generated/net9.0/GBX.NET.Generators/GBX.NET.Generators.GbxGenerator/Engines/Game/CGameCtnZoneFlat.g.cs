@@ -34,73 +34,39 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     [Hexadecimal]
     public static new uint Id => 0x0305D000;
 
-    private CGameCtnBlockInfoFlat? blockInfoFlat;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CGameCtnBlockInfoFlat>? blockInfoFlatRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
-        get => this.blockInfoFlatFile?.GetNode(ref this.blockInfoFlat) ?? this.blockInfoFlat;
-        set => this.blockInfoFlat = value;
-    }
-    private Components.GbxRefTableFile? blockInfoFlatFile;
-
-    public Components.GbxRefTableFile? BlockInfoFlatFile
-    {
-        get => blockInfoFlatFile;
-        set => blockInfoFlatFile = value;
+        get => blockInfoFlatRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoFlatRef, value);
     }
 
-    public CGameCtnBlockInfoFlat? GetBlockInfoFlat(GbxReadSettings settings = default, bool exceptions = false) => blockInfoFlatFile?.GetNode(ref blockInfoFlat, settings, exceptions) ?? blockInfoFlat;
-
-    private CGameCtnBlockInfoClip? blockInfoClip;
+    private NodeRef<CGameCtnBlockInfoClip>? blockInfoClipRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
-        get => this.blockInfoClipFile?.GetNode(ref this.blockInfoClip) ?? this.blockInfoClip;
-        set => this.blockInfoClip = value;
-    }
-    private Components.GbxRefTableFile? blockInfoClipFile;
-
-    public Components.GbxRefTableFile? BlockInfoClipFile
-    {
-        get => blockInfoClipFile;
-        set => blockInfoClipFile = value;
+        get => blockInfoClipRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoClipRef, value);
     }
 
-    public CGameCtnBlockInfoClip? GetBlockInfoClip(GbxReadSettings settings = default, bool exceptions = false) => blockInfoClipFile?.GetNode(ref blockInfoClip, settings, exceptions) ?? blockInfoClip;
-
-    private CGameCtnBlockInfoRoad? blockInfoRoad;
+    private NodeRef<CGameCtnBlockInfoRoad>? blockInfoRoadRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
-        get => this.blockInfoRoadFile?.GetNode(ref this.blockInfoRoad) ?? this.blockInfoRoad;
-        set => this.blockInfoRoad = value;
-    }
-    private Components.GbxRefTableFile? blockInfoRoadFile;
-
-    public Components.GbxRefTableFile? BlockInfoRoadFile
-    {
-        get => blockInfoRoadFile;
-        set => blockInfoRoadFile = value;
+        get => blockInfoRoadRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoRoadRef, value);
     }
 
-    public CGameCtnBlockInfoRoad? GetBlockInfoRoad(GbxReadSettings settings = default, bool exceptions = false) => blockInfoRoadFile?.GetNode(ref blockInfoRoad, settings, exceptions) ?? blockInfoRoad;
-
-    private CGameCtnBlockInfoPylon? blockInfoPylon;
+    private NodeRef<CGameCtnBlockInfoPylon>? blockInfoPylonRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
-        get => this.blockInfoPylonFile?.GetNode(ref this.blockInfoPylon) ?? this.blockInfoPylon;
-        set => this.blockInfoPylon = value;
+        get => blockInfoPylonRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoPylonRef, value);
     }
-    private Components.GbxRefTableFile? blockInfoPylonFile;
-
-    public Components.GbxRefTableFile? BlockInfoPylonFile
-    {
-        get => blockInfoPylonFile;
-        set => blockInfoPylonFile = value;
-    }
-
-    public CGameCtnBlockInfoPylon? GetBlockInfoPylon(GbxReadSettings settings = default, bool exceptions = false) => blockInfoPylonFile?.GetNode(ref blockInfoPylon, settings, exceptions) ?? blockInfoPylon;
 
     private bool groundOnly;
     [AppliedWithChunk<Chunk0305D002>]
@@ -118,13 +84,33 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
         set => this.autoSimplifyGenealogy = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnZoneFlat owner;
+        internal NodeRefView(CGameCtnZoneFlat owner) => this.owner = owner;
+        public NodeRef<CGameCtnBlockInfoFlat> BlockInfoFlat => NodeRef.GetOrCreate(ref owner.blockInfoFlatRef);
+        public NodeRef<CGameCtnBlockInfoClip> BlockInfoClip => NodeRef.GetOrCreate(ref owner.blockInfoClipRef);
+        public NodeRef<CGameCtnBlockInfoRoad> BlockInfoRoad => NodeRef.GetOrCreate(ref owner.blockInfoRoadRef);
+        public NodeRef<CGameCtnBlockInfoPylon> BlockInfoPylon => NodeRef.GetOrCreate(ref owner.blockInfoPylonRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BlockInfoFlat", NodeRef.GetOrCreate(ref blockInfoFlatRef));
+        yield return new("BlockInfoClip", NodeRef.GetOrCreate(ref blockInfoClipRef));
+        yield return new("BlockInfoRoad", NodeRef.GetOrCreate(ref blockInfoRoadRef));
+        yield return new("BlockInfoPylon", NodeRef.GetOrCreate(ref blockInfoPylonRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnZoneFlat)clone).blockInfoFlat = context.Clone(this.blockInfoFlat)!;
-        ((CGameCtnZoneFlat)clone).blockInfoClip = context.Clone(this.blockInfoClip)!;
-        ((CGameCtnZoneFlat)clone).blockInfoRoad = context.Clone(this.blockInfoRoad)!;
-        ((CGameCtnZoneFlat)clone).blockInfoPylon = context.Clone(this.blockInfoPylon)!;
+        ((CGameCtnZoneFlat)clone).blockInfoFlatRef = context.Clone(this.blockInfoFlatRef)!;
+        ((CGameCtnZoneFlat)clone).blockInfoClipRef = context.Clone(this.blockInfoClipRef)!;
+        ((CGameCtnZoneFlat)clone).blockInfoRoadRef = context.Clone(this.blockInfoRoadRef)!;
+        ((CGameCtnZoneFlat)clone).blockInfoPylonRef = context.Clone(this.blockInfoPylonRef)!;
         ((CGameCtnZoneFlat)clone).groundOnly = context.Clone(this.groundOnly)!;
         ((CGameCtnZoneFlat)clone).autoSimplifyGenealogy = context.Clone(this.autoSimplifyGenealogy)!;
     }
@@ -147,10 +133,10 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneFlat n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnBlockInfoFlat>(ref n.blockInfoFlat, ref n.blockInfoFlatFile);
-            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.blockInfoClip, ref n.blockInfoClipFile);
-            rw.NodeRef<CGameCtnBlockInfoRoad>(ref n.blockInfoRoad, ref n.blockInfoRoadFile);
-            rw.NodeRef<CGameCtnBlockInfoPylon>(ref n.blockInfoPylon, ref n.blockInfoPylonFile);
+            rw.NodeRef(ref n.blockInfoFlatRef);
+            rw.NodeRef(ref n.blockInfoClipRef);
+            rw.NodeRef(ref n.blockInfoRoadRef);
+            rw.NodeRef(ref n.blockInfoPylonRef);
         }
     }
 

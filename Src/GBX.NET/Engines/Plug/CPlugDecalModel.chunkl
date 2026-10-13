@@ -10,17 +10,17 @@ property bool IsObsolete
       Flags = Flags & 0xFFFFFFFE
 
 0x000 // legacy textures
-  CPlugBitmap DiffuseA (external)
-  CPlugBitmap Normal (external)
+  CPlugBitmap DiffuseA
+  CPlugBitmap Normal
 
 0x001 // Solid
-  CPlugSolid Solid (external)
+  CPlugSolid Solid
 
 0x002 [MP3, TMT.v5, MP4.v6, TM2020.v6] // textures and projection limits
   version
   v4-
-    CPlugBitmap DiffuseA (external)
-    CPlugBitmap Normal (external)
+    CPlugBitmap DiffuseA
+    CPlugBitmap Normal
   v1+
     float TexelByMeter = 256
   v2+
@@ -28,38 +28,38 @@ property bool IsObsolete
   v3+
     float MaxAngleNCos = 0.087155804f
   v4=
-    CPlugBitmap Specular (external)
+    CPlugBitmap Specular
   v5+
     string DiffuseARef = ""
     if DiffuseARef == null || DiffuseARef == ""
-      CPlugBitmap DiffuseA (external)
+      CPlugBitmap DiffuseA
     string NormalRef = ""
     if NormalRef == null || NormalRef == ""
-      CPlugBitmap Normal (external)
+      CPlugBitmap Normal
     string SpecularRef = ""
     if SpecularRef == null || SpecularRef == ""
-      CPlugBitmap Specular (external)
+      CPlugBitmap Specular
   v6+
     string RoughnessRef = ""
     if RoughnessRef == null || RoughnessRef == ""
-      CPlugBitmap Roughness (external)
+      CPlugBitmap Roughness
 
 0x003 [MP3, TMT, MP4, TM2020] // Icon
-  CPlugBitmap Icon (external)
+  CPlugBitmap Icon
 
 0x004 [MP3, TMT.v7, MP4.v8, TM2020.v8] // solid, sprite, SVG, and macro decals
   version
-  CPlugSolid Solid (external)
+  CPlugSolid Solid
   bool RandomInstances = true
   v2+
     float MaxAngleN3dCos = 0.49999997f
   v3+
-    CPlugBitmap Sprite3dBitmap (external)
+    CPlugBitmap Sprite3dBitmap
     id Sprite3dGroupId
   v4+
     string SvgRef = ""
     if SvgRef == null || SvgRef == ""
-      CMwNod Svg (external)
+      CMwNod Svg
   v5+
     float SvgSize = 1
   v6+
@@ -67,7 +67,7 @@ property bool IsObsolete
   v7+
     int MinAngleN3d
   v8+
-    CPlugDecalModel[] DecalModels = empty (deprec, external)
+    CPlugDecalModel[] DecalModels = empty (deprec)
     MacroDecalSet[] MacroDecalSets = empty
 
 0x005 // ImpactSize

@@ -34,6 +34,8 @@ public partial class CFuncLightColor : CFuncLight, IClass
     [Hexadecimal]
     public static new uint Id => 0x05019000;
 
+    internal override uint GetId() => Id;
+
     private Vec4 color0;
     [AppliedWithChunk<Chunk05019001>]
     [AppliedWithChunk<Chunk05019002>]
@@ -52,29 +54,34 @@ public partial class CFuncLightColor : CFuncLight, IClass
         set => this.color1 = value;
     }
 
-    private CPlugFileImg? image;
+    private NodeRef<CPlugFileImg>? imageRef;
     [AppliedWithChunk<Chunk05019002>]
     public CPlugFileImg? Image
     {
-        get => this.imageFile?.GetNode(ref this.image) ?? this.image;
-        set => this.image = value;
+        get => imageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageRef, value);
     }
-    private Components.GbxRefTableFile? imageFile;
 
-    public Components.GbxRefTableFile? ImageFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => imageFile;
-        set => imageFile = value;
+        private readonly CFuncLightColor owner;
+        internal NodeRefView(CFuncLightColor owner) => this.owner = owner;
+        public NodeRef<CPlugFileImg> Image => NodeRef.GetOrCreate(ref owner.imageRef);
     }
-
-    public CPlugFileImg? GetImage(GbxReadSettings settings = default, bool exceptions = false) => imageFile?.GetNode(ref image, settings, exceptions) ?? image;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Image", NodeRef.GetOrCreate(ref imageRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CFuncLightColor)clone).color0 = context.Clone(this.color0)!;
         ((CFuncLightColor)clone).color1 = context.Clone(this.color1)!;
-        ((CFuncLightColor)clone).image = context.Clone(this.image)!;
+        ((CFuncLightColor)clone).imageRef = context.Clone(this.imageRef)!;
     }
 
     public CFuncLightColor()
@@ -113,7 +120,7 @@ public partial class CFuncLightColor : CFuncLight, IClass
         public override void ReadWrite(CFuncLightColor n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef<CPlugFileImg>(ref n.image, ref n.imageFile);
+            rw.NodeRef(ref n.imageRef);
         }
     }
 

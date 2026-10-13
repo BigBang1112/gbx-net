@@ -34,6 +34,8 @@ public abstract partial class CGameCtnMediaBlockTransition : CGameCtnMediaBlock,
     [Hexadecimal]
     public static new uint Id => 0x030AA000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);

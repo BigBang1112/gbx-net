@@ -34,73 +34,39 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09115000;
 
-    private CPlugParticleEmitterModel? part_DeactivatedShot;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedShotRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_DeactivatedShot
     {
-        get => this.part_DeactivatedShotFile?.GetNode(ref this.part_DeactivatedShot) ?? this.part_DeactivatedShot;
-        set => this.part_DeactivatedShot = value;
-    }
-    private Components.GbxRefTableFile? part_DeactivatedShotFile;
-
-    public Components.GbxRefTableFile? Part_DeactivatedShotFile
-    {
-        get => part_DeactivatedShotFile;
-        set => part_DeactivatedShotFile = value;
+        get => part_DeactivatedShotRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_DeactivatedShotRef, value);
     }
 
-    public CPlugParticleEmitterModel? GetPart_DeactivatedShot(GbxReadSettings settings = default, bool exceptions = false) => part_DeactivatedShotFile?.GetNode(ref part_DeactivatedShot, settings, exceptions) ?? part_DeactivatedShot;
-
-    private CPlugParticleEmitterModel? part_Deactivated;
+    private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_Deactivated
     {
-        get => this.part_DeactivatedFile?.GetNode(ref this.part_Deactivated) ?? this.part_Deactivated;
-        set => this.part_Deactivated = value;
-    }
-    private Components.GbxRefTableFile? part_DeactivatedFile;
-
-    public Components.GbxRefTableFile? Part_DeactivatedFile
-    {
-        get => part_DeactivatedFile;
-        set => part_DeactivatedFile = value;
+        get => part_DeactivatedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_DeactivatedRef, value);
     }
 
-    public CPlugParticleEmitterModel? GetPart_Deactivated(GbxReadSettings settings = default, bool exceptions = false) => part_DeactivatedFile?.GetNode(ref part_Deactivated, settings, exceptions) ?? part_Deactivated;
-
-    private CPlugParticleEmitterModel? part_TeleportUnspawn;
+    private NodeRef<CPlugParticleEmitterModel>? part_TeleportUnspawnRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportUnspawn
     {
-        get => this.part_TeleportUnspawnFile?.GetNode(ref this.part_TeleportUnspawn) ?? this.part_TeleportUnspawn;
-        set => this.part_TeleportUnspawn = value;
-    }
-    private Components.GbxRefTableFile? part_TeleportUnspawnFile;
-
-    public Components.GbxRefTableFile? Part_TeleportUnspawnFile
-    {
-        get => part_TeleportUnspawnFile;
-        set => part_TeleportUnspawnFile = value;
+        get => part_TeleportUnspawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_TeleportUnspawnRef, value);
     }
 
-    public CPlugParticleEmitterModel? GetPart_TeleportUnspawn(GbxReadSettings settings = default, bool exceptions = false) => part_TeleportUnspawnFile?.GetNode(ref part_TeleportUnspawn, settings, exceptions) ?? part_TeleportUnspawn;
-
-    private CPlugParticleEmitterModel? part_TeleportSpawn;
+    private NodeRef<CPlugParticleEmitterModel>? part_TeleportSpawnRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportSpawn
     {
-        get => this.part_TeleportSpawnFile?.GetNode(ref this.part_TeleportSpawn) ?? this.part_TeleportSpawn;
-        set => this.part_TeleportSpawn = value;
+        get => part_TeleportSpawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_TeleportSpawnRef, value);
     }
-    private Components.GbxRefTableFile? part_TeleportSpawnFile;
-
-    public Components.GbxRefTableFile? Part_TeleportSpawnFile
-    {
-        get => part_TeleportSpawnFile;
-        set => part_TeleportSpawnFile = value;
-    }
-
-    public CPlugParticleEmitterModel? GetPart_TeleportSpawn(GbxReadSettings settings = default, bool exceptions = false) => part_TeleportSpawnFile?.GetNode(ref part_TeleportSpawn, settings, exceptions) ?? part_TeleportSpawn;
 
     private PlugCurve? eliminatedTeleportIntens;
     [AppliedWithChunk<Chunk09115000>]
@@ -126,34 +92,47 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         set => this.eliminatedHighlightRgb = value;
     }
 
-    private GxLightBall? tacticalLight;
+    private NodeRef<GxLightBall>? tacticalLightRef;
     [AppliedWithChunk<Chunk09115000>]
     public GxLightBall? TacticalLight
     {
-        get => this.tacticalLightFile?.GetNode(ref this.tacticalLight) ?? this.tacticalLight;
-        set => this.tacticalLight = value;
+        get => tacticalLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref tacticalLightRef, value);
     }
-    private Components.GbxRefTableFile? tacticalLightFile;
 
-    public Components.GbxRefTableFile? TacticalLightFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => tacticalLightFile;
-        set => tacticalLightFile = value;
+        private readonly CPlugVisEntFxModel owner;
+        internal NodeRefView(CPlugVisEntFxModel owner) => this.owner = owner;
+        public NodeRef<CPlugParticleEmitterModel> Part_DeactivatedShot => NodeRef.GetOrCreate(ref owner.part_DeactivatedShotRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_Deactivated => NodeRef.GetOrCreate(ref owner.part_DeactivatedRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_TeleportUnspawn => NodeRef.GetOrCreate(ref owner.part_TeleportUnspawnRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_TeleportSpawn => NodeRef.GetOrCreate(ref owner.part_TeleportSpawnRef);
+        public NodeRef<GxLightBall> TacticalLight => NodeRef.GetOrCreate(ref owner.tacticalLightRef);
     }
-
-    public GxLightBall? GetTacticalLight(GbxReadSettings settings = default, bool exceptions = false) => tacticalLightFile?.GetNode(ref tacticalLight, settings, exceptions) ?? tacticalLight;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Part_DeactivatedShot", NodeRef.GetOrCreate(ref part_DeactivatedShotRef));
+        yield return new("Part_Deactivated", NodeRef.GetOrCreate(ref part_DeactivatedRef));
+        yield return new("Part_TeleportUnspawn", NodeRef.GetOrCreate(ref part_TeleportUnspawnRef));
+        yield return new("Part_TeleportSpawn", NodeRef.GetOrCreate(ref part_TeleportSpawnRef));
+        yield return new("TacticalLight", NodeRef.GetOrCreate(ref tacticalLightRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVisEntFxModel)clone).part_DeactivatedShot = context.Clone(this.part_DeactivatedShot)!;
-        ((CPlugVisEntFxModel)clone).part_Deactivated = context.Clone(this.part_Deactivated)!;
-        ((CPlugVisEntFxModel)clone).part_TeleportUnspawn = context.Clone(this.part_TeleportUnspawn)!;
-        ((CPlugVisEntFxModel)clone).part_TeleportSpawn = context.Clone(this.part_TeleportSpawn)!;
+        ((CPlugVisEntFxModel)clone).part_DeactivatedShotRef = context.Clone(this.part_DeactivatedShotRef)!;
+        ((CPlugVisEntFxModel)clone).part_DeactivatedRef = context.Clone(this.part_DeactivatedRef)!;
+        ((CPlugVisEntFxModel)clone).part_TeleportUnspawnRef = context.Clone(this.part_TeleportUnspawnRef)!;
+        ((CPlugVisEntFxModel)clone).part_TeleportSpawnRef = context.Clone(this.part_TeleportSpawnRef)!;
         ((CPlugVisEntFxModel)clone).eliminatedTeleportIntens = context.Clone(this.eliminatedTeleportIntens)!;
         ((CPlugVisEntFxModel)clone).eliminatedHighlight = context.Clone(this.eliminatedHighlight)!;
         ((CPlugVisEntFxModel)clone).eliminatedHighlightRgb = context.Clone(this.eliminatedHighlightRgb)!;
-        ((CPlugVisEntFxModel)clone).tacticalLight = context.Clone(this.tacticalLight)!;
+        ((CPlugVisEntFxModel)clone).tacticalLightRef = context.Clone(this.tacticalLightRef)!;
     }
 
     /// <summary>
@@ -192,14 +171,14 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         public override void ReadWrite(CPlugVisEntFxModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_DeactivatedShot, ref n.part_DeactivatedShotFile);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_Deactivated, ref n.part_DeactivatedFile);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportUnspawn, ref n.part_TeleportUnspawnFile);
-            rw.NodeRef<CPlugParticleEmitterModel>(ref n.part_TeleportSpawn, ref n.part_TeleportSpawnFile);
+            rw.NodeRef(ref n.part_DeactivatedShotRef);
+            rw.NodeRef(ref n.part_DeactivatedRef);
+            rw.NodeRef(ref n.part_TeleportUnspawnRef);
+            rw.NodeRef(ref n.part_TeleportSpawnRef);
             rw.ReadableWritable<PlugCurve>(ref n.eliminatedTeleportIntens, version: Version- 1);
             rw.ReadableWritable<PlugCurve>(ref n.eliminatedHighlight, version: Version- 1);
             rw.Vec3(ref n.eliminatedHighlightRgb);
-            rw.NodeRef<GxLightBall>(ref n.tacticalLight, ref n.tacticalLightFile);
+            rw.NodeRef(ref n.tacticalLightRef);
         }
     }
 

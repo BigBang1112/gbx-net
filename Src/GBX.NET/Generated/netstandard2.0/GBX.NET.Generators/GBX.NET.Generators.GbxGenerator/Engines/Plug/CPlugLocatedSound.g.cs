@@ -34,22 +34,15 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09061000;
 
-    private CPlugSound? sound;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSound>? soundRef;
     [AppliedWithChunk<Chunk09061000>]
     public CPlugSound? Sound
     {
-        get => this.soundFile?.GetNode(ref this.sound) ?? this.sound;
-        set => this.sound = value;
+        get => soundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundRef, value);
     }
-    private Components.GbxRefTableFile? soundFile;
-
-    public Components.GbxRefTableFile? SoundFile
-    {
-        get => soundFile;
-        set => soundFile = value;
-    }
-
-    public CPlugSound? GetSound(GbxReadSettings settings = default, bool exceptions = false) => soundFile?.GetNode(ref sound, settings, exceptions) ?? sound;
 
     private Iso4 loc;
     [AppliedWithChunk<Chunk09061000>]
@@ -59,10 +52,24 @@ public partial class CPlugLocatedSound : CMwNod, IClass
         set => this.loc = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugLocatedSound owner;
+        internal NodeRefView(CPlugLocatedSound owner) => this.owner = owner;
+        public NodeRef<CPlugSound> Sound => NodeRef.GetOrCreate(ref owner.soundRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Sound", NodeRef.GetOrCreate(ref soundRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugLocatedSound)clone).sound = context.Clone(this.sound)!;
+        ((CPlugLocatedSound)clone).soundRef = context.Clone(this.soundRef)!;
         ((CPlugLocatedSound)clone).loc = context.Clone(this.loc)!;
     }
 
@@ -84,7 +91,7 @@ public partial class CPlugLocatedSound : CMwNod, IClass
 
         public override void ReadWrite(CPlugLocatedSound n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.sound, ref n.soundFile);
+            rw.NodeRef(ref n.soundRef);
             rw.Iso4(ref n.loc);
         }
     }

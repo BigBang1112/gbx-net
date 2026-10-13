@@ -19,12 +19,6 @@ public partial class CPlugTree
         set => Shader = value;
     }
 
-    public GbxRefTableFile? MaterialFile
-    {
-        get => ShaderFile;
-        set => ShaderFile = value;
-    }
-
     public bool IsVisible
     {
         get => GetBit(Flags, 0x3);
@@ -112,7 +106,7 @@ public partial class CPlugTree
     public IEnumerable<CPlugTree> GetAllChildren(bool includeVisualMipLevels = false)
     {
         return GetAllChildren(this, includeVisualMipLevels);
-        
+
         static IEnumerable<CPlugTree> GetAllChildren(CPlugTree tree, bool includeVisualMipLevels)
         {
             if (tree.Children is null)
@@ -224,7 +218,7 @@ public partial class CPlugTree
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
             n.PlugId = ReadWriteId(n.PlugId, rw);
-            rw.NodeRef(ref n.modelSolid, ref n.modelSolidFile);
+            rw.NodeRef(ref n.modelSolidRef);
 
             if (n.HasModel)
             {

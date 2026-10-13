@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03029000;
 
+    internal override uint GetId() => Id;
+
     private E3DPickMode pickMode3D = E3DPickMode.Plane;
     /// <summary>
     /// Editor vertex picking mode.

@@ -34,45 +34,71 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03061000;
 
-    private CGameChallengeScores[]? challengeScores;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CGameChallengeScores>? challengeScores;
     [AppliedWithChunk<Chunk03061000>]
-    public CGameChallengeScores[]? ChallengeScores
+    public NodeRefList<CGameChallengeScores>? ChallengeScores
     {
-        get => this.challengeScores;
-        set => this.challengeScores = value;
+        get => challengeScores;
+        set => challengeScores = value;
     }
 
-    private CGameCampaignScores[]? campaignScores;
+    private NodeRefList<CGameCampaignScores>? campaignScores;
     [AppliedWithChunk<Chunk03061000>]
-    public CGameCampaignScores[]? CampaignScores
+    public NodeRefList<CGameCampaignScores>? CampaignScores
     {
-        get => this.campaignScores;
-        set => this.campaignScores = value;
+        get => campaignScores;
+        set => campaignScores = value;
     }
 
-    private CGameGeneralScores? generalScores;
+    private NodeRef<CGameGeneralScores>? generalScoresRef;
     [AppliedWithChunk<Chunk03061000>]
     public CGameGeneralScores? GeneralScores
     {
-        get => this.generalScores;
-        set => this.generalScores = value;
+        get => generalScoresRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref generalScoresRef, value);
     }
 
-    private CGameSkillScoreComputer? skillScoreComputer;
+    private NodeRef<CGameSkillScoreComputer>? skillScoreComputerRef;
     [AppliedWithChunk<Chunk03061000>]
     public CGameSkillScoreComputer? SkillScoreComputer
     {
-        get => this.skillScoreComputer;
-        set => this.skillScoreComputer = value;
+        get => skillScoreComputerRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skillScoreComputerRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCampaignsScoresManager owner;
+        internal NodeRefView(CGameCampaignsScoresManager owner) => this.owner = owner;
+        public NodeRef<CGameGeneralScores> GeneralScores => NodeRef.GetOrCreate(ref owner.generalScoresRef);
+        public NodeRef<CGameSkillScoreComputer> SkillScoreComputer => NodeRef.GetOrCreate(ref owner.skillScoreComputerRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (challengeScores is not null)
+        {
+            for (var i = 0; i < challengeScores.Count; i++) yield return new("ChallengeScores" + "[" + i + "]", challengeScores.Get(i));
+        }
+        if (campaignScores is not null)
+        {
+            for (var i = 0; i < campaignScores.Count; i++) yield return new("CampaignScores" + "[" + i + "]", campaignScores.Get(i));
+        }
+        yield return new("GeneralScores", NodeRef.GetOrCreate(ref generalScoresRef));
+        yield return new("SkillScoreComputer", NodeRef.GetOrCreate(ref skillScoreComputerRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCampaignsScoresManager)clone).challengeScores = context.CloneArray(this.challengeScores)!;
-        ((CGameCampaignsScoresManager)clone).campaignScores = context.CloneArray(this.campaignScores)!;
-        ((CGameCampaignsScoresManager)clone).generalScores = context.Clone(this.generalScores)!;
-        ((CGameCampaignsScoresManager)clone).skillScoreComputer = context.Clone(this.skillScoreComputer)!;
+        ((CGameCampaignsScoresManager)clone).challengeScores = context.Clone(this.challengeScores)!;
+        ((CGameCampaignsScoresManager)clone).campaignScores = context.Clone(this.campaignScores)!;
+        ((CGameCampaignsScoresManager)clone).generalScoresRef = context.Clone(this.generalScoresRef)!;
+        ((CGameCampaignsScoresManager)clone).skillScoreComputerRef = context.Clone(this.skillScoreComputerRef)!;
     }
 
     public CGameCampaignsScoresManager()
@@ -93,10 +119,10 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
 
         public override void ReadWrite(CGameCampaignsScoresManager n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameChallengeScores>(ref n.challengeScores!);
-            rw.ArrayNodeRef_deprec<CGameCampaignScores>(ref n.campaignScores!);
-            rw.NodeRef<CGameGeneralScores>(ref n.generalScores);
-            rw.NodeRef<CGameSkillScoreComputer>(ref n.skillScoreComputer);
+            n.challengeScores = rw.ListNodeRef_deprec<CGameChallengeScores>(n.challengeScores);
+            n.campaignScores = rw.ListNodeRef_deprec<CGameCampaignScores>(n.campaignScores);
+            rw.NodeRef(ref n.generalScoresRef);
+            rw.NodeRef(ref n.skillScoreComputerRef);
         }
     }
 

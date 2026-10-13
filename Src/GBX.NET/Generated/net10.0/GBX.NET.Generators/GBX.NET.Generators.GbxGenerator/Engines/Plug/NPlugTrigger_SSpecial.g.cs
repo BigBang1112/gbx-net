@@ -34,21 +34,14 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     [Hexadecimal]
     public static new uint Id => 0x09179000;
 
-    private CPlugSurface? triggerShape;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSurface>? triggerShapeRef;
     public CPlugSurface? TriggerShape
     {
-        get => this.triggerShapeFile?.GetNode(ref this.triggerShape) ?? this.triggerShape;
-        set => this.triggerShape = value;
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
-    private Components.GbxRefTableFile? triggerShapeFile;
-
-    public Components.GbxRefTableFile? TriggerShapeFile
-    {
-        get => triggerShapeFile;
-        set => triggerShapeFile = value;
-    }
-
-    public CPlugSurface? GetTriggerShape(GbxReadSettings settings = default, bool exceptions = false) => triggerShapeFile?.GetNode(ref triggerShape, settings, exceptions) ?? triggerShape;
 
     private bool isMergeable;
     public bool IsMergeable
@@ -57,10 +50,24 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
         set => this.isMergeable = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly NPlugTrigger_SSpecial owner;
+        internal NodeRefView(NPlugTrigger_SSpecial owner) => this.owner = owner;
+        public NodeRef<CPlugSurface> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((NPlugTrigger_SSpecial)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((NPlugTrigger_SSpecial)clone).triggerShapeRef = context.Clone(this.triggerShapeRef)!;
         ((NPlugTrigger_SSpecial)clone).isMergeable = context.Clone(this.isMergeable)!;
         ((NPlugTrigger_SSpecial)clone).Version = context.Clone(this.Version)!;
     }
@@ -72,7 +79,7 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.NodeRef<CPlugSurface>(ref this.triggerShape, ref this.triggerShapeFile);
+        rw.NodeRef(ref this.triggerShapeRef);
 
         if (Version >= 2)
         {

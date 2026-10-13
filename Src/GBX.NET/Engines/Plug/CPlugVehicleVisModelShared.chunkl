@@ -39,12 +39,12 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x01E [MP3, TMT, MP4, TM2020]
   version
-  CPlugMaterial (external)
+  CPlugMaterial
   v1+
     v2-
-      CPlugMaterial (external)
+      CPlugMaterial
     v3+
-      CPlugMaterial[] (external)
+      CPlugMaterial[]
     v1-
       CPlugMaterial
       CPlugMaterial
@@ -53,32 +53,32 @@ CPlugVehicleVisModelShared 0x090E8000
       CPlugMaterial
       CPlugMaterial
       CPlugMaterial
-    CPlugLight (external)
-    CPlugLight (external)
-    CPlugLight (external)
-    CPlugLight (external)
-    CPlugLight (external)
-    CPlugLight (external)
+    CPlugLight
+    CPlugLight
+    CPlugLight
+    CPlugLight
+    CPlugLight
+    CPlugLight
     float
     float
     v4+
-      CPlugSolid2Model (external)
+      CPlugSolid2Model
 
 0x01F [MP3, TMT, MP4, TM2020]
   version
-  CPlugParticleEmitterModel (external)
+  CPlugParticleEmitterModel
   v1+
     CPlugParticleEmitterModel
     v2+
-      CPlugParticleEmitterModel (external)
+      CPlugParticleEmitterModel
       v3+
-        CPlugParticleEmitterModel (external)
+        CPlugParticleEmitterModel
         v4+
-          CPlugParticleEmitterModel (external)
+          CPlugParticleEmitterModel
           v5+
             CPlugVehicleVisEmitterModel[] (deprec)
-            CPlugParticleEmitterModel (external)
-            CPlugParticleEmitterModel (external)
+            CPlugParticleEmitterModel
+            CPlugParticleEmitterModel
             v6=
               CPlugVisEntFxModel
               CPlugParticleEmitterModel
@@ -88,19 +88,19 @@ CPlugVehicleVisModelShared 0x090E8000
             v7+
               CPlugVisEntFxModel
               v8+
-                CPlugParticleEmitterModel (external)
+                CPlugParticleEmitterModel
                 v9+
-                  CPlugParticleEmitterModel (external)
+                  CPlugParticleEmitterModel
                   v10+
-                    CPlugParticleEmitterModel (external)
+                    CPlugParticleEmitterModel
                     v11+
-                      CPlugParticleEmitterModel (external)
+                      CPlugParticleEmitterModel
                       v12+
-                        CPlugParticleEmitterModel (external)
+                        CPlugParticleEmitterModel
                         v13+
-                          CPlugParticleEmitterModel (external)
+                          CPlugParticleEmitterModel
                           v14+
-                            CPlugParticleEmitterModel (external)
+                            CPlugParticleEmitterModel
 
 0x020 [MP3, TMT, MP4, TM2020]
   version
@@ -153,8 +153,8 @@ CPlugVehicleVisModelShared 0x090E8000
 
 0x023 [TMT, MP4, TM2020]
   version
-  CPlugParticleMaterialImpactModel (external)
-  CPlugParticleMaterialImpactModel (external)
+  CPlugParticleMaterialImpactModel
+  CPlugParticleMaterialImpactModel
   v1+
     int
     int
@@ -194,7 +194,7 @@ archive VisualId
 
 archive Emitter
   int
-  CPlugParticleEmitterModel EmitterModel (external)
+  CPlugParticleEmitterModel EmitterModel
   int
   int
   int

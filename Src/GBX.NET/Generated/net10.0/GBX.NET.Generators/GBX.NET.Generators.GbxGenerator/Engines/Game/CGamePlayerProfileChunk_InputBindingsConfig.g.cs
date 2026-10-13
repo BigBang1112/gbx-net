@@ -34,13 +34,30 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     [Hexadecimal]
     public static new uint Id => 0x0312F000;
 
+    internal override uint GetId() => Id;
+
+    private NodeRef<CInputBindingsConfig>? configRef;
     [AppliedWithChunk<Chunk0312F000>]
     public partial CInputBindingsConfig? Config { get; set; }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerProfileChunk_InputBindingsConfig owner;
+        internal NodeRefView(CGamePlayerProfileChunk_InputBindingsConfig owner) => this.owner = owner;
+        public NodeRef<CInputBindingsConfig> Config => NodeRef.GetOrCreate(ref owner.configRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Config", NodeRef.GetOrCreate(ref configRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGamePlayerProfileChunk_InputBindingsConfig)clone).config = context.Clone(this.config)!;
+        ((CGamePlayerProfileChunk_InputBindingsConfig)clone).configRef = context.Clone(this.configRef)!;
     }
 
     public CGamePlayerProfileChunk_InputBindingsConfig()
@@ -67,7 +84,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CInputBindingsConfig>(ref n.config);
+                rw.NodeRef(ref n.configRef);
             });
         }
     }

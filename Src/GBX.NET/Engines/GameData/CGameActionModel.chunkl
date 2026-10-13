@@ -101,7 +101,7 @@ archive LegacyLockModeData
 archive SpriteBlock
   SpriteKey[] Keys
   v0=
-    CPlugFileImg LegacyImage (external)
+    CPlugFileImg LegacyImage
   bool
   v1+
     string ImageRef
@@ -226,7 +226,7 @@ archive ParticleBlock
     float
   v9+
     CPlugParticleEmitterModel ParticleEmitter (direct)
-  
+
 
 archive ParticleKey
   float

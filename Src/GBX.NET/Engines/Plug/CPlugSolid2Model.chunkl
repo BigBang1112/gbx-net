@@ -3,7 +3,13 @@ CPlugSolid2Model 0x090BB000
 0x000 (header, struct: SHeaderFileVersion) // file version
   int FileVersion
 
-0x000 [MP3, TMT, MP4, TM2020]
+0x000 (demonstration: partial) [MP3, TMT, MP4, TM2020]
+  CPlugVisual[] Visuals
+  CPlugMaterial[] Materials
+  CPlugSkel* Skel
+  CPlugMaterialUserInst[] MaterialInsts
+  CPlugLightUserModel[] LightUserModels
+  CMwNod U14
 
 0x002 (skippable) [MP4, TM2020] // fake occlusion
   data FileImageBytes
@@ -40,7 +46,7 @@ archive Light
   id U01
   bool U02
   if U02
-    CPlugLight U03 (external)
+    CPlugLight U03
   if !U02
     string U04
   iso4 U05

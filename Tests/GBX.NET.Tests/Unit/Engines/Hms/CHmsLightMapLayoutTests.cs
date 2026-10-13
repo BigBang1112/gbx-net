@@ -57,23 +57,23 @@ public class CHmsLightMapLayoutTests
 
         if (offset is 0x00C or 0x00D or 0x00F)
         {
-            await Assert.That(node.BitmapSM_ColorPeeledFile).IsSameReferenceAs(files[1]);
-            await Assert.That(node.BitmapLM_ILightInputFile).IsSameReferenceAs(files[2]);
-            await Assert.That(node.BitmapLM_ILightDirFile).IsSameReferenceAs(files[3]);
+            await Assert.That(node.References.BitmapSM_ColorPeeled.File).IsSameReferenceAs(files[1]);
+            await Assert.That(node.References.BitmapLM_ILightInput.File).IsSameReferenceAs(files[2]);
+            await Assert.That(node.References.BitmapLM_ILightDir.File).IsSameReferenceAs(files[3]);
         }
         if (offset == 0x028)
         {
-            await Assert.That(node.BitmapLM_LListUVFile).IsSameReferenceAs(files[1]);
-            await Assert.That(node.BitmapLM_LListWFile).IsSameReferenceAs(files[2]);
-            await Assert.That(node.BitmapLM_LocalDirectFile).IsSameReferenceAs(files[3]);
+            await Assert.That(node.References.BitmapLM_LListUV.File).IsSameReferenceAs(files[1]);
+            await Assert.That(node.References.BitmapLM_LListW.File).IsSameReferenceAs(files[2]);
+            await Assert.That(node.References.BitmapLM_LocalDirect.File).IsSameReferenceAs(files[3]);
         }
         if (offset == 0x01E)
         {
-            await Assert.That(((CHmsLightMap.Chunk0602101E)chunk).U01![10].File).IsSameReferenceAs(files[11]);
+            await Assert.That(((CHmsLightMap.Chunk0602101E)chunk).U01!.Get(10).File).IsSameReferenceAs(files[11]);
         }
         if (offset == 0x006)
         {
-            await Assert.That(node.BitmapLightSumBumpLegacy![2].File).IsSameReferenceAs(files[3]);
+            await Assert.That(node.BitmapLightSumBumpLegacy!.Get(2).File).IsSameReferenceAs(files[3]);
         }
     }
 
@@ -100,8 +100,8 @@ public class CHmsLightMapLayoutTests
 
         await Assert.That(chunk.Version).IsEqualTo(version);
         await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020);
-        await Assert.That(node.BitmapProbeGridAmbSVFile).IsSameReferenceAs(version >= 6 ? files[7] : null);
-        await Assert.That(node.BitmapProbeGridAmbSV_Spread1File).IsSameReferenceAs(version >= 7 ? files[8] : null);
+        await Assert.That(node.References.BitmapProbeGridAmbSV.File).IsSameReferenceAs(version >= 6 ? files[7] : null);
+        await Assert.That(node.References.BitmapProbeGridAmbSV_Spread1.File).IsSameReferenceAs(version >= 7 ? files[8] : null);
     }
 
     [Test]
@@ -145,10 +145,10 @@ public class CHmsLightMapLayoutTests
         var chunk = new CHmsLightMap.Chunk0602102B();
         await RoundTrip(payload, files, rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(node.BitmapSprite3x3_LightFile).IsSameReferenceAs(files[1]);
-        await Assert.That(node.BitmapSprite_PosAndRadiusFile).IsSameReferenceAs(files[2]);
-        await Assert.That(node.BitmapSprite_ILightDirFile).IsSameReferenceAs(files[3]);
-        await Assert.That(chunk.U02![0].File).IsSameReferenceAs(files[version == 0 ? 4 : 5]);
+        await Assert.That(node.References.BitmapSprite3x3_Light.File).IsSameReferenceAs(files[1]);
+        await Assert.That(node.References.BitmapSprite_PosAndRadius.File).IsSameReferenceAs(files[2]);
+        await Assert.That(node.References.BitmapSprite_ILightDir.File).IsSameReferenceAs(files[3]);
+        await Assert.That(chunk.U02!.Get(0).File).IsSameReferenceAs(files[version == 0 ? 4 : 5]);
     }
 
     [Test]

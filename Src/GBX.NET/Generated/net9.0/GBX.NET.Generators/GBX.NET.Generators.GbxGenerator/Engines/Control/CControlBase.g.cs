@@ -34,6 +34,8 @@ public partial class CControlBase : CSceneToy, IClass
     [Hexadecimal]
     public static new uint Id => 0x07001000;
 
+    internal override uint GetId() => Id;
+
     private string? stackText;
     [AppliedWithChunk<Chunk0700100C>]
     public string? StackText
@@ -42,19 +44,35 @@ public partial class CControlBase : CSceneToy, IClass
         set => this.stackText = value;
     }
 
-    private CControlLayout? layout;
+    private NodeRef<CControlLayout>? layoutRef;
     [AppliedWithChunk<Chunk0700100E>]
     public CControlLayout? Layout
     {
-        get => this.layout;
-        set => this.layout = value;
+        get => layoutRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref layoutRef, value);
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CControlBase owner;
+        internal NodeRefView(CControlBase owner) => this.owner = owner;
+        public NodeRef<CControlLayout> Layout => NodeRef.GetOrCreate(ref owner.layoutRef);
+        public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneToy)owner).References.MessageHandler;
+        public NodeRef<CMotion> Motion => ((CSceneToy)owner).References.Motion;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Layout", NodeRef.GetOrCreate(ref layoutRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CControlBase)clone).stackText = context.Clone(this.stackText)!;
-        ((CControlBase)clone).layout = context.Clone(this.layout)!;
+        ((CControlBase)clone).layoutRef = context.Clone(this.layoutRef)!;
     }
 
     public CControlBase()
@@ -112,7 +130,7 @@ public partial class CControlBase : CSceneToy, IClass
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
             rw.BoxAligned(ref U01);
-            rw.NodeRef<CControlLayout>(ref n.layout);
+            rw.NodeRef(ref n.layoutRef);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
         }
@@ -144,21 +162,41 @@ public partial class CControlBase : CSceneToy, IClass
     {
         public override uint Id => 0x07001010;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
         public int? U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk07001010 owner;
+            internal NodeRefView(Chunk07001010 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk07001010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk07001010)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk07001010)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
 
-            if (U01== null)
+            if ((U01Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
                 rw.Int32(ref U02);
             }

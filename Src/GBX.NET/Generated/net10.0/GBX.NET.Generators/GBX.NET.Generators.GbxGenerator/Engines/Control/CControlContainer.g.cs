@@ -34,6 +34,8 @@ public partial class CControlContainer : CControlBase, IClass
     [Hexadecimal]
     public static new uint Id => 0x07002000;
 
+    internal override uint GetId() => Id;
+
     private bool acceptOwnControls;
     [AppliedWithChunk<Chunk07002005>]
     public bool AcceptOwnControls

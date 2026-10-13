@@ -11,6 +11,7 @@ internal sealed partial class GbxBodyReader
 {
     public global::GBX.NET.Components.GbxBody Parse(global::GBX.NET.IClass node)
     {
+        reader.NodeDict[0] = node;
         if (Settings.ReadRawBody)
         {
             throw new global::System.NotSupportedException("Reading raw body is not supported when parsing body to a node.");

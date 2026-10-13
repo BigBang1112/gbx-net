@@ -34,6 +34,8 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03121000;
 
+    internal override uint GetId() => Id;
+
     private string typeId = string.Empty;
     [AppliedWithChunk<Chunk03121000>]
     [AppliedWithChunk<Chunk03121003>]

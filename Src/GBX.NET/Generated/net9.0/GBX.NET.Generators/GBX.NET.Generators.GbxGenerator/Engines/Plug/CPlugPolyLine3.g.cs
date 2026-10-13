@@ -34,6 +34,8 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09118000;
 
+    internal override uint GetId() => Id;
+
     private Vec3[]? poss;
     [AppliedWithChunk<Chunk09118000>]
     public Vec3[]? Poss

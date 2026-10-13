@@ -78,7 +78,7 @@ public class CGameCtnCollectorLayoutTests
         var refTable = new GbxRefTable();
         var payload = Payload(writer =>
         {
-            void Reference(string path)
+            void NodeRef(string path)
             {
                 var index = files.Count + 1;
                 files.Add(index, new GbxRefTableFile(refTable, 0, true, path));
@@ -86,28 +86,28 @@ public class CGameCtnCollectorLayoutTests
             }
 
             writer.Write(version);
-            Reference("DefaultSkin.zip");
+            NodeRef("DefaultSkin.zip");
             if (version >= 1) writer.Write(hasDirectory ? "Skins/" : "");
-            if (version >= 2 && !hasDirectory) Reference("LegacySkin.zip");
+            if (version >= 2 && !hasDirectory) NodeRef("LegacySkin.zip");
             if (version >= 3) writer.Write("ModelKit/");
             if (version >= 4)
             {
-                Reference("ModelKitDb.Gbx");
-                Reference("ModelKitDb.Release.Gbx");
+                NodeRef("ModelKitDb.Gbx");
+                NodeRef("ModelKitDb.Release.Gbx");
             }
         });
         var node = new CGameCtnCollector();
         var chunk = new CGameCtnCollector.Chunk2E001010();
         Read(payload, node, chunk, files, isRelease: false);
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(node.DefaultSkinFile!.FilePath).IsEqualTo("DefaultSkin.zip");
+        await Assert.That(node.References.DefaultSkin.File!.FilePath).IsEqualTo("DefaultSkin.zip");
         await Assert.That(node.SkinDirectory).IsEqualTo(version == 0 ? null : hasDirectory ? "Skins/" : "");
-        if (version >= 2 && !hasDirectory) await Assert.That(chunk.U01File!.FilePath).IsEqualTo("LegacySkin.zip");
+        if (version >= 2 && !hasDirectory) await Assert.That(chunk.References.U01.File!.FilePath).IsEqualTo("LegacySkin.zip");
         if (version >= 3) await Assert.That(chunk.U02).IsEqualTo("ModelKit/");
         if (version >= 4)
         {
-            await Assert.That(node.ModelKitDbFile!.FilePath).IsEqualTo("ModelKitDb.Gbx");
-            await Assert.That(node.ModelKitDbReleaseFile!.FilePath).IsEqualTo("ModelKitDb.Release.Gbx");
+            await Assert.That(node.References.ModelKitDb.File!.FilePath).IsEqualTo("ModelKitDb.Gbx");
+            await Assert.That(node.References.ModelKitDbRelease.File!.FilePath).IsEqualTo("ModelKitDb.Release.Gbx");
         }
         await RoundTrip(payload, node, chunk, isRelease: false);
     }
@@ -141,7 +141,7 @@ public class CGameCtnCollectorLayoutTests
         };
         var node = new CGameCtnCollector();
         Read(payload, node, chunk, files);
-        if (offset >= 3) await Assert.That(node.IconFidFile).IsSameReferenceAs(file);
+        if (offset >= 3) await Assert.That(node.References.IconFid.File).IsSameReferenceAs(file);
         await RoundTrip(payload, node, chunk);
     }
 

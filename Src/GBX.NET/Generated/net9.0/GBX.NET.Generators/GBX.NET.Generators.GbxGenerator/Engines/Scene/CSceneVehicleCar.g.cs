@@ -34,6 +34,8 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A02B000;
 
+    internal override uint GetId() => Id;
+
     private VisualVehicle[]? visualVehicles;
     [AppliedWithChunk<Chunk0A02B009>]
     public VisualVehicle[]? VisualVehicles
@@ -71,19 +73,39 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     {
         public override uint Id => 0x0A02B005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
         public Vec3 U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A02B005 owner;
+            internal NodeRefView(Chunk0A02B005 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0A02B005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A02B005)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk0A02B005)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
             rw.Vec3(ref U02);
         }
     }
@@ -94,19 +116,39 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     {
         public override uint Id => 0x0A02B007;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
         public Vec3 U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A02B007 owner;
+            internal NodeRefView(Chunk0A02B007 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0A02B007)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A02B007)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk0A02B007)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
             rw.Vec3(ref U02);
         }
     }
@@ -148,20 +190,48 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     {
         public override uint Id => 0x0A02B00B;
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public CMwNod? U01;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A02B00B owner;
+            internal NodeRefView(Chunk0A02B00B owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0A02B00B)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0A02B00B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A02B00B)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0A02B00B)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 

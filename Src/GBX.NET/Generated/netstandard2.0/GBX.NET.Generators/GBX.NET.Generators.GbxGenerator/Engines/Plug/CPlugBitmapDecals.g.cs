@@ -34,12 +34,14 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09078000;
 
-    private External<CPlugDecalModel>[]? decalModels;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugDecalModel>? decalModels;
     [AppliedWithChunk<Chunk09078000>]
-    public External<CPlugDecalModel>[]? DecalModels
+    public NodeRefList<CPlugDecalModel>? DecalModels
     {
-        get => this.decalModels;
-        set => this.decalModels = value;
+        get => decalModels;
+        set => decalModels = value;
     }
 
     private DecalSet[]? decalSets;
@@ -57,11 +59,20 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         get => this.matterId;
         set => this.matterId = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (decalModels is not null)
+        {
+            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapDecals)clone).decalModels = context.CloneArray(this.decalModels)!;
+        ((CPlugBitmapDecals)clone).decalModels = context.Clone(this.decalModels)!;
         ((CPlugBitmapDecals)clone).decalSets = context.CloneArray(this.decalSets)!;
         ((CPlugBitmapDecals)clone).matterId = context.Clone(this.matterId)!;
     }
@@ -87,7 +98,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         public override void Read(CPlugBitmapDecals n, GbxReader r)
         {
             Version = r.ReadInt32();
-            n.decalModels = r.ReadArrayExternalNodeRef_deprec<CPlugDecalModel>();
+            n.decalModels = r.ReadListNodeRef_deprec<CPlugDecalModel>();
             n.decalSets = r.ReadArrayReadable<DecalSet>(version: Version);
 
             if (Version >= 4)
@@ -99,7 +110,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         public override void Write(CPlugBitmapDecals n, GbxWriter w)
         {
             w.Write(Version);
-            w.WriteArrayExternalNodeRef_deprec<CPlugDecalModel>(n.decalModels);
+            w.WriteListNodeRef_deprec(n.decalModels);
             w.WriteArrayWritable<DecalSet>(n.decalSets, version: Version);
 
             if (Version >= 4)
@@ -147,7 +158,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((DecalSet)clone).Decals = context.CloneArray(this.Decals)!;
+            ((DecalSet)clone).Decals = context.CloneArray(this.Decals, row0 => context.CloneArray(row0)!)!;
         }
     }
 

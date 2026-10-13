@@ -34,6 +34,8 @@ public partial class NPlugItemPlacement_SGroups : CMwNod, IClass, IReadableWrita
     [Hexadecimal]
     public static new uint Id => 0x2F0B8000;
 
+    internal override uint GetId() => Id;
+
     private SIdGroup[]? idGroups;
     public SIdGroup[]? IdGroups
     {

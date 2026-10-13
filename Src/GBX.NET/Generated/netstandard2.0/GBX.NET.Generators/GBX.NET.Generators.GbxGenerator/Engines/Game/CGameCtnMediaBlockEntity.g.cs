@@ -34,12 +34,14 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     [Hexadecimal]
     public static new uint Id => 0x0329F000;
 
-    private CPlugEntRecordData? recordData;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugEntRecordData>? recordDataRef;
     [AppliedWithChunk<Chunk0329F000>]
     public CPlugEntRecordData? RecordData
     {
-        get => this.recordData;
-        set => this.recordData = value;
+        get => recordDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref recordDataRef, value);
     }
 
     private TimeSingle? start;
@@ -215,10 +217,24 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => this.timeScale = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockEntity owner;
+        internal NodeRefView(CGameCtnMediaBlockEntity owner) => this.owner = owner;
+        public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("RecordData", NodeRef.GetOrCreate(ref recordDataRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaBlockEntity)clone).recordData = context.Clone(this.recordData)!;
+        ((CGameCtnMediaBlockEntity)clone).recordDataRef = context.Clone(this.recordDataRef)!;
         ((CGameCtnMediaBlockEntity)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockEntity)clone).end = context.Clone(this.end)!;
         ((CGameCtnMediaBlockEntity)clone).startOffset = context.Clone(this.startOffset)!;
@@ -293,7 +309,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
+            rw.NodeRef(ref n.recordDataRef);
 
             if (Version <= 3)
             {

@@ -37,6 +37,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03043000;
 
+    internal override uint GetId() => Id;
+
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk0304300F>]
@@ -302,22 +304,22 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
-    public partial List<CGameCtnBlock>? Blocks { get; set; }
+    public partial NodeRefList<CGameCtnBlock>? Blocks { get; set; }
 
-    private CGameCtnCollectorList? blockStock;
+    private NodeRef<CGameCtnCollectorList>? blockStockRef;
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnCollectorList? BlockStock
     {
-        get => this.blockStock;
-        set => this.blockStock = value;
+        get => blockStockRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockStockRef, value);
     }
 
-    private CGameCtnChallengeParameters? challengeParameters;
+    private NodeRef<CGameCtnChallengeParameters>? challengeParametersRef;
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnChallengeParameters? ChallengeParameters
     {
-        get => this.challengeParameters;
-        set => this.challengeParameters = value;
+        get => challengeParametersRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref challengeParametersRef, value);
     }
 
     private MapKind kind;
@@ -344,34 +346,34 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.modPackDesc = value;
     }
 
-    private CGameCtnMediaClip? clipIntro;
+    private NodeRef<CGameCtnMediaClip>? clipIntroRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipIntro
     {
-        get => this.clipIntro;
-        set => this.clipIntro = value;
+        get => clipIntroRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipIntroRef, value);
     }
 
-    private CGameCtnMediaClipGroup? clipGroupInGame;
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupInGameRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
     {
-        get => this.clipGroupInGame;
-        set => this.clipGroupInGame = value;
+        get => clipGroupInGameRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupInGameRef, value);
     }
 
-    private CGameCtnMediaClipGroup? clipGroupEndRace;
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupEndRaceRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
     {
-        get => this.clipGroupEndRace;
-        set => this.clipGroupEndRace = value;
+        get => clipGroupEndRaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupEndRaceRef, value);
     }
 
     private PackDesc? customMusicPackDesc;
@@ -382,12 +384,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.customMusicPackDesc = value;
     }
 
-    private CGameCtnMediaClip? clipGlobal;
+    private NodeRef<CGameCtnMediaClip>? clipGlobalRef;
     [AppliedWithChunk<Chunk03043026>]
     public CGameCtnMediaClip? ClipGlobal
     {
-        get => this.clipGlobal;
-        set => this.clipGlobal = value;
+        get => clipGlobalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGlobalRef, value);
     }
 
     [AppliedWithChunk<Chunk03043027>]
@@ -462,6 +464,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304305B>]
     public partial bool HasLightmaps { get; set; }
 
+    private NodeRef<CHmsLightMapCache>? lightmapCacheRef;
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial CHmsLightMapCache? LightmapCache { get; set; }
@@ -474,19 +477,19 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304305B>]
     public partial ZlibData? LightmapCacheData { get; set; }
 
-    private CSceneVehicleCarMarksSamples[]? carMarksBuffer;
+    private NodeRefList<CSceneVehicleCarMarksSamples>? carMarksBuffer;
     [AppliedWithChunk<Chunk0304303E>]
-    public CSceneVehicleCarMarksSamples[]? CarMarksBuffer
+    public NodeRefList<CSceneVehicleCarMarksSamples>? CarMarksBuffer
     {
-        get => this.carMarksBuffer;
-        set => this.carMarksBuffer = value;
+        get => carMarksBuffer;
+        set => carMarksBuffer = value;
     }
 
     [AppliedWithChunk<Chunk03043040>]
-    public partial List<CGameCtnAnchoredObject>? AnchoredObjects { get; set; }
+    public partial NodeRefList<CGameCtnAnchoredObject>? AnchoredObjects { get; set; }
 
     [AppliedWithChunk<Chunk03043043>]
-    public partial List<CGameCtnZoneGenealogy>? ZoneGenealogy { get; set; }
+    public partial NodeRefList<CGameCtnZoneGenealogy>? ZoneGenealogy { get; set; }
 
     [AppliedWithChunk<Chunk03043044>]
     public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
@@ -495,7 +498,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
     /// </summary>
     [AppliedWithChunk<Chunk03043048>]
-    public partial List<CGameCtnBlock>? BakedBlocks { get; set; }
+    public partial NodeRefList<CGameCtnBlock>? BakedBlocks { get; set; }
 
     /// <summary>
     /// Preceded by U01.
@@ -503,20 +506,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043048>]
     public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
-    private CGameCtnMediaClip? clipPodium;
+    private NodeRef<CGameCtnMediaClip>? clipPodiumRef;
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipPodium
     {
-        get => this.clipPodium;
-        set => this.clipPodium = value;
+        get => clipPodiumRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipPodiumRef, value);
     }
 
-    private CGameCtnMediaClip? clipAmbiance;
+    private NodeRef<CGameCtnMediaClip>? clipAmbianceRef;
     [AppliedWithChunk<Chunk03043049>(2)]
     public CGameCtnMediaClip? ClipAmbiance
     {
-        get => this.clipAmbiance;
-        set => this.clipAmbiance = value;
+        get => clipAmbianceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipAmbianceRef, value);
     }
 
     private Int3 clipTriggerSize = (1, 1, 1);
@@ -559,22 +562,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.objectiveTextBronze = value;
     }
 
-    private CPlugAnimFile? challengeAnimation;
+    private NodeRef<CPlugAnimFile>? challengeAnimationRef;
     [AppliedWithChunk<Chunk0304304E>]
     public CPlugAnimFile? ChallengeAnimation
     {
-        get => this.challengeAnimationFile?.GetNode(ref this.challengeAnimation) ?? this.challengeAnimation;
-        set => this.challengeAnimation = value;
+        get => challengeAnimationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref challengeAnimationRef, value);
     }
-    private Components.GbxRefTableFile? challengeAnimationFile;
-
-    public Components.GbxRefTableFile? ChallengeAnimationFile
-    {
-        get => challengeAnimationFile;
-        set => challengeAnimationFile = value;
-    }
-
-    public CPlugAnimFile? GetChallengeAnimation(GbxReadSettings settings = default, bool exceptions = false) => challengeAnimationFile?.GetNode(ref challengeAnimation, settings, exceptions) ?? challengeAnimation;
 
     private CPlugTriggerAction[]? animationTriggers;
     [AppliedWithChunk<Chunk0304304E>]
@@ -708,30 +702,21 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.legacyMacroblocks = value;
     }
 
-    private CGameCtnMediaClipGroup[]? clipGroups;
+    private NodeRefList<CGameCtnMediaClipGroup>? clipGroups;
     [AppliedWithChunk<Chunk03043064>]
-    public CGameCtnMediaClipGroup[]? ClipGroups
+    public NodeRefList<CGameCtnMediaClipGroup>? ClipGroups
     {
-        get => this.clipGroups;
-        set => this.clipGroups = value;
+        get => clipGroups;
+        set => clipGroups = value;
     }
 
-    private CGameSaveLaunchedCheckpoints? launchedCheckpoints;
+    private NodeRef<CGameSaveLaunchedCheckpoints>? launchedCheckpointsRef;
     [AppliedWithChunk<Chunk03043067>]
     public CGameSaveLaunchedCheckpoints? LaunchedCheckpoints
     {
-        get => this.launchedCheckpointsFile?.GetNode(ref this.launchedCheckpoints) ?? this.launchedCheckpoints;
-        set => this.launchedCheckpoints = value;
+        get => launchedCheckpointsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref launchedCheckpointsRef, value);
     }
-    private Components.GbxRefTableFile? launchedCheckpointsFile;
-
-    public Components.GbxRefTableFile? LaunchedCheckpointsFile
-    {
-        get => launchedCheckpointsFile;
-        set => launchedCheckpointsFile = value;
-    }
-
-    public CGameSaveLaunchedCheckpoints? GetLaunchedCheckpoints(GbxReadSettings settings = default, bool exceptions = false) => launchedCheckpointsFile?.GetNode(ref launchedCheckpoints, settings, exceptions) ?? launchedCheckpoints;
 
     /// <summary>
     /// Instance ID and flags pairs, preceded by an instance ID for each block and item.
@@ -745,6 +730,64 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         get => this.palette;
         set => this.palette = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnChallenge owner;
+        internal NodeRefView(CGameCtnChallenge owner) => this.owner = owner;
+        public NodeRef<CGameCtnCollectorList> BlockStock => NodeRef.GetOrCreate(ref owner.blockStockRef);
+        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
+        public NodeRef<CGameCtnMediaClip> ClipIntro => NodeRef.GetOrCreate(ref owner.clipIntroRef);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => NodeRef.GetOrCreate(ref owner.clipGroupInGameRef);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
+        public NodeRef<CGameCtnMediaClip> ClipGlobal => NodeRef.GetOrCreate(ref owner.clipGlobalRef);
+        public NodeRef<CHmsLightMapCache> LightmapCache => NodeRef.GetOrCreate(ref owner.lightmapCacheRef);
+        public NodeRef<CGameCtnMediaClip> ClipPodium => NodeRef.GetOrCreate(ref owner.clipPodiumRef);
+        public NodeRef<CGameCtnMediaClip> ClipAmbiance => NodeRef.GetOrCreate(ref owner.clipAmbianceRef);
+        public NodeRef<CPlugAnimFile> ChallengeAnimation => NodeRef.GetOrCreate(ref owner.challengeAnimationRef);
+        public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => NodeRef.GetOrCreate(ref owner.launchedCheckpointsRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (blocks is not null)
+        {
+            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.Get(i));
+        }
+        yield return new("BlockStock", NodeRef.GetOrCreate(ref blockStockRef));
+        yield return new("ChallengeParameters", NodeRef.GetOrCreate(ref challengeParametersRef));
+        yield return new("ClipIntro", NodeRef.GetOrCreate(ref clipIntroRef));
+        yield return new("ClipGroupInGame", NodeRef.GetOrCreate(ref clipGroupInGameRef));
+        yield return new("ClipGroupEndRace", NodeRef.GetOrCreate(ref clipGroupEndRaceRef));
+        yield return new("ClipGlobal", NodeRef.GetOrCreate(ref clipGlobalRef));
+        yield return new("LightmapCache", NodeRef.GetOrCreate(ref lightmapCacheRef));
+        if (carMarksBuffer is not null)
+        {
+            for (var i = 0; i < carMarksBuffer.Count; i++) yield return new("CarMarksBuffer" + "[" + i + "]", carMarksBuffer.Get(i));
+        }
+        if (anchoredObjects is not null)
+        {
+            for (var i = 0; i < anchoredObjects.Count; i++) yield return new("AnchoredObjects" + "[" + i + "]", anchoredObjects.Get(i));
+        }
+        if (zoneGenealogy is not null)
+        {
+            for (var i = 0; i < zoneGenealogy.Count; i++) yield return new("ZoneGenealogy" + "[" + i + "]", zoneGenealogy.Get(i));
+        }
+        if (bakedBlocks is not null)
+        {
+            for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.Get(i));
+        }
+        yield return new("ClipPodium", NodeRef.GetOrCreate(ref clipPodiumRef));
+        yield return new("ClipAmbiance", NodeRef.GetOrCreate(ref clipAmbianceRef));
+        yield return new("ChallengeAnimation", NodeRef.GetOrCreate(ref challengeAnimationRef));
+        if (clipGroups is not null)
+        {
+            for (var i = 0; i < clipGroups.Count; i++) yield return new("ClipGroups" + "[" + i + "]", clipGroups.Get(i));
+        }
+        yield return new("LaunchedCheckpoints", NodeRef.GetOrCreate(ref launchedCheckpointsRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -773,29 +816,34 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).authorZone = context.Clone(this.authorZone)!;
         ((CGameCtnChallenge)clone).authorExtraInfo = context.Clone(this.authorExtraInfo)!;
         ((CGameCtnChallenge)clone).playerModel = context.Clone(this.playerModel)!;
-        ((CGameCtnChallenge)clone).blockStock = context.Clone(this.blockStock)!;
-        ((CGameCtnChallenge)clone).challengeParameters = context.Clone(this.challengeParameters)!;
+        ((CGameCtnChallenge)clone).blocks = context.Clone(this.blocks)!;
+        ((CGameCtnChallenge)clone).blockStockRef = context.Clone(this.blockStockRef)!;
+        ((CGameCtnChallenge)clone).challengeParametersRef = context.Clone(this.challengeParametersRef)!;
         ((CGameCtnChallenge)clone).kind = context.Clone(this.kind)!;
         ((CGameCtnChallenge)clone).checkpoints = context.CloneList(this.checkpoints)!;
         ((CGameCtnChallenge)clone).modPackDesc = context.Clone(this.modPackDesc)!;
-        ((CGameCtnChallenge)clone).clipIntro = context.Clone(this.clipIntro)!;
-        ((CGameCtnChallenge)clone).clipGroupInGame = context.Clone(this.clipGroupInGame)!;
-        ((CGameCtnChallenge)clone).clipGroupEndRace = context.Clone(this.clipGroupEndRace)!;
+        ((CGameCtnChallenge)clone).clipIntroRef = context.Clone(this.clipIntroRef)!;
+        ((CGameCtnChallenge)clone).clipGroupInGameRef = context.Clone(this.clipGroupInGameRef)!;
+        ((CGameCtnChallenge)clone).clipGroupEndRaceRef = context.Clone(this.clipGroupEndRaceRef)!;
         ((CGameCtnChallenge)clone).customMusicPackDesc = context.Clone(this.customMusicPackDesc)!;
-        ((CGameCtnChallenge)clone).clipGlobal = context.Clone(this.clipGlobal)!;
+        ((CGameCtnChallenge)clone).clipGlobalRef = context.Clone(this.clipGlobalRef)!;
         ((CGameCtnChallenge)clone).thumbnailRotationMatrix = context.Clone(this.thumbnailRotationMatrix)!;
         ((CGameCtnChallenge)clone).crc32 = context.Clone(this.crc32)!;
         ((CGameCtnChallenge)clone).challengeDecals = context.CloneArray(this.challengeDecals)!;
         ((CGameCtnChallenge)clone).challengeCardEventIds = context.CloneArray(this.challengeCardEventIds)!;
-        ((CGameCtnChallenge)clone).carMarksBuffer = context.CloneArray(this.carMarksBuffer)!;
-        ((CGameCtnChallenge)clone).clipPodium = context.Clone(this.clipPodium)!;
-        ((CGameCtnChallenge)clone).clipAmbiance = context.Clone(this.clipAmbiance)!;
+        ((CGameCtnChallenge)clone).lightmapCacheRef = context.Clone(this.lightmapCacheRef)!;
+        ((CGameCtnChallenge)clone).carMarksBuffer = context.Clone(this.carMarksBuffer)!;
+        ((CGameCtnChallenge)clone).anchoredObjects = context.Clone(this.anchoredObjects)!;
+        ((CGameCtnChallenge)clone).zoneGenealogy = context.Clone(this.zoneGenealogy)!;
+        ((CGameCtnChallenge)clone).bakedBlocks = context.Clone(this.bakedBlocks)!;
+        ((CGameCtnChallenge)clone).clipPodiumRef = context.Clone(this.clipPodiumRef)!;
+        ((CGameCtnChallenge)clone).clipAmbianceRef = context.Clone(this.clipAmbianceRef)!;
         ((CGameCtnChallenge)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
         ((CGameCtnChallenge)clone).objectiveTextAuthor = context.Clone(this.objectiveTextAuthor)!;
         ((CGameCtnChallenge)clone).objectiveTextGold = context.Clone(this.objectiveTextGold)!;
         ((CGameCtnChallenge)clone).objectiveTextSilver = context.Clone(this.objectiveTextSilver)!;
         ((CGameCtnChallenge)clone).objectiveTextBronze = context.Clone(this.objectiveTextBronze)!;
-        ((CGameCtnChallenge)clone).challengeAnimation = context.Clone(this.challengeAnimation)!;
+        ((CGameCtnChallenge)clone).challengeAnimationRef = context.Clone(this.challengeAnimationRef)!;
         ((CGameCtnChallenge)clone).animationTriggers = context.CloneArray(this.animationTriggers)!;
         ((CGameCtnChallenge)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
         ((CGameCtnChallenge)clone).offzones = context.CloneList(this.offzones)!;
@@ -811,8 +859,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).hasBlockOctree = context.Clone(this.hasBlockOctree)!;
         ((CGameCtnChallenge)clone).blockOctree = context.Clone(this.blockOctree)!;
         ((CGameCtnChallenge)clone).legacyMacroblocks = context.CloneArray(this.legacyMacroblocks)!;
-        ((CGameCtnChallenge)clone).clipGroups = context.CloneArray(this.clipGroups)!;
-        ((CGameCtnChallenge)clone).launchedCheckpoints = context.Clone(this.launchedCheckpoints)!;
+        ((CGameCtnChallenge)clone).clipGroups = context.Clone(this.clipGroups)!;
+        ((CGameCtnChallenge)clone).launchedCheckpointsRef = context.Clone(this.launchedCheckpointsRef)!;
         ((CGameCtnChallenge)clone).palette = context.Clone(this.palette)!;
         ((CGameCtnChallenge)clone).authorLogin = context.Clone(this.authorLogin)!;
         ((CGameCtnChallenge)clone).bronzeTime = context.Clone(this.bronzeTime)!;
@@ -826,18 +874,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).size = context.Clone(this.size)!;
         ((CGameCtnChallenge)clone).thumbnail = context.CloneArray(this.thumbnail)!;
         ((CGameCtnChallenge)clone).decoration = context.Clone(this.decoration)!;
-        ((CGameCtnChallenge)clone).blocks = context.CloneList(this.blocks)!;
         ((CGameCtnChallenge)clone).hashedPassword = context.Clone(this.hashedPassword)!;
         ((CGameCtnChallenge)clone).hasLightmaps = context.Clone(this.hasLightmaps)!;
         ((CGameCtnChallenge)clone).lightmapVersion = context.Clone(this.lightmapVersion)!;
         ((CGameCtnChallenge)clone).lightmapCacheData = context.Clone(this.lightmapCacheData)!;
-        ((CGameCtnChallenge)clone).lightmapCache = context.Clone(this.lightmapCache)!;
         ((CGameCtnChallenge)clone).lightmapFrames = context.CloneArray(this.lightmapFrames)!;
         ((CGameCtnChallenge)clone).lightmapCacheSmall = context.Clone(this.lightmapCacheSmall)!;
-        ((CGameCtnChallenge)clone).anchoredObjects = context.CloneList(this.anchoredObjects)!;
-        ((CGameCtnChallenge)clone).zoneGenealogy = context.CloneList(this.zoneGenealogy)!;
         ((CGameCtnChallenge)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
-        ((CGameCtnChallenge)clone).bakedBlocks = context.CloneList(this.bakedBlocks)!;
         ((CGameCtnChallenge)clone).bakedClipsAdditionalData = context.CloneList(this.bakedClipsAdditionalData)!;
         ((CGameCtnChallenge)clone).embeddedZipData = context.CloneArray(this.embeddedZipData)!;
         ((CGameCtnChallenge)clone).originalEmbeddedZipData = context.CloneArray(this.originalEmbeddedZipData)!;
@@ -1198,7 +1241,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             rw.Ident(ref n.mapInfo);
             rw.Int3(ref n.size);
-            rw.ListNodeRef_deprec<CGameCtnBlock>(ref n.blocks!);
+            n.blocks = rw.ListNodeRef_deprec<CGameCtnBlock>(n.blocks);
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.decoration);
         }
@@ -1221,8 +1264,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnCollectorList>(ref n.blockStock);
-            rw.NodeRef<CGameCtnChallengeParameters>(ref n.challengeParameters);
+            rw.NodeRef(ref n.blockStockRef);
+            rw.NodeRef(ref n.challengeParametersRef);
             rw.EnumInt32<MapKind>(ref n.kind);
         }
     }
@@ -1272,7 +1315,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             n.decoration = r.ReadIdent();
             n.size = r.ReadInt3();
             U01 = r.ReadBoolean();
-            n.blocks = r.ReadListReadable<CGameCtnBlock>();
+            using (var referenceRw = new GbxReaderWriter(r))
+                n.blocks = referenceRw.EmbeddedNodeRefList(n.blocks);
         }
 
         public override void Write(CGameCtnChallenge n, GbxWriter w)
@@ -1282,7 +1326,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             w.Write(n.decoration);
             w.Write(n.size);
             w.Write(U01);
-            w.WriteListWritable<CGameCtnBlock>(n.blocks);
+            using (var referenceRw = new GbxReaderWriter(w))
+                n.blocks = referenceRw.EmbeddedNodeRefList(n.blocks);
         }
     }
 
@@ -1398,17 +1443,40 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk0304301A : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x0304301A;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        /// <summary>
+        /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0304301A owner;
+            internal NodeRefView(Chunk0304301A owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304301A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304301A)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1463,17 +1531,40 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk0304301D : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x0304301D;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        /// <summary>
+        /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0304301D owner;
+            internal NodeRefView(Chunk0304301D owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304301D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304301D)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1481,17 +1572,40 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk0304301E : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x0304301E;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        /// <summary>
+        /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0304301E owner;
+            internal NodeRefView(Chunk0304301E owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304301E)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304301E)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1535,23 +1649,51 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043020 : Chunk<CGameCtnChallenge>
     {
         public override uint Id => 0x03043020;
-        public CGameCtnMediaClip? U01;
-        public CGameCtnMediaClip? U02;
+
+        private NodeRef<CGameCtnMediaClip>? U01Ref;
+        public CGameCtnMediaClip? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CGameCtnMediaClip>? U02Ref;
+        public CGameCtnMediaClip? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03043020 owner;
+            internal NodeRefView(Chunk03043020 owner) => this.owner = owner;
+            public NodeRef<CGameCtnMediaClip> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CGameCtnMediaClip> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03043020)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03043020)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03043020)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03043020)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
-            rw.NodeRef<CGameCtnMediaClip>(ref U01);
-            rw.NodeRef<CGameCtnMediaClip>(ref U02);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
         }
     }
 
@@ -1572,9 +1714,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
         }
     }
 
@@ -1681,7 +1823,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnMediaClip>(ref n.clipGlobal);
+            rw.NodeRef(ref n.clipGlobalRef);
         }
     }
 
@@ -1937,7 +2079,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new NotSupportedException();
             }
 
-            rw.ArrayNodeRef_deprec<CSceneVehicleCarMarksSamples>(ref n.carMarksBuffer!);
+            n.carMarksBuffer = rw.ListNodeRef_deprec<CSceneVehicleCarMarksSamples>(n.carMarksBuffer);
         }
     }
 
@@ -1983,20 +2125,39 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial class Chunk03043041 : SkippableChunk<CGameCtnChallenge>
     {
         public override uint Id => 0x03043041;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03043041 owner;
+            internal NodeRefView(Chunk03043041 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03043041)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043041)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CMwNod>(ref U01, ref U01File);
+                rw.NodeRef(ref U01Ref);
             });
         }
     }
@@ -2136,14 +2297,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
-            rw.NodeRef<CGameCtnMediaClip>(ref n.clipPodium);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
-            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref n.clipPodiumRef);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
+                rw.NodeRef(ref n.clipAmbianceRef);
             }
 
             if (Version >= 1)
@@ -2184,10 +2345,35 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304304D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
-        public External<CMwNod>[]? U01;
-        public External<CMwNod>[]? U02;
-        public External<CMwNod>[]? U03;
-        public External<CMwNod>[]? U04;
+
+        public NodeRefList<CMwNod>? U01;
+
+        public NodeRefList<CMwNod>? U02;
+
+        public NodeRefList<CMwNod>? U03;
+
+        public NodeRefList<CMwNod>? U04;
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            if (U02 is not null)
+            {
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
+            }
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
+            }
+            if (U04 is not null)
+            {
+                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.Get(i));
+            }
+            yield break;
+        }
 
         public Chunk0304304D() : this(GameVersion.Unspecified)
         {
@@ -2205,10 +2391,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304304D)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0304304D)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0304304D)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk0304304D)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk0304304D)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk0304304D)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0304304D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0304304D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0304304D)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -2217,17 +2403,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.ArrayNodeRef_deprec<CMwNod>(ref U01!);
-                rw.ArrayNodeRef_deprec<CMwNod>(ref U02!);
+                U01 = rw.ListNodeRef_deprec<CMwNod>(U01);
+                U02 = rw.ListNodeRef_deprec<CMwNod>(U02);
 
                 if (Version >= 1)
                 {
-                    rw.ArrayNodeRef_deprec<CMwNod>(ref U03!);
+                    U03 = rw.ListNodeRef_deprec<CMwNod>(U03);
                 }
 
                 if (Version >= 2)
                 {
-                    rw.ArrayNodeRef_deprec<CMwNod>(ref U04!);
+                    U04 = rw.ListNodeRef_deprec<CMwNod>(U04);
                 }
             });
         }
@@ -2258,7 +2444,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CPlugAnimFile>(ref n.challengeAnimation, ref n.challengeAnimationFile);
+                rw.NodeRef(ref n.challengeAnimationRef);
                 var animationTriggerCount = rw.Int32((rw.Writer is null ? default : (n.AnimationTriggers?.Length?? 0)));
                 rw.Int32(ref U01);
                 rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.animationTriggers!, animationTriggerCount, version: U01);
@@ -2538,16 +2724,36 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043059;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugBitmap? U01;
+
+        private NodeRef<CPlugBitmap>? U01Ref;
+        public CPlugBitmap? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
         public bool U02;
         public int U03;
         public int U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03043059 owner;
+            internal NodeRefView(Chunk03043059 owner) => this.owner = owner;
+            public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043059)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043059)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk03043059)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk03043059)clone).U02 = context.Clone(this.U02)!;
             ((Chunk03043059)clone).U03 = context.Clone(this.U03)!;
             ((Chunk03043059)clone).U04 = context.Clone(this.U04)!;
@@ -2560,7 +2766,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.NodeRef<CPlugBitmap>(ref U01);
+                rw.NodeRef(ref U01Ref);
             }
 
             if (Version >= 1)
@@ -2897,7 +3103,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.ArrayNodeRef<CGameCtnMediaClipGroup>(ref n.clipGroups!);
+                n.clipGroups = rw.ListNodeRef<CGameCtnMediaClipGroup>(n.clipGroups);
             });
         }
     }
@@ -2942,7 +3148,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef<CGameSaveLaunchedCheckpoints>(ref n.launchedCheckpoints, ref n.launchedCheckpointsFile);
+                rw.NodeRef(ref n.launchedCheckpointsRef);
             });
         }
     }
@@ -3254,11 +3460,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.u01 = value;
         }
 
-        private MacroblockReferences? references;
-        public MacroblockReferences? References
+        private MacroblockReferences? blockReferences;
+        public MacroblockReferences? BlockReferences
         {
-            get => this.references;
-            set => this.references = value;
+            get => this.blockReferences;
+            set => this.blockReferences = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -3276,7 +3482,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             ((MacroblockData)clone).skins = context.CloneArray(this.skins)!;
             ((MacroblockData)clone).items = context.CloneArray(this.items)!;
             ((MacroblockData)clone).u01 = context.CloneArray(this.u01)!;
-            ((MacroblockData)clone).references = context.Clone(this.references)!;
+            ((MacroblockData)clone).blockReferences = context.Clone(this.blockReferences)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -3291,7 +3497,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 rw.Array<UInt128>(ref this.u01!);
             }
 
-            rw.ReadableWritable<MacroblockReferences>(ref this.references, version: Version);
+            rw.ReadableWritable<MacroblockReferences>(ref this.blockReferences, version: Version);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -3318,11 +3524,19 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.u01 = value;
         }
 
-        private External<CMwNod>[]? nodes;
-        public External<CMwNod>[]? Nodes
+        private NodeRefList<CMwNod>? nodes;
+        public NodeRefList<CMwNod>? Nodes
         {
-            get => this.nodes;
-            set => this.nodes = value;
+            get => nodes;
+            set => nodes = value;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            if (nodes is not null)
+            {
+                for (var i = 0; i < nodes.Count; i++) yield return new("Nodes" + "[" + i + "]", nodes.Get(i));
+            }
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -3337,14 +3551,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             ((MacroblockReferences)clone).Version = context.Clone(this.Version)!;
             ((MacroblockReferences)clone).u01 = context.Clone(this.u01)!;
-            ((MacroblockReferences)clone).nodes = context.CloneArray(this.nodes)!;
+            ((MacroblockReferences)clone).nodes = context.Clone(this.nodes)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
             rw.Int32(ref this.u01);
-            rw.ArrayNodeRef<CMwNod>(ref this.nodes!);
+            this.nodes = rw.ListNodeRef<CMwNod>(this.nodes);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -3520,11 +3734,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.isFlying = value;
         }
 
-        private CGameWaypointSpecialProperty? waypointSpecialProperty;
+        private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
         public CGameWaypointSpecialProperty? WaypointSpecialProperty
         {
-            get => this.waypointSpecialProperty;
-            set => this.waypointSpecialProperty = value;
+            get => waypointSpecialPropertyRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
         }
 
         private bool isAutonomous;
@@ -3532,6 +3746,19 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             get => this.isAutonomous;
             set => this.isAutonomous = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly BotPath owner;
+            internal NodeRefView(BotPath owner) => this.owner = owner;
+            public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("WaypointSpecialProperty", NodeRef.GetOrCreate(ref waypointSpecialPropertyRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -3547,7 +3774,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             ((BotPath)clone).clan = context.Clone(this.clan)!;
             ((BotPath)clone).path = context.CloneList(this.path)!;
             ((BotPath)clone).isFlying = context.Clone(this.isFlying)!;
-            ((BotPath)clone).waypointSpecialProperty = context.Clone(this.waypointSpecialProperty)!;
+            ((BotPath)clone).waypointSpecialPropertyRef = context.Clone(this.waypointSpecialPropertyRef)!;
             ((BotPath)clone).isAutonomous = context.Clone(this.isAutonomous)!;
         }
 
@@ -3556,7 +3783,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             rw.Int32(ref this.clan);
             rw.List<Vec3>(ref this.path!);
             rw.Boolean(ref this.isFlying);
-            rw.NodeRef<CGameWaypointSpecialProperty>(ref this.waypointSpecialProperty);
+            rw.NodeRef(ref this.waypointSpecialPropertyRef);
             rw.Boolean(ref this.isAutonomous);
         }
 

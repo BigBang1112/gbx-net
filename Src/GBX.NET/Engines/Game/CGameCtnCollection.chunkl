@@ -60,18 +60,18 @@ CGameCtnCollection 0x03033000
 
 0x004 // legacy zones and collection
   id Collection
-  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone[] CompleteZoneList (deprec)
   CGameCtnZone DefaultZone
 
 0x006 // legacy zones and unlock
   id Collection
-  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone[] CompleteZoneList (deprec)
   CGameCtnZone DefaultZone
   bool NeedUnlock
 
 0x007 // legacy zones and vehicle
   id Collection
-  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone[] CompleteZoneList (deprec)
   CGameCtnZone DefaultZone
   bool NeedUnlock
   ident Vehicle
@@ -81,7 +81,7 @@ CGameCtnCollection 0x03033000
 
 0x009 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   id Collection
-  CGameCtnZone[] CompleteZoneList (deprec, external)
+  CGameCtnZone[] CompleteZoneList (deprec)
   CGameCtnZone DefaultZone
   bool NeedUnlock
   float SquareSize [TM2020 = 32f]
@@ -96,18 +96,18 @@ CGameCtnCollection 0x03033000
   int<ECollectionType> CollectionType
 
 0x00D [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // menu icons
-  bool HasIconFid (local, write: "n.iconFid is not null || n.iconFidFile is not null")
+  bool HasIconFid (local, write: "n.IconFid is not null")
   if HasIconFid
-    CPlugBitmap IconFid (external)
-  bool HasIconSmallFid (local, write: "n.iconSmallFid is not null || n.iconSmallFidFile is not null")
+    CPlugBitmap IconFid
+  bool HasIconSmallFid (local, write: "n.IconSmallFid is not null")
   if HasIconSmallFid
-    CPlugBitmap IconSmallFid (external)
+    CPlugBitmap IconSmallFid
 
 0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int SortIndex
 
 0x011 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CGameCtnDecoration DefaultDecoration (external)
+  CGameCtnDecoration DefaultDecoration
 
 0x013 [TMSX, TMNESWC]
   float WaterTop = -1000f
@@ -124,21 +124,21 @@ CGameCtnCollection 0x03033000
   float ColorVertexMax = 1f
 
 0x017 // legacy map coordinates
-  CPlugBitmap MapFid (external)
+  CPlugBitmap MapFid
   rect MapRect = (-1, -1, 1, 1)
   vec2 MapCoordElem
 
 0x018 [TMSX]
-  CPlugBitmap MapFid (external)
+  CPlugBitmap MapFid
   rect MapRect = (-1, -1, 1, 1)
   vec2 MapCoordElem
   vec2 MapCoordIcon
 
 0x019 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // LoadScreenFid
-  CPlugBitmap LoadScreenFid (external)
+  CPlugBitmap LoadScreenFid
 
 0x01A [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CPlugBitmap MapFid (external)
+  CPlugBitmap MapFid
   rect MapRect = (-1, -1, 1, 1)
   vec2 MapCoordElem
   vec2 MapCoordIcon
@@ -161,7 +161,7 @@ CGameCtnCollection 0x03033000
 
 0x01D [VSK5, TMF, MP3, TMT, MP4, TM2020]
   ZoneString[] ZoneStrings
-  CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec, external)
+  CGameCtnDecorationTerrainModifier[] ReplacementTerrainModifiers (deprec)
 
 0x01E [VSK5, TMF] // camera
   float WaterTop
@@ -170,7 +170,7 @@ CGameCtnCollection 0x03033000
   bool IsWaterOutsidePlayField = true
 
 0x01F [VSK5, TMF, MP3, TMT, MP4, TM2020] // ParticleEmitterModelsFids
-  CPlugParticleEmitterModel[] ParticleEmitterModelsFids (external)
+  CPlugParticleEmitterModel[] ParticleEmitterModelsFids
 
 0x020 [VSK5, TMF, MP3, TMT, MP4, TM2020] // folders
   string FolderBlockInfo
@@ -250,7 +250,7 @@ CGameCtnCollection 0x03033000
   string FolderMacroDecals
 
 0x032 // legacy cloud shader
-  CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
+  CFuncShaderLayerUV FidFuncShaderCloudsX2
 
 0x033 [MP3, TMT.v0, MP4.v0, TM2020.v1] // decal types
   version
@@ -260,15 +260,15 @@ CGameCtnCollection 0x03033000
 
 0x034 [MP3, TMT.v0, MP4.v0, TM2020.v1] // clouds and vehicle environment layer
   version
-  CFuncShaderLayerUV FidFuncShaderCloudsX2 (external)
-  CPlugBitmap FidPlugBitmapCloudsX2 (external)
+  CFuncShaderLayerUV FidFuncShaderCloudsX2
+  CPlugBitmap FidPlugBitmapCloudsX2
   v1+
-    CPlugBitmap VehicleEnvLayer_FidBitmap (external)
+    CPlugBitmap VehicleEnvLayer_FidBitmap
     int<EVehicleEnvLayer> VehicleEnvLayer
 
 0x036 [MP3, TMT.v0, MP4.v0, TM2020.v0] // OffZone_FogMatter
   version
-  CPlugFogMatter OffZone_FogMatter (external)
+  CPlugFogMatter OffZone_FogMatter
 
 0x037 [MP3, TMT, MP4, TM2020] // TerrainHeightOffset
   float TerrainHeightOffset
@@ -320,43 +320,43 @@ CGameCtnCollection 0x03033000
   v3+
     CPlugAdnRandomGenList AdnRandomGenList
   v4+
-    CGameBlockInfoGroups FidBlockInfoGroups (external)
+    CGameBlockInfoGroups FidBlockInfoGroups
   v5+
     v10-
       SCustomizableDeco CustomDeco
       v8+
         CPlugFileImg LegacyCustomDecoImage
   v6+
-    CMwNod FidBlockInfoInventory (external)
+    CMwNod FidBlockInfoInventory
   v7+
     v8-
       CMwNod LegacyInventory
   v10+
-    CMwNod FidItemModelInventory (external)
+    CMwNod FidItemModelInventory
   v12=
     string LegacyFolderMaterial
   v11+
     SCustomizableDeco CustomDeco
   v20+
-    CPlugFileImg CustomDeco_Default_FidDecalSponsor1x1Big (external)
+    CPlugFileImg CustomDeco_Default_FidDecalSponsor1x1Big
   v21+
-    CPlugFileImg CustomDeco_Default_FidDecalSponsor4x1 (external)
-    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x9 (external)
-    CPlugFileImg CustomDeco_Default_FidDecorationScreen8x1 (external)
-    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x1 (external)
+    CPlugFileImg CustomDeco_Default_FidDecalSponsor4x1
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x9
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen8x1
+    CPlugFileImg CustomDeco_Default_FidDecorationScreen16x1
   v22+
-    CPlugFileImg BlockSkins_Default_FidAdvertisement16x9 (external)
-    CPlugFileImg BlockSkins_Default_FidAdvertisement1x1 (external)
-    CPlugFileImg BlockSkins_Default_FidAdvertisement2x1 (external)
-    CPlugFileImg BlockSkins_Default_FidAdvertisement2x3 (external)
-    CPlugFileImg BlockSkins_Default_FidAdvertisement4x1 (external)
-    CPlugFileImg BlockSkins_Default_FidItemFlag (external)
+    CPlugFileImg BlockSkins_Default_FidAdvertisement16x9
+    CPlugFileImg BlockSkins_Default_FidAdvertisement1x1
+    CPlugFileImg BlockSkins_Default_FidAdvertisement2x1
+    CPlugFileImg BlockSkins_Default_FidAdvertisement2x3
+    CPlugFileImg BlockSkins_Default_FidAdvertisement4x1
+    CPlugFileImg BlockSkins_Default_FidItemFlag
   v13+
-    CPlugMaterial DefaultMaterial (external)
+    CPlugMaterial DefaultMaterial
   v14+
-    CMwNod FidMacroBlockInfoInventory (external)
+    CMwNod FidMacroBlockInfoInventory
   v15+
-    CPlugMediaClipList DefaultSpawnClipList (external)
+    CPlugMediaClipList DefaultSpawnClipList
   v16+
     ident VehicleTransform_CarSnow
   v17+
@@ -378,7 +378,7 @@ CGameCtnCollection 0x03033000
   int LightMapMapper
   float VisMeshLodDistScale = 1f
   v1=
-    CMwNod LegacyLightMap (external)
+    CMwNod LegacyLightMap
   v3+
     float EditorHelperAmbientScale = -1f
 
@@ -391,7 +391,7 @@ CGameCtnCollection 0x03033000
     uint TurboColor_Turbo = 0xFFFF00FF
     uint TurboColor_Turbo2 = 0xFF0000FF
     v2+
-      CPlugMaterialColorTargetTable FidColorTargetTable (external)
+      CPlugMaterialColorTargetTable FidColorTargetTable
 
 0x03C [TM2020.v1] // spectator folders
   version
@@ -402,13 +402,13 @@ CGameCtnCollection 0x03033000
 0x03D [TM2020.v2] // default TV programs
   version
   v1-
-    CPlugBitmap LegacyBitmapDisplayControlDefaultTVProgram (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10A (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10B (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10C (external)
-  CPlugBitmap BitmapDisplayControlDefaultTVProgram_2x3 (external)
+    CPlugBitmap LegacyBitmapDisplayControlDefaultTVProgram
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10A
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10B
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_64x10C
+  CPlugBitmap BitmapDisplayControlDefaultTVProgram_2x3
   v1+
-    CPlugBitmap BitmapDisplayControlDefaultTVProgram_155 (external)
+    CPlugBitmap BitmapDisplayControlDefaultTVProgram_155
 
 0x03E [TM2020.v0] // FolderDefaultActions
   version
@@ -472,6 +472,6 @@ archive Water
   v3+
     float U04 = 1f
   v2+
-    CMwNod U05 (external)
+    CMwNod U05
     v6+
-      CMwNod U06 (external)
+      CMwNod U06

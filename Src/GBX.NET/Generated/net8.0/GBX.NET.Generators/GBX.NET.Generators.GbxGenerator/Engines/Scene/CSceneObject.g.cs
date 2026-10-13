@@ -34,6 +34,8 @@ public abstract partial class CSceneObject : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A005000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     [AppliedWithChunk<Chunk0A005001>]
     public string? Name
@@ -42,19 +44,33 @@ public abstract partial class CSceneObject : CMwNod, IClass
         set => this.name = value;
     }
 
-    private CMotion? motion;
+    private NodeRef<CMotion>? motionRef;
     [AppliedWithChunk<Chunk0A005003>]
     public CMotion? Motion
     {
-        get => this.motion;
-        set => this.motion = value;
+        get => motionRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref motionRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneObject owner;
+        internal NodeRefView(CSceneObject owner) => this.owner = owner;
+        public NodeRef<CMotion> Motion => NodeRef.GetOrCreate(ref owner.motionRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Motion", NodeRef.GetOrCreate(ref motionRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CSceneObject)clone).name = context.Clone(this.name)!;
-        ((CSceneObject)clone).motion = context.Clone(this.motion)!;
+        ((CSceneObject)clone).motionRef = context.Clone(this.motionRef)!;
     }
 
     public CSceneObject()
@@ -111,7 +127,7 @@ public abstract partial class CSceneObject : CMwNod, IClass
 
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMotion>(ref n.motion);
+            rw.NodeRef(ref n.motionRef);
         }
     }
 

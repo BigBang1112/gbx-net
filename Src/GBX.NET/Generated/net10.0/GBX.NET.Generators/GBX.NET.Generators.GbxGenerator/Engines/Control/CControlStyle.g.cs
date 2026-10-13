@@ -34,53 +34,46 @@ public partial class CControlStyle : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x07017000;
 
-    private CMwCmdBlockMain? focusGainedScript;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwCmdBlockMain>? focusGainedScriptRef;
     [AppliedWithChunk<Chunk07017000>]
     public CMwCmdBlockMain? FocusGainedScript
     {
-        get => this.focusGainedScript;
-        set => this.focusGainedScript = value;
+        get => focusGainedScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusGainedScriptRef, value);
     }
 
-    private CMwCmdBlockMain? focusLostScript;
+    private NodeRef<CMwCmdBlockMain>? focusLostScriptRef;
     [AppliedWithChunk<Chunk07017000>]
     public CMwCmdBlockMain? FocusLostScript
     {
-        get => this.focusLostScript;
-        set => this.focusLostScript = value;
+        get => focusLostScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusLostScriptRef, value);
     }
 
-    private CPlugSound? focusSound;
+    private NodeRef<CPlugSound>? focusSoundRef;
     [AppliedWithChunk<Chunk07017000>]
     public CPlugSound? FocusSound
     {
-        get => this.focusSoundFile?.GetNode(ref this.focusSound) ?? this.focusSound;
-        set => this.focusSound = value;
-    }
-    private Components.GbxRefTableFile? focusSoundFile;
-
-    public Components.GbxRefTableFile? FocusSoundFile
-    {
-        get => focusSoundFile;
-        set => focusSoundFile = value;
+        get => focusSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusSoundRef, value);
     }
 
-    public CPlugSound? GetFocusSound(GbxReadSettings settings = default, bool exceptions = false) => focusSoundFile?.GetNode(ref focusSound, settings, exceptions) ?? focusSound;
-
-    private CPlugSound? entrySound;
+    private NodeRef<CPlugSound>? entrySoundRef;
     [AppliedWithChunk<Chunk07017004>]
     public CPlugSound? EntrySound
     {
-        get => this.entrySound;
-        set => this.entrySound = value;
+        get => entrySoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref entrySoundRef, value);
     }
 
-    private CPlugShader? defaultShader;
+    private NodeRef<CPlugShader>? defaultShaderRef;
     [AppliedWithChunk<Chunk07017009>]
     public CPlugShader? DefaultShader
     {
-        get => this.defaultShader;
-        set => this.defaultShader = value;
+        get => defaultShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultShaderRef, value);
     }
 
     private bool fitTextSize;
@@ -91,22 +84,22 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.fitTextSize = value;
     }
 
-    private CPlugSound? enumSound;
+    private NodeRef<CPlugSound>? enumSoundRef;
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public CPlugSound? EnumSound
     {
-        get => this.enumSound;
-        set => this.enumSound = value;
+        get => enumSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref enumSoundRef, value);
     }
 
-    private CPlugShader? enumListShader;
+    private NodeRef<CPlugShader>? enumListShaderRef;
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public CPlugShader? EnumListShader
     {
-        get => this.enumListShader;
-        set => this.enumListShader = value;
+        get => enumListShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref enumListShaderRef, value);
     }
 
     private int enumMaxElemCount;
@@ -136,22 +129,13 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.enumIconHeight = value;
     }
 
-    private CPlugSound? actionSound;
+    private NodeRef<CPlugSound>? actionSoundRef;
     [AppliedWithChunk<Chunk0701700E>]
     public CPlugSound? ActionSound
     {
-        get => this.actionSoundFile?.GetNode(ref this.actionSound) ?? this.actionSound;
-        set => this.actionSound = value;
+        get => actionSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref actionSoundRef, value);
     }
-    private Components.GbxRefTableFile? actionSoundFile;
-
-    public Components.GbxRefTableFile? ActionSoundFile
-    {
-        get => actionSoundFile;
-        set => actionSoundFile = value;
-    }
-
-    public CPlugSound? GetActionSound(GbxReadSettings settings = default, bool exceptions = false) => actionSoundFile?.GetNode(ref actionSound, settings, exceptions) ?? actionSound;
 
     private float buttonIconWidth;
     [AppliedWithChunk<Chunk0701700E>]
@@ -169,22 +153,13 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.buttonIconHeight = value;
     }
 
-    private CFuncEnum? buttonDefaultIcons;
+    private NodeRef<CFuncEnum>? buttonDefaultIconsRef;
     [AppliedWithChunk<Chunk0701700E>]
     public CFuncEnum? ButtonDefaultIcons
     {
-        get => this.buttonDefaultIconsFile?.GetNode(ref this.buttonDefaultIcons) ?? this.buttonDefaultIcons;
-        set => this.buttonDefaultIcons = value;
+        get => buttonDefaultIconsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref buttonDefaultIconsRef, value);
     }
-    private Components.GbxRefTableFile? buttonDefaultIconsFile;
-
-    public Components.GbxRefTableFile? ButtonDefaultIconsFile
-    {
-        get => buttonDefaultIconsFile;
-        set => buttonDefaultIconsFile = value;
-    }
-
-    public CFuncEnum? GetButtonDefaultIcons(GbxReadSettings settings = default, bool exceptions = false) => buttonDefaultIconsFile?.GetNode(ref buttonDefaultIcons, settings, exceptions) ?? buttonDefaultIcons;
 
     private int enumForceDisplayType;
     [AppliedWithChunk<Chunk07017010>]
@@ -194,22 +169,13 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.enumForceDisplayType = value;
     }
 
-    private CFuncEnum? enumForceIcons;
+    private NodeRef<CFuncEnum>? enumForceIconsRef;
     [AppliedWithChunk<Chunk07017010>]
     public CFuncEnum? EnumForceIcons
     {
-        get => this.enumForceIconsFile?.GetNode(ref this.enumForceIcons) ?? this.enumForceIcons;
-        set => this.enumForceIcons = value;
+        get => enumForceIconsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref enumForceIconsRef, value);
     }
-    private Components.GbxRefTableFile? enumForceIconsFile;
-
-    public Components.GbxRefTableFile? EnumForceIconsFile
-    {
-        get => enumForceIconsFile;
-        set => enumForceIconsFile = value;
-    }
-
-    public CFuncEnum? GetEnumForceIcons(GbxReadSettings settings = default, bool exceptions = false) => enumForceIconsFile?.GetNode(ref enumForceIcons, settings, exceptions) ?? enumForceIcons;
 
     private bool quadIsLines;
     [AppliedWithChunk<Chunk07017014>]
@@ -297,22 +263,13 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.quad_UvBottomRight = value;
     }
 
-    private CControlEffectMaster? effectMaster;
+    private NodeRef<CControlEffectMaster>? effectMasterRef;
     [AppliedWithChunk<Chunk07017016>]
     public CControlEffectMaster? EffectMaster
     {
-        get => this.effectMasterFile?.GetNode(ref this.effectMaster) ?? this.effectMaster;
-        set => this.effectMaster = value;
+        get => effectMasterRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref effectMasterRef, value);
     }
-    private Components.GbxRefTableFile? effectMasterFile;
-
-    public Components.GbxRefTableFile? EffectMasterFile
-    {
-        get => effectMasterFile;
-        set => effectMasterFile = value;
-    }
-
-    public CControlEffectMaster? GetEffectMaster(GbxReadSettings settings = default, bool exceptions = false) => effectMasterFile?.GetNode(ref effectMaster, settings, exceptions) ?? effectMaster;
 
     private float skew;
     [AppliedWithChunk<Chunk07017017>]
@@ -338,22 +295,13 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.lineGradientColor1 = value;
     }
 
-    private CPlugFont? font;
+    private NodeRef<CPlugFont>? fontRef;
     [AppliedWithChunk<Chunk0701701B>]
     public CPlugFont? Font
     {
-        get => this.fontFile?.GetNode(ref this.font) ?? this.font;
-        set => this.font = value;
+        get => fontRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fontRef, value);
     }
-    private Components.GbxRefTableFile? fontFile;
-
-    public Components.GbxRefTableFile? FontFile
-    {
-        get => fontFile;
-        set => fontFile = value;
-    }
-
-    public CPlugFont? GetFont(GbxReadSettings settings = default, bool exceptions = false) => fontFile?.GetNode(ref font, settings, exceptions) ?? font;
 
     private float sliderBarWidth;
     [AppliedWithChunk<Chunk0701701C>]
@@ -387,47 +335,29 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.sliderCursorHeight = value;
     }
 
-    private CPlugSound? sliderSound;
+    private NodeRef<CPlugSound>? sliderSoundRef;
     [AppliedWithChunk<Chunk0701701C>]
     public CPlugSound? SliderSound
     {
-        get => this.sliderSound;
-        set => this.sliderSound = value;
+        get => sliderSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderSoundRef, value);
     }
 
-    private CFuncEnum? sliderBarIcons;
+    private NodeRef<CFuncEnum>? sliderBarIconsRef;
     [AppliedWithChunk<Chunk0701701C>]
     public CFuncEnum? SliderBarIcons
     {
-        get => this.sliderBarIconsFile?.GetNode(ref this.sliderBarIcons) ?? this.sliderBarIcons;
-        set => this.sliderBarIcons = value;
-    }
-    private Components.GbxRefTableFile? sliderBarIconsFile;
-
-    public Components.GbxRefTableFile? SliderBarIconsFile
-    {
-        get => sliderBarIconsFile;
-        set => sliderBarIconsFile = value;
+        get => sliderBarIconsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderBarIconsRef, value);
     }
 
-    public CFuncEnum? GetSliderBarIcons(GbxReadSettings settings = default, bool exceptions = false) => sliderBarIconsFile?.GetNode(ref sliderBarIcons, settings, exceptions) ?? sliderBarIcons;
-
-    private CFuncEnum? sliderCursorIcons;
+    private NodeRef<CFuncEnum>? sliderCursorIconsRef;
     [AppliedWithChunk<Chunk0701701C>]
     public CFuncEnum? SliderCursorIcons
     {
-        get => this.sliderCursorIconsFile?.GetNode(ref this.sliderCursorIcons) ?? this.sliderCursorIcons;
-        set => this.sliderCursorIcons = value;
+        get => sliderCursorIconsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sliderCursorIconsRef, value);
     }
-    private Components.GbxRefTableFile? sliderCursorIconsFile;
-
-    public Components.GbxRefTableFile? SliderCursorIconsFile
-    {
-        get => sliderCursorIconsFile;
-        set => sliderCursorIconsFile = value;
-    }
-
-    public CFuncEnum? GetSliderCursorIcons(GbxReadSettings settings = default, bool exceptions = false) => sliderCursorIconsFile?.GetNode(ref sliderCursorIcons, settings, exceptions) ?? sliderCursorIcons;
 
     private bool focusAreaEnable;
     [AppliedWithChunk<Chunk0701701D>]
@@ -437,73 +367,37 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.focusAreaEnable = value;
     }
 
-    private CPlugMaterial? focusAreaMaterial;
+    private NodeRef<CPlugMaterial>? focusAreaMaterialRef;
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterial
     {
-        get => this.focusAreaMaterialFile?.GetNode(ref this.focusAreaMaterial) ?? this.focusAreaMaterial;
-        set => this.focusAreaMaterial = value;
-    }
-    private Components.GbxRefTableFile? focusAreaMaterialFile;
-
-    public Components.GbxRefTableFile? FocusAreaMaterialFile
-    {
-        get => focusAreaMaterialFile;
-        set => focusAreaMaterialFile = value;
+        get => focusAreaMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaMaterialRef, value);
     }
 
-    public CPlugMaterial? GetFocusAreaMaterial(GbxReadSettings settings = default, bool exceptions = false) => focusAreaMaterialFile?.GetNode(ref focusAreaMaterial, settings, exceptions) ?? focusAreaMaterial;
-
-    private CPlugMaterial? focusAreaMaterialReadOnly;
+    private NodeRef<CPlugMaterial>? focusAreaMaterialReadOnlyRef;
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialReadOnly
     {
-        get => this.focusAreaMaterialReadOnlyFile?.GetNode(ref this.focusAreaMaterialReadOnly) ?? this.focusAreaMaterialReadOnly;
-        set => this.focusAreaMaterialReadOnly = value;
-    }
-    private Components.GbxRefTableFile? focusAreaMaterialReadOnlyFile;
-
-    public Components.GbxRefTableFile? FocusAreaMaterialReadOnlyFile
-    {
-        get => focusAreaMaterialReadOnlyFile;
-        set => focusAreaMaterialReadOnlyFile = value;
+        get => focusAreaMaterialReadOnlyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaMaterialReadOnlyRef, value);
     }
 
-    public CPlugMaterial? GetFocusAreaMaterialReadOnly(GbxReadSettings settings = default, bool exceptions = false) => focusAreaMaterialReadOnlyFile?.GetNode(ref focusAreaMaterialReadOnly, settings, exceptions) ?? focusAreaMaterialReadOnly;
-
-    private CPlugMaterial? focusAreaMaterialSelected;
+    private NodeRef<CPlugMaterial>? focusAreaMaterialSelectedRef;
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialSelected
     {
-        get => this.focusAreaMaterialSelectedFile?.GetNode(ref this.focusAreaMaterialSelected) ?? this.focusAreaMaterialSelected;
-        set => this.focusAreaMaterialSelected = value;
-    }
-    private Components.GbxRefTableFile? focusAreaMaterialSelectedFile;
-
-    public Components.GbxRefTableFile? FocusAreaMaterialSelectedFile
-    {
-        get => focusAreaMaterialSelectedFile;
-        set => focusAreaMaterialSelectedFile = value;
+        get => focusAreaMaterialSelectedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaMaterialSelectedRef, value);
     }
 
-    public CPlugMaterial? GetFocusAreaMaterialSelected(GbxReadSettings settings = default, bool exceptions = false) => focusAreaMaterialSelectedFile?.GetNode(ref focusAreaMaterialSelected, settings, exceptions) ?? focusAreaMaterialSelected;
-
-    private CPlugMaterial? focusAreaMaterialFocused;
+    private NodeRef<CPlugMaterial>? focusAreaMaterialFocusedRef;
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialFocused
     {
-        get => this.focusAreaMaterialFocusedFile?.GetNode(ref this.focusAreaMaterialFocused) ?? this.focusAreaMaterialFocused;
-        set => this.focusAreaMaterialFocused = value;
+        get => focusAreaMaterialFocusedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaMaterialFocusedRef, value);
     }
-    private Components.GbxRefTableFile? focusAreaMaterialFocusedFile;
-
-    public Components.GbxRefTableFile? FocusAreaMaterialFocusedFile
-    {
-        get => focusAreaMaterialFocusedFile;
-        set => focusAreaMaterialFocusedFile = value;
-    }
-
-    public CPlugMaterial? GetFocusAreaMaterialFocused(GbxReadSettings settings = default, bool exceptions = false) => focusAreaMaterialFocusedFile?.GetNode(ref focusAreaMaterialFocused, settings, exceptions) ?? focusAreaMaterialFocused;
 
     private float focusAreaMinWidth;
     [AppliedWithChunk<Chunk0701701D>]
@@ -537,12 +431,12 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.focusAreaYMargin = value;
     }
 
-    private CPlugSolid? focusAreaSolid;
+    private NodeRef<CPlugSolid>? focusAreaSolidRef;
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugSolid? FocusAreaSolid
     {
-        get => this.focusAreaSolid;
-        set => this.focusAreaSolid = value;
+        get => focusAreaSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusAreaSolidRef, value);
     }
 
     private float focusAreaZOffset;
@@ -561,26 +455,78 @@ public partial class CControlStyle : CMwNod, IClass
         set => this.buttonDefaultIconId = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CControlStyle owner;
+        internal NodeRefView(CControlStyle owner) => this.owner = owner;
+        public NodeRef<CMwCmdBlockMain> FocusGainedScript => NodeRef.GetOrCreate(ref owner.focusGainedScriptRef);
+        public NodeRef<CMwCmdBlockMain> FocusLostScript => NodeRef.GetOrCreate(ref owner.focusLostScriptRef);
+        public NodeRef<CPlugSound> FocusSound => NodeRef.GetOrCreate(ref owner.focusSoundRef);
+        public NodeRef<CPlugSound> EntrySound => NodeRef.GetOrCreate(ref owner.entrySoundRef);
+        public NodeRef<CPlugShader> DefaultShader => NodeRef.GetOrCreate(ref owner.defaultShaderRef);
+        public NodeRef<CPlugSound> EnumSound => NodeRef.GetOrCreate(ref owner.enumSoundRef);
+        public NodeRef<CPlugShader> EnumListShader => NodeRef.GetOrCreate(ref owner.enumListShaderRef);
+        public NodeRef<CPlugSound> ActionSound => NodeRef.GetOrCreate(ref owner.actionSoundRef);
+        public NodeRef<CFuncEnum> ButtonDefaultIcons => NodeRef.GetOrCreate(ref owner.buttonDefaultIconsRef);
+        public NodeRef<CFuncEnum> EnumForceIcons => NodeRef.GetOrCreate(ref owner.enumForceIconsRef);
+        public NodeRef<CControlEffectMaster> EffectMaster => NodeRef.GetOrCreate(ref owner.effectMasterRef);
+        public NodeRef<CPlugFont> Font => NodeRef.GetOrCreate(ref owner.fontRef);
+        public NodeRef<CPlugSound> SliderSound => NodeRef.GetOrCreate(ref owner.sliderSoundRef);
+        public NodeRef<CFuncEnum> SliderBarIcons => NodeRef.GetOrCreate(ref owner.sliderBarIconsRef);
+        public NodeRef<CFuncEnum> SliderCursorIcons => NodeRef.GetOrCreate(ref owner.sliderCursorIconsRef);
+        public NodeRef<CPlugMaterial> FocusAreaMaterial => NodeRef.GetOrCreate(ref owner.focusAreaMaterialRef);
+        public NodeRef<CPlugMaterial> FocusAreaMaterialReadOnly => NodeRef.GetOrCreate(ref owner.focusAreaMaterialReadOnlyRef);
+        public NodeRef<CPlugMaterial> FocusAreaMaterialSelected => NodeRef.GetOrCreate(ref owner.focusAreaMaterialSelectedRef);
+        public NodeRef<CPlugMaterial> FocusAreaMaterialFocused => NodeRef.GetOrCreate(ref owner.focusAreaMaterialFocusedRef);
+        public NodeRef<CPlugSolid> FocusAreaSolid => NodeRef.GetOrCreate(ref owner.focusAreaSolidRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("FocusGainedScript", NodeRef.GetOrCreate(ref focusGainedScriptRef));
+        yield return new("FocusLostScript", NodeRef.GetOrCreate(ref focusLostScriptRef));
+        yield return new("FocusSound", NodeRef.GetOrCreate(ref focusSoundRef));
+        yield return new("EntrySound", NodeRef.GetOrCreate(ref entrySoundRef));
+        yield return new("DefaultShader", NodeRef.GetOrCreate(ref defaultShaderRef));
+        yield return new("EnumSound", NodeRef.GetOrCreate(ref enumSoundRef));
+        yield return new("EnumListShader", NodeRef.GetOrCreate(ref enumListShaderRef));
+        yield return new("ActionSound", NodeRef.GetOrCreate(ref actionSoundRef));
+        yield return new("ButtonDefaultIcons", NodeRef.GetOrCreate(ref buttonDefaultIconsRef));
+        yield return new("EnumForceIcons", NodeRef.GetOrCreate(ref enumForceIconsRef));
+        yield return new("EffectMaster", NodeRef.GetOrCreate(ref effectMasterRef));
+        yield return new("Font", NodeRef.GetOrCreate(ref fontRef));
+        yield return new("SliderSound", NodeRef.GetOrCreate(ref sliderSoundRef));
+        yield return new("SliderBarIcons", NodeRef.GetOrCreate(ref sliderBarIconsRef));
+        yield return new("SliderCursorIcons", NodeRef.GetOrCreate(ref sliderCursorIconsRef));
+        yield return new("FocusAreaMaterial", NodeRef.GetOrCreate(ref focusAreaMaterialRef));
+        yield return new("FocusAreaMaterialReadOnly", NodeRef.GetOrCreate(ref focusAreaMaterialReadOnlyRef));
+        yield return new("FocusAreaMaterialSelected", NodeRef.GetOrCreate(ref focusAreaMaterialSelectedRef));
+        yield return new("FocusAreaMaterialFocused", NodeRef.GetOrCreate(ref focusAreaMaterialFocusedRef));
+        yield return new("FocusAreaSolid", NodeRef.GetOrCreate(ref focusAreaSolidRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CControlStyle)clone).focusGainedScript = context.Clone(this.focusGainedScript)!;
-        ((CControlStyle)clone).focusLostScript = context.Clone(this.focusLostScript)!;
-        ((CControlStyle)clone).focusSound = context.Clone(this.focusSound)!;
-        ((CControlStyle)clone).entrySound = context.Clone(this.entrySound)!;
-        ((CControlStyle)clone).defaultShader = context.Clone(this.defaultShader)!;
+        ((CControlStyle)clone).focusGainedScriptRef = context.Clone(this.focusGainedScriptRef)!;
+        ((CControlStyle)clone).focusLostScriptRef = context.Clone(this.focusLostScriptRef)!;
+        ((CControlStyle)clone).focusSoundRef = context.Clone(this.focusSoundRef)!;
+        ((CControlStyle)clone).entrySoundRef = context.Clone(this.entrySoundRef)!;
+        ((CControlStyle)clone).defaultShaderRef = context.Clone(this.defaultShaderRef)!;
         ((CControlStyle)clone).fitTextSize = context.Clone(this.fitTextSize)!;
-        ((CControlStyle)clone).enumSound = context.Clone(this.enumSound)!;
-        ((CControlStyle)clone).enumListShader = context.Clone(this.enumListShader)!;
+        ((CControlStyle)clone).enumSoundRef = context.Clone(this.enumSoundRef)!;
+        ((CControlStyle)clone).enumListShaderRef = context.Clone(this.enumListShaderRef)!;
         ((CControlStyle)clone).enumMaxElemCount = context.Clone(this.enumMaxElemCount)!;
         ((CControlStyle)clone).enumIconWidth = context.Clone(this.enumIconWidth)!;
         ((CControlStyle)clone).enumIconHeight = context.Clone(this.enumIconHeight)!;
-        ((CControlStyle)clone).actionSound = context.Clone(this.actionSound)!;
+        ((CControlStyle)clone).actionSoundRef = context.Clone(this.actionSoundRef)!;
         ((CControlStyle)clone).buttonIconWidth = context.Clone(this.buttonIconWidth)!;
         ((CControlStyle)clone).buttonIconHeight = context.Clone(this.buttonIconHeight)!;
-        ((CControlStyle)clone).buttonDefaultIcons = context.Clone(this.buttonDefaultIcons)!;
+        ((CControlStyle)clone).buttonDefaultIconsRef = context.Clone(this.buttonDefaultIconsRef)!;
         ((CControlStyle)clone).enumForceDisplayType = context.Clone(this.enumForceDisplayType)!;
-        ((CControlStyle)clone).enumForceIcons = context.Clone(this.enumForceIcons)!;
+        ((CControlStyle)clone).enumForceIconsRef = context.Clone(this.enumForceIconsRef)!;
         ((CControlStyle)clone).quadIsLines = context.Clone(this.quadIsLines)!;
         ((CControlStyle)clone).quadIsFill = context.Clone(this.quadIsFill)!;
         ((CControlStyle)clone).quadZ = context.Clone(this.quadZ)!;
@@ -590,28 +536,28 @@ public partial class CControlStyle : CMwNod, IClass
         ((CControlStyle)clone).quadLinesColor = context.Clone(this.quadLinesColor)!;
         ((CControlStyle)clone).quad_UvTopLeft = context.Clone(this.quad_UvTopLeft)!;
         ((CControlStyle)clone).quad_UvBottomRight = context.Clone(this.quad_UvBottomRight)!;
-        ((CControlStyle)clone).effectMaster = context.Clone(this.effectMaster)!;
+        ((CControlStyle)clone).effectMasterRef = context.Clone(this.effectMasterRef)!;
         ((CControlStyle)clone).skew = context.Clone(this.skew)!;
         ((CControlStyle)clone).lineGradientColor0 = context.Clone(this.lineGradientColor0)!;
         ((CControlStyle)clone).lineGradientColor1 = context.Clone(this.lineGradientColor1)!;
-        ((CControlStyle)clone).font = context.Clone(this.font)!;
+        ((CControlStyle)clone).fontRef = context.Clone(this.fontRef)!;
         ((CControlStyle)clone).sliderBarWidth = context.Clone(this.sliderBarWidth)!;
         ((CControlStyle)clone).sliderBarHeight = context.Clone(this.sliderBarHeight)!;
         ((CControlStyle)clone).sliderCursorWidth = context.Clone(this.sliderCursorWidth)!;
         ((CControlStyle)clone).sliderCursorHeight = context.Clone(this.sliderCursorHeight)!;
-        ((CControlStyle)clone).sliderSound = context.Clone(this.sliderSound)!;
-        ((CControlStyle)clone).sliderBarIcons = context.Clone(this.sliderBarIcons)!;
-        ((CControlStyle)clone).sliderCursorIcons = context.Clone(this.sliderCursorIcons)!;
+        ((CControlStyle)clone).sliderSoundRef = context.Clone(this.sliderSoundRef)!;
+        ((CControlStyle)clone).sliderBarIconsRef = context.Clone(this.sliderBarIconsRef)!;
+        ((CControlStyle)clone).sliderCursorIconsRef = context.Clone(this.sliderCursorIconsRef)!;
         ((CControlStyle)clone).focusAreaEnable = context.Clone(this.focusAreaEnable)!;
-        ((CControlStyle)clone).focusAreaMaterial = context.Clone(this.focusAreaMaterial)!;
-        ((CControlStyle)clone).focusAreaMaterialReadOnly = context.Clone(this.focusAreaMaterialReadOnly)!;
-        ((CControlStyle)clone).focusAreaMaterialSelected = context.Clone(this.focusAreaMaterialSelected)!;
-        ((CControlStyle)clone).focusAreaMaterialFocused = context.Clone(this.focusAreaMaterialFocused)!;
+        ((CControlStyle)clone).focusAreaMaterialRef = context.Clone(this.focusAreaMaterialRef)!;
+        ((CControlStyle)clone).focusAreaMaterialReadOnlyRef = context.Clone(this.focusAreaMaterialReadOnlyRef)!;
+        ((CControlStyle)clone).focusAreaMaterialSelectedRef = context.Clone(this.focusAreaMaterialSelectedRef)!;
+        ((CControlStyle)clone).focusAreaMaterialFocusedRef = context.Clone(this.focusAreaMaterialFocusedRef)!;
         ((CControlStyle)clone).focusAreaMinWidth = context.Clone(this.focusAreaMinWidth)!;
         ((CControlStyle)clone).focusAreaMinHeight = context.Clone(this.focusAreaMinHeight)!;
         ((CControlStyle)clone).focusAreaXMargin = context.Clone(this.focusAreaXMargin)!;
         ((CControlStyle)clone).focusAreaYMargin = context.Clone(this.focusAreaYMargin)!;
-        ((CControlStyle)clone).focusAreaSolid = context.Clone(this.focusAreaSolid)!;
+        ((CControlStyle)clone).focusAreaSolidRef = context.Clone(this.focusAreaSolidRef)!;
         ((CControlStyle)clone).focusAreaZOffset = context.Clone(this.focusAreaZOffset)!;
         ((CControlStyle)clone).buttonDefaultIconId = context.Clone(this.buttonDefaultIconId)!;
     }
@@ -626,23 +572,51 @@ public partial class CControlStyle : CMwNod, IClass
     {
         public override uint Id => 0x07017000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk07017000 owner;
+            internal NodeRefView(Chunk07017000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk07017000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk07017000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk07017000)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk07017000)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwCmdBlockMain>(ref n.focusGainedScript);
-            rw.NodeRef<CMwCmdBlockMain>(ref n.focusLostScript);
-            rw.NodeRef<CPlugSound>(ref n.focusSound, ref n.focusSoundFile);
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CMwNod>(ref U02);
+            rw.NodeRef(ref n.focusGainedScriptRef);
+            rw.NodeRef(ref n.focusLostScriptRef);
+            rw.NodeRef(ref n.focusSoundRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 
@@ -660,7 +634,7 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.entrySound);
+            rw.NodeRef(ref n.entrySoundRef);
         }
     }
 
@@ -678,7 +652,7 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.defaultShader);
+            rw.NodeRef(ref n.defaultShaderRef);
         }
     }
 
@@ -740,8 +714,8 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.enumSound);
-            rw.NodeRef<CPlugShader>(ref n.enumListShader);
+            rw.NodeRef(ref n.enumSoundRef);
+            rw.NodeRef(ref n.enumListShaderRef);
             rw.Int32(ref n.enumMaxElemCount);
             rw.Single(ref n.enumIconWidth);
             rw.Single(ref n.enumIconHeight);
@@ -762,10 +736,10 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.actionSound, ref n.actionSoundFile);
+            rw.NodeRef(ref n.actionSoundRef);
             rw.Single(ref n.buttonIconWidth);
             rw.Single(ref n.buttonIconHeight);
-            rw.NodeRef<CFuncEnum>(ref n.buttonDefaultIcons, ref n.buttonDefaultIconsFile);
+            rw.NodeRef(ref n.buttonDefaultIconsRef);
         }
     }
 
@@ -783,13 +757,13 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.enumSound);
-            rw.NodeRef<CPlugShader>(ref n.enumListShader);
+            rw.NodeRef(ref n.enumSoundRef);
+            rw.NodeRef(ref n.enumListShaderRef);
             rw.Int32(ref n.enumMaxElemCount);
             rw.Single(ref n.enumIconWidth);
             rw.Single(ref n.enumIconHeight);
             rw.Int32(ref n.enumForceDisplayType);
-            rw.NodeRef<CFuncEnum>(ref n.enumForceIcons, ref n.enumForceIconsFile);
+            rw.NodeRef(ref n.enumForceIconsRef);
         }
     }
 
@@ -856,7 +830,7 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CControlEffectMaster>(ref n.effectMaster, ref n.effectMasterFile);
+            rw.NodeRef(ref n.effectMasterRef);
         }
     }
 
@@ -929,7 +903,7 @@ public partial class CControlStyle : CMwNod, IClass
 
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugFont>(ref n.font, ref n.fontFile);
+            rw.NodeRef(ref n.fontRef);
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.ReadableWritable<STextSettings_ColorAndChars>(ref U03);
@@ -956,9 +930,9 @@ public partial class CControlStyle : CMwNod, IClass
             rw.Single(ref n.sliderBarHeight);
             rw.Single(ref n.sliderCursorWidth);
             rw.Single(ref n.sliderCursorHeight);
-            rw.NodeRef<CPlugSound>(ref n.sliderSound);
-            rw.NodeRef<CFuncEnum>(ref n.sliderBarIcons, ref n.sliderBarIconsFile);
-            rw.NodeRef<CFuncEnum>(ref n.sliderCursorIcons, ref n.sliderCursorIconsFile);
+            rw.NodeRef(ref n.sliderSoundRef);
+            rw.NodeRef(ref n.sliderBarIconsRef);
+            rw.NodeRef(ref n.sliderCursorIconsRef);
         }
     }
 
@@ -977,15 +951,15 @@ public partial class CControlStyle : CMwNod, IClass
         public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.focusAreaEnable);
-            rw.NodeRef<CPlugMaterial>(ref n.focusAreaMaterial, ref n.focusAreaMaterialFile);
-            rw.NodeRef<CPlugMaterial>(ref n.focusAreaMaterialReadOnly, ref n.focusAreaMaterialReadOnlyFile);
-            rw.NodeRef<CPlugMaterial>(ref n.focusAreaMaterialSelected, ref n.focusAreaMaterialSelectedFile);
-            rw.NodeRef<CPlugMaterial>(ref n.focusAreaMaterialFocused, ref n.focusAreaMaterialFocusedFile);
+            rw.NodeRef(ref n.focusAreaMaterialRef);
+            rw.NodeRef(ref n.focusAreaMaterialReadOnlyRef);
+            rw.NodeRef(ref n.focusAreaMaterialSelectedRef);
+            rw.NodeRef(ref n.focusAreaMaterialFocusedRef);
             rw.Single(ref n.focusAreaMinWidth);
             rw.Single(ref n.focusAreaMinHeight);
             rw.Single(ref n.focusAreaXMargin);
             rw.Single(ref n.focusAreaYMargin);
-            rw.NodeRef<CPlugSolid>(ref n.focusAreaSolid);
+            rw.NodeRef(ref n.focusAreaSolidRef);
             rw.Single(ref n.focusAreaZOffset);
         }
     }

@@ -34,6 +34,8 @@ public partial class CSceneSector : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A004000;
 
+    internal override uint GetId() => Id;
+
     private int scene;
     [AppliedWithChunk<Chunk0A004000>]
     public int Scene
@@ -42,19 +44,33 @@ public partial class CSceneSector : CMwNod, IClass
         set => this.scene = value;
     }
 
-    private CHmsZone? zone;
+    private NodeRef<CHmsZone>? zoneRef;
     [AppliedWithChunk<Chunk0A004000>]
     public CHmsZone? Zone
     {
-        get => this.zone;
-        set => this.zone = value;
+        get => zoneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref zoneRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneSector owner;
+        internal NodeRefView(CSceneSector owner) => this.owner = owner;
+        public NodeRef<CHmsZone> Zone => NodeRef.GetOrCreate(ref owner.zoneRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Zone", NodeRef.GetOrCreate(ref zoneRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CSceneSector)clone).scene = context.Clone(this.scene)!;
-        ((CSceneSector)clone).zone = context.Clone(this.zone)!;
+        ((CSceneSector)clone).zoneRef = context.Clone(this.zoneRef)!;
     }
 
     public CSceneSector()
@@ -76,7 +92,7 @@ public partial class CSceneSector : CMwNod, IClass
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.scene);
-            rw.NodeRef<CHmsZone>(ref n.zone);
+            rw.NodeRef(ref n.zoneRef);
         }
     }
 

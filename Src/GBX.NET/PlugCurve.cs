@@ -10,8 +10,7 @@ namespace GBX.NET;
 /// </summary>
 public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
 {
-    private CFuncKeysReal? curve;
-    private GbxRefTableFile? curveFile;
+    private NodeRef<CFuncKeysReal> curveRef = new();
     private int count;
     private ushort flags;
     private byte flagsV1;
@@ -19,8 +18,15 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     private Vec2[]? values;
 
     /// <summary>Gets or sets the original legacy curve node.</summary>
-    public CFuncKeysReal? Curve { get => curve; set => curve = value; }
-    public GbxRefTableFile? CurveFile { get => curveFile; set => curveFile = value; }
+    public CFuncKeysReal? Curve { get => curveRef.Resolve(); set => curveRef.Node = value; }
+    public NodeRefView References => new(this);
+
+    public readonly struct NodeRefView
+    {
+        private readonly PlugCurve owner;
+        internal NodeRefView(PlugCurve owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> Curve => owner.curveRef;
+    }
     /// <summary>Gets or sets the inline curve format version.</summary>
     public int Version { get; set; } = 3;
     /// <summary>Gets or sets the serialized point count. Writing uses the length of <see cref="Values"/>.</summary>
@@ -40,18 +46,22 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     {
         if (version < 0)
         {
-            if (rw.Writer is not null && curve is null && curveFile is null && values is { Length: > 0 })
+            if (rw.Writer is not null && curveRef.Kind == NodeRefKind.None && values is { Length: > 0 })
             {
-                curve = useSimpleNode ? CreateSimpleNode() : CreateFunctionNode();
+                curveRef.Node = useSimpleNode ? CreateSimpleNode() : CreateFunctionNode();
             }
 
-            rw.NodeRef<CFuncKeysReal>(ref curve, ref curveFile);
+            rw.NodeRef(curveRef);
             if (rw.Reader is not null)
             {
                 ReadLegacyCurve();
             }
             return;
         }
+
+        if (rw.Writer is not null && curveRef.Descriptor is not null)
+            throw new NotSupportedException("An external legacy curve cannot be written as inline control points.");
+        if (rw.Reader is not null) curveRef.Node = null;
 
         rw.VersionInt32(this);
         count = rw.Int32(values?.Length ?? 0);
@@ -94,7 +104,8 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     /// <summary>Converts a legacy node to control points, preserving the original node. A null node produces an empty curve.</summary>
     public static implicit operator PlugCurve(CFuncKeysReal? node)
     {
-        var result = new PlugCurve { curve = node };
+        var result = new PlugCurve();
+        result.curveRef.Node = node;
         result.ReadLegacyCurve();
         return result;
     }
@@ -106,11 +117,11 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
         {
             return null;
         }
-        if (value.curve is null && value.curveFile is null && value.values is { Length: > 0 })
+        if (value.curveRef.Kind == NodeRefKind.None && value.values is { Length: > 0 })
         {
-            value.curve = value.CreateFunctionNode();
+            value.curveRef.Node = value.CreateFunctionNode();
         }
-        return value.curve;
+        return value.curveRef.Resolve();
     }
 
     private CPlugCurveSimpleNod CreateSimpleNode()
@@ -133,6 +144,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
 
     private void ReadLegacyCurve()
     {
+        var curve = curveRef.CachedNode;
         if (curve is CPlugCurveSimpleNod simple && simple.Chunks.Get<CPlugCurveSimpleNod.Chunk09185000>() is not null)
         {
             Version = simple.Curve.Version;
@@ -172,7 +184,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     {
         var clone = (PlugCurve)MemberwiseClone();
         context.Register(this, clone);
-        clone.curve = context.Clone(curve);
+        clone.curveRef = context.Clone(curveRef)!;
         clone.values = context.CloneArray(values);
         return clone;
     }

@@ -24,25 +24,25 @@ public class CPlugDecalModelLayoutTests
         writer.Write(version);
         if (version < 5)
         {
-            payload.Reference("Diffuse.Gbx");
-            payload.Reference("Normal.Gbx");
+            payload.NodeRef("Diffuse.Gbx");
+            payload.NodeRef("Normal.Gbx");
         }
         if (version >= 1) writer.Write(128f);
         if (version >= 2) writer.Write(false);
         if (version >= 3) writer.Write(0.25f);
-        if (version == 4) payload.Reference("Specular.Gbx");
+        if (version == 4) payload.NodeRef("Specular.Gbx");
         if (version >= 5)
         {
             foreach (var name in new[] { "Diffuse", "Normal", "Specular" })
             {
                 writer.Write(paths ? name + ".dds" : "");
-                if (!paths) payload.Reference(name + ".Gbx");
+                if (!paths) payload.NodeRef(name + ".Gbx");
             }
         }
         if (version >= 6)
         {
             writer.Write(paths ? "Roughness.dds" : "");
-            if (!paths) payload.Reference("Roughness.Gbx");
+            if (!paths) payload.NodeRef("Roughness.Gbx");
         }
         payload.Finish();
 
@@ -54,10 +54,10 @@ public class CPlugDecalModelLayoutTests
         await Assert.That(node.MaxAngleNCos).IsEqualTo(version >= 3 ? 0.25f : MathF.Cos(1.4835298f));
         if (!paths)
         {
-            await Assert.That(node.DiffuseAFile!.FilePath).IsEqualTo("Diffuse.Gbx");
-            await Assert.That(node.NormalFile!.FilePath).IsEqualTo("Normal.Gbx");
-            if (version >= 4) await Assert.That(node.SpecularFile!.FilePath).IsEqualTo("Specular.Gbx");
-            if (version >= 6) await Assert.That(node.RoughnessFile!.FilePath).IsEqualTo("Roughness.Gbx");
+            await Assert.That(node.References.DiffuseA.File!.FilePath).IsEqualTo("Diffuse.Gbx");
+            await Assert.That(node.References.Normal.File!.FilePath).IsEqualTo("Normal.Gbx");
+            if (version >= 4) await Assert.That(node.References.Specular.File!.FilePath).IsEqualTo("Specular.Gbx");
+            if (version >= 6) await Assert.That(node.References.Roughness.File!.FilePath).IsEqualTo("Roughness.Gbx");
         }
         else
         {
@@ -86,18 +86,18 @@ public class CPlugDecalModelLayoutTests
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
         writer.Write(version);
-        payload.Reference("Solid.Gbx");
+        payload.NodeRef("Solid.Gbx");
         writer.Write(false); // Random instances.
         if (version >= 2) writer.Write(0.75f);
         if (version >= 3)
         {
-            payload.Reference("Sprite.Gbx");
+            payload.NodeRef("Sprite.Gbx");
             writer.WriteIdAsString("SpriteGroup");
         }
         if (version >= 4)
         {
             writer.Write(svgPath ? "Decal.svg" : "");
-            if (!svgPath) payload.Reference("Svg.Gbx");
+            if (!svgPath) payload.NodeRef("Svg.Gbx");
         }
         if (version >= 5) writer.Write(2f);
         if (version >= 6) writer.Write(0.5f);
@@ -106,7 +106,7 @@ public class CPlugDecalModelLayoutTests
         {
             writer.WriteDeprecVersion();
             writer.Write(1); // Decal models.
-            payload.Reference("Decal.Gbx");
+            payload.NodeRef("Decal.Gbx");
             writer.Write(1); // Macro sets.
             writer.WriteIdAsString("Set");
             writer.Write(new BoxAligned(1, 2, 3, 4, 5, 6));
@@ -122,24 +122,24 @@ public class CPlugDecalModelLayoutTests
         var node = new CPlugDecalModel();
         var chunk = new CPlugDecalModel.Chunk090A7004();
         payload.Read(rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.SolidFile!.FilePath).IsEqualTo("Solid.Gbx");
+        await Assert.That(node.References.Solid.File!.FilePath).IsEqualTo("Solid.Gbx");
         await Assert.That(node.RandomInstances).IsFalse();
         await Assert.That(node.MaxAngleN3dCos).IsEqualTo(version >= 2 ? 0.75f : MathF.Cos(1.0471976f));
         if (version >= 3)
         {
-            await Assert.That(node.Sprite3dBitmapFile!.FilePath).IsEqualTo("Sprite.Gbx");
+            await Assert.That(node.References.Sprite3dBitmap.File!.FilePath).IsEqualTo("Sprite.Gbx");
             await Assert.That(node.Sprite3dGroupId).IsEqualTo("SpriteGroup");
         }
         if (version >= 4)
         {
             if (svgPath) await Assert.That(node.SvgRef).IsEqualTo("Decal.svg");
-            else await Assert.That(node.SvgFile!.FilePath).IsEqualTo("Svg.Gbx");
+            else await Assert.That(node.References.Svg.File!.FilePath).IsEqualTo("Svg.Gbx");
         }
         await Assert.That(node.SvgSize).IsEqualTo(version >= 5 ? 2f : 1f);
         await Assert.That(node.SvgAlpha).IsEqualTo(version >= 6 ? 0.5f : 1f);
         if (version >= 8)
         {
-            await Assert.That(node.DecalModels.Single().File!.FilePath).IsEqualTo("Decal.Gbx");
+            await Assert.That(node.DecalModels!.Get(0).File!.FilePath).IsEqualTo("Decal.Gbx");
             var set = node.MacroDecalSets.Single();
             await Assert.That(set.Id).IsEqualTo("Set");
             await Assert.That(set.Bounds).IsEqualTo(new BoxAligned(1, 2, 3, 4, 5, 6));

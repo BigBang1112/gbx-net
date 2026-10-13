@@ -192,7 +192,7 @@ public class CPlugTreeLayoutTests
         node.IsCustomBBox = false;
         await Assert.That(node.Flags).IsEqualTo((1UL << 60) | 0x1E80AUL);
 
-        node.ModelSolidFile = new GbxRefTableFile(new GbxRefTable(), 0, true, "Model.Solid.Gbx");
+        node.References.ModelSolid.Descriptor = new GbxRefTableFile(new GbxRefTable(), 0, true, "Model.Solid.Gbx");
         await Assert.That(node.HasModel).IsTrue();
     }
 

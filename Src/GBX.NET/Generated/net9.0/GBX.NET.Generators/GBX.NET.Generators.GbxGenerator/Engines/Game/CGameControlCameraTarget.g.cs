@@ -34,6 +34,8 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     [Hexadecimal]
     public static new uint Id => 0x03072000;
 
+    internal override uint GetId() => Id;
+
     private Iso4 location;
     [AppliedWithChunk<Chunk03072001>]
     public Iso4 Location

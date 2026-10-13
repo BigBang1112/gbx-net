@@ -34,6 +34,8 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090A2000;
 
+    internal override uint GetId() => Id;
+
     private string? treeId;
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
@@ -45,26 +47,26 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         set => this.treeId = value;
     }
 
-    private CPlugMaterial? material;
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
     public CPlugMaterial? Material
     {
-        get => this.material;
-        set => this.material = value;
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
-    private CPlugTreeLight? treeLight;
+    private NodeRef<CPlugTreeLight>? treeLightRef;
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
     public CPlugTreeLight? TreeLight
     {
-        get => this.treeLight;
-        set => this.treeLight = value;
+        get => treeLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref treeLightRef, value);
     }
 
     private int visibleCond;
@@ -149,12 +151,28 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         set => this.collidableCond = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugDecoratorTree owner;
+        internal NodeRefView(CPlugDecoratorTree owner) => this.owner = owner;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+        public NodeRef<CPlugTreeLight> TreeLight => NodeRef.GetOrCreate(ref owner.treeLightRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield return new("TreeLight", NodeRef.GetOrCreate(ref treeLightRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugDecoratorTree)clone).treeId = context.Clone(this.treeId)!;
-        ((CPlugDecoratorTree)clone).material = context.Clone(this.material)!;
-        ((CPlugDecoratorTree)clone).treeLight = context.Clone(this.treeLight)!;
+        ((CPlugDecoratorTree)clone).materialRef = context.Clone(this.materialRef)!;
+        ((CPlugDecoratorTree)clone).treeLightRef = context.Clone(this.treeLightRef)!;
         ((CPlugDecoratorTree)clone).visibleCond = context.Clone(this.visibleCond)!;
         ((CPlugDecoratorTree)clone).visibleApplyOnChilds = context.Clone(this.visibleApplyOnChilds)!;
         ((CPlugDecoratorTree)clone).shadowCasterCond = context.Clone(this.shadowCasterCond)!;
@@ -184,8 +202,8 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
             rw.Id(ref n.treeId);
-            rw.NodeRef<CPlugMaterial>(ref n.material);
-            rw.NodeRef<CPlugTreeLight>(ref n.treeLight);
+            rw.NodeRef(ref n.materialRef);
+            rw.NodeRef(ref n.treeLightRef);
             rw.Int32(ref n.visibleCond);
             rw.Boolean(ref n.visibleApplyOnChilds);
             rw.Int32(ref n.shadowCasterCond);
@@ -207,8 +225,8 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
             rw.Id(ref n.treeId);
-            rw.NodeRef<CPlugMaterial>(ref n.material);
-            rw.NodeRef<CPlugTreeLight>(ref n.treeLight);
+            rw.NodeRef(ref n.materialRef);
+            rw.NodeRef(ref n.treeLightRef);
             rw.Int32(ref n.existCond);
             rw.Int32(ref n.visibleCond);
             rw.Boolean(ref n.visibleApplyOnChilds);

@@ -34,6 +34,8 @@ public partial class CGameUserFileList : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x031B7000;
 
+    internal override uint GetId() => Id;
+
     private FileInfo[]? files;
     [AppliedWithChunk<Chunk031B7000>]
     public FileInfo[]? Files

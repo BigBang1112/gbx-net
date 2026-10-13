@@ -34,6 +34,8 @@ public partial class NPlugDynaObjectModel_SInstanceParams : SMetaPtr, IClass, IR
     [Hexadecimal]
     public static new uint Id => 0x2F0B6000;
 
+    internal override uint GetId() => Id;
+
     private float periodSc;
     public float PeriodSc
     {

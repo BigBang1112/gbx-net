@@ -34,6 +34,8 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09105000;
 
+    internal override uint GetId() => Id;
+
     private float uVScale;
     [AppliedWithChunk<Chunk09105001>]
     public float UVScale
@@ -138,12 +140,12 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         set => this.helix_MaxHelixCount = value;
     }
 
-    private External<CPlugMaterial>[]? additionalMaterials;
+    private NodeRefList<CPlugMaterial>? additionalMaterials;
     [AppliedWithChunk<Chunk09105001>(7)]
-    public External<CPlugMaterial>[]? AdditionalMaterials
+    public NodeRefList<CPlugMaterial>? AdditionalMaterials
     {
-        get => this.additionalMaterials;
-        set => this.additionalMaterials = value;
+        get => additionalMaterials;
+        set => additionalMaterials = value;
     }
 
     private float lightningDistStep;
@@ -346,22 +348,13 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         set => this.materialPath = value;
     }
 
-    private CPlugMaterial? material;
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk09105002>]
     public CPlugMaterial? Material
     {
-        get => this.materialFile?.GetNode(ref this.material) ?? this.material;
-        set => this.material = value;
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
-    private Components.GbxRefTableFile? materialFile;
-
-    public Components.GbxRefTableFile? MaterialFile
-    {
-        get => materialFile;
-        set => materialFile = value;
-    }
-
-    public CPlugMaterial? GetMaterial(GbxReadSettings settings = default, bool exceptions = false) => materialFile?.GetNode(ref material, settings, exceptions) ?? material;
 
     private float radius;
     [AppliedWithChunk<Chunk09105002>]
@@ -539,6 +532,24 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         set => this.sharpStartOffset = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBeamEmitterSubModel owner;
+        internal NodeRefView(CPlugBeamEmitterSubModel owner) => this.owner = owner;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (additionalMaterials is not null)
+        {
+            for (var i = 0; i < additionalMaterials.Count; i++) yield return new("AdditionalMaterials" + "[" + i + "]", additionalMaterials.Get(i));
+        }
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -555,7 +566,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         ((CPlugBeamEmitterSubModel)clone).helix_DistLOD = context.Clone(this.helix_DistLOD)!;
         ((CPlugBeamEmitterSubModel)clone).helix_CoeffLowDef = context.Clone(this.helix_CoeffLowDef)!;
         ((CPlugBeamEmitterSubModel)clone).helix_MaxHelixCount = context.Clone(this.helix_MaxHelixCount)!;
-        ((CPlugBeamEmitterSubModel)clone).additionalMaterials = context.CloneArray(this.additionalMaterials)!;
+        ((CPlugBeamEmitterSubModel)clone).additionalMaterials = context.Clone(this.additionalMaterials)!;
         ((CPlugBeamEmitterSubModel)clone).lightningDistStep = context.Clone(this.lightningDistStep)!;
         ((CPlugBeamEmitterSubModel)clone).lightningMaxJitterDistPerStep = context.Clone(this.lightningMaxJitterDistPerStep)!;
         ((CPlugBeamEmitterSubModel)clone).lightningJitterRadius = context.Clone(this.lightningJitterRadius)!;
@@ -581,7 +592,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         ((CPlugBeamEmitterSubModel)clone).beamWithSpheres_EndDistance = context.Clone(this.beamWithSpheres_EndDistance)!;
         ((CPlugBeamEmitterSubModel)clone).beamWithSpheres_Speed = context.Clone(this.beamWithSpheres_Speed)!;
         ((CPlugBeamEmitterSubModel)clone).materialPath = context.Clone(this.materialPath)!;
-        ((CPlugBeamEmitterSubModel)clone).material = context.Clone(this.material)!;
+        ((CPlugBeamEmitterSubModel)clone).materialRef = context.Clone(this.materialRef)!;
         ((CPlugBeamEmitterSubModel)clone).radius = context.Clone(this.radius)!;
         ((CPlugBeamEmitterSubModel)clone).displayType = context.Clone(this.displayType)!;
         ((CPlugBeamEmitterSubModel)clone).startOffsetAtEndLife = context.Clone(this.startOffsetAtEndLife)!;
@@ -684,7 +695,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
             {
                 if (Version <= 9)
                 {
-                    rw.ArrayNodeRef<CPlugMaterial>(ref n.additionalMaterials!);
+                    n.additionalMaterials = rw.ListNodeRef<CPlugMaterial>(n.additionalMaterials);
                 }
             }
 
@@ -713,7 +724,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
                 }
                 else
                 {
-                    rw.ArrayNodeRef<CPlugMaterial>(ref n.additionalMaterials!);
+                    n.additionalMaterials = rw.ListNodeRef<CPlugMaterial>(n.additionalMaterials);
                 }
             }
 
@@ -795,7 +806,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
             }
             else
             {
-                rw.NodeRef<CPlugMaterial>(ref n.material, ref n.materialFile);
+                rw.NodeRef(ref n.materialRef);
             }
 
             rw.Single(ref n.radius);

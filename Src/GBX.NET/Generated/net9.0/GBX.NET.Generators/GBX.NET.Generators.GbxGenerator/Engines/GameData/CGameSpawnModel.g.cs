@@ -34,6 +34,8 @@ public partial class CGameSpawnModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E00E000;
 
+    internal override uint GetId() => Id;
+
     private Iso4 loc;
     [AppliedWithChunk<Chunk2E00E000>]
     public Iso4 Loc

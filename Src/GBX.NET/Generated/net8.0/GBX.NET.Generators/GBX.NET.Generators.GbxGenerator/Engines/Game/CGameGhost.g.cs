@@ -37,6 +37,8 @@ public partial class CGameGhost : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0303F000;
 
+    internal override uint GetId() => Id;
+
     private uint? savedMobilClassId;
     [AppliedWithChunk<Chunk0303F004>]
     public uint? SavedMobilClassId

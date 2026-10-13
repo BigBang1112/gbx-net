@@ -2,4 +2,4 @@ CGamePodiumInfo 0x03168000
 
 0x000 [MP3, TMT, MP4]
   version
-  CMwNod[] MediaClipFids (external)
+  CMwNod[] MediaClipFids

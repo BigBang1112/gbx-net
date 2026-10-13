@@ -34,14 +34,16 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     [Hexadecimal]
     public static new uint Id => 0x09026000;
 
-    private CPlugBitmapAddress[] bitmapAddresses = default!;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugBitmapAddress>? bitmapAddresses = new();
     [AppliedWithChunk<Chunk09026000>]
     [AppliedWithChunk<Chunk09026001>]
     [AppliedWithChunk<Chunk09026002>]
-    public CPlugBitmapAddress[] BitmapAddresses
+    public NodeRefList<CPlugBitmapAddress>? BitmapAddresses
     {
-        get => this.bitmapAddresses;
-        set => this.bitmapAddresses = value;
+        get => bitmapAddresses;
+        set => bitmapAddresses = value;
     }
 
     private uint legacyAlphaFlags;
@@ -111,12 +113,12 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         set => this.applyField3 = value;
     }
 
-    private CPlugBitmapAddress[] unusedBitmapAddresses = default!;
+    private NodeRefList<CPlugBitmapAddress>? unusedBitmapAddresses = new();
     [AppliedWithChunk<Chunk0902600C>]
-    public CPlugBitmapAddress[] UnusedBitmapAddresses
+    public NodeRefList<CPlugBitmapAddress>? UnusedBitmapAddresses
     {
-        get => this.unusedBitmapAddresses;
-        set => this.unusedBitmapAddresses = value;
+        get => unusedBitmapAddresses;
+        set => unusedBitmapAddresses = value;
     }
 
     private byte applyFlags;
@@ -127,22 +129,13 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         set => this.applyFlags = value;
     }
 
-    private CPlugBitmapApplyArray? bitmapApplyArray;
+    private NodeRef<CPlugBitmapApplyArray>? bitmapApplyArrayRef;
     [AppliedWithChunk<Chunk09026011>]
     public CPlugBitmapApplyArray? BitmapApplyArray
     {
-        get => this.bitmapApplyArrayFile?.GetNode(ref this.bitmapApplyArray) ?? this.bitmapApplyArray;
-        set => this.bitmapApplyArray = value;
+        get => bitmapApplyArrayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapApplyArrayRef, value);
     }
-    private Components.GbxRefTableFile? bitmapApplyArrayFile;
-
-    public Components.GbxRefTableFile? BitmapApplyArrayFile
-    {
-        get => bitmapApplyArrayFile;
-        set => bitmapApplyArrayFile = value;
-    }
-
-    public CPlugBitmapApplyArray? GetBitmapApplyArray(GbxReadSettings settings = default, bool exceptions = false) => bitmapApplyArrayFile?.GetNode(ref bitmapApplyArray, settings, exceptions) ?? bitmapApplyArray;
 
     private uint legacyMaterialFlags0;
     [AppliedWithChunk<Chunk09063000>]
@@ -162,54 +155,54 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         set => this.envMapTexOp = value;
     }
 
-    private CPlugBitmapAddress? diffuse;
+    private NodeRef<CPlugBitmapAddress>? diffuseRef;
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public CPlugBitmapAddress? Diffuse
     {
-        get => this.diffuse;
-        set => this.diffuse = value;
+        get => diffuseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref diffuseRef, value);
     }
 
-    private CPlugBitmapAddress? lightMap;
+    private NodeRef<CPlugBitmapAddress>? lightMapRef;
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public CPlugBitmapAddress? LightMap
     {
-        get => this.lightMap;
-        set => this.lightMap = value;
+        get => lightMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lightMapRef, value);
     }
 
-    private CPlugBitmapAddress? bumpMap;
+    private NodeRef<CPlugBitmapAddress>? bumpMapRef;
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public CPlugBitmapAddress? BumpMap
     {
-        get => this.bumpMap;
-        set => this.bumpMap = value;
+        get => bumpMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bumpMapRef, value);
     }
 
-    private CPlugBitmapAddress? selfIllum;
+    private NodeRef<CPlugBitmapAddress>? selfIllumRef;
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public CPlugBitmapAddress? SelfIllum
     {
-        get => this.selfIllum;
-        set => this.selfIllum = value;
+        get => selfIllumRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref selfIllumRef, value);
     }
 
-    private CPlugBitmapAddress? envMap;
+    private NodeRef<CPlugBitmapAddress>? envMapRef;
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public CPlugBitmapAddress? EnvMap
     {
-        get => this.envMap;
-        set => this.envMap = value;
+        get => envMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref envMapRef, value);
     }
 
     private uint legacyMaterialFlags;
@@ -221,26 +214,62 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         set => this.legacyMaterialFlags = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CPlugShaderApply owner;
+        internal NodeRefView(CPlugShaderApply owner) => this.owner = owner;
+        public NodeRef<CPlugBitmapApplyArray> BitmapApplyArray => NodeRef.GetOrCreate(ref owner.bitmapApplyArrayRef);
+        public NodeRef<CPlugBitmapAddress> Diffuse => NodeRef.GetOrCreate(ref owner.diffuseRef);
+        public NodeRef<CPlugBitmapAddress> LightMap => NodeRef.GetOrCreate(ref owner.lightMapRef);
+        public NodeRef<CPlugBitmapAddress> BumpMap => NodeRef.GetOrCreate(ref owner.bumpMapRef);
+        public NodeRef<CPlugBitmapAddress> SelfIllum => NodeRef.GetOrCreate(ref owner.selfIllumRef);
+        public NodeRef<CPlugBitmapAddress> EnvMap => NodeRef.GetOrCreate(ref owner.envMapRef);
+        public NodeRef<CFuncShader> FuncShader => ((CPlugShaderGeneric)owner).References.FuncShader;
+        public NodeRef<CPlugBitmapApply> SolidWiredApply => ((CPlugShaderGeneric)owner).References.SolidWiredApply;
+        public NodeRef<CPlugMaterialFx> MaterialFx => ((CPlugShaderGeneric)owner).References.MaterialFx;
+        public NodeRef<CPlugFileGPUV> GPU => ((CPlugShaderGeneric)owner).References.GPU;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (bitmapAddresses is not null)
+        {
+            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.Get(i));
+        }
+        if (unusedBitmapAddresses is not null)
+        {
+            for (var i = 0; i < unusedBitmapAddresses.Count; i++) yield return new("UnusedBitmapAddresses" + "[" + i + "]", unusedBitmapAddresses.Get(i));
+        }
+        yield return new("BitmapApplyArray", NodeRef.GetOrCreate(ref bitmapApplyArrayRef));
+        yield return new("Diffuse", NodeRef.GetOrCreate(ref diffuseRef));
+        yield return new("LightMap", NodeRef.GetOrCreate(ref lightMapRef));
+        yield return new("BumpMap", NodeRef.GetOrCreate(ref bumpMapRef));
+        yield return new("SelfIllum", NodeRef.GetOrCreate(ref selfIllumRef));
+        yield return new("EnvMap", NodeRef.GetOrCreate(ref envMapRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugShaderApply)clone).bitmapAddresses = context.CloneArray(this.bitmapAddresses)!;
+        ((CPlugShaderApply)clone).bitmapAddresses = context.Clone(this.bitmapAddresses)!;
         ((CPlugShaderApply)clone).legacyAlphaFlags = context.Clone(this.legacyAlphaFlags)!;
         ((CPlugShaderApply)clone).legacyApplyField = context.Clone(this.legacyApplyField)!;
         ((CPlugShaderApply)clone).texOpConstant = context.Clone(this.texOpConstant)!;
         ((CPlugShaderApply)clone).applyField = context.Clone(this.applyField)!;
         ((CPlugShaderApply)clone).applyField2 = context.Clone(this.applyField2)!;
         ((CPlugShaderApply)clone).applyField3 = context.Clone(this.applyField3)!;
-        ((CPlugShaderApply)clone).unusedBitmapAddresses = context.CloneArray(this.unusedBitmapAddresses)!;
+        ((CPlugShaderApply)clone).unusedBitmapAddresses = context.Clone(this.unusedBitmapAddresses)!;
         ((CPlugShaderApply)clone).applyFlags = context.Clone(this.applyFlags)!;
-        ((CPlugShaderApply)clone).bitmapApplyArray = context.Clone(this.bitmapApplyArray)!;
+        ((CPlugShaderApply)clone).bitmapApplyArrayRef = context.Clone(this.bitmapApplyArrayRef)!;
         ((CPlugShaderApply)clone).legacyMaterialFlags0 = context.Clone(this.legacyMaterialFlags0)!;
         ((CPlugShaderApply)clone).envMapTexOp = context.Clone(this.envMapTexOp)!;
-        ((CPlugShaderApply)clone).diffuse = context.Clone(this.diffuse)!;
-        ((CPlugShaderApply)clone).lightMap = context.Clone(this.lightMap)!;
-        ((CPlugShaderApply)clone).bumpMap = context.Clone(this.bumpMap)!;
-        ((CPlugShaderApply)clone).selfIllum = context.Clone(this.selfIllum)!;
-        ((CPlugShaderApply)clone).envMap = context.Clone(this.envMap)!;
+        ((CPlugShaderApply)clone).diffuseRef = context.Clone(this.diffuseRef)!;
+        ((CPlugShaderApply)clone).lightMapRef = context.Clone(this.lightMapRef)!;
+        ((CPlugShaderApply)clone).bumpMapRef = context.Clone(this.bumpMapRef)!;
+        ((CPlugShaderApply)clone).selfIllumRef = context.Clone(this.selfIllumRef)!;
+        ((CPlugShaderApply)clone).envMapRef = context.Clone(this.envMapRef)!;
         ((CPlugShaderApply)clone).legacyMaterialFlags = context.Clone(this.legacyMaterialFlags)!;
     }
 
@@ -285,7 +314,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         {
             n.BlendSrc = rw.Int32(n.BlendSrc);
             n.BlendDst = rw.Int32(n.BlendDst);
-            rw.ArrayNodeRef<CPlugBitmapAddress>(ref n.bitmapAddresses!);
+            n.bitmapAddresses = rw.ListNodeRef<CPlugBitmapAddress>(n.bitmapAddresses);
         }
     }
 
@@ -325,7 +354,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CPlugBitmapAddress>(ref n.bitmapAddresses!);
+            n.bitmapAddresses = rw.ListNodeRef<CPlugBitmapAddress>(n.bitmapAddresses);
         }
     }
 
@@ -472,7 +501,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
 
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugBitmapAddress>(ref n.unusedBitmapAddresses!);
+            n.unusedBitmapAddresses = rw.ListNodeRef_deprec<CPlugBitmapAddress>(n.unusedBitmapAddresses);
         }
     }
 
@@ -529,7 +558,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugBitmapApplyArray>(ref n.bitmapApplyArray, ref n.bitmapApplyArrayFile);
+            rw.NodeRef(ref n.bitmapApplyArrayRef);
         }
     }
 
@@ -583,11 +612,11 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         {
             rw.DataUInt32(ref n.legacyMaterialFlags0);
             rw.Int32(ref n.envMapTexOp);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.diffuse);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.lightMap);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.bumpMap);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.selfIllum);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.envMap);
+            rw.NodeRef(ref n.diffuseRef);
+            rw.NodeRef(ref n.lightMapRef);
+            rw.NodeRef(ref n.bumpMapRef);
+            rw.NodeRef(ref n.selfIllumRef);
+            rw.NodeRef(ref n.envMapRef);
         }
     }
 
@@ -605,11 +634,11 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         {
             rw.DataUInt32(ref n.legacyMaterialFlags);
             rw.Int32(ref n.envMapTexOp);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.diffuse);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.lightMap);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.bumpMap);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.selfIllum);
-            rw.NodeRef<CPlugBitmapAddress>(ref n.envMap);
+            rw.NodeRef(ref n.diffuseRef);
+            rw.NodeRef(ref n.lightMapRef);
+            rw.NodeRef(ref n.bumpMapRef);
+            rw.NodeRef(ref n.selfIllumRef);
+            rw.NodeRef(ref n.envMapRef);
         }
     }
 

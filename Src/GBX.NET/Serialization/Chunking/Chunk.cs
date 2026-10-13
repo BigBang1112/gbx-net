@@ -36,6 +36,7 @@ public abstract class Chunk : IReadableWritableChunk
 
     public virtual bool Ignore => false;
     public virtual GameVersion GameVersion => GameVersion.Unspecified;
+    public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences() => [];
 
     /// <inheritdoc />
     public virtual void ReadWrite(IClass n, GbxReaderWriter rw)

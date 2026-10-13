@@ -34,6 +34,8 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0802D000;
 
+    internal override uint GetId() => Id;
+
     private TimeInt32 period = new TimeInt32(10000);
     [AppliedWithChunk<Chunk0802D000>]
     public TimeInt32 Period

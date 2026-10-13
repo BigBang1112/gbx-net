@@ -34,6 +34,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B0000;
 
+    internal override uint GetId() => Id;
+
     private int skelVersion;
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int SkelVersion
@@ -219,44 +221,44 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.legacyClips = value;
     }
 
-    private CPlugAnimPoseGroup[]? poseGroups;
+    private NodeRefList<CPlugAnimPoseGroup>? poseGroups;
     [AppliedWithChunk<Chunk090B0003>(4)]
-    public CPlugAnimPoseGroup[]? PoseGroups
+    public NodeRefList<CPlugAnimPoseGroup>? PoseGroups
     {
-        get => this.poseGroups;
-        set => this.poseGroups = value;
+        get => poseGroups;
+        set => poseGroups = value;
     }
 
-    private CPlugAnimPoseGrid[]? poseGrids;
+    private NodeRefList<CPlugAnimPoseGrid>? poseGrids;
     [AppliedWithChunk<Chunk090B0003>(4)]
-    public CPlugAnimPoseGrid[]? PoseGrids
+    public NodeRefList<CPlugAnimPoseGrid>? PoseGrids
     {
-        get => this.poseGrids;
-        set => this.poseGrids = value;
+        get => poseGrids;
+        set => poseGrids = value;
     }
 
-    private CPlugAnimGraph[]? graphs;
+    private NodeRefList<CPlugAnimGraph>? graphs;
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
-    public CPlugAnimGraph[]? Graphs
+    public NodeRefList<CPlugAnimGraph>? Graphs
     {
-        get => this.graphs;
-        set => this.graphs = value;
+        get => graphs;
+        set => graphs = value;
     }
 
-    private CPlugAnimGraphStack[]? graphStacks;
+    private NodeRefList<CPlugAnimGraphStack>? graphStacks;
     [AppliedWithChunk<Chunk090B0003>(4)]
-    public CPlugAnimGraphStack[]? GraphStacks
+    public NodeRefList<CPlugAnimGraphStack>? GraphStacks
     {
-        get => this.graphStacks;
-        set => this.graphStacks = value;
+        get => graphStacks;
+        set => graphStacks = value;
     }
 
-    private CPlugAnimVariantGroup[]? variantGroups;
+    private NodeRefList<CPlugAnimVariantGroup>? variantGroups;
     [AppliedWithChunk<Chunk090B0003>(5)]
-    public CPlugAnimVariantGroup[]? VariantGroups
+    public NodeRefList<CPlugAnimVariantGroup>? VariantGroups
     {
-        get => this.variantGroups;
-        set => this.variantGroups = value;
+        get => variantGroups;
+        set => variantGroups = value;
     }
 
     private CPlugAnimSpotModel[]? spots;
@@ -267,12 +269,12 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.spots = value;
     }
 
-    private CPlugAnimSkelEditionPose[]? editionPoses;
+    private NodeRefList<CPlugAnimSkelEditionPose>? editionPoses;
     [AppliedWithChunk<Chunk090B0003>(8, 9)]
-    public CPlugAnimSkelEditionPose[]? EditionPoses
+    public NodeRefList<CPlugAnimSkelEditionPose>? EditionPoses
     {
-        get => this.editionPoses;
-        set => this.editionPoses = value;
+        get => editionPoses;
+        set => editionPoses = value;
     }
 
     private int legacyData;
@@ -299,12 +301,45 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.updateString = value;
     }
 
-    private CPlugAnimClip[]? clips;
+    private NodeRefList<CPlugAnimClip>? clips;
     [AppliedWithChunk<Chunk090B0003>(10)]
-    public CPlugAnimClip[]? Clips
+    public NodeRefList<CPlugAnimClip>? Clips
     {
-        get => this.clips;
-        set => this.clips = value;
+        get => clips;
+        set => clips = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (poseGroups is not null)
+        {
+            for (var i = 0; i < poseGroups.Count; i++) yield return new("PoseGroups" + "[" + i + "]", poseGroups.Get(i));
+        }
+        if (poseGrids is not null)
+        {
+            for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.Get(i));
+        }
+        if (graphs is not null)
+        {
+            for (var i = 0; i < graphs.Count; i++) yield return new("Graphs" + "[" + i + "]", graphs.Get(i));
+        }
+        if (graphStacks is not null)
+        {
+            for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.Get(i));
+        }
+        if (variantGroups is not null)
+        {
+            for (var i = 0; i < variantGroups.Count; i++) yield return new("VariantGroups" + "[" + i + "]", variantGroups.Get(i));
+        }
+        if (editionPoses is not null)
+        {
+            for (var i = 0; i < editionPoses.Count; i++) yield return new("EditionPoses" + "[" + i + "]", editionPoses.Get(i));
+        }
+        if (clips is not null)
+        {
+            for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -333,17 +368,17 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).bakedClips = context.CloneArray(this.bakedClips)!;
         ((CPlugAnimFile)clone).editionClips = context.CloneArray(this.editionClips)!;
         ((CPlugAnimFile)clone).legacyClips = context.CloneArray(this.legacyClips)!;
-        ((CPlugAnimFile)clone).poseGroups = context.CloneArray(this.poseGroups)!;
-        ((CPlugAnimFile)clone).poseGrids = context.CloneArray(this.poseGrids)!;
-        ((CPlugAnimFile)clone).graphs = context.CloneArray(this.graphs)!;
-        ((CPlugAnimFile)clone).graphStacks = context.CloneArray(this.graphStacks)!;
-        ((CPlugAnimFile)clone).variantGroups = context.CloneArray(this.variantGroups)!;
+        ((CPlugAnimFile)clone).poseGroups = context.Clone(this.poseGroups)!;
+        ((CPlugAnimFile)clone).poseGrids = context.Clone(this.poseGrids)!;
+        ((CPlugAnimFile)clone).graphs = context.Clone(this.graphs)!;
+        ((CPlugAnimFile)clone).graphStacks = context.Clone(this.graphStacks)!;
+        ((CPlugAnimFile)clone).variantGroups = context.Clone(this.variantGroups)!;
         ((CPlugAnimFile)clone).spots = context.CloneArray(this.spots)!;
-        ((CPlugAnimFile)clone).editionPoses = context.CloneArray(this.editionPoses)!;
+        ((CPlugAnimFile)clone).editionPoses = context.Clone(this.editionPoses)!;
         ((CPlugAnimFile)clone).legacyData = context.Clone(this.legacyData)!;
         ((CPlugAnimFile)clone).importString = context.Clone(this.importString)!;
         ((CPlugAnimFile)clone).updateString = context.Clone(this.updateString)!;
-        ((CPlugAnimFile)clone).clips = context.CloneArray(this.clips)!;
+        ((CPlugAnimFile)clone).clips = context.Clone(this.clips)!;
     }
 
     public CPlugAnimFile()
@@ -452,14 +487,14 @@ public partial class CPlugAnimFile : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.ArrayNodeRef<CPlugAnimPoseGroup>(ref n.poseGroups!);
-                    rw.ArrayNodeRef<CPlugAnimPoseGrid>(ref n.poseGrids!);
-                    rw.ArrayNodeRef<CPlugAnimGraph>(ref n.graphs!);
-                    rw.ArrayNodeRef<CPlugAnimGraphStack>(ref n.graphStacks!);
+                    n.poseGroups = rw.ListNodeRef<CPlugAnimPoseGroup>(n.poseGroups);
+                    n.poseGrids = rw.ListNodeRef<CPlugAnimPoseGrid>(n.poseGrids);
+                    n.graphs = rw.ListNodeRef<CPlugAnimGraph>(n.graphs);
+                    n.graphStacks = rw.ListNodeRef<CPlugAnimGraphStack>(n.graphStacks);
 
                     if (Version >= 5)
                     {
-                        rw.ArrayNodeRef<CPlugAnimVariantGroup>(ref n.variantGroups!);
+                        n.variantGroups = rw.ListNodeRef<CPlugAnimVariantGroup>(n.variantGroups);
 
                         if (Version >= 6)
                         {
@@ -467,7 +502,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
 
                             if (Version >= 8)
                             {
-                                rw.ArrayNodeRef<CPlugAnimSkelEditionPose>(ref n.editionPoses!);
+                                n.editionPoses = rw.ListNodeRef<CPlugAnimSkelEditionPose>(n.editionPoses);
                             }
                         }
                     }
@@ -492,11 +527,11 @@ public partial class CPlugAnimFile : CMwNod, IClass
                     rw.ArrayNodeRef<CPlugSkel>(ref n.skels!);
                 }
 
-                rw.ArrayNodeRef<CPlugAnimClip>(ref n.clips!);
-                rw.ArrayNodeRef<CPlugAnimVariantGroup>(ref n.variantGroups!);
-                rw.ArrayNodeRef<CPlugAnimPoseGroup>(ref n.poseGroups!);
-                rw.ArrayNodeRef<CPlugAnimPoseGrid>(ref n.poseGrids!);
-                rw.ArrayNodeRef<CPlugAnimGraphStack>(ref n.graphStacks!);
+                n.clips = rw.ListNodeRef<CPlugAnimClip>(n.clips);
+                n.variantGroups = rw.ListNodeRef<CPlugAnimVariantGroup>(n.variantGroups);
+                n.poseGroups = rw.ListNodeRef<CPlugAnimPoseGroup>(n.poseGroups);
+                n.poseGrids = rw.ListNodeRef<CPlugAnimPoseGrid>(n.poseGrids);
+                n.graphStacks = rw.ListNodeRef<CPlugAnimGraphStack>(n.graphStacks);
                 rw.Int32(ref n.spotVersion);
                 rw.ArrayReadableWritable<CPlugAnimSpotModel>(ref n.spots!, version: n. SpotVersion);
                 rw.String(ref n.importString);

@@ -34,6 +34,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     [Hexadecimal]
     public static new uint Id => 0x09107000;
 
+    internal override uint GetId() => Id;
+
     private string? bulletName;
     public string? BulletName
     {
@@ -41,18 +43,18 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.bulletName = value;
     }
 
-    private CPlugBeamEmitterSubModel[]? u01;
-    public CPlugBeamEmitterSubModel[]? U01
+    private NodeRefList<CPlugBeamEmitterSubModel>? u01;
+    public NodeRefList<CPlugBeamEmitterSubModel>? U01
     {
-        get => this.u01;
-        set => this.u01 = value;
+        get => u01;
+        set => u01 = value;
     }
 
-    private CPlugParticleEmitterSubModel[]? u02;
-    public CPlugParticleEmitterSubModel[]? U02
+    private NodeRefList<CPlugParticleEmitterSubModel>? u02;
+    public NodeRefList<CPlugParticleEmitterSubModel>? U02
     {
-        get => this.u02;
-        set => this.u02 = value;
+        get => u02;
+        set => u02 = value;
     }
 
     private string? u03;
@@ -195,11 +197,11 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.u15 = value;
     }
 
-    private CFuncKeysReal? damageAttenuationFromDist;
+    private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
     public CFuncKeysReal? DamageAttenuationFromDist
     {
-        get => this.damageAttenuationFromDist;
-        set => this.damageAttenuationFromDist = value;
+        get => damageAttenuationFromDistRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref damageAttenuationFromDistRef, value);
     }
 
     private float maxDistance;
@@ -244,12 +246,34 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.laserShowAdvancedCrosshair = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugCustomBeamModel owner;
+        internal NodeRefView(CPlugCustomBeamModel owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (u01 is not null)
+        {
+            for (var i = 0; i < u01.Count; i++) yield return new("U01" + "[" + i + "]", u01.Get(i));
+        }
+        if (u02 is not null)
+        {
+            for (var i = 0; i < u02.Count; i++) yield return new("U02" + "[" + i + "]", u02.Get(i));
+        }
+        yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugCustomBeamModel)clone).bulletName = context.Clone(this.bulletName)!;
-        ((CPlugCustomBeamModel)clone).u01 = context.CloneArray(this.u01)!;
-        ((CPlugCustomBeamModel)clone).u02 = context.CloneArray(this.u02)!;
+        ((CPlugCustomBeamModel)clone).u01 = context.Clone(this.u01)!;
+        ((CPlugCustomBeamModel)clone).u02 = context.Clone(this.u02)!;
         ((CPlugCustomBeamModel)clone).u03 = context.Clone(this.u03)!;
         ((CPlugCustomBeamModel)clone).u04 = context.Clone(this.u04)!;
         ((CPlugCustomBeamModel)clone).u05 = context.Clone(this.u05)!;
@@ -270,7 +294,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         ((CPlugCustomBeamModel)clone).damageAttenuationWithDist = context.Clone(this.damageAttenuationWithDist)!;
         ((CPlugCustomBeamModel)clone).u14 = context.Clone(this.u14)!;
         ((CPlugCustomBeamModel)clone).u15 = context.Clone(this.u15)!;
-        ((CPlugCustomBeamModel)clone).damageAttenuationFromDist = context.Clone(this.damageAttenuationFromDist)!;
+        ((CPlugCustomBeamModel)clone).damageAttenuationFromDistRef = context.Clone(this.damageAttenuationFromDistRef)!;
         ((CPlugCustomBeamModel)clone).maxDistance = context.Clone(this.maxDistance)!;
         ((CPlugCustomBeamModel)clone).u16 = context.Clone(this.u16)!;
         ((CPlugCustomBeamModel)clone).laserRadius = context.Clone(this.laserRadius)!;
@@ -286,8 +310,8 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.String(ref this.bulletName);
-        rw.ArrayNodeRef_deprec<CPlugBeamEmitterSubModel>(ref this.u01!);
-        rw.ArrayNodeRef_deprec<CPlugParticleEmitterSubModel>(ref this.u02!);
+        this.u01 = rw.ListNodeRef_deprec<CPlugBeamEmitterSubModel>(this.u01);
+        this.u02 = rw.ListNodeRef_deprec<CPlugParticleEmitterSubModel>(this.u02);
         rw.Id(ref this.u03);
         rw.Id(ref this.u04);
         rw.Id(ref this.u05);
@@ -341,7 +365,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
 
                                                 if (v >= 11)
                                                 {
-                                                    rw.NodeRef<CFuncKeysReal>(ref this.damageAttenuationFromDist);
+                                                    rw.NodeRef(ref this.damageAttenuationFromDistRef);
 
                                                     if (v >= 12)
                                                     {

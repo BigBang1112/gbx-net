@@ -34,18 +34,36 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x09091000;
 
-    private CPlugShader? shaderToForce;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugShader>? shaderToForceRef;
     [AppliedWithChunk<Chunk09091000>]
     public CPlugShader? ShaderToForce
     {
-        get => this.shaderToForce;
-        set => this.shaderToForce = value;
+        get => shaderToForceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderToForceRef, value);
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapRenderSub owner;
+        internal NodeRefView(CPlugBitmapRenderSub owner) => this.owner = owner;
+        public NodeRef<CPlugShader> ShaderToForce => NodeRef.GetOrCreate(ref owner.shaderToForceRef);
+        public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("ShaderToForce", NodeRef.GetOrCreate(ref shaderToForceRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapRenderSub)clone).shaderToForce = context.Clone(this.shaderToForce)!;
+        ((CPlugBitmapRenderSub)clone).shaderToForceRef = context.Clone(this.shaderToForceRef)!;
     }
 
     public CPlugBitmapRenderSub()
@@ -66,7 +84,7 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
 
         public override void ReadWrite(CPlugBitmapRenderSub n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugShader>(ref n.shaderToForce);
+            rw.NodeRef(ref n.shaderToForceRef);
         }
     }
 

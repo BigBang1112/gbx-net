@@ -34,6 +34,8 @@ public partial class CGameBlockItem : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E025000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -69,11 +71,24 @@ public partial class CGameBlockItem : CMwNod, IClass
             set => this.id = value;
         }
 
-        private CPlugCrystal? crystal;
+        private NodeRef<CPlugCrystal>? crystalRef;
         public CPlugCrystal? Crystal
         {
-            get => this.crystal;
-            set => this.crystal = value;
+            get => crystalRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref crystalRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Mobil owner;
+            internal NodeRefView(Mobil owner) => this.owner = owner;
+            public NodeRef<CPlugCrystal> Crystal => NodeRef.GetOrCreate(ref owner.crystalRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Crystal", NodeRef.GetOrCreate(ref crystalRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -87,14 +102,14 @@ public partial class CGameBlockItem : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((Mobil)clone).id = context.Clone(this.id)!;
-            ((Mobil)clone).crystal = context.Clone(this.crystal)!;
+            ((Mobil)clone).crystalRef = context.Clone(this.crystalRef)!;
             ((Mobil)clone).Properties = context.Clone(this.Properties)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.id);
-            rw.NodeRef<CPlugCrystal>(ref this.crystal);
+            rw.NodeRef(ref this.crystalRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -119,18 +134,18 @@ public partial class CGameBlockItem : CMwNod, IClass
             set => this.flags = value;
         }
 
-        private CPlugStaticObjectModel? staticObject;
+        private NodeRef<CPlugStaticObjectModel>? staticObjectRef;
         public CPlugStaticObjectModel? StaticObject
         {
-            get => this.staticObject;
-            set => this.staticObject = value;
+            get => staticObjectRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref staticObjectRef, value);
         }
 
-        private CPlugSurface? shape;
+        private NodeRef<CPlugSurface>? shapeRef;
         public CPlugSurface? Shape
         {
-            get => this.shape;
-            set => this.shape = value;
+            get => shapeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref shapeRef, value);
         }
 
         private BoxAligned u01;
@@ -147,6 +162,21 @@ public partial class CGameBlockItem : CMwNod, IClass
             set => this.u02 = value;
         }
 
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly MobilProperties owner;
+            internal NodeRefView(MobilProperties owner) => this.owner = owner;
+            public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
+            public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("StaticObject", NodeRef.GetOrCreate(ref staticObjectRef));
+            yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (MobilProperties)MemberwiseClone();
@@ -158,8 +188,8 @@ public partial class CGameBlockItem : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((MobilProperties)clone).flags = context.Clone(this.flags)!;
-            ((MobilProperties)clone).staticObject = context.Clone(this.staticObject)!;
-            ((MobilProperties)clone).shape = context.Clone(this.shape)!;
+            ((MobilProperties)clone).staticObjectRef = context.Clone(this.staticObjectRef)!;
+            ((MobilProperties)clone).shapeRef = context.Clone(this.shapeRef)!;
             ((MobilProperties)clone).u01 = context.Clone(this.u01)!;
             ((MobilProperties)clone).u02 = context.Clone(this.u02)!;
         }
@@ -170,12 +200,12 @@ public partial class CGameBlockItem : CMwNod, IClass
 
             if ((Flags& 1) != 0)
             {
-                rw.NodeRef<CPlugStaticObjectModel>(ref this.staticObject);
+                rw.NodeRef(ref this.staticObjectRef);
             }
 
             if ((Flags& 2) != 0)
             {
-                rw.NodeRef<CPlugSurface>(ref this.shape);
+                rw.NodeRef(ref this.shapeRef);
             }
 
             if ((Flags& 4) != 0)

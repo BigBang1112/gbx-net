@@ -34,6 +34,8 @@ public partial class CGameActionModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E008000;
 
+    internal override uint GetId() => Id;
+
     private bool useVehicleGuns = true;
     [AppliedWithChunk<Chunk2E008000>(31)]
     public bool UseVehicleGuns
@@ -42,20 +44,20 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.useVehicleGuns = value;
     }
 
-    private CPlugBulletModel[]? bulletModels_Nadeo;
+    private NodeRefList<CPlugBulletModel>? bulletModels_Nadeo;
     [AppliedWithChunk<Chunk2E008000>(30)]
-    public CPlugBulletModel[]? BulletModels_Nadeo
+    public NodeRefList<CPlugBulletModel>? BulletModels_Nadeo
     {
-        get => this.bulletModels_Nadeo;
-        set => this.bulletModels_Nadeo = value;
+        get => bulletModels_Nadeo;
+        set => bulletModels_Nadeo = value;
     }
 
-    private CPlugShieldModel? shieldModel;
+    private NodeRef<CPlugShieldModel>? shieldModelRef;
     [AppliedWithChunk<Chunk2E008000>(25)]
     public CPlugShieldModel? ShieldModel
     {
-        get => this.shieldModel;
-        set => this.shieldModel = value;
+        get => shieldModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shieldModelRef, value);
     }
 
     private LegacyShieldModel? legacyShield;
@@ -234,44 +236,44 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.legacyText = value;
     }
 
-    private CPlugBulletModel[]? bulletModels;
+    private NodeRefList<CPlugBulletModel>? bulletModels;
     [AppliedWithChunk<Chunk2E008000>(0, 5)]
-    public CPlugBulletModel[]? BulletModels
+    public NodeRefList<CPlugBulletModel>? BulletModels
     {
-        get => this.bulletModels;
-        set => this.bulletModels = value;
+        get => bulletModels;
+        set => bulletModels = value;
     }
 
-    private CPlugAnimFile? anim;
+    private NodeRef<CPlugAnimFile>? animRef;
     [AppliedWithChunk<Chunk2E008000>]
     public CPlugAnimFile? Anim
     {
-        get => this.anim;
-        set => this.anim = value;
+        get => animRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref animRef, value);
     }
 
-    private CPlugFileTextScript? legacyScript;
+    private NodeRef<CPlugFileTextScript>? legacyScriptRef;
     [AppliedWithChunk<Chunk2E008000>(0, 10)]
     public CPlugFileTextScript? LegacyScript
     {
-        get => this.legacyScript;
-        set => this.legacyScript = value;
+        get => legacyScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyScriptRef, value);
     }
 
-    private CPlugScriptWithSettings? script;
+    private NodeRef<CPlugScriptWithSettings>? scriptRef;
     [AppliedWithChunk<Chunk2E008000>(11)]
     public CPlugScriptWithSettings? Script
     {
-        get => this.script;
-        set => this.script = value;
+        get => scriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref scriptRef, value);
     }
 
-    private CPlugBitmap? legacyIcon;
+    private NodeRef<CPlugBitmap>? legacyIconRef;
     [AppliedWithChunk<Chunk2E008000>(0, 11)]
     public CPlugBitmap? LegacyIcon
     {
-        get => this.legacyIcon;
-        set => this.legacyIcon = value;
+        get => legacyIconRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyIconRef, value);
     }
 
     private string? iconRef;
@@ -282,12 +284,12 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.iconRef = value;
     }
 
-    private CPlugFileImg? icon;
+    private NodeRef<CPlugFileImg>? iconNodeRef;
     [AppliedWithChunk<Chunk2E008000>(12)]
     public CPlugFileImg? Icon
     {
-        get => this.icon;
-        set => this.icon = value;
+        get => iconNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconNodeRef, value);
     }
 
     private string? crossHairRef;
@@ -298,12 +300,12 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.crossHairRef = value;
     }
 
-    private CPlugFileImg? crossHair;
+    private NodeRef<CPlugFileImg>? crossHairNodeRef;
     [AppliedWithChunk<Chunk2E008000>(12)]
     public CPlugFileImg? CrossHair
     {
-        get => this.crossHair;
-        set => this.crossHair = value;
+        get => crossHairNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref crossHairNodeRef, value);
     }
 
     private ParticleBlock[]? particleBlocks;
@@ -354,12 +356,46 @@ public partial class CGameActionModel : CMwNod, IClass
         set => this.legacyLockModeValues = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameActionModel owner;
+        internal NodeRefView(CGameActionModel owner) => this.owner = owner;
+        public NodeRef<CPlugShieldModel> ShieldModel => NodeRef.GetOrCreate(ref owner.shieldModelRef);
+        public NodeRef<CPlugAnimFile> Anim => NodeRef.GetOrCreate(ref owner.animRef);
+        public NodeRef<CPlugFileTextScript> LegacyScript => NodeRef.GetOrCreate(ref owner.legacyScriptRef);
+        public NodeRef<CPlugScriptWithSettings> Script => NodeRef.GetOrCreate(ref owner.scriptRef);
+        public NodeRef<CPlugBitmap> LegacyIcon => NodeRef.GetOrCreate(ref owner.legacyIconRef);
+        public NodeRef<CPlugFileImg> Icon => NodeRef.GetOrCreate(ref owner.iconNodeRef);
+        public NodeRef<CPlugFileImg> CrossHair => NodeRef.GetOrCreate(ref owner.crossHairNodeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (bulletModels_Nadeo is not null)
+        {
+            for (var i = 0; i < bulletModels_Nadeo.Count; i++) yield return new("BulletModels_Nadeo" + "[" + i + "]", bulletModels_Nadeo.Get(i));
+        }
+        yield return new("ShieldModel", NodeRef.GetOrCreate(ref shieldModelRef));
+        if (bulletModels is not null)
+        {
+            for (var i = 0; i < bulletModels.Count; i++) yield return new("BulletModels" + "[" + i + "]", bulletModels.Get(i));
+        }
+        yield return new("Anim", NodeRef.GetOrCreate(ref animRef));
+        yield return new("LegacyScript", NodeRef.GetOrCreate(ref legacyScriptRef));
+        yield return new("Script", NodeRef.GetOrCreate(ref scriptRef));
+        yield return new("LegacyIcon", NodeRef.GetOrCreate(ref legacyIconRef));
+        yield return new("Icon", NodeRef.GetOrCreate(ref iconNodeRef));
+        yield return new("CrossHair", NodeRef.GetOrCreate(ref crossHairNodeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameActionModel)clone).useVehicleGuns = context.Clone(this.useVehicleGuns)!;
-        ((CGameActionModel)clone).bulletModels_Nadeo = context.CloneArray(this.bulletModels_Nadeo)!;
-        ((CGameActionModel)clone).shieldModel = context.Clone(this.shieldModel)!;
+        ((CGameActionModel)clone).bulletModels_Nadeo = context.Clone(this.bulletModels_Nadeo)!;
+        ((CGameActionModel)clone).shieldModelRef = context.Clone(this.shieldModelRef)!;
         ((CGameActionModel)clone).legacyShield = context.Clone(this.legacyShield)!;
         ((CGameActionModel)clone).name = context.Clone(this.name)!;
         ((CGameActionModel)clone).inventoryItemClass = context.Clone(this.inventoryItemClass)!;
@@ -382,15 +418,15 @@ public partial class CGameActionModel : CMwNod, IClass
         ((CGameActionModel)clone).soundBlockVersion = context.Clone(this.soundBlockVersion)!;
         ((CGameActionModel)clone).particleBlockVersion = context.Clone(this.particleBlockVersion)!;
         ((CGameActionModel)clone).legacyText = context.Clone(this.legacyText)!;
-        ((CGameActionModel)clone).bulletModels = context.CloneArray(this.bulletModels)!;
-        ((CGameActionModel)clone).anim = context.Clone(this.anim)!;
-        ((CGameActionModel)clone).legacyScript = context.Clone(this.legacyScript)!;
-        ((CGameActionModel)clone).script = context.Clone(this.script)!;
-        ((CGameActionModel)clone).legacyIcon = context.Clone(this.legacyIcon)!;
+        ((CGameActionModel)clone).bulletModels = context.Clone(this.bulletModels)!;
+        ((CGameActionModel)clone).animRef = context.Clone(this.animRef)!;
+        ((CGameActionModel)clone).legacyScriptRef = context.Clone(this.legacyScriptRef)!;
+        ((CGameActionModel)clone).scriptRef = context.Clone(this.scriptRef)!;
+        ((CGameActionModel)clone).legacyIconRef = context.Clone(this.legacyIconRef)!;
         ((CGameActionModel)clone).iconRef = context.Clone(this.iconRef)!;
-        ((CGameActionModel)clone).icon = context.Clone(this.icon)!;
+        ((CGameActionModel)clone).iconNodeRef = context.Clone(this.iconNodeRef)!;
         ((CGameActionModel)clone).crossHairRef = context.Clone(this.crossHairRef)!;
-        ((CGameActionModel)clone).crossHair = context.Clone(this.crossHair)!;
+        ((CGameActionModel)clone).crossHairNodeRef = context.Clone(this.crossHairNodeRef)!;
         ((CGameActionModel)clone).particleBlocks = context.CloneArray(this.particleBlocks)!;
         ((CGameActionModel)clone).soundBlocks = context.CloneArray(this.soundBlocks)!;
         ((CGameActionModel)clone).legacyFlag = context.Clone(this.legacyFlag)!;
@@ -452,12 +488,12 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version >= 30)
             {
-                rw.ArrayNodeRef_deprec<CPlugBulletModel>(ref n.bulletModels_Nadeo!);
+                n.bulletModels_Nadeo = rw.ListNodeRef_deprec<CPlugBulletModel>(n.bulletModels_Nadeo);
             }
 
             if (Version >= 25)
             {
-                rw.NodeRef<CPlugShieldModel>(ref n.shieldModel);
+                rw.NodeRef(ref n.shieldModelRef);
             }
 
             if (Version == 24)
@@ -564,24 +600,24 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (Version <= 5)
             {
-                rw.ArrayNodeRef<CPlugBulletModel>(ref n.bulletModels!);
+                n.bulletModels = rw.ListNodeRef<CPlugBulletModel>(n.bulletModels);
             }
 
-            rw.NodeRef<CPlugAnimFile>(ref n.anim);
+            rw.NodeRef(ref n.animRef);
 
             if (Version <= 10)
             {
-                rw.NodeRef<CPlugFileTextScript>(ref n.legacyScript);
+                rw.NodeRef(ref n.legacyScriptRef);
             }
 
             if (Version >= 11)
             {
-                rw.NodeRef<CPlugScriptWithSettings>(ref n.script);
+                rw.NodeRef(ref n.scriptRef);
             }
 
             if (Version <= 11)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.legacyIcon);
+                rw.NodeRef(ref n.legacyIconRef);
             }
 
             if (Version >= 12)
@@ -590,14 +626,14 @@ public partial class CGameActionModel : CMwNod, IClass
 
                 if (n.IconRef== null || n.IconRef== "")
                 {
-                    rw.NodeRef<CPlugFileImg>(ref n.icon);
+                    rw.NodeRef(ref n.iconNodeRef);
                 }
 
                 rw.String(ref n.crossHairRef);
 
                 if (n.CrossHairRef== null || n.CrossHairRef== "")
                 {
-                    rw.NodeRef<CPlugFileImg>(ref n.crossHair);
+                    rw.NodeRef(ref n.crossHairNodeRef);
                 }
             }
 
@@ -644,11 +680,11 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.shapeRef = value;
         }
 
-        private CPlugSurface? shape;
+        private NodeRef<CPlugSurface>? shapeNodeRef;
         public CPlugSurface? Shape
         {
-            get => this.shape;
-            set => this.shape = value;
+            get => shapeNodeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref shapeNodeRef, value);
         }
 
         private string? shapeVisModelRef;
@@ -658,11 +694,26 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.shapeVisModelRef = value;
         }
 
-        private CPlugSolid2Model? shapeVisModel;
+        private NodeRef<CPlugSolid2Model>? shapeVisModelNodeRef;
         public CPlugSolid2Model? ShapeVisModel
         {
-            get => this.shapeVisModel;
-            set => this.shapeVisModel = value;
+            get => shapeVisModelNodeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref shapeVisModelNodeRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly LegacyShieldModel owner;
+            internal NodeRefView(LegacyShieldModel owner) => this.owner = owner;
+            public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeNodeRef);
+            public NodeRef<CPlugSolid2Model> ShapeVisModel => NodeRef.GetOrCreate(ref owner.shapeVisModelNodeRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Shape", NodeRef.GetOrCreate(ref shapeNodeRef));
+            yield return new("ShapeVisModel", NodeRef.GetOrCreate(ref shapeVisModelNodeRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -676,9 +727,9 @@ public partial class CGameActionModel : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((LegacyShieldModel)clone).shapeRef = context.Clone(this.shapeRef)!;
-            ((LegacyShieldModel)clone).shape = context.Clone(this.shape)!;
+            ((LegacyShieldModel)clone).shapeNodeRef = context.Clone(this.shapeNodeRef)!;
             ((LegacyShieldModel)clone).shapeVisModelRef = context.Clone(this.shapeVisModelRef)!;
-            ((LegacyShieldModel)clone).shapeVisModel = context.Clone(this.shapeVisModel)!;
+            ((LegacyShieldModel)clone).shapeVisModelNodeRef = context.Clone(this.shapeVisModelNodeRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -687,14 +738,14 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (ShapeRef== null || ShapeRef== "")
             {
-                rw.NodeRef<CPlugSurface>(ref this.shape);
+                rw.NodeRef(ref this.shapeNodeRef);
             }
 
             rw.String(ref this.shapeVisModelRef);
 
             if (ShapeVisModelRef== null || ShapeVisModelRef== "")
             {
-                rw.NodeRef<CPlugSolid2Model>(ref this.shapeVisModel);
+                rw.NodeRef(ref this.shapeVisModelNodeRef);
             }
         }
 
@@ -778,21 +829,12 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.keys = value;
         }
 
-        private CPlugFileImg? legacyImage;
+        private NodeRef<CPlugFileImg>? legacyImageRef;
         public CPlugFileImg? LegacyImage
         {
-            get => this.legacyImageFile?.GetNode(ref this.legacyImage) ?? this.legacyImage;
-            set => this.legacyImage = value;
+            get => legacyImageRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref legacyImageRef, value);
         }
-        private Components.GbxRefTableFile? legacyImageFile;
-
-        public Components.GbxRefTableFile? LegacyImageFile
-        {
-            get => legacyImageFile;
-            set => legacyImageFile = value;
-        }
-
-        public CPlugFileImg? GetLegacyImage(GbxReadSettings settings = default, bool exceptions = false) => legacyImageFile?.GetNode(ref legacyImage, settings, exceptions) ?? legacyImage;
 
         private bool u01;
         public bool U01
@@ -808,11 +850,26 @@ public partial class CGameActionModel : CMwNod, IClass
             set => this.imageRef = value;
         }
 
-        private CPlugFileImg? image;
+        private NodeRef<CPlugFileImg>? imageNodeRef;
         public CPlugFileImg? Image
         {
-            get => this.image;
-            set => this.image = value;
+            get => imageNodeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref imageNodeRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly SpriteBlock owner;
+            internal NodeRefView(SpriteBlock owner) => this.owner = owner;
+            public NodeRef<CPlugFileImg> LegacyImage => NodeRef.GetOrCreate(ref owner.legacyImageRef);
+            public NodeRef<CPlugFileImg> Image => NodeRef.GetOrCreate(ref owner.imageNodeRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("LegacyImage", NodeRef.GetOrCreate(ref legacyImageRef));
+            yield return new("Image", NodeRef.GetOrCreate(ref imageNodeRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -826,10 +883,10 @@ public partial class CGameActionModel : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((SpriteBlock)clone).keys = context.CloneArray(this.keys)!;
-            ((SpriteBlock)clone).legacyImage = context.Clone(this.legacyImage)!;
+            ((SpriteBlock)clone).legacyImageRef = context.Clone(this.legacyImageRef)!;
             ((SpriteBlock)clone).u01 = context.Clone(this.u01)!;
             ((SpriteBlock)clone).imageRef = context.Clone(this.imageRef)!;
-            ((SpriteBlock)clone).image = context.Clone(this.image)!;
+            ((SpriteBlock)clone).imageNodeRef = context.Clone(this.imageNodeRef)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -838,7 +895,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
             if (v == 0)
             {
-                rw.NodeRef<CPlugFileImg>(ref this.legacyImage, ref this.legacyImageFile);
+                rw.NodeRef(ref this.legacyImageRef);
             }
 
             rw.Boolean(ref this.u01);
@@ -849,7 +906,7 @@ public partial class CGameActionModel : CMwNod, IClass
 
                 if (ImageRef== null || ImageRef== "")
                 {
-                    rw.NodeRef<CPlugFileImg>(ref this.image);
+                    rw.NodeRef(ref this.imageNodeRef);
                 }
             }
         }

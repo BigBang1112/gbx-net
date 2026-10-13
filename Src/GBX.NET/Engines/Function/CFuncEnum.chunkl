@@ -3,7 +3,7 @@ CFuncEnum 0x0500E000
 
 0x005 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   int WantedCount
-  CPlug[] Values (external)
+  CPlug[] Values
   id Name
   int2 Atlas
   int[] ValuesAtlasYx
@@ -11,7 +11,7 @@ CFuncEnum 0x0500E000
   vec2 MaxTexCoord
 
 0x006 [VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CMwRefBuffer IconIndexs (external)
+  CMwRefBuffer IconIndexs
 
 0x007 [TMF, MP3, TMT, MP4, TM2020]
   vec2 TexSize

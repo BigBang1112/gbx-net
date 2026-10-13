@@ -22,7 +22,8 @@ CPlugVisual 0x09006000
 0x009 [TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // NPatchTessLevel
   float NPatchTessLevel
 
-0x00A (base: 0x008) [TMSX] // legacy vertex streams and skin transforms
+0x00A (base: 0x008, demonstration: partial) [TMSX] // legacy vertex streams and skin transforms
+  CPlugVertexStream[] VertexStreams
 
 0x00B [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // Splits
   Split[] Splits = empty

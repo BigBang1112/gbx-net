@@ -20,6 +20,12 @@ partial interface IGbxWriter
     void WriteList(List<GBX.NET.PackDesc>? value, int length);
     void WriteList(List<GBX.NET.PackDesc>? value);
     void WriteList_deprec(List<GBX.NET.PackDesc>? value);
+    void WriteArray(GBX.NET.NodeRef[]? value, int length);
+    void WriteArray(GBX.NET.NodeRef[]? value);
+    void WriteArray_deprec(GBX.NET.NodeRef[]? value);
+    void WriteList(List<GBX.NET.NodeRef>? value, int length);
+    void WriteList(List<GBX.NET.NodeRef>? value);
+    void WriteList_deprec(List<GBX.NET.NodeRef>? value);
 }
 
 partial class GbxWriter
@@ -265,6 +271,88 @@ partial class GbxWriter
     }
 
     public void WriteList_deprec(List<GBX.NET.PackDesc>? value)
+    {
+        WriteDeprecVersion();
+        WriteList(value);
+    }
+
+    public void WriteArray(GBX.NET.NodeRef[]? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Length);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item);
+        }
+    }
+
+    public void WriteArray(GBX.NET.NodeRef[]? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                WriteNodeRef(item);
+            }
+        }
+
+        if (value is null || length > value.Length)
+        {
+            for (var i = value?.Length ?? 0; i < length; i++)
+            {
+                WriteNodeRef(default(GBX.NET.NodeRef));
+            }
+        }
+    }
+
+    public void WriteArray_deprec(GBX.NET.NodeRef[]? value)
+    {
+        WriteDeprecVersion();
+        WriteArray(value);
+    }
+
+    public void WriteList(List<GBX.NET.NodeRef>? value)
+    {
+        if (value is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(value.Count);
+
+        foreach (var item in value)
+        {
+            WriteNodeRef(item);
+        }
+    }
+
+    public void WriteList(List<GBX.NET.NodeRef>? value, int length)
+    {
+        if (value is not null)
+        {
+            foreach (var item in value)
+            {
+                WriteNodeRef(item);
+            }
+        }
+
+        if (value is null || length > value.Count)
+        {
+            for (var i = value?.Count ?? 0; i < length; i++)
+            {
+                WriteNodeRef(default(GBX.NET.NodeRef));
+            }
+        }
+    }
+
+    public void WriteList_deprec(List<GBX.NET.NodeRef>? value)
     {
         WriteDeprecVersion();
         WriteList(value);

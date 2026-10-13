@@ -34,6 +34,8 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     [Hexadecimal]
     public static new uint Id => 0x05031000;
 
+    internal override uint GetId() => Id;
+
     private CFuncKeysNatural? subKeys;
     [AppliedWithChunk<Chunk05031000>]
     [AppliedWithChunk<Chunk05031002>]

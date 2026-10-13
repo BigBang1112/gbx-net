@@ -34,6 +34,8 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F6000;
 
+    internal override uint GetId() => Id;
+
     private float inputGasDistDelta = 1.0f;
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
@@ -782,9 +784,9 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
             rw.Int32(ref n.inputNoSteerDurationBeforeReset);
             rw.Single(ref n.maxDeltaPlaneDistStep);
             rw.Single(ref n.maxDeltaFovStep);
-            n.lookAtFactorFromUpSpeedRatio = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.lookAtFactorFromUpSpeedRatio);
-            n.yawFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.yawFromSpeed);
-            n.rollFromSpeed = (PlugCurve?)rw.NodeRef<CFuncKeysReal>((CFuncKeysReal?)n.rollFromSpeed);
+            n.lookAtFactorFromUpSpeedRatio = rw.ReadableWritable<PlugCurve>(n.lookAtFactorFromUpSpeedRatio, version: -1);
+            n.yawFromSpeed = rw.ReadableWritable<PlugCurve>(n.yawFromSpeed, version: -1);
+            n.rollFromSpeed = rw.ReadableWritable<PlugCurve>(n.rollFromSpeed, version: -1);
             rw.Single(ref n.deltaDistDamperKi);
             rw.Single(ref n.deltaDistDamperKa);
             rw.Single(ref n.deltaLookAtFactorDamperKi);

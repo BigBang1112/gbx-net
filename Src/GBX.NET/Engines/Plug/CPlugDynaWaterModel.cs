@@ -27,21 +27,22 @@ public partial class CPlugDynaWaterModel
             if (rw.Reader is not null)
             {
                 var surf = CPlugSurface.ReadSurf(rw.Reader, surfVersion: 2);
-                surface = surf is null ? null : new CPlugSurface { Surf = surf, SurfVersion = 2 };
-                surfaceFile = null;
-                if (surface is not null)
+                NodeRef.SetEmbedded(ref surfaceRef, surf is null ? null : new CPlugSurface { Surf = surf, SurfVersion = 2 });
+
+                if (surfaceRef?.CachedNode is { } surface)
                 {
                     surface.CreateChunk<CPlugSurface.Chunk0900C003>().Version = 2;
                 }
             }
             if (rw.Writer is not null)
             {
-                CPlugSurface.WriteSurf(Surface?.Surf, rw.Writer, surfVersion: 2);
+                if (surfaceRef?.Descriptor is not null) throw new NotSupportedException("Version 2 stores the surface inline.");
+                CPlugSurface.WriteSurf(surfaceRef?.CachedNode?.Surf, rw.Writer, surfVersion: 2);
             }
         }
         else if (v >= 3)
         {
-            rw.NodeRef<CPlugSurface>(ref surface, ref surfaceFile);
+            rw.NodeRef(ref surfaceRef);
         }
     }
 

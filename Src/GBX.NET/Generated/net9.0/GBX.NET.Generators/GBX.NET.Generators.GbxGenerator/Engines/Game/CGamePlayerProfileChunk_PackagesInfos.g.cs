@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     [Hexadecimal]
     public static new uint Id => 0x03140000;
 
+    internal override uint GetId() => Id;
+
     private PackageInfo[]? packagesInfos;
     [AppliedWithChunk<Chunk03140000>]
     public PackageInfo[]? PackagesInfos

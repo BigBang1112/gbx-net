@@ -34,24 +34,17 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0600D000;
 
-    private CPlugSound? plugSound;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSound>? plugSoundRef;
     [AppliedWithChunk<Chunk0600D000>]
     [AppliedWithChunk<Chunk0600D002>]
     [AppliedWithChunk<Chunk0600D005>]
     public CPlugSound? PlugSound
     {
-        get => this.plugSoundFile?.GetNode(ref this.plugSound) ?? this.plugSound;
-        set => this.plugSound = value;
+        get => plugSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref plugSoundRef, value);
     }
-    private Components.GbxRefTableFile? plugSoundFile;
-
-    public Components.GbxRefTableFile? PlugSoundFile
-    {
-        get => plugSoundFile;
-        set => plugSoundFile = value;
-    }
-
-    public CPlugSound? GetPlugSound(GbxReadSettings settings = default, bool exceptions = false) => plugSoundFile?.GetNode(ref plugSound, settings, exceptions) ?? plugSound;
 
     private float volume;
     [AppliedWithChunk<Chunk0600D001>]
@@ -105,10 +98,24 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
         set => this.volumicSize = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CHmsSoundSource owner;
+        internal NodeRefView(CHmsSoundSource owner) => this.owner = owner;
+        public NodeRef<CPlugSound> PlugSound => NodeRef.GetOrCreate(ref owner.plugSoundRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PlugSound", NodeRef.GetOrCreate(ref plugSoundRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CHmsSoundSource)clone).plugSound = context.Clone(this.plugSound)!;
+        ((CHmsSoundSource)clone).plugSoundRef = context.Clone(this.plugSoundRef)!;
         ((CHmsSoundSource)clone).volume = context.Clone(this.volume)!;
         ((CHmsSoundSource)clone).pitch = context.Clone(this.pitch)!;
         ((CHmsSoundSource)clone).priorityAdjustement = context.Clone(this.priorityAdjustement)!;
@@ -135,7 +142,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.plugSound, ref n.plugSoundFile);
+            rw.NodeRef(ref n.plugSoundRef);
         }
     }
 
@@ -172,7 +179,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.plugSound, ref n.plugSoundFile);
+            rw.NodeRef(ref n.plugSoundRef);
             rw.Single(ref n.priorityAdjustement);
             rw.Boolean(ref n.useLowQuality);
         }
@@ -236,7 +243,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSound>(ref n.plugSound, ref n.plugSoundFile);
+            rw.NodeRef(ref n.plugSoundRef);
             rw.Single(ref n.priorityAdjustement);
             rw.Boolean(ref n.useLowQuality);
         }

@@ -8,13 +8,12 @@ public partial class CPlugVehicleVisModel
 
     public partial class SoundSet
     {
-        private CPlugLocatedSound? bodySurface_Deprecated;
 
         [Obsolete("The body surface sound is unused by the game.")]
         public CPlugLocatedSound? BodySurface_Deprecated
         {
-            get => bodySurface_Deprecated;
-            set => bodySurface_Deprecated = value;
+            get => bodySurface_DeprecatedRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref bodySurface_DeprecatedRef, value);
         }
     }
 
@@ -23,10 +22,10 @@ public partial class CPlugVehicleVisModel
         public override void ReadWrite(CPlugVehicleVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehicleVisModelShared>(ref n.shared);
-            rw.NodeRef<CPlugSolid>(ref U01, ref U01File);
-            rw.NodeRef<CPlugSolid>(ref U02, ref U02File);
-            rw.NodeRef<CPlugSolid>(ref U03, ref U03File);
+            rw.NodeRef(ref n.sharedRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
             if (Version >= 5)
             {
                 rw.Int32(ref n.surfVersion);
@@ -50,11 +49,11 @@ public partial class CPlugVehicleVisModel
             }
             if (Version is >= 12 and <= 17)
             {
-                rw.NodeRef<CPlugVFXFile>(ref U04);
+                rw.NodeRef(ref U04Ref);
             }
             if (Version >= 17)
             {
-                rw.NodeRef<CPlugFxSystem>(ref n.fxSystem);
+                rw.NodeRef(ref n.fxSystemRef);
             }
         }
     }
@@ -76,15 +75,15 @@ public partial class CPlugVehicleVisModel
 
             if (Version is >= 1 and <= 3)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U01);
+                rw.NodeRef(ref U01Ref);
             }
             if (Version is >= 2 and <= 3)
             {
-                rw.NodeRef<CFuncKeysReal>(ref U02);
+                rw.NodeRef(ref U02Ref);
             }
             if (Version >= 3)
             {
-                rw.NodeRef<CPlugAudioEnvironment>(ref n.audioEnvironmentForFirstPerson);
+                rw.NodeRef(ref n.audioEnvironmentForFirstPersonRef);
             }
             if (Version >= 4)
             {

@@ -34,18 +34,35 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     [Hexadecimal]
     public static new uint Id => 0x0902C000;
 
-    private CMwNod? blendShapes;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod>? blendShapesRef;
     [AppliedWithChunk<Chunk0902C002>]
     public CMwNod? BlendShapes
     {
-        get => this.blendShapes;
-        set => this.blendShapes = value;
+        get => blendShapesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blendShapesRef, value);
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CPlugVisual3D owner;
+        internal NodeRefView(CPlugVisual3D owner) => this.owner = owner;
+        public NodeRef<CMwNod> BlendShapes => NodeRef.GetOrCreate(ref owner.blendShapesRef);
+        public NodeRef<CMwNod> FuncVisual => ((CPlugVisual)owner).References.FuncVisual;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BlendShapes", NodeRef.GetOrCreate(ref blendShapesRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVisual3D)clone).blendShapes = context.Clone(this.blendShapes)!;
+        ((CPlugVisual3D)clone).blendShapesRef = context.Clone(this.blendShapesRef)!;
         ((CPlugVisual3D)clone).Vertices = context.CloneArray(this.Vertices)!;
         ((CPlugVisual3D)clone).Tangents = context.CloneArray(this.Tangents)!;
         ((CPlugVisual3D)clone).BiTangents = context.CloneArray(this.BiTangents)!;

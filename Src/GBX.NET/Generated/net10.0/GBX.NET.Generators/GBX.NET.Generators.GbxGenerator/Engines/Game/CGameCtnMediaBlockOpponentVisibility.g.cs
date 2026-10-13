@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     [Hexadecimal]
     public static new uint Id => 0x0338B000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk0338B000>]
     public TimeSingle Start

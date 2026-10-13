@@ -34,6 +34,8 @@ public partial class CPlugRecastPolyMeshData : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09150000;
 
+    internal override uint GetId() => Id;
+
     private HeightfieldLayer[]? heightfieldLayers;
     [AppliedWithChunk<Chunk09150000>(4)]
     public HeightfieldLayer[]? HeightfieldLayers

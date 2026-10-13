@@ -18,7 +18,7 @@ internal sealed class ScopeModel
     public IReadOnlyDictionary<string, int> ChunkVersions { get; }
     public bool HasVersion { get; private set; }
     public bool Separate { get; }
-    
+
     private int unknownCount;
 
     public ScopeModel(ExistingType? existing, AttributeList? attributes, List<IBodyStatement> body, ChunkDeclaration? chunk = null)
@@ -48,9 +48,6 @@ internal sealed class ScopeModel
 
         return null;
     }
-
-    public bool HasFieldOrFile(string name) => FindField(name) is not null ||
-        name.EndsWith("File", StringComparison.Ordinal) && FindField(name.Substring(0, name.Length - 4)) is not null;
 
     public void Add(FieldDeclaration declaration)
     {
@@ -88,20 +85,20 @@ internal sealed class ScopeModel
             return;
         }
 
-        var unknown = string.IsNullOrEmpty(declaration.Name) ||
+        var unknown = LayoutModel.Has(declaration.Attributes, "chunk") || string.IsNullOrEmpty(declaration.Name) ||
             (declaration.Name!.Length == 3 && declaration.Name[0] == 'U' && char.IsDigit(declaration.Name[1]) && char.IsDigit(declaration.Name[2]));
-        
-        if (unknown && !isVersion) 
+
+        if (unknown && !isVersion)
         {
             unknownCount++;
         }
-        
+
         var name = isVersion ? "Version" : string.IsNullOrEmpty(declaration.Name) ? $"U{unknownCount:00}" : declaration.Name!;
-        
+
         var model = local ? null : FindField(name);
         if (model is null)
         {
-            model = new FieldModel(name, declaration, unknown && !isVersion, isVersion && !local);
+            model = new FieldModel(name, declaration, unknown && !isVersion, isVersion && !local, this);
             if (!local)
             {
                 fields.Add(model);

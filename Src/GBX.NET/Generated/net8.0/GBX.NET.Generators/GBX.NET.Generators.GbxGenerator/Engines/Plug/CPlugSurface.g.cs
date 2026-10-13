@@ -34,20 +34,40 @@ public partial class CPlugSurface : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0900C000;
 
-    private CPlugSurfaceGeom? geom;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSurfaceGeom>? geomRef;
     [AppliedWithChunk<Chunk0900C000>]
     public CPlugSurfaceGeom? Geom
     {
-        get => this.geom;
-        set => this.geom = value;
+        get => geomRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref geomRef, value);
+    }
+
+    private NodeRef<CPlugSkel>? skelRef;
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugSurface owner;
+        internal NodeRefView(CPlugSurface owner) => this.owner = owner;
+        public NodeRef<CPlugSurfaceGeom> Geom => NodeRef.GetOrCreate(ref owner.geomRef);
+        public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Geom", NodeRef.GetOrCreate(ref geomRef));
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugSurface)clone).geom = context.Clone(this.geom)!;
+        ((CPlugSurface)clone).geomRef = context.Clone(this.geomRef)!;
+        ((CPlugSurface)clone).skelRef = context.Clone(this.skelRef)!;
         ((CPlugSurface)clone).surfVersion = context.Clone(this.surfVersion)!;
-        ((CPlugSurface)clone).skel = context.Clone(this.skel)!;
         ((CPlugSurface)clone).materials = context.CloneArray(this.materials)!;
         ((CPlugSurface)clone).Surf = context.Clone(this.Surf)!;
     }
@@ -70,7 +90,7 @@ public partial class CPlugSurface : CPlug, IClass
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSurfaceGeom>(ref n.geom);
+            rw.NodeRef(ref n.geomRef);
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials!);
         }
     }
@@ -97,6 +117,21 @@ public partial class CPlugSurface : CPlug, IClass
 
     public partial class SurfMaterial : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private NodeRef<CPlugMaterial>? materialRef;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly SurfMaterial owner;
+            internal NodeRefView(SurfMaterial owner) => this.owner = owner;
+            public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+        }
+        public IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (SurfMaterial)MemberwiseClone();
@@ -107,8 +142,7 @@ public partial class CPlugSurface : CPlug, IClass
 
         internal  void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SurfMaterial)clone).material = context.Clone(this.material)!;
-            ((SurfMaterial)clone).materialFile = context.Clone(this.materialFile)!;
+            ((SurfMaterial)clone).materialRef = context.Clone(this.materialRef)!;
             ((SurfMaterial)clone).SurfaceId = context.Clone(this.SurfaceId)!;
         }
 

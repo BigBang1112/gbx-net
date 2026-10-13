@@ -34,6 +34,8 @@ public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IRe
     [Hexadecimal]
     public static new uint Id => 0x0913C000;
 
+    internal override uint GetId() => Id;
+
     private string? name;
     public string? Name
     {

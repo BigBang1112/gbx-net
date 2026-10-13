@@ -34,18 +34,29 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B8000;
 
-    private CPlugBitmapAddress[] bitmapAddresses = [];
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugBitmapAddress>? bitmapAddresses = new();
     [AppliedWithChunk<Chunk090B8000>]
-    public CPlugBitmapAddress[] BitmapAddresses
+    public NodeRefList<CPlugBitmapAddress>? BitmapAddresses
     {
-        get => this.bitmapAddresses;
-        set => this.bitmapAddresses = value;
+        get => bitmapAddresses;
+        set => bitmapAddresses = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (bitmapAddresses is not null)
+        {
+            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugBitmapApplyArray)clone).bitmapAddresses = context.CloneArray(this.bitmapAddresses)!;
+        ((CPlugBitmapApplyArray)clone).bitmapAddresses = context.Clone(this.bitmapAddresses)!;
     }
 
     public CPlugBitmapApplyArray()
@@ -69,7 +80,7 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapApplyArray n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugBitmapAddress>(ref n.bitmapAddresses!);
+            n.bitmapAddresses = rw.ListNodeRef_deprec<CPlugBitmapAddress>(n.bitmapAddresses);
         }
     }
 

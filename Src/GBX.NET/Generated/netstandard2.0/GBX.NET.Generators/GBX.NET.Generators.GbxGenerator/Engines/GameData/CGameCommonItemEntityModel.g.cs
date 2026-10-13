@@ -34,83 +34,49 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E027000;
 
-    private CMwNod? phyModel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod>? phyModelRef;
     /// <summary>
     /// CGameObjectPhyModel
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? PhyModel
     {
-        get => this.phyModelFile?.GetNode(ref this.phyModel) ?? this.phyModel;
-        set => this.phyModel = value;
-    }
-    private Components.GbxRefTableFile? phyModelFile;
-
-    public Components.GbxRefTableFile? PhyModelFile
-    {
-        get => phyModelFile;
-        set => phyModelFile = value;
+        get => phyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyModelRef, value);
     }
 
-    public CMwNod? GetPhyModel(GbxReadSettings settings = default, bool exceptions = false) => phyModelFile?.GetNode(ref phyModel, settings, exceptions) ?? phyModel;
-
-    private CMwNod? visModel;
+    private NodeRef<CMwNod>? visModelRef;
     /// <summary>
     /// CGameObjectVisModel
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? VisModel
     {
-        get => this.visModelFile?.GetNode(ref this.visModel) ?? this.visModel;
-        set => this.visModel = value;
-    }
-    private Components.GbxRefTableFile? visModelFile;
-
-    public Components.GbxRefTableFile? VisModelFile
-    {
-        get => visModelFile;
-        set => visModelFile = value;
+        get => visModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visModelRef, value);
     }
 
-    public CMwNod? GetVisModel(GbxReadSettings settings = default, bool exceptions = false) => visModelFile?.GetNode(ref visModel, settings, exceptions) ?? visModel;
-
-    private CPlugStaticObjectModel? staticObject;
+    private NodeRef<CPlugStaticObjectModel>? staticObjectRef;
     [AppliedWithChunk<Chunk2E027000>(1, 2)]
     [AppliedWithChunk<Chunk2E027000>(4)]
     public CPlugStaticObjectModel? StaticObject
     {
-        get => this.staticObjectFile?.GetNode(ref this.staticObject) ?? this.staticObject;
-        set => this.staticObject = value;
-    }
-    private Components.GbxRefTableFile? staticObjectFile;
-
-    public Components.GbxRefTableFile? StaticObjectFile
-    {
-        get => staticObjectFile;
-        set => staticObjectFile = value;
+        get => staticObjectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref staticObjectRef, value);
     }
 
-    public CPlugStaticObjectModel? GetStaticObject(GbxReadSettings settings = default, bool exceptions = false) => staticObjectFile?.GetNode(ref staticObject, settings, exceptions) ?? staticObject;
-
-    private CMwNod? triggerShape;
+    private NodeRef<CMwNod>? triggerShapeRef;
     /// <summary>
     /// CPlugSurface
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CMwNod? TriggerShape
     {
-        get => this.triggerShapeFile?.GetNode(ref this.triggerShape) ?? this.triggerShape;
-        set => this.triggerShape = value;
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
-    private Components.GbxRefTableFile? triggerShapeFile;
-
-    public Components.GbxRefTableFile? TriggerShapeFile
-    {
-        get => triggerShapeFile;
-        set => triggerShapeFile = value;
-    }
-
-    public CMwNod? GetTriggerShape(GbxReadSettings settings = default, bool exceptions = false) => triggerShapeFile?.GetNode(ref triggerShape, settings, exceptions) ?? triggerShape;
 
     private Iso4 spawnLoc = Iso4.Identity;
     [AppliedWithChunk<Chunk2E027000>(2)]
@@ -120,29 +86,20 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         set => this.spawnLoc = value;
     }
 
-    private CPlugParticleEmitterModel? particleEmitterModel;
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModelRef;
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CPlugParticleEmitterModel? ParticleEmitterModel
     {
-        get => this.particleEmitterModelFile?.GetNode(ref this.particleEmitterModel) ?? this.particleEmitterModel;
-        set => this.particleEmitterModel = value;
-    }
-    private Components.GbxRefTableFile? particleEmitterModelFile;
-
-    public Components.GbxRefTableFile? ParticleEmitterModelFile
-    {
-        get => particleEmitterModelFile;
-        set => particleEmitterModelFile = value;
+        get => particleEmitterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModelRef, value);
     }
 
-    public CPlugParticleEmitterModel? GetParticleEmitterModel(GbxReadSettings settings = default, bool exceptions = false) => particleEmitterModelFile?.GetNode(ref particleEmitterModel, settings, exceptions) ?? particleEmitterModel;
-
-    private External<CGameActionModel>[]? actions;
+    private NodeRefList<CGameActionModel>? actions;
     [AppliedWithChunk<Chunk2E027000>(2)]
-    public External<CGameActionModel>[]? Actions
+    public NodeRefList<CGameActionModel>? Actions
     {
-        get => this.actions;
-        set => this.actions = value;
+        get => actions;
+        set => actions = value;
     }
 
     private string? soundRefSpawn;
@@ -204,16 +161,42 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         set => this.lightBallStates = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCommonItemEntityModel owner;
+        internal NodeRefView(CGameCommonItemEntityModel owner) => this.owner = owner;
+        public NodeRef<CMwNod> PhyModel => NodeRef.GetOrCreate(ref owner.phyModelRef);
+        public NodeRef<CMwNod> VisModel => NodeRef.GetOrCreate(ref owner.visModelRef);
+        public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
+        public NodeRef<CMwNod> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel => NodeRef.GetOrCreate(ref owner.particleEmitterModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PhyModel", NodeRef.GetOrCreate(ref phyModelRef));
+        yield return new("VisModel", NodeRef.GetOrCreate(ref visModelRef));
+        yield return new("StaticObject", NodeRef.GetOrCreate(ref staticObjectRef));
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
+        yield return new("ParticleEmitterModel", NodeRef.GetOrCreate(ref particleEmitterModelRef));
+        if (actions is not null)
+        {
+            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCommonItemEntityModel)clone).phyModel = context.Clone(this.phyModel)!;
-        ((CGameCommonItemEntityModel)clone).visModel = context.Clone(this.visModel)!;
-        ((CGameCommonItemEntityModel)clone).staticObject = context.Clone(this.staticObject)!;
-        ((CGameCommonItemEntityModel)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((CGameCommonItemEntityModel)clone).phyModelRef = context.Clone(this.phyModelRef)!;
+        ((CGameCommonItemEntityModel)clone).visModelRef = context.Clone(this.visModelRef)!;
+        ((CGameCommonItemEntityModel)clone).staticObjectRef = context.Clone(this.staticObjectRef)!;
+        ((CGameCommonItemEntityModel)clone).triggerShapeRef = context.Clone(this.triggerShapeRef)!;
         ((CGameCommonItemEntityModel)clone).spawnLoc = context.Clone(this.spawnLoc)!;
-        ((CGameCommonItemEntityModel)clone).particleEmitterModel = context.Clone(this.particleEmitterModel)!;
-        ((CGameCommonItemEntityModel)clone).actions = context.CloneArray(this.actions)!;
+        ((CGameCommonItemEntityModel)clone).particleEmitterModelRef = context.Clone(this.particleEmitterModelRef)!;
+        ((CGameCommonItemEntityModel)clone).actions = context.Clone(this.actions)!;
         ((CGameCommonItemEntityModel)clone).soundRefSpawn = context.Clone(this.soundRefSpawn)!;
         ((CGameCommonItemEntityModel)clone).soundRefUnspawn = context.Clone(this.soundRefUnspawn)!;
         ((CGameCommonItemEntityModel)clone).soundRefGrab = context.Clone(this.soundRefGrab)!;
@@ -236,9 +219,31 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public int Version { get; set; }
         public string? U01;
         public string? U02;
-        public CMwNod? U03;
-        public Components.GbxRefTableFile? U03File;
+
+        private NodeRef<CMwNod>? U03Ref;
+        /// <summary>
+        /// Deprecated CMwNod reference.
+        /// </summary>
+        public CMwNod? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
         public bool U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E027000 owner;
+            internal NodeRefView(Chunk2E027000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield break;
+        }
 
         public Chunk2E027000() : this(GameVersion.Unspecified)
         {
@@ -258,7 +263,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
             ((Chunk2E027000)clone).Version = context.Clone(this.Version)!;
             ((Chunk2E027000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk2E027000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk2E027000)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk2E027000)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk2E027000)clone).U04 = context.Clone(this.U04)!;
         }
 
@@ -268,8 +273,8 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.NodeRef<CMwNod>(ref n.phyModel, ref n.phyModelFile);
-                rw.NodeRef<CMwNod>(ref n.visModel, ref n.visModelFile);
+                rw.NodeRef(ref n.phyModelRef);
+                rw.NodeRef(ref n.visModelRef);
             }
 
             if (Version == 3)
@@ -282,25 +287,25 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
             {
                 if (Version <= 2)
                 {
-                    rw.NodeRef<CPlugStaticObjectModel>(ref n.staticObject, ref n.staticObjectFile);
+                    rw.NodeRef(ref n.staticObjectRef);
                 }
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef<CPlugStaticObjectModel>(ref n.staticObject, ref n.staticObjectFile);
+                rw.NodeRef(ref n.staticObjectRef);
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef<CMwNod>(ref n.triggerShape, ref n.triggerShapeFile);
+                rw.NodeRef(ref n.triggerShapeRef);
                 rw.Iso4(ref n.spawnLoc);
-                rw.NodeRef<CPlugParticleEmitterModel>(ref n.particleEmitterModel, ref n.particleEmitterModelFile);
-                rw.ArrayNodeRef<CGameActionModel>(ref n.actions!);
+                rw.NodeRef(ref n.particleEmitterModelRef);
+                n.actions = rw.ListNodeRef<CGameActionModel>(n.actions);
 
                 if (Version <= 5)
                 {
-                    rw.NodeRef<CMwNod>(ref U03, ref U03File);
+                    rw.NodeRef(ref U03Ref);
                 }
 
                 rw.String(ref n.soundRefSpawn);

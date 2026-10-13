@@ -34,12 +34,14 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03090000;
 
-    private List<CGameCtnChallengeGroup>? challengeGroups;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CGameCtnChallengeGroup>? challengeGroups;
     [AppliedWithChunk<Chunk03090000>]
-    public List<CGameCtnChallengeGroup>? ChallengeGroups
+    public NodeRefList<CGameCtnChallengeGroup>? ChallengeGroups
     {
-        get => this.challengeGroups;
-        set => this.challengeGroups = value;
+        get => challengeGroups;
+        set => challengeGroups = value;
     }
 
     private string? iconId;
@@ -143,11 +145,20 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         get => this.officialRecordEnabled;
         set => this.officialRecordEnabled = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (challengeGroups is not null)
+        {
+            for (var i = 0; i < challengeGroups.Count; i++) yield return new("ChallengeGroups" + "[" + i + "]", challengeGroups.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnCampaign)clone).challengeGroups = context.CloneList(this.challengeGroups)!;
+        ((CGameCtnCampaign)clone).challengeGroups = context.Clone(this.challengeGroups)!;
         ((CGameCtnCampaign)clone).iconId = context.Clone(this.iconId)!;
         ((CGameCtnCampaign)clone).name = context.Clone(this.name)!;
         ((CGameCtnCampaign)clone).@type = context.Clone(this.@type)!;
@@ -184,7 +195,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef_deprec<CGameCtnChallengeGroup>(ref n.challengeGroups!);
+            n.challengeGroups = rw.ListNodeRef_deprec<CGameCtnChallengeGroup>(n.challengeGroups);
         }
     }
 

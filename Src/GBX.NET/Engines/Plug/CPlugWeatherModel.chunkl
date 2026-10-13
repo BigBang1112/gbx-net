@@ -5,10 +5,10 @@ CPlugWeatherModel 0x090BF000
   CPlugBitmap BitmapSpecularDir
 
 0x002 [MP3, TMT, MP4, TM2020]
-  CFuncDayTime FuncDayTime (external)
+  CFuncDayTime FuncDayTime
 
 0x003 [MP3, TMT, MP4, TM2020]
-  CPlugBitmap BitmapWaterFog (external)
+  CPlugBitmap BitmapWaterFog
 
 0x004 [MP3, TMT, MP4, TM2020]
-  CPlugMoodSetting MoodSetting (external)
+  CPlugMoodSetting MoodSetting

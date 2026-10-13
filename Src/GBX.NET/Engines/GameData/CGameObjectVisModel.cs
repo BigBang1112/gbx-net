@@ -4,15 +4,12 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameObjectVisModel
 {
-    private CPlugSolid2Model? meshShaded;
+
     public CPlugSolid2Model? MeshShaded
     {
-        get => meshShadedFile?.GetNode(ref meshShaded) ?? meshShaded;
-        set => meshShaded = value;
+        get => meshShadedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshShadedRef, value);
     }
-    private GbxRefTableFile? meshShadedFile;
-    public GbxRefTableFile? MeshShadedFile { get => meshShadedFile; set => meshShadedFile = value; }
-    public CPlugSolid2Model? GetMeshShaded(GbxReadSettings settings = default) => meshShadedFile?.GetNode(ref meshShaded, settings);
 
     private string? mesh;
     public string? Mesh { get => mesh; set => mesh = value; }
@@ -23,28 +20,25 @@ public partial class CGameObjectVisModel
     private string? visEntFx;
     public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
 
-    private CMwNod? meshShadedFid;
     public CMwNod? MeshShadedFid
     {
-        get => meshShadedFidFile?.GetNode(ref meshShadedFid) ?? meshShadedFid;
-        set => meshShadedFid = value;
+        get => meshShadedFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshShadedFidRef, value);
     }
 
     private Vec3? domeShaderColor;
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
 
-    private CPlugAnimLocSimple? locAnim;
     public CPlugAnimLocSimple? LocAnim
     {
-        get => locAnimFile?.GetNode(ref locAnim) ?? locAnim;
-        set => locAnim = value;
+        get => locAnimRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref locAnimRef, value);
     }
 
-    private CPlugSolid? solid;
     public CPlugSolid? Solid
     {
-        get => solidFile?.GetNode(ref solid) ?? solid;
-        set => solid = value;
+        get => solidNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidNodeRef, value);
     }
 
     private string? solidRef;
@@ -63,14 +57,11 @@ public partial class CGameObjectVisModel
         public string? U07;
         public int? U08;
         public int? U09;
-        public CMwNod? U10;
+
         public float? U12;
-        public CMwNod? U13;
-        public CMwNod? U14;
-        public GbxRefTableFile? U14File;
+
         public CMwNod? U15;
-        public CMwNod? U16;
-        public GbxRefTableFile? U16File;
+
         public float? U18;
         public float? U19;
         public float? U20;

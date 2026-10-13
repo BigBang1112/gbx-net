@@ -33,6 +33,8 @@ public partial class CMwNod : IClass
     [Hexadecimal]
     public static uint Id => 0x01001000;
 
+    internal virtual uint GetId() => Id;
+
     public CMwNod()
     {
     }

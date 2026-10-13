@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     [Hexadecimal]
     public static new uint Id => 0x0316C000;
 
+    internal override uint GetId() => Id;
+
     private int keyArchiveVersion = 2;
     [AppliedWithChunk<Chunk0316C000>(2)]
     public int KeyArchiveVersion

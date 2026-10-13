@@ -34,6 +34,8 @@ public partial class CMotionPlayer : CMotion, IClass
     [Hexadecimal]
     public static new uint Id => 0x08034000;
 
+    internal override uint GetId() => Id;
+
     private bool hasBaseLegacy;
     [AppliedWithChunk<Chunk08034000>]
     [AppliedWithChunk<Chunk08034001>]
@@ -43,7 +45,7 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.hasBaseLegacy = value;
     }
 
-    private CMotionCmdBase? @base;
+    private NodeRef<CMotionCmdBase>? baseRef;
     [AppliedWithChunk<Chunk08034000>]
     [AppliedWithChunk<Chunk08034001>]
     [AppliedWithChunk<Chunk08034002>]
@@ -51,16 +53,16 @@ public partial class CMotionPlayer : CMotion, IClass
     [AppliedWithChunk<Chunk08034004>]
     public CMotionCmdBase? Base
     {
-        get => this.@base;
-        set => this.@base = value;
+        get => baseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref baseRef, value);
     }
 
-    private CMwNod? legacyModel;
+    private NodeRef<CMwNod>? legacyModelRef;
     [AppliedWithChunk<Chunk08034002>]
     public CMwNod? LegacyModel
     {
-        get => this.legacyModel;
-        set => this.legacyModel = value;
+        get => legacyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyModelRef, value);
     }
 
     private uint savePlayState = 2;
@@ -86,14 +88,14 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.playState = value;
     }
 
-    private List<CMotionTrack> tracks = new();
+    private NodeRefList<CMotionTrack>? tracks = new();
     [AppliedWithChunk<Chunk08034002>]
     [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
-    public List<CMotionTrack> Tracks
+    public NodeRefList<CMotionTrack>? Tracks
     {
-        get => this.tracks;
-        set => this.tracks = value;
+        get => tracks;
+        set => tracks = value;
     }
 
     private bool isPhysics = false;
@@ -104,15 +106,35 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.isPhysics = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionPlayer owner;
+        internal NodeRefView(CMotionPlayer owner) => this.owner = owner;
+        public NodeRef<CMotionCmdBase> Base => NodeRef.GetOrCreate(ref owner.baseRef);
+        public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Base", NodeRef.GetOrCreate(ref baseRef));
+        yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
+        if (tracks is not null)
+        {
+            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CMotionPlayer)clone).hasBaseLegacy = context.Clone(this.hasBaseLegacy)!;
-        ((CMotionPlayer)clone).@base = context.Clone(this.@base)!;
-        ((CMotionPlayer)clone).legacyModel = context.Clone(this.legacyModel)!;
+        ((CMotionPlayer)clone).baseRef = context.Clone(this.baseRef)!;
+        ((CMotionPlayer)clone).legacyModelRef = context.Clone(this.legacyModelRef)!;
         ((CMotionPlayer)clone).savePlayState = context.Clone(this.savePlayState)!;
         ((CMotionPlayer)clone).playState = context.Clone(this.playState)!;
-        ((CMotionPlayer)clone).tracks = context.CloneList(this.tracks)!;
+        ((CMotionPlayer)clone).tracks = context.Clone(this.tracks)!;
         ((CMotionPlayer)clone).isPhysics = context.Clone(this.isPhysics)!;
     }
 
@@ -132,7 +154,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
             if (n.HasBaseLegacy)
             {
-                rw.NodeRef<CMotionCmdBase>(ref n.@base);
+                rw.NodeRef(ref n.baseRef);
             }
         }
     }
@@ -166,7 +188,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.legacyModel);
+            rw.NodeRef(ref n.legacyModelRef);
             base.ReadWrite(n, rw);
         }
     }
@@ -183,7 +205,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            rw.Node<CMotionCmdBase>(ref n.@base);
+            rw.Node(ref n.baseRef);
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)
@@ -199,7 +221,7 @@ public partial class CMotionPlayer : CMotion, IClass
             }
 
             n.Name = rw.Id(n.Name);
-            rw.ListNodeRef<CMotionTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef<CMotionTrack>(n.tracks);
         }
     }
 
@@ -217,7 +239,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            rw.Node<CMotionCmdBase>(ref n.@base);
+            rw.Node(ref n.baseRef);
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)
@@ -234,7 +256,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
             rw.Boolean(ref n.isPhysics);
             n.Name = rw.Id(n.Name);
-            rw.ListNodeRef<CMotionTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef<CMotionTrack>(n.tracks);
         }
     }
 

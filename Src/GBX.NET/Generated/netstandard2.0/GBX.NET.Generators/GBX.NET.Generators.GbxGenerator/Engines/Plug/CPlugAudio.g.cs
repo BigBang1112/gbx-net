@@ -34,6 +34,8 @@ public abstract partial class CPlugAudio : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09001000;
 
+    internal override uint GetId() => Id;
+
     private int canHaveFx;
     [AppliedWithChunk<Chunk09001000>]
     public int CanHaveFx

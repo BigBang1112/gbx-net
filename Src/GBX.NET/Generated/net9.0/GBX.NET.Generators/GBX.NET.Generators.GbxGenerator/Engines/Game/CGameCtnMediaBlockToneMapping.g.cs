@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
     [Hexadecimal]
     public static new uint Id => 0x03127000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk03127000>]
     [AppliedWithChunk<Chunk03127001>]

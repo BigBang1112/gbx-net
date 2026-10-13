@@ -34,6 +34,8 @@ public partial class CGameLeagueManager : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03049000;
 
+    internal override uint GetId() => Id;
+
     private int cacheDuration;
     [AppliedWithChunk<Chunk03049000>]
     public int CacheDuration
@@ -58,12 +60,21 @@ public partial class CGameLeagueManager : CMwNod, IClass
         set => this.timestamp = value;
     }
 
-    private CGameLeague[]? leagues;
+    private NodeRefList<CGameLeague>? leagues;
     [AppliedWithChunk<Chunk03049000>]
-    public CGameLeague[]? Leagues
+    public NodeRefList<CGameLeague>? Leagues
     {
-        get => this.leagues;
-        set => this.leagues = value;
+        get => leagues;
+        set => leagues = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (leagues is not null)
+        {
+            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -72,7 +83,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
         ((CGameLeagueManager)clone).cacheDuration = context.Clone(this.cacheDuration)!;
         ((CGameLeagueManager)clone).updated = context.Clone(this.updated)!;
         ((CGameLeagueManager)clone).timestamp = context.Clone(this.timestamp)!;
-        ((CGameLeagueManager)clone).leagues = context.CloneArray(this.leagues)!;
+        ((CGameLeagueManager)clone).leagues = context.Clone(this.leagues)!;
     }
 
     public CGameLeagueManager()
@@ -102,7 +113,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
             if (n.Updated)
             {
                 n.timestamp = rw.SystemTime(n.timestamp);
-                rw.ArrayNodeRef_deprec<CGameLeague>(ref n.leagues!);
+                n.leagues = rw.ListNodeRef_deprec<CGameLeague>(n.leagues);
             }
         }
     }

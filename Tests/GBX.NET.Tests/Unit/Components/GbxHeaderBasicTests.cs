@@ -12,7 +12,7 @@ public class GbxHeaderBasicTests
     {
         // Arrange & Act
         var basic = new GbxHeaderBasic(6, GbxFormat.Binary, GbxCompression.Uncompressed, GbxCompression.Compressed, GbxMode.Release);
-        
+
         // Assert
         await Assert.That(basic.Version).IsEqualTo((ushort)6);
         await Assert.That(basic.Format).IsEqualTo(GbxFormat.Binary);

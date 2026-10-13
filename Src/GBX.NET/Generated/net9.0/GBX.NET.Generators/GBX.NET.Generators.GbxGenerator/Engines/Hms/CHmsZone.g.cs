@@ -34,12 +34,14 @@ public partial class CHmsZone : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06004000;
 
-    private CHmsFogPlane[]? fogPlanes;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CHmsFogPlane>? fogPlanes;
     [AppliedWithChunk<Chunk06004002>]
-    public CHmsFogPlane[]? FogPlanes
+    public NodeRefList<CHmsFogPlane>? FogPlanes
     {
-        get => this.fogPlanes;
-        set => this.fogPlanes = value;
+        get => fogPlanes;
+        set => fogPlanes = value;
     }
 
     private Vec3 fogRGB = (1, 1, 1);
@@ -112,53 +114,59 @@ public partial class CHmsZone : CMwNod, IClass
         set => this.mRNormal = value;
     }
 
-    private CHmsPrecalcRender[]? precalcRenders;
+    private NodeRefList<CHmsPrecalcRender>? precalcRenders;
     [AppliedWithChunk<Chunk06004005>]
-    public CHmsPrecalcRender[]? PrecalcRenders
+    public NodeRefList<CHmsPrecalcRender>? PrecalcRenders
     {
-        get => this.precalcRenders;
-        set => this.precalcRenders = value;
+        get => precalcRenders;
+        set => precalcRenders = value;
     }
 
-    private CPlugBitmap? bitmapCubeReflectHardSpecA;
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHardSpecARef;
     [AppliedWithChunk<Chunk06004006>]
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHardSpecA
     {
-        get => this.bitmapCubeReflectHardSpecAFile?.GetNode(ref this.bitmapCubeReflectHardSpecA) ?? this.bitmapCubeReflectHardSpecA;
-        set => this.bitmapCubeReflectHardSpecA = value;
-    }
-    private Components.GbxRefTableFile? bitmapCubeReflectHardSpecAFile;
-
-    public Components.GbxRefTableFile? BitmapCubeReflectHardSpecAFile
-    {
-        get => bitmapCubeReflectHardSpecAFile;
-        set => bitmapCubeReflectHardSpecAFile = value;
+        get => bitmapCubeReflectHardSpecARef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHardSpecARef, value);
     }
 
-    public CPlugBitmap? GetBitmapCubeReflectHardSpecA(GbxReadSettings settings = default, bool exceptions = false) => bitmapCubeReflectHardSpecAFile?.GetNode(ref bitmapCubeReflectHardSpecA, settings, exceptions) ?? bitmapCubeReflectHardSpecA;
-
-    private CPlugBitmap? bitmapCubeReflectHdrAlpha2;
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHdrAlpha2Ref;
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {
-        get => this.bitmapCubeReflectHdrAlpha2File?.GetNode(ref this.bitmapCubeReflectHdrAlpha2) ?? this.bitmapCubeReflectHdrAlpha2;
-        set => this.bitmapCubeReflectHdrAlpha2 = value;
+        get => bitmapCubeReflectHdrAlpha2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHdrAlpha2Ref, value);
     }
-    private Components.GbxRefTableFile? bitmapCubeReflectHdrAlpha2File;
 
-    public Components.GbxRefTableFile? BitmapCubeReflectHdrAlpha2File
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => bitmapCubeReflectHdrAlpha2File;
-        set => bitmapCubeReflectHdrAlpha2File = value;
+        private readonly CHmsZone owner;
+        internal NodeRefView(CHmsZone owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
     }
-
-    public CPlugBitmap? GetBitmapCubeReflectHdrAlpha2(GbxReadSettings settings = default, bool exceptions = false) => bitmapCubeReflectHdrAlpha2File?.GetNode(ref bitmapCubeReflectHdrAlpha2, settings, exceptions) ?? bitmapCubeReflectHdrAlpha2;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (fogPlanes is not null)
+        {
+            for (var i = 0; i < fogPlanes.Count; i++) yield return new("FogPlanes" + "[" + i + "]", fogPlanes.Get(i));
+        }
+        if (precalcRenders is not null)
+        {
+            for (var i = 0; i < precalcRenders.Count; i++) yield return new("PrecalcRenders" + "[" + i + "]", precalcRenders.Get(i));
+        }
+        yield return new("BitmapCubeReflectHardSpecA", NodeRef.GetOrCreate(ref bitmapCubeReflectHardSpecARef));
+        yield return new("BitmapCubeReflectHdrAlpha2", NodeRef.GetOrCreate(ref bitmapCubeReflectHdrAlpha2Ref));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CHmsZone)clone).fogPlanes = context.CloneArray(this.fogPlanes)!;
+        ((CHmsZone)clone).fogPlanes = context.Clone(this.fogPlanes)!;
         ((CHmsZone)clone).fogRGB = context.Clone(this.fogRGB)!;
         ((CHmsZone)clone).fogLinearStart = context.Clone(this.fogLinearStart)!;
         ((CHmsZone)clone).fogLinearEnd = context.Clone(this.fogLinearEnd)!;
@@ -167,9 +175,9 @@ public partial class CHmsZone : CMwNod, IClass
         ((CHmsZone)clone).mRIsForced = context.Clone(this.mRIsForced)!;
         ((CHmsZone)clone).mRPoint = context.Clone(this.mRPoint)!;
         ((CHmsZone)clone).mRNormal = context.Clone(this.mRNormal)!;
-        ((CHmsZone)clone).precalcRenders = context.CloneArray(this.precalcRenders)!;
-        ((CHmsZone)clone).bitmapCubeReflectHardSpecA = context.Clone(this.bitmapCubeReflectHardSpecA)!;
-        ((CHmsZone)clone).bitmapCubeReflectHdrAlpha2 = context.Clone(this.bitmapCubeReflectHdrAlpha2)!;
+        ((CHmsZone)clone).precalcRenders = context.Clone(this.precalcRenders)!;
+        ((CHmsZone)clone).bitmapCubeReflectHardSpecARef = context.Clone(this.bitmapCubeReflectHardSpecARef)!;
+        ((CHmsZone)clone).bitmapCubeReflectHdrAlpha2Ref = context.Clone(this.bitmapCubeReflectHdrAlpha2Ref)!;
     }
 
     [AppliedWithChunk<Chunk06004002>]
@@ -210,7 +218,7 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CHmsFogPlane>(ref n.fogPlanes!);
+            n.fogPlanes = rw.ListNodeRef_deprec<CHmsFogPlane>(n.fogPlanes);
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
@@ -261,7 +269,7 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CHmsPrecalcRender>(ref n.precalcRenders!);
+            n.precalcRenders = rw.ListNodeRef_deprec<CHmsPrecalcRender>(n.precalcRenders);
         }
     }
 
@@ -279,7 +287,7 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHardSpecA, ref n.bitmapCubeReflectHardSpecAFile);
+            rw.NodeRef(ref n.bitmapCubeReflectHardSpecARef);
         }
     }
 
@@ -297,8 +305,8 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHardSpecA, ref n.bitmapCubeReflectHardSpecAFile);
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapCubeReflectHdrAlpha2, ref n.bitmapCubeReflectHdrAlpha2File);
+            rw.NodeRef(ref n.bitmapCubeReflectHardSpecARef);
+            rw.NodeRef(ref n.bitmapCubeReflectHdrAlpha2Ref);
         }
     }
 

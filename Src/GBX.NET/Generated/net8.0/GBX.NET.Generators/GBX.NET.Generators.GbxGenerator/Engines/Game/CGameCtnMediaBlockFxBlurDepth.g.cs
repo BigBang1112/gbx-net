@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
     [Hexadecimal]
     public static new uint Id => 0x03081000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03081000>]
     public TimeSingle Start

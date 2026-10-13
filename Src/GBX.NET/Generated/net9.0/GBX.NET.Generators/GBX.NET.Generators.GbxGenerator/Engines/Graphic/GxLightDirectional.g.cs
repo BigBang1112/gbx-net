@@ -34,6 +34,8 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     [Hexadecimal]
     public static new uint Id => 0x04007000;
 
+    internal override uint GetId() => Id;
+
     private bool useBoundaryHint;
     [AppliedWithChunk<Chunk04007001>]
     [AppliedWithChunk<Chunk04007002>]

@@ -34,6 +34,8 @@ public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableW
     [Hexadecimal]
     public static new uint Id => 0x2F0CA000;
 
+    internal override uint GetId() => Id;
+
     private int subVersion;
     public int SubVersion
     {

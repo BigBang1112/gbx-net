@@ -34,6 +34,8 @@ public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IRead
     [Hexadecimal]
     public static new uint Id => 0x2F0C8000;
 
+    internal override uint GetId() => Id;
+
     private int ent1;
     public int Ent1
     {

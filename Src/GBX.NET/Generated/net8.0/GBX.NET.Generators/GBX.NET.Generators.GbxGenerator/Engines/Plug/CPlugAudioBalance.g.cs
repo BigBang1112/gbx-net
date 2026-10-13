@@ -34,6 +34,8 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
     [Hexadecimal]
     public static new uint Id => 0x09034000;
 
+    internal override uint GetId() => Id;
+
     private Group[]? groups;
     [AppliedWithChunk<Chunk09034000>]
     public Group[]? Groups
@@ -66,21 +68,68 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         public float U05;
         public float U06;
         public float U07;
-        public CFuncKeysReal? U08;
-        public Components.GbxRefTableFile? U08File;
-        public CFuncKeysReal? U09;
-        public Components.GbxRefTableFile? U09File;
-        public CFuncKeysReal? U10;
-        public Components.GbxRefTableFile? U10File;
-        public CFuncKeysReal? U11;
-        public Components.GbxRefTableFile? U11File;
-        public CFuncKeysReal? U12;
-        public Components.GbxRefTableFile? U12File;
+
+        private NodeRef<CFuncKeysReal>? U08Ref;
+        public CFuncKeysReal? U08
+        {
+            get => U08Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U08Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U09Ref;
+        public CFuncKeysReal? U09
+        {
+            get => U09Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U09Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U10Ref;
+        public CFuncKeysReal? U10
+        {
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U11Ref;
+        public CFuncKeysReal? U11
+        {
+            get => U11Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U11Ref, value);
+        }
+
+        private NodeRef<CFuncKeysReal>? U12Ref;
+        public CFuncKeysReal? U12
+        {
+            get => U12Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U12Ref, value);
+        }
         public float U13;
         public float U14;
         public float U15;
         public float U16;
         public float U17;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk09034000 owner;
+            internal NodeRefView(Chunk09034000 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
+            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
+            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
+            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
+            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
+            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -93,11 +142,11 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
             ((Chunk09034000)clone).U05 = context.Clone(this.U05)!;
             ((Chunk09034000)clone).U06 = context.Clone(this.U06)!;
             ((Chunk09034000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09034000)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09034000)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09034000)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk09034000)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk09034000)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk09034000)clone).U08Ref = context.Clone(this.U08Ref)!;
+            ((Chunk09034000)clone).U09Ref = context.Clone(this.U09Ref)!;
+            ((Chunk09034000)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk09034000)clone).U11Ref = context.Clone(this.U11Ref)!;
+            ((Chunk09034000)clone).U12Ref = context.Clone(this.U12Ref)!;
             ((Chunk09034000)clone).U13 = context.Clone(this.U13)!;
             ((Chunk09034000)clone).U14 = context.Clone(this.U14)!;
             ((Chunk09034000)clone).U15 = context.Clone(this.U15)!;
@@ -128,17 +177,17 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
                             rw.Single(ref U05);
                             rw.Single(ref U06);
                             rw.Single(ref U07);
-                            rw.NodeRef<CFuncKeysReal>(ref U08, ref U08File);
-                            rw.NodeRef<CFuncKeysReal>(ref U09, ref U09File);
+                            rw.NodeRef(ref U08Ref);
+                            rw.NodeRef(ref U09Ref);
 
                             if (Version >= 8)
                             {
-                                rw.NodeRef<CFuncKeysReal>(ref U10, ref U10File);
-                                rw.NodeRef<CFuncKeysReal>(ref U11, ref U11File);
+                                rw.NodeRef(ref U10Ref);
+                                rw.NodeRef(ref U11Ref);
 
                                 if (Version >= 9)
                                 {
-                                    rw.NodeRef<CFuncKeysReal>(ref U12, ref U12File);
+                                    rw.NodeRef(ref U12Ref);
 
                                     if (Version >= 10)
                                     {

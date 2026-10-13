@@ -120,7 +120,7 @@ public partial class CPlugAnimSkelEdition
         {
             rw.VersionInt32(this);
             rw.Int32(ref n.flagsVersion);
-            rw.NodeRef(ref n.skel);
+            rw.NodeRef(ref n.skelRef);
             n.ReadWrite(rw, Version);
         }
     }

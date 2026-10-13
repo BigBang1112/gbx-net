@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, IClass, C
     [Hexadecimal]
     public static new uint Id => 0x03195000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03195000>]
     public TimeSingle Start

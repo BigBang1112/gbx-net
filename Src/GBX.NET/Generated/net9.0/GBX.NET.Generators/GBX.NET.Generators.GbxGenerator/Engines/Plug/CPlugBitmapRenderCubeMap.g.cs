@@ -34,6 +34,8 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     [Hexadecimal]
     public static new uint Id => 0x09088000;
 
+    internal override uint GetId() => Id;
+
     private int cubeFaceCount = 6;
     [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
@@ -77,23 +79,14 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.minDistToUpdate = value;
     }
 
-    private CPlugBitmap? bitmapImageSpace;
+    private NodeRef<CPlugBitmap>? bitmapImageSpaceRef;
     [AppliedWithChunk<Chunk09088003>]
     [AppliedWithChunk<Chunk09088004>]
     public CPlugBitmap? BitmapImageSpace
     {
-        get => this.bitmapImageSpaceFile?.GetNode(ref this.bitmapImageSpace) ?? this.bitmapImageSpace;
-        set => this.bitmapImageSpace = value;
+        get => bitmapImageSpaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapImageSpaceRef, value);
     }
-    private Components.GbxRefTableFile? bitmapImageSpaceFile;
-
-    public Components.GbxRefTableFile? BitmapImageSpaceFile
-    {
-        get => bitmapImageSpaceFile;
-        set => bitmapImageSpaceFile = value;
-    }
-
-    public CPlugBitmap? GetBitmapImageSpace(GbxReadSettings settings = default, bool exceptions = false) => bitmapImageSpaceFile?.GetNode(ref bitmapImageSpace, settings, exceptions) ?? bitmapImageSpace;
 
     private float bitmapImageSpaceDistToCenter;
     [AppliedWithChunk<Chunk09088003>]
@@ -112,6 +105,22 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.bitmapImageSpaceScaleHeight = value;
     }
 
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapRenderCubeMap owner;
+        internal NodeRefView(CPlugBitmapRenderCubeMap owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapImageSpace => NodeRef.GetOrCreate(ref owner.bitmapImageSpaceRef);
+        public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BitmapImageSpace", NodeRef.GetOrCreate(ref bitmapImageSpaceRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -120,7 +129,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         ((CPlugBitmapRenderCubeMap)clone).farZ = context.Clone(this.farZ)!;
         ((CPlugBitmapRenderCubeMap)clone).flags = context.Clone(this.flags)!;
         ((CPlugBitmapRenderCubeMap)clone).minDistToUpdate = context.Clone(this.minDistToUpdate)!;
-        ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpace = context.Clone(this.bitmapImageSpace)!;
+        ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpaceRef = context.Clone(this.bitmapImageSpaceRef)!;
         ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpaceDistToCenter = context.Clone(this.bitmapImageSpaceDistToCenter)!;
         ((CPlugBitmapRenderCubeMap)clone).bitmapImageSpaceScaleHeight = context.Clone(this.bitmapImageSpaceScaleHeight)!;
     }
@@ -210,7 +219,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
 
         public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.bitmapImageSpace, ref n.bitmapImageSpaceFile);
+            rw.NodeRef(ref n.bitmapImageSpaceRef);
             rw.Single(ref n.bitmapImageSpaceDistToCenter);
         }
     }

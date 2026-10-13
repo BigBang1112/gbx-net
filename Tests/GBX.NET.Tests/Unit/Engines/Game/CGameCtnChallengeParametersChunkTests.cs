@@ -107,7 +107,7 @@ public class CGameCtnChallengeParametersChunkTests
         }
 
         var restored = await ReadAndRewrite(stream, new CGameCtnChallengeParameters.Chunk0305B00B());
-        await Assert.That(restored.LegacyValidateGhosts!.Length).IsEqualTo(2);
+        await Assert.That(restored.LegacyValidateGhosts!.Count).IsEqualTo(2);
         await Assert.That(restored.LegacyValidateGhosts[0]).IsNotNull();
         await Assert.That(restored.LegacyValidateGhosts[1]).IsNull();
     }

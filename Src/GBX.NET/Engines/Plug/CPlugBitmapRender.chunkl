@@ -7,7 +7,7 @@ CPlugBitmapRender 0x09086000
 
 0x001 (base: 0x000) // legacy clear bitmap
   base
-  CPlugBitmap BitmapClear (external)
+  CPlugBitmap BitmapClear
   vec2? BitmapClearUV = (0, 0)
 
 0x002 // shader visibility filter
@@ -40,11 +40,11 @@ CPlugBitmapRender 0x09086000
 0x00B [TMSX, TMNESWC, VSK5, TMF] // clear bitmap and render flags
   uint ClearColor
   datauint RenderFlags = 0x2E8007E2 // Packed render, clear-bitmap and color-write settings.
-  CPlugBitmap BitmapClear (external)
+  CPlugBitmap BitmapClear
   vec2? BitmapClearUV
 
 0x00C [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020] // RenderSub
-  CPlugBitmapRenderSub RenderSub (external)
+  CPlugBitmapRenderSub RenderSub
 
 0x00D [TMNESWC, VSK5] // legacy secondary render flags
   datauint RenderFlags2 = 0x7800 [TMNESWC = 0, VSK5 = 0] // Packed blur, fog and lighting settings.

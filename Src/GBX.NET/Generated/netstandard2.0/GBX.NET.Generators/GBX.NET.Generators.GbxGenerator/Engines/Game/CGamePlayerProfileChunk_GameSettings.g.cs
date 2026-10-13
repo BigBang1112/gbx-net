@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     [Hexadecimal]
     public static new uint Id => 0x0312D000;
 
+    internal override uint GetId() => Id;
+
     private int opponentsVersionLast;
     [AppliedWithChunk<Chunk0312D000>]
     public int OpponentsVersionLast

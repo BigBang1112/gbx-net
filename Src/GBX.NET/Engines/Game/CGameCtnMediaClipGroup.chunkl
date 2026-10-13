@@ -1,18 +1,18 @@
 CGameCtnMediaClipGroup 0x0307A000 // MediaTracker clip group. Clips and triggers are matched by array index.
 
-0x000 (demonstration: partial)
+0x000 (demonstration)
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 0)
 
-0x001 (demonstration: partial)
+0x001 (demonstration)
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 1)
 
-0x002 (demonstration: partial) [TMSX, TMNESWC, VSK5]
+0x002 (demonstration) [TMSX, TMNESWC, VSK5]
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 2)
 
-0x003 (demonstration: partial) [TMF, MP3, TMT, MP4, TM2020]
+0x003 (demonstration) [TMF, MP3, TMT, MP4, TM2020]
   CGameCtnMediaClip[] Clips (deprec)
   Trigger[] Triggers (version: 3)
 

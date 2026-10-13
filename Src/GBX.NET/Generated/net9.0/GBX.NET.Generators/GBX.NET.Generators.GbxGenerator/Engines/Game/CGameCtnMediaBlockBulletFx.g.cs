@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
     [Hexadecimal]
     public static new uint Id => 0x03169000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03169000>]
     public TimeSingle Start
@@ -50,12 +52,26 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         set => this.end = value;
     }
 
-    private CPlugDataTape? dataTape;
+    private NodeRef<CPlugDataTape>? dataTapeRef;
     [AppliedWithChunk<Chunk03169000>]
     public CPlugDataTape? DataTape
     {
-        get => this.dataTape;
-        set => this.dataTape = value;
+        get => dataTapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dataTapeRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockBulletFx owner;
+        internal NodeRefView(CGameCtnMediaBlockBulletFx owner) => this.owner = owner;
+        public NodeRef<CPlugDataTape> DataTape => NodeRef.GetOrCreate(ref owner.dataTapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DataTape", NodeRef.GetOrCreate(ref dataTapeRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -63,7 +79,7 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockBulletFx)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockBulletFx)clone).end = context.Clone(this.end)!;
-        ((CGameCtnMediaBlockBulletFx)clone).dataTape = context.Clone(this.dataTape)!;
+        ((CGameCtnMediaBlockBulletFx)clone).dataTapeRef = context.Clone(this.dataTapeRef)!;
     }
 
     public CGameCtnMediaBlockBulletFx()
@@ -98,7 +114,7 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CPlugDataTape>(ref n.dataTape);
+            rw.NodeRef(ref n.dataTapeRef);
         }
     }
 

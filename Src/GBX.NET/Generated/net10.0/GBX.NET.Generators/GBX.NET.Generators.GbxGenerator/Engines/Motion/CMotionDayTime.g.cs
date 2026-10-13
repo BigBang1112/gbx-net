@@ -34,54 +34,56 @@ public partial class CMotionDayTime : CMotionManaged, IClass
     [Hexadecimal]
     public static new uint Id => 0x08055000;
 
-    private CMwNod? legacyModel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwNod>? legacyModelRef;
     [AppliedWithChunk<Chunk08055000>]
     public CMwNod? LegacyModel
     {
-        get => this.legacyModel;
-        set => this.legacyModel = value;
+        get => legacyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyModelRef, value);
     }
 
-    private CPlugMaterial? dayMaterial;
+    private NodeRef<CPlugMaterial>? dayMaterialRef;
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? DayMaterial
     {
-        get => this.dayMaterialFile?.GetNode(ref this.dayMaterial) ?? this.dayMaterial;
-        set => this.dayMaterial = value;
-    }
-    private Components.GbxRefTableFile? dayMaterialFile;
-
-    public Components.GbxRefTableFile? DayMaterialFile
-    {
-        get => dayMaterialFile;
-        set => dayMaterialFile = value;
+        get => dayMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dayMaterialRef, value);
     }
 
-    public CPlugMaterial? GetDayMaterial(GbxReadSettings settings = default, bool exceptions = false) => dayMaterialFile?.GetNode(ref dayMaterial, settings, exceptions) ?? dayMaterial;
-
-    private CPlugMaterial? nightMaterial;
+    private NodeRef<CPlugMaterial>? nightMaterialRef;
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? NightMaterial
     {
-        get => this.nightMaterialFile?.GetNode(ref this.nightMaterial) ?? this.nightMaterial;
-        set => this.nightMaterial = value;
+        get => nightMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref nightMaterialRef, value);
     }
-    private Components.GbxRefTableFile? nightMaterialFile;
 
-    public Components.GbxRefTableFile? NightMaterialFile
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
     {
-        get => nightMaterialFile;
-        set => nightMaterialFile = value;
+        private readonly CMotionDayTime owner;
+        internal NodeRefView(CMotionDayTime owner) => this.owner = owner;
+        public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
+        public NodeRef<CPlugMaterial> DayMaterial => NodeRef.GetOrCreate(ref owner.dayMaterialRef);
+        public NodeRef<CPlugMaterial> NightMaterial => NodeRef.GetOrCreate(ref owner.nightMaterialRef);
     }
-
-    public CPlugMaterial? GetNightMaterial(GbxReadSettings settings = default, bool exceptions = false) => nightMaterialFile?.GetNode(ref nightMaterial, settings, exceptions) ?? nightMaterial;
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
+        yield return new("DayMaterial", NodeRef.GetOrCreate(ref dayMaterialRef));
+        yield return new("NightMaterial", NodeRef.GetOrCreate(ref nightMaterialRef));
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionDayTime)clone).legacyModel = context.Clone(this.legacyModel)!;
-        ((CMotionDayTime)clone).dayMaterial = context.Clone(this.dayMaterial)!;
-        ((CMotionDayTime)clone).nightMaterial = context.Clone(this.nightMaterial)!;
+        ((CMotionDayTime)clone).legacyModelRef = context.Clone(this.legacyModelRef)!;
+        ((CMotionDayTime)clone).dayMaterialRef = context.Clone(this.dayMaterialRef)!;
+        ((CMotionDayTime)clone).nightMaterialRef = context.Clone(this.nightMaterialRef)!;
     }
 
     public CMotionDayTime()
@@ -102,9 +104,9 @@ public partial class CMotionDayTime : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionDayTime n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.legacyModel);
-            rw.NodeRef<CPlugMaterial>(ref n.dayMaterial, ref n.dayMaterialFile);
-            rw.NodeRef<CPlugMaterial>(ref n.nightMaterial, ref n.nightMaterialFile);
+            rw.NodeRef(ref n.legacyModelRef);
+            rw.NodeRef(ref n.dayMaterialRef);
+            rw.NodeRef(ref n.nightMaterialRef);
         }
     }
 

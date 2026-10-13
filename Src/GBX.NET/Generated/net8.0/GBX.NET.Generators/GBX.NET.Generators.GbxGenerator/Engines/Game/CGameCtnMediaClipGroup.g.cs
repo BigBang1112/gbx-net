@@ -37,27 +37,11 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0307A000;
 
-    [AppliedWithChunk<Chunk0307A000>]
-    [AppliedWithChunk<Chunk0307A001>]
-    [AppliedWithChunk<Chunk0307A002>]
-    [AppliedWithChunk<Chunk0307A003>]
-    public partial List<ClipTrigger> Clips { get; set; }
-
-    private Trigger[]? triggers;
-    [AppliedWithChunk<Chunk0307A000>]
-    [AppliedWithChunk<Chunk0307A001>]
-    [AppliedWithChunk<Chunk0307A002>]
-    [AppliedWithChunk<Chunk0307A003>]
-    public Trigger[]? Triggers
-    {
-        get => this.triggers;
-        set => this.triggers = value;
-    }
+    internal override uint GetId() => Id;
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaClipGroup)clone).triggers = context.CloneArray(this.triggers)!;
         ((CGameCtnMediaClipGroup)clone).clips = context.CloneList(this.clips)!;
     }
 
@@ -69,22 +53,12 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     public partial class Chunk0307A000 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A000;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
     }
 
     [Chunk(0x0307A001)]
     public partial class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A001;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
     }
 
     [Chunk(0x0307A002)]
@@ -93,11 +67,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     {
         public override uint Id => 0x0307A002;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
     }
 
     [Chunk(0x0307A003)]
@@ -106,11 +75,6 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     {
         public override uint Id => 0x0307A003;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-        }
     }
 
     [Chunk(0x0307A004)]

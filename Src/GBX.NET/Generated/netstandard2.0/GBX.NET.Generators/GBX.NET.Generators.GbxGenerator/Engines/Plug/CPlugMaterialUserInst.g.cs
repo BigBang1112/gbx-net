@@ -34,6 +34,8 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090FD000;
 
+    internal override uint GetId() => Id;
+
     private bool isUsingGameMaterial;
     [AppliedWithChunk<Chunk090FD000>(11)]
     public bool IsUsingGameMaterial
@@ -302,21 +304,41 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override uint Id => 0x090FD001;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 5;
-        public CPlugBitmapAtlas? U01;
+
+        private NodeRef<CPlugBitmapAtlas>? U01Ref;
+        public CPlugBitmapAtlas? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
         public int? U02;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090FD001 owner;
+            internal NodeRefView(Chunk090FD001 owner) => this.owner = owner;
+            public NodeRef<CPlugBitmapAtlas> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090FD001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090FD001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090FD001)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090FD001)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugBitmapAtlas>(ref U01);
+            rw.NodeRef(ref U01Ref);
 
             if (Version == 2)
             {

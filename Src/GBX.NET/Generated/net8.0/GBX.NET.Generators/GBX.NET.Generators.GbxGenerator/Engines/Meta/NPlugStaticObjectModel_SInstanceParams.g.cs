@@ -34,6 +34,8 @@ public partial class NPlugStaticObjectModel_SInstanceParams : SMetaPtr, IClass, 
     [Hexadecimal]
     public static new uint Id => 0x2F0D9000;
 
+    internal override uint GetId() => Id;
+
     private float phase01;
     public float Phase01
     {

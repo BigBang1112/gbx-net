@@ -34,6 +34,10 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E007000;
 
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSolid2Model>? meshShadedRef;
+
     private LegacyLocAnim[]? legacyLocAnims;
     [AppliedWithChunk<Chunk2E007001>(2, 4)]
     public LegacyLocAnim[]? LegacyLocAnims
@@ -42,23 +46,15 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         set => this.legacyLocAnims = value;
     }
 
-    private External<CPlugAnimLocSimple>[]? legacyLocAnimRefs;
+    private NodeRefList<CPlugAnimLocSimple>? legacyLocAnimRefs;
     [AppliedWithChunk<Chunk2E007001>(5, 5)]
-    public External<CPlugAnimLocSimple>[]? LegacyLocAnimRefs
+    public NodeRefList<CPlugAnimLocSimple>? LegacyLocAnimRefs
     {
-        get => this.legacyLocAnimRefs;
-        set => this.legacyLocAnimRefs = value;
+        get => legacyLocAnimRefs;
+        set => legacyLocAnimRefs = value;
     }
 
-    private Components.GbxRefTableFile? locAnimFile;
-
-    public Components.GbxRefTableFile? LocAnimFile
-    {
-        get => locAnimFile;
-        set => locAnimFile = value;
-    }
-
-    public CPlugAnimLocSimple? GetLocAnim(GbxReadSettings settings = default, bool exceptions = false) => locAnimFile?.GetNode(ref locAnim, settings, exceptions) ?? locAnim;
+    private NodeRef<CPlugAnimLocSimple>? locAnimRef;
 
     private CGameCommonItemEntityModel.LightBallStateSimple[]? lightBallStates;
     [AppliedWithChunk<Chunk2E007001>(2)]
@@ -111,25 +107,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         set => this.spriteParams = value;
     }
 
-    private Components.GbxRefTableFile? solidFile;
+    private NodeRef<CPlugSolid>? solidNodeRef;
 
-    public Components.GbxRefTableFile? SolidFile
-    {
-        get => solidFile;
-        set => solidFile = value;
-    }
-
-    public CPlugSolid? GetSolid(GbxReadSettings settings = default, bool exceptions = false) => solidFile?.GetNode(ref solid, settings, exceptions) ?? solid;
-
-    private Components.GbxRefTableFile? meshShadedFidFile;
-
-    public Components.GbxRefTableFile? MeshShadedFidFile
-    {
-        get => meshShadedFidFile;
-        set => meshShadedFidFile = value;
-    }
-
-    public CMwNod? GetMeshShadedFid(GbxReadSettings settings = default, bool exceptions = false) => meshShadedFidFile?.GetNode(ref meshShadedFid, settings, exceptions) ?? meshShadedFid;
+    private NodeRef<CMwNod>? meshShadedFidRef;
 
     private string? soundRefSmashed;
     [AppliedWithChunk<Chunk2E007002>]
@@ -155,29 +135,52 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         set => this.soundLocPermanent = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameObjectVisModel owner;
+        internal NodeRefView(CGameObjectVisModel owner) => this.owner = owner;
+        public NodeRef<CPlugSolid2Model> MeshShaded => NodeRef.GetOrCreate(ref owner.meshShadedRef);
+        public NodeRef<CPlugAnimLocSimple> LocAnim => NodeRef.GetOrCreate(ref owner.locAnimRef);
+        public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidNodeRef);
+        public NodeRef<CMwNod> MeshShadedFid => NodeRef.GetOrCreate(ref owner.meshShadedFidRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("MeshShaded", NodeRef.GetOrCreate(ref meshShadedRef));
+        if (legacyLocAnimRefs is not null)
+        {
+            for (var i = 0; i < legacyLocAnimRefs.Count; i++) yield return new("LegacyLocAnimRefs" + "[" + i + "]", legacyLocAnimRefs.Get(i));
+        }
+        yield return new("LocAnim", NodeRef.GetOrCreate(ref locAnimRef));
+        yield return new("Solid", NodeRef.GetOrCreate(ref solidNodeRef));
+        yield return new("MeshShadedFid", NodeRef.GetOrCreate(ref meshShadedFidRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGameObjectVisModel)clone).meshShadedRef = context.Clone(this.meshShadedRef)!;
         ((CGameObjectVisModel)clone).legacyLocAnims = context.CloneArray(this.legacyLocAnims)!;
-        ((CGameObjectVisModel)clone).legacyLocAnimRefs = context.CloneArray(this.legacyLocAnimRefs)!;
+        ((CGameObjectVisModel)clone).legacyLocAnimRefs = context.Clone(this.legacyLocAnimRefs)!;
+        ((CGameObjectVisModel)clone).locAnimRef = context.Clone(this.locAnimRef)!;
         ((CGameObjectVisModel)clone).lightBallStates = context.CloneArray(this.lightBallStates)!;
         ((CGameObjectVisModel)clone).soundRefSpawn = context.Clone(this.soundRefSpawn)!;
         ((CGameObjectVisModel)clone).soundRefUnspawn = context.Clone(this.soundRefUnspawn)!;
         ((CGameObjectVisModel)clone).soundRefGrab = context.Clone(this.soundRefGrab)!;
         ((CGameObjectVisModel)clone).images = context.CloneArray(this.images)!;
         ((CGameObjectVisModel)clone).spriteParams = context.CloneArray(this.spriteParams)!;
+        ((CGameObjectVisModel)clone).solidNodeRef = context.Clone(this.solidNodeRef)!;
+        ((CGameObjectVisModel)clone).meshShadedFidRef = context.Clone(this.meshShadedFidRef)!;
         ((CGameObjectVisModel)clone).soundRefSmashed = context.Clone(this.soundRefSmashed)!;
         ((CGameObjectVisModel)clone).soundRefPermanent = context.Clone(this.soundRefPermanent)!;
         ((CGameObjectVisModel)clone).soundLocPermanent = context.Clone(this.soundLocPermanent)!;
-        ((CGameObjectVisModel)clone).meshShaded = context.Clone(this.meshShaded)!;
-        ((CGameObjectVisModel)clone).meshShadedFile = context.Clone(this.meshShadedFile)!;
         ((CGameObjectVisModel)clone).mesh = context.Clone(this.mesh)!;
         ((CGameObjectVisModel)clone).smashParticleRef = context.Clone(this.smashParticleRef)!;
         ((CGameObjectVisModel)clone).visEntFx = context.Clone(this.visEntFx)!;
-        ((CGameObjectVisModel)clone).meshShadedFid = context.Clone(this.meshShadedFid)!;
         ((CGameObjectVisModel)clone).domeShaderColor = context.Clone(this.domeShaderColor)!;
-        ((CGameObjectVisModel)clone).locAnim = context.Clone(this.locAnim)!;
-        ((CGameObjectVisModel)clone).solid = context.Clone(this.solid)!;
         ((CGameObjectVisModel)clone).solidRef = context.Clone(this.solidRef)!;
     }
 
@@ -189,19 +192,41 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     public partial class Chunk2E007000 : Chunk<CGameObjectVisModel>
     {
         public override uint Id => 0x2E007000;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod>? U01Ref;
+        /// <summary>
+        /// Deprecated CPlugAnimFile.
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E007000 owner;
+            internal NodeRefView(Chunk2E007000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E007000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E007000)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(ref n.meshShadedRef);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -214,9 +239,67 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         public int U23;
         public int U24;
         public float U25;
+
+        private NodeRef<CMwNod>? U14Ref;
+        /// <summary>
+        /// CPlugSolid2Model.
+        /// </summary>
+        public CMwNod? U14
+        {
+            get => U14Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U14Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U16Ref;
+        /// <summary>
+        /// Deprecated CPlugAnimFile.
+        /// </summary>
+        public CMwNod? U16
+        {
+            get => U16Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U16Ref, value);
+        }
         public string? U26;
-        public Components.GbxRefTableFile? U10File;
-        public Components.GbxRefTableFile? U13File;
+
+        private NodeRef<CMwNod>? U10Ref;
+        /// <summary>
+        /// CPlugParticleEmitterModel.
+        /// </summary>
+        public CMwNod? U10
+        {
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U13Ref;
+        /// <summary>
+        /// CPlugVisEntFxModel.
+        /// </summary>
+        public CMwNod? U13
+        {
+            get => U13Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U13Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E007001 owner;
+            internal NodeRefView(Chunk2E007001 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
+            public NodeRef<CMwNod> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
+            public NodeRef<CMwNod> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CMwNod> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
+            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
+            yield break;
+        }
 
         public Chunk2E007001() : this(GameVersion.Unspecified)
         {
@@ -241,8 +324,8 @@ public partial class CGameObjectVisModel : CMwNod, IClass
             ((Chunk2E007001)clone).U23 = context.Clone(this.U23)!;
             ((Chunk2E007001)clone).U24 = context.Clone(this.U24)!;
             ((Chunk2E007001)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk2E007001)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk2E007001)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk2E007001)clone).U14Ref = context.Clone(this.U14Ref)!;
+            ((Chunk2E007001)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk2E007001)clone).U03 = context.Clone(this.U03)!;
             ((Chunk2E007001)clone).U07 = context.Clone(this.U07)!;
             ((Chunk2E007001)clone).U18 = context.Clone(this.U18)!;
@@ -252,17 +335,15 @@ public partial class CGameObjectVisModel : CMwNod, IClass
             ((Chunk2E007001)clone).U08 = context.Clone(this.U08)!;
             ((Chunk2E007001)clone).U09 = context.Clone(this.U09)!;
             ((Chunk2E007001)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk2E007001)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk2E007001)clone).U10Ref = context.Clone(this.U10Ref)!;
             ((Chunk2E007001)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk2E007001)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk2E007001)clone).U13Ref = context.Clone(this.U13Ref)!;
             ((Chunk2E007001)clone).U01 = context.Clone(this.U01)!;
             ((Chunk2E007001)clone).U02 = context.Clone(this.U02)!;
             ((Chunk2E007001)clone).U04 = context.Clone(this.U04)!;
             ((Chunk2E007001)clone).U05 = context.Clone(this.U05)!;
             ((Chunk2E007001)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk2E007001)clone).U14File = context.Clone(this.U14File)!;
             ((Chunk2E007001)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk2E007001)clone).U16File = context.Clone(this.U16File)!;
             ((Chunk2E007001)clone).U22 = context.Clone(this.U22)!;
         }
 
@@ -279,7 +360,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
             if (Version <= 7)
             {
-                rw.NodeRef<CMwNod>(ref U14, ref U14File);
+                rw.NodeRef(ref U14Ref);
             }
 
             if (Version >= 9)
@@ -288,13 +369,13 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
                 if (n.Mesh== null || n.Mesh.Length == 0)
                 {
-                    rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+                    rw.NodeRef(ref n.meshShadedRef);
                 }
             }
 
             if (Version <= 17)
             {
-                rw.NodeRef<CMwNod>(ref U16, ref U16File);
+                rw.NodeRef(ref U16Ref);
             }
 
             if (Version >= 2)
@@ -311,12 +392,12 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
                 if (Version == 5)
                 {
-                    rw.ArrayNodeRef<CPlugAnimLocSimple>(ref n.legacyLocAnimRefs!);
+                    n.legacyLocAnimRefs = rw.ListNodeRef<CPlugAnimLocSimple>(n.legacyLocAnimRefs);
                 }
 
                 if (Version >= 6)
                 {
-                    rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim, ref n.locAnimFile);
+                    rw.NodeRef(ref n.locAnimRef);
                 }
 
                 U03 = rw.Int32((rw.Writer is null ? default : (n.LightBallStates?.Length?? 0)));
@@ -362,7 +443,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
                     return;
                 }
 
-                rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+                rw.NodeRef(ref n.meshShadedRef);
             }
 
             if (Version >= 13)
@@ -379,7 +460,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
                 if (n.SolidRef== null || n.SolidRef.Length == 0)
                 {
-                    rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
+                    rw.NodeRef(ref n.solidNodeRef);
                 }
             }
 
@@ -390,7 +471,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
             if (Version >= 16)
             {
-                rw.NodeRef<CMwNod>(ref U10, ref U10File);
+                rw.NodeRef(ref U10Ref);
             }
 
             if (Version >= 19)
@@ -404,13 +485,13 @@ public partial class CGameObjectVisModel : CMwNod, IClass
 
                 if (n.VisEntFx== null || n.VisEntFx.Length == 0)
                 {
-                    rw.NodeRef<CMwNod>(ref U13, ref U13File);
+                    rw.NodeRef(ref U13Ref);
                 }
             }
 
             if (Version >= 21)
             {
-                rw.NodeRef<CMwNod>(ref n.meshShadedFid, ref n.meshShadedFidFile);
+                rw.NodeRef(ref n.meshShadedFidRef);
             }
 
             if (Version >= 22)
@@ -450,18 +531,37 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     public partial class Chunk2E007003 : SkippableChunk<CGameObjectVisModel>
     {
         public override uint Id => 0x2E007003;
-        public CMwNod? U01;
-        public Components.GbxRefTableFile? U01File;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E007003 owner;
+            internal NodeRefView(Chunk2E007003 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk2E007003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E007003)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01, ref U01File);
+            rw.NodeRef(ref U01Ref);
         }
     }
 

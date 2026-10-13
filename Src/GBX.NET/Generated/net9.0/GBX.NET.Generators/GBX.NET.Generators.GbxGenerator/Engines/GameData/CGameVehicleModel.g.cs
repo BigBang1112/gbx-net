@@ -34,39 +34,23 @@ public partial class CGameVehicleModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E01C000;
 
-    private CPlugVehiclePhyModel? phyModel;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugVehiclePhyModel>? phyModelRef;
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehiclePhyModel? PhyModel
     {
-        get => this.phyModelFile?.GetNode(ref this.phyModel) ?? this.phyModel;
-        set => this.phyModel = value;
-    }
-    private Components.GbxRefTableFile? phyModelFile;
-
-    public Components.GbxRefTableFile? PhyModelFile
-    {
-        get => phyModelFile;
-        set => phyModelFile = value;
+        get => phyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyModelRef, value);
     }
 
-    public CPlugVehiclePhyModel? GetPhyModel(GbxReadSettings settings = default, bool exceptions = false) => phyModelFile?.GetNode(ref phyModel, settings, exceptions) ?? phyModel;
-
-    private CPlugVehicleVisModel? visModel;
+    private NodeRef<CPlugVehicleVisModel>? visModelRef;
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehicleVisModel? VisModel
     {
-        get => this.visModelFile?.GetNode(ref this.visModel) ?? this.visModel;
-        set => this.visModel = value;
+        get => visModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visModelRef, value);
     }
-    private Components.GbxRefTableFile? visModelFile;
-
-    public Components.GbxRefTableFile? VisModelFile
-    {
-        get => visModelFile;
-        set => visModelFile = value;
-    }
-
-    public CPlugVehicleVisModel? GetVisModel(GbxReadSettings settings = default, bool exceptions = false) => visModelFile?.GetNode(ref visModel, settings, exceptions) ?? visModel;
 
     private ItemOccupantSlotModel[]? itemOccupantSlotModels;
     [AppliedWithChunk<Chunk2E01C000>]
@@ -76,11 +60,27 @@ public partial class CGameVehicleModel : CMwNod, IClass
         set => this.itemOccupantSlotModels = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameVehicleModel owner;
+        internal NodeRefView(CGameVehicleModel owner) => this.owner = owner;
+        public NodeRef<CPlugVehiclePhyModel> PhyModel => NodeRef.GetOrCreate(ref owner.phyModelRef);
+        public NodeRef<CPlugVehicleVisModel> VisModel => NodeRef.GetOrCreate(ref owner.visModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PhyModel", NodeRef.GetOrCreate(ref phyModelRef));
+        yield return new("VisModel", NodeRef.GetOrCreate(ref visModelRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameVehicleModel)clone).phyModel = context.Clone(this.phyModel)!;
-        ((CGameVehicleModel)clone).visModel = context.Clone(this.visModel)!;
+        ((CGameVehicleModel)clone).phyModelRef = context.Clone(this.phyModelRef)!;
+        ((CGameVehicleModel)clone).visModelRef = context.Clone(this.visModelRef)!;
         ((CGameVehicleModel)clone).itemOccupantSlotModels = context.CloneArray(this.itemOccupantSlotModels)!;
     }
 
@@ -95,31 +95,56 @@ public partial class CGameVehicleModel : CMwNod, IClass
         public override uint Id => 0x2E01C000;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CGameObjectModel[]? U01;
-        public CMwNod? U02;
+
+        public NodeRefList<CGameObjectModel>? U01;
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk2E01C000 owner;
+            internal NodeRefView(Chunk2E01C000 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk2E01C000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk2E01C000)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk2E01C000)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk2E01C000)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk2E01C000)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CGameVehicleModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehiclePhyModel>(ref n.phyModel, ref n.phyModelFile);
-            rw.NodeRef<CPlugVehicleVisModel>(ref n.visModel, ref n.visModelFile);
+            rw.NodeRef(ref n.phyModelRef);
+            rw.NodeRef(ref n.visModelRef);
             rw.ArrayReadableWritable<ItemOccupantSlotModel>(ref n.itemOccupantSlotModels!, version: Version);
 
             if (Version >= 1)
             {
-                rw.ArrayNodeRef<CGameObjectModel>(ref U01!);
+                U01 = rw.ListNodeRef<CGameObjectModel>(U01);
 
                 if (Version == 2)
                 {
-                    rw.NodeRef<CMwNod>(ref U02);
+                    rw.NodeRef(ref U02Ref);
                 }
             }
         }
@@ -134,11 +159,19 @@ public partial class CGameVehicleModel : CMwNod, IClass
             set => this.id = value;
         }
 
-        private CGameActionModel[]? actions;
-        public CGameActionModel[]? Actions
+        private NodeRefList<CGameActionModel>? actions;
+        public NodeRefList<CGameActionModel>? Actions
         {
-            get => this.actions;
-            set => this.actions = value;
+            get => actions;
+            set => actions = value;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            if (actions is not null)
+            {
+                for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
+            }
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -152,13 +185,13 @@ public partial class CGameVehicleModel : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((ItemOccupantSlotModel)clone).id = context.Clone(this.id)!;
-            ((ItemOccupantSlotModel)clone).actions = context.CloneArray(this.actions)!;
+            ((ItemOccupantSlotModel)clone).actions = context.Clone(this.actions)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Id(ref this.id);
-            rw.ArrayNodeRef<CGameActionModel>(ref this.actions!);
+            this.actions = rw.ListNodeRef<CGameActionModel>(this.actions);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

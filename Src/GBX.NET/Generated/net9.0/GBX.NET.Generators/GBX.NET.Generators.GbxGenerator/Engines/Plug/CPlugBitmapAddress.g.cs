@@ -34,6 +34,8 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     [Hexadecimal]
     public static new uint Id => 0x09047000;
 
+    internal override uint GetId() => Id;
+
     private BoxAligned? uVTransfoIso3;
     [AppliedWithChunk<Chunk09047007>]
     public BoxAligned? UVTransfoIso3

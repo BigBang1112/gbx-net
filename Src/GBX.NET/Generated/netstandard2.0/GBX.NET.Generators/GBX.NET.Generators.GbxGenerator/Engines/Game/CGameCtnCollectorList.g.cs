@@ -37,6 +37,8 @@ public partial class CGameCtnCollectorList : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0301B000;
 
+    internal override uint GetId() => Id;
+
     private List<SCollectorStock>? collectorStock;
     [AppliedWithChunk<Chunk0301B000>]
     public List<SCollectorStock>? CollectorStock

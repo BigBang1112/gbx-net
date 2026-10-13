@@ -34,18 +34,29 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09157000;
 
-    private CPlugAdnRandomGen[]? datas;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugAdnRandomGen>? datas;
     [AppliedWithChunk<Chunk09157000>]
-    public CPlugAdnRandomGen[]? Datas
+    public NodeRefList<CPlugAdnRandomGen>? Datas
     {
-        get => this.datas;
-        set => this.datas = value;
+        get => datas;
+        set => datas = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (datas is not null)
+        {
+            for (var i = 0; i < datas.Count; i++) yield return new("Datas" + "[" + i + "]", datas.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugAdnRandomGenList)clone).datas = context.CloneArray(this.datas)!;
+        ((CPlugAdnRandomGenList)clone).datas = context.Clone(this.datas)!;
     }
 
     public CPlugAdnRandomGenList()
@@ -84,7 +95,7 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
         public override void ReadWrite(CPlugAdnRandomGenList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugAdnRandomGen>(ref n.datas!);
+            n.datas = rw.ListNodeRef<CPlugAdnRandomGen>(n.datas);
         }
     }
 

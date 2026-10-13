@@ -34,6 +34,8 @@ public partial class CPlugSpriteParam : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090AC000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 globalDirection;
     [AppliedWithChunk<Chunk090AC000>]
     [AppliedWithChunk<Chunk090AC001>]

@@ -37,6 +37,8 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03078000;
 
+    internal override uint GetId() => Id;
+
     private string name = string.Empty;
     [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
@@ -48,7 +50,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
 
     [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
-    public partial List<CGameCtnMediaBlock> Blocks { get; set; }
+    public partial NodeRefList<CGameCtnMediaBlock> Blocks { get; set; }
 
     private bool isKeepPlaying;
     [AppliedWithChunk<Chunk03078002>]
@@ -94,16 +96,37 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         set => this.repeatingSegmentEnd = value;
     }
 
+    private NodeRef<CGameCtnGhost>? legacyGhostModelRef;
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaTrack owner;
+        internal NodeRefView(CGameCtnMediaTrack owner) => this.owner = owner;
+        public NodeRef<CGameCtnGhost> LegacyGhostModel => NodeRef.GetOrCreate(ref owner.legacyGhostModelRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (blocks is not null)
+        {
+            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.Get(i));
+        }
+        yield return new("LegacyGhostModel", NodeRef.GetOrCreate(ref legacyGhostModelRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaTrack)clone).name = context.Clone(this.name)!;
+        ((CGameCtnMediaTrack)clone).blocks = context.Clone(this.blocks)!;
         ((CGameCtnMediaTrack)clone).isKeepPlaying = context.Clone(this.isKeepPlaying)!;
         ((CGameCtnMediaTrack)clone).isReadOnly = context.Clone(this.isReadOnly)!;
         ((CGameCtnMediaTrack)clone).isCycling = context.Clone(this.isCycling)!;
         ((CGameCtnMediaTrack)clone).repeatingSegmentStart = context.Clone(this.repeatingSegmentStart)!;
         ((CGameCtnMediaTrack)clone).repeatingSegmentEnd = context.Clone(this.repeatingSegmentEnd)!;
-        ((CGameCtnMediaTrack)clone).blocks = context.CloneList(this.blocks)!;
+        ((CGameCtnMediaTrack)clone).legacyGhostModelRef = context.Clone(this.legacyGhostModelRef)!;
     }
 
     public CGameCtnMediaTrack()
@@ -123,7 +146,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
-            rw.ListNodeRef_deprec<CGameCtnMediaBlock>(ref n.blocks!);
+            n.blocks = rw.ListNodeRef_deprec<CGameCtnMediaBlock>(n.blocks);
         }
     }
 
@@ -147,7 +170,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             rw.String(ref n.name);
-            rw.ListNodeRef_deprec<CGameCtnMediaBlock>(ref n.blocks!);
+            n.blocks = rw.ListNodeRef_deprec<CGameCtnMediaBlock>(n.blocks);
             rw.Int32(ref U01);
         }
     }

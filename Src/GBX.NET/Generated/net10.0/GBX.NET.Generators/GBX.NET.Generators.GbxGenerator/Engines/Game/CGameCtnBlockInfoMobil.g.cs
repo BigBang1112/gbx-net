@@ -34,23 +34,16 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03122000;
 
-    private CSceneMobil? oldMobil;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CSceneMobil>? oldMobilRef;
     [AppliedWithChunk<Chunk03122000>]
     [AppliedWithChunk<Chunk03122003>]
     public CSceneMobil? OldMobil
     {
-        get => this.oldMobilFile?.GetNode(ref this.oldMobil) ?? this.oldMobil;
-        set => this.oldMobil = value;
+        get => oldMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref oldMobilRef, value);
     }
-    private Components.GbxRefTableFile? oldMobilFile;
-
-    public Components.GbxRefTableFile? OldMobilFile
-    {
-        get => oldMobilFile;
-        set => oldMobilFile = value;
-    }
-
-    public CSceneMobil? GetOldMobil(GbxReadSettings settings = default, bool exceptions = false) => oldMobilFile?.GetNode(ref oldMobil, settings, exceptions) ?? oldMobil;
 
     private int solidFrequency = 1;
     [AppliedWithChunk<Chunk03122000>]
@@ -61,13 +54,13 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => this.solidFrequency = value;
     }
 
-    private CGameCtnSolidDecals[]? solidDecals;
+    private NodeRefList<CGameCtnSolidDecals>? solidDecals;
     [AppliedWithChunk<Chunk03122001>]
     [AppliedWithChunk<Chunk03122002>]
-    public CGameCtnSolidDecals[]? SolidDecals
+    public NodeRefList<CGameCtnSolidDecals>? SolidDecals
     {
-        get => this.solidDecals;
-        set => this.solidDecals = value;
+        get => solidDecals;
+        set => solidDecals = value;
     }
 
     private int noDecalFrequency;
@@ -102,137 +95,96 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => this.geomRotation = value;
     }
 
-    private CPlugSolid? solidFid;
+    private NodeRef<CPlugSolid>? solidFidRef;
     [AppliedWithChunk<Chunk03122003>(2)]
     public CPlugSolid? SolidFid
     {
-        get => this.solidFidFile?.GetNode(ref this.solidFid) ?? this.solidFid;
-        set => this.solidFid = value;
-    }
-    private Components.GbxRefTableFile? solidFidFile;
-
-    public Components.GbxRefTableFile? SolidFidFile
-    {
-        get => solidFidFile;
-        set => solidFidFile = value;
+        get => solidFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidFidRef, value);
     }
 
-    public CPlugSolid? GetSolidFid(GbxReadSettings settings = default, bool exceptions = false) => solidFidFile?.GetNode(ref solidFid, settings, exceptions) ?? solidFid;
-
-    private CPlugPrefab? prefabFid;
+    private NodeRef<CPlugPrefab>? prefabFidRef;
     [AppliedWithChunk<Chunk03122003>(14)]
     public CPlugPrefab? PrefabFid
     {
-        get => this.prefabFidFile?.GetNode(ref this.prefabFid) ?? this.prefabFid;
-        set => this.prefabFid = value;
-    }
-    private Components.GbxRefTableFile? prefabFidFile;
-
-    public Components.GbxRefTableFile? PrefabFidFile
-    {
-        get => prefabFidFile;
-        set => prefabFidFile = value;
+        get => prefabFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref prefabFidRef, value);
     }
 
-    public CPlugPrefab? GetPrefabFid(GbxReadSettings settings = default, bool exceptions = false) => prefabFidFile?.GetNode(ref prefabFid, settings, exceptions) ?? prefabFid;
-
-    private CPlugSolid? oldSolidAggreg;
+    private NodeRef<CPlugSolid>? oldSolidAggregRef;
     [AppliedWithChunk<Chunk03122003>(3)]
     public CPlugSolid? OldSolidAggreg
     {
-        get => this.oldSolidAggregFile?.GetNode(ref this.oldSolidAggreg) ?? this.oldSolidAggreg;
-        set => this.oldSolidAggreg = value;
-    }
-    private Components.GbxRefTableFile? oldSolidAggregFile;
-
-    public Components.GbxRefTableFile? OldSolidAggregFile
-    {
-        get => oldSolidAggregFile;
-        set => oldSolidAggregFile = value;
+        get => oldSolidAggregRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref oldSolidAggregRef, value);
     }
 
-    public CPlugSolid? GetOldSolidAggreg(GbxReadSettings settings = default, bool exceptions = false) => oldSolidAggregFile?.GetNode(ref oldSolidAggreg, settings, exceptions) ?? oldSolidAggreg;
-
-    private CPlugPolyLine3[]? legacyRailPolylines;
+    private NodeRefList<CPlugPolyLine3>? legacyRailPolylines;
     [AppliedWithChunk<Chunk03122003>(4, 5)]
-    public CPlugPolyLine3[]? LegacyRailPolylines
+    public NodeRefList<CPlugPolyLine3>? LegacyRailPolylines
     {
-        get => this.legacyRailPolylines;
-        set => this.legacyRailPolylines = value;
+        get => legacyRailPolylines;
+        set => legacyRailPolylines = value;
     }
 
-    private CPlugPath? railPath;
+    private NodeRef<CPlugPath>? railPathRef;
     [AppliedWithChunk<Chunk03122003>(6)]
     public CPlugPath? RailPath
     {
-        get => this.railPathFile?.GetNode(ref this.railPath) ?? this.railPath;
-        set => this.railPath = value;
-    }
-    private Components.GbxRefTableFile? railPathFile;
-
-    public Components.GbxRefTableFile? RailPathFile
-    {
-        get => railPathFile;
-        set => railPathFile = value;
+        get => railPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref railPathRef, value);
     }
 
-    public CPlugPath? GetRailPath(GbxReadSettings settings = default, bool exceptions = false) => railPathFile?.GetNode(ref railPath, settings, exceptions) ?? railPath;
-
-    private CPlugPath? trafficPath;
+    private NodeRef<CPlugPath>? trafficPathRef;
     [AppliedWithChunk<Chunk03122003>(7, 22)]
     public CPlugPath? TrafficPath
     {
-        get => this.trafficPathFile?.GetNode(ref this.trafficPath) ?? this.trafficPath;
-        set => this.trafficPath = value;
-    }
-    private Components.GbxRefTableFile? trafficPathFile;
-
-    public Components.GbxRefTableFile? TrafficPathFile
-    {
-        get => trafficPathFile;
-        set => trafficPathFile = value;
+        get => trafficPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficPathRef, value);
     }
 
-    public CPlugPath? GetTrafficPath(GbxReadSettings settings = default, bool exceptions = false) => trafficPathFile?.GetNode(ref trafficPath, settings, exceptions) ?? trafficPath;
-
-    private CPlugRecastPolyMeshData? recastPolyMeshData;
+    private NodeRef<CPlugRecastPolyMeshData>? recastPolyMeshDataRef;
     [AppliedWithChunk<Chunk03122003>(15)]
     public CPlugRecastPolyMeshData? RecastPolyMeshData
     {
-        get => this.recastPolyMeshData;
-        set => this.recastPolyMeshData = value;
+        get => recastPolyMeshDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref recastPolyMeshDataRef, value);
     }
 
-    private CPlugRoadChunkTraffic[]? roadChunks;
+    private NodeRefList<CPlugRoadChunk>? legacyRoadChunks;
+
+    private NodeRefList<CPlugRoadChunkTraffic>? roadChunks;
     [AppliedWithChunk<Chunk03122003>(23)]
-    public CPlugRoadChunkTraffic[]? RoadChunks
+    public NodeRefList<CPlugRoadChunkTraffic>? RoadChunks
     {
-        get => this.roadChunks;
-        set => this.roadChunks = value;
+        get => roadChunks;
+        set => roadChunks = value;
     }
 
-    private CPlugPath? citizenNetworkPath;
+    private NodeRef<CPlugPath>? citizenNetworkPathRef;
     [AppliedWithChunk<Chunk03122003>(16, 22)]
     public CPlugPath? CitizenNetworkPath
     {
-        get => this.citizenNetworkPath;
-        set => this.citizenNetworkPath = value;
+        get => citizenNetworkPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref citizenNetworkPathRef, value);
     }
 
-    private CPlugRoadChunkCitizen[]? citizenRoadChunks;
+    private NodeRefList<CPlugRoadChunk>? legacyCitizenRoadChunks;
+
+    private NodeRefList<CPlugRoadChunkCitizen>? citizenRoadChunks;
     [AppliedWithChunk<Chunk03122003>(23)]
-    public CPlugRoadChunkCitizen[]? CitizenRoadChunks
+    public NodeRefList<CPlugRoadChunkCitizen>? CitizenRoadChunks
     {
-        get => this.citizenRoadChunks;
-        set => this.citizenRoadChunks = value;
+        get => citizenRoadChunks;
+        set => citizenRoadChunks = value;
     }
 
-    private CPlugVFXFile? vFXs;
+    private NodeRef<CPlugVFXFile>? vFXsRef;
     [AppliedWithChunk<Chunk03122003>(18)]
     public CPlugVFXFile? VFXs
     {
-        get => this.vFXs;
-        set => this.vFXs = value;
+        get => vFXsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vFXsRef, value);
     }
 
     private byte vFXScaleType = 3;
@@ -291,43 +243,113 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => this.vFXAngle = value;
     }
 
-    private CPlugPlacementPatch[]? placementPatches;
+    private NodeRefList<CPlugRoadChunk>? legacyPlacementPatches;
+
+    private NodeRefList<CPlugPlacementPatch>? placementPatches;
     [AppliedWithChunk<Chunk03122003>(20)]
-    public CPlugPlacementPatch[]? PlacementPatches
+    public NodeRefList<CPlugPlacementPatch>? PlacementPatches
     {
-        get => this.placementPatches;
-        set => this.placementPatches = value;
+        get => placementPatches;
+        set => placementPatches = value;
     }
 
-    private CGameCtnBlockInfoMobilLink[]? dynaLinks;
+    private NodeRefList<CGameCtnBlockInfoMobilLink>? dynaLinks;
     [AppliedWithChunk<Chunk03122004>]
-    public CGameCtnBlockInfoMobilLink[]? DynaLinks
+    public NodeRefList<CGameCtnBlockInfoMobilLink>? DynaLinks
     {
-        get => this.dynaLinks;
-        set => this.dynaLinks = value;
+        get => dynaLinks;
+        set => dynaLinks = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnBlockInfoMobil owner;
+        internal NodeRefView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
+        public NodeRef<CSceneMobil> OldMobil => NodeRef.GetOrCreate(ref owner.oldMobilRef);
+        public NodeRef<CPlugSolid> SolidFid => NodeRef.GetOrCreate(ref owner.solidFidRef);
+        public NodeRef<CPlugPrefab> PrefabFid => NodeRef.GetOrCreate(ref owner.prefabFidRef);
+        public NodeRef<CPlugSolid> OldSolidAggreg => NodeRef.GetOrCreate(ref owner.oldSolidAggregRef);
+        public NodeRef<CPlugPath> RailPath => NodeRef.GetOrCreate(ref owner.railPathRef);
+        public NodeRef<CPlugPath> TrafficPath => NodeRef.GetOrCreate(ref owner.trafficPathRef);
+        public NodeRef<CPlugRecastPolyMeshData> RecastPolyMeshData => NodeRef.GetOrCreate(ref owner.recastPolyMeshDataRef);
+        public NodeRef<CPlugPath> CitizenNetworkPath => NodeRef.GetOrCreate(ref owner.citizenNetworkPathRef);
+        public NodeRef<CPlugVFXFile> VFXs => NodeRef.GetOrCreate(ref owner.vFXsRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("OldMobil", NodeRef.GetOrCreate(ref oldMobilRef));
+        if (solidDecals is not null)
+        {
+            for (var i = 0; i < solidDecals.Count; i++) yield return new("SolidDecals" + "[" + i + "]", solidDecals.Get(i));
+        }
+        yield return new("SolidFid", NodeRef.GetOrCreate(ref solidFidRef));
+        yield return new("PrefabFid", NodeRef.GetOrCreate(ref prefabFidRef));
+        yield return new("OldSolidAggreg", NodeRef.GetOrCreate(ref oldSolidAggregRef));
+        if (legacyRailPolylines is not null)
+        {
+            for (var i = 0; i < legacyRailPolylines.Count; i++) yield return new("LegacyRailPolylines" + "[" + i + "]", legacyRailPolylines.Get(i));
+        }
+        yield return new("RailPath", NodeRef.GetOrCreate(ref railPathRef));
+        yield return new("TrafficPath", NodeRef.GetOrCreate(ref trafficPathRef));
+        yield return new("RecastPolyMeshData", NodeRef.GetOrCreate(ref recastPolyMeshDataRef));
+        if (legacyRoadChunks is not null)
+        {
+            for (var i = 0; i < legacyRoadChunks.Count; i++) yield return new("LegacyRoadChunks" + "[" + i + "]", legacyRoadChunks.Get(i));
+        }
+        if (roadChunks is not null)
+        {
+            for (var i = 0; i < roadChunks.Count; i++) yield return new("RoadChunks" + "[" + i + "]", roadChunks.Get(i));
+        }
+        yield return new("CitizenNetworkPath", NodeRef.GetOrCreate(ref citizenNetworkPathRef));
+        if (legacyCitizenRoadChunks is not null)
+        {
+            for (var i = 0; i < legacyCitizenRoadChunks.Count; i++) yield return new("LegacyCitizenRoadChunks" + "[" + i + "]", legacyCitizenRoadChunks.Get(i));
+        }
+        if (citizenRoadChunks is not null)
+        {
+            for (var i = 0; i < citizenRoadChunks.Count; i++) yield return new("CitizenRoadChunks" + "[" + i + "]", citizenRoadChunks.Get(i));
+        }
+        yield return new("VFXs", NodeRef.GetOrCreate(ref vFXsRef));
+        if (legacyPlacementPatches is not null)
+        {
+            for (var i = 0; i < legacyPlacementPatches.Count; i++) yield return new("LegacyPlacementPatches" + "[" + i + "]", legacyPlacementPatches.Get(i));
+        }
+        if (placementPatches is not null)
+        {
+            for (var i = 0; i < placementPatches.Count; i++) yield return new("PlacementPatches" + "[" + i + "]", placementPatches.Get(i));
+        }
+        if (dynaLinks is not null)
+        {
+            for (var i = 0; i < dynaLinks.Count; i++) yield return new("DynaLinks" + "[" + i + "]", dynaLinks.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnBlockInfoMobil)clone).oldMobil = context.Clone(this.oldMobil)!;
+        ((CGameCtnBlockInfoMobil)clone).oldMobilRef = context.Clone(this.oldMobilRef)!;
         ((CGameCtnBlockInfoMobil)clone).solidFrequency = context.Clone(this.solidFrequency)!;
-        ((CGameCtnBlockInfoMobil)clone).solidDecals = context.CloneArray(this.solidDecals)!;
+        ((CGameCtnBlockInfoMobil)clone).solidDecals = context.Clone(this.solidDecals)!;
         ((CGameCtnBlockInfoMobil)clone).noDecalFrequency = context.Clone(this.noDecalFrequency)!;
         ((CGameCtnBlockInfoMobil)clone).hasGeomTransformation = context.Clone(this.hasGeomTransformation)!;
         ((CGameCtnBlockInfoMobil)clone).geomTranslation = context.Clone(this.geomTranslation)!;
         ((CGameCtnBlockInfoMobil)clone).geomRotation = context.Clone(this.geomRotation)!;
-        ((CGameCtnBlockInfoMobil)clone).solidFid = context.Clone(this.solidFid)!;
-        ((CGameCtnBlockInfoMobil)clone).prefabFid = context.Clone(this.prefabFid)!;
-        ((CGameCtnBlockInfoMobil)clone).oldSolidAggreg = context.Clone(this.oldSolidAggreg)!;
-        ((CGameCtnBlockInfoMobil)clone).legacyRailPolylines = context.CloneArray(this.legacyRailPolylines)!;
-        ((CGameCtnBlockInfoMobil)clone).railPath = context.Clone(this.railPath)!;
-        ((CGameCtnBlockInfoMobil)clone).trafficPath = context.Clone(this.trafficPath)!;
-        ((CGameCtnBlockInfoMobil)clone).recastPolyMeshData = context.Clone(this.recastPolyMeshData)!;
-        ((CGameCtnBlockInfoMobil)clone).roadChunks = context.CloneArray(this.roadChunks)!;
-        ((CGameCtnBlockInfoMobil)clone).citizenNetworkPath = context.Clone(this.citizenNetworkPath)!;
-        ((CGameCtnBlockInfoMobil)clone).citizenRoadChunks = context.CloneArray(this.citizenRoadChunks)!;
-        ((CGameCtnBlockInfoMobil)clone).vFXs = context.Clone(this.vFXs)!;
+        ((CGameCtnBlockInfoMobil)clone).solidFidRef = context.Clone(this.solidFidRef)!;
+        ((CGameCtnBlockInfoMobil)clone).prefabFidRef = context.Clone(this.prefabFidRef)!;
+        ((CGameCtnBlockInfoMobil)clone).oldSolidAggregRef = context.Clone(this.oldSolidAggregRef)!;
+        ((CGameCtnBlockInfoMobil)clone).legacyRailPolylines = context.Clone(this.legacyRailPolylines)!;
+        ((CGameCtnBlockInfoMobil)clone).railPathRef = context.Clone(this.railPathRef)!;
+        ((CGameCtnBlockInfoMobil)clone).trafficPathRef = context.Clone(this.trafficPathRef)!;
+        ((CGameCtnBlockInfoMobil)clone).recastPolyMeshDataRef = context.Clone(this.recastPolyMeshDataRef)!;
+        ((CGameCtnBlockInfoMobil)clone).legacyRoadChunks = context.Clone(this.legacyRoadChunks)!;
+        ((CGameCtnBlockInfoMobil)clone).roadChunks = context.Clone(this.roadChunks)!;
+        ((CGameCtnBlockInfoMobil)clone).citizenNetworkPathRef = context.Clone(this.citizenNetworkPathRef)!;
+        ((CGameCtnBlockInfoMobil)clone).legacyCitizenRoadChunks = context.Clone(this.legacyCitizenRoadChunks)!;
+        ((CGameCtnBlockInfoMobil)clone).citizenRoadChunks = context.Clone(this.citizenRoadChunks)!;
+        ((CGameCtnBlockInfoMobil)clone).vFXsRef = context.Clone(this.vFXsRef)!;
         ((CGameCtnBlockInfoMobil)clone).vFXScaleType = context.Clone(this.vFXScaleType)!;
         ((CGameCtnBlockInfoMobil)clone).vFXScale = context.Clone(this.vFXScale)!;
         ((CGameCtnBlockInfoMobil)clone).vFXScale2 = context.Clone(this.vFXScale2)!;
@@ -335,8 +357,9 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         ((CGameCtnBlockInfoMobil)clone).vFXPosition = context.Clone(this.vFXPosition)!;
         ((CGameCtnBlockInfoMobil)clone).vFXDirection = context.Clone(this.vFXDirection)!;
         ((CGameCtnBlockInfoMobil)clone).vFXAngle = context.Clone(this.vFXAngle)!;
-        ((CGameCtnBlockInfoMobil)clone).placementPatches = context.CloneArray(this.placementPatches)!;
-        ((CGameCtnBlockInfoMobil)clone).dynaLinks = context.CloneArray(this.dynaLinks)!;
+        ((CGameCtnBlockInfoMobil)clone).legacyPlacementPatches = context.Clone(this.legacyPlacementPatches)!;
+        ((CGameCtnBlockInfoMobil)clone).placementPatches = context.Clone(this.placementPatches)!;
+        ((CGameCtnBlockInfoMobil)clone).dynaLinks = context.Clone(this.dynaLinks)!;
     }
 
     public CGameCtnBlockInfoMobil()
@@ -358,7 +381,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneMobil>(ref n.oldMobil, ref n.oldMobilFile);
+            rw.NodeRef(ref n.oldMobilRef);
             rw.Int32(ref n.solidFrequency);
         }
     }
@@ -378,7 +401,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnSolidDecals>(ref n.solidDecals!);
+            n.solidDecals = rw.ListNodeRef_deprec<CGameCtnSolidDecals>(n.solidDecals);
         }
     }
 
@@ -399,7 +422,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnSolidDecals>(ref n.solidDecals!);
+            n.solidDecals = rw.ListNodeRef_deprec<CGameCtnSolidDecals>(n.solidDecals);
             rw.Int32(ref n.noDecalFrequency);
         }
     }
@@ -415,13 +438,46 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-        public CMwNod? U02;
+
+        private NodeRef<CMwNod>? U02Ref;
+        /// <summary>
+        /// Discarded legacy reference
+        /// </summary>
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
         public bool U03;
         public int U04;
         public int U05;
         public int U06;
-        public CMwNod? U07;
-        public Components.GbxRefTableFile? U07File;
+
+        private NodeRef<CMwNod>? U07Ref;
+        /// <summary>
+        /// Additional external mobil asset
+        /// </summary>
+        public CMwNod? U07
+        {
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03122003 owner;
+            internal NodeRefView(Chunk03122003 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
+            yield break;
+        }
 
         public Chunk03122003() : this(GameVersion.Unspecified)
         {
@@ -452,12 +508,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk03122003)clone).Version = context.Clone(this.Version)!;
             ((Chunk03122003)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03122003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk03122003)clone).U02Ref = context.Clone(this.U02Ref)!;
             ((Chunk03122003)clone).U03 = context.Clone(this.U03)!;
             ((Chunk03122003)clone).U04 = context.Clone(this.U04)!;
             ((Chunk03122003)clone).U05 = context.Clone(this.U05)!;
             ((Chunk03122003)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk03122003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk03122003)clone).U07Ref = context.Clone(this.U07Ref)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
@@ -470,11 +526,11 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
                 if (!U01)
                 {
-                    rw.NodeRef<CSceneMobil>(ref n.oldMobil, ref n.oldMobilFile);
+                    rw.NodeRef(ref n.oldMobilRef);
                 }
                 else
                 {
-                    rw.NodeRef<CMwNod>(ref U02);
+                    rw.NodeRef(ref U02Ref);
                 }
             }
 
@@ -493,29 +549,29 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef<CPlugSolid>(ref n.solidFid, ref n.solidFidFile);
+                rw.NodeRef(ref n.solidFidRef);
 
-                if (n.SolidFid== null && n.SolidFidFile== null)
+                if ((n.solidFidRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
-                    rw.NodeRef<CSceneMobil>(ref n.oldMobil, ref n.oldMobilFile);
+                    rw.NodeRef(ref n.oldMobilRef);
                 }
             }
 
             if (Version >= 14)
             {
-                rw.NodeRef<CPlugPrefab>(ref n.prefabFid, ref n.prefabFidFile);
+                rw.NodeRef(ref n.prefabFidRef);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef<CPlugSolid>(ref n.oldSolidAggreg, ref n.oldSolidAggregFile);
+                rw.NodeRef(ref n.oldSolidAggregRef);
             }
 
             if (Version >= 4 && Version <= 5)
             {
-                rw.ArrayNodeRef<CPlugPolyLine3>(ref n.legacyRailPolylines!);
+                n.legacyRailPolylines = rw.ListNodeRef<CPlugPolyLine3>(n.legacyRailPolylines);
 
-                if (n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Length > 0)
+                if (n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Count > 0)
                 {
                     if (rw.Reader is not null)
                     {
@@ -531,17 +587,17 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef<CPlugPath>(ref n.railPath, ref n.railPathFile);
+                rw.NodeRef(ref n.railPathRef);
             }
 
             if (Version >= 7 && Version <= 22)
             {
-                rw.NodeRef<CPlugPath>(ref n.trafficPath, ref n.trafficPathFile);
+                rw.NodeRef(ref n.trafficPathRef);
             }
 
             if (Version >= 15)
             {
-                rw.NodeRef<CPlugRecastPolyMeshData>(ref n.recastPolyMeshData);
+                rw.NodeRef(ref n.recastPolyMeshDataRef);
             }
 
             if (Version >= 8 && Version <= 12)
@@ -551,12 +607,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 9 && Version <= 22)
             {
-                n.LegacyRoadChunks = rw.ArrayNodeRef_deprec<CPlugRoadChunk>(n.LegacyRoadChunks);
+                n.LegacyRoadChunks = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyRoadChunks);
             }
 
             if (Version >= 23)
             {
-                rw.ArrayNodeRef<CPlugRoadChunkTraffic>(ref n.roadChunks!);
+                n.roadChunks = rw.ListNodeRef<CPlugRoadChunkTraffic>(n.roadChunks);
             }
 
             if (Version >= 10 && Version <= 12)
@@ -571,22 +627,22 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 16 && Version <= 22)
             {
-                rw.NodeRef<CPlugPath>(ref n.citizenNetworkPath);
+                rw.NodeRef(ref n.citizenNetworkPathRef);
             }
 
             if (Version >= 17 && Version <= 22)
             {
-                n.LegacyCitizenRoadChunks = rw.ArrayNodeRef_deprec<CPlugRoadChunk>(n.LegacyCitizenRoadChunks);
+                n.LegacyCitizenRoadChunks = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyCitizenRoadChunks);
             }
 
             if (Version >= 23)
             {
-                rw.ArrayNodeRef<CPlugRoadChunkCitizen>(ref n.citizenRoadChunks!);
+                n.citizenRoadChunks = rw.ListNodeRef<CPlugRoadChunkCitizen>(n.citizenRoadChunks);
             }
 
             if (Version >= 18)
             {
-                rw.NodeRef<CPlugVFXFile>(ref n.vFXs);
+                rw.NodeRef(ref n.vFXsRef);
                 rw.Byte(ref n.vFXScaleType);
 
                 if (n.VFXScaleType== 0)
@@ -626,17 +682,17 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
             {
                 if (Version< 23 || (Version== 23 && rw.Reader != null))
                 {
-                    n.LegacyPlacementPatches = rw.ArrayNodeRef_deprec<CPlugRoadChunk>(n.LegacyPlacementPatches);
+                    n.LegacyPlacementPatches = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyPlacementPatches);
                 }
                 else
                 {
-                    rw.ArrayNodeRef<CPlugPlacementPatch>(ref n.placementPatches!);
+                    n.placementPatches = rw.ListNodeRef<CPlugPlacementPatch>(n.placementPatches);
                 }
             }
 
             if (Version >= 21)
             {
-                rw.NodeRef<CMwNod>(ref U07, ref U07File);
+                rw.NodeRef(ref U07Ref);
             }
         }
     }
@@ -661,7 +717,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef_deprec<CGameCtnBlockInfoMobilLink>(ref n.dynaLinks!);
+            n.dynaLinks = rw.ListNodeRef_deprec<CGameCtnBlockInfoMobilLink>(n.dynaLinks);
         }
     }
 

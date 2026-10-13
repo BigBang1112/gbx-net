@@ -34,6 +34,8 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09051000;
 
+    internal override uint GetId() => Id;
+
     private uint flags = 2;
     [AppliedWithChunk<Chunk09051000>]
     public uint Flags

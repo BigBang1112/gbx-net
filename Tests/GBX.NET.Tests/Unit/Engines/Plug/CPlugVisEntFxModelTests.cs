@@ -15,10 +15,10 @@ public class CPlugVisEntFxModelTests
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0);
         WriteParticles(payload);
-        payload.Reference("Teleport.Func.Gbx");
-        payload.Reference("Highlight.Func.Gbx");
+        payload.NodeRef("Teleport.Func.Gbx");
+        payload.NodeRef("Highlight.Func.Gbx");
         payload.Writer.Write(new Vec3(0.2f, 0.4f, 0.6f));
-        payload.Reference("Tactical.Light.Gbx");
+        payload.NodeRef("Tactical.Light.Gbx");
         payload.Finish();
 
         var model = new CPlugVisEntFxModel();
@@ -26,10 +26,10 @@ public class CPlugVisEntFxModelTests
         payload.Read(rw => chunk.ReadWrite(model, rw));
         await Assert.That(chunk.Version).IsEqualTo(0);
         await AssertParticles(model);
-        await Assert.That(model.EliminatedTeleportIntens!.CurveFile!.FilePath).IsEqualTo("Teleport.Func.Gbx");
-        await Assert.That(model.EliminatedHighlight!.CurveFile!.FilePath).IsEqualTo("Highlight.Func.Gbx");
+        await Assert.That(model.EliminatedTeleportIntens!.References.Curve.File!.FilePath).IsEqualTo("Teleport.Func.Gbx");
+        await Assert.That(model.EliminatedHighlight!.References.Curve.File!.FilePath).IsEqualTo("Highlight.Func.Gbx");
         await Assert.That(model.EliminatedHighlightRgb).IsEqualTo(new Vec3(0.2f, 0.4f, 0.6f));
-        await Assert.That(model.TacticalLightFile!.FilePath).IsEqualTo("Tactical.Light.Gbx");
+        await Assert.That(model.References.TacticalLight.File!.FilePath).IsEqualTo("Tactical.Light.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(model, rw));
     }
 
@@ -48,7 +48,7 @@ public class CPlugVisEntFxModelTests
         WriteInlineCurve(writer, curveVersion, 0);
         WriteInlineCurve(writer, curveVersion, 1);
         writer.Write(new Vec3(0.2f, 0.4f, 0.6f));
-        payload.Reference("Tactical.Light.Gbx");
+        payload.NodeRef("Tactical.Light.Gbx");
         payload.Finish();
 
         var model = new CPlugVisEntFxModel();
@@ -68,7 +68,7 @@ public class CPlugVisEntFxModelTests
             await Assert.That(curves[i].Values![i]).IsEqualTo(new Vec2(i + 1.5f, i + 2.5f));
         }
         await Assert.That(model.EliminatedHighlightRgb).IsEqualTo(new Vec3(0.2f, 0.4f, 0.6f));
-        await Assert.That(model.TacticalLightFile!.FilePath).IsEqualTo("Tactical.Light.Gbx");
+        await Assert.That(model.References.TacticalLight.File!.FilePath).IsEqualTo("Tactical.Light.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(model, rw));
     }
 
@@ -176,18 +176,18 @@ public class CPlugVisEntFxModelTests
 
     private static void WriteParticles(ObjectModelPayload payload)
     {
-        payload.Reference("DeactivatedShot.Particle.Gbx");
-        payload.Reference("Deactivated.Particle.Gbx");
-        payload.Reference("TeleportUnspawn.Particle.Gbx");
-        payload.Reference("TeleportSpawn.Particle.Gbx");
+        payload.NodeRef("DeactivatedShot.Particle.Gbx");
+        payload.NodeRef("Deactivated.Particle.Gbx");
+        payload.NodeRef("TeleportUnspawn.Particle.Gbx");
+        payload.NodeRef("TeleportSpawn.Particle.Gbx");
     }
 
     private static async Task AssertParticles(CPlugVisEntFxModel model)
     {
-        await Assert.That(model.Part_DeactivatedShotFile!.FilePath).IsEqualTo("DeactivatedShot.Particle.Gbx");
-        await Assert.That(model.Part_DeactivatedFile!.FilePath).IsEqualTo("Deactivated.Particle.Gbx");
-        await Assert.That(model.Part_TeleportUnspawnFile!.FilePath).IsEqualTo("TeleportUnspawn.Particle.Gbx");
-        await Assert.That(model.Part_TeleportSpawnFile!.FilePath).IsEqualTo("TeleportSpawn.Particle.Gbx");
+        await Assert.That(model.References.Part_DeactivatedShot.File!.FilePath).IsEqualTo("DeactivatedShot.Particle.Gbx");
+        await Assert.That(model.References.Part_Deactivated.File!.FilePath).IsEqualTo("Deactivated.Particle.Gbx");
+        await Assert.That(model.References.Part_TeleportUnspawn.File!.FilePath).IsEqualTo("TeleportUnspawn.Particle.Gbx");
+        await Assert.That(model.References.Part_TeleportSpawn.File!.FilePath).IsEqualTo("TeleportSpawn.Particle.Gbx");
     }
 
     private static void WriteInlineCurve(GbxWriter writer, int version, int index)

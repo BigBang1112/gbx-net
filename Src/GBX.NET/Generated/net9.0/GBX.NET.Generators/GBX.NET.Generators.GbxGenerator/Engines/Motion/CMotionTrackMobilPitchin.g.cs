@@ -34,6 +34,8 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     [Hexadecimal]
     public static new uint Id => 0x08041000;
 
+    internal override uint GetId() => Id;
+
     private float flottaison = 500.01f;
     [AppliedWithChunk<Chunk08041000>]
     [AppliedWithChunk<Chunk08041001>]
@@ -74,13 +76,13 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.offsetHauteur = value;
     }
 
-    private CMwNod? sea;
+    private NodeRef<CMwNod>? seaRef;
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public CMwNod? Sea
     {
-        get => this.sea;
-        set => this.sea = value;
+        get => seaRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref seaRef, value);
     }
 
     private EPitchinMode pitchinMode = EPitchinMode.Normal;
@@ -107,6 +109,20 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.maxAngle = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionTrackMobilPitchin owner;
+        internal NodeRefView(CMotionTrackMobilPitchin owner) => this.owner = owner;
+        public NodeRef<CMwNod> Sea => NodeRef.GetOrCreate(ref owner.seaRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Sea", NodeRef.GetOrCreate(ref seaRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -114,7 +130,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         ((CMotionTrackMobilPitchin)clone).tangage = context.Clone(this.tangage)!;
         ((CMotionTrackMobilPitchin)clone).roulis = context.Clone(this.roulis)!;
         ((CMotionTrackMobilPitchin)clone).offsetHauteur = context.Clone(this.offsetHauteur)!;
-        ((CMotionTrackMobilPitchin)clone).sea = context.Clone(this.sea)!;
+        ((CMotionTrackMobilPitchin)clone).seaRef = context.Clone(this.seaRef)!;
         ((CMotionTrackMobilPitchin)clone).pitchinMode = context.Clone(this.pitchinMode)!;
         ((CMotionTrackMobilPitchin)clone).periodDelta = context.Clone(this.periodDelta)!;
         ((CMotionTrackMobilPitchin)clone).maxAngle = context.Clone(this.maxAngle)!;
@@ -155,7 +171,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.sea);
+            rw.NodeRef(ref n.seaRef);
             rw.Single(ref n.flottaison);
             rw.Single(ref n.tangage);
             rw.Single(ref n.roulis);
@@ -177,7 +193,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref n.sea);
+            rw.NodeRef(ref n.seaRef);
             rw.Single(ref n.flottaison);
             rw.Single(ref n.tangage);
             rw.Single(ref n.roulis);

@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03133000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03133000>]
     public TimeSingle Start

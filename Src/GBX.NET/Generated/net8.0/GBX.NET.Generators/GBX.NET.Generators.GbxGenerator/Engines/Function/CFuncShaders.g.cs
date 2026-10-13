@@ -34,18 +34,29 @@ public partial class CFuncShaders : CFuncShader, IClass
     [Hexadecimal]
     public static new uint Id => 0x05014000;
 
-    private List<CFuncShader>? funcShaders;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CFuncShader>? funcShaders;
     [AppliedWithChunk<Chunk05014000>]
-    public List<CFuncShader>? FuncShaders
+    public NodeRefList<CFuncShader>? FuncShaders
     {
-        get => this.funcShaders;
-        set => this.funcShaders = value;
+        get => funcShaders;
+        set => funcShaders = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (funcShaders is not null)
+        {
+            for (var i = 0; i < funcShaders.Count; i++) yield return new("FuncShaders" + "[" + i + "]", funcShaders.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CFuncShaders)clone).funcShaders = context.CloneList(this.funcShaders)!;
+        ((CFuncShaders)clone).funcShaders = context.Clone(this.funcShaders)!;
     }
 
     public CFuncShaders()
@@ -66,7 +77,7 @@ public partial class CFuncShaders : CFuncShader, IClass
 
         public override void ReadWrite(CFuncShaders n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef<CFuncShader>(ref n.funcShaders!);
+            n.funcShaders = rw.ListNodeRef<CFuncShader>(n.funcShaders);
         }
     }
 

@@ -3,9 +3,9 @@ CPlugVehicleVisModel 0x090E7000
 0x000 [MP3, TMT.v6, MP4.v9, TM2020.v18] // Shared model, sounds and geometry
   version
   CPlugVehicleVisModelShared Shared
-  CPlugSolid (external)
-  CPlugSolid (external)
-  CPlugSolid (external)
+  CPlugSolid
+  CPlugSolid
+  CPlugSolid
   v5+
     int SurfVersion = 1 [TM2020 = 2]
   SoundSet Sounds = empty

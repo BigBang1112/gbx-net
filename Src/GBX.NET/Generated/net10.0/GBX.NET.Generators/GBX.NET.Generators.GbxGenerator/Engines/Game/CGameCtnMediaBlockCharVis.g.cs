@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
     [Hexadecimal]
     public static new uint Id => 0x0316A000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk0316A000>]
     public TimeSingle Start
@@ -50,12 +52,26 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
         set => this.end = value;
     }
 
-    private CPlugDataTape? dataTape;
+    private NodeRef<CPlugDataTape>? dataTapeRef;
     [AppliedWithChunk<Chunk0316A000>]
     public CPlugDataTape? DataTape
     {
-        get => this.dataTape;
-        set => this.dataTape = value;
+        get => dataTapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dataTapeRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockCharVis owner;
+        internal NodeRefView(CGameCtnMediaBlockCharVis owner) => this.owner = owner;
+        public NodeRef<CPlugDataTape> DataTape => NodeRef.GetOrCreate(ref owner.dataTapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DataTape", NodeRef.GetOrCreate(ref dataTapeRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -63,7 +79,7 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
         base.DeepCloneFields(clone, context);
         ((CGameCtnMediaBlockCharVis)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockCharVis)clone).end = context.Clone(this.end)!;
-        ((CGameCtnMediaBlockCharVis)clone).dataTape = context.Clone(this.dataTape)!;
+        ((CGameCtnMediaBlockCharVis)clone).dataTapeRef = context.Clone(this.dataTapeRef)!;
     }
 
     public CGameCtnMediaBlockCharVis()
@@ -98,7 +114,7 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef<CPlugDataTape>(ref n.dataTape);
+            rw.NodeRef(ref n.dataTapeRef);
         }
     }
 

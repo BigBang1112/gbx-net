@@ -51,8 +51,8 @@ public class CGameCtnCollectionChunkTests
         var chunk = new CGameCtnCollection.Chunk0303300D();
         chunk.ReadWrite(restored, rw);
 
-        await Assert.That(restored.IconFidFile).IsEqualTo(iconFile);
-        await Assert.That(restored.IconSmallFidFile).IsEqualTo(smallIconFile);
+        await Assert.That(restored.References.IconFid.File).IsEqualTo(iconFile);
+        await Assert.That(restored.References.IconSmallFid.File).IsEqualTo(smallIconFile);
         if (iconKind == 0) await Assert.That(restored.IconFid).IsNull();
         if (iconKind == 1) await Assert.That(restored.IconFid).IsNotNull();
         if (smallIconKind == 0) await Assert.That(restored.IconSmallFid).IsNull();
@@ -156,9 +156,9 @@ public class CGameCtnCollectionChunkTests
         }
 
         var restored = await ReadAndRewrite(stream, new CGameCtnCollection.Chunk0303303D(), files);
-        await Assert.That(restored.BitmapDisplayControlDefaultTVProgram_64x10AFile?.FilePath).IsEqualTo("64x10A.Gbx");
-        await Assert.That(restored.BitmapDisplayControlDefaultTVProgram_2x3File?.FilePath).IsEqualTo("2x3.Gbx");
-        if (version > 0) await Assert.That(restored.BitmapDisplayControlDefaultTVProgram_155File?.FilePath).IsEqualTo("155.Gbx");
+        await Assert.That(restored.References.BitmapDisplayControlDefaultTVProgram_64x10A.File?.FilePath).IsEqualTo("64x10A.Gbx");
+        await Assert.That(restored.References.BitmapDisplayControlDefaultTVProgram_2x3.File?.FilePath).IsEqualTo("2x3.Gbx");
+        if (version > 0) await Assert.That(restored.References.BitmapDisplayControlDefaultTVProgram_155.File?.FilePath).IsEqualTo("155.Gbx");
     }
 
     [Test]
@@ -227,13 +227,13 @@ public class CGameCtnCollectionChunkTests
         }
 
         var restored = await ReadAndRewrite(stream, new CGameCtnCollection.Chunk03033039(), files);
-        if (version >= 10) await Assert.That(restored.FidItemModelInventoryFile?.FilePath).IsEqualTo("Items.Gbx");
+        if (version >= 10) await Assert.That(restored.References.FidItemModelInventory.File?.FilePath).IsEqualTo("Items.Gbx");
         if (version == 12) await Assert.That(restored.LegacyFolderMaterial).IsEqualTo("Materials");
         if (version >= 11) await Assert.That(restored.CustomDeco?.DecorationScreen16x1).IsNotNull();
-        if (version >= 13) await Assert.That(restored.DefaultMaterialFile?.FilePath).IsEqualTo("DefaultMaterial.Gbx");
-        if (version >= 14) await Assert.That(restored.FidMacroBlockInfoInventoryFile?.FilePath).IsEqualTo("Macroblocks.Gbx");
-        if (version >= 15) await Assert.That(restored.DefaultSpawnClipListFile?.FilePath).IsEqualTo("SpawnClips.Gbx");
-        if (version >= 22) await Assert.That(restored.BlockSkins_Default_FidAdvertisement16x9File?.FilePath).IsEqualTo("Advertisement16x9.Gbx");
+        if (version >= 13) await Assert.That(restored.References.DefaultMaterial.File?.FilePath).IsEqualTo("DefaultMaterial.Gbx");
+        if (version >= 14) await Assert.That(restored.References.FidMacroBlockInfoInventory.File?.FilePath).IsEqualTo("Macroblocks.Gbx");
+        if (version >= 15) await Assert.That(restored.References.DefaultSpawnClipList.File?.FilePath).IsEqualTo("SpawnClips.Gbx");
+        if (version >= 22) await Assert.That(restored.References.BlockSkins_Default_FidAdvertisement16x9.File?.FilePath).IsEqualTo("Advertisement16x9.Gbx");
     }
 
     [Test]
@@ -311,7 +311,9 @@ public class CGameCtnCollectionChunkTests
         // Writer indices also include the internal bitmap nodes.
         var index = writer.NodeDict.Count + 1;
         files[index] = file;
-        writer.WriteNodeRef<CMwNod>(null, file);
+        var reference = new NodeRef<CMwNod>();
+        reference.Descriptor = file;
+        writer.WriteNodeRef(reference);
     }
 
     private static async Task<CGameCtnCollection> ReadAndRewrite(
@@ -342,7 +344,10 @@ public class CGameCtnCollectionChunkTests
         writer.Write(kind != 0);
         if (kind != 0)
         {
-            writer.WriteNodeRef(kind == 1 ? new CPlugBitmap() : null, file);
+            var reference = new NodeRef<CPlugBitmap>();
+            if (file is not null) reference.Descriptor = file;
+            else reference.Node = kind == 1 ? new CPlugBitmap() : null;
+            writer.WriteNodeRef(reference);
         }
     }
 }

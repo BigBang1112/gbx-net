@@ -8,19 +8,11 @@ public partial class CGameCtnCollection
     private Id? collection;
     public Id? Collection { get => collection; set => collection = value; }
 
-    private CGameCtnDecoration? defaultDecoration;
-    private GbxRefTableFile? defaultDecorationFile;
-
     public partial CGameCtnDecoration? DefaultDecoration
     {
-        get => defaultDecorationFile?.GetNode(ref defaultDecoration) ?? defaultDecoration;
-        set => defaultDecoration = value;
+        get => defaultDecorationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultDecorationRef, value);
     }
-
-    public GbxRefTableFile? DefaultDecorationFile { get => defaultDecorationFile; set => defaultDecorationFile = value; }
-
-    public CGameCtnDecoration? GetDefaultDecoration(GbxReadSettings settings = default, bool exceptions = false)
-        => defaultDecorationFile?.GetNode(ref defaultDecoration, settings, exceptions) ?? defaultDecoration;
 
     public bool HasBackgroundShadow
     {
@@ -35,7 +27,7 @@ public partial class CGameCtnCollection
     }
 
     [Obsolete("Use CompleteZoneList instead.")]
-    public External<CGameCtnZone>[]? CompleteListZoneList { get => CompleteZoneList; set => CompleteZoneList = value; }
+    public NodeRefList<CGameCtnZone>? CompleteListZoneList { get => CompleteZoneList; set => CompleteZoneList = value; }
 
     [Obsolete("Use DecalFade_cBlock_FullDensity instead.")]
     public int DecalFadeCBlockFullDensity { get => DecalFade_cBlock_FullDensity; set => DecalFade_cBlock_FullDensity = value; }
@@ -43,22 +35,8 @@ public partial class CGameCtnCollection
     [Obsolete("Use VehicleEnvLayer_FidBitmap instead.")]
     public CPlugBitmap? VehicleEnvLayerFidBitmap { get => VehicleEnvLayer_FidBitmap; set => VehicleEnvLayer_FidBitmap = value; }
 
-    [Obsolete("Use VehicleEnvLayer_FidBitmapFile instead.")]
-    public GbxRefTableFile? VehicleEnvLayerFidBitmapFile { get => VehicleEnvLayer_FidBitmapFile; set => VehicleEnvLayer_FidBitmapFile = value; }
-
-    [Obsolete("Use GetVehicleEnvLayer_FidBitmap instead.")]
-    public CPlugBitmap? GetVehicleEnvLayerFidBitmap(GbxReadSettings settings = default, bool exceptions = false)
-        => GetVehicleEnvLayer_FidBitmap(settings, exceptions);
-
     [Obsolete("Use OffZone_FogMatter instead.")]
     public CPlugFogMatter? OffZoneFogMatter { get => OffZone_FogMatter; set => OffZone_FogMatter = value; }
-
-    [Obsolete("Use OffZone_FogMatterFile instead.")]
-    public GbxRefTableFile? OffZoneFogMatterFile { get => OffZone_FogMatterFile; set => OffZone_FogMatterFile = value; }
-
-    [Obsolete("Use GetOffZone_FogMatter instead.")]
-    public CPlugFogMatter? GetOffZoneFogMatter(GbxReadSettings settings = default, bool exceptions = false)
-        => GetOffZone_FogMatter(settings, exceptions);
 
     [Obsolete("Use WaterG_BitmapNormal instead.")]
     public CPlugBitmap? WaterGBitmapNormal { get => WaterG_BitmapNormal; set => WaterG_BitmapNormal = value; }
@@ -93,52 +71,17 @@ public partial class CGameCtnCollection
     [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10A instead.")]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10A { get => BitmapDisplayControlDefaultTVProgram_64x10A; set => BitmapDisplayControlDefaultTVProgram_64x10A = value; }
 
-    [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10AFile instead.")]
-    public GbxRefTableFile? BitmapDisplayControlDefaultTVProgram64x10AFile { get => BitmapDisplayControlDefaultTVProgram_64x10AFile; set => BitmapDisplayControlDefaultTVProgram_64x10AFile = value; }
-
-    [Obsolete("Use GetBitmapDisplayControlDefaultTVProgram_64x10A instead.")]
-    public CPlugBitmap? GetBitmapDisplayControlDefaultTVProgram64x10A(GbxReadSettings settings = default, bool exceptions = false)
-        => GetBitmapDisplayControlDefaultTVProgram_64x10A(settings, exceptions);
-
     [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10B instead.")]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10B { get => BitmapDisplayControlDefaultTVProgram_64x10B; set => BitmapDisplayControlDefaultTVProgram_64x10B = value; }
-
-    [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10BFile instead.")]
-    public GbxRefTableFile? BitmapDisplayControlDefaultTVProgram64x10BFile { get => BitmapDisplayControlDefaultTVProgram_64x10BFile; set => BitmapDisplayControlDefaultTVProgram_64x10BFile = value; }
-
-    [Obsolete("Use GetBitmapDisplayControlDefaultTVProgram_64x10B instead.")]
-    public CPlugBitmap? GetBitmapDisplayControlDefaultTVProgram64x10B(GbxReadSettings settings = default, bool exceptions = false)
-        => GetBitmapDisplayControlDefaultTVProgram_64x10B(settings, exceptions);
 
     [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10C instead.")]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10C { get => BitmapDisplayControlDefaultTVProgram_64x10C; set => BitmapDisplayControlDefaultTVProgram_64x10C = value; }
 
-    [Obsolete("Use BitmapDisplayControlDefaultTVProgram_64x10CFile instead.")]
-    public GbxRefTableFile? BitmapDisplayControlDefaultTVProgram64x10CFile { get => BitmapDisplayControlDefaultTVProgram_64x10CFile; set => BitmapDisplayControlDefaultTVProgram_64x10CFile = value; }
-
-    [Obsolete("Use GetBitmapDisplayControlDefaultTVProgram_64x10C instead.")]
-    public CPlugBitmap? GetBitmapDisplayControlDefaultTVProgram64x10C(GbxReadSettings settings = default, bool exceptions = false)
-        => GetBitmapDisplayControlDefaultTVProgram_64x10C(settings, exceptions);
-
     [Obsolete("Use BitmapDisplayControlDefaultTVProgram_2x3 instead.")]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram2x3 { get => BitmapDisplayControlDefaultTVProgram_2x3; set => BitmapDisplayControlDefaultTVProgram_2x3 = value; }
 
-    [Obsolete("Use BitmapDisplayControlDefaultTVProgram_2x3File instead.")]
-    public GbxRefTableFile? BitmapDisplayControlDefaultTVProgram2x3File { get => BitmapDisplayControlDefaultTVProgram_2x3File; set => BitmapDisplayControlDefaultTVProgram_2x3File = value; }
-
-    [Obsolete("Use GetBitmapDisplayControlDefaultTVProgram_2x3 instead.")]
-    public CPlugBitmap? GetBitmapDisplayControlDefaultTVProgram2x3(GbxReadSettings settings = default, bool exceptions = false)
-        => GetBitmapDisplayControlDefaultTVProgram_2x3(settings, exceptions);
-
     [Obsolete("Use BitmapDisplayControlDefaultTVProgram_155 instead.")]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram16x9 { get => BitmapDisplayControlDefaultTVProgram_155; set => BitmapDisplayControlDefaultTVProgram_155 = value; }
-
-    [Obsolete("Use BitmapDisplayControlDefaultTVProgram_155File instead.")]
-    public GbxRefTableFile? BitmapDisplayControlDefaultTVProgram16x9File { get => BitmapDisplayControlDefaultTVProgram_155File; set => BitmapDisplayControlDefaultTVProgram_155File = value; }
-
-    [Obsolete("Use GetBitmapDisplayControlDefaultTVProgram_155 instead.")]
-    public CPlugBitmap? GetBitmapDisplayControlDefaultTVProgram16x9(GbxReadSettings settings = default, bool exceptions = false)
-        => GetBitmapDisplayControlDefaultTVProgram_155(settings, exceptions);
 
     public partial class Water
     {

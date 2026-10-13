@@ -34,6 +34,8 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090B5000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -75,10 +77,30 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
         public float U23;
         public float U24;
         public float U25;
-        public CFuncEnvelope? U26;
+
+        private NodeRef<CFuncEnvelope>? U26Ref;
+        public CFuncEnvelope? U26
+        {
+            get => U26Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U26Ref, value);
+        }
         public float U27;
         public float U28;
         public float U29;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090B5000 owner;
+            internal NodeRefView(Chunk090B5000 owner) => this.owner = owner;
+            public NodeRef<CFuncEnvelope> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -109,7 +131,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
             ((Chunk090B5000)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090B5000)clone).U24 = context.Clone(this.U24)!;
             ((Chunk090B5000)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090B5000)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090B5000)clone).U26Ref = context.Clone(this.U26Ref)!;
             ((Chunk090B5000)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090B5000)clone).U28 = context.Clone(this.U28)!;
             ((Chunk090B5000)clone).U29 = context.Clone(this.U29)!;
@@ -154,7 +176,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef<CFuncEnvelope>(ref U26);
+                    rw.NodeRef(ref U26Ref);
 
                     if (Version >= 4)
                     {

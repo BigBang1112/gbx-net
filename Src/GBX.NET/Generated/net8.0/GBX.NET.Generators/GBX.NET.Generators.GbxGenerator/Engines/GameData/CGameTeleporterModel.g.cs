@@ -34,6 +34,8 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x2E00C000;
 
+    internal override uint GetId() => Id;
+
     private Iso4 spawnLoc;
     [AppliedWithChunk<Chunk2E00C000>(0, 0)]
     public Iso4 SpawnLoc
@@ -42,30 +44,21 @@ public partial class CGameTeleporterModel : CMwNod, IClass
         set => this.spawnLoc = value;
     }
 
-    private CGameSpawnModel? spawn;
+    private NodeRef<CGameSpawnModel>? spawnRef;
     [AppliedWithChunk<Chunk2E00C000>(1)]
     public CGameSpawnModel? Spawn
     {
-        get => this.spawn;
-        set => this.spawn = value;
+        get => spawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref spawnRef, value);
     }
 
-    private CPlugSurface? triggerShape;
+    private NodeRef<CPlugSurface>? triggerShapeRef;
     [AppliedWithChunk<Chunk2E00C000>]
     public CPlugSurface? TriggerShape
     {
-        get => this.triggerShapeFile?.GetNode(ref this.triggerShape) ?? this.triggerShape;
-        set => this.triggerShape = value;
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
-    private Components.GbxRefTableFile? triggerShapeFile;
-
-    public Components.GbxRefTableFile? TriggerShapeFile
-    {
-        get => triggerShapeFile;
-        set => triggerShapeFile = value;
-    }
-
-    public CPlugSurface? GetTriggerShape(GbxReadSettings settings = default, bool exceptions = false) => triggerShapeFile?.GetNode(ref triggerShape, settings, exceptions) ?? triggerShape;
 
     private Vec3 centerPos;
     [AppliedWithChunk<Chunk2E00C000>(2)]
@@ -75,12 +68,28 @@ public partial class CGameTeleporterModel : CMwNod, IClass
         set => this.centerPos = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameTeleporterModel owner;
+        internal NodeRefView(CGameTeleporterModel owner) => this.owner = owner;
+        public NodeRef<CGameSpawnModel> Spawn => NodeRef.GetOrCreate(ref owner.spawnRef);
+        public NodeRef<CPlugSurface> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Spawn", NodeRef.GetOrCreate(ref spawnRef));
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CGameTeleporterModel)clone).spawnLoc = context.Clone(this.spawnLoc)!;
-        ((CGameTeleporterModel)clone).spawn = context.Clone(this.spawn)!;
-        ((CGameTeleporterModel)clone).triggerShape = context.Clone(this.triggerShape)!;
+        ((CGameTeleporterModel)clone).spawnRef = context.Clone(this.spawnRef)!;
+        ((CGameTeleporterModel)clone).triggerShapeRef = context.Clone(this.triggerShapeRef)!;
         ((CGameTeleporterModel)clone).centerPos = context.Clone(this.centerPos)!;
     }
 
@@ -113,10 +122,10 @@ public partial class CGameTeleporterModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef<CGameSpawnModel>(ref n.spawn);
+                rw.NodeRef(ref n.spawnRef);
             }
 
-            rw.NodeRef<CPlugSurface>(ref n.triggerShape, ref n.triggerShapeFile);
+            rw.NodeRef(ref n.triggerShapeRef);
 
             if (Version >= 2)
             {

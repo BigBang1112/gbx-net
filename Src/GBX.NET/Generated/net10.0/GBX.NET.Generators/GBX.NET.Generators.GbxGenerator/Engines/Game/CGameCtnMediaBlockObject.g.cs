@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     [Hexadecimal]
     public static new uint Id => 0x03196000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03196000>]
     public TimeSingle Start
@@ -66,12 +68,26 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         set => this.anchoredObjectInfos = value;
     }
 
-    private CGameReplayObjectVisData? visData;
+    private NodeRef<CGameReplayObjectVisData>? visDataRef;
     [AppliedWithChunk<Chunk03196000>(1)]
     public CGameReplayObjectVisData? VisData
     {
-        get => this.visData;
-        set => this.visData = value;
+        get => visDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visDataRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockObject owner;
+        internal NodeRefView(CGameCtnMediaBlockObject owner) => this.owner = owner;
+        public NodeRef<CGameReplayObjectVisData> VisData => NodeRef.GetOrCreate(ref owner.visDataRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("VisData", NodeRef.GetOrCreate(ref visDataRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -81,7 +97,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         ((CGameCtnMediaBlockObject)clone).end = context.Clone(this.end)!;
         ((CGameCtnMediaBlockObject)clone).showObjects = context.Clone(this.showObjects)!;
         ((CGameCtnMediaBlockObject)clone).anchoredObjectInfos = context.CloneArray(this.anchoredObjectInfos)!;
-        ((CGameCtnMediaBlockObject)clone).visData = context.Clone(this.visData)!;
+        ((CGameCtnMediaBlockObject)clone).visDataRef = context.Clone(this.visDataRef)!;
     }
 
     public CGameCtnMediaBlockObject()
@@ -140,7 +156,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
 
             if (Version >= 1)
             {
-                rw.NodeRef<CGameReplayObjectVisData>(ref n.visData);
+                rw.NodeRef(ref n.visDataRef);
             }
         }
     }

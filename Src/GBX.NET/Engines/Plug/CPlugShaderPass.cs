@@ -25,22 +25,8 @@ public partial class CPlugShaderPass
     [Obsolete("Use VertexShader instead.")]
     public CPlugFileGPU? VHlslGpu { get => VertexShader; set => VertexShader = value; }
 
-    [Obsolete("Use VertexShaderFile instead.")]
-    public GbxRefTableFile? VHlslGpuFile { get => VertexShaderFile; set => VertexShaderFile = value; }
-
-    [Obsolete("Use GetVertexShader instead.")]
-    public CPlugFileGPU? GetVHlslGpu(GbxReadSettings settings = default, bool exceptions = false)
-        => GetVertexShader(settings, exceptions);
-
     [Obsolete("Use PixelShader instead.")]
     public CPlugFileGPU? PHlslGpu { get => PixelShader; set => PixelShader = value; }
-
-    [Obsolete("Use PixelShaderFile instead.")]
-    public GbxRefTableFile? PHlslGpuFile { get => PixelShaderFile; set => PixelShaderFile = value; }
-
-    [Obsolete("Use GetPixelShader instead.")]
-    public CPlugFileGPU? GetPHlslGpu(GbxReadSettings settings = default, bool exceptions = false)
-        => GetPixelShader(settings, exceptions);
 
     [Obsolete("Use VertexLoadFxs instead.")]
     public GpuLoadFx[]? VHlslGpuLoadFxs1 { get => VertexLoadFxs; set => VertexLoadFxs = value!; }
@@ -68,13 +54,6 @@ public partial class CPlugShaderPass
         [Obsolete("Use FileGpu instead.")]
         public CMwNod? Script { get => FileGpu; set => FileGpu = (CPlugFileGPU?)value; }
 
-        [Obsolete("Use FileGpuFile instead.")]
-        public GbxRefTableFile? ScriptFile { get => FileGpuFile; set => FileGpuFile = value; }
-
-        [Obsolete("Use GetFileGpu instead.")]
-        public CMwNod? GetScript(GbxReadSettings settings = default, bool exceptions = false)
-            => GetFileGpu(settings, exceptions);
-
         [Obsolete("Use FxValues instead.")]
         public Vec4[]? U02 { get => FxValues; set => FxValues = value!; }
     }
@@ -99,13 +78,6 @@ public partial class CPlugShaderPass
     {
         [Obsolete("Use Bitmap instead.")]
         public CPlugBitmap? U01 { get => Bitmap; set => Bitmap = value; }
-
-        [Obsolete("Use BitmapFile instead.")]
-        public GbxRefTableFile? U01File { get => BitmapFile; set => BitmapFile = value; }
-
-        [Obsolete("Use GetBitmap instead.")]
-        public CPlugBitmap? GetU01(GbxReadSettings settings = default, bool exceptions = false)
-            => GetBitmap(settings, exceptions);
 
         [Obsolete("Use Name instead.")]
         public string? U02 { get => Name; set => Name = value; }

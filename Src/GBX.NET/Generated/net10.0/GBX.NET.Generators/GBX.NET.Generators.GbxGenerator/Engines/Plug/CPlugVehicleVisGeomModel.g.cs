@@ -34,11 +34,13 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     [Hexadecimal]
     public static new uint Id => 0x09114000;
 
-    private CPlugSolid2Model? mesh;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugSolid2Model>? meshNodeRef;
     public CPlugSolid2Model? Mesh
     {
-        get => this.mesh;
-        set => this.mesh = value;
+        get => meshNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshNodeRef, value);
     }
 
     private bool u01;
@@ -76,23 +78,39 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
         set => this.meshRefPath = value;
     }
 
-    private CPlugSolid2Model? meshRef;
+    private NodeRef<CPlugSolid2Model>? meshRefRef;
     public CPlugSolid2Model? MeshRef
     {
-        get => this.meshRef;
-        set => this.meshRef = value;
+        get => meshRefRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshRefRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVehicleVisGeomModel owner;
+        internal NodeRefView(CPlugVehicleVisGeomModel owner) => this.owner = owner;
+        public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshNodeRef);
+        public NodeRef<CPlugSolid2Model> MeshRef => NodeRef.GetOrCreate(ref owner.meshRefRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Mesh", NodeRef.GetOrCreate(ref meshNodeRef));
+        yield return new("MeshRef", NodeRef.GetOrCreate(ref meshRefRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugVehicleVisGeomModel)clone).mesh = context.Clone(this.mesh)!;
+        ((CPlugVehicleVisGeomModel)clone).meshNodeRef = context.Clone(this.meshNodeRef)!;
         ((CPlugVehicleVisGeomModel)clone).u01 = context.Clone(this.u01)!;
         ((CPlugVehicleVisGeomModel)clone).damageParts = context.CloneArray(this.damageParts)!;
         ((CPlugVehicleVisGeomModel)clone).glass = context.CloneArray(this.glass)!;
         ((CPlugVehicleVisGeomModel)clone).u02 = context.CloneArray(this.u02)!;
         ((CPlugVehicleVisGeomModel)clone).meshRefPath = context.Clone(this.meshRefPath)!;
-        ((CPlugVehicleVisGeomModel)clone).meshRef = context.Clone(this.meshRef)!;
+        ((CPlugVehicleVisGeomModel)clone).meshRefRef = context.Clone(this.meshRefRef)!;
         ((CPlugVehicleVisGeomModel)clone).SurfVersion = context.Clone(this.SurfVersion)!;
     }
 
@@ -104,7 +122,7 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     {
         if (v >= 3)
         {
-            rw.NodeRef<CPlugSolid2Model>(ref this.mesh);
+            rw.NodeRef(ref this.meshNodeRef);
             rw.Boolean(ref this.u01);
             rw.ArrayReadableWritable<DamagePart>(ref this.damageParts!, 4, version: SurfVersion);
             rw.ArrayReadableWritable<GlassModel>(ref this.glass!, 5, version: v);
@@ -117,7 +135,7 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
             if (MeshRefPath== "" || MeshRefPath== null)
             {
-                rw.NodeRef<CPlugSolid2Model>(ref this.meshRef);
+                rw.NodeRef(ref this.meshRefRef);
             }
         }
     }
@@ -136,11 +154,11 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
     public partial class DamagePart : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private CPlugSolid2Model? mesh;
+        private NodeRef<CPlugSolid2Model>? meshRef;
         public CPlugSolid2Model? Mesh
         {
-            get => this.mesh;
-            set => this.mesh = value;
+            get => meshRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref meshRef, value);
         }
 
         /// <summary>
@@ -150,6 +168,19 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
         {
             get => this.dyna;
             set => this.dyna = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly DamagePart owner;
+            internal NodeRefView(DamagePart owner) => this.owner = owner;
+            public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Mesh", NodeRef.GetOrCreate(ref meshRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -162,7 +193,7 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((DamagePart)clone).mesh = context.Clone(this.mesh)!;
+            ((DamagePart)clone).meshRef = context.Clone(this.meshRef)!;
             ((DamagePart)clone).dyna = context.Clone(this.dyna)!;
             ((DamagePart)clone).surf = context.Clone(this.surf)!;
         }

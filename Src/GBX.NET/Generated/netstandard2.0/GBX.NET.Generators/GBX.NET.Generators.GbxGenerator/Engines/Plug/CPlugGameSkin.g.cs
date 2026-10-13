@@ -34,6 +34,8 @@ public partial class CPlugGameSkin : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090F4000;
 
+    internal override uint GetId() => Id;
+
     private string? dirName;
     [AppliedWithChunk<HeaderChunk090F4000>]
     [AppliedWithChunk<Chunk090F4004>]
@@ -359,6 +361,21 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
     public partial class Fid : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private NodeRef<CMwNod>? nodeRef;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Fid owner;
+            internal NodeRefView(Fid owner) => this.owner = owner;
+            public NodeRef<CMwNod> Node => NodeRef.GetOrCreate(ref owner.nodeRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Node", NodeRef.GetOrCreate(ref nodeRef));
+            yield break;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Fid)MemberwiseClone();
@@ -369,12 +386,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((Fid)clone).nodeRef = context.Clone(this.nodeRef)!;
             ((Fid)clone).classId = context.Clone(this.classId)!;
             ((Fid)clone).name = context.Clone(this.name)!;
-            ((Fid)clone).node = context.Clone(this.node)!;
             ((Fid)clone).directory = context.Clone(this.directory)!;
             ((Fid)clone).mipMaps = context.Clone(this.mipMaps)!;
-            ((Fid)clone).nodeFile = context.Clone(this.nodeFile)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

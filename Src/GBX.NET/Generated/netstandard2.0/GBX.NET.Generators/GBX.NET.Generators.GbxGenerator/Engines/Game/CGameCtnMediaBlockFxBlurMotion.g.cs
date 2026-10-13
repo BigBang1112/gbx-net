@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
     [Hexadecimal]
     public static new uint Id => 0x03082000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03082000>]
     public TimeSingle Start

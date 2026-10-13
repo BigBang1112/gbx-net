@@ -34,6 +34,8 @@ public partial class CInputReplay : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x1300D000;
 
+    internal override uint GetId() => Id;
+
     private string[]? actionIds;
     [AppliedWithChunk<Chunk1300D000>]
     public string[]? ActionIds

@@ -1,8 +1,8 @@
 CGameObjectVisModel 0x2E007000
 
 0x000
-  CPlugSolid2Model MeshShaded (external)
-  CMwNod (external) // Deprecated CPlugAnimFile.
+  CPlugSolid2Model MeshShaded
+  CMwNod // Deprecated CPlugAnimFile.
 
 0x001 [MP3, TMT, MP4.v21, TM2020.v22]
   version
@@ -11,22 +11,22 @@ CGameObjectVisModel 0x2E007000
     int U24
     float U25
   v7-
-    CMwNod U14 (external) // CPlugSolid2Model.
+    CMwNod U14 // CPlugSolid2Model.
   v9+
     string Mesh
     if Mesh == null || Mesh.Length == 0
-      CPlugSolid2Model MeshShaded (external)
+      CPlugSolid2Model MeshShaded
   v17-
-    CMwNod U16 (external) // Deprecated CPlugAnimFile.
+    CMwNod U16 // Deprecated CPlugAnimFile.
   v2+
     v8-
       string Mesh
     v4-
       LegacyLocAnim[] LegacyLocAnims
     v5=
-      CPlugAnimLocSimple[] LegacyLocAnimRefs (external)
+      CPlugAnimLocSimple[] LegacyLocAnimRefs
     v6+
-      CPlugAnimLocSimple LocAnim (external)
+      CPlugAnimLocSimple LocAnim
     int U03 (write: "n.LightBallStates?.Length ?? 0")
     CGameCommonItemEntityModel.LightBallStateSimple[U03] LightBallStates
   if Version >= 3 && Version <= 16
@@ -47,7 +47,7 @@ CGameObjectVisModel 0x2E007000
   v8=
     if Mesh != null && Mesh.Length != 0
       return
-    CPlugSolid2Model MeshShaded (external) // Version 8 moved this reference to the end.
+    CPlugSolid2Model MeshShaded // Version 8 moved this reference to the end.
   v13+
     int U08 (write: "n.Images?.Length ?? 0")
     CGameCommonItemEntityModelEdition.ImageRef[U08.Value] Images
@@ -56,19 +56,19 @@ CGameObjectVisModel 0x2E007000
   v14+
     string SolidRef
     if SolidRef == null || SolidRef.Length == 0
-      CPlugSolid Solid (external)
+      CPlugSolid Solid
   v15=
     string U26 // Deprecated string, only in version 15.
   v16+
-    CMwNod U10 (external) // CPlugParticleEmitterModel.
+    CMwNod U10 // CPlugParticleEmitterModel.
   v19+
     float U12
   v20+
     string VisEntFx
     if VisEntFx == null || VisEntFx.Length == 0
-      CMwNod U13 (external) // CPlugVisEntFxModel.
+      CMwNod U13 // CPlugVisEntFxModel.
   v21+
-    CMwNod MeshShadedFid (external) // DoFid: an external file reference.
+    CMwNod MeshShadedFid // DoFid: an external file reference.
   v22+
     vec3 DomeShaderColor
 
@@ -82,7 +82,7 @@ CGameObjectVisModel 0x2E007000
   iso4 SoundLocPermanent
 
 0x003 (skippable)
-  CMwNod (external)
+  CMwNod
 
 archive LegacyLocAnim
   version

@@ -50,7 +50,7 @@ enum ELights
   Auto
   On
   Off
- 
+
 archive SBadge
   version
   vec3 Color

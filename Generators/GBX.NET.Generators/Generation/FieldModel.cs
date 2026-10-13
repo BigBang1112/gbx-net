@@ -2,8 +2,9 @@ using ChunkL.Syntax;
 
 namespace GBX.NET.Generators.Generation;
 
-internal sealed class FieldModel(string name, FieldDeclaration declaration, bool unknown, bool version)
+internal sealed class FieldModel(string name, FieldDeclaration declaration, bool unknown, bool version, ScopeModel scope)
 {
+    public ScopeModel Scope { get; } = scope;
     public string Name { get; } = name;
     public FieldDeclaration Declaration { get; } = declaration;
     public bool IsUnknown { get; } = unknown;

@@ -15,13 +15,13 @@ CPlugAudioBalance 0x09034000
           float
           float
           float
-          CFuncKeysReal (external)
-          CFuncKeysReal (external)
+          CFuncKeysReal
+          CFuncKeysReal
           v8+
-            CFuncKeysReal (external)
-            CFuncKeysReal (external)
+            CFuncKeysReal
+            CFuncKeysReal
             v9+
-              CFuncKeysReal (external)
+              CFuncKeysReal
               v10+
                 float
                 float

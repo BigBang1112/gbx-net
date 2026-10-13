@@ -34,59 +34,34 @@ public partial class CPlugDecalModel : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x090A7000;
 
-    private CPlugBitmap? diffuseA;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CPlugBitmap>? diffuseANodeRef;
     [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? DiffuseA
     {
-        get => this.diffuseAFile?.GetNode(ref this.diffuseA) ?? this.diffuseA;
-        set => this.diffuseA = value;
-    }
-    private Components.GbxRefTableFile? diffuseAFile;
-
-    public Components.GbxRefTableFile? DiffuseAFile
-    {
-        get => diffuseAFile;
-        set => diffuseAFile = value;
+        get => diffuseANodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref diffuseANodeRef, value);
     }
 
-    public CPlugBitmap? GetDiffuseA(GbxReadSettings settings = default, bool exceptions = false) => diffuseAFile?.GetNode(ref diffuseA, settings, exceptions) ?? diffuseA;
-
-    private CPlugBitmap? normal;
+    private NodeRef<CPlugBitmap>? normalNodeRef;
     [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? Normal
     {
-        get => this.normalFile?.GetNode(ref this.normal) ?? this.normal;
-        set => this.normal = value;
-    }
-    private Components.GbxRefTableFile? normalFile;
-
-    public Components.GbxRefTableFile? NormalFile
-    {
-        get => normalFile;
-        set => normalFile = value;
+        get => normalNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref normalNodeRef, value);
     }
 
-    public CPlugBitmap? GetNormal(GbxReadSettings settings = default, bool exceptions = false) => normalFile?.GetNode(ref normal, settings, exceptions) ?? normal;
-
-    private CPlugSolid? solid;
+    private NodeRef<CPlugSolid>? solidRef;
     [AppliedWithChunk<Chunk090A7001>]
     [AppliedWithChunk<Chunk090A7004>]
     public CPlugSolid? Solid
     {
-        get => this.solidFile?.GetNode(ref this.solid) ?? this.solid;
-        set => this.solid = value;
+        get => solidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidRef, value);
     }
-    private Components.GbxRefTableFile? solidFile;
-
-    public Components.GbxRefTableFile? SolidFile
-    {
-        get => solidFile;
-        set => solidFile = value;
-    }
-
-    public CPlugSolid? GetSolid(GbxReadSettings settings = default, bool exceptions = false) => solidFile?.GetNode(ref solid, settings, exceptions) ?? solid;
 
     private float texelByMeter = 256;
     [AppliedWithChunk<Chunk090A7002>(1)]
@@ -112,22 +87,13 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.maxAngleNCos = value;
     }
 
-    private CPlugBitmap? specular;
+    private NodeRef<CPlugBitmap>? specularNodeRef;
     [AppliedWithChunk<Chunk090A7002>(4)]
     public CPlugBitmap? Specular
     {
-        get => this.specularFile?.GetNode(ref this.specular) ?? this.specular;
-        set => this.specular = value;
+        get => specularNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref specularNodeRef, value);
     }
-    private Components.GbxRefTableFile? specularFile;
-
-    public Components.GbxRefTableFile? SpecularFile
-    {
-        get => specularFile;
-        set => specularFile = value;
-    }
-
-    public CPlugBitmap? GetSpecular(GbxReadSettings settings = default, bool exceptions = false) => specularFile?.GetNode(ref specular, settings, exceptions) ?? specular;
 
     private string diffuseARef = "";
     [AppliedWithChunk<Chunk090A7002>(5)]
@@ -161,39 +127,21 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.roughnessRef = value;
     }
 
-    private CPlugBitmap? roughness;
+    private NodeRef<CPlugBitmap>? roughnessNodeRef;
     [AppliedWithChunk<Chunk090A7002>(6)]
     public CPlugBitmap? Roughness
     {
-        get => this.roughnessFile?.GetNode(ref this.roughness) ?? this.roughness;
-        set => this.roughness = value;
-    }
-    private Components.GbxRefTableFile? roughnessFile;
-
-    public Components.GbxRefTableFile? RoughnessFile
-    {
-        get => roughnessFile;
-        set => roughnessFile = value;
+        get => roughnessNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref roughnessNodeRef, value);
     }
 
-    public CPlugBitmap? GetRoughness(GbxReadSettings settings = default, bool exceptions = false) => roughnessFile?.GetNode(ref roughness, settings, exceptions) ?? roughness;
-
-    private CPlugBitmap? icon;
+    private NodeRef<CPlugBitmap>? iconRef;
     [AppliedWithChunk<Chunk090A7003>]
     public CPlugBitmap? Icon
     {
-        get => this.iconFile?.GetNode(ref this.icon) ?? this.icon;
-        set => this.icon = value;
+        get => iconRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconRef, value);
     }
-    private Components.GbxRefTableFile? iconFile;
-
-    public Components.GbxRefTableFile? IconFile
-    {
-        get => iconFile;
-        set => iconFile = value;
-    }
-
-    public CPlugBitmap? GetIcon(GbxReadSettings settings = default, bool exceptions = false) => iconFile?.GetNode(ref icon, settings, exceptions) ?? icon;
 
     private bool randomInstances = true;
     [AppliedWithChunk<Chunk090A7004>]
@@ -211,22 +159,13 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.maxAngleN3dCos = value;
     }
 
-    private CPlugBitmap? sprite3dBitmap;
+    private NodeRef<CPlugBitmap>? sprite3dBitmapRef;
     [AppliedWithChunk<Chunk090A7004>(3)]
     public CPlugBitmap? Sprite3dBitmap
     {
-        get => this.sprite3dBitmapFile?.GetNode(ref this.sprite3dBitmap) ?? this.sprite3dBitmap;
-        set => this.sprite3dBitmap = value;
+        get => sprite3dBitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sprite3dBitmapRef, value);
     }
-    private Components.GbxRefTableFile? sprite3dBitmapFile;
-
-    public Components.GbxRefTableFile? Sprite3dBitmapFile
-    {
-        get => sprite3dBitmapFile;
-        set => sprite3dBitmapFile = value;
-    }
-
-    public CPlugBitmap? GetSprite3dBitmap(GbxReadSettings settings = default, bool exceptions = false) => sprite3dBitmapFile?.GetNode(ref sprite3dBitmap, settings, exceptions) ?? sprite3dBitmap;
 
     private string? sprite3dGroupId;
     [AppliedWithChunk<Chunk090A7004>(3)]
@@ -244,22 +183,13 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.svgRef = value;
     }
 
-    private CMwNod? svg;
+    private NodeRef<CMwNod>? svgNodeRef;
     [AppliedWithChunk<Chunk090A7004>(4)]
     public CMwNod? Svg
     {
-        get => this.svgFile?.GetNode(ref this.svg) ?? this.svg;
-        set => this.svg = value;
+        get => svgNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref svgNodeRef, value);
     }
-    private Components.GbxRefTableFile? svgFile;
-
-    public Components.GbxRefTableFile? SvgFile
-    {
-        get => svgFile;
-        set => svgFile = value;
-    }
-
-    public CMwNod? GetSvg(GbxReadSettings settings = default, bool exceptions = false) => svgFile?.GetNode(ref svg, settings, exceptions) ?? svg;
 
     private float svgSize = 1;
     [AppliedWithChunk<Chunk090A7004>(5)]
@@ -285,12 +215,12 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.minAngleN3d = value;
     }
 
-    private External<CPlugDecalModel>[] decalModels = [];
+    private NodeRefList<CPlugDecalModel>? decalModels = new();
     [AppliedWithChunk<Chunk090A7004>(8)]
-    public External<CPlugDecalModel>[] DecalModels
+    public NodeRefList<CPlugDecalModel>? DecalModels
     {
-        get => this.decalModels;
-        set => this.decalModels = value;
+        get => decalModels;
+        set => decalModels = value;
     }
 
     private MacroDecalSet[] macroDecalSets = [];
@@ -317,32 +247,64 @@ public partial class CPlugDecalModel : CPlug, IClass
         set => this.flags = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugDecalModel owner;
+        internal NodeRefView(CPlugDecalModel owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> DiffuseA => NodeRef.GetOrCreate(ref owner.diffuseANodeRef);
+        public NodeRef<CPlugBitmap> Normal => NodeRef.GetOrCreate(ref owner.normalNodeRef);
+        public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidRef);
+        public NodeRef<CPlugBitmap> Specular => NodeRef.GetOrCreate(ref owner.specularNodeRef);
+        public NodeRef<CPlugBitmap> Roughness => NodeRef.GetOrCreate(ref owner.roughnessNodeRef);
+        public NodeRef<CPlugBitmap> Icon => NodeRef.GetOrCreate(ref owner.iconRef);
+        public NodeRef<CPlugBitmap> Sprite3dBitmap => NodeRef.GetOrCreate(ref owner.sprite3dBitmapRef);
+        public NodeRef<CMwNod> Svg => NodeRef.GetOrCreate(ref owner.svgNodeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("DiffuseA", NodeRef.GetOrCreate(ref diffuseANodeRef));
+        yield return new("Normal", NodeRef.GetOrCreate(ref normalNodeRef));
+        yield return new("Solid", NodeRef.GetOrCreate(ref solidRef));
+        yield return new("Specular", NodeRef.GetOrCreate(ref specularNodeRef));
+        yield return new("Roughness", NodeRef.GetOrCreate(ref roughnessNodeRef));
+        yield return new("Icon", NodeRef.GetOrCreate(ref iconRef));
+        yield return new("Sprite3dBitmap", NodeRef.GetOrCreate(ref sprite3dBitmapRef));
+        yield return new("Svg", NodeRef.GetOrCreate(ref svgNodeRef));
+        if (decalModels is not null)
+        {
+            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugDecalModel)clone).diffuseA = context.Clone(this.diffuseA)!;
-        ((CPlugDecalModel)clone).normal = context.Clone(this.normal)!;
-        ((CPlugDecalModel)clone).solid = context.Clone(this.solid)!;
+        ((CPlugDecalModel)clone).diffuseANodeRef = context.Clone(this.diffuseANodeRef)!;
+        ((CPlugDecalModel)clone).normalNodeRef = context.Clone(this.normalNodeRef)!;
+        ((CPlugDecalModel)clone).solidRef = context.Clone(this.solidRef)!;
         ((CPlugDecalModel)clone).texelByMeter = context.Clone(this.texelByMeter)!;
         ((CPlugDecalModel)clone).fadeNormalAndZ = context.Clone(this.fadeNormalAndZ)!;
         ((CPlugDecalModel)clone).maxAngleNCos = context.Clone(this.maxAngleNCos)!;
-        ((CPlugDecalModel)clone).specular = context.Clone(this.specular)!;
+        ((CPlugDecalModel)clone).specularNodeRef = context.Clone(this.specularNodeRef)!;
         ((CPlugDecalModel)clone).diffuseARef = context.Clone(this.diffuseARef)!;
         ((CPlugDecalModel)clone).normalRef = context.Clone(this.normalRef)!;
         ((CPlugDecalModel)clone).specularRef = context.Clone(this.specularRef)!;
         ((CPlugDecalModel)clone).roughnessRef = context.Clone(this.roughnessRef)!;
-        ((CPlugDecalModel)clone).roughness = context.Clone(this.roughness)!;
-        ((CPlugDecalModel)clone).icon = context.Clone(this.icon)!;
+        ((CPlugDecalModel)clone).roughnessNodeRef = context.Clone(this.roughnessNodeRef)!;
+        ((CPlugDecalModel)clone).iconRef = context.Clone(this.iconRef)!;
         ((CPlugDecalModel)clone).randomInstances = context.Clone(this.randomInstances)!;
         ((CPlugDecalModel)clone).maxAngleN3dCos = context.Clone(this.maxAngleN3dCos)!;
-        ((CPlugDecalModel)clone).sprite3dBitmap = context.Clone(this.sprite3dBitmap)!;
+        ((CPlugDecalModel)clone).sprite3dBitmapRef = context.Clone(this.sprite3dBitmapRef)!;
         ((CPlugDecalModel)clone).sprite3dGroupId = context.Clone(this.sprite3dGroupId)!;
         ((CPlugDecalModel)clone).svgRef = context.Clone(this.svgRef)!;
-        ((CPlugDecalModel)clone).svg = context.Clone(this.svg)!;
+        ((CPlugDecalModel)clone).svgNodeRef = context.Clone(this.svgNodeRef)!;
         ((CPlugDecalModel)clone).svgSize = context.Clone(this.svgSize)!;
         ((CPlugDecalModel)clone).svgAlpha = context.Clone(this.svgAlpha)!;
         ((CPlugDecalModel)clone).minAngleN3d = context.Clone(this.minAngleN3d)!;
-        ((CPlugDecalModel)clone).decalModels = context.CloneArray(this.decalModels)!;
+        ((CPlugDecalModel)clone).decalModels = context.Clone(this.decalModels)!;
         ((CPlugDecalModel)clone).macroDecalSets = context.CloneArray(this.macroDecalSets)!;
         ((CPlugDecalModel)clone).impactSize = context.Clone(this.impactSize)!;
         ((CPlugDecalModel)clone).flags = context.Clone(this.flags)!;
@@ -384,8 +346,8 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
-            rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
+            rw.NodeRef(ref n.diffuseANodeRef);
+            rw.NodeRef(ref n.normalNodeRef);
         }
     }
 
@@ -404,7 +366,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
+            rw.NodeRef(ref n.solidRef);
         }
     }
 
@@ -447,8 +409,8 @@ public partial class CPlugDecalModel : CPlug, IClass
 
             if (Version <= 4)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
-                rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
+                rw.NodeRef(ref n.diffuseANodeRef);
+                rw.NodeRef(ref n.normalNodeRef);
             }
 
             if (Version >= 1)
@@ -468,7 +430,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
             if (Version == 4)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
+                rw.NodeRef(ref n.specularNodeRef);
             }
 
             if (Version >= 5)
@@ -477,21 +439,21 @@ public partial class CPlugDecalModel : CPlug, IClass
 
                 if (n.DiffuseARef== null || n.DiffuseARef== "")
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.diffuseA, ref n.diffuseAFile);
+                    rw.NodeRef(ref n.diffuseANodeRef);
                 }
 
                 rw.String(ref n.normalRef);
 
                 if (n.NormalRef== null || n.NormalRef== "")
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.normal, ref n.normalFile);
+                    rw.NodeRef(ref n.normalNodeRef);
                 }
 
                 rw.String(ref n.specularRef);
 
                 if (n.SpecularRef== null || n.SpecularRef== "")
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.specular, ref n.specularFile);
+                    rw.NodeRef(ref n.specularNodeRef);
                 }
             }
 
@@ -501,7 +463,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
                 if (n.RoughnessRef== null || n.RoughnessRef== "")
                 {
-                    rw.NodeRef<CPlugBitmap>(ref n.roughness, ref n.roughnessFile);
+                    rw.NodeRef(ref n.roughnessNodeRef);
                 }
             }
         }
@@ -524,7 +486,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.icon, ref n.iconFile);
+            rw.NodeRef(ref n.iconRef);
         }
     }
 
@@ -564,7 +526,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugSolid>(ref n.solid, ref n.solidFile);
+            rw.NodeRef(ref n.solidRef);
             rw.Boolean(ref n.randomInstances);
 
             if (Version >= 2)
@@ -574,7 +536,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
             if (Version >= 3)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.sprite3dBitmap, ref n.sprite3dBitmapFile);
+                rw.NodeRef(ref n.sprite3dBitmapRef);
                 rw.Id(ref n.sprite3dGroupId);
             }
 
@@ -584,7 +546,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
                 if (n.SvgRef== null || n.SvgRef== "")
                 {
-                    rw.NodeRef<CMwNod>(ref n.svg, ref n.svgFile);
+                    rw.NodeRef(ref n.svgNodeRef);
                 }
             }
 
@@ -605,7 +567,7 @@ public partial class CPlugDecalModel : CPlug, IClass
 
             if (Version >= 8)
             {
-                rw.ArrayNodeRef_deprec<CPlugDecalModel>(ref n.decalModels!);
+                n.decalModels = rw.ListNodeRef_deprec<CPlugDecalModel>(n.decalModels);
                 rw.ArrayReadableWritable<MacroDecalSet>(ref n.macroDecalSets!, version: Version);
             }
         }

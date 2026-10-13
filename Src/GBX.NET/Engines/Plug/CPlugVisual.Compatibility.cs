@@ -51,7 +51,7 @@ public partial class CPlugVisual
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             if (rw.Reader is null && legacyFuncVisualSet) n.FuncVisual = legacyFuncVisual;
-            n.FuncVisual = rw.NodeRef(n.FuncVisual);
+            rw.NodeRef(ref n.funcVisualRef);
             legacyFuncVisual = n.FuncVisual;
             legacyFuncVisualSet = false;
         }

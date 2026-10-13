@@ -34,18 +34,34 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
     [Hexadecimal]
     public static new uint Id => 0x01032000;
 
-    private CMwCmdExp? value;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CMwCmdExp>? valueRef;
     [AppliedWithChunk<Chunk01032000>]
     public CMwCmdExp? Value
     {
-        get => this.value;
-        set => this.value = value;
+        get => valueRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref valueRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMwCmdAffectIdent owner;
+        internal NodeRefView(CMwCmdAffectIdent owner) => this.owner = owner;
+        public NodeRef<CMwCmdExp> Value => NodeRef.GetOrCreate(ref owner.valueRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Value", NodeRef.GetOrCreate(ref valueRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMwCmdAffectIdent)clone).value = context.Clone(this.value)!;
+        ((CMwCmdAffectIdent)clone).valueRef = context.Clone(this.valueRef)!;
     }
 
     public CMwCmdAffectIdent()
@@ -71,7 +87,7 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
         public override void ReadWrite(CMwCmdAffectIdent n, GbxReaderWriter rw)
         {
             rw.String(ref U01);
-            rw.NodeRef<CMwCmdExp>(ref n.value);
+            rw.NodeRef(ref n.valueRef);
             rw.Boolean(ref U02);
         }
     }

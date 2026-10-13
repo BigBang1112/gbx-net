@@ -34,6 +34,8 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x06023000;
 
+    internal override uint GetId() => Id;
+
     private Vec2 ambientRange = (0.35f, 1);
     /// <summary>
     /// GPU constant uses Y-X as the ambient scale and X as the ambient offset

@@ -34,6 +34,8 @@ public partial class GxLightFrustum : GxLightBall, IClass
     [Hexadecimal]
     public static new uint Id => 0x0400A000;
 
+    internal override uint GetId() => Id;
+
     private FrustumData frustum = new();
     [AppliedWithChunk<Chunk0400A000>]
     [AppliedWithChunk<Chunk0400A001>]

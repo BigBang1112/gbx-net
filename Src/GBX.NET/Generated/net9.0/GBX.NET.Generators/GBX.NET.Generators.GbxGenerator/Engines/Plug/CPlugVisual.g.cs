@@ -34,6 +34,8 @@ public partial class CPlugVisual : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09006000;
 
+    internal override uint GetId() => Id;
+
     private string? visualId;
     [AppliedWithChunk<Chunk09006001>]
     public string? VisualId
@@ -42,12 +44,12 @@ public partial class CPlugVisual : CPlug, IClass
         set => this.visualId = value;
     }
 
-    private CMwNod? funcVisual;
+    private NodeRef<CMwNod>? funcVisualRef;
     [AppliedWithChunk<Chunk09006004>]
     public CMwNod? FuncVisual
     {
-        get => this.funcVisual;
-        set => this.funcVisual = value;
+        get => funcVisualRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref funcVisualRef, value);
     }
 
     private Int3[] subVisuals = [];
@@ -77,6 +79,10 @@ public partial class CPlugVisual : CPlug, IClass
         set => this.nPatchTessLevel = value;
     }
 
+    private NodeRefList<CPlugVertexStream>? vertexStreams;
+    [AppliedWithChunk<Chunk0900600A>]
+    public partial NodeRefList<CPlugVertexStream> VertexStreams { get; set; }
+
     private Split[] splits = [];
     [AppliedWithChunk<Chunk0900600B>]
     public Split[] Splits
@@ -101,20 +107,38 @@ public partial class CPlugVisual : CPlug, IClass
         set => this.morphs = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugVisual owner;
+        internal NodeRefView(CPlugVisual owner) => this.owner = owner;
+        public NodeRef<CMwNod> FuncVisual => NodeRef.GetOrCreate(ref owner.funcVisualRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("FuncVisual", NodeRef.GetOrCreate(ref funcVisualRef));
+        if (vertexStreams is not null)
+        {
+            for (var i = 0; i < vertexStreams.Count; i++) yield return new("VertexStreams" + "[" + i + "]", vertexStreams.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugVisual)clone).visualId = context.Clone(this.visualId)!;
-        ((CPlugVisual)clone).funcVisual = context.Clone(this.funcVisual)!;
+        ((CPlugVisual)clone).funcVisualRef = context.Clone(this.funcVisualRef)!;
         ((CPlugVisual)clone).subVisuals = context.CloneArray(this.subVisuals)!;
         ((CPlugVisual)clone).isInverse = context.Clone(this.isInverse)!;
         ((CPlugVisual)clone).nPatchTessLevel = context.Clone(this.nPatchTessLevel)!;
+        ((CPlugVisual)clone).vertexStreams = context.Clone(this.vertexStreams)!;
         ((CPlugVisual)clone).splits = context.CloneArray(this.splits)!;
         ((CPlugVisual)clone).bitmapElemToPacks = context.CloneArray(this.bitmapElemToPacks)!;
         ((CPlugVisual)clone).morphs = context.CloneArray(this.morphs)!;
         ((CPlugVisual)clone).Flags = context.Clone(this.Flags)!;
         ((CPlugVisual)clone).Count = context.Clone(this.Count)!;
-        ((CPlugVisual)clone).VertexStreams = context.CloneList(this.VertexStreams)!;
         ((CPlugVisual)clone).TexCoords = context.CloneArray(this.TexCoords)!;
         ((CPlugVisual)clone).BoundingBox = context.Clone(this.BoundingBox)!;
         ((CPlugVisual)clone).SkinData = context.Clone(this.SkinData)!;
@@ -564,11 +588,11 @@ public partial class CPlugVisual : CPlug, IClass
             set => this.boneCount = value;
         }
 
-        private CPlugVertexStream? vertexStream;
+        private NodeRef<CPlugVertexStream>? vertexStreamRef;
         public CPlugVertexStream? VertexStream
         {
-            get => this.vertexStream;
-            set => this.vertexStream = value;
+            get => vertexStreamRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref vertexStreamRef, value);
         }
 
         private string[] bones = [];
@@ -576,6 +600,19 @@ public partial class CPlugVisual : CPlug, IClass
         {
             get => this.bones;
             set => this.bones = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Morph owner;
+            internal NodeRefView(Morph owner) => this.owner = owner;
+            public NodeRef<CPlugVertexStream> VertexStream => NodeRef.GetOrCreate(ref owner.vertexStreamRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("VertexStream", NodeRef.GetOrCreate(ref vertexStreamRef));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -590,7 +627,7 @@ public partial class CPlugVisual : CPlug, IClass
         {
             ((Morph)clone).indices = context.CloneArray(this.indices)!;
             ((Morph)clone).boneCount = context.Clone(this.boneCount)!;
-            ((Morph)clone).vertexStream = context.Clone(this.vertexStream)!;
+            ((Morph)clone).vertexStreamRef = context.Clone(this.vertexStreamRef)!;
             ((Morph)clone).bones = context.CloneArray(this.bones)!;
         }
 

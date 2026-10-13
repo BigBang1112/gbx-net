@@ -4,35 +4,24 @@ namespace GBX.NET.Engines.GameData;
 
 public partial class CGameObjectPhyModel
 {
-    private CPlugSurface? moveShapeFid;
+
     public CPlugSurface? MoveShapeFid
     {
-        get => moveShapeFidFile?.GetNode(ref moveShapeFid) ?? moveShapeFid;
-        set => moveShapeFid = value;
+        get => moveShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moveShapeFidRef, value);
     }
-    private GbxRefTableFile? moveShapeFidFile;
-    public GbxRefTableFile? MoveShapeFidFile { get => moveShapeFidFile; set => moveShapeFidFile = value; }
-    public CPlugSurface? GetMoveShapeFid(GbxReadSettings settings = default) => moveShapeFidFile?.GetNode(ref moveShapeFid, settings);
 
-    private CPlugSurface? hitShapeFid;
     public CPlugSurface? HitShapeFid
     {
-        get => hitShapeFidFile?.GetNode(ref hitShapeFid) ?? hitShapeFid;
-        set => hitShapeFid = value;
+        get => hitShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hitShapeFidRef, value);
     }
-    private GbxRefTableFile? hitShapeFidFile;
-    public GbxRefTableFile? HitShapeFidFile { get => hitShapeFidFile; set => hitShapeFidFile = value; }
-    public CPlugSurface? GetHitShapeFid(GbxReadSettings settings = default) => hitShapeFidFile?.GetNode(ref hitShapeFid, settings);
 
-    private CPlugSurface? triggerShapeFid;
     public CPlugSurface? TriggerShapeFid
     {
-        get => triggerShapeFidFile?.GetNode(ref triggerShapeFid) ?? triggerShapeFid;
-        set => triggerShapeFid = value;
+        get => triggerShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeFidRef, value);
     }
-    private GbxRefTableFile? triggerShapeFidFile;
-    public GbxRefTableFile? TriggerShapeFidFile { get => triggerShapeFidFile; set => triggerShapeFidFile = value; }
-    public CPlugSurface? GetTriggerShapeFid(GbxReadSettings settings = default) => triggerShapeFidFile?.GetNode(ref triggerShapeFid, settings);
 
     private int triggerActionVersion = 5;
     public int TriggerActionVersion { get => triggerActionVersion; set => triggerActionVersion = value; }
@@ -61,15 +50,11 @@ public partial class CGameObjectPhyModel
     private CGameActionModel?[]? actions;
     public CGameActionModel?[]? Actions { get => actions; set => actions = value; }
 
-    private CMwNod? specialProperties;
     public CMwNod? SpecialProperties
     {
-        get => specialPropertiesFile?.GetNode(ref specialProperties) ?? specialProperties;
-        set => specialProperties = value;
+        get => specialPropertiesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref specialPropertiesRef, value);
     }
-    private GbxRefTableFile? specialPropertiesFile;
-    public GbxRefTableFile? SpecialPropertiesFile { get => specialPropertiesFile; set => specialPropertiesFile = value; }
-    public CMwNod? GetSpecialProperties(GbxReadSettings settings = default) => specialPropertiesFile?.GetNode(ref specialProperties, settings);
 
     private EPersistence? persistence = EPersistence.NeverRemove;
     public EPersistence? Persistence { get => persistence; set => persistence = value; }
@@ -126,11 +111,9 @@ public partial class CGameObjectPhyModel
     {
         public int Version { get; set; }
 
-        public CMwNod? U01;
-        public CMwNod? U03;
         public Iso4? U09;
         public string? U14;
-        public CMwNod? U15;
+
         public bool U17;
         public int? U19;
         public bool? U20;
@@ -139,6 +122,6 @@ public partial class CGameObjectPhyModel
         public bool? U23;
         public bool? U24;
         public bool U25 = true;
-        public CMwNod? U26;
+
     }
 }

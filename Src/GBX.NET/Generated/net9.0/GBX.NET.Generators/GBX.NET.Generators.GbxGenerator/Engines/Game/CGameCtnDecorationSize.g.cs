@@ -34,6 +34,8 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0303B000;
 
+    internal override uint GetId() => Id;
+
     private Vec2 editionZoneMin;
     [AppliedWithChunk<Chunk0303B000>]
     public Vec2 EditionZoneMin
@@ -68,23 +70,14 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         set => this.size = value;
     }
 
-    private CSceneLayout? scene;
+    private NodeRef<CSceneLayout>? sceneRef;
     [AppliedWithChunk<Chunk0303B001>]
     [AppliedWithChunk<Chunk0303B002>]
     public CSceneLayout? Scene
     {
-        get => this.sceneFile?.GetNode(ref this.scene) ?? this.scene;
-        set => this.scene = value;
+        get => sceneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneRef, value);
     }
-    private Components.GbxRefTableFile? sceneFile;
-
-    public Components.GbxRefTableFile? SceneFile
-    {
-        get => sceneFile;
-        set => sceneFile = value;
-    }
-
-    public CSceneLayout? GetScene(GbxReadSettings settings = default, bool exceptions = false) => sceneFile?.GetNode(ref scene, settings, exceptions) ?? scene;
 
     private bool offsetBlockY;
     [AppliedWithChunk<Chunk0303B002>]
@@ -102,6 +95,20 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         set => this.baseHeightOffset = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnDecorationSize owner;
+        internal NodeRefView(CGameCtnDecorationSize owner) => this.owner = owner;
+        public NodeRef<CSceneLayout> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Scene", NodeRef.GetOrCreate(ref sceneRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -109,7 +116,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         ((CGameCtnDecorationSize)clone).editionZoneMax = context.Clone(this.editionZoneMax)!;
         ((CGameCtnDecorationSize)clone).baseHeightBase = context.Clone(this.baseHeightBase)!;
         ((CGameCtnDecorationSize)clone).size = context.Clone(this.size)!;
-        ((CGameCtnDecorationSize)clone).scene = context.Clone(this.scene)!;
+        ((CGameCtnDecorationSize)clone).sceneRef = context.Clone(this.sceneRef)!;
         ((CGameCtnDecorationSize)clone).offsetBlockY = context.Clone(this.offsetBlockY)!;
         ((CGameCtnDecorationSize)clone).baseHeightOffset = context.Clone(this.baseHeightOffset)!;
     }
@@ -156,7 +163,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         {
             rw.Int32(ref n.baseHeightBase);
             rw.Int3(ref n.size);
-            rw.NodeRef<CSceneLayout>(ref n.scene, ref n.sceneFile);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 
@@ -177,7 +184,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
             rw.Int32(ref n.baseHeightBase);
             rw.Int3(ref n.size);
             rw.Boolean(ref n.offsetBlockY);
-            rw.NodeRef<CSceneLayout>(ref n.scene, ref n.sceneFile);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 

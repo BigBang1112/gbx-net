@@ -34,6 +34,8 @@ public partial class CPlugDataTape : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090CE000;
 
+    internal override uint GetId() => Id;
+
     private TapeHeader? header;
     [AppliedWithChunk<Chunk090CE000>]
     [AppliedWithChunk<Chunk090CE001>]

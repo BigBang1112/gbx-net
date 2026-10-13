@@ -23,7 +23,7 @@ CSceneLayout 0x0A003000
   SceneLoc[] SceneLocations
   CSceneObject[] (deprec)
   SceneLoc[]
-  CSceneLight[] Lights (deprec, external)
+  CSceneLight[] Lights (deprec)
   SceneLoc[] LightLocations
   CSceneObject[] Sounds (deprec)
   SceneLoc[] SoundLocations
@@ -35,7 +35,7 @@ CSceneLayout 0x0A003000
   CScenePath[] Paths (deprec)
   CSceneTrafficGraph TrafficGraph
   CSceneTrafficPath[] TrafficPaths (deprec)
-  CSceneFxNod SceneFxNod (external)
+  CSceneFxNod SceneFxNod
 
 0x019 [MP3, TMT]
   int
@@ -66,7 +66,7 @@ CSceneLayout 0x0A003000
   SceneLoc[] LocationLocations
   int
   int
-  CSceneFxNod SceneFxNod (external)
+  CSceneFxNod SceneFxNod
 
 0x01C [MP4, TM2020]
   version
@@ -78,13 +78,13 @@ CSceneLayout 0x0A003000
     Unknown3[]
   CSceneConfig
   v1-
-    CPlugWeatherModel[] WeatherModels (deprec, external)
+    CPlugWeatherModel[] WeatherModels (deprec)
   v2+
-    CPlugWeatherModel WeatherModel (external)
+    CPlugWeatherModel WeatherModel
   uint[]
-  CPlugBitmap BitmapWaterFog (external)
-  CPlugBitmap BitmapCubeReflectHardSpecA (external)
-  CPlugBitmap BitmapCubeReflectHdrAlpha2 (external)
+  CPlugBitmap BitmapWaterFog
+  CPlugBitmap BitmapCubeReflectHardSpecA
+  CPlugBitmap BitmapCubeReflectHdrAlpha2
   v0=
     CSceneLocation[]
   float
@@ -102,7 +102,7 @@ CSceneLayout 0x0A003000
   float
   float
   float
-  CSceneFxNod SceneFxNod (external)
+  CSceneFxNod SceneFxNod
 
 archive SceneMobil
   int U01
@@ -127,9 +127,9 @@ archive Unknown2
   id
   transquat
   int
-  CPlugBitmap (external)
-  CPlugBitmap (external)
-  CPlugBitmap (external)
+  CPlugBitmap
+  CPlugBitmap
+  CPlugBitmap
   GxLight
   int
 
@@ -138,7 +138,7 @@ archive Unknown3
   transquat
   short
   ulong
-  CPlugSolid (external)
+  CPlugSolid
   v4+
     CPlugSolid2Model
     v5+

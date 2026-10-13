@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     [Hexadecimal]
     public static new uint Id => 0x0312E000;
 
+    internal override uint GetId() => Id;
+
     private string? menuLeagueFilter;
     [AppliedWithChunk<Chunk0312E000>]
     public string? MenuLeagueFilter

@@ -21,6 +21,8 @@ public partial class CMwNod : IClass
     private ChunkSet? chunks;
     public IChunkSet Chunks => chunks ??= new ChunkSet(this);
 
+    public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences() => [];
+
     internal virtual void Read(GbxReaderWriter rw)
     {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
@@ -504,7 +506,7 @@ public partial class CMwNod : IClass
 
     public Gbx ToGbx(GbxHeaderBasic headerBasic)
     {
-        var classId = ClassManager.GetId(GetType()) ?? throw new Exception("Class ID not found.");
+        var classId = GetId();
         var header = ClassManager.NewHeader(headerBasic, classId) ?? throw new Exception("Header cannot be created.");
         return ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created.");
     }

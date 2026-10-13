@@ -34,6 +34,8 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0308C000;
 
+    internal override uint GetId() => Id;
+
     private string? onlineLogin;
     [AppliedWithChunk<HeaderChunk0308C000>]
     [AppliedWithChunk<Chunk0308C02C>]
@@ -113,7 +115,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.profileId = value;
     }
 
-    private CInputBindingsConfig? bindingsForCompatConfig;
+    private NodeRef<CInputBindingsConfig>? bindingsForCompatConfigRef;
     [AppliedWithChunk<Chunk0308C006>]
     [AppliedWithChunk<Chunk0308C039>]
     [AppliedWithChunk<Chunk0308C03E>]
@@ -121,8 +123,8 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [AppliedWithChunk<Chunk0308C062>]
     public CInputBindingsConfig? BindingsForCompatConfig
     {
-        get => this.bindingsForCompatConfig;
-        set => this.bindingsForCompatConfig = value;
+        get => bindingsForCompatConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bindingsForCompatConfigRef, value);
     }
 
     private bool unlockAllCheat;
@@ -497,28 +499,28 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.ladderMode = value;
     }
 
-    private CGameNetOnlineMessage[]? inboxMessages;
+    private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
     [AppliedWithChunk<Chunk0308C047>]
-    public CGameNetOnlineMessage[]? InboxMessages
+    public NodeRefList<CGameNetOnlineMessage>? InboxMessages
     {
-        get => this.inboxMessages;
-        set => this.inboxMessages = value;
+        get => inboxMessages;
+        set => inboxMessages = value;
     }
 
-    private CGameNetOnlineMessage[]? readMessages;
+    private NodeRefList<CGameNetOnlineMessage>? readMessages;
     [AppliedWithChunk<Chunk0308C047>]
-    public CGameNetOnlineMessage[]? ReadMessages
+    public NodeRefList<CGameNetOnlineMessage>? ReadMessages
     {
-        get => this.readMessages;
-        set => this.readMessages = value;
+        get => readMessages;
+        set => readMessages = value;
     }
 
-    private CGameNetOnlineMessage[]? outboxMessages;
+    private NodeRefList<CGameNetOnlineMessage>? outboxMessages;
     [AppliedWithChunk<Chunk0308C047>]
-    public CGameNetOnlineMessage[]? OutboxMessages
+    public NodeRefList<CGameNetOnlineMessage>? OutboxMessages
     {
-        get => this.outboxMessages;
-        set => this.outboxMessages = value;
+        get => outboxMessages;
+        set => outboxMessages = value;
     }
 
     private bool enableChat = true;
@@ -538,12 +540,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.multiLocalProfileHeaders = value;
     }
 
-    private CInputBindingsConfig? bindingsConfig;
+    private NodeRef<CInputBindingsConfig>? bindingsConfigRef;
     [AppliedWithChunk<Chunk0308C04B>]
     public CInputBindingsConfig? BindingsConfig
     {
-        get => this.bindingsConfig;
-        set => this.bindingsConfig = value;
+        get => bindingsConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bindingsConfigRef, value);
     }
 
     private int leagueCacheDuration;
@@ -570,12 +572,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.leagueCacheUpdatedAt = value;
     }
 
-    private CGameLeague[]? leagues;
+    private NodeRefList<CGameLeague>? leagues;
     [AppliedWithChunk<Chunk0308C04C>]
-    public CGameLeague[]? Leagues
+    public NodeRefList<CGameLeague>? Leagues
     {
-        get => this.leagues;
-        set => this.leagues = value;
+        get => leagues;
+        set => leagues = value;
     }
 
     private DateTime? receivedMessagesAt;
@@ -682,12 +684,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.onlineValidationKeyHexa = value;
     }
 
-    private CGameCtnMediaShootParams? shootParams;
+    private NodeRef<CGameCtnMediaShootParams>? shootParamsRef;
     [AppliedWithChunk<Chunk0308C05E>]
     public CGameCtnMediaShootParams? ShootParams
     {
-        get => this.shootParams;
-        set => this.shootParams = value;
+        get => shootParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shootParamsRef, value);
     }
 
     private int playTime;
@@ -860,12 +862,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.campaignUnlocks = value;
     }
 
-    private CGameCtnCampaign[]? customCampaigns;
+    private NodeRefList<CGameCtnCampaign>? customCampaigns;
     [AppliedWithChunk<Chunk240B500B>]
-    public CGameCtnCampaign[]? CustomCampaigns
+    public NodeRefList<CGameCtnCampaign>? CustomCampaigns
     {
-        get => this.customCampaigns;
-        set => this.customCampaigns = value;
+        get => customCampaigns;
+        set => customCampaigns = value;
     }
 
     private bool clickedOnShare;
@@ -876,6 +878,44 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.clickedOnShare = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGamePlayerProfile owner;
+        internal NodeRefView(CGamePlayerProfile owner) => this.owner = owner;
+        public NodeRef<CInputBindingsConfig> BindingsForCompatConfig => NodeRef.GetOrCreate(ref owner.bindingsForCompatConfigRef);
+        public NodeRef<CInputBindingsConfig> BindingsConfig => NodeRef.GetOrCreate(ref owner.bindingsConfigRef);
+        public NodeRef<CGameCtnMediaShootParams> ShootParams => NodeRef.GetOrCreate(ref owner.shootParamsRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BindingsForCompatConfig", NodeRef.GetOrCreate(ref bindingsForCompatConfigRef));
+        if (inboxMessages is not null)
+        {
+            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.Get(i));
+        }
+        if (readMessages is not null)
+        {
+            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.Get(i));
+        }
+        if (outboxMessages is not null)
+        {
+            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.Get(i));
+        }
+        yield return new("BindingsConfig", NodeRef.GetOrCreate(ref bindingsConfigRef));
+        if (leagues is not null)
+        {
+            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.Get(i));
+        }
+        yield return new("ShootParams", NodeRef.GetOrCreate(ref shootParamsRef));
+        if (customCampaigns is not null)
+        {
+            for (var i = 0; i < customCampaigns.Count; i++) yield return new("CustomCampaigns" + "[" + i + "]", customCampaigns.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -884,7 +924,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).profileName = context.Clone(this.profileName)!;
         ((CGamePlayerProfile)clone).nickName = context.Clone(this.nickName)!;
         ((CGamePlayerProfile)clone).profileId = context.Clone(this.profileId)!;
-        ((CGamePlayerProfile)clone).bindingsForCompatConfig = context.Clone(this.bindingsForCompatConfig)!;
+        ((CGamePlayerProfile)clone).bindingsForCompatConfigRef = context.Clone(this.bindingsForCompatConfigRef)!;
         ((CGamePlayerProfile)clone).unlockAllCheat = context.Clone(this.unlockAllCheat)!;
         ((CGamePlayerProfile)clone).allowDownload = context.Clone(this.allowDownload)!;
         ((CGamePlayerProfile)clone).serverName = context.Clone(this.serverName)!;
@@ -917,16 +957,16 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).vehicleProfiles = context.CloneArray(this.vehicleProfiles)!;
         ((CGamePlayerProfile)clone).isShowPlayerGhost = context.Clone(this.isShowPlayerGhost)!;
         ((CGamePlayerProfile)clone).ladderMode = context.Clone(this.ladderMode)!;
-        ((CGamePlayerProfile)clone).inboxMessages = context.CloneArray(this.inboxMessages)!;
-        ((CGamePlayerProfile)clone).readMessages = context.CloneArray(this.readMessages)!;
-        ((CGamePlayerProfile)clone).outboxMessages = context.CloneArray(this.outboxMessages)!;
+        ((CGamePlayerProfile)clone).inboxMessages = context.Clone(this.inboxMessages)!;
+        ((CGamePlayerProfile)clone).readMessages = context.Clone(this.readMessages)!;
+        ((CGamePlayerProfile)clone).outboxMessages = context.Clone(this.outboxMessages)!;
         ((CGamePlayerProfile)clone).enableChat = context.Clone(this.enableChat)!;
         ((CGamePlayerProfile)clone).multiLocalProfileHeaders = context.CloneArray(this.multiLocalProfileHeaders)!;
-        ((CGamePlayerProfile)clone).bindingsConfig = context.Clone(this.bindingsConfig)!;
+        ((CGamePlayerProfile)clone).bindingsConfigRef = context.Clone(this.bindingsConfigRef)!;
         ((CGamePlayerProfile)clone).leagueCacheDuration = context.Clone(this.leagueCacheDuration)!;
         ((CGamePlayerProfile)clone).hasLeagueCache = context.Clone(this.hasLeagueCache)!;
         ((CGamePlayerProfile)clone).leagueCacheUpdatedAt = context.Clone(this.leagueCacheUpdatedAt)!;
-        ((CGamePlayerProfile)clone).leagues = context.CloneArray(this.leagues)!;
+        ((CGamePlayerProfile)clone).leagues = context.Clone(this.leagues)!;
         ((CGamePlayerProfile)clone).receivedMessagesAt = context.Clone(this.receivedMessagesAt)!;
         ((CGamePlayerProfile)clone).avatarName = context.Clone(this.avatarName)!;
         ((CGamePlayerProfile)clone).hornName = context.Clone(this.hornName)!;
@@ -937,7 +977,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).rumbleIntensity = context.Clone(this.rumbleIntensity)!;
         ((CGamePlayerProfile)clone).onlineValidationCode = context.Clone(this.onlineValidationCode)!;
         ((CGamePlayerProfile)clone).onlineValidationKeyHexa = context.Clone(this.onlineValidationKeyHexa)!;
-        ((CGamePlayerProfile)clone).shootParams = context.Clone(this.shootParams)!;
+        ((CGamePlayerProfile)clone).shootParamsRef = context.Clone(this.shootParamsRef)!;
         ((CGamePlayerProfile)clone).playTime = context.Clone(this.playTime)!;
         ((CGamePlayerProfile)clone).stereoscopyStrength01 = context.Clone(this.stereoscopyStrength01)!;
         ((CGamePlayerProfile)clone).stereoscopyAdvancedSeparation = context.Clone(this.stereoscopyAdvancedSeparation)!;
@@ -957,7 +997,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         ((CGamePlayerProfile)clone).lastSessionId = context.Clone(this.lastSessionId)!;
         ((CGamePlayerProfile)clone).challengeOpponents = context.CloneArray(this.challengeOpponents)!;
         ((CGamePlayerProfile)clone).campaignUnlocks = context.CloneArray(this.campaignUnlocks)!;
-        ((CGamePlayerProfile)clone).customCampaigns = context.CloneArray(this.customCampaigns)!;
+        ((CGamePlayerProfile)clone).customCampaigns = context.Clone(this.customCampaigns)!;
         ((CGamePlayerProfile)clone).clickedOnShare = context.Clone(this.clickedOnShare)!;
         ((CGamePlayerProfile)clone).lastUsedMSAddress = context.Clone(this.lastUsedMSAddress)!;
         ((CGamePlayerProfile)clone).lastUsedMSPath = context.Clone(this.lastUsedMSPath)!;
@@ -1133,7 +1173,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsForCompatConfig);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
         }
     }
 
@@ -2502,7 +2542,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<OldVehicleProfile>(ref U01!, version: 0);
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsForCompatConfig);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Id(ref U02);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U03);
@@ -2678,7 +2718,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsForCompatConfig);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Id(ref U01);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U02);
@@ -2836,17 +2876,27 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     public partial class Chunk0308C046 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C046;
-        public CGameNetOnlineMessage[]? U01;
+
+        public NodeRefList<CGameNetOnlineMessage>? U01;
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308C046)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0308C046)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref U01!);
+            U01 = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(U01);
         }
     }
 
@@ -2864,9 +2914,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.inboxMessages!);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.readMessages!);
-            rw.ArrayNodeRef_deprec<CGameNetOnlineMessage>(ref n.outboxMessages!);
+            n.inboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.inboxMessages);
+            n.readMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.readMessages);
+            n.outboxMessages = rw.ListNodeRef_deprec<CGameNetOnlineMessage>(n.outboxMessages);
         }
     }
 
@@ -2955,7 +3005,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsConfig);
+            rw.NodeRef(ref n.bindingsConfigRef);
         }
     }
 
@@ -2985,7 +3035,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             if (n.HasLeagueCache)
             {
                 n.leagueCacheUpdatedAt = rw.SystemTime(n.leagueCacheUpdatedAt);
-                rw.ArrayNodeRef_deprec<CGameLeague>(ref n.leagues!);
+                n.leagues = rw.ListNodeRef_deprec<CGameLeague>(n.leagues);
             }
         }
     }
@@ -3095,7 +3145,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsForCompatConfig);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U01);
             rw.Boolean(ref n.enableCarSkinGeom);
@@ -3409,7 +3459,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnMediaShootParams>(ref n.shootParams);
+            rw.NodeRef(ref n.shootParamsRef);
         }
     }
 
@@ -3487,7 +3537,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.bindingsForCompatVersion);
-            rw.NodeRef<CInputBindingsConfig>(ref n.bindingsForCompatConfig);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
         }
     }
 
@@ -3813,17 +3863,27 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     public partial class Chunk0308C070 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C070;
-        public CInputBindingsConfig[]? U01;
+
+        public NodeRefList<CInputBindingsConfig>? U01;
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308C070)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0308C070)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CInputBindingsConfig>(ref U01!);
+            U01 = rw.ListNodeRef<CInputBindingsConfig>(U01);
         }
     }
 
@@ -3849,17 +3909,27 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     public partial class Chunk0308C072 : Chunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C072;
-        public CGameCtnCampaign[]? U01;
+
+        public NodeRefList<CGameCtnCampaign>? U01;
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0308C072)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk0308C072)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnCampaign>(ref U01!);
+            U01 = rw.ListNodeRef_deprec<CGameCtnCampaign>(U01);
         }
     }
 
@@ -4150,17 +4220,27 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         public override uint Id => 0x240B5004;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
-        public CGameCtnChallenge[]? U01;
+
+        public NodeRefList<CGameCtnChallenge>? U01;
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk240B5004)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk240B5004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef<CGameCtnChallenge>(ref U01!);
+            U01 = rw.ListNodeRef<CGameCtnChallenge>(U01);
         }
     }
 
@@ -4279,7 +4359,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CGameCtnCampaign>(ref n.customCampaigns!);
+            n.customCampaigns = rw.ListNodeRef_deprec<CGameCtnCampaign>(n.customCampaigns);
         }
     }
 
@@ -5256,11 +5336,24 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             set => this.avatarName = value;
         }
 
-        private CMwNod? u02;
+        private NodeRef<CMwNod>? u02Ref;
         public CMwNod? U02
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => u02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly MultiLocalProfileHeader owner;
+            internal NodeRefView(MultiLocalProfileHeader owner) => this.owner = owner;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
+            yield break;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -5277,7 +5370,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             ((MultiLocalProfileHeader)clone).profileName = context.Clone(this.profileName)!;
             ((MultiLocalProfileHeader)clone).nickName = context.Clone(this.nickName)!;
             ((MultiLocalProfileHeader)clone).avatarName = context.Clone(this.avatarName)!;
-            ((MultiLocalProfileHeader)clone).u02 = context.Clone(this.u02)!;
+            ((MultiLocalProfileHeader)clone).u02Ref = context.Clone(this.u02Ref)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -5292,7 +5385,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
                 if (Version == 1)
                 {
-                    rw.NodeRef<CMwNod>(ref this.u02);
+                    rw.NodeRef(ref this.u02Ref);
                 }
             }
         }

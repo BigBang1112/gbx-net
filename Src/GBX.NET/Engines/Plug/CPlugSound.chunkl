@@ -2,7 +2,7 @@ CPlugSound 0x0901A000
 - inherits: CPlugAudio
 
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CMwNod PlugFile (external) // CPlugFileSnd
+  CMwNod PlugFile // CPlugFileSnd
 
 0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
   id
@@ -113,11 +113,11 @@ CPlugSound 0x0901A000
 
 0x012 [MP3, TMT, MP4, TM2020]
   version
-  CPlugSound BackingSound (external)
+  CPlugSound BackingSound
 
 0x013 [MP3, TMT, MP4, TM2020]
   version
-  CPlugSound FocusedSound (external)
+  CPlugSound FocusedSound
 
 enum ESoundKind
   Point

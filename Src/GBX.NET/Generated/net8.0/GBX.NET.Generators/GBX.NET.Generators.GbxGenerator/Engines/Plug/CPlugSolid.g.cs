@@ -34,6 +34,8 @@ public partial class CPlugSolid : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x09005000;
 
+    internal override uint GetId() => Id;
+
     private int typeAndIndex;
     [AppliedWithChunk<Chunk09005000>]
     public int TypeAndIndex
@@ -42,23 +44,14 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.typeAndIndex = value;
     }
 
-    private CPlug? tree;
+    private NodeRef<CPlug>? treeRef;
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public CPlug? Tree
     {
-        get => this.treeFile?.GetNode(ref this.tree) ?? this.tree;
-        set => this.tree = value;
+        get => treeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref treeRef, value);
     }
-    private Components.GbxRefTableFile? treeFile;
-
-    public Components.GbxRefTableFile? TreeFile
-    {
-        get => treeFile;
-        set => treeFile = value;
-    }
-
-    public CPlug? GetTree(GbxReadSettings settings = default, bool exceptions = false) => treeFile?.GetNode(ref tree, settings, exceptions) ?? tree;
 
     private PreLightGen? solidPreLightGen;
     [AppliedWithChunk<Chunk09005017>(3)]
@@ -76,11 +69,25 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.fileWriteTime = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugSolid owner;
+        internal NodeRefView(CPlugSolid owner) => this.owner = owner;
+        public NodeRef<CPlug> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Tree", NodeRef.GetOrCreate(ref treeRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CPlugSolid)clone).typeAndIndex = context.Clone(this.typeAndIndex)!;
-        ((CPlugSolid)clone).tree = context.Clone(this.tree)!;
+        ((CPlugSolid)clone).treeRef = context.Clone(this.treeRef)!;
         ((CPlugSolid)clone).solidPreLightGen = context.Clone(this.solidPreLightGen)!;
         ((CPlugSolid)clone).fileWriteTime = context.Clone(this.fileWriteTime)!;
     }
@@ -290,7 +297,7 @@ public partial class CPlugSolid : CPlug, IClass
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
+            rw.NodeRef(ref n.treeRef);
         }
     }
 
@@ -355,17 +362,40 @@ public partial class CPlugSolid : CPlug, IClass
     {
         public override uint Id => 0x09005010;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public CMwNod? U01;
+
+        private NodeRef<CMwNod>? U01Ref;
+        /// <summary>
+        /// CSceneVehicleEnvironment
+        /// </summary>
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk09005010 owner;
+            internal NodeRefView(Chunk09005010 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09005010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09005010)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CMwNod>(ref U01);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -397,7 +427,7 @@ public partial class CPlugSolid : CPlug, IClass
                 rw.Boolean(ref U03);
             }
 
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
+            rw.NodeRef(ref n.treeRef);
         }
     }
 
@@ -509,8 +539,10 @@ public partial class CPlugSolid : CPlug, IClass
         public override uint Id => 0x09005019;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CPlugSound[]? U01;
-        public CPlugParticleEmitterModel[]? U02;
+
+        public NodeRefList<CPlugSound>? U01;
+
+        public NodeRefList<CPlugParticleEmitterModel>? U02;
         public LocatedInstance[]? U03;
         public LocatedInstance[]? U04;
         public int U05;
@@ -518,7 +550,35 @@ public partial class CPlugSolid : CPlug, IClass
         public Iso4[]? U07;
         public string? U08;
         public int U09;
-        public CPlugPath? U10;
+
+        private NodeRef<CPlugPath>? U10Ref;
+        public CPlugPath? U10
+        {
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk09005019 owner;
+            internal NodeRefView(Chunk09005019 owner) => this.owner = owner;
+            public NodeRef<CPlugPath> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            if (U02 is not null)
+            {
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
+            }
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield break;
+        }
 
         public Chunk09005019() : this(GameVersion.Unspecified)
         {
@@ -540,8 +600,8 @@ public partial class CPlugSolid : CPlug, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09005019)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09005019)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk09005019)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk09005019)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk09005019)clone).U02 = context.Clone(this.U02)!;
             ((Chunk09005019)clone).U03 = context.CloneArray(this.U03)!;
             ((Chunk09005019)clone).U04 = context.CloneArray(this.U04)!;
             ((Chunk09005019)clone).U05 = context.Clone(this.U05)!;
@@ -549,14 +609,14 @@ public partial class CPlugSolid : CPlug, IClass
             ((Chunk09005019)clone).U07 = context.CloneArray(this.U07)!;
             ((Chunk09005019)clone).U08 = context.Clone(this.U08)!;
             ((Chunk09005019)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09005019)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk09005019)clone).U10Ref = context.Clone(this.U10Ref)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef_deprec<CPlugSound>(ref U01!);
-            rw.ArrayNodeRef_deprec<CPlugParticleEmitterModel>(ref U02!);
+            U01 = rw.ListNodeRef_deprec<CPlugSound>(U01);
+            U02 = rw.ListNodeRef_deprec<CPlugParticleEmitterModel>(U02);
             rw.ArrayReadableWritable<LocatedInstance>(ref U03!, version: Version);
             rw.ArrayReadableWritable<LocatedInstance>(ref U04!, version: Version);
 
@@ -579,7 +639,7 @@ public partial class CPlugSolid : CPlug, IClass
 
                             if (Version >= 5)
                             {
-                                rw.NodeRef<CPlugPath>(ref U10);
+                                rw.NodeRef(ref U10Ref);
                             }
                         }
                     }

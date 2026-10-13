@@ -34,6 +34,8 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     [Hexadecimal]
     public static new uint Id => 0x090BA000;
 
+    internal override uint GetId() => Id;
+
     private string name = "";
     public string Name
     {

@@ -34,6 +34,8 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     [Hexadecimal]
     public static new uint Id => 0x0500D000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 startPoint;
     [AppliedWithChunk<Chunk0500D000>]
     public Vec3 StartPoint

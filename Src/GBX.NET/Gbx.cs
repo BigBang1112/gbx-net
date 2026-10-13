@@ -215,6 +215,9 @@ public partial class Gbx : IGbx
         var header = GbxHeader.Parse(reader, out var node);
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
 
+        if (refTable is not null && node is CMwNod owner && filePath is not null)
+            refTable.LoadContext = NodeRefLoadContext.Create(filePath, owner);
+
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             var unknownBody = await GbxBody.ParseAsync(reader, header.Basic.CompressionOfBody, cancellationToken);
@@ -252,6 +255,7 @@ public partial class Gbx : IGbx
         }
 
         var gbx = ClassManager.NewGbx(header, body, node) ?? new Gbx(header, body);
+        refTable?.LoadContext?.MarkParsed();
         gbx.RefTable = refTable;
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;
@@ -323,7 +327,7 @@ public partial class Gbx : IGbx
         var header = GbxHeader.Parse(reader, out var node);
         var refTable = GbxRefTable.Parse(reader, header, Path.GetDirectoryName(filePath));
         var body = GbxBody.Parse(reader, header.Basic.CompressionOfBody);
-        
+
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             if (logger is not null)
@@ -457,10 +461,16 @@ public partial class Gbx : IGbx
             DeprecVersion = deprecVersion,
             ClassIdRemapMode = classIdRemapMode
         };
-        
+
         Header.Write(writer, Node, settings);
 
         var hasRawBodyData = !Body.RawData.IsDefaultOrEmpty;
+        var outputRefTable = hasRawBodyData ? RefTable : new GbxRefTable
+        {
+            AncestorLevel = RefTable?.AncestorLevel ?? 0,
+            InferAncestorLevelOnWrite = RefTable is null,
+            FileSystemPath = stream is FileStream outputFile ? Path.GetDirectoryName(outputFile.Name) : RefTable?.FileSystemPath
+        };
 
         var bodyUncompressedMs = default(MemoryStream);
 
@@ -477,12 +487,13 @@ public partial class Gbx : IGbx
                 IsRelease = writer.IsRelease,
                 PackDescVersion = packDescVersion,
                 DeprecVersion = deprecVersion,
+                ReferenceTable = outputRefTable,
                 ClassIdRemapMode = classIdRemapMode
             };
 
             Body.WriteUncompressed(Node, bodyWriter);
 
-            writer.Write(bodyWriter.NodeDict.Count + 1);
+            writer.Write(bodyWriter.NodeDict.Count);
             writer.LoadFrom(bodyWriter);
 
             bodyUncompressedMs.Position = 0;
@@ -496,13 +507,13 @@ public partial class Gbx : IGbx
             throw new Exception("Node cannot be null for a known header, as the node contains the header chunk definitions.");
         }
 
-        if (RefTable is null)
+        if (outputRefTable is null)
         {
             writer.Write(0); // number of external nodes
         }
         else
         {
-            RefTable.Write(writer, Header, hasRawBodyData);
+            outputRefTable.Write(writer, Header, hasRawBodyData);
         }
 
         if (hasRawBodyData)
@@ -894,7 +905,7 @@ public class Gbx<
     /// <param name="node">Node.</param>
     public Gbx(T node) : this(node, GbxHeaderBasic.Default)
     {
-        
+
     }
 
     /// <summary>

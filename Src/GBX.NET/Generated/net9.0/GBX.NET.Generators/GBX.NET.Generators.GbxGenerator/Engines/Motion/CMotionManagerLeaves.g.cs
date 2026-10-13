@@ -34,18 +34,34 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
     [Hexadecimal]
     public static new uint Id => 0x0804D000;
 
-    private CSceneMobilLeaves? mobilLeaves;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CSceneMobilLeaves>? mobilLeavesRef;
     [AppliedWithChunk<Chunk0804C000>]
     public CSceneMobilLeaves? MobilLeaves
     {
-        get => this.mobilLeaves;
-        set => this.mobilLeaves = value;
+        get => mobilLeavesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mobilLeavesRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionManagerLeaves owner;
+        internal NodeRefView(CMotionManagerLeaves owner) => this.owner = owner;
+        public NodeRef<CSceneMobilLeaves> MobilLeaves => NodeRef.GetOrCreate(ref owner.mobilLeavesRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("MobilLeaves", NodeRef.GetOrCreate(ref mobilLeavesRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CMotionManagerLeaves)clone).mobilLeaves = context.Clone(this.mobilLeaves)!;
+        ((CMotionManagerLeaves)clone).mobilLeavesRef = context.Clone(this.mobilLeavesRef)!;
     }
 
     [Chunk(0x0804C000)]
@@ -62,7 +78,7 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
 
         public override void ReadWrite(CMotionManagerLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneMobilLeaves>(ref n.mobilLeaves);
+            rw.NodeRef(ref n.mobilLeavesRef);
         }
     }
 

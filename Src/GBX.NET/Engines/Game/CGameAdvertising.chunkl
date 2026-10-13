@@ -2,10 +2,10 @@ CGameAdvertising 0x0303D000
 - inherits: CGameNod
 
 0x001 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
-  CMwNod[] Files (external)
+  CMwNod[] Files
 
 0x002 [TMSX, TMNESWC]
-  CMwNod[] FilesOrig (external)
+  CMwNod[] FilesOrig
 
 0x003 [TMNESWC, VSK5, TMF, MP3, TMT, MP4]
   int<EMode> Mode

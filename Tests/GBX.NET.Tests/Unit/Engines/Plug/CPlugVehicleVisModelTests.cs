@@ -31,7 +31,7 @@ public class CPlugVehicleVisModelTests
         var writer = payload.Writer;
         writer.Write(version);
         writer.Write(-1); // Shared
-        var legacyFile = payload.Reference("LegacyBody.Solid.Gbx");
+        var legacyFile = payload.NodeRef("LegacyBody.Solid.Gbx");
         writer.NodeDict.Add(legacyFile, 1);
         writer.Write(-1);
         writer.Write(-1);
@@ -83,7 +83,7 @@ public class CPlugVehicleVisModelTests
         var chunk = new CPlugVehicleVisModel.Chunk090E7000();
         payload.Read(rw => chunk.ReadWrite(node, rw));
         await Assert.That(chunk.Version).IsEqualTo(version);
-        await Assert.That(chunk.U01File!.FilePath).IsEqualTo("LegacyBody.Solid.Gbx");
+        await Assert.That(chunk.References.U01.File!.FilePath).IsEqualTo("LegacyBody.Solid.Gbx");
         await Assert.That(node.Sounds.Horn).IsNotNull();
         await Assert.That(ReferenceEquals(node.Sounds.Horn, node.Sounds.Engine)).IsTrue();
         await Assert.That(node.Sounds.WheelSurfaceLeft).IsNull();

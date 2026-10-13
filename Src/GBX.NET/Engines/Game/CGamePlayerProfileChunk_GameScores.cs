@@ -2,11 +2,10 @@
 
 public partial class CGamePlayerProfileChunk_GameScores
 {
-    private CGamePlayerOfficialScores? officialScores1;
-    public CGamePlayerOfficialScores? OfficialScores1 { get => officialScores1; set => officialScores1 = value; }
 
-    private CGamePlayerOfficialScores? officialScores2;
-    public CGamePlayerOfficialScores? OfficialScores2 { get => officialScores2; set => officialScores2 = value; }
+    public CGamePlayerOfficialScores? OfficialScores1 { get => officialScores1Ref?.Resolve(); set => NodeRef.SetEmbedded(ref officialScores1Ref, value); }
+
+    public CGamePlayerOfficialScores? OfficialScores2 { get => officialScores2Ref?.Resolve(); set => NodeRef.SetEmbedded(ref officialScores2Ref, value); }
 
     public partial class STrainingMedalsScores
     {
@@ -16,7 +15,6 @@ public partial class CGamePlayerProfileChunk_GameScores
         private int u02;
         public int U02 { get => u02; set => u02 = value; }
 
-        private CGamePlayerOfficialScores? officialScores;
-        public CGamePlayerOfficialScores? OfficialScores { get => officialScores; set => officialScores = value; }
+        public CGamePlayerOfficialScores? OfficialScores { get => officialScoresRef?.Resolve(); set => NodeRef.SetEmbedded(ref officialScoresRef, value); }
     }
 }

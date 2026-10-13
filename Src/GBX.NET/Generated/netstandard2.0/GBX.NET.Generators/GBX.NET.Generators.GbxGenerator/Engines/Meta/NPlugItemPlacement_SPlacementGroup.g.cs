@@ -34,6 +34,8 @@ public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IRea
     [Hexadecimal]
     public static new uint Id => 0x2F0D8000;
 
+    internal override uint GetId() => Id;
+
     private NPlugItemPlacement_SPlacement[]? placements;
     public NPlugItemPlacement_SPlacement[]? Placements
     {

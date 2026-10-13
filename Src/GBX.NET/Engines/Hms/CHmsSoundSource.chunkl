@@ -2,14 +2,14 @@ CHmsSoundSource 0x0600D000
 - inherits: CHmsPoc
 
 0x000 [TM10, TMPU]
-  CPlugSound PlugSound (external)
+  CPlugSound PlugSound
 
 0x001 [TM10, TMPU]
   float Volume
   float Pitch
 
 0x002 [TMSX, TMNESWC, VSK5]
-  CPlugSound PlugSound (external)
+  CPlugSound PlugSound
   float PriorityAdjustement
   bool UseLowQuality
 
@@ -22,6 +22,6 @@ CHmsSoundSource 0x0600D000
   vec3 VolumicSize
 
 0x005 [TMF, MP3]
-  CPlugSound PlugSound (external)
+  CPlugSound PlugSound
   float PriorityAdjustement
   bool UseLowQuality

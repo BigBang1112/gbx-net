@@ -170,7 +170,7 @@ public class CPlugBitmapLayoutTests
         var node = new CPlugBitmap();
         await ReadAndRoundTrip(payload, node, new CPlugBitmap.Chunk09011036(),
             new Dictionary<int, GbxRefTableNode> { [1] = file });
-        await Assert.That(node.GrassIdImageFile).IsSameReferenceAs(file);
+        await Assert.That(node.References.GrassIdImage.File).IsSameReferenceAs(file);
         await Assert.That(node.GrassIdTexCoordRotate).IsEqualTo(1.25f);
     }
 
@@ -201,7 +201,7 @@ public class CPlugBitmapLayoutTests
         var node = new CPlugBitmap();
         await ReadAndRoundTrip(payload, node, new CPlugBitmap.Chunk09011034(),
             new Dictionary<int, GbxRefTableNode> { [1] = file });
-        await Assert.That(node.ImageArrayFids![0].File).IsSameReferenceAs(file);
+        await Assert.That(node.ImageArrayFids!.Get(0).File).IsSameReferenceAs(file);
     }
 
     private static async Task ReadAndRoundTrip(MemoryStream payload, CPlugBitmap node,

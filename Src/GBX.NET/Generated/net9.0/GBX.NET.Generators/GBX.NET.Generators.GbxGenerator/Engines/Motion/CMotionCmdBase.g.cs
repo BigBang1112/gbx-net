@@ -34,6 +34,8 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     [Hexadecimal]
     public static new uint Id => 0x08029000;
 
+    internal override uint GetId() => Id;
+
     private uint period = 1000;
     /// <summary>
     /// Period in milliseconds.
@@ -94,12 +96,12 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         set => this.isAbsolutePhase = value;
     }
 
-    private CMotionCmdBaseParams? cmdBaseParams;
+    private NodeRef<CMotionCmdBaseParams>? cmdBaseParamsRef;
     [AppliedWithChunk<Chunk08029002>]
     public CMotionCmdBaseParams? CmdBaseParams
     {
-        get => this.cmdBaseParams;
-        set => this.cmdBaseParams = value;
+        get => cmdBaseParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cmdBaseParamsRef, value);
     }
 
     private uint legacyPeriod;
@@ -132,6 +134,20 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         set => this.legacyPhase = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CMotionCmdBase owner;
+        internal NodeRefView(CMotionCmdBase owner) => this.owner = owner;
+        public NodeRef<CMotionCmdBaseParams> CmdBaseParams => NodeRef.GetOrCreate(ref owner.cmdBaseParamsRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("CmdBaseParams", NodeRef.GetOrCreate(ref cmdBaseParamsRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -140,7 +156,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         ((CMotionCmdBase)clone).waveType = context.Clone(this.waveType)!;
         ((CMotionCmdBase)clone).isOnce = context.Clone(this.isOnce)!;
         ((CMotionCmdBase)clone).isAbsolutePhase = context.Clone(this.isAbsolutePhase)!;
-        ((CMotionCmdBase)clone).cmdBaseParams = context.Clone(this.cmdBaseParams)!;
+        ((CMotionCmdBase)clone).cmdBaseParamsRef = context.Clone(this.cmdBaseParamsRef)!;
         ((CMotionCmdBase)clone).legacyPeriod = context.Clone(this.legacyPeriod)!;
         ((CMotionCmdBase)clone).legacySpeed = context.Clone(this.legacySpeed)!;
         ((CMotionCmdBase)clone).legacyPhase = context.Clone(this.legacyPhase)!;
@@ -201,7 +217,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef<CMotionCmdBaseParams>(ref n.cmdBaseParams);
+            rw.NodeRef(ref n.cmdBaseParamsRef);
         }
     }
 

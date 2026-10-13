@@ -34,6 +34,8 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     [Hexadecimal]
     public static new uint Id => 0x03149000;
 
+    internal override uint GetId() => Id;
+
     private SContextMapRecordForProfile[]? contextMapRecordsForProfile;
     [AppliedWithChunk<Chunk03149002>]
     public SContextMapRecordForProfile[]? ContextMapRecordsForProfile

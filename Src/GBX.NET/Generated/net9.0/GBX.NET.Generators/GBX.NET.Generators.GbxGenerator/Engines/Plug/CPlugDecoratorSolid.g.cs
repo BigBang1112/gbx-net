@@ -34,18 +34,29 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x090A3000;
 
-    private CPlugDecoratorTree[]? treeDecorators;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugDecoratorTree>? treeDecorators;
     [AppliedWithChunk<Chunk090A3000>]
-    public CPlugDecoratorTree[]? TreeDecorators
+    public NodeRefList<CPlugDecoratorTree>? TreeDecorators
     {
-        get => this.treeDecorators;
-        set => this.treeDecorators = value;
+        get => treeDecorators;
+        set => treeDecorators = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (treeDecorators is not null)
+        {
+            for (var i = 0; i < treeDecorators.Count; i++) yield return new("TreeDecorators" + "[" + i + "]", treeDecorators.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugDecoratorSolid)clone).treeDecorators = context.CloneArray(this.treeDecorators)!;
+        ((CPlugDecoratorSolid)clone).treeDecorators = context.Clone(this.treeDecorators)!;
     }
 
     public CPlugDecoratorSolid()
@@ -66,7 +77,7 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
 
         public override void ReadWrite(CPlugDecoratorSolid n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CPlugDecoratorTree>(ref n.treeDecorators!);
+            n.treeDecorators = rw.ListNodeRef_deprec<CPlugDecoratorTree>(n.treeDecorators);
         }
     }
 

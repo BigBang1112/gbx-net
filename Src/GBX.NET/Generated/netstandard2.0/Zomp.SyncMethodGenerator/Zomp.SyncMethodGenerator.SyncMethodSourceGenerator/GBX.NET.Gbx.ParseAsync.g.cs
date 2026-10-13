@@ -24,6 +24,9 @@ public partial class Gbx
         var header = global::GBX.NET.Components.GbxHeader.Parse(reader, out var node);
         var refTable = global::GBX.NET.Components.GbxRefTable.Parse(reader, header, global::System.IO.Path.GetDirectoryName(filePath));
 
+        if (refTable is not null && node is global::GBX.NET.Engines.MwFoundations.CMwNod owner && filePath is not null)
+            refTable.LoadContext = global::GBX.NET.Serialization.NodeRefLoadContext.Create(filePath, owner);
+
         if (node is null) // aka, header is GbxHeaderUnknown
         {
             var unknownBody = global::GBX.NET.Components.GbxBody.Parse(reader, header.Basic.CompressionOfBody);
@@ -61,6 +64,7 @@ public partial class Gbx
         }
 
         var gbx = global::GBX.NET.Managers.ClassManager.NewGbx(header, body, node) ?? new global::GBX.NET.Gbx(header, body);
+        refTable?.LoadContext?.MarkParsed();
         gbx.RefTable = refTable;
         gbx.ReadSettings = settings;
         gbx.IdVersion = reader.IdVersion;

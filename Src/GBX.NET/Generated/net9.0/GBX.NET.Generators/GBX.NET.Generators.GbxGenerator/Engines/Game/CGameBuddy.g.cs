@@ -34,6 +34,8 @@ public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, 
     [Hexadecimal]
     public static new uint Id => 0x03153000;
 
+    internal override uint GetId() => Id;
+
     public int Version { get; set; }
 
     private string? login;

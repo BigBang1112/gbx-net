@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass
     [Hexadecimal]
     public static new uint Id => 0x03186000;
 
+    internal override uint GetId() => Id;
+
     private PackDesc? image;
     [AppliedWithChunk<Chunk03186000>]
     public PackDesc? Image

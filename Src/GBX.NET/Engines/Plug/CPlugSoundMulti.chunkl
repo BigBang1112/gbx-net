@@ -2,11 +2,11 @@ CPlugSoundMulti 0x09064000
 - inherits: CPlugSound
 
 0x000 [TMSX, TMNESWC, VSK5, TMF]
-  CMwNod AdditionalSounds (external)
+  CMwNod AdditionalSounds
   int<ESoundInputMapping> InputMapping
 
 0x001 [MP3, TMT, MP4, TM2020]
-  CMwNod[] AdditionalSounds2 (deprec, external)
+  CMwNod[] AdditionalSounds2 (deprec)
   int<ESoundInputMapping> InputMapping
 
 0x002 [MP3, TMT, MP4, TM2020]
@@ -25,7 +25,7 @@ CPlugSoundMulti 0x09064000
   bool // is Distance from ESoundInputMapping
   vec3[] PreferedDistances
   v1+
-    CFuncKeysReal VolumeFromInput (external)
+    CFuncKeysReal VolumeFromInput
     v2+
       int<ESoundInputMapping> InputMapping
 

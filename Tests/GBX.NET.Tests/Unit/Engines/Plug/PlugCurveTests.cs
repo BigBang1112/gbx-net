@@ -14,11 +14,11 @@ public class PlugCurveTests
     public async Task NegativeVersionsPreserveLegacyReferences(int version)
     {
         using var payload = new ObjectModelPayload();
-        payload.Reference("Legacy.Func.Gbx");
+        payload.NodeRef("Legacy.Func.Gbx");
         payload.Finish();
         var curve = new PlugCurve();
         payload.Read(rw => curve.ReadWrite(rw, version));
-        await Assert.That(curve.CurveFile!.FilePath).IsEqualTo("Legacy.Func.Gbx");
+        await Assert.That(curve.References.Curve.File!.FilePath).IsEqualTo("Legacy.Func.Gbx");
         await payload.AssertRoundTrip(rw => curve.ReadWrite(rw, version));
     }
 
@@ -78,7 +78,7 @@ public class PlugCurveTests
         payload.Read(rw => chunk.ReadWrite(model, rw));
         if (version < 12)
         {
-            await Assert.That(chunk.U23!.CurveFile!.FilePath).IsEqualTo("First.Func.Gbx");
+            await Assert.That(chunk.U23!.References.Curve.File!.FilePath).IsEqualTo("First.Func.Gbx");
         }
         else
         {
@@ -110,7 +110,7 @@ public class PlugCurveTests
         payload.Read(rw => chunk.ReadWrite(model, rw));
         if (version < 2)
         {
-            await Assert.That(chunk.U02!.CurveFile!.FilePath).IsEqualTo("Tuning.Func.Gbx");
+            await Assert.That(chunk.U02!.References.Curve.File!.FilePath).IsEqualTo("Tuning.Func.Gbx");
         }
         else
         {
@@ -185,7 +185,7 @@ public class PlugCurveTests
     {
         if (!inline)
         {
-            payload.Reference(filePath);
+            payload.NodeRef(filePath);
             return;
         }
         payload.Writer.Write(4);

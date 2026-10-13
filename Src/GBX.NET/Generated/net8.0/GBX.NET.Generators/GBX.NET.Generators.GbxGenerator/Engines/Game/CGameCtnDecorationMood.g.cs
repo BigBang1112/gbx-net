@@ -34,6 +34,8 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0303A000;
 
+    internal override uint GetId() => Id;
+
     private float latitude;
     [AppliedWithChunk<Chunk0303A000>]
     public float Latitude
@@ -83,23 +85,14 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.remappedStartDayTime = value;
     }
 
-    private CPlugGameSkin? remapping;
+    private NodeRef<CPlugGameSkin>? remappingRef;
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugGameSkin? Remapping
     {
-        get => this.remappingFile?.GetNode(ref this.remapping) ?? this.remapping;
-        set => this.remapping = value;
+        get => remappingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref remappingRef, value);
     }
-    private Components.GbxRefTableFile? remappingFile;
-
-    public Components.GbxRefTableFile? RemappingFile
-    {
-        get => remappingFile;
-        set => remappingFile = value;
-    }
-
-    public CPlugGameSkin? GetRemapping(GbxReadSettings settings = default, bool exceptions = false) => remappingFile?.GetNode(ref remapping, settings, exceptions) ?? remapping;
 
     private string? remapFolder;
     [AppliedWithChunk<Chunk0303A001>]
@@ -158,39 +151,21 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.solidLightAreSkinned = value;
     }
 
-    private CHmsLightMap? hmsLightMap;
+    private NodeRef<CHmsLightMap>? hmsLightMapRef;
     [AppliedWithChunk<Chunk0303A004>]
     public CHmsLightMap? HmsLightMap
     {
-        get => this.hmsLightMapFile?.GetNode(ref this.hmsLightMap) ?? this.hmsLightMap;
-        set => this.hmsLightMap = value;
-    }
-    private Components.GbxRefTableFile? hmsLightMapFile;
-
-    public Components.GbxRefTableFile? HmsLightMapFile
-    {
-        get => hmsLightMapFile;
-        set => hmsLightMapFile = value;
+        get => hmsLightMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hmsLightMapRef, value);
     }
 
-    public CHmsLightMap? GetHmsLightMap(GbxReadSettings settings = default, bool exceptions = false) => hmsLightMapFile?.GetNode(ref hmsLightMap, settings, exceptions) ?? hmsLightMap;
-
-    private CHmsAmbientOcc? hmsAmbientOcc;
+    private NodeRef<CHmsAmbientOcc>? hmsAmbientOccRef;
     [AppliedWithChunk<Chunk0303A005>]
     public CHmsAmbientOcc? HmsAmbientOcc
     {
-        get => this.hmsAmbientOccFile?.GetNode(ref this.hmsAmbientOcc) ?? this.hmsAmbientOcc;
-        set => this.hmsAmbientOcc = value;
+        get => hmsAmbientOccRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hmsAmbientOccRef, value);
     }
-    private Components.GbxRefTableFile? hmsAmbientOccFile;
-
-    public Components.GbxRefTableFile? HmsAmbientOccFile
-    {
-        get => hmsAmbientOccFile;
-        set => hmsAmbientOccFile = value;
-    }
-
-    public CHmsAmbientOcc? GetHmsAmbientOcc(GbxReadSettings settings = default, bool exceptions = false) => hmsAmbientOccFile?.GetNode(ref hmsAmbientOcc, settings, exceptions) ?? hmsAmbientOcc;
 
     private float sunMoonIntensity;
     [AppliedWithChunk<Chunk0303A006>]
@@ -225,12 +200,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.toneMapFilmCurve = value;
     }
 
-    private CFuncKeysReal? toneMapAutoExp_FidAvgLumiToKeyValue;
+    private NodeRef<CFuncKeysReal>? toneMapAutoExp_FidAvgLumiToKeyValueRef;
     [AppliedWithChunk<Chunk0303A00C>]
     public CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get => this.toneMapAutoExp_FidAvgLumiToKeyValue;
-        set => this.toneMapAutoExp_FidAvgLumiToKeyValue = value;
+        get => toneMapAutoExp_FidAvgLumiToKeyValueRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref toneMapAutoExp_FidAvgLumiToKeyValueRef, value);
     }
 
     private Vec3 tech3SpecularFake_ExpScaleMax;
@@ -265,12 +240,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.tech3ToneMapAutoExp = value;
     }
 
-    private CFuncKeysReal? fxBloom_FidFuncIntensAtHdrNorm;
+    private NodeRef<CFuncKeysReal>? fxBloom_FidFuncIntensAtHdrNormRef;
     [AppliedWithChunk<Chunk0303A00F>]
     public CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
     {
-        get => this.fxBloom_FidFuncIntensAtHdrNorm;
-        set => this.fxBloom_FidFuncIntensAtHdrNorm = value;
+        get => fxBloom_FidFuncIntensAtHdrNormRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxBloom_FidFuncIntensAtHdrNormRef, value);
     }
 
     private bool waterReflectFakeCube;
@@ -281,39 +256,21 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.waterReflectFakeCube = value;
     }
 
-    private CPlugFxHdrScales_Tech3? fxHdrScalesT3;
+    private NodeRef<CPlugFxHdrScales_Tech3>? fxHdrScalesT3Ref;
     [AppliedWithChunk<Chunk0303A00F>(2)]
     public CPlugFxHdrScales_Tech3? FxHdrScalesT3
     {
-        get => this.fxHdrScalesT3File?.GetNode(ref this.fxHdrScalesT3) ?? this.fxHdrScalesT3;
-        set => this.fxHdrScalesT3 = value;
-    }
-    private Components.GbxRefTableFile? fxHdrScalesT3File;
-
-    public Components.GbxRefTableFile? FxHdrScalesT3File
-    {
-        get => fxHdrScalesT3File;
-        set => fxHdrScalesT3File = value;
+        get => fxHdrScalesT3Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxHdrScalesT3Ref, value);
     }
 
-    public CPlugFxHdrScales_Tech3? GetFxHdrScalesT3(GbxReadSettings settings = default, bool exceptions = false) => fxHdrScalesT3File?.GetNode(ref fxHdrScalesT3, settings, exceptions) ?? fxHdrScalesT3;
-
-    private CPlugMoodBlender? moodBlender;
+    private NodeRef<CPlugMoodBlender>? moodBlenderRef;
     [AppliedWithChunk<Chunk0303A00F>(3)]
     public CPlugMoodBlender? MoodBlender
     {
-        get => this.moodBlenderFile?.GetNode(ref this.moodBlender) ?? this.moodBlender;
-        set => this.moodBlender = value;
+        get => moodBlenderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moodBlenderRef, value);
     }
-    private Components.GbxRefTableFile? moodBlenderFile;
-
-    public Components.GbxRefTableFile? MoodBlenderFile
-    {
-        get => moodBlenderFile;
-        set => moodBlenderFile = value;
-    }
-
-    public CPlugMoodBlender? GetMoodBlender(GbxReadSettings settings = default, bool exceptions = false) => moodBlenderFile?.GetNode(ref moodBlender, settings, exceptions) ?? moodBlender;
 
     private bool isNight;
 
@@ -325,73 +282,37 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.enableStars = value;
     }
 
-    private CFuncCloudsSolids? cloudsSolids;
+    private NodeRef<CFuncCloudsSolids>? cloudsSolidsRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CFuncCloudsSolids? CloudsSolids
     {
-        get => this.cloudsSolidsFile?.GetNode(ref this.cloudsSolids) ?? this.cloudsSolids;
-        set => this.cloudsSolids = value;
-    }
-    private Components.GbxRefTableFile? cloudsSolidsFile;
-
-    public Components.GbxRefTableFile? CloudsSolidsFile
-    {
-        get => cloudsSolidsFile;
-        set => cloudsSolidsFile = value;
+        get => cloudsSolidsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cloudsSolidsRef, value);
     }
 
-    public CFuncCloudsSolids? GetCloudsSolids(GbxReadSettings settings = default, bool exceptions = false) => cloudsSolidsFile?.GetNode(ref cloudsSolids, settings, exceptions) ?? cloudsSolids;
-
-    private CPlugFxLightning? fxLightning;
+    private NodeRef<CPlugFxLightning>? fxLightningRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxLightning? FxLightning
     {
-        get => this.fxLightningFile?.GetNode(ref this.fxLightning) ?? this.fxLightning;
-        set => this.fxLightning = value;
-    }
-    private Components.GbxRefTableFile? fxLightningFile;
-
-    public Components.GbxRefTableFile? FxLightningFile
-    {
-        get => fxLightningFile;
-        set => fxLightningFile = value;
+        get => fxLightningRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxLightningRef, value);
     }
 
-    public CPlugFxLightning? GetFxLightning(GbxReadSettings settings = default, bool exceptions = false) => fxLightningFile?.GetNode(ref fxLightning, settings, exceptions) ?? fxLightning;
-
-    private CPlugFxWindOnDecal? fxWindOnDecal;
+    private NodeRef<CPlugFxWindOnDecal>? fxWindOnDecalRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxWindOnDecal? FxWindOnDecal
     {
-        get => this.fxWindOnDecalFile?.GetNode(ref this.fxWindOnDecal) ?? this.fxWindOnDecal;
-        set => this.fxWindOnDecal = value;
-    }
-    private Components.GbxRefTableFile? fxWindOnDecalFile;
-
-    public Components.GbxRefTableFile? FxWindOnDecalFile
-    {
-        get => fxWindOnDecalFile;
-        set => fxWindOnDecalFile = value;
+        get => fxWindOnDecalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxWindOnDecalRef, value);
     }
 
-    public CPlugFxWindOnDecal? GetFxWindOnDecal(GbxReadSettings settings = default, bool exceptions = false) => fxWindOnDecalFile?.GetNode(ref fxWindOnDecal, settings, exceptions) ?? fxWindOnDecal;
-
-    private CPlugFxWindOnTreeSprite? fxWindOnTreeSprite;
+    private NodeRef<CPlugFxWindOnTreeSprite>? fxWindOnTreeSpriteRef;
     [AppliedWithChunk<Chunk0303A012>(1)]
     public CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
     {
-        get => this.fxWindOnTreeSpriteFile?.GetNode(ref this.fxWindOnTreeSprite) ?? this.fxWindOnTreeSprite;
-        set => this.fxWindOnTreeSprite = value;
+        get => fxWindOnTreeSpriteRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxWindOnTreeSpriteRef, value);
     }
-    private Components.GbxRefTableFile? fxWindOnTreeSpriteFile;
-
-    public Components.GbxRefTableFile? FxWindOnTreeSpriteFile
-    {
-        get => fxWindOnTreeSpriteFile;
-        set => fxWindOnTreeSpriteFile = value;
-    }
-
-    public CPlugFxWindOnTreeSprite? GetFxWindOnTreeSprite(GbxReadSettings settings = default, bool exceptions = false) => fxWindOnTreeSpriteFile?.GetNode(ref fxWindOnTreeSprite, settings, exceptions) ?? fxWindOnTreeSprite;
 
     private float editorHelperHdrScale;
     [AppliedWithChunk<Chunk0303A013>]
@@ -399,6 +320,40 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         get => this.editorHelperHdrScale;
         set => this.editorHelperHdrScale = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnDecorationMood owner;
+        internal NodeRefView(CGameCtnDecorationMood owner) => this.owner = owner;
+        public NodeRef<CPlugGameSkin> Remapping => NodeRef.GetOrCreate(ref owner.remappingRef);
+        public NodeRef<CHmsLightMap> HmsLightMap => NodeRef.GetOrCreate(ref owner.hmsLightMapRef);
+        public NodeRef<CHmsAmbientOcc> HmsAmbientOcc => NodeRef.GetOrCreate(ref owner.hmsAmbientOccRef);
+        public NodeRef<CFuncKeysReal> ToneMapAutoExp_FidAvgLumiToKeyValue => NodeRef.GetOrCreate(ref owner.toneMapAutoExp_FidAvgLumiToKeyValueRef);
+        public NodeRef<CFuncKeysReal> FxBloom_FidFuncIntensAtHdrNorm => NodeRef.GetOrCreate(ref owner.fxBloom_FidFuncIntensAtHdrNormRef);
+        public NodeRef<CPlugFxHdrScales_Tech3> FxHdrScalesT3 => NodeRef.GetOrCreate(ref owner.fxHdrScalesT3Ref);
+        public NodeRef<CPlugMoodBlender> MoodBlender => NodeRef.GetOrCreate(ref owner.moodBlenderRef);
+        public NodeRef<CFuncCloudsSolids> CloudsSolids => NodeRef.GetOrCreate(ref owner.cloudsSolidsRef);
+        public NodeRef<CPlugFxLightning> FxLightning => NodeRef.GetOrCreate(ref owner.fxLightningRef);
+        public NodeRef<CPlugFxWindOnDecal> FxWindOnDecal => NodeRef.GetOrCreate(ref owner.fxWindOnDecalRef);
+        public NodeRef<CPlugFxWindOnTreeSprite> FxWindOnTreeSprite => NodeRef.GetOrCreate(ref owner.fxWindOnTreeSpriteRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Remapping", NodeRef.GetOrCreate(ref remappingRef));
+        yield return new("HmsLightMap", NodeRef.GetOrCreate(ref hmsLightMapRef));
+        yield return new("HmsAmbientOcc", NodeRef.GetOrCreate(ref hmsAmbientOccRef));
+        yield return new("ToneMapAutoExp_FidAvgLumiToKeyValue", NodeRef.GetOrCreate(ref toneMapAutoExp_FidAvgLumiToKeyValueRef));
+        yield return new("FxBloom_FidFuncIntensAtHdrNorm", NodeRef.GetOrCreate(ref fxBloom_FidFuncIntensAtHdrNormRef));
+        yield return new("FxHdrScalesT3", NodeRef.GetOrCreate(ref fxHdrScalesT3Ref));
+        yield return new("MoodBlender", NodeRef.GetOrCreate(ref moodBlenderRef));
+        yield return new("CloudsSolids", NodeRef.GetOrCreate(ref cloudsSolidsRef));
+        yield return new("FxLightning", NodeRef.GetOrCreate(ref fxLightningRef));
+        yield return new("FxWindOnDecal", NodeRef.GetOrCreate(ref fxWindOnDecalRef));
+        yield return new("FxWindOnTreeSprite", NodeRef.GetOrCreate(ref fxWindOnTreeSpriteRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -410,7 +365,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         ((CGameCtnDecorationMood)clone).timeSunRise = context.Clone(this.timeSunRise)!;
         ((CGameCtnDecorationMood)clone).timeSunFall = context.Clone(this.timeSunFall)!;
         ((CGameCtnDecorationMood)clone).remappedStartDayTime = context.Clone(this.remappedStartDayTime)!;
-        ((CGameCtnDecorationMood)clone).remapping = context.Clone(this.remapping)!;
+        ((CGameCtnDecorationMood)clone).remappingRef = context.Clone(this.remappingRef)!;
         ((CGameCtnDecorationMood)clone).remapFolder = context.Clone(this.remapFolder)!;
         ((CGameCtnDecorationMood)clone).shadowCountCarHuman = context.Clone(this.shadowCountCarHuman)!;
         ((CGameCtnDecorationMood)clone).shadowCountCarOpponent = context.Clone(this.shadowCountCarOpponent)!;
@@ -418,27 +373,27 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         ((CGameCtnDecorationMood)clone).shadowScene = context.Clone(this.shadowScene)!;
         ((CGameCtnDecorationMood)clone).backgroundIsLocallyLighted = context.Clone(this.backgroundIsLocallyLighted)!;
         ((CGameCtnDecorationMood)clone).solidLightAreSkinned = context.Clone(this.solidLightAreSkinned)!;
-        ((CGameCtnDecorationMood)clone).hmsLightMap = context.Clone(this.hmsLightMap)!;
-        ((CGameCtnDecorationMood)clone).hmsAmbientOcc = context.Clone(this.hmsAmbientOcc)!;
+        ((CGameCtnDecorationMood)clone).hmsLightMapRef = context.Clone(this.hmsLightMapRef)!;
+        ((CGameCtnDecorationMood)clone).hmsAmbientOccRef = context.Clone(this.hmsAmbientOccRef)!;
         ((CGameCtnDecorationMood)clone).sunMoonIntensity = context.Clone(this.sunMoonIntensity)!;
         ((CGameCtnDecorationMood)clone).localLightScale = context.Clone(this.localLightScale)!;
         ((CGameCtnDecorationMood)clone).toneMapExposureStaticBase = context.Clone(this.toneMapExposureStaticBase)!;
         ((CGameCtnDecorationMood)clone).toneMapFilmCurve = context.Clone(this.toneMapFilmCurve)!;
-        ((CGameCtnDecorationMood)clone).toneMapAutoExp_FidAvgLumiToKeyValue = context.Clone(this.toneMapAutoExp_FidAvgLumiToKeyValue)!;
+        ((CGameCtnDecorationMood)clone).toneMapAutoExp_FidAvgLumiToKeyValueRef = context.Clone(this.toneMapAutoExp_FidAvgLumiToKeyValueRef)!;
         ((CGameCtnDecorationMood)clone).tech3SpecularFake_ExpScaleMax = context.Clone(this.tech3SpecularFake_ExpScaleMax)!;
         ((CGameCtnDecorationMood)clone).tech3SpecularLocal = context.Clone(this.tech3SpecularLocal)!;
         ((CGameCtnDecorationMood)clone).tech3Bloom = context.Clone(this.tech3Bloom)!;
         ((CGameCtnDecorationMood)clone).tech3ToneMapAutoExp = context.Clone(this.tech3ToneMapAutoExp)!;
-        ((CGameCtnDecorationMood)clone).fxBloom_FidFuncIntensAtHdrNorm = context.Clone(this.fxBloom_FidFuncIntensAtHdrNorm)!;
+        ((CGameCtnDecorationMood)clone).fxBloom_FidFuncIntensAtHdrNormRef = context.Clone(this.fxBloom_FidFuncIntensAtHdrNormRef)!;
         ((CGameCtnDecorationMood)clone).waterReflectFakeCube = context.Clone(this.waterReflectFakeCube)!;
-        ((CGameCtnDecorationMood)clone).fxHdrScalesT3 = context.Clone(this.fxHdrScalesT3)!;
-        ((CGameCtnDecorationMood)clone).moodBlender = context.Clone(this.moodBlender)!;
+        ((CGameCtnDecorationMood)clone).fxHdrScalesT3Ref = context.Clone(this.fxHdrScalesT3Ref)!;
+        ((CGameCtnDecorationMood)clone).moodBlenderRef = context.Clone(this.moodBlenderRef)!;
         ((CGameCtnDecorationMood)clone).isNight = context.Clone(this.isNight)!;
         ((CGameCtnDecorationMood)clone).enableStars = context.Clone(this.enableStars)!;
-        ((CGameCtnDecorationMood)clone).cloudsSolids = context.Clone(this.cloudsSolids)!;
-        ((CGameCtnDecorationMood)clone).fxLightning = context.Clone(this.fxLightning)!;
-        ((CGameCtnDecorationMood)clone).fxWindOnDecal = context.Clone(this.fxWindOnDecal)!;
-        ((CGameCtnDecorationMood)clone).fxWindOnTreeSprite = context.Clone(this.fxWindOnTreeSprite)!;
+        ((CGameCtnDecorationMood)clone).cloudsSolidsRef = context.Clone(this.cloudsSolidsRef)!;
+        ((CGameCtnDecorationMood)clone).fxLightningRef = context.Clone(this.fxLightningRef)!;
+        ((CGameCtnDecorationMood)clone).fxWindOnDecalRef = context.Clone(this.fxWindOnDecalRef)!;
+        ((CGameCtnDecorationMood)clone).fxWindOnTreeSpriteRef = context.Clone(this.fxWindOnTreeSpriteRef)!;
         ((CGameCtnDecorationMood)clone).editorHelperHdrScale = context.Clone(this.editorHelperHdrScale)!;
     }
 
@@ -494,7 +449,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.Single(ref n.remappedStartDayTime);
-            rw.NodeRef<CPlugGameSkin>(ref n.remapping, ref n.remappingFile);
+            rw.NodeRef(ref n.remappingRef);
             rw.String(ref n.remapFolder);
         }
     }
@@ -553,7 +508,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CHmsLightMap>(ref n.hmsLightMap, ref n.hmsLightMapFile);
+            rw.NodeRef(ref n.hmsLightMapRef);
         }
     }
 
@@ -571,7 +526,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CHmsAmbientOcc>(ref n.hmsAmbientOcc, ref n.hmsAmbientOccFile);
+            rw.NodeRef(ref n.hmsAmbientOccRef);
         }
     }
 
@@ -629,7 +584,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.Vec3(ref U01);
             rw.Single(ref n.toneMapExposureStaticBase);
             rw.Int32(ref n.toneMapFilmCurve);
-            rw.NodeRef<CFuncKeysReal>(ref n.toneMapAutoExp_FidAvgLumiToKeyValue);
+            rw.NodeRef(ref n.toneMapAutoExp_FidAvgLumiToKeyValueRef);
         }
     }
 
@@ -654,7 +609,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.Vec2(ref n.tech3SpecularLocal);
             rw.Vec3(ref n.tech3Bloom);
             rw.Vec4(ref n.tech3ToneMapAutoExp);
-            rw.NodeRef<CFuncKeysReal>(ref n.fxBloom_FidFuncIntensAtHdrNorm);
+            rw.NodeRef(ref n.fxBloom_FidFuncIntensAtHdrNormRef);
 
             if (Version >= 1)
             {
@@ -662,11 +617,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef<CPlugFxHdrScales_Tech3>(ref n.fxHdrScalesT3, ref n.fxHdrScalesT3File);
+                    rw.NodeRef(ref n.fxHdrScalesT3Ref);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef<CPlugMoodBlender>(ref n.moodBlender, ref n.moodBlenderFile);
+                        rw.NodeRef(ref n.moodBlenderRef);
                     }
                 }
             }
@@ -692,16 +647,16 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.VersionInt32(this);
             rw.Single(ref n.remappedStartDayTime);
             rw.Boolean(ref n.isNight);
-            rw.NodeRef<CPlugGameSkin>(ref n.remapping, ref n.remappingFile);
+            rw.NodeRef(ref n.remappingRef);
             rw.String(ref n.remapFolder);
             rw.Boolean(ref n.enableStars);
-            rw.NodeRef<CFuncCloudsSolids>(ref n.cloudsSolids, ref n.cloudsSolidsFile);
-            rw.NodeRef<CPlugFxLightning>(ref n.fxLightning, ref n.fxLightningFile);
-            rw.NodeRef<CPlugFxWindOnDecal>(ref n.fxWindOnDecal, ref n.fxWindOnDecalFile);
+            rw.NodeRef(ref n.cloudsSolidsRef);
+            rw.NodeRef(ref n.fxLightningRef);
+            rw.NodeRef(ref n.fxWindOnDecalRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef<CPlugFxWindOnTreeSprite>(ref n.fxWindOnTreeSprite, ref n.fxWindOnTreeSpriteFile);
+                rw.NodeRef(ref n.fxWindOnTreeSpriteRef);
             }
         }
     }

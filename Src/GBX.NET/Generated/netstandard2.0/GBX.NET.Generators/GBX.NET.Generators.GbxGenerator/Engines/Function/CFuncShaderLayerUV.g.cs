@@ -34,6 +34,8 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     [Hexadecimal]
     public static new uint Id => 0x05015000;
 
+    internal override uint GetId() => Id;
+
     private string? layerName;
     [AppliedWithChunk<Chunk05015005>]
     public string? LayerName
@@ -154,7 +156,27 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public bool U03;
         public bool U04;
         public bool U05;
-        public CMwNod? U06;
+
+        private NodeRef<CMwNod>? U06Ref;
+        public CMwNod? U06
+        {
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk05015011 owner;
+            internal NodeRefView(Chunk05015011 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -164,7 +186,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
             ((Chunk05015011)clone).U03 = context.Clone(this.U03)!;
             ((Chunk05015011)clone).U04 = context.Clone(this.U04)!;
             ((Chunk05015011)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk05015011)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk05015011)clone).U06Ref = context.Clone(this.U06Ref)!;
         }
 
         public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
@@ -174,7 +196,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
             rw.Boolean(ref U03);
             rw.Boolean(ref U04);
             rw.Boolean(ref U05);
-            rw.NodeRef<CMwNod>(ref U06);
+            rw.NodeRef(ref U06Ref);
         }
     }
 

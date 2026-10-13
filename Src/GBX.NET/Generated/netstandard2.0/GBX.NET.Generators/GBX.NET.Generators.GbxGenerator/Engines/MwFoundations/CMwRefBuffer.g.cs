@@ -34,6 +34,8 @@ public partial class CMwRefBuffer : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x01026000;
 
+    internal override uint GetId() => Id;
+
     private uint nodClassId;
     [AppliedWithChunk<Chunk01026000>]
     public uint NodClassId
@@ -50,12 +52,12 @@ public partial class CMwRefBuffer : CMwNod, IClass
         set => this.useAddRefRelease = value;
     }
 
-    private External<CMwNod>[]? nods;
+    private NodeRefList<CMwNod>? nods;
     [AppliedWithChunk<Chunk01026000>]
-    public External<CMwNod>[]? Nods
+    public NodeRefList<CMwNod>? Nods
     {
-        get => this.nods;
-        set => this.nods = value;
+        get => nods;
+        set => nods = value;
     }
 
     private string? bufferId;
@@ -65,13 +67,22 @@ public partial class CMwRefBuffer : CMwNod, IClass
         get => this.bufferId;
         set => this.bufferId = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (nods is not null)
+        {
+            for (var i = 0; i < nods.Count; i++) yield return new("Nods" + "[" + i + "]", nods.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CMwRefBuffer)clone).nodClassId = context.Clone(this.nodClassId)!;
         ((CMwRefBuffer)clone).useAddRefRelease = context.Clone(this.useAddRefRelease)!;
-        ((CMwRefBuffer)clone).nods = context.CloneArray(this.nods)!;
+        ((CMwRefBuffer)clone).nods = context.Clone(this.nods)!;
         ((CMwRefBuffer)clone).bufferId = context.Clone(this.bufferId)!;
     }
 
@@ -95,7 +106,7 @@ public partial class CMwRefBuffer : CMwNod, IClass
         {
             rw.UInt32(ref n.nodClassId);
             rw.Boolean(ref n.useAddRefRelease);
-            rw.ArrayNodeRef_deprec<CMwNod>(ref n.nods!);
+            n.nods = rw.ListNodeRef_deprec<CMwNod>(n.nods);
         }
     }
 

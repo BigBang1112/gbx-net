@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
     [Hexadecimal]
     public static new uint Id => 0x030A4000;
 
+    internal override uint GetId() => Id;
+
     private List<Key>? keys;
     [AppliedWithChunk<Chunk030A4000>]
     public List<Key>? Keys

@@ -9,11 +9,6 @@ public partial class CPlugDynaObjectModel
     /// </summary>
     public CPlugSurface? Shape { get => DynaShape; set => DynaShape = value; }
 
-    public GbxRefTableFile? ShapeFile { get => DynaShapeFile; set => DynaShapeFile = value; }
-
-    public CPlugSurface? GetShape(GbxReadSettings settings = default, bool exceptions = false)
-        => GetDynaShape(settings, exceptions);
-
     public override void ReadWrite(GbxReaderWriter rw)
     {
         ReadWrite(rw, v: 0);

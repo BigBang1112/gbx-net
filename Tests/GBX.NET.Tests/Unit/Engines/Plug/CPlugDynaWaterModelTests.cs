@@ -112,12 +112,12 @@ public class CPlugDynaWaterModelTests
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(version);
         WriteBody(payload.Writer, version);
-        payload.Reference("Water.Shape.Gbx");
+        payload.NodeRef("Water.Shape.Gbx");
         payload.Finish();
         var node = new CPlugDynaWaterModel();
         var chunk = new CPlugDynaWaterModel.Chunk0915F000();
         payload.Read(rw => chunk.ReadWrite(node, rw));
-        await Assert.That(node.SurfaceFile!.FilePath).IsEqualTo("Water.Shape.Gbx");
+        await Assert.That(node.References.Surface.File!.FilePath).IsEqualTo("Water.Shape.Gbx");
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
     }
 

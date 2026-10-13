@@ -34,12 +34,14 @@ public partial class CPlugPath : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09119000;
 
-    private CPlugPolyLine3[]? polyLines;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CPlugPolyLine3>? polyLines;
     [AppliedWithChunk<Chunk09119000>]
-    public CPlugPolyLine3[]? PolyLines
+    public NodeRefList<CPlugPolyLine3>? PolyLines
     {
-        get => this.polyLines;
-        set => this.polyLines = value;
+        get => polyLines;
+        set => polyLines = value;
     }
 
     private byte[]? lineGroups;
@@ -52,11 +54,20 @@ public partial class CPlugPath : CMwNod, IClass
         get => this.lineGroups;
         set => this.lineGroups = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (polyLines is not null)
+        {
+            for (var i = 0; i < polyLines.Count; i++) yield return new("PolyLines" + "[" + i + "]", polyLines.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugPath)clone).polyLines = context.CloneArray(this.polyLines)!;
+        ((CPlugPath)clone).polyLines = context.Clone(this.polyLines)!;
         ((CPlugPath)clone).lineGroups = context.CloneArray(this.lineGroups)!;
     }
 
@@ -85,7 +96,7 @@ public partial class CPlugPath : CMwNod, IClass
         public override void ReadWrite(CPlugPath n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef<CPlugPolyLine3>(ref n.polyLines!);
+            n.polyLines = rw.ListNodeRef<CPlugPolyLine3>(n.polyLines);
 
             if (Version >= 2)
             {

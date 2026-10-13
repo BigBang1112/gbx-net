@@ -20,7 +20,7 @@ archive
   v0..2 (archive)
     EnableSubStepping = false
   v4+ (archive)
-    CPlugDynaWaterModel* WaterModel (external)
+    CPlugDynaWaterModel* WaterModel
 
 enum ESleepingMethod
   None

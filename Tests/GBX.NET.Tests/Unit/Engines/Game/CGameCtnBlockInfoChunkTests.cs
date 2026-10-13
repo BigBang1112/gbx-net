@@ -65,8 +65,8 @@ public class CGameCtnBlockInfoChunkTests
             Selection = CGameCtnBlockInfo.ESelection.AutoRotate,
             GroundBlockUnitInfos = [],
             AirBlockUnitInfos = [],
-            GroundMobils = [[new(null, null)], []],
-            AirMobils = [[], [new(null, null)]]
+            GroundMobils = [[null], []],
+            AirMobils = [[], [null]]
         };
         var chunk = new CGameCtnBlockInfo.Chunk0304E005
         {
@@ -104,12 +104,12 @@ public class CGameCtnBlockInfoChunkTests
         await Assert.That(restored.AirBlockUnitInfos).IsEmpty();
         await Assert.That(restored.GroundMobils).Count().IsEqualTo(2);
         await Assert.That(restored.GroundMobils![0]).Count().IsEqualTo(1);
-        await Assert.That(restored.GroundMobils[0][0].Node).IsNull();
+        await Assert.That(restored.GroundMobils[0][0]).IsNull();
         await Assert.That(restored.GroundMobils[1]).IsEmpty();
         await Assert.That(restored.AirMobils).Count().IsEqualTo(2);
         await Assert.That(restored.AirMobils![0]).IsEmpty();
         await Assert.That(restored.AirMobils[1]).Count().IsEqualTo(1);
-        await Assert.That(restored.AirMobils[1][0].Node).IsNull();
+        await Assert.That(restored.AirMobils[1][0]).IsNull();
         await Assert.That(restored.SizeX).IsEqualTo(2);
         await Assert.That(restored.SizeY).IsEqualTo(3);
         await Assert.That(restored.SizeZ).IsEqualTo(4);

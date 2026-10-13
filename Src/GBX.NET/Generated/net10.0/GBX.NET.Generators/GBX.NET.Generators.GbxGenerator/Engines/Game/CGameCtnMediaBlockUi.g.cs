@@ -34,12 +34,14 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     [Hexadecimal]
     public static new uint Id => 0x0307D000;
 
-    private CControlContainer? userInterface;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CControlContainer>? userInterfaceRef;
     [AppliedWithChunk<Chunk0307D000>]
     public CControlContainer? UserInterface
     {
-        get => this.userInterface;
-        set => this.userInterface = value;
+        get => userInterfaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref userInterfaceRef, value);
     }
 
     private TimeSingle start;
@@ -60,10 +62,24 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
         set => this.end = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaBlockUi owner;
+        internal NodeRefView(CGameCtnMediaBlockUi owner) => this.owner = owner;
+        public NodeRef<CControlContainer> UserInterface => NodeRef.GetOrCreate(ref owner.userInterfaceRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("UserInterface", NodeRef.GetOrCreate(ref userInterfaceRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaBlockUi)clone).userInterface = context.Clone(this.userInterface)!;
+        ((CGameCtnMediaBlockUi)clone).userInterfaceRef = context.Clone(this.userInterfaceRef)!;
         ((CGameCtnMediaBlockUi)clone).start = context.Clone(this.start)!;
         ((CGameCtnMediaBlockUi)clone).end = context.Clone(this.end)!;
     }
@@ -96,7 +112,7 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
 
         public override void ReadWrite(CGameCtnMediaBlockUi n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CControlContainer>(ref n.userInterface);
+            rw.NodeRef(ref n.userInterfaceRef);
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
         }

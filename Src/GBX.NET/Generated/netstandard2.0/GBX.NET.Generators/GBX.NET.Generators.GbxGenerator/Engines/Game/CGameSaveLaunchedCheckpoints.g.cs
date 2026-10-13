@@ -34,6 +34,8 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03262000;
 
+    internal override uint GetId() => Id;
+
     private int recordVersion = 33;
     [AppliedWithChunk<Chunk03262000>(3)]
     public int RecordVersion

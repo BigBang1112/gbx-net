@@ -34,6 +34,8 @@ public partial class CFuncPlug : CFunc, IClass
     [Hexadecimal]
     public static new uint Id => 0x0500B000;
 
+    internal override uint GetId() => Id;
+
     private float period;
     [AppliedWithChunk<Chunk0500B003>]
     [AppliedWithChunk<Chunk0500B004>]

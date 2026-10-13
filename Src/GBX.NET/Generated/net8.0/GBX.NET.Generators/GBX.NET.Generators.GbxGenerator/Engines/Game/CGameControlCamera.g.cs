@@ -34,6 +34,8 @@ public partial class CGameControlCamera : CSceneController, IClass
     [Hexadecimal]
     public static new uint Id => 0x0306B000;
 
+    internal override uint GetId() => Id;
+
     private Vec3 relativeTargetPos;
     [AppliedWithChunk<Chunk0306B001>]
     public Vec3 RelativeTargetPos

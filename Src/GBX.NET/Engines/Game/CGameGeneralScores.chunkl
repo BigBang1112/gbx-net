@@ -13,7 +13,7 @@ archive Unknown
   systemtime
   RecordsBuffer
   ChampionRanking[]
- 
+
 archive RecordsBuffer
   int Version
   int

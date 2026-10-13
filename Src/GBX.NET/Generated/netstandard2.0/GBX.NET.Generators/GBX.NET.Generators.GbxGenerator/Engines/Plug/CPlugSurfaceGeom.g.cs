@@ -34,6 +34,8 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     [Hexadecimal]
     public static new uint Id => 0x0900F000;
 
+    internal override uint GetId() => Id;
+
     private BoxAligned boundingBox = (0, 0, 0, -1, -1, -1);
     [AppliedWithChunk<Chunk0900F004>]
     public BoxAligned BoundingBox

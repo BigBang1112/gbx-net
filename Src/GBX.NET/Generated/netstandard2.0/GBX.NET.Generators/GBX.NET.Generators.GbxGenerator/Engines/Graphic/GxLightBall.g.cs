@@ -34,6 +34,8 @@ public partial class GxLightBall : GxLightPoint, IClass
     [Hexadecimal]
     public static new uint Id => 0x04002000;
 
+    internal override uint GetId() => Id;
+
     private float radius = 10;
     [AppliedWithChunk<Chunk04002000>]
     [AppliedWithChunk<Chunk04002001>]

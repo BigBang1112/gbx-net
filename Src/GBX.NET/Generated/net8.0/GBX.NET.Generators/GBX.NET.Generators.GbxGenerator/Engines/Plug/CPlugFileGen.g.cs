@@ -34,6 +34,8 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     [Hexadecimal]
     public static new uint Id => 0x0902F000;
 
+    internal override uint GetId() => Id;
+
     private int genKind;
     [GameVersionDefault(GameVersion.TM2020, 54)]
     public int GenKind
@@ -77,11 +79,11 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
         set => this.functions = value;
     }
 
-    private CPlugFileImg[]? inputImages;
-    public CPlugFileImg[]? InputImages
+    private NodeRefList<CPlugFileImg>? inputImages;
+    public NodeRefList<CPlugFileImg>? InputImages
     {
-        get => this.inputImages;
-        set => this.inputImages = value;
+        get => inputImages;
+        set => inputImages = value;
     }
 
     private byte[]? pixelData;
@@ -89,6 +91,15 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
     {
         get => this.pixelData;
         set => this.pixelData = value;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (inputImages is not null)
+        {
+            for (var i = 0; i < inputImages.Count; i++) yield return new("InputImages" + "[" + i + "]", inputImages.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -100,7 +111,7 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
         ((CPlugFileGen)clone).realParams = context.CloneArray(this.realParams)!;
         ((CPlugFileGen)clone).script = context.Clone(this.script)!;
         ((CPlugFileGen)clone).functions = context.CloneArray(this.functions)!;
-        ((CPlugFileGen)clone).inputImages = context.CloneArray(this.inputImages)!;
+        ((CPlugFileGen)clone).inputImages = context.Clone(this.inputImages)!;
         ((CPlugFileGen)clone).pixelData = context.CloneArray(this.pixelData)!;
         ((CPlugFileGen)clone).Version = context.Clone(this.Version)!;
     }

@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockLightmap : CGameCtnMediaBlock, IClass, CG
     [Hexadecimal]
     public static new uint Id => 0x030C0000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk030C0000>]
     public TimeSingle Start

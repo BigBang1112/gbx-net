@@ -34,36 +34,47 @@ public partial class CSceneFxNod : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x0A03A000;
 
-    private CSceneFx? fx;
+    internal override uint GetId() => Id;
+
+    private NodeRef<CSceneFx>? fxRef;
     [AppliedWithChunk<Chunk0A03A000>]
     public CSceneFx? Fx
     {
-        get => this.fxFile?.GetNode(ref this.fx) ?? this.fx;
-        set => this.fx = value;
-    }
-    private Components.GbxRefTableFile? fxFile;
-
-    public Components.GbxRefTableFile? FxFile
-    {
-        get => fxFile;
-        set => fxFile = value;
+        get => fxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxRef, value);
     }
 
-    public CSceneFx? GetFx(GbxReadSettings settings = default, bool exceptions = false) => fxFile?.GetNode(ref fx, settings, exceptions) ?? fx;
-
-    private CSceneFxNod[]? nodInputs;
+    private NodeRefList<CSceneFxNod>? nodInputs;
     [AppliedWithChunk<Chunk0A03A001>]
-    public CSceneFxNod[]? NodInputs
+    public NodeRefList<CSceneFxNod>? NodInputs
     {
-        get => this.nodInputs;
-        set => this.nodInputs = value;
+        get => nodInputs;
+        set => nodInputs = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CSceneFxNod owner;
+        internal NodeRefView(CSceneFxNod owner) => this.owner = owner;
+        public NodeRef<CSceneFx> Fx => NodeRef.GetOrCreate(ref owner.fxRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Fx", NodeRef.GetOrCreate(ref fxRef));
+        if (nodInputs is not null)
+        {
+            for (var i = 0; i < nodInputs.Count; i++) yield return new("NodInputs" + "[" + i + "]", nodInputs.Get(i));
+        }
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CSceneFxNod)clone).fx = context.Clone(this.fx)!;
-        ((CSceneFxNod)clone).nodInputs = context.CloneArray(this.nodInputs)!;
+        ((CSceneFxNod)clone).fxRef = context.Clone(this.fxRef)!;
+        ((CSceneFxNod)clone).nodInputs = context.Clone(this.nodInputs)!;
     }
 
     public CSceneFxNod()
@@ -84,7 +95,7 @@ public partial class CSceneFxNod : CMwNod, IClass
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CSceneFx>(ref n.fx, ref n.fxFile);
+            rw.NodeRef(ref n.fxRef);
         }
     }
 
@@ -104,7 +115,7 @@ public partial class CSceneFxNod : CMwNod, IClass
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
-            rw.ArrayNodeRef_deprec<CSceneFxNod>(ref n.nodInputs!);
+            n.nodInputs = rw.ListNodeRef_deprec<CSceneFxNod>(n.nodInputs);
             rw.Int32(ref U01);
         }
     }
@@ -116,23 +127,50 @@ public partial class CSceneFxNod : CMwNod, IClass
         public override uint Id => 0x0A03A002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public CMwNod? U01;
-        public CMwNod? U02;
-        public Components.GbxRefTableFile? U02File;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A03A002 owner;
+            internal NodeRefView(Chunk0A03A002 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0A03A002)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0A03A002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0A03A002)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0A03A002)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0A03A002)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CMwNod>(ref U01);
-            rw.NodeRef<CMwNod>(ref U02, ref U02File);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 

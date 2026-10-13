@@ -34,6 +34,8 @@ public partial class CPlugRoadChunk : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x09128000;
 
+    internal override uint GetId() => Id;
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -67,7 +69,7 @@ public partial class CPlugRoadChunk : CMwNod, IClass
             ((Chunk09128000)clone).U12 = context.Clone(this.U12)!;
             ((Chunk09128000)clone).U13 = context.Clone(this.U13)!;
             ((Chunk09128000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk09128000)clone).U15 = context.CloneArray(this.U15)!;
+            ((Chunk09128000)clone).U15 = context.CloneArray(this.U15, row0 => context.CloneArray(row0)!)!;
             ((Chunk09128000)clone).U16 = context.Clone(this.U16)!;
             ((Chunk09128000)clone).U17 = context.Clone(this.U17)!;
             ((Chunk09128000)clone).U18 = context.Clone(this.U18)!;

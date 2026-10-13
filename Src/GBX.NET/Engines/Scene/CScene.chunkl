@@ -8,11 +8,11 @@ CScene 0x0A001000
   uint[]
 
 0x005 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
-  CMotionManager[] MotionManagerModels (deprec, external)
+  CMotionManager[] MotionManagerModels (deprec)
 
 0x006 (ignore) [TMSX, TMNESWC]
   OldSceneMobil[] OldMobils
 
 archive OldSceneMobil
-  CMwNod (external)
-  CMwNod (external)
+  CMwNod
+  CMwNod

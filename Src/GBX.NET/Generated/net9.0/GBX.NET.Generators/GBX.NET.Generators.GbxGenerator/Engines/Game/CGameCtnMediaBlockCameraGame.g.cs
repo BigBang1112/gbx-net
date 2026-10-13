@@ -34,6 +34,8 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     [Hexadecimal]
     public static new uint Id => 0x03084000;
 
+    internal override uint GetId() => Id;
+
     private TimeSingle start;
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]

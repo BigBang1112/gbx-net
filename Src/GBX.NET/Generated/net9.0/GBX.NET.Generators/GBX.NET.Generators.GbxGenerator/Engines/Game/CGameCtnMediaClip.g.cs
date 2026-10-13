@@ -34,13 +34,15 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [Hexadecimal]
     public static new uint Id => 0x03079000;
 
+    internal override uint GetId() => Id;
+
     [AppliedWithChunk<Chunk03079000>]
     [AppliedWithChunk<Chunk03079001>]
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
     [AppliedWithChunk<Chunk0307900D>]
-    public partial List<CGameCtnMediaTrack> Tracks { get; set; }
+    public partial NodeRefList<CGameCtnMediaTrack> Tracks { get; set; }
 
     [SupportsFormatting]
     [AppliedWithChunk<Chunk03079001>]
@@ -50,12 +52,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [AppliedWithChunk<Chunk0307900D>]
     public partial string? Name { get; set; }
 
-    private CScene? scene;
+    private NodeRef<CScene>? sceneRef;
     [AppliedWithChunk<Chunk03079004>]
     public CScene? Scene
     {
-        get => this.scene;
-        set => this.scene = value;
+        get => sceneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneRef, value);
     }
 
     private int localPlayerClipEntIndex = -1;
@@ -128,10 +130,29 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         set => this.flags = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CGameCtnMediaClip owner;
+        internal NodeRefView(CGameCtnMediaClip owner) => this.owner = owner;
+        public NodeRef<CScene> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (tracks is not null)
+        {
+            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.Get(i));
+        }
+        yield return new("Scene", NodeRef.GetOrCreate(ref sceneRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnMediaClip)clone).scene = context.Clone(this.scene)!;
+        ((CGameCtnMediaClip)clone).tracks = context.Clone(this.tracks)!;
+        ((CGameCtnMediaClip)clone).sceneRef = context.Clone(this.sceneRef)!;
         ((CGameCtnMediaClip)clone).localPlayerClipEntIndex = context.Clone(this.localPlayerClipEntIndex)!;
         ((CGameCtnMediaClip)clone).stereoSepMax = context.Clone(this.stereoSepMax)!;
         ((CGameCtnMediaClip)clone).configScript = context.Clone(this.configScript)!;
@@ -140,7 +161,6 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         ((CGameCtnMediaClip)clone).stopWhenRespawn = context.Clone(this.stopWhenRespawn)!;
         ((CGameCtnMediaClip)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnMediaClip)clone).name = context.Clone(this.name)!;
-        ((CGameCtnMediaClip)clone).tracks = context.CloneList(this.tracks)!;
         ((CGameCtnMediaClip)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
     }
 
@@ -163,7 +183,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
         }
     }
 
@@ -182,7 +202,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
             rw.String(ref n.name);
         }
     }
@@ -204,7 +224,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
             rw.String(ref n.name);
             rw.Boolean(ref U01);
         }
@@ -227,7 +247,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
             rw.String(ref n.name);
         }
     }
@@ -249,7 +269,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.NodeRef<CScene>(ref n.scene);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 
@@ -440,7 +460,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ListNodeRef_deprec<CGameCtnMediaTrack>(ref n.tracks!);
+            n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
             rw.String(ref n.name);
             rw.Boolean(ref n.stopWhenLeave);
             rw.Boolean(ref n.isScriptEvent);

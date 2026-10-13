@@ -29,10 +29,10 @@ public class CPlugDynaObjectModelLayoutTests
         writer.Write(version);
         if (version >= 9) writer.Write(true);
         if (version >= 11) writer.Write(true);
-        payload.Reference("Mesh.Solid.Gbx");
-        payload.Reference("Dyna.Shape.Gbx");
-        if (version <= 2) payload.Reference("Dyna.Model.Gbx");
-        if (version >= 1) payload.Reference("Static.Shape.Gbx");
+        payload.NodeRef("Mesh.Solid.Gbx");
+        payload.NodeRef("Dyna.Shape.Gbx");
+        if (version <= 2) payload.NodeRef("Dyna.Model.Gbx");
+        if (version >= 1) payload.NodeRef("Static.Shape.Gbx");
         if (version >= 2) writer.Write(123.5f);
         if (version >= 3) writer.Write(12.5f);
         if (version >= 5)
@@ -55,11 +55,11 @@ public class CPlugDynaObjectModelLayoutTests
             writer.Write(108);
             writer.Write(109);
         }
-        if (version >= 7) payload.Reference("Loc.Anim.Gbx");
+        if (version >= 7) payload.NodeRef("Loc.Anim.Gbx");
         if (version >= 8) writer.Write(110);
         if (version >= 10) writer.Write(true);
         if (version == 12) writer.Write(111);
-        if (version >= 13) payload.Reference("Water.Model.Gbx");
+        if (version >= 13) payload.NodeRef("Water.Model.Gbx");
         payload.Finish();
 
         var node = new CPlugDynaObjectModel { LocAnimIsPhysical = true };
@@ -67,11 +67,11 @@ public class CPlugDynaObjectModelLayoutTests
         await Assert.That(node.Version).IsEqualTo(version);
         await Assert.That(node.IsStatic).IsEqualTo(version >= 9);
         await Assert.That(node.DynamizeOnSpawn).IsEqualTo(version >= 11);
-        await Assert.That(node.MeshFile!.FilePath).IsEqualTo("Mesh.Solid.Gbx");
-        await Assert.That(node.DynaShapeFile!.FilePath).IsEqualTo("Dyna.Shape.Gbx");
-        await Assert.That(node.StaticShapeFile!.FilePath).IsEqualTo(version == 0 ? "Dyna.Shape.Gbx" : "Static.Shape.Gbx");
-        if (version <= 2) await Assert.That(node.DynaModelFile!.FilePath).IsEqualTo("Dyna.Model.Gbx");
-        else await Assert.That(node.DynaModelFile).IsNull();
+        await Assert.That(node.References.Mesh.File!.FilePath).IsEqualTo("Mesh.Solid.Gbx");
+        await Assert.That(node.References.DynaShape.File!.FilePath).IsEqualTo("Dyna.Shape.Gbx");
+        await Assert.That(node.References.StaticShape.File!.FilePath).IsEqualTo(version == 0 ? "Dyna.Shape.Gbx" : "Static.Shape.Gbx");
+        if (version <= 2) await Assert.That(node.References.DynaModel.File!.FilePath).IsEqualTo("Dyna.Model.Gbx");
+        else await Assert.That(node.References.DynaModel.File).IsNull();
         await Assert.That(node.BreakSpeedKmh).IsEqualTo(version >= 2 ? 123.5f : 100f);
         await Assert.That(node.Mass).IsEqualTo(version >= 3 ? 12.5f : 10f);
         await Assert.That(node.LightAliveDurationScMin).IsEqualTo(version >= 5 ? 2.5f : 5f);
@@ -85,13 +85,13 @@ public class CPlugDynaObjectModelLayoutTests
         await Assert.That(node.U07).IsEqualTo((byte)(version >= 6 ? 27 : 0));
         await Assert.That(node.U08).IsEqualTo(version >= 6 ? 108 : 0);
         await Assert.That(node.U09).IsEqualTo(version >= 6 ? 109 : 0);
-        if (version >= 7) await Assert.That(node.LocAnimFile!.FilePath).IsEqualTo("Loc.Anim.Gbx");
-        else await Assert.That(node.LocAnimFile).IsNull();
+        if (version >= 7) await Assert.That(node.References.LocAnim.File!.FilePath).IsEqualTo("Loc.Anim.Gbx");
+        else await Assert.That(node.References.LocAnim.File).IsNull();
         await Assert.That(node.U10).IsEqualTo(version >= 8 ? 110 : 0);
         await Assert.That(node.LocAnimIsPhysical).IsEqualTo(version >= 10);
         await Assert.That(node.U11).IsEqualTo(version == 12 ? 111 : 0);
-        if (version >= 13) await Assert.That(node.WaterModelFile!.FilePath).IsEqualTo("Water.Model.Gbx");
-        else await Assert.That(node.WaterModelFile).IsNull();
+        if (version >= 13) await Assert.That(node.References.WaterModel.File!.FilePath).IsEqualTo("Water.Model.Gbx");
+        else await Assert.That(node.References.WaterModel.File).IsNull();
         await payload.AssertRoundTrip(rw => node.ReadWrite(rw));
     }
 
@@ -169,7 +169,7 @@ public class CPlugDynaObjectModelLayoutTests
         var node = reader.ReadReadable<CPlugDynaObjectModel>();
         await Assert.That(node.Shape).IsSameReferenceAs(node.DynaShape);
         await Assert.That(node.StaticShape).IsSameReferenceAs(node.DynaShape);
-        await Assert.That(node.GetShape()).IsSameReferenceAs(node.DynaShape);
+        await Assert.That(node.References.StaticShape.CachedNode).IsSameReferenceAs(node.DynaShape);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
         await Assert.That(payload.Position).IsEqualTo(payload.Length);
     }

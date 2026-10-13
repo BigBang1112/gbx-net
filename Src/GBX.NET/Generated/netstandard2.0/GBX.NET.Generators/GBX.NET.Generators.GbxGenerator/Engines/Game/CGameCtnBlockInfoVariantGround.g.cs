@@ -34,12 +34,14 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     [Hexadecimal]
     public static new uint Id => 0x0315C000;
 
-    private CGameCtnAutoTerrain[]? autoTerrains;
+    internal override uint GetId() => Id;
+
+    private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
     [AppliedWithChunk<Chunk0315C001>]
-    public CGameCtnAutoTerrain[]? AutoTerrains
+    public NodeRefList<CGameCtnAutoTerrain>? AutoTerrains
     {
-        get => this.autoTerrains;
-        set => this.autoTerrains = value;
+        get => autoTerrains;
+        set => autoTerrains = value;
     }
 
     private int autoTerrainHeightOffset;
@@ -57,11 +59,20 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         get => this.autoTerrainPlaceType;
         set => this.autoTerrainPlaceType = value;
     }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (autoTerrains is not null)
+        {
+            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.Get(i));
+        }
+        yield break;
+    }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CGameCtnBlockInfoVariantGround)clone).autoTerrains = context.CloneArray(this.autoTerrains)!;
+        ((CGameCtnBlockInfoVariantGround)clone).autoTerrains = context.Clone(this.autoTerrains)!;
         ((CGameCtnBlockInfoVariantGround)clone).autoTerrainHeightOffset = context.Clone(this.autoTerrainHeightOffset)!;
         ((CGameCtnBlockInfoVariantGround)clone).autoTerrainPlaceType = context.Clone(this.autoTerrainPlaceType)!;
     }
@@ -103,7 +114,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         public override void ReadWrite(CGameCtnBlockInfoVariantGround n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.ArrayNodeRef_deprec<CGameCtnAutoTerrain>(ref n.autoTerrains!);
+            n.autoTerrains = rw.ListNodeRef_deprec<CGameCtnAutoTerrain>(n.autoTerrains);
             rw.Int32(ref n.autoTerrainHeightOffset);
             rw.EnumInt32<EAutoTerrainPlaceType>(ref n.autoTerrainPlaceType);
         }
