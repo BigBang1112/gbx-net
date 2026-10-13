@@ -73,35 +73,19 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     {
         private readonly CGameCampaignsScoresManager owner;
         internal NodeRefView(CGameCampaignsScoresManager owner) => this.owner = owner;
-        public ChallengeScoresReferenceView ChallengeScores => new(owner);
-        public CampaignScoresReferenceView CampaignScores => new(owner);
         public NodeRef<CGameGeneralScores> GeneralScores => NodeRef.GetOrCreate(ref owner.generalScoresRef);
         public NodeRef<CGameSkillScoreComputer> SkillScoreComputer => NodeRef.GetOrCreate(ref owner.skillScoreComputerRef);
-    }
-    public readonly struct ChallengeScoresReferenceView
-    {
-        private readonly CGameCampaignsScoresManager owner;
-        internal ChallengeScoresReferenceView(CGameCampaignsScoresManager owner) => this.owner = owner;
-        public int Count => owner.challengeScores?.Count ?? 0;
-        public NodeRef<CGameChallengeScores> this[int index] => (owner.challengeScores ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CampaignScoresReferenceView
-    {
-        private readonly CGameCampaignsScoresManager owner;
-        internal CampaignScoresReferenceView(CGameCampaignsScoresManager owner) => this.owner = owner;
-        public int Count => owner.campaignScores?.Count ?? 0;
-        public NodeRef<CGameCampaignScores> this[int index] => (owner.campaignScores ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (challengeScores is not null)
         {
-            for (var i = 0; i < challengeScores.Count; i++) yield return new("ChallengeScores" + "[" + i + "]", challengeScores.GetReference(i));
+            for (var i = 0; i < challengeScores.Count; i++) yield return new("ChallengeScores" + "[" + i + "]", challengeScores.Get(i));
         }
         if (campaignScores is not null)
         {
-            for (var i = 0; i < campaignScores.Count; i++) yield return new("CampaignScores" + "[" + i + "]", campaignScores.GetReference(i));
+            for (var i = 0; i < campaignScores.Count; i++) yield return new("CampaignScores" + "[" + i + "]", campaignScores.Get(i));
         }
         yield return new("GeneralScores", NodeRef.GetOrCreate(ref generalScoresRef));
         yield return new("SkillScoreComputer", NodeRef.GetOrCreate(ref skillScoreComputerRef));

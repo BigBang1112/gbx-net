@@ -216,7 +216,6 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         private readonly CSceneMobilLeaves owner;
         internal NodeRefView(CSceneMobilLeaves owner) => this.owner = owner;
         public NodeRef<CPlugShader> LeafShader => NodeRef.GetOrCreate(ref owner.leafShaderRef);
-        public CSceneMobil.ObjectLinkReferenceView ObjectLink => ((CSceneMobil)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneMobil)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneMobil)owner).References.Motion;
     }

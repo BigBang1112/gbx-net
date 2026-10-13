@@ -737,7 +737,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         private readonly CGameCtnChallenge owner;
         internal NodeRefView(CGameCtnChallenge owner) => this.owner = owner;
-        public BlocksReferenceView Blocks => new(owner);
         public NodeRef<CGameCtnCollectorList> BlockStock => NodeRef.GetOrCreate(ref owner.blockStockRef);
         public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
         public NodeRef<CGameCtnMediaClip> ClipIntro => NodeRef.GetOrCreate(ref owner.clipIntroRef);
@@ -745,64 +744,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
         public NodeRef<CGameCtnMediaClip> ClipGlobal => NodeRef.GetOrCreate(ref owner.clipGlobalRef);
         public NodeRef<CHmsLightMapCache> LightmapCache => NodeRef.GetOrCreate(ref owner.lightmapCacheRef);
-        public CarMarksBufferReferenceView CarMarksBuffer => new(owner);
-        public AnchoredObjectsReferenceView AnchoredObjects => new(owner);
-        public ZoneGenealogyReferenceView ZoneGenealogy => new(owner);
-        public BakedBlocksReferenceView BakedBlocks => new(owner);
         public NodeRef<CGameCtnMediaClip> ClipPodium => NodeRef.GetOrCreate(ref owner.clipPodiumRef);
         public NodeRef<CGameCtnMediaClip> ClipAmbiance => NodeRef.GetOrCreate(ref owner.clipAmbianceRef);
         public NodeRef<CPlugAnimFile> ChallengeAnimation => NodeRef.GetOrCreate(ref owner.challengeAnimationRef);
-        public ClipGroupsReferenceView ClipGroups => new(owner);
         public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => NodeRef.GetOrCreate(ref owner.launchedCheckpointsRef);
-    }
-    public readonly struct BlocksReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal BlocksReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.blocks?.Count ?? 0;
-        public NodeRef<CGameCtnBlock> this[int index] => (owner.blocks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CarMarksBufferReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal CarMarksBufferReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.carMarksBuffer?.Count ?? 0;
-        public NodeRef<CSceneVehicleCarMarksSamples> this[int index] => (owner.carMarksBuffer ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct AnchoredObjectsReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal AnchoredObjectsReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.anchoredObjects?.Count ?? 0;
-        public NodeRef<CGameCtnAnchoredObject> this[int index] => (owner.anchoredObjects ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ZoneGenealogyReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal ZoneGenealogyReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.zoneGenealogy?.Count ?? 0;
-        public NodeRef<CGameCtnZoneGenealogy> this[int index] => (owner.zoneGenealogy ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct BakedBlocksReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal BakedBlocksReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.bakedBlocks?.Count ?? 0;
-        public NodeRef<CGameCtnBlock> this[int index] => (owner.bakedBlocks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipGroupsReferenceView
-    {
-        private readonly CGameCtnChallenge owner;
-        internal ClipGroupsReferenceView(CGameCtnChallenge owner) => this.owner = owner;
-        public int Count => owner.clipGroups?.Count ?? 0;
-        public NodeRef<CGameCtnMediaClipGroup> this[int index] => (owner.clipGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (blocks is not null)
         {
-            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.GetReference(i));
+            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.Get(i));
         }
         yield return new("BlockStock", NodeRef.GetOrCreate(ref blockStockRef));
         yield return new("ChallengeParameters", NodeRef.GetOrCreate(ref challengeParametersRef));
@@ -813,26 +765,26 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         yield return new("LightmapCache", NodeRef.GetOrCreate(ref lightmapCacheRef));
         if (carMarksBuffer is not null)
         {
-            for (var i = 0; i < carMarksBuffer.Count; i++) yield return new("CarMarksBuffer" + "[" + i + "]", carMarksBuffer.GetReference(i));
+            for (var i = 0; i < carMarksBuffer.Count; i++) yield return new("CarMarksBuffer" + "[" + i + "]", carMarksBuffer.Get(i));
         }
         if (anchoredObjects is not null)
         {
-            for (var i = 0; i < anchoredObjects.Count; i++) yield return new("AnchoredObjects" + "[" + i + "]", anchoredObjects.GetReference(i));
+            for (var i = 0; i < anchoredObjects.Count; i++) yield return new("AnchoredObjects" + "[" + i + "]", anchoredObjects.Get(i));
         }
         if (zoneGenealogy is not null)
         {
-            for (var i = 0; i < zoneGenealogy.Count; i++) yield return new("ZoneGenealogy" + "[" + i + "]", zoneGenealogy.GetReference(i));
+            for (var i = 0; i < zoneGenealogy.Count; i++) yield return new("ZoneGenealogy" + "[" + i + "]", zoneGenealogy.Get(i));
         }
         if (bakedBlocks is not null)
         {
-            for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.GetReference(i));
+            for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.Get(i));
         }
         yield return new("ClipPodium", NodeRef.GetOrCreate(ref clipPodiumRef));
         yield return new("ClipAmbiance", NodeRef.GetOrCreate(ref clipAmbianceRef));
         yield return new("ChallengeAnimation", NodeRef.GetOrCreate(ref challengeAnimationRef));
         if (clipGroups is not null)
         {
-            for (var i = 0; i < clipGroups.Count; i++) yield return new("ClipGroups" + "[" + i + "]", clipGroups.GetReference(i));
+            for (var i = 0; i < clipGroups.Count; i++) yield return new("ClipGroups" + "[" + i + "]", clipGroups.Get(i));
         }
         yield return new("LaunchedCheckpoints", NodeRef.GetOrCreate(ref launchedCheckpointsRef));
         yield break;
@@ -2401,63 +2353,24 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public NodeRefList<CMwNod>? U03;
 
         public NodeRefList<CMwNod>? U04;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0304304D owner;
-            internal NodeRefView(Chunk0304304D owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-            public U02ReferenceView U02 => new(owner);
-            public U03ReferenceView U03 => new(owner);
-            public U04ReferenceView U04 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0304304D owner;
-            internal U01ReferenceView(Chunk0304304D owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U02ReferenceView
-        {
-            private readonly Chunk0304304D owner;
-            internal U02ReferenceView(Chunk0304304D owner) => this.owner = owner;
-            public int Count => owner.U02?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U02 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U03ReferenceView
-        {
-            private readonly Chunk0304304D owner;
-            internal U03ReferenceView(Chunk0304304D owner) => this.owner = owner;
-            public int Count => owner.U03?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U04ReferenceView
-        {
-            private readonly Chunk0304304D owner;
-            internal U04ReferenceView(Chunk0304304D owner) => this.owner = owner;
-            public int Count => owner.U04?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U04 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             if (U02 is not null)
             {
-                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
             }
             if (U03 is not null)
             {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
             }
             if (U04 is not null)
             {
-                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.GetReference(i));
+                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.Get(i));
             }
             yield break;
         }
@@ -3617,26 +3530,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             get => nodes;
             set => nodes = value;
         }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly MacroblockReferences owner;
-            internal NodeRefView(MacroblockReferences owner) => this.owner = owner;
-            public NodesReferenceView Nodes => new(owner);
-        }
-        public readonly struct NodesReferenceView
-        {
-            private readonly MacroblockReferences owner;
-            internal NodesReferenceView(MacroblockReferences owner) => this.owner = owner;
-            public int Count => owner.nodes?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.nodes ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             if (nodes is not null)
             {
-                for (var i = 0; i < nodes.Count; i++) yield return new("Nodes" + "[" + i + "]", nodes.GetReference(i));
+                for (var i = 0; i < nodes.Count; i++) yield return new("Nodes" + "[" + i + "]", nodes.Get(i));
             }
             yield break;
         }

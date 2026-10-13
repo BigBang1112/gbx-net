@@ -43,27 +43,12 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
         get => materials;
         set => materials = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CSceneVehicleEnvironment owner;
-        internal NodeRefView(CSceneVehicleEnvironment owner) => this.owner = owner;
-        public MaterialsReferenceView Materials => new(owner);
-    }
-    public readonly struct MaterialsReferenceView
-    {
-        private readonly CSceneVehicleEnvironment owner;
-        internal MaterialsReferenceView(CSceneVehicleEnvironment owner) => this.owner = owner;
-        public int Count => owner.materials?.Count ?? 0;
-        public NodeRef<CPlugMaterial> this[int index] => (owner.materials ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (materials is not null)
         {
-            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.GetReference(i));
+            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.Get(i));
         }
         yield break;
     }

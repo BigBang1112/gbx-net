@@ -251,34 +251,18 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
     {
         private readonly CPlugCustomBeamModel owner;
         internal NodeRefView(CPlugCustomBeamModel owner) => this.owner = owner;
-        public U01ReferenceView U01 => new(owner);
-        public U02ReferenceView U02 => new(owner);
         public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
-    }
-    public readonly struct U01ReferenceView
-    {
-        private readonly CPlugCustomBeamModel owner;
-        internal U01ReferenceView(CPlugCustomBeamModel owner) => this.owner = owner;
-        public int Count => owner.u01?.Count ?? 0;
-        public NodeRef<CPlugBeamEmitterSubModel> this[int index] => (owner.u01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct U02ReferenceView
-    {
-        private readonly CPlugCustomBeamModel owner;
-        internal U02ReferenceView(CPlugCustomBeamModel owner) => this.owner = owner;
-        public int Count => owner.u02?.Count ?? 0;
-        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.u02 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (u01 is not null)
         {
-            for (var i = 0; i < u01.Count; i++) yield return new("U01" + "[" + i + "]", u01.GetReference(i));
+            for (var i = 0; i < u01.Count; i++) yield return new("U01" + "[" + i + "]", u01.Get(i));
         }
         if (u02 is not null)
         {
-            for (var i = 0; i < u02.Count; i++) yield return new("U02" + "[" + i + "]", u02.GetReference(i));
+            for (var i = 0; i < u02.Count; i++) yield return new("U02" + "[" + i + "]", u02.Get(i));
         }
         yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
         yield break;

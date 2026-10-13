@@ -408,7 +408,7 @@ internal static class ObjExporter
         var positionsDict = mergeVerticesDigitThreshold.HasValue
             ? new Dictionary<Vec3, int>(new Vec3EqualityComparer(mergeVerticesDigitThreshold.Value)) : [];
 
-        if (solid.Visuals is null || solid.Visuals.Length == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
+        if (solid.Visuals is null || solid.Visuals.Count == 0 || solid.ShadedGeoms is null || solid.ShadedGeoms.Length == 0)
         {
             throw new Exception("CPlugSolid2Model has no Visuals.");
         }
@@ -582,12 +582,12 @@ internal static class ObjExporter
             return customMaterials[materialIndex].MaterialUserInst?.Link ?? "Unknown";
         }
 
-        if (solid.Materials is { Length: > 0 } materialsArray)
+        if (solid.Materials is { Count: > 0 } materialsArray)
         {
-            return GbxPath.GetFileNameWithoutExtension(materialsArray.GetReference(materialIndex).File?.FilePath) ?? "Unknown";
+            return GbxPath.GetFileNameWithoutExtension(materialsArray.Get(materialIndex).File?.FilePath) ?? "Unknown";
         }
 
-        if (solid.MaterialInsts is { Length: > 0 } materialInsts)
+        if (solid.MaterialInsts is { Count: > 0 } materialInsts)
         {
             return materialInsts[materialIndex].Link ?? "Unknown";
         }

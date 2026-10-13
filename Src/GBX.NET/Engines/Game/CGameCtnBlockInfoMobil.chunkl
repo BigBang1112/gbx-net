@@ -35,7 +35,7 @@ CGameCtnBlockInfoMobil 0x03122000
     CPlugSolid OldSolidAggreg
   v4..5
     CPlugPolyLine3[] LegacyRailPolylines
-    if LegacyRailPolylines != null && LegacyRailPolylines.Length > 0
+    if LegacyRailPolylines != null && LegacyRailPolylines.Count > 0
       RailPath = ConvertedRailPath
   v5..10
     bool // Discarded legacy rail flag

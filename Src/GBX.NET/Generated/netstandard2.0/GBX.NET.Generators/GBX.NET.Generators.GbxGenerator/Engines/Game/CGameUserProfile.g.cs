@@ -306,22 +306,14 @@ public partial class CGameUserProfile : CMwNod, IClass
     {
         private readonly CGameUserProfile owner;
         internal NodeRefView(CGameUserProfile owner) => this.owner = owner;
-        public InputBindingsConfigsReferenceView InputBindingsConfigs => new(owner);
         public NodeRef<CInputBindingsConfig> InputBindingsConfig => NodeRef.GetOrCreate(ref owner.inputBindingsConfigRef);
-    }
-    public readonly struct InputBindingsConfigsReferenceView
-    {
-        private readonly CGameUserProfile owner;
-        internal InputBindingsConfigsReferenceView(CGameUserProfile owner) => this.owner = owner;
-        public int Count => owner.inputBindingsConfigs?.Count ?? 0;
-        public NodeRef<CInputBindingsConfig> this[int index] => (owner.inputBindingsConfigs ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (inputBindingsConfigs is not null)
         {
-            for (var i = 0; i < inputBindingsConfigs.Count; i++) yield return new("InputBindingsConfigs" + "[" + i + "]", inputBindingsConfigs.GetReference(i));
+            for (var i = 0; i < inputBindingsConfigs.Count; i++) yield return new("InputBindingsConfigs" + "[" + i + "]", inputBindingsConfigs.Get(i));
         }
         yield return new("InputBindingsConfig", NodeRef.GetOrCreate(ref inputBindingsConfigRef));
         yield break;

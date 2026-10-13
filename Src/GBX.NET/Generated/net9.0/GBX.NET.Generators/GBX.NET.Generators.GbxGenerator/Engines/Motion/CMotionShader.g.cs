@@ -110,7 +110,7 @@ public partial class CMotionShader : CMotionTrack, IClass
             {
                 NodeRef<CPlugShader>? unusedShaderRef = null;
                 rw.NodeRef(ref unusedShaderRef);
-                var unusedShader = unusedShaderRef?.CachedTarget;
+                var unusedShader = unusedShaderRef?.CachedNode;
             }
             else
             {

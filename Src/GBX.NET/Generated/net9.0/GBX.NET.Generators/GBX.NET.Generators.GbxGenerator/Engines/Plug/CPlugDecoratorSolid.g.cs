@@ -43,27 +43,12 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
         get => treeDecorators;
         set => treeDecorators = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugDecoratorSolid owner;
-        internal NodeRefView(CPlugDecoratorSolid owner) => this.owner = owner;
-        public TreeDecoratorsReferenceView TreeDecorators => new(owner);
-    }
-    public readonly struct TreeDecoratorsReferenceView
-    {
-        private readonly CPlugDecoratorSolid owner;
-        internal TreeDecoratorsReferenceView(CPlugDecoratorSolid owner) => this.owner = owner;
-        public int Count => owner.treeDecorators?.Count ?? 0;
-        public NodeRef<CPlugDecoratorTree> this[int index] => (owner.treeDecorators ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (treeDecorators is not null)
         {
-            for (var i = 0; i < treeDecorators.Count; i++) yield return new("TreeDecorators" + "[" + i + "]", treeDecorators.GetReference(i));
+            for (var i = 0; i < treeDecorators.Count; i++) yield return new("TreeDecorators" + "[" + i + "]", treeDecorators.Get(i));
         }
         yield break;
     }

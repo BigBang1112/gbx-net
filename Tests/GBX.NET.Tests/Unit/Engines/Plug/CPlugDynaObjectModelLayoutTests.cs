@@ -169,7 +169,7 @@ public class CPlugDynaObjectModelLayoutTests
         var node = reader.ReadReadable<CPlugDynaObjectModel>();
         await Assert.That(node.Shape).IsSameReferenceAs(node.DynaShape);
         await Assert.That(node.StaticShape).IsSameReferenceAs(node.DynaShape);
-        await Assert.That(node.References.StaticShape.CachedTarget).IsSameReferenceAs(node.DynaShape);
+        await Assert.That(node.References.StaticShape.CachedNode).IsSameReferenceAs(node.DynaShape);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
         await Assert.That(payload.Position).IsEqualTo(payload.Length);
     }

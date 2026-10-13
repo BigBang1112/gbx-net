@@ -51,27 +51,12 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
         get => this.disabled;
         set => this.disabled = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CSceneVehicleCarMarksModel owner;
-        internal NodeRefView(CSceneVehicleCarMarksModel owner) => this.owner = owner;
-        public ModelsReferenceView Models => new(owner);
-    }
-    public readonly struct ModelsReferenceView
-    {
-        private readonly CSceneVehicleCarMarksModel owner;
-        internal ModelsReferenceView(CSceneVehicleCarMarksModel owner) => this.owner = owner;
-        public int Count => owner.models?.Count ?? 0;
-        public NodeRef<CSceneVehicleCarMarksModelSub> this[int index] => (owner.models ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (models is not null)
         {
-            for (var i = 0; i < models.Count; i++) yield return new("Models" + "[" + i + "]", models.GetReference(i));
+            for (var i = 0; i < models.Count; i++) yield return new("Models" + "[" + i + "]", models.Get(i));
         }
         yield break;
     }

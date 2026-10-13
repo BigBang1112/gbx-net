@@ -54,7 +54,7 @@ public class CGameCtnChallengeGroupChunkTests
             if (usesMapFiles)
             {
                 var reference = new NodeRef<CGameCtnChallenge>();
-                reference.SetExternal(file);
+                reference.Descriptor = file;
                 writer.WriteNodeRef(reference);
             }
             else writer.Write(metadata);
@@ -65,7 +65,7 @@ public class CGameCtnChallengeGroupChunkTests
         await Assert.That(restored.UsesMapFiles).IsEqualTo(usesMapFiles);
         if (usesMapFiles)
         {
-            await Assert.That(restored.References.MapFiles[0].File).IsEqualTo(file);
+            await Assert.That(restored.MapFiles!.Get(0).File).IsEqualTo(file);
             await Assert.That(restored.MapInfos).IsNull();
         }
         else
@@ -120,7 +120,7 @@ public class CGameCtnChallengeGroupChunkTests
         {
             if (offset == 4) writer.Write(1);
             var reference = new NodeRef<CMwNod>();
-            reference.SetExternal(file);
+            reference.Descriptor = file;
             writer.WriteNodeRef(reference);
             writer.Write(0x12345678);
         }
@@ -129,7 +129,7 @@ public class CGameCtnChallengeGroupChunkTests
             ? new CGameCtnChallengeGroup.Chunk0308F004()
             : new CGameCtnChallengeGroup.Chunk0308F008();
         var restored = await ReadAndRewrite(stream, chunk, file);
-        await Assert.That(offset == 4 ? restored.References.Files[0].File : restored.References.AssociatedCollection.File).IsEqualTo(file);
+        await Assert.That(offset == 4 ? restored.Files!.Get(0).File : restored.References.AssociatedCollection.File).IsEqualTo(file);
     }
 
     [Test]

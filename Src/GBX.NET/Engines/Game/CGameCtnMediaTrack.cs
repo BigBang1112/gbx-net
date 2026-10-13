@@ -29,7 +29,7 @@ public partial class CGameCtnMediaTrack
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             var reference = n.blocks is null ? null : Enumerable.Range(0, n.blocks.Count)
-                .Select(i => n.blocks.GetReference(i).CachedTarget).OfType<CGameCtnMediaBlockGhost>().FirstOrDefault()?.References.GhostModel;
+                .Select(i => n.blocks.Get(i).CachedNode).OfType<CGameCtnMediaBlockGhost>().FirstOrDefault()?.References.GhostModel;
             rw.NodeRef(ref reference);
 
             if (rw.Reader is null)
@@ -42,9 +42,9 @@ public partial class CGameCtnMediaTrack
                 Start = TimeSingle.Zero,
                 End = new TimeSingle(1)
             };
-            if (reference?.Descriptor is { } descriptor) block.References.GhostModel.SetDescriptor(descriptor);
-            else block.GhostModel = reference?.CachedTarget;
-            var ghost = reference?.CachedTarget;
+            if (reference?.Descriptor is { } descriptor) block.References.GhostModel.Descriptor = descriptor;
+            else block.GhostModel = reference?.CachedNode;
+            var ghost = reference?.CachedNode;
             block.CreateChunk<CGameCtnMediaBlockGhost.Chunk030E5000>();
 
             if (ghost is not null)

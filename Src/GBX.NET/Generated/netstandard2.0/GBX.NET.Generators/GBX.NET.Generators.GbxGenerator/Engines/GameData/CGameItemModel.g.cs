@@ -419,12 +419,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugMaterial> MaterialSkin => NodeRef.GetOrCreate(ref owner.materialSkinRef);
         public NodeRef<CPlugMaterial> MaterialGlass => NodeRef.GetOrCreate(ref owner.materialGlassRef);
         public NodeRef<CPlugMaterial> MaterialDetails => NodeRef.GetOrCreate(ref owner.materialDetailsRef);
-        public NadeoSkinFidsReferenceView NadeoSkinFids => new(owner);
-        public CamerasReferenceView Cameras => new(owner);
         public NodeRef<CPlugDecoratorSolid> DecoratorSolid => NodeRef.GetOrCreate(ref owner.decoratorSolidRef);
         public NodeRef<CPlugMaterial> StemMaterial => NodeRef.GetOrCreate(ref owner.stemMaterialRef);
         public NodeRef<CPlugMaterial> StemBumpMaterial => NodeRef.GetOrCreate(ref owner.stemBumpMaterialRef);
-        public ForcedSkinsFidsReferenceView ForcedSkinsFids => new(owner);
         public NodeRef<CPlugMaterial> MaterialPilot => NodeRef.GetOrCreate(ref owner.materialPilotRef);
         public NodeRef<CPlugBitmap> BannerProfileFid => NodeRef.GetOrCreate(ref owner.bannerProfileFidRef);
         public NodeRef<CPlugLight> FrontLight => NodeRef.GetOrCreate(ref owner.frontLightRef);
@@ -435,7 +432,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugAudioEnvironment> AudioEnvironmentInCar => NodeRef.GetOrCreate(ref owner.audioEnvironmentInCarRef);
         public NodeRef<CMwNod> PhyModelCustom => NodeRef.GetOrCreate(ref owner.phyModelCustomRef);
         public NodeRef<CMwNod> VisModelCustom => NodeRef.GetOrCreate(ref owner.visModelCustomRef);
-        public ActionsReferenceView Actions => new(owner);
         public NodeRef<CMwNod> EntityModelEdition => NodeRef.GetOrCreate(ref owner.entityModelEditionRef);
         public NodeRef<CMwNod> EntityModel => NodeRef.GetOrCreate(ref owner.entityModelRef);
         public NodeRef<CPlugVFXFile> VFX => NodeRef.GetOrCreate(ref owner.vFXRef);
@@ -446,34 +442,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
         public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
-    }
-    public readonly struct NadeoSkinFidsReferenceView
-    {
-        private readonly CGameItemModel owner;
-        internal NadeoSkinFidsReferenceView(CGameItemModel owner) => this.owner = owner;
-        public int Count => owner.nadeoSkinFids?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.nadeoSkinFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CamerasReferenceView
-    {
-        private readonly CGameItemModel owner;
-        internal CamerasReferenceView(CGameItemModel owner) => this.owner = owner;
-        public int Count => owner.cameras?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.cameras ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ForcedSkinsFidsReferenceView
-    {
-        private readonly CGameItemModel owner;
-        internal ForcedSkinsFidsReferenceView(CGameItemModel owner) => this.owner = owner;
-        public int Count => owner.forcedSkinsFids?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.forcedSkinsFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ActionsReferenceView
-    {
-        private readonly CGameItemModel owner;
-        internal ActionsReferenceView(CGameItemModel owner) => this.owner = owner;
-        public int Count => owner.actions?.Count ?? 0;
-        public NodeRef<CGameActionModel> this[int index] => (owner.actions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -487,18 +455,18 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         yield return new("MaterialDetails", NodeRef.GetOrCreate(ref materialDetailsRef));
         if (nadeoSkinFids is not null)
         {
-            for (var i = 0; i < nadeoSkinFids.Count; i++) yield return new("NadeoSkinFids" + "[" + i + "]", nadeoSkinFids.GetReference(i));
+            for (var i = 0; i < nadeoSkinFids.Count; i++) yield return new("NadeoSkinFids" + "[" + i + "]", nadeoSkinFids.Get(i));
         }
         if (cameras is not null)
         {
-            for (var i = 0; i < cameras.Count; i++) yield return new("Cameras" + "[" + i + "]", cameras.GetReference(i));
+            for (var i = 0; i < cameras.Count; i++) yield return new("Cameras" + "[" + i + "]", cameras.Get(i));
         }
         yield return new("DecoratorSolid", NodeRef.GetOrCreate(ref decoratorSolidRef));
         yield return new("StemMaterial", NodeRef.GetOrCreate(ref stemMaterialRef));
         yield return new("StemBumpMaterial", NodeRef.GetOrCreate(ref stemBumpMaterialRef));
         if (forcedSkinsFids is not null)
         {
-            for (var i = 0; i < forcedSkinsFids.Count; i++) yield return new("ForcedSkinsFids" + "[" + i + "]", forcedSkinsFids.GetReference(i));
+            for (var i = 0; i < forcedSkinsFids.Count; i++) yield return new("ForcedSkinsFids" + "[" + i + "]", forcedSkinsFids.Get(i));
         }
         yield return new("MaterialPilot", NodeRef.GetOrCreate(ref materialPilotRef));
         yield return new("BannerProfileFid", NodeRef.GetOrCreate(ref bannerProfileFidRef));
@@ -512,7 +480,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         yield return new("VisModelCustom", NodeRef.GetOrCreate(ref visModelCustomRef));
         if (actions is not null)
         {
-            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.GetReference(i));
+            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
         }
         yield return new("EntityModelEdition", NodeRef.GetOrCreate(ref entityModelEditionRef));
         yield return new("EntityModel", NodeRef.GetOrCreate(ref entityModelRef));

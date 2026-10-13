@@ -343,14 +343,6 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public NodeRef<CPlugCrystal> CustomHitShapeCrystal => NodeRef.GetOrCreate(ref owner.customHitShapeCrystalRef);
         public NodeRef<CPlugCrystal> CustomTriggerShapeCrystal => NodeRef.GetOrCreate(ref owner.customTriggerShapeCrystalRef);
         public NodeRef<CGameActionModel> PickupActionModel => NodeRef.GetOrCreate(ref owner.pickupActionModelRef);
-        public TriggeredActionsReferenceView TriggeredActions => new(owner);
-    }
-    public readonly struct TriggeredActionsReferenceView
-    {
-        private readonly CGameCommonItemEntityModelEdition owner;
-        internal TriggeredActionsReferenceView(CGameCommonItemEntityModelEdition owner) => this.owner = owner;
-        public int Count => owner.triggeredActions?.Count ?? 0;
-        public NodeRef<CGameActionModel> this[int index] => (owner.triggeredActions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -365,7 +357,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         yield return new("PickupActionModel", NodeRef.GetOrCreate(ref pickupActionModelRef));
         if (triggeredActions is not null)
         {
-            for (var i = 0; i < triggeredActions.Count; i++) yield return new("TriggeredActions" + "[" + i + "]", triggeredActions.GetReference(i));
+            for (var i = 0; i < triggeredActions.Count; i++) yield return new("TriggeredActions" + "[" + i + "]", triggeredActions.Get(i));
         }
         yield break;
     }

@@ -127,23 +127,15 @@ public partial class CPlugClouds : CMwNod, IClass
     {
         private readonly CPlugClouds owner;
         internal NodeRefView(CPlugClouds owner) => this.owner = owner;
-        public SolidFidsReferenceView SolidFids => new(owner);
         public NodeRef<CPlugFileImg> ImageColorMin => NodeRef.GetOrCreate(ref owner.imageColorMinRef);
         public NodeRef<CPlugFileImg> ImageColorMax => NodeRef.GetOrCreate(ref owner.imageColorMaxRef);
-    }
-    public readonly struct SolidFidsReferenceView
-    {
-        private readonly CPlugClouds owner;
-        internal SolidFidsReferenceView(CPlugClouds owner) => this.owner = owner;
-        public int Count => owner.solidFids?.Count ?? 0;
-        public NodeRef<CPlugSolid> this[int index] => (owner.solidFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (solidFids is not null)
         {
-            for (var i = 0; i < solidFids.Count; i++) yield return new("SolidFids" + "[" + i + "]", solidFids.GetReference(i));
+            for (var i = 0; i < solidFids.Count; i++) yield return new("SolidFids" + "[" + i + "]", solidFids.Get(i));
         }
         yield return new("ImageColorMin", NodeRef.GetOrCreate(ref imageColorMinRef));
         yield return new("ImageColorMax", NodeRef.GetOrCreate(ref imageColorMaxRef));

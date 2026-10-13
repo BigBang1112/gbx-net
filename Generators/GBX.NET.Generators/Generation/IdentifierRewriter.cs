@@ -89,11 +89,11 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
 
     public override SyntaxNode? VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
     {
-        if (ReferenceName(node.Expression) is { } name && storedRef?.Invoke(name) is { } targetHandle)
-            return node.WithExpression(SyntaxFactory.ParseExpression("(" + targetHandle + "?.CachedTarget)"));
+        if (ReferenceName(node.Expression) is { } name && storedRef?.Invoke(name) is { } nodeHandle)
+            return node.WithExpression(SyntaxFactory.ParseExpression("(" + nodeHandle + "?.CachedNode)"));
         if (storedRef is not null && (node.Expression is ThisExpressionSyntax || node.Expression is IdentifierNameSyntax { Identifier.ValueText: "n" or "this" }) &&
             storedRef(node.Name.Identifier.ValueText) is { } handle)
-            return SyntaxFactory.ParseExpression(handle + "?.CachedTarget");
+            return SyntaxFactory.ParseExpression(handle + "?.CachedNode");
         return base.VisitMemberAccessExpression(node);
     }
 }

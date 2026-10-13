@@ -14,7 +14,9 @@ public partial class GbxReader
         return reference;
     }
 
-    /// <summary>Reads stored reference data, leaving an absent handle null when the file stores a null reference.</summary>
+    /// <summary>
+    /// Reads stored reference data, leaving an absent handle null when the file stores a null reference.
+    /// </summary>
     public void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod
     {
         var index = default(int?);
@@ -34,9 +36,14 @@ public partial class GbxReader
                 logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
 
                 if (existingNode is GbxRefTableNode descriptor)
-                    NodeRef.GetOrCreate(ref reference).SetDescriptor(descriptor);
+                {
+                    NodeRef.GetOrCreate(ref reference).Descriptor = descriptor;
+                }
                 else
-                    NodeRef.GetOrCreate(ref reference).SetReadTarget((CMwNod)existingNode);
+                {
+                    NodeRef.GetOrCreate(ref reference).SetNodeCore((CMwNod)existingNode);
+                }
+
                 return;
             }
 
@@ -44,7 +51,7 @@ public partial class GbxReader
             {
                 logger?.LogDebug("NodeRef #{Index}: {ExternalNode}", index.Value, externalNode);
 
-                NodeRef.GetOrCreate(ref reference).SetDescriptor(externalNode);
+                NodeRef.GetOrCreate(ref reference).Descriptor = externalNode;
                 return;
             }
         }
@@ -83,16 +90,21 @@ public partial class GbxReader
             NodeDict[index.Value] = node;
         }
 
-        NodeRef.GetOrCreate(ref reference).SetReadTarget((CMwNod)ReadNode(node));
+        NodeRef.GetOrCreate(ref reference).SetNodeCore((CMwNod)ReadNode(node));
     }
 
     public NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod
     {
         var count = length ?? ReadInt32();
         EnsureValidLength(count);
+
         var list = new NodeRefList<T>();
-        for (var i = 0; i < count; i++) list.AddReference(ReadNodeRef<T>(null));
-        list.IsFixedSize = length.HasValue;
+
+        for (var i = 0; i < count; i++)
+        {
+            list.Add(ReadNodeRef<T>(null));
+        }
+
         return list;
     }
 
@@ -102,16 +114,20 @@ public partial class GbxReader
         return ReadListNodeRef<T>(length);
     }
 
-    public NodeRefList<T>[] ReadJaggedArrayNodeRef<T>(bool fixedSize, int? innerLength = null, int? outerLength = null) where T : CMwNod
+    public NodeRefList<T>[] ReadJaggedListNodeRef<T>(
+        int? innerLength = null,
+        int? outerLength = null) where T : CMwNod
     {
         var count = outerLength ?? ReadInt32();
         EnsureValidLength(count);
+
         var result = new NodeRefList<T>[count];
+
         for (var i = 0; i < count; i++)
         {
             result[i] = ReadListNodeRef<T>(innerLength);
-            if (fixedSize) result[i].IsFixedSize = true;
         }
+
         return result;
     }
 }

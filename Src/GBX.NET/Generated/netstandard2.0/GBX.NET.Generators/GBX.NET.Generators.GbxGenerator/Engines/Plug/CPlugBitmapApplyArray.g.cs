@@ -43,27 +43,12 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
         get => bitmapAddresses;
         set => bitmapAddresses = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugBitmapApplyArray owner;
-        internal NodeRefView(CPlugBitmapApplyArray owner) => this.owner = owner;
-        public BitmapAddressesReferenceView BitmapAddresses => new(owner);
-    }
-    public readonly struct BitmapAddressesReferenceView
-    {
-        private readonly CPlugBitmapApplyArray owner;
-        internal BitmapAddressesReferenceView(CPlugBitmapApplyArray owner) => this.owner = owner;
-        public int Count => owner.bitmapAddresses?.Count ?? 0;
-        public NodeRef<CPlugBitmapAddress> this[int index] => (owner.bitmapAddresses ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (bitmapAddresses is not null)
         {
-            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.GetReference(i));
+            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.Get(i));
         }
         yield break;
     }

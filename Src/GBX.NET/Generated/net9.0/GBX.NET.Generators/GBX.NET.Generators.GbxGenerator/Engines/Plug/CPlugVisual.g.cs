@@ -113,14 +113,6 @@ public partial class CPlugVisual : CPlug, IClass
         private readonly CPlugVisual owner;
         internal NodeRefView(CPlugVisual owner) => this.owner = owner;
         public NodeRef<CMwNod> FuncVisual => NodeRef.GetOrCreate(ref owner.funcVisualRef);
-        public VertexStreamsReferenceView VertexStreams => new(owner);
-    }
-    public readonly struct VertexStreamsReferenceView
-    {
-        private readonly CPlugVisual owner;
-        internal VertexStreamsReferenceView(CPlugVisual owner) => this.owner = owner;
-        public int Count => owner.vertexStreams?.Count ?? 0;
-        public NodeRef<CPlugVertexStream> this[int index] => (owner.vertexStreams ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -128,7 +120,7 @@ public partial class CPlugVisual : CPlug, IClass
         yield return new("FuncVisual", NodeRef.GetOrCreate(ref funcVisualRef));
         if (vertexStreams is not null)
         {
-            for (var i = 0; i < vertexStreams.Count; i++) yield return new("VertexStreams" + "[" + i + "]", vertexStreams.GetReference(i));
+            for (var i = 0; i < vertexStreams.Count; i++) yield return new("VertexStreams" + "[" + i + "]", vertexStreams.Get(i));
         }
         yield break;
     }

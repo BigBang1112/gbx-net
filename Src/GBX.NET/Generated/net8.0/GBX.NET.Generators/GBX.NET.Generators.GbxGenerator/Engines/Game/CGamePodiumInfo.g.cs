@@ -43,27 +43,12 @@ public partial class CGamePodiumInfo : CMwNod, IClass
         get => mediaClipFids;
         set => mediaClipFids = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CGamePodiumInfo owner;
-        internal NodeRefView(CGamePodiumInfo owner) => this.owner = owner;
-        public MediaClipFidsReferenceView MediaClipFids => new(owner);
-    }
-    public readonly struct MediaClipFidsReferenceView
-    {
-        private readonly CGamePodiumInfo owner;
-        internal MediaClipFidsReferenceView(CGamePodiumInfo owner) => this.owner = owner;
-        public int Count => owner.mediaClipFids?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.mediaClipFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (mediaClipFids is not null)
         {
-            for (var i = 0; i < mediaClipFids.Count; i++) yield return new("MediaClipFids" + "[" + i + "]", mediaClipFids.GetReference(i));
+            for (var i = 0; i < mediaClipFids.Count; i++) yield return new("MediaClipFids" + "[" + i + "]", mediaClipFids.Get(i));
         }
         yield break;
     }

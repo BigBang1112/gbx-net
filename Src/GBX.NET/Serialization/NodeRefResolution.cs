@@ -6,9 +6,13 @@ namespace GBX.NET.Serialization;
 internal sealed class NodeRefResolution
 {
     private static readonly AsyncLocal<HashSet<GbxRefTableNode>?> resolving = new();
+#if NET9_0_OR_GREATER
+    private readonly Lock sync = new();
+#else
     private readonly object sync = new();
+#endif
     private Task<CMwNod?>? task;
-    private CMwNod? target;
+    private CMwNod? node;
     private ExceptionDispatchInfo? error;
     private NodeRefState state;
     private int generation;
@@ -16,7 +20,7 @@ internal sealed class NodeRefResolution
     internal int Generation
     {
         get
-        { 
+        {
             lock (sync)
             {
                 return generation;
@@ -24,29 +28,32 @@ internal sealed class NodeRefResolution
         }
     }
 
-    internal CMwNod? CachedTarget
+    internal CMwNod? CachedNode
     {
         get
         {
             lock (sync)
             {
-                return target;
+                return node;
             }
         }
     }
 
     internal NodeRefResolutionSnapshot Snapshot()
     {
-        lock (sync) return new(generation, state, target, error?.SourceException);
+        lock (sync)
+        {
+            return new(generation, state, node, error?.SourceException);
+        }
     }
 
-    internal void Seed(CMwNod target)
+    internal void Seed(CMwNod node)
     {
         lock (sync)
         {
             ResetCore();
-            task = Task.FromResult<CMwNod?>(target);
-            this.target = target;
+            task = Task.FromResult<CMwNod?>(node);
+            this.node = node;
             state = NodeRefState.Resolved;
         }
     }
@@ -61,7 +68,7 @@ internal sealed class NodeRefResolution
 
             try
             {
-                Complete(completion, descriptor.ResolveTarget());
+                Complete(completion, descriptor.ResolveNode());
             }
             catch (Exception ex)
             {
@@ -91,7 +98,7 @@ internal sealed class NodeRefResolution
         }
 
         var canceled = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-        
+
         using (cancellationToken.Register(() => canceled.TrySetResult(true)))
         {
             if (await Task.WhenAny(pending, canceled.Task).ConfigureAwait(false) != pending)
@@ -107,7 +114,7 @@ internal sealed class NodeRefResolution
     {
         if (resolving.Value?.Contains(descriptor) == true)
         {
-            throw new InvalidOperationException("An external reference was accessed while its target was still being parsed.");
+            throw new InvalidOperationException("An external reference was accessed while its node was still being parsed.");
         }
 
         lock (sync)
@@ -118,7 +125,7 @@ internal sealed class NodeRefResolution
             }
 
             var completion = new TaskCompletionSource<CMwNod?>(TaskCreationOptions.RunContinuationsAsynchronously);
-            
+
             task = completion.Task;
             state = NodeRefState.Resolving;
 
@@ -130,6 +137,7 @@ internal sealed class NodeRefResolution
     {
         var previous = resolving.Value;
         resolving.Value = previous is null ? [descriptor] : new HashSet<GbxRefTableNode>(previous) { descriptor };
+
         return previous;
     }
 
@@ -139,7 +147,7 @@ internal sealed class NodeRefResolution
 
         try
         {
-            Complete(completion, await descriptor.ResolveTargetAsync().ConfigureAwait(false));
+            Complete(completion, await descriptor.ResolveNodeAsync().ConfigureAwait(false));
         }
         catch (Exception ex)
         {
@@ -155,7 +163,7 @@ internal sealed class NodeRefResolution
     {
         lock (sync)
         {
-            target = node;
+            this.node = node;
             state = node is null ? NodeRefState.Missing : NodeRefState.Resolved;
             completion.SetResult(node);
         }
@@ -173,14 +181,21 @@ internal sealed class NodeRefResolution
 
     internal void Reset()
     {
-        lock (sync) ResetCore();
+        lock (sync)
+        {
+            ResetCore();
+        }
     }
 
     internal void Update<T>(ref T field, T value)
     {
         lock (sync)
         {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return;
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return;
+            }
+
             // Keep metadata changes atomic with cache invalidation and the start of a load.
             ResetCore();
             field = value;
@@ -195,7 +210,7 @@ internal sealed class NodeRefResolution
         }
 
         task = null;
-        target = null;
+        node = null;
         generation++;
         error = null;
         state = NodeRefState.Unresolved;

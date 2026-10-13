@@ -59,39 +59,16 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         get => vehicleEmitters;
         set => vehicleEmitters = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugVehicleVisModelShared owner;
-        internal NodeRefView(CPlugVehicleVisModelShared owner) => this.owner = owner;
-        public VehicleMaterialGroupsReferenceView VehicleMaterialGroups => new(owner);
-        public VehicleEmittersReferenceView VehicleEmitters => new(owner);
-    }
-    public readonly struct VehicleMaterialGroupsReferenceView
-    {
-        private readonly CPlugVehicleVisModelShared owner;
-        internal VehicleMaterialGroupsReferenceView(CPlugVehicleVisModelShared owner) => this.owner = owner;
-        public int Count => owner.vehicleMaterialGroups?.Count ?? 0;
-        public NodeRef<CPlugVehicleMaterialGroup> this[int index] => (owner.vehicleMaterialGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct VehicleEmittersReferenceView
-    {
-        private readonly CPlugVehicleVisModelShared owner;
-        internal VehicleEmittersReferenceView(CPlugVehicleVisModelShared owner) => this.owner = owner;
-        public int Count => owner.vehicleEmitters?.Count ?? 0;
-        public NodeRef<CPlugVehicleVisEmitterModel> this[int index] => (owner.vehicleEmitters ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (vehicleMaterialGroups is not null)
         {
-            for (var i = 0; i < vehicleMaterialGroups.Count; i++) yield return new("VehicleMaterialGroups" + "[" + i + "]", vehicleMaterialGroups.GetReference(i));
+            for (var i = 0; i < vehicleMaterialGroups.Count; i++) yield return new("VehicleMaterialGroups" + "[" + i + "]", vehicleMaterialGroups.Get(i));
         }
         if (vehicleEmitters is not null)
         {
-            for (var i = 0; i < vehicleEmitters.Count; i++) yield return new("VehicleEmitters" + "[" + i + "]", vehicleEmitters.GetReference(i));
+            for (var i = 0; i < vehicleEmitters.Count; i++) yield return new("VehicleEmitters" + "[" + i + "]", vehicleEmitters.Get(i));
         }
         yield break;
     }
@@ -544,7 +521,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             internal NodeRefView(Chunk090E801E owner) => this.owner = owner;
             public NodeRef<CPlugMaterial> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CPlugMaterial> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public U03ReferenceView U03 => new(owner);
             public NodeRef<CPlugMaterial> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public NodeRef<CPlugMaterial> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugMaterial> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
@@ -560,13 +536,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugLight> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
             public NodeRef<CPlugSolid2Model> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
         }
-        public readonly struct U03ReferenceView
-        {
-            private readonly Chunk090E801E owner;
-            internal U03ReferenceView(Chunk090E801E owner) => this.owner = owner;
-            public int Count => owner.U03?.Count ?? 0;
-            public NodeRef<CPlugMaterial> this[int index] => (owner.U03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -574,7 +543,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
             }
             yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
@@ -823,7 +792,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugParticleEmitterModel> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CPlugParticleEmitterModel> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public NodeRef<CPlugParticleEmitterModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public U06ReferenceView U06 => new(owner);
             public NodeRef<CPlugParticleEmitterModel> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
             public NodeRef<CPlugParticleEmitterModel> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
             public NodeRef<CPlugVisEntFxModel> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
@@ -840,13 +808,6 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             public NodeRef<CPlugParticleEmitterModel> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
             public NodeRef<CPlugParticleEmitterModel> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
         }
-        public readonly struct U06ReferenceView
-        {
-            private readonly Chunk090E801F owner;
-            internal U06ReferenceView(Chunk090E801F owner) => this.owner = owner;
-            public int Count => owner.U06?.Count ?? 0;
-            public NodeRef<CPlugVehicleVisEmitterModel> this[int index] => (owner.U06 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
@@ -857,7 +818,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             if (U06 is not null)
             {
-                for (var i = 0; i < U06.Count; i++) yield return new("U06" + "[" + i + "]", U06.GetReference(i));
+                for (var i = 0; i < U06.Count; i++) yield return new("U06" + "[" + i + "]", U06.Get(i));
             }
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
             yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));

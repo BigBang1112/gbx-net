@@ -1,4 +1,4 @@
-﻿#if NET8_0_OR_GREATER
+#if NET8_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
 #endif
 
@@ -10,8 +10,14 @@ public sealed class GbxRefTable : IDeepCloneable
     private IDictionary<string, Func<Gbx>> externalNodes = new Dictionary<string, Func<Gbx>>();
     private IDictionary<string, Func<CancellationToken, Task<Gbx>>> externalNodesAsync = new Dictionary<string, Func<CancellationToken, Task<Gbx>>>();
 
-    /// <summary>Settings used to parse external files and propagated to their reference tables.</summary>
-    public GbxReadSettings ReadSettings { get => readSettings; init => readSettings = value; }
+    /// <summary>
+    /// Settings used to parse external files and propagated to their reference tables.
+    /// </summary>
+    public GbxReadSettings ReadSettings
+    {
+        get => readSettings;
+        init => readSettings = value;
+    }
 
     internal NodeRefLoadContext? LoadContext { get; set; }
     internal bool InferAncestorLevelOnWrite { get; set; }
@@ -28,32 +34,50 @@ public sealed class GbxRefTable : IDeepCloneable
     /// </summary>
     public IReadOnlyCollection<UnlinkedGbxRefTableResource> Resources { get; internal set; } = [];
 
-    /// <summary>Synchronous file resolvers, keyed by descriptor path, used when no file-system path is configured.</summary>
+    /// <summary>
+    /// Synchronous file resolvers, keyed by descriptor path, used when no file-system path is configured.
+    /// </summary>
     public IDictionary<string, Func<Gbx>> ExternalNodes
     {
         get => externalNodes;
         set => externalNodes = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    /// <summary>Asynchronous file resolvers. Async resolution prefers these and falls back to <see cref="ExternalNodes"/>.</summary>
-    /// <remarks>Canceling one waiter does not cancel a shared load. The resolver receives <see cref="CancellationToken.None"/>.</remarks>
+    /// <summary>
+    /// Asynchronous file resolvers. Async resolution prefers these and falls back to <see cref="ExternalNodes"/>.
+    /// </summary>
+    /// <remarks>
+    /// Canceling one waiter does not cancel a shared load. The resolver receives <see cref="CancellationToken.None"/>.
+    /// </remarks>
     public IDictionary<string, Func<CancellationToken, Task<Gbx>>> ExternalNodesAsync
     {
         get => externalNodesAsync;
         set => externalNodesAsync = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    /// <summary>Creates a file descriptor owned by this table without resolving it or adding it to the header preview.</summary>
+    /// <summary>
+    /// Creates a file descriptor owned by this table without resolving it or adding it to the header preview.
+    /// </summary>
     public GbxRefTableFile CreateFile(string filePath, int flags = 0, bool useFile = true)
     {
-        if ((flags & 4) != 0) throw new ArgumentException("A file descriptor cannot have the resource flag.", nameof(flags));
+        if ((flags & 4) != 0)
+        {
+            throw new ArgumentException("A file descriptor cannot have the resource flag.", nameof(flags));
+        }
+
         return new(this, flags, useFile, filePath);
     }
 
-    /// <summary>Creates a resource descriptor owned by this table without resolving it or adding it to the header preview.</summary>
+    /// <summary>
+    /// Creates a resource descriptor owned by this table without resolving it or adding it to the header preview.
+    /// </summary>
     public GbxRefTableResource CreateResource(int resourceIndex, int flags = 4, bool useFile = true)
     {
-        if ((flags & 4) == 0) throw new ArgumentException("A resource descriptor must have the resource flag.", nameof(flags));
+        if ((flags & 4) == 0)
+        {
+            throw new ArgumentException("A resource descriptor must have the resource flag.", nameof(flags));
+        }
+
         return new(this, flags, useFile, resourceIndex);
     }
 
@@ -132,7 +156,7 @@ public sealed class GbxRefTable : IDeepCloneable
     private CMwNod LoadedNode(Gbx gbx)
     {
         var node = gbx.Node ?? throw new NotSupportedException($"Cannot resolve Gbx class 0x{gbx.Header.ClassId:X8}.");
-        
+
         if (gbx.RefTable is not null)
         {
             gbx.RefTable.readSettings = ReadSettings;
@@ -188,20 +212,36 @@ public sealed class GbxRefTable : IDeepCloneable
             : Path.Combine(FileSystemPath, ancestor, filePath);
     }
 
-    /// <summary>Combines this table's location and ancestor level with a descriptor's file path.</summary>
+    /// <summary>
+    /// Combines this table's location and ancestor level with a descriptor's file path.
+    /// </summary>
     public string GetFilePath(GbxRefTableFile file) => GetFilePath((file ?? throw new ArgumentNullException(nameof(file))).FilePath);
-    /// <summary>Combines this table's location and ancestor level with a header-preview file path.</summary>
+
+    /// <summary>
+    /// Combines this table's location and ancestor level with a header-preview file path.
+    /// </summary>
     public string GetFilePath(UnlinkedGbxRefTableFile file) => GetFilePath((file ?? throw new ArgumentNullException(nameof(file))).FilePath);
 
-    /// <summary>Gets the absolute path of a file descriptor relative to this table.</summary>
+    /// <summary>
+    /// Gets the absolute path of a file descriptor relative to this table.
+    /// </summary>
     public string GetFullFilePath(GbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
-    /// <summary>Gets the absolute path of a header-preview file relative to this table.</summary>
+
+    /// <summary>
+    /// Gets the absolute path of a header-preview file relative to this table.
+    /// </summary>
     public string GetFullFilePath(UnlinkedGbxRefTableFile file) => Path.GetFullPath(GetFilePath(file));
 
-    /// <summary>Copies a file or resource descriptor into this table. File paths are rebased without modifying the source.</summary>
+    /// <summary>
+    /// Copies a file or resource descriptor into this table. File paths are rebased without modifying the source.
+    /// </summary>
     public GbxRefTableNode Import(GbxRefTableNode descriptor)
     {
-        if (descriptor is null) throw new ArgumentNullException(nameof(descriptor));
+        if (descriptor is null)
+        {
+            throw new ArgumentNullException(nameof(descriptor));
+        }
+
         return descriptor switch
         {
             GbxRefTableFile file => Import(file),
@@ -210,7 +250,9 @@ public sealed class GbxRefTable : IDeepCloneable
         };
     }
 
-    /// <summary>Copies a descriptor into this table, rebasing its path without modifying the source.</summary>
+    /// <summary>
+    /// Copies a descriptor into this table, rebasing its path without modifying the source.
+    /// </summary>
     public GbxRefTableFile Import(GbxRefTableFile file)
     {
         if (file is null)
@@ -229,6 +271,7 @@ public sealed class GbxRefTable : IDeepCloneable
         }
 
         var path = file.FilePath;
+
         if (!ReferenceEquals(file.RefTable, this))
         {
             if (file.RefTable.FileSystemPath is not null && FileSystemPath is not null)
@@ -251,7 +294,9 @@ public sealed class GbxRefTable : IDeepCloneable
         return new(this, file.Flags, file.UseFile, path);
     }
 
-    /// <summary>Copies a resource descriptor into this table without resolving it or modifying the source.</summary>
+    /// <summary>
+    /// Copies a resource descriptor into this table without resolving it or modifying the source.
+    /// </summary>
     public GbxRefTableResource Import(GbxRefTableResource resource)
     {
         if (resource is null)
@@ -259,11 +304,11 @@ public sealed class GbxRefTable : IDeepCloneable
             throw new ArgumentNullException(nameof(resource));
         }
 
-        if ((resource.Flags & 4) == 0) 
+        if ((resource.Flags & 4) == 0)
         {
             throw new InvalidOperationException("A resource descriptor must have the resource flag.");
         }
-        
+
         return new(this, resource.Flags, resource.UseFile, resource.ResourceIndex);
     }
 

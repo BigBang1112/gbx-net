@@ -633,17 +633,9 @@ public partial class CPlugBitmap : CPlug, IClass
         public NodeRef<CPlugBitmapDecals> Decals => NodeRef.GetOrCreate(ref owner.decalsRef);
         public NodeRef<CPlugFileImg> GrassIdImage => NodeRef.GetOrCreate(ref owner.grassIdImageRef);
         public NodeRef<CPlugImageArray> ImageArray => NodeRef.GetOrCreate(ref owner.imageArrayRef);
-        public ImageArrayFidsReferenceView ImageArrayFids => new(owner);
         public NodeRef<CPlugBitmapArray> BitmapArray => NodeRef.GetOrCreate(ref owner.bitmapArrayRef);
         public NodeRef<CMwNod> GrassMatterArray => NodeRef.GetOrCreate(ref owner.grassMatterArrayRef);
         public NodeRef<CPlugFileImg> LegacyImage => NodeRef.GetOrCreate(ref owner.legacyImageRef);
-    }
-    public readonly struct ImageArrayFidsReferenceView
-    {
-        private readonly CPlugBitmap owner;
-        internal ImageArrayFidsReferenceView(CPlugBitmap owner) => this.owner = owner;
-        public int Count => owner.imageArrayFids?.Count ?? 0;
-        public NodeRef<CPlugFileImg> this[int index] => (owner.imageArrayFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -657,7 +649,7 @@ public partial class CPlugBitmap : CPlug, IClass
         yield return new("ImageArray", NodeRef.GetOrCreate(ref imageArrayRef));
         if (imageArrayFids is not null)
         {
-            for (var i = 0; i < imageArrayFids.Count; i++) yield return new("ImageArrayFids" + "[" + i + "]", imageArrayFids.GetReference(i));
+            for (var i = 0; i < imageArrayFids.Count; i++) yield return new("ImageArrayFids" + "[" + i + "]", imageArrayFids.Get(i));
         }
         yield return new("BitmapArray", NodeRef.GetOrCreate(ref bitmapArrayRef));
         yield return new("GrassMatterArray", NodeRef.GetOrCreate(ref grassMatterArrayRef));

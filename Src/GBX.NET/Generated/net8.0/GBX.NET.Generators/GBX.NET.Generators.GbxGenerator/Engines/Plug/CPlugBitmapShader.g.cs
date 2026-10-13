@@ -70,15 +70,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
         private readonly CPlugBitmapShader owner;
         internal NodeRefView(CPlugBitmapShader owner) => this.owner = owner;
         public NodeRef<CPlugShader> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
-        public LegacyBitmapsReferenceView LegacyBitmaps => new(owner);
         public NodeRef<CPlugBitmap> BitmapToSwap => NodeRef.GetOrCreate(ref owner.bitmapToSwapRef);
-    }
-    public readonly struct LegacyBitmapsReferenceView
-    {
-        private readonly CPlugBitmapShader owner;
-        internal LegacyBitmapsReferenceView(CPlugBitmapShader owner) => this.owner = owner;
-        public int Count => owner.legacyBitmaps?.Count ?? 0;
-        public NodeRef<CPlugBitmap> this[int index] => (owner.legacyBitmaps ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -86,7 +78,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
         yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
         if (legacyBitmaps is not null)
         {
-            for (var i = 0; i < legacyBitmaps.Count; i++) yield return new("LegacyBitmaps" + "[" + i + "]", legacyBitmaps.GetReference(i));
+            for (var i = 0; i < legacyBitmaps.Count; i++) yield return new("LegacyBitmaps" + "[" + i + "]", legacyBitmaps.Get(i));
         }
         yield return new("BitmapToSwap", NodeRef.GetOrCreate(ref bitmapToSwapRef));
         yield break;

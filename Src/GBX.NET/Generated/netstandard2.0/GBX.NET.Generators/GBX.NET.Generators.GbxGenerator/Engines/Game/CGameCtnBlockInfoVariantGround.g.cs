@@ -59,41 +59,12 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         get => this.autoTerrainPlaceType;
         set => this.autoTerrainPlaceType = value;
     }
-
-    public new NodeRefView References => new(this);
-    public new readonly struct NodeRefView
-    {
-        private readonly CGameCtnBlockInfoVariantGround owner;
-        internal NodeRefView(CGameCtnBlockInfoVariantGround owner) => this.owner = owner;
-        public AutoTerrainsReferenceView AutoTerrains => new(owner);
-        public CGameCtnBlockInfoVariant.BlockUnitModelsReferenceView BlockUnitModels => ((CGameCtnBlockInfoVariant)owner).References.BlockUnitModels;
-        public CGameCtnBlockInfoVariant.MobilsReferenceView Mobils => ((CGameCtnBlockInfoVariant)owner).References.Mobils;
-        public NodeRef<CPlugSolid> HelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.HelperSolidFid;
-        public NodeRef<CPlugSolid> FacultativeHelperSolidFid => ((CGameCtnBlockInfoVariant)owner).References.FacultativeHelperSolidFid;
-        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.ScreenInteractionTriggerSolid;
-        public NodeRef<CMwNod> WaypointTriggerSolid => ((CGameCtnBlockInfoVariant)owner).References.WaypointTriggerSolid;
-        public NodeRef<CGameGateModel> Gate => ((CGameCtnBlockInfoVariant)owner).References.Gate;
-        public NodeRef<CGameTeleporterModel> Teleporter => ((CGameCtnBlockInfoVariant)owner).References.Teleporter;
-        public NodeRef<CGameTurbineModel> Turbine => ((CGameCtnBlockInfoVariant)owner).References.Turbine;
-        public NodeRef<CPlugFlockModel> FlockModel => ((CGameCtnBlockInfoVariant)owner).References.FlockModel;
-        public NodeRef<CGameSpawnModel> SpawnModel => ((CGameCtnBlockInfoVariant)owner).References.SpawnModel;
-        public CGameCtnBlockInfoVariant.EntitySpawnersReferenceView EntitySpawners => ((CGameCtnBlockInfoVariant)owner).References.EntitySpawners;
-        public NodeRef<CPlugProbe> Probe => ((CGameCtnBlockInfoVariant)owner).References.Probe;
-        public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => ((CGameCtnBlockInfoVariant)owner).References.CompoundModel;
-    }
-    public readonly struct AutoTerrainsReferenceView
-    {
-        private readonly CGameCtnBlockInfoVariantGround owner;
-        internal AutoTerrainsReferenceView(CGameCtnBlockInfoVariantGround owner) => this.owner = owner;
-        public int Count => owner.autoTerrains?.Count ?? 0;
-        public NodeRef<CGameCtnAutoTerrain> this[int index] => (owner.autoTerrains ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (autoTerrains is not null)
         {
-            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.GetReference(i));
+            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.Get(i));
         }
         yield break;
     }

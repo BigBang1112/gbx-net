@@ -537,22 +537,14 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     {
         private readonly CPlugBeamEmitterSubModel owner;
         internal NodeRefView(CPlugBeamEmitterSubModel owner) => this.owner = owner;
-        public AdditionalMaterialsReferenceView AdditionalMaterials => new(owner);
         public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
-    }
-    public readonly struct AdditionalMaterialsReferenceView
-    {
-        private readonly CPlugBeamEmitterSubModel owner;
-        internal AdditionalMaterialsReferenceView(CPlugBeamEmitterSubModel owner) => this.owner = owner;
-        public int Count => owner.additionalMaterials?.Count ?? 0;
-        public NodeRef<CPlugMaterial> this[int index] => (owner.additionalMaterials ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (additionalMaterials is not null)
         {
-            for (var i = 0; i < additionalMaterials.Count; i++) yield return new("AdditionalMaterials" + "[" + i + "]", additionalMaterials.GetReference(i));
+            for (var i = 0; i < additionalMaterials.Count; i++) yield return new("AdditionalMaterials" + "[" + i + "]", additionalMaterials.Get(i));
         }
         yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
         yield break;

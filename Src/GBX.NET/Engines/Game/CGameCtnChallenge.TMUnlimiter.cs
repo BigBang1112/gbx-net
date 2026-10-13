@@ -10,11 +10,11 @@ public partial class CGameCtnChallenge
     {
         base.Read(rw);
 
-        if (tempOldTMUnlimiterClipData is not null && clipGroupInGameRef?.CachedTarget is not null)
+        if (tempOldTMUnlimiterClipData is not null && clipGroupInGameRef?.CachedNode is not null)
         {
             foreach (var clipData in tempOldTMUnlimiterClipData)
             {
-                clipGroupInGameRef?.CachedTarget.Clips[clipData.Key].Clip!.TMUnlimiterData = clipData.Value;
+                clipGroupInGameRef?.CachedNode.Clips[clipData.Key].Clip!.TMUnlimiterData = clipData.Value;
             }
 
             tempOldTMUnlimiterClipData = null;
@@ -154,9 +154,9 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            w.Write(n.clipGroupInGameRef?.CachedTarget?.Clips.Count(x => x.Clip?.TMUnlimiterData is not null) ?? 0);
+            w.Write(n.clipGroupInGameRef?.CachedNode?.Clips.Count(x => x.Clip?.TMUnlimiterData is not null) ?? 0);
 
-            foreach (var (clip, i) in n.clipGroupInGameRef?.CachedTarget?.Clips
+            foreach (var (clip, i) in n.clipGroupInGameRef?.CachedNode?.Clips
                 .Select((clipTrigger, i) => (clip: clipTrigger.Clip, i))
                 .Where(x => x.clip?.TMUnlimiterData is not null) ?? [])
             {
@@ -524,7 +524,7 @@ public partial class CGameCtnChallenge
         {
             n.TMUnlimiterData = new()
             {
-                FakeBlocks = n.blocks?.GetEmbeddedTargets().ToList()!
+                FakeBlocks = n.blocks?.GetEmbeddedNodes().ToList()!
             };
 
             var blockCount = r.ReadInt32();
@@ -617,14 +617,14 @@ public partial class CGameCtnChallenge
                 {
                     case 0: // Parameter Set
                         var parameterSet = parameterSets[r.ReadInt32()];
-                        n.clipGroupInGameRef?.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef?.CachedNode?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = parameterSet
                         };
                         break;
                     case 1: // Legacy Script
                         var legacyScript = legacyScripts[r.ReadInt32()];
-                        n.clipGroupInGameRef?.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef?.CachedNode?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = legacyScript
                         };
@@ -666,7 +666,7 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            var clips = n.clipGroupInGameRef?.CachedTarget?.Clips.Select(x => x.Clip).ToList() ?? [];
+            var clips = n.clipGroupInGameRef?.CachedNode?.Clips.Select(x => x.Clip).ToList() ?? [];
 
             var legacyScripts = clips
                 .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
@@ -963,7 +963,7 @@ public partial class CGameCtnChallenge
             List<TMUnlimiter.TriggerGroup> allTriggerGroups,
             List<TMUnlimiter.BlockGroup> allBlockGroups)
         {
-            tmUnlimiter.FakeBlocks = n.blocks?.GetEmbeddedTargets().ToList()!;
+            tmUnlimiter.FakeBlocks = n.blocks?.GetEmbeddedNodes().ToList()!;
 
             var blockCount = r.ReadInt32();
             n.blocks = [];

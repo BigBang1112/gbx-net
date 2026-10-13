@@ -211,53 +211,29 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     {
         private readonly CGameCtnMacroBlockInfo owner;
         internal NodeRefView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
-        public LegacyAnchoredObjectsReferenceView LegacyAnchoredObjects => new(owner);
-        public LegacyMacroBlocksReferenceView LegacyMacroBlocks => new(owner);
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => NodeRef.GetOrCreate(ref owner.clipGroupInGameRef);
         public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
-        public AutoTerrainsReferenceView AutoTerrains => new(owner);
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
         public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
-    }
-    public readonly struct LegacyAnchoredObjectsReferenceView
-    {
-        private readonly CGameCtnMacroBlockInfo owner;
-        internal LegacyAnchoredObjectsReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
-        public int Count => owner.legacyAnchoredObjects?.Count ?? 0;
-        public NodeRef<CGameCtnAnchoredObject> this[int index] => (owner.legacyAnchoredObjects ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyMacroBlocksReferenceView
-    {
-        private readonly CGameCtnMacroBlockInfo owner;
-        internal LegacyMacroBlocksReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
-        public int Count => owner.legacyMacroBlocks?.Count ?? 0;
-        public NodeRef<CGameCtnMacroBlockInfo> this[int index] => (owner.legacyMacroBlocks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct AutoTerrainsReferenceView
-    {
-        private readonly CGameCtnMacroBlockInfo owner;
-        internal AutoTerrainsReferenceView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
-        public int Count => owner.autoTerrains?.Count ?? 0;
-        public NodeRef<CGameCtnAutoTerrain> this[int index] => (owner.autoTerrains ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (legacyAnchoredObjects is not null)
         {
-            for (var i = 0; i < legacyAnchoredObjects.Count; i++) yield return new("LegacyAnchoredObjects" + "[" + i + "]", legacyAnchoredObjects.GetReference(i));
+            for (var i = 0; i < legacyAnchoredObjects.Count; i++) yield return new("LegacyAnchoredObjects" + "[" + i + "]", legacyAnchoredObjects.Get(i));
         }
         if (legacyMacroBlocks is not null)
         {
-            for (var i = 0; i < legacyMacroBlocks.Count; i++) yield return new("LegacyMacroBlocks" + "[" + i + "]", legacyMacroBlocks.GetReference(i));
+            for (var i = 0; i < legacyMacroBlocks.Count; i++) yield return new("LegacyMacroBlocks" + "[" + i + "]", legacyMacroBlocks.Get(i));
         }
         yield return new("ClipGroupInGame", NodeRef.GetOrCreate(ref clipGroupInGameRef));
         yield return new("ClipGroupEndRace", NodeRef.GetOrCreate(ref clipGroupEndRaceRef));
         if (autoTerrains is not null)
         {
-            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.GetReference(i));
+            for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.Get(i));
         }
         yield break;
     }
@@ -510,27 +486,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override uint Id => 0x0310D009;
 
         public NodeRefList<CMwNod>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0310D009 owner;
-            internal NodeRefView(Chunk0310D009 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0310D009 owner;
-            internal U01ReferenceView(Chunk0310D009 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -612,75 +573,28 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public int U07;
 
         public NodeRefList<CMwNod>? U08;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0310D00C owner;
-            internal NodeRefView(Chunk0310D00C owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-            public U02ReferenceView U02 => new(owner);
-            public U03ReferenceView U03 => new(owner);
-            public U04ReferenceView U04 => new(owner);
-            public U08ReferenceView U08 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0310D00C owner;
-            internal U01ReferenceView(Chunk0310D00C owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U02ReferenceView
-        {
-            private readonly Chunk0310D00C owner;
-            internal U02ReferenceView(Chunk0310D00C owner) => this.owner = owner;
-            public int Count => owner.U02?.Count ?? 0;
-            public NodeRef<CPlugSpline3D> this[int index] => (owner.U02 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U03ReferenceView
-        {
-            private readonly Chunk0310D00C owner;
-            internal U03ReferenceView(Chunk0310D00C owner) => this.owner = owner;
-            public int Count => owner.U03?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U04ReferenceView
-        {
-            private readonly Chunk0310D00C owner;
-            internal U04ReferenceView(Chunk0310D00C owner) => this.owner = owner;
-            public int Count => owner.U04?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U04 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U08ReferenceView
-        {
-            private readonly Chunk0310D00C owner;
-            internal U08ReferenceView(Chunk0310D00C owner) => this.owner = owner;
-            public int Count => owner.U08?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.U08 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             if (U02 is not null)
             {
-                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
             }
             if (U03 is not null)
             {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
             }
             if (U04 is not null)
             {
-                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.GetReference(i));
+                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.Get(i));
             }
             if (U08 is not null)
             {
-                for (var i = 0; i < U08.Count; i++) yield return new("U08" + "[" + i + "]", U08.GetReference(i));
+                for (var i = 0; i < U08.Count; i++) yield return new("U08" + "[" + i + "]", U08.Get(i));
             }
             yield break;
         }

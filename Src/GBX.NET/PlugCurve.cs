@@ -18,7 +18,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     private Vec2[]? values;
 
     /// <summary>Gets or sets the original legacy curve node.</summary>
-    public CFuncKeysReal? Curve { get => curveRef.Resolve(); set => curveRef.SetEmbedded(value); }
+    public CFuncKeysReal? Curve { get => curveRef.Resolve(); set => curveRef.Node = value; }
     public NodeRefView References => new(this);
 
     public readonly struct NodeRefView
@@ -48,7 +48,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
         {
             if (rw.Writer is not null && curveRef.Kind == NodeRefKind.None && values is { Length: > 0 })
             {
-                curveRef.SetEmbedded(useSimpleNode ? CreateSimpleNode() : CreateFunctionNode());
+                curveRef.Node = useSimpleNode ? CreateSimpleNode() : CreateFunctionNode();
             }
 
             rw.NodeRef(curveRef);
@@ -61,7 +61,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
 
         if (rw.Writer is not null && curveRef.Descriptor is not null)
             throw new NotSupportedException("An external legacy curve cannot be written as inline control points.");
-        if (rw.Reader is not null) curveRef.SetEmbedded(null);
+        if (rw.Reader is not null) curveRef.Node = null;
 
         rw.VersionInt32(this);
         count = rw.Int32(values?.Length ?? 0);
@@ -105,7 +105,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
     public static implicit operator PlugCurve(CFuncKeysReal? node)
     {
         var result = new PlugCurve();
-        result.curveRef.SetEmbedded(node);
+        result.curveRef.Node = node;
         result.ReadLegacyCurve();
         return result;
     }
@@ -119,7 +119,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
         }
         if (value.curveRef.Kind == NodeRefKind.None && value.values is { Length: > 0 })
         {
-            value.curveRef.SetEmbedded(value.CreateFunctionNode());
+            value.curveRef.Node = value.CreateFunctionNode();
         }
         return value.curveRef.Resolve();
     }
@@ -144,7 +144,7 @@ public sealed class PlugCurve : IReadableWritable, IReadable, IWritable, IVersio
 
     private void ReadLegacyCurve()
     {
-        var curve = curveRef.CachedTarget;
+        var curve = curveRef.CachedNode;
         if (curve is CPlugCurveSimpleNod simple && simple.Chunks.Get<CPlugCurveSimpleNod.Chunk09185000>() is not null)
         {
             Version = simple.Curve.Version;

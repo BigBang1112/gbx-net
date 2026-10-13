@@ -1,141 +1,192 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 namespace GBX.NET;
 
-/// <summary>A collection that retains external descriptors and resolves targets on element access.</summary>
+/// <summary>
+/// A collection that retains external descriptors and resolves nodes on element access.
+/// </summary>
 public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneable where T : CMwNod
 {
-    private readonly List<NodeRef<T>> refs = [];
-    public bool IsFixedSize { get; internal set; }
-    public bool IsReadOnly => false;
-    public int Count => refs.Count;
-    [Obsolete("Use Count instead.")]
-    public int Length => Count;
+    private readonly List<NodeRef<T>> references = [];
 
-    public NodeRefList() { }
+    public bool IsReadOnly => false;
+    public int Count => references.Count;
+
+    public NodeRefList()
+    {
+    }
 
     public NodeRefList(IEnumerable<T?> nodes)
     {
-        if (nodes is null) throw new ArgumentNullException(nameof(nodes));
-        foreach (var node in nodes) Add(node);
+        if (nodes is null)
+        {
+            throw new ArgumentNullException(nameof(nodes));
+        }
+
+        foreach (var node in nodes)
+        {
+            Add(node);
+        }
     }
 
     public static implicit operator NodeRefList<T>?(T?[]? nodes) => nodes is null ? null : new(nodes);
+
     public static implicit operator NodeRefList<T>?(List<T?>? nodes) => nodes is null ? null : new(nodes);
 
-    [Obsolete("Create NodeRefList<T> and use GetReference(index).SetExternal(file) instead.")]
+    [Obsolete("Create NodeRefList<T> and use Get(index).Descriptor = file instead.")]
     public static implicit operator NodeRefList<T>?(External<T>[]? nodes)
     {
-        if (nodes is null) return null;
+        if (nodes is null)
+        {
+            return null;
+        }
+
         var result = new NodeRefList<T>();
+
         foreach (var node in nodes)
         {
-            result.Add(node?.CachedTarget);
-            if (node?.File is { } file) result.refs[result.Count - 1].SetExternal(file);
+            if (node is null)
+            {
+                result.Add(null);
+            }
+            else
+            {
+                result.Add(node.ToNodeRef());
+            }
         }
-        return result;
-    }
 
-    public static NodeRefList<T> CreateFixed(int count)
-    {
-        if (count < 0) throw new ArgumentOutOfRangeException(nameof(count));
-        var result = new NodeRefList<T>();
-        for (var i = 0; i < count; i++) result.Add(null);
-        result.IsFixedSize = true;
         return result;
     }
 
     public T? this[int index]
     {
-        get => refs[index].Resolve();
-        set => refs[index].SetEmbedded(value);
+        get => references[index].Resolve();
+        set => references[index].Node = value;
     }
 
-    /// <summary>Gets the stored handle without resolving its target.</summary>
-    public NodeRef<T> GetReference(int index) => refs[index];
-    /// <summary>A read-only collection of stored handles. Inspecting or enumerating it does not resolve targets.</summary>
-    public ReferenceView References => new(this);
+    /// <summary>
+    /// Gets the stored handle without resolving its node.
+    /// </summary>
+    public NodeRef<T> Get(int index) => references[index];
 
-    public readonly struct ReferenceView : IReadOnlyList<NodeRef<T>>
+    /// <summary>
+    /// Enumerates the stored handles without resolving their nodes.
+    /// </summary>
+    public IEnumerable<NodeRef<T>> EnumerateReferences()
     {
-        private readonly NodeRefList<T> owner;
-        internal ReferenceView(NodeRefList<T> owner) => this.owner = owner;
-        public int Count => owner.Count;
-        public NodeRef<T> this[int index] => owner.GetReference(index);
-        public IEnumerator<NodeRef<T>> GetEnumerator() => owner.refs.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        foreach (var reference in references)
+        {
+            yield return reference;
+        }
     }
 
-    /// <summary>Appends a copy of the stored reference without resolving it. The new element owns its own handle.</summary>
-    public void AddReference(NodeRef<T> reference)
-        => InsertReference(Count, reference);
+    /// <summary>
+    /// Appends a copy of the stored reference without resolving it. The new element owns its own handle.
+    /// </summary>
+    public void Add(NodeRef<T> reference) => references.Add(Copy(reference));
 
-    /// <summary>Inserts a copy of the stored reference without resolving it. Fixed-size collections reject insertion.</summary>
-    public void InsertReference(int index, NodeRef<T> reference)
+    [OverloadResolutionPriority(1)]
+    public void Add(T? item) => references.Add(new() { Node = item });
+
+    /// <summary>
+    /// Inserts a copy of the stored reference without resolving it. The new element owns its own handle.
+    /// </summary>
+    public void Insert(int index, NodeRef<T> reference) => references.Insert(index, Copy(reference));
+
+    [OverloadResolutionPriority(1)]
+    public void Insert(int index, T? item) => references.Insert(index, new() { Node = item });
+
+    private static NodeRef<T> Copy(NodeRef<T> reference)
     {
-        EnsureVariableSize();
-        if (reference is null) throw new ArgumentNullException(nameof(reference));
-        // Each element owns its handle even when descriptors or targets are shared.
+        if (reference is null)
+        {
+            throw new ArgumentNullException(nameof(reference));
+        }
+
+        // Each element owns its handle even when descriptors or nodes are shared.
         var entry = new NodeRef<T>();
         entry.CopyFrom(reference);
-        refs.Insert(index, entry);
+        return entry;
     }
 
-    public void Add(T? item) => Insert(Count, item);
-    public void Insert(int index, T? item)
-    {
-        EnsureVariableSize();
-        var reference = new NodeRef<T>();
-        reference.SetEmbedded(item);
-        refs.Insert(index, reference);
-    }
+    public void Clear() => references.Clear();
 
-    public void Clear() { EnsureVariableSize(); refs.Clear(); }
-    public void RemoveAt(int index) { EnsureVariableSize(); refs.RemoveAt(index); }
+    public void RemoveAt(int index) => references.RemoveAt(index);
+
     public bool Remove(T? item)
     {
-        EnsureVariableSize();
         var index = IndexOf(item);
-        if (index < 0) return false;
+        if (index < 0)
+        {
+            return false;
+        }
+
         RemoveAt(index);
         return true;
     }
 
     public int IndexOf(T? item)
     {
-        for (var i = 0; i < Count; i++) if (EqualityComparer<T?>.Default.Equals(this[i], item)) return i;
+        var comparer = EqualityComparer<T?>.Default;
+
+        for (var i = 0; i < Count; i++)
+        {
+            if (comparer.Equals(this[i], item))
+            {
+                return i;
+            }
+        }
+
         return -1;
     }
 
     public bool Contains(T? item) => IndexOf(item) >= 0;
+
     public int RemoveAll(Predicate<T?> match)
     {
-        EnsureVariableSize();
-        if (match is null) throw new ArgumentNullException(nameof(match));
-        var count = 0;
-        for (var i = Count - 1; i >= 0; i--)
+        if (match is null)
         {
-            if (!match(this[i])) continue;
-            refs.RemoveAt(i);
-            count++;
+            throw new ArgumentNullException(nameof(match));
         }
-        return count;
+
+        return references.RemoveAll(reference => match(reference.Resolve()));
     }
 
-    internal IEnumerable<T?> GetEmbeddedTargets()
+    internal IEnumerable<T?> GetEmbeddedNodes()
     {
-        foreach (var reference in refs)
+        foreach (var reference in references)
         {
-            if (reference.Descriptor is not null) throw new NotSupportedException("This serialization context cannot encode external references.");
-            yield return reference.CachedTarget;
+            if (reference.Descriptor is not null)
+            {
+                throw new NotSupportedException("This serialization context cannot encode external references.");
+            }
+
+            yield return reference.CachedNode;
         }
     }
+
     public void CopyTo(T?[] array, int arrayIndex)
     {
-        if (array is null) throw new ArgumentNullException(nameof(array));
-        if (arrayIndex < 0 || arrayIndex > array.Length) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-        if (array.Length - arrayIndex < Count) throw new ArgumentException("The destination array is too small.", nameof(array));
-        foreach (var reference in refs) array[arrayIndex++] = reference.Resolve();
+        if (array is null)
+        {
+            throw new ArgumentNullException(nameof(array));
+        }
+
+        if (arrayIndex < 0 || arrayIndex > array.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(arrayIndex));
+        }
+
+        if (array.Length - arrayIndex < Count)
+        {
+            throw new ArgumentException("The destination array is too small.", nameof(array));
+        }
+
+        foreach (var reference in references)
+        {
+            array[arrayIndex++] = reference.Resolve();
+        }
     }
 
     public T?[] ToArray()
@@ -147,21 +198,24 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IDeepCloneabl
 
     public IEnumerator<T?> GetEnumerator()
     {
-        foreach (var reference in refs) yield return reference.Resolve();
+        foreach (var reference in references)
+        {
+            yield return reference.Resolve();
+        }
     }
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    private void EnsureVariableSize()
-    {
-        if (IsFixedSize) throw new NotSupportedException("This reference collection has a fixed size.");
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     object IDeepCloneable.DeepClone(DeepCloneContext context)
     {
         var clone = new NodeRefList<T>();
         context.Register(this, clone);
-        foreach (var reference in refs) clone.refs.Add(context.Clone(reference)!);
-        clone.IsFixedSize = IsFixedSize;
+
+        foreach (var reference in references)
+        {
+            clone.references.Add(context.Clone(reference)!);
+        }
+
         return clone;
     }
 }

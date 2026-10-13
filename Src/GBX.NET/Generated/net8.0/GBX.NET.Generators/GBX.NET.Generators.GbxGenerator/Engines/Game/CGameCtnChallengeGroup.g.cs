@@ -214,35 +214,19 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     {
         private readonly CGameCtnChallengeGroup owner;
         internal NodeRefView(CGameCtnChallengeGroup owner) => this.owner = owner;
-        public MapFilesReferenceView MapFiles => new(owner);
-        public FilesReferenceView Files => new(owner);
         public NodeRef<CGameCtnCampaign> LinkedCampaign => NodeRef.GetOrCreate(ref owner.linkedCampaignRef);
         public NodeRef<CGameCtnCollection> AssociatedCollection => NodeRef.GetOrCreate(ref owner.associatedCollectionRef);
-    }
-    public readonly struct MapFilesReferenceView
-    {
-        private readonly CGameCtnChallengeGroup owner;
-        internal MapFilesReferenceView(CGameCtnChallengeGroup owner) => this.owner = owner;
-        public int Count => owner.mapFiles?.Count ?? 0;
-        public NodeRef<CGameCtnChallenge> this[int index] => (owner.mapFiles ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct FilesReferenceView
-    {
-        private readonly CGameCtnChallengeGroup owner;
-        internal FilesReferenceView(CGameCtnChallengeGroup owner) => this.owner = owner;
-        public int Count => owner.files?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.files ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (mapFiles is not null)
         {
-            for (var i = 0; i < mapFiles.Count; i++) yield return new("MapFiles" + "[" + i + "]", mapFiles.GetReference(i));
+            for (var i = 0; i < mapFiles.Count; i++) yield return new("MapFiles" + "[" + i + "]", mapFiles.Get(i));
         }
         if (files is not null)
         {
-            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.GetReference(i));
+            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.Get(i));
         }
         yield return new("LinkedCampaign", NodeRef.GetOrCreate(ref linkedCampaignRef));
         yield return new("AssociatedCollection", NodeRef.GetOrCreate(ref associatedCollectionRef));

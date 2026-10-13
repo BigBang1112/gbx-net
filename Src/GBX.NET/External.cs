@@ -1,4 +1,4 @@
-﻿using GBX.NET.Components;
+using GBX.NET.Components;
 
 namespace GBX.NET;
 
@@ -6,12 +6,13 @@ namespace GBX.NET;
 public sealed record External<T> : IDeepCloneable where T : CMwNod
 {
     private NodeRef<T> reference = new();
-    internal T? CachedTarget => reference.CachedTarget;
+
+    internal T? CachedNode => reference.CachedNode;
 
     public T? Node
     {
-        get => reference.Resolve();
-        set => reference.SetEmbedded(value);
+        get => reference.Node;
+        set => reference.Node = value;
     }
 
     public GbxRefTableFile? File
@@ -19,9 +20,19 @@ public sealed record External<T> : IDeepCloneable where T : CMwNod
         get => reference.File;
         set
         {
-            if (ReferenceEquals(value, reference.File)) return;
-            if (value is null) reference.SetEmbedded(reference.CachedTarget);
-            else reference.SetExternal(value);
+            if (ReferenceEquals(value, reference.File))
+            {
+                return;
+            }
+
+            if (value is null)
+            {
+                reference.Node = reference.CachedNode;
+            }
+            else
+            {
+                reference.Descriptor = value;
+            }
         }
     }
 
@@ -29,7 +40,7 @@ public sealed record External<T> : IDeepCloneable where T : CMwNod
     {
         Node = node;
         File = file;
-        
+
         if (node is not null && file is not null)
         {
             file.Resolution.Seed(node);

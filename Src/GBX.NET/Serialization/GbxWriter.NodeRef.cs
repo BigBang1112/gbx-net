@@ -6,7 +6,7 @@ public partial class GbxWriter
 {
     public void WriteNodeRef(NodeRef? nodeRef)
     {
-        var value = nodeRef?.CachedTarget;
+        var value = nodeRef?.CachedNode;
         var descriptor = nodeRef?.Descriptor;
 
         if (descriptor is not null && encapsulation is not null)
@@ -23,6 +23,7 @@ public partial class GbxWriter
             }
 
             importedRefs ??= [];
+
             if (!importedRefs.TryGetValue(descriptor, out var imported))
             {
                 imported = ReferenceTable.Import(descriptor);
@@ -31,7 +32,7 @@ public partial class GbxWriter
 
             descriptor = imported;
         }
-        
+
         if (value is null && descriptor is null)
         {
             Write(-1);
@@ -41,7 +42,7 @@ public partial class GbxWriter
         if (encapsulation is null)
         {
             if ((descriptor is not null && NodeDict.TryGetValue(descriptor, out int index))
-            || (descriptor is null && value is not null && NodeDict.TryGetValue(value, out index)))
+                || (descriptor is null && value is not null && NodeDict.TryGetValue(value, out index)))
             {
                 Write(index);
                 return;
@@ -101,7 +102,7 @@ public partial class GbxWriter
 
         for (var i = 0; i < count; i++)
         {
-            WriteNodeRef(references is not null && i < references.Count ? references.GetReference(i) : null);
+            WriteNodeRef(references is not null && i < references.Count ? references.Get(i) : null);
         }
     }
 
@@ -111,7 +112,10 @@ public partial class GbxWriter
         WriteListNodeRef(references, length);
     }
 
-    public void WriteJaggedArrayNodeRef<T>(NodeRefList<T>[]? references, int? innerLength = null, int? outerLength = null) where T : CMwNod
+    public void WriteJaggedArrayNodeRef<T>(
+        NodeRefList<T>[]? references,
+        int? innerLength = null,
+        int? outerLength = null) where T : CMwNod
     {
         var count = outerLength ?? references?.Length ?? 0;
 
@@ -124,7 +128,7 @@ public partial class GbxWriter
         {
             Write(count);
         }
-        
+
         for (var i = 0; i < count; i++)
         {
             WriteListNodeRef(references is not null && i < references.Length ? references[i] : null, innerLength);

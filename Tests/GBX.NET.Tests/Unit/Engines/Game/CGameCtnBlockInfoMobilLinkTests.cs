@@ -28,8 +28,8 @@ public class CGameCtnBlockInfoMobilLinkTests
             {
                 writer.WriteNodeRef(phy);
                 var reference = new NodeRef<CGameObjectVisModel>();
-                if (visFile is not null) reference.SetExternal(visFile);
-                else reference.SetEmbedded(vis);
+                if (visFile is not null) reference.Descriptor = visFile;
+                else reference.Node = vis;
                 writer.WriteNodeRef(reference);
             }
             else

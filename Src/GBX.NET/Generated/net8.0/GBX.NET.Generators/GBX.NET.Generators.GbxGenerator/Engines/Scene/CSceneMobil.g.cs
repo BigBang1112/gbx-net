@@ -65,23 +65,15 @@ public partial class CSceneMobil : CSceneObject, IClass
     {
         private readonly CSceneMobil owner;
         internal NodeRefView(CSceneMobil owner) => this.owner = owner;
-        public ObjectLinkReferenceView ObjectLink => new(owner);
         public NodeRef<CSceneMessageHandler> MessageHandler => NodeRef.GetOrCreate(ref owner.messageHandlerRef);
         public NodeRef<CMotion> Motion => ((CSceneObject)owner).References.Motion;
-    }
-    public readonly struct ObjectLinkReferenceView
-    {
-        private readonly CSceneMobil owner;
-        internal ObjectLinkReferenceView(CSceneMobil owner) => this.owner = owner;
-        public int Count => owner.objectLink?.Count ?? 0;
-        public NodeRef<CSceneObjectLink> this[int index] => (owner.objectLink ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (objectLink is not null)
         {
-            for (var i = 0; i < objectLink.Count; i++) yield return new("ObjectLink" + "[" + i + "]", objectLink.GetReference(i));
+            for (var i = 0; i < objectLink.Count; i++) yield return new("ObjectLink" + "[" + i + "]", objectLink.Get(i));
         }
         yield return new("MessageHandler", NodeRef.GetOrCreate(ref messageHandlerRef));
         yield break;

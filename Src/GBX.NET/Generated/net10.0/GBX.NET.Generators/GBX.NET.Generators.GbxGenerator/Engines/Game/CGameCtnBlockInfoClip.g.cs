@@ -188,29 +188,20 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
         internal NodeRefView(CGameCtnBlockInfoClip owner) => this.owner = owner;
         public NodeRef<CGameCtnCollector> LegacySymmetricalClip => NodeRef.GetOrCreate(ref owner.legacySymmetricalClipRef);
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => ((CGameCtnBlockInfo)owner).References.Pillar;
-        public CGameCtnBlockInfo.GroundBlockUnitInfosReferenceView GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
-        public CGameCtnBlockInfo.AirBlockUnitInfosReferenceView AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
-        public CGameCtnBlockInfo.GroundMobilsReferenceView GroundMobils => ((CGameCtnBlockInfo)owner).References.GroundMobils;
-        public CGameCtnBlockInfo.AirMobilsReferenceView AirMobils => ((CGameCtnBlockInfo)owner).References.AirMobils;
         public NodeRef<CSceneMobil> GroundHelperMobil => ((CGameCtnBlockInfo)owner).References.GroundHelperMobil;
         public NodeRef<CSceneMobil> AirHelperMobil => ((CGameCtnBlockInfo)owner).References.AirHelperMobil;
         public NodeRef<CSceneMobil> ConstructionModeHelperMobil => ((CGameCtnBlockInfo)owner).References.ConstructionModeHelperMobil;
         public NodeRef<CSceneMobil> ScreenInteractionTriggerGround => ((CGameCtnBlockInfo)owner).References.ScreenInteractionTriggerGround;
         public NodeRef<CSceneMobil> ScreenInteractionTriggerAir => ((CGameCtnBlockInfo)owner).References.ScreenInteractionTriggerAir;
         public NodeRef<CGameCtnPrecalcPartParams> PrecalcPartParams => ((CGameCtnBlockInfo)owner).References.PrecalcPartParams;
-        public CGameCtnBlockInfo.AutoTerrainsGroundReferenceView AutoTerrainsGround => ((CGameCtnBlockInfo)owner).References.AutoTerrainsGround;
-        public CGameCtnBlockInfo.GroundBlockInfoMobilsReferenceView GroundBlockInfoMobils => ((CGameCtnBlockInfo)owner).References.GroundBlockInfoMobils;
-        public CGameCtnBlockInfo.AirBlockInfoMobilsReferenceView AirBlockInfoMobils => ((CGameCtnBlockInfo)owner).References.AirBlockInfoMobils;
         public NodeRef<CPlugCharPhySpecialProperty> CharPhySpecialProperty => ((CGameCtnBlockInfo)owner).References.CharPhySpecialProperty;
         public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => ((CGameCtnBlockInfo)owner).References.WaypointSpecialProperty;
         public NodeRef<CMwNod> PodiumInfo => ((CGameCtnBlockInfo)owner).References.PodiumInfo;
         public NodeRef<CMwNod> IntroInfo => ((CGameCtnBlockInfo)owner).References.IntroInfo;
         public NodeRef<CGameCtnMacroBlockInfo> IconMacroBlockInfo => ((CGameCtnBlockInfo)owner).References.IconMacroBlockInfo;
-        public CGameCtnBlockInfo.AdditionalVariantsGroundReferenceView AdditionalVariantsGround => ((CGameCtnBlockInfo)owner).References.AdditionalVariantsGround;
         public NodeRef<CPlugFogVolumeBox> FogVolumeBox => ((CGameCtnBlockInfo)owner).References.FogVolumeBox;
         public NodeRef<CPlugSound> Sound1 => ((CGameCtnBlockInfo)owner).References.Sound1;
         public NodeRef<CPlugSound> Sound2 => ((CGameCtnBlockInfo)owner).References.Sound2;
-        public CGameCtnBlockInfo.AdditionalVariantsAirReferenceView AdditionalVariantsAir => ((CGameCtnBlockInfo)owner).References.AdditionalVariantsAir;
         public NodeRef<CGameCtnBlockInfo> BlockInfoModelFid => ((CGameCtnBlockInfo)owner).References.BlockInfoModelFid;
         public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => ((CGameCtnBlockInfo)owner).References.MaterialModifier;
         public NodeRef<CPlugGameSkinAndFolder> MaterialModifier2 => ((CGameCtnBlockInfo)owner).References.MaterialModifier2;
@@ -275,7 +266,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedTarget).Ident.Id;
+                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
                 }
             }
         }
@@ -302,7 +293,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedTarget).Ident.Id;
+                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
                 }
             }
         }

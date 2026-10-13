@@ -602,22 +602,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         private readonly CGameCtnGhost owner;
         internal NodeRefView(CGameCtnGhost owner) => this.owner = owner;
         public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
-        public ScreenCapturesReferenceView ScreenCaptures => new(owner);
-        public ScreenCaptures_DifferenceReferenceView ScreenCaptures_Difference => new(owner);
-    }
-    public readonly struct ScreenCapturesReferenceView
-    {
-        private readonly CGameCtnGhost owner;
-        internal ScreenCapturesReferenceView(CGameCtnGhost owner) => this.owner = owner;
-        public int Count => owner.screenCaptures?.Count ?? 0;
-        public NodeRef<CPlugTimedPixelArray> this[int index] => (owner.screenCaptures ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ScreenCaptures_DifferenceReferenceView
-    {
-        private readonly CGameCtnGhost owner;
-        internal ScreenCaptures_DifferenceReferenceView(CGameCtnGhost owner) => this.owner = owner;
-        public int Count => owner.screenCaptures_Difference?.Count ?? 0;
-        public NodeRef<CPlugTimedPixelArray> this[int index] => (owner.screenCaptures_Difference ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -625,11 +609,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         yield return new("RecordData", NodeRef.GetOrCreate(ref recordDataRef));
         if (screenCaptures is not null)
         {
-            for (var i = 0; i < screenCaptures.Count; i++) yield return new("ScreenCaptures" + "[" + i + "]", screenCaptures.GetReference(i));
+            for (var i = 0; i < screenCaptures.Count; i++) yield return new("ScreenCaptures" + "[" + i + "]", screenCaptures.Get(i));
         }
         if (screenCaptures_Difference is not null)
         {
-            for (var i = 0; i < screenCaptures_Difference.Count; i++) yield return new("ScreenCaptures_Difference" + "[" + i + "]", screenCaptures_Difference.GetReference(i));
+            for (var i = 0; i < screenCaptures_Difference.Count; i++) yield return new("ScreenCaptures_Difference" + "[" + i + "]", screenCaptures_Difference.Get(i));
         }
         yield break;
     }

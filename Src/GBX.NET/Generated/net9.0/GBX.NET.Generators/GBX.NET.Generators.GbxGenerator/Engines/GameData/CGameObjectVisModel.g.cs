@@ -141,17 +141,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         private readonly CGameObjectVisModel owner;
         internal NodeRefView(CGameObjectVisModel owner) => this.owner = owner;
         public NodeRef<CPlugSolid2Model> MeshShaded => NodeRef.GetOrCreate(ref owner.meshShadedRef);
-        public LegacyLocAnimRefsReferenceView LegacyLocAnimRefs => new(owner);
         public NodeRef<CPlugAnimLocSimple> LocAnim => NodeRef.GetOrCreate(ref owner.locAnimRef);
         public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidNodeRef);
         public NodeRef<CMwNod> MeshShadedFid => NodeRef.GetOrCreate(ref owner.meshShadedFidRef);
-    }
-    public readonly struct LegacyLocAnimRefsReferenceView
-    {
-        private readonly CGameObjectVisModel owner;
-        internal LegacyLocAnimRefsReferenceView(CGameObjectVisModel owner) => this.owner = owner;
-        public int Count => owner.legacyLocAnimRefs?.Count ?? 0;
-        public NodeRef<CPlugAnimLocSimple> this[int index] => (owner.legacyLocAnimRefs ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -159,7 +151,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         yield return new("MeshShaded", NodeRef.GetOrCreate(ref meshShadedRef));
         if (legacyLocAnimRefs is not null)
         {
-            for (var i = 0; i < legacyLocAnimRefs.Count; i++) yield return new("LegacyLocAnimRefs" + "[" + i + "]", legacyLocAnimRefs.GetReference(i));
+            for (var i = 0; i < legacyLocAnimRefs.Count; i++) yield return new("LegacyLocAnimRefs" + "[" + i + "]", legacyLocAnimRefs.Get(i));
         }
         yield return new("LocAnim", NodeRef.GetOrCreate(ref locAnimRef));
         yield return new("Solid", NodeRef.GetOrCreate(ref solidNodeRef));

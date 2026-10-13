@@ -51,27 +51,12 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
         get => this.tuningIndex;
         set => this.tuningIndex = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugVehiclePhyTunings owner;
-        internal NodeRefView(CPlugVehiclePhyTunings owner) => this.owner = owner;
-        public TuningReferenceView Tuning => new(owner);
-    }
-    public readonly struct TuningReferenceView
-    {
-        private readonly CPlugVehiclePhyTunings owner;
-        internal TuningReferenceView(CPlugVehiclePhyTunings owner) => this.owner = owner;
-        public int Count => owner.tuning?.Count ?? 0;
-        public NodeRef<CPlugVehiclePhyTuning> this[int index] => (owner.tuning ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (tuning is not null)
         {
-            for (var i = 0; i < tuning.Count; i++) yield return new("Tuning" + "[" + i + "]", tuning.GetReference(i));
+            for (var i = 0; i < tuning.Count; i++) yield return new("Tuning" + "[" + i + "]", tuning.Get(i));
         }
         yield break;
     }

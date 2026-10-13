@@ -98,7 +98,7 @@ public class CPlugShaderApplyLayoutTests
         }
         await ReadAndRoundTrip(node, new CPlugShaderApply.Chunk0902600C(), payload);
         await Assert.That(node.BitmapAddresses[0]).IsSameReferenceAs(active);
-        await Assert.That(node.UnusedBitmapAddresses.Length).IsEqualTo(0);
+        await Assert.That(node.UnusedBitmapAddresses.Count).IsEqualTo(0);
     }
 
     [Test]
@@ -114,7 +114,7 @@ public class CPlugShaderApplyLayoutTests
         stream.Position = 0;
         var parsed = Gbx.Parse<CPlugShaderApply>(stream);
         await Assert.That(parsed.Node.BitmapApplyArray).IsNotNull();
-        await Assert.That(parsed.Node.BitmapApplyArray!.BitmapAddresses.Length).IsEqualTo(1);
+        await Assert.That(parsed.Node.BitmapApplyArray!.BitmapAddresses.Count).IsEqualTo(1);
         await Assert.That(parsed.Node.BitmapApplyArray.BitmapAddresses[0]).IsTypeOf<CPlugBitmapAddress>();
         using var saved = new MemoryStream();
         parsed.Save(saved);

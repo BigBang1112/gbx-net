@@ -43,27 +43,12 @@ public partial class CMwCmdBlock : CMwNod, IClass
         get => cmds;
         set => cmds = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CMwCmdBlock owner;
-        internal NodeRefView(CMwCmdBlock owner) => this.owner = owner;
-        public CmdsReferenceView Cmds => new(owner);
-    }
-    public readonly struct CmdsReferenceView
-    {
-        private readonly CMwCmdBlock owner;
-        internal CmdsReferenceView(CMwCmdBlock owner) => this.owner = owner;
-        public int Count => owner.cmds?.Count ?? 0;
-        public NodeRef<CMwCmdScript> this[int index] => (owner.cmds ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (cmds is not null)
         {
-            for (var i = 0; i < cmds.Count; i++) yield return new("Cmds" + "[" + i + "]", cmds.GetReference(i));
+            for (var i = 0; i < cmds.Count; i++) yield return new("Cmds" + "[" + i + "]", cmds.Get(i));
         }
         yield break;
     }

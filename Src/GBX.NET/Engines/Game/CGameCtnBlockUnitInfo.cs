@@ -6,12 +6,12 @@ public partial class CGameCtnBlockUnitInfo
     {
         private int ValidateClipCounts(CGameCtnBlockUnitInfo n)
         {
-            if (Version == 0 && (n.ClipsNorth?.Length > 3
-                || n.ClipsEast?.Length > 3
-                || n.ClipsSouth?.Length > 3
-                || n.ClipsWest?.Length > 3
-                || n.ClipsTop?.Length > 3
-                || n.ClipsBottom?.Length > 3))
+            if (Version == 0 && (n.ClipsNorth?.Count > 3
+                || n.ClipsEast?.Count > 3
+                || n.ClipsSouth?.Count > 3
+                || n.ClipsWest?.Count > 3
+                || n.ClipsTop?.Count > 3
+                || n.ClipsBottom?.Count > 3))
             {
                 throw new InvalidOperationException("Version 0 supports at most 3 clips per direction.");
             }

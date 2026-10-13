@@ -8,9 +8,9 @@ This proposal lets any node reference preserve an external Gbx file with metadat
 
 The implementation separates the loaded node from its reference descriptor:
 
-- Scalar node properties project targets stored in typed reference handles.
+- Scalar node properties project nodes stored in typed reference handles.
 - Reference collections use `NodeRefList<T>`, with metadata exposed through typed element handles.
-- `ReadNodeRef`, `WriteNodeRef`, and combined `NodeRef` serialization preserve descriptors without resolving targets.
+- `ReadNodeRef`, `WriteNodeRef`, and combined `NodeRef` serialization preserve descriptors without resolving nodes.
 - Missing files return `null`. Parse errors, unsupported resolution, and incompatible loaded types propagate as errors.
 - Resolution can use the file system or `GbxRefTable.ExternalNodes`. A reference is not necessarily backed by a local file.
 
@@ -22,9 +22,9 @@ The design should:
 
 - Preserve every reference-table entry used by a node reference, including unresolved files, through their actual wire operation.
 - Keep scalar node properties typed as `T?`, with no `.Node` step in ordinary access.
-- Expose reference metadata and replacement operations without loading the target.
-- Distinguish an absent reference from an external reference whose target is unavailable or invalid.
-- Write an unresolved external reference back without loading its target.
+- Expose reference metadata and replacement operations without loading the node.
+- Distinguish an absent reference from an external reference whose node is unavailable or invalid.
+- Write an unresolved external reference back without loading its node.
 - Keep abstract engine classes abstract and preserve the actual runtime type of loaded nodes.
 - Generate direct member access and class dispatch from layouts and compiler symbols. Use `typeof(T).Name` for type-mismatch diagnostics without requiring a generated type-name string.
 
@@ -34,24 +34,24 @@ Reference-table resources also exist. They must retain their resource index, fla
 
 ## Why the file cannot live only on CMwNod
 
-An alternative would attach incoming-reference metadata to each target node. That is convenient for a successfully loaded node, but it does not cover the full reference lifecycle.
+An alternative would attach incoming-reference metadata to each node node. That is convenient for a successfully loaded node, but it does not cover the full reference lifecycle.
 
 | Problem | Consequence |
 | --- | --- |
 | A missing file has no node instance. | Metadata still needs somewhere to live before resolution. |
 | A reference may be declared as an abstract base class. | Instantiating that declared type is impossible, and removing `abstract` does not reveal the file's actual class. |
 | A normal node filled with defaults looks usable. | Every data getter, setter, method, and public field would need to prevent access to an unresolved placeholder. A base class cannot intercept ordinary member access. |
-| Several owners can refer to the same loaded node through different files, flags, or paths. | Metadata on the target cannot describe every incoming reference. |
+| Several owners can refer to the same loaded node through different files, flags, or paths. | Metadata on the node cannot describe every incoming reference. |
 | Replacing a placeholder with a loaded node changes object identity. | Previously obtained placeholders and other references do not automatically follow the replacement. |
 | Arrays expose stored elements directly. | Ordinary arrays cannot resolve or validate an element through a custom indexer. |
 
-The authoritative metadata therefore belongs to the **reference held by the owner**, not to the target node. A future node-level provenance API could describe where a node was loaded from, but it must not decide how an owner serializes that node.
+The authoritative metadata therefore belongs to the **reference held by the owner**, not to the node node. A future node-level provenance API could describe where a node was loaded from, but it must not decide how an owner serializes that node.
 
 ## Proposed reference storage
 
-Use a reference object behind each node property. The proposed name is `NodeRef<T> where T : CMwNod`, with a non-generic `NodeRef` base for common metadata and inspection. It stores the reference kind, descriptor, resolution state, and cached target. It does not require `new T()`.
+Use a reference object behind each node property. The proposed name is `NodeRef<T> where T : CMwNod`, with a non-generic `NodeRef` base for common metadata and inspection. It stores the reference kind, descriptor, resolution state, and cached node. It does not require `new T()`.
 
-The public node property projects the resolved target. A generated, strongly typed `References` view on the owner exposes reference handles under the same member names. This keeps the wrapper out of normal property chains and groups metadata access under one property.
+The public node property projects the resolved node. A generated, strongly typed `References` view on the owner exposes reference handles under the same member names. This keeps the wrapper out of normal property chains and groups metadata access under one property.
 
 The following illustrates the generated shape:
 
@@ -61,11 +61,11 @@ private NodeRef<CMwNod> entityModelEditionRef = new();
 public CMwNod? EntityModelEdition
 {
     get => entityModelEditionRef.Resolve();
-    set => entityModelEditionRef.SetEmbedded(value);
+    set => entityModelEditionRef.Node = value;
 }
 ```
 
-Reference owners include `CMwNod`, chunks, and named archives that contain node references. Access to `item.EntityModelEdition` resolves the target. Access to `item.References.EntityModelEdition` returns its existing `NodeRef<CMwNod>` directly, without evaluating the node property or starting I/O. The caller does not supply a member-name string, selector expression, or generic type argument.
+Reference owners include `CMwNod`, chunks, and named archives that contain node references. Access to `item.EntityModelEdition` resolves the node. Access to `item.References.EntityModelEdition` returns its existing `NodeRef<CMwNod>` directly, without evaluating the node property or starting I/O. The caller does not supply a member-name string, selector expression, or generic type argument.
 
 For example, metadata inspection and replacement could look like this:
 
@@ -75,8 +75,8 @@ var reference = item.References.EntityModelEdition;
 // Inspecting File does not load EntityModelEdition.
 Console.WriteLine(reference.File?.FilePath);
 
-// Change the file even when the old target is missing.
-reference.SetExternal(replacementFile);
+// Change the file even when the old node is missing.
+reference.Descriptor = replacementFile;
 
 // Explicitly switch to an embedded node and clear the external descriptor.
 item.EntityModelEdition = replacementNode;
@@ -106,7 +106,7 @@ Each view property has the exact `NodeRef<T>` type declared by its node member. 
 
 A captured view or scalar handle remains attached to that owner's member when the member is reassigned. Reassigning one member must not change another member merely because both previously referenced the same table entry. There is no string lookup, runtime type selection, member dictionary, property discovery, expression-tree inspection, or accessor compilation.
 
-Tools that need to inspect an owner without knowing its concrete type can use generated reference enumeration with constant member names and non-generic handles. That operation returns stored references without resolving targets and does not become a member-name lookup API. The concrete typed view remains the API for selecting and editing a known member.
+Tools that need to inspect an owner without knowing its concrete type can use generated reference enumeration with constant member names and non-generic handles. That operation returns stored references without resolving nodes and does not become a member-name lookup API. The concrete typed view remains the API for selecting and editing a known member.
 
 ## Reference kind and resolution state
 
@@ -114,10 +114,10 @@ Keep storage kind separate from resolution state. Loading a file changes its sta
 
 | Kind | Stored data | Scalar property access | Serialization |
 | --- | --- | --- | --- |
-| None | No target or descriptor | Returns `null` | Writes the null-reference marker |
+| None | No node or descriptor | Returns `null` | Writes the null-reference marker |
 | Embedded | A concrete node | Returns that node | Writes an embedded node reference |
-| External file | File descriptor and optional cached target | Resolves lazily and returns the typed target, returns `null` if missing, or throws for resolution errors | Writes the file reference regardless of resolution state |
-| External resource | Resource descriptor and optional cached target | Uses a supported resource resolver, or reports unsupported resolution | Writes the resource reference |
+| External file | File descriptor and optional cached node | Resolves lazily and returns the typed node, returns `null` if missing, or throws for resolution errors | Writes the file reference regardless of resolution state |
+| External resource | Resource descriptor and optional cached node | Uses a supported resource resolver, or reports unsupported resolution | Writes the resource reference |
 
 An external reference has these resolution states:
 
@@ -125,22 +125,22 @@ An external reference has these resolution states:
 | --- | --- |
 | Unresolved | No resolution attempt has completed. |
 | Resolving | A resolution attempt is in progress. |
-| Resolved | A target has been loaded and validated for this member. |
-| Missing | The configured resolver reported that the target is unavailable. |
+| Resolved | A node has been loaded and validated for this member. |
+| Missing | The configured resolver reported that the node is unavailable. |
 | Failed | Resolution encountered a parse, I/O, unsupported-class, or type error. The error is retained. |
 
-`Kind`, `State`, `File`, resource metadata, and inspection of an already cached target must never start I/O. A missing target retains its descriptor. A failed target retains both its descriptor and the original error.
+`Kind`, `State`, `File`, resource metadata, and inspection of an already cached node must never start I/O. A missing node retains its descriptor. A failed node retains both its descriptor and the original error.
 
 ## Access and error handling
 
-Direct node properties and `Resolve` return nullable targets:
+Direct node properties, a reference handle's `Node` property, and `Resolve` return nullable nodes. `Node` delegates to `Resolve`, so both resolve on demand and share cached results and errors. Cache-only access stays internal for serialization and cloning:
 
 - An absent reference returns `null`.
-- A missing external target returns `null` when the owner property resolves it. The reference retains its External file kind, Missing state, and file descriptor.
+- A missing external node returns `null` when the owner property resolves it. The reference retains its External file kind, Missing state, and file descriptor.
 - Malformed data, access-denied errors, unsupported classes, and incompatible types remain errors. They must not be converted into a missing-file result.
-- Type validation uses `node is T` against the member's declared type. A concrete subtype is accepted. For incompatible targets, diagnostics use `typeof(T).Name` and the actual Gbx class ID.
+- Type validation uses `node is T` against the member's declared type. A concrete subtype is accepted. For incompatible nodes, diagnostics use `typeof(T).Name` and the actual Gbx class ID.
 
-File metadata remains available through the reference handle when resolution returns `null`. `Kind` and `State` distinguish an absent reference from a missing external target. A filesystem path may be unavailable for an `ExternalNodes` resolver.
+File metadata remains available through the reference handle when resolution returns `null`. `Kind` and `State` distinguish an absent reference from a missing external node. A filesystem path may be unavailable for an `ExternalNodes` resolver.
 
 For partial exports and explorers, `TryResolve` provides an explicit success check on the specific reference:
 
@@ -153,26 +153,26 @@ if (reference.TryResolve(out var edition))
 }
 else
 {
-    // Kind distinguishes an absent reference from a missing external target.
+    // Kind distinguishes an absent reference from a missing external node.
     Console.WriteLine(reference.File?.FilePath);
 }
 ```
 
-`TryResolve` returns `false` with a `null` output only for an absent reference or a missing target. It still propagates parse, I/O, type, and unsupported-resolution errors. A caller accessing a longer property chain can use null-conditional access at each nullable node boundary.
+`TryResolve` returns `false` with a `null` output only for an absent reference or a missing node. It still propagates parse, I/O, type, and unsupported-resolution errors. A caller accessing a longer property chain can use null-conditional access at each nullable node boundary.
 
-The original `AsNullable<TResult>(Func<TNode, TResult>)` helper is removed. Nullable node access already handles absent and missing targets. Also, unconstrained `TResult?` does not reliably provide `Nullable<T>` semantics for value types, so `default` can turn unavailable data into a valid-looking zero or `false`.
+The original `AsNullable<TResult>(Func<TNode, TResult>)` helper is removed. Nullable node access already handles absent and missing nodes. Also, unconstrained `TResult?` does not reliably provide `Nullable<T>` semantics for value types, so `default` can turn unavailable data into a valid-looking zero or `false`.
 
 ## Resolution, caching, and identity
 
-Reading the parent Gbx records external descriptors without resolving them. Ordinary node getters resolve synchronously on demand. Explicit `ResolveAsync(CancellationToken)` and `TryResolveAsync(CancellationToken)` operations provide asynchronous access through the reference handle, with the same nullable results and error handling as their synchronous counterparts. Async resolution prefers an asynchronous resolver and can fall back to a synchronous resolver. It never blocks on an asynchronous task to support a synchronous call.
+Reading the parent Gbx records external descriptors without resolving them. Ordinary node getters resolve synchronously on demand. `ResolveAsync(CancellationToken)` provides asynchronous access through the reference handle, with the same nullable results and error handling as `Resolve`. Async resolution prefers an asynchronous resolver and can fall back to a synchronous resolver. It never blocks on an asynchronous task to support a synchronous call.
 
 The resolution context carries the owner's path, ancestor level, `ExternalNodes` resolver, and read settings. Nested loads retain the relevant settings, such as size limits, game context, and logging. A public overload must not silently substitute default settings for the settings used to read the owner.
 
-Target construction uses generated class-ID factories with direct constructor calls for concrete nodes. Handwritten node types supply an explicitly registered factory when needed. There is no `Activator.CreateInstance`, assembly scanning, dynamic member dispatch, or reflection fallback. An unknown class ID remains an unsupported-class error.
+Node construction uses generated class-ID factories with direct constructor calls for concrete nodes. Handwritten node types supply an explicitly registered factory when needed. There is no `Activator.CreateInstance`, assembly scanning, dynamic member dispatch, or reflection fallback. An unknown class ID remains an unsupported-class error.
 
-Resolution caches successful loads and terminal missing or failed outcomes. Repeated inspection of an unavailable dependency should not repeatedly hit the file system. Explicit `Reset` invalidates the shared cache without loading a target, and `Retry` also attempts resolution again. Replacing the descriptor attaches the member to the replacement's cache. The `GbxRefTableFile.FilePath` setter invalidates all handles sharing the descriptor, preserves the cache for an unchanged path, and rejects path changes during an active load. Cache generations remain internal to the library.
+Resolution caches successful loads and terminal missing or failed outcomes. Repeated inspection of an unavailable dependency should not repeatedly hit the file system. Explicit `Reset` invalidates the shared cache without loading a node, and `Retry` also attempts resolution again. Replacing the descriptor attaches the member to the replacement's cache. The `GbxRefTableFile.FilePath` setter invalidates all handles sharing the descriptor, preserves the cache for an unchanged path, and rejects path changes during an active load. Cache generations remain internal to the library.
 
-Repeated references to the same source table entry share a resolution entry and loaded target. Each owning member still retains its own declared-type check and replacement control. Do not merge distinct table entries solely because their paths match. Relative paths and flags depend on the owning table, and two entries can have different serialization intent even if a resolver returns the same object.
+Repeated references to the same source table entry share a resolution entry and loaded node. Each owning member still retains its own declared-type check and replacement control. Do not merge distinct table entries solely because their paths match. Relative paths and flags depend on the owning table, and two entries can have different serialization intent even if a resolver returns the same object.
 
 Concurrent resolution of one entry shares one in-flight load. Cancellation of one waiter must not cancel other callers' work or permanently mark the reference missing or failed. Reassignment during a load must prevent the old result from being published into the replacement reference. These guarantees apply to resolution, not to arbitrary concurrent edits of a node graph.
 
@@ -184,12 +184,12 @@ Assignment has explicit meaning:
 
 | Operation | Result |
 | --- | --- |
-| Assign `null` to a node property | Clears the target, descriptor, and error, producing None |
+| Assign `null` to a node property | Clears the node, descriptor, and error, producing None |
 | Assign a node to a node property | Stores it as Embedded and clears any external descriptor |
-| Call `SetExternal(file)` | Stores an external descriptor and invalidates previous resolution state |
-| Resolve an external reference | Caches the loaded target while retaining External file kind |
+| Assign `Descriptor = file` | Stores an external descriptor and invalidates previous resolution state |
+| Resolve an external reference | Caches the loaded node while retaining External file kind |
 
-Assigning a node that was loaded from a file does not implicitly copy its incoming reference metadata. To keep it external, retain the existing reference or explicitly use `SetExternal`.
+Assigning a node that was loaded from a file does not implicitly copy its incoming reference metadata. To keep it external, retain the existing reference or assign its `Descriptor`.
 
 The writer consumes reference storage directly. It must not call public node getters or enumerate a resolving collection to recover metadata. A missing or malformed dependency can still be referenced in the output without loading it.
 
@@ -207,20 +207,20 @@ Encapsulated or direct-node serialization contexts that cannot encode an externa
 
 ## Collections
 
-Ordinary `T[]` and `List<T>` cannot provide lazy resolution and retain unresolved element metadata through their usual element access. A proposed `NodeRefList<T>` stores references and exposes resolved `T?` elements through its indexer. A fixed-size equivalent can cover fixed-length layouts without allowing structural changes.
+Ordinary `T[]` and `List<T>` cannot provide lazy resolution and retain unresolved element metadata through their usual element access. `NodeRefList<T>` stores references and exposes resolved `T?` elements through its indexer. It remains resizable for every layout. Fixed wire lengths belong to the serializer, which reads or writes the required number of entries.
 
-The owner's typed view also exposes a metadata view for each reference collection. For example, `item.References.NadeoSkinFids[0]` returns the first element's `NodeRef<CMwNod>` without resolving it, while `item.NadeoSkinFids[0]` resolves that element. Both paths use the same underlying storage. The metadata view follows the owner's current collection if the whole collection is replaced. An element handle identifies its stored entry, so removing that entry does not retarget the handle to whichever element later occupies its index.
+Collections expose their handles directly through `Get(index)` and `EnumerateReferences()`. For example, `item.NadeoSkinFids.Get(0)` returns the first element's `NodeRef<CMwNod>` without resolving it, while `item.NadeoSkinFids[0]` resolves that element. Both paths use the same underlying storage. A captured list remains attached to its entries if the owner replaces the collection. An element handle identifies its stored entry, so removing that entry does not retarget the handle to whichever element later occupies its index.
 
 The collection contract needs to be consistent:
 
-- `Count` and `GetReference(index)` do not resolve elements.
+- `Count`, `Get(index)`, and `EnumerateReferences()` do not resolve elements.
 - The indexer resolves only the requested element using the scalar access rules.
-- Enumeration and `CopyTo` resolve elements in order, yielding or copying `null` for absent or missing targets and throwing at an element with a resolution error.
+- Enumeration and `CopyTo` resolve elements in order, yielding or copying `null` for absent or missing nodes and throwing at an element with a resolution error.
 - Element assignment follows scalar assignment rules. Metadata operations on an element handle do not load it.
-- `Contains`, `IndexOf`, and `Remove(T)` compare resolved targets and may therefore perform I/O. Metadata-only edits use `GetReference(index)` and `RemoveAt(index)`.
-- Serialization and cloning traverse reference storage directly, preserving null entries, unresolved descriptors, aliases, order, and fixed lengths.
+- `Contains`, `IndexOf`, and `Remove(T)` compare resolved nodes and may therefore perform I/O. Metadata-only edits use `Get(index)` and `RemoveAt(index)`.
+- Serialization and cloning traverse reference storage directly, preserving null entries, unresolved descriptors, aliases, and order. Serialization applies wire lengths without restricting collection edits.
 
-A resolving iterator continues past missing targets with `null` elements. Exporters that need to distinguish absent references from missing targets can iterate indices and inspect each reference handle's `Kind` and `State`.
+A resolving iterator continues past missing nodes with `null` elements. Exporters that need to distinguish absent references from missing nodes can iterate indices and inspect each reference handle's `Kind` and `State`.
 
 Replacing existing arrays, lists, and `External<T>` collections is a public API break. Snapshot conversion to an ordinary array should be an explicit operation because it resolves elements and cannot retain unresolved descriptors. Jagged collections need the same contract at each reference-bearing level.
 
@@ -234,7 +234,7 @@ The implementation should be staged:
 2. Add combined `ReadWrite` support for reference storage in [GbxReaderWriter](../Src/GBX.NET/Serialization/GbxReaderWriter.cs), with reader and writer paths that retain metadata and never require resolution to write.
 3. Update [EngineWriter](../Generators/GBX.NET.Generators/Generation/EngineWriter.cs), [SerializationWriter](../Generators/GBX.NET.Generators/Generation/SerializationWriter.cs), and [WireTypes](../Generators/GBX.NET.Generators/Generation/WireTypes.cs) to cover every `NodeRef` member, including chunk fields, named archives, collections, and conditions that inspect reference presence. Emit diagnostics for incompatible layout annotations and validate external assignments at runtime. Keep direct nodes and meta references on their existing wire paths.
 4. Prototype the generated typed views and collection API with representative classes before converting layouts broadly. Verify inherited view members and captured views after reassignment. Audit handwritten getters, public fields, serializers, and member-name collisions. Tools that inspect references use generated reference enumeration and metadata handles rather than reflected properties. Use Roslyn symbols and layout data during generation, with no reflection fallback in the emitted runtime code.
-5. Generate explicit clone operations for reference fields and loaded targets to preserve aliases within the cloned graph without resolving dependencies or discovering members through reflection. Clone already loaded targets using the same graph context while retaining their external kind. Unresolved, missing, failed, or in-flight external entries start Unresolved in the clone, with fresh resolution state and no copied tasks or errors.
+5. Generate explicit clone operations for reference fields and loaded nodes to preserve aliases within the cloned graph without resolving dependencies or discovering members through reflection. Clone already loaded nodes using the same graph context while retaining their external kind. Unresolved, missing, failed, or in-flight external entries start Unresolved in the clone, with fresh resolution state and no copied tasks or errors.
 6. Expose scalar metadata only through `References`. Remove sibling file properties and their getter adapters. Document collection migration with explicit examples.
 7. Remove obsolete members and adopt the proposed public contract in a major release once generation and handwritten serialization are covered.
 
@@ -248,15 +248,15 @@ Before adopting the public API, verify these behaviors:
 
 - Null, embedded, unresolved external, resolved external, missing external, and failed external references preserve their storage kind through a read/write cycle.
 - Reading, metadata inspection, cloning, and writing do not invoke an external resolver. Direct access invokes it lazily and only once per shared entry until an explicit retry or replacement.
-- Missing files and absent resolver entries return `null` through scalar properties, collection access, and synchronous or asynchronous resolution, while remaining inspectable and serializable. `TryResolve` and `TryResolveAsync` report failure with a null target. Malformed files, incompatible classes, permission errors, and unsupported resources keep distinct errors.
+- Missing files and absent resolver entries return `null` through scalar properties, collection access, and synchronous or asynchronous resolution, while remaining inspectable and serializable. `TryResolve` returns false with a null output. Malformed files, incompatible classes, permission errors, and unsupported resources keep distinct errors.
 - Abstract declared types resolve to valid concrete subtypes without placeholder instances or changes to abstract class declarations.
 - Repeated references preserve aliases. Two references with different descriptors can share a loaded node without overwriting each other's metadata or output entries.
 - Reassignment, retry, cancellation, concurrent loads, and external cycles follow the stated cache and identity rules.
-- Scalar properties, chunk fields, named archives, variable and fixed-size collections, and jagged collections retain external metadata and wire ordering.
+- Scalar properties, chunk fields, named archives, collections with variable or fixed wire lengths, and jagged collections retain external metadata and wire ordering.
 - Importing descriptors across tables preserves the intended location and flags. Encapsulation rejects unsupported external output, and raw-body writes keep their separate editing rules.
-- Assigning a node clears a previous external descriptor, while resolving or editing an external target never silently changes the parent's storage kind.
+- Assigning a node clears a previous external descriptor, while resolving or editing an external node never silently changes the parent's storage kind.
 - Generated typed views expose inherited members and reject ambiguous or reserved names during generation. Invalid member access and mismatched handle assignments fail at compile time. Accessing or capturing a view never evaluates a node getter.
-- Captured scalar views and handles follow member reassignment. Collection metadata views follow collection replacement, while element handles retain their entry identity across index changes or removal.
+- Captured scalar views and handles follow member reassignment. Collection properties expose the current list directly, while captured lists and element handles retain their entries across collection replacement, index changes, or removal.
 - Reference access, resolution dispatch, serialization, cloning, and inspection run using generated accessors and factories in a trimmed or Native AOT test application. Type-mismatch diagnostics read `typeof(T).Name`. Member access and construction require no reflected member lookup, dynamic code generation, or reflection fallback.
 
-The remaining prototype decisions are collection metadata-view interfaces, descriptor construction and rebasing API, resource resolver support, and the allocation cost of reference storage. The scalar access shape is `owner.References.Member`, with the declared type supplied by generation. The remaining decisions need implementation evidence before the release scope is fixed.
+The remaining prototype decisions are descriptor construction and rebasing API, resource resolver support, and the allocation cost of reference storage. The scalar access shape is `owner.References.Member`, with the declared type supplied by generation. Collections use `Get` and `EnumerateReferences` directly. The remaining decisions need implementation evidence before the release scope is fixed.

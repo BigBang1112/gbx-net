@@ -67,39 +67,16 @@ public partial class CGameAdvertising : CGameNod, IClass
         get => this.radial_Config;
         set => this.radial_Config = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CGameAdvertising owner;
-        internal NodeRefView(CGameAdvertising owner) => this.owner = owner;
-        public FilesReferenceView Files => new(owner);
-        public FilesOrigReferenceView FilesOrig => new(owner);
-    }
-    public readonly struct FilesReferenceView
-    {
-        private readonly CGameAdvertising owner;
-        internal FilesReferenceView(CGameAdvertising owner) => this.owner = owner;
-        public int Count => owner.files?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.files ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct FilesOrigReferenceView
-    {
-        private readonly CGameAdvertising owner;
-        internal FilesOrigReferenceView(CGameAdvertising owner) => this.owner = owner;
-        public int Count => owner.filesOrig?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.filesOrig ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (files is not null)
         {
-            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.GetReference(i));
+            for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.Get(i));
         }
         if (filesOrig is not null)
         {
-            for (var i = 0; i < filesOrig.Count; i++) yield return new("FilesOrig" + "[" + i + "]", filesOrig.GetReference(i));
+            for (var i = 0; i < filesOrig.Count; i++) yield return new("FilesOrig" + "[" + i + "]", filesOrig.Get(i));
         }
         yield break;
     }

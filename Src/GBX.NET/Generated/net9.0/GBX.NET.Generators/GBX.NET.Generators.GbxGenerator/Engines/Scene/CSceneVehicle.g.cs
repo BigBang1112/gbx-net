@@ -77,7 +77,6 @@ public partial class CSceneVehicle : CSceneMobil, IClass
         public NodeRef<CMwRefBuffer> VehicleMaterials => NodeRef.GetOrCreate(ref owner.vehicleMaterialsRef);
         public NodeRef<CSceneVehicleEnvironment> Environment => NodeRef.GetOrCreate(ref owner.environmentRef);
         public NodeRef<CPlugVehicleVisModelShared> VehicleStruct => NodeRef.GetOrCreate(ref owner.vehicleStructRef);
-        public CSceneMobil.ObjectLinkReferenceView ObjectLink => ((CSceneMobil)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneMobil)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneMobil)owner).References.Motion;
     }

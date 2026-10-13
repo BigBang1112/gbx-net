@@ -260,14 +260,6 @@ public partial class CPlugDecalModel : CPlug, IClass
         public NodeRef<CPlugBitmap> Icon => NodeRef.GetOrCreate(ref owner.iconRef);
         public NodeRef<CPlugBitmap> Sprite3dBitmap => NodeRef.GetOrCreate(ref owner.sprite3dBitmapRef);
         public NodeRef<CMwNod> Svg => NodeRef.GetOrCreate(ref owner.svgNodeRef);
-        public DecalModelsReferenceView DecalModels => new(owner);
-    }
-    public readonly struct DecalModelsReferenceView
-    {
-        private readonly CPlugDecalModel owner;
-        internal DecalModelsReferenceView(CPlugDecalModel owner) => this.owner = owner;
-        public int Count => owner.decalModels?.Count ?? 0;
-        public NodeRef<CPlugDecalModel> this[int index] => (owner.decalModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -282,7 +274,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         yield return new("Svg", NodeRef.GetOrCreate(ref svgNodeRef));
         if (decalModels is not null)
         {
-            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.GetReference(i));
+            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.Get(i));
         }
         yield break;
     }

@@ -295,8 +295,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     {
         private readonly CGameCtnBlockInfoVariant owner;
         internal NodeRefView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
-        public BlockUnitModelsReferenceView BlockUnitModels => new(owner);
-        public MobilsReferenceView Mobils => new(owner);
         public NodeRef<CPlugSolid> HelperSolidFid => NodeRef.GetOrCreate(ref owner.helperSolidFidRef);
         public NodeRef<CPlugSolid> FacultativeHelperSolidFid => NodeRef.GetOrCreate(ref owner.facultativeHelperSolidFidRef);
         public NodeRef<CMwNod> ScreenInteractionTriggerSolid => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerSolidRef);
@@ -306,44 +304,22 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public NodeRef<CGameTurbineModel> Turbine => NodeRef.GetOrCreate(ref owner.turbineRef);
         public NodeRef<CPlugFlockModel> FlockModel => NodeRef.GetOrCreate(ref owner.flockModelRef);
         public NodeRef<CGameSpawnModel> SpawnModel => NodeRef.GetOrCreate(ref owner.spawnModelRef);
-        public EntitySpawnersReferenceView EntitySpawners => new(owner);
         public NodeRef<CPlugProbe> Probe => NodeRef.GetOrCreate(ref owner.probeRef);
         public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => NodeRef.GetOrCreate(ref owner.compoundModelRef);
-    }
-    public readonly struct BlockUnitModelsReferenceView
-    {
-        private readonly CGameCtnBlockInfoVariant owner;
-        internal BlockUnitModelsReferenceView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
-        public int Count => owner.blockUnitModels?.Count ?? 0;
-        public NodeRef<CGameCtnBlockUnitInfo> this[int index] => (owner.blockUnitModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct MobilsReferenceView
-    {
-        private readonly CGameCtnBlockInfoVariant owner;
-        internal MobilsReferenceView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
-        public int Count => owner.mobils?.Length ?? 0;
-        public NodeRefList<CGameCtnBlockInfoMobil>.ReferenceView this[int index] => (owner.mobils ?? throw new InvalidOperationException("The reference collection is null."))[index].References;
-    }
-    public readonly struct EntitySpawnersReferenceView
-    {
-        private readonly CGameCtnBlockInfoVariant owner;
-        internal EntitySpawnersReferenceView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
-        public int Count => owner.entitySpawners?.Count ?? 0;
-        public NodeRef<CPlugEntitySpawner> this[int index] => (owner.entitySpawners ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (blockUnitModels is not null)
         {
-            for (var i = 0; i < blockUnitModels.Count; i++) yield return new("BlockUnitModels" + "[" + i + "]", blockUnitModels.GetReference(i));
+            for (var i = 0; i < blockUnitModels.Count; i++) yield return new("BlockUnitModels" + "[" + i + "]", blockUnitModels.Get(i));
         }
         if (mobils is not null)
         {
             for (var i = 0; i < mobils.Length; i++)
             {
                 if (mobils[i] is null) continue;
-                for (var j = 0; j < mobils[i].Count; j++) yield return new("Mobils" + "[" + i + "][" + j + "]", mobils[i].GetReference(j));
+                for (var j = 0; j < mobils[i].Count; j++) yield return new("Mobils" + "[" + i + "][" + j + "]", mobils[i].Get(j));
             }
         }
         yield return new("HelperSolidFid", NodeRef.GetOrCreate(ref helperSolidFidRef));
@@ -357,7 +333,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         yield return new("SpawnModel", NodeRef.GetOrCreate(ref spawnModelRef));
         if (entitySpawners is not null)
         {
-            for (var i = 0; i < entitySpawners.Count; i++) yield return new("EntitySpawners" + "[" + i + "]", entitySpawners.GetReference(i));
+            for (var i = 0; i < entitySpawners.Count; i++) yield return new("EntitySpawners" + "[" + i + "]", entitySpawners.Get(i));
         }
         yield return new("Probe", NodeRef.GetOrCreate(ref probeRef));
         yield return new("CompoundModel", NodeRef.GetOrCreate(ref compoundModelRef));

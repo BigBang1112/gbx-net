@@ -254,7 +254,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     {
         private readonly CGameCtnBlockUnitInfo owner;
         internal NodeRefView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public ClipsReferenceView Clips => new(owner);
         public NodeRef<CGameCtnBlockInfo> ReplacementBlockInfo => NodeRef.GetOrCreate(ref owner.replacementBlockInfoRef);
         public NodeRef<CGameCtnBlockInfoPylon> PylonNorth => NodeRef.GetOrCreate(ref owner.pylonNorthRef);
         public NodeRef<CGameCtnBlockInfoPylon> PylonEast => NodeRef.GetOrCreate(ref owner.pylonEastRef);
@@ -262,68 +261,13 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public NodeRef<CGameCtnBlockInfoPylon> PylonWest => NodeRef.GetOrCreate(ref owner.pylonWestRef);
         public NodeRef<CGameCtnBlockInfoClip> BottomClip => NodeRef.GetOrCreate(ref owner.bottomClipRef);
         public NodeRef<CGameCtnBlockInfoClip> TopClip => NodeRef.GetOrCreate(ref owner.topClipRef);
-        public ClipsNorthReferenceView ClipsNorth => new(owner);
-        public ClipsEastReferenceView ClipsEast => new(owner);
-        public ClipsSouthReferenceView ClipsSouth => new(owner);
-        public ClipsWestReferenceView ClipsWest => new(owner);
-        public ClipsTopReferenceView ClipsTop => new(owner);
-        public ClipsBottomReferenceView ClipsBottom => new(owner);
-    }
-    public readonly struct ClipsReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clips?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clips ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsNorthReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsNorthReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsNorth?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsNorth ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsEastReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsEastReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsEast?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsEast ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsSouthReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsSouthReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsSouth?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsSouth ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsWestReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsWestReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsWest?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsWest ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsTopReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsTopReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsTop?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsTop ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsBottomReferenceView
-    {
-        private readonly CGameCtnBlockUnitInfo owner;
-        internal ClipsBottomReferenceView(CGameCtnBlockUnitInfo owner) => this.owner = owner;
-        public int Count => owner.clipsBottom?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoClip> this[int index] => (owner.clipsBottom ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (clips is not null)
         {
-            for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.GetReference(i));
+            for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.Get(i));
         }
         yield return new("ReplacementBlockInfo", NodeRef.GetOrCreate(ref replacementBlockInfoRef));
         yield return new("PylonNorth", NodeRef.GetOrCreate(ref pylonNorthRef));
@@ -334,27 +278,27 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         yield return new("TopClip", NodeRef.GetOrCreate(ref topClipRef));
         if (clipsNorth is not null)
         {
-            for (var i = 0; i < clipsNorth.Count; i++) yield return new("ClipsNorth" + "[" + i + "]", clipsNorth.GetReference(i));
+            for (var i = 0; i < clipsNorth.Count; i++) yield return new("ClipsNorth" + "[" + i + "]", clipsNorth.Get(i));
         }
         if (clipsEast is not null)
         {
-            for (var i = 0; i < clipsEast.Count; i++) yield return new("ClipsEast" + "[" + i + "]", clipsEast.GetReference(i));
+            for (var i = 0; i < clipsEast.Count; i++) yield return new("ClipsEast" + "[" + i + "]", clipsEast.Get(i));
         }
         if (clipsSouth is not null)
         {
-            for (var i = 0; i < clipsSouth.Count; i++) yield return new("ClipsSouth" + "[" + i + "]", clipsSouth.GetReference(i));
+            for (var i = 0; i < clipsSouth.Count; i++) yield return new("ClipsSouth" + "[" + i + "]", clipsSouth.Get(i));
         }
         if (clipsWest is not null)
         {
-            for (var i = 0; i < clipsWest.Count; i++) yield return new("ClipsWest" + "[" + i + "]", clipsWest.GetReference(i));
+            for (var i = 0; i < clipsWest.Count; i++) yield return new("ClipsWest" + "[" + i + "]", clipsWest.Get(i));
         }
         if (clipsTop is not null)
         {
-            for (var i = 0; i < clipsTop.Count; i++) yield return new("ClipsTop" + "[" + i + "]", clipsTop.GetReference(i));
+            for (var i = 0; i < clipsTop.Count; i++) yield return new("ClipsTop" + "[" + i + "]", clipsTop.Get(i));
         }
         if (clipsBottom is not null)
         {
-            for (var i = 0; i < clipsBottom.Count; i++) yield return new("ClipsBottom" + "[" + i + "]", clipsBottom.GetReference(i));
+            for (var i = 0; i < clipsBottom.Count; i++) yield return new("ClipsBottom" + "[" + i + "]", clipsBottom.Get(i));
         }
         yield break;
     }
@@ -814,7 +758,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
 
             if (Version == 0)
             {
-                var clipCountBits = rw.UInt16((ushort)(rw.Writer is null ? default : ((ushort)((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 2 | (n.ClipsSouth?.Length?? 0) << 4 | (n.ClipsWest?.Length?? 0) << 6 | (n.ClipsTop?.Length?? 0) << 8 | (n.ClipsBottom?.Length?? 0) << 10))));
+                var clipCountBits = rw.UInt16((ushort)(rw.Writer is null ? default : ((ushort)((n.ClipsNorth?.Count?? 0) | (n.ClipsEast?.Count?? 0) << 2 | (n.ClipsSouth?.Count?? 0) << 4 | (n.ClipsWest?.Count?? 0) << 6 | (n.ClipsTop?.Count?? 0) << 8 | (n.ClipsBottom?.Count?? 0) << 10))));
                 n.clipsNorth = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsNorth, clipCountBits& 3);
                 n.clipsEast = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsEast, (clipCountBits>> 2) & 3);
                 n.clipsSouth = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsSouth, (clipCountBits>> 4) & 3);
@@ -825,7 +769,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
 
             if (Version >= 1)
             {
-                var clipCountBits = rw.Int32((rw.Writer is null ? default : ((n.ClipsNorth?.Length?? 0) | (n.ClipsEast?.Length?? 0) << 3 | (n.ClipsSouth?.Length?? 0) << 6 | (n.ClipsWest?.Length?? 0) << 9 | (n.ClipsTop?.Length?? 0) << 12 | (n.ClipsBottom?.Length?? 0) << 15)));
+                var clipCountBits = rw.Int32((rw.Writer is null ? default : ((n.ClipsNorth?.Count?? 0) | (n.ClipsEast?.Count?? 0) << 3 | (n.ClipsSouth?.Count?? 0) << 6 | (n.ClipsWest?.Count?? 0) << 9 | (n.ClipsTop?.Count?? 0) << 12 | (n.ClipsBottom?.Count?? 0) << 15)));
                 n.clipsNorth = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsNorth, clipCountBits& 7);
                 n.clipsEast = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsEast, (clipCountBits>> 3) & 7);
                 n.clipsSouth = rw.ListNodeRef<CGameCtnBlockInfoClip>(n.clipsSouth, (clipCountBits>> 6) & 7);

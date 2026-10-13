@@ -267,86 +267,14 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         private readonly CGameCtnBlockInfoMobil owner;
         internal NodeRefView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
         public NodeRef<CSceneMobil> OldMobil => NodeRef.GetOrCreate(ref owner.oldMobilRef);
-        public SolidDecalsReferenceView SolidDecals => new(owner);
         public NodeRef<CPlugSolid> SolidFid => NodeRef.GetOrCreate(ref owner.solidFidRef);
         public NodeRef<CPlugPrefab> PrefabFid => NodeRef.GetOrCreate(ref owner.prefabFidRef);
         public NodeRef<CPlugSolid> OldSolidAggreg => NodeRef.GetOrCreate(ref owner.oldSolidAggregRef);
-        public LegacyRailPolylinesReferenceView LegacyRailPolylines => new(owner);
         public NodeRef<CPlugPath> RailPath => NodeRef.GetOrCreate(ref owner.railPathRef);
         public NodeRef<CPlugPath> TrafficPath => NodeRef.GetOrCreate(ref owner.trafficPathRef);
         public NodeRef<CPlugRecastPolyMeshData> RecastPolyMeshData => NodeRef.GetOrCreate(ref owner.recastPolyMeshDataRef);
-        public LegacyRoadChunksReferenceView LegacyRoadChunks => new(owner);
-        public RoadChunksReferenceView RoadChunks => new(owner);
         public NodeRef<CPlugPath> CitizenNetworkPath => NodeRef.GetOrCreate(ref owner.citizenNetworkPathRef);
-        public LegacyCitizenRoadChunksReferenceView LegacyCitizenRoadChunks => new(owner);
-        public CitizenRoadChunksReferenceView CitizenRoadChunks => new(owner);
         public NodeRef<CPlugVFXFile> VFXs => NodeRef.GetOrCreate(ref owner.vFXsRef);
-        public LegacyPlacementPatchesReferenceView LegacyPlacementPatches => new(owner);
-        public PlacementPatchesReferenceView PlacementPatches => new(owner);
-        public DynaLinksReferenceView DynaLinks => new(owner);
-    }
-    public readonly struct SolidDecalsReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal SolidDecalsReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.solidDecals?.Count ?? 0;
-        public NodeRef<CGameCtnSolidDecals> this[int index] => (owner.solidDecals ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyRailPolylinesReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal LegacyRailPolylinesReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.legacyRailPolylines?.Count ?? 0;
-        public NodeRef<CPlugPolyLine3> this[int index] => (owner.legacyRailPolylines ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyRoadChunksReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal LegacyRoadChunksReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.legacyRoadChunks?.Count ?? 0;
-        public NodeRef<CPlugRoadChunk> this[int index] => (owner.legacyRoadChunks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct RoadChunksReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal RoadChunksReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.roadChunks?.Count ?? 0;
-        public NodeRef<CPlugRoadChunkTraffic> this[int index] => (owner.roadChunks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyCitizenRoadChunksReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal LegacyCitizenRoadChunksReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.legacyCitizenRoadChunks?.Count ?? 0;
-        public NodeRef<CPlugRoadChunk> this[int index] => (owner.legacyCitizenRoadChunks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CitizenRoadChunksReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal CitizenRoadChunksReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.citizenRoadChunks?.Count ?? 0;
-        public NodeRef<CPlugRoadChunkCitizen> this[int index] => (owner.citizenRoadChunks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyPlacementPatchesReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal LegacyPlacementPatchesReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.legacyPlacementPatches?.Count ?? 0;
-        public NodeRef<CPlugRoadChunk> this[int index] => (owner.legacyPlacementPatches ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct PlacementPatchesReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal PlacementPatchesReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.placementPatches?.Count ?? 0;
-        public NodeRef<CPlugPlacementPatch> this[int index] => (owner.placementPatches ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct DynaLinksReferenceView
-    {
-        private readonly CGameCtnBlockInfoMobil owner;
-        internal DynaLinksReferenceView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public int Count => owner.dynaLinks?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoMobilLink> this[int index] => (owner.dynaLinks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -354,47 +282,47 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         yield return new("OldMobil", NodeRef.GetOrCreate(ref oldMobilRef));
         if (solidDecals is not null)
         {
-            for (var i = 0; i < solidDecals.Count; i++) yield return new("SolidDecals" + "[" + i + "]", solidDecals.GetReference(i));
+            for (var i = 0; i < solidDecals.Count; i++) yield return new("SolidDecals" + "[" + i + "]", solidDecals.Get(i));
         }
         yield return new("SolidFid", NodeRef.GetOrCreate(ref solidFidRef));
         yield return new("PrefabFid", NodeRef.GetOrCreate(ref prefabFidRef));
         yield return new("OldSolidAggreg", NodeRef.GetOrCreate(ref oldSolidAggregRef));
         if (legacyRailPolylines is not null)
         {
-            for (var i = 0; i < legacyRailPolylines.Count; i++) yield return new("LegacyRailPolylines" + "[" + i + "]", legacyRailPolylines.GetReference(i));
+            for (var i = 0; i < legacyRailPolylines.Count; i++) yield return new("LegacyRailPolylines" + "[" + i + "]", legacyRailPolylines.Get(i));
         }
         yield return new("RailPath", NodeRef.GetOrCreate(ref railPathRef));
         yield return new("TrafficPath", NodeRef.GetOrCreate(ref trafficPathRef));
         yield return new("RecastPolyMeshData", NodeRef.GetOrCreate(ref recastPolyMeshDataRef));
         if (legacyRoadChunks is not null)
         {
-            for (var i = 0; i < legacyRoadChunks.Count; i++) yield return new("LegacyRoadChunks" + "[" + i + "]", legacyRoadChunks.GetReference(i));
+            for (var i = 0; i < legacyRoadChunks.Count; i++) yield return new("LegacyRoadChunks" + "[" + i + "]", legacyRoadChunks.Get(i));
         }
         if (roadChunks is not null)
         {
-            for (var i = 0; i < roadChunks.Count; i++) yield return new("RoadChunks" + "[" + i + "]", roadChunks.GetReference(i));
+            for (var i = 0; i < roadChunks.Count; i++) yield return new("RoadChunks" + "[" + i + "]", roadChunks.Get(i));
         }
         yield return new("CitizenNetworkPath", NodeRef.GetOrCreate(ref citizenNetworkPathRef));
         if (legacyCitizenRoadChunks is not null)
         {
-            for (var i = 0; i < legacyCitizenRoadChunks.Count; i++) yield return new("LegacyCitizenRoadChunks" + "[" + i + "]", legacyCitizenRoadChunks.GetReference(i));
+            for (var i = 0; i < legacyCitizenRoadChunks.Count; i++) yield return new("LegacyCitizenRoadChunks" + "[" + i + "]", legacyCitizenRoadChunks.Get(i));
         }
         if (citizenRoadChunks is not null)
         {
-            for (var i = 0; i < citizenRoadChunks.Count; i++) yield return new("CitizenRoadChunks" + "[" + i + "]", citizenRoadChunks.GetReference(i));
+            for (var i = 0; i < citizenRoadChunks.Count; i++) yield return new("CitizenRoadChunks" + "[" + i + "]", citizenRoadChunks.Get(i));
         }
         yield return new("VFXs", NodeRef.GetOrCreate(ref vFXsRef));
         if (legacyPlacementPatches is not null)
         {
-            for (var i = 0; i < legacyPlacementPatches.Count; i++) yield return new("LegacyPlacementPatches" + "[" + i + "]", legacyPlacementPatches.GetReference(i));
+            for (var i = 0; i < legacyPlacementPatches.Count; i++) yield return new("LegacyPlacementPatches" + "[" + i + "]", legacyPlacementPatches.Get(i));
         }
         if (placementPatches is not null)
         {
-            for (var i = 0; i < placementPatches.Count; i++) yield return new("PlacementPatches" + "[" + i + "]", placementPatches.GetReference(i));
+            for (var i = 0; i < placementPatches.Count; i++) yield return new("PlacementPatches" + "[" + i + "]", placementPatches.Get(i));
         }
         if (dynaLinks is not null)
         {
-            for (var i = 0; i < dynaLinks.Count; i++) yield return new("DynaLinks" + "[" + i + "]", dynaLinks.GetReference(i));
+            for (var i = 0; i < dynaLinks.Count; i++) yield return new("DynaLinks" + "[" + i + "]", dynaLinks.Get(i));
         }
         yield break;
     }
@@ -643,7 +571,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
             {
                 n.legacyRailPolylines = rw.ListNodeRef<CPlugPolyLine3>(n.legacyRailPolylines);
 
-                if (n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Length > 0)
+                if (n.LegacyRailPolylines!= null && n.LegacyRailPolylines.Count > 0)
                 {
                     if (rw.Reader is not null)
                     {

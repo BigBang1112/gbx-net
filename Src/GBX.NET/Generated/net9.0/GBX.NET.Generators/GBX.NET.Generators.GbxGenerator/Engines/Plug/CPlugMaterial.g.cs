@@ -389,22 +389,14 @@ public partial class CPlugMaterial : CPlug, IClass
         {
             private readonly Chunk09079015 owner;
             internal NodeRefView(Chunk09079015 owner) => this.owner = owner;
-            public U03ReferenceView U03 => new(owner);
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-        }
-        public readonly struct U03ReferenceView
-        {
-            private readonly Chunk09079015 owner;
-            internal U03ReferenceView(Chunk09079015 owner) => this.owner = owner;
-            public int Count => owner.U03?.Count ?? 0;
-            public NodeRef<CPlugMaterialColorTargetTable> this[int index] => (owner.U03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U03 is not null)
             {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
             }
             yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;

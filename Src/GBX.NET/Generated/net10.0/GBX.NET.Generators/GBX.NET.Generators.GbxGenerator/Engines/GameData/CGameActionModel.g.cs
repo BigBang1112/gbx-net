@@ -361,9 +361,7 @@ public partial class CGameActionModel : CMwNod, IClass
     {
         private readonly CGameActionModel owner;
         internal NodeRefView(CGameActionModel owner) => this.owner = owner;
-        public BulletModels_NadeoReferenceView BulletModels_Nadeo => new(owner);
         public NodeRef<CPlugShieldModel> ShieldModel => NodeRef.GetOrCreate(ref owner.shieldModelRef);
-        public BulletModelsReferenceView BulletModels => new(owner);
         public NodeRef<CPlugAnimFile> Anim => NodeRef.GetOrCreate(ref owner.animRef);
         public NodeRef<CPlugFileTextScript> LegacyScript => NodeRef.GetOrCreate(ref owner.legacyScriptRef);
         public NodeRef<CPlugScriptWithSettings> Script => NodeRef.GetOrCreate(ref owner.scriptRef);
@@ -371,31 +369,17 @@ public partial class CGameActionModel : CMwNod, IClass
         public NodeRef<CPlugFileImg> Icon => NodeRef.GetOrCreate(ref owner.iconNodeRef);
         public NodeRef<CPlugFileImg> CrossHair => NodeRef.GetOrCreate(ref owner.crossHairNodeRef);
     }
-    public readonly struct BulletModels_NadeoReferenceView
-    {
-        private readonly CGameActionModel owner;
-        internal BulletModels_NadeoReferenceView(CGameActionModel owner) => this.owner = owner;
-        public int Count => owner.bulletModels_Nadeo?.Count ?? 0;
-        public NodeRef<CPlugBulletModel> this[int index] => (owner.bulletModels_Nadeo ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct BulletModelsReferenceView
-    {
-        private readonly CGameActionModel owner;
-        internal BulletModelsReferenceView(CGameActionModel owner) => this.owner = owner;
-        public int Count => owner.bulletModels?.Count ?? 0;
-        public NodeRef<CPlugBulletModel> this[int index] => (owner.bulletModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (bulletModels_Nadeo is not null)
         {
-            for (var i = 0; i < bulletModels_Nadeo.Count; i++) yield return new("BulletModels_Nadeo" + "[" + i + "]", bulletModels_Nadeo.GetReference(i));
+            for (var i = 0; i < bulletModels_Nadeo.Count; i++) yield return new("BulletModels_Nadeo" + "[" + i + "]", bulletModels_Nadeo.Get(i));
         }
         yield return new("ShieldModel", NodeRef.GetOrCreate(ref shieldModelRef));
         if (bulletModels is not null)
         {
-            for (var i = 0; i < bulletModels.Count; i++) yield return new("BulletModels" + "[" + i + "]", bulletModels.GetReference(i));
+            for (var i = 0; i < bulletModels.Count; i++) yield return new("BulletModels" + "[" + i + "]", bulletModels.Get(i));
         }
         yield return new("Anim", NodeRef.GetOrCreate(ref animRef));
         yield return new("LegacyScript", NodeRef.GetOrCreate(ref legacyScriptRef));

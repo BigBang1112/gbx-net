@@ -44,27 +44,12 @@ public partial class CMotions : CMotion, IClass
         get => motions;
         set => motions = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CMotions owner;
-        internal NodeRefView(CMotions owner) => this.owner = owner;
-        public MotionsReferenceView Motions => new(owner);
-    }
-    public readonly struct MotionsReferenceView
-    {
-        private readonly CMotions owner;
-        internal MotionsReferenceView(CMotions owner) => this.owner = owner;
-        public int Count => owner.motions?.Count ?? 0;
-        public NodeRef<CMotion> this[int index] => (owner.motions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (motions is not null)
         {
-            for (var i = 0; i < motions.Count; i++) yield return new("Motions" + "[" + i + "]", motions.GetReference(i));
+            for (var i = 0; i < motions.Count; i++) yield return new("Motions" + "[" + i + "]", motions.Get(i));
         }
         yield break;
     }

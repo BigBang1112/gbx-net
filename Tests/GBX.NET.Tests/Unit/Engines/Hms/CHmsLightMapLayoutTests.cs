@@ -69,11 +69,11 @@ public class CHmsLightMapLayoutTests
         }
         if (offset == 0x01E)
         {
-            await Assert.That(((CHmsLightMap.Chunk0602101E)chunk).References.U01[10].File).IsSameReferenceAs(files[11]);
+            await Assert.That(((CHmsLightMap.Chunk0602101E)chunk).U01!.Get(10).File).IsSameReferenceAs(files[11]);
         }
         if (offset == 0x006)
         {
-            await Assert.That(node.References.BitmapLightSumBumpLegacy[2].File).IsSameReferenceAs(files[3]);
+            await Assert.That(node.BitmapLightSumBumpLegacy!.Get(2).File).IsSameReferenceAs(files[3]);
         }
     }
 
@@ -148,7 +148,7 @@ public class CHmsLightMapLayoutTests
         await Assert.That(node.References.BitmapSprite3x3_Light.File).IsSameReferenceAs(files[1]);
         await Assert.That(node.References.BitmapSprite_PosAndRadius.File).IsSameReferenceAs(files[2]);
         await Assert.That(node.References.BitmapSprite_ILightDir.File).IsSameReferenceAs(files[3]);
-        await Assert.That(chunk.References.U02[0].File).IsSameReferenceAs(files[version == 0 ? 4 : 5]);
+        await Assert.That(chunk.U02!.Get(0).File).IsSameReferenceAs(files[version == 0 ? 4 : 5]);
     }
 
     [Test]

@@ -116,14 +116,6 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         private readonly CGameCtnZoneFrontier owner;
         internal NodeRefView(CGameCtnZoneFrontier owner) => this.owner = owner;
         public NodeRef<CGameCtnBlockInfoFrontier> BlockInfoFrontier => NodeRef.GetOrCreate(ref owner.blockInfoFrontierRef);
-        public CompatibleZonesReferenceView CompatibleZones => new(owner);
-    }
-    public readonly struct CompatibleZonesReferenceView
-    {
-        private readonly CGameCtnZoneFrontier owner;
-        internal CompatibleZonesReferenceView(CGameCtnZoneFrontier owner) => this.owner = owner;
-        public int Count => owner.compatibleZones?.Count ?? 0;
-        public NodeRef<CGameCtnZoneFusionInfo> this[int index] => (owner.compatibleZones ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -131,7 +123,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         yield return new("BlockInfoFrontier", NodeRef.GetOrCreate(ref blockInfoFrontierRef));
         if (compatibleZones is not null)
         {
-            for (var i = 0; i < compatibleZones.Count; i++) yield return new("CompatibleZones" + "[" + i + "]", compatibleZones.GetReference(i));
+            for (var i = 0; i < compatibleZones.Count; i++) yield return new("CompatibleZones" + "[" + i + "]", compatibleZones.Get(i));
         }
         yield break;
     }

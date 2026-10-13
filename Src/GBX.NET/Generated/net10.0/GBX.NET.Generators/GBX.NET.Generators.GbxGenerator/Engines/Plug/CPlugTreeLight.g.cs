@@ -50,7 +50,6 @@ public partial class CPlugTreeLight : CPlugTree, IClass
         private readonly CPlugTreeLight owner;
         internal NodeRefView(CPlugTreeLight owner) => this.owner = owner;
         public NodeRef<CPlugLight> PlugLight => NodeRef.GetOrCreate(ref owner.plugLightRef);
-        public CPlugTree.ChildrenReferenceView Children => ((CPlugTree)owner).References.Children;
         public NodeRef<CPlugSolid> ModelSolid => ((CPlugTree)owner).References.ModelSolid;
         public NodeRef<CPlugVisual> Visual => ((CPlugTree)owner).References.Visual;
         public NodeRef<CPlug> Shader => ((CPlugTree)owner).References.Shader;

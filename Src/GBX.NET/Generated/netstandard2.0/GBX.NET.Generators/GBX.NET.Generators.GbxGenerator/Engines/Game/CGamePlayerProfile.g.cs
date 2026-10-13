@@ -884,48 +884,8 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         private readonly CGamePlayerProfile owner;
         internal NodeRefView(CGamePlayerProfile owner) => this.owner = owner;
         public NodeRef<CInputBindingsConfig> BindingsForCompatConfig => NodeRef.GetOrCreate(ref owner.bindingsForCompatConfigRef);
-        public InboxMessagesReferenceView InboxMessages => new(owner);
-        public ReadMessagesReferenceView ReadMessages => new(owner);
-        public OutboxMessagesReferenceView OutboxMessages => new(owner);
         public NodeRef<CInputBindingsConfig> BindingsConfig => NodeRef.GetOrCreate(ref owner.bindingsConfigRef);
-        public LeaguesReferenceView Leagues => new(owner);
         public NodeRef<CGameCtnMediaShootParams> ShootParams => NodeRef.GetOrCreate(ref owner.shootParamsRef);
-        public CustomCampaignsReferenceView CustomCampaigns => new(owner);
-    }
-    public readonly struct InboxMessagesReferenceView
-    {
-        private readonly CGamePlayerProfile owner;
-        internal InboxMessagesReferenceView(CGamePlayerProfile owner) => this.owner = owner;
-        public int Count => owner.inboxMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.inboxMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ReadMessagesReferenceView
-    {
-        private readonly CGamePlayerProfile owner;
-        internal ReadMessagesReferenceView(CGamePlayerProfile owner) => this.owner = owner;
-        public int Count => owner.readMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.readMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct OutboxMessagesReferenceView
-    {
-        private readonly CGamePlayerProfile owner;
-        internal OutboxMessagesReferenceView(CGamePlayerProfile owner) => this.owner = owner;
-        public int Count => owner.outboxMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.outboxMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LeaguesReferenceView
-    {
-        private readonly CGamePlayerProfile owner;
-        internal LeaguesReferenceView(CGamePlayerProfile owner) => this.owner = owner;
-        public int Count => owner.leagues?.Count ?? 0;
-        public NodeRef<CGameLeague> this[int index] => (owner.leagues ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CustomCampaignsReferenceView
-    {
-        private readonly CGamePlayerProfile owner;
-        internal CustomCampaignsReferenceView(CGamePlayerProfile owner) => this.owner = owner;
-        public int Count => owner.customCampaigns?.Count ?? 0;
-        public NodeRef<CGameCtnCampaign> this[int index] => (owner.customCampaigns ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -933,25 +893,25 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         yield return new("BindingsForCompatConfig", NodeRef.GetOrCreate(ref bindingsForCompatConfigRef));
         if (inboxMessages is not null)
         {
-            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.GetReference(i));
+            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.Get(i));
         }
         if (readMessages is not null)
         {
-            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.GetReference(i));
+            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.Get(i));
         }
         if (outboxMessages is not null)
         {
-            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.GetReference(i));
+            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.Get(i));
         }
         yield return new("BindingsConfig", NodeRef.GetOrCreate(ref bindingsConfigRef));
         if (leagues is not null)
         {
-            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.GetReference(i));
+            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.Get(i));
         }
         yield return new("ShootParams", NodeRef.GetOrCreate(ref shootParamsRef));
         if (customCampaigns is not null)
         {
-            for (var i = 0; i < customCampaigns.Count; i++) yield return new("CustomCampaigns" + "[" + i + "]", customCampaigns.GetReference(i));
+            for (var i = 0; i < customCampaigns.Count; i++) yield return new("CustomCampaigns" + "[" + i + "]", customCampaigns.Get(i));
         }
         yield break;
     }
@@ -2918,27 +2878,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C046;
 
         public NodeRefList<CGameNetOnlineMessage>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0308C046 owner;
-            internal NodeRefView(Chunk0308C046 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0308C046 owner;
-            internal U01ReferenceView(Chunk0308C046 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -3920,27 +3865,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C070;
 
         public NodeRefList<CInputBindingsConfig>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0308C070 owner;
-            internal NodeRefView(Chunk0308C070 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0308C070 owner;
-            internal U01ReferenceView(Chunk0308C070 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CInputBindingsConfig> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -3981,27 +3911,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override uint Id => 0x0308C072;
 
         public NodeRefList<CGameCtnCampaign>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0308C072 owner;
-            internal NodeRefView(Chunk0308C072 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0308C072 owner;
-            internal U01ReferenceView(Chunk0308C072 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CGameCtnCampaign> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -4307,27 +4222,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
         public NodeRefList<CGameCtnChallenge>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk240B5004 owner;
-            internal NodeRefView(Chunk240B5004 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk240B5004 owner;
-            internal U01ReferenceView(Chunk240B5004 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CGameCtnChallenge> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }

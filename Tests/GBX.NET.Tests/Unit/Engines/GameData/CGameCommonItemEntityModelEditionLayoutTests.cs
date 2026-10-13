@@ -75,10 +75,10 @@ public class CGameCommonItemEntityModelEditionLayoutTests
         }
         if (itemType == CGameCommonItemEntityModelEdition.EItemType.Spot)
         {
-            await Assert.That(node.TriggeredActions!.Length).IsEqualTo(details ? 1 : 0);
+            await Assert.That(node.TriggeredActions!.Count).IsEqualTo(details ? 1 : 0);
             await Assert.That(node.TriggerActionVersion).IsEqualTo(5);
             await Assert.That(node.Triggers!.Length).IsEqualTo(details ? 1 : 0);
-            if (details) await Assert.That(node.References.TriggeredActions[0].File!.FilePath).IsEqualTo("Triggered.Gbx");
+            if (details) await Assert.That(node.TriggeredActions!.Get(0).File!.FilePath).IsEqualTo("Triggered.Gbx");
         }
         if (version < 4) await Assert.That(node.SpawnLoc.Translation).IsEqualTo(new Vec3(10, 11, 12));
         if (version >= 1)

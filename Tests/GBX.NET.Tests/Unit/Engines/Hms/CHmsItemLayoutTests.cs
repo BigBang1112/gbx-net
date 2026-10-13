@@ -176,7 +176,7 @@ public class CHmsItemLayoutTests
             await Assert.That(reader.ReadUInt32()).IsEqualTo(0xDEADBEEFu);
             await Assert.That(input.Position).IsEqualTo(input.Length);
         }
-        await Assert.That(node.Portals!.Length).IsEqualTo(3);
+        await Assert.That(node.Portals!.Count).IsEqualTo(3);
         await Assert.That(node.Portals[1]).IsNull();
         await Assert.That(node.Portals[2]).IsSameReferenceAs(node.Portals[0]);
         await Assert.That(node.Portals[0]!.SeeThroughOpacity).IsEqualTo(0.75f);

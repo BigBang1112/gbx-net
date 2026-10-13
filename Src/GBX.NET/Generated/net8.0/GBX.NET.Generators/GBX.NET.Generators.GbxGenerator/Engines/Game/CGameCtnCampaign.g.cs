@@ -145,27 +145,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         get => this.officialRecordEnabled;
         set => this.officialRecordEnabled = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CGameCtnCampaign owner;
-        internal NodeRefView(CGameCtnCampaign owner) => this.owner = owner;
-        public ChallengeGroupsReferenceView ChallengeGroups => new(owner);
-    }
-    public readonly struct ChallengeGroupsReferenceView
-    {
-        private readonly CGameCtnCampaign owner;
-        internal ChallengeGroupsReferenceView(CGameCtnCampaign owner) => this.owner = owner;
-        public int Count => owner.challengeGroups?.Count ?? 0;
-        public NodeRef<CGameCtnChallengeGroup> this[int index] => (owner.challengeGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (challengeGroups is not null)
         {
-            for (var i = 0; i < challengeGroups.Count; i++) yield return new("ChallengeGroups" + "[" + i + "]", challengeGroups.GetReference(i));
+            for (var i = 0; i < challengeGroups.Count; i++) yield return new("ChallengeGroups" + "[" + i + "]", challengeGroups.Get(i));
         }
         yield break;
     }

@@ -546,39 +546,16 @@ public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable,
         get => this.u17;
         set => this.u17 = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugCustomBulletModel owner;
-        internal NodeRefView(CPlugCustomBulletModel owner) => this.owner = owner;
-        public AliveParticleEmitterSubModelsReferenceView AliveParticleEmitterSubModels => new(owner);
-        public ExplosionParticleEmitterSubModelsReferenceView ExplosionParticleEmitterSubModels => new(owner);
-    }
-    public readonly struct AliveParticleEmitterSubModelsReferenceView
-    {
-        private readonly CPlugCustomBulletModel owner;
-        internal AliveParticleEmitterSubModelsReferenceView(CPlugCustomBulletModel owner) => this.owner = owner;
-        public int Count => owner.aliveParticleEmitterSubModels?.Count ?? 0;
-        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.aliveParticleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ExplosionParticleEmitterSubModelsReferenceView
-    {
-        private readonly CPlugCustomBulletModel owner;
-        internal ExplosionParticleEmitterSubModelsReferenceView(CPlugCustomBulletModel owner) => this.owner = owner;
-        public int Count => owner.explosionParticleEmitterSubModels?.Count ?? 0;
-        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.explosionParticleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (aliveParticleEmitterSubModels is not null)
         {
-            for (var i = 0; i < aliveParticleEmitterSubModels.Count; i++) yield return new("AliveParticleEmitterSubModels" + "[" + i + "]", aliveParticleEmitterSubModels.GetReference(i));
+            for (var i = 0; i < aliveParticleEmitterSubModels.Count; i++) yield return new("AliveParticleEmitterSubModels" + "[" + i + "]", aliveParticleEmitterSubModels.Get(i));
         }
         if (explosionParticleEmitterSubModels is not null)
         {
-            for (var i = 0; i < explosionParticleEmitterSubModels.Count; i++) yield return new("ExplosionParticleEmitterSubModels" + "[" + i + "]", explosionParticleEmitterSubModels.GetReference(i));
+            for (var i = 0; i < explosionParticleEmitterSubModels.Count; i++) yield return new("ExplosionParticleEmitterSubModels" + "[" + i + "]", explosionParticleEmitterSubModels.Get(i));
         }
         yield break;
     }

@@ -58,14 +58,6 @@ public partial class CSceneFxNod : CMwNod, IClass
         private readonly CSceneFxNod owner;
         internal NodeRefView(CSceneFxNod owner) => this.owner = owner;
         public NodeRef<CSceneFx> Fx => NodeRef.GetOrCreate(ref owner.fxRef);
-        public NodInputsReferenceView NodInputs => new(owner);
-    }
-    public readonly struct NodInputsReferenceView
-    {
-        private readonly CSceneFxNod owner;
-        internal NodInputsReferenceView(CSceneFxNod owner) => this.owner = owner;
-        public int Count => owner.nodInputs?.Count ?? 0;
-        public NodeRef<CSceneFxNod> this[int index] => (owner.nodInputs ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -73,7 +65,7 @@ public partial class CSceneFxNod : CMwNod, IClass
         yield return new("Fx", NodeRef.GetOrCreate(ref fxRef));
         if (nodInputs is not null)
         {
-            for (var i = 0; i < nodInputs.Count; i++) yield return new("NodInputs" + "[" + i + "]", nodInputs.GetReference(i));
+            for (var i = 0; i < nodInputs.Count; i++) yield return new("NodInputs" + "[" + i + "]", nodInputs.Get(i));
         }
         yield break;
     }

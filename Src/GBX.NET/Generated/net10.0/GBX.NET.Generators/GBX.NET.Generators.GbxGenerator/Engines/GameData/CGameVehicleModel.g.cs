@@ -110,22 +110,14 @@ public partial class CGameVehicleModel : CMwNod, IClass
         {
             private readonly Chunk2E01C000 owner;
             internal NodeRefView(Chunk2E01C000 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk2E01C000 owner;
-            internal U01ReferenceView(Chunk2E01C000 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CGameObjectModel> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
@@ -173,26 +165,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
             get => actions;
             set => actions = value;
         }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly ItemOccupantSlotModel owner;
-            internal NodeRefView(ItemOccupantSlotModel owner) => this.owner = owner;
-            public ActionsReferenceView Actions => new(owner);
-        }
-        public readonly struct ActionsReferenceView
-        {
-            private readonly ItemOccupantSlotModel owner;
-            internal ActionsReferenceView(ItemOccupantSlotModel owner) => this.owner = owner;
-            public int Count => owner.actions?.Count ?? 0;
-            public NodeRef<CGameActionModel> this[int index] => (owner.actions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             if (actions is not null)
             {
-                for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.GetReference(i));
+                for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
             }
             yield break;
         }

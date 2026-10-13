@@ -77,8 +77,8 @@ public class CPlugWeatherTests
         }
         if (offset is 16 or 18 or 21)
         {
-            await Assert.That(node.Clouds!.SolidFids!.Length).IsEqualTo(2);
-            await Assert.That(node.Clouds.References.SolidFids[1].File!.FilePath).IsEqualTo("Cloud2.Solid.Gbx");
+            await Assert.That(node.Clouds!.SolidFids!.Count).IsEqualTo(2);
+            await Assert.That(node.Clouds.SolidFids!.Get(1).File!.FilePath).IsEqualTo("Cloud2.Solid.Gbx");
             await Assert.That(node.Clouds.BottomNearZ).IsEqualTo(1200.5f);
             await Assert.That(node.Clouds.BottomFarZ).IsEqualTo(offset == 16 ? 1200.5f : 2400.5f);
             if (offset != 16)

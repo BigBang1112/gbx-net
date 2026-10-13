@@ -3017,27 +3017,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         internal NodeRefView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
         public NodeRef<CFuncKeysReal> WaterSplashFromSpeed => NodeRef.GetOrCreate(ref owner.waterSplashFromSpeedRef);
         public NodeRef<CFuncKeysReal> BrakeHeatSpeedFromFBrake => NodeRef.GetOrCreate(ref owner.brakeHeatSpeedFromFBrakeRef);
-        public CameraModelsReferenceView CameraModels => new(owner);
-        public CameraModels_ConsoleReferenceView CameraModels_Console => new(owner);
         public NodeRef<CPlugCamControlModel> CamModelRear => NodeRef.GetOrCreate(ref owner.camModelRearRef);
         public NodeRef<CPlugCamControlModel> CamModelIronSight => NodeRef.GetOrCreate(ref owner.camModelIronSightRef);
         public NodeRef<CMwRefBuffer> Materials => NodeRef.GetOrCreate(ref owner.materialsRef);
         public NodeRef<CPlugVehicleCarPhyShape> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
         public NodeRef<CPlugVehicleGearBox> GearBox => NodeRef.GetOrCreate(ref owner.gearBoxRef);
-    }
-    public readonly struct CameraModelsReferenceView
-    {
-        private readonly CPlugVehicleCarPhyTuning owner;
-        internal CameraModelsReferenceView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
-        public int Count => owner.cameraModels?.Count ?? 0;
-        public NodeRef<CPlugCamControlModel> this[int index] => (owner.cameraModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct CameraModels_ConsoleReferenceView
-    {
-        private readonly CPlugVehicleCarPhyTuning owner;
-        internal CameraModels_ConsoleReferenceView(CPlugVehicleCarPhyTuning owner) => this.owner = owner;
-        public int Count => owner.cameraModels_Console?.Count ?? 0;
-        public NodeRef<CPlugCamControlModel> this[int index] => (owner.cameraModels_Console ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -3046,11 +3030,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         yield return new("BrakeHeatSpeedFromFBrake", NodeRef.GetOrCreate(ref brakeHeatSpeedFromFBrakeRef));
         if (cameraModels is not null)
         {
-            for (var i = 0; i < cameraModels.Count; i++) yield return new("CameraModels" + "[" + i + "]", cameraModels.GetReference(i));
+            for (var i = 0; i < cameraModels.Count; i++) yield return new("CameraModels" + "[" + i + "]", cameraModels.Get(i));
         }
         if (cameraModels_Console is not null)
         {
-            for (var i = 0; i < cameraModels_Console.Count; i++) yield return new("CameraModels_Console" + "[" + i + "]", cameraModels_Console.GetReference(i));
+            for (var i = 0; i < cameraModels_Console.Count; i++) yield return new("CameraModels_Console" + "[" + i + "]", cameraModels_Console.Get(i));
         }
         yield return new("CamModelRear", NodeRef.GetOrCreate(ref camModelRearRef));
         yield return new("CamModelIronSight", NodeRef.GetOrCreate(ref camModelIronSightRef));
@@ -6470,27 +6454,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public int Version { get; set; }
 
         public NodeRefList<CPlugCamControlModel>? U01;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090ED08E owner;
-            internal NodeRefView(Chunk090ED08E owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk090ED08E owner;
-            internal U01ReferenceView(Chunk090ED08E owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CPlugCamControlModel> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }

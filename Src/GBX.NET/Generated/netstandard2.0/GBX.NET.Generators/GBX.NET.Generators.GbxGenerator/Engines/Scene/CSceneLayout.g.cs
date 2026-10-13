@@ -253,139 +253,58 @@ public partial class CSceneLayout : CScene, IClass
     {
         private readonly CSceneLayout owner;
         internal NodeRefView(CSceneLayout owner) => this.owner = owner;
-        public SectorsReferenceView Sectors => new(owner);
-        public LightsReferenceView Lights => new(owner);
-        public SoundsReferenceView Sounds => new(owner);
-        public LocationsReferenceView Locations => new(owner);
-        public FieldsReferenceView Fields => new(owner);
-        public GatesReferenceView Gates => new(owner);
-        public PathsReferenceView Paths => new(owner);
         public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
-        public TrafficPathsReferenceView TrafficPaths => new(owner);
         public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
-        public ObjectsReferenceView Objects => new(owner);
-        public WeatherModelsReferenceView WeatherModels => new(owner);
         public NodeRef<CPlugWeatherModel> WeatherModel => NodeRef.GetOrCreate(ref owner.weatherModelRef);
         public NodeRef<CPlugBitmap> BitmapWaterFog => NodeRef.GetOrCreate(ref owner.bitmapWaterFogRef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
-        public CScene.MotionManagerModelsReferenceView MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
-    }
-    public readonly struct SectorsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal SectorsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.sectors?.Count ?? 0;
-        public NodeRef<CSceneSector> this[int index] => (owner.sectors ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LightsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal LightsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.lights?.Count ?? 0;
-        public NodeRef<CSceneLight> this[int index] => (owner.lights ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct SoundsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal SoundsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.sounds?.Count ?? 0;
-        public NodeRef<CSceneObject> this[int index] => (owner.sounds ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LocationsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal LocationsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.locations?.Count ?? 0;
-        public NodeRef<CSceneObject> this[int index] => (owner.locations ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct FieldsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal FieldsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.fields?.Count ?? 0;
-        public NodeRef<CSceneObject> this[int index] => (owner.fields ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct GatesReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal GatesReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.gates?.Count ?? 0;
-        public NodeRef<CSceneGate> this[int index] => (owner.gates ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct PathsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal PathsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.paths?.Count ?? 0;
-        public NodeRef<CScenePath> this[int index] => (owner.paths ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct TrafficPathsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal TrafficPathsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.trafficPaths?.Count ?? 0;
-        public NodeRef<CSceneTrafficPath> this[int index] => (owner.trafficPaths ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ObjectsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal ObjectsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.objects?.Count ?? 0;
-        public NodeRef<CSceneObject> this[int index] => (owner.objects ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct WeatherModelsReferenceView
-    {
-        private readonly CSceneLayout owner;
-        internal WeatherModelsReferenceView(CSceneLayout owner) => this.owner = owner;
-        public int Count => owner.weatherModels?.Count ?? 0;
-        public NodeRef<CPlugWeatherModel> this[int index] => (owner.weatherModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (sectors is not null)
         {
-            for (var i = 0; i < sectors.Count; i++) yield return new("Sectors" + "[" + i + "]", sectors.GetReference(i));
+            for (var i = 0; i < sectors.Count; i++) yield return new("Sectors" + "[" + i + "]", sectors.Get(i));
         }
         if (lights is not null)
         {
-            for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.GetReference(i));
+            for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.Get(i));
         }
         if (sounds is not null)
         {
-            for (var i = 0; i < sounds.Count; i++) yield return new("Sounds" + "[" + i + "]", sounds.GetReference(i));
+            for (var i = 0; i < sounds.Count; i++) yield return new("Sounds" + "[" + i + "]", sounds.Get(i));
         }
         if (locations is not null)
         {
-            for (var i = 0; i < locations.Count; i++) yield return new("Locations" + "[" + i + "]", locations.GetReference(i));
+            for (var i = 0; i < locations.Count; i++) yield return new("Locations" + "[" + i + "]", locations.Get(i));
         }
         if (fields is not null)
         {
-            for (var i = 0; i < fields.Count; i++) yield return new("Fields" + "[" + i + "]", fields.GetReference(i));
+            for (var i = 0; i < fields.Count; i++) yield return new("Fields" + "[" + i + "]", fields.Get(i));
         }
         if (gates is not null)
         {
-            for (var i = 0; i < gates.Count; i++) yield return new("Gates" + "[" + i + "]", gates.GetReference(i));
+            for (var i = 0; i < gates.Count; i++) yield return new("Gates" + "[" + i + "]", gates.Get(i));
         }
         if (paths is not null)
         {
-            for (var i = 0; i < paths.Count; i++) yield return new("Paths" + "[" + i + "]", paths.GetReference(i));
+            for (var i = 0; i < paths.Count; i++) yield return new("Paths" + "[" + i + "]", paths.Get(i));
         }
         yield return new("TrafficGraph", NodeRef.GetOrCreate(ref trafficGraphRef));
         if (trafficPaths is not null)
         {
-            for (var i = 0; i < trafficPaths.Count; i++) yield return new("TrafficPaths" + "[" + i + "]", trafficPaths.GetReference(i));
+            for (var i = 0; i < trafficPaths.Count; i++) yield return new("TrafficPaths" + "[" + i + "]", trafficPaths.Get(i));
         }
         yield return new("SceneFxNod", NodeRef.GetOrCreate(ref sceneFxNodRef));
         if (objects is not null)
         {
-            for (var i = 0; i < objects.Count; i++) yield return new("Objects" + "[" + i + "]", objects.GetReference(i));
+            for (var i = 0; i < objects.Count; i++) yield return new("Objects" + "[" + i + "]", objects.Get(i));
         }
         if (weatherModels is not null)
         {
-            for (var i = 0; i < weatherModels.Count; i++) yield return new("WeatherModels" + "[" + i + "]", weatherModels.GetReference(i));
+            for (var i = 0; i < weatherModels.Count; i++) yield return new("WeatherModels" + "[" + i + "]", weatherModels.Get(i));
         }
         yield return new("WeatherModel", NodeRef.GetOrCreate(ref weatherModelRef));
         yield return new("BitmapWaterFog", NodeRef.GetOrCreate(ref bitmapWaterFogRef));
@@ -520,27 +439,12 @@ public partial class CSceneLayout : CScene, IClass
 
         public NodeRefList<CSceneObject>? U01;
         public SceneLoc[]? U02;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0A003018 owner;
-            internal NodeRefView(Chunk0A003018 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0A003018 owner;
-            internal U01ReferenceView(Chunk0A003018 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CSceneObject> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -642,27 +546,12 @@ public partial class CSceneLayout : CScene, IClass
         public SceneLoc[]? U02;
         public int U03;
         public int U04;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0A00301B owner;
-            internal NodeRefView(Chunk0A00301B owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0A00301B owner;
-            internal U01ReferenceView(Chunk0A00301B owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CSceneObject> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }
@@ -737,14 +626,6 @@ public partial class CSceneLayout : CScene, IClass
             private readonly Chunk0A00301C owner;
             internal NodeRefView(Chunk0A00301C owner) => this.owner = owner;
             public NodeRef<CSceneConfig> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public U05ReferenceView U05 => new(owner);
-        }
-        public readonly struct U05ReferenceView
-        {
-            private readonly Chunk0A00301C owner;
-            internal U05ReferenceView(Chunk0A00301C owner) => this.owner = owner;
-            public int Count => owner.U05?.Count ?? 0;
-            public NodeRef<CSceneLocation> this[int index] => (owner.U05 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -752,7 +633,7 @@ public partial class CSceneLayout : CScene, IClass
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             if (U05 is not null)
             {
-                for (var i = 0; i < U05.Count; i++) yield return new("U05" + "[" + i + "]", U05.GetReference(i));
+                for (var i = 0; i < U05.Count; i++) yield return new("U05" + "[" + i + "]", U05.Get(i));
             }
             yield break;
         }

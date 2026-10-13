@@ -135,6 +135,7 @@ public partial interface IGbxReader : IDisposable
     T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass;
     [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod;
     [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod;
+    [IgnoreForCodeGeneration] NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
@@ -1050,7 +1051,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             logger?.LogWarning("Reference table file discard: {File} {StackTrace}", file, Environment.StackTrace);
         }
 
-        return reference.CachedTarget;
+        return reference.CachedNode;
     }
 
     public T? ReadNode<T>() where T : IClass, new()
@@ -1614,7 +1615,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var reference = ReadNodeRef<T>(null);
         if (reference.Resource is not null)
             throw new NotSupportedException("Use NodeRef<T> or NodeRefList<T> to retain external resources.");
-        return new(reference.CachedTarget, reference.File);
+        return new(reference.CachedNode, reference.File);
     }
 
     public External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod

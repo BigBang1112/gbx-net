@@ -113,14 +113,6 @@ public partial class CMotionPlayer : CMotion, IClass
         internal NodeRefView(CMotionPlayer owner) => this.owner = owner;
         public NodeRef<CMotionCmdBase> Base => NodeRef.GetOrCreate(ref owner.baseRef);
         public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
-        public TracksReferenceView Tracks => new(owner);
-    }
-    public readonly struct TracksReferenceView
-    {
-        private readonly CMotionPlayer owner;
-        internal TracksReferenceView(CMotionPlayer owner) => this.owner = owner;
-        public int Count => owner.tracks?.Count ?? 0;
-        public NodeRef<CMotionTrack> this[int index] => (owner.tracks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -129,7 +121,7 @@ public partial class CMotionPlayer : CMotion, IClass
         yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
         if (tracks is not null)
         {
-            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.GetReference(i));
+            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.Get(i));
         }
         yield break;
     }
@@ -213,7 +205,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            NodeRef.SetEmbedded(ref n.baseRef, rw.Node<CMotionCmdBase>(n.baseRef?.CachedTarget));
+            rw.Node(ref n.baseRef);
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)
@@ -247,7 +239,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            NodeRef.SetEmbedded(ref n.baseRef, rw.Node<CMotionCmdBase>(n.baseRef?.CachedTarget));
+            rw.Node(ref n.baseRef);
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)

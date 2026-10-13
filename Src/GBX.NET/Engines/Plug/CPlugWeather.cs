@@ -59,7 +59,7 @@ public partial class CPlugWeather
                 inlineClouds.CreateChunk<CPlugClouds.Chunk09180000>();
             }
 
-            var clouds = n.cloudsRef?.CachedTarget ?? throw new InvalidOperationException("Inline clouds are missing.");
+            var clouds = n.cloudsRef?.CachedNode ?? throw new InvalidOperationException("Inline clouds are missing.");
             clouds.SolidFids = rw.ListNodeRef(clouds.SolidFids);
             clouds.BottomNearZ = rw.Single(clouds.BottomNearZ);
             if (rw.Reader is not null)
@@ -74,7 +74,7 @@ public partial class CPlugWeather
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            var clouds = n.cloudsRef?.CachedTarget ?? throw new InvalidOperationException("Inline clouds are missing.");
+            var clouds = n.cloudsRef?.CachedNode ?? throw new InvalidOperationException("Inline clouds are missing.");
             clouds.BottomFarZ = rw.Single(clouds.BottomFarZ);
             rw.NodeRef(clouds.References.ImageColorMin);
             rw.NodeRef(clouds.References.ImageColorMax);
@@ -86,7 +86,7 @@ public partial class CPlugWeather
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            var clouds = n.cloudsRef?.CachedTarget ?? throw new InvalidOperationException("Inline clouds are missing.");
+            var clouds = n.cloudsRef?.CachedNode ?? throw new InvalidOperationException("Inline clouds are missing.");
             clouds.Lighting = rw.Int32(clouds.Lighting);
         }
     }

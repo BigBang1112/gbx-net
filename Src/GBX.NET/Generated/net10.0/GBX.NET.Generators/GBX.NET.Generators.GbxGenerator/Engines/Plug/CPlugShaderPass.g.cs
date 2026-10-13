@@ -243,14 +243,6 @@ public partial class CPlugShaderPass : CPlug, IClass
         public NodeRef<CPlugFileGPU> VertexShader => NodeRef.GetOrCreate(ref owner.vertexShaderRef);
         public NodeRef<CPlugFileGPU> PixelShader => NodeRef.GetOrCreate(ref owner.pixelShaderRef);
         public NodeRef<CMwNod> UnusedShader => NodeRef.GetOrCreate(ref owner.unusedShaderRef);
-        public VertexTexturesReferenceView VertexTextures => new(owner);
-    }
-    public readonly struct VertexTexturesReferenceView
-    {
-        private readonly CPlugShaderPass owner;
-        internal VertexTexturesReferenceView(CPlugShaderPass owner) => this.owner = owner;
-        public int Count => owner.vertexTextures?.Count ?? 0;
-        public NodeRef<CPlugBitmapSampler> this[int index] => (owner.vertexTextures ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -260,7 +252,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         yield return new("UnusedShader", NodeRef.GetOrCreate(ref unusedShaderRef));
         if (vertexTextures is not null)
         {
-            for (var i = 0; i < vertexTextures.Count; i++) yield return new("VertexTextures" + "[" + i + "]", vertexTextures.GetReference(i));
+            for (var i = 0; i < vertexTextures.Count; i++) yield return new("VertexTextures" + "[" + i + "]", vertexTextures.Get(i));
         }
         yield break;
     }

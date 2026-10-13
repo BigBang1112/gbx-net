@@ -171,14 +171,6 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
         public NodeRef<CMwNod> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
         public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel => NodeRef.GetOrCreate(ref owner.particleEmitterModelRef);
-        public ActionsReferenceView Actions => new(owner);
-    }
-    public readonly struct ActionsReferenceView
-    {
-        private readonly CGameCommonItemEntityModel owner;
-        internal ActionsReferenceView(CGameCommonItemEntityModel owner) => this.owner = owner;
-        public int Count => owner.actions?.Count ?? 0;
-        public NodeRef<CGameActionModel> this[int index] => (owner.actions ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -190,7 +182,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         yield return new("ParticleEmitterModel", NodeRef.GetOrCreate(ref particleEmitterModelRef));
         if (actions is not null)
         {
-            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.GetReference(i));
+            for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.Get(i));
         }
         yield break;
     }

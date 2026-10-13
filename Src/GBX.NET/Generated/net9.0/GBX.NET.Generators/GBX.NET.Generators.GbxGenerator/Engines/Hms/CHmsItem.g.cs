@@ -198,14 +198,6 @@ public partial class CHmsItem : CMwNod, IClass
         private readonly CHmsItem owner;
         internal NodeRefView(CHmsItem owner) => this.owner = owner;
         public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidRef);
-        public PortalsReferenceView Portals => new(owner);
-    }
-    public readonly struct PortalsReferenceView
-    {
-        private readonly CHmsItem owner;
-        internal PortalsReferenceView(CHmsItem owner) => this.owner = owner;
-        public int Count => owner.portals?.Count ?? 0;
-        public NodeRef<CHmsPortal> this[int index] => (owner.portals ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -213,7 +205,7 @@ public partial class CHmsItem : CMwNod, IClass
         yield return new("Solid", NodeRef.GetOrCreate(ref solidRef));
         if (portals is not null)
         {
-            for (var i = 0; i < portals.Count; i++) yield return new("Portals" + "[" + i + "]", portals.GetReference(i));
+            for (var i = 0; i < portals.Count; i++) yield return new("Portals" + "[" + i + "]", portals.Get(i));
         }
         yield break;
     }

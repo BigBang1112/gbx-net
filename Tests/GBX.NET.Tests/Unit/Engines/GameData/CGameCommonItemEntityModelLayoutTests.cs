@@ -94,7 +94,7 @@ public class CGameCommonItemEntityModelLayoutTests
         await Assert.That(node.References.ParticleEmitterModel.File).IsSameReferenceAs(particleFile);
         if (version >= 2)
         {
-            await Assert.That(node.References.Actions[0].File).IsSameReferenceAs(actionFile);
+            await Assert.That(node.Actions!.Get(0).File).IsSameReferenceAs(actionFile);
             await Assert.That(node.SpawnLoc).IsEqualTo(Iso4.Identity);
             await Assert.That(node.SoundRefSpawn).IsEqualTo("Spawn");
             await Assert.That(node.SoundRefPermanent).IsEqualTo("Permanent");

@@ -233,14 +233,14 @@ public partial class CGameCtnChallenge :
         {
             // Lightmap cache is not compressed in version 1 and below
             if (lightmapCacheRef?.Descriptor is not null) return lightmapCacheRef?.Resolve();
-            if (lightmapCacheRef?.CachedTarget is not null || LightmapVersion < 2) return lightmapCacheRef?.CachedTarget;
-            if (LightmapCacheData is null || LightmapCacheData.Parsed) return lightmapCacheRef?.CachedTarget;
+            if (lightmapCacheRef?.CachedNode is not null || LightmapVersion < 2) return lightmapCacheRef?.CachedNode;
+            if (LightmapCacheData is null || LightmapCacheData.Parsed) return lightmapCacheRef?.CachedNode;
 
             lock (LightmapCacheDataLock)
             {
-                if (lightmapCacheRef?.CachedTarget is not null) return lightmapCacheRef?.CachedTarget;
+                if (lightmapCacheRef?.CachedNode is not null) return lightmapCacheRef?.CachedNode;
                 ParseLightMapCacheSmall(); // sets lightmapCache and LightmapCacheData.Parsed to true
-                return lightmapCacheRef?.CachedTarget;
+                return lightmapCacheRef?.CachedNode;
             }
         }
         set
@@ -1251,7 +1251,7 @@ public partial class CGameCtnChallenge :
                     return;
                 }
 
-                w.WriteListWritable(n.blocks?.GetEmbeddedTargets().ToList(), version: Version);
+                w.WriteListWritable(n.blocks?.GetEmbeddedNodes().ToList(), version: Version);
                 return;
             }
 
@@ -1262,7 +1262,7 @@ public partial class CGameCtnChallenge :
                 return;
             }
 
-            foreach (var block in n.blocks.GetEmbeddedTargets())
+            foreach (var block in n.blocks.GetEmbeddedNodes())
             {
                 try
                 {
@@ -1290,7 +1290,7 @@ public partial class CGameCtnChallenge :
             using var rw = new GbxReaderWriter(r);
 
             lightmapCacheSmall = new CHmsLightMapCache.Small();
-            var cache = lightmapCacheRef?.CachedTarget;
+            var cache = lightmapCacheRef?.CachedNode;
             lightmapCacheSmall.ReadWrite(LightmapVersion.Value, ref cache, lightmapFrames, rw);
             NodeRef.SetEmbedded(ref lightmapCacheRef, cache);
 
@@ -1387,7 +1387,7 @@ public partial class CGameCtnChallenge :
                 w.WriteZlibData(n.LightmapCacheData, w =>
                 {
                     using var rw = new GbxReaderWriter(w);
-                    var cache = n.lightmapCacheRef?.CachedTarget;
+                    var cache = n.lightmapCacheRef?.CachedNode;
                     (n.LightmapCacheSmall ?? new()).ReadWrite(n.LightmapVersion.Value, ref cache, n.lightmapFrames, rw);
                 });
             }
@@ -1706,7 +1706,7 @@ public partial class CGameCtnChallenge :
 
             if (BlocksVersion < 6)
             {
-                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedTargets().ToList(), version: BlocksVersion);
+                w.WriteListWritable(n.bakedBlocks?.GetEmbeddedNodes().ToList(), version: BlocksVersion);
             }
             else
             {
@@ -1714,7 +1714,7 @@ public partial class CGameCtnChallenge :
 
                 if (n.bakedBlocks is not null)
                 {
-                    foreach (var block in n.bakedBlocks.GetEmbeddedTargets())
+                    foreach (var block in n.bakedBlocks.GetEmbeddedNodes())
                     {
                         try
                         {

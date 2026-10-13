@@ -1,9 +1,12 @@
-﻿namespace GBX.NET.Components;
+namespace GBX.NET.Components;
 
 public abstract class GbxRefTableNode : IDeepCloneable
 {
-    /// <summary>The table that owns this descriptor and supplies its read settings and external resolvers.</summary>
+    /// <summary>
+    /// The table that owns this descriptor and supplies its read settings and external resolvers.
+    /// </summary>
     public GbxRefTable RefTable { get; }
+
     internal NodeRefResolution Resolution { get; } = new();
 
     public int Flags { get; }
@@ -16,8 +19,9 @@ public abstract class GbxRefTableNode : IDeepCloneable
         UseFile = useFile;
     }
 
-    internal abstract CMwNod? ResolveTarget();
-    internal virtual Task<CMwNod?> ResolveTargetAsync() => Task.FromResult(ResolveTarget());
+    internal abstract CMwNod? ResolveNode();
+
+    internal virtual Task<CMwNod?> ResolveNodeAsync() => Task.FromResult(ResolveNode());
 
     object IDeepCloneable.DeepClone(DeepCloneContext context)
     {
@@ -32,11 +36,11 @@ public abstract class GbxRefTableNode : IDeepCloneable
 
         context.Register(this, clone);
 
-        if (Resolution.CachedTarget is not null) 
+        if (Resolution.CachedNode is not null)
         {
-            clone.Resolution.Seed(context.Clone(Resolution.CachedTarget)!);
+            clone.Resolution.Seed(context.Clone(Resolution.CachedNode)!);
         }
-        
+
         return clone;
     }
 }

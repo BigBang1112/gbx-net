@@ -92,27 +92,12 @@ public partial class CPlugFileGen : CPlugFileImg, IClass, IReadableWritable, IRe
         get => this.pixelData;
         set => this.pixelData = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugFileGen owner;
-        internal NodeRefView(CPlugFileGen owner) => this.owner = owner;
-        public InputImagesReferenceView InputImages => new(owner);
-    }
-    public readonly struct InputImagesReferenceView
-    {
-        private readonly CPlugFileGen owner;
-        internal InputImagesReferenceView(CPlugFileGen owner) => this.owner = owner;
-        public int Count => owner.inputImages?.Count ?? 0;
-        public NodeRef<CPlugFileImg> this[int index] => (owner.inputImages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (inputImages is not null)
         {
-            for (var i = 0; i < inputImages.Count; i++) yield return new("InputImages" + "[" + i + "]", inputImages.GetReference(i));
+            for (var i = 0; i < inputImages.Count; i++) yield return new("InputImages" + "[" + i + "]", inputImages.Get(i));
         }
         yield break;
     }

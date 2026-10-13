@@ -99,12 +99,12 @@ public partial class CGameItemPlacementParam
 
             if (Version == 3)
             {
-                NodeRef.SetEmbedded(ref n.placementClassRef, rw.ReadableWritable(n.placementClassRef?.CachedTarget));
+                NodeRef.SetEmbedded(ref n.placementClassRef, rw.ReadableWritable(n.placementClassRef?.CachedNode));
                 return;
             }
 
             // The owning placement parameter defaults this flag to true before legacy chunks run.
-            var placementClass = n.placementClassRef?.CachedTarget;
+            var placementClass = n.placementClassRef?.CachedNode;
             if (placementClass is null)
             {
                 placementClass = new NPlugItemPlacement_SClass { AlignToInterior = true };

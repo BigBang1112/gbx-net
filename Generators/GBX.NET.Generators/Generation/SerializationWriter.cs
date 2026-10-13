@@ -319,7 +319,7 @@ internal sealed class SerializationWriter
             ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes) &&
             !SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@'))
             ? prefix + ReferenceModel.Handle(storedField, chunk && storedField.IsUnknown) : null;
-        if (embeddedHandle is not null) target = embeddedHandle + "?.CachedTarget";
+        if (embeddedHandle is not null) target = embeddedHandle + "?.CachedNode";
         string Assign(string value) => embeddedHandle is null
             ? (field.IsLocal ? "var " : "") + target + " = " + value + ";"
             : "NodeRef.SetEmbedded(ref " + embeddedHandle + ", " + value + ");";
@@ -432,6 +432,11 @@ internal sealed class SerializationWriter
             {
                 code.Line(Assign($"rw.{method}({value}{argumentSuffix}){(storageType.EndsWith("?", StringComparison.Ordinal) || WireTypes.Nullable(field) ? "" : ".GetValueOrDefault()")}"));
             }
+            else if (embeddedHandle is not null && write is null && arguments.Count == 0 &&
+                method == "Node<" + ReferenceModel.Element(storedField) + ">")
+            {
+                code.Line($"rw.Node(ref {embeddedHandle});");
+            }
             else if (hasBacking && write is null)
             {
                 code.Line($"rw.{method}(ref {target}{(declaration.Type.ArrayDimensions > 0 ? "!" : "")}{argumentSuffix});");
@@ -477,10 +482,10 @@ internal sealed class SerializationWriter
             });
             if (converted && mode != SerializationMode.Write)
             {
-                var assignment = $"{target} = ({customStorage}){handle}?.CachedTarget;";
+                var assignment = $"{target} = ({customStorage}){handle}?.CachedNode;";
                 code.Line(mode == SerializationMode.ReadWrite ? "if (rw.Reader is not null) " + assignment : assignment);
             }
-            if (local) code.Line($"var {target} = {handle}?.CachedTarget;");
+            if (local) code.Line($"var {target} = {handle}?.CachedNode;");
             return;
         }
 
@@ -491,12 +496,13 @@ internal sealed class SerializationWriter
             "ListNodeRef" + (LayoutModel.Has(declaration.Attributes, "deprec") ? "_deprec" : "");
         var suffix = arguments.Length == 0 ? "" : ", " + arguments;
         var readArguments = declaration.Type.FixedArrayCount is { Length: > 0 } readLength
-            ? declaration.Type.ArrayDimensions > 1 ? "fixedSize: true, innerLength: " + ExpressionText(readLength, nullSafeCount: true) :
+            ? declaration.Type.ArrayDimensions > 1 ? "innerLength: " + ExpressionText(readLength, nullSafeCount: true) :
                 "length: " + ExpressionText(readLength, nullSafeCount: true)
-            : declaration.Type.ArrayDimensions > 1 ? "fixedSize: false" : "";
+            : "";
+        var readMethod = declaration.Type.ArrayDimensions > 1 ? "JaggedListNodeRef" : method;
         code.Line(mode switch
         {
-            SerializationMode.Read => $"{(local ? "var " : "")}{target} = r.Read{method}<{name}>({readArguments});",
+            SerializationMode.Read => $"{(local ? "var " : "")}{target} = r.Read{readMethod}<{name}>({readArguments});",
             SerializationMode.Write => $"w.Write{method}({target}{suffix});",
             _ => $"{(local ? "var " : "")}{target} = rw.{method}<{name}>({(local ? "null" : target)}{suffix});"
         });
@@ -736,7 +742,7 @@ internal sealed class SerializationWriter
 
     private string DataIdentifier(string name)
     {
-        if (CachedReferenceIdentifier(name) is { } handle) return handle + "?.CachedTarget";
+        if (CachedReferenceIdentifier(name) is { } handle) return handle + "?.CachedNode";
         return Identifier(name);
     }
 

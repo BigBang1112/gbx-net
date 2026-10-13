@@ -308,99 +308,36 @@ public partial class CPlugAnimFile : CMwNod, IClass
         get => clips;
         set => clips = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugAnimFile owner;
-        internal NodeRefView(CPlugAnimFile owner) => this.owner = owner;
-        public PoseGroupsReferenceView PoseGroups => new(owner);
-        public PoseGridsReferenceView PoseGrids => new(owner);
-        public GraphsReferenceView Graphs => new(owner);
-        public GraphStacksReferenceView GraphStacks => new(owner);
-        public VariantGroupsReferenceView VariantGroups => new(owner);
-        public EditionPosesReferenceView EditionPoses => new(owner);
-        public ClipsReferenceView Clips => new(owner);
-    }
-    public readonly struct PoseGroupsReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal PoseGroupsReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.poseGroups?.Count ?? 0;
-        public NodeRef<CPlugAnimPoseGroup> this[int index] => (owner.poseGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct PoseGridsReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal PoseGridsReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.poseGrids?.Count ?? 0;
-        public NodeRef<CPlugAnimPoseGrid> this[int index] => (owner.poseGrids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct GraphsReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal GraphsReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.graphs?.Count ?? 0;
-        public NodeRef<CPlugAnimGraph> this[int index] => (owner.graphs ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct GraphStacksReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal GraphStacksReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.graphStacks?.Count ?? 0;
-        public NodeRef<CPlugAnimGraphStack> this[int index] => (owner.graphStacks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct VariantGroupsReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal VariantGroupsReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.variantGroups?.Count ?? 0;
-        public NodeRef<CPlugAnimVariantGroup> this[int index] => (owner.variantGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct EditionPosesReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal EditionPosesReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.editionPoses?.Count ?? 0;
-        public NodeRef<CPlugAnimSkelEditionPose> this[int index] => (owner.editionPoses ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ClipsReferenceView
-    {
-        private readonly CPlugAnimFile owner;
-        internal ClipsReferenceView(CPlugAnimFile owner) => this.owner = owner;
-        public int Count => owner.clips?.Count ?? 0;
-        public NodeRef<CPlugAnimClip> this[int index] => (owner.clips ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (poseGroups is not null)
         {
-            for (var i = 0; i < poseGroups.Count; i++) yield return new("PoseGroups" + "[" + i + "]", poseGroups.GetReference(i));
+            for (var i = 0; i < poseGroups.Count; i++) yield return new("PoseGroups" + "[" + i + "]", poseGroups.Get(i));
         }
         if (poseGrids is not null)
         {
-            for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.GetReference(i));
+            for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.Get(i));
         }
         if (graphs is not null)
         {
-            for (var i = 0; i < graphs.Count; i++) yield return new("Graphs" + "[" + i + "]", graphs.GetReference(i));
+            for (var i = 0; i < graphs.Count; i++) yield return new("Graphs" + "[" + i + "]", graphs.Get(i));
         }
         if (graphStacks is not null)
         {
-            for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.GetReference(i));
+            for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.Get(i));
         }
         if (variantGroups is not null)
         {
-            for (var i = 0; i < variantGroups.Count; i++) yield return new("VariantGroups" + "[" + i + "]", variantGroups.GetReference(i));
+            for (var i = 0; i < variantGroups.Count; i++) yield return new("VariantGroups" + "[" + i + "]", variantGroups.Get(i));
         }
         if (editionPoses is not null)
         {
-            for (var i = 0; i < editionPoses.Count; i++) yield return new("EditionPoses" + "[" + i + "]", editionPoses.GetReference(i));
+            for (var i = 0; i < editionPoses.Count; i++) yield return new("EditionPoses" + "[" + i + "]", editionPoses.Get(i));
         }
         if (clips is not null)
         {
-            for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.GetReference(i));
+            for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.Get(i));
         }
         yield break;
     }

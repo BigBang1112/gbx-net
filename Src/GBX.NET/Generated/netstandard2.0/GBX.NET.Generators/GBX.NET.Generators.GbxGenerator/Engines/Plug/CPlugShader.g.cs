@@ -193,25 +193,9 @@ public partial class CPlugShader : CPlug, IClass
         private readonly CPlugShader owner;
         internal NodeRefView(CPlugShader owner) => this.owner = owner;
         public NodeRef<CFuncShader> FuncShader => NodeRef.GetOrCreate(ref owner.funcShaderRef);
-        public PassesReferenceView Passes => new(owner);
         public NodeRef<CPlugBitmapApply> SolidWiredApply => NodeRef.GetOrCreate(ref owner.solidWiredApplyRef);
         public NodeRef<CPlugMaterialFx> MaterialFx => NodeRef.GetOrCreate(ref owner.materialFxRef);
-        public LegacyCustomShadersReferenceView LegacyCustomShaders => new(owner);
         public NodeRef<CPlugFileGPUV> GPU => NodeRef.GetOrCreate(ref owner.gPURef);
-    }
-    public readonly struct PassesReferenceView
-    {
-        private readonly CPlugShader owner;
-        internal PassesReferenceView(CPlugShader owner) => this.owner = owner;
-        public int Count => owner.passes?.Count ?? 0;
-        public NodeRef<CPlugShaderPass> this[int index] => (owner.passes ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LegacyCustomShadersReferenceView
-    {
-        private readonly CPlugShader owner;
-        internal LegacyCustomShadersReferenceView(CPlugShader owner) => this.owner = owner;
-        public int Count => owner.legacyCustomShaders?.Count ?? 0;
-        public NodeRef<CPlugShader> this[int index] => (owner.legacyCustomShaders ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -219,13 +203,13 @@ public partial class CPlugShader : CPlug, IClass
         yield return new("FuncShader", NodeRef.GetOrCreate(ref funcShaderRef));
         if (passes is not null)
         {
-            for (var i = 0; i < passes.Count; i++) yield return new("Passes" + "[" + i + "]", passes.GetReference(i));
+            for (var i = 0; i < passes.Count; i++) yield return new("Passes" + "[" + i + "]", passes.Get(i));
         }
         yield return new("SolidWiredApply", NodeRef.GetOrCreate(ref solidWiredApplyRef));
         yield return new("MaterialFx", NodeRef.GetOrCreate(ref materialFxRef));
         if (legacyCustomShaders is not null)
         {
-            for (var i = 0; i < legacyCustomShaders.Count; i++) yield return new("LegacyCustomShaders" + "[" + i + "]", legacyCustomShaders.GetReference(i));
+            for (var i = 0; i < legacyCustomShaders.Count; i++) yield return new("LegacyCustomShaders" + "[" + i + "]", legacyCustomShaders.Get(i));
         }
         yield return new("GPU", NodeRef.GetOrCreate(ref gPURef));
         yield break;

@@ -103,22 +103,14 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
         private readonly CGameCtnMediaTrack owner;
         internal NodeRefView(CGameCtnMediaTrack owner) => this.owner = owner;
-        public BlocksReferenceView Blocks => new(owner);
         public NodeRef<CGameCtnGhost> LegacyGhostModel => NodeRef.GetOrCreate(ref owner.legacyGhostModelRef);
-    }
-    public readonly struct BlocksReferenceView
-    {
-        private readonly CGameCtnMediaTrack owner;
-        internal BlocksReferenceView(CGameCtnMediaTrack owner) => this.owner = owner;
-        public int Count => owner.blocks?.Count ?? 0;
-        public NodeRef<CGameCtnMediaBlock> this[int index] => (owner.blocks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (blocks is not null)
         {
-            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.GetReference(i));
+            for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.Get(i));
         }
         yield return new("LegacyGhostModel", NodeRef.GetOrCreate(ref legacyGhostModelRef));
         yield break;

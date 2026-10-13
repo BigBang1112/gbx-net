@@ -446,14 +446,6 @@ public partial class CGamePlayerScore : CMwNod, IClass
         private readonly CGamePlayerScore owner;
         internal NodeRefView(CGamePlayerScore owner) => this.owner = owner;
         public NodeRef<CGamePlayerOfficialScores> PlayerOfficialScores => NodeRef.GetOrCreate(ref owner.playerOfficialScoresRef);
-        public CampaignPlayerScoresReferenceView CampaignPlayerScores => new(owner);
-    }
-    public readonly struct CampaignPlayerScoresReferenceView
-    {
-        private readonly CGamePlayerScore owner;
-        internal CampaignPlayerScoresReferenceView(CGamePlayerScore owner) => this.owner = owner;
-        public int Count => owner.campaignPlayerScores?.Count ?? 0;
-        public NodeRef<CGameCampaignPlayerScores> this[int index] => (owner.campaignPlayerScores ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -461,7 +453,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         yield return new("PlayerOfficialScores", NodeRef.GetOrCreate(ref playerOfficialScoresRef));
         if (campaignPlayerScores is not null)
         {
-            for (var i = 0; i < campaignPlayerScores.Count; i++) yield return new("CampaignPlayerScores" + "[" + i + "]", campaignPlayerScores.GetReference(i));
+            for (var i = 0; i < campaignPlayerScores.Count; i++) yield return new("CampaignPlayerScores" + "[" + i + "]", campaignPlayerScores.Get(i));
         }
         yield break;
     }
@@ -1422,30 +1414,6 @@ public partial class CGamePlayerScore : CMwNod, IClass
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
             public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
             public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
-            public U05ReferenceView U05 => new(owner);
-            public U09ReferenceView U09 => new(owner);
-            public U10ReferenceView U10 => new(owner);
-        }
-        public readonly struct U05ReferenceView
-        {
-            private readonly DeprecatedChallengeLeagueScore owner;
-            internal U05ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
-            public int Count => owner.u05?.Count ?? 0;
-            public NodeRef<CGameHighScore> this[int index] => (owner.u05 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U09ReferenceView
-        {
-            private readonly DeprecatedChallengeLeagueScore owner;
-            internal U09ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
-            public int Count => owner.u09?.Count ?? 0;
-            public NodeRef<CMwNod> this[int index] => (owner.u09 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U10ReferenceView
-        {
-            private readonly DeprecatedChallengeLeagueScore owner;
-            internal U10ReferenceView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
-            public int Count => owner.u10?.Count ?? 0;
-            public NodeRef<CGameHighScore> this[int index] => (owner.u10 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -1455,15 +1423,15 @@ public partial class CGamePlayerScore : CMwNod, IClass
             yield return new("U04", NodeRef.GetOrCreate(ref u04Ref));
             if (u05 is not null)
             {
-                for (var i = 0; i < u05.Count; i++) yield return new("U05" + "[" + i + "]", u05.GetReference(i));
+                for (var i = 0; i < u05.Count; i++) yield return new("U05" + "[" + i + "]", u05.Get(i));
             }
             if (u09 is not null)
             {
-                for (var i = 0; i < u09.Count; i++) yield return new("U09" + "[" + i + "]", u09.GetReference(i));
+                for (var i = 0; i < u09.Count; i++) yield return new("U09" + "[" + i + "]", u09.Get(i));
             }
             if (u10 is not null)
             {
-                for (var i = 0; i < u10.Count; i++) yield return new("U10" + "[" + i + "]", u10.GetReference(i));
+                for (var i = 0; i < u10.Count; i++) yield return new("U10" + "[" + i + "]", u10.Get(i));
             }
             yield break;
         }

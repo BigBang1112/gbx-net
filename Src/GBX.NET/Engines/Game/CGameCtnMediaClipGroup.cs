@@ -23,7 +23,7 @@ public partial class CGameCtnMediaClipGroup
         private static NodeRef<CGameCtnMediaClip> CreateRef(CGameCtnMediaClip? clip)
         {
             var reference = new NodeRef<CGameCtnMediaClip>();
-            reference.SetEmbedded(clip);
+            reference.Node = clip;
             return reference;
         }
 
@@ -55,7 +55,7 @@ public partial class CGameCtnMediaClipGroup
 
         for (var i = 0; i < clipBuffer.Count; i++)
         {
-            n.Clips.Add(ClipTrigger.FromReference(clipBuffer.GetReference(i), triggerBuffer[i]));
+            n.Clips.Add(ClipTrigger.FromReference(clipBuffer.Get(i), triggerBuffer[i]));
         }
     }
 

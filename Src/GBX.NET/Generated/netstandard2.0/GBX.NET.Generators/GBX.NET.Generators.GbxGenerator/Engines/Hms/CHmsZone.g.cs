@@ -144,35 +144,19 @@ public partial class CHmsZone : CMwNod, IClass
     {
         private readonly CHmsZone owner;
         internal NodeRefView(CHmsZone owner) => this.owner = owner;
-        public FogPlanesReferenceView FogPlanes => new(owner);
-        public PrecalcRendersReferenceView PrecalcRenders => new(owner);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
         public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
-    }
-    public readonly struct FogPlanesReferenceView
-    {
-        private readonly CHmsZone owner;
-        internal FogPlanesReferenceView(CHmsZone owner) => this.owner = owner;
-        public int Count => owner.fogPlanes?.Count ?? 0;
-        public NodeRef<CHmsFogPlane> this[int index] => (owner.fogPlanes ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct PrecalcRendersReferenceView
-    {
-        private readonly CHmsZone owner;
-        internal PrecalcRendersReferenceView(CHmsZone owner) => this.owner = owner;
-        public int Count => owner.precalcRenders?.Count ?? 0;
-        public NodeRef<CHmsPrecalcRender> this[int index] => (owner.precalcRenders ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (fogPlanes is not null)
         {
-            for (var i = 0; i < fogPlanes.Count; i++) yield return new("FogPlanes" + "[" + i + "]", fogPlanes.GetReference(i));
+            for (var i = 0; i < fogPlanes.Count; i++) yield return new("FogPlanes" + "[" + i + "]", fogPlanes.Get(i));
         }
         if (precalcRenders is not null)
         {
-            for (var i = 0; i < precalcRenders.Count; i++) yield return new("PrecalcRenders" + "[" + i + "]", precalcRenders.GetReference(i));
+            for (var i = 0; i < precalcRenders.Count; i++) yield return new("PrecalcRenders" + "[" + i + "]", precalcRenders.Get(i));
         }
         yield return new("BitmapCubeReflectHardSpecA", NodeRef.GetOrCreate(ref bitmapCubeReflectHardSpecARef));
         yield return new("BitmapCubeReflectHdrAlpha2", NodeRef.GetOrCreate(ref bitmapCubeReflectHdrAlpha2Ref));

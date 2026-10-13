@@ -59,27 +59,12 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         get => this.matterId;
         set => this.matterId = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugBitmapDecals owner;
-        internal NodeRefView(CPlugBitmapDecals owner) => this.owner = owner;
-        public DecalModelsReferenceView DecalModels => new(owner);
-    }
-    public readonly struct DecalModelsReferenceView
-    {
-        private readonly CPlugBitmapDecals owner;
-        internal DecalModelsReferenceView(CPlugBitmapDecals owner) => this.owner = owner;
-        public int Count => owner.decalModels?.Count ?? 0;
-        public NodeRef<CPlugDecalModel> this[int index] => (owner.decalModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (decalModels is not null)
         {
-            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.GetReference(i));
+            for (var i = 0; i < decalModels.Count; i++) yield return new("DecalModels" + "[" + i + "]", decalModels.Get(i));
         }
         yield break;
     }

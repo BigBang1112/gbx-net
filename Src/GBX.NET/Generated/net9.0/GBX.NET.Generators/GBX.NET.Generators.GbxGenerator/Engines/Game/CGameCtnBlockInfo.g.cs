@@ -518,29 +518,20 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         private readonly CGameCtnBlockInfo owner;
         internal NodeRefView(CGameCtnBlockInfo owner) => this.owner = owner;
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => NodeRef.GetOrCreate(ref owner.pillarRef);
-        public GroundBlockUnitInfosReferenceView GroundBlockUnitInfos => new(owner);
-        public AirBlockUnitInfosReferenceView AirBlockUnitInfos => new(owner);
-        public GroundMobilsReferenceView GroundMobils => new(owner);
-        public AirMobilsReferenceView AirMobils => new(owner);
         public NodeRef<CSceneMobil> GroundHelperMobil => NodeRef.GetOrCreate(ref owner.groundHelperMobilRef);
         public NodeRef<CSceneMobil> AirHelperMobil => NodeRef.GetOrCreate(ref owner.airHelperMobilRef);
         public NodeRef<CSceneMobil> ConstructionModeHelperMobil => NodeRef.GetOrCreate(ref owner.constructionModeHelperMobilRef);
         public NodeRef<CSceneMobil> ScreenInteractionTriggerGround => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerGroundRef);
         public NodeRef<CSceneMobil> ScreenInteractionTriggerAir => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerAirRef);
         public NodeRef<CGameCtnPrecalcPartParams> PrecalcPartParams => NodeRef.GetOrCreate(ref owner.precalcPartParamsRef);
-        public AutoTerrainsGroundReferenceView AutoTerrainsGround => new(owner);
-        public GroundBlockInfoMobilsReferenceView GroundBlockInfoMobils => new(owner);
-        public AirBlockInfoMobilsReferenceView AirBlockInfoMobils => new(owner);
         public NodeRef<CPlugCharPhySpecialProperty> CharPhySpecialProperty => NodeRef.GetOrCreate(ref owner.charPhySpecialPropertyRef);
         public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
         public NodeRef<CMwNod> PodiumInfo => NodeRef.GetOrCreate(ref owner.podiumInfoRef);
         public NodeRef<CMwNod> IntroInfo => NodeRef.GetOrCreate(ref owner.introInfoRef);
         public NodeRef<CGameCtnMacroBlockInfo> IconMacroBlockInfo => NodeRef.GetOrCreate(ref owner.iconMacroBlockInfoRef);
-        public AdditionalVariantsGroundReferenceView AdditionalVariantsGround => new(owner);
         public NodeRef<CPlugFogVolumeBox> FogVolumeBox => NodeRef.GetOrCreate(ref owner.fogVolumeBoxRef);
         public NodeRef<CPlugSound> Sound1 => NodeRef.GetOrCreate(ref owner.sound1Ref);
         public NodeRef<CPlugSound> Sound2 => NodeRef.GetOrCreate(ref owner.sound2Ref);
-        public AdditionalVariantsAirReferenceView AdditionalVariantsAir => new(owner);
         public NodeRef<CGameCtnBlockInfo> BlockInfoModelFid => NodeRef.GetOrCreate(ref owner.blockInfoModelFidRef);
         public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => NodeRef.GetOrCreate(ref owner.materialModifierRef);
         public NodeRef<CPlugGameSkinAndFolder> MaterialModifier2 => NodeRef.GetOrCreate(ref owner.materialModifier2Ref);
@@ -549,87 +540,24 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
         public NodeRef<CMwNod> ModelKitDbRelease => ((CGameCtnCollector)owner).References.ModelKitDbRelease;
     }
-    public readonly struct GroundBlockUnitInfosReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal GroundBlockUnitInfosReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.groundBlockUnitInfos?.Count ?? 0;
-        public NodeRef<CGameCtnBlockUnitInfo> this[int index] => (owner.groundBlockUnitInfos ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct AirBlockUnitInfosReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AirBlockUnitInfosReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.airBlockUnitInfos?.Count ?? 0;
-        public NodeRef<CGameCtnBlockUnitInfo> this[int index] => (owner.airBlockUnitInfos ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct GroundMobilsReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal GroundMobilsReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.groundMobils?.Length ?? 0;
-        public NodeRefList<CSceneMobil>.ReferenceView this[int index] => (owner.groundMobils ?? throw new InvalidOperationException("The reference collection is null."))[index].References;
-    }
-    public readonly struct AirMobilsReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AirMobilsReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.airMobils?.Length ?? 0;
-        public NodeRefList<CSceneMobil>.ReferenceView this[int index] => (owner.airMobils ?? throw new InvalidOperationException("The reference collection is null."))[index].References;
-    }
-    public readonly struct AutoTerrainsGroundReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AutoTerrainsGroundReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.autoTerrainsGround?.Count ?? 0;
-        public NodeRef<CGameCtnAutoTerrain> this[int index] => (owner.autoTerrainsGround ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct GroundBlockInfoMobilsReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal GroundBlockInfoMobilsReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.groundBlockInfoMobils?.Length ?? 0;
-        public NodeRefList<CGameCtnBlockInfoMobil>.ReferenceView this[int index] => (owner.groundBlockInfoMobils ?? throw new InvalidOperationException("The reference collection is null."))[index].References;
-    }
-    public readonly struct AirBlockInfoMobilsReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AirBlockInfoMobilsReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.airBlockInfoMobils?.Length ?? 0;
-        public NodeRefList<CGameCtnBlockInfoMobil>.ReferenceView this[int index] => (owner.airBlockInfoMobils ?? throw new InvalidOperationException("The reference collection is null."))[index].References;
-    }
-    public readonly struct AdditionalVariantsGroundReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AdditionalVariantsGroundReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.additionalVariantsGround?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoVariantGround> this[int index] => (owner.additionalVariantsGround ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct AdditionalVariantsAirReferenceView
-    {
-        private readonly CGameCtnBlockInfo owner;
-        internal AdditionalVariantsAirReferenceView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public int Count => owner.additionalVariantsAir?.Count ?? 0;
-        public NodeRef<CGameCtnBlockInfoVariantAir> this[int index] => (owner.additionalVariantsAir ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         yield return new("Pillar", NodeRef.GetOrCreate(ref pillarRef));
         if (groundBlockUnitInfos is not null)
         {
-            for (var i = 0; i < groundBlockUnitInfos.Count; i++) yield return new("GroundBlockUnitInfos" + "[" + i + "]", groundBlockUnitInfos.GetReference(i));
+            for (var i = 0; i < groundBlockUnitInfos.Count; i++) yield return new("GroundBlockUnitInfos" + "[" + i + "]", groundBlockUnitInfos.Get(i));
         }
         if (airBlockUnitInfos is not null)
         {
-            for (var i = 0; i < airBlockUnitInfos.Count; i++) yield return new("AirBlockUnitInfos" + "[" + i + "]", airBlockUnitInfos.GetReference(i));
+            for (var i = 0; i < airBlockUnitInfos.Count; i++) yield return new("AirBlockUnitInfos" + "[" + i + "]", airBlockUnitInfos.Get(i));
         }
         if (groundMobils is not null)
         {
             for (var i = 0; i < groundMobils.Length; i++)
             {
                 if (groundMobils[i] is null) continue;
-                for (var j = 0; j < groundMobils[i].Count; j++) yield return new("GroundMobils" + "[" + i + "][" + j + "]", groundMobils[i].GetReference(j));
+                for (var j = 0; j < groundMobils[i].Count; j++) yield return new("GroundMobils" + "[" + i + "][" + j + "]", groundMobils[i].Get(j));
             }
         }
         if (airMobils is not null)
@@ -637,7 +565,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             for (var i = 0; i < airMobils.Length; i++)
             {
                 if (airMobils[i] is null) continue;
-                for (var j = 0; j < airMobils[i].Count; j++) yield return new("AirMobils" + "[" + i + "][" + j + "]", airMobils[i].GetReference(j));
+                for (var j = 0; j < airMobils[i].Count; j++) yield return new("AirMobils" + "[" + i + "][" + j + "]", airMobils[i].Get(j));
             }
         }
         yield return new("GroundHelperMobil", NodeRef.GetOrCreate(ref groundHelperMobilRef));
@@ -648,14 +576,14 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         yield return new("PrecalcPartParams", NodeRef.GetOrCreate(ref precalcPartParamsRef));
         if (autoTerrainsGround is not null)
         {
-            for (var i = 0; i < autoTerrainsGround.Count; i++) yield return new("AutoTerrainsGround" + "[" + i + "]", autoTerrainsGround.GetReference(i));
+            for (var i = 0; i < autoTerrainsGround.Count; i++) yield return new("AutoTerrainsGround" + "[" + i + "]", autoTerrainsGround.Get(i));
         }
         if (groundBlockInfoMobils is not null)
         {
             for (var i = 0; i < groundBlockInfoMobils.Length; i++)
             {
                 if (groundBlockInfoMobils[i] is null) continue;
-                for (var j = 0; j < groundBlockInfoMobils[i].Count; j++) yield return new("GroundBlockInfoMobils" + "[" + i + "][" + j + "]", groundBlockInfoMobils[i].GetReference(j));
+                for (var j = 0; j < groundBlockInfoMobils[i].Count; j++) yield return new("GroundBlockInfoMobils" + "[" + i + "][" + j + "]", groundBlockInfoMobils[i].Get(j));
             }
         }
         if (airBlockInfoMobils is not null)
@@ -663,7 +591,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             for (var i = 0; i < airBlockInfoMobils.Length; i++)
             {
                 if (airBlockInfoMobils[i] is null) continue;
-                for (var j = 0; j < airBlockInfoMobils[i].Count; j++) yield return new("AirBlockInfoMobils" + "[" + i + "][" + j + "]", airBlockInfoMobils[i].GetReference(j));
+                for (var j = 0; j < airBlockInfoMobils[i].Count; j++) yield return new("AirBlockInfoMobils" + "[" + i + "][" + j + "]", airBlockInfoMobils[i].Get(j));
             }
         }
         yield return new("CharPhySpecialProperty", NodeRef.GetOrCreate(ref charPhySpecialPropertyRef));
@@ -673,14 +601,14 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         yield return new("IconMacroBlockInfo", NodeRef.GetOrCreate(ref iconMacroBlockInfoRef));
         if (additionalVariantsGround is not null)
         {
-            for (var i = 0; i < additionalVariantsGround.Count; i++) yield return new("AdditionalVariantsGround" + "[" + i + "]", additionalVariantsGround.GetReference(i));
+            for (var i = 0; i < additionalVariantsGround.Count; i++) yield return new("AdditionalVariantsGround" + "[" + i + "]", additionalVariantsGround.Get(i));
         }
         yield return new("FogVolumeBox", NodeRef.GetOrCreate(ref fogVolumeBoxRef));
         yield return new("Sound1", NodeRef.GetOrCreate(ref sound1Ref));
         yield return new("Sound2", NodeRef.GetOrCreate(ref sound2Ref));
         if (additionalVariantsAir is not null)
         {
-            for (var i = 0; i < additionalVariantsAir.Count; i++) yield return new("AdditionalVariantsAir" + "[" + i + "]", additionalVariantsAir.GetReference(i));
+            for (var i = 0; i < additionalVariantsAir.Count; i++) yield return new("AdditionalVariantsAir" + "[" + i + "]", additionalVariantsAir.Get(i));
         }
         yield return new("BlockInfoModelFid", NodeRef.GetOrCreate(ref blockInfoModelFidRef));
         yield return new("MaterialModifier", NodeRef.GetOrCreate(ref materialModifierRef));

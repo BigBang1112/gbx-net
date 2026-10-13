@@ -55,7 +55,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         private readonly CGameCtnReplayRecord owner;
         internal NodeRefView(CGameCtnReplayRecord owner) => this.owner = owner;
-        public GhostsReferenceView Ghosts => new(owner);
         public NodeRef<CGameCtnMediaClip> Clip => NodeRef.GetOrCreate(ref owner.clipRef);
         public NodeRef<CCtnMediaBlockEventTrackMania> Events => NodeRef.GetOrCreate(ref owner.eventsRef);
         public NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> SimpleEventsDisplay => NodeRef.GetOrCreate(ref owner.simpleEventsDisplayRef);
@@ -63,19 +62,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
         public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
     }
-    public readonly struct GhostsReferenceView
-    {
-        private readonly CGameCtnReplayRecord owner;
-        internal GhostsReferenceView(CGameCtnReplayRecord owner) => this.owner = owner;
-        public int Count => owner.ghosts?.Count ?? 0;
-        public NodeRef<CGameCtnGhost> this[int index] => (owner.ghosts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (ghosts is not null)
         {
-            for (var i = 0; i < ghosts.Count; i++) yield return new("Ghosts" + "[" + i + "]", ghosts.GetReference(i));
+            for (var i = 0; i < ghosts.Count; i++) yield return new("Ghosts" + "[" + i + "]", ghosts.Get(i));
         }
         yield return new("Clip", NodeRef.GetOrCreate(ref clipRef));
         yield return new("Events", NodeRef.GetOrCreate(ref eventsRef));
@@ -298,26 +290,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x0309300A;
 
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0309300A owner;
-            internal NodeRefView(Chunk0309300A owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk0309300A owner;
-            internal U01ReferenceView(Chunk0309300A owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CGameCtnMediaTrack> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             yield break;
         }

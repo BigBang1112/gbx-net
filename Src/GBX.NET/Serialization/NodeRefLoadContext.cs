@@ -4,6 +4,7 @@ internal sealed class NodeRefLoadContext
 {
     private static readonly AsyncLocal<NodeRefLoadContext?> current = new();
     private static readonly StringComparer pathComparer = Path.DirectorySeparatorChar == '\\' ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
+
     private readonly Dictionary<string, Entry> ancestors;
     private readonly Entry owner;
 
@@ -21,6 +22,7 @@ internal sealed class NodeRefLoadContext
 
         var owner = new Entry(node);
         ancestors[Path.GetFullPath(path)] = owner;
+
         return new(ancestors, owner);
     }
 
@@ -28,8 +30,16 @@ internal sealed class NodeRefLoadContext
 
     public CMwNod? FindAncestor(string path)
     {
-        if (!ancestors.TryGetValue(Path.GetFullPath(path), out var entry)) return null;
-        if (!entry.Parsed) throw new InvalidOperationException("An external dependency cycle re-entered a node that is still being parsed.");
+        if (!ancestors.TryGetValue(Path.GetFullPath(path), out var entry))
+        {
+            return null;
+        }
+
+        if (!entry.Parsed)
+        {
+            throw new InvalidOperationException("An external dependency cycle re-entered a node that is still being parsed.");
+        }
+
         return entry.Node;
     }
 

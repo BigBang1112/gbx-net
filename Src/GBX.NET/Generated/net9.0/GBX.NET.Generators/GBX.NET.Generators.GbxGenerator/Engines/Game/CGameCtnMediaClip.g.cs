@@ -135,22 +135,14 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     {
         private readonly CGameCtnMediaClip owner;
         internal NodeRefView(CGameCtnMediaClip owner) => this.owner = owner;
-        public TracksReferenceView Tracks => new(owner);
         public NodeRef<CScene> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
-    }
-    public readonly struct TracksReferenceView
-    {
-        private readonly CGameCtnMediaClip owner;
-        internal TracksReferenceView(CGameCtnMediaClip owner) => this.owner = owner;
-        public int Count => owner.tracks?.Count ?? 0;
-        public NodeRef<CGameCtnMediaTrack> this[int index] => (owner.tracks ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (tracks is not null)
         {
-            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.GetReference(i));
+            for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.Get(i));
         }
         yield return new("Scene", NodeRef.GetOrCreate(ref sceneRef));
         yield break;

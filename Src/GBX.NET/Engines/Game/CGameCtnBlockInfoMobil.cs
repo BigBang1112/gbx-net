@@ -29,11 +29,11 @@ public partial class CGameCtnBlockInfoMobil
         var result = new NodeRefList<CPlugRoadChunk>();
         for (var i = 0; i < chunks.Count; i++)
         {
-            var source = chunks.GetReference(i);
+            var source = chunks.Get(i);
             var reference = new NodeRef<CPlugRoadChunk>();
-            if (source.Descriptor is { } descriptor) reference.SetDescriptor(descriptor);
-            else reference.SetEmbedded(source.CachedTarget);
-            result.AddReference(reference);
+            if (source.Descriptor is { } descriptor) reference.Descriptor = descriptor;
+            else reference.Node = source.CachedNode;
+            result.Add(reference);
         }
         return result;
     }
@@ -43,16 +43,16 @@ public partial class CGameCtnBlockInfoMobil
         if (chunks is null) return null;
         var converted = new NodeRefList<T>();
         var nodes = new Dictionary<CPlugRoadChunk, T>();
-        for (var i = 0; i < chunks.Length; i++)
+        for (var i = 0; i < chunks.Count; i++)
         {
-            var reference = chunks.GetReference(i);
+            var reference = chunks.Get(i);
             converted.Add(null);
             if (reference.Descriptor is { } descriptor)
             {
-                converted.GetReference(i).SetDescriptor(descriptor);
+                converted.Get(i).Descriptor = descriptor;
                 continue;
             }
-            var source = reference.CachedTarget;
+            var source = reference.CachedNode;
             if (source is null) continue;
             if (source is T typed)
             {
@@ -71,7 +71,7 @@ public partial class CGameCtnBlockInfoMobil
         return converted;
     }
 
-    internal CPlugPath? ConvertedRailPath => LegacyRailPolylines is { Length: > 0 } polylines
+    internal CPlugPath? ConvertedRailPath => LegacyRailPolylines is { Count: > 0 } polylines
         ? new CPlugPath { PolyLines = polylines }
         : null;
 

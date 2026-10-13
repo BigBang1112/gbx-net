@@ -95,7 +95,7 @@ public partial class CFuncSkelValues : CMwNod, IClass
 
             if ((n.skelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.skelRef?.CachedTarget?.BonesCount?? 0);
+                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.skelRef?.CachedNode?.BonesCount?? 0);
             }
         }
     }

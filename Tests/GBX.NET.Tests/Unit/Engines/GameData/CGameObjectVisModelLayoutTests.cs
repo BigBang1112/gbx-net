@@ -168,8 +168,8 @@ public class CGameObjectVisModelLayoutTests
             }
             else if (version == 5)
             {
-                await Assert.That(node.LegacyLocAnimRefs!.Length).IsEqualTo(2);
-                await Assert.That(node.References.LegacyLocAnimRefs[1].File!.FilePath).IsEqualTo("AnimationB.Gbx");
+                await Assert.That(node.LegacyLocAnimRefs!.Count).IsEqualTo(2);
+                await Assert.That(node.LegacyLocAnimRefs!.Get(1).File!.FilePath).IsEqualTo("AnimationB.Gbx");
             }
             else await Assert.That(node.References.LocAnim.File!.FilePath).IsEqualTo("Animation.Gbx");
         }

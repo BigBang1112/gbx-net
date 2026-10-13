@@ -59,59 +59,27 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     {
         private readonly CPlugSolid2Model owner;
         internal NodeRefView(CPlugSolid2Model owner) => this.owner = owner;
-        public VisualsReferenceView Visuals => new(owner);
-        public MaterialsReferenceView Materials => new(owner);
         public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
-        public MaterialInstsReferenceView MaterialInsts => new(owner);
-        public LightUserModelsReferenceView LightUserModels => new(owner);
-    }
-    public readonly struct VisualsReferenceView
-    {
-        private readonly CPlugSolid2Model owner;
-        internal VisualsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
-        public int Count => owner.visuals?.Count ?? 0;
-        public NodeRef<CPlugVisual> this[int index] => (owner.visuals ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct MaterialsReferenceView
-    {
-        private readonly CPlugSolid2Model owner;
-        internal MaterialsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
-        public int Count => owner.materials?.Count ?? 0;
-        public NodeRef<CPlugMaterial> this[int index] => (owner.materials ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct MaterialInstsReferenceView
-    {
-        private readonly CPlugSolid2Model owner;
-        internal MaterialInstsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
-        public int Count => owner.materialInsts?.Count ?? 0;
-        public NodeRef<CPlugMaterialUserInst> this[int index] => (owner.materialInsts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct LightUserModelsReferenceView
-    {
-        private readonly CPlugSolid2Model owner;
-        internal LightUserModelsReferenceView(CPlugSolid2Model owner) => this.owner = owner;
-        public int Count => owner.lightUserModels?.Count ?? 0;
-        public NodeRef<CPlugLightUserModel> this[int index] => (owner.lightUserModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (visuals is not null)
         {
-            for (var i = 0; i < visuals.Count; i++) yield return new("Visuals" + "[" + i + "]", visuals.GetReference(i));
+            for (var i = 0; i < visuals.Count; i++) yield return new("Visuals" + "[" + i + "]", visuals.Get(i));
         }
         if (materials is not null)
         {
-            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.GetReference(i));
+            for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.Get(i));
         }
         yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
         if (materialInsts is not null)
         {
-            for (var i = 0; i < materialInsts.Count; i++) yield return new("MaterialInsts" + "[" + i + "]", materialInsts.GetReference(i));
+            for (var i = 0; i < materialInsts.Count; i++) yield return new("MaterialInsts" + "[" + i + "]", materialInsts.Get(i));
         }
         if (lightUserModels is not null)
         {
-            for (var i = 0; i < lightUserModels.Count; i++) yield return new("LightUserModels" + "[" + i + "]", lightUserModels.GetReference(i));
+            for (var i = 0; i < lightUserModels.Count; i++) yield return new("LightUserModels" + "[" + i + "]", lightUserModels.Get(i));
         }
         yield break;
     }

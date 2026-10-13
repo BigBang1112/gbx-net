@@ -59,27 +59,12 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         get => this.shadowMapTexelSize;
         set => this.shadowMapTexelSize = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugParticleEmitterModel owner;
-        internal NodeRefView(CPlugParticleEmitterModel owner) => this.owner = owner;
-        public ParticleEmitterSubModelsReferenceView ParticleEmitterSubModels => new(owner);
-    }
-    public readonly struct ParticleEmitterSubModelsReferenceView
-    {
-        private readonly CPlugParticleEmitterModel owner;
-        internal ParticleEmitterSubModelsReferenceView(CPlugParticleEmitterModel owner) => this.owner = owner;
-        public int Count => owner.particleEmitterSubModels?.Count ?? 0;
-        public NodeRef<CPlugParticleEmitterSubModel> this[int index] => (owner.particleEmitterSubModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (particleEmitterSubModels is not null)
         {
-            for (var i = 0; i < particleEmitterSubModels.Count; i++) yield return new("ParticleEmitterSubModels" + "[" + i + "]", particleEmitterSubModels.GetReference(i));
+            for (var i = 0; i < particleEmitterSubModels.Count; i++) yield return new("ParticleEmitterSubModels" + "[" + i + "]", particleEmitterSubModels.Get(i));
         }
         yield break;
     }

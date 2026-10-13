@@ -67,27 +67,12 @@ public partial class CGameLeagueManager : CMwNod, IClass
         get => leagues;
         set => leagues = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CGameLeagueManager owner;
-        internal NodeRefView(CGameLeagueManager owner) => this.owner = owner;
-        public LeaguesReferenceView Leagues => new(owner);
-    }
-    public readonly struct LeaguesReferenceView
-    {
-        private readonly CGameLeagueManager owner;
-        internal LeaguesReferenceView(CGameLeagueManager owner) => this.owner = owner;
-        public int Count => owner.leagues?.Count ?? 0;
-        public NodeRef<CGameLeague> this[int index] => (owner.leagues ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (leagues is not null)
         {
-            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.GetReference(i));
+            for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.Get(i));
         }
         yield break;
     }

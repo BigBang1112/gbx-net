@@ -563,34 +563,18 @@ public partial class CPlugSolid : CPlug, IClass
         {
             private readonly Chunk09005019 owner;
             internal NodeRefView(Chunk09005019 owner) => this.owner = owner;
-            public U01ReferenceView U01 => new(owner);
-            public U02ReferenceView U02 => new(owner);
             public NodeRef<CPlugPath> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-        }
-        public readonly struct U01ReferenceView
-        {
-            private readonly Chunk09005019 owner;
-            internal U01ReferenceView(Chunk09005019 owner) => this.owner = owner;
-            public int Count => owner.U01?.Count ?? 0;
-            public NodeRef<CPlugSound> this[int index] => (owner.U01 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
-        public readonly struct U02ReferenceView
-        {
-            private readonly Chunk09005019 owner;
-            internal U02ReferenceView(Chunk09005019 owner) => this.owner = owner;
-            public int Count => owner.U02?.Count ?? 0;
-            public NodeRef<CPlugParticleEmitterModel> this[int index] => (owner.U02 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             if (U01 is not null)
             {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
             }
             if (U02 is not null)
             {
-                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
+                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
             }
             yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield break;

@@ -58,7 +58,6 @@ public partial class CControlBase : CSceneToy, IClass
         private readonly CControlBase owner;
         internal NodeRefView(CControlBase owner) => this.owner = owner;
         public NodeRef<CControlLayout> Layout => NodeRef.GetOrCreate(ref owner.layoutRef);
-        public CSceneToy.ObjectLinkReferenceView ObjectLink => ((CSceneToy)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneToy)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneToy)owner).References.Motion;
     }

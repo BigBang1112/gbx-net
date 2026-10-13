@@ -165,7 +165,6 @@ public partial class CPlugTree : CPlug, IClass
     {
         private readonly CPlugTree owner;
         internal NodeRefView(CPlugTree owner) => this.owner = owner;
-        public ChildrenReferenceView Children => new(owner);
         public NodeRef<CPlugSolid> ModelSolid => NodeRef.GetOrCreate(ref owner.modelSolidRef);
         public NodeRef<CPlugVisual> Visual => NodeRef.GetOrCreate(ref owner.visualRef);
         public NodeRef<CPlug> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
@@ -174,19 +173,12 @@ public partial class CPlugTree : CPlug, IClass
         public NodeRef<CPlugTreeGenerator> Generator => NodeRef.GetOrCreate(ref owner.generatorRef);
         public NodeRef<CMwRefBuffer> RefBuffer => NodeRef.GetOrCreate(ref owner.refBufferRef);
     }
-    public readonly struct ChildrenReferenceView
-    {
-        private readonly CPlugTree owner;
-        internal ChildrenReferenceView(CPlugTree owner) => this.owner = owner;
-        public int Count => owner.children?.Count ?? 0;
-        public NodeRef<CPlugTree> this[int index] => (owner.children ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (children is not null)
         {
-            for (var i = 0; i < children.Count; i++) yield return new("Children" + "[" + i + "]", children.GetReference(i));
+            for (var i = 0; i < children.Count; i++) yield return new("Children" + "[" + i + "]", children.Get(i));
         }
         yield return new("ModelSolid", NodeRef.GetOrCreate(ref modelSolidRef));
         yield return new("Visual", NodeRef.GetOrCreate(ref visualRef));

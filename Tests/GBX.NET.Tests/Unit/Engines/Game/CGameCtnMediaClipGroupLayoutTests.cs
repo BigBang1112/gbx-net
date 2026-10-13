@@ -28,7 +28,7 @@ public class CGameCtnMediaClipGroupLayoutTests
                 new(null, new() { RefCoord = (4, 5, 6) })
             ]
         };
-        foreach (var pair in group.Clips) pair.References.Clip!.SetExternal(file);
+        foreach (var pair in group.Clips) pair.References.Clip!.Descriptor = file;
 
         using var output = new MemoryStream();
         using var writer = new GbxWriter(output);

@@ -139,7 +139,7 @@ public class CPlugDecalModelLayoutTests
         await Assert.That(node.SvgAlpha).IsEqualTo(version >= 6 ? 0.5f : 1f);
         if (version >= 8)
         {
-            await Assert.That(node.References.DecalModels[0].File!.FilePath).IsEqualTo("Decal.Gbx");
+            await Assert.That(node.DecalModels!.Get(0).File!.FilePath).IsEqualTo("Decal.Gbx");
             var set = node.MacroDecalSets.Single();
             await Assert.That(set.Id).IsEqualTo("Set");
             await Assert.That(set.Bounds).IsEqualTo(new BoxAligned(1, 2, 3, 4, 5, 6));

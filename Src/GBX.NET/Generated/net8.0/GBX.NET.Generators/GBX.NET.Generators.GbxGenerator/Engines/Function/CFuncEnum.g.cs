@@ -113,22 +113,14 @@ public partial class CFuncEnum : CFunc, IClass
     {
         private readonly CFuncEnum owner;
         internal NodeRefView(CFuncEnum owner) => this.owner = owner;
-        public ValuesReferenceView Values => new(owner);
         public NodeRef<CMwRefBuffer> IconIndexs => NodeRef.GetOrCreate(ref owner.iconIndexsRef);
-    }
-    public readonly struct ValuesReferenceView
-    {
-        private readonly CFuncEnum owner;
-        internal ValuesReferenceView(CFuncEnum owner) => this.owner = owner;
-        public int Count => owner.values?.Count ?? 0;
-        public NodeRef<CPlug> this[int index] => (owner.values ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (values is not null)
         {
-            for (var i = 0; i < values.Count; i++) yield return new("Values" + "[" + i + "]", values.GetReference(i));
+            for (var i = 0; i < values.Count; i++) yield return new("Values" + "[" + i + "]", values.Get(i));
         }
         yield return new("IconIndexs", NodeRef.GetOrCreate(ref iconIndexsRef));
         yield break;

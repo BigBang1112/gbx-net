@@ -312,7 +312,7 @@ public class CGameCtnCollectionChunkTests
         var index = writer.NodeDict.Count + 1;
         files[index] = file;
         var reference = new NodeRef<CMwNod>();
-        reference.SetExternal(file);
+        reference.Descriptor = file;
         writer.WriteNodeRef(reference);
     }
 
@@ -345,8 +345,8 @@ public class CGameCtnCollectionChunkTests
         if (kind != 0)
         {
             var reference = new NodeRef<CPlugBitmap>();
-            if (file is not null) reference.SetExternal(file);
-            else reference.SetEmbedded(kind == 1 ? new CPlugBitmap() : null);
+            if (file is not null) reference.Descriptor = file;
+            else reference.Node = kind == 1 ? new CPlugBitmap() : null;
             writer.WriteNodeRef(reference);
         }
     }

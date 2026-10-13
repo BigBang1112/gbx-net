@@ -109,7 +109,7 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
 
         public override void ReadWrite(CFuncKeysSkel n, GbxReaderWriter rw)
         {
-            rw.JaggedArrayReadableWritable<Loc>(ref n.locations!, n.skelRef?.CachedTarget?.BonesCount?? 0);
+            rw.JaggedArrayReadableWritable<Loc>(ref n.locations!, n.skelRef?.CachedNode?.BonesCount?? 0);
         }
     }
 

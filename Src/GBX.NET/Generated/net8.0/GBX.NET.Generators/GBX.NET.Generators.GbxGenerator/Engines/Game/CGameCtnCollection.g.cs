@@ -1208,15 +1208,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
     {
         private readonly CGameCtnCollection owner;
         internal NodeRefView(CGameCtnCollection owner) => this.owner = owner;
-        public CompleteZoneListReferenceView CompleteZoneList => new(owner);
         public NodeRef<CGameCtnZone> DefaultZone => NodeRef.GetOrCreate(ref owner.defaultZoneRef);
         public NodeRef<CGameCtnDecoration> DefaultDecoration => NodeRef.GetOrCreate(ref owner.defaultDecorationRef);
         public NodeRef<CPlugBitmap> IconFid => NodeRef.GetOrCreate(ref owner.iconFidRef);
         public NodeRef<CPlugBitmap> IconSmallFid => NodeRef.GetOrCreate(ref owner.iconSmallFidRef);
         public NodeRef<CPlugBitmap> MapFid => NodeRef.GetOrCreate(ref owner.mapFidRef);
         public NodeRef<CPlugBitmap> LoadScreenFid => NodeRef.GetOrCreate(ref owner.loadScreenFidRef);
-        public ReplacementTerrainModifiersReferenceView ReplacementTerrainModifiers => new(owner);
-        public ParticleEmitterModelsFidsReferenceView ParticleEmitterModelsFids => new(owner);
         public NodeRef<CGameCtnDecoration> LegacyDecoration => NodeRef.GetOrCreate(ref owner.legacyDecorationRef);
         public NodeRef<CSceneVehicleCarMarksModel> MarksModel => NodeRef.GetOrCreate(ref owner.marksModelRef);
         public NodeRef<CFuncShaderLayerUV> FidFuncShaderCloudsX2 => NodeRef.GetOrCreate(ref owner.fidFuncShaderCloudsX2Ref);
@@ -1258,33 +1255,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public NodeRef<CPlugGameSkinAndFolder> ColorBlindnessModifier => NodeRef.GetOrCreate(ref owner.colorBlindnessModifierRef);
         public NodeRef<CPlugGameSkinAndFolder> GlobalMaterialModifier => NodeRef.GetOrCreate(ref owner.globalMaterialModifierRef);
     }
-    public readonly struct CompleteZoneListReferenceView
-    {
-        private readonly CGameCtnCollection owner;
-        internal CompleteZoneListReferenceView(CGameCtnCollection owner) => this.owner = owner;
-        public int Count => owner.completeZoneList?.Count ?? 0;
-        public NodeRef<CGameCtnZone> this[int index] => (owner.completeZoneList ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ReplacementTerrainModifiersReferenceView
-    {
-        private readonly CGameCtnCollection owner;
-        internal ReplacementTerrainModifiersReferenceView(CGameCtnCollection owner) => this.owner = owner;
-        public int Count => owner.replacementTerrainModifiers?.Count ?? 0;
-        public NodeRef<CGameCtnDecorationTerrainModifier> this[int index] => (owner.replacementTerrainModifiers ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ParticleEmitterModelsFidsReferenceView
-    {
-        private readonly CGameCtnCollection owner;
-        internal ParticleEmitterModelsFidsReferenceView(CGameCtnCollection owner) => this.owner = owner;
-        public int Count => owner.particleEmitterModelsFids?.Count ?? 0;
-        public NodeRef<CPlugParticleEmitterModel> this[int index] => (owner.particleEmitterModelsFids ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (completeZoneList is not null)
         {
-            for (var i = 0; i < completeZoneList.Count; i++) yield return new("CompleteZoneList" + "[" + i + "]", completeZoneList.GetReference(i));
+            for (var i = 0; i < completeZoneList.Count; i++) yield return new("CompleteZoneList" + "[" + i + "]", completeZoneList.Get(i));
         }
         yield return new("DefaultZone", NodeRef.GetOrCreate(ref defaultZoneRef));
         yield return new("DefaultDecoration", NodeRef.GetOrCreate(ref defaultDecorationRef));
@@ -1294,11 +1270,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         yield return new("LoadScreenFid", NodeRef.GetOrCreate(ref loadScreenFidRef));
         if (replacementTerrainModifiers is not null)
         {
-            for (var i = 0; i < replacementTerrainModifiers.Count; i++) yield return new("ReplacementTerrainModifiers" + "[" + i + "]", replacementTerrainModifiers.GetReference(i));
+            for (var i = 0; i < replacementTerrainModifiers.Count; i++) yield return new("ReplacementTerrainModifiers" + "[" + i + "]", replacementTerrainModifiers.Get(i));
         }
         if (particleEmitterModelsFids is not null)
         {
-            for (var i = 0; i < particleEmitterModelsFids.Count; i++) yield return new("ParticleEmitterModelsFids" + "[" + i + "]", particleEmitterModelsFids.GetReference(i));
+            for (var i = 0; i < particleEmitterModelsFids.Count; i++) yield return new("ParticleEmitterModelsFids" + "[" + i + "]", particleEmitterModelsFids.Get(i));
         }
         yield return new("LegacyDecoration", NodeRef.GetOrCreate(ref legacyDecorationRef));
         yield return new("MarksModel", NodeRef.GetOrCreate(ref marksModelRef));

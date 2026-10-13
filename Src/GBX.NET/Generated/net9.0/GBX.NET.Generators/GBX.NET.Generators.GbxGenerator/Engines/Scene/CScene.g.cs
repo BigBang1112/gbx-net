@@ -66,14 +66,6 @@ public abstract partial class CScene : CMwNod, IClass
         private readonly CScene owner;
         internal NodeRefView(CScene owner) => this.owner = owner;
         public NodeRef<CSceneConfig> SceneConfig => NodeRef.GetOrCreate(ref owner.sceneConfigRef);
-        public MotionManagerModelsReferenceView MotionManagerModels => new(owner);
-    }
-    public readonly struct MotionManagerModelsReferenceView
-    {
-        private readonly CScene owner;
-        internal MotionManagerModelsReferenceView(CScene owner) => this.owner = owner;
-        public int Count => owner.motionManagerModels?.Count ?? 0;
-        public NodeRef<CMotionManager> this[int index] => (owner.motionManagerModels ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -81,7 +73,7 @@ public abstract partial class CScene : CMwNod, IClass
         yield return new("SceneConfig", NodeRef.GetOrCreate(ref sceneConfigRef));
         if (motionManagerModels is not null)
         {
-            for (var i = 0; i < motionManagerModels.Count; i++) yield return new("MotionManagerModels" + "[" + i + "]", motionManagerModels.GetReference(i));
+            for (var i = 0; i < motionManagerModels.Count; i++) yield return new("MotionManagerModels" + "[" + i + "]", motionManagerModels.Get(i));
         }
         yield break;
     }

@@ -43,27 +43,12 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
         get => datas;
         set => datas = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugAdnRandomGenList owner;
-        internal NodeRefView(CPlugAdnRandomGenList owner) => this.owner = owner;
-        public DatasReferenceView Datas => new(owner);
-    }
-    public readonly struct DatasReferenceView
-    {
-        private readonly CPlugAdnRandomGenList owner;
-        internal DatasReferenceView(CPlugAdnRandomGenList owner) => this.owner = owner;
-        public int Count => owner.datas?.Count ?? 0;
-        public NodeRef<CPlugAdnRandomGen> this[int index] => (owner.datas ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (datas is not null)
         {
-            for (var i = 0; i < datas.Count; i++) yield return new("Datas" + "[" + i + "]", datas.GetReference(i));
+            for (var i = 0; i < datas.Count; i++) yield return new("Datas" + "[" + i + "]", datas.Get(i));
         }
         yield break;
     }

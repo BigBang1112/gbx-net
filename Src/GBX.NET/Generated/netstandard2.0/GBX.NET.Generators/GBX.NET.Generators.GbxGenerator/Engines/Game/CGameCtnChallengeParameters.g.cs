@@ -149,22 +149,14 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
         private readonly CGameCtnChallengeParameters owner;
         internal NodeRefView(CGameCtnChallengeParameters owner) => this.owner = owner;
-        public LegacyValidateGhostsReferenceView LegacyValidateGhosts => new(owner);
         public NodeRef<CGameCtnGhost> RaceValidateGhost => NodeRef.GetOrCreate(ref owner.raceValidateGhostRef);
-    }
-    public readonly struct LegacyValidateGhostsReferenceView
-    {
-        private readonly CGameCtnChallengeParameters owner;
-        internal LegacyValidateGhostsReferenceView(CGameCtnChallengeParameters owner) => this.owner = owner;
-        public int Count => owner.legacyValidateGhosts?.Count ?? 0;
-        public NodeRef<CGameCtnGhost> this[int index] => (owner.legacyValidateGhosts ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (legacyValidateGhosts is not null)
         {
-            for (var i = 0; i < legacyValidateGhosts.Count; i++) yield return new("LegacyValidateGhosts" + "[" + i + "]", legacyValidateGhosts.GetReference(i));
+            for (var i = 0; i < legacyValidateGhosts.Count; i++) yield return new("LegacyValidateGhosts" + "[" + i + "]", legacyValidateGhosts.Get(i));
         }
         yield return new("RaceValidateGhost", NodeRef.GetOrCreate(ref raceValidateGhostRef));
         yield break;

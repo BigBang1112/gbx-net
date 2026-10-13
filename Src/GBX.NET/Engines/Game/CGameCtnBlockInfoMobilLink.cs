@@ -19,7 +19,7 @@ public partial class CGameCtnBlockInfoMobilLink : IVersionable
         {
             // Version 0 stores the model's two references without a CGameObjectModel node.
             if (modelRef?.Descriptor is not null) throw new NotSupportedException("Version 0 stores the model inline.");
-            var model = modelRef?.CachedTarget ?? new CGameObjectModel();
+            var model = modelRef?.CachedNode ?? new CGameObjectModel();
             NodeRef.SetEmbedded(ref modelRef, model);
             rw.NodeRef(model.References.Phy);
             rw.NodeRef(model.References.Vis);

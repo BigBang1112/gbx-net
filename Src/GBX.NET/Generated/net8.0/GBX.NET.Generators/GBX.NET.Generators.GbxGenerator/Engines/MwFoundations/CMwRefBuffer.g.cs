@@ -67,27 +67,12 @@ public partial class CMwRefBuffer : CMwNod, IClass
         get => this.bufferId;
         set => this.bufferId = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CMwRefBuffer owner;
-        internal NodeRefView(CMwRefBuffer owner) => this.owner = owner;
-        public NodsReferenceView Nods => new(owner);
-    }
-    public readonly struct NodsReferenceView
-    {
-        private readonly CMwRefBuffer owner;
-        internal NodsReferenceView(CMwRefBuffer owner) => this.owner = owner;
-        public int Count => owner.nods?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.nods ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (nods is not null)
         {
-            for (var i = 0; i < nods.Count; i++) yield return new("Nods" + "[" + i + "]", nods.GetReference(i));
+            for (var i = 0; i < nods.Count; i++) yield return new("Nods" + "[" + i + "]", nods.Get(i));
         }
         yield break;
     }

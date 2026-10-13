@@ -1,4 +1,4 @@
-﻿namespace GBX.NET.Components;
+namespace GBX.NET.Components;
 
 public sealed class GbxRefTableFile : GbxRefTableNode
 {
@@ -18,12 +18,16 @@ public sealed class GbxRefTableFile : GbxRefTableNode
             {
                 throw new ArgumentNullException(nameof(value));
             }
-            
+
             Resolution.Update(ref filePath, value);
         }
     }
 
-    public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string filePath) : base(refTable, flags, useFile)
+    public GbxRefTableFile(
+        GbxRefTable refTable,
+        int flags,
+        bool useFile,
+        string filePath) : base(refTable, flags, useFile)
     {
         this.filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
     }
@@ -38,6 +42,7 @@ public sealed class GbxRefTableFile : GbxRefTableNode
         return RefTable.GetFullFilePath(this);
     }
 
-    internal override CMwNod? ResolveTarget() => RefTable.ResolveNode(this);
-    internal override Task<CMwNod?> ResolveTargetAsync() => RefTable.ResolveNodeAsync(this);
+    internal override CMwNod? ResolveNode() => RefTable.ResolveNode(this);
+
+    internal override Task<CMwNod?> ResolveNodeAsync() => RefTable.ResolveNodeAsync(this);
 }

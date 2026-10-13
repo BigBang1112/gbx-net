@@ -285,11 +285,11 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         {
             rw.NodeRef(ref this.dynaModelRef);
 
-            if (dynaModelRef?.CachedTarget!= null)
+            if (dynaModelRef?.CachedNode!= null)
             {
                 if (rw.Reader is not null)
                 {
-                    Mass = (dynaModelRef?.CachedTarget).LinearMass;
+                    Mass = (dynaModelRef?.CachedNode).LinearMass;
                 }
             }
         }

@@ -544,51 +544,20 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         get => this.steamId;
         set => this.steamId = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CGamePlayerProfileChunk_AccountSettings owner;
-        internal NodeRefView(CGamePlayerProfileChunk_AccountSettings owner) => this.owner = owner;
-        public InboxMessagesReferenceView InboxMessages => new(owner);
-        public ReadMessagesReferenceView ReadMessages => new(owner);
-        public OutboxMessagesReferenceView OutboxMessages => new(owner);
-    }
-    public readonly struct InboxMessagesReferenceView
-    {
-        private readonly CGamePlayerProfileChunk_AccountSettings owner;
-        internal InboxMessagesReferenceView(CGamePlayerProfileChunk_AccountSettings owner) => this.owner = owner;
-        public int Count => owner.inboxMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.inboxMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct ReadMessagesReferenceView
-    {
-        private readonly CGamePlayerProfileChunk_AccountSettings owner;
-        internal ReadMessagesReferenceView(CGamePlayerProfileChunk_AccountSettings owner) => this.owner = owner;
-        public int Count => owner.readMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.readMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct OutboxMessagesReferenceView
-    {
-        private readonly CGamePlayerProfileChunk_AccountSettings owner;
-        internal OutboxMessagesReferenceView(CGamePlayerProfileChunk_AccountSettings owner) => this.owner = owner;
-        public int Count => owner.outboxMessages?.Count ?? 0;
-        public NodeRef<CGameNetOnlineMessage> this[int index] => (owner.outboxMessages ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (inboxMessages is not null)
         {
-            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.GetReference(i));
+            for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.Get(i));
         }
         if (readMessages is not null)
         {
-            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.GetReference(i));
+            for (var i = 0; i < readMessages.Count; i++) yield return new("ReadMessages" + "[" + i + "]", readMessages.Get(i));
         }
         if (outboxMessages is not null)
         {
-            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.GetReference(i));
+            for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.Get(i));
         }
         yield break;
     }

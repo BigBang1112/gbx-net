@@ -1009,7 +1009,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         var reference = new NodeRef<CMwNod>();
         if (value is CMwNod node)
-            reference.SetEmbedded(node);
+            reference.Node = node;
         else if (value is not null)
             throw new NotSupportedException("Node references require a CMwNod target.");
         WriteNodeRef(reference);

@@ -124,22 +124,13 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         private readonly CPlugSoundMulti owner;
         internal NodeRefView(CPlugSoundMulti owner) => this.owner = owner;
         public NodeRef<CMwNod> AdditionalSounds => NodeRef.GetOrCreate(ref owner.additionalSoundsRef);
-        public AdditionalSounds2ReferenceView AdditionalSounds2 => new(owner);
         public NodeRef<CFuncKeysReal> VolumeFromInput => NodeRef.GetOrCreate(ref owner.volumeFromInputRef);
         public NodeRef<CMwNod> PlugFile => ((CPlugSound)owner).References.PlugFile;
         public NodeRef<CFuncKeysReal> VolumeFromDistance => ((CPlugSound)owner).References.VolumeFromDistance;
         public NodeRef<CFuncKeysReal> PitchFromDistance => ((CPlugSound)owner).References.PitchFromDistance;
         public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => ((CPlugSound)owner).References.VolumeFormSpeedKmh;
-        public CPlugSound.OldSubSourcesReferenceView OldSubSources => ((CPlugSound)owner).References.OldSubSources;
         public NodeRef<CPlugSound> BackingSound => ((CPlugSound)owner).References.BackingSound;
         public NodeRef<CPlugSound> FocusedSound => ((CPlugSound)owner).References.FocusedSound;
-    }
-    public readonly struct AdditionalSounds2ReferenceView
-    {
-        private readonly CPlugSoundMulti owner;
-        internal AdditionalSounds2ReferenceView(CPlugSoundMulti owner) => this.owner = owner;
-        public int Count => owner.additionalSounds2?.Count ?? 0;
-        public NodeRef<CMwNod> this[int index] => (owner.additionalSounds2 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -147,7 +138,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         yield return new("AdditionalSounds", NodeRef.GetOrCreate(ref additionalSoundsRef));
         if (additionalSounds2 is not null)
         {
-            for (var i = 0; i < additionalSounds2.Count; i++) yield return new("AdditionalSounds2" + "[" + i + "]", additionalSounds2.GetReference(i));
+            for (var i = 0; i < additionalSounds2.Count; i++) yield return new("AdditionalSounds2" + "[" + i + "]", additionalSounds2.Get(i));
         }
         yield return new("VolumeFromInput", NodeRef.GetOrCreate(ref volumeFromInputRef));
         yield break;

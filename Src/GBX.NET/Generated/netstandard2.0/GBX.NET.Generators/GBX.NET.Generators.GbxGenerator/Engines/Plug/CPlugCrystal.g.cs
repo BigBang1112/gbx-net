@@ -408,7 +408,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
 
             if (v == 0)
             {
-                NodeRef.SetEmbedded(ref this.materialUserInstRef, rw.Node<CPlugMaterialUserInst>(this.materialUserInstRef?.CachedTarget));
+                rw.Node(ref this.materialUserInstRef);
             }
         }
 
@@ -1192,26 +1192,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             get => u03;
             set => u03 = value;
         }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly BorderTransitionLayer owner;
-            internal NodeRefView(BorderTransitionLayer owner) => this.owner = owner;
-            public U03ReferenceView U03 => new(owner);
-        }
-        public readonly struct U03ReferenceView
-        {
-            private readonly BorderTransitionLayer owner;
-            internal U03ReferenceView(BorderTransitionLayer owner) => this.owner = owner;
-            public int Count => owner.u03?.Count ?? 0;
-            public NodeRef<CPlugVisual> this[int index] => (owner.u03 ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             if (u03 is not null)
             {
-                for (var i = 0; i < u03.Count; i++) yield return new("U03" + "[" + i + "]", u03.GetReference(i));
+                for (var i = 0; i < u03.Count; i++) yield return new("U03" + "[" + i + "]", u03.Get(i));
             }
             yield break;
         }
@@ -1533,26 +1518,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             get => this.lightPositions;
             set => this.lightPositions = value;
         }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly LightLayer owner;
-            internal NodeRefView(LightLayer owner) => this.owner = owner;
-            public LightsReferenceView Lights => new(owner);
-        }
-        public readonly struct LightsReferenceView
-        {
-            private readonly LightLayer owner;
-            internal LightsReferenceView(LightLayer owner) => this.owner = owner;
-            public int Count => owner.lights?.Count ?? 0;
-            public NodeRef<CPlugLightUserModel> this[int index] => (owner.lights ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-        }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             if (lights is not null)
             {
-                for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.GetReference(i));
+                for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.Get(i));
             }
             yield break;
         }

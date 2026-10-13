@@ -81,25 +81,17 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     {
         private readonly CPlugWeatherModel owner;
         internal NodeRefView(CPlugWeatherModel owner) => this.owner = owner;
-        public WeathersReferenceView Weathers => new(owner);
         public NodeRef<CPlugBitmap> BitmapSpecularDir => NodeRef.GetOrCreate(ref owner.bitmapSpecularDirRef);
         public NodeRef<CFuncDayTime> FuncDayTime => NodeRef.GetOrCreate(ref owner.funcDayTimeRef);
         public NodeRef<CPlugBitmap> BitmapWaterFog => NodeRef.GetOrCreate(ref owner.bitmapWaterFogRef);
         public NodeRef<CPlugMoodSetting> MoodSetting => NodeRef.GetOrCreate(ref owner.moodSettingRef);
-    }
-    public readonly struct WeathersReferenceView
-    {
-        private readonly CPlugWeatherModel owner;
-        internal WeathersReferenceView(CPlugWeatherModel owner) => this.owner = owner;
-        public int Count => owner.weathers?.Count ?? 0;
-        public NodeRef<CPlugWeather> this[int index] => (owner.weathers ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (weathers is not null)
         {
-            for (var i = 0; i < weathers.Count; i++) yield return new("Weathers" + "[" + i + "]", weathers.GetReference(i));
+            for (var i = 0; i < weathers.Count; i++) yield return new("Weathers" + "[" + i + "]", weathers.Get(i));
         }
         yield return new("BitmapSpecularDir", NodeRef.GetOrCreate(ref bitmapSpecularDirRef));
         yield return new("FuncDayTime", NodeRef.GetOrCreate(ref funcDayTimeRef));

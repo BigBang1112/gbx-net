@@ -403,16 +403,8 @@ public partial class CPlugSound : CPlugAudio, IClass
         public NodeRef<CFuncKeysReal> VolumeFromDistance => NodeRef.GetOrCreate(ref owner.volumeFromDistanceRef);
         public NodeRef<CFuncKeysReal> PitchFromDistance => NodeRef.GetOrCreate(ref owner.pitchFromDistanceRef);
         public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => NodeRef.GetOrCreate(ref owner.volumeFormSpeedKmhRef);
-        public OldSubSourcesReferenceView OldSubSources => new(owner);
         public NodeRef<CPlugSound> BackingSound => NodeRef.GetOrCreate(ref owner.backingSoundRef);
         public NodeRef<CPlugSound> FocusedSound => NodeRef.GetOrCreate(ref owner.focusedSoundRef);
-    }
-    public readonly struct OldSubSourcesReferenceView
-    {
-        private readonly CPlugSound owner;
-        internal OldSubSourcesReferenceView(CPlugSound owner) => this.owner = owner;
-        public int Count => owner.oldSubSources?.Count ?? 0;
-        public NodeRef<CPlugSound> this[int index] => (owner.oldSubSources ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -423,7 +415,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         yield return new("VolumeFormSpeedKmh", NodeRef.GetOrCreate(ref volumeFormSpeedKmhRef));
         if (oldSubSources is not null)
         {
-            for (var i = 0; i < oldSubSources.Count; i++) yield return new("OldSubSources" + "[" + i + "]", oldSubSources.GetReference(i));
+            for (var i = 0; i < oldSubSources.Count; i++) yield return new("OldSubSources" + "[" + i + "]", oldSubSources.Get(i));
         }
         yield return new("BackingSound", NodeRef.GetOrCreate(ref backingSoundRef));
         yield return new("FocusedSound", NodeRef.GetOrCreate(ref focusedSoundRef));

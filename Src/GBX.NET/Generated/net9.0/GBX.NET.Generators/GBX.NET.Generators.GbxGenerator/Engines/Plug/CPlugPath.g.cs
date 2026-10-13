@@ -54,27 +54,12 @@ public partial class CPlugPath : CMwNod, IClass
         get => this.lineGroups;
         set => this.lineGroups = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugPath owner;
-        internal NodeRefView(CPlugPath owner) => this.owner = owner;
-        public PolyLinesReferenceView PolyLines => new(owner);
-    }
-    public readonly struct PolyLinesReferenceView
-    {
-        private readonly CPlugPath owner;
-        internal PolyLinesReferenceView(CPlugPath owner) => this.owner = owner;
-        public int Count => owner.polyLines?.Count ?? 0;
-        public NodeRef<CPlugPolyLine3> this[int index] => (owner.polyLines ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (polyLines is not null)
         {
-            for (var i = 0; i < polyLines.Count; i++) yield return new("PolyLines" + "[" + i + "]", polyLines.GetReference(i));
+            for (var i = 0; i < polyLines.Count; i++) yield return new("PolyLines" + "[" + i + "]", polyLines.Get(i));
         }
         yield break;
     }

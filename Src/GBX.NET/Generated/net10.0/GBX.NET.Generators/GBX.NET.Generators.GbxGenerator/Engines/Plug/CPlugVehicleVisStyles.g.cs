@@ -51,27 +51,12 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
         get => this.unwantedTrafficVehiclesMatchName;
         set => this.unwantedTrafficVehiclesMatchName = value;
     }
-
-    public NodeRefView References => new(this);
-    public readonly struct NodeRefView
-    {
-        private readonly CPlugVehicleVisStyles owner;
-        internal NodeRefView(CPlugVehicleVisStyles owner) => this.owner = owner;
-        public RandomGroupsReferenceView RandomGroups => new(owner);
-    }
-    public readonly struct RandomGroupsReferenceView
-    {
-        private readonly CPlugVehicleVisStyles owner;
-        internal RandomGroupsReferenceView(CPlugVehicleVisStyles owner) => this.owner = owner;
-        public int Count => owner.randomGroups?.Count ?? 0;
-        public NodeRef<CPlugVehicleVisStyleRandomGroup> this[int index] => (owner.randomGroups ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (randomGroups is not null)
         {
-            for (var i = 0; i < randomGroups.Count; i++) yield return new("RandomGroups" + "[" + i + "]", randomGroups.GetReference(i));
+            for (var i = 0; i < randomGroups.Count; i++) yield return new("RandomGroups" + "[" + i + "]", randomGroups.Get(i));
         }
         yield break;
     }

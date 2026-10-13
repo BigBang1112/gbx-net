@@ -219,8 +219,6 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     {
         private readonly CPlugShaderApply owner;
         internal NodeRefView(CPlugShaderApply owner) => this.owner = owner;
-        public BitmapAddressesReferenceView BitmapAddresses => new(owner);
-        public UnusedBitmapAddressesReferenceView UnusedBitmapAddresses => new(owner);
         public NodeRef<CPlugBitmapApplyArray> BitmapApplyArray => NodeRef.GetOrCreate(ref owner.bitmapApplyArrayRef);
         public NodeRef<CPlugBitmapAddress> Diffuse => NodeRef.GetOrCreate(ref owner.diffuseRef);
         public NodeRef<CPlugBitmapAddress> LightMap => NodeRef.GetOrCreate(ref owner.lightMapRef);
@@ -228,36 +226,20 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         public NodeRef<CPlugBitmapAddress> SelfIllum => NodeRef.GetOrCreate(ref owner.selfIllumRef);
         public NodeRef<CPlugBitmapAddress> EnvMap => NodeRef.GetOrCreate(ref owner.envMapRef);
         public NodeRef<CFuncShader> FuncShader => ((CPlugShaderGeneric)owner).References.FuncShader;
-        public CPlugShaderGeneric.PassesReferenceView Passes => ((CPlugShaderGeneric)owner).References.Passes;
         public NodeRef<CPlugBitmapApply> SolidWiredApply => ((CPlugShaderGeneric)owner).References.SolidWiredApply;
         public NodeRef<CPlugMaterialFx> MaterialFx => ((CPlugShaderGeneric)owner).References.MaterialFx;
-        public CPlugShaderGeneric.LegacyCustomShadersReferenceView LegacyCustomShaders => ((CPlugShaderGeneric)owner).References.LegacyCustomShaders;
         public NodeRef<CPlugFileGPUV> GPU => ((CPlugShaderGeneric)owner).References.GPU;
-    }
-    public readonly struct BitmapAddressesReferenceView
-    {
-        private readonly CPlugShaderApply owner;
-        internal BitmapAddressesReferenceView(CPlugShaderApply owner) => this.owner = owner;
-        public int Count => owner.bitmapAddresses?.Count ?? 0;
-        public NodeRef<CPlugBitmapAddress> this[int index] => (owner.bitmapAddresses ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
-    }
-    public readonly struct UnusedBitmapAddressesReferenceView
-    {
-        private readonly CPlugShaderApply owner;
-        internal UnusedBitmapAddressesReferenceView(CPlugShaderApply owner) => this.owner = owner;
-        public int Count => owner.unusedBitmapAddresses?.Count ?? 0;
-        public NodeRef<CPlugBitmapAddress> this[int index] => (owner.unusedBitmapAddresses ?? throw new InvalidOperationException("The reference collection is null.")).GetReference(index);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         if (bitmapAddresses is not null)
         {
-            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.GetReference(i));
+            for (var i = 0; i < bitmapAddresses.Count; i++) yield return new("BitmapAddresses" + "[" + i + "]", bitmapAddresses.Get(i));
         }
         if (unusedBitmapAddresses is not null)
         {
-            for (var i = 0; i < unusedBitmapAddresses.Count; i++) yield return new("UnusedBitmapAddresses" + "[" + i + "]", unusedBitmapAddresses.GetReference(i));
+            for (var i = 0; i < unusedBitmapAddresses.Count; i++) yield return new("UnusedBitmapAddresses" + "[" + i + "]", unusedBitmapAddresses.Get(i));
         }
         yield return new("BitmapApplyArray", NodeRef.GetOrCreate(ref bitmapApplyArrayRef));
         yield return new("Diffuse", NodeRef.GetOrCreate(ref diffuseRef));
