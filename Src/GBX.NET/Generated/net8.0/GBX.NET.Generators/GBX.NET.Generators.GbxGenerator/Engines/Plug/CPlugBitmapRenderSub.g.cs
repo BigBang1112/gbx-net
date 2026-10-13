@@ -36,12 +36,12 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugShader> shaderToForceRef = new();
+    private NodeRef<CPlugShader>? shaderToForceRef;
     [AppliedWithChunk<Chunk09091000>]
     public CPlugShader? ShaderToForce
     {
-        get => shaderToForceRef.Resolve();
-        set => shaderToForceRef.SetEmbedded(value);
+        get => shaderToForceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderToForceRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -49,14 +49,14 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
     {
         private readonly CPlugBitmapRenderSub owner;
         internal NodeRefView(CPlugBitmapRenderSub owner) => this.owner = owner;
-        public NodeRef<CPlugShader> ShaderToForce => owner.shaderToForceRef;
+        public NodeRef<CPlugShader> ShaderToForce => NodeRef.GetOrCreate(ref owner.shaderToForceRef);
         public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
         public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("ShaderToForce", shaderToForceRef);
+        yield return new("ShaderToForce", NodeRef.GetOrCreate(ref shaderToForceRef));
         yield break;
     }
 
@@ -84,7 +84,7 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
 
         public override void ReadWrite(CPlugBitmapRenderSub n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shaderToForceRef);
+            rw.NodeRef(ref n.shaderToForceRef);
         }
     }
 

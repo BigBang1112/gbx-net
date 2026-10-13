@@ -36,46 +36,46 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> phyModelRef = new();
+    private NodeRef<CMwNod>? phyModelRef;
     /// <summary>
     /// CGameObjectPhyModel
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? PhyModel
     {
-        get => phyModelRef.Resolve();
-        set => phyModelRef.SetEmbedded(value);
+        get => phyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyModelRef, value);
     }
 
-    private NodeRef<CMwNod> visModelRef = new();
+    private NodeRef<CMwNod>? visModelRef;
     /// <summary>
     /// CGameObjectVisModel
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? VisModel
     {
-        get => visModelRef.Resolve();
-        set => visModelRef.SetEmbedded(value);
+        get => visModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visModelRef, value);
     }
 
-    private NodeRef<CPlugStaticObjectModel> staticObjectRef = new();
+    private NodeRef<CPlugStaticObjectModel>? staticObjectRef;
     [AppliedWithChunk<Chunk2E027000>(1, 2)]
     [AppliedWithChunk<Chunk2E027000>(4)]
     public CPlugStaticObjectModel? StaticObject
     {
-        get => staticObjectRef.Resolve();
-        set => staticObjectRef.SetEmbedded(value);
+        get => staticObjectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref staticObjectRef, value);
     }
 
-    private NodeRef<CMwNod> triggerShapeRef = new();
+    private NodeRef<CMwNod>? triggerShapeRef;
     /// <summary>
     /// CPlugSurface
     /// </summary>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CMwNod? TriggerShape
     {
-        get => triggerShapeRef.Resolve();
-        set => triggerShapeRef.SetEmbedded(value);
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
 
     private Iso4 spawnLoc = Iso4.Identity;
@@ -86,12 +86,12 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         set => this.spawnLoc = value;
     }
 
-    private NodeRef<CPlugParticleEmitterModel> particleEmitterModelRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModelRef;
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CPlugParticleEmitterModel? ParticleEmitterModel
     {
-        get => particleEmitterModelRef.Resolve();
-        set => particleEmitterModelRef.SetEmbedded(value);
+        get => particleEmitterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModelRef, value);
     }
 
     private NodeRefList<CGameActionModel>? actions;
@@ -166,11 +166,11 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     {
         private readonly CGameCommonItemEntityModel owner;
         internal NodeRefView(CGameCommonItemEntityModel owner) => this.owner = owner;
-        public NodeRef<CMwNod> PhyModel => owner.phyModelRef;
-        public NodeRef<CMwNod> VisModel => owner.visModelRef;
-        public NodeRef<CPlugStaticObjectModel> StaticObject => owner.staticObjectRef;
-        public NodeRef<CMwNod> TriggerShape => owner.triggerShapeRef;
-        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel => owner.particleEmitterModelRef;
+        public NodeRef<CMwNod> PhyModel => NodeRef.GetOrCreate(ref owner.phyModelRef);
+        public NodeRef<CMwNod> VisModel => NodeRef.GetOrCreate(ref owner.visModelRef);
+        public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
+        public NodeRef<CMwNod> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel => NodeRef.GetOrCreate(ref owner.particleEmitterModelRef);
         public ActionsReferenceView Actions => new(owner);
     }
     public readonly struct ActionsReferenceView
@@ -183,11 +183,11 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PhyModel", phyModelRef);
-        yield return new("VisModel", visModelRef);
-        yield return new("StaticObject", staticObjectRef);
-        yield return new("TriggerShape", triggerShapeRef);
-        yield return new("ParticleEmitterModel", particleEmitterModelRef);
+        yield return new("PhyModel", NodeRef.GetOrCreate(ref phyModelRef));
+        yield return new("VisModel", NodeRef.GetOrCreate(ref visModelRef));
+        yield return new("StaticObject", NodeRef.GetOrCreate(ref staticObjectRef));
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
+        yield return new("ParticleEmitterModel", NodeRef.GetOrCreate(ref particleEmitterModelRef));
         if (actions is not null)
         {
             for (var i = 0; i < actions.Count; i++) yield return new("Actions" + "[" + i + "]", actions.GetReference(i));
@@ -228,14 +228,14 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public string? U01;
         public string? U02;
 
-        private NodeRef<CMwNod> U03Ref = new();
+        private NodeRef<CMwNod>? U03Ref;
         /// <summary>
         /// Deprecated CMwNod reference.
         /// </summary>
         public CMwNod? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
         public bool U04;
 
@@ -244,12 +244,12 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         {
             private readonly Chunk2E027000 owner;
             internal NodeRefView(Chunk2E027000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U03 => owner.U03Ref;
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U03", U03Ref);
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -281,8 +281,8 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.NodeRef(n.phyModelRef);
-                rw.NodeRef(n.visModelRef);
+                rw.NodeRef(ref n.phyModelRef);
+                rw.NodeRef(ref n.visModelRef);
             }
 
             if (Version == 3)
@@ -295,25 +295,25 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
             {
                 if (Version <= 2)
                 {
-                    rw.NodeRef(n.staticObjectRef);
+                    rw.NodeRef(ref n.staticObjectRef);
                 }
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef(n.staticObjectRef);
+                rw.NodeRef(ref n.staticObjectRef);
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.triggerShapeRef);
+                rw.NodeRef(ref n.triggerShapeRef);
                 rw.Iso4(ref n.spawnLoc);
-                rw.NodeRef(n.particleEmitterModelRef);
+                rw.NodeRef(ref n.particleEmitterModelRef);
                 n.actions = rw.ListNodeRef<CGameActionModel>(n.actions);
 
                 if (Version <= 5)
                 {
-                    rw.NodeRef(U03Ref);
+                    rw.NodeRef(ref U03Ref);
                 }
 
                 rw.String(ref n.soundRefSpawn);

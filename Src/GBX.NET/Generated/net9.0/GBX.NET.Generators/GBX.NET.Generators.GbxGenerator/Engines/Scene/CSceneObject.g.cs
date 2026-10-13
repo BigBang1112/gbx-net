@@ -44,12 +44,12 @@ public abstract partial class CSceneObject : CMwNod, IClass
         set => this.name = value;
     }
 
-    private NodeRef<CMotion> motionRef = new();
+    private NodeRef<CMotion>? motionRef;
     [AppliedWithChunk<Chunk0A005003>]
     public CMotion? Motion
     {
-        get => motionRef.Resolve();
-        set => motionRef.SetEmbedded(value);
+        get => motionRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref motionRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -57,12 +57,12 @@ public abstract partial class CSceneObject : CMwNod, IClass
     {
         private readonly CSceneObject owner;
         internal NodeRefView(CSceneObject owner) => this.owner = owner;
-        public NodeRef<CMotion> Motion => owner.motionRef;
+        public NodeRef<CMotion> Motion => NodeRef.GetOrCreate(ref owner.motionRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Motion", motionRef);
+        yield return new("Motion", NodeRef.GetOrCreate(ref motionRef));
         yield break;
     }
 
@@ -127,7 +127,7 @@ public abstract partial class CSceneObject : CMwNod, IClass
 
         public override void ReadWrite(CSceneObject n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.motionRef);
+            rw.NodeRef(ref n.motionRef);
         }
     }
 

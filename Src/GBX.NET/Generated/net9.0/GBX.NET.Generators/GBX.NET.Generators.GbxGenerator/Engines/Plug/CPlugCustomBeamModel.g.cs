@@ -197,11 +197,11 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         set => this.u15 = value;
     }
 
-    private NodeRef<CFuncKeysReal> damageAttenuationFromDistRef = new();
+    private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
     public CFuncKeysReal? DamageAttenuationFromDist
     {
-        get => damageAttenuationFromDistRef.Resolve();
-        set => damageAttenuationFromDistRef.SetEmbedded(value);
+        get => damageAttenuationFromDistRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref damageAttenuationFromDistRef, value);
     }
 
     private float maxDistance;
@@ -253,7 +253,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         internal NodeRefView(CPlugCustomBeamModel owner) => this.owner = owner;
         public U01ReferenceView U01 => new(owner);
         public U02ReferenceView U02 => new(owner);
-        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => owner.damageAttenuationFromDistRef;
+        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
     }
     public readonly struct U01ReferenceView
     {
@@ -280,7 +280,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
         {
             for (var i = 0; i < u02.Count; i++) yield return new("U02" + "[" + i + "]", u02.GetReference(i));
         }
-        yield return new("DamageAttenuationFromDist", damageAttenuationFromDistRef);
+        yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
         yield break;
     }
 
@@ -381,7 +381,7 @@ public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, I
 
                                                 if (v >= 11)
                                                 {
-                                                    rw.NodeRef(this.damageAttenuationFromDistRef);
+                                                    rw.NodeRef(ref this.damageAttenuationFromDistRef);
 
                                                     if (v >= 12)
                                                     {

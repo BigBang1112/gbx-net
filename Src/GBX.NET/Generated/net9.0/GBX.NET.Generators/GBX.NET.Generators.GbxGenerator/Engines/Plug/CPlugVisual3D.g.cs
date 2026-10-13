@@ -36,12 +36,12 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> blendShapesRef = new();
+    private NodeRef<CMwNod>? blendShapesRef;
     [AppliedWithChunk<Chunk0902C002>]
     public CMwNod? BlendShapes
     {
-        get => blendShapesRef.Resolve();
-        set => blendShapesRef.SetEmbedded(value);
+        get => blendShapesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blendShapesRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -49,14 +49,14 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     {
         private readonly CPlugVisual3D owner;
         internal NodeRefView(CPlugVisual3D owner) => this.owner = owner;
-        public NodeRef<CMwNod> BlendShapes => owner.blendShapesRef;
+        public NodeRef<CMwNod> BlendShapes => NodeRef.GetOrCreate(ref owner.blendShapesRef);
         public NodeRef<CMwNod> FuncVisual => ((CPlugVisual)owner).References.FuncVisual;
         public CPlugVisual.VertexStreamsReferenceView VertexStreams => ((CPlugVisual)owner).References.VertexStreams;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BlendShapes", blendShapesRef);
+        yield return new("BlendShapes", NodeRef.GetOrCreate(ref blendShapesRef));
         yield break;
     }
 

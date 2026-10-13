@@ -115,7 +115,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.profileId = value;
     }
 
-    private NodeRef<CInputBindingsConfig> bindingsForCompatConfigRef = new();
+    private NodeRef<CInputBindingsConfig>? bindingsForCompatConfigRef;
     [AppliedWithChunk<Chunk0308C006>]
     [AppliedWithChunk<Chunk0308C039>]
     [AppliedWithChunk<Chunk0308C03E>]
@@ -123,8 +123,8 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [AppliedWithChunk<Chunk0308C062>]
     public CInputBindingsConfig? BindingsForCompatConfig
     {
-        get => bindingsForCompatConfigRef.Resolve();
-        set => bindingsForCompatConfigRef.SetEmbedded(value);
+        get => bindingsForCompatConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bindingsForCompatConfigRef, value);
     }
 
     private bool unlockAllCheat;
@@ -540,12 +540,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.multiLocalProfileHeaders = value;
     }
 
-    private NodeRef<CInputBindingsConfig> bindingsConfigRef = new();
+    private NodeRef<CInputBindingsConfig>? bindingsConfigRef;
     [AppliedWithChunk<Chunk0308C04B>]
     public CInputBindingsConfig? BindingsConfig
     {
-        get => bindingsConfigRef.Resolve();
-        set => bindingsConfigRef.SetEmbedded(value);
+        get => bindingsConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bindingsConfigRef, value);
     }
 
     private int leagueCacheDuration;
@@ -684,12 +684,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.onlineValidationKeyHexa = value;
     }
 
-    private NodeRef<CGameCtnMediaShootParams> shootParamsRef = new();
+    private NodeRef<CGameCtnMediaShootParams>? shootParamsRef;
     [AppliedWithChunk<Chunk0308C05E>]
     public CGameCtnMediaShootParams? ShootParams
     {
-        get => shootParamsRef.Resolve();
-        set => shootParamsRef.SetEmbedded(value);
+        get => shootParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shootParamsRef, value);
     }
 
     private int playTime;
@@ -883,13 +883,13 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
         private readonly CGamePlayerProfile owner;
         internal NodeRefView(CGamePlayerProfile owner) => this.owner = owner;
-        public NodeRef<CInputBindingsConfig> BindingsForCompatConfig => owner.bindingsForCompatConfigRef;
+        public NodeRef<CInputBindingsConfig> BindingsForCompatConfig => NodeRef.GetOrCreate(ref owner.bindingsForCompatConfigRef);
         public InboxMessagesReferenceView InboxMessages => new(owner);
         public ReadMessagesReferenceView ReadMessages => new(owner);
         public OutboxMessagesReferenceView OutboxMessages => new(owner);
-        public NodeRef<CInputBindingsConfig> BindingsConfig => owner.bindingsConfigRef;
+        public NodeRef<CInputBindingsConfig> BindingsConfig => NodeRef.GetOrCreate(ref owner.bindingsConfigRef);
         public LeaguesReferenceView Leagues => new(owner);
-        public NodeRef<CGameCtnMediaShootParams> ShootParams => owner.shootParamsRef;
+        public NodeRef<CGameCtnMediaShootParams> ShootParams => NodeRef.GetOrCreate(ref owner.shootParamsRef);
         public CustomCampaignsReferenceView CustomCampaigns => new(owner);
     }
     public readonly struct InboxMessagesReferenceView
@@ -930,7 +930,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BindingsForCompatConfig", bindingsForCompatConfigRef);
+        yield return new("BindingsForCompatConfig", NodeRef.GetOrCreate(ref bindingsForCompatConfigRef));
         if (inboxMessages is not null)
         {
             for (var i = 0; i < inboxMessages.Count; i++) yield return new("InboxMessages" + "[" + i + "]", inboxMessages.GetReference(i));
@@ -943,12 +943,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         {
             for (var i = 0; i < outboxMessages.Count; i++) yield return new("OutboxMessages" + "[" + i + "]", outboxMessages.GetReference(i));
         }
-        yield return new("BindingsConfig", bindingsConfigRef);
+        yield return new("BindingsConfig", NodeRef.GetOrCreate(ref bindingsConfigRef));
         if (leagues is not null)
         {
             for (var i = 0; i < leagues.Count; i++) yield return new("Leagues" + "[" + i + "]", leagues.GetReference(i));
         }
-        yield return new("ShootParams", shootParamsRef);
+        yield return new("ShootParams", NodeRef.GetOrCreate(ref shootParamsRef));
         if (customCampaigns is not null)
         {
             for (var i = 0; i < customCampaigns.Count; i++) yield return new("CustomCampaigns" + "[" + i + "]", customCampaigns.GetReference(i));
@@ -1213,7 +1213,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bindingsForCompatConfigRef);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
         }
     }
 
@@ -2582,7 +2582,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.ArrayReadableWritable<OldVehicleProfile>(ref U01!, version: 0);
-            rw.NodeRef(n.bindingsForCompatConfigRef);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Id(ref U02);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U03);
@@ -2758,7 +2758,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bindingsForCompatConfigRef);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Id(ref U01);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U02);
@@ -3060,7 +3060,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bindingsConfigRef);
+            rw.NodeRef(ref n.bindingsConfigRef);
         }
     }
 
@@ -3200,7 +3200,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bindingsForCompatConfigRef);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
             rw.Boolean(ref n.enableAvatars);
             rw.Boolean(ref U01);
             rw.Boolean(ref n.enableCarSkinGeom);
@@ -3514,7 +3514,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shootParamsRef);
+            rw.NodeRef(ref n.shootParamsRef);
         }
     }
 
@@ -3592,7 +3592,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.bindingsForCompatVersion);
-            rw.NodeRef(n.bindingsForCompatConfigRef);
+            rw.NodeRef(ref n.bindingsForCompatConfigRef);
         }
     }
 
@@ -5436,11 +5436,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
             set => this.avatarName = value;
         }
 
-        private NodeRef<CMwNod> u02Ref = new();
+        private NodeRef<CMwNod>? u02Ref;
         public CMwNod? U02
         {
-            get => u02Ref.Resolve();
-            set => u02Ref.SetEmbedded(value);
+            get => u02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -5448,11 +5448,11 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         {
             private readonly MultiLocalProfileHeader owner;
             internal NodeRefView(MultiLocalProfileHeader owner) => this.owner = owner;
-            public NodeRef<CMwNod> U02 => owner.u02Ref;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U02", u02Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
             yield break;
         }
 
@@ -5485,7 +5485,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
                 if (Version == 1)
                 {
-                    rw.NodeRef(this.u02Ref);
+                    rw.NodeRef(ref this.u02Ref);
                 }
             }
         }

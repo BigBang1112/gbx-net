@@ -36,22 +36,22 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugAudioEnvironment> audioEnvOutsideOpenRef = new();
+    private NodeRef<CPlugAudioEnvironment>? audioEnvOutsideOpenRef;
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideOpen
     {
-        get => audioEnvOutsideOpenRef.Resolve();
-        set => audioEnvOutsideOpenRef.SetEmbedded(value);
+        get => audioEnvOutsideOpenRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioEnvOutsideOpenRef, value);
     }
 
-    private NodeRef<CPlugAudioEnvironment> audioEnvOutsideEnclosedRef = new();
+    private NodeRef<CPlugAudioEnvironment>? audioEnvOutsideEnclosedRef;
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideEnclosed
     {
-        get => audioEnvOutsideEnclosedRef.Resolve();
-        set => audioEnvOutsideEnclosedRef.SetEmbedded(value);
+        get => audioEnvOutsideEnclosedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioEnvOutsideEnclosedRef, value);
     }
 
     private float soundAttenuationInEditor;
@@ -62,172 +62,172 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => this.soundAttenuationInEditor = value;
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_PlaygroundLoudRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_PlaygroundLoudRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_PlaygroundLoud
     {
-        get => audioBalance_PlaygroundLoudRef.Resolve();
-        set => audioBalance_PlaygroundLoudRef.SetEmbedded(value);
+        get => audioBalance_PlaygroundLoudRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_PlaygroundLoudRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_ReplayLoudRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_ReplayLoudRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_ReplayLoud
     {
-        get => audioBalance_ReplayLoudRef.Resolve();
-        set => audioBalance_ReplayLoudRef.SetEmbedded(value);
+        get => audioBalance_ReplayLoudRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_ReplayLoudRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_PodiumRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_PodiumRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_Podium
     {
-        get => audioBalance_PodiumRef.Resolve();
-        set => audioBalance_PodiumRef.SetEmbedded(value);
+        get => audioBalance_PodiumRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_PodiumRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_PlaygroundSoftRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_PlaygroundSoftRef;
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_PlaygroundSoft
     {
-        get => audioBalance_PlaygroundSoftRef.Resolve();
-        set => audioBalance_PlaygroundSoftRef.SetEmbedded(value);
+        get => audioBalance_PlaygroundSoftRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_PlaygroundSoftRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_ReplaySoftRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_ReplaySoftRef;
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_ReplaySoft
     {
-        get => audioBalance_ReplaySoftRef.Resolve();
-        set => audioBalance_ReplaySoftRef.SetEmbedded(value);
+        get => audioBalance_ReplaySoftRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_ReplaySoftRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtStartLineRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtStartLineRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtStartLine
     {
-        get => audioBalance_TM_EvtStartLineRef.Resolve();
-        set => audioBalance_TM_EvtStartLineRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtStartLineRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtStartLineRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtCheckpointRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtCheckpointRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCheckpoint
     {
-        get => audioBalance_TM_EvtCheckpointRef.Resolve();
-        set => audioBalance_TM_EvtCheckpointRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtCheckpointRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtCheckpointRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtRespawnRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtRespawnRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtRespawn
     {
-        get => audioBalance_TM_EvtRespawnRef.Resolve();
-        set => audioBalance_TM_EvtRespawnRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtRespawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtRespawnRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtCrashRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtCrashRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCrash
     {
-        get => audioBalance_TM_EvtCrashRef.Resolve();
-        set => audioBalance_TM_EvtCrashRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtCrashRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtCrashRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtFlyingRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtFlyingRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtFlying
     {
-        get => audioBalance_TM_EvtFlyingRef.Resolve();
-        set => audioBalance_TM_EvtFlyingRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtFlyingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtFlyingRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_TM_EvtSwimmingRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtSwimmingRef;
     [AppliedWithChunk<Chunk03039003>(7)]
     public CPlugAudioBalance? AudioBalance_TM_EvtSwimming
     {
-        get => audioBalance_TM_EvtSwimmingRef.Resolve();
-        set => audioBalance_TM_EvtSwimmingRef.SetEmbedded(value);
+        get => audioBalance_TM_EvtSwimmingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_TM_EvtSwimmingRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtSpawnRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtSpawnRef;
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_SM_EvtSpawn
     {
-        get => audioBalance_SM_EvtSpawnRef.Resolve();
-        set => audioBalance_SM_EvtSpawnRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtSpawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtSpawnRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_Overlay_UndergroundRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_Overlay_UndergroundRef;
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Underground
     {
-        get => audioBalance_Overlay_UndergroundRef.Resolve();
-        set => audioBalance_Overlay_UndergroundRef.SetEmbedded(value);
+        get => audioBalance_Overlay_UndergroundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_Overlay_UndergroundRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_Overlay_FarRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_Overlay_FarRef;
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Far
     {
-        get => audioBalance_Overlay_FarRef.Resolve();
-        set => audioBalance_Overlay_FarRef.SetEmbedded(value);
+        get => audioBalance_Overlay_FarRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_Overlay_FarRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtUnspawnRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtUnspawnRef;
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtUnspawn
     {
-        get => audioBalance_SM_EvtUnspawnRef.Resolve();
-        set => audioBalance_SM_EvtUnspawnRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtUnspawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtUnspawnRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtHitRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtHitRef;
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHit
     {
-        get => audioBalance_SM_EvtHitRef.Resolve();
-        set => audioBalance_SM_EvtHitRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtHitRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtHitRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtFireRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtFireRef;
     [AppliedWithChunk<Chunk03039003>(3)]
     public CPlugAudioBalance? AudioBalance_SM_EvtFire
     {
-        get => audioBalance_SM_EvtFireRef.Resolve();
-        set => audioBalance_SM_EvtFireRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtFireRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtFireRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtHitEliminatedRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtHitEliminatedRef;
     [AppliedWithChunk<Chunk03039003>(4)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHitEliminated
     {
-        get => audioBalance_SM_EvtHitEliminatedRef.Resolve();
-        set => audioBalance_SM_EvtHitEliminatedRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtHitEliminatedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtHitEliminatedRef, value);
     }
 
-    private NodeRef<CPlugAudioBalance> audioBalance_SM_EvtBulletTimeRef = new();
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtBulletTimeRef;
     [AppliedWithChunk<Chunk03039003>(8)]
     public CPlugAudioBalance? AudioBalance_SM_EvtBulletTime
     {
-        get => audioBalance_SM_EvtBulletTimeRef.Resolve();
-        set => audioBalance_SM_EvtBulletTimeRef.SetEmbedded(value);
+        get => audioBalance_SM_EvtBulletTimeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtBulletTimeRef, value);
     }
 
-    private NodeRef<CPlugAudioEnvironment> audioEnvUndergroundOpenRef = new();
+    private NodeRef<CPlugAudioEnvironment>? audioEnvUndergroundOpenRef;
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundOpen
     {
-        get => audioEnvUndergroundOpenRef.Resolve();
-        set => audioEnvUndergroundOpenRef.SetEmbedded(value);
+        get => audioEnvUndergroundOpenRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioEnvUndergroundOpenRef, value);
     }
 
-    private NodeRef<CPlugAudioEnvironment> audioEnvUndergroundEnclosedRef = new();
+    private NodeRef<CPlugAudioEnvironment>? audioEnvUndergroundEnclosedRef;
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundEnclosed
     {
-        get => audioEnvUndergroundEnclosedRef.Resolve();
-        set => audioEnvUndergroundEnclosedRef.SetEmbedded(value);
+        get => audioEnvUndergroundEnclosedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioEnvUndergroundEnclosedRef, value);
     }
 
     private float cameraWooshMinSpeedKmh;
@@ -262,12 +262,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => this.reverbMaterialGains = value;
     }
 
-    private NodeRef<CPlugFileText> modifierXmlFileRef = new();
+    private NodeRef<CPlugFileText>? modifierXmlFileRef;
     [AppliedWithChunk<Chunk03039006>]
     public CPlugFileText? ModifierXmlFile
     {
-        get => modifierXmlFileRef.Resolve();
-        set => modifierXmlFileRef.SetEmbedded(value);
+        get => modifierXmlFileRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modifierXmlFileRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -275,58 +275,58 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     {
         private readonly CGameCtnDecorationAudio owner;
         internal NodeRefView(CGameCtnDecorationAudio owner) => this.owner = owner;
-        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideOpen => owner.audioEnvOutsideOpenRef;
-        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideEnclosed => owner.audioEnvOutsideEnclosedRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundLoud => owner.audioBalance_PlaygroundLoudRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_ReplayLoud => owner.audioBalance_ReplayLoudRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_Podium => owner.audioBalance_PodiumRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundSoft => owner.audioBalance_PlaygroundSoftRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_ReplaySoft => owner.audioBalance_ReplaySoftRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtStartLine => owner.audioBalance_TM_EvtStartLineRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCheckpoint => owner.audioBalance_TM_EvtCheckpointRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtRespawn => owner.audioBalance_TM_EvtRespawnRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCrash => owner.audioBalance_TM_EvtCrashRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtFlying => owner.audioBalance_TM_EvtFlyingRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtSwimming => owner.audioBalance_TM_EvtSwimmingRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtSpawn => owner.audioBalance_SM_EvtSpawnRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Underground => owner.audioBalance_Overlay_UndergroundRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Far => owner.audioBalance_Overlay_FarRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtUnspawn => owner.audioBalance_SM_EvtUnspawnRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHit => owner.audioBalance_SM_EvtHitRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtFire => owner.audioBalance_SM_EvtFireRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHitEliminated => owner.audioBalance_SM_EvtHitEliminatedRef;
-        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtBulletTime => owner.audioBalance_SM_EvtBulletTimeRef;
-        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundOpen => owner.audioEnvUndergroundOpenRef;
-        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundEnclosed => owner.audioEnvUndergroundEnclosedRef;
-        public NodeRef<CPlugFileText> ModifierXmlFile => owner.modifierXmlFileRef;
+        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideOpen => NodeRef.GetOrCreate(ref owner.audioEnvOutsideOpenRef);
+        public NodeRef<CPlugAudioEnvironment> AudioEnvOutsideEnclosed => NodeRef.GetOrCreate(ref owner.audioEnvOutsideEnclosedRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundLoud => NodeRef.GetOrCreate(ref owner.audioBalance_PlaygroundLoudRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_ReplayLoud => NodeRef.GetOrCreate(ref owner.audioBalance_ReplayLoudRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_Podium => NodeRef.GetOrCreate(ref owner.audioBalance_PodiumRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_PlaygroundSoft => NodeRef.GetOrCreate(ref owner.audioBalance_PlaygroundSoftRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_ReplaySoft => NodeRef.GetOrCreate(ref owner.audioBalance_ReplaySoftRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtStartLine => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtStartLineRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCheckpoint => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtCheckpointRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtRespawn => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtRespawnRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtCrash => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtCrashRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtFlying => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtFlyingRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_TM_EvtSwimming => NodeRef.GetOrCreate(ref owner.audioBalance_TM_EvtSwimmingRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtSpawn => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtSpawnRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Underground => NodeRef.GetOrCreate(ref owner.audioBalance_Overlay_UndergroundRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_Overlay_Far => NodeRef.GetOrCreate(ref owner.audioBalance_Overlay_FarRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtUnspawn => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtUnspawnRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHit => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtHitRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtFire => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtFireRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHitEliminated => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtHitEliminatedRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtBulletTime => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtBulletTimeRef);
+        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundOpen => NodeRef.GetOrCreate(ref owner.audioEnvUndergroundOpenRef);
+        public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundEnclosed => NodeRef.GetOrCreate(ref owner.audioEnvUndergroundEnclosedRef);
+        public NodeRef<CPlugFileText> ModifierXmlFile => NodeRef.GetOrCreate(ref owner.modifierXmlFileRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("AudioEnvOutsideOpen", audioEnvOutsideOpenRef);
-        yield return new("AudioEnvOutsideEnclosed", audioEnvOutsideEnclosedRef);
-        yield return new("AudioBalance_PlaygroundLoud", audioBalance_PlaygroundLoudRef);
-        yield return new("AudioBalance_ReplayLoud", audioBalance_ReplayLoudRef);
-        yield return new("AudioBalance_Podium", audioBalance_PodiumRef);
-        yield return new("AudioBalance_PlaygroundSoft", audioBalance_PlaygroundSoftRef);
-        yield return new("AudioBalance_ReplaySoft", audioBalance_ReplaySoftRef);
-        yield return new("AudioBalance_TM_EvtStartLine", audioBalance_TM_EvtStartLineRef);
-        yield return new("AudioBalance_TM_EvtCheckpoint", audioBalance_TM_EvtCheckpointRef);
-        yield return new("AudioBalance_TM_EvtRespawn", audioBalance_TM_EvtRespawnRef);
-        yield return new("AudioBalance_TM_EvtCrash", audioBalance_TM_EvtCrashRef);
-        yield return new("AudioBalance_TM_EvtFlying", audioBalance_TM_EvtFlyingRef);
-        yield return new("AudioBalance_TM_EvtSwimming", audioBalance_TM_EvtSwimmingRef);
-        yield return new("AudioBalance_SM_EvtSpawn", audioBalance_SM_EvtSpawnRef);
-        yield return new("AudioBalance_Overlay_Underground", audioBalance_Overlay_UndergroundRef);
-        yield return new("AudioBalance_Overlay_Far", audioBalance_Overlay_FarRef);
-        yield return new("AudioBalance_SM_EvtUnspawn", audioBalance_SM_EvtUnspawnRef);
-        yield return new("AudioBalance_SM_EvtHit", audioBalance_SM_EvtHitRef);
-        yield return new("AudioBalance_SM_EvtFire", audioBalance_SM_EvtFireRef);
-        yield return new("AudioBalance_SM_EvtHitEliminated", audioBalance_SM_EvtHitEliminatedRef);
-        yield return new("AudioBalance_SM_EvtBulletTime", audioBalance_SM_EvtBulletTimeRef);
-        yield return new("AudioEnvUndergroundOpen", audioEnvUndergroundOpenRef);
-        yield return new("AudioEnvUndergroundEnclosed", audioEnvUndergroundEnclosedRef);
-        yield return new("ModifierXmlFile", modifierXmlFileRef);
+        yield return new("AudioEnvOutsideOpen", NodeRef.GetOrCreate(ref audioEnvOutsideOpenRef));
+        yield return new("AudioEnvOutsideEnclosed", NodeRef.GetOrCreate(ref audioEnvOutsideEnclosedRef));
+        yield return new("AudioBalance_PlaygroundLoud", NodeRef.GetOrCreate(ref audioBalance_PlaygroundLoudRef));
+        yield return new("AudioBalance_ReplayLoud", NodeRef.GetOrCreate(ref audioBalance_ReplayLoudRef));
+        yield return new("AudioBalance_Podium", NodeRef.GetOrCreate(ref audioBalance_PodiumRef));
+        yield return new("AudioBalance_PlaygroundSoft", NodeRef.GetOrCreate(ref audioBalance_PlaygroundSoftRef));
+        yield return new("AudioBalance_ReplaySoft", NodeRef.GetOrCreate(ref audioBalance_ReplaySoftRef));
+        yield return new("AudioBalance_TM_EvtStartLine", NodeRef.GetOrCreate(ref audioBalance_TM_EvtStartLineRef));
+        yield return new("AudioBalance_TM_EvtCheckpoint", NodeRef.GetOrCreate(ref audioBalance_TM_EvtCheckpointRef));
+        yield return new("AudioBalance_TM_EvtRespawn", NodeRef.GetOrCreate(ref audioBalance_TM_EvtRespawnRef));
+        yield return new("AudioBalance_TM_EvtCrash", NodeRef.GetOrCreate(ref audioBalance_TM_EvtCrashRef));
+        yield return new("AudioBalance_TM_EvtFlying", NodeRef.GetOrCreate(ref audioBalance_TM_EvtFlyingRef));
+        yield return new("AudioBalance_TM_EvtSwimming", NodeRef.GetOrCreate(ref audioBalance_TM_EvtSwimmingRef));
+        yield return new("AudioBalance_SM_EvtSpawn", NodeRef.GetOrCreate(ref audioBalance_SM_EvtSpawnRef));
+        yield return new("AudioBalance_Overlay_Underground", NodeRef.GetOrCreate(ref audioBalance_Overlay_UndergroundRef));
+        yield return new("AudioBalance_Overlay_Far", NodeRef.GetOrCreate(ref audioBalance_Overlay_FarRef));
+        yield return new("AudioBalance_SM_EvtUnspawn", NodeRef.GetOrCreate(ref audioBalance_SM_EvtUnspawnRef));
+        yield return new("AudioBalance_SM_EvtHit", NodeRef.GetOrCreate(ref audioBalance_SM_EvtHitRef));
+        yield return new("AudioBalance_SM_EvtFire", NodeRef.GetOrCreate(ref audioBalance_SM_EvtFireRef));
+        yield return new("AudioBalance_SM_EvtHitEliminated", NodeRef.GetOrCreate(ref audioBalance_SM_EvtHitEliminatedRef));
+        yield return new("AudioBalance_SM_EvtBulletTime", NodeRef.GetOrCreate(ref audioBalance_SM_EvtBulletTimeRef));
+        yield return new("AudioEnvUndergroundOpen", NodeRef.GetOrCreate(ref audioEnvUndergroundOpenRef));
+        yield return new("AudioEnvUndergroundEnclosed", NodeRef.GetOrCreate(ref audioEnvUndergroundEnclosedRef));
+        yield return new("ModifierXmlFile", NodeRef.GetOrCreate(ref modifierXmlFileRef));
         yield break;
     }
 
@@ -397,8 +397,8 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.audioEnvOutsideOpenRef);
-            rw.NodeRef(n.audioEnvOutsideEnclosedRef);
+            rw.NodeRef(ref n.audioEnvOutsideOpenRef);
+            rw.NodeRef(ref n.audioEnvOutsideEnclosedRef);
         }
     }
 
@@ -428,53 +428,53 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CPlugAudioBalance> U01Ref = new();
+        private NodeRef<CPlugAudioBalance>? U01Ref;
         public CPlugAudioBalance? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U02Ref = new();
+        private NodeRef<CPlugAudioBalance>? U02Ref;
         public CPlugAudioBalance? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U03Ref = new();
+        private NodeRef<CPlugAudioBalance>? U03Ref;
         public CPlugAudioBalance? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U04Ref = new();
+        private NodeRef<CPlugAudioBalance>? U04Ref;
         public CPlugAudioBalance? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U05Ref = new();
+        private NodeRef<CPlugAudioBalance>? U05Ref;
         public CPlugAudioBalance? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U06Ref = new();
+        private NodeRef<CPlugAudioBalance>? U06Ref;
         public CPlugAudioBalance? U06
         {
-            get => U06Ref.Resolve();
-            set => U06Ref.SetEmbedded(value);
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance> U07Ref = new();
+        private NodeRef<CPlugAudioBalance>? U07Ref;
         public CPlugAudioBalance? U07
         {
-            get => U07Ref.Resolve();
-            set => U07Ref.SetEmbedded(value);
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -482,24 +482,24 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         {
             private readonly Chunk03039003 owner;
             internal NodeRefView(Chunk03039003 owner) => this.owner = owner;
-            public NodeRef<CPlugAudioBalance> U01 => owner.U01Ref;
-            public NodeRef<CPlugAudioBalance> U02 => owner.U02Ref;
-            public NodeRef<CPlugAudioBalance> U03 => owner.U03Ref;
-            public NodeRef<CPlugAudioBalance> U04 => owner.U04Ref;
-            public NodeRef<CPlugAudioBalance> U05 => owner.U05Ref;
-            public NodeRef<CPlugAudioBalance> U06 => owner.U06Ref;
-            public NodeRef<CPlugAudioBalance> U07 => owner.U07Ref;
+            public NodeRef<CPlugAudioBalance> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugAudioBalance> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugAudioBalance> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugAudioBalance> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CPlugAudioBalance> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CPlugAudioBalance> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
+            public NodeRef<CPlugAudioBalance> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U04", U04Ref);
-            yield return new("U05", U05Ref);
-            yield return new("U06", U06Ref);
-            yield return new("U07", U07Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
             yield break;
         }
 
@@ -524,68 +524,68 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
             {
                 if (Version <= 3)
                 {
-                    rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
-                    rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
+                    rw.NodeRef(ref n.audioBalance_PlaygroundLoudRef);
+                    rw.NodeRef(ref n.audioBalance_PlaygroundLoudRef);
                 }
             }
 
-            rw.NodeRef(n.audioBalance_PlaygroundLoudRef);
-            rw.NodeRef(n.audioBalance_ReplayLoudRef);
-            rw.NodeRef(n.audioBalance_PodiumRef);
+            rw.NodeRef(ref n.audioBalance_PlaygroundLoudRef);
+            rw.NodeRef(ref n.audioBalance_ReplayLoudRef);
+            rw.NodeRef(ref n.audioBalance_PodiumRef);
 
             if (Version >= 6)
             {
-                rw.NodeRef(n.audioBalance_PlaygroundSoftRef);
-                rw.NodeRef(n.audioBalance_ReplaySoftRef);
+                rw.NodeRef(ref n.audioBalance_PlaygroundSoftRef);
+                rw.NodeRef(ref n.audioBalance_ReplaySoftRef);
             }
 
-            rw.NodeRef(n.audioBalance_TM_EvtStartLineRef);
-            rw.NodeRef(n.audioBalance_TM_EvtCheckpointRef);
-            rw.NodeRef(n.audioBalance_TM_EvtRespawnRef);
-            rw.NodeRef(n.audioBalance_TM_EvtCrashRef);
-            rw.NodeRef(n.audioBalance_TM_EvtFlyingRef);
+            rw.NodeRef(ref n.audioBalance_TM_EvtStartLineRef);
+            rw.NodeRef(ref n.audioBalance_TM_EvtCheckpointRef);
+            rw.NodeRef(ref n.audioBalance_TM_EvtRespawnRef);
+            rw.NodeRef(ref n.audioBalance_TM_EvtCrashRef);
+            rw.NodeRef(ref n.audioBalance_TM_EvtFlyingRef);
 
             if (Version >= 7)
             {
-                rw.NodeRef(n.audioBalance_TM_EvtSwimmingRef);
+                rw.NodeRef(ref n.audioBalance_TM_EvtSwimmingRef);
             }
 
-            rw.NodeRef(n.audioBalance_SM_EvtSpawnRef);
+            rw.NodeRef(ref n.audioBalance_SM_EvtSpawnRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.audioBalance_Overlay_UndergroundRef);
-                rw.NodeRef(n.audioBalance_Overlay_FarRef);
-                rw.NodeRef(n.audioBalance_SM_EvtUnspawnRef);
-                rw.NodeRef(n.audioBalance_SM_EvtHitRef);
+                rw.NodeRef(ref n.audioBalance_Overlay_UndergroundRef);
+                rw.NodeRef(ref n.audioBalance_Overlay_FarRef);
+                rw.NodeRef(ref n.audioBalance_SM_EvtUnspawnRef);
+                rw.NodeRef(ref n.audioBalance_SM_EvtHitRef);
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef(n.audioBalance_SM_EvtFireRef);
+                    rw.NodeRef(ref n.audioBalance_SM_EvtFireRef);
 
                     if (Version >= 4)
                     {
-                        rw.NodeRef(n.audioBalance_SM_EvtHitEliminatedRef);
+                        rw.NodeRef(ref n.audioBalance_SM_EvtHitEliminatedRef);
 
                         if (Version >= 5)
                         {
                             if (Version == 5)
                             {
-                                rw.NodeRef(U01Ref);
-                                rw.NodeRef(U02Ref);
-                                rw.NodeRef(U03Ref);
-                                rw.NodeRef(U04Ref);
-                                rw.NodeRef(U05Ref);
-                                rw.NodeRef(U06Ref);
+                                rw.NodeRef(ref U01Ref);
+                                rw.NodeRef(ref U02Ref);
+                                rw.NodeRef(ref U03Ref);
+                                rw.NodeRef(ref U04Ref);
+                                rw.NodeRef(ref U05Ref);
+                                rw.NodeRef(ref U06Ref);
                             }
 
                             if (Version >= 6)
                             {
-                                rw.NodeRef(U07Ref);
+                                rw.NodeRef(ref U07Ref);
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef(n.audioBalance_SM_EvtBulletTimeRef);
+                                    rw.NodeRef(ref n.audioBalance_SM_EvtBulletTimeRef);
                                 }
                             }
                         }
@@ -612,10 +612,10 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.audioEnvOutsideOpenRef);
-            rw.NodeRef(n.audioEnvOutsideEnclosedRef);
-            rw.NodeRef(n.audioEnvUndergroundOpenRef);
-            rw.NodeRef(n.audioEnvUndergroundEnclosedRef);
+            rw.NodeRef(ref n.audioEnvOutsideOpenRef);
+            rw.NodeRef(ref n.audioEnvOutsideEnclosedRef);
+            rw.NodeRef(ref n.audioEnvUndergroundOpenRef);
+            rw.NodeRef(ref n.audioEnvUndergroundEnclosedRef);
         }
     }
 
@@ -663,7 +663,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.modifierXmlFileRef);
+            rw.NodeRef(ref n.modifierXmlFileRef);
         }
     }
 

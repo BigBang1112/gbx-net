@@ -44,12 +44,12 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
         set => this.flagsVersion = value;
     }
 
-    private NodeRef<CPlugSkel> skelRef = new();
+    private NodeRef<CPlugSkel>? skelRef;
     [AppliedWithChunk<Chunk09134000>]
     public CPlugSkel? Skel
     {
-        get => skelRef.Resolve();
-        set => skelRef.SetEmbedded(value);
+        get => skelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -57,12 +57,12 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     {
         private readonly CPlugAnimSkelEdition owner;
         internal NodeRefView(CPlugAnimSkelEdition owner) => this.owner = owner;
-        public NodeRef<CPlugSkel> Skel => owner.skelRef;
+        public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Skel", skelRef);
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
         yield break;
     }
 

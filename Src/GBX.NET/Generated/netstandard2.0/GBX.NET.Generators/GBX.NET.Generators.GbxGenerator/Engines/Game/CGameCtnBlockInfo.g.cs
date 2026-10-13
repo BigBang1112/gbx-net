@@ -95,13 +95,13 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.selection = value;
     }
 
-    private NodeRef<CGameCtnBlockInfoClassic> pillarRef = new();
+    private NodeRef<CGameCtnBlockInfoClassic>? pillarRef;
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
     public CGameCtnBlockInfoClassic? Pillar
     {
-        get => pillarRef.Resolve();
-        set => pillarRef.SetEmbedded(value);
+        get => pillarRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pillarRef, value);
     }
 
     private NodeRefList<CGameCtnBlockUnitInfo>? groundBlockUnitInfos;
@@ -158,33 +158,33 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.wayPointType = value;
     }
 
-    private NodeRef<CSceneMobil> groundHelperMobilRef = new();
+    private NodeRef<CSceneMobil>? groundHelperMobilRef;
     [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? GroundHelperMobil
     {
-        get => groundHelperMobilRef.Resolve();
-        set => groundHelperMobilRef.SetEmbedded(value);
+        get => groundHelperMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref groundHelperMobilRef, value);
     }
 
-    private NodeRef<CSceneMobil> airHelperMobilRef = new();
+    private NodeRef<CSceneMobil>? airHelperMobilRef;
     [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? AirHelperMobil
     {
-        get => airHelperMobilRef.Resolve();
-        set => airHelperMobilRef.SetEmbedded(value);
+        get => airHelperMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref airHelperMobilRef, value);
     }
 
-    private NodeRef<CSceneMobil> constructionModeHelperMobilRef = new();
+    private NodeRef<CSceneMobil>? constructionModeHelperMobilRef;
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? ConstructionModeHelperMobil
     {
-        get => constructionModeHelperMobilRef.Resolve();
-        set => constructionModeHelperMobilRef.SetEmbedded(value);
+        get => constructionModeHelperMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref constructionModeHelperMobilRef, value);
     }
 
     private Iso4? spawnLocAir;
@@ -212,20 +212,20 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.noRespawn = value;
     }
 
-    private NodeRef<CSceneMobil> screenInteractionTriggerGroundRef = new();
+    private NodeRef<CSceneMobil>? screenInteractionTriggerGroundRef;
     [AppliedWithChunk<Chunk0304E012>]
     public CSceneMobil? ScreenInteractionTriggerGround
     {
-        get => screenInteractionTriggerGroundRef.Resolve();
-        set => screenInteractionTriggerGroundRef.SetEmbedded(value);
+        get => screenInteractionTriggerGroundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref screenInteractionTriggerGroundRef, value);
     }
 
-    private NodeRef<CSceneMobil> screenInteractionTriggerAirRef = new();
+    private NodeRef<CSceneMobil>? screenInteractionTriggerAirRef;
     [AppliedWithChunk<Chunk0304E012>]
     public CSceneMobil? ScreenInteractionTriggerAir
     {
-        get => screenInteractionTriggerAirRef.Resolve();
-        set => screenInteractionTriggerAirRef.SetEmbedded(value);
+        get => screenInteractionTriggerAirRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref screenInteractionTriggerAirRef, value);
     }
 
     private bool iconAutoUseGround;
@@ -236,12 +236,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.iconAutoUseGround = value;
     }
 
-    private NodeRef<CGameCtnPrecalcPartParams> precalcPartParamsRef = new();
+    private NodeRef<CGameCtnPrecalcPartParams>? precalcPartParamsRef;
     [AppliedWithChunk<Chunk0304E015>]
     public CGameCtnPrecalcPartParams? PrecalcPartParams
     {
-        get => precalcPartParamsRef.Resolve();
-        set => precalcPartParamsRef.SetEmbedded(value);
+        get => precalcPartParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref precalcPartParamsRef, value);
     }
 
     private Iso4 precalcPartLoc;
@@ -284,43 +284,43 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => airBlockInfoMobils = value;
     }
 
-    private NodeRef<CPlugCharPhySpecialProperty> charPhySpecialPropertyRef = new();
+    private NodeRef<CPlugCharPhySpecialProperty>? charPhySpecialPropertyRef;
     [AppliedWithChunk<Chunk0304E01F>]
     [AppliedWithChunk<Chunk0304E020>]
     public CPlugCharPhySpecialProperty? CharPhySpecialProperty
     {
-        get => charPhySpecialPropertyRef.Resolve();
-        set => charPhySpecialPropertyRef.SetEmbedded(value);
+        get => charPhySpecialPropertyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref charPhySpecialPropertyRef, value);
     }
 
-    private NodeRef<CGameWaypointSpecialProperty> waypointSpecialPropertyRef = new();
+    private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
     [AppliedWithChunk<Chunk0304E020>(0, 6)]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
-        get => waypointSpecialPropertyRef.Resolve();
-        set => waypointSpecialPropertyRef.SetEmbedded(value);
+        get => waypointSpecialPropertyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
     }
 
-    private NodeRef<CMwNod> podiumInfoRef = new();
+    private NodeRef<CMwNod>? podiumInfoRef;
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
     [AppliedWithChunk<Chunk0304E020>(2)]
     public CMwNod? PodiumInfo
     {
-        get => podiumInfoRef.Resolve();
-        set => podiumInfoRef.SetEmbedded(value);
+        get => podiumInfoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref podiumInfoRef, value);
     }
 
-    private NodeRef<CMwNod> introInfoRef = new();
+    private NodeRef<CMwNod>? introInfoRef;
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
     [AppliedWithChunk<Chunk0304E020>(3)]
     public CMwNod? IntroInfo
     {
-        get => introInfoRef.Resolve();
-        set => introInfoRef.SetEmbedded(value);
+        get => introInfoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref introInfoRef, value);
     }
 
     private bool charPhySpecialPropertyCustomizable;
@@ -373,12 +373,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.symmetryAir = value;
     }
 
-    private NodeRef<CGameCtnMacroBlockInfo> iconMacroBlockInfoRef = new();
+    private NodeRef<CGameCtnMacroBlockInfo>? iconMacroBlockInfoRef;
     [AppliedWithChunk<Chunk0304E022>]
     public CGameCtnMacroBlockInfo? IconMacroBlockInfo
     {
-        get => iconMacroBlockInfoRef.Resolve();
-        set => iconMacroBlockInfoRef.SetEmbedded(value);
+        get => iconMacroBlockInfoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconMacroBlockInfoRef, value);
     }
 
     private CGameCtnBlockInfoVariantGround? variantBaseGround;
@@ -413,28 +413,28 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.symmetricalBlockInfoId = value;
     }
 
-    private NodeRef<CPlugFogVolumeBox> fogVolumeBoxRef = new();
+    private NodeRef<CPlugFogVolumeBox>? fogVolumeBoxRef;
     [AppliedWithChunk<Chunk0304E029>]
     public CPlugFogVolumeBox? FogVolumeBox
     {
-        get => fogVolumeBoxRef.Resolve();
-        set => fogVolumeBoxRef.SetEmbedded(value);
+        get => fogVolumeBoxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fogVolumeBoxRef, value);
     }
 
-    private NodeRef<CPlugSound> sound1Ref = new();
+    private NodeRef<CPlugSound>? sound1Ref;
     [AppliedWithChunk<Chunk0304E02A>]
     public CPlugSound? Sound1
     {
-        get => sound1Ref.Resolve();
-        set => sound1Ref.SetEmbedded(value);
+        get => sound1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref sound1Ref, value);
     }
 
-    private NodeRef<CPlugSound> sound2Ref = new();
+    private NodeRef<CPlugSound>? sound2Ref;
     [AppliedWithChunk<Chunk0304E02A>(1)]
     public CPlugSound? Sound2
     {
-        get => sound2Ref.Resolve();
-        set => sound2Ref.SetEmbedded(value);
+        get => sound2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref sound2Ref, value);
     }
 
     private Iso4 sound1Loc;
@@ -485,31 +485,31 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         set => this.isMultiHeightPillarOrVFC = value;
     }
 
-    private NodeRef<CGameCtnBlockInfo> blockInfoModelFidRef = new();
+    private NodeRef<CGameCtnBlockInfo>? blockInfoModelFidRef;
     /// <summary>
     /// Source model copied when the concrete block classes match
     /// </summary>
     [AppliedWithChunk<Chunk0304E031>]
     public CGameCtnBlockInfo? BlockInfoModelFid
     {
-        get => blockInfoModelFidRef.Resolve();
-        set => blockInfoModelFidRef.SetEmbedded(value);
+        get => blockInfoModelFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoModelFidRef, value);
     }
 
-    private NodeRef<CPlugGameSkinAndFolder> materialModifierRef = new();
+    private NodeRef<CPlugGameSkinAndFolder>? materialModifierRef;
     [AppliedWithChunk<Chunk0304E031>]
     public CPlugGameSkinAndFolder? MaterialModifier
     {
-        get => materialModifierRef.Resolve();
-        set => materialModifierRef.SetEmbedded(value);
+        get => materialModifierRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialModifierRef, value);
     }
 
-    private NodeRef<CPlugGameSkinAndFolder> materialModifier2Ref = new();
+    private NodeRef<CPlugGameSkinAndFolder>? materialModifier2Ref;
     [AppliedWithChunk<Chunk0304E031>(1)]
     public CPlugGameSkinAndFolder? MaterialModifier2
     {
-        get => materialModifier2Ref.Resolve();
-        set => materialModifier2Ref.SetEmbedded(value);
+        get => materialModifier2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialModifier2Ref, value);
     }
 
     public new NodeRefView References => new(this);
@@ -517,33 +517,33 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         private readonly CGameCtnBlockInfo owner;
         internal NodeRefView(CGameCtnBlockInfo owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockInfoClassic> Pillar => owner.pillarRef;
+        public NodeRef<CGameCtnBlockInfoClassic> Pillar => NodeRef.GetOrCreate(ref owner.pillarRef);
         public GroundBlockUnitInfosReferenceView GroundBlockUnitInfos => new(owner);
         public AirBlockUnitInfosReferenceView AirBlockUnitInfos => new(owner);
         public GroundMobilsReferenceView GroundMobils => new(owner);
         public AirMobilsReferenceView AirMobils => new(owner);
-        public NodeRef<CSceneMobil> GroundHelperMobil => owner.groundHelperMobilRef;
-        public NodeRef<CSceneMobil> AirHelperMobil => owner.airHelperMobilRef;
-        public NodeRef<CSceneMobil> ConstructionModeHelperMobil => owner.constructionModeHelperMobilRef;
-        public NodeRef<CSceneMobil> ScreenInteractionTriggerGround => owner.screenInteractionTriggerGroundRef;
-        public NodeRef<CSceneMobil> ScreenInteractionTriggerAir => owner.screenInteractionTriggerAirRef;
-        public NodeRef<CGameCtnPrecalcPartParams> PrecalcPartParams => owner.precalcPartParamsRef;
+        public NodeRef<CSceneMobil> GroundHelperMobil => NodeRef.GetOrCreate(ref owner.groundHelperMobilRef);
+        public NodeRef<CSceneMobil> AirHelperMobil => NodeRef.GetOrCreate(ref owner.airHelperMobilRef);
+        public NodeRef<CSceneMobil> ConstructionModeHelperMobil => NodeRef.GetOrCreate(ref owner.constructionModeHelperMobilRef);
+        public NodeRef<CSceneMobil> ScreenInteractionTriggerGround => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerGroundRef);
+        public NodeRef<CSceneMobil> ScreenInteractionTriggerAir => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerAirRef);
+        public NodeRef<CGameCtnPrecalcPartParams> PrecalcPartParams => NodeRef.GetOrCreate(ref owner.precalcPartParamsRef);
         public AutoTerrainsGroundReferenceView AutoTerrainsGround => new(owner);
         public GroundBlockInfoMobilsReferenceView GroundBlockInfoMobils => new(owner);
         public AirBlockInfoMobilsReferenceView AirBlockInfoMobils => new(owner);
-        public NodeRef<CPlugCharPhySpecialProperty> CharPhySpecialProperty => owner.charPhySpecialPropertyRef;
-        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => owner.waypointSpecialPropertyRef;
-        public NodeRef<CMwNod> PodiumInfo => owner.podiumInfoRef;
-        public NodeRef<CMwNod> IntroInfo => owner.introInfoRef;
-        public NodeRef<CGameCtnMacroBlockInfo> IconMacroBlockInfo => owner.iconMacroBlockInfoRef;
+        public NodeRef<CPlugCharPhySpecialProperty> CharPhySpecialProperty => NodeRef.GetOrCreate(ref owner.charPhySpecialPropertyRef);
+        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
+        public NodeRef<CMwNod> PodiumInfo => NodeRef.GetOrCreate(ref owner.podiumInfoRef);
+        public NodeRef<CMwNod> IntroInfo => NodeRef.GetOrCreate(ref owner.introInfoRef);
+        public NodeRef<CGameCtnMacroBlockInfo> IconMacroBlockInfo => NodeRef.GetOrCreate(ref owner.iconMacroBlockInfoRef);
         public AdditionalVariantsGroundReferenceView AdditionalVariantsGround => new(owner);
-        public NodeRef<CPlugFogVolumeBox> FogVolumeBox => owner.fogVolumeBoxRef;
-        public NodeRef<CPlugSound> Sound1 => owner.sound1Ref;
-        public NodeRef<CPlugSound> Sound2 => owner.sound2Ref;
+        public NodeRef<CPlugFogVolumeBox> FogVolumeBox => NodeRef.GetOrCreate(ref owner.fogVolumeBoxRef);
+        public NodeRef<CPlugSound> Sound1 => NodeRef.GetOrCreate(ref owner.sound1Ref);
+        public NodeRef<CPlugSound> Sound2 => NodeRef.GetOrCreate(ref owner.sound2Ref);
         public AdditionalVariantsAirReferenceView AdditionalVariantsAir => new(owner);
-        public NodeRef<CGameCtnBlockInfo> BlockInfoModelFid => owner.blockInfoModelFidRef;
-        public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => owner.materialModifierRef;
-        public NodeRef<CPlugGameSkinAndFolder> MaterialModifier2 => owner.materialModifier2Ref;
+        public NodeRef<CGameCtnBlockInfo> BlockInfoModelFid => NodeRef.GetOrCreate(ref owner.blockInfoModelFidRef);
+        public NodeRef<CPlugGameSkinAndFolder> MaterialModifier => NodeRef.GetOrCreate(ref owner.materialModifierRef);
+        public NodeRef<CPlugGameSkinAndFolder> MaterialModifier2 => NodeRef.GetOrCreate(ref owner.materialModifier2Ref);
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
@@ -615,7 +615,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Pillar", pillarRef);
+        yield return new("Pillar", NodeRef.GetOrCreate(ref pillarRef));
         if (groundBlockUnitInfos is not null)
         {
             for (var i = 0; i < groundBlockUnitInfos.Count; i++) yield return new("GroundBlockUnitInfos" + "[" + i + "]", groundBlockUnitInfos.GetReference(i));
@@ -640,12 +640,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
                 for (var j = 0; j < airMobils[i].Count; j++) yield return new("AirMobils" + "[" + i + "][" + j + "]", airMobils[i].GetReference(j));
             }
         }
-        yield return new("GroundHelperMobil", groundHelperMobilRef);
-        yield return new("AirHelperMobil", airHelperMobilRef);
-        yield return new("ConstructionModeHelperMobil", constructionModeHelperMobilRef);
-        yield return new("ScreenInteractionTriggerGround", screenInteractionTriggerGroundRef);
-        yield return new("ScreenInteractionTriggerAir", screenInteractionTriggerAirRef);
-        yield return new("PrecalcPartParams", precalcPartParamsRef);
+        yield return new("GroundHelperMobil", NodeRef.GetOrCreate(ref groundHelperMobilRef));
+        yield return new("AirHelperMobil", NodeRef.GetOrCreate(ref airHelperMobilRef));
+        yield return new("ConstructionModeHelperMobil", NodeRef.GetOrCreate(ref constructionModeHelperMobilRef));
+        yield return new("ScreenInteractionTriggerGround", NodeRef.GetOrCreate(ref screenInteractionTriggerGroundRef));
+        yield return new("ScreenInteractionTriggerAir", NodeRef.GetOrCreate(ref screenInteractionTriggerAirRef));
+        yield return new("PrecalcPartParams", NodeRef.GetOrCreate(ref precalcPartParamsRef));
         if (autoTerrainsGround is not null)
         {
             for (var i = 0; i < autoTerrainsGround.Count; i++) yield return new("AutoTerrainsGround" + "[" + i + "]", autoTerrainsGround.GetReference(i));
@@ -666,25 +666,25 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
                 for (var j = 0; j < airBlockInfoMobils[i].Count; j++) yield return new("AirBlockInfoMobils" + "[" + i + "][" + j + "]", airBlockInfoMobils[i].GetReference(j));
             }
         }
-        yield return new("CharPhySpecialProperty", charPhySpecialPropertyRef);
-        yield return new("WaypointSpecialProperty", waypointSpecialPropertyRef);
-        yield return new("PodiumInfo", podiumInfoRef);
-        yield return new("IntroInfo", introInfoRef);
-        yield return new("IconMacroBlockInfo", iconMacroBlockInfoRef);
+        yield return new("CharPhySpecialProperty", NodeRef.GetOrCreate(ref charPhySpecialPropertyRef));
+        yield return new("WaypointSpecialProperty", NodeRef.GetOrCreate(ref waypointSpecialPropertyRef));
+        yield return new("PodiumInfo", NodeRef.GetOrCreate(ref podiumInfoRef));
+        yield return new("IntroInfo", NodeRef.GetOrCreate(ref introInfoRef));
+        yield return new("IconMacroBlockInfo", NodeRef.GetOrCreate(ref iconMacroBlockInfoRef));
         if (additionalVariantsGround is not null)
         {
             for (var i = 0; i < additionalVariantsGround.Count; i++) yield return new("AdditionalVariantsGround" + "[" + i + "]", additionalVariantsGround.GetReference(i));
         }
-        yield return new("FogVolumeBox", fogVolumeBoxRef);
-        yield return new("Sound1", sound1Ref);
-        yield return new("Sound2", sound2Ref);
+        yield return new("FogVolumeBox", NodeRef.GetOrCreate(ref fogVolumeBoxRef));
+        yield return new("Sound1", NodeRef.GetOrCreate(ref sound1Ref));
+        yield return new("Sound2", NodeRef.GetOrCreate(ref sound2Ref));
         if (additionalVariantsAir is not null)
         {
             for (var i = 0; i < additionalVariantsAir.Count; i++) yield return new("AdditionalVariantsAir" + "[" + i + "]", additionalVariantsAir.GetReference(i));
         }
-        yield return new("BlockInfoModelFid", blockInfoModelFidRef);
-        yield return new("MaterialModifier", materialModifierRef);
-        yield return new("MaterialModifier2", materialModifier2Ref);
+        yield return new("BlockInfoModelFid", NodeRef.GetOrCreate(ref blockInfoModelFidRef));
+        yield return new("MaterialModifier", NodeRef.GetOrCreate(ref materialModifierRef));
+        yield return new("MaterialModifier2", NodeRef.GetOrCreate(ref materialModifier2Ref));
         yield break;
     }
 
@@ -800,7 +800,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             rw.Boolean(ref n.isPillar);
             rw.EnumInt32<ESelection>(ref n.selection);
             rw.Int32(ref U01);
-            rw.NodeRef(n.pillarRef);
+            rw.NodeRef(ref n.pillarRef);
             n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.groundBlockUnitInfos);
             n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.airBlockUnitInfos);
             n.groundMobils = rw.JaggedArrayNodeRef<CSceneMobil>(n.groundMobils);
@@ -894,8 +894,8 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EWayPointType>(ref n.wayPointType);
-            rw.NodeRef(n.groundHelperMobilRef);
-            rw.NodeRef(n.airHelperMobilRef);
+            rw.NodeRef(ref n.groundHelperMobilRef);
+            rw.NodeRef(ref n.airHelperMobilRef);
         }
     }
 
@@ -917,9 +917,9 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EWayPointType>(ref n.wayPointType);
-            rw.NodeRef(n.groundHelperMobilRef);
-            rw.NodeRef(n.airHelperMobilRef);
-            rw.NodeRef(n.constructionModeHelperMobilRef);
+            rw.NodeRef(ref n.groundHelperMobilRef);
+            rw.NodeRef(ref n.airHelperMobilRef);
+            rw.NodeRef(ref n.constructionModeHelperMobilRef);
         }
     }
 
@@ -984,9 +984,9 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.EnumInt32<EWayPointType>(ref n.wayPointType);
-            rw.NodeRef(n.groundHelperMobilRef);
-            rw.NodeRef(n.airHelperMobilRef);
-            rw.NodeRef(n.constructionModeHelperMobilRef);
+            rw.NodeRef(ref n.groundHelperMobilRef);
+            rw.NodeRef(ref n.airHelperMobilRef);
+            rw.NodeRef(ref n.constructionModeHelperMobilRef);
         }
     }
 
@@ -1026,8 +1026,8 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.screenInteractionTriggerGroundRef);
-            rw.NodeRef(n.screenInteractionTriggerAirRef);
+            rw.NodeRef(ref n.screenInteractionTriggerGroundRef);
+            rw.NodeRef(ref n.screenInteractionTriggerAirRef);
         }
     }
 
@@ -1069,7 +1069,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.precalcPartParamsRef);
+            rw.NodeRef(ref n.precalcPartParamsRef);
             rw.Iso4(ref n.precalcPartLoc);
         }
     }
@@ -1146,7 +1146,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
             rw.Int32(ref U03);
             rw.Boolean(ref n.isPillar);
             rw.Int32(ref U04);
-            rw.NodeRef(n.pillarRef);
+            rw.NodeRef(ref n.pillarRef);
             n.groundBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.groundBlockUnitInfos);
             n.airBlockUnitInfos = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.airBlockUnitInfos);
         }
@@ -1187,7 +1187,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.charPhySpecialPropertyRef);
+            rw.NodeRef(ref n.charPhySpecialPropertyRef);
         }
     }
 
@@ -1231,21 +1231,21 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.charPhySpecialPropertyRef);
+            rw.NodeRef(ref n.charPhySpecialPropertyRef);
 
             if (Version <= 6)
             {
-                rw.NodeRef(n.waypointSpecialPropertyRef);
+                rw.NodeRef(ref n.waypointSpecialPropertyRef);
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.podiumInfoRef);
+                rw.NodeRef(ref n.podiumInfoRef);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef(n.introInfoRef);
+                rw.NodeRef(ref n.introInfoRef);
             }
 
             if (Version >= 4)
@@ -1278,11 +1278,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         public override uint Id => 0x0304E021;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1290,12 +1290,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         {
             private readonly Chunk0304E021 owner;
             internal NodeRefView(Chunk0304E021 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1307,7 +1307,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.EnumInt32<Direction>(ref n.dir);
             rw.ReadableWritable<SymmetryFlags>(ref n.symmetryGround);
             rw.ReadableWritable<SymmetryFlags>(ref n.symmetryAir);
@@ -1331,7 +1331,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.iconMacroBlockInfoRef);
+            rw.NodeRef(ref n.iconMacroBlockInfoRef);
         }
     }
 
@@ -1365,11 +1365,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     {
         public override uint Id => 0x0304E024;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1377,12 +1377,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         {
             private readonly Chunk0304E024 owner;
             internal NodeRefView(Chunk0304E024 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1394,7 +1394,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.EnumInt32<Direction>(ref n.dir);
         }
     }
@@ -1480,7 +1480,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.fogVolumeBoxRef);
+            rw.NodeRef(ref n.fogVolumeBoxRef);
         }
     }
 
@@ -1524,11 +1524,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.sound1Ref);
+            rw.NodeRef(ref n.sound1Ref);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.sound2Ref);
+                rw.NodeRef(ref n.sound2Ref);
 
                 if (Version <= 2)
                 {
@@ -1538,12 +1538,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 
                 if (Version >= 3)
                 {
-                    if (n.sound1Ref.Kind != NodeRefKind.None)
+                    if ((n.sound1Ref?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
                     {
                         rw.Iso4(ref n.sound1Loc);
                     }
 
-                    if (n.sound2Ref.Kind != NodeRefKind.None)
+                    if ((n.sound2Ref?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
                     {
                         rw.Iso4(ref n.sound2Loc);
                     }
@@ -1738,12 +1738,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.blockInfoModelFidRef);
-            rw.NodeRef(n.materialModifierRef);
+            rw.NodeRef(ref n.blockInfoModelFidRef);
+            rw.NodeRef(ref n.materialModifierRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.materialModifier2Ref);
+                rw.NodeRef(ref n.materialModifier2Ref);
             }
         }
     }

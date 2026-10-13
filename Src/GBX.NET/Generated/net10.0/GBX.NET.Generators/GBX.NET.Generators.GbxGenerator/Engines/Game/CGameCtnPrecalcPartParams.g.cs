@@ -100,12 +100,12 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         set => this.leafMotionScale = value;
     }
 
-    private NodeRef<CPlugSurface> collSurfRef = new();
+    private NodeRef<CPlugSurface>? collSurfRef;
     [AppliedWithChunk<Chunk0311C000>(2)]
     public CPlugSurface? CollSurf
     {
-        get => collSurfRef.Resolve();
-        set => collSurfRef.SetEmbedded(value);
+        get => collSurfRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref collSurfRef, value);
     }
 
     private int iterCount = 500;
@@ -148,12 +148,12 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         set => this.phyZoneWind = value;
     }
 
-    private NodeRef<CPlugDecalModel> decalModelRef = new();
+    private NodeRef<CPlugDecalModel>? decalModelRef;
     [AppliedWithChunk<Chunk0311C000>]
     public CPlugDecalModel? DecalModel
     {
-        get => decalModelRef.Resolve();
-        set => decalModelRef.SetEmbedded(value);
+        get => decalModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decalModelRef, value);
     }
 
     private float decalSizeBase = 0.3f;
@@ -185,14 +185,14 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     {
         private readonly CGameCtnPrecalcPartParams owner;
         internal NodeRefView(CGameCtnPrecalcPartParams owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> CollSurf => owner.collSurfRef;
-        public NodeRef<CPlugDecalModel> DecalModel => owner.decalModelRef;
+        public NodeRef<CPlugSurface> CollSurf => NodeRef.GetOrCreate(ref owner.collSurfRef);
+        public NodeRef<CPlugDecalModel> DecalModel => NodeRef.GetOrCreate(ref owner.decalModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("CollSurf", collSurfRef);
-        yield return new("DecalModel", decalModelRef);
+        yield return new("CollSurf", NodeRef.GetOrCreate(ref collSurfRef));
+        yield return new("DecalModel", NodeRef.GetOrCreate(ref decalModelRef));
         yield break;
     }
 
@@ -266,7 +266,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.collSurfRef);
+                rw.NodeRef(ref n.collSurfRef);
             }
 
             rw.Int32(ref n.iterCount);
@@ -274,7 +274,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
             rw.Int32(ref n.randValSeed);
             rw.Vec3(ref n.phyZoneGravity);
             rw.Vec3(ref n.phyZoneWind);
-            rw.NodeRef(n.decalModelRef);
+            rw.NodeRef(ref n.decalModelRef);
             rw.Single(ref n.decalSizeBase);
             rw.Single(ref n.decalSizeVar);
             rw.Single(ref n.decalBoxDepth);

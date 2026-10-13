@@ -36,20 +36,20 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSurface> shapeRef = new();
+    private NodeRef<CPlugSurface>? shapeRef;
     [AppliedWithChunk<Chunk0911C000>]
     public CPlugSurface? Shape
     {
-        get => shapeRef.Resolve();
-        set => shapeRef.SetEmbedded(value);
+        get => shapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shapeRef, value);
     }
 
-    private NodeRef<CPlugSolid2Model> meshRef = new();
+    private NodeRef<CPlugSolid2Model>? meshRef;
     [AppliedWithChunk<Chunk0911C000>]
     public CPlugSolid2Model? Mesh
     {
-        get => meshRef.Resolve();
-        set => meshRef.SetEmbedded(value);
+        get => meshRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshRef, value);
     }
 
     private bool isLoco;
@@ -60,36 +60,36 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => this.isLoco = value;
     }
 
-    private NodeRef<CPlugSound> soundEngineRef = new();
+    private NodeRef<CPlugSound>? soundEngineRef;
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundEngine
     {
-        get => soundEngineRef.Resolve();
-        set => soundEngineRef.SetEmbedded(value);
+        get => soundEngineRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEngineRef, value);
     }
 
-    private NodeRef<CPlugSound> soundBrakeRef = new();
+    private NodeRef<CPlugSound>? soundBrakeRef;
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundBrake
     {
-        get => soundBrakeRef.Resolve();
-        set => soundBrakeRef.SetEmbedded(value);
+        get => soundBrakeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundBrakeRef, value);
     }
 
-    private NodeRef<CPlugSound> soundRailContactRef = new();
+    private NodeRef<CPlugSound>? soundRailContactRef;
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundRailContact
     {
-        get => soundRailContactRef.Resolve();
-        set => soundRailContactRef.SetEmbedded(value);
+        get => soundRailContactRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundRailContactRef, value);
     }
 
-    private NodeRef<CPlugSound> soundCollisionRef = new();
+    private NodeRef<CPlugSound>? soundCollisionRef;
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundCollision
     {
-        get => soundCollisionRef.Resolve();
-        set => soundCollisionRef.SetEmbedded(value);
+        get => soundCollisionRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundCollisionRef, value);
     }
 
     private float wagonLength;
@@ -116,44 +116,44 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         set => this.genLengthFromShape = value;
     }
 
-    private NodeRef<CFuncKeysReal> accelCurveRef = new();
+    private NodeRef<CFuncKeysReal>? accelCurveRef;
     [AppliedWithChunk<Chunk0911C000>(6)]
     public CFuncKeysReal? AccelCurve
     {
-        get => accelCurveRef.Resolve();
-        set => accelCurveRef.SetEmbedded(value);
+        get => accelCurveRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref accelCurveRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> smokeEmitterModelRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? smokeEmitterModelRef;
     [AppliedWithChunk<Chunk0911C000>(7)]
     public CPlugParticleEmitterModel? SmokeEmitterModel
     {
-        get => smokeEmitterModelRef.Resolve();
-        set => smokeEmitterModelRef.SetEmbedded(value);
+        get => smokeEmitterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref smokeEmitterModelRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> dustEmitterModelRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? dustEmitterModelRef;
     [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? DustEmitterModel
     {
-        get => dustEmitterModelRef.Resolve();
-        set => dustEmitterModelRef.SetEmbedded(value);
+        get => dustEmitterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dustEmitterModelRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> sparkleParticleRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? sparkleParticleRef;
     [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? SparkleParticle
     {
-        get => sparkleParticleRef.Resolve();
-        set => sparkleParticleRef.SetEmbedded(value);
+        get => sparkleParticleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sparkleParticleRef, value);
     }
 
-    private NodeRef<CPlugAnimFile> animFileRef = new();
+    private NodeRef<CPlugAnimFile>? animFileRef;
     [AppliedWithChunk<Chunk0911C000>(10)]
     public CPlugAnimFile? AnimFile
     {
-        get => animFileRef.Resolve();
-        set => animFileRef.SetEmbedded(value);
+        get => animFileRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref animFileRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -161,32 +161,32 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     {
         private readonly CPlugTrainWagonModel owner;
         internal NodeRefView(CPlugTrainWagonModel owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> Shape => owner.shapeRef;
-        public NodeRef<CPlugSolid2Model> Mesh => owner.meshRef;
-        public NodeRef<CPlugSound> SoundEngine => owner.soundEngineRef;
-        public NodeRef<CPlugSound> SoundBrake => owner.soundBrakeRef;
-        public NodeRef<CPlugSound> SoundRailContact => owner.soundRailContactRef;
-        public NodeRef<CPlugSound> SoundCollision => owner.soundCollisionRef;
-        public NodeRef<CFuncKeysReal> AccelCurve => owner.accelCurveRef;
-        public NodeRef<CPlugParticleEmitterModel> SmokeEmitterModel => owner.smokeEmitterModelRef;
-        public NodeRef<CPlugParticleEmitterModel> DustEmitterModel => owner.dustEmitterModelRef;
-        public NodeRef<CPlugParticleEmitterModel> SparkleParticle => owner.sparkleParticleRef;
-        public NodeRef<CPlugAnimFile> AnimFile => owner.animFileRef;
+        public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
+        public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshRef);
+        public NodeRef<CPlugSound> SoundEngine => NodeRef.GetOrCreate(ref owner.soundEngineRef);
+        public NodeRef<CPlugSound> SoundBrake => NodeRef.GetOrCreate(ref owner.soundBrakeRef);
+        public NodeRef<CPlugSound> SoundRailContact => NodeRef.GetOrCreate(ref owner.soundRailContactRef);
+        public NodeRef<CPlugSound> SoundCollision => NodeRef.GetOrCreate(ref owner.soundCollisionRef);
+        public NodeRef<CFuncKeysReal> AccelCurve => NodeRef.GetOrCreate(ref owner.accelCurveRef);
+        public NodeRef<CPlugParticleEmitterModel> SmokeEmitterModel => NodeRef.GetOrCreate(ref owner.smokeEmitterModelRef);
+        public NodeRef<CPlugParticleEmitterModel> DustEmitterModel => NodeRef.GetOrCreate(ref owner.dustEmitterModelRef);
+        public NodeRef<CPlugParticleEmitterModel> SparkleParticle => NodeRef.GetOrCreate(ref owner.sparkleParticleRef);
+        public NodeRef<CPlugAnimFile> AnimFile => NodeRef.GetOrCreate(ref owner.animFileRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Shape", shapeRef);
-        yield return new("Mesh", meshRef);
-        yield return new("SoundEngine", soundEngineRef);
-        yield return new("SoundBrake", soundBrakeRef);
-        yield return new("SoundRailContact", soundRailContactRef);
-        yield return new("SoundCollision", soundCollisionRef);
-        yield return new("AccelCurve", accelCurveRef);
-        yield return new("SmokeEmitterModel", smokeEmitterModelRef);
-        yield return new("DustEmitterModel", dustEmitterModelRef);
-        yield return new("SparkleParticle", sparkleParticleRef);
-        yield return new("AnimFile", animFileRef);
+        yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
+        yield return new("Mesh", NodeRef.GetOrCreate(ref meshRef));
+        yield return new("SoundEngine", NodeRef.GetOrCreate(ref soundEngineRef));
+        yield return new("SoundBrake", NodeRef.GetOrCreate(ref soundBrakeRef));
+        yield return new("SoundRailContact", NodeRef.GetOrCreate(ref soundRailContactRef));
+        yield return new("SoundCollision", NodeRef.GetOrCreate(ref soundCollisionRef));
+        yield return new("AccelCurve", NodeRef.GetOrCreate(ref accelCurveRef));
+        yield return new("SmokeEmitterModel", NodeRef.GetOrCreate(ref smokeEmitterModelRef));
+        yield return new("DustEmitterModel", NodeRef.GetOrCreate(ref dustEmitterModelRef));
+        yield return new("SparkleParticle", NodeRef.GetOrCreate(ref sparkleParticleRef));
+        yield return new("AnimFile", NodeRef.GetOrCreate(ref animFileRef));
         yield break;
     }
 
@@ -223,18 +223,18 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         public int Version { get; set; }
         public Vec3 U01;
 
-        private NodeRef<CFuncKeysReal> U02Ref = new();
+        private NodeRef<CFuncKeysReal>? U02Ref;
         public CFuncKeysReal? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CMwNod> U03Ref = new();
+        private NodeRef<CMwNod>? U03Ref;
         public CMwNod? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -242,14 +242,14 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         {
             private readonly Chunk0911C000 owner;
             internal NodeRefView(Chunk0911C000 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => owner.U02Ref;
-            public NodeRef<CMwNod> U03 => owner.U03Ref;
+            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -265,8 +265,8 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         public override void ReadWrite(CPlugTrainWagonModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.shapeRef);
-            rw.NodeRef(n.meshRef);
+            rw.NodeRef(ref n.shapeRef);
+            rw.NodeRef(ref n.meshRef);
 
             if (Version >= 2)
             {
@@ -275,10 +275,10 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef(n.soundEngineRef);
-                    rw.NodeRef(n.soundBrakeRef);
-                    rw.NodeRef(n.soundRailContactRef);
-                    rw.NodeRef(n.soundCollisionRef);
+                    rw.NodeRef(ref n.soundEngineRef);
+                    rw.NodeRef(ref n.soundBrakeRef);
+                    rw.NodeRef(ref n.soundRailContactRef);
+                    rw.NodeRef(ref n.soundCollisionRef);
 
                     if (Version >= 5)
                     {
@@ -288,25 +288,25 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
 
                         if (Version >= 6)
                         {
-                            rw.NodeRef(n.accelCurveRef);
+                            rw.NodeRef(ref n.accelCurveRef);
 
                             if (Version >= 7)
                             {
-                                rw.NodeRef(n.smokeEmitterModelRef);
+                                rw.NodeRef(ref n.smokeEmitterModelRef);
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef(U02Ref);
-                                    rw.NodeRef(n.dustEmitterModelRef);
-                                    rw.NodeRef(n.sparkleParticleRef);
+                                    rw.NodeRef(ref U02Ref);
+                                    rw.NodeRef(ref n.dustEmitterModelRef);
+                                    rw.NodeRef(ref n.sparkleParticleRef);
 
                                     if (Version >= 9)
                                     {
-                                        rw.NodeRef(U03Ref);
+                                        rw.NodeRef(ref U03Ref);
 
                                         if (Version >= 10)
                                         {
-                                            rw.NodeRef(n.animFileRef);
+                                            rw.NodeRef(ref n.animFileRef);
                                         }
                                     }
                                 }

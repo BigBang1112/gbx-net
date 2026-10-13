@@ -44,20 +44,20 @@ public partial class CGameTeleporterModel : CMwNod, IClass
         set => this.spawnLoc = value;
     }
 
-    private NodeRef<CGameSpawnModel> spawnRef = new();
+    private NodeRef<CGameSpawnModel>? spawnRef;
     [AppliedWithChunk<Chunk2E00C000>(1)]
     public CGameSpawnModel? Spawn
     {
-        get => spawnRef.Resolve();
-        set => spawnRef.SetEmbedded(value);
+        get => spawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref spawnRef, value);
     }
 
-    private NodeRef<CPlugSurface> triggerShapeRef = new();
+    private NodeRef<CPlugSurface>? triggerShapeRef;
     [AppliedWithChunk<Chunk2E00C000>]
     public CPlugSurface? TriggerShape
     {
-        get => triggerShapeRef.Resolve();
-        set => triggerShapeRef.SetEmbedded(value);
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
 
     private Vec3 centerPos;
@@ -73,14 +73,14 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     {
         private readonly CGameTeleporterModel owner;
         internal NodeRefView(CGameTeleporterModel owner) => this.owner = owner;
-        public NodeRef<CGameSpawnModel> Spawn => owner.spawnRef;
-        public NodeRef<CPlugSurface> TriggerShape => owner.triggerShapeRef;
+        public NodeRef<CGameSpawnModel> Spawn => NodeRef.GetOrCreate(ref owner.spawnRef);
+        public NodeRef<CPlugSurface> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Spawn", spawnRef);
-        yield return new("TriggerShape", triggerShapeRef);
+        yield return new("Spawn", NodeRef.GetOrCreate(ref spawnRef));
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
         yield break;
     }
 
@@ -122,10 +122,10 @@ public partial class CGameTeleporterModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.spawnRef);
+                rw.NodeRef(ref n.spawnRef);
             }
 
-            rw.NodeRef(n.triggerShapeRef);
+            rw.NodeRef(ref n.triggerShapeRef);
 
             if (Version >= 2)
             {

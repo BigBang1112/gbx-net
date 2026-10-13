@@ -60,12 +60,12 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
         set => this.timing = value;
     }
 
-    private NodeRef<CPlugAnimSkelJointGroup> jointGroupRef = new();
+    private NodeRef<CPlugAnimSkelJointGroup>? jointGroupRef;
     [AppliedWithChunk<Chunk09132000>]
     public CPlugAnimSkelJointGroup? JointGroup
     {
-        get => jointGroupRef.Resolve();
-        set => jointGroupRef.SetEmbedded(value);
+        get => jointGroupRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref jointGroupRef, value);
     }
 
     private TransQuat[]? localJointsData;
@@ -121,12 +121,12 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     {
         private readonly CPlugAnimSkelBaked owner;
         internal NodeRefView(CPlugAnimSkelBaked owner) => this.owner = owner;
-        public NodeRef<CPlugAnimSkelJointGroup> JointGroup => owner.jointGroupRef;
+        public NodeRef<CPlugAnimSkelJointGroup> JointGroup => NodeRef.GetOrCreate(ref owner.jointGroupRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("JointGroup", jointGroupRef);
+        yield return new("JointGroup", NodeRef.GetOrCreate(ref jointGroupRef));
         yield break;
     }
 
@@ -170,7 +170,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
             rw.Int32(ref n.flagsVersion);
             rw.Int32(ref n.timingVersion);
             rw.ReadableWritable<TimingFixedPeriod>(ref n.timing, version: n. TimingVersion);
-            rw.NodeRef(n.jointGroupRef);
+            rw.NodeRef(ref n.jointGroupRef);
             rw.Array<TransQuat>(ref n.localJointsData!);
 
             if (Version == 1)

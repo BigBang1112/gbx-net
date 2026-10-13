@@ -52,12 +52,12 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [AppliedWithChunk<Chunk0307900D>]
     public partial string? Name { get; set; }
 
-    private NodeRef<CScene> sceneRef = new();
+    private NodeRef<CScene>? sceneRef;
     [AppliedWithChunk<Chunk03079004>]
     public CScene? Scene
     {
-        get => sceneRef.Resolve();
-        set => sceneRef.SetEmbedded(value);
+        get => sceneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneRef, value);
     }
 
     private int localPlayerClipEntIndex = -1;
@@ -136,7 +136,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         private readonly CGameCtnMediaClip owner;
         internal NodeRefView(CGameCtnMediaClip owner) => this.owner = owner;
         public TracksReferenceView Tracks => new(owner);
-        public NodeRef<CScene> Scene => owner.sceneRef;
+        public NodeRef<CScene> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
     }
     public readonly struct TracksReferenceView
     {
@@ -152,7 +152,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         {
             for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.GetReference(i));
         }
-        yield return new("Scene", sceneRef);
+        yield return new("Scene", NodeRef.GetOrCreate(ref sceneRef));
         yield break;
     }
 
@@ -277,7 +277,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.sceneRef);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 

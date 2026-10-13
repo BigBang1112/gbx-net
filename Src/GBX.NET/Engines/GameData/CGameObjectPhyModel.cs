@@ -7,20 +7,20 @@ public partial class CGameObjectPhyModel
 
     public CPlugSurface? MoveShapeFid
     {
-        get => moveShapeFidRef.Resolve();
-        set => moveShapeFidRef.SetEmbedded(value);
+        get => moveShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moveShapeFidRef, value);
     }
 
     public CPlugSurface? HitShapeFid
     {
-        get => hitShapeFidRef.Resolve();
-        set => hitShapeFidRef.SetEmbedded(value);
+        get => hitShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hitShapeFidRef, value);
     }
 
     public CPlugSurface? TriggerShapeFid
     {
-        get => triggerShapeFidRef.Resolve();
-        set => triggerShapeFidRef.SetEmbedded(value);
+        get => triggerShapeFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeFidRef, value);
     }
 
     private int triggerActionVersion = 5;
@@ -52,8 +52,8 @@ public partial class CGameObjectPhyModel
 
     public CMwNod? SpecialProperties
     {
-        get => specialPropertiesRef.Resolve();
-        set => specialPropertiesRef.SetEmbedded(value);
+        get => specialPropertiesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref specialPropertiesRef, value);
     }
 
     private EPersistence? persistence = EPersistence.NeverRemove;

@@ -80,15 +80,15 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
         set => this.texVPerMeter = value;
     }
 
-    private NodeRef<CPlugMaterial> materialRef = new();
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
     public CPlugMaterial? Material
     {
-        get => materialRef.Resolve();
-        set => materialRef.SetEmbedded(value);
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
     private bool legacyFlag;
@@ -229,12 +229,12 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     {
         private readonly CSceneVehicleCarMarksModelSub owner;
         internal NodeRefView(CSceneVehicleCarMarksModelSub owner) => this.owner = owner;
-        public NodeRef<CPlugMaterial> Material => owner.materialRef;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Material", materialRef);
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
         yield break;
     }
 
@@ -285,7 +285,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
             rw.Single(ref n.width);
             rw.Single(ref n.groundOffset);
             rw.Single(ref n.texVPerMeter);
-            rw.NodeRef(n.materialRef);
+            rw.NodeRef(ref n.materialRef);
         }
     }
 
@@ -316,7 +316,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
             rw.Boolean(ref n.condSliding);
             rw.Byte(ref n.condMaterialId);
             rw.Single(ref n.condForceXGreaterThan);
-            rw.NodeRef(n.materialRef);
+            rw.NodeRef(ref n.materialRef);
         }
     }
 

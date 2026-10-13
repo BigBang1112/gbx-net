@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Serialization;
 
@@ -85,6 +86,7 @@ public partial interface IGbxReader : IDisposable
     T? ReadNodeRef<T>() where T : IClass;
     [IgnoreForCodeGeneration] IClass? ReadNodeRef();
     [IgnoreForCodeGeneration] NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod;
+    [IgnoreForCodeGeneration] void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod;
     T? ReadNode<T>() where T : IClass, new();
     T? ReadMetaRef<T>() where T : IClass;
     TimeInt32 ReadTimeInt32();

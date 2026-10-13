@@ -7,8 +7,8 @@ public partial class CGameObjectVisModel
 
     public CPlugSolid2Model? MeshShaded
     {
-        get => meshShadedRef.Resolve();
-        set => meshShadedRef.SetEmbedded(value);
+        get => meshShadedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshShadedRef, value);
     }
 
     private string? mesh;
@@ -22,8 +22,8 @@ public partial class CGameObjectVisModel
 
     public CMwNod? MeshShadedFid
     {
-        get => meshShadedFidRef.Resolve();
-        set => meshShadedFidRef.SetEmbedded(value);
+        get => meshShadedFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshShadedFidRef, value);
     }
 
     private Vec3? domeShaderColor;
@@ -31,14 +31,14 @@ public partial class CGameObjectVisModel
 
     public CPlugAnimLocSimple? LocAnim
     {
-        get => locAnimRef.Resolve();
-        set => locAnimRef.SetEmbedded(value);
+        get => locAnimRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref locAnimRef, value);
     }
 
     public CPlugSolid? Solid
     {
-        get => solidNodeRef.Resolve();
-        set => solidNodeRef.SetEmbedded(value);
+        get => solidNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidNodeRef, value);
     }
 
     private string? solidRef;

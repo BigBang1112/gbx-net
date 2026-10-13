@@ -36,15 +36,15 @@ public partial class CPlugSoundComponent : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> plugFileRef = new();
+    private NodeRef<CMwNod>? plugFileRef;
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
     [AppliedWithChunk<Chunk0908F000>]
     public CMwNod? PlugFile
     {
-        get => plugFileRef.Resolve();
-        set => plugFileRef.SetEmbedded(value);
+        get => plugFileRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref plugFileRef, value);
     }
 
     private float minVolume;
@@ -160,12 +160,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     {
         private readonly CPlugSoundComponent owner;
         internal NodeRefView(CPlugSoundComponent owner) => this.owner = owner;
-        public NodeRef<CMwNod> PlugFile => owner.plugFileRef;
+        public NodeRef<CMwNod> PlugFile => NodeRef.GetOrCreate(ref owner.plugFileRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlugFile", plugFileRef);
+        yield return new("PlugFile", NodeRef.GetOrCreate(ref plugFileRef));
         yield break;
     }
 
@@ -241,7 +241,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
 
         public override void ReadWrite(CPlugSoundComponent n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugFileRef);
+            rw.NodeRef(ref n.plugFileRef);
             rw.Single(ref n.minVolume);
             rw.Single(ref n.maxVolume);
             rw.Single(ref n.fadeInStartSpeedKmh);

@@ -129,7 +129,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.defaultSkinName = value;
     }
 
-    private NodeRef<CMwNod> iconFidRef = new();
+    private NodeRef<CMwNod>? iconFidRef;
     [AppliedWithChunk<Chunk2E001003>]
     [AppliedWithChunk<Chunk2E001004>]
     [AppliedWithChunk<Chunk2E001009>]
@@ -196,28 +196,28 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.skinDirectory = value;
     }
 
-    private NodeRef<CPlugFileZip> defaultSkinRef = new();
+    private NodeRef<CPlugFileZip>? defaultSkinRef;
     [AppliedWithChunk<Chunk2E001010>]
     public CPlugFileZip? DefaultSkin
     {
-        get => defaultSkinRef.Resolve();
-        set => defaultSkinRef.SetEmbedded(value);
+        get => defaultSkinRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultSkinRef, value);
     }
 
-    private NodeRef<CMwNod> modelKitDbRef = new();
+    private NodeRef<CMwNod>? modelKitDbRef;
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDb
     {
-        get => modelKitDbRef.Resolve();
-        set => modelKitDbRef.SetEmbedded(value);
+        get => modelKitDbRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modelKitDbRef, value);
     }
 
-    private NodeRef<CMwNod> modelKitDbReleaseRef = new();
+    private NodeRef<CMwNod>? modelKitDbReleaseRef;
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDbRelease
     {
-        get => modelKitDbReleaseRef.Resolve();
-        set => modelKitDbReleaseRef.SetEmbedded(value);
+        get => modelKitDbReleaseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modelKitDbReleaseRef, value);
     }
 
     private bool isAdvanced;
@@ -241,18 +241,18 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         private readonly CGameCtnCollector owner;
         internal NodeRefView(CGameCtnCollector owner) => this.owner = owner;
-        public NodeRef<CMwNod> IconFid => owner.iconFidRef;
-        public NodeRef<CPlugFileZip> DefaultSkin => owner.defaultSkinRef;
-        public NodeRef<CMwNod> ModelKitDb => owner.modelKitDbRef;
-        public NodeRef<CMwNod> ModelKitDbRelease => owner.modelKitDbReleaseRef;
+        public NodeRef<CMwNod> IconFid => NodeRef.GetOrCreate(ref owner.iconFidRef);
+        public NodeRef<CPlugFileZip> DefaultSkin => NodeRef.GetOrCreate(ref owner.defaultSkinRef);
+        public NodeRef<CMwNod> ModelKitDb => NodeRef.GetOrCreate(ref owner.modelKitDbRef);
+        public NodeRef<CMwNod> ModelKitDbRelease => NodeRef.GetOrCreate(ref owner.modelKitDbReleaseRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("IconFid", iconFidRef);
-        yield return new("DefaultSkin", defaultSkinRef);
-        yield return new("ModelKitDb", modelKitDbRef);
-        yield return new("ModelKitDbRelease", modelKitDbReleaseRef);
+        yield return new("IconFid", NodeRef.GetOrCreate(ref iconFidRef));
+        yield return new("DefaultSkin", NodeRef.GetOrCreate(ref defaultSkinRef));
+        yield return new("ModelKitDb", NodeRef.GetOrCreate(ref modelKitDbRef));
+        yield return new("ModelKitDbRelease", NodeRef.GetOrCreate(ref modelKitDbReleaseRef));
         yield break;
     }
 
@@ -487,11 +487,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         public override uint Id => 0x2E001000;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -499,12 +499,12 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             private readonly Chunk2E001000 owner;
             internal NodeRefView(Chunk2E001000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -517,7 +517,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -529,14 +529,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
     {
         public override uint Id => 0x2E001001;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// CMwRefBuffer in TMF, CPlugFileImg in MP4
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -544,12 +544,12 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             private readonly Chunk2E001001 owner;
             internal NodeRefView(Chunk2E001001 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -562,7 +562,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -603,11 +603,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : ((n.iconFidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef(n.iconFidRef);
+                rw.NodeRef(ref n.iconFidRef);
             }
         }
     }
@@ -632,11 +632,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : ((n.iconFidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef(n.iconFidRef);
+                rw.NodeRef(ref n.iconFidRef);
             }
 
             rw.Boolean(ref U01);
@@ -714,11 +714,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override uint Id => 0x2E001008;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CPlugGameSkin> U01Ref = new();
+        private NodeRef<CPlugGameSkin>? U01Ref;
         public CPlugGameSkin? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -726,12 +726,12 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             private readonly Chunk2E001008 owner;
             internal NodeRefView(Chunk2E001008 owner) => this.owner = owner;
-            public NodeRef<CPlugGameSkin> U01 => owner.U01Ref;
+            public NodeRef<CPlugGameSkin> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -743,7 +743,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -762,11 +762,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.String(ref n.pageName);
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : ((n.iconFidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef(n.iconFidRef);
+                rw.NodeRef(ref n.iconFidRef);
             }
 
             rw.Id(ref n.parentCollectorId);
@@ -905,14 +905,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// CPlugFileZip
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public string? U02;
 
@@ -921,12 +921,12 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             private readonly Chunk2E001010 owner;
             internal NodeRefView(Chunk2E001010 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -957,7 +957,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.defaultSkinRef);
+            rw.NodeRef(ref n.defaultSkinRef);
 
             if (Version >= 1)
             {
@@ -968,7 +968,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
             {
                 if (n.SkinDirectory== null || n.SkinDirectory== "")
                 {
-                    rw.NodeRef(U01Ref);
+                    rw.NodeRef(ref U01Ref);
                 }
             }
 
@@ -981,8 +981,8 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.NodeRef(n.modelKitDbRef);
-                    rw.NodeRef(n.modelKitDbReleaseRef);
+                    rw.NodeRef(ref n.modelKitDbRef);
+                    rw.NodeRef(ref n.modelKitDbReleaseRef);
                 }
             }
         }

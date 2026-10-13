@@ -44,12 +44,12 @@ public partial class CSceneSector : CMwNod, IClass
         set => this.scene = value;
     }
 
-    private NodeRef<CHmsZone> zoneRef = new();
+    private NodeRef<CHmsZone>? zoneRef;
     [AppliedWithChunk<Chunk0A004000>]
     public CHmsZone? Zone
     {
-        get => zoneRef.Resolve();
-        set => zoneRef.SetEmbedded(value);
+        get => zoneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref zoneRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -57,12 +57,12 @@ public partial class CSceneSector : CMwNod, IClass
     {
         private readonly CSceneSector owner;
         internal NodeRefView(CSceneSector owner) => this.owner = owner;
-        public NodeRef<CHmsZone> Zone => owner.zoneRef;
+        public NodeRef<CHmsZone> Zone => NodeRef.GetOrCreate(ref owner.zoneRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Zone", zoneRef);
+        yield return new("Zone", NodeRef.GetOrCreate(ref zoneRef));
         yield break;
     }
 
@@ -92,7 +92,7 @@ public partial class CSceneSector : CMwNod, IClass
         public override void ReadWrite(CSceneSector n, GbxReaderWriter rw)
         {
             rw.Int32(ref n.scene);
-            rw.NodeRef(n.zoneRef);
+            rw.NodeRef(ref n.zoneRef);
         }
     }
 

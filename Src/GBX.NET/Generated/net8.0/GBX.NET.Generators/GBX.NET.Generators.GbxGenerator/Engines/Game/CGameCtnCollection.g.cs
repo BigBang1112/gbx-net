@@ -276,18 +276,18 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => completeZoneList = value;
     }
 
-    private NodeRef<CGameCtnZone> defaultZoneRef = new();
+    private NodeRef<CGameCtnZone>? defaultZoneRef;
     [AppliedWithChunk<Chunk03033004>]
     [AppliedWithChunk<Chunk03033006>]
     [AppliedWithChunk<Chunk03033007>]
     [AppliedWithChunk<Chunk03033009>]
     public CGameCtnZone? DefaultZone
     {
-        get => defaultZoneRef.Resolve();
-        set => defaultZoneRef.SetEmbedded(value);
+        get => defaultZoneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultZoneRef, value);
     }
 
-    private NodeRef<CGameCtnDecoration> defaultDecorationRef = new();
+    private NodeRef<CGameCtnDecoration>? defaultDecorationRef;
     [AppliedWithChunk<Chunk03033008>]
     [AppliedWithChunk<Chunk03033011>]
     public partial CGameCtnDecoration? DefaultDecoration { get; set; }
@@ -331,20 +331,20 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.collectionType = value;
     }
 
-    private NodeRef<CPlugBitmap> iconFidRef = new();
+    private NodeRef<CPlugBitmap>? iconFidRef;
     [AppliedWithChunk<Chunk0303300D>]
     public CPlugBitmap? IconFid
     {
-        get => iconFidRef.Resolve();
-        set => iconFidRef.SetEmbedded(value);
+        get => iconFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconFidRef, value);
     }
 
-    private NodeRef<CPlugBitmap> iconSmallFidRef = new();
+    private NodeRef<CPlugBitmap>? iconSmallFidRef;
     [AppliedWithChunk<Chunk0303300D>]
     public CPlugBitmap? IconSmallFid
     {
-        get => iconSmallFidRef.Resolve();
-        set => iconSmallFidRef.SetEmbedded(value);
+        get => iconSmallFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconSmallFidRef, value);
     }
 
     private float waterTop;
@@ -428,22 +428,22 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.colorVertexMax = value;
     }
 
-    private NodeRef<CPlugBitmap> mapFidRef = new();
+    private NodeRef<CPlugBitmap>? mapFidRef;
     [AppliedWithChunk<Chunk03033017>]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
     public CPlugBitmap? MapFid
     {
-        get => mapFidRef.Resolve();
-        set => mapFidRef.SetEmbedded(value);
+        get => mapFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mapFidRef, value);
     }
 
-    private NodeRef<CPlugBitmap> loadScreenFidRef = new();
+    private NodeRef<CPlugBitmap>? loadScreenFidRef;
     [AppliedWithChunk<Chunk03033019>]
     public CPlugBitmap? LoadScreenFid
     {
-        get => loadScreenFidRef.Resolve();
-        set => loadScreenFidRef.SetEmbedded(value);
+        get => loadScreenFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref loadScreenFidRef, value);
     }
 
     private EVertexLighting vertexLighting;
@@ -568,12 +568,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.folderDecalModels = value;
     }
 
-    private NodeRef<CGameCtnDecoration> legacyDecorationRef = new();
+    private NodeRef<CGameCtnDecoration>? legacyDecorationRef;
     [AppliedWithChunk<Chunk0303302B>]
     public CGameCtnDecoration? LegacyDecoration
     {
-        get => legacyDecorationRef.Resolve();
-        set => legacyDecorationRef.SetEmbedded(value);
+        get => legacyDecorationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyDecorationRef, value);
     }
 
     private Int128 collectionPackMask;
@@ -618,21 +618,21 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.tech3TunnelSpecularExpScaleMax = value;
     }
 
-    private NodeRef<CSceneVehicleCarMarksModel> marksModelRef = new();
+    private NodeRef<CSceneVehicleCarMarksModel>? marksModelRef;
     [AppliedWithChunk<Chunk03033030>]
     public CSceneVehicleCarMarksModel? MarksModel
     {
-        get => marksModelRef.Resolve();
-        set => marksModelRef.SetEmbedded(value);
+        get => marksModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref marksModelRef, value);
     }
 
-    private NodeRef<CFuncShaderLayerUV> fidFuncShaderCloudsX2Ref = new();
+    private NodeRef<CFuncShaderLayerUV>? fidFuncShaderCloudsX2Ref;
     [AppliedWithChunk<Chunk03033032>]
     [AppliedWithChunk<Chunk03033034>]
     public CFuncShaderLayerUV? FidFuncShaderCloudsX2
     {
-        get => fidFuncShaderCloudsX2Ref.Resolve();
-        set => fidFuncShaderCloudsX2Ref.SetEmbedded(value);
+        get => fidFuncShaderCloudsX2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidFuncShaderCloudsX2Ref, value);
     }
 
     private string[]? decalsTypesId;
@@ -651,20 +651,20 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.decalFade_cBlock_FullDensity = value;
     }
 
-    private NodeRef<CPlugBitmap> fidPlugBitmapCloudsX2Ref = new();
+    private NodeRef<CPlugBitmap>? fidPlugBitmapCloudsX2Ref;
     [AppliedWithChunk<Chunk03033034>]
     public CPlugBitmap? FidPlugBitmapCloudsX2
     {
-        get => fidPlugBitmapCloudsX2Ref.Resolve();
-        set => fidPlugBitmapCloudsX2Ref.SetEmbedded(value);
+        get => fidPlugBitmapCloudsX2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidPlugBitmapCloudsX2Ref, value);
     }
 
-    private NodeRef<CPlugBitmap> vehicleEnvLayer_FidBitmapRef = new();
+    private NodeRef<CPlugBitmap>? vehicleEnvLayer_FidBitmapRef;
     [AppliedWithChunk<Chunk03033034>(1)]
     public CPlugBitmap? VehicleEnvLayer_FidBitmap
     {
-        get => vehicleEnvLayer_FidBitmapRef.Resolve();
-        set => vehicleEnvLayer_FidBitmapRef.SetEmbedded(value);
+        get => vehicleEnvLayer_FidBitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleEnvLayer_FidBitmapRef, value);
     }
 
     private EVehicleEnvLayer vehicleEnvLayer;
@@ -675,12 +675,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.vehicleEnvLayer = value;
     }
 
-    private NodeRef<CPlugFogMatter> offZone_FogMatterRef = new();
+    private NodeRef<CPlugFogMatter>? offZone_FogMatterRef;
     [AppliedWithChunk<Chunk03033036>]
     public CPlugFogMatter? OffZone_FogMatter
     {
-        get => offZone_FogMatterRef.Resolve();
-        set => offZone_FogMatterRef.SetEmbedded(value);
+        get => offZone_FogMatterRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref offZone_FogMatterRef, value);
     }
 
     private float terrainHeightOffset;
@@ -731,12 +731,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.water4 = value;
     }
 
-    private NodeRef<CPlugMaterialWaterArray> waterArrayRef = new();
+    private NodeRef<CPlugMaterialWaterArray>? waterArrayRef;
     [AppliedWithChunk<Chunk03033038>(8)]
     public CPlugMaterialWaterArray? WaterArray
     {
-        get => waterArrayRef.Resolve();
-        set => waterArrayRef.SetEmbedded(value);
+        get => waterArrayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterArrayRef, value);
     }
 
     private int water0Version;
@@ -747,12 +747,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.water0Version = value;
     }
 
-    private NodeRef<CPlugBitmap> waterG_BitmapNormalRef = new();
+    private NodeRef<CPlugBitmap>? waterG_BitmapNormalRef;
     [AppliedWithChunk<Chunk03033038>(5)]
     public CPlugBitmap? WaterG_BitmapNormal
     {
-        get => waterG_BitmapNormalRef.Resolve();
-        set => waterG_BitmapNormalRef.SetEmbedded(value);
+        get => waterG_BitmapNormalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterG_BitmapNormalRef, value);
     }
 
     private float waterG_BumpSpeedUV;
@@ -803,36 +803,36 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.legacyVehicleStyleColor = value;
     }
 
-    private NodeRef<CPlugVehicleVisStyles> vehicleStylesRef = new();
+    private NodeRef<CPlugVehicleVisStyles>? vehicleStylesRef;
     [AppliedWithChunk<Chunk03033039>]
     public CPlugVehicleVisStyles? VehicleStyles
     {
-        get => vehicleStylesRef.Resolve();
-        set => vehicleStylesRef.SetEmbedded(value);
+        get => vehicleStylesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleStylesRef, value);
     }
 
-    private NodeRef<NPlugItemPlacement_SGroups> itemPlacementGroupsRef = new();
+    private NodeRef<NPlugItemPlacement_SGroups>? itemPlacementGroupsRef;
     [AppliedWithChunk<Chunk03033039>(2)]
     public NPlugItemPlacement_SGroups? ItemPlacementGroups
     {
-        get => itemPlacementGroupsRef.Resolve();
-        set => itemPlacementGroupsRef.SetEmbedded(value);
+        get => itemPlacementGroupsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref itemPlacementGroupsRef, value);
     }
 
-    private NodeRef<CPlugAdnRandomGenList> adnRandomGenListRef = new();
+    private NodeRef<CPlugAdnRandomGenList>? adnRandomGenListRef;
     [AppliedWithChunk<Chunk03033039>(3)]
     public CPlugAdnRandomGenList? AdnRandomGenList
     {
-        get => adnRandomGenListRef.Resolve();
-        set => adnRandomGenListRef.SetEmbedded(value);
+        get => adnRandomGenListRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref adnRandomGenListRef, value);
     }
 
-    private NodeRef<CGameBlockInfoGroups> fidBlockInfoGroupsRef = new();
+    private NodeRef<CGameBlockInfoGroups>? fidBlockInfoGroupsRef;
     [AppliedWithChunk<Chunk03033039>(4)]
     public CGameBlockInfoGroups? FidBlockInfoGroups
     {
-        get => fidBlockInfoGroupsRef.Resolve();
-        set => fidBlockInfoGroupsRef.SetEmbedded(value);
+        get => fidBlockInfoGroupsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidBlockInfoGroupsRef, value);
     }
 
     private SCustomizableDeco? customDeco;
@@ -843,36 +843,36 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.customDeco = value;
     }
 
-    private NodeRef<CPlugFileImg> legacyCustomDecoImageRef = new();
+    private NodeRef<CPlugFileImg>? legacyCustomDecoImageRef;
     [AppliedWithChunk<Chunk03033039>(8, 10)]
     public CPlugFileImg? LegacyCustomDecoImage
     {
-        get => legacyCustomDecoImageRef.Resolve();
-        set => legacyCustomDecoImageRef.SetEmbedded(value);
+        get => legacyCustomDecoImageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyCustomDecoImageRef, value);
     }
 
-    private NodeRef<CMwNod> fidBlockInfoInventoryRef = new();
+    private NodeRef<CMwNod>? fidBlockInfoInventoryRef;
     [AppliedWithChunk<Chunk03033039>(6)]
     public CMwNod? FidBlockInfoInventory
     {
-        get => fidBlockInfoInventoryRef.Resolve();
-        set => fidBlockInfoInventoryRef.SetEmbedded(value);
+        get => fidBlockInfoInventoryRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidBlockInfoInventoryRef, value);
     }
 
-    private NodeRef<CMwNod> legacyInventoryRef = new();
+    private NodeRef<CMwNod>? legacyInventoryRef;
     [AppliedWithChunk<Chunk03033039>(7, 8)]
     public CMwNod? LegacyInventory
     {
-        get => legacyInventoryRef.Resolve();
-        set => legacyInventoryRef.SetEmbedded(value);
+        get => legacyInventoryRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyInventoryRef, value);
     }
 
-    private NodeRef<CMwNod> fidItemModelInventoryRef = new();
+    private NodeRef<CMwNod>? fidItemModelInventoryRef;
     [AppliedWithChunk<Chunk03033039>(10)]
     public CMwNod? FidItemModelInventory
     {
-        get => fidItemModelInventoryRef.Resolve();
-        set => fidItemModelInventoryRef.SetEmbedded(value);
+        get => fidItemModelInventoryRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidItemModelInventoryRef, value);
     }
 
     private string? legacyFolderMaterial;
@@ -883,116 +883,116 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.legacyFolderMaterial = value;
     }
 
-    private NodeRef<CPlugFileImg> customDeco_Default_FidDecalSponsor1x1BigRef = new();
+    private NodeRef<CPlugFileImg>? customDeco_Default_FidDecalSponsor1x1BigRef;
     [AppliedWithChunk<Chunk03033039>(20)]
     public CPlugFileImg? CustomDeco_Default_FidDecalSponsor1x1Big
     {
-        get => customDeco_Default_FidDecalSponsor1x1BigRef.Resolve();
-        set => customDeco_Default_FidDecalSponsor1x1BigRef.SetEmbedded(value);
+        get => customDeco_Default_FidDecalSponsor1x1BigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref customDeco_Default_FidDecalSponsor1x1BigRef, value);
     }
 
-    private NodeRef<CPlugFileImg> customDeco_Default_FidDecalSponsor4x1Ref = new();
+    private NodeRef<CPlugFileImg>? customDeco_Default_FidDecalSponsor4x1Ref;
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecalSponsor4x1
     {
-        get => customDeco_Default_FidDecalSponsor4x1Ref.Resolve();
-        set => customDeco_Default_FidDecalSponsor4x1Ref.SetEmbedded(value);
+        get => customDeco_Default_FidDecalSponsor4x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref customDeco_Default_FidDecalSponsor4x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> customDeco_Default_FidDecorationScreen16x9Ref = new();
+    private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen16x9Ref;
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x9
     {
-        get => customDeco_Default_FidDecorationScreen16x9Ref.Resolve();
-        set => customDeco_Default_FidDecorationScreen16x9Ref.SetEmbedded(value);
+        get => customDeco_Default_FidDecorationScreen16x9Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref customDeco_Default_FidDecorationScreen16x9Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> customDeco_Default_FidDecorationScreen8x1Ref = new();
+    private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen8x1Ref;
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen8x1
     {
-        get => customDeco_Default_FidDecorationScreen8x1Ref.Resolve();
-        set => customDeco_Default_FidDecorationScreen8x1Ref.SetEmbedded(value);
+        get => customDeco_Default_FidDecorationScreen8x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref customDeco_Default_FidDecorationScreen8x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> customDeco_Default_FidDecorationScreen16x1Ref = new();
+    private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen16x1Ref;
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x1
     {
-        get => customDeco_Default_FidDecorationScreen16x1Ref.Resolve();
-        set => customDeco_Default_FidDecorationScreen16x1Ref.SetEmbedded(value);
+        get => customDeco_Default_FidDecorationScreen16x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref customDeco_Default_FidDecorationScreen16x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidAdvertisement16x9Ref = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement16x9Ref;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement16x9
     {
-        get => blockSkins_Default_FidAdvertisement16x9Ref.Resolve();
-        set => blockSkins_Default_FidAdvertisement16x9Ref.SetEmbedded(value);
+        get => blockSkins_Default_FidAdvertisement16x9Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidAdvertisement16x9Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidAdvertisement1x1Ref = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement1x1Ref;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement1x1
     {
-        get => blockSkins_Default_FidAdvertisement1x1Ref.Resolve();
-        set => blockSkins_Default_FidAdvertisement1x1Ref.SetEmbedded(value);
+        get => blockSkins_Default_FidAdvertisement1x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidAdvertisement1x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidAdvertisement2x1Ref = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement2x1Ref;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x1
     {
-        get => blockSkins_Default_FidAdvertisement2x1Ref.Resolve();
-        set => blockSkins_Default_FidAdvertisement2x1Ref.SetEmbedded(value);
+        get => blockSkins_Default_FidAdvertisement2x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidAdvertisement2x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidAdvertisement2x3Ref = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement2x3Ref;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x3
     {
-        get => blockSkins_Default_FidAdvertisement2x3Ref.Resolve();
-        set => blockSkins_Default_FidAdvertisement2x3Ref.SetEmbedded(value);
+        get => blockSkins_Default_FidAdvertisement2x3Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidAdvertisement2x3Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidAdvertisement4x1Ref = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement4x1Ref;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement4x1
     {
-        get => blockSkins_Default_FidAdvertisement4x1Ref.Resolve();
-        set => blockSkins_Default_FidAdvertisement4x1Ref.SetEmbedded(value);
+        get => blockSkins_Default_FidAdvertisement4x1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidAdvertisement4x1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> blockSkins_Default_FidItemFlagRef = new();
+    private NodeRef<CPlugFileImg>? blockSkins_Default_FidItemFlagRef;
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidItemFlag
     {
-        get => blockSkins_Default_FidItemFlagRef.Resolve();
-        set => blockSkins_Default_FidItemFlagRef.SetEmbedded(value);
+        get => blockSkins_Default_FidItemFlagRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockSkins_Default_FidItemFlagRef, value);
     }
 
-    private NodeRef<CPlugMaterial> defaultMaterialRef = new();
+    private NodeRef<CPlugMaterial>? defaultMaterialRef;
     [AppliedWithChunk<Chunk03033039>(13)]
     public CPlugMaterial? DefaultMaterial
     {
-        get => defaultMaterialRef.Resolve();
-        set => defaultMaterialRef.SetEmbedded(value);
+        get => defaultMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultMaterialRef, value);
     }
 
-    private NodeRef<CMwNod> fidMacroBlockInfoInventoryRef = new();
+    private NodeRef<CMwNod>? fidMacroBlockInfoInventoryRef;
     [AppliedWithChunk<Chunk03033039>(14)]
     public CMwNod? FidMacroBlockInfoInventory
     {
-        get => fidMacroBlockInfoInventoryRef.Resolve();
-        set => fidMacroBlockInfoInventoryRef.SetEmbedded(value);
+        get => fidMacroBlockInfoInventoryRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidMacroBlockInfoInventoryRef, value);
     }
 
-    private NodeRef<CPlugMediaClipList> defaultSpawnClipListRef = new();
+    private NodeRef<CPlugMediaClipList>? defaultSpawnClipListRef;
     [AppliedWithChunk<Chunk03033039>(15)]
     public CPlugMediaClipList? DefaultSpawnClipList
     {
-        get => defaultSpawnClipListRef.Resolve();
-        set => defaultSpawnClipListRef.SetEmbedded(value);
+        get => defaultSpawnClipListRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultSpawnClipListRef, value);
     }
 
     private Ident? vehicleTransform_CarSnow;
@@ -1035,12 +1035,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.visMeshLodDistScale = value;
     }
 
-    private NodeRef<CMwNod> legacyLightMapRef = new();
+    private NodeRef<CMwNod>? legacyLightMapRef;
     [AppliedWithChunk<Chunk0303303A>(1, 1)]
     public CMwNod? LegacyLightMap
     {
-        get => legacyLightMapRef.Resolve();
-        set => legacyLightMapRef.SetEmbedded(value);
+        get => legacyLightMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyLightMapRef, value);
     }
 
     private float editorHelperAmbientScale;
@@ -1091,12 +1091,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.turboColor_Turbo2 = value;
     }
 
-    private NodeRef<CPlugMaterialColorTargetTable> fidColorTargetTableRef = new();
+    private NodeRef<CPlugMaterialColorTargetTable>? fidColorTargetTableRef;
     [AppliedWithChunk<Chunk0303303B>(2)]
     public CPlugMaterialColorTargetTable? FidColorTargetTable
     {
-        get => fidColorTargetTableRef.Resolve();
-        set => fidColorTargetTableRef.SetEmbedded(value);
+        get => fidColorTargetTableRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fidColorTargetTableRef, value);
     }
 
     private string? folderSpectators;
@@ -1115,52 +1115,52 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.folderSpectatorSkins = value;
     }
 
-    private NodeRef<CPlugBitmap> legacyBitmapDisplayControlDefaultTVProgramRef = new();
+    private NodeRef<CPlugBitmap>? legacyBitmapDisplayControlDefaultTVProgramRef;
     [AppliedWithChunk<Chunk0303303D>(0, 1)]
     public CPlugBitmap? LegacyBitmapDisplayControlDefaultTVProgram
     {
-        get => legacyBitmapDisplayControlDefaultTVProgramRef.Resolve();
-        set => legacyBitmapDisplayControlDefaultTVProgramRef.SetEmbedded(value);
+        get => legacyBitmapDisplayControlDefaultTVProgramRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyBitmapDisplayControlDefaultTVProgramRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapDisplayControlDefaultTVProgram_64x10ARef = new();
+    private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10ARef;
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10A
     {
-        get => bitmapDisplayControlDefaultTVProgram_64x10ARef.Resolve();
-        set => bitmapDisplayControlDefaultTVProgram_64x10ARef.SetEmbedded(value);
+        get => bitmapDisplayControlDefaultTVProgram_64x10ARef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDisplayControlDefaultTVProgram_64x10ARef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapDisplayControlDefaultTVProgram_64x10BRef = new();
+    private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10BRef;
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10B
     {
-        get => bitmapDisplayControlDefaultTVProgram_64x10BRef.Resolve();
-        set => bitmapDisplayControlDefaultTVProgram_64x10BRef.SetEmbedded(value);
+        get => bitmapDisplayControlDefaultTVProgram_64x10BRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDisplayControlDefaultTVProgram_64x10BRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapDisplayControlDefaultTVProgram_64x10CRef = new();
+    private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10CRef;
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10C
     {
-        get => bitmapDisplayControlDefaultTVProgram_64x10CRef.Resolve();
-        set => bitmapDisplayControlDefaultTVProgram_64x10CRef.SetEmbedded(value);
+        get => bitmapDisplayControlDefaultTVProgram_64x10CRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDisplayControlDefaultTVProgram_64x10CRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapDisplayControlDefaultTVProgram_2x3Ref = new();
+    private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_2x3Ref;
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_2x3
     {
-        get => bitmapDisplayControlDefaultTVProgram_2x3Ref.Resolve();
-        set => bitmapDisplayControlDefaultTVProgram_2x3Ref.SetEmbedded(value);
+        get => bitmapDisplayControlDefaultTVProgram_2x3Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDisplayControlDefaultTVProgram_2x3Ref, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapDisplayControlDefaultTVProgram_155Ref = new();
+    private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_155Ref;
     [AppliedWithChunk<Chunk0303303D>(1)]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_155
     {
-        get => bitmapDisplayControlDefaultTVProgram_155Ref.Resolve();
-        set => bitmapDisplayControlDefaultTVProgram_155Ref.SetEmbedded(value);
+        get => bitmapDisplayControlDefaultTVProgram_155Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDisplayControlDefaultTVProgram_155Ref, value);
     }
 
     private string? folderDefaultActions;
@@ -1179,12 +1179,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.folderDefaultActions2 = value;
     }
 
-    private NodeRef<CPlugGameSkinAndFolder> colorBlindnessModifierRef = new();
+    private NodeRef<CPlugGameSkinAndFolder>? colorBlindnessModifierRef;
     [AppliedWithChunk<Chunk03033040>]
     public CPlugGameSkinAndFolder? ColorBlindnessModifier
     {
-        get => colorBlindnessModifierRef.Resolve();
-        set => colorBlindnessModifierRef.SetEmbedded(value);
+        get => colorBlindnessModifierRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref colorBlindnessModifierRef, value);
     }
 
     private string? folderAdditionalItem3;
@@ -1195,12 +1195,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         set => this.folderAdditionalItem3 = value;
     }
 
-    private NodeRef<CPlugGameSkinAndFolder> globalMaterialModifierRef = new();
+    private NodeRef<CPlugGameSkinAndFolder>? globalMaterialModifierRef;
     [AppliedWithChunk<Chunk03033044>]
     public CPlugGameSkinAndFolder? GlobalMaterialModifier
     {
-        get => globalMaterialModifierRef.Resolve();
-        set => globalMaterialModifierRef.SetEmbedded(value);
+        get => globalMaterialModifierRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref globalMaterialModifierRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -1209,54 +1209,54 @@ public partial class CGameCtnCollection : CMwNod, IClass
         private readonly CGameCtnCollection owner;
         internal NodeRefView(CGameCtnCollection owner) => this.owner = owner;
         public CompleteZoneListReferenceView CompleteZoneList => new(owner);
-        public NodeRef<CGameCtnZone> DefaultZone => owner.defaultZoneRef;
-        public NodeRef<CGameCtnDecoration> DefaultDecoration => owner.defaultDecorationRef;
-        public NodeRef<CPlugBitmap> IconFid => owner.iconFidRef;
-        public NodeRef<CPlugBitmap> IconSmallFid => owner.iconSmallFidRef;
-        public NodeRef<CPlugBitmap> MapFid => owner.mapFidRef;
-        public NodeRef<CPlugBitmap> LoadScreenFid => owner.loadScreenFidRef;
+        public NodeRef<CGameCtnZone> DefaultZone => NodeRef.GetOrCreate(ref owner.defaultZoneRef);
+        public NodeRef<CGameCtnDecoration> DefaultDecoration => NodeRef.GetOrCreate(ref owner.defaultDecorationRef);
+        public NodeRef<CPlugBitmap> IconFid => NodeRef.GetOrCreate(ref owner.iconFidRef);
+        public NodeRef<CPlugBitmap> IconSmallFid => NodeRef.GetOrCreate(ref owner.iconSmallFidRef);
+        public NodeRef<CPlugBitmap> MapFid => NodeRef.GetOrCreate(ref owner.mapFidRef);
+        public NodeRef<CPlugBitmap> LoadScreenFid => NodeRef.GetOrCreate(ref owner.loadScreenFidRef);
         public ReplacementTerrainModifiersReferenceView ReplacementTerrainModifiers => new(owner);
         public ParticleEmitterModelsFidsReferenceView ParticleEmitterModelsFids => new(owner);
-        public NodeRef<CGameCtnDecoration> LegacyDecoration => owner.legacyDecorationRef;
-        public NodeRef<CSceneVehicleCarMarksModel> MarksModel => owner.marksModelRef;
-        public NodeRef<CFuncShaderLayerUV> FidFuncShaderCloudsX2 => owner.fidFuncShaderCloudsX2Ref;
-        public NodeRef<CPlugBitmap> FidPlugBitmapCloudsX2 => owner.fidPlugBitmapCloudsX2Ref;
-        public NodeRef<CPlugBitmap> VehicleEnvLayer_FidBitmap => owner.vehicleEnvLayer_FidBitmapRef;
-        public NodeRef<CPlugFogMatter> OffZone_FogMatter => owner.offZone_FogMatterRef;
-        public NodeRef<CPlugMaterialWaterArray> WaterArray => owner.waterArrayRef;
-        public NodeRef<CPlugBitmap> WaterG_BitmapNormal => owner.waterG_BitmapNormalRef;
-        public NodeRef<CPlugVehicleVisStyles> VehicleStyles => owner.vehicleStylesRef;
-        public NodeRef<NPlugItemPlacement_SGroups> ItemPlacementGroups => owner.itemPlacementGroupsRef;
-        public NodeRef<CPlugAdnRandomGenList> AdnRandomGenList => owner.adnRandomGenListRef;
-        public NodeRef<CGameBlockInfoGroups> FidBlockInfoGroups => owner.fidBlockInfoGroupsRef;
-        public NodeRef<CPlugFileImg> LegacyCustomDecoImage => owner.legacyCustomDecoImageRef;
-        public NodeRef<CMwNod> FidBlockInfoInventory => owner.fidBlockInfoInventoryRef;
-        public NodeRef<CMwNod> LegacyInventory => owner.legacyInventoryRef;
-        public NodeRef<CMwNod> FidItemModelInventory => owner.fidItemModelInventoryRef;
-        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecalSponsor1x1Big => owner.customDeco_Default_FidDecalSponsor1x1BigRef;
-        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecalSponsor4x1 => owner.customDeco_Default_FidDecalSponsor4x1Ref;
-        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen16x9 => owner.customDeco_Default_FidDecorationScreen16x9Ref;
-        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen8x1 => owner.customDeco_Default_FidDecorationScreen8x1Ref;
-        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen16x1 => owner.customDeco_Default_FidDecorationScreen16x1Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement16x9 => owner.blockSkins_Default_FidAdvertisement16x9Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement1x1 => owner.blockSkins_Default_FidAdvertisement1x1Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement2x1 => owner.blockSkins_Default_FidAdvertisement2x1Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement2x3 => owner.blockSkins_Default_FidAdvertisement2x3Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement4x1 => owner.blockSkins_Default_FidAdvertisement4x1Ref;
-        public NodeRef<CPlugFileImg> BlockSkins_Default_FidItemFlag => owner.blockSkins_Default_FidItemFlagRef;
-        public NodeRef<CPlugMaterial> DefaultMaterial => owner.defaultMaterialRef;
-        public NodeRef<CMwNod> FidMacroBlockInfoInventory => owner.fidMacroBlockInfoInventoryRef;
-        public NodeRef<CPlugMediaClipList> DefaultSpawnClipList => owner.defaultSpawnClipListRef;
-        public NodeRef<CMwNod> LegacyLightMap => owner.legacyLightMapRef;
-        public NodeRef<CPlugMaterialColorTargetTable> FidColorTargetTable => owner.fidColorTargetTableRef;
-        public NodeRef<CPlugBitmap> LegacyBitmapDisplayControlDefaultTVProgram => owner.legacyBitmapDisplayControlDefaultTVProgramRef;
-        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10A => owner.bitmapDisplayControlDefaultTVProgram_64x10ARef;
-        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10B => owner.bitmapDisplayControlDefaultTVProgram_64x10BRef;
-        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10C => owner.bitmapDisplayControlDefaultTVProgram_64x10CRef;
-        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_2x3 => owner.bitmapDisplayControlDefaultTVProgram_2x3Ref;
-        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_155 => owner.bitmapDisplayControlDefaultTVProgram_155Ref;
-        public NodeRef<CPlugGameSkinAndFolder> ColorBlindnessModifier => owner.colorBlindnessModifierRef;
-        public NodeRef<CPlugGameSkinAndFolder> GlobalMaterialModifier => owner.globalMaterialModifierRef;
+        public NodeRef<CGameCtnDecoration> LegacyDecoration => NodeRef.GetOrCreate(ref owner.legacyDecorationRef);
+        public NodeRef<CSceneVehicleCarMarksModel> MarksModel => NodeRef.GetOrCreate(ref owner.marksModelRef);
+        public NodeRef<CFuncShaderLayerUV> FidFuncShaderCloudsX2 => NodeRef.GetOrCreate(ref owner.fidFuncShaderCloudsX2Ref);
+        public NodeRef<CPlugBitmap> FidPlugBitmapCloudsX2 => NodeRef.GetOrCreate(ref owner.fidPlugBitmapCloudsX2Ref);
+        public NodeRef<CPlugBitmap> VehicleEnvLayer_FidBitmap => NodeRef.GetOrCreate(ref owner.vehicleEnvLayer_FidBitmapRef);
+        public NodeRef<CPlugFogMatter> OffZone_FogMatter => NodeRef.GetOrCreate(ref owner.offZone_FogMatterRef);
+        public NodeRef<CPlugMaterialWaterArray> WaterArray => NodeRef.GetOrCreate(ref owner.waterArrayRef);
+        public NodeRef<CPlugBitmap> WaterG_BitmapNormal => NodeRef.GetOrCreate(ref owner.waterG_BitmapNormalRef);
+        public NodeRef<CPlugVehicleVisStyles> VehicleStyles => NodeRef.GetOrCreate(ref owner.vehicleStylesRef);
+        public NodeRef<NPlugItemPlacement_SGroups> ItemPlacementGroups => NodeRef.GetOrCreate(ref owner.itemPlacementGroupsRef);
+        public NodeRef<CPlugAdnRandomGenList> AdnRandomGenList => NodeRef.GetOrCreate(ref owner.adnRandomGenListRef);
+        public NodeRef<CGameBlockInfoGroups> FidBlockInfoGroups => NodeRef.GetOrCreate(ref owner.fidBlockInfoGroupsRef);
+        public NodeRef<CPlugFileImg> LegacyCustomDecoImage => NodeRef.GetOrCreate(ref owner.legacyCustomDecoImageRef);
+        public NodeRef<CMwNod> FidBlockInfoInventory => NodeRef.GetOrCreate(ref owner.fidBlockInfoInventoryRef);
+        public NodeRef<CMwNod> LegacyInventory => NodeRef.GetOrCreate(ref owner.legacyInventoryRef);
+        public NodeRef<CMwNod> FidItemModelInventory => NodeRef.GetOrCreate(ref owner.fidItemModelInventoryRef);
+        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecalSponsor1x1Big => NodeRef.GetOrCreate(ref owner.customDeco_Default_FidDecalSponsor1x1BigRef);
+        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecalSponsor4x1 => NodeRef.GetOrCreate(ref owner.customDeco_Default_FidDecalSponsor4x1Ref);
+        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen16x9 => NodeRef.GetOrCreate(ref owner.customDeco_Default_FidDecorationScreen16x9Ref);
+        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen8x1 => NodeRef.GetOrCreate(ref owner.customDeco_Default_FidDecorationScreen8x1Ref);
+        public NodeRef<CPlugFileImg> CustomDeco_Default_FidDecorationScreen16x1 => NodeRef.GetOrCreate(ref owner.customDeco_Default_FidDecorationScreen16x1Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement16x9 => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidAdvertisement16x9Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement1x1 => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidAdvertisement1x1Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement2x1 => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidAdvertisement2x1Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement2x3 => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidAdvertisement2x3Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidAdvertisement4x1 => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidAdvertisement4x1Ref);
+        public NodeRef<CPlugFileImg> BlockSkins_Default_FidItemFlag => NodeRef.GetOrCreate(ref owner.blockSkins_Default_FidItemFlagRef);
+        public NodeRef<CPlugMaterial> DefaultMaterial => NodeRef.GetOrCreate(ref owner.defaultMaterialRef);
+        public NodeRef<CMwNod> FidMacroBlockInfoInventory => NodeRef.GetOrCreate(ref owner.fidMacroBlockInfoInventoryRef);
+        public NodeRef<CPlugMediaClipList> DefaultSpawnClipList => NodeRef.GetOrCreate(ref owner.defaultSpawnClipListRef);
+        public NodeRef<CMwNod> LegacyLightMap => NodeRef.GetOrCreate(ref owner.legacyLightMapRef);
+        public NodeRef<CPlugMaterialColorTargetTable> FidColorTargetTable => NodeRef.GetOrCreate(ref owner.fidColorTargetTableRef);
+        public NodeRef<CPlugBitmap> LegacyBitmapDisplayControlDefaultTVProgram => NodeRef.GetOrCreate(ref owner.legacyBitmapDisplayControlDefaultTVProgramRef);
+        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10A => NodeRef.GetOrCreate(ref owner.bitmapDisplayControlDefaultTVProgram_64x10ARef);
+        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10B => NodeRef.GetOrCreate(ref owner.bitmapDisplayControlDefaultTVProgram_64x10BRef);
+        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_64x10C => NodeRef.GetOrCreate(ref owner.bitmapDisplayControlDefaultTVProgram_64x10CRef);
+        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_2x3 => NodeRef.GetOrCreate(ref owner.bitmapDisplayControlDefaultTVProgram_2x3Ref);
+        public NodeRef<CPlugBitmap> BitmapDisplayControlDefaultTVProgram_155 => NodeRef.GetOrCreate(ref owner.bitmapDisplayControlDefaultTVProgram_155Ref);
+        public NodeRef<CPlugGameSkinAndFolder> ColorBlindnessModifier => NodeRef.GetOrCreate(ref owner.colorBlindnessModifierRef);
+        public NodeRef<CPlugGameSkinAndFolder> GlobalMaterialModifier => NodeRef.GetOrCreate(ref owner.globalMaterialModifierRef);
     }
     public readonly struct CompleteZoneListReferenceView
     {
@@ -1286,12 +1286,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             for (var i = 0; i < completeZoneList.Count; i++) yield return new("CompleteZoneList" + "[" + i + "]", completeZoneList.GetReference(i));
         }
-        yield return new("DefaultZone", defaultZoneRef);
-        yield return new("DefaultDecoration", defaultDecorationRef);
-        yield return new("IconFid", iconFidRef);
-        yield return new("IconSmallFid", iconSmallFidRef);
-        yield return new("MapFid", mapFidRef);
-        yield return new("LoadScreenFid", loadScreenFidRef);
+        yield return new("DefaultZone", NodeRef.GetOrCreate(ref defaultZoneRef));
+        yield return new("DefaultDecoration", NodeRef.GetOrCreate(ref defaultDecorationRef));
+        yield return new("IconFid", NodeRef.GetOrCreate(ref iconFidRef));
+        yield return new("IconSmallFid", NodeRef.GetOrCreate(ref iconSmallFidRef));
+        yield return new("MapFid", NodeRef.GetOrCreate(ref mapFidRef));
+        yield return new("LoadScreenFid", NodeRef.GetOrCreate(ref loadScreenFidRef));
         if (replacementTerrainModifiers is not null)
         {
             for (var i = 0; i < replacementTerrainModifiers.Count; i++) yield return new("ReplacementTerrainModifiers" + "[" + i + "]", replacementTerrainModifiers.GetReference(i));
@@ -1300,46 +1300,46 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             for (var i = 0; i < particleEmitterModelsFids.Count; i++) yield return new("ParticleEmitterModelsFids" + "[" + i + "]", particleEmitterModelsFids.GetReference(i));
         }
-        yield return new("LegacyDecoration", legacyDecorationRef);
-        yield return new("MarksModel", marksModelRef);
-        yield return new("FidFuncShaderCloudsX2", fidFuncShaderCloudsX2Ref);
-        yield return new("FidPlugBitmapCloudsX2", fidPlugBitmapCloudsX2Ref);
-        yield return new("VehicleEnvLayer_FidBitmap", vehicleEnvLayer_FidBitmapRef);
-        yield return new("OffZone_FogMatter", offZone_FogMatterRef);
-        yield return new("WaterArray", waterArrayRef);
-        yield return new("WaterG_BitmapNormal", waterG_BitmapNormalRef);
-        yield return new("VehicleStyles", vehicleStylesRef);
-        yield return new("ItemPlacementGroups", itemPlacementGroupsRef);
-        yield return new("AdnRandomGenList", adnRandomGenListRef);
-        yield return new("FidBlockInfoGroups", fidBlockInfoGroupsRef);
-        yield return new("LegacyCustomDecoImage", legacyCustomDecoImageRef);
-        yield return new("FidBlockInfoInventory", fidBlockInfoInventoryRef);
-        yield return new("LegacyInventory", legacyInventoryRef);
-        yield return new("FidItemModelInventory", fidItemModelInventoryRef);
-        yield return new("CustomDeco_Default_FidDecalSponsor1x1Big", customDeco_Default_FidDecalSponsor1x1BigRef);
-        yield return new("CustomDeco_Default_FidDecalSponsor4x1", customDeco_Default_FidDecalSponsor4x1Ref);
-        yield return new("CustomDeco_Default_FidDecorationScreen16x9", customDeco_Default_FidDecorationScreen16x9Ref);
-        yield return new("CustomDeco_Default_FidDecorationScreen8x1", customDeco_Default_FidDecorationScreen8x1Ref);
-        yield return new("CustomDeco_Default_FidDecorationScreen16x1", customDeco_Default_FidDecorationScreen16x1Ref);
-        yield return new("BlockSkins_Default_FidAdvertisement16x9", blockSkins_Default_FidAdvertisement16x9Ref);
-        yield return new("BlockSkins_Default_FidAdvertisement1x1", blockSkins_Default_FidAdvertisement1x1Ref);
-        yield return new("BlockSkins_Default_FidAdvertisement2x1", blockSkins_Default_FidAdvertisement2x1Ref);
-        yield return new("BlockSkins_Default_FidAdvertisement2x3", blockSkins_Default_FidAdvertisement2x3Ref);
-        yield return new("BlockSkins_Default_FidAdvertisement4x1", blockSkins_Default_FidAdvertisement4x1Ref);
-        yield return new("BlockSkins_Default_FidItemFlag", blockSkins_Default_FidItemFlagRef);
-        yield return new("DefaultMaterial", defaultMaterialRef);
-        yield return new("FidMacroBlockInfoInventory", fidMacroBlockInfoInventoryRef);
-        yield return new("DefaultSpawnClipList", defaultSpawnClipListRef);
-        yield return new("LegacyLightMap", legacyLightMapRef);
-        yield return new("FidColorTargetTable", fidColorTargetTableRef);
-        yield return new("LegacyBitmapDisplayControlDefaultTVProgram", legacyBitmapDisplayControlDefaultTVProgramRef);
-        yield return new("BitmapDisplayControlDefaultTVProgram_64x10A", bitmapDisplayControlDefaultTVProgram_64x10ARef);
-        yield return new("BitmapDisplayControlDefaultTVProgram_64x10B", bitmapDisplayControlDefaultTVProgram_64x10BRef);
-        yield return new("BitmapDisplayControlDefaultTVProgram_64x10C", bitmapDisplayControlDefaultTVProgram_64x10CRef);
-        yield return new("BitmapDisplayControlDefaultTVProgram_2x3", bitmapDisplayControlDefaultTVProgram_2x3Ref);
-        yield return new("BitmapDisplayControlDefaultTVProgram_155", bitmapDisplayControlDefaultTVProgram_155Ref);
-        yield return new("ColorBlindnessModifier", colorBlindnessModifierRef);
-        yield return new("GlobalMaterialModifier", globalMaterialModifierRef);
+        yield return new("LegacyDecoration", NodeRef.GetOrCreate(ref legacyDecorationRef));
+        yield return new("MarksModel", NodeRef.GetOrCreate(ref marksModelRef));
+        yield return new("FidFuncShaderCloudsX2", NodeRef.GetOrCreate(ref fidFuncShaderCloudsX2Ref));
+        yield return new("FidPlugBitmapCloudsX2", NodeRef.GetOrCreate(ref fidPlugBitmapCloudsX2Ref));
+        yield return new("VehicleEnvLayer_FidBitmap", NodeRef.GetOrCreate(ref vehicleEnvLayer_FidBitmapRef));
+        yield return new("OffZone_FogMatter", NodeRef.GetOrCreate(ref offZone_FogMatterRef));
+        yield return new("WaterArray", NodeRef.GetOrCreate(ref waterArrayRef));
+        yield return new("WaterG_BitmapNormal", NodeRef.GetOrCreate(ref waterG_BitmapNormalRef));
+        yield return new("VehicleStyles", NodeRef.GetOrCreate(ref vehicleStylesRef));
+        yield return new("ItemPlacementGroups", NodeRef.GetOrCreate(ref itemPlacementGroupsRef));
+        yield return new("AdnRandomGenList", NodeRef.GetOrCreate(ref adnRandomGenListRef));
+        yield return new("FidBlockInfoGroups", NodeRef.GetOrCreate(ref fidBlockInfoGroupsRef));
+        yield return new("LegacyCustomDecoImage", NodeRef.GetOrCreate(ref legacyCustomDecoImageRef));
+        yield return new("FidBlockInfoInventory", NodeRef.GetOrCreate(ref fidBlockInfoInventoryRef));
+        yield return new("LegacyInventory", NodeRef.GetOrCreate(ref legacyInventoryRef));
+        yield return new("FidItemModelInventory", NodeRef.GetOrCreate(ref fidItemModelInventoryRef));
+        yield return new("CustomDeco_Default_FidDecalSponsor1x1Big", NodeRef.GetOrCreate(ref customDeco_Default_FidDecalSponsor1x1BigRef));
+        yield return new("CustomDeco_Default_FidDecalSponsor4x1", NodeRef.GetOrCreate(ref customDeco_Default_FidDecalSponsor4x1Ref));
+        yield return new("CustomDeco_Default_FidDecorationScreen16x9", NodeRef.GetOrCreate(ref customDeco_Default_FidDecorationScreen16x9Ref));
+        yield return new("CustomDeco_Default_FidDecorationScreen8x1", NodeRef.GetOrCreate(ref customDeco_Default_FidDecorationScreen8x1Ref));
+        yield return new("CustomDeco_Default_FidDecorationScreen16x1", NodeRef.GetOrCreate(ref customDeco_Default_FidDecorationScreen16x1Ref));
+        yield return new("BlockSkins_Default_FidAdvertisement16x9", NodeRef.GetOrCreate(ref blockSkins_Default_FidAdvertisement16x9Ref));
+        yield return new("BlockSkins_Default_FidAdvertisement1x1", NodeRef.GetOrCreate(ref blockSkins_Default_FidAdvertisement1x1Ref));
+        yield return new("BlockSkins_Default_FidAdvertisement2x1", NodeRef.GetOrCreate(ref blockSkins_Default_FidAdvertisement2x1Ref));
+        yield return new("BlockSkins_Default_FidAdvertisement2x3", NodeRef.GetOrCreate(ref blockSkins_Default_FidAdvertisement2x3Ref));
+        yield return new("BlockSkins_Default_FidAdvertisement4x1", NodeRef.GetOrCreate(ref blockSkins_Default_FidAdvertisement4x1Ref));
+        yield return new("BlockSkins_Default_FidItemFlag", NodeRef.GetOrCreate(ref blockSkins_Default_FidItemFlagRef));
+        yield return new("DefaultMaterial", NodeRef.GetOrCreate(ref defaultMaterialRef));
+        yield return new("FidMacroBlockInfoInventory", NodeRef.GetOrCreate(ref fidMacroBlockInfoInventoryRef));
+        yield return new("DefaultSpawnClipList", NodeRef.GetOrCreate(ref defaultSpawnClipListRef));
+        yield return new("LegacyLightMap", NodeRef.GetOrCreate(ref legacyLightMapRef));
+        yield return new("FidColorTargetTable", NodeRef.GetOrCreate(ref fidColorTargetTableRef));
+        yield return new("LegacyBitmapDisplayControlDefaultTVProgram", NodeRef.GetOrCreate(ref legacyBitmapDisplayControlDefaultTVProgramRef));
+        yield return new("BitmapDisplayControlDefaultTVProgram_64x10A", NodeRef.GetOrCreate(ref bitmapDisplayControlDefaultTVProgram_64x10ARef));
+        yield return new("BitmapDisplayControlDefaultTVProgram_64x10B", NodeRef.GetOrCreate(ref bitmapDisplayControlDefaultTVProgram_64x10BRef));
+        yield return new("BitmapDisplayControlDefaultTVProgram_64x10C", NodeRef.GetOrCreate(ref bitmapDisplayControlDefaultTVProgram_64x10CRef));
+        yield return new("BitmapDisplayControlDefaultTVProgram_2x3", NodeRef.GetOrCreate(ref bitmapDisplayControlDefaultTVProgram_2x3Ref));
+        yield return new("BitmapDisplayControlDefaultTVProgram_155", NodeRef.GetOrCreate(ref bitmapDisplayControlDefaultTVProgram_155Ref));
+        yield return new("ColorBlindnessModifier", NodeRef.GetOrCreate(ref colorBlindnessModifierRef));
+        yield return new("GlobalMaterialModifier", NodeRef.GetOrCreate(ref globalMaterialModifierRef));
         yield break;
     }
 
@@ -1716,7 +1716,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             rw.Id(ref n.collection);
             n.completeZoneList = rw.ListNodeRef_deprec<CGameCtnZone>(n.completeZoneList);
-            rw.NodeRef(n.defaultZoneRef);
+            rw.NodeRef(ref n.defaultZoneRef);
         }
     }
 
@@ -1737,7 +1737,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             rw.Id(ref n.collection);
             n.completeZoneList = rw.ListNodeRef_deprec<CGameCtnZone>(n.completeZoneList);
-            rw.NodeRef(n.defaultZoneRef);
+            rw.NodeRef(ref n.defaultZoneRef);
             rw.Boolean(ref n.needUnlock);
         }
     }
@@ -1759,7 +1759,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             rw.Id(ref n.collection);
             n.completeZoneList = rw.ListNodeRef_deprec<CGameCtnZone>(n.completeZoneList);
-            rw.NodeRef(n.defaultZoneRef);
+            rw.NodeRef(ref n.defaultZoneRef);
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.vehicle);
         }
@@ -1782,7 +1782,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.defaultDecorationRef);
+            rw.NodeRef(ref n.defaultDecorationRef);
         }
     }
 
@@ -1802,7 +1802,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             rw.Id(ref n.collection);
             n.completeZoneList = rw.ListNodeRef_deprec<CGameCtnZone>(n.completeZoneList);
-            rw.NodeRef(n.defaultZoneRef);
+            rw.NodeRef(ref n.defaultZoneRef);
             rw.Boolean(ref n.needUnlock);
             rw.Single(ref n.squareSize);
             rw.Single(ref n.squareHeight);
@@ -1864,18 +1864,18 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            var hasIconFid = rw.Boolean((rw.Writer is null ? default : (n.iconFidRef.Kind != NodeRefKind.None)));
+            var hasIconFid = rw.Boolean((rw.Writer is null ? default : ((n.iconFidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
             if (hasIconFid)
             {
-                rw.NodeRef(n.iconFidRef);
+                rw.NodeRef(ref n.iconFidRef);
             }
 
-            var hasIconSmallFid = rw.Boolean((rw.Writer is null ? default : (n.iconSmallFidRef.Kind != NodeRefKind.None)));
+            var hasIconSmallFid = rw.Boolean((rw.Writer is null ? default : ((n.iconSmallFidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
             if (hasIconSmallFid)
             {
-                rw.NodeRef(n.iconSmallFidRef);
+                rw.NodeRef(ref n.iconSmallFidRef);
             }
         }
     }
@@ -1912,7 +1912,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.defaultDecorationRef);
+            rw.NodeRef(ref n.defaultDecorationRef);
         }
     }
 
@@ -1975,7 +1975,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.mapFidRef);
+            rw.NodeRef(ref n.mapFidRef);
             rw.Rect(ref n.mapRect);
             rw.Vec2(ref n.mapCoordElem);
         }
@@ -1995,7 +1995,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.mapFidRef);
+            rw.NodeRef(ref n.mapFidRef);
             rw.Rect(ref n.mapRect);
             rw.Vec2(ref n.mapCoordElem);
             rw.Vec2(ref n.mapCoordIcon);
@@ -2019,7 +2019,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.loadScreenFidRef);
+            rw.NodeRef(ref n.loadScreenFidRef);
         }
     }
 
@@ -2037,7 +2037,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.mapFidRef);
+            rw.NodeRef(ref n.mapFidRef);
             rw.Rect(ref n.mapRect);
             rw.Vec2(ref n.mapCoordElem);
             rw.Vec2(ref n.mapCoordIcon);
@@ -2411,7 +2411,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacyDecorationRef);
+            rw.NodeRef(ref n.legacyDecorationRef);
         }
     }
 
@@ -2518,7 +2518,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.marksModelRef);
+            rw.NodeRef(ref n.marksModelRef);
         }
     }
 
@@ -2558,7 +2558,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.fidFuncShaderCloudsX2Ref);
+            rw.NodeRef(ref n.fidFuncShaderCloudsX2Ref);
         }
     }
 
@@ -2643,12 +2643,12 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.fidFuncShaderCloudsX2Ref);
-            rw.NodeRef(n.fidPlugBitmapCloudsX2Ref);
+            rw.NodeRef(ref n.fidFuncShaderCloudsX2Ref);
+            rw.NodeRef(ref n.fidPlugBitmapCloudsX2Ref);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.vehicleEnvLayer_FidBitmapRef);
+                rw.NodeRef(ref n.vehicleEnvLayer_FidBitmapRef);
                 rw.EnumInt32<EVehicleEnvLayer>(ref n.vehicleEnvLayer);
             }
         }
@@ -2686,7 +2686,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.offZone_FogMatterRef);
+            rw.NodeRef(ref n.offZone_FogMatterRef);
         }
     }
 
@@ -2782,9 +2782,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version >= 8)
             {
-                rw.NodeRef(n.waterArrayRef);
+                rw.NodeRef(ref n.waterArrayRef);
 
-                if (n.waterArrayRef.Kind == NodeRefKind.None)
+                if ((n.waterArrayRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
                     rw.Int32(ref n.water0Version);
                     rw.ReadableWritable<Water>(ref n.water1, version: Version);
@@ -2793,7 +2793,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.NodeRef(n.waterG_BitmapNormalRef);
+                rw.NodeRef(ref n.waterG_BitmapNormalRef);
                 rw.Single(ref n.waterG_BumpSpeedUV);
                 rw.Single(ref n.waterG_BumpScaleUV);
                 rw.Single(ref n.waterG_BumpScale);
@@ -2865,21 +2865,21 @@ public partial class CGameCtnCollection : CMwNod, IClass
                 rw.Vec3(ref n.legacyVehicleStyleColor);
             }
 
-            rw.NodeRef(n.vehicleStylesRef);
+            rw.NodeRef(ref n.vehicleStylesRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.itemPlacementGroupsRef);
+                rw.NodeRef(ref n.itemPlacementGroupsRef);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef(n.adnRandomGenListRef);
+                rw.NodeRef(ref n.adnRandomGenListRef);
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef(n.fidBlockInfoGroupsRef);
+                rw.NodeRef(ref n.fidBlockInfoGroupsRef);
             }
 
             if (Version >= 5)
@@ -2890,27 +2890,27 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
                     if (Version >= 8)
                     {
-                        rw.NodeRef(n.legacyCustomDecoImageRef);
+                        rw.NodeRef(ref n.legacyCustomDecoImageRef);
                     }
                 }
             }
 
             if (Version >= 6)
             {
-                rw.NodeRef(n.fidBlockInfoInventoryRef);
+                rw.NodeRef(ref n.fidBlockInfoInventoryRef);
             }
 
             if (Version >= 7)
             {
                 if (Version <= 8)
                 {
-                    rw.NodeRef(n.legacyInventoryRef);
+                    rw.NodeRef(ref n.legacyInventoryRef);
                 }
             }
 
             if (Version >= 10)
             {
-                rw.NodeRef(n.fidItemModelInventoryRef);
+                rw.NodeRef(ref n.fidItemModelInventoryRef);
             }
 
             if (Version == 12)
@@ -2925,40 +2925,40 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version >= 20)
             {
-                rw.NodeRef(n.customDeco_Default_FidDecalSponsor1x1BigRef);
+                rw.NodeRef(ref n.customDeco_Default_FidDecalSponsor1x1BigRef);
             }
 
             if (Version >= 21)
             {
-                rw.NodeRef(n.customDeco_Default_FidDecalSponsor4x1Ref);
-                rw.NodeRef(n.customDeco_Default_FidDecorationScreen16x9Ref);
-                rw.NodeRef(n.customDeco_Default_FidDecorationScreen8x1Ref);
-                rw.NodeRef(n.customDeco_Default_FidDecorationScreen16x1Ref);
+                rw.NodeRef(ref n.customDeco_Default_FidDecalSponsor4x1Ref);
+                rw.NodeRef(ref n.customDeco_Default_FidDecorationScreen16x9Ref);
+                rw.NodeRef(ref n.customDeco_Default_FidDecorationScreen8x1Ref);
+                rw.NodeRef(ref n.customDeco_Default_FidDecorationScreen16x1Ref);
             }
 
             if (Version >= 22)
             {
-                rw.NodeRef(n.blockSkins_Default_FidAdvertisement16x9Ref);
-                rw.NodeRef(n.blockSkins_Default_FidAdvertisement1x1Ref);
-                rw.NodeRef(n.blockSkins_Default_FidAdvertisement2x1Ref);
-                rw.NodeRef(n.blockSkins_Default_FidAdvertisement2x3Ref);
-                rw.NodeRef(n.blockSkins_Default_FidAdvertisement4x1Ref);
-                rw.NodeRef(n.blockSkins_Default_FidItemFlagRef);
+                rw.NodeRef(ref n.blockSkins_Default_FidAdvertisement16x9Ref);
+                rw.NodeRef(ref n.blockSkins_Default_FidAdvertisement1x1Ref);
+                rw.NodeRef(ref n.blockSkins_Default_FidAdvertisement2x1Ref);
+                rw.NodeRef(ref n.blockSkins_Default_FidAdvertisement2x3Ref);
+                rw.NodeRef(ref n.blockSkins_Default_FidAdvertisement4x1Ref);
+                rw.NodeRef(ref n.blockSkins_Default_FidItemFlagRef);
             }
 
             if (Version >= 13)
             {
-                rw.NodeRef(n.defaultMaterialRef);
+                rw.NodeRef(ref n.defaultMaterialRef);
             }
 
             if (Version >= 14)
             {
-                rw.NodeRef(n.fidMacroBlockInfoInventoryRef);
+                rw.NodeRef(ref n.fidMacroBlockInfoInventoryRef);
             }
 
             if (Version >= 15)
             {
-                rw.NodeRef(n.defaultSpawnClipListRef);
+                rw.NodeRef(ref n.defaultSpawnClipListRef);
             }
 
             if (Version >= 16)
@@ -3035,7 +3035,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version == 1)
             {
-                rw.NodeRef(n.legacyLightMapRef);
+                rw.NodeRef(ref n.legacyLightMapRef);
             }
 
             if (Version >= 3)
@@ -3088,7 +3088,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(n.fidColorTargetTableRef);
+                    rw.NodeRef(ref n.fidColorTargetTableRef);
                 }
             }
         }
@@ -3170,17 +3170,17 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (Version <= 1)
             {
-                rw.NodeRef(n.legacyBitmapDisplayControlDefaultTVProgramRef);
+                rw.NodeRef(ref n.legacyBitmapDisplayControlDefaultTVProgramRef);
             }
 
-            rw.NodeRef(n.bitmapDisplayControlDefaultTVProgram_64x10ARef);
-            rw.NodeRef(n.bitmapDisplayControlDefaultTVProgram_64x10BRef);
-            rw.NodeRef(n.bitmapDisplayControlDefaultTVProgram_64x10CRef);
-            rw.NodeRef(n.bitmapDisplayControlDefaultTVProgram_2x3Ref);
+            rw.NodeRef(ref n.bitmapDisplayControlDefaultTVProgram_64x10ARef);
+            rw.NodeRef(ref n.bitmapDisplayControlDefaultTVProgram_64x10BRef);
+            rw.NodeRef(ref n.bitmapDisplayControlDefaultTVProgram_64x10CRef);
+            rw.NodeRef(ref n.bitmapDisplayControlDefaultTVProgram_2x3Ref);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.bitmapDisplayControlDefaultTVProgram_155Ref);
+                rw.NodeRef(ref n.bitmapDisplayControlDefaultTVProgram_155Ref);
             }
         }
     }
@@ -3289,7 +3289,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.colorBlindnessModifierRef);
+            rw.NodeRef(ref n.colorBlindnessModifierRef);
         }
     }
 
@@ -3388,7 +3388,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.globalMaterialModifierRef);
+            rw.NodeRef(ref n.globalMaterialModifierRef);
         }
     }
 
@@ -3443,39 +3443,39 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
     public partial class SCustomizableDeco : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CPlugBitmap> decalSponsor1x1BigRef = new();
+        private NodeRef<CPlugBitmap>? decalSponsor1x1BigRef;
         public CPlugBitmap? DecalSponsor1x1Big
         {
-            get => decalSponsor1x1BigRef.Resolve();
-            set => decalSponsor1x1BigRef.SetEmbedded(value);
+            get => decalSponsor1x1BigRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref decalSponsor1x1BigRef, value);
         }
 
-        private NodeRef<CPlugBitmap> decalSponsor4x1Ref = new();
+        private NodeRef<CPlugBitmap>? decalSponsor4x1Ref;
         public CPlugBitmap? DecalSponsor4x1
         {
-            get => decalSponsor4x1Ref.Resolve();
-            set => decalSponsor4x1Ref.SetEmbedded(value);
+            get => decalSponsor4x1Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref decalSponsor4x1Ref, value);
         }
 
-        private NodeRef<CPlugBitmap> decorationScreen16x9Ref = new();
+        private NodeRef<CPlugBitmap>? decorationScreen16x9Ref;
         public CPlugBitmap? DecorationScreen16x9
         {
-            get => decorationScreen16x9Ref.Resolve();
-            set => decorationScreen16x9Ref.SetEmbedded(value);
+            get => decorationScreen16x9Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref decorationScreen16x9Ref, value);
         }
 
-        private NodeRef<CPlugBitmap> decorationScreen8x1Ref = new();
+        private NodeRef<CPlugBitmap>? decorationScreen8x1Ref;
         public CPlugBitmap? DecorationScreen8x1
         {
-            get => decorationScreen8x1Ref.Resolve();
-            set => decorationScreen8x1Ref.SetEmbedded(value);
+            get => decorationScreen8x1Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref decorationScreen8x1Ref, value);
         }
 
-        private NodeRef<CPlugBitmap> decorationScreen16x1Ref = new();
+        private NodeRef<CPlugBitmap>? decorationScreen16x1Ref;
         public CPlugBitmap? DecorationScreen16x1
         {
-            get => decorationScreen16x1Ref.Resolve();
-            set => decorationScreen16x1Ref.SetEmbedded(value);
+            get => decorationScreen16x1Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref decorationScreen16x1Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -3483,19 +3483,19 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             private readonly SCustomizableDeco owner;
             internal NodeRefView(SCustomizableDeco owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> DecalSponsor1x1Big => owner.decalSponsor1x1BigRef;
-            public NodeRef<CPlugBitmap> DecalSponsor4x1 => owner.decalSponsor4x1Ref;
-            public NodeRef<CPlugBitmap> DecorationScreen16x9 => owner.decorationScreen16x9Ref;
-            public NodeRef<CPlugBitmap> DecorationScreen8x1 => owner.decorationScreen8x1Ref;
-            public NodeRef<CPlugBitmap> DecorationScreen16x1 => owner.decorationScreen16x1Ref;
+            public NodeRef<CPlugBitmap> DecalSponsor1x1Big => NodeRef.GetOrCreate(ref owner.decalSponsor1x1BigRef);
+            public NodeRef<CPlugBitmap> DecalSponsor4x1 => NodeRef.GetOrCreate(ref owner.decalSponsor4x1Ref);
+            public NodeRef<CPlugBitmap> DecorationScreen16x9 => NodeRef.GetOrCreate(ref owner.decorationScreen16x9Ref);
+            public NodeRef<CPlugBitmap> DecorationScreen8x1 => NodeRef.GetOrCreate(ref owner.decorationScreen8x1Ref);
+            public NodeRef<CPlugBitmap> DecorationScreen16x1 => NodeRef.GetOrCreate(ref owner.decorationScreen16x1Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("DecalSponsor1x1Big", decalSponsor1x1BigRef);
-            yield return new("DecalSponsor4x1", decalSponsor4x1Ref);
-            yield return new("DecorationScreen16x9", decorationScreen16x9Ref);
-            yield return new("DecorationScreen8x1", decorationScreen8x1Ref);
-            yield return new("DecorationScreen16x1", decorationScreen16x1Ref);
+            yield return new("DecalSponsor1x1Big", NodeRef.GetOrCreate(ref decalSponsor1x1BigRef));
+            yield return new("DecalSponsor4x1", NodeRef.GetOrCreate(ref decalSponsor4x1Ref));
+            yield return new("DecorationScreen16x9", NodeRef.GetOrCreate(ref decorationScreen16x9Ref));
+            yield return new("DecorationScreen8x1", NodeRef.GetOrCreate(ref decorationScreen8x1Ref));
+            yield return new("DecorationScreen16x1", NodeRef.GetOrCreate(ref decorationScreen16x1Ref));
             yield break;
         }
 
@@ -3518,14 +3518,14 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.decalSponsor1x1BigRef);
+            rw.NodeRef(ref this.decalSponsor1x1BigRef);
 
             if (v >= 11)
             {
-                rw.NodeRef(this.decalSponsor4x1Ref);
-                rw.NodeRef(this.decorationScreen16x9Ref);
-                rw.NodeRef(this.decorationScreen8x1Ref);
-                rw.NodeRef(this.decorationScreen16x1Ref);
+                rw.NodeRef(ref this.decalSponsor4x1Ref);
+                rw.NodeRef(ref this.decorationScreen16x9Ref);
+                rw.NodeRef(ref this.decorationScreen8x1Ref);
+                rw.NodeRef(ref this.decorationScreen16x1Ref);
             }
         }
 
@@ -3572,18 +3572,18 @@ public partial class CGameCtnCollection : CMwNod, IClass
             set => this.u04 = value;
         }
 
-        private NodeRef<CMwNod> u05Ref = new();
+        private NodeRef<CMwNod>? u05Ref;
         public CMwNod? U05
         {
-            get => u05Ref.Resolve();
-            set => u05Ref.SetEmbedded(value);
+            get => u05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u05Ref, value);
         }
 
-        private NodeRef<CMwNod> u06Ref = new();
+        private NodeRef<CMwNod>? u06Ref;
         public CMwNod? U06
         {
-            get => u06Ref.Resolve();
-            set => u06Ref.SetEmbedded(value);
+            get => u06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u06Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -3591,13 +3591,13 @@ public partial class CGameCtnCollection : CMwNod, IClass
         {
             private readonly Water owner;
             internal NodeRefView(Water owner) => this.owner = owner;
-            public NodeRef<CMwNod> U05 => owner.u05Ref;
-            public NodeRef<CMwNod> U06 => owner.u06Ref;
+            public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.u05Ref);
+            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.u06Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U05", u05Ref);
-            yield return new("U06", u06Ref);
+            yield return new("U05", NodeRef.GetOrCreate(ref u05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref u06Ref));
             yield break;
         }
 
@@ -3632,11 +3632,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
             if (v >= 2)
             {
-                rw.NodeRef(this.u05Ref);
+                rw.NodeRef(ref this.u05Ref);
 
                 if (v >= 6)
                 {
-                    rw.NodeRef(this.u06Ref);
+                    rw.NodeRef(ref this.u06Ref);
                 }
             }
         }

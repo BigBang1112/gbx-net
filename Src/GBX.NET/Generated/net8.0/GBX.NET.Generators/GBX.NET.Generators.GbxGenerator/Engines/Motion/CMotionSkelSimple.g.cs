@@ -36,12 +36,12 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CFuncSkelValues> skelValuesRef = new();
+    private NodeRef<CFuncSkelValues>? skelValuesRef;
     [AppliedWithChunk<Chunk08036000>]
     public CFuncSkelValues? SkelValues
     {
-        get => skelValuesRef.Resolve();
-        set => skelValuesRef.SetEmbedded(value);
+        get => skelValuesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skelValuesRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
     {
         private readonly CMotionSkelSimple owner;
         internal NodeRefView(CMotionSkelSimple owner) => this.owner = owner;
-        public NodeRef<CFuncSkelValues> SkelValues => owner.skelValuesRef;
+        public NodeRef<CFuncSkelValues> SkelValues => NodeRef.GetOrCreate(ref owner.skelValuesRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("SkelValues", skelValuesRef);
+        yield return new("SkelValues", NodeRef.GetOrCreate(ref skelValuesRef));
         yield break;
     }
 
@@ -82,7 +82,7 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionSkelSimple n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.skelValuesRef);
+            rw.NodeRef(ref n.skelValuesRef);
         }
     }
 

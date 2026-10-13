@@ -361,18 +361,18 @@ public partial class CPlugGameSkin : CMwNod, IClass
 
     public partial class Fid : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> nodeRef = new();
+        private NodeRef<CMwNod>? nodeRef;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Fid owner;
             internal NodeRefView(Fid owner) => this.owner = owner;
-            public NodeRef<CMwNod> Node => owner.nodeRef;
+            public NodeRef<CMwNod> Node => NodeRef.GetOrCreate(ref owner.nodeRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Node", nodeRef);
+            yield return new("Node", NodeRef.GetOrCreate(ref nodeRef));
             yield break;
         }
 

@@ -44,9 +44,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         set => this.trainingMedalsScores = value;
     }
 
-    private NodeRef<CGamePlayerOfficialScores> officialScores1Ref = new();
+    private NodeRef<CGamePlayerOfficialScores>? officialScores1Ref;
 
-    private NodeRef<CGamePlayerOfficialScores> officialScores2Ref = new();
+    private NodeRef<CGamePlayerOfficialScores>? officialScores2Ref;
 
     private LadderMatchResult[]? ladderMatchResults;
     [AppliedWithChunk<Chunk03146005>]
@@ -61,14 +61,14 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     {
         private readonly CGamePlayerProfileChunk_GameScores owner;
         internal NodeRefView(CGamePlayerProfileChunk_GameScores owner) => this.owner = owner;
-        public NodeRef<CGamePlayerOfficialScores> OfficialScores1 => owner.officialScores1Ref;
-        public NodeRef<CGamePlayerOfficialScores> OfficialScores2 => owner.officialScores2Ref;
+        public NodeRef<CGamePlayerOfficialScores> OfficialScores1 => NodeRef.GetOrCreate(ref owner.officialScores1Ref);
+        public NodeRef<CGamePlayerOfficialScores> OfficialScores2 => NodeRef.GetOrCreate(ref owner.officialScores2Ref);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("OfficialScores1", officialScores1Ref);
-        yield return new("OfficialScores2", officialScores2Ref);
+        yield return new("OfficialScores1", NodeRef.GetOrCreate(ref officialScores1Ref));
+        yield return new("OfficialScores2", NodeRef.GetOrCreate(ref officialScores2Ref));
         yield break;
     }
 
@@ -126,7 +126,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.officialScores1Ref);
+                rw.NodeRef(ref n.officialScores1Ref);
             });
         }
     }
@@ -151,7 +151,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.officialScores2Ref);
+                rw.NodeRef(ref n.officialScores2Ref);
             });
         }
     }
@@ -179,18 +179,18 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
     public partial class STrainingMedalsScores : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CGamePlayerOfficialScores> officialScoresRef = new();
+        private NodeRef<CGamePlayerOfficialScores>? officialScoresRef;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly STrainingMedalsScores owner;
             internal NodeRefView(STrainingMedalsScores owner) => this.owner = owner;
-            public NodeRef<CGamePlayerOfficialScores> OfficialScores => owner.officialScoresRef;
+            public NodeRef<CGamePlayerOfficialScores> OfficialScores => NodeRef.GetOrCreate(ref owner.officialScoresRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("OfficialScores", officialScoresRef);
+            yield return new("OfficialScores", NodeRef.GetOrCreate(ref officialScoresRef));
             yield break;
         }
 
@@ -216,7 +216,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(this.officialScoresRef);
+                rw.NodeRef(ref this.officialScoresRef);
             });
         }
 

@@ -36,12 +36,12 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugEntRecordData> recordDataRef = new();
+    private NodeRef<CPlugEntRecordData>? recordDataRef;
     [AppliedWithChunk<Chunk0329F000>]
     public CPlugEntRecordData? RecordData
     {
-        get => recordDataRef.Resolve();
-        set => recordDataRef.SetEmbedded(value);
+        get => recordDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref recordDataRef, value);
     }
 
     private TimeSingle? start;
@@ -222,12 +222,12 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     {
         private readonly CGameCtnMediaBlockEntity owner;
         internal NodeRefView(CGameCtnMediaBlockEntity owner) => this.owner = owner;
-        public NodeRef<CPlugEntRecordData> RecordData => owner.recordDataRef;
+        public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("RecordData", recordDataRef);
+        yield return new("RecordData", NodeRef.GetOrCreate(ref recordDataRef));
         yield break;
     }
 
@@ -309,7 +309,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.recordDataRef);
+            rw.NodeRef(ref n.recordDataRef);
 
             if (Version <= 3)
             {

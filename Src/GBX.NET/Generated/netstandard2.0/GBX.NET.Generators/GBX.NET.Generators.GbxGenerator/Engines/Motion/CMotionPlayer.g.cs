@@ -45,7 +45,7 @@ public partial class CMotionPlayer : CMotion, IClass
         set => this.hasBaseLegacy = value;
     }
 
-    private NodeRef<CMotionCmdBase> baseRef = new();
+    private NodeRef<CMotionCmdBase>? baseRef;
     [AppliedWithChunk<Chunk08034000>]
     [AppliedWithChunk<Chunk08034001>]
     [AppliedWithChunk<Chunk08034002>]
@@ -53,16 +53,16 @@ public partial class CMotionPlayer : CMotion, IClass
     [AppliedWithChunk<Chunk08034004>]
     public CMotionCmdBase? Base
     {
-        get => baseRef.Resolve();
-        set => baseRef.SetEmbedded(value);
+        get => baseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref baseRef, value);
     }
 
-    private NodeRef<CMwNod> legacyModelRef = new();
+    private NodeRef<CMwNod>? legacyModelRef;
     [AppliedWithChunk<Chunk08034002>]
     public CMwNod? LegacyModel
     {
-        get => legacyModelRef.Resolve();
-        set => legacyModelRef.SetEmbedded(value);
+        get => legacyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyModelRef, value);
     }
 
     private uint savePlayState = 2;
@@ -111,8 +111,8 @@ public partial class CMotionPlayer : CMotion, IClass
     {
         private readonly CMotionPlayer owner;
         internal NodeRefView(CMotionPlayer owner) => this.owner = owner;
-        public NodeRef<CMotionCmdBase> Base => owner.baseRef;
-        public NodeRef<CMwNod> LegacyModel => owner.legacyModelRef;
+        public NodeRef<CMotionCmdBase> Base => NodeRef.GetOrCreate(ref owner.baseRef);
+        public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
         public TracksReferenceView Tracks => new(owner);
     }
     public readonly struct TracksReferenceView
@@ -125,8 +125,8 @@ public partial class CMotionPlayer : CMotion, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Base", baseRef);
-        yield return new("LegacyModel", legacyModelRef);
+        yield return new("Base", NodeRef.GetOrCreate(ref baseRef));
+        yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
         if (tracks is not null)
         {
             for (var i = 0; i < tracks.Count; i++) yield return new("Tracks" + "[" + i + "]", tracks.GetReference(i));
@@ -162,7 +162,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
             if (n.HasBaseLegacy)
             {
-                rw.NodeRef(n.baseRef);
+                rw.NodeRef(ref n.baseRef);
             }
         }
     }
@@ -196,7 +196,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacyModelRef);
+            rw.NodeRef(ref n.legacyModelRef);
             base.ReadWrite(n, rw);
         }
     }
@@ -213,7 +213,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            n.baseRef.SetEmbedded(rw.Node<CMotionCmdBase>(n.baseRef.CachedTarget));
+            NodeRef.SetEmbedded(ref n.baseRef, rw.Node<CMotionCmdBase>(n.baseRef?.CachedTarget));
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)
@@ -247,7 +247,7 @@ public partial class CMotionPlayer : CMotion, IClass
 
         public override void ReadWrite(CMotionPlayer n, GbxReaderWriter rw)
         {
-            n.baseRef.SetEmbedded(rw.Node<CMotionCmdBase>(n.baseRef.CachedTarget));
+            NodeRef.SetEmbedded(ref n.baseRef, rw.Node<CMotionCmdBase>(n.baseRef?.CachedTarget));
             rw.UInt32(ref n.savePlayState);
 
             if (n.SavePlayState== 3)

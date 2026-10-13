@@ -276,11 +276,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         public override uint Id => 0x0903A010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
-        private NodeRef<CPlugBitmap> U01Ref = new();
+        private NodeRef<CPlugBitmap>? U01Ref;
         public CPlugBitmap? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -288,12 +288,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             private readonly Chunk0903A010 owner;
             internal NodeRefView(Chunk0903A010 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U01 => owner.U01Ref;
+            public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -305,7 +305,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
 
         public override void ReadWrite(CPlugMaterialCustom n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -336,11 +336,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         public override uint Id => 0x0903A012;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -348,12 +348,12 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             private readonly Chunk0903A012 owner;
             internal NodeRefView(Chunk0903A012 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -365,7 +365,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
 
         public override void ReadWrite(CPlugMaterialCustom n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -519,11 +519,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
             set => this.u01 = value;
         }
 
-        private NodeRef<CMwNod> textureRef = new();
+        private NodeRef<CMwNod>? textureRef;
         public CMwNod? Texture
         {
-            get => textureRef.Resolve();
-            set => textureRef.SetEmbedded(value);
+            get => textureRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref textureRef, value);
         }
 
         private int u02;
@@ -545,11 +545,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             private readonly Bitmap owner;
             internal NodeRefView(Bitmap owner) => this.owner = owner;
-            public NodeRef<CMwNod> Texture => owner.textureRef;
+            public NodeRef<CMwNod> Texture => NodeRef.GetOrCreate(ref owner.textureRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Texture", textureRef);
+            yield return new("Texture", NodeRef.GetOrCreate(ref textureRef));
             yield break;
         }
 
@@ -574,7 +574,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         {
             rw.Id(ref this.name);
             rw.Int32(ref this.u01);
-            rw.NodeRef(this.textureRef);
+            rw.NodeRef(ref this.textureRef);
 
             if (v >= 1)
             {

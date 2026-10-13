@@ -64,8 +64,8 @@ public partial class CPlugVertexStream
             rw.Int32(ref n.vertexCount);
             if (n.VertexCount < 0) throw new InvalidDataException("Vertex count cannot be negative.");
             rw.DataUInt32(ref n.flags);
-            rw.NodeRef(n.streamModelRef);
-            if (n.streamModelRef.Kind != NodeRefKind.None || (Version >= 0 && n.VertexCount == 0)) return;
+            rw.NodeRef(ref n.streamModelRef);
+            if ((n.streamModelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None || (Version >= 0 && n.VertexCount == 0)) return;
 
             var declCount = rw.Int32(n.dataDecls?.Length ?? 0);
             if (declCount < 0 || declCount > (rw.Reader?.Settings.MaxDataSize ?? GbxReader.MaxDataSize) / 8)

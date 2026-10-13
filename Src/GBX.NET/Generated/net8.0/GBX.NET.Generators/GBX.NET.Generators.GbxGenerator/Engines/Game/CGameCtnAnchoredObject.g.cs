@@ -76,12 +76,12 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.absolutePositionInMap = value;
     }
 
-    private NodeRef<CGameWaypointSpecialProperty> waypointSpecialPropertyRef = new();
+    private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
     [AppliedWithChunk<Chunk03101002>]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
-        get => waypointSpecialPropertyRef.Resolve();
-        set => waypointSpecialPropertyRef.SetEmbedded(value);
+        get => waypointSpecialPropertyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
     }
 
     private short flags;
@@ -121,12 +121,12 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     {
         private readonly CGameCtnAnchoredObject owner;
         internal NodeRefView(CGameCtnAnchoredObject owner) => this.owner = owner;
-        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => owner.waypointSpecialPropertyRef;
+        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("WaypointSpecialProperty", waypointSpecialPropertyRef);
+        yield return new("WaypointSpecialProperty", NodeRef.GetOrCreate(ref waypointSpecialPropertyRef));
         yield break;
     }
 
@@ -186,7 +186,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
             rw.Byte3(ref n.blockUnitCoord);
             rw.Id(ref n.anchorTreeId);
             rw.Vec3(ref n.absolutePositionInMap);
-            rw.NodeRef(n.waypointSpecialPropertyRef);
+            rw.NodeRef(ref n.waypointSpecialPropertyRef);
 
             if (Version <= 4)
             {

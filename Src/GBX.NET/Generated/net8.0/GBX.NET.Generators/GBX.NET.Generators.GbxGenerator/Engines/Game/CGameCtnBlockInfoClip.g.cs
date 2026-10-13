@@ -36,13 +36,13 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnCollector> legacySymmetricalClipRef = new();
+    private NodeRef<CGameCtnCollector>? legacySymmetricalClipRef;
     [AppliedWithChunk<Chunk03053000>]
     [AppliedWithChunk<Chunk03053001>]
     public CGameCtnCollector? LegacySymmetricalClip
     {
-        get => legacySymmetricalClipRef.Resolve();
-        set => legacySymmetricalClipRef.SetEmbedded(value);
+        get => legacySymmetricalClipRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacySymmetricalClipRef, value);
     }
 
     private string? symmetricalClipId;
@@ -186,7 +186,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     {
         private readonly CGameCtnBlockInfoClip owner;
         internal NodeRefView(CGameCtnBlockInfoClip owner) => this.owner = owner;
-        public NodeRef<CGameCtnCollector> LegacySymmetricalClip => owner.legacySymmetricalClipRef;
+        public NodeRef<CGameCtnCollector> LegacySymmetricalClip => NodeRef.GetOrCreate(ref owner.legacySymmetricalClipRef);
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => ((CGameCtnBlockInfo)owner).References.Pillar;
         public CGameCtnBlockInfo.GroundBlockUnitInfosReferenceView GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
         public CGameCtnBlockInfo.AirBlockUnitInfosReferenceView AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
@@ -222,7 +222,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("LegacySymmetricalClip", legacySymmetricalClipRef);
+        yield return new("LegacySymmetricalClip", NodeRef.GetOrCreate(ref legacySymmetricalClipRef));
         yield break;
     }
 
@@ -269,13 +269,13 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacySymmetricalClipRef);
+            rw.NodeRef(ref n.legacySymmetricalClipRef);
 
-            if (n.legacySymmetricalClipRef.Kind != NodeRefKind.None)
+            if ((n.legacySymmetricalClipRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = n.legacySymmetricalClipRef.CachedTarget.Ident.Id;
+                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedTarget).Ident.Id;
                 }
             }
         }
@@ -296,13 +296,13 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoClip n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacySymmetricalClipRef);
+            rw.NodeRef(ref n.legacySymmetricalClipRef);
 
-            if (n.legacySymmetricalClipRef.Kind != NodeRefKind.None)
+            if ((n.legacySymmetricalClipRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = n.legacySymmetricalClipRef.CachedTarget.Ident.Id;
+                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedTarget).Ident.Id;
                 }
             }
         }

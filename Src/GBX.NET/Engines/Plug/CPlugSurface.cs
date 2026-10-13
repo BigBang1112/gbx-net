@@ -7,7 +7,7 @@ public partial class CPlugSurface
     private int surfVersion;
     public int SurfVersion { get => surfVersion; set => surfVersion = value; }
 
-    public CPlugSkel? Skel { get => skelRef.Resolve(); set => skelRef.SetEmbedded(value); }
+    public CPlugSkel? Skel { get => skelRef?.Resolve(); set => NodeRef.SetEmbedded(ref skelRef, value); }
 
     private SurfMaterial[] materials = [];
     [AppliedWithChunk<Chunk0900C000>]
@@ -69,7 +69,7 @@ public partial class CPlugSurface
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.skelRef);
+                rw.NodeRef(ref n.skelRef);
             }
 
             if (Version >= 5)
@@ -175,15 +175,15 @@ public partial class CPlugSurface
     public sealed partial class SurfMaterial
     {
 
-        public CPlugMaterial? Material { get => materialRef.Resolve(); set => materialRef.SetEmbedded(value); }
+        public CPlugMaterial? Material { get => materialRef?.Resolve(); set => NodeRef.SetEmbedded(ref materialRef, value); }
 
         public MaterialId? SurfaceId { get; set; }
 
         public void ReadWrite(GbxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(materialRef.Kind != NodeRefKind.None))
+            if (rw.Boolean((materialRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
             {
-                rw.NodeRef(materialRef);
+                rw.NodeRef(ref materialRef);
             }
             else
             {

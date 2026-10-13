@@ -17,7 +17,7 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
             var candidate = Unwrap(node.Left).IsKind(SyntaxKind.NullLiteralExpression) ? node.Right :
                 Unwrap(node.Right).IsKind(SyntaxKind.NullLiteralExpression) ? node.Left : null;
             if (candidate is not null && ReferenceHandle(candidate) is { } handle)
-                return SyntaxFactory.ParseExpression(handle + ".Kind " + (node.IsKind(SyntaxKind.EqualsExpression) ? "==" : "!=") + " NodeRefKind.None");
+                return SyntaxFactory.ParseExpression("(" + handle + "?.Kind ?? NodeRefKind.None) " + (node.IsKind(SyntaxKind.EqualsExpression) ? "==" : "!=") + " NodeRefKind.None");
         }
         var rewritten = (BinaryExpressionSyntax)base.VisitBinaryExpression(node)!;
         if (isTimeInt32 is not null && node.Kind() is SyntaxKind.EqualsExpression or SyntaxKind.NotEqualsExpression or
@@ -52,7 +52,7 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
         }
         if (pattern is ConstantPatternSyntax constant && Unwrap(constant.Expression).IsKind(SyntaxKind.NullLiteralExpression) &&
             ReferenceHandle(node.Expression) is { } handle)
-            return SyntaxFactory.ParseExpression(handle + ".Kind " + (negated ? "!=" : "==") + " NodeRefKind.None");
+            return SyntaxFactory.ParseExpression("(" + handle + "?.Kind ?? NodeRefKind.None) " + (negated ? "!=" : "==") + " NodeRefKind.None");
         var rewritten = (IsPatternExpressionSyntax)base.VisitIsPatternExpression(node)!;
         return rewritten.WithExpression(rewritten.Expression.WithTriviaFrom(node.Expression));
     }
@@ -65,10 +65,16 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
 
     private string? ReferenceHandle(ExpressionSyntax expression)
     {
-        expression = Unwrap(expression);
-        var name = expression is IdentifierNameSyntax identifier ? identifier.Identifier.ValueText :
-            expression is MemberAccessExpressionSyntax { Expression: IdentifierNameSyntax { Identifier.ValueText: "n" or "this" } } member ? member.Name.Identifier.ValueText : null;
+        var name = ReferenceName(expression);
         return name is null ? null : nodeRef?.Invoke(name);
+    }
+
+    private static string? ReferenceName(ExpressionSyntax expression)
+    {
+        expression = Unwrap(expression);
+        return expression is IdentifierNameSyntax identifier ? identifier.Identifier.ValueText :
+            expression is MemberAccessExpressionSyntax { Expression: ThisExpressionSyntax } thisMember ? thisMember.Name.Identifier.ValueText :
+            expression is MemberAccessExpressionSyntax { Expression: IdentifierNameSyntax { Identifier.ValueText: "n" or "this" } } member ? member.Name.Identifier.ValueText : null;
     }
 
     public override SyntaxNode? VisitIdentifierName(IdentifierNameSyntax node)
@@ -83,9 +89,11 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
 
     public override SyntaxNode? VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
     {
-        if (storedRef is not null && node.Expression is IdentifierNameSyntax { Identifier.ValueText: "n" or "this" } &&
+        if (ReferenceName(node.Expression) is { } name && storedRef?.Invoke(name) is { } targetHandle)
+            return node.WithExpression(SyntaxFactory.ParseExpression("(" + targetHandle + "?.CachedTarget)"));
+        if (storedRef is not null && (node.Expression is ThisExpressionSyntax || node.Expression is IdentifierNameSyntax { Identifier.ValueText: "n" or "this" }) &&
             storedRef(node.Name.Identifier.ValueText) is { } handle)
-            return SyntaxFactory.ParseExpression(handle + ".CachedTarget");
+            return SyntaxFactory.ParseExpression(handle + "?.CachedTarget");
         return base.VisitMemberAccessExpression(node);
     }
 }

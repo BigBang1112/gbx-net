@@ -36,12 +36,12 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CFuncKeysSkel> keysSkelRef = new();
+    private NodeRef<CFuncKeysSkel>? keysSkelRef;
     [AppliedWithChunk<Chunk08037000>]
     public CFuncKeysSkel? KeysSkel
     {
-        get => keysSkelRef.Resolve();
-        set => keysSkelRef.SetEmbedded(value);
+        get => keysSkelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref keysSkelRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -49,13 +49,13 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
     {
         private readonly CMotionSkel owner;
         internal NodeRefView(CMotionSkel owner) => this.owner = owner;
-        public NodeRef<CFuncKeysSkel> KeysSkel => owner.keysSkelRef;
+        public NodeRef<CFuncKeysSkel> KeysSkel => NodeRef.GetOrCreate(ref owner.keysSkelRef);
         public NodeRef<CFuncSkelValues> SkelValues => ((CMotionSkelSimple)owner).References.SkelValues;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("KeysSkel", keysSkelRef);
+        yield return new("KeysSkel", NodeRef.GetOrCreate(ref keysSkelRef));
         yield break;
     }
 
@@ -83,7 +83,7 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
 
         public override void ReadWrite(CMotionSkel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.keysSkelRef);
+            rw.NodeRef(ref n.keysSkelRef);
         }
     }
 

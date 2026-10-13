@@ -121,14 +121,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
         set => this.campaignRecordsStates = value;
     }
 
-    private NodeRef<CGamePlayerOfficialScores> playerOfficialScoresRef = new();
+    private NodeRef<CGamePlayerOfficialScores>? playerOfficialScoresRef;
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
     public CGamePlayerOfficialScores? PlayerOfficialScores
     {
-        get => playerOfficialScoresRef.Resolve();
-        set => playerOfficialScoresRef.SetEmbedded(value);
+        get => playerOfficialScoresRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref playerOfficialScoresRef, value);
     }
 
     private TrainingMedalsScore[]? trainingMedalsScores;
@@ -445,7 +445,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         private readonly CGamePlayerScore owner;
         internal NodeRefView(CGamePlayerScore owner) => this.owner = owner;
-        public NodeRef<CGamePlayerOfficialScores> PlayerOfficialScores => owner.playerOfficialScoresRef;
+        public NodeRef<CGamePlayerOfficialScores> PlayerOfficialScores => NodeRef.GetOrCreate(ref owner.playerOfficialScoresRef);
         public CampaignPlayerScoresReferenceView CampaignPlayerScores => new(owner);
     }
     public readonly struct CampaignPlayerScoresReferenceView
@@ -458,7 +458,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlayerOfficialScores", playerOfficialScoresRef);
+        yield return new("PlayerOfficialScores", NodeRef.GetOrCreate(ref playerOfficialScoresRef));
         if (campaignPlayerScores is not null)
         {
             for (var i = 0; i < campaignPlayerScores.Count; i++) yield return new("CampaignPlayerScores" + "[" + i + "]", campaignPlayerScores.GetReference(i));
@@ -730,7 +730,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.playerOfficialScoresRef);
+            rw.NodeRef(ref n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
             n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
             U01 = rw.SystemTime(U01);
@@ -769,7 +769,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.playerOfficialScoresRef);
+            rw.NodeRef(ref n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
             n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
             U01 = rw.SystemTime(U01);
@@ -791,7 +791,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
         public override void ReadWrite(CGamePlayerScore n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.playerOfficialScoresRef);
+            rw.NodeRef(ref n.playerOfficialScoresRef);
             rw.ArrayReadableWritable<TrainingMedalsScore>(ref n.trainingMedalsScores!);
             n.campaignPlayerScores = rw.ListNodeRef_deprec<CGameCampaignPlayerScores>(n.campaignPlayerScores);
         }
@@ -1336,32 +1336,32 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
         public int Version { get; set; } = 5;
 
-        private NodeRef<CMwNod> u01Ref = new();
+        private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
-            get => u01Ref.Resolve();
-            set => u01Ref.SetEmbedded(value);
+            get => u01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
-        private NodeRef<CMwNod> u02Ref = new();
+        private NodeRef<CMwNod>? u02Ref;
         public CMwNod? U02
         {
-            get => u02Ref.Resolve();
-            set => u02Ref.SetEmbedded(value);
+            get => u02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u02Ref, value);
         }
 
-        private NodeRef<CMwNod> u03Ref = new();
+        private NodeRef<CMwNod>? u03Ref;
         public CMwNod? U03
         {
-            get => u03Ref.Resolve();
-            set => u03Ref.SetEmbedded(value);
+            get => u03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u03Ref, value);
         }
 
-        private NodeRef<CMwNod> u04Ref = new();
+        private NodeRef<CMwNod>? u04Ref;
         public CMwNod? U04
         {
-            get => u04Ref.Resolve();
-            set => u04Ref.SetEmbedded(value);
+            get => u04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u04Ref, value);
         }
 
         private NodeRefList<CGameHighScore>? u05;
@@ -1418,10 +1418,10 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             private readonly DeprecatedChallengeLeagueScore owner;
             internal NodeRefView(DeprecatedChallengeLeagueScore owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.u01Ref;
-            public NodeRef<CMwNod> U02 => owner.u02Ref;
-            public NodeRef<CMwNod> U03 => owner.u03Ref;
-            public NodeRef<CMwNod> U04 => owner.u04Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
             public U05ReferenceView U05 => new(owner);
             public U09ReferenceView U09 => new(owner);
             public U10ReferenceView U10 => new(owner);
@@ -1449,10 +1449,10 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", u01Ref);
-            yield return new("U02", u02Ref);
-            yield return new("U03", u03Ref);
-            yield return new("U04", u04Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref u03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref u04Ref));
             if (u05 is not null)
             {
                 for (var i = 0; i < u05.Count; i++) yield return new("U05" + "[" + i + "]", u05.GetReference(i));
@@ -1498,14 +1498,14 @@ public partial class CGamePlayerScore : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.NodeRef(this.u01Ref);
-                rw.NodeRef(this.u02Ref);
+                rw.NodeRef(ref this.u01Ref);
+                rw.NodeRef(ref this.u02Ref);
             }
 
             if (Version == 4)
             {
-                rw.NodeRef(this.u03Ref);
-                rw.NodeRef(this.u04Ref);
+                rw.NodeRef(ref this.u03Ref);
+                rw.NodeRef(ref this.u04Ref);
                 this.u05 = rw.ListNodeRef_deprec<CGameHighScore>(this.u05);
             }
 
@@ -1841,11 +1841,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
             set => this.playMode = value;
         }
 
-        private NodeRef<CGamePlayerOfficialScores> scoreRef = new();
+        private NodeRef<CGamePlayerOfficialScores>? scoreRef;
         public CGamePlayerOfficialScores? Score
         {
-            get => scoreRef.Resolve();
-            set => scoreRef.SetEmbedded(value);
+            get => scoreRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref scoreRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -1853,11 +1853,11 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             private readonly TrainingMedalsScore owner;
             internal NodeRefView(TrainingMedalsScore owner) => this.owner = owner;
-            public NodeRef<CGamePlayerOfficialScores> Score => owner.scoreRef;
+            public NodeRef<CGamePlayerOfficialScores> Score => NodeRef.GetOrCreate(ref owner.scoreRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Score", scoreRef);
+            yield return new("Score", NodeRef.GetOrCreate(ref scoreRef));
             yield break;
         }
 
@@ -1880,7 +1880,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
         {
             rw.Id(ref this.campaignId);
             rw.EnumInt32<CGameCtnChallenge.PlayMode>(ref this.playMode);
-            rw.NodeRef(this.scoreRef);
+            rw.NodeRef(ref this.scoreRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

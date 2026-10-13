@@ -36,11 +36,11 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugPrefab> prefabRef = new();
+    private NodeRef<CPlugPrefab>? prefabRef;
     public CPlugPrefab? Prefab
     {
-        get => prefabRef.Resolve();
-        set => prefabRef.SetEmbedded(value);
+        get => prefabRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref prefabRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -48,12 +48,12 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
     {
         private readonly CPlugEditorHelper owner;
         internal NodeRefView(CPlugEditorHelper owner) => this.owner = owner;
-        public NodeRef<CPlugPrefab> Prefab => owner.prefabRef;
+        public NodeRef<CPlugPrefab> Prefab => NodeRef.GetOrCreate(ref owner.prefabRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Prefab", prefabRef);
+        yield return new("Prefab", NodeRef.GetOrCreate(ref prefabRef));
         yield break;
     }
 
@@ -71,7 +71,7 @@ public partial class CPlugEditorHelper : CMwNod, IClass, IReadableWritable, IRea
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.NodeRef(this.prefabRef);
+        rw.NodeRef(ref this.prefabRef);
     }
 
     public virtual void Read(GbxReader r, int v = 0)

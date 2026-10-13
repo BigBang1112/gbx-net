@@ -60,12 +60,12 @@ public partial class CPlugTree : CPlug, IClass
         set => this.plugId = value;
     }
 
-    private NodeRef<CPlugSolid> modelSolidRef = new();
+    private NodeRef<CPlugSolid>? modelSolidRef;
     [AppliedWithChunk<Chunk0904F00D>]
     public CPlugSolid? ModelSolid
     {
-        get => modelSolidRef.Resolve();
-        set => modelSolidRef.SetEmbedded(value);
+        get => modelSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modelSolidRef, value);
     }
 
     private string? modelPlugId;
@@ -76,34 +76,34 @@ public partial class CPlugTree : CPlug, IClass
         set => this.modelPlugId = value;
     }
 
-    private NodeRef<CPlugVisual> visualRef = new();
+    private NodeRef<CPlugVisual>? visualRef;
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlugVisual? Visual
     {
-        get => visualRef.Resolve();
-        set => visualRef.SetEmbedded(value);
+        get => visualRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visualRef, value);
     }
 
-    private NodeRef<CPlug> shaderRef = new();
+    private NodeRef<CPlug>? shaderRef;
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlug? Shader
     {
-        get => shaderRef.Resolve();
-        set => shaderRef.SetEmbedded(value);
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
-    private NodeRef<CPlug> surfaceRef = new();
+    private NodeRef<CPlug>? surfaceRef;
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlug? Surface
     {
-        get => surfaceRef.Resolve();
-        set => surfaceRef.SetEmbedded(value);
+        get => surfaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref surfaceRef, value);
     }
 
     private ulong flags;
@@ -135,29 +135,29 @@ public partial class CPlugTree : CPlug, IClass
         set => this.location = value;
     }
 
-    private NodeRef<CFuncTree> funcTreeRef = new();
+    private NodeRef<CFuncTree>? funcTreeRef;
     [AppliedWithChunk<Chunk0904F011>]
     public CFuncTree? FuncTree
     {
-        get => funcTreeRef.Resolve();
-        set => funcTreeRef.SetEmbedded(value);
+        get => funcTreeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref funcTreeRef, value);
     }
 
-    private NodeRef<CPlugTreeGenerator> generatorRef = new();
+    private NodeRef<CPlugTreeGenerator>? generatorRef;
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlugTreeGenerator? Generator
     {
-        get => generatorRef.Resolve();
-        set => generatorRef.SetEmbedded(value);
+        get => generatorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref generatorRef, value);
     }
 
-    private NodeRef<CMwRefBuffer> refBufferRef = new();
+    private NodeRef<CMwRefBuffer>? refBufferRef;
     [AppliedWithChunk<Chunk0904F017>]
     public CMwRefBuffer? RefBuffer
     {
-        get => refBufferRef.Resolve();
-        set => refBufferRef.SetEmbedded(value);
+        get => refBufferRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref refBufferRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -166,13 +166,13 @@ public partial class CPlugTree : CPlug, IClass
         private readonly CPlugTree owner;
         internal NodeRefView(CPlugTree owner) => this.owner = owner;
         public ChildrenReferenceView Children => new(owner);
-        public NodeRef<CPlugSolid> ModelSolid => owner.modelSolidRef;
-        public NodeRef<CPlugVisual> Visual => owner.visualRef;
-        public NodeRef<CPlug> Shader => owner.shaderRef;
-        public NodeRef<CPlug> Surface => owner.surfaceRef;
-        public NodeRef<CFuncTree> FuncTree => owner.funcTreeRef;
-        public NodeRef<CPlugTreeGenerator> Generator => owner.generatorRef;
-        public NodeRef<CMwRefBuffer> RefBuffer => owner.refBufferRef;
+        public NodeRef<CPlugSolid> ModelSolid => NodeRef.GetOrCreate(ref owner.modelSolidRef);
+        public NodeRef<CPlugVisual> Visual => NodeRef.GetOrCreate(ref owner.visualRef);
+        public NodeRef<CPlug> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
+        public NodeRef<CPlug> Surface => NodeRef.GetOrCreate(ref owner.surfaceRef);
+        public NodeRef<CFuncTree> FuncTree => NodeRef.GetOrCreate(ref owner.funcTreeRef);
+        public NodeRef<CPlugTreeGenerator> Generator => NodeRef.GetOrCreate(ref owner.generatorRef);
+        public NodeRef<CMwRefBuffer> RefBuffer => NodeRef.GetOrCreate(ref owner.refBufferRef);
     }
     public readonly struct ChildrenReferenceView
     {
@@ -188,13 +188,13 @@ public partial class CPlugTree : CPlug, IClass
         {
             for (var i = 0; i < children.Count; i++) yield return new("Children" + "[" + i + "]", children.GetReference(i));
         }
-        yield return new("ModelSolid", modelSolidRef);
-        yield return new("Visual", visualRef);
-        yield return new("Shader", shaderRef);
-        yield return new("Surface", surfaceRef);
-        yield return new("FuncTree", funcTreeRef);
-        yield return new("Generator", generatorRef);
-        yield return new("RefBuffer", refBufferRef);
+        yield return new("ModelSolid", NodeRef.GetOrCreate(ref modelSolidRef));
+        yield return new("Visual", NodeRef.GetOrCreate(ref visualRef));
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
+        yield return new("Surface", NodeRef.GetOrCreate(ref surfaceRef));
+        yield return new("FuncTree", NodeRef.GetOrCreate(ref funcTreeRef));
+        yield return new("Generator", NodeRef.GetOrCreate(ref generatorRef));
+        yield return new("RefBuffer", NodeRef.GetOrCreate(ref refBufferRef));
         yield break;
     }
 
@@ -219,7 +219,7 @@ public partial class CPlugTree : CPlug, IClass
     [AppliedWithChunk<Chunk0904F00D>]
     public bool HasModel
     {
-        get => modelSolidRef.Kind != NodeRefKind.None;
+        get => (modelSolidRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None;
     }
 
     public CPlugTree() : this(GameVersion.Unspecified)
@@ -322,9 +322,9 @@ public partial class CPlugTree : CPlug, IClass
                 return;
             }
 
-            rw.NodeRef(n.visualRef);
-            rw.NodeRef(n.shaderRef);
-            rw.NodeRef(n.surfaceRef);
+            rw.NodeRef(ref n.visualRef);
+            rw.NodeRef(ref n.shaderRef);
+            rw.NodeRef(ref n.surfaceRef);
         }
     }
 
@@ -378,7 +378,7 @@ public partial class CPlugTree : CPlug, IClass
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.funcTreeRef);
+            rw.NodeRef(ref n.funcTreeRef);
         }
     }
 
@@ -402,10 +402,10 @@ public partial class CPlugTree : CPlug, IClass
                 return;
             }
 
-            rw.NodeRef(n.visualRef);
-            rw.NodeRef(n.shaderRef);
-            rw.NodeRef(n.surfaceRef);
-            rw.NodeRef(n.generatorRef);
+            rw.NodeRef(ref n.visualRef);
+            rw.NodeRef(ref n.shaderRef);
+            rw.NodeRef(ref n.surfaceRef);
+            rw.NodeRef(ref n.generatorRef);
         }
     }
 
@@ -515,10 +515,10 @@ public partial class CPlugTree : CPlug, IClass
                 return;
             }
 
-            rw.NodeRef(n.visualRef);
-            rw.NodeRef(n.shaderRef);
-            rw.NodeRef(n.surfaceRef);
-            rw.NodeRef(n.generatorRef);
+            rw.NodeRef(ref n.visualRef);
+            rw.NodeRef(ref n.shaderRef);
+            rw.NodeRef(ref n.surfaceRef);
+            rw.NodeRef(ref n.generatorRef);
         }
     }
 
@@ -539,7 +539,7 @@ public partial class CPlugTree : CPlug, IClass
 
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.refBufferRef);
+            rw.NodeRef(ref n.refBufferRef);
         }
     }
 

@@ -100,22 +100,22 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         set => this.sceneDecals = value;
     }
 
-    private NodeRef<CGameCtnMediaClipGroup> clipGroupInGameRef = new();
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupInGameRef;
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
     {
-        get => clipGroupInGameRef.Resolve();
-        set => clipGroupInGameRef.SetEmbedded(value);
+        get => clipGroupInGameRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupInGameRef, value);
     }
 
-    private NodeRef<CGameCtnMediaClipGroup> clipGroupEndRaceRef = new();
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupEndRaceRef;
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
     {
-        get => clipGroupEndRaceRef.Resolve();
-        set => clipGroupEndRaceRef.SetEmbedded(value);
+        get => clipGroupEndRaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupEndRaceRef, value);
     }
 
     private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
@@ -213,8 +213,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         internal NodeRefView(CGameCtnMacroBlockInfo owner) => this.owner = owner;
         public LegacyAnchoredObjectsReferenceView LegacyAnchoredObjects => new(owner);
         public LegacyMacroBlocksReferenceView LegacyMacroBlocks => new(owner);
-        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => owner.clipGroupInGameRef;
-        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => owner.clipGroupEndRaceRef;
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => NodeRef.GetOrCreate(ref owner.clipGroupInGameRef);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
         public AutoTerrainsReferenceView AutoTerrains => new(owner);
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
@@ -253,8 +253,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             for (var i = 0; i < legacyMacroBlocks.Count; i++) yield return new("LegacyMacroBlocks" + "[" + i + "]", legacyMacroBlocks.GetReference(i));
         }
-        yield return new("ClipGroupInGame", clipGroupInGameRef);
-        yield return new("ClipGroupEndRace", clipGroupEndRaceRef);
+        yield return new("ClipGroupInGame", NodeRef.GetOrCreate(ref clipGroupInGameRef));
+        yield return new("ClipGroupEndRace", NodeRef.GetOrCreate(ref clipGroupEndRaceRef));
         if (autoTerrains is not null)
         {
             for (var i = 0; i < autoTerrains.Count; i++) yield return new("AutoTerrains" + "[" + i + "]", autoTerrains.GetReference(i));
@@ -440,11 +440,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override GameVersion GameVersion => GameVersion.MP3;
         public int U01 = 3;
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -452,12 +452,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             private readonly Chunk0310D007 owner;
             internal NodeRefView(Chunk0310D007 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -471,9 +471,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef(n.clipGroupInGameRef);
-            rw.NodeRef(n.clipGroupEndRaceRef);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
+            rw.NodeRef(ref U02Ref);
         }
     }
 
@@ -874,8 +874,8 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             {
                 rw.Int3(ref n.clipOffset);
                 rw.Int3(ref n.clipTriggerSize);
-                rw.NodeRef(n.clipGroupInGameRef);
-                rw.NodeRef(n.clipGroupEndRaceRef);
+                rw.NodeRef(ref n.clipGroupInGameRef);
+                rw.NodeRef(ref n.clipGroupEndRaceRef);
             });
         }
     }
@@ -954,18 +954,18 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.yawPitchRoll = value;
         }
 
-        private NodeRef<CGameWaypointSpecialProperty> waypointRef = new();
+        private NodeRef<CGameWaypointSpecialProperty>? waypointRef;
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => waypointRef.Resolve();
-            set => waypointRef.SetEmbedded(value);
+            get => waypointRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref waypointRef, value);
         }
 
-        private NodeRef<CGameCtnChallenge> challengeRef = new();
+        private NodeRef<CGameCtnChallenge>? challengeRef;
         public CGameCtnChallenge? Challenge
         {
-            get => challengeRef.Resolve();
-            set => challengeRef.SetEmbedded(value);
+            get => challengeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref challengeRef, value);
         }
 
         private byte color;
@@ -987,13 +987,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             private readonly BlockSpawn owner;
             internal NodeRefView(BlockSpawn owner) => this.owner = owner;
-            public NodeRef<CGameWaypointSpecialProperty> Waypoint => owner.waypointRef;
-            public NodeRef<CGameCtnChallenge> Challenge => owner.challengeRef;
+            public NodeRef<CGameWaypointSpecialProperty> Waypoint => NodeRef.GetOrCreate(ref owner.waypointRef);
+            public NodeRef<CGameCtnChallenge> Challenge => NodeRef.GetOrCreate(ref owner.challengeRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Waypoint", waypointRef);
-            yield return new("Challenge", challengeRef);
+            yield return new("Waypoint", NodeRef.GetOrCreate(ref waypointRef));
+            yield return new("Challenge", NodeRef.GetOrCreate(ref challengeRef));
             yield break;
         }
 
@@ -1070,13 +1070,13 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
                         }
                     }
 
-                    rw.NodeRef(this.waypointRef);
+                    rw.NodeRef(ref this.waypointRef);
 
                     if (Version >= 4)
                     {
                         if (Version <= 5)
                         {
-                            rw.NodeRef(this.challengeRef);
+                            rw.NodeRef(ref this.challengeRef);
                         }
 
                         if (Version >= 7)
@@ -1110,11 +1110,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     {
         public int Version { get; set; }
 
-        private NodeRef<CGameCtnBlockSkin> skinRef = new();
+        private NodeRef<CGameCtnBlockSkin>? skinRef;
         public CGameCtnBlockSkin? Skin
         {
-            get => skinRef.Resolve();
-            set => skinRef.SetEmbedded(value);
+            get => skinRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref skinRef, value);
         }
 
         private Int3 coord;
@@ -1136,11 +1136,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             private readonly BlockSkinSpawn owner;
             internal NodeRefView(BlockSkinSpawn owner) => this.owner = owner;
-            public NodeRef<CGameCtnBlockSkin> Skin => owner.skinRef;
+            public NodeRef<CGameCtnBlockSkin> Skin => NodeRef.GetOrCreate(ref owner.skinRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Skin", skinRef);
+            yield return new("Skin", NodeRef.GetOrCreate(ref skinRef));
             yield break;
         }
 
@@ -1163,7 +1163,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(this.skinRef);
+            rw.NodeRef(ref this.skinRef);
 
             if (Version == 0)
             {
@@ -1321,11 +1321,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
             set => this.pivotPosition = value;
         }
 
-        private NodeRef<CGameWaypointSpecialProperty> waypointRef = new();
+        private NodeRef<CGameWaypointSpecialProperty>? waypointRef;
         public CGameWaypointSpecialProperty? Waypoint
         {
-            get => waypointRef.Resolve();
-            set => waypointRef.SetEmbedded(value);
+            get => waypointRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref waypointRef, value);
         }
 
         private float scale = 1;
@@ -1403,11 +1403,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         {
             private readonly ObjectSpawn owner;
             internal NodeRefView(ObjectSpawn owner) => this.owner = owner;
-            public NodeRef<CGameWaypointSpecialProperty> Waypoint => owner.waypointRef;
+            public NodeRef<CGameWaypointSpecialProperty> Waypoint => NodeRef.GetOrCreate(ref owner.waypointRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Waypoint", waypointRef);
+            yield return new("Waypoint", NodeRef.GetOrCreate(ref waypointRef));
             yield break;
         }
 
@@ -1496,7 +1496,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
                     if (Version >= 8)
                     {
-                        rw.NodeRef(this.waypointRef);
+                        rw.NodeRef(ref this.waypointRef);
 
                         if (Version >= 9)
                         {

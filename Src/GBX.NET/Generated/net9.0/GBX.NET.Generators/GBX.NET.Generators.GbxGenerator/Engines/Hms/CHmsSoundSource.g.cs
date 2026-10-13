@@ -36,14 +36,14 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSound> plugSoundRef = new();
+    private NodeRef<CPlugSound>? plugSoundRef;
     [AppliedWithChunk<Chunk0600D000>]
     [AppliedWithChunk<Chunk0600D002>]
     [AppliedWithChunk<Chunk0600D005>]
     public CPlugSound? PlugSound
     {
-        get => plugSoundRef.Resolve();
-        set => plugSoundRef.SetEmbedded(value);
+        get => plugSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref plugSoundRef, value);
     }
 
     private float volume;
@@ -103,12 +103,12 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     {
         private readonly CHmsSoundSource owner;
         internal NodeRefView(CHmsSoundSource owner) => this.owner = owner;
-        public NodeRef<CPlugSound> PlugSound => owner.plugSoundRef;
+        public NodeRef<CPlugSound> PlugSound => NodeRef.GetOrCreate(ref owner.plugSoundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlugSound", plugSoundRef);
+        yield return new("PlugSound", NodeRef.GetOrCreate(ref plugSoundRef));
         yield break;
     }
 
@@ -142,7 +142,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugSoundRef);
+            rw.NodeRef(ref n.plugSoundRef);
         }
     }
 
@@ -179,7 +179,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugSoundRef);
+            rw.NodeRef(ref n.plugSoundRef);
             rw.Single(ref n.priorityAdjustement);
             rw.Boolean(ref n.useLowQuality);
         }
@@ -243,7 +243,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
 
         public override void ReadWrite(CHmsSoundSource n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugSoundRef);
+            rw.NodeRef(ref n.plugSoundRef);
             rw.Single(ref n.priorityAdjustement);
             rw.Boolean(ref n.useLowQuality);
         }

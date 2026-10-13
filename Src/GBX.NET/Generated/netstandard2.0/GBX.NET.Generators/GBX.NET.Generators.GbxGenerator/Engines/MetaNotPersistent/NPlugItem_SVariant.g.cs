@@ -36,19 +36,19 @@ public partial class NPlugItem_SVariant : CMwNod, IClass, IReadableWritable, IRe
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> entityModelRef = new();
+    private NodeRef<CMwNod>? entityModelRef;
 
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
         private readonly NPlugItem_SVariant owner;
         internal NodeRefView(NPlugItem_SVariant owner) => this.owner = owner;
-        public NodeRef<CMwNod> EntityModel => owner.entityModelRef;
+        public NodeRef<CMwNod> EntityModel => NodeRef.GetOrCreate(ref owner.entityModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("EntityModel", entityModelRef);
+        yield return new("EntityModel", NodeRef.GetOrCreate(ref entityModelRef));
         yield break;
     }
 

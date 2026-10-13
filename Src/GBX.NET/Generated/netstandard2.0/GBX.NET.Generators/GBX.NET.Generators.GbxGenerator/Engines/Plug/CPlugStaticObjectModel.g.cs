@@ -43,11 +43,11 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         set => this.version = value;
     }
 
-    private NodeRef<CPlugSolid2Model> meshRef = new();
+    private NodeRef<CPlugSolid2Model>? meshRef;
     public CPlugSolid2Model? Mesh
     {
-        get => meshRef.Resolve();
-        set => meshRef.SetEmbedded(value);
+        get => meshRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshRef, value);
     }
 
     private bool isMeshCollidable;
@@ -57,11 +57,11 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
         set => this.isMeshCollidable = value;
     }
 
-    private NodeRef<CPlugSurface> shapeRef = new();
+    private NodeRef<CPlugSurface>? shapeRef;
     public CPlugSurface? Shape
     {
-        get => shapeRef.Resolve();
-        set => shapeRef.SetEmbedded(value);
+        get => shapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shapeRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -69,14 +69,14 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     {
         private readonly CPlugStaticObjectModel owner;
         internal NodeRefView(CPlugStaticObjectModel owner) => this.owner = owner;
-        public NodeRef<CPlugSolid2Model> Mesh => owner.meshRef;
-        public NodeRef<CPlugSurface> Shape => owner.shapeRef;
+        public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshRef);
+        public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Mesh", meshRef);
-        yield return new("Shape", shapeRef);
+        yield return new("Mesh", NodeRef.GetOrCreate(ref meshRef));
+        yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
         yield break;
     }
 
@@ -96,12 +96,12 @@ public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable,
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.Int32(ref this.version);
-        rw.NodeRef(this.meshRef);
+        rw.NodeRef(ref this.meshRef);
         rw.Boolean(ref this.isMeshCollidable, asByte: true);
 
         if (!IsMeshCollidable)
         {
-            rw.NodeRef(this.shapeRef);
+            rw.NodeRef(ref this.shapeRef);
         }
     }
 

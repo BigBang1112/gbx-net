@@ -134,11 +134,11 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
             set => this.u01 = value;
         }
 
-        private NodeRef<CGameHighScore> scoreRef = new();
+        private NodeRef<CGameHighScore>? scoreRef;
         public CGameHighScore? Score
         {
-            get => scoreRef.Resolve();
-            set => scoreRef.SetEmbedded(value);
+            get => scoreRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref scoreRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -146,11 +146,11 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
         {
             private readonly FilteredPlayerRank owner;
             internal NodeRefView(FilteredPlayerRank owner) => this.owner = owner;
-            public NodeRef<CGameHighScore> Score => owner.scoreRef;
+            public NodeRef<CGameHighScore> Score => NodeRef.GetOrCreate(ref owner.scoreRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Score", scoreRef);
+            yield return new("Score", NodeRef.GetOrCreate(ref scoreRef));
             yield break;
         }
 
@@ -173,7 +173,7 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
         {
             rw.String(ref this.zone);
             rw.Boolean(ref this.u01);
-            rw.NodeRef(this.scoreRef);
+            rw.NodeRef(ref this.scoreRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

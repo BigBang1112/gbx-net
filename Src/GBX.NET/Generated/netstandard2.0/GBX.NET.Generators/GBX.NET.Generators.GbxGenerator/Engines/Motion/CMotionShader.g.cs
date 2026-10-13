@@ -36,28 +36,28 @@ public partial class CMotionShader : CMotionTrack, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugMaterial> materialRef = new();
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk0802B000>]
     public CPlugMaterial? Material
     {
-        get => materialRef.Resolve();
-        set => materialRef.SetEmbedded(value);
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
-    private NodeRef<CPlugShader> shaderRef = new();
+    private NodeRef<CPlugShader>? shaderRef;
     [AppliedWithChunk<Chunk0802B000>]
     public CPlugShader? Shader
     {
-        get => shaderRef.Resolve();
-        set => shaderRef.SetEmbedded(value);
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
-    private NodeRef<CFuncShader> funcShaderRef = new();
+    private NodeRef<CFuncShader>? funcShaderRef;
     [AppliedWithChunk<Chunk0802B000>]
     public CFuncShader? FuncShader
     {
-        get => funcShaderRef.Resolve();
-        set => funcShaderRef.SetEmbedded(value);
+        get => funcShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref funcShaderRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -65,16 +65,16 @@ public partial class CMotionShader : CMotionTrack, IClass
     {
         private readonly CMotionShader owner;
         internal NodeRefView(CMotionShader owner) => this.owner = owner;
-        public NodeRef<CPlugMaterial> Material => owner.materialRef;
-        public NodeRef<CPlugShader> Shader => owner.shaderRef;
-        public NodeRef<CFuncShader> FuncShader => owner.funcShaderRef;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+        public NodeRef<CPlugShader> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
+        public NodeRef<CFuncShader> FuncShader => NodeRef.GetOrCreate(ref owner.funcShaderRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Material", materialRef);
-        yield return new("Shader", shaderRef);
-        yield return new("FuncShader", funcShaderRef);
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
+        yield return new("FuncShader", NodeRef.GetOrCreate(ref funcShaderRef));
         yield break;
     }
 
@@ -104,20 +104,20 @@ public partial class CMotionShader : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionShader n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.materialRef);
+            rw.NodeRef(ref n.materialRef);
 
-            if (rw.Writer != null && n.materialRef.Kind != NodeRefKind.None)
+            if (rw.Writer != null && (n.materialRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                var unusedShaderRef = new NodeRef<CPlugShader>();
-                rw.NodeRef(unusedShaderRef);
-                var unusedShader = unusedShaderRef.CachedTarget;
+                NodeRef<CPlugShader>? unusedShaderRef = null;
+                rw.NodeRef(ref unusedShaderRef);
+                var unusedShader = unusedShaderRef?.CachedTarget;
             }
             else
             {
-                rw.NodeRef(n.shaderRef);
+                rw.NodeRef(ref n.shaderRef);
             }
 
-            rw.NodeRef(n.funcShaderRef);
+            rw.NodeRef(ref n.funcShaderRef);
         }
     }
 

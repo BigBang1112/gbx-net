@@ -127,13 +127,13 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.mapStyle = value;
     }
 
-    private NodeRef<CGameCtnGhost> raceValidateGhostRef = new();
+    private NodeRef<CGameCtnGhost>? raceValidateGhostRef;
     [AppliedWithChunk<Chunk0305B00D>]
     [AppliedWithChunk<Chunk0305B00F>]
     public CGameCtnGhost? RaceValidateGhost
     {
-        get => raceValidateGhostRef.Resolve();
-        set => raceValidateGhostRef.SetEmbedded(value);
+        get => raceValidateGhostRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref raceValidateGhostRef, value);
     }
 
     private bool isValidatedForScriptModes;
@@ -150,7 +150,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         private readonly CGameCtnChallengeParameters owner;
         internal NodeRefView(CGameCtnChallengeParameters owner) => this.owner = owner;
         public LegacyValidateGhostsReferenceView LegacyValidateGhosts => new(owner);
-        public NodeRef<CGameCtnGhost> RaceValidateGhost => owner.raceValidateGhostRef;
+        public NodeRef<CGameCtnGhost> RaceValidateGhost => NodeRef.GetOrCreate(ref owner.raceValidateGhostRef);
     }
     public readonly struct LegacyValidateGhostsReferenceView
     {
@@ -166,7 +166,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         {
             for (var i = 0; i < legacyValidateGhosts.Count; i++) yield return new("LegacyValidateGhosts" + "[" + i + "]", legacyValidateGhosts.GetReference(i));
         }
-        yield return new("RaceValidateGhost", raceValidateGhostRef);
+        yield return new("RaceValidateGhost", NodeRef.GetOrCreate(ref raceValidateGhostRef));
         yield break;
     }
 
@@ -552,7 +552,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.raceValidateGhostRef);
+            rw.NodeRef(ref n.raceValidateGhostRef);
         }
     }
 
@@ -598,7 +598,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         {
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.raceValidateGhostRef);
+                rw.NodeRef(ref n.raceValidateGhostRef);
             });
         }
     }

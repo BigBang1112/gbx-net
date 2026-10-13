@@ -36,12 +36,12 @@ public partial class CSceneFxNod : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneFx> fxRef = new();
+    private NodeRef<CSceneFx>? fxRef;
     [AppliedWithChunk<Chunk0A03A000>]
     public CSceneFx? Fx
     {
-        get => fxRef.Resolve();
-        set => fxRef.SetEmbedded(value);
+        get => fxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxRef, value);
     }
 
     private NodeRefList<CSceneFxNod>? nodInputs;
@@ -57,7 +57,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     {
         private readonly CSceneFxNod owner;
         internal NodeRefView(CSceneFxNod owner) => this.owner = owner;
-        public NodeRef<CSceneFx> Fx => owner.fxRef;
+        public NodeRef<CSceneFx> Fx => NodeRef.GetOrCreate(ref owner.fxRef);
         public NodInputsReferenceView NodInputs => new(owner);
     }
     public readonly struct NodInputsReferenceView
@@ -70,7 +70,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Fx", fxRef);
+        yield return new("Fx", NodeRef.GetOrCreate(ref fxRef));
         if (nodInputs is not null)
         {
             for (var i = 0; i < nodInputs.Count; i++) yield return new("NodInputs" + "[" + i + "]", nodInputs.GetReference(i));
@@ -103,7 +103,7 @@ public partial class CSceneFxNod : CMwNod, IClass
 
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.fxRef);
+            rw.NodeRef(ref n.fxRef);
         }
     }
 
@@ -136,18 +136,18 @@ public partial class CSceneFxNod : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -155,14 +155,14 @@ public partial class CSceneFxNod : CMwNod, IClass
         {
             private readonly Chunk0A03A002 owner;
             internal NodeRefView(Chunk0A03A002 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -177,8 +177,8 @@ public partial class CSceneFxNod : CMwNod, IClass
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 

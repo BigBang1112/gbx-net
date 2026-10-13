@@ -360,11 +360,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.materialName = value;
         }
 
-        private NodeRef<CPlugMaterialUserInst> materialUserInstRef = new();
+        private NodeRef<CPlugMaterialUserInst>? materialUserInstRef;
         public CPlugMaterialUserInst? MaterialUserInst
         {
-            get => materialUserInstRef.Resolve();
-            set => materialUserInstRef.SetEmbedded(value);
+            get => materialUserInstRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref materialUserInstRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -372,11 +372,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             private readonly Material owner;
             internal NodeRefView(Material owner) => this.owner = owner;
-            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => owner.materialUserInstRef;
+            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => NodeRef.GetOrCreate(ref owner.materialUserInstRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("MaterialUserInst", materialUserInstRef);
+            yield return new("MaterialUserInst", NodeRef.GetOrCreate(ref materialUserInstRef));
             yield break;
         }
 
@@ -402,13 +402,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
 
                 if (MaterialName== null || MaterialName== "")
                 {
-                    rw.NodeRef(this.materialUserInstRef);
+                    rw.NodeRef(ref this.materialUserInstRef);
                 }
             }
 
             if (v == 0)
             {
-                this.materialUserInstRef.SetEmbedded(rw.Node<CPlugMaterialUserInst>(this.materialUserInstRef.CachedTarget));
+                NodeRef.SetEmbedded(ref this.materialUserInstRef, rw.Node<CPlugMaterialUserInst>(this.materialUserInstRef?.CachedTarget));
             }
         }
 
@@ -1657,11 +1657,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             set => this.u01 = value;
         }
 
-        private NodeRef<CPlugParticleEmitterModel> particleEmitterRef = new();
+        private NodeRef<CPlugParticleEmitterModel>? particleEmitterRef;
         public CPlugParticleEmitterModel? ParticleEmitter
         {
-            get => particleEmitterRef.Resolve();
-            set => particleEmitterRef.SetEmbedded(value);
+            get => particleEmitterRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref particleEmitterRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -1669,11 +1669,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         {
             private readonly ParticleEmitterLayer owner;
             internal NodeRefView(ParticleEmitterLayer owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> ParticleEmitter => owner.particleEmitterRef;
+            public NodeRef<CPlugParticleEmitterModel> ParticleEmitter => NodeRef.GetOrCreate(ref owner.particleEmitterRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("ParticleEmitter", particleEmitterRef);
+            yield return new("ParticleEmitter", NodeRef.GetOrCreate(ref particleEmitterRef));
             yield break;
         }
 
@@ -1696,7 +1696,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
             this.rotation = r.ReadVec3();
             this.scale = r.ReadVec3();
             this.u01 = r.ReadSingle();
-            r.ReadNodeRef(this.particleEmitterRef);
+            r.ReadNodeRef(ref this.particleEmitterRef);
         }
 
         public override void Write(GbxWriter w, CPlugCrystal n, int v = 0)

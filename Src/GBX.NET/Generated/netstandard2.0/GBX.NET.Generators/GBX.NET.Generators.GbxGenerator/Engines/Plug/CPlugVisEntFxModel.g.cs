@@ -36,36 +36,36 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugParticleEmitterModel> part_DeactivatedShotRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedShotRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_DeactivatedShot
     {
-        get => part_DeactivatedShotRef.Resolve();
-        set => part_DeactivatedShotRef.SetEmbedded(value);
+        get => part_DeactivatedShotRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_DeactivatedShotRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> part_DeactivatedRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_Deactivated
     {
-        get => part_DeactivatedRef.Resolve();
-        set => part_DeactivatedRef.SetEmbedded(value);
+        get => part_DeactivatedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_DeactivatedRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> part_TeleportUnspawnRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? part_TeleportUnspawnRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportUnspawn
     {
-        get => part_TeleportUnspawnRef.Resolve();
-        set => part_TeleportUnspawnRef.SetEmbedded(value);
+        get => part_TeleportUnspawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_TeleportUnspawnRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> part_TeleportSpawnRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? part_TeleportSpawnRef;
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportSpawn
     {
-        get => part_TeleportSpawnRef.Resolve();
-        set => part_TeleportSpawnRef.SetEmbedded(value);
+        get => part_TeleportSpawnRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref part_TeleportSpawnRef, value);
     }
 
     private PlugCurve? eliminatedTeleportIntens;
@@ -92,12 +92,12 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         set => this.eliminatedHighlightRgb = value;
     }
 
-    private NodeRef<GxLightBall> tacticalLightRef = new();
+    private NodeRef<GxLightBall>? tacticalLightRef;
     [AppliedWithChunk<Chunk09115000>]
     public GxLightBall? TacticalLight
     {
-        get => tacticalLightRef.Resolve();
-        set => tacticalLightRef.SetEmbedded(value);
+        get => tacticalLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref tacticalLightRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -105,20 +105,20 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     {
         private readonly CPlugVisEntFxModel owner;
         internal NodeRefView(CPlugVisEntFxModel owner) => this.owner = owner;
-        public NodeRef<CPlugParticleEmitterModel> Part_DeactivatedShot => owner.part_DeactivatedShotRef;
-        public NodeRef<CPlugParticleEmitterModel> Part_Deactivated => owner.part_DeactivatedRef;
-        public NodeRef<CPlugParticleEmitterModel> Part_TeleportUnspawn => owner.part_TeleportUnspawnRef;
-        public NodeRef<CPlugParticleEmitterModel> Part_TeleportSpawn => owner.part_TeleportSpawnRef;
-        public NodeRef<GxLightBall> TacticalLight => owner.tacticalLightRef;
+        public NodeRef<CPlugParticleEmitterModel> Part_DeactivatedShot => NodeRef.GetOrCreate(ref owner.part_DeactivatedShotRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_Deactivated => NodeRef.GetOrCreate(ref owner.part_DeactivatedRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_TeleportUnspawn => NodeRef.GetOrCreate(ref owner.part_TeleportUnspawnRef);
+        public NodeRef<CPlugParticleEmitterModel> Part_TeleportSpawn => NodeRef.GetOrCreate(ref owner.part_TeleportSpawnRef);
+        public NodeRef<GxLightBall> TacticalLight => NodeRef.GetOrCreate(ref owner.tacticalLightRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Part_DeactivatedShot", part_DeactivatedShotRef);
-        yield return new("Part_Deactivated", part_DeactivatedRef);
-        yield return new("Part_TeleportUnspawn", part_TeleportUnspawnRef);
-        yield return new("Part_TeleportSpawn", part_TeleportSpawnRef);
-        yield return new("TacticalLight", tacticalLightRef);
+        yield return new("Part_DeactivatedShot", NodeRef.GetOrCreate(ref part_DeactivatedShotRef));
+        yield return new("Part_Deactivated", NodeRef.GetOrCreate(ref part_DeactivatedRef));
+        yield return new("Part_TeleportUnspawn", NodeRef.GetOrCreate(ref part_TeleportUnspawnRef));
+        yield return new("Part_TeleportSpawn", NodeRef.GetOrCreate(ref part_TeleportSpawnRef));
+        yield return new("TacticalLight", NodeRef.GetOrCreate(ref tacticalLightRef));
         yield break;
     }
 
@@ -171,14 +171,14 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         public override void ReadWrite(CPlugVisEntFxModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.part_DeactivatedShotRef);
-            rw.NodeRef(n.part_DeactivatedRef);
-            rw.NodeRef(n.part_TeleportUnspawnRef);
-            rw.NodeRef(n.part_TeleportSpawnRef);
+            rw.NodeRef(ref n.part_DeactivatedShotRef);
+            rw.NodeRef(ref n.part_DeactivatedRef);
+            rw.NodeRef(ref n.part_TeleportUnspawnRef);
+            rw.NodeRef(ref n.part_TeleportSpawnRef);
             rw.ReadableWritable<PlugCurve>(ref n.eliminatedTeleportIntens, version: Version- 1);
             rw.ReadableWritable<PlugCurve>(ref n.eliminatedHighlight, version: Version- 1);
             rw.Vec3(ref n.eliminatedHighlightRgb);
-            rw.NodeRef(n.tacticalLightRef);
+            rw.NodeRef(ref n.tacticalLightRef);
         }
     }
 

@@ -44,13 +44,13 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.typeAndIndex = value;
     }
 
-    private NodeRef<CPlug> treeRef = new();
+    private NodeRef<CPlug>? treeRef;
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public CPlug? Tree
     {
-        get => treeRef.Resolve();
-        set => treeRef.SetEmbedded(value);
+        get => treeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref treeRef, value);
     }
 
     private PreLightGen? solidPreLightGen;
@@ -74,12 +74,12 @@ public partial class CPlugSolid : CPlug, IClass
     {
         private readonly CPlugSolid owner;
         internal NodeRefView(CPlugSolid owner) => this.owner = owner;
-        public NodeRef<CPlug> Tree => owner.treeRef;
+        public NodeRef<CPlug> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Tree", treeRef);
+        yield return new("Tree", NodeRef.GetOrCreate(ref treeRef));
         yield break;
     }
 
@@ -297,7 +297,7 @@ public partial class CPlugSolid : CPlug, IClass
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef(n.treeRef);
+            rw.NodeRef(ref n.treeRef);
         }
     }
 
@@ -363,14 +363,14 @@ public partial class CPlugSolid : CPlug, IClass
         public override uint Id => 0x09005010;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// CSceneVehicleEnvironment
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -378,12 +378,12 @@ public partial class CPlugSolid : CPlug, IClass
         {
             private readonly Chunk09005010 owner;
             internal NodeRefView(Chunk09005010 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -395,7 +395,7 @@ public partial class CPlugSolid : CPlug, IClass
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -427,7 +427,7 @@ public partial class CPlugSolid : CPlug, IClass
                 rw.Boolean(ref U03);
             }
 
-            rw.NodeRef(n.treeRef);
+            rw.NodeRef(ref n.treeRef);
         }
     }
 
@@ -551,11 +551,11 @@ public partial class CPlugSolid : CPlug, IClass
         public string? U08;
         public int U09;
 
-        private NodeRef<CPlugPath> U10Ref = new();
+        private NodeRef<CPlugPath>? U10Ref;
         public CPlugPath? U10
         {
-            get => U10Ref.Resolve();
-            set => U10Ref.SetEmbedded(value);
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -565,7 +565,7 @@ public partial class CPlugSolid : CPlug, IClass
             internal NodeRefView(Chunk09005019 owner) => this.owner = owner;
             public U01ReferenceView U01 => new(owner);
             public U02ReferenceView U02 => new(owner);
-            public NodeRef<CPlugPath> U10 => owner.U10Ref;
+            public NodeRef<CPlugPath> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
         }
         public readonly struct U01ReferenceView
         {
@@ -592,7 +592,7 @@ public partial class CPlugSolid : CPlug, IClass
             {
                 for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
             }
-            yield return new("U10", U10Ref);
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield break;
         }
 
@@ -655,7 +655,7 @@ public partial class CPlugSolid : CPlug, IClass
 
                             if (Version >= 5)
                             {
-                                rw.NodeRef(U10Ref);
+                                rw.NodeRef(ref U10Ref);
                             }
                         }
                     }

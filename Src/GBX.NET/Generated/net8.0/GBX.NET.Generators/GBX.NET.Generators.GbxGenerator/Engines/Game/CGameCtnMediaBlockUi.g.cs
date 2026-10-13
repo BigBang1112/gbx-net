@@ -36,12 +36,12 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CControlContainer> userInterfaceRef = new();
+    private NodeRef<CControlContainer>? userInterfaceRef;
     [AppliedWithChunk<Chunk0307D000>]
     public CControlContainer? UserInterface
     {
-        get => userInterfaceRef.Resolve();
-        set => userInterfaceRef.SetEmbedded(value);
+        get => userInterfaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref userInterfaceRef, value);
     }
 
     private TimeSingle start;
@@ -67,12 +67,12 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     {
         private readonly CGameCtnMediaBlockUi owner;
         internal NodeRefView(CGameCtnMediaBlockUi owner) => this.owner = owner;
-        public NodeRef<CControlContainer> UserInterface => owner.userInterfaceRef;
+        public NodeRef<CControlContainer> UserInterface => NodeRef.GetOrCreate(ref owner.userInterfaceRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("UserInterface", userInterfaceRef);
+        yield return new("UserInterface", NodeRef.GetOrCreate(ref userInterfaceRef));
         yield break;
     }
 
@@ -112,7 +112,7 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
 
         public override void ReadWrite(CGameCtnMediaBlockUi n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.userInterfaceRef);
+            rw.NodeRef(ref n.userInterfaceRef);
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
         }

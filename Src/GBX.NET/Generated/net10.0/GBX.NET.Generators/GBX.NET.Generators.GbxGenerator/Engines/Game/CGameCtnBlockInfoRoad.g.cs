@@ -36,12 +36,12 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnBlockInfoSlope> slopeRef = new();
+    private NodeRef<CGameCtnBlockInfoSlope>? slopeRef;
     [AppliedWithChunk<Chunk03052000>]
     public CGameCtnBlockInfoSlope? Slope
     {
-        get => slopeRef.Resolve();
-        set => slopeRef.SetEmbedded(value);
+        get => slopeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref slopeRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -49,7 +49,7 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
     {
         private readonly CGameCtnBlockInfoRoad owner;
         internal NodeRefView(CGameCtnBlockInfoRoad owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockInfoSlope> Slope => owner.slopeRef;
+        public NodeRef<CGameCtnBlockInfoSlope> Slope => NodeRef.GetOrCreate(ref owner.slopeRef);
         public NodeRef<CGameCtnBlockInfoClassic> Pillar => ((CGameCtnBlockInfo)owner).References.Pillar;
         public CGameCtnBlockInfo.GroundBlockUnitInfosReferenceView GroundBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.GroundBlockUnitInfos;
         public CGameCtnBlockInfo.AirBlockUnitInfosReferenceView AirBlockUnitInfos => ((CGameCtnBlockInfo)owner).References.AirBlockUnitInfos;
@@ -85,7 +85,7 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Slope", slopeRef);
+        yield return new("Slope", NodeRef.GetOrCreate(ref slopeRef));
         yield break;
     }
 
@@ -113,7 +113,7 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoRoad n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.slopeRef);
+            rw.NodeRef(ref n.slopeRef);
         }
     }
 

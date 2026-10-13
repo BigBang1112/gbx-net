@@ -36,12 +36,12 @@ public partial class CFuncSkelValues : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CFuncSkel> skelRef = new();
+    private NodeRef<CFuncSkel>? skelRef;
     [AppliedWithChunk<Chunk05007000>]
     public CFuncSkel? Skel
     {
-        get => skelRef.Resolve();
-        set => skelRef.SetEmbedded(value);
+        get => skelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skelRef, value);
     }
 
     private CFuncKeysSkel.Loc[]? locations;
@@ -57,12 +57,12 @@ public partial class CFuncSkelValues : CMwNod, IClass
     {
         private readonly CFuncSkelValues owner;
         internal NodeRefView(CFuncSkelValues owner) => this.owner = owner;
-        public NodeRef<CFuncSkel> Skel => owner.skelRef;
+        public NodeRef<CFuncSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Skel", skelRef);
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
         yield break;
     }
 
@@ -91,11 +91,11 @@ public partial class CFuncSkelValues : CMwNod, IClass
 
         public override void ReadWrite(CFuncSkelValues n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.skelRef);
+            rw.NodeRef(ref n.skelRef);
 
-            if (n.skelRef.Kind != NodeRefKind.None)
+            if ((n.skelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.skelRef.CachedTarget?.BonesCount?? 0);
+                rw.ArrayReadableWritable<CFuncKeysSkel.Loc>(ref n.locations!, n.skelRef?.CachedTarget?.BonesCount?? 0);
             }
         }
     }

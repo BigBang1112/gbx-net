@@ -44,12 +44,12 @@ public partial class CControlBase : CSceneToy, IClass
         set => this.stackText = value;
     }
 
-    private NodeRef<CControlLayout> layoutRef = new();
+    private NodeRef<CControlLayout>? layoutRef;
     [AppliedWithChunk<Chunk0700100E>]
     public CControlLayout? Layout
     {
-        get => layoutRef.Resolve();
-        set => layoutRef.SetEmbedded(value);
+        get => layoutRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref layoutRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -57,7 +57,7 @@ public partial class CControlBase : CSceneToy, IClass
     {
         private readonly CControlBase owner;
         internal NodeRefView(CControlBase owner) => this.owner = owner;
-        public NodeRef<CControlLayout> Layout => owner.layoutRef;
+        public NodeRef<CControlLayout> Layout => NodeRef.GetOrCreate(ref owner.layoutRef);
         public CSceneToy.ObjectLinkReferenceView ObjectLink => ((CSceneToy)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneToy)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneToy)owner).References.Motion;
@@ -65,7 +65,7 @@ public partial class CControlBase : CSceneToy, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Layout", layoutRef);
+        yield return new("Layout", NodeRef.GetOrCreate(ref layoutRef));
         yield break;
     }
 
@@ -131,7 +131,7 @@ public partial class CControlBase : CSceneToy, IClass
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
             rw.BoxAligned(ref U01);
-            rw.NodeRef(n.layoutRef);
+            rw.NodeRef(ref n.layoutRef);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
         }
@@ -164,11 +164,11 @@ public partial class CControlBase : CSceneToy, IClass
         public override uint Id => 0x07001010;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public int? U02;
 
@@ -177,12 +177,12 @@ public partial class CControlBase : CSceneToy, IClass
         {
             private readonly Chunk07001010 owner;
             internal NodeRefView(Chunk07001010 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -195,9 +195,9 @@ public partial class CControlBase : CSceneToy, IClass
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
 
-            if (U01Ref.Kind == NodeRefKind.None)
+            if ((U01Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
                 rw.Int32(ref U02);
             }

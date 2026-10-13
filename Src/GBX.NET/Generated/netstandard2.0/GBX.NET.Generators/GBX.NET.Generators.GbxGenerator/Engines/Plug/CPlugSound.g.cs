@@ -36,15 +36,15 @@ public partial class CPlugSound : CPlugAudio, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> plugFileRef = new();
+    private NodeRef<CMwNod>? plugFileRef;
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
     [AppliedWithChunk<Chunk0901A000>]
     public CMwNod? PlugFile
     {
-        get => plugFileRef.Resolve();
-        set => plugFileRef.SetEmbedded(value);
+        get => plugFileRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref plugFileRef, value);
     }
 
     private EMode mode;
@@ -306,12 +306,12 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.maxDistance = value;
     }
 
-    private NodeRef<CFuncKeysReal> volumeFromDistanceRef = new();
+    private NodeRef<CFuncKeysReal>? volumeFromDistanceRef;
     [AppliedWithChunk<Chunk0901A00F>(2)]
     public CFuncKeysReal? VolumeFromDistance
     {
-        get => volumeFromDistanceRef.Resolve();
-        set => volumeFromDistanceRef.SetEmbedded(value);
+        get => volumeFromDistanceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref volumeFromDistanceRef, value);
     }
 
     private int roomFxSend;
@@ -338,20 +338,20 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => this.ignoreSourceProperties = value;
     }
 
-    private NodeRef<CFuncKeysReal> pitchFromDistanceRef = new();
+    private NodeRef<CFuncKeysReal>? pitchFromDistanceRef;
     [AppliedWithChunk<Chunk0901A00F>(8)]
     public CFuncKeysReal? PitchFromDistance
     {
-        get => pitchFromDistanceRef.Resolve();
-        set => pitchFromDistanceRef.SetEmbedded(value);
+        get => pitchFromDistanceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pitchFromDistanceRef, value);
     }
 
-    private NodeRef<CFuncKeysReal> volumeFormSpeedKmhRef = new();
+    private NodeRef<CFuncKeysReal>? volumeFormSpeedKmhRef;
     [AppliedWithChunk<Chunk0901A00F>(9)]
     public CFuncKeysReal? VolumeFormSpeedKmh
     {
-        get => volumeFormSpeedKmhRef.Resolve();
-        set => volumeFormSpeedKmhRef.SetEmbedded(value);
+        get => volumeFormSpeedKmhRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref volumeFormSpeedKmhRef, value);
     }
 
     private float radius;
@@ -378,20 +378,20 @@ public partial class CPlugSound : CPlugAudio, IClass
         set => oldSubSources = value;
     }
 
-    private NodeRef<CPlugSound> backingSoundRef = new();
+    private NodeRef<CPlugSound>? backingSoundRef;
     [AppliedWithChunk<Chunk0901A012>]
     public CPlugSound? BackingSound
     {
-        get => backingSoundRef.Resolve();
-        set => backingSoundRef.SetEmbedded(value);
+        get => backingSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref backingSoundRef, value);
     }
 
-    private NodeRef<CPlugSound> focusedSoundRef = new();
+    private NodeRef<CPlugSound>? focusedSoundRef;
     [AppliedWithChunk<Chunk0901A013>]
     public CPlugSound? FocusedSound
     {
-        get => focusedSoundRef.Resolve();
-        set => focusedSoundRef.SetEmbedded(value);
+        get => focusedSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusedSoundRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -399,13 +399,13 @@ public partial class CPlugSound : CPlugAudio, IClass
     {
         private readonly CPlugSound owner;
         internal NodeRefView(CPlugSound owner) => this.owner = owner;
-        public NodeRef<CMwNod> PlugFile => owner.plugFileRef;
-        public NodeRef<CFuncKeysReal> VolumeFromDistance => owner.volumeFromDistanceRef;
-        public NodeRef<CFuncKeysReal> PitchFromDistance => owner.pitchFromDistanceRef;
-        public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => owner.volumeFormSpeedKmhRef;
+        public NodeRef<CMwNod> PlugFile => NodeRef.GetOrCreate(ref owner.plugFileRef);
+        public NodeRef<CFuncKeysReal> VolumeFromDistance => NodeRef.GetOrCreate(ref owner.volumeFromDistanceRef);
+        public NodeRef<CFuncKeysReal> PitchFromDistance => NodeRef.GetOrCreate(ref owner.pitchFromDistanceRef);
+        public NodeRef<CFuncKeysReal> VolumeFormSpeedKmh => NodeRef.GetOrCreate(ref owner.volumeFormSpeedKmhRef);
         public OldSubSourcesReferenceView OldSubSources => new(owner);
-        public NodeRef<CPlugSound> BackingSound => owner.backingSoundRef;
-        public NodeRef<CPlugSound> FocusedSound => owner.focusedSoundRef;
+        public NodeRef<CPlugSound> BackingSound => NodeRef.GetOrCreate(ref owner.backingSoundRef);
+        public NodeRef<CPlugSound> FocusedSound => NodeRef.GetOrCreate(ref owner.focusedSoundRef);
     }
     public readonly struct OldSubSourcesReferenceView
     {
@@ -417,16 +417,16 @@ public partial class CPlugSound : CPlugAudio, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlugFile", plugFileRef);
-        yield return new("VolumeFromDistance", volumeFromDistanceRef);
-        yield return new("PitchFromDistance", pitchFromDistanceRef);
-        yield return new("VolumeFormSpeedKmh", volumeFormSpeedKmhRef);
+        yield return new("PlugFile", NodeRef.GetOrCreate(ref plugFileRef));
+        yield return new("VolumeFromDistance", NodeRef.GetOrCreate(ref volumeFromDistanceRef));
+        yield return new("PitchFromDistance", NodeRef.GetOrCreate(ref pitchFromDistanceRef));
+        yield return new("VolumeFormSpeedKmh", NodeRef.GetOrCreate(ref volumeFormSpeedKmhRef));
         if (oldSubSources is not null)
         {
             for (var i = 0; i < oldSubSources.Count; i++) yield return new("OldSubSources" + "[" + i + "]", oldSubSources.GetReference(i));
         }
-        yield return new("BackingSound", backingSoundRef);
-        yield return new("FocusedSound", focusedSoundRef);
+        yield return new("BackingSound", NodeRef.GetOrCreate(ref backingSoundRef));
+        yield return new("FocusedSound", NodeRef.GetOrCreate(ref focusedSoundRef));
         yield break;
     }
 
@@ -495,7 +495,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugFileRef);
+            rw.NodeRef(ref n.plugFileRef);
         }
     }
 
@@ -728,7 +728,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(n.volumeFromDistanceRef);
+                    rw.NodeRef(ref n.volumeFromDistanceRef);
 
                     if (Version >= 3)
                     {
@@ -746,11 +746,11 @@ public partial class CPlugSound : CPlugAudio, IClass
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef(n.pitchFromDistanceRef);
+                                    rw.NodeRef(ref n.pitchFromDistanceRef);
 
                                     if (Version >= 9)
                                     {
-                                        rw.NodeRef(n.volumeFormSpeedKmhRef);
+                                        rw.NodeRef(ref n.volumeFormSpeedKmhRef);
 
                                         if (Version >= 10)
                                         {
@@ -838,7 +838,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.backingSoundRef);
+            rw.NodeRef(ref n.backingSoundRef);
         }
     }
 
@@ -859,7 +859,7 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.focusedSoundRef);
+            rw.NodeRef(ref n.focusedSoundRef);
         }
     }
 

@@ -44,12 +44,12 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
         set => this.offset = value;
     }
 
-    private NodeRef<CGameCtnZoneGenealogy> genealogyRef = new();
+    private NodeRef<CGameCtnZoneGenealogy>? genealogyRef;
     [AppliedWithChunk<Chunk03120001>]
     public CGameCtnZoneGenealogy? Genealogy
     {
-        get => genealogyRef.Resolve();
-        set => genealogyRef.SetEmbedded(value);
+        get => genealogyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref genealogyRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -57,12 +57,12 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     {
         private readonly CGameCtnAutoTerrain owner;
         internal NodeRefView(CGameCtnAutoTerrain owner) => this.owner = owner;
-        public NodeRef<CGameCtnZoneGenealogy> Genealogy => owner.genealogyRef;
+        public NodeRef<CGameCtnZoneGenealogy> Genealogy => NodeRef.GetOrCreate(ref owner.genealogyRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Genealogy", genealogyRef);
+        yield return new("Genealogy", NodeRef.GetOrCreate(ref genealogyRef));
         yield break;
     }
 
@@ -92,7 +92,7 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
         public override void ReadWrite(CGameCtnAutoTerrain n, GbxReaderWriter rw)
         {
             rw.Int3(ref n.offset);
-            rw.NodeRef(n.genealogyRef);
+            rw.NodeRef(ref n.genealogyRef);
         }
     }
 

@@ -94,11 +94,11 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
         set => this.enableSubStepping = value;
     }
 
-    private NodeRef<CPlugDynaWaterModel> waterModelRef = new();
+    private NodeRef<CPlugDynaWaterModel>? waterModelRef;
     public CPlugDynaWaterModel? WaterModel
     {
-        get => waterModelRef.Resolve();
-        set => waterModelRef.SetEmbedded(value);
+        get => waterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterModelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -106,12 +106,12 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
     {
         private readonly CPlugDynaModel owner;
         internal NodeRefView(CPlugDynaModel owner) => this.owner = owner;
-        public NodeRef<CPlugDynaWaterModel> WaterModel => owner.waterModelRef;
+        public NodeRef<CPlugDynaWaterModel> WaterModel => NodeRef.GetOrCreate(ref owner.waterModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("WaterModel", waterModelRef);
+        yield return new("WaterModel", NodeRef.GetOrCreate(ref waterModelRef));
         yield break;
     }
 
@@ -184,7 +184,7 @@ public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadab
 
         if (Version >= 4)
         {
-            rw.NodeRef(this.waterModelRef);
+            rw.NodeRef(ref this.waterModelRef);
         }
     }
 

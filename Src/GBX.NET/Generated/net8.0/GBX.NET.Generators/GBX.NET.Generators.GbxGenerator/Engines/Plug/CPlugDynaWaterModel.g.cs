@@ -99,11 +99,11 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
         set => this.u09 = value;
     }
 
-    private NodeRef<CPlugSurface> surfaceRef = new();
+    private NodeRef<CPlugSurface>? surfaceRef;
     public CPlugSurface? Surface
     {
-        get => surfaceRef.Resolve();
-        set => surfaceRef.SetEmbedded(value);
+        get => surfaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref surfaceRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -111,12 +111,12 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
     {
         private readonly CPlugDynaWaterModel owner;
         internal NodeRefView(CPlugDynaWaterModel owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> Surface => owner.surfaceRef;
+        public NodeRef<CPlugSurface> Surface => NodeRef.GetOrCreate(ref owner.surfaceRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Surface", surfaceRef);
+        yield return new("Surface", NodeRef.GetOrCreate(ref surfaceRef));
         yield break;
     }
 

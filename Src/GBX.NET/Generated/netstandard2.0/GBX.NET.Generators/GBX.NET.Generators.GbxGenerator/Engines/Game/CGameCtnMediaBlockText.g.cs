@@ -44,12 +44,12 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
         set => this.text = value;
     }
 
-    private NodeRef<CControlEffectSimi> effectRef = new();
+    private NodeRef<CControlEffectSimi>? effectRef;
     [AppliedWithChunk<Chunk030A8001>]
     public CControlEffectSimi? Effect
     {
-        get => effectRef.Resolve();
-        set => effectRef.SetEmbedded(value);
+        get => effectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref effectRef, value);
     }
 
     private Vec3 color;
@@ -65,12 +65,12 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
     {
         private readonly CGameCtnMediaBlockText owner;
         internal NodeRefView(CGameCtnMediaBlockText owner) => this.owner = owner;
-        public NodeRef<CControlEffectSimi> Effect => owner.effectRef;
+        public NodeRef<CControlEffectSimi> Effect => NodeRef.GetOrCreate(ref owner.effectRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Effect", effectRef);
+        yield return new("Effect", NodeRef.GetOrCreate(ref effectRef));
         yield break;
     }
 
@@ -104,7 +104,7 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
         public override void ReadWrite(CGameCtnMediaBlockText n, GbxReaderWriter rw)
         {
             rw.String(ref n.text);
-            rw.NodeRef(n.effectRef);
+            rw.NodeRef(ref n.effectRef);
         }
     }
 

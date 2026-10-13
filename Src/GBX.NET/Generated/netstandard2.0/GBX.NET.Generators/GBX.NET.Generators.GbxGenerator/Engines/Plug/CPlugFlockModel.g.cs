@@ -172,12 +172,12 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.flockType = value;
     }
 
-    private NodeRef<CMwNod> animFileFidRef = new();
+    private NodeRef<CMwNod>? animFileFidRef;
     [AppliedWithChunk<Chunk090E5000>(3, 5)]
     public CMwNod? AnimFileFid
     {
-        get => animFileFidRef.Resolve();
-        set => animFileFidRef.SetEmbedded(value);
+        get => animFileFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref animFileFidRef, value);
     }
 
     private int defSpawnCount;
@@ -188,20 +188,20 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.defSpawnCount = value;
     }
 
-    private NodeRef<CMwNod> birdModelRef = new();
+    private NodeRef<CMwNod>? birdModelRef;
     [AppliedWithChunk<Chunk090E5000>(5, 5)]
     public CMwNod? BirdModel
     {
-        get => birdModelRef.Resolve();
-        set => birdModelRef.SetEmbedded(value);
+        get => birdModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref birdModelRef, value);
     }
 
-    private NodeRef<CMwNod> birdModelFidRef = new();
+    private NodeRef<CMwNod>? birdModelFidRef;
     [AppliedWithChunk<Chunk090E5001>]
     public CMwNod? BirdModelFid
     {
-        get => birdModelFidRef.Resolve();
-        set => birdModelFidRef.SetEmbedded(value);
+        get => birdModelFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref birdModelFidRef, value);
     }
 
     private int animPeriod;
@@ -260,20 +260,20 @@ public partial class CPlugFlockModel : CMwNod, IClass
         set => this.animFlappingEnd = value;
     }
 
-    private NodeRef<CPlugSound> soundLoopRef = new();
+    private NodeRef<CPlugSound>? soundLoopRef;
     [AppliedWithChunk<Chunk090E5002>]
     public CPlugSound? SoundLoop
     {
-        get => soundLoopRef.Resolve();
-        set => soundLoopRef.SetEmbedded(value);
+        get => soundLoopRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundLoopRef, value);
     }
 
-    private NodeRef<CPlugSound> soundEventTakeOffRef = new();
+    private NodeRef<CPlugSound>? soundEventTakeOffRef;
     [AppliedWithChunk<Chunk090E5002>(2)]
     public CPlugSound? SoundEventTakeOff
     {
-        get => soundEventTakeOffRef.Resolve();
-        set => soundEventTakeOffRef.SetEmbedded(value);
+        get => soundEventTakeOffRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundEventTakeOffRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -281,20 +281,20 @@ public partial class CPlugFlockModel : CMwNod, IClass
     {
         private readonly CPlugFlockModel owner;
         internal NodeRefView(CPlugFlockModel owner) => this.owner = owner;
-        public NodeRef<CMwNod> AnimFileFid => owner.animFileFidRef;
-        public NodeRef<CMwNod> BirdModel => owner.birdModelRef;
-        public NodeRef<CMwNod> BirdModelFid => owner.birdModelFidRef;
-        public NodeRef<CPlugSound> SoundLoop => owner.soundLoopRef;
-        public NodeRef<CPlugSound> SoundEventTakeOff => owner.soundEventTakeOffRef;
+        public NodeRef<CMwNod> AnimFileFid => NodeRef.GetOrCreate(ref owner.animFileFidRef);
+        public NodeRef<CMwNod> BirdModel => NodeRef.GetOrCreate(ref owner.birdModelRef);
+        public NodeRef<CMwNod> BirdModelFid => NodeRef.GetOrCreate(ref owner.birdModelFidRef);
+        public NodeRef<CPlugSound> SoundLoop => NodeRef.GetOrCreate(ref owner.soundLoopRef);
+        public NodeRef<CPlugSound> SoundEventTakeOff => NodeRef.GetOrCreate(ref owner.soundEventTakeOffRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("AnimFileFid", animFileFidRef);
-        yield return new("BirdModel", birdModelRef);
-        yield return new("BirdModelFid", birdModelFidRef);
-        yield return new("SoundLoop", soundLoopRef);
-        yield return new("SoundEventTakeOff", soundEventTakeOffRef);
+        yield return new("AnimFileFid", NodeRef.GetOrCreate(ref animFileFidRef));
+        yield return new("BirdModel", NodeRef.GetOrCreate(ref birdModelRef));
+        yield return new("BirdModelFid", NodeRef.GetOrCreate(ref birdModelFidRef));
+        yield return new("SoundLoop", NodeRef.GetOrCreate(ref soundLoopRef));
+        yield return new("SoundEventTakeOff", NodeRef.GetOrCreate(ref soundEventTakeOffRef));
         yield break;
     }
 
@@ -383,7 +383,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef(n.animFileFidRef);
+                        rw.NodeRef(ref n.animFileFidRef);
 
                         if (Version >= 4)
                         {
@@ -391,7 +391,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
                             if (Version >= 5)
                             {
-                                rw.NodeRef(n.birdModelRef);
+                                rw.NodeRef(ref n.birdModelRef);
                             }
                         }
                     }
@@ -417,7 +417,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.birdModelFidRef);
+            rw.NodeRef(ref n.birdModelFidRef);
             rw.Int32(ref n.animPeriod);
 
             if (Version >= 2)
@@ -449,11 +449,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.soundLoopRef);
+            rw.NodeRef(ref n.soundLoopRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.soundEventTakeOffRef);
+                rw.NodeRef(ref n.soundEventTakeOffRef);
             }
         }
     }

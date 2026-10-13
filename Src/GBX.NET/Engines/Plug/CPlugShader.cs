@@ -283,7 +283,7 @@ public partial class CPlugShader
 
             rw.DataUInt64(ref U01);
             rw.Single(ref n.lightMapQuality);
-            rw.NodeRef(n.materialFxRef);
+            rw.NodeRef(ref n.materialFxRef);
             rw.UInt16(ref n.visibleIdFlags);
 
             if (rw.Reader is not null)

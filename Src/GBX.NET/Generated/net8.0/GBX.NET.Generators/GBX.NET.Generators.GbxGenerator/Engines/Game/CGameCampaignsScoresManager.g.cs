@@ -52,20 +52,20 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
         set => campaignScores = value;
     }
 
-    private NodeRef<CGameGeneralScores> generalScoresRef = new();
+    private NodeRef<CGameGeneralScores>? generalScoresRef;
     [AppliedWithChunk<Chunk03061000>]
     public CGameGeneralScores? GeneralScores
     {
-        get => generalScoresRef.Resolve();
-        set => generalScoresRef.SetEmbedded(value);
+        get => generalScoresRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref generalScoresRef, value);
     }
 
-    private NodeRef<CGameSkillScoreComputer> skillScoreComputerRef = new();
+    private NodeRef<CGameSkillScoreComputer>? skillScoreComputerRef;
     [AppliedWithChunk<Chunk03061000>]
     public CGameSkillScoreComputer? SkillScoreComputer
     {
-        get => skillScoreComputerRef.Resolve();
-        set => skillScoreComputerRef.SetEmbedded(value);
+        get => skillScoreComputerRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref skillScoreComputerRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -75,8 +75,8 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
         internal NodeRefView(CGameCampaignsScoresManager owner) => this.owner = owner;
         public ChallengeScoresReferenceView ChallengeScores => new(owner);
         public CampaignScoresReferenceView CampaignScores => new(owner);
-        public NodeRef<CGameGeneralScores> GeneralScores => owner.generalScoresRef;
-        public NodeRef<CGameSkillScoreComputer> SkillScoreComputer => owner.skillScoreComputerRef;
+        public NodeRef<CGameGeneralScores> GeneralScores => NodeRef.GetOrCreate(ref owner.generalScoresRef);
+        public NodeRef<CGameSkillScoreComputer> SkillScoreComputer => NodeRef.GetOrCreate(ref owner.skillScoreComputerRef);
     }
     public readonly struct ChallengeScoresReferenceView
     {
@@ -103,8 +103,8 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
         {
             for (var i = 0; i < campaignScores.Count; i++) yield return new("CampaignScores" + "[" + i + "]", campaignScores.GetReference(i));
         }
-        yield return new("GeneralScores", generalScoresRef);
-        yield return new("SkillScoreComputer", skillScoreComputerRef);
+        yield return new("GeneralScores", NodeRef.GetOrCreate(ref generalScoresRef));
+        yield return new("SkillScoreComputer", NodeRef.GetOrCreate(ref skillScoreComputerRef));
         yield break;
     }
 
@@ -137,8 +137,8 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
         {
             n.challengeScores = rw.ListNodeRef_deprec<CGameChallengeScores>(n.challengeScores);
             n.campaignScores = rw.ListNodeRef_deprec<CGameCampaignScores>(n.campaignScores);
-            rw.NodeRef(n.generalScoresRef);
-            rw.NodeRef(n.skillScoreComputerRef);
+            rw.NodeRef(ref n.generalScoresRef);
+            rw.NodeRef(ref n.skillScoreComputerRef);
         }
     }
 

@@ -140,12 +140,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         set => this.magnetLocs = value;
     }
 
-    private NodeRef<NPlugItemPlacement_SClass> placementClassRef = new();
+    private NodeRef<NPlugItemPlacement_SClass>? placementClassRef;
     [AppliedWithChunk<Chunk2E020005>]
     public NPlugItemPlacement_SClass? PlacementClass
     {
-        get => placementClassRef.Resolve();
-        set => placementClassRef.SetEmbedded(value);
+        get => placementClassRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref placementClassRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -153,12 +153,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
         private readonly CGameItemPlacementParam owner;
         internal NodeRefView(CGameItemPlacementParam owner) => this.owner = owner;
-        public NodeRef<NPlugItemPlacement_SClass> PlacementClass => owner.placementClassRef;
+        public NodeRef<NPlugItemPlacement_SClass> PlacementClass => NodeRef.GetOrCreate(ref owner.placementClassRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlacementClass", placementClassRef);
+        yield return new("PlacementClass", NodeRef.GetOrCreate(ref placementClassRef));
         yield break;
     }
 
@@ -297,7 +297,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
 
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.placementClassRef);
+            rw.NodeRef(ref n.placementClassRef);
         }
     }
 

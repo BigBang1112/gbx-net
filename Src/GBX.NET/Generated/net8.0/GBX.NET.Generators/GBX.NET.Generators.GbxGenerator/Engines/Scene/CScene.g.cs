@@ -36,12 +36,12 @@ public abstract partial class CScene : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneConfig> sceneConfigRef = new();
+    private NodeRef<CSceneConfig>? sceneConfigRef;
     [AppliedWithChunk<Chunk0A001003>]
     public CSceneConfig? SceneConfig
     {
-        get => sceneConfigRef.Resolve();
-        set => sceneConfigRef.SetEmbedded(value);
+        get => sceneConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneConfigRef, value);
     }
 
     private NodeRefList<CMotionManager>? motionManagerModels;
@@ -65,7 +65,7 @@ public abstract partial class CScene : CMwNod, IClass
     {
         private readonly CScene owner;
         internal NodeRefView(CScene owner) => this.owner = owner;
-        public NodeRef<CSceneConfig> SceneConfig => owner.sceneConfigRef;
+        public NodeRef<CSceneConfig> SceneConfig => NodeRef.GetOrCreate(ref owner.sceneConfigRef);
         public MotionManagerModelsReferenceView MotionManagerModels => new(owner);
     }
     public readonly struct MotionManagerModelsReferenceView
@@ -78,7 +78,7 @@ public abstract partial class CScene : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("SceneConfig", sceneConfigRef);
+        yield return new("SceneConfig", NodeRef.GetOrCreate(ref sceneConfigRef));
         if (motionManagerModels is not null)
         {
             for (var i = 0; i < motionManagerModels.Count; i++) yield return new("MotionManagerModels" + "[" + i + "]", motionManagerModels.GetReference(i));
@@ -112,7 +112,7 @@ public abstract partial class CScene : CMwNod, IClass
 
         public override void ReadWrite(CScene n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.sceneConfigRef);
+            rw.NodeRef(ref n.sceneConfigRef);
         }
     }
 
@@ -175,18 +175,18 @@ public abstract partial class CScene : CMwNod, IClass
 
     public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> u01Ref = new();
+        private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
-            get => u01Ref.Resolve();
-            set => u01Ref.SetEmbedded(value);
+            get => u01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
-        private NodeRef<CMwNod> u02Ref = new();
+        private NodeRef<CMwNod>? u02Ref;
         public CMwNod? U02
         {
-            get => u02Ref.Resolve();
-            set => u02Ref.SetEmbedded(value);
+            get => u02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -194,13 +194,13 @@ public abstract partial class CScene : CMwNod, IClass
         {
             private readonly OldSceneMobil owner;
             internal NodeRefView(OldSceneMobil owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.u01Ref;
-            public NodeRef<CMwNod> U02 => owner.u02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", u01Ref);
-            yield return new("U02", u02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
             yield break;
         }
 
@@ -220,8 +220,8 @@ public abstract partial class CScene : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.u01Ref);
-            rw.NodeRef(this.u02Ref);
+            rw.NodeRef(ref this.u01Ref);
+            rw.NodeRef(ref this.u02Ref);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

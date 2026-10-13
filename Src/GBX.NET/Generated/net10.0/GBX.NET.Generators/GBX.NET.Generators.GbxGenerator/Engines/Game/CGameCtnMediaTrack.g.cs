@@ -96,7 +96,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         set => this.repeatingSegmentEnd = value;
     }
 
-    private NodeRef<CGameCtnGhost> legacyGhostModelRef = new();
+    private NodeRef<CGameCtnGhost>? legacyGhostModelRef;
 
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
@@ -104,7 +104,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         private readonly CGameCtnMediaTrack owner;
         internal NodeRefView(CGameCtnMediaTrack owner) => this.owner = owner;
         public BlocksReferenceView Blocks => new(owner);
-        public NodeRef<CGameCtnGhost> LegacyGhostModel => owner.legacyGhostModelRef;
+        public NodeRef<CGameCtnGhost> LegacyGhostModel => NodeRef.GetOrCreate(ref owner.legacyGhostModelRef);
     }
     public readonly struct BlocksReferenceView
     {
@@ -120,7 +120,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         {
             for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.GetReference(i));
         }
-        yield return new("LegacyGhostModel", legacyGhostModelRef);
+        yield return new("LegacyGhostModel", NodeRef.GetOrCreate(ref legacyGhostModelRef));
         yield break;
     }
 

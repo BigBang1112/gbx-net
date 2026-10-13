@@ -305,11 +305,11 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; } = 5;
 
-        private NodeRef<CPlugBitmapAtlas> U01Ref = new();
+        private NodeRef<CPlugBitmapAtlas>? U01Ref;
         public CPlugBitmapAtlas? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public int? U02;
 
@@ -318,12 +318,12 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         {
             private readonly Chunk090FD001 owner;
             internal NodeRefView(Chunk090FD001 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmapAtlas> U01 => owner.U01Ref;
+            public NodeRef<CPlugBitmapAtlas> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -338,7 +338,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
 
             if (Version == 2)
             {

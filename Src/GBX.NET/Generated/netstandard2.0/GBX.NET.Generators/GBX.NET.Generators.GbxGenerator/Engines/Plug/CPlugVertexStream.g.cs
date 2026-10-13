@@ -52,12 +52,12 @@ public partial class CPlugVertexStream : CPlug, IClass
         set => this.flags = value;
     }
 
-    private NodeRef<CPlugVertexStream> streamModelRef = new();
+    private NodeRef<CPlugVertexStream>? streamModelRef;
     [AppliedWithChunk<Chunk09056000>]
     public CPlugVertexStream? StreamModel
     {
-        get => streamModelRef.Resolve();
-        set => streamModelRef.SetEmbedded(value);
+        get => streamModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref streamModelRef, value);
     }
 
     private DataDecl[]? dataDecls;
@@ -81,12 +81,12 @@ public partial class CPlugVertexStream : CPlug, IClass
     {
         private readonly CPlugVertexStream owner;
         internal NodeRefView(CPlugVertexStream owner) => this.owner = owner;
-        public NodeRef<CPlugVertexStream> StreamModel => owner.streamModelRef;
+        public NodeRef<CPlugVertexStream> StreamModel => NodeRef.GetOrCreate(ref owner.streamModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("StreamModel", streamModelRef);
+        yield return new("StreamModel", NodeRef.GetOrCreate(ref streamModelRef));
         yield break;
     }
 

@@ -36,12 +36,12 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnBlockInfoTransition> blockInfoTransitionRef = new();
+    private NodeRef<CGameCtnBlockInfoTransition>? blockInfoTransitionRef;
     [AppliedWithChunk<Chunk0314D000>]
     public CGameCtnBlockInfoTransition? BlockInfoTransition
     {
-        get => blockInfoTransitionRef.Resolve();
-        set => blockInfoTransitionRef.SetEmbedded(value);
+        get => blockInfoTransitionRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoTransitionRef, value);
     }
 
     private string? replacementZoneId;
@@ -121,12 +121,12 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     {
         private readonly CGameCtnZoneTransition owner;
         internal NodeRefView(CGameCtnZoneTransition owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockInfoTransition> BlockInfoTransition => owner.blockInfoTransitionRef;
+        public NodeRef<CGameCtnBlockInfoTransition> BlockInfoTransition => NodeRef.GetOrCreate(ref owner.blockInfoTransitionRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BlockInfoTransition", blockInfoTransitionRef);
+        yield return new("BlockInfoTransition", NodeRef.GetOrCreate(ref blockInfoTransitionRef));
         yield break;
     }
 
@@ -163,7 +163,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.blockInfoTransitionRef);
+            rw.NodeRef(ref n.blockInfoTransitionRef);
         }
     }
 

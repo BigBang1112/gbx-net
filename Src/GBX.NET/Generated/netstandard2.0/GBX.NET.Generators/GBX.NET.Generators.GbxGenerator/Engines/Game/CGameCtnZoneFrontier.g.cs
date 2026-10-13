@@ -36,12 +36,12 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnBlockInfoFrontier> blockInfoFrontierRef = new();
+    private NodeRef<CGameCtnBlockInfoFrontier>? blockInfoFrontierRef;
     [AppliedWithChunk<Chunk0305E001>]
     public CGameCtnBlockInfoFrontier? BlockInfoFrontier
     {
-        get => blockInfoFrontierRef.Resolve();
-        set => blockInfoFrontierRef.SetEmbedded(value);
+        get => blockInfoFrontierRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoFrontierRef, value);
     }
 
     private string? parentZoneId;
@@ -115,7 +115,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     {
         private readonly CGameCtnZoneFrontier owner;
         internal NodeRefView(CGameCtnZoneFrontier owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockInfoFrontier> BlockInfoFrontier => owner.blockInfoFrontierRef;
+        public NodeRef<CGameCtnBlockInfoFrontier> BlockInfoFrontier => NodeRef.GetOrCreate(ref owner.blockInfoFrontierRef);
         public CompatibleZonesReferenceView CompatibleZones => new(owner);
     }
     public readonly struct CompatibleZonesReferenceView
@@ -128,7 +128,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BlockInfoFrontier", blockInfoFrontierRef);
+        yield return new("BlockInfoFrontier", NodeRef.GetOrCreate(ref blockInfoFrontierRef));
         if (compatibleZones is not null)
         {
             for (var i = 0; i < compatibleZones.Count; i++) yield return new("CompatibleZones" + "[" + i + "]", compatibleZones.GetReference(i));
@@ -168,7 +168,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneFrontier n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.blockInfoFrontierRef);
+            rw.NodeRef(ref n.blockInfoFrontierRef);
             rw.Id(ref n.parentZoneId);
             rw.Id(ref n.childZoneId);
         }

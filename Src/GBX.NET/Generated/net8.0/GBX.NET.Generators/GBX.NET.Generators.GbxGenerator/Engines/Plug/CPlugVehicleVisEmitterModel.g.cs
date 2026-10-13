@@ -36,14 +36,14 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugParticleEmitterModel> particleEmitterModel1Ref = new();
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModel1Ref;
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
     public CPlugParticleEmitterModel? ParticleEmitterModel1
     {
-        get => particleEmitterModel1Ref.Resolve();
-        set => particleEmitterModel1Ref.SetEmbedded(value);
+        get => particleEmitterModel1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModel1Ref, value);
     }
 
     private int wheelIndex;
@@ -229,26 +229,26 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         set => this.pitchYawRoll = value;
     }
 
-    private NodeRef<CPlugParticleEmitterModel> particleEmitterModel0Ref = new();
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModel0Ref;
     /// <summary>
     /// Visual quality index 0.
     /// </summary>
     [AppliedWithChunk<Chunk090E6004>]
     public CPlugParticleEmitterModel? ParticleEmitterModel0
     {
-        get => particleEmitterModel0Ref.Resolve();
-        set => particleEmitterModel0Ref.SetEmbedded(value);
+        get => particleEmitterModel0Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModel0Ref, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> particleEmitterModel2Ref = new();
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModel2Ref;
     /// <summary>
     /// Visual quality index 2.
     /// </summary>
     [AppliedWithChunk<Chunk090E6004>]
     public CPlugParticleEmitterModel? ParticleEmitterModel2
     {
-        get => particleEmitterModel2Ref.Resolve();
-        set => particleEmitterModel2Ref.SetEmbedded(value);
+        get => particleEmitterModel2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModel2Ref, value);
     }
 
     private bool onlyWhenAllWheelsSliding;
@@ -259,15 +259,15 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         set => this.onlyWhenAllWheelsSliding = value;
     }
 
-    private NodeRef<CPlugParticleEmitterModel> particleEmitterModelShootRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? particleEmitterModelShootRef;
     /// <summary>
     /// Used when rendering videos.
     /// </summary>
     [AppliedWithChunk<Chunk090E6006>]
     public CPlugParticleEmitterModel? ParticleEmitterModelShoot
     {
-        get => particleEmitterModelShootRef.Resolve();
-        set => particleEmitterModelShootRef.SetEmbedded(value);
+        get => particleEmitterModelShootRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleEmitterModelShootRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -275,18 +275,18 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     {
         private readonly CPlugVehicleVisEmitterModel owner;
         internal NodeRefView(CPlugVehicleVisEmitterModel owner) => this.owner = owner;
-        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel1 => owner.particleEmitterModel1Ref;
-        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel0 => owner.particleEmitterModel0Ref;
-        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel2 => owner.particleEmitterModel2Ref;
-        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModelShoot => owner.particleEmitterModelShootRef;
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel1 => NodeRef.GetOrCreate(ref owner.particleEmitterModel1Ref);
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel0 => NodeRef.GetOrCreate(ref owner.particleEmitterModel0Ref);
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModel2 => NodeRef.GetOrCreate(ref owner.particleEmitterModel2Ref);
+        public NodeRef<CPlugParticleEmitterModel> ParticleEmitterModelShoot => NodeRef.GetOrCreate(ref owner.particleEmitterModelShootRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("ParticleEmitterModel1", particleEmitterModel1Ref);
-        yield return new("ParticleEmitterModel0", particleEmitterModel0Ref);
-        yield return new("ParticleEmitterModel2", particleEmitterModel2Ref);
-        yield return new("ParticleEmitterModelShoot", particleEmitterModelShootRef);
+        yield return new("ParticleEmitterModel1", NodeRef.GetOrCreate(ref particleEmitterModel1Ref));
+        yield return new("ParticleEmitterModel0", NodeRef.GetOrCreate(ref particleEmitterModel0Ref));
+        yield return new("ParticleEmitterModel2", NodeRef.GetOrCreate(ref particleEmitterModel2Ref));
+        yield return new("ParticleEmitterModelShoot", NodeRef.GetOrCreate(ref particleEmitterModelShootRef));
         yield break;
     }
 
@@ -357,10 +357,10 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef(n.particleEmitterModel1Ref);
+            rw.NodeRef(ref n.particleEmitterModel1Ref);
             if (rw.Reader is not null)
             {
-                n.particleEmitterModel2Ref.CopyFrom(n.particleEmitterModel1Ref);
+                NodeRef.CopyFrom(ref n.particleEmitterModel2Ref, n.particleEmitterModel1Ref);
             }
             rw.Int32(ref n.wheelIndex);
             rw.Int32(ref n.visualHandlerIndex);
@@ -400,10 +400,10 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef(n.particleEmitterModel1Ref);
+            rw.NodeRef(ref n.particleEmitterModel1Ref);
             if (rw.Reader is not null)
             {
-                n.particleEmitterModel2Ref.CopyFrom(n.particleEmitterModel1Ref);
+                NodeRef.CopyFrom(ref n.particleEmitterModel2Ref, n.particleEmitterModel1Ref);
             }
             rw.Int32(ref n.wheelIndex);
             rw.Int32(ref n.visualHandlerIndex);
@@ -488,9 +488,9 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef(n.particleEmitterModel0Ref);
-            rw.NodeRef(n.particleEmitterModel1Ref);
-            rw.NodeRef(n.particleEmitterModel2Ref);
+            rw.NodeRef(ref n.particleEmitterModel0Ref);
+            rw.NodeRef(ref n.particleEmitterModel1Ref);
+            rw.NodeRef(ref n.particleEmitterModel2Ref);
             rw.Int32(ref n.wheelIndex);
             rw.Int32(ref n.visualHandlerIndex);
             rw.Int32(ref n.materialGroupIndex);
@@ -549,7 +549,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.particleEmitterModelShootRef);
+            rw.NodeRef(ref n.particleEmitterModelShootRef);
         }
     }
 

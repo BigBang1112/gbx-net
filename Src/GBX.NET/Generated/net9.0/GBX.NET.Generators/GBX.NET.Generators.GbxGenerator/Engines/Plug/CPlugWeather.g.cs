@@ -36,7 +36,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugMaterial> materialSky_NightRef = new();
+    private NodeRef<CPlugMaterial>? materialSky_NightRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -48,11 +48,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSky_Night
     {
-        get => materialSky_NightRef.Resolve();
-        set => materialSky_NightRef.SetEmbedded(value);
+        get => materialSky_NightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSky_NightRef, value);
     }
 
-    private NodeRef<CPlugMaterial> materialSky_SunRiseRef = new();
+    private NodeRef<CPlugMaterial>? materialSky_SunRiseRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -64,11 +64,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSky_SunRise
     {
-        get => materialSky_SunRiseRef.Resolve();
-        set => materialSky_SunRiseRef.SetEmbedded(value);
+        get => materialSky_SunRiseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSky_SunRiseRef, value);
     }
 
-    private NodeRef<CPlugMaterial> materialSky_DayRef = new();
+    private NodeRef<CPlugMaterial>? materialSky_DayRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -80,11 +80,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSky_Day
     {
-        get => materialSky_DayRef.Resolve();
-        set => materialSky_DayRef.SetEmbedded(value);
+        get => materialSky_DayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSky_DayRef, value);
     }
 
-    private NodeRef<CPlugMaterial> materialSky_SunFallRef = new();
+    private NodeRef<CPlugMaterial>? materialSky_SunFallRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -96,11 +96,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSky_SunFall
     {
-        get => materialSky_SunFallRef.Resolve();
-        set => materialSky_SunFallRef.SetEmbedded(value);
+        get => materialSky_SunFallRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSky_SunFallRef, value);
     }
 
-    private NodeRef<CPlugMaterial> materialSea0Ref = new();
+    private NodeRef<CPlugMaterial>? materialSea0Ref;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -112,11 +112,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSea0
     {
-        get => materialSea0Ref.Resolve();
-        set => materialSea0Ref.SetEmbedded(value);
+        get => materialSea0Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSea0Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> imageLightAmbRef = new();
+    private NodeRef<CPlugFileImg>? imageLightAmbRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -130,11 +130,11 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightAmb
     {
-        get => imageLightAmbRef.Resolve();
-        set => imageLightAmbRef.SetEmbedded(value);
+        get => imageLightAmbRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageLightAmbRef, value);
     }
 
-    private NodeRef<CPlugFileImg> imageLightDirSunRef = new();
+    private NodeRef<CPlugFileImg>? imageLightDirSunRef;
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -148,8 +148,8 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightDirSun
     {
-        get => imageLightDirSunRef.Resolve();
-        set => imageLightDirSunRef.SetEmbedded(value);
+        get => imageLightDirSunRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageLightDirSunRef, value);
     }
 
     private Vec3 fogRGB = (1, 1, 1);
@@ -381,7 +381,7 @@ public partial class CPlugWeather : CMwNod, IClass
         set => this.seaTwkWaterColor_Day = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapRainFidRef = new();
+    private NodeRef<CPlugBitmap>? bitmapRainFidRef;
     [AppliedWithChunk<Chunk0917E008>]
     [AppliedWithChunk<Chunk0917E009>]
     [AppliedWithChunk<Chunk0917E00A>]
@@ -389,36 +389,36 @@ public partial class CPlugWeather : CMwNod, IClass
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugBitmap? BitmapRainFid
     {
-        get => bitmapRainFidRef.Resolve();
-        set => bitmapRainFidRef.SetEmbedded(value);
+        get => bitmapRainFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapRainFidRef, value);
     }
 
-    private NodeRef<CMwNod> sceneFxFidRef = new();
+    private NodeRef<CMwNod>? sceneFxFidRef;
     [AppliedWithChunk<Chunk0917E009>]
     [AppliedWithChunk<Chunk0917E00A>]
     [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CMwNod? SceneFxFid
     {
-        get => sceneFxFidRef.Resolve();
-        set => sceneFxFidRef.SetEmbedded(value);
+        get => sceneFxFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneFxFidRef, value);
     }
 
-    private NodeRef<CPlugMaterial> materialSea1Ref = new();
+    private NodeRef<CPlugMaterial>? materialSea1Ref;
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSea1
     {
-        get => materialSea1Ref.Resolve();
-        set => materialSea1Ref.SetEmbedded(value);
+        get => materialSea1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialSea1Ref, value);
     }
 
-    private NodeRef<CPlugFileImg> imageLightDirMoonRef = new();
+    private NodeRef<CPlugFileImg>? imageLightDirMoonRef;
     [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightDirMoon
     {
-        get => imageLightDirMoonRef.Resolve();
-        set => imageLightDirMoonRef.SetEmbedded(value);
+        get => imageLightDirMoonRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageLightDirMoonRef, value);
     }
 
     private float seaTwkReflecIntensMidNight = 0.3f;
@@ -469,20 +469,20 @@ public partial class CPlugWeather : CMwNod, IClass
         set => this.seaTwkReflecIntensTMmidDay = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapFlareSunRef = new();
+    private NodeRef<CPlugBitmap>? bitmapFlareSunRef;
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugBitmap? BitmapFlareSun
     {
-        get => bitmapFlareSunRef.Resolve();
-        set => bitmapFlareSunRef.SetEmbedded(value);
+        get => bitmapFlareSunRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFlareSunRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapFlareMoonRef = new();
+    private NodeRef<CPlugBitmap>? bitmapFlareMoonRef;
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugBitmap? BitmapFlareMoon
     {
-        get => bitmapFlareMoonRef.Resolve();
-        set => bitmapFlareMoonRef.SetEmbedded(value);
+        get => bitmapFlareMoonRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFlareMoonRef, value);
     }
 
     private float flareAngularSizeSun = 20;
@@ -501,60 +501,60 @@ public partial class CPlugWeather : CMwNod, IClass
         set => this.flareAngularSizeMoon = value;
     }
 
-    private NodeRef<CPlugFileImg> imageLightDirDblSidedRef = new();
+    private NodeRef<CPlugFileImg>? imageLightDirDblSidedRef;
     [AppliedWithChunk<Chunk0917E00F>]
     public CPlugFileImg? ImageLightDirDblSided
     {
-        get => imageLightDirDblSidedRef.Resolve();
-        set => imageLightDirDblSidedRef.SetEmbedded(value);
+        get => imageLightDirDblSidedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageLightDirDblSidedRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapSkyGradVRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSkyGradVRef;
     [AppliedWithChunk<Chunk0917E011>]
     public CPlugBitmap? BitmapSkyGradV
     {
-        get => bitmapSkyGradVRef.Resolve();
-        set => bitmapSkyGradVRef.SetEmbedded(value);
+        get => bitmapSkyGradVRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSkyGradVRef, value);
     }
 
-    private NodeRef<CPlugFileImg> imageFogColorRef = new();
+    private NodeRef<CPlugFileImg>? imageFogColorRef;
     [AppliedWithChunk<Chunk0917E013>]
     public CPlugFileImg? ImageFogColor
     {
-        get => imageFogColorRef.Resolve();
-        set => imageFogColorRef.SetEmbedded(value);
+        get => imageFogColorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageFogColorRef, value);
     }
 
-    private NodeRef<CPlugFileImg> imageSeaColorRef = new();
+    private NodeRef<CPlugFileImg>? imageSeaColorRef;
     [AppliedWithChunk<Chunk0917E014>]
     public CPlugFileImg? ImageSeaColor
     {
-        get => imageSeaColorRef.Resolve();
-        set => imageSeaColorRef.SetEmbedded(value);
+        get => imageSeaColorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageSeaColorRef, value);
     }
 
-    private NodeRef<CPlugClouds> cloudsRef = new();
+    private NodeRef<CPlugClouds>? cloudsRef;
     [AppliedWithChunk<Chunk0917E016>]
     public CPlugClouds? Clouds
     {
-        get => cloudsRef.Resolve();
-        set => cloudsRef.SetEmbedded(value);
+        get => cloudsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cloudsRef, value);
     }
 
-    private NodeRef<GxFogBlender> fogBlenderRef = new();
+    private NodeRef<GxFogBlender>? fogBlenderRef;
     [AppliedWithChunk<Chunk0917E017>]
     public GxFogBlender? FogBlender
     {
-        get => fogBlenderRef.Resolve();
-        set => fogBlenderRef.SetEmbedded(value);
+        get => fogBlenderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fogBlenderRef, value);
     }
 
-    private NodeRef<CPlugParticleEmitterModel> emitterInFogRef = new();
+    private NodeRef<CPlugParticleEmitterModel>? emitterInFogRef;
     [AppliedWithChunk<Chunk0917E018>]
     public CPlugParticleEmitterModel? EmitterInFog
     {
-        get => emitterInFogRef.Resolve();
-        set => emitterInFogRef.SetEmbedded(value);
+        get => emitterInFogRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref emitterInFogRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -562,50 +562,50 @@ public partial class CPlugWeather : CMwNod, IClass
     {
         private readonly CPlugWeather owner;
         internal NodeRefView(CPlugWeather owner) => this.owner = owner;
-        public NodeRef<CPlugMaterial> MaterialSky_Night => owner.materialSky_NightRef;
-        public NodeRef<CPlugMaterial> MaterialSky_SunRise => owner.materialSky_SunRiseRef;
-        public NodeRef<CPlugMaterial> MaterialSky_Day => owner.materialSky_DayRef;
-        public NodeRef<CPlugMaterial> MaterialSky_SunFall => owner.materialSky_SunFallRef;
-        public NodeRef<CPlugMaterial> MaterialSea0 => owner.materialSea0Ref;
-        public NodeRef<CPlugFileImg> ImageLightAmb => owner.imageLightAmbRef;
-        public NodeRef<CPlugFileImg> ImageLightDirSun => owner.imageLightDirSunRef;
-        public NodeRef<CPlugBitmap> BitmapRainFid => owner.bitmapRainFidRef;
-        public NodeRef<CMwNod> SceneFxFid => owner.sceneFxFidRef;
-        public NodeRef<CPlugMaterial> MaterialSea1 => owner.materialSea1Ref;
-        public NodeRef<CPlugFileImg> ImageLightDirMoon => owner.imageLightDirMoonRef;
-        public NodeRef<CPlugBitmap> BitmapFlareSun => owner.bitmapFlareSunRef;
-        public NodeRef<CPlugBitmap> BitmapFlareMoon => owner.bitmapFlareMoonRef;
-        public NodeRef<CPlugFileImg> ImageLightDirDblSided => owner.imageLightDirDblSidedRef;
-        public NodeRef<CPlugBitmap> BitmapSkyGradV => owner.bitmapSkyGradVRef;
-        public NodeRef<CPlugFileImg> ImageFogColor => owner.imageFogColorRef;
-        public NodeRef<CPlugFileImg> ImageSeaColor => owner.imageSeaColorRef;
-        public NodeRef<CPlugClouds> Clouds => owner.cloudsRef;
-        public NodeRef<GxFogBlender> FogBlender => owner.fogBlenderRef;
-        public NodeRef<CPlugParticleEmitterModel> EmitterInFog => owner.emitterInFogRef;
+        public NodeRef<CPlugMaterial> MaterialSky_Night => NodeRef.GetOrCreate(ref owner.materialSky_NightRef);
+        public NodeRef<CPlugMaterial> MaterialSky_SunRise => NodeRef.GetOrCreate(ref owner.materialSky_SunRiseRef);
+        public NodeRef<CPlugMaterial> MaterialSky_Day => NodeRef.GetOrCreate(ref owner.materialSky_DayRef);
+        public NodeRef<CPlugMaterial> MaterialSky_SunFall => NodeRef.GetOrCreate(ref owner.materialSky_SunFallRef);
+        public NodeRef<CPlugMaterial> MaterialSea0 => NodeRef.GetOrCreate(ref owner.materialSea0Ref);
+        public NodeRef<CPlugFileImg> ImageLightAmb => NodeRef.GetOrCreate(ref owner.imageLightAmbRef);
+        public NodeRef<CPlugFileImg> ImageLightDirSun => NodeRef.GetOrCreate(ref owner.imageLightDirSunRef);
+        public NodeRef<CPlugBitmap> BitmapRainFid => NodeRef.GetOrCreate(ref owner.bitmapRainFidRef);
+        public NodeRef<CMwNod> SceneFxFid => NodeRef.GetOrCreate(ref owner.sceneFxFidRef);
+        public NodeRef<CPlugMaterial> MaterialSea1 => NodeRef.GetOrCreate(ref owner.materialSea1Ref);
+        public NodeRef<CPlugFileImg> ImageLightDirMoon => NodeRef.GetOrCreate(ref owner.imageLightDirMoonRef);
+        public NodeRef<CPlugBitmap> BitmapFlareSun => NodeRef.GetOrCreate(ref owner.bitmapFlareSunRef);
+        public NodeRef<CPlugBitmap> BitmapFlareMoon => NodeRef.GetOrCreate(ref owner.bitmapFlareMoonRef);
+        public NodeRef<CPlugFileImg> ImageLightDirDblSided => NodeRef.GetOrCreate(ref owner.imageLightDirDblSidedRef);
+        public NodeRef<CPlugBitmap> BitmapSkyGradV => NodeRef.GetOrCreate(ref owner.bitmapSkyGradVRef);
+        public NodeRef<CPlugFileImg> ImageFogColor => NodeRef.GetOrCreate(ref owner.imageFogColorRef);
+        public NodeRef<CPlugFileImg> ImageSeaColor => NodeRef.GetOrCreate(ref owner.imageSeaColorRef);
+        public NodeRef<CPlugClouds> Clouds => NodeRef.GetOrCreate(ref owner.cloudsRef);
+        public NodeRef<GxFogBlender> FogBlender => NodeRef.GetOrCreate(ref owner.fogBlenderRef);
+        public NodeRef<CPlugParticleEmitterModel> EmitterInFog => NodeRef.GetOrCreate(ref owner.emitterInFogRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("MaterialSky_Night", materialSky_NightRef);
-        yield return new("MaterialSky_SunRise", materialSky_SunRiseRef);
-        yield return new("MaterialSky_Day", materialSky_DayRef);
-        yield return new("MaterialSky_SunFall", materialSky_SunFallRef);
-        yield return new("MaterialSea0", materialSea0Ref);
-        yield return new("ImageLightAmb", imageLightAmbRef);
-        yield return new("ImageLightDirSun", imageLightDirSunRef);
-        yield return new("BitmapRainFid", bitmapRainFidRef);
-        yield return new("SceneFxFid", sceneFxFidRef);
-        yield return new("MaterialSea1", materialSea1Ref);
-        yield return new("ImageLightDirMoon", imageLightDirMoonRef);
-        yield return new("BitmapFlareSun", bitmapFlareSunRef);
-        yield return new("BitmapFlareMoon", bitmapFlareMoonRef);
-        yield return new("ImageLightDirDblSided", imageLightDirDblSidedRef);
-        yield return new("BitmapSkyGradV", bitmapSkyGradVRef);
-        yield return new("ImageFogColor", imageFogColorRef);
-        yield return new("ImageSeaColor", imageSeaColorRef);
-        yield return new("Clouds", cloudsRef);
-        yield return new("FogBlender", fogBlenderRef);
-        yield return new("EmitterInFog", emitterInFogRef);
+        yield return new("MaterialSky_Night", NodeRef.GetOrCreate(ref materialSky_NightRef));
+        yield return new("MaterialSky_SunRise", NodeRef.GetOrCreate(ref materialSky_SunRiseRef));
+        yield return new("MaterialSky_Day", NodeRef.GetOrCreate(ref materialSky_DayRef));
+        yield return new("MaterialSky_SunFall", NodeRef.GetOrCreate(ref materialSky_SunFallRef));
+        yield return new("MaterialSea0", NodeRef.GetOrCreate(ref materialSea0Ref));
+        yield return new("ImageLightAmb", NodeRef.GetOrCreate(ref imageLightAmbRef));
+        yield return new("ImageLightDirSun", NodeRef.GetOrCreate(ref imageLightDirSunRef));
+        yield return new("BitmapRainFid", NodeRef.GetOrCreate(ref bitmapRainFidRef));
+        yield return new("SceneFxFid", NodeRef.GetOrCreate(ref sceneFxFidRef));
+        yield return new("MaterialSea1", NodeRef.GetOrCreate(ref materialSea1Ref));
+        yield return new("ImageLightDirMoon", NodeRef.GetOrCreate(ref imageLightDirMoonRef));
+        yield return new("BitmapFlareSun", NodeRef.GetOrCreate(ref bitmapFlareSunRef));
+        yield return new("BitmapFlareMoon", NodeRef.GetOrCreate(ref bitmapFlareMoonRef));
+        yield return new("ImageLightDirDblSided", NodeRef.GetOrCreate(ref imageLightDirDblSidedRef));
+        yield return new("BitmapSkyGradV", NodeRef.GetOrCreate(ref bitmapSkyGradVRef));
+        yield return new("ImageFogColor", NodeRef.GetOrCreate(ref imageFogColorRef));
+        yield return new("ImageSeaColor", NodeRef.GetOrCreate(ref imageSeaColorRef));
+        yield return new("Clouds", NodeRef.GetOrCreate(ref cloudsRef));
+        yield return new("FogBlender", NodeRef.GetOrCreate(ref fogBlenderRef));
+        yield return new("EmitterInFog", NodeRef.GetOrCreate(ref emitterInFogRef));
         yield break;
     }
 
@@ -714,13 +714,13 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.NodeRef(n.materialSky_NightRef);
-            rw.NodeRef(n.materialSky_SunRiseRef);
-            rw.NodeRef(n.materialSky_DayRef);
-            rw.NodeRef(n.materialSky_SunFallRef);
-            rw.NodeRef(n.materialSea0Ref);
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
+            rw.NodeRef(ref n.materialSky_NightRef);
+            rw.NodeRef(ref n.materialSky_SunRiseRef);
+            rw.NodeRef(ref n.materialSky_DayRef);
+            rw.NodeRef(ref n.materialSky_SunFallRef);
+            rw.NodeRef(ref n.materialSea0Ref);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
@@ -735,7 +735,7 @@ public partial class CPlugWeather : CMwNod, IClass
             rw.Single(ref U04);
             if (rw.Reader is not null)
             {
-                n.materialSea1Ref.CopyFrom(n.materialSea0Ref);
+                NodeRef.CopyFrom(ref n.materialSea1Ref, n.materialSea0Ref);
             }
             if (rw.Reader is not null)
             {
@@ -786,13 +786,13 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.NodeRef(n.materialSky_NightRef);
-            rw.NodeRef(n.materialSky_SunRiseRef);
-            rw.NodeRef(n.materialSky_DayRef);
-            rw.NodeRef(n.materialSky_SunFallRef);
-            rw.NodeRef(n.materialSea0Ref);
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
+            rw.NodeRef(ref n.materialSky_NightRef);
+            rw.NodeRef(ref n.materialSky_SunRiseRef);
+            rw.NodeRef(ref n.materialSky_DayRef);
+            rw.NodeRef(ref n.materialSky_SunFallRef);
+            rw.NodeRef(ref n.materialSea0Ref);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
@@ -808,7 +808,7 @@ public partial class CPlugWeather : CMwNod, IClass
             rw.Boolean(ref U05);
             if (rw.Reader is not null)
             {
-                n.materialSea1Ref.CopyFrom(n.materialSea0Ref);
+                NodeRef.CopyFrom(ref n.materialSea1Ref, n.materialSea0Ref);
             }
             if (rw.Reader is not null)
             {
@@ -842,25 +842,25 @@ public partial class CPlugWeather : CMwNod, IClass
         public override uint Id => 0x0917E002;
         public string? U01;
 
-        private NodeRef<CPlugMaterial> U02Ref = new();
+        private NodeRef<CPlugMaterial>? U02Ref;
         public CPlugMaterial? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugMaterial> U03Ref = new();
+        private NodeRef<CPlugMaterial>? U03Ref;
         public CPlugMaterial? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CPlugMaterial> U04Ref = new();
+        private NodeRef<CPlugMaterial>? U04Ref;
         public CPlugMaterial? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
         public float U05;
         public float U06;
@@ -872,16 +872,16 @@ public partial class CPlugWeather : CMwNod, IClass
         {
             private readonly Chunk0917E002 owner;
             internal NodeRefView(Chunk0917E002 owner) => this.owner = owner;
-            public NodeRef<CPlugMaterial> U02 => owner.U02Ref;
-            public NodeRef<CPlugMaterial> U03 => owner.U03Ref;
-            public NodeRef<CPlugMaterial> U04 => owner.U04Ref;
+            public NodeRef<CPlugMaterial> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugMaterial> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugMaterial> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U04", U04Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -901,16 +901,16 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.NodeRef(n.materialSky_NightRef);
-            rw.NodeRef(U02Ref);
-            rw.NodeRef(n.materialSky_SunRiseRef);
-            rw.NodeRef(U03Ref);
-            rw.NodeRef(n.materialSky_DayRef);
-            rw.NodeRef(U04Ref);
-            rw.NodeRef(n.materialSky_SunFallRef);
-            rw.NodeRef(n.materialSea0Ref);
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
+            rw.NodeRef(ref n.materialSky_NightRef);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.materialSky_SunRiseRef);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref n.materialSky_DayRef);
+            rw.NodeRef(ref U04Ref);
+            rw.NodeRef(ref n.materialSky_SunFallRef);
+            rw.NodeRef(ref n.materialSea0Ref);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
@@ -926,7 +926,7 @@ public partial class CPlugWeather : CMwNod, IClass
             rw.Boolean(ref U08);
             if (rw.Reader is not null)
             {
-                n.materialSea1Ref.CopyFrom(n.materialSea0Ref);
+                NodeRef.CopyFrom(ref n.materialSea1Ref, n.materialSea0Ref);
             }
             if (rw.Reader is not null)
             {
@@ -996,25 +996,25 @@ public partial class CPlugWeather : CMwNod, IClass
         public override uint Id => 0x0917E005;
         public string? U01;
 
-        private NodeRef<CPlugMaterial> U02Ref = new();
+        private NodeRef<CPlugMaterial>? U02Ref;
         public CPlugMaterial? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugMaterial> U03Ref = new();
+        private NodeRef<CPlugMaterial>? U03Ref;
         public CPlugMaterial? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CPlugMaterial> U04Ref = new();
+        private NodeRef<CPlugMaterial>? U04Ref;
         public CPlugMaterial? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
         public float U05;
         public float U06;
@@ -1026,16 +1026,16 @@ public partial class CPlugWeather : CMwNod, IClass
         {
             private readonly Chunk0917E005 owner;
             internal NodeRefView(Chunk0917E005 owner) => this.owner = owner;
-            public NodeRef<CPlugMaterial> U02 => owner.U02Ref;
-            public NodeRef<CPlugMaterial> U03 => owner.U03Ref;
-            public NodeRef<CPlugMaterial> U04 => owner.U04Ref;
+            public NodeRef<CPlugMaterial> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugMaterial> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugMaterial> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U04", U04Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -1055,14 +1055,14 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.NodeRef(n.materialSky_NightRef);
-            rw.NodeRef(U02Ref);
-            rw.NodeRef(n.materialSky_SunRiseRef);
-            rw.NodeRef(U03Ref);
-            rw.NodeRef(n.materialSky_DayRef);
-            rw.NodeRef(U04Ref);
-            rw.NodeRef(n.materialSky_SunFallRef);
-            rw.NodeRef(n.materialSea0Ref);
+            rw.NodeRef(ref n.materialSky_NightRef);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.materialSky_SunRiseRef);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref n.materialSky_DayRef);
+            rw.NodeRef(ref U04Ref);
+            rw.NodeRef(ref n.materialSky_SunFallRef);
+            rw.NodeRef(ref n.materialSea0Ref);
             rw.Vec3(ref n.fogRGB);
             rw.Single(ref n.fogLinearStart);
             rw.Single(ref n.fogLinearEnd);
@@ -1081,8 +1081,8 @@ public partial class CPlugWeather : CMwNod, IClass
             {
                 n.DayFogFlags = n.DayFogFlags& 0xF;
             }
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
             rw.Single(ref U05);
             rw.Single(ref U06);
             rw.Single(ref U07);
@@ -1090,7 +1090,7 @@ public partial class CPlugWeather : CMwNod, IClass
             rw.Single(ref n.cameraFarZ);
             if (rw.Reader is not null)
             {
-                n.materialSea1Ref.CopyFrom(n.materialSea0Ref);
+                NodeRef.CopyFrom(ref n.materialSea1Ref, n.materialSea0Ref);
             }
         }
     }
@@ -1145,7 +1145,7 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.bitmapRainFidRef);
+            rw.NodeRef(ref n.bitmapRainFidRef);
         }
     }
 
@@ -1162,7 +1162,7 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.sceneFxFidRef);
+            rw.NodeRef(ref n.sceneFxFidRef);
         }
     }
 
@@ -1210,15 +1210,15 @@ public partial class CPlugWeather : CMwNod, IClass
                 n.DayFogFlags = n.DayFogFlags& 0xF;
             }
             rw.Id(ref U01);
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Boolean(ref U05);
             rw.Single(ref n.cameraFarZ);
-            rw.NodeRef(n.bitmapRainFidRef);
-            rw.NodeRef(n.sceneFxFidRef);
+            rw.NodeRef(ref n.bitmapRainFidRef);
+            rw.NodeRef(ref n.sceneFxFidRef);
         }
     }
 
@@ -1239,12 +1239,12 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.materialSky_NightRef);
-            rw.NodeRef(n.materialSky_SunRiseRef);
-            rw.NodeRef(n.materialSky_DayRef);
-            rw.NodeRef(n.materialSky_SunFallRef);
-            rw.NodeRef(n.materialSea0Ref);
-            rw.NodeRef(n.materialSea1Ref);
+            rw.NodeRef(ref n.materialSky_NightRef);
+            rw.NodeRef(ref n.materialSky_SunRiseRef);
+            rw.NodeRef(ref n.materialSky_DayRef);
+            rw.NodeRef(ref n.materialSky_SunFallRef);
+            rw.NodeRef(ref n.materialSea0Ref);
+            rw.NodeRef(ref n.materialSea1Ref);
         }
     }
 
@@ -1261,7 +1261,7 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.imageLightDirMoonRef);
+            rw.NodeRef(ref n.imageLightDirMoonRef);
         }
     }
 
@@ -1336,19 +1336,19 @@ public partial class CPlugWeather : CMwNod, IClass
                 n.DayFogFlags = n.DayFogFlags& 0xF;
             }
             rw.Id(ref U01);
-            rw.NodeRef(n.imageLightAmbRef);
-            rw.NodeRef(n.imageLightDirSunRef);
-            rw.NodeRef(n.imageLightDirMoonRef);
-            rw.NodeRef(n.bitmapFlareSunRef);
-            rw.NodeRef(n.bitmapFlareMoonRef);
+            rw.NodeRef(ref n.imageLightAmbRef);
+            rw.NodeRef(ref n.imageLightDirSunRef);
+            rw.NodeRef(ref n.imageLightDirMoonRef);
+            rw.NodeRef(ref n.bitmapFlareSunRef);
+            rw.NodeRef(ref n.bitmapFlareMoonRef);
             rw.Single(ref n.flareAngularSizeSun);
             rw.Single(ref n.flareAngularSizeMoon);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref n.cameraFarZ);
-            rw.NodeRef(n.bitmapRainFidRef);
-            rw.NodeRef(n.sceneFxFidRef);
+            rw.NodeRef(ref n.bitmapRainFidRef);
+            rw.NodeRef(ref n.sceneFxFidRef);
         }
     }
 
@@ -1369,7 +1369,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageLightDirDblSidedRef);
+            rw.NodeRef(ref n.imageLightDirDblSidedRef);
         }
     }
 
@@ -1404,7 +1404,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSkyGradVRef);
+            rw.NodeRef(ref n.bitmapSkyGradVRef);
         }
     }
 
@@ -1439,7 +1439,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageFogColorRef);
+            rw.NodeRef(ref n.imageFogColorRef);
         }
     }
 
@@ -1460,7 +1460,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageSeaColorRef);
+            rw.NodeRef(ref n.imageSeaColorRef);
         }
     }
 
@@ -1495,7 +1495,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.cloudsRef);
+            rw.NodeRef(ref n.cloudsRef);
         }
     }
 
@@ -1516,7 +1516,7 @@ public partial class CPlugWeather : CMwNod, IClass
 
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.fogBlenderRef);
+            rw.NodeRef(ref n.fogBlenderRef);
         }
     }
 
@@ -1552,7 +1552,7 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.emitterInFogRef);
+            rw.NodeRef(ref n.emitterInFogRef);
         }
     }
 

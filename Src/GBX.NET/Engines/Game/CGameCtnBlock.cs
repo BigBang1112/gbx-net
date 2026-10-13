@@ -120,7 +120,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public CGameCtnBlockSkin? Skin
     {
-        get => skinRef.Resolve();
+        get => skinRef?.Resolve();
         set
         {
             if (value is null && string.IsNullOrEmpty(Author)) // it may be needed to have this complex set on Author prop too
@@ -129,7 +129,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
             }
 
             flags |= 1 << SkinnableBit;
-            skinRef.SetEmbedded(value);
+            NodeRef.SetEmbedded(ref skinRef, value);
         }
     }
 
@@ -147,11 +147,11 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     /// </summary>
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
-        get => waypointSpecialPropertyRef.Resolve();
+        get => waypointSpecialPropertyRef?.Resolve();
         set
         {
             SetFlagBit(WaypointBit, value is not null);
-            waypointSpecialPropertyRef.SetEmbedded(value);
+            NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
         }
     }
 
@@ -232,7 +232,7 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
             var flags = r.ReadInt32();
             if ((flags & (1 << 27)) != 0)
             {
-                r.ReadNodeRef(n.skinRef);
+                r.ReadNodeRef(ref n.skinRef);
             }
             n.Flags = 0;
             n.Variant = (byte)(flags & 0xFFF);
@@ -252,13 +252,13 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
                 ((n.Flags & 0xF000) << 12);
 
             // in case of private value desync
-            if (n.skinRef.Kind != NodeRefKind.None)
+            if ((n.skinRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 flags |= 1 << 27;
             }
 
             w.Write(flags);
-            if (n.skinRef.Kind != NodeRefKind.None)
+            if ((n.skinRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 w.WriteNodeRef(n.skinRef);
             }

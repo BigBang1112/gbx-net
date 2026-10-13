@@ -1,6 +1,7 @@
 using GBX.NET.Components;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Serialization;
 
@@ -9,6 +10,13 @@ public partial class GbxReader
     public NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod
     {
         reference ??= new();
+        ReadNodeRef(ref reference);
+        return reference;
+    }
+
+    /// <summary>Reads stored reference data, leaving an absent handle null when the file stores a null reference.</summary>
+    public void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod
+    {
         var index = default(int?);
 
         if (encapsulation is null)
@@ -17,8 +25,8 @@ public partial class GbxReader
 
             if (index == -1)
             {
-                reference.SetEmbedded(null);
-                return reference;
+                reference?.Clear();
+                return;
             }
 
             if (NodeDict.TryGetValue(index.Value, out var existingNode))
@@ -26,18 +34,18 @@ public partial class GbxReader
                 logger?.LogDebug("NodeRef #{Index}: {ExistingNode} (existing)", index.Value, existingNode);
 
                 if (existingNode is GbxRefTableNode descriptor)
-                    reference.SetDescriptor(descriptor);
+                    NodeRef.GetOrCreate(ref reference).SetDescriptor(descriptor);
                 else
-                    reference.SetReadTarget((CMwNod)existingNode);
-                return reference;
+                    NodeRef.GetOrCreate(ref reference).SetReadTarget((CMwNod)existingNode);
+                return;
             }
 
             if (refTable?.TryGetValue(index.Value, out var externalNode) == true)
             {
                 logger?.LogDebug("NodeRef #{Index}: {ExternalNode}", index.Value, externalNode);
 
-                reference.SetDescriptor(externalNode);
-                return reference;
+                NodeRef.GetOrCreate(ref reference).SetDescriptor(externalNode);
+                return;
             }
         }
 
@@ -45,8 +53,8 @@ public partial class GbxReader
 
         if (encapsulation is not null && rawClassId == uint.MaxValue)
         {
-            reference.SetEmbedded(null);
-            return reference;
+            reference?.Clear();
+            return;
         }
 
         var classId = ClassManager.Wrap(rawClassId);
@@ -75,8 +83,7 @@ public partial class GbxReader
             NodeDict[index.Value] = node;
         }
 
-        reference.SetReadTarget((CMwNod)ReadNode(node));
-        return reference;
+        NodeRef.GetOrCreate(ref reference).SetReadTarget((CMwNod)ReadNode(node));
     }
 
     public NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod

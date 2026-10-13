@@ -74,7 +74,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.legacyRenderFlags = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapClearRef = new();
+    private NodeRef<CPlugBitmap>? bitmapClearRef;
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
     [AppliedWithChunk<Chunk09086005>]
@@ -85,8 +85,8 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [AppliedWithChunk<Chunk09086010>]
     public CPlugBitmap? BitmapClear
     {
-        get => bitmapClearRef.Resolve();
-        set => bitmapClearRef.SetEmbedded(value);
+        get => bitmapClearRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapClearRef, value);
     }
 
     private Vec2? bitmapClearUV;
@@ -200,12 +200,12 @@ public partial class CPlugBitmapRender : CPlug, IClass
         set => this.renderFlags = value;
     }
 
-    private NodeRef<CPlugBitmapRenderSub> renderSubRef = new();
+    private NodeRef<CPlugBitmapRenderSub>? renderSubRef;
     [AppliedWithChunk<Chunk0908600C>]
     public CPlugBitmapRenderSub? RenderSub
     {
-        get => renderSubRef.Resolve();
-        set => renderSubRef.SetEmbedded(value);
+        get => renderSubRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref renderSubRef, value);
     }
 
     private uint renderFlags2;
@@ -228,14 +228,14 @@ public partial class CPlugBitmapRender : CPlug, IClass
     {
         private readonly CPlugBitmapRender owner;
         internal NodeRefView(CPlugBitmapRender owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> BitmapClear => owner.bitmapClearRef;
-        public NodeRef<CPlugBitmapRenderSub> RenderSub => owner.renderSubRef;
+        public NodeRef<CPlugBitmap> BitmapClear => NodeRef.GetOrCreate(ref owner.bitmapClearRef);
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => NodeRef.GetOrCreate(ref owner.renderSubRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BitmapClear", bitmapClearRef);
-        yield return new("RenderSub", renderSubRef);
+        yield return new("BitmapClear", NodeRef.GetOrCreate(ref bitmapClearRef));
+        yield return new("RenderSub", NodeRef.GetOrCreate(ref renderSubRef));
         yield break;
     }
 
@@ -351,7 +351,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.bitmapClearRef);
+            rw.NodeRef(ref n.bitmapClearRef);
             rw.Vec2(ref n.bitmapClearUV);
         }
     }
@@ -536,7 +536,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
         {
             rw.UInt32(ref n.clearColor);
             rw.DataUInt32(ref n.renderFlags);
-            rw.NodeRef(n.bitmapClearRef);
+            rw.NodeRef(ref n.bitmapClearRef);
             rw.Vec2(ref n.bitmapClearUV);
         }
     }
@@ -558,7 +558,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapRender n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.renderSubRef);
+            rw.NodeRef(ref n.renderSubRef);
         }
     }
 

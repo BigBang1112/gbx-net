@@ -38,17 +38,17 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
 
     private NodeRefList<CGameCtnGhost>? ghosts;
 
-    private NodeRef<CGameCtnMediaClip> clipRef = new();
+    private NodeRef<CGameCtnMediaClip>? clipRef;
 
-    private NodeRef<CCtnMediaBlockEventTrackMania> eventsRef = new();
+    private NodeRef<CCtnMediaBlockEventTrackMania>? eventsRef;
 
-    private NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> simpleEventsDisplayRef = new();
+    private NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>? simpleEventsDisplayRef;
 
-    private NodeRef<CGameReplayObjectVisData> sceneryObjectsRef = new();
+    private NodeRef<CGameReplayObjectVisData>? sceneryObjectsRef;
 
-    private NodeRef<CPlugEntRecordData> recordDataRef = new();
+    private NodeRef<CPlugEntRecordData>? recordDataRef;
 
-    private NodeRef<CGameCtnChallengeParameters> challengeParametersRef = new();
+    private NodeRef<CGameCtnChallengeParameters>? challengeParametersRef;
 
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
@@ -56,12 +56,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         private readonly CGameCtnReplayRecord owner;
         internal NodeRefView(CGameCtnReplayRecord owner) => this.owner = owner;
         public GhostsReferenceView Ghosts => new(owner);
-        public NodeRef<CGameCtnMediaClip> Clip => owner.clipRef;
-        public NodeRef<CCtnMediaBlockEventTrackMania> Events => owner.eventsRef;
-        public NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> SimpleEventsDisplay => owner.simpleEventsDisplayRef;
-        public NodeRef<CGameReplayObjectVisData> SceneryObjects => owner.sceneryObjectsRef;
-        public NodeRef<CPlugEntRecordData> RecordData => owner.recordDataRef;
-        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => owner.challengeParametersRef;
+        public NodeRef<CGameCtnMediaClip> Clip => NodeRef.GetOrCreate(ref owner.clipRef);
+        public NodeRef<CCtnMediaBlockEventTrackMania> Events => NodeRef.GetOrCreate(ref owner.eventsRef);
+        public NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay> SimpleEventsDisplay => NodeRef.GetOrCreate(ref owner.simpleEventsDisplayRef);
+        public NodeRef<CGameReplayObjectVisData> SceneryObjects => NodeRef.GetOrCreate(ref owner.sceneryObjectsRef);
+        public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
+        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
     }
     public readonly struct GhostsReferenceView
     {
@@ -77,12 +77,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             for (var i = 0; i < ghosts.Count; i++) yield return new("Ghosts" + "[" + i + "]", ghosts.GetReference(i));
         }
-        yield return new("Clip", clipRef);
-        yield return new("Events", eventsRef);
-        yield return new("SimpleEventsDisplay", simpleEventsDisplayRef);
-        yield return new("SceneryObjects", sceneryObjectsRef);
-        yield return new("RecordData", recordDataRef);
-        yield return new("ChallengeParameters", challengeParametersRef);
+        yield return new("Clip", NodeRef.GetOrCreate(ref clipRef));
+        yield return new("Events", NodeRef.GetOrCreate(ref eventsRef));
+        yield return new("SimpleEventsDisplay", NodeRef.GetOrCreate(ref simpleEventsDisplayRef));
+        yield return new("SceneryObjects", NodeRef.GetOrCreate(ref sceneryObjectsRef));
+        yield return new("RecordData", NodeRef.GetOrCreate(ref recordDataRef));
+        yield return new("ChallengeParameters", NodeRef.GetOrCreate(ref challengeParametersRef));
         yield break;
     }
 
@@ -337,11 +337,11 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x0309300B;
 
-        private NodeRef<CMwNod> HumanTimeToGameTimeFuncRef = new();
+        private NodeRef<CMwNod>? HumanTimeToGameTimeFuncRef;
         public CMwNod? HumanTimeToGameTimeFunc
         {
-            get => HumanTimeToGameTimeFuncRef.Resolve();
-            set => HumanTimeToGameTimeFuncRef.SetEmbedded(value);
+            get => HumanTimeToGameTimeFuncRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref HumanTimeToGameTimeFuncRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -349,12 +349,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk0309300B owner;
             internal NodeRefView(Chunk0309300B owner) => this.owner = owner;
-            public NodeRef<CMwNod> HumanTimeToGameTimeFunc => owner.HumanTimeToGameTimeFuncRef;
+            public NodeRef<CMwNod> HumanTimeToGameTimeFunc => NodeRef.GetOrCreate(ref owner.HumanTimeToGameTimeFuncRef);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("HumanTimeToGameTimeFunc", HumanTimeToGameTimeFuncRef);
+            yield return new("HumanTimeToGameTimeFunc", NodeRef.GetOrCreate(ref HumanTimeToGameTimeFuncRef));
             yield break;
         }
 
@@ -523,25 +523,25 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x03093016;
 
-        private NodeRef<CPlugDataTape> U01Ref = new();
+        private NodeRef<CPlugDataTape>? U01Ref;
         public CPlugDataTape? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugDataTape> U02Ref = new();
+        private NodeRef<CPlugDataTape>? U02Ref;
         public CPlugDataTape? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugDataTape> U03Ref = new();
+        private NodeRef<CPlugDataTape>? U03Ref;
         public CPlugDataTape? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -549,16 +549,16 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk03093016 owner;
             internal NodeRefView(Chunk03093016 owner) => this.owner = owner;
-            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
-            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
-            public NodeRef<CPlugDataTape> U03 => owner.U03Ref;
+            public NodeRef<CPlugDataTape> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugDataTape> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugDataTape> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -579,25 +579,25 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     {
         public override uint Id => 0x03093017;
 
-        private NodeRef<CPlugDataTape> U01Ref = new();
+        private NodeRef<CPlugDataTape>? U01Ref;
         public CPlugDataTape? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugDataTape> U02Ref = new();
+        private NodeRef<CPlugDataTape>? U02Ref;
         public CPlugDataTape? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugDataTape> U03Ref = new();
+        private NodeRef<CPlugDataTape>? U03Ref;
         public CPlugDataTape? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -605,16 +605,16 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk03093017 owner;
             internal NodeRefView(Chunk03093017 owner) => this.owner = owner;
-            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
-            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
-            public NodeRef<CPlugDataTape> U03 => owner.U03Ref;
+            public NodeRef<CPlugDataTape> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugDataTape> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugDataTape> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -669,11 +669,11 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x0309301A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CPlugDataTape> U02Ref = new();
+        private NodeRef<CPlugDataTape>? U02Ref;
         public CPlugDataTape? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -681,12 +681,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk0309301A owner;
             internal NodeRefView(Chunk0309301A owner) => this.owner = owner;
-            public NodeRef<CPlugDataTape> U02 => owner.U02Ref;
+            public NodeRef<CPlugDataTape> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -842,11 +842,11 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x03093023;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CPlugDataTape> U01Ref = new();
+        private NodeRef<CPlugDataTape>? U01Ref;
         public CPlugDataTape? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -854,12 +854,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk03093023 owner;
             internal NodeRefView(Chunk03093023 owner) => this.owner = owner;
-            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+            public NodeRef<CPlugDataTape> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -881,11 +881,11 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         public override uint Id => 0x03093024;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CPlugDataTape> U01Ref = new();
+        private NodeRef<CPlugDataTape>? U01Ref;
         public CPlugDataTape? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -893,12 +893,12 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         {
             private readonly Chunk03093024 owner;
             internal NodeRefView(Chunk03093024 owner) => this.owner = owner;
-            public NodeRef<CPlugDataTape> U01 => owner.U01Ref;
+            public NodeRef<CPlugDataTape> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 

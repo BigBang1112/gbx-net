@@ -36,28 +36,28 @@ public partial class CMotionDayTime : CMotionManaged, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> legacyModelRef = new();
+    private NodeRef<CMwNod>? legacyModelRef;
     [AppliedWithChunk<Chunk08055000>]
     public CMwNod? LegacyModel
     {
-        get => legacyModelRef.Resolve();
-        set => legacyModelRef.SetEmbedded(value);
+        get => legacyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyModelRef, value);
     }
 
-    private NodeRef<CPlugMaterial> dayMaterialRef = new();
+    private NodeRef<CPlugMaterial>? dayMaterialRef;
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? DayMaterial
     {
-        get => dayMaterialRef.Resolve();
-        set => dayMaterialRef.SetEmbedded(value);
+        get => dayMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dayMaterialRef, value);
     }
 
-    private NodeRef<CPlugMaterial> nightMaterialRef = new();
+    private NodeRef<CPlugMaterial>? nightMaterialRef;
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? NightMaterial
     {
-        get => nightMaterialRef.Resolve();
-        set => nightMaterialRef.SetEmbedded(value);
+        get => nightMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref nightMaterialRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -65,16 +65,16 @@ public partial class CMotionDayTime : CMotionManaged, IClass
     {
         private readonly CMotionDayTime owner;
         internal NodeRefView(CMotionDayTime owner) => this.owner = owner;
-        public NodeRef<CMwNod> LegacyModel => owner.legacyModelRef;
-        public NodeRef<CPlugMaterial> DayMaterial => owner.dayMaterialRef;
-        public NodeRef<CPlugMaterial> NightMaterial => owner.nightMaterialRef;
+        public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
+        public NodeRef<CPlugMaterial> DayMaterial => NodeRef.GetOrCreate(ref owner.dayMaterialRef);
+        public NodeRef<CPlugMaterial> NightMaterial => NodeRef.GetOrCreate(ref owner.nightMaterialRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("LegacyModel", legacyModelRef);
-        yield return new("DayMaterial", dayMaterialRef);
-        yield return new("NightMaterial", nightMaterialRef);
+        yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
+        yield return new("DayMaterial", NodeRef.GetOrCreate(ref dayMaterialRef));
+        yield return new("NightMaterial", NodeRef.GetOrCreate(ref nightMaterialRef));
         yield break;
     }
 
@@ -104,9 +104,9 @@ public partial class CMotionDayTime : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionDayTime n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacyModelRef);
-            rw.NodeRef(n.dayMaterialRef);
-            rw.NodeRef(n.nightMaterialRef);
+            rw.NodeRef(ref n.legacyModelRef);
+            rw.NodeRef(ref n.dayMaterialRef);
+            rw.NodeRef(ref n.nightMaterialRef);
         }
     }
 

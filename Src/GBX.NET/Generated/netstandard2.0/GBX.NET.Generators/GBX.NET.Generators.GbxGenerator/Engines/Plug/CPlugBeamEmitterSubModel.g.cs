@@ -348,12 +348,12 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         set => this.materialPath = value;
     }
 
-    private NodeRef<CPlugMaterial> materialRef = new();
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk09105002>]
     public CPlugMaterial? Material
     {
-        get => materialRef.Resolve();
-        set => materialRef.SetEmbedded(value);
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
     private float radius;
@@ -538,7 +538,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         private readonly CPlugBeamEmitterSubModel owner;
         internal NodeRefView(CPlugBeamEmitterSubModel owner) => this.owner = owner;
         public AdditionalMaterialsReferenceView AdditionalMaterials => new(owner);
-        public NodeRef<CPlugMaterial> Material => owner.materialRef;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
     }
     public readonly struct AdditionalMaterialsReferenceView
     {
@@ -554,7 +554,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         {
             for (var i = 0; i < additionalMaterials.Count; i++) yield return new("AdditionalMaterials" + "[" + i + "]", additionalMaterials.GetReference(i));
         }
-        yield return new("Material", materialRef);
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
         yield break;
     }
 
@@ -814,7 +814,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
             }
             else
             {
-                rw.NodeRef(n.materialRef);
+                rw.NodeRef(ref n.materialRef);
             }
 
             rw.Single(ref n.radius);

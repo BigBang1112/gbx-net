@@ -9,7 +9,7 @@ public partial class CPlugVehiclePhyTuning
         public override void ReadWrite(CPlugVehiclePhyTuning n, GbxReaderWriter rw)
         {
             rw.Id(ref n.name);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.Single(ref U02);
 
             if (rw.Reader?.Settings.EncryptionInitializer is not null && n.name is { Length: >= 4 })

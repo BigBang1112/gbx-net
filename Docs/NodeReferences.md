@@ -20,6 +20,8 @@ var edition = item.EntityModelEdition;
 
 Assigning a node property stores an embedded node and clears its external descriptor. Assigning `null` clears the reference. `SetExternal` replaces the descriptor and invalidates the member's cached target. `CopyFrom` copies reference storage into an existing handle without resolving either target. A captured handle remains attached to its owning member after reassignment.
 
+Scalar reference handles on nodes start as null. Reading an empty node property, assigning null, generated serialization, and cloning preserve unallocated storage. A non-null target, a stored external descriptor, or explicit metadata access through `References` or `EnumerateReferences()` creates a handle on demand. Once created, the handle stays attached to its property, including when the property is cleared.
+
 Changing `GbxRefTableFile.FilePath` invalidates the shared target, missing result, and errors for every handle using that descriptor. Assigning the same path preserves the cache. Null paths and changes during resolution are rejected. To change only one handle, create a replacement descriptor and use `SetExternal`.
 
 `Clear()` removes the target and descriptor from one handle. `Reset()` keeps the descriptor and invalidates its shared resolution cache without loading anything. Other handles using that descriptor also see the invalidation. A descriptor cannot be reset while its load is running.
@@ -124,5 +126,7 @@ var refs = reader.ReadListNodeRef<CMwNod>();
 writer.WriteNodeRef(reference);
 writer.WriteListNodeRef(refs);
 ```
+
+Use `reader.ReadNodeRef(ref reference)` or combined `rw.NodeRef(ref reference)` for nullable scalar storage. A null wire reference keeps unallocated storage null and clears an existing handle without replacing it. Writing nullable storage emits the null marker without creating a handle.
 
 The [design document](Designs/ReferenceTableFileForAnyNode.md) describes the storage and migration decisions.

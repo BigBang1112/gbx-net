@@ -36,12 +36,12 @@ public partial class CPlugMaterial : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugMaterialCustom> customMaterialRef = new();
+    private NodeRef<CPlugMaterialCustom>? customMaterialRef;
     [AppliedWithChunk<Chunk09079007>]
     public CPlugMaterialCustom? CustomMaterial
     {
-        get => customMaterialRef.Resolve();
-        set => customMaterialRef.SetEmbedded(value);
+        get => customMaterialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref customMaterialRef, value);
     }
 
     private CPlugSurface.MaterialId surfaceId;
@@ -53,12 +53,12 @@ public partial class CPlugMaterial : CPlug, IClass
         set => this.surfaceId = value;
     }
 
-    private NodeRef<CPlug> shaderRef = new();
+    private NodeRef<CPlug>? shaderRef;
     [AppliedWithChunk<Chunk09079015>]
     public CPlug? Shader
     {
-        get => shaderRef.Resolve();
-        set => shaderRef.SetEmbedded(value);
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
     private CPlugSurface.GameplayId gameplayId;
@@ -74,14 +74,14 @@ public partial class CPlugMaterial : CPlug, IClass
     {
         private readonly CPlugMaterial owner;
         internal NodeRefView(CPlugMaterial owner) => this.owner = owner;
-        public NodeRef<CPlugMaterialCustom> CustomMaterial => owner.customMaterialRef;
-        public NodeRef<CPlug> Shader => owner.shaderRef;
+        public NodeRef<CPlugMaterialCustom> CustomMaterial => NodeRef.GetOrCreate(ref owner.customMaterialRef);
+        public NodeRef<CPlug> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("CustomMaterial", customMaterialRef);
-        yield return new("Shader", shaderRef);
+        yield return new("CustomMaterial", NodeRef.GetOrCreate(ref customMaterialRef));
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
         yield break;
     }
 
@@ -106,11 +106,11 @@ public partial class CPlugMaterial : CPlug, IClass
         public override uint Id => 0x09079001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -118,12 +118,12 @@ public partial class CPlugMaterial : CPlug, IClass
         {
             private readonly Chunk09079001 owner;
             internal NodeRefView(Chunk09079001 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -135,7 +135,7 @@ public partial class CPlugMaterial : CPlug, IClass
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -191,7 +191,7 @@ public partial class CPlugMaterial : CPlug, IClass
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.customMaterialRef);
+            rw.NodeRef(ref n.customMaterialRef);
         }
     }
 
@@ -377,11 +377,11 @@ public partial class CPlugMaterial : CPlug, IClass
 
         public NodeRefList<CPlugMaterialColorTargetTable>? U03;
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -390,7 +390,7 @@ public partial class CPlugMaterial : CPlug, IClass
             private readonly Chunk09079015 owner;
             internal NodeRefView(Chunk09079015 owner) => this.owner = owner;
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -406,7 +406,7 @@ public partial class CPlugMaterial : CPlug, IClass
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U04", U04Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -423,9 +423,9 @@ public partial class CPlugMaterial : CPlug, IClass
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.shaderRef);
+            rw.NodeRef(ref n.shaderRef);
 
-            if (n.shaderRef.Kind == NodeRefKind.None)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<DeviceMat>(ref n.deviceMaterials!, version: 0x015);
                 rw.Array<int>(ref U01!);
@@ -436,13 +436,13 @@ public partial class CPlugMaterial : CPlug, IClass
                 }
             }
 
-            if (n.shaderRef.Kind != NodeRefKind.None)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 U03 = rw.ListNodeRef<CPlugMaterialColorTargetTable>(U03);
 
                 if (Version >= 7)
                 {
-                    rw.NodeRef(U04Ref);
+                    rw.NodeRef(ref U04Ref);
                 }
             }
         }
@@ -546,25 +546,25 @@ public partial class CPlugMaterial : CPlug, IClass
             set => this.u03 = value;
         }
 
-        private NodeRef<CPlugShader> shader1Ref = new();
+        private NodeRef<CPlugShader>? shader1Ref;
         public CPlugShader? Shader1
         {
-            get => shader1Ref.Resolve();
-            set => shader1Ref.SetEmbedded(value);
+            get => shader1Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader1Ref, value);
         }
 
-        private NodeRef<CPlugShader> shader2Ref = new();
+        private NodeRef<CPlugShader>? shader2Ref;
         public CPlugShader? Shader2
         {
-            get => shader2Ref.Resolve();
-            set => shader2Ref.SetEmbedded(value);
+            get => shader2Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader2Ref, value);
         }
 
-        private NodeRef<CPlugShader> shader3Ref = new();
+        private NodeRef<CPlugShader>? shader3Ref;
         public CPlugShader? Shader3
         {
-            get => shader3Ref.Resolve();
-            set => shader3Ref.SetEmbedded(value);
+            get => shader3Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref shader3Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -572,15 +572,15 @@ public partial class CPlugMaterial : CPlug, IClass
         {
             private readonly DeviceMat owner;
             internal NodeRefView(DeviceMat owner) => this.owner = owner;
-            public NodeRef<CPlugShader> Shader1 => owner.shader1Ref;
-            public NodeRef<CPlugShader> Shader2 => owner.shader2Ref;
-            public NodeRef<CPlugShader> Shader3 => owner.shader3Ref;
+            public NodeRef<CPlugShader> Shader1 => NodeRef.GetOrCreate(ref owner.shader1Ref);
+            public NodeRef<CPlugShader> Shader2 => NodeRef.GetOrCreate(ref owner.shader2Ref);
+            public NodeRef<CPlugShader> Shader3 => NodeRef.GetOrCreate(ref owner.shader3Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Shader1", shader1Ref);
-            yield return new("Shader2", shader2Ref);
-            yield return new("Shader3", shader3Ref);
+            yield return new("Shader1", NodeRef.GetOrCreate(ref shader1Ref));
+            yield return new("Shader2", NodeRef.GetOrCreate(ref shader2Ref));
+            yield return new("Shader3", NodeRef.GetOrCreate(ref shader3Ref));
             yield break;
         }
 
@@ -612,12 +612,12 @@ public partial class CPlugMaterial : CPlug, IClass
                 rw.Boolean(ref this.u03);
             }
 
-            rw.NodeRef(this.shader1Ref);
+            rw.NodeRef(ref this.shader1Ref);
 
             if (v >= 9)
             {
-                rw.NodeRef(this.shader2Ref);
-                rw.NodeRef(this.shader3Ref);
+                rw.NodeRef(ref this.shader2Ref);
+                rw.NodeRef(ref this.shader3Ref);
             }
         }
 

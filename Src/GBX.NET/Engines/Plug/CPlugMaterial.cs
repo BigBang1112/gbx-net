@@ -10,9 +10,9 @@ public partial class CPlugMaterial
     {
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shaderRef);
+            rw.NodeRef(ref n.shaderRef);
 
-            if (n.shaderRef.Kind != NodeRefKind.None)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 return;
             }
@@ -27,9 +27,9 @@ public partial class CPlugMaterial
 
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shaderRef);
+            rw.NodeRef(ref n.shaderRef);
 
-            if (n.shaderRef.Kind != NodeRefKind.None)
+            if ((n.shaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 return;
             }

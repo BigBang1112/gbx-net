@@ -47,26 +47,26 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         set => this.treeId = value;
     }
 
-    private NodeRef<CPlugMaterial> materialRef = new();
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
     public CPlugMaterial? Material
     {
-        get => materialRef.Resolve();
-        set => materialRef.SetEmbedded(value);
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
-    private NodeRef<CPlugTreeLight> treeLightRef = new();
+    private NodeRef<CPlugTreeLight>? treeLightRef;
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
     public CPlugTreeLight? TreeLight
     {
-        get => treeLightRef.Resolve();
-        set => treeLightRef.SetEmbedded(value);
+        get => treeLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref treeLightRef, value);
     }
 
     private int visibleCond;
@@ -156,14 +156,14 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     {
         private readonly CPlugDecoratorTree owner;
         internal NodeRefView(CPlugDecoratorTree owner) => this.owner = owner;
-        public NodeRef<CPlugMaterial> Material => owner.materialRef;
-        public NodeRef<CPlugTreeLight> TreeLight => owner.treeLightRef;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+        public NodeRef<CPlugTreeLight> TreeLight => NodeRef.GetOrCreate(ref owner.treeLightRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Material", materialRef);
-        yield return new("TreeLight", treeLightRef);
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield return new("TreeLight", NodeRef.GetOrCreate(ref treeLightRef));
         yield break;
     }
 
@@ -202,8 +202,8 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
             rw.Id(ref n.treeId);
-            rw.NodeRef(n.materialRef);
-            rw.NodeRef(n.treeLightRef);
+            rw.NodeRef(ref n.materialRef);
+            rw.NodeRef(ref n.treeLightRef);
             rw.Int32(ref n.visibleCond);
             rw.Boolean(ref n.visibleApplyOnChilds);
             rw.Int32(ref n.shadowCasterCond);
@@ -225,8 +225,8 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         public override void ReadWrite(CPlugDecoratorTree n, GbxReaderWriter rw)
         {
             rw.Id(ref n.treeId);
-            rw.NodeRef(n.materialRef);
-            rw.NodeRef(n.treeLightRef);
+            rw.NodeRef(ref n.materialRef);
+            rw.NodeRef(ref n.treeLightRef);
             rw.Int32(ref n.existCond);
             rw.Int32(ref n.visibleCond);
             rw.Boolean(ref n.visibleApplyOnChilds);

@@ -52,12 +52,12 @@ public partial class CPlugImageArray : CMwNod, IClass
         set => this.layers = value;
     }
 
-    private NodeRef<CMwNod> material_VIdRef = new();
+    private NodeRef<CMwNod>? material_VIdRef;
     [AppliedWithChunk<Chunk0914C000>(4)]
     public CMwNod? Material_VId
     {
-        get => material_VIdRef.Resolve();
-        set => material_VIdRef.SetEmbedded(value);
+        get => material_VIdRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref material_VIdRef, value);
     }
 
     private float maskScale;
@@ -81,12 +81,12 @@ public partial class CPlugImageArray : CMwNod, IClass
     {
         private readonly CPlugImageArray owner;
         internal NodeRefView(CPlugImageArray owner) => this.owner = owner;
-        public NodeRef<CMwNod> Material_VId => owner.material_VIdRef;
+        public NodeRef<CMwNod> Material_VId => NodeRef.GetOrCreate(ref owner.material_VIdRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Material_VId", material_VIdRef);
+        yield return new("Material_VId", NodeRef.GetOrCreate(ref material_VIdRef));
         yield break;
     }
 
@@ -128,7 +128,7 @@ public partial class CPlugImageArray : CMwNod, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef(n.material_VIdRef);
+                rw.NodeRef(ref n.material_VIdRef);
 
                 if (Version >= 5)
                 {

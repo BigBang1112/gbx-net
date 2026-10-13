@@ -50,7 +50,7 @@ public partial class CPlugVisual3D
         public override void ReadWrite(CPlugVisual3D n, GbxReaderWriter rw)
         {
             if (rw.Reader is null && LegacyBlendShapesSet) n.BlendShapes = LegacyBlendShapes;
-            rw.NodeRef(n.References.BlendShapes);
+            rw.NodeRef(ref n.blendShapesRef);
             LegacyBlendShapes = n.BlendShapes;
             LegacyBlendShapesSet = false;
         }

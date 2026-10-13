@@ -36,44 +36,44 @@ public partial class CGameGateModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameArmorModel> armorRef = new();
+    private NodeRef<CGameArmorModel>? armorRef;
     [AppliedWithChunk<Chunk2E00B000>]
     public CGameArmorModel? Armor
     {
-        get => armorRef.Resolve();
-        set => armorRef.SetEmbedded(value);
+        get => armorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref armorRef, value);
     }
 
-    private NodeRef<CPlugSurface> shapeRef = new();
+    private NodeRef<CPlugSurface>? shapeRef;
     [AppliedWithChunk<Chunk2E00B000>]
     public CPlugSurface? Shape
     {
-        get => shapeRef.Resolve();
-        set => shapeRef.SetEmbedded(value);
+        get => shapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shapeRef, value);
     }
 
-    private NodeRef<CPlugSound> gateOpenSoundRef = new();
+    private NodeRef<CPlugSound>? gateOpenSoundRef;
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateOpenSound
     {
-        get => gateOpenSoundRef.Resolve();
-        set => gateOpenSoundRef.SetEmbedded(value);
+        get => gateOpenSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateOpenSoundRef, value);
     }
 
-    private NodeRef<CPlugSound> gateCloseSoundRef = new();
+    private NodeRef<CPlugSound>? gateCloseSoundRef;
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateCloseSound
     {
-        get => gateCloseSoundRef.Resolve();
-        set => gateCloseSoundRef.SetEmbedded(value);
+        get => gateCloseSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateCloseSoundRef, value);
     }
 
-    private NodeRef<CPlugSound> gateSoundRef = new();
+    private NodeRef<CPlugSound>? gateSoundRef;
     [AppliedWithChunk<Chunk2E00B001>(1)]
     public CPlugSound? GateSound
     {
-        get => gateSoundRef.Resolve();
-        set => gateSoundRef.SetEmbedded(value);
+        get => gateSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateSoundRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -81,20 +81,20 @@ public partial class CGameGateModel : CMwNod, IClass
     {
         private readonly CGameGateModel owner;
         internal NodeRefView(CGameGateModel owner) => this.owner = owner;
-        public NodeRef<CGameArmorModel> Armor => owner.armorRef;
-        public NodeRef<CPlugSurface> Shape => owner.shapeRef;
-        public NodeRef<CPlugSound> GateOpenSound => owner.gateOpenSoundRef;
-        public NodeRef<CPlugSound> GateCloseSound => owner.gateCloseSoundRef;
-        public NodeRef<CPlugSound> GateSound => owner.gateSoundRef;
+        public NodeRef<CGameArmorModel> Armor => NodeRef.GetOrCreate(ref owner.armorRef);
+        public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
+        public NodeRef<CPlugSound> GateOpenSound => NodeRef.GetOrCreate(ref owner.gateOpenSoundRef);
+        public NodeRef<CPlugSound> GateCloseSound => NodeRef.GetOrCreate(ref owner.gateCloseSoundRef);
+        public NodeRef<CPlugSound> GateSound => NodeRef.GetOrCreate(ref owner.gateSoundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Armor", armorRef);
-        yield return new("Shape", shapeRef);
-        yield return new("GateOpenSound", gateOpenSoundRef);
-        yield return new("GateCloseSound", gateCloseSoundRef);
-        yield return new("GateSound", gateSoundRef);
+        yield return new("Armor", NodeRef.GetOrCreate(ref armorRef));
+        yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
+        yield return new("GateOpenSound", NodeRef.GetOrCreate(ref gateOpenSoundRef));
+        yield return new("GateCloseSound", NodeRef.GetOrCreate(ref gateCloseSoundRef));
+        yield return new("GateSound", NodeRef.GetOrCreate(ref gateSoundRef));
         yield break;
     }
 
@@ -129,8 +129,8 @@ public partial class CGameGateModel : CMwNod, IClass
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.armorRef);
-            rw.NodeRef(n.shapeRef);
+            rw.NodeRef(ref n.armorRef);
+            rw.NodeRef(ref n.shapeRef);
         }
     }
 
@@ -151,12 +151,12 @@ public partial class CGameGateModel : CMwNod, IClass
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.gateOpenSoundRef);
-            rw.NodeRef(n.gateCloseSoundRef);
+            rw.NodeRef(ref n.gateOpenSoundRef);
+            rw.NodeRef(ref n.gateCloseSoundRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.gateSoundRef);
+                rw.NodeRef(ref n.gateSoundRef);
             }
         }
     }

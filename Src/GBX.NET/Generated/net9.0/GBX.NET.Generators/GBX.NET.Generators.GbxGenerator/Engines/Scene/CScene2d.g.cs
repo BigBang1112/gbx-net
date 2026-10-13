@@ -44,12 +44,12 @@ public partial class CScene2d : CScene, IClass
         set => this.overlay = value;
     }
 
-    private NodeRef<CSceneSector> sectorRef = new();
+    private NodeRef<CSceneSector>? sectorRef;
     [AppliedWithChunk<Chunk0A002000>]
     public CSceneSector? Sector
     {
-        get => sectorRef.Resolve();
-        set => sectorRef.SetEmbedded(value);
+        get => sectorRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sectorRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -57,14 +57,14 @@ public partial class CScene2d : CScene, IClass
     {
         private readonly CScene2d owner;
         internal NodeRefView(CScene2d owner) => this.owner = owner;
-        public NodeRef<CSceneSector> Sector => owner.sectorRef;
+        public NodeRef<CSceneSector> Sector => NodeRef.GetOrCreate(ref owner.sectorRef);
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
         public CScene.MotionManagerModelsReferenceView MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Sector", sectorRef);
+        yield return new("Sector", NodeRef.GetOrCreate(ref sectorRef));
         yield break;
     }
 
@@ -94,7 +94,7 @@ public partial class CScene2d : CScene, IClass
         public override void ReadWrite(CScene2d n, GbxReaderWriter rw)
         {
             rw.Rect(ref n.overlay);
-            rw.NodeRef(n.sectorRef);
+            rw.NodeRef(ref n.sectorRef);
         }
     }
 

@@ -36,12 +36,12 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneMobilLeaves> mobilLeavesRef = new();
+    private NodeRef<CSceneMobilLeaves>? mobilLeavesRef;
     [AppliedWithChunk<Chunk0804C000>]
     public CSceneMobilLeaves? MobilLeaves
     {
-        get => mobilLeavesRef.Resolve();
-        set => mobilLeavesRef.SetEmbedded(value);
+        get => mobilLeavesRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mobilLeavesRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
     {
         private readonly CMotionManagerLeaves owner;
         internal NodeRefView(CMotionManagerLeaves owner) => this.owner = owner;
-        public NodeRef<CSceneMobilLeaves> MobilLeaves => owner.mobilLeavesRef;
+        public NodeRef<CSceneMobilLeaves> MobilLeaves => NodeRef.GetOrCreate(ref owner.mobilLeavesRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("MobilLeaves", mobilLeavesRef);
+        yield return new("MobilLeaves", NodeRef.GetOrCreate(ref mobilLeavesRef));
         yield break;
     }
 
@@ -78,7 +78,7 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
 
         public override void ReadWrite(CMotionManagerLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.mobilLeavesRef);
+            rw.NodeRef(ref n.mobilLeavesRef);
         }
     }
 

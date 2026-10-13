@@ -157,11 +157,11 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         public bool U04;
         public bool U05;
 
-        private NodeRef<CMwNod> U06Ref = new();
+        private NodeRef<CMwNod>? U06Ref;
         public CMwNod? U06
         {
-            get => U06Ref.Resolve();
-            set => U06Ref.SetEmbedded(value);
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -169,12 +169,12 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         {
             private readonly Chunk05015011 owner;
             internal NodeRefView(Chunk05015011 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U06 => owner.U06Ref;
+            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U06", U06Ref);
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield break;
         }
 
@@ -196,7 +196,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
             rw.Boolean(ref U03);
             rw.Boolean(ref U04);
             rw.Boolean(ref U05);
-            rw.NodeRef(U06Ref);
+            rw.NodeRef(ref U06Ref);
         }
     }
 

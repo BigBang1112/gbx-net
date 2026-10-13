@@ -46,16 +46,16 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         set => this.author = value;
     }
 
-    private NodeRef<CGameCtnBlockSkin> skinRef = new();
+    private NodeRef<CGameCtnBlockSkin>? skinRef;
 
-    private NodeRef<CPlugCharPhySpecialProperty> phyCharSpecialPropertyRef = new();
+    private NodeRef<CPlugCharPhySpecialProperty>? phyCharSpecialPropertyRef;
     public CPlugCharPhySpecialProperty? PhyCharSpecialProperty
     {
-        get => phyCharSpecialPropertyRef.Resolve();
-        set => phyCharSpecialPropertyRef.SetEmbedded(value);
+        get => phyCharSpecialPropertyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyCharSpecialPropertyRef, value);
     }
 
-    private NodeRef<CGameWaypointSpecialProperty> waypointSpecialPropertyRef = new();
+    private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
 
     private SSquareCardEventIds[]? squareCardEventIds;
     public SSquareCardEventIds[]? SquareCardEventIds
@@ -83,16 +83,16 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
     {
         private readonly CGameCtnBlock owner;
         internal NodeRefView(CGameCtnBlock owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockSkin> Skin => owner.skinRef;
-        public NodeRef<CPlugCharPhySpecialProperty> PhyCharSpecialProperty => owner.phyCharSpecialPropertyRef;
-        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => owner.waypointSpecialPropertyRef;
+        public NodeRef<CGameCtnBlockSkin> Skin => NodeRef.GetOrCreate(ref owner.skinRef);
+        public NodeRef<CPlugCharPhySpecialProperty> PhyCharSpecialProperty => NodeRef.GetOrCreate(ref owner.phyCharSpecialPropertyRef);
+        public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Skin", skinRef);
-        yield return new("PhyCharSpecialProperty", phyCharSpecialPropertyRef);
-        yield return new("WaypointSpecialProperty", waypointSpecialPropertyRef);
+        yield return new("Skin", NodeRef.GetOrCreate(ref skinRef));
+        yield return new("PhyCharSpecialProperty", NodeRef.GetOrCreate(ref phyCharSpecialPropertyRef));
+        yield return new("WaypointSpecialProperty", NodeRef.GetOrCreate(ref waypointSpecialPropertyRef));
         yield break;
     }
 
@@ -139,19 +139,19 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         if ((Flags& (1 << 15)) != 0)
         {
             this.author = r.ReadId();
-            r.ReadNodeRef(this.skinRef);
+            r.ReadNodeRef(ref this.skinRef);
         }
 
         if (v >= 2)
         {
             if ((Flags& (1 << 19)) != 0)
             {
-                r.ReadNodeRef(this.phyCharSpecialPropertyRef);
+                r.ReadNodeRef(ref this.phyCharSpecialPropertyRef);
             }
 
             if ((Flags& (1 << 20)) != 0)
             {
-                r.ReadNodeRef(this.waypointSpecialPropertyRef);
+                r.ReadNodeRef(ref this.waypointSpecialPropertyRef);
             }
 
             if ((Flags& (1 << 18)) != 0)

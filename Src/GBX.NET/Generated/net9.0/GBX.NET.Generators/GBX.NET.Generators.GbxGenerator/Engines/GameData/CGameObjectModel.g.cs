@@ -36,20 +36,20 @@ public partial class CGameObjectModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameObjectPhyModel> phyRef = new();
+    private NodeRef<CGameObjectPhyModel>? phyRef;
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectPhyModel? Phy
     {
-        get => phyRef.Resolve();
-        set => phyRef.SetEmbedded(value);
+        get => phyRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyRef, value);
     }
 
-    private NodeRef<CGameObjectVisModel> visRef = new();
+    private NodeRef<CGameObjectVisModel>? visRef;
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectVisModel? Vis
     {
-        get => visRef.Resolve();
-        set => visRef.SetEmbedded(value);
+        get => visRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visRef, value);
     }
 
     private string? inventoryName;
@@ -84,20 +84,20 @@ public partial class CGameObjectModel : CMwNod, IClass
         set => this.inventoryOccupation = value;
     }
 
-    private NodeRef<CGameObjectModel> slaveHealDomeRef = new();
+    private NodeRef<CGameObjectModel>? slaveHealDomeRef;
     [AppliedWithChunk<Chunk2E01D000>(2)]
     public CGameObjectModel? SlaveHealDome
     {
-        get => slaveHealDomeRef.Resolve();
-        set => slaveHealDomeRef.SetEmbedded(value);
+        get => slaveHealDomeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref slaveHealDomeRef, value);
     }
 
-    private NodeRef<CGameObjectModel> slaveShieldDomeRef = new();
+    private NodeRef<CGameObjectModel>? slaveShieldDomeRef;
     [AppliedWithChunk<Chunk2E01D000>(3)]
     public CGameObjectModel? SlaveShieldDome
     {
-        get => slaveShieldDomeRef.Resolve();
-        set => slaveShieldDomeRef.SetEmbedded(value);
+        get => slaveShieldDomeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref slaveShieldDomeRef, value);
     }
 
     private string? scriptId;
@@ -113,18 +113,18 @@ public partial class CGameObjectModel : CMwNod, IClass
     {
         private readonly CGameObjectModel owner;
         internal NodeRefView(CGameObjectModel owner) => this.owner = owner;
-        public NodeRef<CGameObjectPhyModel> Phy => owner.phyRef;
-        public NodeRef<CGameObjectVisModel> Vis => owner.visRef;
-        public NodeRef<CGameObjectModel> SlaveHealDome => owner.slaveHealDomeRef;
-        public NodeRef<CGameObjectModel> SlaveShieldDome => owner.slaveShieldDomeRef;
+        public NodeRef<CGameObjectPhyModel> Phy => NodeRef.GetOrCreate(ref owner.phyRef);
+        public NodeRef<CGameObjectVisModel> Vis => NodeRef.GetOrCreate(ref owner.visRef);
+        public NodeRef<CGameObjectModel> SlaveHealDome => NodeRef.GetOrCreate(ref owner.slaveHealDomeRef);
+        public NodeRef<CGameObjectModel> SlaveShieldDome => NodeRef.GetOrCreate(ref owner.slaveShieldDomeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Phy", phyRef);
-        yield return new("Vis", visRef);
-        yield return new("SlaveHealDome", slaveHealDomeRef);
-        yield return new("SlaveShieldDome", slaveShieldDomeRef);
+        yield return new("Phy", NodeRef.GetOrCreate(ref phyRef));
+        yield return new("Vis", NodeRef.GetOrCreate(ref visRef));
+        yield return new("SlaveHealDome", NodeRef.GetOrCreate(ref slaveHealDomeRef));
+        yield return new("SlaveShieldDome", NodeRef.GetOrCreate(ref slaveShieldDomeRef));
         yield break;
     }
 
@@ -165,8 +165,8 @@ public partial class CGameObjectModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.phyRef);
-            rw.NodeRef(n.visRef);
+            rw.NodeRef(ref n.phyRef);
+            rw.NodeRef(ref n.visRef);
 
             if (Version >= 1)
             {
@@ -178,11 +178,11 @@ public partial class CGameObjectModel : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(n.slaveHealDomeRef);
+                    rw.NodeRef(ref n.slaveHealDomeRef);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef(n.slaveShieldDomeRef);
+                        rw.NodeRef(ref n.slaveShieldDomeRef);
 
                         if (Version >= 4)
                         {

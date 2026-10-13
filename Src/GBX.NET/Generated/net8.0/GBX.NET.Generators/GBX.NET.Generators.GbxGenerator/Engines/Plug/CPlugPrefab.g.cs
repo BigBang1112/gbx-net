@@ -53,18 +53,18 @@ public partial class CPlugPrefab : CMwNod, IClass
 
     public partial class EntRef : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> modelRef = new();
+        private NodeRef<CMwNod>? modelRef;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly EntRef owner;
             internal NodeRefView(EntRef owner) => this.owner = owner;
-            public NodeRef<CMwNod> Model => owner.modelRef;
+            public NodeRef<CMwNod> Model => NodeRef.GetOrCreate(ref owner.modelRef);
         }
         public IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Model", modelRef);
+            yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
             yield break;
         }
 

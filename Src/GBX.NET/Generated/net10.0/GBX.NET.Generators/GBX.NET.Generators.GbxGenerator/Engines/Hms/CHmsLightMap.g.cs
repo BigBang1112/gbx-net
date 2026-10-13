@@ -36,20 +36,20 @@ public partial class CHmsLightMap : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugPointsInSphereOpt> pointsInSphereOptRef = new();
+    private NodeRef<CPlugPointsInSphereOpt>? pointsInSphereOptRef;
     [AppliedWithChunk<Chunk06021001>]
     public CPlugPointsInSphereOpt? PointsInSphereOpt
     {
-        get => pointsInSphereOptRef.Resolve();
-        set => pointsInSphereOptRef.SetEmbedded(value);
+        get => pointsInSphereOptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pointsInSphereOptRef, value);
     }
 
-    private NodeRef<CHmsLightMapMood> moodRef = new();
+    private NodeRef<CHmsLightMapMood>? moodRef;
     [AppliedWithChunk<Chunk06021003>]
     public CHmsLightMapMood? Mood
     {
-        get => moodRef.Resolve();
-        set => moodRef.SetEmbedded(value);
+        get => moodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moodRef, value);
     }
 
     private NodeRefList<CPlugBitmap>? bitmapLightSumBumpLegacy;
@@ -78,34 +78,34 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.useHDR = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapSM_ColorPeeledRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSM_ColorPeeledRef;
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
     public CPlugBitmap? BitmapSM_ColorPeeled
     {
-        get => bitmapSM_ColorPeeledRef.Resolve();
-        set => bitmapSM_ColorPeeledRef.SetEmbedded(value);
+        get => bitmapSM_ColorPeeledRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSM_ColorPeeledRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapLM_ILightInputRef = new();
+    private NodeRef<CPlugBitmap>? bitmapLM_ILightInputRef;
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
     public CPlugBitmap? BitmapLM_ILightInput
     {
-        get => bitmapLM_ILightInputRef.Resolve();
-        set => bitmapLM_ILightInputRef.SetEmbedded(value);
+        get => bitmapLM_ILightInputRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLM_ILightInputRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapLM_ILightDirRef = new();
+    private NodeRef<CPlugBitmap>? bitmapLM_ILightDirRef;
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
     public CPlugBitmap? BitmapLM_ILightDir
     {
-        get => bitmapLM_ILightDirRef.Resolve();
-        set => bitmapLM_ILightDirRef.SetEmbedded(value);
+        get => bitmapLM_ILightDirRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLM_ILightDirRef, value);
     }
 
     private bool clampAmb_PosY = false;
@@ -128,20 +128,20 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.sRGB = value;
     }
 
-    private NodeRef<CPlugBitmapArray> bitmapArrayLightSHRef = new();
+    private NodeRef<CPlugBitmapArray>? bitmapArrayLightSHRef;
     [AppliedWithChunk<Chunk06021013>]
     public CPlugBitmapArray? BitmapArrayLightSH
     {
-        get => bitmapArrayLightSHRef.Resolve();
-        set => bitmapArrayLightSHRef.SetEmbedded(value);
+        get => bitmapArrayLightSHRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapArrayLightSHRef, value);
     }
 
-    private NodeRef<CPlugBitmapArray> bitmapLightSumBumpRef = new();
+    private NodeRef<CPlugBitmapArray>? bitmapLightSumBumpRef;
     [AppliedWithChunk<Chunk06021014>]
     public CPlugBitmapArray? BitmapLightSumBump
     {
-        get => bitmapLightSumBumpRef.Resolve();
-        set => bitmapLightSumBumpRef.SetEmbedded(value);
+        get => bitmapLightSumBumpRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLightSumBumpRef, value);
     }
 
     private ECompressMode compressMode = ECompressMode.Ldr_DXT1;
@@ -152,49 +152,49 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.compressMode = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapSprite3x3_LightRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSprite3x3_LightRef;
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite3x3_Light
     {
-        get => bitmapSprite3x3_LightRef.Resolve();
-        set => bitmapSprite3x3_LightRef.SetEmbedded(value);
+        get => bitmapSprite3x3_LightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSprite3x3_LightRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapSprite_PosAndRadiusRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSprite_PosAndRadiusRef;
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite_PosAndRadius
     {
-        get => bitmapSprite_PosAndRadiusRef.Resolve();
-        set => bitmapSprite_PosAndRadiusRef.SetEmbedded(value);
+        get => bitmapSprite_PosAndRadiusRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSprite_PosAndRadiusRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapSprite_ILightDirRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSprite_ILightDirRef;
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite_ILightDir
     {
-        get => bitmapSprite_ILightDirRef.Resolve();
-        set => bitmapSprite_ILightDirRef.SetEmbedded(value);
+        get => bitmapSprite_ILightDirRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSprite_ILightDirRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapShadowRef = new();
+    private NodeRef<CPlugBitmap>? bitmapShadowRef;
     [AppliedWithChunk<Chunk06021019>]
     public CPlugBitmap? BitmapShadow
     {
-        get => bitmapShadowRef.Resolve();
-        set => bitmapShadowRef.SetEmbedded(value);
+        get => bitmapShadowRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapShadowRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapLM_LListUVRef = new();
+    private NodeRef<CPlugBitmap>? bitmapLM_LListUVRef;
     [AppliedWithChunk<Chunk0602101B>]
     [AppliedWithChunk<Chunk06021021>]
     [AppliedWithChunk<Chunk06021028>]
     public CPlugBitmap? BitmapLM_LListUV
     {
-        get => bitmapLM_LListUVRef.Resolve();
-        set => bitmapLM_LListUVRef.SetEmbedded(value);
+        get => bitmapLM_LListUVRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLM_LListUVRef, value);
     }
 
     private bool storeLDir0Legacy;
@@ -213,30 +213,30 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.isSpriteLDirInAlpha = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapLM_LListWRef = new();
+    private NodeRef<CPlugBitmap>? bitmapLM_LListWRef;
     [AppliedWithChunk<Chunk06021020>]
     [AppliedWithChunk<Chunk06021021>]
     [AppliedWithChunk<Chunk06021028>]
     public CPlugBitmap? BitmapLM_LListW
     {
-        get => bitmapLM_LListWRef.Resolve();
-        set => bitmapLM_LListWRef.SetEmbedded(value);
+        get => bitmapLM_LListWRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLM_LListWRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapSM_DepthToPeelRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSM_DepthToPeelRef;
     [AppliedWithChunk<Chunk06021023>]
     public CPlugBitmap? BitmapSM_DepthToPeel
     {
-        get => bitmapSM_DepthToPeelRef.Resolve();
-        set => bitmapSM_DepthToPeelRef.SetEmbedded(value);
+        get => bitmapSM_DepthToPeelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSM_DepthToPeelRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef = new();
+    private NodeRef<CPlugBitmap>? bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef;
     [AppliedWithChunk<Chunk06021024>]
     public CPlugBitmap? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
-        get => bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef.Resolve();
-        set => bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef.SetEmbedded(value);
+        get => bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef, value);
     }
 
     private EStoreLDir0 storeLDir0 = EStoreLDir0.Sinc;
@@ -247,13 +247,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.storeLDir0 = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapLM_LocalDirectRef = new();
+    private NodeRef<CPlugBitmap>? bitmapLM_LocalDirectRef;
     [AppliedWithChunk<Chunk06021026>]
     [AppliedWithChunk<Chunk06021028>]
     public CPlugBitmap? BitmapLM_LocalDirect
     {
-        get => bitmapLM_LocalDirectRef.Resolve();
-        set => bitmapLM_LocalDirectRef.SetEmbedded(value);
+        get => bitmapLM_LocalDirectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLM_LocalDirectRef, value);
     }
 
     private bool backgroundUseClouds = false;
@@ -272,20 +272,20 @@ public partial class CHmsLightMap : CMwNod, IClass
         set => this.gameTimerSeconds = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapProbeGridAmbSVRef = new();
+    private NodeRef<CPlugBitmap>? bitmapProbeGridAmbSVRef;
     [AppliedWithChunk<Chunk06021029>(6)]
     public CPlugBitmap? BitmapProbeGridAmbSV
     {
-        get => bitmapProbeGridAmbSVRef.Resolve();
-        set => bitmapProbeGridAmbSVRef.SetEmbedded(value);
+        get => bitmapProbeGridAmbSVRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapProbeGridAmbSVRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapProbeGridAmbSV_Spread1Ref = new();
+    private NodeRef<CPlugBitmap>? bitmapProbeGridAmbSV_Spread1Ref;
     [AppliedWithChunk<Chunk06021029>(7)]
     public CPlugBitmap? BitmapProbeGridAmbSV_Spread1
     {
-        get => bitmapProbeGridAmbSV_Spread1Ref.Resolve();
-        set => bitmapProbeGridAmbSV_Spread1Ref.SetEmbedded(value);
+        get => bitmapProbeGridAmbSV_Spread1Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapProbeGridAmbSV_Spread1Ref, value);
     }
 
     public NodeRefView References => new(this);
@@ -293,25 +293,25 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
         private readonly CHmsLightMap owner;
         internal NodeRefView(CHmsLightMap owner) => this.owner = owner;
-        public NodeRef<CPlugPointsInSphereOpt> PointsInSphereOpt => owner.pointsInSphereOptRef;
-        public NodeRef<CHmsLightMapMood> Mood => owner.moodRef;
+        public NodeRef<CPlugPointsInSphereOpt> PointsInSphereOpt => NodeRef.GetOrCreate(ref owner.pointsInSphereOptRef);
+        public NodeRef<CHmsLightMapMood> Mood => NodeRef.GetOrCreate(ref owner.moodRef);
         public BitmapLightSumBumpLegacyReferenceView BitmapLightSumBumpLegacy => new(owner);
-        public NodeRef<CPlugBitmap> BitmapSM_ColorPeeled => owner.bitmapSM_ColorPeeledRef;
-        public NodeRef<CPlugBitmap> BitmapLM_ILightInput => owner.bitmapLM_ILightInputRef;
-        public NodeRef<CPlugBitmap> BitmapLM_ILightDir => owner.bitmapLM_ILightDirRef;
-        public NodeRef<CPlugBitmapArray> BitmapArrayLightSH => owner.bitmapArrayLightSHRef;
-        public NodeRef<CPlugBitmapArray> BitmapLightSumBump => owner.bitmapLightSumBumpRef;
-        public NodeRef<CPlugBitmap> BitmapSprite3x3_Light => owner.bitmapSprite3x3_LightRef;
-        public NodeRef<CPlugBitmap> BitmapSprite_PosAndRadius => owner.bitmapSprite_PosAndRadiusRef;
-        public NodeRef<CPlugBitmap> BitmapSprite_ILightDir => owner.bitmapSprite_ILightDirRef;
-        public NodeRef<CPlugBitmap> BitmapShadow => owner.bitmapShadowRef;
-        public NodeRef<CPlugBitmap> BitmapLM_LListUV => owner.bitmapLM_LListUVRef;
-        public NodeRef<CPlugBitmap> BitmapLM_LListW => owner.bitmapLM_LListWRef;
-        public NodeRef<CPlugBitmap> BitmapSM_DepthToPeel => owner.bitmapSM_DepthToPeelRef;
-        public NodeRef<CPlugBitmap> BitmapProbeGeom_BBoxInvHDiag_ThroughBounce => owner.bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef;
-        public NodeRef<CPlugBitmap> BitmapLM_LocalDirect => owner.bitmapLM_LocalDirectRef;
-        public NodeRef<CPlugBitmap> BitmapProbeGridAmbSV => owner.bitmapProbeGridAmbSVRef;
-        public NodeRef<CPlugBitmap> BitmapProbeGridAmbSV_Spread1 => owner.bitmapProbeGridAmbSV_Spread1Ref;
+        public NodeRef<CPlugBitmap> BitmapSM_ColorPeeled => NodeRef.GetOrCreate(ref owner.bitmapSM_ColorPeeledRef);
+        public NodeRef<CPlugBitmap> BitmapLM_ILightInput => NodeRef.GetOrCreate(ref owner.bitmapLM_ILightInputRef);
+        public NodeRef<CPlugBitmap> BitmapLM_ILightDir => NodeRef.GetOrCreate(ref owner.bitmapLM_ILightDirRef);
+        public NodeRef<CPlugBitmapArray> BitmapArrayLightSH => NodeRef.GetOrCreate(ref owner.bitmapArrayLightSHRef);
+        public NodeRef<CPlugBitmapArray> BitmapLightSumBump => NodeRef.GetOrCreate(ref owner.bitmapLightSumBumpRef);
+        public NodeRef<CPlugBitmap> BitmapSprite3x3_Light => NodeRef.GetOrCreate(ref owner.bitmapSprite3x3_LightRef);
+        public NodeRef<CPlugBitmap> BitmapSprite_PosAndRadius => NodeRef.GetOrCreate(ref owner.bitmapSprite_PosAndRadiusRef);
+        public NodeRef<CPlugBitmap> BitmapSprite_ILightDir => NodeRef.GetOrCreate(ref owner.bitmapSprite_ILightDirRef);
+        public NodeRef<CPlugBitmap> BitmapShadow => NodeRef.GetOrCreate(ref owner.bitmapShadowRef);
+        public NodeRef<CPlugBitmap> BitmapLM_LListUV => NodeRef.GetOrCreate(ref owner.bitmapLM_LListUVRef);
+        public NodeRef<CPlugBitmap> BitmapLM_LListW => NodeRef.GetOrCreate(ref owner.bitmapLM_LListWRef);
+        public NodeRef<CPlugBitmap> BitmapSM_DepthToPeel => NodeRef.GetOrCreate(ref owner.bitmapSM_DepthToPeelRef);
+        public NodeRef<CPlugBitmap> BitmapProbeGeom_BBoxInvHDiag_ThroughBounce => NodeRef.GetOrCreate(ref owner.bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef);
+        public NodeRef<CPlugBitmap> BitmapLM_LocalDirect => NodeRef.GetOrCreate(ref owner.bitmapLM_LocalDirectRef);
+        public NodeRef<CPlugBitmap> BitmapProbeGridAmbSV => NodeRef.GetOrCreate(ref owner.bitmapProbeGridAmbSVRef);
+        public NodeRef<CPlugBitmap> BitmapProbeGridAmbSV_Spread1 => NodeRef.GetOrCreate(ref owner.bitmapProbeGridAmbSV_Spread1Ref);
     }
     public readonly struct BitmapLightSumBumpLegacyReferenceView
     {
@@ -323,28 +323,28 @@ public partial class CHmsLightMap : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PointsInSphereOpt", pointsInSphereOptRef);
-        yield return new("Mood", moodRef);
+        yield return new("PointsInSphereOpt", NodeRef.GetOrCreate(ref pointsInSphereOptRef));
+        yield return new("Mood", NodeRef.GetOrCreate(ref moodRef));
         if (bitmapLightSumBumpLegacy is not null)
         {
             for (var i = 0; i < bitmapLightSumBumpLegacy.Count; i++) yield return new("BitmapLightSumBumpLegacy" + "[" + i + "]", bitmapLightSumBumpLegacy.GetReference(i));
         }
-        yield return new("BitmapSM_ColorPeeled", bitmapSM_ColorPeeledRef);
-        yield return new("BitmapLM_ILightInput", bitmapLM_ILightInputRef);
-        yield return new("BitmapLM_ILightDir", bitmapLM_ILightDirRef);
-        yield return new("BitmapArrayLightSH", bitmapArrayLightSHRef);
-        yield return new("BitmapLightSumBump", bitmapLightSumBumpRef);
-        yield return new("BitmapSprite3x3_Light", bitmapSprite3x3_LightRef);
-        yield return new("BitmapSprite_PosAndRadius", bitmapSprite_PosAndRadiusRef);
-        yield return new("BitmapSprite_ILightDir", bitmapSprite_ILightDirRef);
-        yield return new("BitmapShadow", bitmapShadowRef);
-        yield return new("BitmapLM_LListUV", bitmapLM_LListUVRef);
-        yield return new("BitmapLM_LListW", bitmapLM_LListWRef);
-        yield return new("BitmapSM_DepthToPeel", bitmapSM_DepthToPeelRef);
-        yield return new("BitmapProbeGeom_BBoxInvHDiag_ThroughBounce", bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef);
-        yield return new("BitmapLM_LocalDirect", bitmapLM_LocalDirectRef);
-        yield return new("BitmapProbeGridAmbSV", bitmapProbeGridAmbSVRef);
-        yield return new("BitmapProbeGridAmbSV_Spread1", bitmapProbeGridAmbSV_Spread1Ref);
+        yield return new("BitmapSM_ColorPeeled", NodeRef.GetOrCreate(ref bitmapSM_ColorPeeledRef));
+        yield return new("BitmapLM_ILightInput", NodeRef.GetOrCreate(ref bitmapLM_ILightInputRef));
+        yield return new("BitmapLM_ILightDir", NodeRef.GetOrCreate(ref bitmapLM_ILightDirRef));
+        yield return new("BitmapArrayLightSH", NodeRef.GetOrCreate(ref bitmapArrayLightSHRef));
+        yield return new("BitmapLightSumBump", NodeRef.GetOrCreate(ref bitmapLightSumBumpRef));
+        yield return new("BitmapSprite3x3_Light", NodeRef.GetOrCreate(ref bitmapSprite3x3_LightRef));
+        yield return new("BitmapSprite_PosAndRadius", NodeRef.GetOrCreate(ref bitmapSprite_PosAndRadiusRef));
+        yield return new("BitmapSprite_ILightDir", NodeRef.GetOrCreate(ref bitmapSprite_ILightDirRef));
+        yield return new("BitmapShadow", NodeRef.GetOrCreate(ref bitmapShadowRef));
+        yield return new("BitmapLM_LListUV", NodeRef.GetOrCreate(ref bitmapLM_LListUVRef));
+        yield return new("BitmapLM_LListW", NodeRef.GetOrCreate(ref bitmapLM_LListWRef));
+        yield return new("BitmapSM_DepthToPeel", NodeRef.GetOrCreate(ref bitmapSM_DepthToPeelRef));
+        yield return new("BitmapProbeGeom_BBoxInvHDiag_ThroughBounce", NodeRef.GetOrCreate(ref bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef));
+        yield return new("BitmapLM_LocalDirect", NodeRef.GetOrCreate(ref bitmapLM_LocalDirectRef));
+        yield return new("BitmapProbeGridAmbSV", NodeRef.GetOrCreate(ref bitmapProbeGridAmbSVRef));
+        yield return new("BitmapProbeGridAmbSV_Spread1", NodeRef.GetOrCreate(ref bitmapProbeGridAmbSV_Spread1Ref));
         yield break;
     }
 
@@ -393,27 +393,27 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021000;
         public override GameVersion GameVersion => GameVersion.VSK5;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefList<CMwNod>? U03;
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -421,10 +421,10 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021000 owner;
             internal NodeRefView(Chunk06021000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -436,13 +436,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U04", U04Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -457,10 +457,10 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
             U03 = rw.ListNodeRef<CMwNod>(U03, 10);
-            rw.NodeRef(U04Ref);
+            rw.NodeRef(ref U04Ref);
         }
     }
 
@@ -478,7 +478,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.pointsInSphereOptRef);
+            rw.NodeRef(ref n.pointsInSphereOptRef);
         }
     }
 
@@ -489,11 +489,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021002;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -501,12 +501,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021002 owner;
             internal NodeRefView(Chunk06021002 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -518,7 +518,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -536,7 +536,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.moodRef);
+            rw.NodeRef(ref n.moodRef);
         }
     }
 
@@ -547,27 +547,27 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021004;
         public override GameVersion GameVersion => GameVersion.TMF;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefList<CMwNod>? U03;
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -575,10 +575,10 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021004 owner;
             internal NodeRefView(Chunk06021004 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -590,13 +590,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U04", U04Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -611,10 +611,10 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
             U03 = rw.ListNodeRef<CMwNod>(U03, 12);
-            rw.NodeRef(U04Ref);
+            rw.NodeRef(ref U04Ref);
         }
     }
 
@@ -623,11 +623,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
         public override uint Id => 0x06021005;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -635,12 +635,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021005 owner;
             internal NodeRefView(Chunk06021005 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -652,7 +652,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -770,27 +770,27 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
         public override uint Id => 0x0602100A;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefList<CMwNod>? U03;
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -798,10 +798,10 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk0602100A owner;
             internal NodeRefView(Chunk0602100A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -813,13 +813,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U04", U04Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -834,10 +834,10 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
             U03 = rw.ListNodeRef<CMwNod>(U03, 16);
-            rw.NodeRef(U04Ref);
+            rw.NodeRef(ref U04Ref);
         }
     }
 
@@ -896,9 +896,9 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSM_ColorPeeledRef);
-            rw.NodeRef(n.bitmapLM_ILightInputRef);
-            rw.NodeRef(n.bitmapLM_ILightDirRef);
+            rw.NodeRef(ref n.bitmapSM_ColorPeeledRef);
+            rw.NodeRef(ref n.bitmapLM_ILightInputRef);
+            rw.NodeRef(ref n.bitmapLM_ILightDirRef);
         }
     }
 
@@ -916,9 +916,9 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSM_ColorPeeledRef);
-            rw.NodeRef(n.bitmapLM_ILightInputRef);
-            rw.NodeRef(n.bitmapLM_ILightDirRef);
+            rw.NodeRef(ref n.bitmapSM_ColorPeeledRef);
+            rw.NodeRef(ref n.bitmapLM_ILightInputRef);
+            rw.NodeRef(ref n.bitmapLM_ILightDirRef);
             rw.UInt32(ref U01);
         }
     }
@@ -960,9 +960,9 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSM_ColorPeeledRef);
-            rw.NodeRef(n.bitmapLM_ILightInputRef);
-            rw.NodeRef(n.bitmapLM_ILightDirRef);
+            rw.NodeRef(ref n.bitmapSM_ColorPeeledRef);
+            rw.NodeRef(ref n.bitmapLM_ILightInputRef);
+            rw.NodeRef(ref n.bitmapLM_ILightDirRef);
             rw.UInt32(ref U01);
             rw.UInt32(ref U02);
         }
@@ -975,27 +975,27 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefList<CMwNod>? U03;
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1003,10 +1003,10 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021010 owner;
             internal NodeRefView(Chunk06021010 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -1018,13 +1018,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U04", U04Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -1039,10 +1039,10 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
             U03 = rw.ListNodeRef<CMwNod>(U03, 18);
-            rw.NodeRef(U04Ref);
+            rw.NodeRef(ref U04Ref);
         }
     }
 
@@ -1094,11 +1094,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
         public override uint Id => 0x06021012;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1106,12 +1106,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021012 owner;
             internal NodeRefView(Chunk06021012 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1124,7 +1124,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.sRGB);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1142,7 +1142,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapArrayLightSHRef);
+            rw.NodeRef(ref n.bitmapArrayLightSHRef);
         }
     }
 
@@ -1160,7 +1160,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapLightSumBumpRef);
+            rw.NodeRef(ref n.bitmapLightSumBumpRef);
         }
     }
 
@@ -1311,9 +1311,9 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSprite3x3_LightRef);
-            rw.NodeRef(n.bitmapSprite_PosAndRadiusRef);
-            rw.NodeRef(n.bitmapSprite_ILightDirRef);
+            rw.NodeRef(ref n.bitmapSprite3x3_LightRef);
+            rw.NodeRef(ref n.bitmapSprite_PosAndRadiusRef);
+            rw.NodeRef(ref n.bitmapSprite_ILightDirRef);
             U01 = rw.ListNodeRef<CMwNod>(U01, 3);
         }
     }
@@ -1325,11 +1325,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021019;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
 
-        private NodeRef<CPlugBitmap> U01Ref = new();
+        private NodeRef<CPlugBitmap>? U01Ref;
         public CPlugBitmap? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1337,12 +1337,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021019 owner;
             internal NodeRefView(Chunk06021019 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U01 => owner.U01Ref;
+            public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1354,8 +1354,8 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapShadowRef);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref n.bitmapShadowRef);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1407,11 +1407,11 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
         public override uint Id => 0x0602101B;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefList<CMwNod>? U02;
@@ -1421,7 +1421,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk0602101B owner;
             internal NodeRefView(Chunk0602101B owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public U02ReferenceView U02 => new(owner);
         }
         public readonly struct U02ReferenceView
@@ -1434,7 +1434,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             if (U02 is not null)
             {
                 for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
@@ -1451,8 +1451,8 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(n.bitmapLM_LListUVRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.bitmapLM_LListUVRef);
             U02 = rw.ListNodeRef<CMwNod>(U02, 2);
         }
     }
@@ -1556,11 +1556,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x0602101F;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1568,12 +1568,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk0602101F owner;
             internal NodeRefView(Chunk0602101F owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1585,7 +1585,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1628,7 +1628,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapLM_LListWRef);
+            rw.NodeRef(ref n.bitmapLM_LListWRef);
             U01 = rw.ListNodeRef<CMwNod>(U01, 3);
         }
     }
@@ -1672,8 +1672,8 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapLM_LListUVRef);
-            rw.NodeRef(n.bitmapLM_LListWRef);
+            rw.NodeRef(ref n.bitmapLM_LListUVRef);
+            rw.NodeRef(ref n.bitmapLM_LListWRef);
             U01 = rw.ListNodeRef<CMwNod>(U01, 5);
         }
     }
@@ -1685,11 +1685,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override uint Id => 0x06021022;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1697,12 +1697,12 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021022 owner;
             internal NodeRefView(Chunk06021022 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1714,7 +1714,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1732,7 +1732,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapSM_DepthToPeelRef);
+            rw.NodeRef(ref n.bitmapSM_DepthToPeelRef);
         }
     }
 
@@ -1750,7 +1750,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef);
+            rw.NodeRef(ref n.bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef);
         }
     }
 
@@ -1784,7 +1784,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapLM_LocalDirectRef);
+            rw.NodeRef(ref n.bitmapLM_LocalDirectRef);
         }
     }
 
@@ -1848,9 +1848,9 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapLM_LListUVRef);
-            rw.NodeRef(n.bitmapLM_LListWRef);
-            rw.NodeRef(n.bitmapLM_LocalDirectRef);
+            rw.NodeRef(ref n.bitmapLM_LListUVRef);
+            rw.NodeRef(ref n.bitmapLM_LListWRef);
+            rw.NodeRef(ref n.bitmapLM_LocalDirectRef);
             U01 = rw.ListNodeRef<CMwNod>(U01, 3);
         }
     }
@@ -1863,49 +1863,49 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// Obsolete FID reference
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CMwNod> U03Ref = new();
+        private NodeRef<CMwNod>? U03Ref;
         public CMwNod? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CMwNod> U04Ref = new();
+        private NodeRef<CMwNod>? U04Ref;
         public CMwNod? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CMwNod> U05Ref = new();
+        private NodeRef<CMwNod>? U05Ref;
         public CMwNod? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
-        private NodeRef<CMwNod> U06Ref = new();
+        private NodeRef<CMwNod>? U06Ref;
         public CMwNod? U06
         {
-            get => U06Ref.Resolve();
-            set => U06Ref.SetEmbedded(value);
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1913,22 +1913,22 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk06021029 owner;
             internal NodeRefView(Chunk06021029 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
-            public NodeRef<CMwNod> U03 => owner.U03Ref;
-            public NodeRef<CMwNod> U04 => owner.U04Ref;
-            public NodeRef<CMwNod> U05 => owner.U05Ref;
-            public NodeRef<CMwNod> U06 => owner.U06Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U04", U04Ref);
-            yield return new("U05", U05Ref);
-            yield return new("U06", U06Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield break;
         }
 
@@ -1959,41 +1959,41 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
             {
-                rw.NodeRef(U02Ref);
+                rw.NodeRef(ref U02Ref);
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef(U03Ref);
+                rw.NodeRef(ref U03Ref);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef(U04Ref);
+                rw.NodeRef(ref U04Ref);
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef(U05Ref);
+                rw.NodeRef(ref U05Ref);
             }
 
             if (Version >= 5)
             {
-                rw.NodeRef(U06Ref);
+                rw.NodeRef(ref U06Ref);
             }
 
             if (Version >= 6)
             {
-                rw.NodeRef(n.bitmapProbeGridAmbSVRef);
+                rw.NodeRef(ref n.bitmapProbeGridAmbSVRef);
             }
 
             if (Version >= 7)
             {
-                rw.NodeRef(n.bitmapProbeGridAmbSV_Spread1Ref);
+                rw.NodeRef(ref n.bitmapProbeGridAmbSV_Spread1Ref);
             }
         }
     }
@@ -2006,24 +2006,24 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; } = 5;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// CPlugFilePHlsl
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         /// <summary>
         /// CPlugFilePHlsl
         /// </summary>
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         /// <summary>
@@ -2032,18 +2032,18 @@ public partial class CHmsLightMap : CMwNod, IClass
         public NodeRefList<CMwNod>? U03;
         public uint U04;
 
-        private NodeRef<CMwNod> U05Ref = new();
+        private NodeRef<CMwNod>? U05Ref;
         public CMwNod? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
-        private NodeRef<CPlugFileGPU> U06Ref = new();
+        private NodeRef<CPlugFileGPU>? U06Ref;
         public CPlugFileGPU? U06
         {
-            get => U06Ref.Resolve();
-            set => U06Ref.SetEmbedded(value);
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -2051,11 +2051,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk0602102A owner;
             internal NodeRefView(Chunk0602102A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public U03ReferenceView U03 => new(owner);
-            public NodeRef<CMwNod> U05 => owner.U05Ref;
-            public NodeRef<CPlugFileGPU> U06 => owner.U06Ref;
+            public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CPlugFileGPU> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
         }
         public readonly struct U03ReferenceView
         {
@@ -2067,14 +2067,14 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             if (U03 is not null)
             {
                 for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.GetReference(i));
             }
-            yield return new("U05", U05Ref);
-            yield return new("U06", U06Ref);
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield break;
         }
 
@@ -2093,11 +2093,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
             {
-                rw.NodeRef(U02Ref);
+                rw.NodeRef(ref U02Ref);
             }
 
             if (Version >= 2)
@@ -2112,12 +2112,12 @@ public partial class CHmsLightMap : CMwNod, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef(U05Ref);
+                rw.NodeRef(ref U05Ref);
             }
 
             if (Version >= 5)
             {
-                rw.NodeRef(U06Ref);
+                rw.NodeRef(ref U06Ref);
             }
         }
     }
@@ -2130,11 +2130,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefList<CMwNod>? U02;
@@ -2144,7 +2144,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         {
             private readonly Chunk0602102B owner;
             internal NodeRefView(Chunk0602102B owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public U02ReferenceView U02 => new(owner);
         }
         public readonly struct U02ReferenceView
@@ -2157,7 +2157,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             if (U02 is not null)
             {
                 for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.GetReference(i));
@@ -2188,13 +2188,13 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.bitmapSprite3x3_LightRef);
-            rw.NodeRef(n.bitmapSprite_PosAndRadiusRef);
-            rw.NodeRef(n.bitmapSprite_ILightDirRef);
+            rw.NodeRef(ref n.bitmapSprite3x3_LightRef);
+            rw.NodeRef(ref n.bitmapSprite_PosAndRadiusRef);
+            rw.NodeRef(ref n.bitmapSprite_ILightDirRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             }
 
             U02 = rw.ListNodeRef<CMwNod>(U02, 4);

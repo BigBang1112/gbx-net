@@ -36,12 +36,12 @@ public partial class CPlugTreeLight : CPlugTree, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugLight> plugLightRef = new();
+    private NodeRef<CPlugLight>? plugLightRef;
     [AppliedWithChunk<Chunk09062004>]
     public CPlugLight? PlugLight
     {
-        get => plugLightRef.Resolve();
-        set => plugLightRef.SetEmbedded(value);
+        get => plugLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref plugLightRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -49,7 +49,7 @@ public partial class CPlugTreeLight : CPlugTree, IClass
     {
         private readonly CPlugTreeLight owner;
         internal NodeRefView(CPlugTreeLight owner) => this.owner = owner;
-        public NodeRef<CPlugLight> PlugLight => owner.plugLightRef;
+        public NodeRef<CPlugLight> PlugLight => NodeRef.GetOrCreate(ref owner.plugLightRef);
         public CPlugTree.ChildrenReferenceView Children => ((CPlugTree)owner).References.Children;
         public NodeRef<CPlugSolid> ModelSolid => ((CPlugTree)owner).References.ModelSolid;
         public NodeRef<CPlugVisual> Visual => ((CPlugTree)owner).References.Visual;
@@ -62,7 +62,7 @@ public partial class CPlugTreeLight : CPlugTree, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PlugLight", plugLightRef);
+        yield return new("PlugLight", NodeRef.GetOrCreate(ref plugLightRef));
         yield break;
     }
 
@@ -90,7 +90,7 @@ public partial class CPlugTreeLight : CPlugTree, IClass
 
         public override void ReadWrite(CPlugTreeLight n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.plugLightRef);
+            rw.NodeRef(ref n.plugLightRef);
         }
     }
 

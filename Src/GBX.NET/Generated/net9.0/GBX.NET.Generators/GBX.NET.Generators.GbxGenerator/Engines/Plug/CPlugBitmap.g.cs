@@ -36,7 +36,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugFileImg> imageRef = new();
+    private NodeRef<CPlugFileImg>? imageRef;
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -63,8 +63,8 @@ public partial class CPlugBitmap : CPlug, IClass
     [AppliedWithChunk<Chunk09011030>]
     public CPlugFileImg? Image
     {
-        get => imageRef.Resolve();
-        set => imageRef.SetEmbedded(value);
+        get => imageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageRef, value);
     }
 
     private float mipMapLowerAlpha = 0;
@@ -129,7 +129,7 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.bumpScaleFactor = value;
     }
 
-    private NodeRef<CPlugShader> legacyShaderRef = new();
+    private NodeRef<CPlugShader>? legacyShaderRef;
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -140,8 +140,8 @@ public partial class CPlugBitmap : CPlug, IClass
     [AppliedWithChunk<Chunk0901100A>]
     public CPlugShader? LegacyShader
     {
-        get => legacyShaderRef.Resolve();
-        set => legacyShaderRef.SetEmbedded(value);
+        get => legacyShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyShaderRef, value);
     }
 
     private SpecularSubMapCat[]? specularSubMapCats;
@@ -247,7 +247,7 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.borderRGB = value;
     }
 
-    private NodeRef<CPlugBitmapRender> bitmapRenderRef = new();
+    private NodeRef<CPlugBitmapRender>? bitmapRenderRef;
     [AppliedWithChunk<Chunk09011010>]
     [AppliedWithChunk<Chunk09011011>]
     [AppliedWithChunk<Chunk09011012>]
@@ -259,8 +259,8 @@ public partial class CPlugBitmap : CPlug, IClass
     [AppliedWithChunk<Chunk09011030>]
     public CPlugBitmapRender? BitmapRender
     {
-        get => bitmapRenderRef.Resolve();
-        set => bitmapRenderRef.SetEmbedded(value);
+        get => bitmapRenderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapRenderRef, value);
     }
 
     private uint clearColor;
@@ -437,20 +437,20 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.flags3 = value;
     }
 
-    private NodeRef<CPlugSpriteParam> spriteParamRef = new();
+    private NodeRef<CPlugSpriteParam>? spriteParamRef;
     [AppliedWithChunk<Chunk0901102A>]
     public CPlugSpriteParam? SpriteParam
     {
-        get => spriteParamRef.Resolve();
-        set => spriteParamRef.SetEmbedded(value);
+        get => spriteParamRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref spriteParamRef, value);
     }
 
-    private NodeRef<CPlugBitmapDecals> decalsRef = new();
+    private NodeRef<CPlugBitmapDecals>? decalsRef;
     [AppliedWithChunk<Chunk0901102C>]
     public CPlugBitmapDecals? Decals
     {
-        get => decalsRef.Resolve();
-        set => decalsRef.SetEmbedded(value);
+        get => decalsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decalsRef, value);
     }
 
     private LegacyShareSize? shareSize;
@@ -473,13 +473,13 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.flagsHigh = value;
     }
 
-    private NodeRef<CPlugFileImg> grassIdImageRef = new();
+    private NodeRef<CPlugFileImg>? grassIdImageRef;
     [AppliedWithChunk<Chunk09011030>(2, 2)]
     [AppliedWithChunk<Chunk09011036>]
     public CPlugFileImg? GrassIdImage
     {
-        get => grassIdImageRef.Resolve();
-        set => grassIdImageRef.SetEmbedded(value);
+        get => grassIdImageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref grassIdImageRef, value);
     }
 
     private float heightInMeters = 1;
@@ -490,12 +490,12 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.heightInMeters = value;
     }
 
-    private NodeRef<CPlugImageArray> imageArrayRef = new();
+    private NodeRef<CPlugImageArray>? imageArrayRef;
     [AppliedWithChunk<Chunk09011034>]
     public CPlugImageArray? ImageArray
     {
-        get => imageArrayRef.Resolve();
-        set => imageArrayRef.SetEmbedded(value);
+        get => imageArrayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageArrayRef, value);
     }
 
     private string imageArraySuffix = string.Empty;
@@ -514,12 +514,12 @@ public partial class CPlugBitmap : CPlug, IClass
         set => imageArrayFids = value;
     }
 
-    private NodeRef<CPlugBitmapArray> bitmapArrayRef = new();
+    private NodeRef<CPlugBitmapArray>? bitmapArrayRef;
     [AppliedWithChunk<Chunk09011034>(3)]
     public CPlugBitmapArray? BitmapArray
     {
-        get => bitmapArrayRef.Resolve();
-        set => bitmapArrayRef.SetEmbedded(value);
+        get => bitmapArrayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapArrayRef, value);
     }
 
     private string bitmapArrayElemName = string.Empty;
@@ -578,12 +578,12 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.grassIdTexCoordRotate = value;
     }
 
-    private NodeRef<CMwNod> grassMatterArrayRef = new();
+    private NodeRef<CMwNod>? grassMatterArrayRef;
     [AppliedWithChunk<Chunk09011036>]
     public CMwNod? GrassMatterArray
     {
-        get => grassMatterArrayRef.Resolve();
-        set => grassMatterArrayRef.SetEmbedded(value);
+        get => grassMatterArrayRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref grassMatterArrayRef, value);
     }
 
     private ImageArraySettings? arraySettings;
@@ -613,12 +613,12 @@ public partial class CPlugBitmap : CPlug, IClass
         set => this.atlasCubeIn = value;
     }
 
-    private NodeRef<CPlugFileImg> legacyImageRef = new();
+    private NodeRef<CPlugFileImg>? legacyImageRef;
     [AppliedWithChunk<Chunk0901103A>]
     public CPlugFileImg? LegacyImage
     {
-        get => legacyImageRef.Resolve();
-        set => legacyImageRef.SetEmbedded(value);
+        get => legacyImageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyImageRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -626,17 +626,17 @@ public partial class CPlugBitmap : CPlug, IClass
     {
         private readonly CPlugBitmap owner;
         internal NodeRefView(CPlugBitmap owner) => this.owner = owner;
-        public NodeRef<CPlugFileImg> Image => owner.imageRef;
-        public NodeRef<CPlugShader> LegacyShader => owner.legacyShaderRef;
-        public NodeRef<CPlugBitmapRender> BitmapRender => owner.bitmapRenderRef;
-        public NodeRef<CPlugSpriteParam> SpriteParam => owner.spriteParamRef;
-        public NodeRef<CPlugBitmapDecals> Decals => owner.decalsRef;
-        public NodeRef<CPlugFileImg> GrassIdImage => owner.grassIdImageRef;
-        public NodeRef<CPlugImageArray> ImageArray => owner.imageArrayRef;
+        public NodeRef<CPlugFileImg> Image => NodeRef.GetOrCreate(ref owner.imageRef);
+        public NodeRef<CPlugShader> LegacyShader => NodeRef.GetOrCreate(ref owner.legacyShaderRef);
+        public NodeRef<CPlugBitmapRender> BitmapRender => NodeRef.GetOrCreate(ref owner.bitmapRenderRef);
+        public NodeRef<CPlugSpriteParam> SpriteParam => NodeRef.GetOrCreate(ref owner.spriteParamRef);
+        public NodeRef<CPlugBitmapDecals> Decals => NodeRef.GetOrCreate(ref owner.decalsRef);
+        public NodeRef<CPlugFileImg> GrassIdImage => NodeRef.GetOrCreate(ref owner.grassIdImageRef);
+        public NodeRef<CPlugImageArray> ImageArray => NodeRef.GetOrCreate(ref owner.imageArrayRef);
         public ImageArrayFidsReferenceView ImageArrayFids => new(owner);
-        public NodeRef<CPlugBitmapArray> BitmapArray => owner.bitmapArrayRef;
-        public NodeRef<CMwNod> GrassMatterArray => owner.grassMatterArrayRef;
-        public NodeRef<CPlugFileImg> LegacyImage => owner.legacyImageRef;
+        public NodeRef<CPlugBitmapArray> BitmapArray => NodeRef.GetOrCreate(ref owner.bitmapArrayRef);
+        public NodeRef<CMwNod> GrassMatterArray => NodeRef.GetOrCreate(ref owner.grassMatterArrayRef);
+        public NodeRef<CPlugFileImg> LegacyImage => NodeRef.GetOrCreate(ref owner.legacyImageRef);
     }
     public readonly struct ImageArrayFidsReferenceView
     {
@@ -648,20 +648,20 @@ public partial class CPlugBitmap : CPlug, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Image", imageRef);
-        yield return new("LegacyShader", legacyShaderRef);
-        yield return new("BitmapRender", bitmapRenderRef);
-        yield return new("SpriteParam", spriteParamRef);
-        yield return new("Decals", decalsRef);
-        yield return new("GrassIdImage", grassIdImageRef);
-        yield return new("ImageArray", imageArrayRef);
+        yield return new("Image", NodeRef.GetOrCreate(ref imageRef));
+        yield return new("LegacyShader", NodeRef.GetOrCreate(ref legacyShaderRef));
+        yield return new("BitmapRender", NodeRef.GetOrCreate(ref bitmapRenderRef));
+        yield return new("SpriteParam", NodeRef.GetOrCreate(ref spriteParamRef));
+        yield return new("Decals", NodeRef.GetOrCreate(ref decalsRef));
+        yield return new("GrassIdImage", NodeRef.GetOrCreate(ref grassIdImageRef));
+        yield return new("ImageArray", NodeRef.GetOrCreate(ref imageArrayRef));
         if (imageArrayFids is not null)
         {
             for (var i = 0; i < imageArrayFids.Count; i++) yield return new("ImageArrayFids" + "[" + i + "]", imageArrayFids.GetReference(i));
         }
-        yield return new("BitmapArray", bitmapArrayRef);
-        yield return new("GrassMatterArray", grassMatterArrayRef);
-        yield return new("LegacyImage", legacyImageRef);
+        yield return new("BitmapArray", NodeRef.GetOrCreate(ref bitmapArrayRef));
+        yield return new("GrassMatterArray", NodeRef.GetOrCreate(ref grassMatterArrayRef));
+        yield return new("LegacyImage", NodeRef.GetOrCreate(ref legacyImageRef));
         yield break;
     }
 
@@ -736,14 +736,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
         }
     }
@@ -760,14 +760,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
         }
     }
@@ -784,14 +784,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
 
             if (n.PixelUpdate== 7)
@@ -813,14 +813,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
 
             if (n.PixelUpdate== 7)
@@ -842,14 +842,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
 
             if (n.PixelUpdate== 7)
@@ -871,14 +871,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
 
             if (n.PixelUpdate== 7)
@@ -900,7 +900,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.ReadableWritable<LegacyBitmapOptions>(ref n.legacyOptions);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -924,7 +924,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -943,14 +943,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
         }
     }
@@ -967,14 +967,14 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             n.LegacyFlags32 = rw.UInt32(n.LegacyFlags32);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
 
             if (n.PixelUpdate== 5)
             {
-                rw.NodeRef(n.legacyShaderRef);
+                rw.NodeRef(ref n.legacyShaderRef);
             }
         }
     }
@@ -991,7 +991,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1020,7 +1020,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1049,7 +1049,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1078,7 +1078,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1107,7 +1107,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1137,7 +1137,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1145,7 +1145,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1177,7 +1177,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1185,7 +1185,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1217,7 +1217,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1226,7 +1226,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1258,7 +1258,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1267,7 +1267,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1301,7 +1301,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1310,7 +1310,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1342,7 +1342,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1351,7 +1351,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1418,7 +1418,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
             rw.UInt64(ref n.flags);
             rw.Single(ref n.mipMapLowerAlpha);
             rw.Single(ref n.bumpScaleFactor);
@@ -1427,7 +1427,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -1761,7 +1761,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.spriteParamRef);
+            rw.NodeRef(ref n.spriteParamRef);
         }
     }
 
@@ -1797,7 +1797,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.decalsRef);
+            rw.NodeRef(ref n.decalsRef);
         }
     }
 
@@ -1901,7 +1901,7 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
 
             if (Version >= 1)
             {
@@ -1911,7 +1911,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (Version == 2)
             {
-                rw.NodeRef(n.grassIdImageRef);
+                rw.NodeRef(ref n.grassIdImageRef);
             }
 
             rw.Single(ref n.mipMapLowerAlpha);
@@ -1921,7 +1921,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (n.PixelUpdate== 4)
             {
-                rw.NodeRef(n.bitmapRenderRef);
+                rw.NodeRef(ref n.bitmapRenderRef);
             }
 
             if (n.PixelUpdate== 5)
@@ -2045,7 +2045,7 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.imageArrayRef);
+            rw.NodeRef(ref n.imageArrayRef);
 
             if (Version >= 1)
             {
@@ -2059,7 +2059,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (Version >= 3)
             {
-                rw.NodeRef(n.bitmapArrayRef);
+                rw.NodeRef(ref n.bitmapArrayRef);
                 rw.String(ref n.bitmapArrayElemName);
             }
 
@@ -2132,9 +2132,9 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.grassIdImageRef);
+            rw.NodeRef(ref n.grassIdImageRef);
 
-            if (Version== 0 || (n.grassIdImageRef.Kind == NodeRefKind.None))
+            if (Version== 0 || ((n.grassIdImageRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None))
             {
                 rw.Id(ref n.grassId);
             }
@@ -2145,7 +2145,7 @@ public partial class CPlugBitmap : CPlug, IClass
                 rw.Single(ref n.grassIdTexCoordRotate);
             }
 
-            rw.NodeRef(n.grassMatterArrayRef);
+            rw.NodeRef(ref n.grassMatterArrayRef);
         }
     }
 
@@ -2236,7 +2236,7 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.legacyImageRef);
+            rw.NodeRef(ref n.legacyImageRef);
         }
     }
 
@@ -2600,11 +2600,11 @@ public partial class CPlugBitmap : CPlug, IClass
             set => this.entries = value;
         }
 
-        private NodeRef<CPlugFileImg> imageRef = new();
+        private NodeRef<CPlugFileImg>? imageRef;
         public CPlugFileImg? Image
         {
-            get => imageRef.Resolve();
-            set => imageRef.SetEmbedded(value);
+            get => imageRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref imageRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -2612,11 +2612,11 @@ public partial class CPlugBitmap : CPlug, IClass
         {
             private readonly CubeAtlasInput owner;
             internal NodeRefView(CubeAtlasInput owner) => this.owner = owner;
-            public NodeRef<CPlugFileImg> Image => owner.imageRef;
+            public NodeRef<CPlugFileImg> Image => NodeRef.GetOrCreate(ref owner.imageRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Image", imageRef);
+            yield return new("Image", NodeRef.GetOrCreate(ref imageRef));
             yield break;
         }
 
@@ -2659,7 +2659,7 @@ public partial class CPlugBitmap : CPlug, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(this.imageRef);
+                rw.NodeRef(ref this.imageRef);
             }
         }
 

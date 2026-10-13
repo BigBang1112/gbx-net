@@ -36,14 +36,14 @@ public partial class CPlugBitmapShader : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugShader> shaderRef = new();
+    private NodeRef<CPlugShader>? shaderRef;
     [AppliedWithChunk<Chunk09080000>]
     [AppliedWithChunk<Chunk09080001>]
     [AppliedWithChunk<Chunk09080002>]
     public CPlugShader? Shader
     {
-        get => shaderRef.Resolve();
-        set => shaderRef.SetEmbedded(value);
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
     private NodeRefList<CPlugBitmap>? legacyBitmaps;
@@ -55,13 +55,13 @@ public partial class CPlugBitmapShader : CPlug, IClass
         set => legacyBitmaps = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapToSwapRef = new();
+    private NodeRef<CPlugBitmap>? bitmapToSwapRef;
     [AppliedWithChunk<Chunk09080001>]
     [AppliedWithChunk<Chunk09080002>]
     public CPlugBitmap? BitmapToSwap
     {
-        get => bitmapToSwapRef.Resolve();
-        set => bitmapToSwapRef.SetEmbedded(value);
+        get => bitmapToSwapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapToSwapRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -69,9 +69,9 @@ public partial class CPlugBitmapShader : CPlug, IClass
     {
         private readonly CPlugBitmapShader owner;
         internal NodeRefView(CPlugBitmapShader owner) => this.owner = owner;
-        public NodeRef<CPlugShader> Shader => owner.shaderRef;
+        public NodeRef<CPlugShader> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
         public LegacyBitmapsReferenceView LegacyBitmaps => new(owner);
-        public NodeRef<CPlugBitmap> BitmapToSwap => owner.bitmapToSwapRef;
+        public NodeRef<CPlugBitmap> BitmapToSwap => NodeRef.GetOrCreate(ref owner.bitmapToSwapRef);
     }
     public readonly struct LegacyBitmapsReferenceView
     {
@@ -83,12 +83,12 @@ public partial class CPlugBitmapShader : CPlug, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Shader", shaderRef);
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
         if (legacyBitmaps is not null)
         {
             for (var i = 0; i < legacyBitmaps.Count; i++) yield return new("LegacyBitmaps" + "[" + i + "]", legacyBitmaps.GetReference(i));
         }
-        yield return new("BitmapToSwap", bitmapToSwapRef);
+        yield return new("BitmapToSwap", NodeRef.GetOrCreate(ref bitmapToSwapRef));
         yield break;
     }
 
@@ -116,7 +116,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapShader n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shaderRef);
+            rw.NodeRef(ref n.shaderRef);
             n.legacyBitmaps = rw.ListNodeRef<CPlugBitmap>(n.legacyBitmaps);
         }
     }
@@ -136,7 +136,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
         public override void ReadWrite(CPlugBitmapShader n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.bitmapToSwapRef);
+            rw.NodeRef(ref n.bitmapToSwapRef);
         }
     }
 
@@ -154,8 +154,8 @@ public partial class CPlugBitmapShader : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapShader n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.shaderRef);
-            rw.NodeRef(n.bitmapToSwapRef);
+            rw.NodeRef(ref n.shaderRef);
+            rw.NodeRef(ref n.bitmapToSwapRef);
         }
     }
 

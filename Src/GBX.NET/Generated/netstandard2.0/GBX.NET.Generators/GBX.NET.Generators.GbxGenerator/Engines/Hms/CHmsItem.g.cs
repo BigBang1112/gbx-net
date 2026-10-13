@@ -85,12 +85,12 @@ public partial class CHmsItem : CMwNod, IClass
         set => this.dynamicTypeLegacy = value;
     }
 
-    private NodeRef<CPlugSolid> solidRef = new();
+    private NodeRef<CPlugSolid>? solidRef;
     [AppliedWithChunk<Chunk06003001>]
     public CPlugSolid? Solid
     {
-        get => solidRef.Resolve();
-        set => solidRef.SetEmbedded(value);
+        get => solidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidRef, value);
     }
 
     private NodeRefList<CHmsPortal>? portals = new();
@@ -197,7 +197,7 @@ public partial class CHmsItem : CMwNod, IClass
     {
         private readonly CHmsItem owner;
         internal NodeRefView(CHmsItem owner) => this.owner = owner;
-        public NodeRef<CPlugSolid> Solid => owner.solidRef;
+        public NodeRef<CPlugSolid> Solid => NodeRef.GetOrCreate(ref owner.solidRef);
         public PortalsReferenceView Portals => new(owner);
     }
     public readonly struct PortalsReferenceView
@@ -210,7 +210,7 @@ public partial class CHmsItem : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Solid", solidRef);
+        yield return new("Solid", NodeRef.GetOrCreate(ref solidRef));
         if (portals is not null)
         {
             for (var i = 0; i < portals.Count; i++) yield return new("Portals" + "[" + i + "]", portals.GetReference(i));
@@ -957,7 +957,7 @@ public partial class CHmsItem : CMwNod, IClass
 
         public override void ReadWrite(CHmsItem n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.solidRef);
+            rw.NodeRef(ref n.solidRef);
         }
     }
 

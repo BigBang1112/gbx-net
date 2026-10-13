@@ -36,12 +36,12 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSurface> moveShapeRef = new();
+    private NodeRef<CPlugSurface>? moveShapeRef;
     [AppliedWithChunk<Chunk0910E000>(1)]
     public CPlugSurface? MoveShape
     {
-        get => moveShapeRef.Resolve();
-        set => moveShapeRef.SetEmbedded(value);
+        get => moveShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moveShapeRef, value);
     }
 
     private BoxAligned carVsCarShapeBox;
@@ -57,12 +57,12 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     {
         private readonly CPlugVehicleCarPhyShape owner;
         internal NodeRefView(CPlugVehicleCarPhyShape owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> MoveShape => owner.moveShapeRef;
+        public NodeRef<CPlugSurface> MoveShape => NodeRef.GetOrCreate(ref owner.moveShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("MoveShape", moveShapeRef);
+        yield return new("MoveShape", NodeRef.GetOrCreate(ref moveShapeRef));
         yield break;
     }
 
@@ -86,11 +86,11 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         public int Version { get; set; }
         public float U01;
 
-        private NodeRef<CPlugSolid> U02Ref = new();
+        private NodeRef<CPlugSolid>? U02Ref;
         public CPlugSolid? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
         public CPlugVehicleWheelPhyModel[]? U04;
         public BoxAligned U05;
@@ -122,33 +122,33 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         public float U32;
         public string? U33;
 
-        private NodeRef<CPlugSurface> U34Ref = new();
+        private NodeRef<CPlugSurface>? U34Ref;
         public CPlugSurface? U34
         {
-            get => U34Ref.Resolve();
-            set => U34Ref.SetEmbedded(value);
+            get => U34Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U34Ref, value);
         }
         public Vec3[]? U35;
 
-        private NodeRef<CPlugSurface> U36Ref = new();
+        private NodeRef<CPlugSurface>? U36Ref;
         public CPlugSurface? U36
         {
-            get => U36Ref.Resolve();
-            set => U36Ref.SetEmbedded(value);
+            get => U36Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U36Ref, value);
         }
 
-        private NodeRef<CPlugSurface> U37Ref = new();
+        private NodeRef<CPlugSurface>? U37Ref;
         public CPlugSurface? U37
         {
-            get => U37Ref.Resolve();
-            set => U37Ref.SetEmbedded(value);
+            get => U37Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U37Ref, value);
         }
 
-        private NodeRef<CPlugSurface> U38Ref = new();
+        private NodeRef<CPlugSurface>? U38Ref;
         public CPlugSurface? U38
         {
-            get => U38Ref.Resolve();
-            set => U38Ref.SetEmbedded(value);
+            get => U38Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U38Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -156,20 +156,20 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         {
             private readonly Chunk0910E000 owner;
             internal NodeRefView(Chunk0910E000 owner) => this.owner = owner;
-            public NodeRef<CPlugSolid> U02 => owner.U02Ref;
-            public NodeRef<CPlugSurface> U34 => owner.U34Ref;
-            public NodeRef<CPlugSurface> U36 => owner.U36Ref;
-            public NodeRef<CPlugSurface> U37 => owner.U37Ref;
-            public NodeRef<CPlugSurface> U38 => owner.U38Ref;
+            public NodeRef<CPlugSolid> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugSurface> U34 => NodeRef.GetOrCreate(ref owner.U34Ref);
+            public NodeRef<CPlugSurface> U36 => NodeRef.GetOrCreate(ref owner.U36Ref);
+            public NodeRef<CPlugSurface> U37 => NodeRef.GetOrCreate(ref owner.U37Ref);
+            public NodeRef<CPlugSurface> U38 => NodeRef.GetOrCreate(ref owner.U38Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
-            yield return new("U34", U34Ref);
-            yield return new("U36", U36Ref);
-            yield return new("U37", U37Ref);
-            yield return new("U38", U38Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U34", NodeRef.GetOrCreate(ref U34Ref));
+            yield return new("U36", NodeRef.GetOrCreate(ref U36Ref));
+            yield return new("U37", NodeRef.GetOrCreate(ref U37Ref));
+            yield return new("U38", NodeRef.GetOrCreate(ref U38Ref));
             yield break;
         }
 
@@ -219,13 +219,13 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
         {
             rw.VersionInt32(this);
             rw.Single(ref U01);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U02Ref);
 
             if (Version >= 1)
             {
-                if (U02Ref.Kind == NodeRefKind.None)
+                if ((U02Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
-                    rw.NodeRef(n.moveShapeRef);
+                    rw.NodeRef(ref n.moveShapeRef);
                 }
             }
 
@@ -268,7 +268,7 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
 
                     if (U33== null || U33== "")
                     {
-                        rw.NodeRef(U34Ref);
+                        rw.NodeRef(ref U34Ref);
                     }
 
                     if (Version >= 4)
@@ -277,12 +277,12 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
 
                         if (Version >= 5)
                         {
-                            rw.NodeRef(U36Ref);
+                            rw.NodeRef(ref U36Ref);
 
                             if (Version >= 6)
                             {
-                                rw.NodeRef(U37Ref);
-                                rw.NodeRef(U38Ref);
+                                rw.NodeRef(ref U37Ref);
+                                rw.NodeRef(ref U38Ref);
                             }
                         }
                     }

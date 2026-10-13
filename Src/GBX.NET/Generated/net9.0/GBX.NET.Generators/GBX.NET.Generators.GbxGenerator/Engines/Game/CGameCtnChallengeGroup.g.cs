@@ -129,12 +129,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => files = value;
     }
 
-    private NodeRef<CGameCtnCampaign> linkedCampaignRef = new();
+    private NodeRef<CGameCtnCampaign>? linkedCampaignRef;
     [AppliedWithChunk<Chunk0308F005>]
     public CGameCtnCampaign? LinkedCampaign
     {
-        get => linkedCampaignRef.Resolve();
-        set => linkedCampaignRef.SetEmbedded(value);
+        get => linkedCampaignRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref linkedCampaignRef, value);
     }
 
     private bool usesMapFiles;
@@ -193,12 +193,12 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         set => this.nbGoldCupRequired = value;
     }
 
-    private NodeRef<CGameCtnCollection> associatedCollectionRef = new();
+    private NodeRef<CGameCtnCollection>? associatedCollectionRef;
     [AppliedWithChunk<Chunk0308F008>]
     public CGameCtnCollection? AssociatedCollection
     {
-        get => associatedCollectionRef.Resolve();
-        set => associatedCollectionRef.SetEmbedded(value);
+        get => associatedCollectionRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref associatedCollectionRef, value);
     }
 
     private string? associatedCollectionId;
@@ -216,8 +216,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         internal NodeRefView(CGameCtnChallengeGroup owner) => this.owner = owner;
         public MapFilesReferenceView MapFiles => new(owner);
         public FilesReferenceView Files => new(owner);
-        public NodeRef<CGameCtnCampaign> LinkedCampaign => owner.linkedCampaignRef;
-        public NodeRef<CGameCtnCollection> AssociatedCollection => owner.associatedCollectionRef;
+        public NodeRef<CGameCtnCampaign> LinkedCampaign => NodeRef.GetOrCreate(ref owner.linkedCampaignRef);
+        public NodeRef<CGameCtnCollection> AssociatedCollection => NodeRef.GetOrCreate(ref owner.associatedCollectionRef);
     }
     public readonly struct MapFilesReferenceView
     {
@@ -244,8 +244,8 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         {
             for (var i = 0; i < files.Count; i++) yield return new("Files" + "[" + i + "]", files.GetReference(i));
         }
-        yield return new("LinkedCampaign", linkedCampaignRef);
-        yield return new("AssociatedCollection", associatedCollectionRef);
+        yield return new("LinkedCampaign", NodeRef.GetOrCreate(ref linkedCampaignRef));
+        yield return new("AssociatedCollection", NodeRef.GetOrCreate(ref associatedCollectionRef));
         yield break;
     }
 
@@ -418,7 +418,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.linkedCampaignRef);
+            rw.NodeRef(ref n.linkedCampaignRef);
         }
     }
 
@@ -495,7 +495,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.associatedCollectionRef);
+            rw.NodeRef(ref n.associatedCollectionRef);
         }
     }
 

@@ -38,9 +38,9 @@ public partial class CPlugTreeVisualMip
 
     public sealed record Level : IDeepCloneable
     {
-        private NodeRef<CPlugTree> treeRef = new();
+        private NodeRef<CPlugTree>? treeRef;
         public float FarZ { get; init; }
-        public CPlugTree? Tree { get => treeRef.Resolve(); init => treeRef.SetEmbedded(value); }
+        public CPlugTree? Tree { get => treeRef?.Resolve(); init => NodeRef.SetEmbedded(ref treeRef, value); }
         public NodeRefView References => new(this);
 
         public Level(float farZ, CPlugTree? tree)
@@ -53,7 +53,7 @@ public partial class CPlugTreeVisualMip
         {
             private readonly Level owner;
             internal NodeRefView(Level owner) => this.owner = owner;
-            public NodeRef<CPlugTree> Tree => owner.treeRef;
+            public NodeRef<CPlugTree> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)

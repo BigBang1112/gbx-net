@@ -3,5 +3,5 @@
 public partial class CGamePlayerProfileChunk_InputBindingsConfig
 {
 
-    public partial CInputBindingsConfig? Config { get => configRef.Resolve(); set => configRef.SetEmbedded(value); }
+    public partial CInputBindingsConfig? Config { get => configRef?.Resolve(); set => NodeRef.SetEmbedded(ref configRef, value); }
 }

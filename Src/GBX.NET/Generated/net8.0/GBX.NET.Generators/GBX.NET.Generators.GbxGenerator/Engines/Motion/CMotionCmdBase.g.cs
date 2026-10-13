@@ -96,12 +96,12 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         set => this.isAbsolutePhase = value;
     }
 
-    private NodeRef<CMotionCmdBaseParams> cmdBaseParamsRef = new();
+    private NodeRef<CMotionCmdBaseParams>? cmdBaseParamsRef;
     [AppliedWithChunk<Chunk08029002>]
     public CMotionCmdBaseParams? CmdBaseParams
     {
-        get => cmdBaseParamsRef.Resolve();
-        set => cmdBaseParamsRef.SetEmbedded(value);
+        get => cmdBaseParamsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cmdBaseParamsRef, value);
     }
 
     private uint legacyPeriod;
@@ -139,12 +139,12 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     {
         private readonly CMotionCmdBase owner;
         internal NodeRefView(CMotionCmdBase owner) => this.owner = owner;
-        public NodeRef<CMotionCmdBaseParams> CmdBaseParams => owner.cmdBaseParamsRef;
+        public NodeRef<CMotionCmdBaseParams> CmdBaseParams => NodeRef.GetOrCreate(ref owner.cmdBaseParamsRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("CmdBaseParams", cmdBaseParamsRef);
+        yield return new("CmdBaseParams", NodeRef.GetOrCreate(ref cmdBaseParamsRef));
         yield break;
     }
 
@@ -217,7 +217,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         public override void ReadWrite(CMotionCmdBase n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.cmdBaseParamsRef);
+            rw.NodeRef(ref n.cmdBaseParamsRef);
         }
     }
 

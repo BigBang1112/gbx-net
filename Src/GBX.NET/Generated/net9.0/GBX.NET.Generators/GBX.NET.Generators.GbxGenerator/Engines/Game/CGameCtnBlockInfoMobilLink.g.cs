@@ -41,12 +41,12 @@ public partial class CGameCtnBlockInfoMobilLink : CMwNod, IClass
     {
         private readonly CGameCtnBlockInfoMobilLink owner;
         internal NodeRefView(CGameCtnBlockInfoMobilLink owner) => this.owner = owner;
-        public NodeRef<CGameObjectModel> Model => owner.modelRef;
+        public NodeRef<CGameObjectModel> Model => NodeRef.GetOrCreate(ref owner.modelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Model", modelRef);
+        yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
         yield break;
     }
 

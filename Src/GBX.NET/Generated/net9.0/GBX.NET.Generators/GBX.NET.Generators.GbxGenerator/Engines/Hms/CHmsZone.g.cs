@@ -122,21 +122,21 @@ public partial class CHmsZone : CMwNod, IClass
         set => precalcRenders = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapCubeReflectHardSpecARef = new();
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHardSpecARef;
     [AppliedWithChunk<Chunk06004006>]
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHardSpecA
     {
-        get => bitmapCubeReflectHardSpecARef.Resolve();
-        set => bitmapCubeReflectHardSpecARef.SetEmbedded(value);
+        get => bitmapCubeReflectHardSpecARef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHardSpecARef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapCubeReflectHdrAlpha2Ref = new();
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHdrAlpha2Ref;
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {
-        get => bitmapCubeReflectHdrAlpha2Ref.Resolve();
-        set => bitmapCubeReflectHdrAlpha2Ref.SetEmbedded(value);
+        get => bitmapCubeReflectHdrAlpha2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHdrAlpha2Ref, value);
     }
 
     public NodeRefView References => new(this);
@@ -146,8 +146,8 @@ public partial class CHmsZone : CMwNod, IClass
         internal NodeRefView(CHmsZone owner) => this.owner = owner;
         public FogPlanesReferenceView FogPlanes => new(owner);
         public PrecalcRendersReferenceView PrecalcRenders => new(owner);
-        public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => owner.bitmapCubeReflectHardSpecARef;
-        public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => owner.bitmapCubeReflectHdrAlpha2Ref;
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
     }
     public readonly struct FogPlanesReferenceView
     {
@@ -174,8 +174,8 @@ public partial class CHmsZone : CMwNod, IClass
         {
             for (var i = 0; i < precalcRenders.Count; i++) yield return new("PrecalcRenders" + "[" + i + "]", precalcRenders.GetReference(i));
         }
-        yield return new("BitmapCubeReflectHardSpecA", bitmapCubeReflectHardSpecARef);
-        yield return new("BitmapCubeReflectHdrAlpha2", bitmapCubeReflectHdrAlpha2Ref);
+        yield return new("BitmapCubeReflectHardSpecA", NodeRef.GetOrCreate(ref bitmapCubeReflectHardSpecARef));
+        yield return new("BitmapCubeReflectHdrAlpha2", NodeRef.GetOrCreate(ref bitmapCubeReflectHdrAlpha2Ref));
         yield break;
     }
 
@@ -303,7 +303,7 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapCubeReflectHardSpecARef);
+            rw.NodeRef(ref n.bitmapCubeReflectHardSpecARef);
         }
     }
 
@@ -321,8 +321,8 @@ public partial class CHmsZone : CMwNod, IClass
 
         public override void ReadWrite(CHmsZone n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapCubeReflectHardSpecARef);
-            rw.NodeRef(n.bitmapCubeReflectHdrAlpha2Ref);
+            rw.NodeRef(ref n.bitmapCubeReflectHardSpecARef);
+            rw.NodeRef(ref n.bitmapCubeReflectHdrAlpha2Ref);
         }
     }
 

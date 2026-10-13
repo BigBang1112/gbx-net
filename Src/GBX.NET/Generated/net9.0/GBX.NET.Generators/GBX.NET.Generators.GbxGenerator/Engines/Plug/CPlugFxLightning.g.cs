@@ -36,12 +36,12 @@ public partial class CPlugFxLightning : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSound> soundRef = new();
+    private NodeRef<CPlugSound>? soundRef;
     [AppliedWithChunk<Chunk090D8000>]
     public CPlugSound? Sound
     {
-        get => soundRef.Resolve();
-        set => soundRef.SetEmbedded(value);
+        get => soundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CPlugFxLightning : CPlug, IClass
     {
         private readonly CPlugFxLightning owner;
         internal NodeRefView(CPlugFxLightning owner) => this.owner = owner;
-        public NodeRef<CPlugSound> Sound => owner.soundRef;
+        public NodeRef<CPlugSound> Sound => NodeRef.GetOrCreate(ref owner.soundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Sound", soundRef);
+        yield return new("Sound", NodeRef.GetOrCreate(ref soundRef));
         yield break;
     }
 
@@ -128,7 +128,7 @@ public partial class CPlugFxLightning : CPlug, IClass
         public override void ReadWrite(CPlugFxLightning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.soundRef);
+            rw.NodeRef(ref n.soundRef);
             U01 = rw.ListNodeRef_deprec<CFuncKeysReal>(U01);
             rw.Single(ref U02);
             rw.Single(ref U03);

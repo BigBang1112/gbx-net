@@ -36,13 +36,13 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneMobil> oldMobilRef = new();
+    private NodeRef<CSceneMobil>? oldMobilRef;
     [AppliedWithChunk<Chunk03122000>]
     [AppliedWithChunk<Chunk03122003>]
     public CSceneMobil? OldMobil
     {
-        get => oldMobilRef.Resolve();
-        set => oldMobilRef.SetEmbedded(value);
+        get => oldMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref oldMobilRef, value);
     }
 
     private int solidFrequency = 1;
@@ -95,28 +95,28 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => this.geomRotation = value;
     }
 
-    private NodeRef<CPlugSolid> solidFidRef = new();
+    private NodeRef<CPlugSolid>? solidFidRef;
     [AppliedWithChunk<Chunk03122003>(2)]
     public CPlugSolid? SolidFid
     {
-        get => solidFidRef.Resolve();
-        set => solidFidRef.SetEmbedded(value);
+        get => solidFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidFidRef, value);
     }
 
-    private NodeRef<CPlugPrefab> prefabFidRef = new();
+    private NodeRef<CPlugPrefab>? prefabFidRef;
     [AppliedWithChunk<Chunk03122003>(14)]
     public CPlugPrefab? PrefabFid
     {
-        get => prefabFidRef.Resolve();
-        set => prefabFidRef.SetEmbedded(value);
+        get => prefabFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref prefabFidRef, value);
     }
 
-    private NodeRef<CPlugSolid> oldSolidAggregRef = new();
+    private NodeRef<CPlugSolid>? oldSolidAggregRef;
     [AppliedWithChunk<Chunk03122003>(3)]
     public CPlugSolid? OldSolidAggreg
     {
-        get => oldSolidAggregRef.Resolve();
-        set => oldSolidAggregRef.SetEmbedded(value);
+        get => oldSolidAggregRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref oldSolidAggregRef, value);
     }
 
     private NodeRefList<CPlugPolyLine3>? legacyRailPolylines;
@@ -127,28 +127,28 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => legacyRailPolylines = value;
     }
 
-    private NodeRef<CPlugPath> railPathRef = new();
+    private NodeRef<CPlugPath>? railPathRef;
     [AppliedWithChunk<Chunk03122003>(6)]
     public CPlugPath? RailPath
     {
-        get => railPathRef.Resolve();
-        set => railPathRef.SetEmbedded(value);
+        get => railPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref railPathRef, value);
     }
 
-    private NodeRef<CPlugPath> trafficPathRef = new();
+    private NodeRef<CPlugPath>? trafficPathRef;
     [AppliedWithChunk<Chunk03122003>(7, 22)]
     public CPlugPath? TrafficPath
     {
-        get => trafficPathRef.Resolve();
-        set => trafficPathRef.SetEmbedded(value);
+        get => trafficPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficPathRef, value);
     }
 
-    private NodeRef<CPlugRecastPolyMeshData> recastPolyMeshDataRef = new();
+    private NodeRef<CPlugRecastPolyMeshData>? recastPolyMeshDataRef;
     [AppliedWithChunk<Chunk03122003>(15)]
     public CPlugRecastPolyMeshData? RecastPolyMeshData
     {
-        get => recastPolyMeshDataRef.Resolve();
-        set => recastPolyMeshDataRef.SetEmbedded(value);
+        get => recastPolyMeshDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref recastPolyMeshDataRef, value);
     }
 
     private NodeRefList<CPlugRoadChunk>? legacyRoadChunks;
@@ -161,12 +161,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => roadChunks = value;
     }
 
-    private NodeRef<CPlugPath> citizenNetworkPathRef = new();
+    private NodeRef<CPlugPath>? citizenNetworkPathRef;
     [AppliedWithChunk<Chunk03122003>(16, 22)]
     public CPlugPath? CitizenNetworkPath
     {
-        get => citizenNetworkPathRef.Resolve();
-        set => citizenNetworkPathRef.SetEmbedded(value);
+        get => citizenNetworkPathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref citizenNetworkPathRef, value);
     }
 
     private NodeRefList<CPlugRoadChunk>? legacyCitizenRoadChunks;
@@ -179,12 +179,12 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         set => citizenRoadChunks = value;
     }
 
-    private NodeRef<CPlugVFXFile> vFXsRef = new();
+    private NodeRef<CPlugVFXFile>? vFXsRef;
     [AppliedWithChunk<Chunk03122003>(18)]
     public CPlugVFXFile? VFXs
     {
-        get => vFXsRef.Resolve();
-        set => vFXsRef.SetEmbedded(value);
+        get => vFXsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vFXsRef, value);
     }
 
     private byte vFXScaleType = 3;
@@ -266,21 +266,21 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     {
         private readonly CGameCtnBlockInfoMobil owner;
         internal NodeRefView(CGameCtnBlockInfoMobil owner) => this.owner = owner;
-        public NodeRef<CSceneMobil> OldMobil => owner.oldMobilRef;
+        public NodeRef<CSceneMobil> OldMobil => NodeRef.GetOrCreate(ref owner.oldMobilRef);
         public SolidDecalsReferenceView SolidDecals => new(owner);
-        public NodeRef<CPlugSolid> SolidFid => owner.solidFidRef;
-        public NodeRef<CPlugPrefab> PrefabFid => owner.prefabFidRef;
-        public NodeRef<CPlugSolid> OldSolidAggreg => owner.oldSolidAggregRef;
+        public NodeRef<CPlugSolid> SolidFid => NodeRef.GetOrCreate(ref owner.solidFidRef);
+        public NodeRef<CPlugPrefab> PrefabFid => NodeRef.GetOrCreate(ref owner.prefabFidRef);
+        public NodeRef<CPlugSolid> OldSolidAggreg => NodeRef.GetOrCreate(ref owner.oldSolidAggregRef);
         public LegacyRailPolylinesReferenceView LegacyRailPolylines => new(owner);
-        public NodeRef<CPlugPath> RailPath => owner.railPathRef;
-        public NodeRef<CPlugPath> TrafficPath => owner.trafficPathRef;
-        public NodeRef<CPlugRecastPolyMeshData> RecastPolyMeshData => owner.recastPolyMeshDataRef;
+        public NodeRef<CPlugPath> RailPath => NodeRef.GetOrCreate(ref owner.railPathRef);
+        public NodeRef<CPlugPath> TrafficPath => NodeRef.GetOrCreate(ref owner.trafficPathRef);
+        public NodeRef<CPlugRecastPolyMeshData> RecastPolyMeshData => NodeRef.GetOrCreate(ref owner.recastPolyMeshDataRef);
         public LegacyRoadChunksReferenceView LegacyRoadChunks => new(owner);
         public RoadChunksReferenceView RoadChunks => new(owner);
-        public NodeRef<CPlugPath> CitizenNetworkPath => owner.citizenNetworkPathRef;
+        public NodeRef<CPlugPath> CitizenNetworkPath => NodeRef.GetOrCreate(ref owner.citizenNetworkPathRef);
         public LegacyCitizenRoadChunksReferenceView LegacyCitizenRoadChunks => new(owner);
         public CitizenRoadChunksReferenceView CitizenRoadChunks => new(owner);
-        public NodeRef<CPlugVFXFile> VFXs => owner.vFXsRef;
+        public NodeRef<CPlugVFXFile> VFXs => NodeRef.GetOrCreate(ref owner.vFXsRef);
         public LegacyPlacementPatchesReferenceView LegacyPlacementPatches => new(owner);
         public PlacementPatchesReferenceView PlacementPatches => new(owner);
         public DynaLinksReferenceView DynaLinks => new(owner);
@@ -351,21 +351,21 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("OldMobil", oldMobilRef);
+        yield return new("OldMobil", NodeRef.GetOrCreate(ref oldMobilRef));
         if (solidDecals is not null)
         {
             for (var i = 0; i < solidDecals.Count; i++) yield return new("SolidDecals" + "[" + i + "]", solidDecals.GetReference(i));
         }
-        yield return new("SolidFid", solidFidRef);
-        yield return new("PrefabFid", prefabFidRef);
-        yield return new("OldSolidAggreg", oldSolidAggregRef);
+        yield return new("SolidFid", NodeRef.GetOrCreate(ref solidFidRef));
+        yield return new("PrefabFid", NodeRef.GetOrCreate(ref prefabFidRef));
+        yield return new("OldSolidAggreg", NodeRef.GetOrCreate(ref oldSolidAggregRef));
         if (legacyRailPolylines is not null)
         {
             for (var i = 0; i < legacyRailPolylines.Count; i++) yield return new("LegacyRailPolylines" + "[" + i + "]", legacyRailPolylines.GetReference(i));
         }
-        yield return new("RailPath", railPathRef);
-        yield return new("TrafficPath", trafficPathRef);
-        yield return new("RecastPolyMeshData", recastPolyMeshDataRef);
+        yield return new("RailPath", NodeRef.GetOrCreate(ref railPathRef));
+        yield return new("TrafficPath", NodeRef.GetOrCreate(ref trafficPathRef));
+        yield return new("RecastPolyMeshData", NodeRef.GetOrCreate(ref recastPolyMeshDataRef));
         if (legacyRoadChunks is not null)
         {
             for (var i = 0; i < legacyRoadChunks.Count; i++) yield return new("LegacyRoadChunks" + "[" + i + "]", legacyRoadChunks.GetReference(i));
@@ -374,7 +374,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         {
             for (var i = 0; i < roadChunks.Count; i++) yield return new("RoadChunks" + "[" + i + "]", roadChunks.GetReference(i));
         }
-        yield return new("CitizenNetworkPath", citizenNetworkPathRef);
+        yield return new("CitizenNetworkPath", NodeRef.GetOrCreate(ref citizenNetworkPathRef));
         if (legacyCitizenRoadChunks is not null)
         {
             for (var i = 0; i < legacyCitizenRoadChunks.Count; i++) yield return new("LegacyCitizenRoadChunks" + "[" + i + "]", legacyCitizenRoadChunks.GetReference(i));
@@ -383,7 +383,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         {
             for (var i = 0; i < citizenRoadChunks.Count; i++) yield return new("CitizenRoadChunks" + "[" + i + "]", citizenRoadChunks.GetReference(i));
         }
-        yield return new("VFXs", vFXsRef);
+        yield return new("VFXs", NodeRef.GetOrCreate(ref vFXsRef));
         if (legacyPlacementPatches is not null)
         {
             for (var i = 0; i < legacyPlacementPatches.Count; i++) yield return new("LegacyPlacementPatches" + "[" + i + "]", legacyPlacementPatches.GetReference(i));
@@ -453,7 +453,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.oldMobilRef);
+            rw.NodeRef(ref n.oldMobilRef);
             rw.Int32(ref n.solidFrequency);
         }
     }
@@ -511,28 +511,28 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public int Version { get; set; }
         public bool U01;
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         /// <summary>
         /// Discarded legacy reference
         /// </summary>
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
         public bool U03;
         public int U04;
         public int U05;
         public int U06;
 
-        private NodeRef<CMwNod> U07Ref = new();
+        private NodeRef<CMwNod>? U07Ref;
         /// <summary>
         /// Additional external mobil asset
         /// </summary>
         public CMwNod? U07
         {
-            get => U07Ref.Resolve();
-            set => U07Ref.SetEmbedded(value);
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -540,14 +540,14 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         {
             private readonly Chunk03122003 owner;
             internal NodeRefView(Chunk03122003 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
-            public NodeRef<CMwNod> U07 => owner.U07Ref;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", U02Ref);
-            yield return new("U07", U07Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
             yield break;
         }
 
@@ -598,11 +598,11 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
                 if (!U01)
                 {
-                    rw.NodeRef(n.oldMobilRef);
+                    rw.NodeRef(ref n.oldMobilRef);
                 }
                 else
                 {
-                    rw.NodeRef(U02Ref);
+                    rw.NodeRef(ref U02Ref);
                 }
             }
 
@@ -621,22 +621,22 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.solidFidRef);
+                rw.NodeRef(ref n.solidFidRef);
 
-                if (n.solidFidRef.Kind == NodeRefKind.None)
+                if ((n.solidFidRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
                 {
-                    rw.NodeRef(n.oldMobilRef);
+                    rw.NodeRef(ref n.oldMobilRef);
                 }
             }
 
             if (Version >= 14)
             {
-                rw.NodeRef(n.prefabFidRef);
+                rw.NodeRef(ref n.prefabFidRef);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef(n.oldSolidAggregRef);
+                rw.NodeRef(ref n.oldSolidAggregRef);
             }
 
             if (Version >= 4 && Version <= 5)
@@ -659,17 +659,17 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef(n.railPathRef);
+                rw.NodeRef(ref n.railPathRef);
             }
 
             if (Version >= 7 && Version <= 22)
             {
-                rw.NodeRef(n.trafficPathRef);
+                rw.NodeRef(ref n.trafficPathRef);
             }
 
             if (Version >= 15)
             {
-                rw.NodeRef(n.recastPolyMeshDataRef);
+                rw.NodeRef(ref n.recastPolyMeshDataRef);
             }
 
             if (Version >= 8 && Version <= 12)
@@ -699,7 +699,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 16 && Version <= 22)
             {
-                rw.NodeRef(n.citizenNetworkPathRef);
+                rw.NodeRef(ref n.citizenNetworkPathRef);
             }
 
             if (Version >= 17 && Version <= 22)
@@ -714,7 +714,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 18)
             {
-                rw.NodeRef(n.vFXsRef);
+                rw.NodeRef(ref n.vFXsRef);
                 rw.Byte(ref n.vFXScaleType);
 
                 if (n.VFXScaleType== 0)
@@ -764,7 +764,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 
             if (Version >= 21)
             {
-                rw.NodeRef(U07Ref);
+                rw.NodeRef(ref U07Ref);
             }
         }
     }

@@ -36,12 +36,12 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwCmdExp> valueRef = new();
+    private NodeRef<CMwCmdExp>? valueRef;
     [AppliedWithChunk<Chunk01032000>]
     public CMwCmdExp? Value
     {
-        get => valueRef.Resolve();
-        set => valueRef.SetEmbedded(value);
+        get => valueRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref valueRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
     {
         private readonly CMwCmdAffectIdent owner;
         internal NodeRefView(CMwCmdAffectIdent owner) => this.owner = owner;
-        public NodeRef<CMwCmdExp> Value => owner.valueRef;
+        public NodeRef<CMwCmdExp> Value => NodeRef.GetOrCreate(ref owner.valueRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Value", valueRef);
+        yield return new("Value", NodeRef.GetOrCreate(ref valueRef));
         yield break;
     }
 
@@ -87,7 +87,7 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
         public override void ReadWrite(CMwCmdAffectIdent n, GbxReaderWriter rw)
         {
             rw.String(ref U01);
-            rw.NodeRef(n.valueRef);
+            rw.NodeRef(ref n.valueRef);
             rw.Boolean(ref U02);
         }
     }

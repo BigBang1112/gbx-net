@@ -36,12 +36,12 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugBitmap> bitmapRef = new();
+    private NodeRef<CPlugBitmap>? bitmapRef;
     [AppliedWithChunk<Chunk090C6002>]
     public CPlugBitmap? Bitmap
     {
-        get => bitmapRef.Resolve();
-        set => bitmapRef.SetEmbedded(value);
+        get => bitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     {
         private readonly CPlugParticleGpuModel owner;
         internal NodeRefView(CPlugParticleGpuModel owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> Bitmap => owner.bitmapRef;
+        public NodeRef<CPlugBitmap> Bitmap => NodeRef.GetOrCreate(ref owner.bitmapRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Bitmap", bitmapRef);
+        yield return new("Bitmap", NodeRef.GetOrCreate(ref bitmapRef));
         yield break;
     }
 
@@ -202,11 +202,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U19;
         public float U20;
 
-        private NodeRef<CPlugBitmap> U21Ref = new();
+        private NodeRef<CPlugBitmap>? U21Ref;
         public CPlugBitmap? U21
         {
-            get => U21Ref.Resolve();
-            set => U21Ref.SetEmbedded(value);
+            get => U21Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U21Ref, value);
         }
         public bool U22;
         public bool U23;
@@ -223,12 +223,12 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         {
             private readonly Chunk090C6002 owner;
             internal NodeRefView(Chunk090C6002 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U21 => owner.U21Ref;
+            public NodeRef<CPlugBitmap> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U21", U21Ref);
+            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
             yield break;
         }
 
@@ -275,7 +275,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
             if (Version <= 6)
             {
-                rw.NodeRef(n.bitmapRef);
+                rw.NodeRef(ref n.bitmapRef);
             }
 
             if (Version >= 7)
@@ -284,7 +284,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
                 if (!U02)
                 {
-                    rw.NodeRef(n.bitmapRef);
+                    rw.NodeRef(ref n.bitmapRef);
                 }
 
                 if (U02)
@@ -339,7 +339,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
                         if (Version >= 9)
                         {
-                            rw.NodeRef(U21Ref);
+                            rw.NodeRef(ref U21Ref);
                             rw.Boolean(ref U22);
                             rw.Boolean(ref U23);
                             rw.Boolean(ref U24);

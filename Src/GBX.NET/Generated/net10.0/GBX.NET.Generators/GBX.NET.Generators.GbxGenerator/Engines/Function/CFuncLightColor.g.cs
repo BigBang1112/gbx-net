@@ -54,12 +54,12 @@ public partial class CFuncLightColor : CFuncLight, IClass
         set => this.color1 = value;
     }
 
-    private NodeRef<CPlugFileImg> imageRef = new();
+    private NodeRef<CPlugFileImg>? imageRef;
     [AppliedWithChunk<Chunk05019002>]
     public CPlugFileImg? Image
     {
-        get => imageRef.Resolve();
-        set => imageRef.SetEmbedded(value);
+        get => imageRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -67,12 +67,12 @@ public partial class CFuncLightColor : CFuncLight, IClass
     {
         private readonly CFuncLightColor owner;
         internal NodeRefView(CFuncLightColor owner) => this.owner = owner;
-        public NodeRef<CPlugFileImg> Image => owner.imageRef;
+        public NodeRef<CPlugFileImg> Image => NodeRef.GetOrCreate(ref owner.imageRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Image", imageRef);
+        yield return new("Image", NodeRef.GetOrCreate(ref imageRef));
         yield break;
     }
 
@@ -120,7 +120,7 @@ public partial class CFuncLightColor : CFuncLight, IClass
         public override void ReadWrite(CFuncLightColor n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.imageRef);
+            rw.NodeRef(ref n.imageRef);
         }
     }
 

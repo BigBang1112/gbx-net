@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace GBX.NET.Serialization;
 
 public partial class GbxReaderWriter
@@ -28,6 +30,13 @@ public partial class GbxReaderWriter
     {
         if (reference is null) throw new ArgumentNullException(nameof(reference));
         Reader?.ReadNodeRef(reference);
+        Writer?.WriteNodeRef(reference);
+    }
+
+    /// <summary>Serializes a stored reference without allocating a handle for an absent target.</summary>
+    public void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod
+    {
+        Reader?.ReadNodeRef(ref reference);
         Writer?.WriteNodeRef(reference);
     }
 

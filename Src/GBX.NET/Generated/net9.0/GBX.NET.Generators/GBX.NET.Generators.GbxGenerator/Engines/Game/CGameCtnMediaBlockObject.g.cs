@@ -68,12 +68,12 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
         set => this.anchoredObjectInfos = value;
     }
 
-    private NodeRef<CGameReplayObjectVisData> visDataRef = new();
+    private NodeRef<CGameReplayObjectVisData>? visDataRef;
     [AppliedWithChunk<Chunk03196000>(1)]
     public CGameReplayObjectVisData? VisData
     {
-        get => visDataRef.Resolve();
-        set => visDataRef.SetEmbedded(value);
+        get => visDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visDataRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -81,12 +81,12 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     {
         private readonly CGameCtnMediaBlockObject owner;
         internal NodeRefView(CGameCtnMediaBlockObject owner) => this.owner = owner;
-        public NodeRef<CGameReplayObjectVisData> VisData => owner.visDataRef;
+        public NodeRef<CGameReplayObjectVisData> VisData => NodeRef.GetOrCreate(ref owner.visDataRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("VisData", visDataRef);
+        yield return new("VisData", NodeRef.GetOrCreate(ref visDataRef));
         yield break;
     }
 
@@ -156,7 +156,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.visDataRef);
+                rw.NodeRef(ref n.visDataRef);
             }
         }
     }

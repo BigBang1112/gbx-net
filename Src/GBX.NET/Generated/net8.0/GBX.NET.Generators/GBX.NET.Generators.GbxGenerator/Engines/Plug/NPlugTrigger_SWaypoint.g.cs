@@ -43,11 +43,11 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
         set => this.@type = value;
     }
 
-    private NodeRef<CPlugSurface> triggerShapeRef = new();
+    private NodeRef<CPlugSurface>? triggerShapeRef;
     public CPlugSurface? TriggerShape
     {
-        get => triggerShapeRef.Resolve();
-        set => triggerShapeRef.SetEmbedded(value);
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
 
     private bool noRespawn;
@@ -62,12 +62,12 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
     {
         private readonly NPlugTrigger_SWaypoint owner;
         internal NodeRefView(NPlugTrigger_SWaypoint owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> TriggerShape => owner.triggerShapeRef;
+        public NodeRef<CPlugSurface> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("TriggerShape", triggerShapeRef);
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
         yield break;
     }
 
@@ -88,7 +88,7 @@ public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable,
     {
         rw.VersionInt32(this);
         rw.EnumInt32<EGameItemWaypointType>(ref this.@type);
-        rw.NodeRef(this.triggerShapeRef);
+        rw.NodeRef(ref this.triggerShapeRef);
         rw.Boolean(ref this.noRespawn);
     }
 

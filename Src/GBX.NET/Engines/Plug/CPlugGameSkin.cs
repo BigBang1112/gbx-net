@@ -86,7 +86,7 @@ public partial class CPlugGameSkin
         public uint ClassId { get => classId; set => classId = value; }
         public string Name { get => name; set => name = value; }
 
-        public CMwNod? Node { get => nodeRef.Resolve(); set => nodeRef.SetEmbedded(value); }
+        public CMwNod? Node { get => nodeRef?.Resolve(); set => NodeRef.SetEmbedded(ref nodeRef, value); }
 
         public string Directory { get => directory; set => directory = value; }
         public bool MipMaps { get => mipMaps; set => mipMaps = value; }
@@ -98,9 +98,9 @@ public partial class CPlugGameSkin
 
             if (version >= 3)
             {
-                if (rw.Boolean(nodeRef.Kind != NodeRefKind.None))
+                if (rw.Boolean((nodeRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
                 {
-                    rw.NodeRef(nodeRef);
+                    rw.NodeRef(ref nodeRef);
                 }
             }
             else

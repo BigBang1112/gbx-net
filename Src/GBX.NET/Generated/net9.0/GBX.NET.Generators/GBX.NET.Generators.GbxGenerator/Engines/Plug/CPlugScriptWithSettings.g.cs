@@ -36,12 +36,12 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugFileTextScript> scriptRef = new();
+    private NodeRef<CPlugFileTextScript>? scriptRef;
     [AppliedWithChunk<Chunk09083000>]
     public CPlugFileTextScript? Script
     {
-        get => scriptRef.Resolve();
-        set => scriptRef.SetEmbedded(value);
+        get => scriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref scriptRef, value);
     }
 
     private int settingsVersion;
@@ -65,12 +65,12 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     {
         private readonly CPlugScriptWithSettings owner;
         internal NodeRefView(CPlugScriptWithSettings owner) => this.owner = owner;
-        public NodeRef<CPlugFileTextScript> Script => owner.scriptRef;
+        public NodeRef<CPlugFileTextScript> Script => NodeRef.GetOrCreate(ref owner.scriptRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Script", scriptRef);
+        yield return new("Script", NodeRef.GetOrCreate(ref scriptRef));
         yield break;
     }
 
@@ -103,7 +103,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
 
         public override void ReadWrite(CPlugScriptWithSettings n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.scriptRef);
+            rw.NodeRef(ref n.scriptRef);
             var settingCount = rw.Int32((rw.Writer is null ? default : (n.Settings?.Length?? 0)));
             rw.Int32(ref n.settingsVersion);
 

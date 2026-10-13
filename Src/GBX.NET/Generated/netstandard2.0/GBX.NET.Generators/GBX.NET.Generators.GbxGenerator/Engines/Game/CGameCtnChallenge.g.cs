@@ -306,20 +306,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304301F>]
     public partial NodeRefList<CGameCtnBlock>? Blocks { get; set; }
 
-    private NodeRef<CGameCtnCollectorList> blockStockRef = new();
+    private NodeRef<CGameCtnCollectorList>? blockStockRef;
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnCollectorList? BlockStock
     {
-        get => blockStockRef.Resolve();
-        set => blockStockRef.SetEmbedded(value);
+        get => blockStockRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockStockRef, value);
     }
 
-    private NodeRef<CGameCtnChallengeParameters> challengeParametersRef = new();
+    private NodeRef<CGameCtnChallengeParameters>? challengeParametersRef;
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnChallengeParameters? ChallengeParameters
     {
-        get => challengeParametersRef.Resolve();
-        set => challengeParametersRef.SetEmbedded(value);
+        get => challengeParametersRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref challengeParametersRef, value);
     }
 
     private MapKind kind;
@@ -346,34 +346,34 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.modPackDesc = value;
     }
 
-    private NodeRef<CGameCtnMediaClip> clipIntroRef = new();
+    private NodeRef<CGameCtnMediaClip>? clipIntroRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipIntro
     {
-        get => clipIntroRef.Resolve();
-        set => clipIntroRef.SetEmbedded(value);
+        get => clipIntroRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipIntroRef, value);
     }
 
-    private NodeRef<CGameCtnMediaClipGroup> clipGroupInGameRef = new();
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupInGameRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
     {
-        get => clipGroupInGameRef.Resolve();
-        set => clipGroupInGameRef.SetEmbedded(value);
+        get => clipGroupInGameRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupInGameRef, value);
     }
 
-    private NodeRef<CGameCtnMediaClipGroup> clipGroupEndRaceRef = new();
+    private NodeRef<CGameCtnMediaClipGroup>? clipGroupEndRaceRef;
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
     {
-        get => clipGroupEndRaceRef.Resolve();
-        set => clipGroupEndRaceRef.SetEmbedded(value);
+        get => clipGroupEndRaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGroupEndRaceRef, value);
     }
 
     private PackDesc? customMusicPackDesc;
@@ -384,12 +384,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.customMusicPackDesc = value;
     }
 
-    private NodeRef<CGameCtnMediaClip> clipGlobalRef = new();
+    private NodeRef<CGameCtnMediaClip>? clipGlobalRef;
     [AppliedWithChunk<Chunk03043026>]
     public CGameCtnMediaClip? ClipGlobal
     {
-        get => clipGlobalRef.Resolve();
-        set => clipGlobalRef.SetEmbedded(value);
+        get => clipGlobalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipGlobalRef, value);
     }
 
     [AppliedWithChunk<Chunk03043027>]
@@ -464,7 +464,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304305B>]
     public partial bool HasLightmaps { get; set; }
 
-    private NodeRef<CHmsLightMapCache> lightmapCacheRef = new();
+    private NodeRef<CHmsLightMapCache>? lightmapCacheRef;
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial CHmsLightMapCache? LightmapCache { get; set; }
@@ -506,20 +506,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043048>]
     public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
-    private NodeRef<CGameCtnMediaClip> clipPodiumRef = new();
+    private NodeRef<CGameCtnMediaClip>? clipPodiumRef;
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipPodium
     {
-        get => clipPodiumRef.Resolve();
-        set => clipPodiumRef.SetEmbedded(value);
+        get => clipPodiumRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipPodiumRef, value);
     }
 
-    private NodeRef<CGameCtnMediaClip> clipAmbianceRef = new();
+    private NodeRef<CGameCtnMediaClip>? clipAmbianceRef;
     [AppliedWithChunk<Chunk03043049>(2)]
     public CGameCtnMediaClip? ClipAmbiance
     {
-        get => clipAmbianceRef.Resolve();
-        set => clipAmbianceRef.SetEmbedded(value);
+        get => clipAmbianceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref clipAmbianceRef, value);
     }
 
     private Int3 clipTriggerSize = (1, 1, 1);
@@ -562,12 +562,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.objectiveTextBronze = value;
     }
 
-    private NodeRef<CPlugAnimFile> challengeAnimationRef = new();
+    private NodeRef<CPlugAnimFile>? challengeAnimationRef;
     [AppliedWithChunk<Chunk0304304E>]
     public CPlugAnimFile? ChallengeAnimation
     {
-        get => challengeAnimationRef.Resolve();
-        set => challengeAnimationRef.SetEmbedded(value);
+        get => challengeAnimationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref challengeAnimationRef, value);
     }
 
     private CPlugTriggerAction[]? animationTriggers;
@@ -710,12 +710,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => clipGroups = value;
     }
 
-    private NodeRef<CGameSaveLaunchedCheckpoints> launchedCheckpointsRef = new();
+    private NodeRef<CGameSaveLaunchedCheckpoints>? launchedCheckpointsRef;
     [AppliedWithChunk<Chunk03043067>]
     public CGameSaveLaunchedCheckpoints? LaunchedCheckpoints
     {
-        get => launchedCheckpointsRef.Resolve();
-        set => launchedCheckpointsRef.SetEmbedded(value);
+        get => launchedCheckpointsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref launchedCheckpointsRef, value);
     }
 
     /// <summary>
@@ -738,22 +738,22 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         private readonly CGameCtnChallenge owner;
         internal NodeRefView(CGameCtnChallenge owner) => this.owner = owner;
         public BlocksReferenceView Blocks => new(owner);
-        public NodeRef<CGameCtnCollectorList> BlockStock => owner.blockStockRef;
-        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => owner.challengeParametersRef;
-        public NodeRef<CGameCtnMediaClip> ClipIntro => owner.clipIntroRef;
-        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => owner.clipGroupInGameRef;
-        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => owner.clipGroupEndRaceRef;
-        public NodeRef<CGameCtnMediaClip> ClipGlobal => owner.clipGlobalRef;
-        public NodeRef<CHmsLightMapCache> LightmapCache => owner.lightmapCacheRef;
+        public NodeRef<CGameCtnCollectorList> BlockStock => NodeRef.GetOrCreate(ref owner.blockStockRef);
+        public NodeRef<CGameCtnChallengeParameters> ChallengeParameters => NodeRef.GetOrCreate(ref owner.challengeParametersRef);
+        public NodeRef<CGameCtnMediaClip> ClipIntro => NodeRef.GetOrCreate(ref owner.clipIntroRef);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupInGame => NodeRef.GetOrCreate(ref owner.clipGroupInGameRef);
+        public NodeRef<CGameCtnMediaClipGroup> ClipGroupEndRace => NodeRef.GetOrCreate(ref owner.clipGroupEndRaceRef);
+        public NodeRef<CGameCtnMediaClip> ClipGlobal => NodeRef.GetOrCreate(ref owner.clipGlobalRef);
+        public NodeRef<CHmsLightMapCache> LightmapCache => NodeRef.GetOrCreate(ref owner.lightmapCacheRef);
         public CarMarksBufferReferenceView CarMarksBuffer => new(owner);
         public AnchoredObjectsReferenceView AnchoredObjects => new(owner);
         public ZoneGenealogyReferenceView ZoneGenealogy => new(owner);
         public BakedBlocksReferenceView BakedBlocks => new(owner);
-        public NodeRef<CGameCtnMediaClip> ClipPodium => owner.clipPodiumRef;
-        public NodeRef<CGameCtnMediaClip> ClipAmbiance => owner.clipAmbianceRef;
-        public NodeRef<CPlugAnimFile> ChallengeAnimation => owner.challengeAnimationRef;
+        public NodeRef<CGameCtnMediaClip> ClipPodium => NodeRef.GetOrCreate(ref owner.clipPodiumRef);
+        public NodeRef<CGameCtnMediaClip> ClipAmbiance => NodeRef.GetOrCreate(ref owner.clipAmbianceRef);
+        public NodeRef<CPlugAnimFile> ChallengeAnimation => NodeRef.GetOrCreate(ref owner.challengeAnimationRef);
         public ClipGroupsReferenceView ClipGroups => new(owner);
-        public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => owner.launchedCheckpointsRef;
+        public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => NodeRef.GetOrCreate(ref owner.launchedCheckpointsRef);
     }
     public readonly struct BlocksReferenceView
     {
@@ -804,13 +804,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             for (var i = 0; i < blocks.Count; i++) yield return new("Blocks" + "[" + i + "]", blocks.GetReference(i));
         }
-        yield return new("BlockStock", blockStockRef);
-        yield return new("ChallengeParameters", challengeParametersRef);
-        yield return new("ClipIntro", clipIntroRef);
-        yield return new("ClipGroupInGame", clipGroupInGameRef);
-        yield return new("ClipGroupEndRace", clipGroupEndRaceRef);
-        yield return new("ClipGlobal", clipGlobalRef);
-        yield return new("LightmapCache", lightmapCacheRef);
+        yield return new("BlockStock", NodeRef.GetOrCreate(ref blockStockRef));
+        yield return new("ChallengeParameters", NodeRef.GetOrCreate(ref challengeParametersRef));
+        yield return new("ClipIntro", NodeRef.GetOrCreate(ref clipIntroRef));
+        yield return new("ClipGroupInGame", NodeRef.GetOrCreate(ref clipGroupInGameRef));
+        yield return new("ClipGroupEndRace", NodeRef.GetOrCreate(ref clipGroupEndRaceRef));
+        yield return new("ClipGlobal", NodeRef.GetOrCreate(ref clipGlobalRef));
+        yield return new("LightmapCache", NodeRef.GetOrCreate(ref lightmapCacheRef));
         if (carMarksBuffer is not null)
         {
             for (var i = 0; i < carMarksBuffer.Count; i++) yield return new("CarMarksBuffer" + "[" + i + "]", carMarksBuffer.GetReference(i));
@@ -827,14 +827,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.GetReference(i));
         }
-        yield return new("ClipPodium", clipPodiumRef);
-        yield return new("ClipAmbiance", clipAmbianceRef);
-        yield return new("ChallengeAnimation", challengeAnimationRef);
+        yield return new("ClipPodium", NodeRef.GetOrCreate(ref clipPodiumRef));
+        yield return new("ClipAmbiance", NodeRef.GetOrCreate(ref clipAmbianceRef));
+        yield return new("ChallengeAnimation", NodeRef.GetOrCreate(ref challengeAnimationRef));
         if (clipGroups is not null)
         {
             for (var i = 0; i < clipGroups.Count; i++) yield return new("ClipGroups" + "[" + i + "]", clipGroups.GetReference(i));
         }
-        yield return new("LaunchedCheckpoints", launchedCheckpointsRef);
+        yield return new("LaunchedCheckpoints", NodeRef.GetOrCreate(ref launchedCheckpointsRef));
         yield break;
     }
 
@@ -1312,8 +1312,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.blockStockRef);
-            rw.NodeRef(n.challengeParametersRef);
+            rw.NodeRef(ref n.blockStockRef);
+            rw.NodeRef(ref n.challengeParametersRef);
             rw.EnumInt32<MapKind>(ref n.kind);
         }
     }
@@ -1492,14 +1492,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301A;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1507,12 +1507,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk0304301A owner;
             internal NodeRefView(Chunk0304301A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1524,7 +1524,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1580,14 +1580,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301D;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1595,12 +1595,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk0304301D owner;
             internal NodeRefView(Chunk0304301D owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1612,7 +1612,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1621,14 +1621,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x0304301E;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// assert: '!ReplayRecord || !ReplayRecord-&gt;m_Challenge' failed.
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1636,12 +1636,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk0304301E owner;
             internal NodeRefView(Chunk0304301E owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1653,7 +1653,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1698,18 +1698,18 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043020;
 
-        private NodeRef<CGameCtnMediaClip> U01Ref = new();
+        private NodeRef<CGameCtnMediaClip>? U01Ref;
         public CGameCtnMediaClip? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CGameCtnMediaClip> U02Ref = new();
+        private NodeRef<CGameCtnMediaClip>? U02Ref;
         public CGameCtnMediaClip? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1717,14 +1717,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk03043020 owner;
             internal NodeRefView(Chunk03043020 owner) => this.owner = owner;
-            public NodeRef<CGameCtnMediaClip> U01 => owner.U01Ref;
-            public NodeRef<CGameCtnMediaClip> U02 => owner.U02Ref;
+            public NodeRef<CGameCtnMediaClip> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CGameCtnMediaClip> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -1737,11 +1737,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.clipIntroRef);
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
-            rw.NodeRef(n.clipGroupInGameRef);
-            rw.NodeRef(n.clipGroupEndRaceRef);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
         }
     }
 
@@ -1762,9 +1762,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.clipIntroRef);
-            rw.NodeRef(n.clipGroupInGameRef);
-            rw.NodeRef(n.clipGroupEndRaceRef);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
         }
     }
 
@@ -1871,7 +1871,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.clipGlobalRef);
+            rw.NodeRef(ref n.clipGlobalRef);
         }
     }
 
@@ -2174,11 +2174,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         public override uint Id => 0x03043041;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -2186,12 +2186,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk03043041 owner;
             internal NodeRefView(Chunk03043041 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -2205,7 +2205,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             });
         }
     }
@@ -2345,14 +2345,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.clipIntroRef);
-            rw.NodeRef(n.clipPodiumRef);
-            rw.NodeRef(n.clipGroupInGameRef);
-            rw.NodeRef(n.clipGroupEndRaceRef);
+            rw.NodeRef(ref n.clipIntroRef);
+            rw.NodeRef(ref n.clipPodiumRef);
+            rw.NodeRef(ref n.clipGroupInGameRef);
+            rw.NodeRef(ref n.clipGroupEndRaceRef);
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.clipAmbianceRef);
+                rw.NodeRef(ref n.clipAmbianceRef);
             }
 
             if (Version >= 1)
@@ -2531,7 +2531,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.challengeAnimationRef);
+                rw.NodeRef(ref n.challengeAnimationRef);
                 var animationTriggerCount = rw.Int32((rw.Writer is null ? default : (n.AnimationTriggers?.Length?? 0)));
                 rw.Int32(ref U01);
                 rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.animationTriggers!, animationTriggerCount, version: U01);
@@ -2812,11 +2812,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CPlugBitmap> U01Ref = new();
+        private NodeRef<CPlugBitmap>? U01Ref;
         public CPlugBitmap? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public bool U02;
         public int U03;
@@ -2827,12 +2827,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly Chunk03043059 owner;
             internal NodeRefView(Chunk03043059 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U01 => owner.U01Ref;
+            public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -2853,7 +2853,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             }
 
             if (Version >= 1)
@@ -3235,7 +3235,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.launchedCheckpointsRef);
+                rw.NodeRef(ref n.launchedCheckpointsRef);
             });
         }
     }
@@ -3836,11 +3836,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             set => this.isFlying = value;
         }
 
-        private NodeRef<CGameWaypointSpecialProperty> waypointSpecialPropertyRef = new();
+        private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
         public CGameWaypointSpecialProperty? WaypointSpecialProperty
         {
-            get => waypointSpecialPropertyRef.Resolve();
-            set => waypointSpecialPropertyRef.SetEmbedded(value);
+            get => waypointSpecialPropertyRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
         }
 
         private bool isAutonomous;
@@ -3855,11 +3855,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             private readonly BotPath owner;
             internal NodeRefView(BotPath owner) => this.owner = owner;
-            public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => owner.waypointSpecialPropertyRef;
+            public NodeRef<CGameWaypointSpecialProperty> WaypointSpecialProperty => NodeRef.GetOrCreate(ref owner.waypointSpecialPropertyRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("WaypointSpecialProperty", waypointSpecialPropertyRef);
+            yield return new("WaypointSpecialProperty", NodeRef.GetOrCreate(ref waypointSpecialPropertyRef));
             yield break;
         }
 
@@ -3885,7 +3885,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             rw.Int32(ref this.clan);
             rw.List<Vec3>(ref this.path!);
             rw.Boolean(ref this.isFlying);
-            rw.NodeRef(this.waypointSpecialPropertyRef);
+            rw.NodeRef(ref this.waypointSpecialPropertyRef);
             rw.Boolean(ref this.isAutonomous);
         }
 

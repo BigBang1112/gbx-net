@@ -36,13 +36,13 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMotionManagerLeaves> managerModelRef = new();
+    private NodeRef<CMotionManagerLeaves>? managerModelRef;
     [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public CMotionManagerLeaves? ManagerModel
     {
-        get => managerModelRef.Resolve();
-        set => managerModelRef.SetEmbedded(value);
+        get => managerModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref managerModelRef, value);
     }
 
     private Vec3 pos;
@@ -75,12 +75,12 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     {
         private readonly CMotionEmitterLeaves owner;
         internal NodeRefView(CMotionEmitterLeaves owner) => this.owner = owner;
-        public NodeRef<CMotionManagerLeaves> ManagerModel => owner.managerModelRef;
+        public NodeRef<CMotionManagerLeaves> ManagerModel => NodeRef.GetOrCreate(ref owner.managerModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("ManagerModel", managerModelRef);
+        yield return new("ManagerModel", NodeRef.GetOrCreate(ref managerModelRef));
         yield break;
     }
 
@@ -109,7 +109,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.managerModelRef);
+            rw.NodeRef(ref n.managerModelRef);
             rw.Vec3(ref n.pos);
             rw.Single(ref n.uniformRadiusLegacy);
             if (rw.Reader is not null)
@@ -133,7 +133,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionEmitterLeaves n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.managerModelRef);
+            rw.NodeRef(ref n.managerModelRef);
             rw.Vec3(ref n.pos);
             rw.Vec3(ref n.radius);
         }

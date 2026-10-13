@@ -36,7 +36,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugBitmap> bitmapRef = new();
+    private NodeRef<CPlugBitmap>? bitmapRef;
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -51,8 +51,8 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [AppliedWithChunk<Chunk0907E00B>]
     public CPlugBitmap? Bitmap
     {
-        get => bitmapRef.Resolve();
-        set => bitmapRef.SetEmbedded(value);
+        get => bitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapRef, value);
     }
 
     private ETexFilter wantedFiltering;
@@ -167,12 +167,12 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     {
         private readonly CPlugBitmapSampler owner;
         internal NodeRefView(CPlugBitmapSampler owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> Bitmap => owner.bitmapRef;
+        public NodeRef<CPlugBitmap> Bitmap => NodeRef.GetOrCreate(ref owner.bitmapRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Bitmap", bitmapRef);
+        yield return new("Bitmap", NodeRef.GetOrCreate(ref bitmapRef));
         yield break;
     }
 
@@ -225,7 +225,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapRef);
+            rw.NodeRef(ref n.bitmapRef);
             rw.EnumInt32<ETexFilter>(ref n.wantedFiltering);
             rw.EnumInt32<ETexAddress>(ref n.texAddressU);
             rw.EnumInt32<ETexAddress>(ref n.texAddressV);
@@ -248,7 +248,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
 
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapRef);
+            rw.NodeRef(ref n.bitmapRef);
             rw.DataUInt32(ref n.legacyFlags);
             rw.Single(ref n.mipMapLodBias);
         }
@@ -431,7 +431,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         {
             rw.VersionInt32(this);
             rw.Id(ref n.name);
-            rw.NodeRef(n.bitmapRef);
+            rw.NodeRef(ref n.bitmapRef);
             rw.DataUInt32(ref n.flags);
             rw.Single(ref n.mipMapLodBias);
 

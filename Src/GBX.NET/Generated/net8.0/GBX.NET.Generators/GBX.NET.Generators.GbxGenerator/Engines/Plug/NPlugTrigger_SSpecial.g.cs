@@ -36,11 +36,11 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSurface> triggerShapeRef = new();
+    private NodeRef<CPlugSurface>? triggerShapeRef;
     public CPlugSurface? TriggerShape
     {
-        get => triggerShapeRef.Resolve();
-        set => triggerShapeRef.SetEmbedded(value);
+        get => triggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref triggerShapeRef, value);
     }
 
     private bool isMergeable;
@@ -55,12 +55,12 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     {
         private readonly NPlugTrigger_SSpecial owner;
         internal NodeRefView(NPlugTrigger_SSpecial owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> TriggerShape => owner.triggerShapeRef;
+        public NodeRef<CPlugSurface> TriggerShape => NodeRef.GetOrCreate(ref owner.triggerShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("TriggerShape", triggerShapeRef);
+        yield return new("TriggerShape", NodeRef.GetOrCreate(ref triggerShapeRef));
         yield break;
     }
 
@@ -79,7 +79,7 @@ public partial class NPlugTrigger_SSpecial : CMwNod, IClass, IReadableWritable, 
     public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
     {
         rw.VersionInt32(this);
-        rw.NodeRef(this.triggerShapeRef);
+        rw.NodeRef(ref this.triggerShapeRef);
 
         if (Version >= 2)
         {

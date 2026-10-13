@@ -17,7 +17,7 @@ public partial class CPlugVehicleVisGeomModel
 
         public void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(meshRef);
+            rw.NodeRef(ref meshRef);
             rw.ReadableWritable<CPlugDynaModel>(ref dyna);
 
             if (rw.Reader is not null)

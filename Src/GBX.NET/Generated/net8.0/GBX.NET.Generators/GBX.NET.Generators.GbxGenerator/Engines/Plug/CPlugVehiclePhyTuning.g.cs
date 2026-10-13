@@ -73,11 +73,11 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         public override uint Id => 0x090EB000;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CFuncKeysReal> U01Ref = new();
+        private NodeRef<CFuncKeysReal>? U01Ref;
         public CFuncKeysReal? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public float U02;
 
@@ -86,12 +86,12 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
         {
             private readonly Chunk090EB000 owner;
             internal NodeRefView(Chunk090EB000 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => owner.U01Ref;
+            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 

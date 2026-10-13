@@ -1,8 +1,6 @@
 using GBX.NET.Components;
 using System.Runtime.ExceptionServices;
-#if NET8_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace GBX.NET;
 
@@ -27,6 +25,26 @@ public enum NodeRefState
 public abstract class NodeRef
 {
     private protected NodeRef() { }
+
+    internal static NodeRef<T> GetOrCreate<T>(ref NodeRef<T>? reference) where T : CMwNod
+    {
+        var existing = Volatile.Read(ref reference);
+        if (existing is not null) return existing;
+        var created = new NodeRef<T>();
+        return Interlocked.CompareExchange(ref reference, created, null) ?? created;
+    }
+
+    internal static void SetEmbedded<T>([NotNullIfNotNull(nameof(value))] ref NodeRef<T>? reference, T? value) where T : CMwNod
+    {
+        if (value is null) reference?.Clear();
+        else GetOrCreate(ref reference).SetEmbedded(value);
+    }
+
+    internal static void CopyFrom<T>(ref NodeRef<T>? reference, NodeRef<T>? source) where T : CMwNod
+    {
+        if (source is null || source.Kind == NodeRefKind.None) reference?.Clear();
+        else GetOrCreate(ref reference).CopyFrom(source);
+    }
 
     /// <summary>How the reference is stored, independently of whether its target has been resolved.</summary>
     public abstract NodeRefKind Kind { get; }

@@ -36,12 +36,12 @@ public partial class CMotionWeather : CMotionManaged, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> legacyModelRef = new();
+    private NodeRef<CMwNod>? legacyModelRef;
     [AppliedWithChunk<Chunk08054000>]
     public CMwNod? LegacyModel
     {
-        get => legacyModelRef.Resolve();
-        set => legacyModelRef.SetEmbedded(value);
+        get => legacyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyModelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CMotionWeather : CMotionManaged, IClass
     {
         private readonly CMotionWeather owner;
         internal NodeRefView(CMotionWeather owner) => this.owner = owner;
-        public NodeRef<CMwNod> LegacyModel => owner.legacyModelRef;
+        public NodeRef<CMwNod> LegacyModel => NodeRef.GetOrCreate(ref owner.legacyModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("LegacyModel", legacyModelRef);
+        yield return new("LegacyModel", NodeRef.GetOrCreate(ref legacyModelRef));
         yield break;
     }
 
@@ -82,7 +82,7 @@ public partial class CMotionWeather : CMotionManaged, IClass
 
         public override void ReadWrite(CMotionWeather n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.legacyModelRef);
+            rw.NodeRef(ref n.legacyModelRef);
         }
     }
 

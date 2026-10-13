@@ -27,7 +27,7 @@ public partial class CPlugSolid2Model
 
     public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
     public NodeRefList<CPlugVisual>? Visuals { get => visuals; set => visuals = value; }
-    public CPlugSkel? Skel { get => skelRef.Resolve(); set => skelRef.SetEmbedded(value); }
+    public CPlugSkel? Skel { get => skelRef?.Resolve(); set => NodeRef.SetEmbedded(ref skelRef, value); }
     public float[]? LodMaxDistAtFov90 { get => lodMaxDistAtFov90; set => lodMaxDistAtFov90 = value; }
     public int VisCstType { get => visCstType; set => visCstType = value; }
     public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
@@ -113,7 +113,7 @@ public partial class CPlugSolid2Model
                 rw.ListNodeRef_deprec<CPlugMaterial>(ref n.materials!);
             }
 
-            rw.NodeRef(n.skelRef);
+            rw.NodeRef(ref n.skelRef);
 
             if (Version >= 1)
             {
@@ -231,7 +231,7 @@ public partial class CPlugSolid2Model
 
                                                                                     if (Version >= 25)
                                                                                     {
-                                                                                        rw.NodeRef(U14Ref);
+                                                                                        rw.NodeRef(ref U14Ref);
                                                                                         rw.Single(ref U15);
                                                                                         rw.Single(ref U16);
 

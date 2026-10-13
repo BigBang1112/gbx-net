@@ -36,7 +36,7 @@ public partial class CPlugShaderPass : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugFileGPU> vertexShaderRef = new();
+    private NodeRef<CPlugFileGPU>? vertexShaderRef;
     [AppliedWithChunk<Chunk09067000>]
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
@@ -46,11 +46,11 @@ public partial class CPlugShaderPass : CPlug, IClass
     [AppliedWithChunk<Chunk09067008>]
     public CPlugFileGPU? VertexShader
     {
-        get => vertexShaderRef.Resolve();
-        set => vertexShaderRef.SetEmbedded(value);
+        get => vertexShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vertexShaderRef, value);
     }
 
-    private NodeRef<CPlugFileGPU> pixelShaderRef = new();
+    private NodeRef<CPlugFileGPU>? pixelShaderRef;
     [AppliedWithChunk<Chunk09067000>]
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
@@ -60,8 +60,8 @@ public partial class CPlugShaderPass : CPlug, IClass
     [AppliedWithChunk<Chunk09067008>]
     public CPlugFileGPU? PixelShader
     {
-        get => pixelShaderRef.Resolve();
-        set => pixelShaderRef.SetEmbedded(value);
+        get => pixelShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pixelShaderRef, value);
     }
 
     private Vec4[] vertexFxValues = [];
@@ -78,15 +78,15 @@ public partial class CPlugShaderPass : CPlug, IClass
         set => this.vertexFxValues = value;
     }
 
-    private NodeRef<CMwNod> unusedShaderRef = new();
+    private NodeRef<CMwNod>? unusedShaderRef;
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
     [AppliedWithChunk<Chunk09067003>]
     [AppliedWithChunk<Chunk09067004>]
     public CMwNod? UnusedShader
     {
-        get => unusedShaderRef.Resolve();
-        set => unusedShaderRef.SetEmbedded(value);
+        get => unusedShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref unusedShaderRef, value);
     }
 
     private Vec4[] pixelFxValues = [];
@@ -240,9 +240,9 @@ public partial class CPlugShaderPass : CPlug, IClass
     {
         private readonly CPlugShaderPass owner;
         internal NodeRefView(CPlugShaderPass owner) => this.owner = owner;
-        public NodeRef<CPlugFileGPU> VertexShader => owner.vertexShaderRef;
-        public NodeRef<CPlugFileGPU> PixelShader => owner.pixelShaderRef;
-        public NodeRef<CMwNod> UnusedShader => owner.unusedShaderRef;
+        public NodeRef<CPlugFileGPU> VertexShader => NodeRef.GetOrCreate(ref owner.vertexShaderRef);
+        public NodeRef<CPlugFileGPU> PixelShader => NodeRef.GetOrCreate(ref owner.pixelShaderRef);
+        public NodeRef<CMwNod> UnusedShader => NodeRef.GetOrCreate(ref owner.unusedShaderRef);
         public VertexTexturesReferenceView VertexTextures => new(owner);
     }
     public readonly struct VertexTexturesReferenceView
@@ -255,9 +255,9 @@ public partial class CPlugShaderPass : CPlug, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("VertexShader", vertexShaderRef);
-        yield return new("PixelShader", pixelShaderRef);
-        yield return new("UnusedShader", unusedShaderRef);
+        yield return new("VertexShader", NodeRef.GetOrCreate(ref vertexShaderRef));
+        yield return new("PixelShader", NodeRef.GetOrCreate(ref pixelShaderRef));
+        yield return new("UnusedShader", NodeRef.GetOrCreate(ref unusedShaderRef));
         if (vertexTextures is not null)
         {
             for (var i = 0; i < vertexTextures.Count; i++) yield return new("VertexTextures" + "[" + i + "]", vertexTextures.GetReference(i));
@@ -307,10 +307,10 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.vertexShaderRef);
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
@@ -329,11 +329,11 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.vertexShaderRef);
-            rw.NodeRef(n.unusedShaderRef);
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
+            rw.NodeRef(ref n.unusedShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
@@ -354,11 +354,11 @@ public partial class CPlugShaderPass : CPlug, IClass
         {
             n.BlendSrc = rw.Int32(n.BlendSrc);
             n.BlendDst = rw.Int32(n.BlendDst);
-            rw.NodeRef(n.vertexShaderRef);
-            rw.NodeRef(n.unusedShaderRef);
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
+            rw.NodeRef(ref n.unusedShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
@@ -380,11 +380,11 @@ public partial class CPlugShaderPass : CPlug, IClass
             n.BlendSrc = rw.Int32(n.BlendSrc);
             n.BlendDst = rw.Int32(n.BlendDst);
             n.CullMode = rw.Int32(n.CullMode);
-            rw.NodeRef(n.vertexShaderRef);
-            rw.NodeRef(n.unusedShaderRef);
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
+            rw.NodeRef(ref n.unusedShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
@@ -405,7 +405,7 @@ public partial class CPlugShaderPass : CPlug, IClass
         {
             base.ReadWrite(n, rw);
 
-            if (n.pixelShaderRef.Kind != NodeRefKind.None)
+            if ((n.pixelShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.Array<Vec4>(ref n.pixelFxValues!);
             }
@@ -432,17 +432,17 @@ public partial class CPlugShaderPass : CPlug, IClass
             n.BlendSrc = rw.Int32(n.BlendSrc);
             n.BlendDst = rw.Int32(n.BlendDst);
             n.CullMode = rw.Int32(n.CullMode);
-            rw.NodeRef(n.vertexShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<GpuLoadFx>(ref n.vertexLoadFxs!, version: 0);
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
 
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.pixelShaderRef.Kind != NodeRefKind.None)
+            if ((n.pixelShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<GpuLoadFx>(ref n.pixelLoadFxs!, version: 0);
                 rw.Array<Vec4>(ref n.pixelFxValues!);
@@ -509,17 +509,17 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.vertexShaderRef);
+            rw.NodeRef(ref n.vertexShaderRef);
 
-            if (n.vertexShaderRef.Kind != NodeRefKind.None)
+            if ((n.vertexShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<GpuLoadFx>(ref n.vertexLoadFxs!, version: 0);
                 rw.Array<Vec4>(ref n.vertexFxValues!);
             }
 
-            rw.NodeRef(n.pixelShaderRef);
+            rw.NodeRef(ref n.pixelShaderRef);
 
-            if (n.pixelShaderRef.Kind != NodeRefKind.None)
+            if ((n.pixelShaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<GpuLoadFx>(ref n.pixelLoadFxs!, version: 0);
                 rw.Array<Vec4>(ref n.pixelFxValues!);
@@ -665,11 +665,11 @@ public partial class CPlugShaderPass : CPlug, IClass
             set => this.hasExternalFile = value;
         }
 
-        private NodeRef<CPlugFileGPU> fileGpuRef = new();
+        private NodeRef<CPlugFileGPU>? fileGpuRef;
         public CPlugFileGPU? FileGpu
         {
-            get => fileGpuRef.Resolve();
-            set => fileGpuRef.SetEmbedded(value);
+            get => fileGpuRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref fileGpuRef, value);
         }
 
         private GpuLoadFx[] gpuLoadFxs = [];
@@ -691,11 +691,11 @@ public partial class CPlugShaderPass : CPlug, IClass
         {
             private readonly PipelineGpu owner;
             internal NodeRefView(PipelineGpu owner) => this.owner = owner;
-            public NodeRef<CPlugFileGPU> FileGpu => owner.fileGpuRef;
+            public NodeRef<CPlugFileGPU> FileGpu => NodeRef.GetOrCreate(ref owner.fileGpuRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("FileGpu", fileGpuRef);
+            yield return new("FileGpu", NodeRef.GetOrCreate(ref fileGpuRef));
             yield break;
         }
 
@@ -718,9 +718,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             this.hasExternalFile = rw.Boolean((rw.Writer is null ? default : (References.FileGpu.Kind == NodeRefKind.ExternalFile)));
-            rw.NodeRef(this.fileGpuRef);
+            rw.NodeRef(ref this.fileGpuRef);
 
-            if (fileGpuRef.Kind != NodeRefKind.None)
+            if ((fileGpuRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
                 rw.ArrayReadableWritable<GpuLoadFx>(ref this.gpuLoadFxs!, version: 0);
                 rw.Array<Vec4>(ref this.fxValues!);
@@ -830,11 +830,11 @@ public partial class CPlugShaderPass : CPlug, IClass
 
     public partial class Sampler : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CPlugBitmap> bitmapRef = new();
+        private NodeRef<CPlugBitmap>? bitmapRef;
         public CPlugBitmap? Bitmap
         {
-            get => bitmapRef.Resolve();
-            set => bitmapRef.SetEmbedded(value);
+            get => bitmapRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref bitmapRef, value);
         }
 
         private string? name;
@@ -849,11 +849,11 @@ public partial class CPlugShaderPass : CPlug, IClass
         {
             private readonly Sampler owner;
             internal NodeRefView(Sampler owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> Bitmap => owner.bitmapRef;
+            public NodeRef<CPlugBitmap> Bitmap => NodeRef.GetOrCreate(ref owner.bitmapRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Bitmap", bitmapRef);
+            yield return new("Bitmap", NodeRef.GetOrCreate(ref bitmapRef));
             yield break;
         }
 
@@ -873,7 +873,7 @@ public partial class CPlugShaderPass : CPlug, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.bitmapRef);
+            rw.NodeRef(ref this.bitmapRef);
             rw.Id(ref this.name);
         }
 

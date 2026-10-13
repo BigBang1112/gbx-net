@@ -10,11 +10,11 @@ public partial class CGameCtnChallenge
     {
         base.Read(rw);
 
-        if (tempOldTMUnlimiterClipData is not null && clipGroupInGameRef.CachedTarget is not null)
+        if (tempOldTMUnlimiterClipData is not null && clipGroupInGameRef?.CachedTarget is not null)
         {
             foreach (var clipData in tempOldTMUnlimiterClipData)
             {
-                clipGroupInGameRef.CachedTarget.Clips[clipData.Key].Clip!.TMUnlimiterData = clipData.Value;
+                clipGroupInGameRef?.CachedTarget.Clips[clipData.Key].Clip!.TMUnlimiterData = clipData.Value;
             }
 
             tempOldTMUnlimiterClipData = null;
@@ -154,9 +154,9 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            w.Write(n.clipGroupInGameRef.CachedTarget?.Clips.Count(x => x.Clip?.TMUnlimiterData is not null) ?? 0);
+            w.Write(n.clipGroupInGameRef?.CachedTarget?.Clips.Count(x => x.Clip?.TMUnlimiterData is not null) ?? 0);
 
-            foreach (var (clip, i) in n.clipGroupInGameRef.CachedTarget?.Clips
+            foreach (var (clip, i) in n.clipGroupInGameRef?.CachedTarget?.Clips
                 .Select((clipTrigger, i) => (clip: clipTrigger.Clip, i))
                 .Where(x => x.clip?.TMUnlimiterData is not null) ?? [])
             {
@@ -617,14 +617,14 @@ public partial class CGameCtnChallenge
                 {
                     case 0: // Parameter Set
                         var parameterSet = parameterSets[r.ReadInt32()];
-                        n.clipGroupInGameRef.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef?.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = parameterSet
                         };
                         break;
                     case 1: // Legacy Script
                         var legacyScript = legacyScripts[r.ReadInt32()];
-                        n.clipGroupInGameRef.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
+                        n.clipGroupInGameRef?.CachedTarget?.Clips[mediaClipIndex].Clip!.TMUnlimiterData = new CGameCtnMediaClip.TMUnlimiter
                         {
                             Resource = legacyScript
                         };
@@ -666,7 +666,7 @@ public partial class CGameCtnChallenge
                 }
             }
 
-            var clips = n.clipGroupInGameRef.CachedTarget?.Clips.Select(x => x.Clip).ToList() ?? [];
+            var clips = n.clipGroupInGameRef?.CachedTarget?.Clips.Select(x => x.Clip).ToList() ?? [];
 
             var legacyScripts = clips
                 .Select(x => x.TMUnlimiterData?.Resource as CGameCtnMediaClip.TMUnlimiter.LegacyScript)
@@ -2108,10 +2108,10 @@ public partial class CGameCtnChallenge
 
         public class SubVariation : IReadable, IWritable, IDeepCloneable
         {
-            private NodeRef<CPlugTree> treeRef = new();
-            private NodeRef<CPlugTree> triggerTreeRef = new();
-            public CPlugTree? Tree { get => treeRef.Resolve(); set => treeRef.SetEmbedded(value); }
-            public CPlugTree? TriggerTree { get => triggerTreeRef.Resolve(); set => triggerTreeRef.SetEmbedded(value); }
+            private NodeRef<CPlugTree>? treeRef;
+            private NodeRef<CPlugTree>? triggerTreeRef;
+            public CPlugTree? Tree { get => treeRef?.Resolve(); set => NodeRef.SetEmbedded(ref treeRef, value); }
+            public CPlugTree? TriggerTree { get => triggerTreeRef?.Resolve(); set => NodeRef.SetEmbedded(ref triggerTreeRef, value); }
             public byte? PreLightGenTileCountU { get; set; }
             public NodeRefView References => new(this);
 
@@ -2119,8 +2119,8 @@ public partial class CGameCtnChallenge
             {
                 private readonly SubVariation owner;
                 internal NodeRefView(SubVariation owner) => this.owner = owner;
-                public NodeRef<CPlugTree> Tree => owner.treeRef;
-                public NodeRef<CPlugTree> TriggerTree => owner.triggerTreeRef;
+                public NodeRef<CPlugTree> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
+                public NodeRef<CPlugTree> TriggerTree => NodeRef.GetOrCreate(ref owner.triggerTreeRef);
             }
 
             object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -2137,13 +2137,13 @@ public partial class CGameCtnChallenge
                 var waypointType = (CGameItemModel.EWaypointType)(v & 0xF);
                 var ver = (v >> 4) & 0xF;
 
-                r.ReadNodeRef(treeRef);
+                r.ReadNodeRef(ref treeRef);
 
                 if (waypointType is CGameItemModel.EWaypointType.Finish
                                  or CGameItemModel.EWaypointType.Checkpoint
                                  or CGameItemModel.EWaypointType.StartFinish)
                 {
-                    r.ReadNodeRef(triggerTreeRef);
+                    r.ReadNodeRef(ref triggerTreeRef);
                 }
 
                 if (ver >= 2)

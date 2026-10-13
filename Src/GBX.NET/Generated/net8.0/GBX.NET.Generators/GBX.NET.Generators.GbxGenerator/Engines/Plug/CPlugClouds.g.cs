@@ -63,22 +63,22 @@ public partial class CPlugClouds : CMwNod, IClass
         set => this.bottomFarZ = value;
     }
 
-    private NodeRef<CPlugFileImg> imageColorMinRef = new();
+    private NodeRef<CPlugFileImg>? imageColorMinRef;
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMin
     {
-        get => imageColorMinRef.Resolve();
-        set => imageColorMinRef.SetEmbedded(value);
+        get => imageColorMinRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageColorMinRef, value);
     }
 
-    private NodeRef<CPlugFileImg> imageColorMaxRef = new();
+    private NodeRef<CPlugFileImg>? imageColorMaxRef;
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMax
     {
-        get => imageColorMaxRef.Resolve();
-        set => imageColorMaxRef.SetEmbedded(value);
+        get => imageColorMaxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref imageColorMaxRef, value);
     }
 
     private int lighting;
@@ -128,8 +128,8 @@ public partial class CPlugClouds : CMwNod, IClass
         private readonly CPlugClouds owner;
         internal NodeRefView(CPlugClouds owner) => this.owner = owner;
         public SolidFidsReferenceView SolidFids => new(owner);
-        public NodeRef<CPlugFileImg> ImageColorMin => owner.imageColorMinRef;
-        public NodeRef<CPlugFileImg> ImageColorMax => owner.imageColorMaxRef;
+        public NodeRef<CPlugFileImg> ImageColorMin => NodeRef.GetOrCreate(ref owner.imageColorMinRef);
+        public NodeRef<CPlugFileImg> ImageColorMax => NodeRef.GetOrCreate(ref owner.imageColorMaxRef);
     }
     public readonly struct SolidFidsReferenceView
     {
@@ -145,8 +145,8 @@ public partial class CPlugClouds : CMwNod, IClass
         {
             for (var i = 0; i < solidFids.Count; i++) yield return new("SolidFids" + "[" + i + "]", solidFids.GetReference(i));
         }
-        yield return new("ImageColorMin", imageColorMinRef);
-        yield return new("ImageColorMax", imageColorMaxRef);
+        yield return new("ImageColorMin", NodeRef.GetOrCreate(ref imageColorMinRef));
+        yield return new("ImageColorMax", NodeRef.GetOrCreate(ref imageColorMaxRef));
         yield break;
     }
 
@@ -184,8 +184,8 @@ public partial class CPlugClouds : CMwNod, IClass
             n.solidFids = rw.ListNodeRef<CPlugSolid>(n.solidFids);
             rw.Single(ref n.bottomNearZ);
             rw.Single(ref n.bottomFarZ);
-            rw.NodeRef(n.imageColorMinRef);
-            rw.NodeRef(n.imageColorMaxRef);
+            rw.NodeRef(ref n.imageColorMinRef);
+            rw.NodeRef(ref n.imageColorMaxRef);
             rw.Int32(ref n.lighting);
         }
     }

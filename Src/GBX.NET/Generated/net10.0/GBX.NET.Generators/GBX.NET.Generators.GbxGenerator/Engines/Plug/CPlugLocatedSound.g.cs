@@ -36,12 +36,12 @@ public partial class CPlugLocatedSound : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSound> soundRef = new();
+    private NodeRef<CPlugSound>? soundRef;
     [AppliedWithChunk<Chunk09061000>]
     public CPlugSound? Sound
     {
-        get => soundRef.Resolve();
-        set => soundRef.SetEmbedded(value);
+        get => soundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundRef, value);
     }
 
     private Iso4 loc;
@@ -57,12 +57,12 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     {
         private readonly CPlugLocatedSound owner;
         internal NodeRefView(CPlugLocatedSound owner) => this.owner = owner;
-        public NodeRef<CPlugSound> Sound => owner.soundRef;
+        public NodeRef<CPlugSound> Sound => NodeRef.GetOrCreate(ref owner.soundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Sound", soundRef);
+        yield return new("Sound", NodeRef.GetOrCreate(ref soundRef));
         yield break;
     }
 
@@ -91,7 +91,7 @@ public partial class CPlugLocatedSound : CMwNod, IClass
 
         public override void ReadWrite(CPlugLocatedSound n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.soundRef);
+            rw.NodeRef(ref n.soundRef);
             rw.Iso4(ref n.loc);
         }
     }

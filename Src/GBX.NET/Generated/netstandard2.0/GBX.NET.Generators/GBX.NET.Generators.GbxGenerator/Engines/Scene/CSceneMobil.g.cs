@@ -52,12 +52,12 @@ public partial class CSceneMobil : CSceneObject, IClass
         set => this.item = value;
     }
 
-    private NodeRef<CSceneMessageHandler> messageHandlerRef = new();
+    private NodeRef<CSceneMessageHandler>? messageHandlerRef;
     [AppliedWithChunk<Chunk0A011006>]
     public CSceneMessageHandler? MessageHandler
     {
-        get => messageHandlerRef.Resolve();
-        set => messageHandlerRef.SetEmbedded(value);
+        get => messageHandlerRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref messageHandlerRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -66,7 +66,7 @@ public partial class CSceneMobil : CSceneObject, IClass
         private readonly CSceneMobil owner;
         internal NodeRefView(CSceneMobil owner) => this.owner = owner;
         public ObjectLinkReferenceView ObjectLink => new(owner);
-        public NodeRef<CSceneMessageHandler> MessageHandler => owner.messageHandlerRef;
+        public NodeRef<CSceneMessageHandler> MessageHandler => NodeRef.GetOrCreate(ref owner.messageHandlerRef);
         public NodeRef<CMotion> Motion => ((CSceneObject)owner).References.Motion;
     }
     public readonly struct ObjectLinkReferenceView
@@ -83,7 +83,7 @@ public partial class CSceneMobil : CSceneObject, IClass
         {
             for (var i = 0; i < objectLink.Count; i++) yield return new("ObjectLink" + "[" + i + "]", objectLink.GetReference(i));
         }
-        yield return new("MessageHandler", messageHandlerRef);
+        yield return new("MessageHandler", NodeRef.GetOrCreate(ref messageHandlerRef));
         yield break;
     }
 
@@ -124,11 +124,11 @@ public partial class CSceneMobil : CSceneObject, IClass
         public override uint Id => 0x0A011004;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -136,12 +136,12 @@ public partial class CSceneMobil : CSceneObject, IClass
         {
             private readonly Chunk0A011004 owner;
             internal NodeRefView(Chunk0A011004 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -153,7 +153,7 @@ public partial class CSceneMobil : CSceneObject, IClass
 
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -189,7 +189,7 @@ public partial class CSceneMobil : CSceneObject, IClass
 
         public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.messageHandlerRef);
+            rw.NodeRef(ref n.messageHandlerRef);
         }
     }
 

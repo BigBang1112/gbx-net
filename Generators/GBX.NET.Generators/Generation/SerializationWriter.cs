@@ -188,7 +188,7 @@ internal sealed class SerializationWriter
                     if (sourceName is not null && StoredReferenceIdentifier(assignment.TargetName) is { } copyTarget && StoredReferenceIdentifier(sourceName) is { } copySource &&
                         ReferenceElement(assignment.TargetName) == ReferenceElement(sourceName))
                     {
-                        code.Line(copyTarget + ".CopyFrom(" + copySource + ");");
+                        code.Line("NodeRef.CopyFrom(ref " + copyTarget + ", " + copySource + ");");
                         if (mode == SerializationMode.ReadWrite) code.Close();
                         break;
                     }
@@ -199,7 +199,7 @@ internal sealed class SerializationWriter
                         assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
                     if (CachedReferenceIdentifier(assignment.TargetName) is { } assignmentHandle &&
                         ReferenceFieldByName(assignment.TargetName)?.Name != assignment.TargetName)
-                        code.Line(assignmentHandle + ".SetEmbedded(" + Expression(assignment.Expression, assignmentType) + ");");
+                        code.Line("NodeRef.SetEmbedded(ref " + assignmentHandle + ", " + Expression(assignment.Expression, assignmentType) + ");");
                     else
                         code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
                     if (mode == SerializationMode.ReadWrite) code.Close();
@@ -319,10 +319,10 @@ internal sealed class SerializationWriter
             ReferenceModel.IsNode(storedField.StorageDeclaration, layout, layouts, existingTypes) &&
             !SyntaxOverlap.Has(owner.Existing, backing.TrimStart('@'))
             ? prefix + ReferenceModel.Handle(storedField, chunk && storedField.IsUnknown) : null;
-        if (embeddedHandle is not null) target = embeddedHandle + ".CachedTarget";
+        if (embeddedHandle is not null) target = embeddedHandle + "?.CachedTarget";
         string Assign(string value) => embeddedHandle is null
             ? (field.IsLocal ? "var " : "") + target + " = " + value + ";"
-            : embeddedHandle + ".SetEmbedded(" + value + ");";
+            : "NodeRef.SetEmbedded(ref " + embeddedHandle + ", " + value + ");";
         var storageType = (field.IsLocal ? null : SyntaxOverlap.MemberType(owner.Existing, (hasBacking ? backing : property).TrimStart('@'))) ??
             WireTypes.CSharp(storedField.StorageDeclaration) +
             (!field.IsLocal && WireTypes.Nullable(storedField) ? "?" : "");
@@ -459,28 +459,28 @@ internal sealed class SerializationWriter
             if (local)
             {
                 handle = SyntaxOverlap.Backing(field.Name).TrimStart('@') + "Ref";
-                code.Line($"var {handle} = new NodeRef<{name}>();");
+                code.Line($"NodeRef<{name}>? {handle} = null;");
             }
             var owner = chunk && !field.IsUnknown ? layout.Scope : scope;
             var customStorage = local ? null : SyntaxOverlap.MemberType(owner.Existing, SyntaxOverlap.Backing(field.Name).TrimStart('@'));
             var converted = customStorage is not null && SyntaxOverlap.Normalize(customStorage.TrimEnd('?')) != name;
             if (converted && mode != SerializationMode.Read)
             {
-                if (mode == SerializationMode.ReadWrite) code.Line($"if (rw.Writer is not null && {handle}.Descriptor is null) {handle}.SetEmbedded(({name}?){target});");
-                else code.Line($"if ({handle}.Descriptor is null) {handle}.SetEmbedded(({name}?){target});");
+                if (mode == SerializationMode.ReadWrite) code.Line($"if (rw.Writer is not null && {handle}?.Descriptor is null) NodeRef.SetEmbedded(ref {handle}, ({name}?){target});");
+                else code.Line($"if ({handle}?.Descriptor is null) NodeRef.SetEmbedded(ref {handle}, ({name}?){target});");
             }
             code.Line(mode switch
             {
-                SerializationMode.Read => $"r.ReadNodeRef({handle});",
+                SerializationMode.Read => $"r.ReadNodeRef(ref {handle});",
                 SerializationMode.Write => $"w.WriteNodeRef({handle});",
-                _ => $"rw.NodeRef({handle});"
+                _ => $"rw.NodeRef(ref {handle});"
             });
             if (converted && mode != SerializationMode.Write)
             {
-                var assignment = $"{target} = ({customStorage}){handle}.CachedTarget;";
+                var assignment = $"{target} = ({customStorage}){handle}?.CachedTarget;";
                 code.Line(mode == SerializationMode.ReadWrite ? "if (rw.Reader is not null) " + assignment : assignment);
             }
-            if (local) code.Line($"var {target} = {handle}.CachedTarget;");
+            if (local) code.Line($"var {target} = {handle}?.CachedTarget;");
             return;
         }
 
@@ -736,7 +736,7 @@ internal sealed class SerializationWriter
 
     private string DataIdentifier(string name)
     {
-        if (CachedReferenceIdentifier(name) is { } handle) return handle + ".CachedTarget";
+        if (CachedReferenceIdentifier(name) is { } handle) return handle + "?.CachedTarget";
         return Identifier(name);
     }
 

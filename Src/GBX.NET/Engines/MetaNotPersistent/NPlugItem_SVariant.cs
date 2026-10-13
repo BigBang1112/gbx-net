@@ -5,7 +5,7 @@ public partial class NPlugItem_SVariant
 {
     public Dictionary<string, string> Tags { get; set; } = [];
 
-    public CMwNod? EntityModel { get => entityModelRef.Resolve(); set => entityModelRef.SetEmbedded(value); }
+    public CMwNod? EntityModel { get => entityModelRef?.Resolve(); set => NodeRef.SetEmbedded(ref entityModelRef, value); }
 
     private bool hiddenInManualCycle;
     public bool HiddenInManualCycle { get => hiddenInManualCycle; set => hiddenInManualCycle = value; }
@@ -36,7 +36,7 @@ public partial class NPlugItem_SVariant
             }
         }
 
-        rw.NodeRef(entityModelRef);
+        rw.NodeRef(ref entityModelRef);
 
         if (v >= 1)
         {

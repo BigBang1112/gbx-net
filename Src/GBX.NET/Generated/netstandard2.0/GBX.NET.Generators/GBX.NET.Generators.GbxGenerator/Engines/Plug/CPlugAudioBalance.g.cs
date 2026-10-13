@@ -69,39 +69,39 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         public float U06;
         public float U07;
 
-        private NodeRef<CFuncKeysReal> U08Ref = new();
+        private NodeRef<CFuncKeysReal>? U08Ref;
         public CFuncKeysReal? U08
         {
-            get => U08Ref.Resolve();
-            set => U08Ref.SetEmbedded(value);
+            get => U08Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U08Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U09Ref = new();
+        private NodeRef<CFuncKeysReal>? U09Ref;
         public CFuncKeysReal? U09
         {
-            get => U09Ref.Resolve();
-            set => U09Ref.SetEmbedded(value);
+            get => U09Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U09Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U10Ref = new();
+        private NodeRef<CFuncKeysReal>? U10Ref;
         public CFuncKeysReal? U10
         {
-            get => U10Ref.Resolve();
-            set => U10Ref.SetEmbedded(value);
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U11Ref = new();
+        private NodeRef<CFuncKeysReal>? U11Ref;
         public CFuncKeysReal? U11
         {
-            get => U11Ref.Resolve();
-            set => U11Ref.SetEmbedded(value);
+            get => U11Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U11Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U12Ref = new();
+        private NodeRef<CFuncKeysReal>? U12Ref;
         public CFuncKeysReal? U12
         {
-            get => U12Ref.Resolve();
-            set => U12Ref.SetEmbedded(value);
+            get => U12Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U12Ref, value);
         }
         public float U13;
         public float U14;
@@ -114,20 +114,20 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         {
             private readonly Chunk09034000 owner;
             internal NodeRefView(Chunk09034000 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U08 => owner.U08Ref;
-            public NodeRef<CFuncKeysReal> U09 => owner.U09Ref;
-            public NodeRef<CFuncKeysReal> U10 => owner.U10Ref;
-            public NodeRef<CFuncKeysReal> U11 => owner.U11Ref;
-            public NodeRef<CFuncKeysReal> U12 => owner.U12Ref;
+            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
+            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
+            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
+            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U08", U08Ref);
-            yield return new("U09", U09Ref);
-            yield return new("U10", U10Ref);
-            yield return new("U11", U11Ref);
-            yield return new("U12", U12Ref);
+            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
+            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
+            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
             yield break;
         }
 
@@ -177,17 +177,17 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
                             rw.Single(ref U05);
                             rw.Single(ref U06);
                             rw.Single(ref U07);
-                            rw.NodeRef(U08Ref);
-                            rw.NodeRef(U09Ref);
+                            rw.NodeRef(ref U08Ref);
+                            rw.NodeRef(ref U09Ref);
 
                             if (Version >= 8)
                             {
-                                rw.NodeRef(U10Ref);
-                                rw.NodeRef(U11Ref);
+                                rw.NodeRef(ref U10Ref);
+                                rw.NodeRef(ref U11Ref);
 
                                 if (Version >= 9)
                                 {
-                                    rw.NodeRef(U12Ref);
+                                    rw.NodeRef(ref U12Ref);
 
                                     if (Version >= 10)
                                     {

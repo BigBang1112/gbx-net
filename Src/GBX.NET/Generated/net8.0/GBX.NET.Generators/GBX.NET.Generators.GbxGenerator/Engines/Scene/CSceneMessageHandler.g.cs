@@ -36,20 +36,20 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> onClickScriptRef = new();
+    private NodeRef<CMwNod>? onClickScriptRef;
     [AppliedWithChunk<Chunk0A01F000>]
     public CMwNod? OnClickScript
     {
-        get => onClickScriptRef.Resolve();
-        set => onClickScriptRef.SetEmbedded(value);
+        get => onClickScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref onClickScriptRef, value);
     }
 
-    private NodeRef<CMwNod> onContactScriptRef = new();
+    private NodeRef<CMwNod>? onContactScriptRef;
     [AppliedWithChunk<Chunk0A01F001>]
     public CMwNod? OnContactScript
     {
-        get => onContactScriptRef.Resolve();
-        set => onContactScriptRef.SetEmbedded(value);
+        get => onContactScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref onContactScriptRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -57,14 +57,14 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     {
         private readonly CSceneMessageHandler owner;
         internal NodeRefView(CSceneMessageHandler owner) => this.owner = owner;
-        public NodeRef<CMwNod> OnClickScript => owner.onClickScriptRef;
-        public NodeRef<CMwNod> OnContactScript => owner.onContactScriptRef;
+        public NodeRef<CMwNod> OnClickScript => NodeRef.GetOrCreate(ref owner.onClickScriptRef);
+        public NodeRef<CMwNod> OnContactScript => NodeRef.GetOrCreate(ref owner.onContactScriptRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("OnClickScript", onClickScriptRef);
-        yield return new("OnContactScript", onContactScriptRef);
+        yield return new("OnClickScript", NodeRef.GetOrCreate(ref onClickScriptRef));
+        yield return new("OnContactScript", NodeRef.GetOrCreate(ref onContactScriptRef));
         yield break;
     }
 
@@ -93,7 +93,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.onClickScriptRef);
+            rw.NodeRef(ref n.onClickScriptRef);
         }
     }
 
@@ -111,7 +111,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
 
         public override void ReadWrite(CSceneMessageHandler n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.onContactScriptRef);
+            rw.NodeRef(ref n.onContactScriptRef);
         }
     }
 

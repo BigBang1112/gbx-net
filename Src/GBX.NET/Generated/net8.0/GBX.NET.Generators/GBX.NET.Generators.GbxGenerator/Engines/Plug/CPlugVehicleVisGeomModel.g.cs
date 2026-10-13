@@ -36,11 +36,11 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSolid2Model> meshNodeRef = new();
+    private NodeRef<CPlugSolid2Model>? meshNodeRef;
     public CPlugSolid2Model? Mesh
     {
-        get => meshNodeRef.Resolve();
-        set => meshNodeRef.SetEmbedded(value);
+        get => meshNodeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshNodeRef, value);
     }
 
     private bool u01;
@@ -78,11 +78,11 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
         set => this.meshRefPath = value;
     }
 
-    private NodeRef<CPlugSolid2Model> meshRefRef = new();
+    private NodeRef<CPlugSolid2Model>? meshRefRef;
     public CPlugSolid2Model? MeshRef
     {
-        get => meshRefRef.Resolve();
-        set => meshRefRef.SetEmbedded(value);
+        get => meshRefRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshRefRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -90,14 +90,14 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     {
         private readonly CPlugVehicleVisGeomModel owner;
         internal NodeRefView(CPlugVehicleVisGeomModel owner) => this.owner = owner;
-        public NodeRef<CPlugSolid2Model> Mesh => owner.meshNodeRef;
-        public NodeRef<CPlugSolid2Model> MeshRef => owner.meshRefRef;
+        public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshNodeRef);
+        public NodeRef<CPlugSolid2Model> MeshRef => NodeRef.GetOrCreate(ref owner.meshRefRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Mesh", meshNodeRef);
-        yield return new("MeshRef", meshRefRef);
+        yield return new("Mesh", NodeRef.GetOrCreate(ref meshNodeRef));
+        yield return new("MeshRef", NodeRef.GetOrCreate(ref meshRefRef));
         yield break;
     }
 
@@ -122,7 +122,7 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
     {
         if (v >= 3)
         {
-            rw.NodeRef(this.meshNodeRef);
+            rw.NodeRef(ref this.meshNodeRef);
             rw.Boolean(ref this.u01);
             rw.ArrayReadableWritable<DamagePart>(ref this.damageParts!, 4, version: SurfVersion);
             rw.ArrayReadableWritable<GlassModel>(ref this.glass!, 5, version: v);
@@ -135,7 +135,7 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
             if (MeshRefPath== "" || MeshRefPath== null)
             {
-                rw.NodeRef(this.meshRefRef);
+                rw.NodeRef(ref this.meshRefRef);
             }
         }
     }
@@ -154,11 +154,11 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
 
     public partial class DamagePart : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CPlugSolid2Model> meshRef = new();
+        private NodeRef<CPlugSolid2Model>? meshRef;
         public CPlugSolid2Model? Mesh
         {
-            get => meshRef.Resolve();
-            set => meshRef.SetEmbedded(value);
+            get => meshRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref meshRef, value);
         }
 
         /// <summary>
@@ -175,11 +175,11 @@ public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritabl
         {
             private readonly DamagePart owner;
             internal NodeRefView(DamagePart owner) => this.owner = owner;
-            public NodeRef<CPlugSolid2Model> Mesh => owner.meshRef;
+            public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Mesh", meshRef);
+            yield return new("Mesh", NodeRef.GetOrCreate(ref meshRef));
             yield break;
         }
 

@@ -76,13 +76,13 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         set => this.offsetHauteur = value;
     }
 
-    private NodeRef<CMwNod> seaRef = new();
+    private NodeRef<CMwNod>? seaRef;
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public CMwNod? Sea
     {
-        get => seaRef.Resolve();
-        set => seaRef.SetEmbedded(value);
+        get => seaRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref seaRef, value);
     }
 
     private EPitchinMode pitchinMode = EPitchinMode.Normal;
@@ -114,12 +114,12 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     {
         private readonly CMotionTrackMobilPitchin owner;
         internal NodeRefView(CMotionTrackMobilPitchin owner) => this.owner = owner;
-        public NodeRef<CMwNod> Sea => owner.seaRef;
+        public NodeRef<CMwNod> Sea => NodeRef.GetOrCreate(ref owner.seaRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Sea", seaRef);
+        yield return new("Sea", NodeRef.GetOrCreate(ref seaRef));
         yield break;
     }
 
@@ -171,7 +171,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.seaRef);
+            rw.NodeRef(ref n.seaRef);
             rw.Single(ref n.flottaison);
             rw.Single(ref n.tangage);
             rw.Single(ref n.roulis);
@@ -193,7 +193,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 
         public override void ReadWrite(CMotionTrackMobilPitchin n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.seaRef);
+            rw.NodeRef(ref n.seaRef);
             rw.Single(ref n.flottaison);
             rw.Single(ref n.tangage);
             rw.Single(ref n.roulis);

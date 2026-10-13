@@ -36,13 +36,13 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSurface> triggerShapeFidRef = new();
+    private NodeRef<CPlugSurface>? triggerShapeFidRef;
 
-    private NodeRef<CPlugSurface> moveShapeFidRef = new();
+    private NodeRef<CPlugSurface>? moveShapeFidRef;
 
-    private NodeRef<CPlugSurface> hitShapeFidRef = new();
+    private NodeRef<CPlugSurface>? hitShapeFidRef;
 
-    private NodeRef<CMwNod> specialPropertiesRef = new();
+    private NodeRef<CMwNod>? specialPropertiesRef;
 
     private CPlugDynaModel? dynaModel;
     [AppliedWithChunk<Chunk2E006003>]
@@ -97,18 +97,18 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         private readonly CGameObjectPhyModel owner;
         internal NodeRefView(CGameObjectPhyModel owner) => this.owner = owner;
-        public NodeRef<CPlugSurface> TriggerShapeFid => owner.triggerShapeFidRef;
-        public NodeRef<CPlugSurface> MoveShapeFid => owner.moveShapeFidRef;
-        public NodeRef<CPlugSurface> HitShapeFid => owner.hitShapeFidRef;
-        public NodeRef<CMwNod> SpecialProperties => owner.specialPropertiesRef;
+        public NodeRef<CPlugSurface> TriggerShapeFid => NodeRef.GetOrCreate(ref owner.triggerShapeFidRef);
+        public NodeRef<CPlugSurface> MoveShapeFid => NodeRef.GetOrCreate(ref owner.moveShapeFidRef);
+        public NodeRef<CPlugSurface> HitShapeFid => NodeRef.GetOrCreate(ref owner.hitShapeFidRef);
+        public NodeRef<CMwNod> SpecialProperties => NodeRef.GetOrCreate(ref owner.specialPropertiesRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("TriggerShapeFid", triggerShapeFidRef);
-        yield return new("MoveShapeFid", moveShapeFidRef);
-        yield return new("HitShapeFid", hitShapeFidRef);
-        yield return new("SpecialProperties", specialPropertiesRef);
+        yield return new("TriggerShapeFid", NodeRef.GetOrCreate(ref triggerShapeFidRef));
+        yield return new("MoveShapeFid", NodeRef.GetOrCreate(ref moveShapeFidRef));
+        yield return new("HitShapeFid", NodeRef.GetOrCreate(ref hitShapeFidRef));
+        yield return new("SpecialProperties", NodeRef.GetOrCreate(ref specialPropertiesRef));
         yield break;
     }
 
@@ -162,14 +162,14 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         public override uint Id => 0x2E006000;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// Deprecated CPlugAnimFile.
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -177,12 +177,12 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         {
             private readonly Chunk2E006000 owner;
             internal NodeRefView(Chunk2E006000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -194,9 +194,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.triggerShapeFidRef);
+            rw.NodeRef(ref n.triggerShapeFidRef);
             rw.ArrayReadableWritable<CPlugTriggerAction>(ref n.triggers!, version: 5);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -207,54 +207,54 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public override uint Id => 0x2E006001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U03Ref = new();
+        private NodeRef<CMwNod>? U03Ref;
         /// <summary>
         /// Deprecated CPlugAnimFile.
         /// </summary>
         public CMwNod? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         /// <summary>
         /// DoFid: an external file reference.
         /// </summary>
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U27Ref = new();
+        private NodeRef<CMwNod>? U27Ref;
         /// <summary>
         /// Deprecated CPlugSurface, present whenever the file reference exists.
         /// </summary>
         public CMwNod? U27
         {
-            get => U27Ref.Resolve();
-            set => U27Ref.SetEmbedded(value);
+            get => U27Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U27Ref, value);
         }
 
-        private NodeRef<CMwNod> U15Ref = new();
+        private NodeRef<CMwNod>? U15Ref;
         /// <summary>
         /// CPlugSolid.
         /// </summary>
         public CMwNod? U15
         {
-            get => U15Ref.Resolve();
-            set => U15Ref.SetEmbedded(value);
+            get => U15Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U15Ref, value);
         }
 
-        private NodeRef<CMwNod> U26Ref = new();
+        private NodeRef<CMwNod>? U26Ref;
         /// <summary>
         /// Removed in version 26.
         /// </summary>
         public CMwNod? U26
         {
-            get => U26Ref.Resolve();
-            set => U26Ref.SetEmbedded(value);
+            get => U26Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U26Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -262,20 +262,20 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         {
             private readonly Chunk2E006001 owner;
             internal NodeRefView(Chunk2E006001 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U03 => owner.U03Ref;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U27 => owner.U27Ref;
-            public NodeRef<CMwNod> U15 => owner.U15Ref;
-            public NodeRef<CMwNod> U26 => owner.U26Ref;
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U27 => NodeRef.GetOrCreate(ref owner.U27Ref);
+            public NodeRef<CMwNod> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
+            public NodeRef<CMwNod> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U03", U03Ref);
-            yield return new("U01", U01Ref);
-            yield return new("U27", U27Ref);
-            yield return new("U15", U15Ref);
-            yield return new("U26", U26Ref);
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U27", NodeRef.GetOrCreate(ref U27Ref));
+            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
+            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
             yield break;
         }
 
@@ -322,9 +322,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version <= 10)
             {
-                rw.NodeRef(n.moveShapeFidRef);
-                rw.NodeRef(n.hitShapeFidRef);
-                rw.NodeRef(n.triggerShapeFidRef);
+                rw.NodeRef(ref n.moveShapeFidRef);
+                rw.NodeRef(ref n.hitShapeFidRef);
+                rw.NodeRef(ref n.triggerShapeFidRef);
             }
 
             if (Version >= 8)
@@ -344,7 +344,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version <= 13)
             {
-                rw.NodeRef(U03Ref);
+                rw.NodeRef(ref U03Ref);
             }
 
             if (Version >= 2)
@@ -410,31 +410,31 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version >= 21)
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             }
 
             if (Version >= 11)
             {
-                if (Version>= 21 && (U01Ref.Kind != NodeRefKind.None))
+                if (Version>= 21 && ((U01Ref?.Kind ?? NodeRefKind.None) != NodeRefKind.None))
                 {
-                    rw.NodeRef(U27Ref);
+                    rw.NodeRef(ref U27Ref);
                 }
                 else
                 {
                     if (n.MoveShape== null || n.MoveShape.Length == 0)
                     {
-                        rw.NodeRef(n.moveShapeFidRef);
+                        rw.NodeRef(ref n.moveShapeFidRef);
                     }
                 }
 
                 if (n.HitShape== null || n.HitShape.Length == 0)
                 {
-                    rw.NodeRef(n.hitShapeFidRef);
+                    rw.NodeRef(ref n.hitShapeFidRef);
                 }
 
                 if (n.TriggerShape== null || n.TriggerShape.Length == 0)
                 {
-                    rw.NodeRef(n.triggerShapeFidRef);
+                    rw.NodeRef(ref n.triggerShapeFidRef);
                 }
             }
 
@@ -444,7 +444,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
                 if (U14== null || U14.Length == 0)
                 {
-                    rw.NodeRef(U15Ref);
+                    rw.NodeRef(ref U15Ref);
                 }
             }
 
@@ -455,7 +455,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version >= 16)
             {
-                rw.NodeRef(n.specialPropertiesRef);
+                rw.NodeRef(ref n.specialPropertiesRef);
             }
 
             if (Version >= 17)
@@ -507,7 +507,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
             if (Version == 25)
             {
-                rw.NodeRef(U26Ref);
+                rw.NodeRef(ref U26Ref);
             }
         }
     }
@@ -517,11 +517,11 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
         public override uint Id => 0x2E006002;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -529,12 +529,12 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         {
             private readonly Chunk2E006002 owner;
             internal NodeRefView(Chunk2E006002 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -546,7 +546,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
 
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -581,11 +581,11 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public override uint Id => 0x2E006004;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public Vec3 U02;
 
@@ -594,12 +594,12 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         {
             private readonly Chunk2E006004 owner;
             internal NodeRefView(Chunk2E006004 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -614,7 +614,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.Vec3(ref U02);
         }
     }

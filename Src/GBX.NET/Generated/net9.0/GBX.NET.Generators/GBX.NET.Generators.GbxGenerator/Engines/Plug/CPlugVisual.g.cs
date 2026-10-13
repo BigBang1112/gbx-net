@@ -44,12 +44,12 @@ public partial class CPlugVisual : CPlug, IClass
         set => this.visualId = value;
     }
 
-    private NodeRef<CMwNod> funcVisualRef = new();
+    private NodeRef<CMwNod>? funcVisualRef;
     [AppliedWithChunk<Chunk09006004>]
     public CMwNod? FuncVisual
     {
-        get => funcVisualRef.Resolve();
-        set => funcVisualRef.SetEmbedded(value);
+        get => funcVisualRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref funcVisualRef, value);
     }
 
     private Int3[] subVisuals = [];
@@ -112,7 +112,7 @@ public partial class CPlugVisual : CPlug, IClass
     {
         private readonly CPlugVisual owner;
         internal NodeRefView(CPlugVisual owner) => this.owner = owner;
-        public NodeRef<CMwNod> FuncVisual => owner.funcVisualRef;
+        public NodeRef<CMwNod> FuncVisual => NodeRef.GetOrCreate(ref owner.funcVisualRef);
         public VertexStreamsReferenceView VertexStreams => new(owner);
     }
     public readonly struct VertexStreamsReferenceView
@@ -125,7 +125,7 @@ public partial class CPlugVisual : CPlug, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("FuncVisual", funcVisualRef);
+        yield return new("FuncVisual", NodeRef.GetOrCreate(ref funcVisualRef));
         if (vertexStreams is not null)
         {
             for (var i = 0; i < vertexStreams.Count; i++) yield return new("VertexStreams" + "[" + i + "]", vertexStreams.GetReference(i));
@@ -596,11 +596,11 @@ public partial class CPlugVisual : CPlug, IClass
             set => this.boneCount = value;
         }
 
-        private NodeRef<CPlugVertexStream> vertexStreamRef = new();
+        private NodeRef<CPlugVertexStream>? vertexStreamRef;
         public CPlugVertexStream? VertexStream
         {
-            get => vertexStreamRef.Resolve();
-            set => vertexStreamRef.SetEmbedded(value);
+            get => vertexStreamRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref vertexStreamRef, value);
         }
 
         private string[] bones = [];
@@ -615,11 +615,11 @@ public partial class CPlugVisual : CPlug, IClass
         {
             private readonly Morph owner;
             internal NodeRefView(Morph owner) => this.owner = owner;
-            public NodeRef<CPlugVertexStream> VertexStream => owner.vertexStreamRef;
+            public NodeRef<CPlugVertexStream> VertexStream => NodeRef.GetOrCreate(ref owner.vertexStreamRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("VertexStream", vertexStreamRef);
+            yield return new("VertexStream", NodeRef.GetOrCreate(ref vertexStreamRef));
             yield break;
         }
 

@@ -36,7 +36,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CInputBindingsConfig> configRef = new();
+    private NodeRef<CInputBindingsConfig>? configRef;
     [AppliedWithChunk<Chunk0312F000>]
     public partial CInputBindingsConfig? Config { get; set; }
 
@@ -45,12 +45,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     {
         private readonly CGamePlayerProfileChunk_InputBindingsConfig owner;
         internal NodeRefView(CGamePlayerProfileChunk_InputBindingsConfig owner) => this.owner = owner;
-        public NodeRef<CInputBindingsConfig> Config => owner.configRef;
+        public NodeRef<CInputBindingsConfig> Config => NodeRef.GetOrCreate(ref owner.configRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Config", configRef);
+        yield return new("Config", NodeRef.GetOrCreate(ref configRef));
         yield break;
     }
 
@@ -84,7 +84,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
 
             rw.Encapsulated(rw =>
             {
-                rw.NodeRef(n.configRef);
+                rw.NodeRef(ref n.configRef);
             });
         }
     }

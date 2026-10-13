@@ -184,7 +184,7 @@ public partial class CPlugVisual
         {
             Indices = rw.Array(Indices)!;
             BoneCount = rw.Int32(Bones.Length);
-            rw.NodeRef(References.VertexStream);
+            rw.NodeRef(ref vertexStreamRef);
             Bones = rw.ArrayId(Bones, BoneCount)!;
         }
     }

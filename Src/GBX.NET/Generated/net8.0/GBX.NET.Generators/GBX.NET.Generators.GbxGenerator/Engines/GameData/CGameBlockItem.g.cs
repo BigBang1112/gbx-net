@@ -71,11 +71,11 @@ public partial class CGameBlockItem : CMwNod, IClass
             set => this.id = value;
         }
 
-        private NodeRef<CPlugCrystal> crystalRef = new();
+        private NodeRef<CPlugCrystal>? crystalRef;
         public CPlugCrystal? Crystal
         {
-            get => crystalRef.Resolve();
-            set => crystalRef.SetEmbedded(value);
+            get => crystalRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref crystalRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -83,11 +83,11 @@ public partial class CGameBlockItem : CMwNod, IClass
         {
             private readonly Mobil owner;
             internal NodeRefView(Mobil owner) => this.owner = owner;
-            public NodeRef<CPlugCrystal> Crystal => owner.crystalRef;
+            public NodeRef<CPlugCrystal> Crystal => NodeRef.GetOrCreate(ref owner.crystalRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Crystal", crystalRef);
+            yield return new("Crystal", NodeRef.GetOrCreate(ref crystalRef));
             yield break;
         }
 
@@ -109,7 +109,7 @@ public partial class CGameBlockItem : CMwNod, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.id);
-            rw.NodeRef(this.crystalRef);
+            rw.NodeRef(ref this.crystalRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -134,18 +134,18 @@ public partial class CGameBlockItem : CMwNod, IClass
             set => this.flags = value;
         }
 
-        private NodeRef<CPlugStaticObjectModel> staticObjectRef = new();
+        private NodeRef<CPlugStaticObjectModel>? staticObjectRef;
         public CPlugStaticObjectModel? StaticObject
         {
-            get => staticObjectRef.Resolve();
-            set => staticObjectRef.SetEmbedded(value);
+            get => staticObjectRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref staticObjectRef, value);
         }
 
-        private NodeRef<CPlugSurface> shapeRef = new();
+        private NodeRef<CPlugSurface>? shapeRef;
         public CPlugSurface? Shape
         {
-            get => shapeRef.Resolve();
-            set => shapeRef.SetEmbedded(value);
+            get => shapeRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref shapeRef, value);
         }
 
         private BoxAligned u01;
@@ -167,13 +167,13 @@ public partial class CGameBlockItem : CMwNod, IClass
         {
             private readonly MobilProperties owner;
             internal NodeRefView(MobilProperties owner) => this.owner = owner;
-            public NodeRef<CPlugStaticObjectModel> StaticObject => owner.staticObjectRef;
-            public NodeRef<CPlugSurface> Shape => owner.shapeRef;
+            public NodeRef<CPlugStaticObjectModel> StaticObject => NodeRef.GetOrCreate(ref owner.staticObjectRef);
+            public NodeRef<CPlugSurface> Shape => NodeRef.GetOrCreate(ref owner.shapeRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("StaticObject", staticObjectRef);
-            yield return new("Shape", shapeRef);
+            yield return new("StaticObject", NodeRef.GetOrCreate(ref staticObjectRef));
+            yield return new("Shape", NodeRef.GetOrCreate(ref shapeRef));
             yield break;
         }
 
@@ -200,12 +200,12 @@ public partial class CGameBlockItem : CMwNod, IClass
 
             if ((Flags& 1) != 0)
             {
-                rw.NodeRef(this.staticObjectRef);
+                rw.NodeRef(ref this.staticObjectRef);
             }
 
             if ((Flags& 2) != 0)
             {
-                rw.NodeRef(this.shapeRef);
+                rw.NodeRef(ref this.shapeRef);
             }
 
             if ((Flags& 4) != 0)

@@ -548,28 +548,28 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         set => this.eventBurningRadiusTimeDown = value;
     }
 
-    private NodeRef<CFuncKeysReal> slerpSpeedModulationFromSpeedRef = new();
+    private NodeRef<CFuncKeysReal>? slerpSpeedModulationFromSpeedRef;
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? SlerpSpeedModulationFromSpeed
     {
-        get => slerpSpeedModulationFromSpeedRef.Resolve();
-        set => slerpSpeedModulationFromSpeedRef.SetEmbedded(value);
+        get => slerpSpeedModulationFromSpeedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref slerpSpeedModulationFromSpeedRef, value);
     }
 
-    private NodeRef<CFuncKeysReal> lookAtFactorFromUpSpeedRatioRef = new();
+    private NodeRef<CFuncKeysReal>? lookAtFactorFromUpSpeedRatioRef;
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? LookAtFactorFromUpSpeedRatio
     {
-        get => lookAtFactorFromUpSpeedRatioRef.Resolve();
-        set => lookAtFactorFromUpSpeedRatioRef.SetEmbedded(value);
+        get => lookAtFactorFromUpSpeedRatioRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref lookAtFactorFromUpSpeedRatioRef, value);
     }
 
-    private NodeRef<CFuncKeysReal> flyingLookDownFactorFromSpeedRatioRef = new();
+    private NodeRef<CFuncKeysReal>? flyingLookDownFactorFromSpeedRatioRef;
     [AppliedWithChunk<Chunk24087000>]
     public CFuncKeysReal? FlyingLookDownFactorFromSpeedRatio
     {
-        get => flyingLookDownFactorFromSpeedRatioRef.Resolve();
-        set => flyingLookDownFactorFromSpeedRatioRef.SetEmbedded(value);
+        get => flyingLookDownFactorFromSpeedRatioRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref flyingLookDownFactorFromSpeedRatioRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -577,16 +577,16 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
     {
         private readonly CGameControlCameraTrackManiaRace3 owner;
         internal NodeRefView(CGameControlCameraTrackManiaRace3 owner) => this.owner = owner;
-        public NodeRef<CFuncKeysReal> SlerpSpeedModulationFromSpeed => owner.slerpSpeedModulationFromSpeedRef;
-        public NodeRef<CFuncKeysReal> LookAtFactorFromUpSpeedRatio => owner.lookAtFactorFromUpSpeedRatioRef;
-        public NodeRef<CFuncKeysReal> FlyingLookDownFactorFromSpeedRatio => owner.flyingLookDownFactorFromSpeedRatioRef;
+        public NodeRef<CFuncKeysReal> SlerpSpeedModulationFromSpeed => NodeRef.GetOrCreate(ref owner.slerpSpeedModulationFromSpeedRef);
+        public NodeRef<CFuncKeysReal> LookAtFactorFromUpSpeedRatio => NodeRef.GetOrCreate(ref owner.lookAtFactorFromUpSpeedRatioRef);
+        public NodeRef<CFuncKeysReal> FlyingLookDownFactorFromSpeedRatio => NodeRef.GetOrCreate(ref owner.flyingLookDownFactorFromSpeedRatioRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("SlerpSpeedModulationFromSpeed", slerpSpeedModulationFromSpeedRef);
-        yield return new("LookAtFactorFromUpSpeedRatio", lookAtFactorFromUpSpeedRatioRef);
-        yield return new("FlyingLookDownFactorFromSpeedRatio", flyingLookDownFactorFromSpeedRatioRef);
+        yield return new("SlerpSpeedModulationFromSpeed", NodeRef.GetOrCreate(ref slerpSpeedModulationFromSpeedRef));
+        yield return new("LookAtFactorFromUpSpeedRatio", NodeRef.GetOrCreate(ref lookAtFactorFromUpSpeedRatioRef));
+        yield return new("FlyingLookDownFactorFromSpeedRatio", NodeRef.GetOrCreate(ref flyingLookDownFactorFromSpeedRatioRef));
         yield break;
     }
 
@@ -747,9 +747,9 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
             rw.Single(ref n.eventBurningRadiusDelta);
             rw.Int32(ref n.eventBurningRadiusTimeUp);
             rw.Int32(ref n.eventBurningRadiusTimeDown);
-            rw.NodeRef(n.slerpSpeedModulationFromSpeedRef);
-            rw.NodeRef(n.lookAtFactorFromUpSpeedRatioRef);
-            rw.NodeRef(n.flyingLookDownFactorFromSpeedRatioRef);
+            rw.NodeRef(ref n.slerpSpeedModulationFromSpeedRef);
+            rw.NodeRef(ref n.lookAtFactorFromUpSpeedRatioRef);
+            rw.NodeRef(ref n.flyingLookDownFactorFromSpeedRatioRef);
         }
     }
 

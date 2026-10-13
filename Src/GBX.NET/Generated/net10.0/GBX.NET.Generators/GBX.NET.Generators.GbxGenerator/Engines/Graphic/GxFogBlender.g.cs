@@ -107,11 +107,11 @@ public partial class GxFogBlender : CMwNod, IClass
             set => this.time = value;
         }
 
-        private NodeRef<GxFog> fogRef = new();
+        private NodeRef<GxFog>? fogRef;
         public GxFog? Fog
         {
-            get => fogRef.Resolve();
-            set => fogRef.SetEmbedded(value);
+            get => fogRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref fogRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -119,11 +119,11 @@ public partial class GxFogBlender : CMwNod, IClass
         {
             private readonly Key owner;
             internal NodeRefView(Key owner) => this.owner = owner;
-            public NodeRef<GxFog> Fog => owner.fogRef;
+            public NodeRef<GxFog> Fog => NodeRef.GetOrCreate(ref owner.fogRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Fog", fogRef);
+            yield return new("Fog", NodeRef.GetOrCreate(ref fogRef));
             yield break;
         }
 
@@ -144,7 +144,7 @@ public partial class GxFogBlender : CMwNod, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.TimeSingle(ref this.time);
-            rw.NodeRef(this.fogRef);
+            rw.NodeRef(ref this.fogRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

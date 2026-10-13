@@ -36,101 +36,101 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CControlEffect> focusEffectRef = new();
+    private NodeRef<CControlEffect>? focusEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusEffect
     {
-        get => focusEffectRef.Resolve();
-        set => focusEffectRef.SetEmbedded(value);
+        get => focusEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> focusGainedEffectRef = new();
+    private NodeRef<CControlEffect>? focusGainedEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedEffect
     {
-        get => focusGainedEffectRef.Resolve();
-        set => focusGainedEffectRef.SetEmbedded(value);
+        get => focusGainedEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusGainedEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> focusLostEffectRef = new();
+    private NodeRef<CControlEffect>? focusLostEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostEffect
     {
-        get => focusLostEffectRef.Resolve();
-        set => focusLostEffectRef.SetEmbedded(value);
+        get => focusLostEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusLostEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> focusGainedByAnotherEffectRef = new();
+    private NodeRef<CControlEffect>? focusGainedByAnotherEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedByAnotherEffect
     {
-        get => focusGainedByAnotherEffectRef.Resolve();
-        set => focusGainedByAnotherEffectRef.SetEmbedded(value);
+        get => focusGainedByAnotherEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusGainedByAnotherEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> focusLostByAnotherEffectRef = new();
+    private NodeRef<CControlEffect>? focusLostByAnotherEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostByAnotherEffect
     {
-        get => focusLostByAnotherEffectRef.Resolve();
-        set => focusLostByAnotherEffectRef.SetEmbedded(value);
+        get => focusLostByAnotherEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref focusLostByAnotherEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> sleepingEffectRef = new();
+    private NodeRef<CControlEffect>? sleepingEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? SleepingEffect
     {
-        get => sleepingEffectRef.Resolve();
-        set => sleepingEffectRef.SetEmbedded(value);
+        get => sleepingEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sleepingEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> showingEffectRef = new();
+    private NodeRef<CControlEffect>? showingEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ShowingEffect
     {
-        get => showingEffectRef.Resolve();
-        set => showingEffectRef.SetEmbedded(value);
+        get => showingEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref showingEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> hidingEffectRef = new();
+    private NodeRef<CControlEffect>? hidingEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? HidingEffect
     {
-        get => hidingEffectRef.Resolve();
-        set => hidingEffectRef.SetEmbedded(value);
+        get => hidingEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hidingEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> actionEffectRef = new();
+    private NodeRef<CControlEffect>? actionEffectRef;
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ActionEffect
     {
-        get => actionEffectRef.Resolve();
-        set => actionEffectRef.SetEmbedded(value);
+        get => actionEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref actionEffectRef, value);
     }
 
-    private NodeRef<CControlEffect> managedEffectRef = new();
+    private NodeRef<CControlEffect>? managedEffectRef;
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ManagedEffect
     {
-        get => managedEffectRef.Resolve();
-        set => managedEffectRef.SetEmbedded(value);
+        get => managedEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref managedEffectRef, value);
     }
 
-    private NodeRef<CMwRefBuffer> specialEffectRef = new();
+    private NodeRef<CMwRefBuffer>? specialEffectRef;
     [AppliedWithChunk<Chunk0701C003>]
     public CMwRefBuffer? SpecialEffect
     {
-        get => specialEffectRef.Resolve();
-        set => specialEffectRef.SetEmbedded(value);
+        get => specialEffectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref specialEffectRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -138,32 +138,32 @@ public partial class CControlEffectMaster : CMwNod, IClass
     {
         private readonly CControlEffectMaster owner;
         internal NodeRefView(CControlEffectMaster owner) => this.owner = owner;
-        public NodeRef<CControlEffect> FocusEffect => owner.focusEffectRef;
-        public NodeRef<CControlEffect> FocusGainedEffect => owner.focusGainedEffectRef;
-        public NodeRef<CControlEffect> FocusLostEffect => owner.focusLostEffectRef;
-        public NodeRef<CControlEffect> FocusGainedByAnotherEffect => owner.focusGainedByAnotherEffectRef;
-        public NodeRef<CControlEffect> FocusLostByAnotherEffect => owner.focusLostByAnotherEffectRef;
-        public NodeRef<CControlEffect> SleepingEffect => owner.sleepingEffectRef;
-        public NodeRef<CControlEffect> ShowingEffect => owner.showingEffectRef;
-        public NodeRef<CControlEffect> HidingEffect => owner.hidingEffectRef;
-        public NodeRef<CControlEffect> ActionEffect => owner.actionEffectRef;
-        public NodeRef<CControlEffect> ManagedEffect => owner.managedEffectRef;
-        public NodeRef<CMwRefBuffer> SpecialEffect => owner.specialEffectRef;
+        public NodeRef<CControlEffect> FocusEffect => NodeRef.GetOrCreate(ref owner.focusEffectRef);
+        public NodeRef<CControlEffect> FocusGainedEffect => NodeRef.GetOrCreate(ref owner.focusGainedEffectRef);
+        public NodeRef<CControlEffect> FocusLostEffect => NodeRef.GetOrCreate(ref owner.focusLostEffectRef);
+        public NodeRef<CControlEffect> FocusGainedByAnotherEffect => NodeRef.GetOrCreate(ref owner.focusGainedByAnotherEffectRef);
+        public NodeRef<CControlEffect> FocusLostByAnotherEffect => NodeRef.GetOrCreate(ref owner.focusLostByAnotherEffectRef);
+        public NodeRef<CControlEffect> SleepingEffect => NodeRef.GetOrCreate(ref owner.sleepingEffectRef);
+        public NodeRef<CControlEffect> ShowingEffect => NodeRef.GetOrCreate(ref owner.showingEffectRef);
+        public NodeRef<CControlEffect> HidingEffect => NodeRef.GetOrCreate(ref owner.hidingEffectRef);
+        public NodeRef<CControlEffect> ActionEffect => NodeRef.GetOrCreate(ref owner.actionEffectRef);
+        public NodeRef<CControlEffect> ManagedEffect => NodeRef.GetOrCreate(ref owner.managedEffectRef);
+        public NodeRef<CMwRefBuffer> SpecialEffect => NodeRef.GetOrCreate(ref owner.specialEffectRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("FocusEffect", focusEffectRef);
-        yield return new("FocusGainedEffect", focusGainedEffectRef);
-        yield return new("FocusLostEffect", focusLostEffectRef);
-        yield return new("FocusGainedByAnotherEffect", focusGainedByAnotherEffectRef);
-        yield return new("FocusLostByAnotherEffect", focusLostByAnotherEffectRef);
-        yield return new("SleepingEffect", sleepingEffectRef);
-        yield return new("ShowingEffect", showingEffectRef);
-        yield return new("HidingEffect", hidingEffectRef);
-        yield return new("ActionEffect", actionEffectRef);
-        yield return new("ManagedEffect", managedEffectRef);
-        yield return new("SpecialEffect", specialEffectRef);
+        yield return new("FocusEffect", NodeRef.GetOrCreate(ref focusEffectRef));
+        yield return new("FocusGainedEffect", NodeRef.GetOrCreate(ref focusGainedEffectRef));
+        yield return new("FocusLostEffect", NodeRef.GetOrCreate(ref focusLostEffectRef));
+        yield return new("FocusGainedByAnotherEffect", NodeRef.GetOrCreate(ref focusGainedByAnotherEffectRef));
+        yield return new("FocusLostByAnotherEffect", NodeRef.GetOrCreate(ref focusLostByAnotherEffectRef));
+        yield return new("SleepingEffect", NodeRef.GetOrCreate(ref sleepingEffectRef));
+        yield return new("ShowingEffect", NodeRef.GetOrCreate(ref showingEffectRef));
+        yield return new("HidingEffect", NodeRef.GetOrCreate(ref hidingEffectRef));
+        yield return new("ActionEffect", NodeRef.GetOrCreate(ref actionEffectRef));
+        yield return new("ManagedEffect", NodeRef.GetOrCreate(ref managedEffectRef));
+        yield return new("SpecialEffect", NodeRef.GetOrCreate(ref specialEffectRef));
         yield break;
     }
 
@@ -199,15 +199,15 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.focusEffectRef);
-            rw.NodeRef(n.focusGainedEffectRef);
-            rw.NodeRef(n.focusLostEffectRef);
-            rw.NodeRef(n.focusGainedByAnotherEffectRef);
-            rw.NodeRef(n.focusLostByAnotherEffectRef);
-            rw.NodeRef(n.sleepingEffectRef);
-            rw.NodeRef(n.showingEffectRef);
-            rw.NodeRef(n.hidingEffectRef);
-            rw.NodeRef(n.actionEffectRef);
+            rw.NodeRef(ref n.focusEffectRef);
+            rw.NodeRef(ref n.focusGainedEffectRef);
+            rw.NodeRef(ref n.focusLostEffectRef);
+            rw.NodeRef(ref n.focusGainedByAnotherEffectRef);
+            rw.NodeRef(ref n.focusLostByAnotherEffectRef);
+            rw.NodeRef(ref n.sleepingEffectRef);
+            rw.NodeRef(ref n.showingEffectRef);
+            rw.NodeRef(ref n.hidingEffectRef);
+            rw.NodeRef(ref n.actionEffectRef);
         }
     }
 
@@ -246,16 +246,16 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.focusEffectRef);
-            rw.NodeRef(n.focusGainedEffectRef);
-            rw.NodeRef(n.focusLostEffectRef);
-            rw.NodeRef(n.focusGainedByAnotherEffectRef);
-            rw.NodeRef(n.focusLostByAnotherEffectRef);
-            rw.NodeRef(n.sleepingEffectRef);
-            rw.NodeRef(n.showingEffectRef);
-            rw.NodeRef(n.hidingEffectRef);
-            rw.NodeRef(n.actionEffectRef);
-            rw.NodeRef(n.managedEffectRef);
+            rw.NodeRef(ref n.focusEffectRef);
+            rw.NodeRef(ref n.focusGainedEffectRef);
+            rw.NodeRef(ref n.focusLostEffectRef);
+            rw.NodeRef(ref n.focusGainedByAnotherEffectRef);
+            rw.NodeRef(ref n.focusLostByAnotherEffectRef);
+            rw.NodeRef(ref n.sleepingEffectRef);
+            rw.NodeRef(ref n.showingEffectRef);
+            rw.NodeRef(ref n.hidingEffectRef);
+            rw.NodeRef(ref n.actionEffectRef);
+            rw.NodeRef(ref n.managedEffectRef);
         }
     }
 
@@ -273,7 +273,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
 
         public override void ReadWrite(CControlEffectMaster n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.specialEffectRef);
+            rw.NodeRef(ref n.specialEffectRef);
         }
     }
 

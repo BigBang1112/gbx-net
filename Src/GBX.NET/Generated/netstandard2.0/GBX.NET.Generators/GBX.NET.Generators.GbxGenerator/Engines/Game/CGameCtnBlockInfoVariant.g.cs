@@ -146,68 +146,68 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => mobils = value;
     }
 
-    private NodeRef<CPlugSolid> helperSolidFidRef = new();
+    private NodeRef<CPlugSolid>? helperSolidFidRef;
     [AppliedWithChunk<Chunk0315B005>(2)]
     public CPlugSolid? HelperSolidFid
     {
-        get => helperSolidFidRef.Resolve();
-        set => helperSolidFidRef.SetEmbedded(value);
+        get => helperSolidFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref helperSolidFidRef, value);
     }
 
-    private NodeRef<CPlugSolid> facultativeHelperSolidFidRef = new();
+    private NodeRef<CPlugSolid>? facultativeHelperSolidFidRef;
     [AppliedWithChunk<Chunk0315B005>(2)]
     public CPlugSolid? FacultativeHelperSolidFid
     {
-        get => facultativeHelperSolidFidRef.Resolve();
-        set => facultativeHelperSolidFidRef.SetEmbedded(value);
+        get => facultativeHelperSolidFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref facultativeHelperSolidFidRef, value);
     }
 
-    private NodeRef<CMwNod> screenInteractionTriggerSolidRef = new();
+    private NodeRef<CMwNod>? screenInteractionTriggerSolidRef;
     [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? ScreenInteractionTriggerSolid
     {
-        get => screenInteractionTriggerSolidRef.Resolve();
-        set => screenInteractionTriggerSolidRef.SetEmbedded(value);
+        get => screenInteractionTriggerSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref screenInteractionTriggerSolidRef, value);
     }
 
-    private NodeRef<CMwNod> waypointTriggerSolidRef = new();
+    private NodeRef<CMwNod>? waypointTriggerSolidRef;
     [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? WaypointTriggerSolid
     {
-        get => waypointTriggerSolidRef.Resolve();
-        set => waypointTriggerSolidRef.SetEmbedded(value);
+        get => waypointTriggerSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waypointTriggerSolidRef, value);
     }
 
-    private NodeRef<CGameGateModel> gateRef = new();
+    private NodeRef<CGameGateModel>? gateRef;
     [AppliedWithChunk<Chunk0315B006>(2)]
     public CGameGateModel? Gate
     {
-        get => gateRef.Resolve();
-        set => gateRef.SetEmbedded(value);
+        get => gateRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref gateRef, value);
     }
 
-    private NodeRef<CGameTeleporterModel> teleporterRef = new();
+    private NodeRef<CGameTeleporterModel>? teleporterRef;
     [AppliedWithChunk<Chunk0315B006>(3)]
     public CGameTeleporterModel? Teleporter
     {
-        get => teleporterRef.Resolve();
-        set => teleporterRef.SetEmbedded(value);
+        get => teleporterRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref teleporterRef, value);
     }
 
-    private NodeRef<CGameTurbineModel> turbineRef = new();
+    private NodeRef<CGameTurbineModel>? turbineRef;
     [AppliedWithChunk<Chunk0315B006>(6)]
     public CGameTurbineModel? Turbine
     {
-        get => turbineRef.Resolve();
-        set => turbineRef.SetEmbedded(value);
+        get => turbineRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref turbineRef, value);
     }
 
-    private NodeRef<CPlugFlockModel> flockModelRef = new();
+    private NodeRef<CPlugFlockModel>? flockModelRef;
     [AppliedWithChunk<Chunk0315B006>(7)]
     public CPlugFlockModel? FlockModel
     {
-        get => flockModelRef.Resolve();
-        set => flockModelRef.SetEmbedded(value);
+        get => flockModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref flockModelRef, value);
     }
 
     private FlockEmitterState? flockEmmiter;
@@ -218,12 +218,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.flockEmmiter = value;
     }
 
-    private NodeRef<CGameSpawnModel> spawnModelRef = new();
+    private NodeRef<CGameSpawnModel>? spawnModelRef;
     [AppliedWithChunk<Chunk0315B006>(8)]
     public CGameSpawnModel? SpawnModel
     {
-        get => spawnModelRef.Resolve();
-        set => spawnModelRef.SetEmbedded(value);
+        get => spawnModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref spawnModelRef, value);
     }
 
     private NodeRefList<CPlugEntitySpawner>? entitySpawners;
@@ -234,12 +234,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => entitySpawners = value;
     }
 
-    private NodeRef<CPlugProbe> probeRef = new();
+    private NodeRef<CPlugProbe>? probeRef;
     [AppliedWithChunk<Chunk0315B007>]
     public CPlugProbe? Probe
     {
-        get => probeRef.Resolve();
-        set => probeRef.SetEmbedded(value);
+        get => probeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref probeRef, value);
     }
 
     private Vec3 spawnTrans;
@@ -266,12 +266,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.spawnPitch = value;
     }
 
-    private NodeRef<CGameObjectPhyCompoundModel> compoundModelRef = new();
+    private NodeRef<CGameObjectPhyCompoundModel>? compoundModelRef;
     [AppliedWithChunk<Chunk0315B00A>(2)]
     public CGameObjectPhyCompoundModel? CompoundModel
     {
-        get => compoundModelRef.Resolve();
-        set => compoundModelRef.SetEmbedded(value);
+        get => compoundModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref compoundModelRef, value);
     }
 
     private Iso4 compoundLoc;
@@ -297,18 +297,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         internal NodeRefView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
         public BlockUnitModelsReferenceView BlockUnitModels => new(owner);
         public MobilsReferenceView Mobils => new(owner);
-        public NodeRef<CPlugSolid> HelperSolidFid => owner.helperSolidFidRef;
-        public NodeRef<CPlugSolid> FacultativeHelperSolidFid => owner.facultativeHelperSolidFidRef;
-        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => owner.screenInteractionTriggerSolidRef;
-        public NodeRef<CMwNod> WaypointTriggerSolid => owner.waypointTriggerSolidRef;
-        public NodeRef<CGameGateModel> Gate => owner.gateRef;
-        public NodeRef<CGameTeleporterModel> Teleporter => owner.teleporterRef;
-        public NodeRef<CGameTurbineModel> Turbine => owner.turbineRef;
-        public NodeRef<CPlugFlockModel> FlockModel => owner.flockModelRef;
-        public NodeRef<CGameSpawnModel> SpawnModel => owner.spawnModelRef;
+        public NodeRef<CPlugSolid> HelperSolidFid => NodeRef.GetOrCreate(ref owner.helperSolidFidRef);
+        public NodeRef<CPlugSolid> FacultativeHelperSolidFid => NodeRef.GetOrCreate(ref owner.facultativeHelperSolidFidRef);
+        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerSolidRef);
+        public NodeRef<CMwNod> WaypointTriggerSolid => NodeRef.GetOrCreate(ref owner.waypointTriggerSolidRef);
+        public NodeRef<CGameGateModel> Gate => NodeRef.GetOrCreate(ref owner.gateRef);
+        public NodeRef<CGameTeleporterModel> Teleporter => NodeRef.GetOrCreate(ref owner.teleporterRef);
+        public NodeRef<CGameTurbineModel> Turbine => NodeRef.GetOrCreate(ref owner.turbineRef);
+        public NodeRef<CPlugFlockModel> FlockModel => NodeRef.GetOrCreate(ref owner.flockModelRef);
+        public NodeRef<CGameSpawnModel> SpawnModel => NodeRef.GetOrCreate(ref owner.spawnModelRef);
         public EntitySpawnersReferenceView EntitySpawners => new(owner);
-        public NodeRef<CPlugProbe> Probe => owner.probeRef;
-        public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => owner.compoundModelRef;
+        public NodeRef<CPlugProbe> Probe => NodeRef.GetOrCreate(ref owner.probeRef);
+        public NodeRef<CGameObjectPhyCompoundModel> CompoundModel => NodeRef.GetOrCreate(ref owner.compoundModelRef);
     }
     public readonly struct BlockUnitModelsReferenceView
     {
@@ -346,21 +346,21 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
                 for (var j = 0; j < mobils[i].Count; j++) yield return new("Mobils" + "[" + i + "][" + j + "]", mobils[i].GetReference(j));
             }
         }
-        yield return new("HelperSolidFid", helperSolidFidRef);
-        yield return new("FacultativeHelperSolidFid", facultativeHelperSolidFidRef);
-        yield return new("ScreenInteractionTriggerSolid", screenInteractionTriggerSolidRef);
-        yield return new("WaypointTriggerSolid", waypointTriggerSolidRef);
-        yield return new("Gate", gateRef);
-        yield return new("Teleporter", teleporterRef);
-        yield return new("Turbine", turbineRef);
-        yield return new("FlockModel", flockModelRef);
-        yield return new("SpawnModel", spawnModelRef);
+        yield return new("HelperSolidFid", NodeRef.GetOrCreate(ref helperSolidFidRef));
+        yield return new("FacultativeHelperSolidFid", NodeRef.GetOrCreate(ref facultativeHelperSolidFidRef));
+        yield return new("ScreenInteractionTriggerSolid", NodeRef.GetOrCreate(ref screenInteractionTriggerSolidRef));
+        yield return new("WaypointTriggerSolid", NodeRef.GetOrCreate(ref waypointTriggerSolidRef));
+        yield return new("Gate", NodeRef.GetOrCreate(ref gateRef));
+        yield return new("Teleporter", NodeRef.GetOrCreate(ref teleporterRef));
+        yield return new("Turbine", NodeRef.GetOrCreate(ref turbineRef));
+        yield return new("FlockModel", NodeRef.GetOrCreate(ref flockModelRef));
+        yield return new("SpawnModel", NodeRef.GetOrCreate(ref spawnModelRef));
         if (entitySpawners is not null)
         {
             for (var i = 0; i < entitySpawners.Count; i++) yield return new("EntitySpawners" + "[" + i + "]", entitySpawners.GetReference(i));
         }
-        yield return new("Probe", probeRef);
-        yield return new("CompoundModel", compoundModelRef);
+        yield return new("Probe", NodeRef.GetOrCreate(ref probeRef));
+        yield return new("CompoundModel", NodeRef.GetOrCreate(ref compoundModelRef));
         yield break;
     }
 
@@ -526,18 +526,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CSceneMobil> U01Ref = new();
+        private NodeRef<CSceneMobil>? U01Ref;
         public CSceneMobil? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CSceneMobil> U02Ref = new();
+        private NodeRef<CSceneMobil>? U02Ref;
         public CSceneMobil? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
         public int U03;
 
@@ -546,14 +546,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly Chunk0315B005 owner;
             internal NodeRefView(Chunk0315B005 owner) => this.owner = owner;
-            public NodeRef<CSceneMobil> U01 => owner.U01Ref;
-            public NodeRef<CSceneMobil> U02 => owner.U02Ref;
+            public NodeRef<CSceneMobil> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CSceneMobil> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -589,14 +589,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version <= 1)
             {
-                rw.NodeRef(U01Ref);
-                rw.NodeRef(U02Ref);
+                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.helperSolidFidRef);
-                rw.NodeRef(n.facultativeHelperSolidFidRef);
+                rw.NodeRef(ref n.helperSolidFidRef);
+                rw.NodeRef(ref n.facultativeHelperSolidFidRef);
 
                 if (Version >= 3)
                 {
@@ -614,39 +614,39 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         /// <summary>
         /// WaypointTriggerShape?
         /// </summary>
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CMwNod> U03Ref = new();
+        private NodeRef<CMwNod>? U03Ref;
         /// <summary>
         /// ScreenInteractionTriggerShape?
         /// </summary>
         public CMwNod? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
         public int U04;
 
-        private NodeRef<CGameCaptureZoneModel> U05Ref = new();
+        private NodeRef<CGameCaptureZoneModel>? U05Ref;
         public CGameCaptureZoneModel? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -654,18 +654,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly Chunk0315B006 owner;
             internal NodeRefView(Chunk0315B006 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
-            public NodeRef<CMwNod> U03 => owner.U03Ref;
-            public NodeRef<CGameCaptureZoneModel> U05 => owner.U05Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CGameCaptureZoneModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U05", U05Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield break;
         }
 
@@ -706,16 +706,16 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version <= 8)
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             }
 
-            rw.NodeRef(n.screenInteractionTriggerSolidRef);
-            rw.NodeRef(n.waypointTriggerSolidRef);
+            rw.NodeRef(ref n.screenInteractionTriggerSolidRef);
+            rw.NodeRef(ref n.waypointTriggerSolidRef);
 
             if (Version >= 11)
             {
-                rw.NodeRef(U02Ref);
-                rw.NodeRef(U03Ref);
+                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref U03Ref);
             }
 
             if (Version <= 8)
@@ -725,32 +725,32 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.gateRef);
+                rw.NodeRef(ref n.gateRef);
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef(n.teleporterRef);
+                    rw.NodeRef(ref n.teleporterRef);
 
                     if (Version >= 5)
                     {
-                        rw.NodeRef(U05Ref);
+                        rw.NodeRef(ref U05Ref);
 
                         if (Version >= 6)
                         {
-                            rw.NodeRef(n.turbineRef);
+                            rw.NodeRef(ref n.turbineRef);
 
                             if (Version >= 7)
                             {
-                                rw.NodeRef(n.flockModelRef);
+                                rw.NodeRef(ref n.flockModelRef);
 
-                                if (n.flockModelRef.Kind != NodeRefKind.None)
+                                if ((n.flockModelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
                                 {
                                     rw.ReadableWritable<FlockEmitterState>(ref n.flockEmmiter, version: Version);
                                 }
 
                                 if (Version >= 8)
                                 {
-                                    rw.NodeRef(n.spawnModelRef);
+                                    rw.NodeRef(ref n.spawnModelRef);
 
                                     if (Version >= 10)
                                     {
@@ -794,7 +794,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.probeRef);
+            rw.NodeRef(ref n.probeRef);
         }
     }
 
@@ -908,18 +908,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
         public Iso4? U03;
 
@@ -928,14 +928,14 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly Chunk0315B00A owner;
             internal NodeRefView(Chunk0315B00A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -966,8 +966,8 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version <= 1)
             {
-                rw.NodeRef(U01Ref);
-                rw.NodeRef(U02Ref);
+                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
 
                 if (Version >= 1)
                 {
@@ -977,7 +977,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.compoundModelRef);
+                rw.NodeRef(ref n.compoundModelRef);
 
                 if (Version <= 2)
                 {
@@ -1085,11 +1085,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
     public partial class PlacedPillarParam : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> u01Ref = new();
+        private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
-            get => u01Ref.Resolve();
-            set => u01Ref.SetEmbedded(value);
+            get => u01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
         private int u02;
@@ -1125,11 +1125,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly PlacedPillarParam owner;
             internal NodeRefView(PlacedPillarParam owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.u01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", u01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
             yield break;
         }
 
@@ -1152,7 +1152,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.u01Ref);
+            rw.NodeRef(ref this.u01Ref);
             rw.Int32(ref this.u02);
             rw.Int32(ref this.u03);
             rw.Int32(ref this.u04);

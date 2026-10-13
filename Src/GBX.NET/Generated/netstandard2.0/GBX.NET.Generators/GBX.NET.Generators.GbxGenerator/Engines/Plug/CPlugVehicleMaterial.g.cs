@@ -55,12 +55,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         set => this.trailIsOnlyWhenSliding = value;
     }
 
-    private NodeRef<CPlugShader> trailShaderRef = new();
+    private NodeRef<CPlugShader>? trailShaderRef;
     [AppliedWithChunk<Chunk090F1001>]
     public CPlugShader? TrailShader
     {
-        get => trailShaderRef.Resolve();
-        set => trailShaderRef.SetEmbedded(value);
+        get => trailShaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trailShaderRef, value);
     }
 
     private float vibrationSpeedCoef;
@@ -83,12 +83,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         set => this.vibrationMax = value;
     }
 
-    private NodeRef<CPlugBitmap> materialHeightDetailBitmapRef = new();
+    private NodeRef<CPlugBitmap>? materialHeightDetailBitmapRef;
     [AppliedWithChunk<Chunk090F1004>]
     public CPlugBitmap? MaterialHeightDetailBitmap
     {
-        get => materialHeightDetailBitmapRef.Resolve();
-        set => materialHeightDetailBitmapRef.SetEmbedded(value);
+        get => materialHeightDetailBitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialHeightDetailBitmapRef, value);
     }
 
     private Vec2 materialHeightDetailScale;
@@ -131,12 +131,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         set => this.brakeCoef = value;
     }
 
-    private NodeRef<CPlugFlockModel> trailManagerModelRef = new();
+    private NodeRef<CPlugFlockModel>? trailManagerModelRef;
     [AppliedWithChunk<Chunk090F1006>]
     public CPlugFlockModel? TrailManagerModel
     {
-        get => trailManagerModelRef.Resolve();
-        set => trailManagerModelRef.SetEmbedded(value);
+        get => trailManagerModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trailManagerModelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -144,16 +144,16 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     {
         private readonly CPlugVehicleMaterial owner;
         internal NodeRefView(CPlugVehicleMaterial owner) => this.owner = owner;
-        public NodeRef<CPlugShader> TrailShader => owner.trailShaderRef;
-        public NodeRef<CPlugBitmap> MaterialHeightDetailBitmap => owner.materialHeightDetailBitmapRef;
-        public NodeRef<CPlugFlockModel> TrailManagerModel => owner.trailManagerModelRef;
+        public NodeRef<CPlugShader> TrailShader => NodeRef.GetOrCreate(ref owner.trailShaderRef);
+        public NodeRef<CPlugBitmap> MaterialHeightDetailBitmap => NodeRef.GetOrCreate(ref owner.materialHeightDetailBitmapRef);
+        public NodeRef<CPlugFlockModel> TrailManagerModel => NodeRef.GetOrCreate(ref owner.trailManagerModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("TrailShader", trailShaderRef);
-        yield return new("MaterialHeightDetailBitmap", materialHeightDetailBitmapRef);
-        yield return new("TrailManagerModel", trailManagerModelRef);
+        yield return new("TrailShader", NodeRef.GetOrCreate(ref trailShaderRef));
+        yield return new("MaterialHeightDetailBitmap", NodeRef.GetOrCreate(ref materialHeightDetailBitmapRef));
+        yield return new("TrailManagerModel", NodeRef.GetOrCreate(ref trailManagerModelRef));
         yield break;
     }
 
@@ -194,7 +194,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             rw.Byte(ref n.materialId);
             rw.Boolean(ref n.trailIsOnlyWhenSliding);
-            rw.NodeRef(n.trailShaderRef);
+            rw.NodeRef(ref n.trailShaderRef);
             rw.Single(ref n.vibrationSpeedCoef);
             rw.Single(ref n.vibrationMax);
         }
@@ -214,7 +214,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.materialHeightDetailBitmapRef);
+            rw.NodeRef(ref n.materialHeightDetailBitmapRef);
             rw.Vec2(ref n.materialHeightDetailScale);
         }
     }
@@ -254,7 +254,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.trailManagerModelRef);
+            rw.NodeRef(ref n.trailManagerModelRef);
         }
     }
 
@@ -265,39 +265,39 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F1009;
         public override GameVersion GameVersion => GameVersion.TMSX;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugParticleEmitterModel> U02Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U02Ref;
         public CPlugParticleEmitterModel? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugParticleEmitterModel> U03Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U03Ref;
         public CPlugParticleEmitterModel? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CPlugParticleEmitterModel> U04Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U04Ref;
         public CPlugParticleEmitterModel? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CPlugParticleEmitterModel> U05Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U05Ref;
         public CPlugParticleEmitterModel? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -305,20 +305,20 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             private readonly Chunk090F1009 owner;
             internal NodeRefView(Chunk090F1009 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CPlugParticleEmitterModel> U02 => owner.U02Ref;
-            public NodeRef<CPlugParticleEmitterModel> U03 => owner.U03Ref;
-            public NodeRef<CPlugParticleEmitterModel> U04 => owner.U04Ref;
-            public NodeRef<CPlugParticleEmitterModel> U05 => owner.U05Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugParticleEmitterModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugParticleEmitterModel> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugParticleEmitterModel> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CPlugParticleEmitterModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
-            yield return new("U04", U04Ref);
-            yield return new("U05", U05Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield break;
         }
 
@@ -338,11 +338,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
             rw.Single(ref n.vibrationSpeedCoef);
             rw.Single(ref n.vibrationMax);
             rw.Boolean(ref n.trailIsOnlyWhenSliding);
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
-            rw.NodeRef(U03Ref);
-            rw.NodeRef(U04Ref);
-            rw.NodeRef(U05Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref U04Ref);
+            rw.NodeRef(ref U05Ref);
         }
     }
 
@@ -353,11 +353,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100A;
         public override GameVersion GameVersion => GameVersion.TMSX;
 
-        private NodeRef<CPlugParticleEmitterModel> U01Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
         public CPlugParticleEmitterModel? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -365,12 +365,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             private readonly Chunk090F100A owner;
             internal NodeRefView(Chunk090F100A owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> U01 => owner.U01Ref;
+            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -382,7 +382,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -393,11 +393,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100B;
         public override GameVersion GameVersion => GameVersion.TMSX;
 
-        private NodeRef<CPlugParticleEmitterModel> U01Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
         public CPlugParticleEmitterModel? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -405,12 +405,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             private readonly Chunk090F100B owner;
             internal NodeRefView(Chunk090F100B owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> U01 => owner.U01Ref;
+            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -422,7 +422,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -433,11 +433,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100C;
         public override GameVersion GameVersion => GameVersion.TMSX;
 
-        private NodeRef<CPlugParticleEmitterModel> U01Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
         public CPlugParticleEmitterModel? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -445,12 +445,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             private readonly Chunk090F100C owner;
             internal NodeRefView(Chunk090F100C owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> U01 => owner.U01Ref;
+            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -462,7 +462,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -473,11 +473,11 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         public override uint Id => 0x090F100D;
         public override GameVersion GameVersion => GameVersion.TMSX;
 
-        private NodeRef<CPlugParticleEmitterModel> U01Ref = new();
+        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
         public CPlugParticleEmitterModel? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -485,12 +485,12 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         {
             private readonly Chunk090F100D owner;
             internal NodeRefView(Chunk090F100D owner) => this.owner = owner;
-            public NodeRef<CPlugParticleEmitterModel> U01 => owner.U01Ref;
+            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -502,7 +502,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
 
         public override void ReadWrite(CPlugVehicleMaterial n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 

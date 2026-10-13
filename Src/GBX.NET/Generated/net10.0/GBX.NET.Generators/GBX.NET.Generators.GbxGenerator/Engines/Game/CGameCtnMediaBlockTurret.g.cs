@@ -36,12 +36,12 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugDataTape> dataTapeRef = new();
+    private NodeRef<CPlugDataTape>? dataTapeRef;
     [AppliedWithChunk<Chunk03294000>]
     public CPlugDataTape? DataTape
     {
-        get => dataTapeRef.Resolve();
-        set => dataTapeRef.SetEmbedded(value);
+        get => dataTapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dataTapeRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
     {
         private readonly CGameCtnMediaBlockTurret owner;
         internal NodeRefView(CGameCtnMediaBlockTurret owner) => this.owner = owner;
-        public NodeRef<CPlugDataTape> DataTape => owner.dataTapeRef;
+        public NodeRef<CPlugDataTape> DataTape => NodeRef.GetOrCreate(ref owner.dataTapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("DataTape", dataTapeRef);
+        yield return new("DataTape", NodeRef.GetOrCreate(ref dataTapeRef));
         yield break;
     }
 
@@ -85,7 +85,7 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
         public override void ReadWrite(CGameCtnMediaBlockTurret n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.dataTapeRef);
+            rw.NodeRef(ref n.dataTapeRef);
         }
     }
 

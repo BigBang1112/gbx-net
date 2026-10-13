@@ -117,12 +117,12 @@ public partial class CGameUserProfile : CMwNod, IClass
         set => inputBindingsConfigs = value;
     }
 
-    private NodeRef<CInputBindingsConfig> inputBindingsConfigRef = new();
+    private NodeRef<CInputBindingsConfig>? inputBindingsConfigRef;
     [AppliedWithChunk<Chunk031CC007>(1, 1)]
     public CInputBindingsConfig? InputBindingsConfig
     {
-        get => inputBindingsConfigRef.Resolve();
-        set => inputBindingsConfigRef.SetEmbedded(value);
+        get => inputBindingsConfigRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref inputBindingsConfigRef, value);
     }
 
     private float rumbleIntensity = 1;
@@ -307,7 +307,7 @@ public partial class CGameUserProfile : CMwNod, IClass
         private readonly CGameUserProfile owner;
         internal NodeRefView(CGameUserProfile owner) => this.owner = owner;
         public InputBindingsConfigsReferenceView InputBindingsConfigs => new(owner);
-        public NodeRef<CInputBindingsConfig> InputBindingsConfig => owner.inputBindingsConfigRef;
+        public NodeRef<CInputBindingsConfig> InputBindingsConfig => NodeRef.GetOrCreate(ref owner.inputBindingsConfigRef);
     }
     public readonly struct InputBindingsConfigsReferenceView
     {
@@ -323,7 +323,7 @@ public partial class CGameUserProfile : CMwNod, IClass
         {
             for (var i = 0; i < inputBindingsConfigs.Count; i++) yield return new("InputBindingsConfigs" + "[" + i + "]", inputBindingsConfigs.GetReference(i));
         }
-        yield return new("InputBindingsConfig", inputBindingsConfigRef);
+        yield return new("InputBindingsConfig", NodeRef.GetOrCreate(ref inputBindingsConfigRef));
         yield break;
     }
 
@@ -768,7 +768,7 @@ public partial class CGameUserProfile : CMwNod, IClass
 
             if (Version == 1)
             {
-                rw.NodeRef(n.inputBindingsConfigRef);
+                rw.NodeRef(ref n.inputBindingsConfigRef);
             }
 
             if (Version >= 2)

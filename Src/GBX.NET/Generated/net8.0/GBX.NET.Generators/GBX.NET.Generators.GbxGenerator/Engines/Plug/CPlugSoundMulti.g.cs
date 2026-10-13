@@ -36,12 +36,12 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CMwNod> additionalSoundsRef = new();
+    private NodeRef<CMwNod>? additionalSoundsRef;
     [AppliedWithChunk<Chunk09064000>]
     public CMwNod? AdditionalSounds
     {
-        get => additionalSoundsRef.Resolve();
-        set => additionalSoundsRef.SetEmbedded(value);
+        get => additionalSoundsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref additionalSoundsRef, value);
     }
 
     private ESoundInputMapping inputMapping;
@@ -110,12 +110,12 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         set => this.preferedDistances = value;
     }
 
-    private NodeRef<CFuncKeysReal> volumeFromInputRef = new();
+    private NodeRef<CFuncKeysReal>? volumeFromInputRef;
     [AppliedWithChunk<Chunk09064003>(1)]
     public CFuncKeysReal? VolumeFromInput
     {
-        get => volumeFromInputRef.Resolve();
-        set => volumeFromInputRef.SetEmbedded(value);
+        get => volumeFromInputRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref volumeFromInputRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -123,9 +123,9 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     {
         private readonly CPlugSoundMulti owner;
         internal NodeRefView(CPlugSoundMulti owner) => this.owner = owner;
-        public NodeRef<CMwNod> AdditionalSounds => owner.additionalSoundsRef;
+        public NodeRef<CMwNod> AdditionalSounds => NodeRef.GetOrCreate(ref owner.additionalSoundsRef);
         public AdditionalSounds2ReferenceView AdditionalSounds2 => new(owner);
-        public NodeRef<CFuncKeysReal> VolumeFromInput => owner.volumeFromInputRef;
+        public NodeRef<CFuncKeysReal> VolumeFromInput => NodeRef.GetOrCreate(ref owner.volumeFromInputRef);
         public NodeRef<CMwNod> PlugFile => ((CPlugSound)owner).References.PlugFile;
         public NodeRef<CFuncKeysReal> VolumeFromDistance => ((CPlugSound)owner).References.VolumeFromDistance;
         public NodeRef<CFuncKeysReal> PitchFromDistance => ((CPlugSound)owner).References.PitchFromDistance;
@@ -144,12 +144,12 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("AdditionalSounds", additionalSoundsRef);
+        yield return new("AdditionalSounds", NodeRef.GetOrCreate(ref additionalSoundsRef));
         if (additionalSounds2 is not null)
         {
             for (var i = 0; i < additionalSounds2.Count; i++) yield return new("AdditionalSounds2" + "[" + i + "]", additionalSounds2.GetReference(i));
         }
-        yield return new("VolumeFromInput", volumeFromInputRef);
+        yield return new("VolumeFromInput", NodeRef.GetOrCreate(ref volumeFromInputRef));
         yield break;
     }
 
@@ -186,7 +186,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
         public override void ReadWrite(CPlugSoundMulti n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.additionalSoundsRef);
+            rw.NodeRef(ref n.additionalSoundsRef);
             rw.EnumInt32<ESoundInputMapping>(ref n.inputMapping);
         }
     }
@@ -271,7 +271,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.volumeFromInputRef);
+                rw.NodeRef(ref n.volumeFromInputRef);
 
                 if (Version >= 2)
                 {

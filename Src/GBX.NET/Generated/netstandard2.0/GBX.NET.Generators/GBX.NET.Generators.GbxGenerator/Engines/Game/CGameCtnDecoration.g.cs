@@ -36,53 +36,53 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnDecorationSize> decoSizeRef = new();
+    private NodeRef<CGameCtnDecorationSize>? decoSizeRef;
     [AppliedWithChunk<Chunk03038011>]
     public CGameCtnDecorationSize? DecoSize
     {
-        get => decoSizeRef.Resolve();
-        set => decoSizeRef.SetEmbedded(value);
+        get => decoSizeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoSizeRef, value);
     }
 
-    private NodeRef<CGameCtnDecorationAudio> decoAudioRef = new();
+    private NodeRef<CGameCtnDecorationAudio>? decoAudioRef;
     [AppliedWithChunk<Chunk03038012>]
     [AppliedWithChunk<Chunk03038019>]
     public CGameCtnDecorationAudio? DecoAudio
     {
-        get => decoAudioRef.Resolve();
-        set => decoAudioRef.SetEmbedded(value);
+        get => decoAudioRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoAudioRef, value);
     }
 
-    private NodeRef<CGameCtnDecorationMood> decoMoodRef = new();
+    private NodeRef<CGameCtnDecorationMood>? decoMoodRef;
     [AppliedWithChunk<Chunk03038013>]
     public CGameCtnDecorationMood? DecoMood
     {
-        get => decoMoodRef.Resolve();
-        set => decoMoodRef.SetEmbedded(value);
+        get => decoMoodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoMoodRef, value);
     }
 
-    private NodeRef<CPlugDecoratorSolid> decoratorSolidWarpRef = new();
+    private NodeRef<CPlugDecoratorSolid>? decoratorSolidWarpRef;
     [AppliedWithChunk<Chunk03038014>]
     public CPlugDecoratorSolid? DecoratorSolidWarp
     {
-        get => decoratorSolidWarpRef.Resolve();
-        set => decoratorSolidWarpRef.SetEmbedded(value);
+        get => decoratorSolidWarpRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoratorSolidWarpRef, value);
     }
 
-    private NodeRef<CGameCtnDecorationTerrainModifier> terrainModifierCoveredRef = new();
+    private NodeRef<CGameCtnDecorationTerrainModifier>? terrainModifierCoveredRef;
     [AppliedWithChunk<Chunk03038015>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierCovered
     {
-        get => terrainModifierCoveredRef.Resolve();
-        set => terrainModifierCoveredRef.SetEmbedded(value);
+        get => terrainModifierCoveredRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref terrainModifierCoveredRef, value);
     }
 
-    private NodeRef<CGameCtnDecorationTerrainModifier> terrainModifierBaseRef = new();
+    private NodeRef<CGameCtnDecorationTerrainModifier>? terrainModifierBaseRef;
     [AppliedWithChunk<Chunk03038016>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierBase
     {
-        get => terrainModifierBaseRef.Resolve();
-        set => terrainModifierBaseRef.SetEmbedded(value);
+        get => terrainModifierBaseRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref terrainModifierBaseRef, value);
     }
 
     private string? decorationZoneFrontierId;
@@ -101,12 +101,12 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         set => this.isWaterOutsidePlayField = value;
     }
 
-    private NodeRef<CPlugGameSkin> vehicleFxSkinRef = new();
+    private NodeRef<CPlugGameSkin>? vehicleFxSkinRef;
     [AppliedWithChunk<Chunk03038018>]
     public CPlugGameSkin? VehicleFxSkin
     {
-        get => vehicleFxSkinRef.Resolve();
-        set => vehicleFxSkinRef.SetEmbedded(value);
+        get => vehicleFxSkinRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleFxSkinRef, value);
     }
 
     private string? vehicleFxFolder;
@@ -117,39 +117,39 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         set => this.vehicleFxFolder = value;
     }
 
-    private NodeRef<CPlugSound> decoAudioAmbientRef = new();
+    private NodeRef<CPlugSound>? decoAudioAmbientRef;
     [AppliedWithChunk<Chunk03038019>(1)]
     public CPlugSound? DecoAudioAmbient
     {
-        get => decoAudioAmbientRef.Resolve();
-        set => decoAudioAmbientRef.SetEmbedded(value);
+        get => decoAudioAmbientRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoAudioAmbientRef, value);
     }
 
-    private NodeRef<CGameCtnDecorationMaterialModifiers> decoMaterialModifiersRef = new();
+    private NodeRef<CGameCtnDecorationMaterialModifiers>? decoMaterialModifiersRef;
     [AppliedWithChunk<Chunk0303801A>]
     public CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers
     {
-        get => decoMaterialModifiersRef.Resolve();
-        set => decoMaterialModifiersRef.SetEmbedded(value);
+        get => decoMaterialModifiersRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoMaterialModifiersRef, value);
     }
 
-    private NodeRef<CGameCtnChallenge> decoMapRef = new();
+    private NodeRef<CGameCtnChallenge>? decoMapRef;
     [AppliedWithChunk<Chunk0303801B>]
     public CGameCtnChallenge? DecoMap
     {
-        get => decoMapRef.Resolve();
-        set => decoMapRef.SetEmbedded(value);
+        get => decoMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoMapRef, value);
     }
 
-    private NodeRef<CMwNod> decoMapLightMapRef = new();
+    private NodeRef<CMwNod>? decoMapLightMapRef;
     /// <summary>
     /// Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
     /// </summary>
     [AppliedWithChunk<Chunk0303801B>(1)]
     public CMwNod? DecoMapLightMap
     {
-        get => decoMapLightMapRef.Resolve();
-        set => decoMapLightMapRef.SetEmbedded(value);
+        get => decoMapLightMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref decoMapLightMapRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -157,17 +157,17 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     {
         private readonly CGameCtnDecoration owner;
         internal NodeRefView(CGameCtnDecoration owner) => this.owner = owner;
-        public NodeRef<CGameCtnDecorationSize> DecoSize => owner.decoSizeRef;
-        public NodeRef<CGameCtnDecorationAudio> DecoAudio => owner.decoAudioRef;
-        public NodeRef<CGameCtnDecorationMood> DecoMood => owner.decoMoodRef;
-        public NodeRef<CPlugDecoratorSolid> DecoratorSolidWarp => owner.decoratorSolidWarpRef;
-        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierCovered => owner.terrainModifierCoveredRef;
-        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierBase => owner.terrainModifierBaseRef;
-        public NodeRef<CPlugGameSkin> VehicleFxSkin => owner.vehicleFxSkinRef;
-        public NodeRef<CPlugSound> DecoAudioAmbient => owner.decoAudioAmbientRef;
-        public NodeRef<CGameCtnDecorationMaterialModifiers> DecoMaterialModifiers => owner.decoMaterialModifiersRef;
-        public NodeRef<CGameCtnChallenge> DecoMap => owner.decoMapRef;
-        public NodeRef<CMwNod> DecoMapLightMap => owner.decoMapLightMapRef;
+        public NodeRef<CGameCtnDecorationSize> DecoSize => NodeRef.GetOrCreate(ref owner.decoSizeRef);
+        public NodeRef<CGameCtnDecorationAudio> DecoAudio => NodeRef.GetOrCreate(ref owner.decoAudioRef);
+        public NodeRef<CGameCtnDecorationMood> DecoMood => NodeRef.GetOrCreate(ref owner.decoMoodRef);
+        public NodeRef<CPlugDecoratorSolid> DecoratorSolidWarp => NodeRef.GetOrCreate(ref owner.decoratorSolidWarpRef);
+        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierCovered => NodeRef.GetOrCreate(ref owner.terrainModifierCoveredRef);
+        public NodeRef<CGameCtnDecorationTerrainModifier> TerrainModifierBase => NodeRef.GetOrCreate(ref owner.terrainModifierBaseRef);
+        public NodeRef<CPlugGameSkin> VehicleFxSkin => NodeRef.GetOrCreate(ref owner.vehicleFxSkinRef);
+        public NodeRef<CPlugSound> DecoAudioAmbient => NodeRef.GetOrCreate(ref owner.decoAudioAmbientRef);
+        public NodeRef<CGameCtnDecorationMaterialModifiers> DecoMaterialModifiers => NodeRef.GetOrCreate(ref owner.decoMaterialModifiersRef);
+        public NodeRef<CGameCtnChallenge> DecoMap => NodeRef.GetOrCreate(ref owner.decoMapRef);
+        public NodeRef<CMwNod> DecoMapLightMap => NodeRef.GetOrCreate(ref owner.decoMapLightMapRef);
         public NodeRef<CMwNod> IconFid => ((CGameCtnCollector)owner).References.IconFid;
         public NodeRef<CPlugFileZip> DefaultSkin => ((CGameCtnCollector)owner).References.DefaultSkin;
         public NodeRef<CMwNod> ModelKitDb => ((CGameCtnCollector)owner).References.ModelKitDb;
@@ -176,17 +176,17 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("DecoSize", decoSizeRef);
-        yield return new("DecoAudio", decoAudioRef);
-        yield return new("DecoMood", decoMoodRef);
-        yield return new("DecoratorSolidWarp", decoratorSolidWarpRef);
-        yield return new("TerrainModifierCovered", terrainModifierCoveredRef);
-        yield return new("TerrainModifierBase", terrainModifierBaseRef);
-        yield return new("VehicleFxSkin", vehicleFxSkinRef);
-        yield return new("DecoAudioAmbient", decoAudioAmbientRef);
-        yield return new("DecoMaterialModifiers", decoMaterialModifiersRef);
-        yield return new("DecoMap", decoMapRef);
-        yield return new("DecoMapLightMap", decoMapLightMapRef);
+        yield return new("DecoSize", NodeRef.GetOrCreate(ref decoSizeRef));
+        yield return new("DecoAudio", NodeRef.GetOrCreate(ref decoAudioRef));
+        yield return new("DecoMood", NodeRef.GetOrCreate(ref decoMoodRef));
+        yield return new("DecoratorSolidWarp", NodeRef.GetOrCreate(ref decoratorSolidWarpRef));
+        yield return new("TerrainModifierCovered", NodeRef.GetOrCreate(ref terrainModifierCoveredRef));
+        yield return new("TerrainModifierBase", NodeRef.GetOrCreate(ref terrainModifierBaseRef));
+        yield return new("VehicleFxSkin", NodeRef.GetOrCreate(ref vehicleFxSkinRef));
+        yield return new("DecoAudioAmbient", NodeRef.GetOrCreate(ref decoAudioAmbientRef));
+        yield return new("DecoMaterialModifiers", NodeRef.GetOrCreate(ref decoMaterialModifiersRef));
+        yield return new("DecoMap", NodeRef.GetOrCreate(ref decoMapRef));
+        yield return new("DecoMapLightMap", NodeRef.GetOrCreate(ref decoMapLightMapRef));
         yield break;
     }
 
@@ -268,7 +268,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.decoSizeRef);
+            rw.NodeRef(ref n.decoSizeRef);
         }
     }
 
@@ -289,7 +289,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.decoAudioRef);
+            rw.NodeRef(ref n.decoAudioRef);
         }
     }
 
@@ -310,7 +310,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.decoMoodRef);
+            rw.NodeRef(ref n.decoMoodRef);
         }
     }
 
@@ -331,7 +331,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.decoratorSolidWarpRef);
+            rw.NodeRef(ref n.decoratorSolidWarpRef);
         }
     }
 
@@ -352,7 +352,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.terrainModifierCoveredRef);
+            rw.NodeRef(ref n.terrainModifierCoveredRef);
         }
     }
 
@@ -373,7 +373,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.terrainModifierBaseRef);
+            rw.NodeRef(ref n.terrainModifierBaseRef);
         }
     }
 
@@ -420,7 +420,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.vehicleFxSkinRef);
+            rw.NodeRef(ref n.vehicleFxSkinRef);
             rw.String(ref n.vehicleFxFolder);
         }
     }
@@ -442,11 +442,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.decoAudioRef);
+            rw.NodeRef(ref n.decoAudioRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.decoAudioAmbientRef);
+                rw.NodeRef(ref n.decoAudioAmbientRef);
             }
         }
     }
@@ -468,7 +468,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.decoMaterialModifiersRef);
+            rw.NodeRef(ref n.decoMaterialModifiersRef);
         }
     }
 
@@ -489,11 +489,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.decoMapRef);
+            rw.NodeRef(ref n.decoMapRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.decoMapLightMapRef);
+                rw.NodeRef(ref n.decoMapLightMapRef);
             }
         }
     }

@@ -79,13 +79,13 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
         set => this.minDistToUpdate = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapImageSpaceRef = new();
+    private NodeRef<CPlugBitmap>? bitmapImageSpaceRef;
     [AppliedWithChunk<Chunk09088003>]
     [AppliedWithChunk<Chunk09088004>]
     public CPlugBitmap? BitmapImageSpace
     {
-        get => bitmapImageSpaceRef.Resolve();
-        set => bitmapImageSpaceRef.SetEmbedded(value);
+        get => bitmapImageSpaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapImageSpaceRef, value);
     }
 
     private float bitmapImageSpaceDistToCenter;
@@ -110,14 +110,14 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     {
         private readonly CPlugBitmapRenderCubeMap owner;
         internal NodeRefView(CPlugBitmapRenderCubeMap owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> BitmapImageSpace => owner.bitmapImageSpaceRef;
+        public NodeRef<CPlugBitmap> BitmapImageSpace => NodeRef.GetOrCreate(ref owner.bitmapImageSpaceRef);
         public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
         public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BitmapImageSpace", bitmapImageSpaceRef);
+        yield return new("BitmapImageSpace", NodeRef.GetOrCreate(ref bitmapImageSpaceRef));
         yield break;
     }
 
@@ -219,7 +219,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
 
         public override void ReadWrite(CPlugBitmapRenderCubeMap n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.bitmapImageSpaceRef);
+            rw.NodeRef(ref n.bitmapImageSpaceRef);
             rw.Single(ref n.bitmapImageSpaceDistToCenter);
         }
     }

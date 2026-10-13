@@ -52,12 +52,12 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
         set => this.opacity = value;
     }
 
-    private NodeRef<CPlugBitmap> bitmapToModulateRef = new();
+    private NodeRef<CPlugBitmap>? bitmapToModulateRef;
     [AppliedWithChunk<Chunk0909F000>]
     public CPlugBitmap? BitmapToModulate
     {
-        get => bitmapToModulateRef.Resolve();
-        set => bitmapToModulateRef.SetEmbedded(value);
+        get => bitmapToModulateRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapToModulateRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -65,14 +65,14 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     {
         private readonly CPlugBitmapRenderLightOcc owner;
         internal NodeRefView(CPlugBitmapRenderLightOcc owner) => this.owner = owner;
-        public NodeRef<CPlugBitmap> BitmapToModulate => owner.bitmapToModulateRef;
+        public NodeRef<CPlugBitmap> BitmapToModulate => NodeRef.GetOrCreate(ref owner.bitmapToModulateRef);
         public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
         public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BitmapToModulate", bitmapToModulateRef);
+        yield return new("BitmapToModulate", NodeRef.GetOrCreate(ref bitmapToModulateRef));
         yield break;
     }
 
@@ -104,7 +104,7 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
         {
             rw.Single(ref n.fovY);
             rw.Single(ref n.opacity);
-            rw.NodeRef(n.bitmapToModulateRef);
+            rw.NodeRef(ref n.bitmapToModulateRef);
         }
     }
 

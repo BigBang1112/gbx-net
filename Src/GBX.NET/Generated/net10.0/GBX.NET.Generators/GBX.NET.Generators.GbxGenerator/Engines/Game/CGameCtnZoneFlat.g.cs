@@ -36,36 +36,36 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CGameCtnBlockInfoFlat> blockInfoFlatRef = new();
+    private NodeRef<CGameCtnBlockInfoFlat>? blockInfoFlatRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
-        get => blockInfoFlatRef.Resolve();
-        set => blockInfoFlatRef.SetEmbedded(value);
+        get => blockInfoFlatRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoFlatRef, value);
     }
 
-    private NodeRef<CGameCtnBlockInfoClip> blockInfoClipRef = new();
+    private NodeRef<CGameCtnBlockInfoClip>? blockInfoClipRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
-        get => blockInfoClipRef.Resolve();
-        set => blockInfoClipRef.SetEmbedded(value);
+        get => blockInfoClipRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoClipRef, value);
     }
 
-    private NodeRef<CGameCtnBlockInfoRoad> blockInfoRoadRef = new();
+    private NodeRef<CGameCtnBlockInfoRoad>? blockInfoRoadRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
-        get => blockInfoRoadRef.Resolve();
-        set => blockInfoRoadRef.SetEmbedded(value);
+        get => blockInfoRoadRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoRoadRef, value);
     }
 
-    private NodeRef<CGameCtnBlockInfoPylon> blockInfoPylonRef = new();
+    private NodeRef<CGameCtnBlockInfoPylon>? blockInfoPylonRef;
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
-        get => blockInfoPylonRef.Resolve();
-        set => blockInfoPylonRef.SetEmbedded(value);
+        get => blockInfoPylonRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref blockInfoPylonRef, value);
     }
 
     private bool groundOnly;
@@ -89,18 +89,18 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     {
         private readonly CGameCtnZoneFlat owner;
         internal NodeRefView(CGameCtnZoneFlat owner) => this.owner = owner;
-        public NodeRef<CGameCtnBlockInfoFlat> BlockInfoFlat => owner.blockInfoFlatRef;
-        public NodeRef<CGameCtnBlockInfoClip> BlockInfoClip => owner.blockInfoClipRef;
-        public NodeRef<CGameCtnBlockInfoRoad> BlockInfoRoad => owner.blockInfoRoadRef;
-        public NodeRef<CGameCtnBlockInfoPylon> BlockInfoPylon => owner.blockInfoPylonRef;
+        public NodeRef<CGameCtnBlockInfoFlat> BlockInfoFlat => NodeRef.GetOrCreate(ref owner.blockInfoFlatRef);
+        public NodeRef<CGameCtnBlockInfoClip> BlockInfoClip => NodeRef.GetOrCreate(ref owner.blockInfoClipRef);
+        public NodeRef<CGameCtnBlockInfoRoad> BlockInfoRoad => NodeRef.GetOrCreate(ref owner.blockInfoRoadRef);
+        public NodeRef<CGameCtnBlockInfoPylon> BlockInfoPylon => NodeRef.GetOrCreate(ref owner.blockInfoPylonRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("BlockInfoFlat", blockInfoFlatRef);
-        yield return new("BlockInfoClip", blockInfoClipRef);
-        yield return new("BlockInfoRoad", blockInfoRoadRef);
-        yield return new("BlockInfoPylon", blockInfoPylonRef);
+        yield return new("BlockInfoFlat", NodeRef.GetOrCreate(ref blockInfoFlatRef));
+        yield return new("BlockInfoClip", NodeRef.GetOrCreate(ref blockInfoClipRef));
+        yield return new("BlockInfoRoad", NodeRef.GetOrCreate(ref blockInfoRoadRef));
+        yield return new("BlockInfoPylon", NodeRef.GetOrCreate(ref blockInfoPylonRef));
         yield break;
     }
 
@@ -133,10 +133,10 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
 
         public override void ReadWrite(CGameCtnZoneFlat n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.blockInfoFlatRef);
-            rw.NodeRef(n.blockInfoClipRef);
-            rw.NodeRef(n.blockInfoRoadRef);
-            rw.NodeRef(n.blockInfoPylonRef);
+            rw.NodeRef(ref n.blockInfoFlatRef);
+            rw.NodeRef(ref n.blockInfoClipRef);
+            rw.NodeRef(ref n.blockInfoRoadRef);
+            rw.NodeRef(ref n.blockInfoPylonRef);
         }
     }
 

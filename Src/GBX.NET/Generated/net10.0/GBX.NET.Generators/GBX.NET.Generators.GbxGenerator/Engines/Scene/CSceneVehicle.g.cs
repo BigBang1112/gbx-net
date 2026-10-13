@@ -36,36 +36,36 @@ public partial class CSceneVehicle : CSceneMobil, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugVehiclePhyTunings> vehicleTuningsRef = new();
+    private NodeRef<CPlugVehiclePhyTunings>? vehicleTuningsRef;
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehiclePhyTunings? VehicleTunings
     {
-        get => vehicleTuningsRef.Resolve();
-        set => vehicleTuningsRef.SetEmbedded(value);
+        get => vehicleTuningsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleTuningsRef, value);
     }
 
-    private NodeRef<CMwRefBuffer> vehicleMaterialsRef = new();
+    private NodeRef<CMwRefBuffer>? vehicleMaterialsRef;
     [AppliedWithChunk<Chunk0A060000>]
     public CMwRefBuffer? VehicleMaterials
     {
-        get => vehicleMaterialsRef.Resolve();
-        set => vehicleMaterialsRef.SetEmbedded(value);
+        get => vehicleMaterialsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleMaterialsRef, value);
     }
 
-    private NodeRef<CSceneVehicleEnvironment> environmentRef = new();
+    private NodeRef<CSceneVehicleEnvironment>? environmentRef;
     [AppliedWithChunk<Chunk0A060000>]
     public CSceneVehicleEnvironment? Environment
     {
-        get => environmentRef.Resolve();
-        set => environmentRef.SetEmbedded(value);
+        get => environmentRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref environmentRef, value);
     }
 
-    private NodeRef<CPlugVehicleVisModelShared> vehicleStructRef = new();
+    private NodeRef<CPlugVehicleVisModelShared>? vehicleStructRef;
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehicleVisModelShared? VehicleStruct
     {
-        get => vehicleStructRef.Resolve();
-        set => vehicleStructRef.SetEmbedded(value);
+        get => vehicleStructRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref vehicleStructRef, value);
     }
 
     public new NodeRefView References => new(this);
@@ -73,10 +73,10 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     {
         private readonly CSceneVehicle owner;
         internal NodeRefView(CSceneVehicle owner) => this.owner = owner;
-        public NodeRef<CPlugVehiclePhyTunings> VehicleTunings => owner.vehicleTuningsRef;
-        public NodeRef<CMwRefBuffer> VehicleMaterials => owner.vehicleMaterialsRef;
-        public NodeRef<CSceneVehicleEnvironment> Environment => owner.environmentRef;
-        public NodeRef<CPlugVehicleVisModelShared> VehicleStruct => owner.vehicleStructRef;
+        public NodeRef<CPlugVehiclePhyTunings> VehicleTunings => NodeRef.GetOrCreate(ref owner.vehicleTuningsRef);
+        public NodeRef<CMwRefBuffer> VehicleMaterials => NodeRef.GetOrCreate(ref owner.vehicleMaterialsRef);
+        public NodeRef<CSceneVehicleEnvironment> Environment => NodeRef.GetOrCreate(ref owner.environmentRef);
+        public NodeRef<CPlugVehicleVisModelShared> VehicleStruct => NodeRef.GetOrCreate(ref owner.vehicleStructRef);
         public CSceneMobil.ObjectLinkReferenceView ObjectLink => ((CSceneMobil)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneMobil)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneMobil)owner).References.Motion;
@@ -84,10 +84,10 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("VehicleTunings", vehicleTuningsRef);
-        yield return new("VehicleMaterials", vehicleMaterialsRef);
-        yield return new("Environment", environmentRef);
-        yield return new("VehicleStruct", vehicleStructRef);
+        yield return new("VehicleTunings", NodeRef.GetOrCreate(ref vehicleTuningsRef));
+        yield return new("VehicleMaterials", NodeRef.GetOrCreate(ref vehicleMaterialsRef));
+        yield return new("Environment", NodeRef.GetOrCreate(ref environmentRef));
+        yield return new("VehicleStruct", NodeRef.GetOrCreate(ref vehicleStructRef));
         yield break;
     }
 
@@ -111,11 +111,11 @@ public partial class CSceneVehicle : CSceneMobil, IClass
         public override uint Id => 0x0A060000;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -123,12 +123,12 @@ public partial class CSceneVehicle : CSceneMobil, IClass
         {
             private readonly Chunk0A060000 owner;
             internal NodeRefView(Chunk0A060000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -140,11 +140,11 @@ public partial class CSceneVehicle : CSceneMobil, IClass
 
         public override void ReadWrite(CSceneVehicle n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.vehicleTuningsRef);
-            rw.NodeRef(n.vehicleMaterialsRef);
-            rw.NodeRef(n.environmentRef);
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(n.vehicleStructRef);
+            rw.NodeRef(ref n.vehicleTuningsRef);
+            rw.NodeRef(ref n.vehicleMaterialsRef);
+            rw.NodeRef(ref n.environmentRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.vehicleStructRef);
         }
     }
 

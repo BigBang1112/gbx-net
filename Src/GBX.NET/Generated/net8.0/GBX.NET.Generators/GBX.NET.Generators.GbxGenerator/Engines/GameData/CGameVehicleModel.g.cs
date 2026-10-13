@@ -36,20 +36,20 @@ public partial class CGameVehicleModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugVehiclePhyModel> phyModelRef = new();
+    private NodeRef<CPlugVehiclePhyModel>? phyModelRef;
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehiclePhyModel? PhyModel
     {
-        get => phyModelRef.Resolve();
-        set => phyModelRef.SetEmbedded(value);
+        get => phyModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phyModelRef, value);
     }
 
-    private NodeRef<CPlugVehicleVisModel> visModelRef = new();
+    private NodeRef<CPlugVehicleVisModel>? visModelRef;
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehicleVisModel? VisModel
     {
-        get => visModelRef.Resolve();
-        set => visModelRef.SetEmbedded(value);
+        get => visModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visModelRef, value);
     }
 
     private ItemOccupantSlotModel[]? itemOccupantSlotModels;
@@ -65,14 +65,14 @@ public partial class CGameVehicleModel : CMwNod, IClass
     {
         private readonly CGameVehicleModel owner;
         internal NodeRefView(CGameVehicleModel owner) => this.owner = owner;
-        public NodeRef<CPlugVehiclePhyModel> PhyModel => owner.phyModelRef;
-        public NodeRef<CPlugVehicleVisModel> VisModel => owner.visModelRef;
+        public NodeRef<CPlugVehiclePhyModel> PhyModel => NodeRef.GetOrCreate(ref owner.phyModelRef);
+        public NodeRef<CPlugVehicleVisModel> VisModel => NodeRef.GetOrCreate(ref owner.visModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("PhyModel", phyModelRef);
-        yield return new("VisModel", visModelRef);
+        yield return new("PhyModel", NodeRef.GetOrCreate(ref phyModelRef));
+        yield return new("VisModel", NodeRef.GetOrCreate(ref visModelRef));
         yield break;
     }
 
@@ -98,11 +98,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
 
         public NodeRefList<CGameObjectModel>? U01;
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -111,7 +111,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
             private readonly Chunk2E01C000 owner;
             internal NodeRefView(Chunk2E01C000 owner) => this.owner = owner;
             public U01ReferenceView U01 => new(owner);
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public readonly struct U01ReferenceView
         {
@@ -127,7 +127,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
             {
                 for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.GetReference(i));
             }
-            yield return new("U02", U02Ref);
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -142,8 +142,8 @@ public partial class CGameVehicleModel : CMwNod, IClass
         public override void ReadWrite(CGameVehicleModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.phyModelRef);
-            rw.NodeRef(n.visModelRef);
+            rw.NodeRef(ref n.phyModelRef);
+            rw.NodeRef(ref n.visModelRef);
             rw.ArrayReadableWritable<ItemOccupantSlotModel>(ref n.itemOccupantSlotModels!, version: Version);
 
             if (Version >= 1)
@@ -152,7 +152,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
 
                 if (Version == 2)
                 {
-                    rw.NodeRef(U02Ref);
+                    rw.NodeRef(ref U02Ref);
                 }
             }
         }

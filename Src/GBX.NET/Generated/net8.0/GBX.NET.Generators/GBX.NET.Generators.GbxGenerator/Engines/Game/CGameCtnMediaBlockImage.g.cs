@@ -36,12 +36,12 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CControlEffectSimi> effectRef = new();
+    private NodeRef<CControlEffectSimi>? effectRef;
     [AppliedWithChunk<Chunk030A5000>]
     public CControlEffectSimi? Effect
     {
-        get => effectRef.Resolve();
-        set => effectRef.SetEmbedded(value);
+        get => effectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref effectRef, value);
     }
 
     private PackDesc? image;
@@ -57,12 +57,12 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     {
         private readonly CGameCtnMediaBlockImage owner;
         internal NodeRefView(CGameCtnMediaBlockImage owner) => this.owner = owner;
-        public NodeRef<CControlEffectSimi> Effect => owner.effectRef;
+        public NodeRef<CControlEffectSimi> Effect => NodeRef.GetOrCreate(ref owner.effectRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Effect", effectRef);
+        yield return new("Effect", NodeRef.GetOrCreate(ref effectRef));
         yield break;
     }
 
@@ -91,7 +91,7 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
 
         public override void ReadWrite(CGameCtnMediaBlockImage n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.effectRef);
+            rw.NodeRef(ref n.effectRef);
             rw.PackDesc(ref n.image);
         }
     }

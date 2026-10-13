@@ -52,12 +52,12 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         set => this.end = value;
     }
 
-    private NodeRef<CPlugDataTape> dataTapeRef = new();
+    private NodeRef<CPlugDataTape>? dataTapeRef;
     [AppliedWithChunk<Chunk03169000>]
     public CPlugDataTape? DataTape
     {
-        get => dataTapeRef.Resolve();
-        set => dataTapeRef.SetEmbedded(value);
+        get => dataTapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dataTapeRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -65,12 +65,12 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
     {
         private readonly CGameCtnMediaBlockBulletFx owner;
         internal NodeRefView(CGameCtnMediaBlockBulletFx owner) => this.owner = owner;
-        public NodeRef<CPlugDataTape> DataTape => owner.dataTapeRef;
+        public NodeRef<CPlugDataTape> DataTape => NodeRef.GetOrCreate(ref owner.dataTapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("DataTape", dataTapeRef);
+        yield return new("DataTape", NodeRef.GetOrCreate(ref dataTapeRef));
         yield break;
     }
 
@@ -114,7 +114,7 @@ public partial class CGameCtnMediaBlockBulletFx : CGameCtnMediaBlock, IClass, CG
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef(n.dataTapeRef);
+            rw.NodeRef(ref n.dataTapeRef);
         }
     }
 

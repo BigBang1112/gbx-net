@@ -10,8 +10,8 @@ public partial class CGameCtnCollection
 
     public partial CGameCtnDecoration? DefaultDecoration
     {
-        get => defaultDecorationRef.Resolve();
-        set => defaultDecorationRef.SetEmbedded(value);
+        get => defaultDecorationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultDecorationRef, value);
     }
 
     public bool HasBackgroundShadow

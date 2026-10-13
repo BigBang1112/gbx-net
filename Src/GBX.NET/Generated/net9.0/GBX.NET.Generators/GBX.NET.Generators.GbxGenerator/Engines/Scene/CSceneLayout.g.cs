@@ -166,12 +166,12 @@ public partial class CSceneLayout : CScene, IClass
         set => paths = value;
     }
 
-    private NodeRef<CSceneTrafficGraph> trafficGraphRef = new();
+    private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
     [AppliedWithChunk<Chunk0A003018>]
     public CSceneTrafficGraph? TrafficGraph
     {
-        get => trafficGraphRef.Resolve();
-        set => trafficGraphRef.SetEmbedded(value);
+        get => trafficGraphRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficGraphRef, value);
     }
 
     private NodeRefList<CSceneTrafficPath>? trafficPaths;
@@ -182,14 +182,14 @@ public partial class CSceneLayout : CScene, IClass
         set => trafficPaths = value;
     }
 
-    private NodeRef<CSceneFxNod> sceneFxNodRef = new();
+    private NodeRef<CSceneFxNod>? sceneFxNodRef;
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     [AppliedWithChunk<Chunk0A00301C>]
     public CSceneFxNod? SceneFxNod
     {
-        get => sceneFxNodRef.Resolve();
-        set => sceneFxNodRef.SetEmbedded(value);
+        get => sceneFxNodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneFxNodRef, value);
     }
 
     private NodeRefList<CSceneObject>? objects;
@@ -216,36 +216,36 @@ public partial class CSceneLayout : CScene, IClass
         set => weatherModels = value;
     }
 
-    private NodeRef<CPlugWeatherModel> weatherModelRef = new();
+    private NodeRef<CPlugWeatherModel>? weatherModelRef;
     [AppliedWithChunk<Chunk0A00301C>(2)]
     public CPlugWeatherModel? WeatherModel
     {
-        get => weatherModelRef.Resolve();
-        set => weatherModelRef.SetEmbedded(value);
+        get => weatherModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref weatherModelRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapWaterFogRef = new();
+    private NodeRef<CPlugBitmap>? bitmapWaterFogRef;
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapWaterFog
     {
-        get => bitmapWaterFogRef.Resolve();
-        set => bitmapWaterFogRef.SetEmbedded(value);
+        get => bitmapWaterFogRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapWaterFogRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapCubeReflectHardSpecARef = new();
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHardSpecARef;
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapCubeReflectHardSpecA
     {
-        get => bitmapCubeReflectHardSpecARef.Resolve();
-        set => bitmapCubeReflectHardSpecARef.SetEmbedded(value);
+        get => bitmapCubeReflectHardSpecARef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHardSpecARef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapCubeReflectHdrAlpha2Ref = new();
+    private NodeRef<CPlugBitmap>? bitmapCubeReflectHdrAlpha2Ref;
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {
-        get => bitmapCubeReflectHdrAlpha2Ref.Resolve();
-        set => bitmapCubeReflectHdrAlpha2Ref.SetEmbedded(value);
+        get => bitmapCubeReflectHdrAlpha2Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCubeReflectHdrAlpha2Ref, value);
     }
 
     public new NodeRefView References => new(this);
@@ -260,15 +260,15 @@ public partial class CSceneLayout : CScene, IClass
         public FieldsReferenceView Fields => new(owner);
         public GatesReferenceView Gates => new(owner);
         public PathsReferenceView Paths => new(owner);
-        public NodeRef<CSceneTrafficGraph> TrafficGraph => owner.trafficGraphRef;
+        public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
         public TrafficPathsReferenceView TrafficPaths => new(owner);
-        public NodeRef<CSceneFxNod> SceneFxNod => owner.sceneFxNodRef;
+        public NodeRef<CSceneFxNod> SceneFxNod => NodeRef.GetOrCreate(ref owner.sceneFxNodRef);
         public ObjectsReferenceView Objects => new(owner);
         public WeatherModelsReferenceView WeatherModels => new(owner);
-        public NodeRef<CPlugWeatherModel> WeatherModel => owner.weatherModelRef;
-        public NodeRef<CPlugBitmap> BitmapWaterFog => owner.bitmapWaterFogRef;
-        public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => owner.bitmapCubeReflectHardSpecARef;
-        public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => owner.bitmapCubeReflectHdrAlpha2Ref;
+        public NodeRef<CPlugWeatherModel> WeatherModel => NodeRef.GetOrCreate(ref owner.weatherModelRef);
+        public NodeRef<CPlugBitmap> BitmapWaterFog => NodeRef.GetOrCreate(ref owner.bitmapWaterFogRef);
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHardSpecA => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHardSpecARef);
+        public NodeRef<CPlugBitmap> BitmapCubeReflectHdrAlpha2 => NodeRef.GetOrCreate(ref owner.bitmapCubeReflectHdrAlpha2Ref);
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
         public CScene.MotionManagerModelsReferenceView MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
     }
@@ -373,12 +373,12 @@ public partial class CSceneLayout : CScene, IClass
         {
             for (var i = 0; i < paths.Count; i++) yield return new("Paths" + "[" + i + "]", paths.GetReference(i));
         }
-        yield return new("TrafficGraph", trafficGraphRef);
+        yield return new("TrafficGraph", NodeRef.GetOrCreate(ref trafficGraphRef));
         if (trafficPaths is not null)
         {
             for (var i = 0; i < trafficPaths.Count; i++) yield return new("TrafficPaths" + "[" + i + "]", trafficPaths.GetReference(i));
         }
-        yield return new("SceneFxNod", sceneFxNodRef);
+        yield return new("SceneFxNod", NodeRef.GetOrCreate(ref sceneFxNodRef));
         if (objects is not null)
         {
             for (var i = 0; i < objects.Count; i++) yield return new("Objects" + "[" + i + "]", objects.GetReference(i));
@@ -387,10 +387,10 @@ public partial class CSceneLayout : CScene, IClass
         {
             for (var i = 0; i < weatherModels.Count; i++) yield return new("WeatherModels" + "[" + i + "]", weatherModels.GetReference(i));
         }
-        yield return new("WeatherModel", weatherModelRef);
-        yield return new("BitmapWaterFog", bitmapWaterFogRef);
-        yield return new("BitmapCubeReflectHardSpecA", bitmapCubeReflectHardSpecARef);
-        yield return new("BitmapCubeReflectHdrAlpha2", bitmapCubeReflectHdrAlpha2Ref);
+        yield return new("WeatherModel", NodeRef.GetOrCreate(ref weatherModelRef));
+        yield return new("BitmapWaterFog", NodeRef.GetOrCreate(ref bitmapWaterFogRef));
+        yield return new("BitmapCubeReflectHardSpecA", NodeRef.GetOrCreate(ref bitmapCubeReflectHardSpecARef));
+        yield return new("BitmapCubeReflectHdrAlpha2", NodeRef.GetOrCreate(ref bitmapCubeReflectHdrAlpha2Ref));
         yield break;
     }
 
@@ -571,9 +571,9 @@ public partial class CSceneLayout : CScene, IClass
             rw.ArrayReadableWritable<SceneLoc>(ref n.fieldLocations!, version: Version);
             n.gates = rw.ListNodeRef_deprec<CSceneGate>(n.gates);
             n.paths = rw.ListNodeRef_deprec<CScenePath>(n.paths);
-            rw.NodeRef(n.trafficGraphRef);
+            rw.NodeRef(ref n.trafficGraphRef);
             n.trafficPaths = rw.ListNodeRef_deprec<CSceneTrafficPath>(n.trafficPaths);
-            rw.NodeRef(n.sceneFxNodRef);
+            rw.NodeRef(ref n.sceneFxNodRef);
         }
     }
 
@@ -693,7 +693,7 @@ public partial class CSceneLayout : CScene, IClass
             rw.ArrayReadableWritable<SceneLoc>(ref n.locationLocations!, version: Version);
             rw.Int32(ref U03);
             rw.Int32(ref U04);
-            rw.NodeRef(n.sceneFxNodRef);
+            rw.NodeRef(ref n.sceneFxNodRef);
         }
     }
 
@@ -707,11 +707,11 @@ public partial class CSceneLayout : CScene, IClass
         public Unknown2[]? U01;
         public Unknown3[]? U02;
 
-        private NodeRef<CSceneConfig> U03Ref = new();
+        private NodeRef<CSceneConfig>? U03Ref;
         public CSceneConfig? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
         public uint[]? U04;
 
@@ -736,7 +736,7 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly Chunk0A00301C owner;
             internal NodeRefView(Chunk0A00301C owner) => this.owner = owner;
-            public NodeRef<CSceneConfig> U03 => owner.U03Ref;
+            public NodeRef<CSceneConfig> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public U05ReferenceView U05 => new(owner);
         }
         public readonly struct U05ReferenceView
@@ -749,7 +749,7 @@ public partial class CSceneLayout : CScene, IClass
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U03", U03Ref);
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             if (U05 is not null)
             {
                 for (var i = 0; i < U05.Count; i++) yield return new("U05" + "[" + i + "]", U05.GetReference(i));
@@ -798,7 +798,7 @@ public partial class CSceneLayout : CScene, IClass
                 rw.ArrayReadableWritable<Unknown3>(ref U02!, version: Version);
             }
 
-            rw.NodeRef(U03Ref);
+            rw.NodeRef(ref U03Ref);
 
             if (Version <= 1)
             {
@@ -807,13 +807,13 @@ public partial class CSceneLayout : CScene, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(n.weatherModelRef);
+                rw.NodeRef(ref n.weatherModelRef);
             }
 
             rw.Array<uint>(ref U04!);
-            rw.NodeRef(n.bitmapWaterFogRef);
-            rw.NodeRef(n.bitmapCubeReflectHardSpecARef);
-            rw.NodeRef(n.bitmapCubeReflectHdrAlpha2Ref);
+            rw.NodeRef(ref n.bitmapWaterFogRef);
+            rw.NodeRef(ref n.bitmapCubeReflectHardSpecARef);
+            rw.NodeRef(ref n.bitmapCubeReflectHdrAlpha2Ref);
 
             if (Version == 0)
             {
@@ -835,7 +835,7 @@ public partial class CSceneLayout : CScene, IClass
             rw.Single(ref U17);
             rw.Single(ref U18);
             rw.Single(ref U19);
-            rw.NodeRef(n.sceneFxNodRef);
+            rw.NodeRef(ref n.sceneFxNodRef);
         }
     }
 
@@ -848,11 +848,11 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u01 = value;
         }
 
-        private NodeRef<CMwNod> mobilRef = new();
+        private NodeRef<CMwNod>? mobilRef;
         public CMwNod? Mobil
         {
-            get => mobilRef.Resolve();
-            set => mobilRef.SetEmbedded(value);
+            get => mobilRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref mobilRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -860,11 +860,11 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly SceneMobil owner;
             internal NodeRefView(SceneMobil owner) => this.owner = owner;
-            public NodeRef<CMwNod> Mobil => owner.mobilRef;
+            public NodeRef<CMwNod> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Mobil", mobilRef);
+            yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
             yield break;
         }
 
@@ -888,7 +888,7 @@ public partial class CSceneLayout : CScene, IClass
 
             if (U01== -2)
             {
-                rw.NodeRef(this.mobilRef);
+                rw.NodeRef(ref this.mobilRef);
             }
         }
 
@@ -907,11 +907,11 @@ public partial class CSceneLayout : CScene, IClass
 
     public partial class SceneLoc : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> u01Ref = new();
+        private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
-            get => u01Ref.Resolve();
-            set => u01Ref.SetEmbedded(value);
+            get => u01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
         private Iso4 u02;
@@ -926,11 +926,11 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly SceneLoc owner;
             internal NodeRefView(SceneLoc owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.u01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", u01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
             yield break;
         }
 
@@ -950,7 +950,7 @@ public partial class CSceneLayout : CScene, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.u01Ref);
+            rw.NodeRef(ref this.u01Ref);
             rw.Iso4(ref this.u02);
         }
 
@@ -969,11 +969,11 @@ public partial class CSceneLayout : CScene, IClass
 
     public partial class Unknown : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod> u01Ref = new();
+        private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
-            get => u01Ref.Resolve();
-            set => u01Ref.SetEmbedded(value);
+            get => u01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
         private string? u02;
@@ -990,11 +990,11 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u03 = value;
         }
 
-        private NodeRef<CMwNod> u04Ref = new();
+        private NodeRef<CMwNod>? u04Ref;
         public CMwNod? U04
         {
-            get => u04Ref.Resolve();
-            set => u04Ref.SetEmbedded(value);
+            get => u04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u04Ref, value);
         }
 
         private string? u05;
@@ -1030,13 +1030,13 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly Unknown owner;
             internal NodeRefView(Unknown owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.u01Ref;
-            public NodeRef<CMwNod> U04 => owner.u04Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", u01Ref);
-            yield return new("U04", u04Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref u04Ref));
             yield break;
         }
 
@@ -1062,10 +1062,10 @@ public partial class CSceneLayout : CScene, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(this.u01Ref);
+            rw.NodeRef(ref this.u01Ref);
             rw.Id(ref this.u02);
             rw.Int32(ref this.u03);
-            rw.NodeRef(this.u04Ref);
+            rw.NodeRef(ref this.u04Ref);
             rw.Id(ref this.u05);
             rw.Int32(ref this.u06);
             rw.Iso4(ref this.u07);
@@ -1108,32 +1108,32 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u03 = value;
         }
 
-        private NodeRef<CPlugBitmap> u04Ref = new();
+        private NodeRef<CPlugBitmap>? u04Ref;
         public CPlugBitmap? U04
         {
-            get => u04Ref.Resolve();
-            set => u04Ref.SetEmbedded(value);
+            get => u04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u04Ref, value);
         }
 
-        private NodeRef<CPlugBitmap> u05Ref = new();
+        private NodeRef<CPlugBitmap>? u05Ref;
         public CPlugBitmap? U05
         {
-            get => u05Ref.Resolve();
-            set => u05Ref.SetEmbedded(value);
+            get => u05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u05Ref, value);
         }
 
-        private NodeRef<CPlugBitmap> u06Ref = new();
+        private NodeRef<CPlugBitmap>? u06Ref;
         public CPlugBitmap? U06
         {
-            get => u06Ref.Resolve();
-            set => u06Ref.SetEmbedded(value);
+            get => u06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u06Ref, value);
         }
 
-        private NodeRef<GxLight> u07Ref = new();
+        private NodeRef<GxLight>? u07Ref;
         public GxLight? U07
         {
-            get => u07Ref.Resolve();
-            set => u07Ref.SetEmbedded(value);
+            get => u07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u07Ref, value);
         }
 
         private int u08;
@@ -1148,17 +1148,17 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly Unknown2 owner;
             internal NodeRefView(Unknown2 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U04 => owner.u04Ref;
-            public NodeRef<CPlugBitmap> U05 => owner.u05Ref;
-            public NodeRef<CPlugBitmap> U06 => owner.u06Ref;
-            public NodeRef<GxLight> U07 => owner.u07Ref;
+            public NodeRef<CPlugBitmap> U04 => NodeRef.GetOrCreate(ref owner.u04Ref);
+            public NodeRef<CPlugBitmap> U05 => NodeRef.GetOrCreate(ref owner.u05Ref);
+            public NodeRef<CPlugBitmap> U06 => NodeRef.GetOrCreate(ref owner.u06Ref);
+            public NodeRef<GxLight> U07 => NodeRef.GetOrCreate(ref owner.u07Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U04", u04Ref);
-            yield return new("U05", u05Ref);
-            yield return new("U06", u06Ref);
-            yield return new("U07", u07Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref u04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref u05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref u06Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref u07Ref));
             yield break;
         }
 
@@ -1187,10 +1187,10 @@ public partial class CSceneLayout : CScene, IClass
             rw.Id(ref this.u01);
             rw.TransQuat(ref this.u02);
             rw.Int32(ref this.u03);
-            rw.NodeRef(this.u04Ref);
-            rw.NodeRef(this.u05Ref);
-            rw.NodeRef(this.u06Ref);
-            rw.NodeRef(this.u07Ref);
+            rw.NodeRef(ref this.u04Ref);
+            rw.NodeRef(ref this.u05Ref);
+            rw.NodeRef(ref this.u06Ref);
+            rw.NodeRef(ref this.u07Ref);
             rw.Int32(ref this.u08);
         }
 
@@ -1237,25 +1237,25 @@ public partial class CSceneLayout : CScene, IClass
             set => this.u04 = value;
         }
 
-        private NodeRef<CPlugSolid> u05Ref = new();
+        private NodeRef<CPlugSolid>? u05Ref;
         public CPlugSolid? U05
         {
-            get => u05Ref.Resolve();
-            set => u05Ref.SetEmbedded(value);
+            get => u05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u05Ref, value);
         }
 
-        private NodeRef<CPlugSolid2Model> u06Ref = new();
+        private NodeRef<CPlugSolid2Model>? u06Ref;
         public CPlugSolid2Model? U06
         {
-            get => u06Ref.Resolve();
-            set => u06Ref.SetEmbedded(value);
+            get => u06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u06Ref, value);
         }
 
-        private NodeRef<CPlugPrefab> u07Ref = new();
+        private NodeRef<CPlugPrefab>? u07Ref;
         public CPlugPrefab? U07
         {
-            get => u07Ref.Resolve();
-            set => u07Ref.SetEmbedded(value);
+            get => u07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u07Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1263,15 +1263,15 @@ public partial class CSceneLayout : CScene, IClass
         {
             private readonly Unknown3 owner;
             internal NodeRefView(Unknown3 owner) => this.owner = owner;
-            public NodeRef<CPlugSolid> U05 => owner.u05Ref;
-            public NodeRef<CPlugSolid2Model> U06 => owner.u06Ref;
-            public NodeRef<CPlugPrefab> U07 => owner.u07Ref;
+            public NodeRef<CPlugSolid> U05 => NodeRef.GetOrCreate(ref owner.u05Ref);
+            public NodeRef<CPlugSolid2Model> U06 => NodeRef.GetOrCreate(ref owner.u06Ref);
+            public NodeRef<CPlugPrefab> U07 => NodeRef.GetOrCreate(ref owner.u07Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U05", u05Ref);
-            yield return new("U06", u06Ref);
-            yield return new("U07", u07Ref);
+            yield return new("U05", NodeRef.GetOrCreate(ref u05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref u06Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref u07Ref));
             yield break;
         }
 
@@ -1300,15 +1300,15 @@ public partial class CSceneLayout : CScene, IClass
             rw.TransQuat(ref this.u02);
             rw.Int16(ref this.u03);
             rw.UInt64(ref this.u04);
-            rw.NodeRef(this.u05Ref);
+            rw.NodeRef(ref this.u05Ref);
 
             if (v >= 4)
             {
-                rw.NodeRef(this.u06Ref);
+                rw.NodeRef(ref this.u06Ref);
 
                 if (v >= 5)
                 {
-                    rw.NodeRef(this.u07Ref);
+                    rw.NodeRef(ref this.u07Ref);
                 }
             }
         }

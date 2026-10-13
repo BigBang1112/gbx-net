@@ -225,32 +225,32 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
 
     public partial class MaterialSound : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CPlugFileSnd> smallImpactRef = new();
+        private NodeRef<CPlugFileSnd>? smallImpactRef;
         public CPlugFileSnd? SmallImpact
         {
-            get => smallImpactRef.Resolve();
-            set => smallImpactRef.SetEmbedded(value);
+            get => smallImpactRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref smallImpactRef, value);
         }
 
-        private NodeRef<CPlugFileSnd> bigImpactRef = new();
+        private NodeRef<CPlugFileSnd>? bigImpactRef;
         public CPlugFileSnd? BigImpact
         {
-            get => bigImpactRef.Resolve();
-            set => bigImpactRef.SetEmbedded(value);
+            get => bigImpactRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref bigImpactRef, value);
         }
 
-        private NodeRef<CPlugSoundComponent> textureRef = new();
+        private NodeRef<CPlugSoundComponent>? textureRef;
         public CPlugSoundComponent? Texture
         {
-            get => textureRef.Resolve();
-            set => textureRef.SetEmbedded(value);
+            get => textureRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref textureRef, value);
         }
 
-        private NodeRef<CPlugSoundComponent> skidRef = new();
+        private NodeRef<CPlugSoundComponent>? skidRef;
         public CPlugSoundComponent? Skid
         {
-            get => skidRef.Resolve();
-            set => skidRef.SetEmbedded(value);
+            get => skidRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref skidRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -258,17 +258,17 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         {
             private readonly MaterialSound owner;
             internal NodeRefView(MaterialSound owner) => this.owner = owner;
-            public NodeRef<CPlugFileSnd> SmallImpact => owner.smallImpactRef;
-            public NodeRef<CPlugFileSnd> BigImpact => owner.bigImpactRef;
-            public NodeRef<CPlugSoundComponent> Texture => owner.textureRef;
-            public NodeRef<CPlugSoundComponent> Skid => owner.skidRef;
+            public NodeRef<CPlugFileSnd> SmallImpact => NodeRef.GetOrCreate(ref owner.smallImpactRef);
+            public NodeRef<CPlugFileSnd> BigImpact => NodeRef.GetOrCreate(ref owner.bigImpactRef);
+            public NodeRef<CPlugSoundComponent> Texture => NodeRef.GetOrCreate(ref owner.textureRef);
+            public NodeRef<CPlugSoundComponent> Skid => NodeRef.GetOrCreate(ref owner.skidRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("SmallImpact", smallImpactRef);
-            yield return new("BigImpact", bigImpactRef);
-            yield return new("Texture", textureRef);
-            yield return new("Skid", skidRef);
+            yield return new("SmallImpact", NodeRef.GetOrCreate(ref smallImpactRef));
+            yield return new("BigImpact", NodeRef.GetOrCreate(ref bigImpactRef));
+            yield return new("Texture", NodeRef.GetOrCreate(ref textureRef));
+            yield return new("Skid", NodeRef.GetOrCreate(ref skidRef));
             yield break;
         }
 
@@ -292,12 +292,12 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         {
             if (v == 0)
             {
-                rw.NodeRef(this.smallImpactRef);
-                rw.NodeRef(this.bigImpactRef);
+                rw.NodeRef(ref this.smallImpactRef);
+                rw.NodeRef(ref this.bigImpactRef);
             }
 
-            rw.NodeRef(this.textureRef);
-            rw.NodeRef(this.skidRef);
+            rw.NodeRef(ref this.textureRef);
+            rw.NodeRef(ref this.skidRef);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

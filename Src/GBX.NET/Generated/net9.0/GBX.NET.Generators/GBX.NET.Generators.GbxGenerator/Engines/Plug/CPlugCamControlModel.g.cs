@@ -36,12 +36,12 @@ public partial class CPlugCamControlModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugCamShakeModel> shakeRef = new();
+    private NodeRef<CPlugCamShakeModel>? shakeRef;
     [AppliedWithChunk<Chunk0910C000>]
     public CPlugCamShakeModel? Shake
     {
-        get => shakeRef.Resolve();
-        set => shakeRef.SetEmbedded(value);
+        get => shakeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shakeRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -49,12 +49,12 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     {
         private readonly CPlugCamControlModel owner;
         internal NodeRefView(CPlugCamControlModel owner) => this.owner = owner;
-        public NodeRef<CPlugCamShakeModel> Shake => owner.shakeRef;
+        public NodeRef<CPlugCamShakeModel> Shake => NodeRef.GetOrCreate(ref owner.shakeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Shake", shakeRef);
+        yield return new("Shake", NodeRef.GetOrCreate(ref shakeRef));
         yield break;
     }
 
@@ -85,7 +85,7 @@ public partial class CPlugCamControlModel : CMwNod, IClass
         public override void ReadWrite(CPlugCamControlModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(n.shakeRef);
+            rw.NodeRef(ref n.shakeRef);
         }
     }
 

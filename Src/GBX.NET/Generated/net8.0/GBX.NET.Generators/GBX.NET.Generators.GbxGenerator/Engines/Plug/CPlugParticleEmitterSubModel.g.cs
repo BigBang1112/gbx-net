@@ -36,22 +36,22 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugMaterial> materialRef = new();
+    private NodeRef<CPlugMaterial>? materialRef;
     [AppliedWithChunk<Chunk090B2011>]
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugMaterial? Material
     {
-        get => materialRef.Resolve();
-        set => materialRef.SetEmbedded(value);
+        get => materialRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialRef, value);
     }
 
-    private NodeRef<CPlugShader> shaderRef = new();
+    private NodeRef<CPlugShader>? shaderRef;
     [AppliedWithChunk<Chunk090B2011>]
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugShader? Shader
     {
-        get => shaderRef.Resolve();
-        set => shaderRef.SetEmbedded(value);
+        get => shaderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
     private float sizeBirthRatioXY;
@@ -70,12 +70,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => this.spritePivotPoint = value;
     }
 
-    private NodeRef<CFuncColorGradient> colorGradientRef = new();
+    private NodeRef<CFuncColorGradient>? colorGradientRef;
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncColorGradient? ColorGradient
     {
-        get => colorGradientRef.Resolve();
-        set => colorGradientRef.SetEmbedded(value);
+        get => colorGradientRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref colorGradientRef, value);
     }
 
     private int colorGradientUse;
@@ -190,20 +190,20 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => this.transparencyBirthVariation = value;
     }
 
-    private NodeRef<CFuncEnvelope> sizeOverLifeRef = new();
+    private NodeRef<CFuncEnvelope>? sizeOverLifeRef;
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? SizeOverLife
     {
-        get => sizeOverLifeRef.Resolve();
-        set => sizeOverLifeRef.SetEmbedded(value);
+        get => sizeOverLifeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sizeOverLifeRef, value);
     }
 
-    private NodeRef<CFuncEnvelope> transparencyOverLifeRef = new();
+    private NodeRef<CFuncEnvelope>? transparencyOverLifeRef;
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? TransparencyOverLife
     {
-        get => transparencyOverLifeRef.Resolve();
-        set => transparencyOverLifeRef.SetEmbedded(value);
+        get => transparencyOverLifeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref transparencyOverLifeRef, value);
     }
 
     private EPlugParticleEmitterSubModel particleEmitterSubModel;
@@ -278,12 +278,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => this.fluidFrictionBirthVariation = value;
     }
 
-    private NodeRef<CFuncEnvelope> sizeXOverLifeRef = new();
+    private NodeRef<CFuncEnvelope>? sizeXOverLifeRef;
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? SizeXOverLife
     {
-        get => sizeXOverLifeRef.Resolve();
-        set => sizeXOverLifeRef.SetEmbedded(value);
+        get => sizeXOverLifeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sizeXOverLifeRef, value);
     }
 
     private bool sizeUseSizeX;
@@ -358,12 +358,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => this.fluidFrictionBirthUseIntensity = value;
     }
 
-    private NodeRef<CFuncEnvelope> intensityFilterRef = new();
+    private NodeRef<CFuncEnvelope>? intensityFilterRef;
     [AppliedWithChunk<Chunk090B2018>]
     public CFuncEnvelope? IntensityFilter
     {
-        get => intensityFilterRef.Resolve();
-        set => intensityFilterRef.SetEmbedded(value);
+        get => intensityFilterRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref intensityFilterRef, value);
     }
 
     private bool multiState_IsAsyncLink;
@@ -478,20 +478,20 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => this.sortSprites = value;
     }
 
-    private NodeRef<CPlugVisual> visualRef = new();
+    private NodeRef<CPlugVisual>? visualRef;
     [AppliedWithChunk<Chunk090B2031>(0, 4)]
     public CPlugVisual? Visual
     {
-        get => visualRef.Resolve();
-        set => visualRef.SetEmbedded(value);
+        get => visualRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref visualRef, value);
     }
 
-    private NodeRef<CPlugSolid2Model> solid2ModelRef = new();
+    private NodeRef<CPlugSolid2Model>? solid2ModelRef;
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugSolid2Model? Solid2Model
     {
-        get => solid2ModelRef.Resolve();
-        set => solid2ModelRef.SetEmbedded(value);
+        get => solid2ModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solid2ModelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -499,28 +499,28 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
         private readonly CPlugParticleEmitterSubModel owner;
         internal NodeRefView(CPlugParticleEmitterSubModel owner) => this.owner = owner;
-        public NodeRef<CPlugMaterial> Material => owner.materialRef;
-        public NodeRef<CPlugShader> Shader => owner.shaderRef;
-        public NodeRef<CFuncColorGradient> ColorGradient => owner.colorGradientRef;
-        public NodeRef<CFuncEnvelope> SizeOverLife => owner.sizeOverLifeRef;
-        public NodeRef<CFuncEnvelope> TransparencyOverLife => owner.transparencyOverLifeRef;
-        public NodeRef<CFuncEnvelope> SizeXOverLife => owner.sizeXOverLifeRef;
-        public NodeRef<CFuncEnvelope> IntensityFilter => owner.intensityFilterRef;
-        public NodeRef<CPlugVisual> Visual => owner.visualRef;
-        public NodeRef<CPlugSolid2Model> Solid2Model => owner.solid2ModelRef;
+        public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
+        public NodeRef<CPlugShader> Shader => NodeRef.GetOrCreate(ref owner.shaderRef);
+        public NodeRef<CFuncColorGradient> ColorGradient => NodeRef.GetOrCreate(ref owner.colorGradientRef);
+        public NodeRef<CFuncEnvelope> SizeOverLife => NodeRef.GetOrCreate(ref owner.sizeOverLifeRef);
+        public NodeRef<CFuncEnvelope> TransparencyOverLife => NodeRef.GetOrCreate(ref owner.transparencyOverLifeRef);
+        public NodeRef<CFuncEnvelope> SizeXOverLife => NodeRef.GetOrCreate(ref owner.sizeXOverLifeRef);
+        public NodeRef<CFuncEnvelope> IntensityFilter => NodeRef.GetOrCreate(ref owner.intensityFilterRef);
+        public NodeRef<CPlugVisual> Visual => NodeRef.GetOrCreate(ref owner.visualRef);
+        public NodeRef<CPlugSolid2Model> Solid2Model => NodeRef.GetOrCreate(ref owner.solid2ModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Material", materialRef);
-        yield return new("Shader", shaderRef);
-        yield return new("ColorGradient", colorGradientRef);
-        yield return new("SizeOverLife", sizeOverLifeRef);
-        yield return new("TransparencyOverLife", transparencyOverLifeRef);
-        yield return new("SizeXOverLife", sizeXOverLifeRef);
-        yield return new("IntensityFilter", intensityFilterRef);
-        yield return new("Visual", visualRef);
-        yield return new("Solid2Model", solid2ModelRef);
+        yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
+        yield return new("Shader", NodeRef.GetOrCreate(ref shaderRef));
+        yield return new("ColorGradient", NodeRef.GetOrCreate(ref colorGradientRef));
+        yield return new("SizeOverLife", NodeRef.GetOrCreate(ref sizeOverLifeRef));
+        yield return new("TransparencyOverLife", NodeRef.GetOrCreate(ref transparencyOverLifeRef));
+        yield return new("SizeXOverLife", NodeRef.GetOrCreate(ref sizeXOverLifeRef));
+        yield return new("IntensityFilter", NodeRef.GetOrCreate(ref intensityFilterRef));
+        yield return new("Visual", NodeRef.GetOrCreate(ref visualRef));
+        yield return new("Solid2Model", NodeRef.GetOrCreate(ref solid2ModelRef));
         yield break;
     }
 
@@ -626,11 +626,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.materialRef);
+            rw.NodeRef(ref n.materialRef);
 
-            if (n.materialRef.Kind == NodeRefKind.None)
+            if ((n.materialRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
-                rw.NodeRef(n.shaderRef);
+                rw.NodeRef(ref n.shaderRef);
             }
 
             rw.Single(ref n.sizeBirthRatioXY);
@@ -639,7 +639,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
-            rw.NodeRef(n.colorGradientRef);
+            rw.NodeRef(ref n.colorGradientRef);
             rw.Int32(ref n.colorGradientUse);
             rw.Boolean(ref n.colorModulateWithTransparency);
             rw.Int32(ref n.maxParticleCount);
@@ -656,8 +656,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref n.rollSpeedBirthVariation);
             rw.Single(ref n.transparencyBirth);
             rw.Single(ref n.transparencyBirthVariation);
-            rw.NodeRef(n.sizeOverLifeRef);
-            rw.NodeRef(n.transparencyOverLifeRef);
+            rw.NodeRef(ref n.sizeOverLifeRef);
+            rw.NodeRef(ref n.transparencyOverLifeRef);
             rw.EnumInt32<EPlugParticleEmitterSubModel>(ref n.particleEmitterSubModel);
             rw.Int32(ref U07);
             rw.Int32(ref n.multiStateRenderMode);
@@ -671,7 +671,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref n.vScaleDist);
             rw.Single(ref n.fluidFrictionBirth);
             rw.Single(ref n.fluidFrictionBirthVariation);
-            rw.NodeRef(n.sizeXOverLifeRef);
+            rw.NodeRef(ref n.sizeXOverLifeRef);
             rw.Boolean(ref n.sizeUseSizeX);
             rw.Boolean(ref n.sizeBirthUseEmissionZone);
             rw.Int32(ref n.circularTrailVertPerPartCount);
@@ -806,7 +806,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.intensityFilterRef);
+            rw.NodeRef(ref n.intensityFilterRef);
         }
     }
 
@@ -837,11 +837,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override uint Id => 0x090B201A;
         public override GameVersion GameVersion => GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -849,12 +849,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B201A owner;
             internal NodeRefView(Chunk090B201A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -866,7 +866,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1130,11 +1130,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CPlugParticleSplashModel> U01Ref = new();
+        private NodeRef<CPlugParticleSplashModel>? U01Ref;
         public CPlugParticleSplashModel? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1142,12 +1142,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B202E owner;
             internal NodeRefView(Chunk090B202E owner) => this.owner = owner;
-            public NodeRef<CPlugParticleSplashModel> U01 => owner.U01Ref;
+            public NodeRef<CPlugParticleSplashModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1164,7 +1164,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.NodeRef(U01Ref);
+                rw.NodeRef(ref U01Ref);
             }
         }
     }
@@ -1181,11 +1181,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U03;
         public Iso4 U04;
 
-        private NodeRef<CFuncEnvelope> U05Ref = new();
+        private NodeRef<CFuncEnvelope>? U05Ref;
         public CFuncEnvelope? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1193,12 +1193,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B202F owner;
             internal NodeRefView(Chunk090B202F owner) => this.owner = owner;
-            public NodeRef<CFuncEnvelope> U05 => owner.U05Ref;
+            public NodeRef<CFuncEnvelope> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U05", U05Ref);
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield break;
         }
 
@@ -1230,7 +1230,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(U05Ref);
+                    rw.NodeRef(ref U05Ref);
                 }
             }
         }
@@ -1289,25 +1289,25 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U15;
         public int U16;
 
-        private NodeRef<CFuncKeysReal> U17Ref = new();
+        private NodeRef<CFuncKeysReal>? U17Ref;
         public CFuncKeysReal? U17
         {
-            get => U17Ref.Resolve();
-            set => U17Ref.SetEmbedded(value);
+            get => U17Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U17Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U18Ref = new();
+        private NodeRef<CFuncKeysReal>? U18Ref;
         public CFuncKeysReal? U18
         {
-            get => U18Ref.Resolve();
-            set => U18Ref.SetEmbedded(value);
+            get => U18Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U18Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U19Ref = new();
+        private NodeRef<CFuncKeysReal>? U19Ref;
         public CFuncKeysReal? U19
         {
-            get => U19Ref.Resolve();
-            set => U19Ref.SetEmbedded(value);
+            get => U19Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U19Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1315,16 +1315,16 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B2031 owner;
             internal NodeRefView(Chunk090B2031 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U17 => owner.U17Ref;
-            public NodeRef<CFuncKeysReal> U18 => owner.U18Ref;
-            public NodeRef<CFuncKeysReal> U19 => owner.U19Ref;
+            public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
+            public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
+            public NodeRef<CFuncKeysReal> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U17", U17Ref);
-            yield return new("U18", U18Ref);
-            yield return new("U19", U19Ref);
+            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
+            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
+            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
             yield break;
         }
 
@@ -1360,16 +1360,16 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Int32(ref U02);
             rw.Boolean(ref U03);
             rw.Single(ref U04);
-            rw.NodeRef(n.materialRef);
+            rw.NodeRef(ref n.materialRef);
 
-            if (n.materialRef.Kind == NodeRefKind.None)
+            if ((n.materialRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
             {
-                rw.NodeRef(n.shaderRef);
+                rw.NodeRef(ref n.shaderRef);
             }
 
             if (Version <= 4)
             {
-                rw.NodeRef(n.visualRef);
+                rw.NodeRef(ref n.visualRef);
             }
 
             if (Version >= 6)
@@ -1377,7 +1377,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
                 rw.String(ref U05);
             }
 
-            rw.NodeRef(n.solid2ModelRef);
+            rw.NodeRef(ref n.solid2ModelRef);
 
             if (Version >= 7)
             {
@@ -1415,12 +1415,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
                                     if (Version >= 12)
                                     {
-                                        rw.NodeRef(U17Ref);
+                                        rw.NodeRef(ref U17Ref);
 
                                         if (Version >= 13)
                                         {
-                                            rw.NodeRef(U18Ref);
-                                            rw.NodeRef(U19Ref);
+                                            rw.NodeRef(ref U18Ref);
+                                            rw.NodeRef(ref U19Ref);
                                         }
                                     }
                                 }
@@ -1490,29 +1490,29 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U05;
         public bool U06;
 
-        private NodeRef<CFuncEnvelope> U07Ref = new();
+        private NodeRef<CFuncEnvelope>? U07Ref;
         public CFuncEnvelope? U07
         {
-            get => U07Ref.Resolve();
-            set => U07Ref.SetEmbedded(value);
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
         public bool U08;
 
-        private NodeRef<CFuncEnvelope> U09Ref = new();
+        private NodeRef<CFuncEnvelope>? U09Ref;
         public CFuncEnvelope? U09
         {
-            get => U09Ref.Resolve();
-            set => U09Ref.SetEmbedded(value);
+            get => U09Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U09Ref, value);
         }
         public float U10;
         public float U11;
         public bool U12;
 
-        private NodeRef<CFuncColorGradient> U13Ref = new();
+        private NodeRef<CFuncColorGradient>? U13Ref;
         public CFuncColorGradient? U13
         {
-            get => U13Ref.Resolve();
-            set => U13Ref.SetEmbedded(value);
+            get => U13Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U13Ref, value);
         }
         public int U14;
         public bool U15;
@@ -1523,21 +1523,21 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U20;
         public bool U21;
 
-        private NodeRef<CFuncEnvelope> U22Ref = new();
+        private NodeRef<CFuncEnvelope>? U22Ref;
         public CFuncEnvelope? U22
         {
-            get => U22Ref.Resolve();
-            set => U22Ref.SetEmbedded(value);
+            get => U22Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U22Ref, value);
         }
         public float U23;
         public float U24;
         public float U25;
 
-        private NodeRef<CFuncKeysReal> U26Ref = new();
+        private NodeRef<CFuncKeysReal>? U26Ref;
         public CFuncKeysReal? U26
         {
-            get => U26Ref.Resolve();
-            set => U26Ref.SetEmbedded(value);
+            get => U26Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U26Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1545,20 +1545,20 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B2033 owner;
             internal NodeRefView(Chunk090B2033 owner) => this.owner = owner;
-            public NodeRef<CFuncEnvelope> U07 => owner.U07Ref;
-            public NodeRef<CFuncEnvelope> U09 => owner.U09Ref;
-            public NodeRef<CFuncColorGradient> U13 => owner.U13Ref;
-            public NodeRef<CFuncEnvelope> U22 => owner.U22Ref;
-            public NodeRef<CFuncKeysReal> U26 => owner.U26Ref;
+            public NodeRef<CFuncEnvelope> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+            public NodeRef<CFuncEnvelope> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
+            public NodeRef<CFuncColorGradient> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
+            public NodeRef<CFuncEnvelope> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
+            public NodeRef<CFuncKeysReal> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U07", U07Ref);
-            yield return new("U09", U09Ref);
-            yield return new("U13", U13Ref);
-            yield return new("U22", U22Ref);
-            yield return new("U26", U26Ref);
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
+            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
+            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
+            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
+            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
             yield break;
         }
 
@@ -1603,13 +1603,13 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U04);
             rw.Single(ref U05);
             rw.Boolean(ref U06);
-            rw.NodeRef(U07Ref);
+            rw.NodeRef(ref U07Ref);
             rw.Boolean(ref U08);
-            rw.NodeRef(U09Ref);
+            rw.NodeRef(ref U09Ref);
             rw.Single(ref U10);
             rw.Single(ref U11);
             rw.Boolean(ref U12);
-            rw.NodeRef(U13Ref);
+            rw.NodeRef(ref U13Ref);
             rw.Int32(ref U14);
             rw.Boolean(ref U15);
 
@@ -1634,14 +1634,14 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U19);
             rw.Single(ref U20);
             rw.Boolean(ref U21);
-            rw.NodeRef(U22Ref);
+            rw.NodeRef(ref U22Ref);
             rw.Single(ref U23);
             rw.Single(ref U24);
 
             if (Version >= 4)
             {
                 rw.Single(ref U25);
-                rw.NodeRef(U26Ref);
+                rw.NodeRef(ref U26Ref);
             }
         }
     }
@@ -1654,25 +1654,25 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<GxLightBall> U01Ref = new();
+        private NodeRef<GxLightBall>? U01Ref;
         public GxLightBall? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CFuncEnvelope> U02Ref = new();
+        private NodeRef<CFuncEnvelope>? U02Ref;
         public CFuncEnvelope? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CFuncColorGradient> U03Ref = new();
+        private NodeRef<CFuncColorGradient>? U03Ref;
         public CFuncColorGradient? U03
         {
-            get => U03Ref.Resolve();
-            set => U03Ref.SetEmbedded(value);
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
         public bool U04;
         public bool U05;
@@ -1682,16 +1682,16 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B2034 owner;
             internal NodeRefView(Chunk090B2034 owner) => this.owner = owner;
-            public NodeRef<GxLightBall> U01 => owner.U01Ref;
-            public NodeRef<CFuncEnvelope> U02 => owner.U02Ref;
-            public NodeRef<CFuncColorGradient> U03 => owner.U03Ref;
+            public NodeRef<GxLightBall> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CFuncEnvelope> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CFuncColorGradient> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
-            yield return new("U03", U03Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -1709,9 +1709,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
-            rw.NodeRef(U03Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
 
             if (Version >= 1)
             {
@@ -1733,11 +1733,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -1745,12 +1745,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B2035 owner;
             internal NodeRefView(Chunk090B2035 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -1770,7 +1770,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
                 return;
             }
 
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -1814,18 +1814,18 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U02;
         public float U03;
 
-        private NodeRef<CFuncKeysReal> U04Ref = new();
+        private NodeRef<CFuncKeysReal>? U04Ref;
         public CFuncKeysReal? U04
         {
-            get => U04Ref.Resolve();
-            set => U04Ref.SetEmbedded(value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal> U05Ref = new();
+        private NodeRef<CFuncKeysReal>? U05Ref;
         public CFuncKeysReal? U05
         {
-            get => U05Ref.Resolve();
-            set => U05Ref.SetEmbedded(value);
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
         public float U06;
         public float U07;
@@ -1837,11 +1837,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U13;
         public int U14;
 
-        private NodeRef<CFuncKeysReal> U15Ref = new();
+        private NodeRef<CFuncKeysReal>? U15Ref;
         public CFuncKeysReal? U15
         {
-            get => U15Ref.Resolve();
-            set => U15Ref.SetEmbedded(value);
+            get => U15Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U15Ref, value);
         }
         public float U16;
         public float U17;
@@ -1852,16 +1852,16 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B2037 owner;
             internal NodeRefView(Chunk090B2037 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U04 => owner.U04Ref;
-            public NodeRef<CFuncKeysReal> U05 => owner.U05Ref;
-            public NodeRef<CFuncKeysReal> U15 => owner.U15Ref;
+            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U04", U04Ref);
-            yield return new("U05", U05Ref);
-            yield return new("U15", U15Ref);
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
             yield break;
         }
 
@@ -1895,8 +1895,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Int32(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
-            rw.NodeRef(U04Ref);
-            rw.NodeRef(U05Ref);
+            rw.NodeRef(ref U04Ref);
+            rw.NodeRef(ref U05Ref);
             rw.Single(ref U06);
             rw.Single(ref U07);
             rw.Single(ref U08);
@@ -1906,7 +1906,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U12);
             rw.Single(ref U13);
             rw.Int32(ref U14);
-            rw.NodeRef(U15Ref);
+            rw.NodeRef(ref U15Ref);
             rw.Single(ref U16);
             rw.Single(ref U17);
             rw.Single(ref U18);
@@ -2000,18 +2000,18 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CPlugParticleGpuSpawn> U01Ref = new();
+        private NodeRef<CPlugParticleGpuSpawn>? U01Ref;
         public CPlugParticleGpuSpawn? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugParticleGpuModel> U02Ref = new();
+        private NodeRef<CPlugParticleGpuModel>? U02Ref;
         public CPlugParticleGpuModel? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -2019,14 +2019,14 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         {
             private readonly Chunk090B203A owner;
             internal NodeRefView(Chunk090B203A owner) => this.owner = owner;
-            public NodeRef<CPlugParticleGpuSpawn> U01 => owner.U01Ref;
-            public NodeRef<CPlugParticleGpuModel> U02 => owner.U02Ref;
+            public NodeRef<CPlugParticleGpuSpawn> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugParticleGpuModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -2044,8 +2044,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(U01Ref);
-                rw.NodeRef(U02Ref);
+                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
             }
         }
     }

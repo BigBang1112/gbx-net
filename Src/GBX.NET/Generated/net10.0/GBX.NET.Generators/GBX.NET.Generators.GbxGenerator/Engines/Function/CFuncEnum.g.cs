@@ -92,12 +92,12 @@ public partial class CFuncEnum : CFunc, IClass
         set => this.maxTexCoord = value;
     }
 
-    private NodeRef<CMwRefBuffer> iconIndexsRef = new();
+    private NodeRef<CMwRefBuffer>? iconIndexsRef;
     [AppliedWithChunk<Chunk0500E006>]
     public CMwRefBuffer? IconIndexs
     {
-        get => iconIndexsRef.Resolve();
-        set => iconIndexsRef.SetEmbedded(value);
+        get => iconIndexsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconIndexsRef, value);
     }
 
     private Vec2 texSize;
@@ -114,7 +114,7 @@ public partial class CFuncEnum : CFunc, IClass
         private readonly CFuncEnum owner;
         internal NodeRefView(CFuncEnum owner) => this.owner = owner;
         public ValuesReferenceView Values => new(owner);
-        public NodeRef<CMwRefBuffer> IconIndexs => owner.iconIndexsRef;
+        public NodeRef<CMwRefBuffer> IconIndexs => NodeRef.GetOrCreate(ref owner.iconIndexsRef);
     }
     public readonly struct ValuesReferenceView
     {
@@ -130,7 +130,7 @@ public partial class CFuncEnum : CFunc, IClass
         {
             for (var i = 0; i < values.Count; i++) yield return new("Values" + "[" + i + "]", values.GetReference(i));
         }
-        yield return new("IconIndexs", iconIndexsRef);
+        yield return new("IconIndexs", NodeRef.GetOrCreate(ref iconIndexsRef));
         yield break;
     }
 
@@ -190,7 +190,7 @@ public partial class CFuncEnum : CFunc, IClass
 
         public override void ReadWrite(CFuncEnum n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.iconIndexsRef);
+            rw.NodeRef(ref n.iconIndexsRef);
         }
     }
 

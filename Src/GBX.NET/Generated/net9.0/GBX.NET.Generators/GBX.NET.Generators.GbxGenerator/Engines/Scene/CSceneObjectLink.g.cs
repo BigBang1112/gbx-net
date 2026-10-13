@@ -36,12 +36,12 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CSceneMobil> mobilRef = new();
+    private NodeRef<CSceneMobil>? mobilRef;
     [AppliedWithChunk<Chunk0A014001>]
     public CSceneMobil? Mobil
     {
-        get => mobilRef.Resolve();
-        set => mobilRef.SetEmbedded(value);
+        get => mobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mobilRef, value);
     }
 
     private string? name;
@@ -52,13 +52,13 @@ public partial class CSceneObjectLink : CMwNod, IClass
         set => this.name = value;
     }
 
-    private NodeRef<CSceneObject> objectRef = new();
+    private NodeRef<CSceneObject>? objectRef;
     [AppliedWithChunk<Chunk0A014001>]
     [AppliedWithChunk<Chunk0A00F000>]
     public CSceneObject? Object
     {
-        get => objectRef.Resolve();
-        set => objectRef.SetEmbedded(value);
+        get => objectRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref objectRef, value);
     }
 
     private Iso4 relativeLocation;
@@ -83,14 +83,14 @@ public partial class CSceneObjectLink : CMwNod, IClass
     {
         private readonly CSceneObjectLink owner;
         internal NodeRefView(CSceneObjectLink owner) => this.owner = owner;
-        public NodeRef<CSceneMobil> Mobil => owner.mobilRef;
-        public NodeRef<CSceneObject> Object => owner.objectRef;
+        public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
+        public NodeRef<CSceneObject> Object => NodeRef.GetOrCreate(ref owner.objectRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Mobil", mobilRef);
-        yield return new("Object", objectRef);
+        yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
+        yield return new("Object", NodeRef.GetOrCreate(ref objectRef));
         yield break;
     }
 
@@ -122,7 +122,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
         public override void ReadWrite(CSceneObjectLink n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.objectRef);
+            rw.NodeRef(ref n.objectRef);
             rw.Iso4(ref n.relativeLocation);
             rw.Boolean(ref U01);
         }
@@ -214,7 +214,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
             if (U01)
             {
-                rw.NodeRef(n.mobilRef);
+                rw.NodeRef(ref n.mobilRef);
                 rw.Int32(ref U02);
 
                 if (U02== 2)
@@ -228,7 +228,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
 
             if (!U01)
             {
-                rw.NodeRef(n.objectRef);
+                rw.NodeRef(ref n.objectRef);
             }
 
             rw.Iso4(ref n.relativeLocation);

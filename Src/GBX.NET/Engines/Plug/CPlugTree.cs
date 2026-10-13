@@ -218,7 +218,7 @@ public partial class CPlugTree
         public override void ReadWrite(CPlugTree n, GbxReaderWriter rw)
         {
             n.PlugId = ReadWriteId(n.PlugId, rw);
-            rw.NodeRef(n.modelSolidRef);
+            rw.NodeRef(ref n.modelSolidRef);
 
             if (n.HasModel)
             {

@@ -70,13 +70,13 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         set => this.size = value;
     }
 
-    private NodeRef<CSceneLayout> sceneRef = new();
+    private NodeRef<CSceneLayout>? sceneRef;
     [AppliedWithChunk<Chunk0303B001>]
     [AppliedWithChunk<Chunk0303B002>]
     public CSceneLayout? Scene
     {
-        get => sceneRef.Resolve();
-        set => sceneRef.SetEmbedded(value);
+        get => sceneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneRef, value);
     }
 
     private bool offsetBlockY;
@@ -100,12 +100,12 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     {
         private readonly CGameCtnDecorationSize owner;
         internal NodeRefView(CGameCtnDecorationSize owner) => this.owner = owner;
-        public NodeRef<CSceneLayout> Scene => owner.sceneRef;
+        public NodeRef<CSceneLayout> Scene => NodeRef.GetOrCreate(ref owner.sceneRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Scene", sceneRef);
+        yield return new("Scene", NodeRef.GetOrCreate(ref sceneRef));
         yield break;
     }
 
@@ -163,7 +163,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         {
             rw.Int32(ref n.baseHeightBase);
             rw.Int3(ref n.size);
-            rw.NodeRef(n.sceneRef);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 
@@ -184,7 +184,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
             rw.Int32(ref n.baseHeightBase);
             rw.Int3(ref n.size);
             rw.Boolean(ref n.offsetBlockY);
-            rw.NodeRef(n.sceneRef);
+            rw.NodeRef(ref n.sceneRef);
         }
     }
 

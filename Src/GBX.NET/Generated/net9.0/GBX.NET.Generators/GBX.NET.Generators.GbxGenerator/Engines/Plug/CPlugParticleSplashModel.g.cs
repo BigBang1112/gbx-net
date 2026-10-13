@@ -78,11 +78,11 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
         public float U24;
         public float U25;
 
-        private NodeRef<CFuncEnvelope> U26Ref = new();
+        private NodeRef<CFuncEnvelope>? U26Ref;
         public CFuncEnvelope? U26
         {
-            get => U26Ref.Resolve();
-            set => U26Ref.SetEmbedded(value);
+            get => U26Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U26Ref, value);
         }
         public float U27;
         public float U28;
@@ -93,12 +93,12 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
         {
             private readonly Chunk090B5000 owner;
             internal NodeRefView(Chunk090B5000 owner) => this.owner = owner;
-            public NodeRef<CFuncEnvelope> U26 => owner.U26Ref;
+            public NodeRef<CFuncEnvelope> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U26", U26Ref);
+            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
             yield break;
         }
 
@@ -176,7 +176,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
 
                 if (Version >= 3)
                 {
-                    rw.NodeRef(U26Ref);
+                    rw.NodeRef(ref U26Ref);
 
                     if (Version >= 4)
                     {

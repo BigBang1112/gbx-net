@@ -34,6 +34,7 @@ public partial interface IGbxReaderWriter : IDisposable
     CMwNod? NodeRef(CMwNod? value = default);
     void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value);
     void NodeRef<T>(NodeRef<T> reference) where T : CMwNod;
+    void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;

@@ -56,14 +56,14 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         set => this.end = value;
     }
 
-    private NodeRef<CGameCtnGhost> ghostModelRef = new();
+    private NodeRef<CGameCtnGhost>? ghostModelRef;
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>]
     public CGameCtnGhost? GhostModel
     {
-        get => ghostModelRef.Resolve();
-        set => ghostModelRef.SetEmbedded(value);
+        get => ghostModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref ghostModelRef, value);
     }
 
     private float startOffset;
@@ -120,12 +120,12 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     {
         private readonly CGameCtnMediaBlockGhost owner;
         internal NodeRefView(CGameCtnMediaBlockGhost owner) => this.owner = owner;
-        public NodeRef<CGameCtnGhost> GhostModel => owner.ghostModelRef;
+        public NodeRef<CGameCtnGhost> GhostModel => NodeRef.GetOrCreate(ref owner.ghostModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("GhostModel", ghostModelRef);
+        yield return new("GhostModel", NodeRef.GetOrCreate(ref ghostModelRef));
         yield break;
     }
 
@@ -175,7 +175,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef(n.ghostModelRef);
+            rw.NodeRef(ref n.ghostModelRef);
         }
     }
 
@@ -195,7 +195,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.NodeRef(n.ghostModelRef);
+            rw.NodeRef(ref n.ghostModelRef);
             rw.Single(ref n.startOffset);
         }
     }
@@ -241,7 +241,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
                 rw.TimeSingle(ref n.end);
             }
 
-            rw.NodeRef(n.ghostModelRef);
+            rw.NodeRef(ref n.ghostModelRef);
             rw.Single(ref n.startOffset);
             rw.Boolean(ref n.noDamage);
 

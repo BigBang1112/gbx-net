@@ -99,11 +99,11 @@ public partial class CControlList : CControlContainer, IClass
         public bool U05;
         public string? U06;
 
-        private NodeRef<CMwNod> U07Ref = new();
+        private NodeRef<CMwNod>? U07Ref;
         public CMwNod? U07
         {
-            get => U07Ref.Resolve();
-            set => U07Ref.SetEmbedded(value);
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
         public float U08;
         public float U09;
@@ -114,12 +114,12 @@ public partial class CControlList : CControlContainer, IClass
         {
             private readonly Chunk0700F00A owner;
             internal NodeRefView(Chunk0700F00A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U07 => owner.U07Ref;
+            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U07", U07Ref);
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
             yield break;
         }
 
@@ -149,7 +149,7 @@ public partial class CControlList : CControlContainer, IClass
 
             if (U06== null || U06== "")
             {
-                rw.NodeRef(U07Ref);
+                rw.NodeRef(ref U07Ref);
             }
 
             rw.Single(ref U08);
@@ -174,11 +174,11 @@ public partial class CControlList : CControlContainer, IClass
             set => this.u02 = value;
         }
 
-        private NodeRef<CMwNod> u03Ref = new();
+        private NodeRef<CMwNod>? u03Ref;
         public CMwNod? U03
         {
-            get => u03Ref.Resolve();
-            set => u03Ref.SetEmbedded(value);
+            get => u03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u03Ref, value);
         }
 
         private string? u04;
@@ -200,11 +200,11 @@ public partial class CControlList : CControlContainer, IClass
         {
             private readonly Unknown owner;
             internal NodeRefView(Unknown owner) => this.owner = owner;
-            public NodeRef<CMwNod> U03 => owner.u03Ref;
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U03", u03Ref);
+            yield return new("U03", NodeRef.GetOrCreate(ref u03Ref));
             yield break;
         }
 
@@ -229,7 +229,7 @@ public partial class CControlList : CControlContainer, IClass
         {
             rw.String(ref this.u01);
             rw.Single(ref this.u02);
-            rw.NodeRef(this.u03Ref);
+            rw.NodeRef(ref this.u03Ref);
             rw.Id(ref this.u04);
             rw.Boolean(ref this.u05);
         }

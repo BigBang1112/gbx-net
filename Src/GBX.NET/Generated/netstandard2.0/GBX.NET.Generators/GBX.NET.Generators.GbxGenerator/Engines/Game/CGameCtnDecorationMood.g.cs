@@ -85,13 +85,13 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.remappedStartDayTime = value;
     }
 
-    private NodeRef<CPlugGameSkin> remappingRef = new();
+    private NodeRef<CPlugGameSkin>? remappingRef;
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugGameSkin? Remapping
     {
-        get => remappingRef.Resolve();
-        set => remappingRef.SetEmbedded(value);
+        get => remappingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref remappingRef, value);
     }
 
     private string? remapFolder;
@@ -151,20 +151,20 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.solidLightAreSkinned = value;
     }
 
-    private NodeRef<CHmsLightMap> hmsLightMapRef = new();
+    private NodeRef<CHmsLightMap>? hmsLightMapRef;
     [AppliedWithChunk<Chunk0303A004>]
     public CHmsLightMap? HmsLightMap
     {
-        get => hmsLightMapRef.Resolve();
-        set => hmsLightMapRef.SetEmbedded(value);
+        get => hmsLightMapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hmsLightMapRef, value);
     }
 
-    private NodeRef<CHmsAmbientOcc> hmsAmbientOccRef = new();
+    private NodeRef<CHmsAmbientOcc>? hmsAmbientOccRef;
     [AppliedWithChunk<Chunk0303A005>]
     public CHmsAmbientOcc? HmsAmbientOcc
     {
-        get => hmsAmbientOccRef.Resolve();
-        set => hmsAmbientOccRef.SetEmbedded(value);
+        get => hmsAmbientOccRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref hmsAmbientOccRef, value);
     }
 
     private float sunMoonIntensity;
@@ -200,12 +200,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.toneMapFilmCurve = value;
     }
 
-    private NodeRef<CFuncKeysReal> toneMapAutoExp_FidAvgLumiToKeyValueRef = new();
+    private NodeRef<CFuncKeysReal>? toneMapAutoExp_FidAvgLumiToKeyValueRef;
     [AppliedWithChunk<Chunk0303A00C>]
     public CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
     {
-        get => toneMapAutoExp_FidAvgLumiToKeyValueRef.Resolve();
-        set => toneMapAutoExp_FidAvgLumiToKeyValueRef.SetEmbedded(value);
+        get => toneMapAutoExp_FidAvgLumiToKeyValueRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref toneMapAutoExp_FidAvgLumiToKeyValueRef, value);
     }
 
     private Vec3 tech3SpecularFake_ExpScaleMax;
@@ -240,12 +240,12 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.tech3ToneMapAutoExp = value;
     }
 
-    private NodeRef<CFuncKeysReal> fxBloom_FidFuncIntensAtHdrNormRef = new();
+    private NodeRef<CFuncKeysReal>? fxBloom_FidFuncIntensAtHdrNormRef;
     [AppliedWithChunk<Chunk0303A00F>]
     public CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
     {
-        get => fxBloom_FidFuncIntensAtHdrNormRef.Resolve();
-        set => fxBloom_FidFuncIntensAtHdrNormRef.SetEmbedded(value);
+        get => fxBloom_FidFuncIntensAtHdrNormRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxBloom_FidFuncIntensAtHdrNormRef, value);
     }
 
     private bool waterReflectFakeCube;
@@ -256,20 +256,20 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.waterReflectFakeCube = value;
     }
 
-    private NodeRef<CPlugFxHdrScales_Tech3> fxHdrScalesT3Ref = new();
+    private NodeRef<CPlugFxHdrScales_Tech3>? fxHdrScalesT3Ref;
     [AppliedWithChunk<Chunk0303A00F>(2)]
     public CPlugFxHdrScales_Tech3? FxHdrScalesT3
     {
-        get => fxHdrScalesT3Ref.Resolve();
-        set => fxHdrScalesT3Ref.SetEmbedded(value);
+        get => fxHdrScalesT3Ref?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxHdrScalesT3Ref, value);
     }
 
-    private NodeRef<CPlugMoodBlender> moodBlenderRef = new();
+    private NodeRef<CPlugMoodBlender>? moodBlenderRef;
     [AppliedWithChunk<Chunk0303A00F>(3)]
     public CPlugMoodBlender? MoodBlender
     {
-        get => moodBlenderRef.Resolve();
-        set => moodBlenderRef.SetEmbedded(value);
+        get => moodBlenderRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref moodBlenderRef, value);
     }
 
     private bool isNight;
@@ -282,36 +282,36 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => this.enableStars = value;
     }
 
-    private NodeRef<CFuncCloudsSolids> cloudsSolidsRef = new();
+    private NodeRef<CFuncCloudsSolids>? cloudsSolidsRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CFuncCloudsSolids? CloudsSolids
     {
-        get => cloudsSolidsRef.Resolve();
-        set => cloudsSolidsRef.SetEmbedded(value);
+        get => cloudsSolidsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cloudsSolidsRef, value);
     }
 
-    private NodeRef<CPlugFxLightning> fxLightningRef = new();
+    private NodeRef<CPlugFxLightning>? fxLightningRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxLightning? FxLightning
     {
-        get => fxLightningRef.Resolve();
-        set => fxLightningRef.SetEmbedded(value);
+        get => fxLightningRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxLightningRef, value);
     }
 
-    private NodeRef<CPlugFxWindOnDecal> fxWindOnDecalRef = new();
+    private NodeRef<CPlugFxWindOnDecal>? fxWindOnDecalRef;
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxWindOnDecal? FxWindOnDecal
     {
-        get => fxWindOnDecalRef.Resolve();
-        set => fxWindOnDecalRef.SetEmbedded(value);
+        get => fxWindOnDecalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxWindOnDecalRef, value);
     }
 
-    private NodeRef<CPlugFxWindOnTreeSprite> fxWindOnTreeSpriteRef = new();
+    private NodeRef<CPlugFxWindOnTreeSprite>? fxWindOnTreeSpriteRef;
     [AppliedWithChunk<Chunk0303A012>(1)]
     public CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
     {
-        get => fxWindOnTreeSpriteRef.Resolve();
-        set => fxWindOnTreeSpriteRef.SetEmbedded(value);
+        get => fxWindOnTreeSpriteRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref fxWindOnTreeSpriteRef, value);
     }
 
     private float editorHelperHdrScale;
@@ -327,32 +327,32 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
         private readonly CGameCtnDecorationMood owner;
         internal NodeRefView(CGameCtnDecorationMood owner) => this.owner = owner;
-        public NodeRef<CPlugGameSkin> Remapping => owner.remappingRef;
-        public NodeRef<CHmsLightMap> HmsLightMap => owner.hmsLightMapRef;
-        public NodeRef<CHmsAmbientOcc> HmsAmbientOcc => owner.hmsAmbientOccRef;
-        public NodeRef<CFuncKeysReal> ToneMapAutoExp_FidAvgLumiToKeyValue => owner.toneMapAutoExp_FidAvgLumiToKeyValueRef;
-        public NodeRef<CFuncKeysReal> FxBloom_FidFuncIntensAtHdrNorm => owner.fxBloom_FidFuncIntensAtHdrNormRef;
-        public NodeRef<CPlugFxHdrScales_Tech3> FxHdrScalesT3 => owner.fxHdrScalesT3Ref;
-        public NodeRef<CPlugMoodBlender> MoodBlender => owner.moodBlenderRef;
-        public NodeRef<CFuncCloudsSolids> CloudsSolids => owner.cloudsSolidsRef;
-        public NodeRef<CPlugFxLightning> FxLightning => owner.fxLightningRef;
-        public NodeRef<CPlugFxWindOnDecal> FxWindOnDecal => owner.fxWindOnDecalRef;
-        public NodeRef<CPlugFxWindOnTreeSprite> FxWindOnTreeSprite => owner.fxWindOnTreeSpriteRef;
+        public NodeRef<CPlugGameSkin> Remapping => NodeRef.GetOrCreate(ref owner.remappingRef);
+        public NodeRef<CHmsLightMap> HmsLightMap => NodeRef.GetOrCreate(ref owner.hmsLightMapRef);
+        public NodeRef<CHmsAmbientOcc> HmsAmbientOcc => NodeRef.GetOrCreate(ref owner.hmsAmbientOccRef);
+        public NodeRef<CFuncKeysReal> ToneMapAutoExp_FidAvgLumiToKeyValue => NodeRef.GetOrCreate(ref owner.toneMapAutoExp_FidAvgLumiToKeyValueRef);
+        public NodeRef<CFuncKeysReal> FxBloom_FidFuncIntensAtHdrNorm => NodeRef.GetOrCreate(ref owner.fxBloom_FidFuncIntensAtHdrNormRef);
+        public NodeRef<CPlugFxHdrScales_Tech3> FxHdrScalesT3 => NodeRef.GetOrCreate(ref owner.fxHdrScalesT3Ref);
+        public NodeRef<CPlugMoodBlender> MoodBlender => NodeRef.GetOrCreate(ref owner.moodBlenderRef);
+        public NodeRef<CFuncCloudsSolids> CloudsSolids => NodeRef.GetOrCreate(ref owner.cloudsSolidsRef);
+        public NodeRef<CPlugFxLightning> FxLightning => NodeRef.GetOrCreate(ref owner.fxLightningRef);
+        public NodeRef<CPlugFxWindOnDecal> FxWindOnDecal => NodeRef.GetOrCreate(ref owner.fxWindOnDecalRef);
+        public NodeRef<CPlugFxWindOnTreeSprite> FxWindOnTreeSprite => NodeRef.GetOrCreate(ref owner.fxWindOnTreeSpriteRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Remapping", remappingRef);
-        yield return new("HmsLightMap", hmsLightMapRef);
-        yield return new("HmsAmbientOcc", hmsAmbientOccRef);
-        yield return new("ToneMapAutoExp_FidAvgLumiToKeyValue", toneMapAutoExp_FidAvgLumiToKeyValueRef);
-        yield return new("FxBloom_FidFuncIntensAtHdrNorm", fxBloom_FidFuncIntensAtHdrNormRef);
-        yield return new("FxHdrScalesT3", fxHdrScalesT3Ref);
-        yield return new("MoodBlender", moodBlenderRef);
-        yield return new("CloudsSolids", cloudsSolidsRef);
-        yield return new("FxLightning", fxLightningRef);
-        yield return new("FxWindOnDecal", fxWindOnDecalRef);
-        yield return new("FxWindOnTreeSprite", fxWindOnTreeSpriteRef);
+        yield return new("Remapping", NodeRef.GetOrCreate(ref remappingRef));
+        yield return new("HmsLightMap", NodeRef.GetOrCreate(ref hmsLightMapRef));
+        yield return new("HmsAmbientOcc", NodeRef.GetOrCreate(ref hmsAmbientOccRef));
+        yield return new("ToneMapAutoExp_FidAvgLumiToKeyValue", NodeRef.GetOrCreate(ref toneMapAutoExp_FidAvgLumiToKeyValueRef));
+        yield return new("FxBloom_FidFuncIntensAtHdrNorm", NodeRef.GetOrCreate(ref fxBloom_FidFuncIntensAtHdrNormRef));
+        yield return new("FxHdrScalesT3", NodeRef.GetOrCreate(ref fxHdrScalesT3Ref));
+        yield return new("MoodBlender", NodeRef.GetOrCreate(ref moodBlenderRef));
+        yield return new("CloudsSolids", NodeRef.GetOrCreate(ref cloudsSolidsRef));
+        yield return new("FxLightning", NodeRef.GetOrCreate(ref fxLightningRef));
+        yield return new("FxWindOnDecal", NodeRef.GetOrCreate(ref fxWindOnDecalRef));
+        yield return new("FxWindOnTreeSprite", NodeRef.GetOrCreate(ref fxWindOnTreeSpriteRef));
         yield break;
     }
 
@@ -449,7 +449,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.Single(ref n.remappedStartDayTime);
-            rw.NodeRef(n.remappingRef);
+            rw.NodeRef(ref n.remappingRef);
             rw.String(ref n.remapFolder);
         }
     }
@@ -508,7 +508,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.hmsLightMapRef);
+            rw.NodeRef(ref n.hmsLightMapRef);
         }
     }
 
@@ -526,7 +526,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.hmsAmbientOccRef);
+            rw.NodeRef(ref n.hmsAmbientOccRef);
         }
     }
 
@@ -584,7 +584,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.Vec3(ref U01);
             rw.Single(ref n.toneMapExposureStaticBase);
             rw.Int32(ref n.toneMapFilmCurve);
-            rw.NodeRef(n.toneMapAutoExp_FidAvgLumiToKeyValueRef);
+            rw.NodeRef(ref n.toneMapAutoExp_FidAvgLumiToKeyValueRef);
         }
     }
 
@@ -609,7 +609,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.Vec2(ref n.tech3SpecularLocal);
             rw.Vec3(ref n.tech3Bloom);
             rw.Vec4(ref n.tech3ToneMapAutoExp);
-            rw.NodeRef(n.fxBloom_FidFuncIntensAtHdrNormRef);
+            rw.NodeRef(ref n.fxBloom_FidFuncIntensAtHdrNormRef);
 
             if (Version >= 1)
             {
@@ -617,11 +617,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
                 if (Version >= 2)
                 {
-                    rw.NodeRef(n.fxHdrScalesT3Ref);
+                    rw.NodeRef(ref n.fxHdrScalesT3Ref);
 
                     if (Version >= 3)
                     {
-                        rw.NodeRef(n.moodBlenderRef);
+                        rw.NodeRef(ref n.moodBlenderRef);
                     }
                 }
             }
@@ -647,16 +647,16 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
             rw.VersionInt32(this);
             rw.Single(ref n.remappedStartDayTime);
             rw.Boolean(ref n.isNight);
-            rw.NodeRef(n.remappingRef);
+            rw.NodeRef(ref n.remappingRef);
             rw.String(ref n.remapFolder);
             rw.Boolean(ref n.enableStars);
-            rw.NodeRef(n.cloudsSolidsRef);
-            rw.NodeRef(n.fxLightningRef);
-            rw.NodeRef(n.fxWindOnDecalRef);
+            rw.NodeRef(ref n.cloudsSolidsRef);
+            rw.NodeRef(ref n.fxLightningRef);
+            rw.NodeRef(ref n.fxWindOnDecalRef);
 
             if (Version >= 1)
             {
-                rw.NodeRef(n.fxWindOnTreeSpriteRef);
+                rw.NodeRef(ref n.fxWindOnTreeSpriteRef);
             }
         }
     }

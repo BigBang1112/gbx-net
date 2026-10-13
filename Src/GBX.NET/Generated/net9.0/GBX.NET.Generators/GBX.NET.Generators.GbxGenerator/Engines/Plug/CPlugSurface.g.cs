@@ -36,29 +36,29 @@ public partial class CPlugSurface : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugSurfaceGeom> geomRef = new();
+    private NodeRef<CPlugSurfaceGeom>? geomRef;
     [AppliedWithChunk<Chunk0900C000>]
     public CPlugSurfaceGeom? Geom
     {
-        get => geomRef.Resolve();
-        set => geomRef.SetEmbedded(value);
+        get => geomRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref geomRef, value);
     }
 
-    private NodeRef<CPlugSkel> skelRef = new();
+    private NodeRef<CPlugSkel>? skelRef;
 
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
         private readonly CPlugSurface owner;
         internal NodeRefView(CPlugSurface owner) => this.owner = owner;
-        public NodeRef<CPlugSurfaceGeom> Geom => owner.geomRef;
-        public NodeRef<CPlugSkel> Skel => owner.skelRef;
+        public NodeRef<CPlugSurfaceGeom> Geom => NodeRef.GetOrCreate(ref owner.geomRef);
+        public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Geom", geomRef);
-        yield return new("Skel", skelRef);
+        yield return new("Geom", NodeRef.GetOrCreate(ref geomRef));
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
         yield break;
     }
 
@@ -90,7 +90,7 @@ public partial class CPlugSurface : CPlug, IClass
 
         public override void ReadWrite(CPlugSurface n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.geomRef);
+            rw.NodeRef(ref n.geomRef);
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials!);
         }
     }
@@ -117,18 +117,18 @@ public partial class CPlugSurface : CPlug, IClass
 
     public partial class SurfMaterial : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CPlugMaterial> materialRef = new();
+        private NodeRef<CPlugMaterial>? materialRef;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly SurfMaterial owner;
             internal NodeRefView(SurfMaterial owner) => this.owner = owner;
-            public NodeRef<CPlugMaterial> Material => owner.materialRef;
+            public NodeRef<CPlugMaterial> Material => NodeRef.GetOrCreate(ref owner.materialRef);
         }
         public IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("Material", materialRef);
+            yield return new("Material", NodeRef.GetOrCreate(ref materialRef));
             yield break;
         }
 

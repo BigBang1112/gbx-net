@@ -44,7 +44,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         set => this.fileVersion = value;
     }
 
-    private NodeRef<CPlugSkel> skelRef = new();
+    private NodeRef<CPlugSkel>? skelRef;
 
     private FakeOccProj[]? fakeOccProjs;
     [AppliedWithChunk<Chunk090BB002>]
@@ -61,7 +61,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         internal NodeRefView(CPlugSolid2Model owner) => this.owner = owner;
         public VisualsReferenceView Visuals => new(owner);
         public MaterialsReferenceView Materials => new(owner);
-        public NodeRef<CPlugSkel> Skel => owner.skelRef;
+        public NodeRef<CPlugSkel> Skel => NodeRef.GetOrCreate(ref owner.skelRef);
         public MaterialInstsReferenceView MaterialInsts => new(owner);
         public LightUserModelsReferenceView LightUserModels => new(owner);
     }
@@ -104,7 +104,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         {
             for (var i = 0; i < materials.Count; i++) yield return new("Materials" + "[" + i + "]", materials.GetReference(i));
         }
-        yield return new("Skel", skelRef);
+        yield return new("Skel", NodeRef.GetOrCreate(ref skelRef));
         if (materialInsts is not null)
         {
             for (var i = 0; i < materialInsts.Count; i++) yield return new("MaterialInsts" + "[" + i + "]", materialInsts.GetReference(i));
@@ -173,11 +173,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         public override uint Id => 0x090BB000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod> U14Ref = new();
+        private NodeRef<CMwNod>? U14Ref;
         public CMwNod? U14
         {
-            get => U14Ref.Resolve();
-            set => U14Ref.SetEmbedded(value);
+            get => U14Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U14Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -185,12 +185,12 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         {
             private readonly Chunk090BB000 owner;
             internal NodeRefView(Chunk090BB000 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U14 => owner.U14Ref;
+            public NodeRef<CMwNod> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U14", U14Ref);
+            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
             yield break;
         }
 
@@ -507,11 +507,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.u02 = value;
         }
 
-        private NodeRef<CPlugLight> u03Ref = new();
+        private NodeRef<CPlugLight>? u03Ref;
         public CPlugLight? U03
         {
-            get => u03Ref.Resolve();
-            set => u03Ref.SetEmbedded(value);
+            get => u03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref u03Ref, value);
         }
 
         private string? u04;
@@ -624,11 +624,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         {
             private readonly Light owner;
             internal NodeRefView(Light owner) => this.owner = owner;
-            public NodeRef<CPlugLight> U03 => owner.u03Ref;
+            public NodeRef<CPlugLight> U03 => NodeRef.GetOrCreate(ref owner.u03Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U03", u03Ref);
+            yield return new("U03", NodeRef.GetOrCreate(ref u03Ref));
             yield break;
         }
 
@@ -669,7 +669,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
             if (U02)
             {
-                rw.NodeRef(this.u03Ref);
+                rw.NodeRef(ref this.u03Ref);
             }
 
             if (!U02)
@@ -773,11 +773,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.materialName = value;
         }
 
-        private NodeRef<CPlugMaterialUserInst> materialUserInstRef = new();
+        private NodeRef<CPlugMaterialUserInst>? materialUserInstRef;
         public CPlugMaterialUserInst? MaterialUserInst
         {
-            get => materialUserInstRef.Resolve();
-            set => materialUserInstRef.SetEmbedded(value);
+            get => materialUserInstRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref materialUserInstRef, value);
         }
 
         public NodeRefView References => new(this);
@@ -785,11 +785,11 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         {
             private readonly Material owner;
             internal NodeRefView(Material owner) => this.owner = owner;
-            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => owner.materialUserInstRef;
+            public NodeRef<CPlugMaterialUserInst> MaterialUserInst => NodeRef.GetOrCreate(ref owner.materialUserInstRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("MaterialUserInst", materialUserInstRef);
+            yield return new("MaterialUserInst", NodeRef.GetOrCreate(ref materialUserInstRef));
             yield break;
         }
 
@@ -813,7 +813,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
             if (MaterialName== null || MaterialName== "")
             {
-                rw.NodeRef(this.materialUserInstRef);
+                rw.NodeRef(ref this.materialUserInstRef);
             }
         }
 

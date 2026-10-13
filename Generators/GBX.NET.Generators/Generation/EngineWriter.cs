@@ -433,7 +433,7 @@ internal static class EngineWriter
         if (scalar)
         {
             if (!SyntaxOverlap.Has(scope.Existing, handle))
-                code.Line($"private NodeRef<{element}> {handle} = new();");
+                code.Line($"private NodeRef<{element}>? {handle};");
         }
         else if (!chunk && !SyntaxOverlap.Has(scope.Existing, backing.TrimStart('@')))
         {
@@ -452,9 +452,9 @@ internal static class EngineWriter
             else
             {
                 code.Open($"public {type} {property}");
-                code.Line($"get => {(convertedStorage ? handle + ".Descriptor is null ? " + backing + " : (" + type + ")" + handle + ".Resolve()" : scalar ? handle + ".Resolve()" : backing)};");
-                if (convertedStorage) code.Line($"set {{ {backing} = value; {handle}.SetEmbedded(({element}?)value); }}");
-                else code.Line($"set => {(scalar ? handle + ".SetEmbedded(value)" : backing + " = value")};");
+                code.Line($"get => {(convertedStorage ? handle + "?.Descriptor is null ? " + backing + " : (" + type + ")" + handle + ".Resolve()" : scalar ? handle + "?.Resolve()" : backing)};");
+                if (convertedStorage) code.Line($"set {{ {backing} = value; NodeRef.SetEmbedded(ref {handle}, ({element}?)value); }}");
+                else code.Line($"set => {(scalar ? "NodeRef.SetEmbedded(ref " + handle + ", value)" : backing + " = value")};");
                 code.Close();
             }
         }
@@ -494,7 +494,7 @@ internal static class EngineWriter
         {
             var name = SyntaxOverlap.Escape(field.Name);
             if (field.StorageDeclaration.Type.ArrayDimensions == 0)
-                code.Line($"public NodeRef<{ReferenceModel.Element(field)}> {name} => owner.{ReferenceModel.Handle(field, chunk)};");
+                code.Line($"public NodeRef<{ReferenceModel.Element(field)}> {name} => NodeRef.GetOrCreate(ref owner.{ReferenceModel.Handle(field, chunk)});");
             else
                 code.Line($"public {field.Name}ReferenceView {name} => new(owner);");
         }
@@ -502,7 +502,7 @@ internal static class EngineWriter
         {
             foreach (var declaration in scope.Existing.Fields)
             {
-                if (declaration.Declaration.Type is not GenericNameSyntax { Identifier.ValueText: "NodeRef" } referenceType) continue;
+                if (NodeReferenceType(declaration.Declaration.Type) is not { } referenceType) continue;
                 foreach (var variable in declaration.Declaration.Variables)
                 {
                     var handle = variable.Identifier.ValueText;
@@ -511,7 +511,7 @@ internal static class EngineWriter
                     var name = handle.Substring(0, handle.Length - "Ref".Length);
                     name = char.ToUpperInvariant(name[0]) + name.Substring(1);
                     if (fields.Any(x => x.Name == name)) continue;
-                    code.Line($"public NodeRef<{referenceType.TypeArgumentList.Arguments[0]}> {SyntaxOverlap.Escape(name)} => owner.{SyntaxOverlap.Escape(handle)};");
+                    code.Line($"public NodeRef<{referenceType.TypeArgumentList.Arguments[0]}> {SyntaxOverlap.Escape(name)} => NodeRef.GetOrCreate(ref owner.{SyntaxOverlap.Escape(handle)});");
                 }
             }
         }
@@ -551,7 +551,7 @@ internal static class EngineWriter
         {
             var name = SymbolDisplay.FormatLiteral(field.Name, true);
             if (field.StorageDeclaration.Type.ArrayDimensions == 0)
-                code.Line($"yield return new({name}, {ReferenceModel.Handle(field, chunk)});");
+                code.Line($"yield return new({name}, NodeRef.GetOrCreate(ref {ReferenceModel.Handle(field, chunk)}));");
             else
             {
                 var backing = chunk ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name);
@@ -572,14 +572,14 @@ internal static class EngineWriter
         {
             foreach (var declaration in scope.Existing.Fields)
             {
-                if (declaration.Declaration.Type is not GenericNameSyntax { Identifier.ValueText: "NodeRef" }) continue;
+                if (NodeReferenceType(declaration.Declaration.Type) is null) continue;
                 foreach (var variable in declaration.Declaration.Variables)
                 {
                     var handle = variable.Identifier.ValueText;
                     if (fields.Any(x => ReferenceModel.Handle(x, chunk) == handle)) continue;
                     var name = handle.Substring(0, handle.Length - "Ref".Length);
                     name = char.ToUpperInvariant(name[0]) + name.Substring(1);
-                    code.Line($"yield return new({SymbolDisplay.FormatLiteral(name, true)}, {SyntaxOverlap.Escape(handle)});");
+                    code.Line($"yield return new({SymbolDisplay.FormatLiteral(name, true)}, NodeRef.GetOrCreate(ref {SyntaxOverlap.Escape(handle)}));");
                 }
             }
         }
@@ -588,7 +588,13 @@ internal static class EngineWriter
     }
 
     private static bool HasHandwrittenReferences(ScopeModel scope) => scope.Existing?.Fields.Any(static field =>
-        field.Declaration.Type is GenericNameSyntax { Identifier.ValueText: "NodeRef" }) == true;
+        NodeReferenceType(field.Declaration.Type) is not null) == true;
+
+    private static GenericNameSyntax? NodeReferenceType(TypeSyntax type)
+    {
+        if (type is NullableTypeSyntax nullable) type = nullable.ElementType;
+        return type is GenericNameSyntax { Identifier.ValueText: "NodeRef" } reference ? reference : null;
+    }
 
     private static IEnumerable<FieldModel> InheritedReferences(LayoutModel layout, string baseName, ScopeModel scope,
         IReadOnlyDictionary<string, LayoutModel> layouts, IReadOnlyDictionary<string, ExistingType> existingTypes)

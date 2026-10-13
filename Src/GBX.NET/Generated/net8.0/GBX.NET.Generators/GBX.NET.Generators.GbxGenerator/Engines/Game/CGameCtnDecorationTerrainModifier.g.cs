@@ -36,12 +36,12 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<CPlugGameSkin> remappingRef = new();
+    private NodeRef<CPlugGameSkin>? remappingRef;
     [AppliedWithChunk<Chunk0303C000>]
     public CPlugGameSkin? Remapping
     {
-        get => remappingRef.Resolve();
-        set => remappingRef.SetEmbedded(value);
+        get => remappingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref remappingRef, value);
     }
 
     private string? remapFolder;
@@ -65,12 +65,12 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     {
         private readonly CGameCtnDecorationTerrainModifier owner;
         internal NodeRefView(CGameCtnDecorationTerrainModifier owner) => this.owner = owner;
-        public NodeRef<CPlugGameSkin> Remapping => owner.remappingRef;
+        public NodeRef<CPlugGameSkin> Remapping => NodeRef.GetOrCreate(ref owner.remappingRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Remapping", remappingRef);
+        yield return new("Remapping", NodeRef.GetOrCreate(ref remappingRef));
         yield break;
     }
 
@@ -100,7 +100,7 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
 
         public override void ReadWrite(CGameCtnDecorationTerrainModifier n, GbxReaderWriter rw)
         {
-            rw.NodeRef(n.remappingRef);
+            rw.NodeRef(ref n.remappingRef);
             rw.String(ref n.remapFolder);
         }
     }

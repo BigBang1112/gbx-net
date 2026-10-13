@@ -134,12 +134,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.recordingContext = value;
     }
 
-    private NodeRef<CPlugEntRecordData> recordDataRef = new();
+    private NodeRef<CPlugEntRecordData>? recordDataRef;
     [AppliedWithChunk<Chunk03092000>(5)]
     public CPlugEntRecordData? RecordData
     {
-        get => recordDataRef.Resolve();
-        set => recordDataRef.SetEmbedded(value);
+        get => recordDataRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref recordDataRef, value);
     }
 
     private string? ghostTrigram;
@@ -601,7 +601,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     {
         private readonly CGameCtnGhost owner;
         internal NodeRefView(CGameCtnGhost owner) => this.owner = owner;
-        public NodeRef<CPlugEntRecordData> RecordData => owner.recordDataRef;
+        public NodeRef<CPlugEntRecordData> RecordData => NodeRef.GetOrCreate(ref owner.recordDataRef);
         public ScreenCapturesReferenceView ScreenCaptures => new(owner);
         public ScreenCaptures_DifferenceReferenceView ScreenCaptures_Difference => new(owner);
     }
@@ -622,7 +622,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("RecordData", recordDataRef);
+        yield return new("RecordData", NodeRef.GetOrCreate(ref recordDataRef));
         if (screenCaptures is not null)
         {
             for (var i = 0; i < screenCaptures.Count; i++) yield return new("ScreenCaptures" + "[" + i + "]", screenCaptures.GetReference(i));
@@ -804,7 +804,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
 
                     if (Version >= 5)
                     {
-                        rw.NodeRef(n.recordDataRef);
+                        rw.NodeRef(ref n.recordDataRef);
                         rw.Array<int>(ref U02!);
 
                         if (Version >= 6)

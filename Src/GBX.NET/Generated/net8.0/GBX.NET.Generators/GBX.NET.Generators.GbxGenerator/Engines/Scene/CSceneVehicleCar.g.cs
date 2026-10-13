@@ -74,11 +74,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         public override uint Id => 0x0A02B005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public Vec3 U02;
 
@@ -87,12 +87,12 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         {
             private readonly Chunk0A02B005 owner;
             internal NodeRefView(Chunk0A02B005 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -105,7 +105,7 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.Vec3(ref U02);
         }
     }
@@ -117,11 +117,11 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         public override uint Id => 0x0A02B007;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public Vec3 U02;
 
@@ -130,12 +130,12 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         {
             private readonly Chunk0A02B007 owner;
             internal NodeRefView(Chunk0A02B007 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
         }
 
@@ -148,7 +148,7 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
+            rw.NodeRef(ref U01Ref);
             rw.Vec3(ref U02);
         }
     }
@@ -191,18 +191,18 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         public override uint Id => 0x0A02B00B;
         public override GameVersion GameVersion => GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
 
-        private NodeRef<CMwNod> U01Ref = new();
+        private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
         {
-            get => U01Ref.Resolve();
-            set => U01Ref.SetEmbedded(value);
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod> U02Ref = new();
+        private NodeRef<CMwNod>? U02Ref;
         public CMwNod? U02
         {
-            get => U02Ref.Resolve();
-            set => U02Ref.SetEmbedded(value);
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -210,14 +210,14 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         {
             private readonly Chunk0A02B00B owner;
             internal NodeRefView(Chunk0A02B00B owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => owner.U01Ref;
-            public NodeRef<CMwNod> U02 => owner.U02Ref;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", U01Ref);
-            yield return new("U02", U02Ref);
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -230,8 +230,8 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
 
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            rw.NodeRef(U01Ref);
-            rw.NodeRef(U02Ref);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 

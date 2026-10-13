@@ -36,32 +36,32 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
 
     internal override uint GetId() => Id;
 
-    private NodeRef<GxLight> mainGxLightRef = new();
+    private NodeRef<GxLight>? mainGxLightRef;
     [AppliedWithChunk<Chunk0600C000>]
     [AppliedWithChunk<Chunk0600C001>]
     [AppliedWithChunk<Chunk0600C002>]
     [AppliedWithChunk<Chunk0600C003>]
     public GxLight? MainGxLight
     {
-        get => mainGxLightRef.Resolve();
-        set => mainGxLightRef.SetEmbedded(value);
+        get => mainGxLightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref mainGxLightRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapFlareRef = new();
+    private NodeRef<CPlugBitmap>? bitmapFlareRef;
     [AppliedWithChunk<Chunk0600C002>]
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapFlare
     {
-        get => bitmapFlareRef.Resolve();
-        set => bitmapFlareRef.SetEmbedded(value);
+        get => bitmapFlareRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFlareRef, value);
     }
 
-    private NodeRef<CPlugBitmap> bitmapSpriteRef = new();
+    private NodeRef<CPlugBitmap>? bitmapSpriteRef;
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapSprite
     {
-        get => bitmapSpriteRef.Resolve();
-        set => bitmapSpriteRef.SetEmbedded(value);
+        get => bitmapSpriteRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapSpriteRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -69,16 +69,16 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     {
         private readonly CHmsLight owner;
         internal NodeRefView(CHmsLight owner) => this.owner = owner;
-        public NodeRef<GxLight> MainGxLight => owner.mainGxLightRef;
-        public NodeRef<CPlugBitmap> BitmapFlare => owner.bitmapFlareRef;
-        public NodeRef<CPlugBitmap> BitmapSprite => owner.bitmapSpriteRef;
+        public NodeRef<GxLight> MainGxLight => NodeRef.GetOrCreate(ref owner.mainGxLightRef);
+        public NodeRef<CPlugBitmap> BitmapFlare => NodeRef.GetOrCreate(ref owner.bitmapFlareRef);
+        public NodeRef<CPlugBitmap> BitmapSprite => NodeRef.GetOrCreate(ref owner.bitmapSpriteRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("MainGxLight", mainGxLightRef);
-        yield return new("BitmapFlare", bitmapFlareRef);
-        yield return new("BitmapSprite", bitmapSpriteRef);
+        yield return new("MainGxLight", NodeRef.GetOrCreate(ref mainGxLightRef));
+        yield return new("BitmapFlare", NodeRef.GetOrCreate(ref bitmapFlareRef));
+        yield return new("BitmapSprite", NodeRef.GetOrCreate(ref bitmapSpriteRef));
         yield break;
     }
 
@@ -109,7 +109,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.NodeRef(n.mainGxLightRef);
+            rw.NodeRef(ref n.mainGxLightRef);
         }
     }
 
@@ -142,7 +142,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.bitmapFlareRef);
+            rw.NodeRef(ref n.bitmapFlareRef);
         }
     }
 
@@ -161,7 +161,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         public override void ReadWrite(CHmsLight n, GbxReaderWriter rw)
         {
             base.ReadWrite(n, rw);
-            rw.NodeRef(n.bitmapSpriteRef);
+            rw.NodeRef(ref n.bitmapSpriteRef);
         }
     }
 

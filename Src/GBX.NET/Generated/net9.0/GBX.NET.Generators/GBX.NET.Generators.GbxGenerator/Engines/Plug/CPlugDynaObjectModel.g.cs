@@ -52,32 +52,32 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         set => this.dynamizeOnSpawn = value;
     }
 
-    private NodeRef<CPlugSolid2Model> meshRef = new();
+    private NodeRef<CPlugSolid2Model>? meshRef;
     public CPlugSolid2Model? Mesh
     {
-        get => meshRef.Resolve();
-        set => meshRef.SetEmbedded(value);
+        get => meshRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref meshRef, value);
     }
 
-    private NodeRef<CPlugSurface> dynaShapeRef = new();
+    private NodeRef<CPlugSurface>? dynaShapeRef;
     public CPlugSurface? DynaShape
     {
-        get => dynaShapeRef.Resolve();
-        set => dynaShapeRef.SetEmbedded(value);
+        get => dynaShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dynaShapeRef, value);
     }
 
-    private NodeRef<CPlugDynaModel> dynaModelRef = new();
+    private NodeRef<CPlugDynaModel>? dynaModelRef;
     public CPlugDynaModel? DynaModel
     {
-        get => dynaModelRef.Resolve();
-        set => dynaModelRef.SetEmbedded(value);
+        get => dynaModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref dynaModelRef, value);
     }
 
-    private NodeRef<CPlugSurface> staticShapeRef = new();
+    private NodeRef<CPlugSurface>? staticShapeRef;
     public CPlugSurface? StaticShape
     {
-        get => staticShapeRef.Resolve();
-        set => staticShapeRef.SetEmbedded(value);
+        get => staticShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref staticShapeRef, value);
     }
 
     private float breakSpeedKmh = 100;
@@ -171,11 +171,11 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         set => this.u09 = value;
     }
 
-    private NodeRef<CPlugAnimLocSimple> locAnimRef = new();
+    private NodeRef<CPlugAnimLocSimple>? locAnimRef;
     public CPlugAnimLocSimple? LocAnim
     {
-        get => locAnimRef.Resolve();
-        set => locAnimRef.SetEmbedded(value);
+        get => locAnimRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref locAnimRef, value);
     }
 
     private int u10;
@@ -199,11 +199,11 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         set => this.u11 = value;
     }
 
-    private NodeRef<CPlugDynaWaterModel> waterModelRef = new();
+    private NodeRef<CPlugDynaWaterModel>? waterModelRef;
     public CPlugDynaWaterModel? WaterModel
     {
-        get => waterModelRef.Resolve();
-        set => waterModelRef.SetEmbedded(value);
+        get => waterModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waterModelRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -211,22 +211,22 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
     {
         private readonly CPlugDynaObjectModel owner;
         internal NodeRefView(CPlugDynaObjectModel owner) => this.owner = owner;
-        public NodeRef<CPlugSolid2Model> Mesh => owner.meshRef;
-        public NodeRef<CPlugSurface> DynaShape => owner.dynaShapeRef;
-        public NodeRef<CPlugDynaModel> DynaModel => owner.dynaModelRef;
-        public NodeRef<CPlugSurface> StaticShape => owner.staticShapeRef;
-        public NodeRef<CPlugAnimLocSimple> LocAnim => owner.locAnimRef;
-        public NodeRef<CPlugDynaWaterModel> WaterModel => owner.waterModelRef;
+        public NodeRef<CPlugSolid2Model> Mesh => NodeRef.GetOrCreate(ref owner.meshRef);
+        public NodeRef<CPlugSurface> DynaShape => NodeRef.GetOrCreate(ref owner.dynaShapeRef);
+        public NodeRef<CPlugDynaModel> DynaModel => NodeRef.GetOrCreate(ref owner.dynaModelRef);
+        public NodeRef<CPlugSurface> StaticShape => NodeRef.GetOrCreate(ref owner.staticShapeRef);
+        public NodeRef<CPlugAnimLocSimple> LocAnim => NodeRef.GetOrCreate(ref owner.locAnimRef);
+        public NodeRef<CPlugDynaWaterModel> WaterModel => NodeRef.GetOrCreate(ref owner.waterModelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
-        yield return new("Mesh", meshRef);
-        yield return new("DynaShape", dynaShapeRef);
-        yield return new("DynaModel", dynaModelRef);
-        yield return new("StaticShape", staticShapeRef);
-        yield return new("LocAnim", locAnimRef);
-        yield return new("WaterModel", waterModelRef);
+        yield return new("Mesh", NodeRef.GetOrCreate(ref meshRef));
+        yield return new("DynaShape", NodeRef.GetOrCreate(ref dynaShapeRef));
+        yield return new("DynaModel", NodeRef.GetOrCreate(ref dynaModelRef));
+        yield return new("StaticShape", NodeRef.GetOrCreate(ref staticShapeRef));
+        yield return new("LocAnim", NodeRef.GetOrCreate(ref locAnimRef));
+        yield return new("WaterModel", NodeRef.GetOrCreate(ref waterModelRef));
         yield break;
     }
 
@@ -278,18 +278,18 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
             rw.Boolean(ref this.dynamizeOnSpawn);
         }
 
-        rw.NodeRef(this.meshRef);
-        rw.NodeRef(this.dynaShapeRef);
+        rw.NodeRef(ref this.meshRef);
+        rw.NodeRef(ref this.dynaShapeRef);
 
         if (Version >= 0 && Version <= 2)
         {
-            rw.NodeRef(this.dynaModelRef);
+            rw.NodeRef(ref this.dynaModelRef);
 
-            if (dynaModelRef.CachedTarget!= null)
+            if (dynaModelRef?.CachedTarget!= null)
             {
                 if (rw.Reader is not null)
                 {
-                    Mass = dynaModelRef.CachedTarget.LinearMass;
+                    Mass = (dynaModelRef?.CachedTarget).LinearMass;
                 }
             }
         }
@@ -298,13 +298,13 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
         {
             if (rw.Reader is not null)
             {
-                staticShapeRef.CopyFrom(dynaShapeRef);
+                NodeRef.CopyFrom(ref staticShapeRef, dynaShapeRef);
             }
         }
 
         if (Version >= 1)
         {
-            rw.NodeRef(this.staticShapeRef);
+            rw.NodeRef(ref this.staticShapeRef);
         }
 
         if (Version >= 2)
@@ -342,7 +342,7 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
 
         if (Version >= 7)
         {
-            rw.NodeRef(this.locAnimRef);
+            rw.NodeRef(ref this.locAnimRef);
         }
 
         if (Version >= 8)
@@ -370,7 +370,7 @@ public partial class CPlugDynaObjectModel : CMwNod, IClass, IReadableWritable, I
 
         if (Version >= 13)
         {
-            rw.NodeRef(this.waterModelRef);
+            rw.NodeRef(ref this.waterModelRef);
         }
     }
 
