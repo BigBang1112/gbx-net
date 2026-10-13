@@ -116,6 +116,11 @@
 
     </span>
 
+    @if (Property?.GetCustomAttribute<ObsoleteAttribute>() is { } obsoleteAttribute)
+    {
+        <span class="element-box obsolete-member" title="@(string.IsNullOrWhiteSpace(obsoleteAttribute.Message) ? "This member is obsolete." : obsoleteAttribute.Message)">OBSOLETE</span>
+    }
+
     @if (value is not null && ValueRenderer is not null)
     {
         props = value.GetType()

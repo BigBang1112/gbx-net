@@ -109,9 +109,17 @@
 
                 @if (Chunk is IVersionable versionable)
                 {
-                    <div style="font-weight:bold;">Version</div>
+                    var versionProperty = chunkType.GetProperty(nameof(IVersionable.Version));
+
+                    <div style="font-weight:bold;">
+                        Version
+                        @if (versionProperty?.GetCustomAttribute<ObsoleteAttribute>() is { } obsoleteAttribute)
+                        {
+                            <span class="element-box obsolete-member" title="@(string.IsNullOrWhiteSpace(obsoleteAttribute.Message) ? "This member is obsolete." : obsoleteAttribute.Message)">OBSOLETE</span>
+                        }
+                    </div>
                     <div style="font-size:0.85rem;display:flex;font-family:Source Code Pro;">
-                        <DynamicComponent Type="ValueRendererService[typeof(int)]" Parameters="GetValueRendererParameters(versionable.Version, isNullable: false, typeof(int), property: chunkType.GetProperty(nameof(IVersionable.Version)))" />
+                        <DynamicComponent Type="ValueRendererService[typeof(int)]" Parameters="GetValueRendererParameters(versionable.Version, isNullable: false, typeof(int), property: versionProperty)" />
                     </div>
                 }
 
@@ -130,6 +138,10 @@
                         <div>
                             <TypeRenderer TypeInfo="typeInfo" />
                             <span style="font-weight:bold">@field.Name</span>
+                            @if (field.GetCustomAttribute<ObsoleteAttribute>() is { } obsoleteAttribute)
+                            {
+                                <span class="element-box obsolete-member" title="@(string.IsNullOrWhiteSpace(obsoleteAttribute.Message) ? "This member is obsolete." : obsoleteAttribute.Message)">OBSOLETE</span>
+                            }
                         </div>
                         <div style="display:flex;gap:0.2rem;font-family:Source Code Pro">
                             <DynamicComponent Type="ValueRendererService[actualType]" Parameters="GetValueRendererParameters(value, isNullable, actualType, field)" />
