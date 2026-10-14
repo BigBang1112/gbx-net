@@ -36,21 +36,99 @@ public partial class CPlugSolid : CPlug, IClass
 
     internal override uint GetId() => Id;
 
-    private int typeAndIndex;
+    private int plugIdCounter = 1;
     [AppliedWithChunk<Chunk09005000>]
-    public int TypeAndIndex
+    public int PlugIdCounter
     {
-        get => this.typeAndIndex;
-        set => this.typeAndIndex = value;
+        get => this.plugIdCounter;
+        set => this.plugIdCounter = value;
     }
 
-    private NodeRef<CPlug>? treeRef;
+    private float mass = 1;
+    [AppliedWithChunk<Chunk09005006>]
+    [AppliedWithChunk<Chunk0900500E>]
+    public float Mass
+    {
+        get => this.mass;
+        set => this.mass = value;
+    }
+
+    private Vec3 centerOfMass;
+    [AppliedWithChunk<Chunk09005006>]
+    [AppliedWithChunk<Chunk0900500E>]
+    public Vec3 CenterOfMass
+    {
+        get => this.centerOfMass;
+        set => this.centerOfMass = value;
+    }
+
+    private Mat3 inverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f);
+    [AppliedWithChunk<Chunk09005006>]
+    [AppliedWithChunk<Chunk0900500E>]
+    public Mat3 InverseInertiaMatrix
+    {
+        get => this.inverseInertiaMatrix;
+        set => this.inverseInertiaMatrix = value;
+    }
+
+    private bool useModel = true;
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
-    public CPlug? Tree
+    public bool UseModel
+    {
+        get => this.useModel;
+        set => this.useModel = value;
+    }
+
+    private NodeRef<CPlugSolid>? modelRef;
+    [AppliedWithChunk<Chunk0900500D>]
+    [AppliedWithChunk<Chunk09005011>]
+    public CPlugSolid? Model
+    {
+        get => modelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modelRef, value);
+    }
+
+    private NodeRef<CPlugTree>? treeRef;
+    [AppliedWithChunk<Chunk0900500D>]
+    [AppliedWithChunk<Chunk09005011>]
+    public CPlugTree? Tree
     {
         get => treeRef?.Resolve();
         set => NodeRef.SetEmbedded(ref treeRef, value);
+    }
+
+    private float linearFluidFriction = 0.1f;
+    [AppliedWithChunk<Chunk0900500E>]
+    public float LinearFluidFriction
+    {
+        get => this.linearFluidFriction;
+        set => this.linearFluidFriction = value;
+    }
+
+    private float angularFluidFriction = 0.3f;
+    [AppliedWithChunk<Chunk0900500E>]
+    public float AngularFluidFriction
+    {
+        get => this.angularFluidFriction;
+        set => this.angularFluidFriction = value;
+    }
+
+    private float maxDistPerStep = 0.3f;
+    [AppliedWithChunk<Chunk0900500E>]
+    public float MaxDistPerStep
+    {
+        get => this.maxDistPerStep;
+        set => this.maxDistPerStep = value;
+    }
+
+    private byte tileCountU;
+    [AppliedWithChunk<Chunk09005012>]
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public byte TileCountU
+    {
+        get => this.tileCountU;
+        set => this.tileCountU = value;
     }
 
     private PreLightGen? solidPreLightGen;
@@ -61,6 +139,54 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.solidPreLightGen = value;
     }
 
+    private float meterByUv = -1;
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public float MeterByUv
+    {
+        get => this.meterByUv;
+        set => this.meterByUv = value;
+    }
+
+    private bool isComputed;
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public bool IsComputed
+    {
+        get => this.isComputed;
+        set => this.isComputed = value;
+    }
+
+    private Rect uvBBox = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public Rect UvBBox
+    {
+        get => this.uvBBox;
+        set => this.uvBBox = value;
+    }
+
+    private Rect uvBBoxSH = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public Rect UvBBoxSH
+    {
+        get => this.uvBBoxSH;
+        set => this.uvBBoxSH = value;
+    }
+
+    private Int2 spriteCount;
+    [AppliedWithChunk<Chunk09005017>(0, 2)]
+    public Int2 SpriteCount
+    {
+        get => this.spriteCount;
+        set => this.spriteCount = value;
+    }
+
+    private BoxAligned[]? probeBoxes;
+    [AppliedWithChunk<Chunk09005017>(1, 2)]
+    public BoxAligned[]? ProbeBoxes
+    {
+        get => this.probeBoxes;
+        set => this.probeBoxes = value;
+    }
+
     private DateTime? fileWriteTime;
     [AppliedWithChunk<Chunk09005017>(2)]
     public DateTime? FileWriteTime
@@ -69,34 +195,138 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.fileWriteTime = value;
     }
 
+    private NodeRefList<CPlugSound>? sounds;
+    [AppliedWithChunk<Chunk09005019>]
+    public NodeRefList<CPlugSound>? Sounds
+    {
+        get => sounds;
+        set => sounds = value;
+    }
+
+    private NodeRefList<CPlugParticleEmitterModel>? particleEmitterModels;
+    [AppliedWithChunk<Chunk09005019>]
+    public NodeRefList<CPlugParticleEmitterModel>? ParticleEmitterModels
+    {
+        get => particleEmitterModels;
+        set => particleEmitterModels = value;
+    }
+
+    private LocatedInstance[]? soundInstances;
+    [AppliedWithChunk<Chunk09005019>]
+    public LocatedInstance[]? SoundInstances
+    {
+        get => this.soundInstances;
+        set => this.soundInstances = value;
+    }
+
+    private LocatedInstance[]? particleInstances;
+    [AppliedWithChunk<Chunk09005019>]
+    public LocatedInstance[]? ParticleInstances
+    {
+        get => this.particleInstances;
+        set => this.particleInstances = value;
+    }
+
+    private NodeRef<CPlugPath>? pathRef;
+    [AppliedWithChunk<Chunk09005019>(5)]
+    public CPlugPath? Path
+    {
+        get => pathRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pathRef, value);
+    }
+
+    private byte[]? lodNormalMapTga;
+    [AppliedWithChunk<Chunk0900501A>(0, 2)]
+    public byte[]? LodNormalMapTga
+    {
+        get => this.lodNormalMapTga;
+        set => this.lodNormalMapTga = value;
+    }
+
+    private FileImageData? veryLQDiffuse;
+    [AppliedWithChunk<Chunk0900501A>(1, 1)]
+    public FileImageData? VeryLQDiffuse
+    {
+        get => this.veryLQDiffuse;
+        set => this.veryLQDiffuse = value;
+    }
+
+    private LodNormalMap? solidLodNormalMap;
+    [AppliedWithChunk<Chunk0900501A>(4)]
+    public LodNormalMap? SolidLodNormalMap
+    {
+        get => this.solidLodNormalMap;
+        set => this.solidLodNormalMap = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
         private readonly CPlugSolid owner;
         internal NodeRefView(CPlugSolid owner) => this.owner = owner;
-        public NodeRef<CPlug> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
+        public NodeRef<CPlugSolid> Model => NodeRef.GetOrCreate(ref owner.modelRef);
+        public NodeRef<CPlugTree> Tree => NodeRef.GetOrCreate(ref owner.treeRef);
+        public IReadOnlyList<NodeRef<CPlugSound>>? Sounds => owner.sounds?.References;
+        public IReadOnlyList<NodeRef<CPlugParticleEmitterModel>>? ParticleEmitterModels => owner.particleEmitterModels?.References;
+        public NodeRef<CPlugPath> Path => NodeRef.GetOrCreate(ref owner.pathRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
         yield return new("Tree", NodeRef.GetOrCreate(ref treeRef));
+        if (sounds is not null)
+        {
+            for (var i = 0; i < sounds.Count; i++) yield return new("Sounds" + "[" + i + "]", sounds.Get(i));
+        }
+        if (particleEmitterModels is not null)
+        {
+            for (var i = 0; i < particleEmitterModels.Count; i++) yield return new("ParticleEmitterModels" + "[" + i + "]", particleEmitterModels.Get(i));
+        }
+        yield return new("Path", NodeRef.GetOrCreate(ref pathRef));
         yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugSolid)clone).typeAndIndex = context.Clone(this.typeAndIndex)!;
+        ((CPlugSolid)clone).plugIdCounter = context.Clone(this.plugIdCounter)!;
+        ((CPlugSolid)clone).mass = context.Clone(this.mass)!;
+        ((CPlugSolid)clone).centerOfMass = context.Clone(this.centerOfMass)!;
+        ((CPlugSolid)clone).inverseInertiaMatrix = context.Clone(this.inverseInertiaMatrix)!;
+        ((CPlugSolid)clone).useModel = context.Clone(this.useModel)!;
+        ((CPlugSolid)clone).modelRef = context.Clone(this.modelRef)!;
         ((CPlugSolid)clone).treeRef = context.Clone(this.treeRef)!;
+        ((CPlugSolid)clone).linearFluidFriction = context.Clone(this.linearFluidFriction)!;
+        ((CPlugSolid)clone).angularFluidFriction = context.Clone(this.angularFluidFriction)!;
+        ((CPlugSolid)clone).maxDistPerStep = context.Clone(this.maxDistPerStep)!;
+        ((CPlugSolid)clone).tileCountU = context.Clone(this.tileCountU)!;
         ((CPlugSolid)clone).solidPreLightGen = context.Clone(this.solidPreLightGen)!;
+        ((CPlugSolid)clone).meterByUv = context.Clone(this.meterByUv)!;
+        ((CPlugSolid)clone).isComputed = context.Clone(this.isComputed)!;
+        ((CPlugSolid)clone).uvBBox = context.Clone(this.uvBBox)!;
+        ((CPlugSolid)clone).uvBBoxSH = context.Clone(this.uvBBoxSH)!;
+        ((CPlugSolid)clone).spriteCount = context.Clone(this.spriteCount)!;
+        ((CPlugSolid)clone).probeBoxes = context.CloneArray(this.probeBoxes)!;
         ((CPlugSolid)clone).fileWriteTime = context.Clone(this.fileWriteTime)!;
+        ((CPlugSolid)clone).sounds = context.Clone(this.sounds)!;
+        ((CPlugSolid)clone).particleEmitterModels = context.Clone(this.particleEmitterModels)!;
+        ((CPlugSolid)clone).soundInstances = context.CloneArray(this.soundInstances)!;
+        ((CPlugSolid)clone).particleInstances = context.CloneArray(this.particleInstances)!;
+        ((CPlugSolid)clone).pathRef = context.Clone(this.pathRef)!;
+        ((CPlugSolid)clone).lodNormalMapTga = context.CloneArray(this.lodNormalMapTga)!;
+        ((CPlugSolid)clone).veryLQDiffuse = context.Clone(this.veryLQDiffuse)!;
+        ((CPlugSolid)clone).solidLodNormalMap = context.Clone(this.solidLodNormalMap)!;
     }
 
     public CPlugSolid()
     {
     }
 
-    [Chunk(0x09005000)]
+    /// <summary>
+    /// PlugIdCounter
+    /// </summary>
+    [Chunk(0x09005000, "PlugIdCounter")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005000 : Chunk<CPlugSolid>
     {
@@ -110,43 +340,34 @@ public partial class CPlugSolid : CPlug, IClass
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.typeAndIndex);
+            rw.Int32(ref n.plugIdCounter);
         }
     }
 
-    [Chunk(0x09005006)]
+    /// <summary>
+    /// legacy mass and inertia
+    /// </summary>
+    [Chunk(0x09005006, "legacy mass and inertia")]
     public partial class Chunk09005006 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005006;
         public float U01;
         public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public Mat3 U07;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09005006)clone).U01 = context.Clone(this.U01)!;
             ((Chunk09005006)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09005006)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09005006)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09005006)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09005006)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09005006)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.Single(ref U01);
             rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Mat3(ref U07);
+            rw.Single(ref n.mass);
+            rw.Vec3(ref n.centerOfMass);
+            rw.Mat3(ref n.inverseInertiaMatrix);
         }
     }
 
@@ -170,7 +391,10 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900500B)]
+    /// <summary>
+    /// legacy physical flags
+    /// </summary>
+    [Chunk(0x0900500B, "legacy physical flags")]
     public partial class Chunk0900500B : Chunk<CPlugSolid>
     {
         public override uint Id => 0x0900500B;
@@ -180,7 +404,8 @@ public partial class CPlugSolid : CPlug, IClass
         public bool U04;
         public bool U05;
         public bool U06;
-        public int U07;
+        public float U07;
+        public int U08;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -192,6 +417,7 @@ public partial class CPlugSolid : CPlug, IClass
             ((Chunk0900500B)clone).U05 = context.Clone(this.U05)!;
             ((Chunk0900500B)clone).U06 = context.Clone(this.U06)!;
             ((Chunk0900500B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0900500B)clone).U08 = context.Clone(this.U08)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
@@ -202,11 +428,15 @@ public partial class CPlugSolid : CPlug, IClass
             rw.Boolean(ref U04);
             rw.Boolean(ref U05);
             rw.Boolean(ref U06);
-            rw.Int32(ref U07);
+            rw.Single(ref U07);
+            rw.Int32(ref U08);
         }
     }
 
-    [Chunk(0x0900500C)]
+    /// <summary>
+    /// legacy physical flags
+    /// </summary>
+    [Chunk(0x0900500C, "legacy physical flags")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900500C : Chunk<CPlugSolid>
     {
@@ -277,63 +507,70 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
-    [Chunk(0x0900500D)]
+    /// <summary>
+    /// model and tree
+    /// </summary>
+    [Chunk(0x0900500D, "model and tree")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900500D : Chunk<CPlugSolid>
     {
         public override uint Id => 0x0900500D;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public bool U01;
-        public bool U02;
+        public bool HasModel;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900500D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0900500D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0900500D)clone).HasModel = context.Clone(this.HasModel)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
-            rw.NodeRef(ref n.treeRef);
+            rw.Boolean(ref n.useModel);
+            HasModel = rw.Boolean((rw.Writer is null ? default : (HasModel|| n.References.Model.Kind != NodeRefKind.None)));
+
+            if (HasModel)
+            {
+                rw.NodeRef(ref n.modelRef);
+            }
+
+            if (!HasModel)
+            {
+                rw.NodeRef(ref n.treeRef);
+            }
         }
     }
 
-    [Chunk(0x0900500E)]
+    /// <summary>
+    /// mass, inertia, and friction
+    /// </summary>
+    [Chunk(0x0900500E, "mass, inertia, and friction")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0900500E : Chunk<CPlugSolid>
     {
         public override uint Id => 0x0900500E;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF;
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public Iso4 U05;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900500E)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0900500E)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0900500E)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0900500E)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0900500E)clone).U05 = context.Clone(this.U05)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Iso4(ref U05);
+            rw.Single(ref n.mass);
+            rw.Vec3(ref n.centerOfMass);
+            rw.Mat3(ref n.inverseInertiaMatrix);
+            rw.Single(ref n.linearFluidFriction);
+            rw.Single(ref n.angularFluidFriction);
+            rw.Single(ref n.maxDistPerStep);
         }
     }
 
-    [Chunk(0x0900500F)]
+    /// <summary>
+    /// legacy physical parameters
+    /// </summary>
+    [Chunk(0x0900500F, "legacy physical parameters")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900500F : Chunk<CPlugSolid>
     {
@@ -356,7 +593,10 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
-    [Chunk(0x09005010)]
+    /// <summary>
+    /// legacy vehicle environment
+    /// </summary>
+    [Chunk(0x09005010, "legacy vehicle environment")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005010 : Chunk<CPlugSolid>
     {
@@ -399,55 +639,61 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
-    [Chunk(0x09005011)]
+    /// <summary>
+    /// model and tree
+    /// </summary>
+    [Chunk(0x09005011, "model and tree")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09005011 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005011;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool U01;
-        public bool U02;
-        public bool? U03;
+        public bool HasModel;
+        public bool? ModelIsExternal;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09005011)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09005011)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09005011)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk09005011)clone).HasModel = context.Clone(this.HasModel)!;
+            ((Chunk09005011)clone).ModelIsExternal = context.Clone(this.ModelIsExternal)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref n.useModel);
+            HasModel = rw.Boolean((rw.Writer is null ? default : (HasModel|| n.References.Model.Kind != NodeRefKind.None)));
 
-            if (U02)
+            if (HasModel)
             {
-                rw.Boolean(ref U03);
+                ModelIsExternal = rw.Boolean((rw.Writer is null ? default : (ModelIsExternal?? (n.References.Model.Kind == NodeRefKind.ExternalFile))));
+                rw.NodeRef(ref n.modelRef);
             }
 
-            rw.NodeRef(ref n.treeRef);
+            if (!HasModel)
+            {
+                rw.NodeRef(ref n.treeRef);
+            }
         }
     }
 
-    [Chunk(0x09005012)]
+    /// <summary>
+    /// TileCountU
+    /// </summary>
+    [Chunk(0x09005012, "TileCountU")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09005012 : Chunk<CPlugSolid>
     {
         public override uint Id => 0x09005012;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF;
-        public byte U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09005012)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
-            rw.Byte(ref U01);
+            rw.Byte(ref n.tileCountU);
         }
     }
 
@@ -455,20 +701,13 @@ public partial class CPlugSolid : CPlug, IClass
     /// SolidPreLightGen
     /// </summary>
     [Chunk(0x09005017, "SolidPreLightGen")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 3)]
     public partial class Chunk09005017 : Chunk<CPlugSolid>, IVersionable
     {
         public override uint Id => 0x09005017;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
-        public byte U02;
-        public float U03;
-        public bool U04;
-        public Rect U05;
-        public Rect U06;
-        public Int2 U07;
-        public BoxAligned[]? U08;
+        public bool HasPreLightGen;
 
         public Chunk09005017() : this(GameVersion.Unspecified)
         {
@@ -476,7 +715,7 @@ public partial class CPlugSolid : CPlug, IClass
 
         public Chunk09005017(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -486,14 +725,7 @@ public partial class CPlugSolid : CPlug, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09005017)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09005017)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09005017)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09005017)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09005017)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09005017)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09005017)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09005017)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09005017)clone).U08 = context.CloneArray(this.U08)!;
+            ((Chunk09005017)clone).HasPreLightGen = context.Clone(this.HasPreLightGen)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
@@ -502,9 +734,9 @@ public partial class CPlugSolid : CPlug, IClass
 
             if (Version >= 3)
             {
-                rw.Boolean(ref U01);
+                rw.Boolean(ref HasPreLightGen);
 
-                if (U01)
+                if (HasPreLightGen)
                 {
                     rw.ReadableWritable<PreLightGen>(ref n.solidPreLightGen, version: Version);
                 }
@@ -512,16 +744,16 @@ public partial class CPlugSolid : CPlug, IClass
 
             if (Version <= 2)
             {
-                rw.Byte(ref U02);
-                rw.Single(ref U03);
-                rw.Boolean(ref U04);
-                rw.Rect(ref U05);
-                rw.Rect(ref U06);
-                rw.Int2(ref U07);
+                rw.Byte(ref n.tileCountU);
+                rw.Single(ref n.meterByUv);
+                rw.Boolean(ref n.isComputed);
+                rw.Rect(ref n.uvBBox);
+                rw.Rect(ref n.uvBBoxSH);
+                rw.Int2(ref n.spriteCount);
 
                 if (Version >= 1)
                 {
-                    rw.Array<BoxAligned>(ref U08!);
+                    rw.Array<BoxAligned>(ref n.probeBoxes!);
                 }
             }
 
@@ -532,55 +764,21 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
-    [Chunk(0x09005019)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 3, -1)]
+    /// <summary>
+    /// sounds, particles, and path
+    /// </summary>
+    [Chunk(0x09005019, "sounds, particles, and path")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 3, 5)]
     public partial class Chunk09005019 : Chunk<CPlugSolid>, IVersionable
     {
         public override uint Id => 0x09005019;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public NodeRefList<CPlugSound>? U01;
-
-        public NodeRefList<CPlugParticleEmitterModel>? U02;
-        public LocatedInstance[]? U03;
-        public LocatedInstance[]? U04;
+        public int U01;
+        public string[]? U02;
+        public Iso4[]? U03;
+        public string? U04;
         public int U05;
-        public string[]? U06;
-        public Iso4[]? U07;
-        public string? U08;
-        public int U09;
-
-        private NodeRef<CPlugPath>? U10Ref;
-        public CPlugPath? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk09005019 owner;
-            internal NodeRefView(Chunk09005019 owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CPlugSound>>? U01 => owner.U01?.References;
-            public IReadOnlyList<NodeRef<CPlugParticleEmitterModel>>? U02 => owner.U02?.References;
-            public NodeRef<CPlugPath> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            if (U01 is not null)
-            {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
-            }
-            if (U02 is not null)
-            {
-                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
-            }
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield break;
-        }
 
         public Chunk09005019() : this(GameVersion.Unspecified)
         {
@@ -588,13 +786,21 @@ public partial class CPlugSolid : CPlug, IClass
 
         public Chunk09005019(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
             {
                 Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
             }
             else if (gameVersion == GameVersion.MP4)
             {
                 Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
             }
         }
 
@@ -603,45 +809,40 @@ public partial class CPlugSolid : CPlug, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk09005019)clone).Version = context.Clone(this.Version)!;
             ((Chunk09005019)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09005019)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk09005019)clone).U02 = context.CloneArray(this.U02)!;
             ((Chunk09005019)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk09005019)clone).U04 = context.CloneArray(this.U04)!;
+            ((Chunk09005019)clone).U04 = context.Clone(this.U04)!;
             ((Chunk09005019)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09005019)clone).U06 = context.CloneArray(this.U06)!;
-            ((Chunk09005019)clone).U07 = context.CloneArray(this.U07)!;
-            ((Chunk09005019)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk09005019)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk09005019)clone).U10Ref = context.Clone(this.U10Ref)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            U01 = rw.ListNodeRef_deprec<CPlugSound>(U01);
-            U02 = rw.ListNodeRef_deprec<CPlugParticleEmitterModel>(U02);
-            rw.ArrayReadableWritable<LocatedInstance>(ref U03!, version: Version);
-            rw.ArrayReadableWritable<LocatedInstance>(ref U04!, version: Version);
+            n.sounds = rw.ListNodeRef_deprec<CPlugSound>(n.sounds);
+            n.particleEmitterModels = rw.ListNodeRef_deprec<CPlugParticleEmitterModel>(n.particleEmitterModels);
+            rw.ArrayReadableWritable<LocatedInstance>(ref n.soundInstances!, version: Version);
+            rw.ArrayReadableWritable<LocatedInstance>(ref n.particleInstances!, version: Version);
 
             if (Version >= 1)
             {
-                rw.Int32(ref U05);
+                rw.Int32(ref U01);
 
                 if (Version >= 2)
                 {
-                    rw.ArrayId(ref U06!);
-                    rw.Array<Iso4>(ref U07!);
+                    rw.ArrayId(ref U02!);
+                    rw.Array<Iso4>(ref U03!);
 
                     if (Version >= 3)
                     {
-                        rw.String(ref U08);
+                        rw.String(ref U04);
 
                         if (Version >= 4)
                         {
-                            rw.Int32(ref U09);
+                            rw.Int32(ref U05);
 
                             if (Version >= 5)
                             {
-                                rw.NodeRef(ref U10Ref);
+                                rw.NodeRef(ref n.pathRef);
                             }
                         }
                     }
@@ -651,19 +852,59 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// lod normal map
+    /// LOD normal maps
     /// </summary>
-    [Chunk(0x0900501A, "lod normal map")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0900501A : SkippableChunk<CPlugSolid>
+    [Chunk(0x0900501A, "LOD normal maps")]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 4)]
+    public partial class Chunk0900501A : SkippableChunk<CPlugSolid>, IVersionable
     {
         public override uint Id => 0x0900501A;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+        public bool HasVeryLQDiffuse;
+
+        public Chunk0900501A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0900501A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0900501A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0900501A)clone).HasVeryLQDiffuse = context.Clone(this.HasVeryLQDiffuse)!;
+        }
+
+        public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            if (Version <= 2)
+            {
+                rw.Data(ref n.lodNormalMapTga);
+
+                if (Version == 1)
+                {
+                    HasVeryLQDiffuse = rw.Boolean((rw.Writer is null ? default : (n.VeryLQDiffuse!= null)));
+
+                    if (HasVeryLQDiffuse)
+                    {
+                        rw.ReadableWritable<FileImageData>(ref n.veryLQDiffuse, version: Version);
+                    }
+                }
+            }
+
+            if (Version >= 4)
+            {
+                rw.ReadableWritable<LodNormalMap>(ref n.solidLodNormalMap, version: Version);
+            }
         }
     }
 
@@ -671,109 +912,69 @@ public partial class CPlugSolid : CPlug, IClass
     {
         public int Version { get; set; }
 
-        private int u01;
-        public int U01
+        private int tileCountU;
+        /// <summary>
+        /// PreLightGenTileCountU, zero when the mapper is unavailable
+        /// </summary>
+        public int TileCountU
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.tileCountU;
+            set => this.tileCountU = value;
         }
 
-        private float u02;
-        public float U02
+        private float meterByUv = -1;
+        public float MeterByUv
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.meterByUv;
+            set => this.meterByUv = value;
         }
 
-        private bool u03;
-        public bool U03
+        private bool isComputed;
+        /// <summary>
+        /// Mapper computation has been attempted
+        /// </summary>
+        public bool IsComputed
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.isComputed;
+            set => this.isComputed = value;
         }
 
-        private float u04;
-        public float U04
+        private Rect uvBBox = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+        public Rect UvBBox
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.uvBBox;
+            set => this.uvBBox = value;
         }
 
-        private float u05;
-        public float U05
+        private Rect uvBBoxSH = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+        public Rect UvBBoxSH
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.uvBBoxSH;
+            set => this.uvBBoxSH = value;
         }
 
-        private float u06;
-        public float U06
+        private Int2 spriteCount;
+        public Int2 SpriteCount
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => this.spriteCount;
+            set => this.spriteCount = value;
         }
 
-        private float u07;
-        public float U07
+        private BoxAligned[]? probeBoxes;
+        /// <summary>
+        /// Probe centers and half extents
+        /// </summary>
+        public BoxAligned[]? ProbeBoxes
         {
-            get => this.u07;
-            set => this.u07 = value;
+            get => this.probeBoxes;
+            set => this.probeBoxes = value;
         }
 
-        private float u08;
-        public float U08
+        private UvGroup[]? uvGroups;
+        public UvGroup[]? UvGroups
         {
-            get => this.u08;
-            set => this.u08 = value;
-        }
-
-        private float u09;
-        public float U09
-        {
-            get => this.u09;
-            set => this.u09 = value;
-        }
-
-        private float u10;
-        public float U10
-        {
-            get => this.u10;
-            set => this.u10 = value;
-        }
-
-        private float u11;
-        public float U11
-        {
-            get => this.u11;
-            set => this.u11 = value;
-        }
-
-        private int u12;
-        public int U12
-        {
-            get => this.u12;
-            set => this.u12 = value;
-        }
-
-        private int u13;
-        public int U13
-        {
-            get => this.u13;
-            set => this.u13 = value;
-        }
-
-        private BoxAligned[]? u14;
-        public BoxAligned[]? U14
-        {
-            get => this.u14;
-            set => this.u14 = value;
-        }
-
-        private UvGroup[]? u15;
-        public UvGroup[]? U15
-        {
-            get => this.u15;
-            set => this.u15 = value;
+            get => this.uvGroups;
+            set => this.uvGroups = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -787,44 +988,30 @@ public partial class CPlugSolid : CPlug, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((PreLightGen)clone).Version = context.Clone(this.Version)!;
-            ((PreLightGen)clone).u01 = context.Clone(this.u01)!;
-            ((PreLightGen)clone).u02 = context.Clone(this.u02)!;
-            ((PreLightGen)clone).u03 = context.Clone(this.u03)!;
-            ((PreLightGen)clone).u04 = context.Clone(this.u04)!;
-            ((PreLightGen)clone).u05 = context.Clone(this.u05)!;
-            ((PreLightGen)clone).u06 = context.Clone(this.u06)!;
-            ((PreLightGen)clone).u07 = context.Clone(this.u07)!;
-            ((PreLightGen)clone).u08 = context.Clone(this.u08)!;
-            ((PreLightGen)clone).u09 = context.Clone(this.u09)!;
-            ((PreLightGen)clone).u10 = context.Clone(this.u10)!;
-            ((PreLightGen)clone).u11 = context.Clone(this.u11)!;
-            ((PreLightGen)clone).u12 = context.Clone(this.u12)!;
-            ((PreLightGen)clone).u13 = context.Clone(this.u13)!;
-            ((PreLightGen)clone).u14 = context.CloneArray(this.u14)!;
-            ((PreLightGen)clone).u15 = context.CloneArray(this.u15)!;
+            ((PreLightGen)clone).tileCountU = context.Clone(this.tileCountU)!;
+            ((PreLightGen)clone).meterByUv = context.Clone(this.meterByUv)!;
+            ((PreLightGen)clone).isComputed = context.Clone(this.isComputed)!;
+            ((PreLightGen)clone).uvBBox = context.Clone(this.uvBBox)!;
+            ((PreLightGen)clone).uvBBoxSH = context.Clone(this.uvBBoxSH)!;
+            ((PreLightGen)clone).spriteCount = context.Clone(this.spriteCount)!;
+            ((PreLightGen)clone).probeBoxes = context.CloneArray(this.probeBoxes)!;
+            ((PreLightGen)clone).uvGroups = context.CloneArray(this.uvGroups)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Boolean(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
-            rw.Single(ref this.u06);
-            rw.Single(ref this.u07);
-            rw.Single(ref this.u08);
-            rw.Single(ref this.u09);
-            rw.Single(ref this.u10);
-            rw.Single(ref this.u11);
-            rw.Int32(ref this.u12);
-            rw.Int32(ref this.u13);
-            rw.Array<BoxAligned>(ref this.u14!);
+            rw.Int32(ref this.tileCountU);
+            rw.Single(ref this.meterByUv);
+            rw.Boolean(ref this.isComputed);
+            rw.Rect(ref this.uvBBox);
+            rw.Rect(ref this.uvBBoxSH);
+            rw.Int2(ref this.spriteCount);
+            rw.Array<BoxAligned>(ref this.probeBoxes!);
 
             if (Version >= 1)
             {
-                rw.ArrayReadableWritable<UvGroup>(ref this.u15!, version: v);
+                rw.ArrayReadableWritable<UvGroup>(ref this.uvGroups!, version: Version);
             }
         }
 
@@ -843,39 +1030,18 @@ public partial class CPlugSolid : CPlug, IClass
 
     public partial class UvGroup : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private float u01;
-        public float U01
+        private float meterByUv;
+        public float MeterByUv
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.meterByUv;
+            set => this.meterByUv = value;
         }
 
-        private float u02;
-        public float U02
+        private Rect uvBBox;
+        public Rect UvBBox
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private float u03;
-        public float U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private float u04;
-        public float U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private float u05;
-        public float U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.uvBBox;
+            set => this.uvBBox = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -888,20 +1054,14 @@ public partial class CPlugSolid : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((UvGroup)clone).u01 = context.Clone(this.u01)!;
-            ((UvGroup)clone).u02 = context.Clone(this.u02)!;
-            ((UvGroup)clone).u03 = context.Clone(this.u03)!;
-            ((UvGroup)clone).u04 = context.Clone(this.u04)!;
-            ((UvGroup)clone).u05 = context.Clone(this.u05)!;
+            ((UvGroup)clone).meterByUv = context.Clone(this.meterByUv)!;
+            ((UvGroup)clone).uvBBox = context.Clone(this.uvBBox)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
+            rw.Single(ref this.meterByUv);
+            rw.Rect(ref this.uvBBox);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -919,18 +1079,18 @@ public partial class CPlugSolid : CPlug, IClass
 
     public partial class LocatedInstance : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        private int modelIndex;
+        public int ModelIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.modelIndex;
+            set => this.modelIndex = value;
         }
 
-        private Iso4 u02;
-        public Iso4 U02
+        private Iso4 loc = Iso4.Identity;
+        public Iso4 Loc
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.loc;
+            set => this.loc = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -943,14 +1103,204 @@ public partial class CPlugSolid : CPlug, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((LocatedInstance)clone).u01 = context.Clone(this.u01)!;
-            ((LocatedInstance)clone).u02 = context.Clone(this.u02)!;
+            ((LocatedInstance)clone).modelIndex = context.Clone(this.modelIndex)!;
+            ((LocatedInstance)clone).loc = context.Clone(this.loc)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.u01);
-            rw.Iso4(ref this.u02);
+            rw.Int32(ref this.modelIndex);
+            rw.Iso4(ref this.loc);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LodNormalMap : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; } = 2;
+
+        private NodeRef<CPlugVisualIndexedTriangles>? visualRef;
+        public CPlugVisualIndexedTriangles? Visual
+        {
+            get => visualRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref visualRef, value);
+        }
+
+        private FileImage? normal;
+        public FileImage? Normal
+        {
+            get => this.normal;
+            set => this.normal = value;
+        }
+
+        private FileImage? diffuse;
+        public FileImage? Diffuse
+        {
+            get => this.diffuse;
+            set => this.diffuse = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly LodNormalMap owner;
+            internal NodeRefView(LodNormalMap owner) => this.owner = owner;
+            public NodeRef<CPlugVisualIndexedTriangles> Visual => NodeRef.GetOrCreate(ref owner.visualRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Visual", NodeRef.GetOrCreate(ref visualRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LodNormalMap)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LodNormalMap)clone).Version = context.Clone(this.Version)!;
+            ((LodNormalMap)clone).visualRef = context.Clone(this.visualRef)!;
+            ((LodNormalMap)clone).normal = context.Clone(this.normal)!;
+            ((LodNormalMap)clone).diffuse = context.Clone(this.diffuse)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.NodeRef(ref this.visualRef);
+            rw.ReadableWritable<FileImage>(ref this.normal, version: Version);
+
+            if (Version >= 1)
+            {
+                rw.ReadableWritable<FileImage>(ref this.diffuse, version: Version);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class FileImage : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private bool isNull = true;
+        public bool IsNull
+        {
+            get => this.isNull;
+            set => this.isNull = value;
+        }
+
+        private FileImageData? data;
+        public FileImageData? Data
+        {
+            get => this.data;
+            set => this.data = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (FileImage)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((FileImage)clone).isNull = context.Clone(this.isNull)!;
+            ((FileImage)clone).data = context.Clone(this.data)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            this.isNull = rw.Boolean((rw.Writer is null ? default : (Data== null)));
+
+            if (!IsNull)
+            {
+                rw.ReadableWritable<FileImageData>(ref this.data, version: v);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class FileImageData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Int3 size;
+        public Int3 Size
+        {
+            get => this.size;
+            set => this.size = value;
+        }
+
+        private uint flags;
+        public uint Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        private byte[]? pixels;
+        public byte[]? Pixels
+        {
+            get => this.pixels;
+            set => this.pixels = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (FileImageData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((FileImageData)clone).size = context.Clone(this.size)!;
+            ((FileImageData)clone).flags = context.Clone(this.flags)!;
+            ((FileImageData)clone).pixels = context.CloneArray(this.pixels)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int3(ref this.size);
+            rw.DataUInt32(ref this.flags);
+            rw.Data(ref this.pixels!, PixelDataLength);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
