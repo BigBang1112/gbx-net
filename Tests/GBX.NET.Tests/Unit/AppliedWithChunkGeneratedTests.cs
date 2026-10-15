@@ -12,7 +12,7 @@ public class AppliedWithChunkGeneratedTests
     [Test]
     [Arguments(nameof(CGameCtnChallenge.MapType))]
     [Arguments(nameof(CGameCtnChallenge.MapStyle))]
-    public async Task ChallengePartialPropertiesUseLayoutVersionBounds(string propertyName)
+    public async Task GetCustomAttributes_ChallengePartialProperties_ReturnsLayoutVersionBounds(string propertyName)
     {
         var applied = typeof(CGameCtnChallenge).GetProperty(propertyName)!
             .GetCustomAttributes<AppliedWithChunkAttribute>()
@@ -27,7 +27,7 @@ public class AppliedWithChunkGeneratedTests
     [Arguments(nameof(CGameCtnChallenge.Collection), nameof(CGameCtnChallenge.MapInfo))]
     [Arguments(nameof(CGameCtnChallenge.NbBlocks), nameof(CGameCtnChallenge.Blocks))]
     [Arguments(nameof(CGameCtnChallenge.NbBakedBlocks), nameof(CGameCtnChallenge.BakedBlocks))]
-    public async Task ChallengeComputedPropertiesKeepSourceChunkMetadata(string propertyName, string sourceName)
+    public async Task GetCustomAttributes_ChallengeComputedProperties_ReturnsSourceChunkMetadata(string propertyName, string sourceName)
     {
         var source = GetMetadata(sourceName);
         await Assert.That(source).IsNotEmpty();
@@ -39,7 +39,7 @@ public class AppliedWithChunkGeneratedTests
     }
 
     [Test]
-    public async Task ChallengeHandwrittenChunksSupplyPartialPropertyMetadata()
+    public async Task GetCustomAttributes_ChallengeHandwrittenChunks_ReturnsPartialPropertyMetadata()
     {
         var properties = new (string Name, Type ChunkType)[]
         {
@@ -76,7 +76,7 @@ public class AppliedWithChunkGeneratedTests
     }
 
     [Test]
-    public async Task GeneratedSinceVersionControlsChunkApplicability()
+    public async Task Applies_GeneratedSinceVersion_RespectsLowerBound()
     {
         var applied = typeof(CGameCtnChallenge).GetProperty(nameof(CGameCtnChallenge.Cost))!
             .GetCustomAttributes<AppliedWithChunkAttribute>()
@@ -89,7 +89,7 @@ public class AppliedWithChunkGeneratedTests
     }
 
     [Test]
-    public async Task GeneratedUpperBoundControlsChunkApplicability()
+    public async Task Applies_GeneratedUpperBound_RespectsUpperBound()
     {
         var applied = typeof(CPlugAnimFile).GetProperty(nameof(CPlugAnimFile.SkelEditionVersion))!
             .GetCustomAttributes<AppliedWithChunkAttribute>()
@@ -104,7 +104,7 @@ public class AppliedWithChunkGeneratedTests
     }
 
     [Test]
-    public async Task BaseChunkMembersHaveAnnotationsForEachSerializingDerivedChunk()
+    public async Task GetCustomAttributes_BaseChunkMembers_ReturnsEachSerializingDerivedChunk()
     {
         var applied = typeof(CControlIconIndex).GetProperty(nameof(CControlIconIndex.IndexOff))!
             .GetCustomAttributes<AppliedWithChunkAttribute>()

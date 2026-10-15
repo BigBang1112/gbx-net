@@ -12,7 +12,7 @@ public class CSystemConfigLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task AudioQualityAndSpeakerConfigurationUseDistinctSlots(bool openAl)
+    public async Task ReadWrite_AudioQualityAndSpeakerConfiguration_UseDistinctSlots(bool openAl)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -50,7 +50,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task DeprecatedStringsRemainIndependent()
+    public async Task ReadWrite_DeprecatedStrings_PreservesIndependentValues()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -65,7 +65,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task LegacyPlayerSettingsConsumeDisplaySize()
+    public async Task ReadWrite_LegacyPlayerSettings_ConsumeDisplaySize()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -83,7 +83,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task CarParticlesAndOcclusionUseTheirNativeSlots()
+    public async Task ReadWrite_CarParticlesAndOcclusion_UseTheirNativeSlots()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -102,7 +102,7 @@ public class CSystemConfigLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task FileTransferCacheSizePreservesNativeWidth(bool wide)
+    public async Task ReadWrite_FileTransferCacheSize_PreservesNativeWidth(bool wide)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -133,7 +133,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task FirewallExecutableChecksumsPreserveUnsignedValues()
+    public async Task ReadWrite_FirewallExecutableChecksums_PreserveUnsignedValues()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -153,7 +153,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task ParentalLockPreservesTimestampAndPasswordHash()
+    public async Task ReadWrite_ParentalLock_PreservesTimestampAndPasswordHash()
     {
         var timestamp = new DateTime(2020, 1, 2, 3, 4, 5, DateTimeKind.Utc);
         var hash = new UInt128(0x1122334455667788UL, 0x99aabbccddeeff00UL);
@@ -175,7 +175,7 @@ public class CSystemConfigLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task BadWordListUrlUsesVersionTwo(int version)
+    public async Task ReadWrite_BadWordListUrl_UsesVersionTwo(int version)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -192,7 +192,7 @@ public class CSystemConfigLayoutTests
     }
 
     [Test]
-    public async Task TrackmaniaInputsIncludeJoystickEnablement()
+    public async Task ReadWrite_TrackmaniaInputs_IncludeJoystickEnablement()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -210,7 +210,7 @@ public class CSystemConfigLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task UnsupportedVersionsStopBeforeReadingSettings(bool inputs)
+    public async Task ReadWrite_UnsupportedVersions_StopBeforeReadingSettings(bool inputs)
     {
         using var payload = CreatePayload(writer => writer.Write(inputs ? 1 : 3));
         payload.Position = 0;

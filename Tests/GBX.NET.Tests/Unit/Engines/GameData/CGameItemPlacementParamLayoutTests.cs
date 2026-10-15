@@ -13,7 +13,7 @@ public class CGameItemPlacementParamLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task LegacyPlacementFieldsRoundTrip(int version)
+    public async Task ReadWrite_LegacyPlacementFields_RoundTrip(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -48,7 +48,7 @@ public class CGameItemPlacementParamLayoutTests
     [Arguments(8)]
     [Arguments(9)]
     [Arguments(10)]
-    public async Task InlinePlacementArchivePreservesVersionBranches(int archiveVersion)
+    public async Task ReadWrite_InlinePlacementArchive_PreservesVersionBranches(int archiveVersion)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -146,7 +146,7 @@ public class CGameItemPlacementParamLayoutTests
     [Test]
     [Arguments(true)]
     [Arguments(false)]
-    public async Task PlacementReferencePreservesExternalFile(bool legacyChunk)
+    public async Task ReadWrite_PlacementReference_PreservesExternalFile(bool legacyChunk)
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "Placement.PlaceParam.Gbx");
         using var payload = new MemoryStream();
@@ -179,7 +179,7 @@ public class CGameItemPlacementParamLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task MagnetLocationsPreservePositionAndDegreeRotations(int version)
+    public async Task ReadWrite_MagnetLocations_PreservePositionAndDegreeRotations(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -200,7 +200,7 @@ public class CGameItemPlacementParamLayoutTests
     }
 
     [Test]
-    public async Task FlagsPreserveReservedBitsAndNativeDefaults()
+    public async Task Flags_WhenChanged_PreserveReservedBitsAndNativeDefaults()
     {
         var node = new CGameItemPlacementParam();
         await Assert.That(node.IsFreelyAnchorable).IsTrue();
@@ -219,7 +219,7 @@ public class CGameItemPlacementParamLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(3)]
-    public async Task UnsupportedChunkVersionsStopBeforeReadingFields(int chunkId)
+    public async Task ReadWrite_UnsupportedChunkVersions_StopBeforeReadingFields(int chunkId)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

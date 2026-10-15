@@ -11,7 +11,7 @@ public class CPlugCamShakeModelLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task VersionsPreserveFieldOrderAndParameterSets(int version)
+    public async Task ReadWrite_Versions_PreserveFieldOrderAndParameterSets(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -65,7 +65,7 @@ public class CPlugCamShakeModelLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task NodeBodiesRoundTripWithoutExtraVersionOrCountFields(int version)
+    public async Task ReadNode_NodeBodies_RoundTripWithoutExtraVersionOrCountFields(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -89,7 +89,7 @@ public class CPlugCamShakeModelLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task NewNodesSerializeNativeDefaultsForEachVersion(int version)
+    public async Task Write_NewNodes_SerializesNativeDefaultsForEachVersion(int version)
     {
         var node = new CPlugCamShakeModel();
         using var saved = new MemoryStream();
@@ -109,7 +109,7 @@ public class CPlugCamShakeModelLayoutTests
     }
 
     [Test]
-    public async Task ParameterSetsHaveIndependentNativeDefaults()
+    public async Task Constructor_ParameterSets_HaveIndependentNativeDefaults()
     {
         var node = new CPlugCamShakeModel();
         await Assert.That(node.Params.Length).IsEqualTo(2);

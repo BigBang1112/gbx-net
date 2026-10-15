@@ -9,7 +9,7 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugVehicleCarPhyTuningLayoutTests
 {
     [Test]
-    public async Task GameplayModelKeepsItsFloatingPointSteeringTorque()
+    public async Task ReadWrite_GameplayModel_KeepsItsFloatingPointSteeringTorque()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -25,7 +25,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Test]
     [Arguments(6)]
     [Arguments(7)]
-    public async Task AirControlSwitchesToInlineCurvesAtVersionSeven(int version)
+    public async Task ReadWrite_AirControl_UsesInlineCurvesFromVersionSeven(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -63,7 +63,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task CurveGroupSwitchesToInlineCurvesAtVersionTwo(int version)
+    public async Task ReadWrite_CurveGroup_UsesInlineCurvesFromVersionTwo(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -84,7 +84,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Test]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task JumpHookPreservesVectorAndVersionedCurve(int version)
+    public async Task ReadWrite_JumpHook_PreservesVectorAndVersionedCurve(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -105,7 +105,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task RetiredCurveGroupPreservesItsVersionZeroReferences(int version)
+    public async Task ReadWrite_RetiredCurveGroup_PreservesItsVersionZeroReferences(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -121,7 +121,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     [Test]
     [Arguments(12)]
     [Arguments(13)]
-    public async Task ObsoleteCurvesEndAfterVersionTwelve(int version)
+    public async Task ReadWrite_ObsoleteCurves_EndAfterVersionTwelve(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -152,7 +152,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     }
 
     [Test]
-    public async Task VersionThirtyFivePreservesFloatInsteadOfNormalizingItToBoolean()
+    public async Task ReadWrite_VersionThirtyFive_PreservesFloatInsteadOfNormalizingItToBoolean()
     {
         var node = new CPlugVehicleCarPhyTuning();
         var chunk = new CPlugVehicleCarPhyTuning.Chunk090ED08B { Version = 35, U23 = 1500.5f };
@@ -166,7 +166,7 @@ public class CPlugVehicleCarPhyTuningLayoutTests
     }
 
     [Test]
-    public async Task LegacyAccelerationReferenceAndInlinePointsShareOneProperty()
+    public async Task ReadWrite_LegacyAccelerationReferenceAndInlinePoints_ShareOneProperty()
     {
         var node = new CPlugVehicleCarPhyTuning();
         var legacyChunk = new CPlugVehicleCarPhyTuning.Chunk090ED024();

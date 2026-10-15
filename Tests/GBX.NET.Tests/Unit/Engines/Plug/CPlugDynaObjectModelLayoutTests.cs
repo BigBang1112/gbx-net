@@ -22,7 +22,7 @@ public class CPlugDynaObjectModelLayoutTests
     [Arguments(11)]
     [Arguments(12)]
     [Arguments(13)]
-    public async Task VersionedArchive_PreservesNativeFieldOrderAndExternalReferences(int version)
+    public async Task ReadWrite_VersionedArchive_PreservesNativeFieldOrderAndExternalReferences(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -99,7 +99,7 @@ public class CPlugDynaObjectModelLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task LegacyArchive_UsesReferencedPhysicsMass(int version)
+    public async Task ReadWrite_LegacyArchive_UsesReferencedPhysicsMass(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -130,7 +130,7 @@ public class CPlugDynaObjectModelLayoutTests
     }
 
     [Test]
-    public async Task DefaultArchive_UsesLatestVersionAndNativeDefaults()
+    public async Task ReadWrite_DefaultArchive_UsesLatestVersionAndNativeDefaults()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -152,7 +152,7 @@ public class CPlugDynaObjectModelLayoutTests
     }
 
     [Test]
-    public async Task VersionZero_ShapesShareTheOriginalCollisionReference()
+    public async Task ReadWrite_VersionZero_ShapesShareTheOriginalCollisionReference()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

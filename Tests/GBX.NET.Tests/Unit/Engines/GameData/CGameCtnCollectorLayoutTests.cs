@@ -21,7 +21,7 @@ public class CGameCtnCollectorLayoutTests
     [Arguments(6)]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task DescriptionHeaderPreservesAllVersionBranches(int version)
+    public async Task ReadWrite_DescriptionHeader_PreservesAllVersionBranches(int version)
     {
         var payload = Payload(writer =>
         {
@@ -72,7 +72,7 @@ public class CGameCtnCollectorLayoutTests
     [Arguments(3, true)]
     [Arguments(4, false)]
     [Arguments(4, true)]
-    public async Task SkinChunkPreservesFolderPathsAndFileReferences(int version, bool hasDirectory)
+    public async Task ReadWrite_SkinChunk_PreservesFolderPathsAndFileReferences(int version, bool hasDirectory)
     {
         var files = new Dictionary<int, GbxRefTableNode>();
         var refTable = new GbxRefTable();
@@ -118,7 +118,7 @@ public class CGameCtnCollectorLayoutTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(9)]
-    public async Task IconChunksPreserveExternalReferences(int offset)
+    public async Task ReadWrite_IconChunks_PreserveExternalReferences(int offset)
     {
         var file = new GbxRefTableFile(new(), 0, true, "Icon.dds");
         var files = new Dictionary<int, GbxRefTableNode> { [1] = file };
@@ -146,7 +146,7 @@ public class CGameCtnCollectorLayoutTests
     }
 
     [Test]
-    public async Task RenderChunkHasAVersionAndFloatPhase()
+    public async Task ReadWrite_RenderChunk_HasAVersionAndFloatPhase()
     {
         var payload = Payload(writer =>
         {
@@ -174,7 +174,7 @@ public class CGameCtnCollectorLayoutTests
     [Arguments(4, GbxMode.Release, GbxCompression.Compressed)]
     [Arguments(4, GbxMode.Editor, GbxCompression.Uncompressed)]
     [Arguments(4, GbxMode.Editor, GbxCompression.Compressed)]
-    public async Task SkinChunkUsesHeaderModeThroughFullGbxRoundTrip(int version, GbxMode mode, GbxCompression compression)
+    public async Task ReadWrite_SkinChunk_UsesHeaderModeThroughFullGbxRoundTrip(int version, GbxMode mode, GbxCompression compression)
     {
         var node = new CGameCtnCollector { CatalogPosition = 77, Icon = new Color[3, 2] };
         node.Chunks.Create<CGameCtnCollector.HeaderChunk2E001004>();
@@ -201,7 +201,7 @@ public class CGameCtnCollectorLayoutTests
     }
 
     [Test]
-    public async Task ConstructorAndChunkAttributesMatchVerifiedMetadata()
+    public async Task Constructor_DefaultsAndChunkAttributes_MatchVerifiedMetadata()
     {
         var node = new CGameCtnCollector();
         await Assert.That(node.CatalogPosition).IsEqualTo(1);

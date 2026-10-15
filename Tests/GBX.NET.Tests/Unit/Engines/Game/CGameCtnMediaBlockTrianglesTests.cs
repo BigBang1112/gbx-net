@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnMediaBlockTrianglesTests
 {
     [Test]
-    public async Task TrianglesRejectIndicesOutsideTheVertexArray()
+    public async Task Triangles_IndexOutsideVertexArray_ThrowsAndKeepsOriginalTriangles()
     {
         var block = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[3] };
         block.Triangles = [new Int3(0, 1, 2)];
@@ -17,7 +17,7 @@ public class CGameCtnMediaBlockTrianglesTests
     }
 
     [Test]
-    public async Task ShrinkingVerticesResizesKeyPositionsAndRemovesInvalidTriangles()
+    public async Task Vertices_ShrinkingArray_ResizesKeyPositionsAndRemovesInvalidTriangles()
     {
         var block = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[4] };
         var key = new CGameCtnMediaBlockTriangles.Key(block);
@@ -31,7 +31,7 @@ public class CGameCtnMediaBlockTrianglesTests
     }
 
     [Test]
-    public async Task ShrinkingVerticesWithoutKeysStillRemovesInvalidTriangles()
+    public async Task Vertices_ShrinkingArrayWithoutKeys_RemovesInvalidTriangles()
     {
         var block = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[4] };
         block.Triangles = [new Int3(0, 1, 2), new Int3(1, 2, 3)];
@@ -42,7 +42,7 @@ public class CGameCtnMediaBlockTrianglesTests
     }
 
     [Test]
-    public async Task ResizingOneKeysPositionsResizesVerticesAndOtherKeys()
+    public async Task Positions_ResizingOneKey_ResizesVerticesAndOtherKeys()
     {
         var block = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[3] };
         var first = new CGameCtnMediaBlockTriangles.Key(block);

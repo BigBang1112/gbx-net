@@ -45,7 +45,7 @@ public class CPlugVisualLayoutTests
     }
 
     [Test]
-    public async Task NamedChunks_PreserveNativeFields()
+    public async Task ReadWrite_NamedChunks_PreserveNativeFields()
     {
         using var payload = new MemoryStream();
         using (var w = new GbxWriter(payload))
@@ -89,7 +89,7 @@ public class CPlugVisualLayoutTests
     [Arguments(3, 0)]
     [Arguments(3, 1)]
     [Arguments(3, 2)]
-    public async Task TexCoords_UseInterleavedNativeDimensions(int version, int kind)
+    public async Task ReadWrite_TexCoords_UseInterleavedNativeDimensions(int version, int kind)
     {
         using var payload = new MemoryStream();
         using (var w = new GbxWriter(payload))
@@ -141,7 +141,7 @@ public class CPlugVisualLayoutTests
     [Arguments(0x0900600Fu, 4, 2, true, true)]
     [Arguments(0x0900600Fu, 5, 3, false, true)]
     [Arguments(0x0900600Fu, 6, 4, true, false)]
-    public async Task Geometry_PreservesVersionedSkinAndTrailingData(uint chunkId, int version, int skinCount, bool weights, bool names)
+    public async Task ReadWrite_Geometry_PreservesVersionedSkinAndTrailingData(uint chunkId, int version, int skinCount, bool weights, bool names)
     {
         var stride = skinCount == 1 ? 1 : skinCount * 4;
         var vertexWeights = Enumerable.Range(1, stride * 2).Select(x => (byte)x).ToArray();
@@ -263,7 +263,7 @@ public class CPlugVisualLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task Morphs_PreserveCountsBeforeTheVertexStream(bool empty)
+    public async Task ReadWrite_Morphs_PreserveCountsBeforeTheVertexStream(bool empty)
     {
         using var payload = new MemoryStream();
         using (var w = new GbxWriter(payload))
@@ -294,7 +294,7 @@ public class CPlugVisualLayoutTests
     }
 
     [Test]
-    public async Task Defaults_MatchTheNativeVisualConstructors()
+    public async Task Constructor_Defaults_MatchTheNativeVisualConstructors()
     {
         var node = new CPlugVisual();
         await Assert.That(node.Flags).IsEqualTo(0x804F0);

@@ -22,7 +22,7 @@ public class CGameCtnCollectionChunkTests
     [Arguments(2, 0)]
     [Arguments(2, 1)]
     [Arguments(2, 2)]
-    public async Task Chunk0303300D_RoundTripsAbsentInternalAndExternalIcons(int iconKind, int smallIconKind)
+    public async Task ReadWrite_Chunk0303300D_RoundTripsAbsentInternalAndExternalIcons(int iconKind, int smallIconKind)
     {
         // Reference kinds: 0 = absent, 1 = internal bitmap, 2 = external file.
         var refTable = new GbxRefTable();
@@ -79,7 +79,7 @@ public class CGameCtnCollectionChunkTests
     [Arguments(6)]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task Chunk03033038_ReadsNativeWaterVersions(int version)
+    public async Task ReadWrite_Chunk03033038_ReadsNativeWaterVersions(int version)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -138,7 +138,7 @@ public class CGameCtnCollectionChunkTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task Chunk0303303D_ReadsNativeTvProgramOrder(int version)
+    public async Task ReadWrite_Chunk0303303D_ReadsNativeTvProgramOrder(int version)
     {
         var refTable = new GbxRefTable();
         var files = new Dictionary<int, GbxRefTableNode>();
@@ -178,7 +178,7 @@ public class CGameCtnCollectionChunkTests
     [Arguments(20)]
     [Arguments(21)]
     [Arguments(22)]
-    public async Task Chunk03033039_ReadsNativeInventoryVersions(int version)
+    public async Task ReadWrite_Chunk03033039_ReadsNativeInventoryVersions(int version)
     {
         var refTable = new GbxRefTable();
         var files = new Dictionary<int, GbxRefTableNode>();
@@ -237,7 +237,7 @@ public class CGameCtnCollectionChunkTests
     }
 
     [Test]
-    public async Task Chunk03033039_ReadsVehicleStylesAndRandomGenerators()
+    public async Task ReadWrite_Chunk03033039_ReadsVehicleStylesAndRandomGenerators()
     {
         var group = new CPlugVehicleVisStyleRandomGroup
         {
@@ -283,7 +283,7 @@ public class CGameCtnCollectionChunkTests
     }
 
     [Test]
-    public async Task Chunk03033030_ReadsCarMarksModels()
+    public async Task ReadWrite_Chunk03033030_ReadsCarMarksModels()
     {
         var subModel = new CSceneVehicleCarMarksModelSub { Width = 0.6f, WidthMax = 25f, CondMaterialId = 5 };
         subModel.CreateChunk<CSceneVehicleCarMarksModelSub.Chunk0A082003>();

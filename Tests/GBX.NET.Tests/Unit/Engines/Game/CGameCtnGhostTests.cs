@@ -13,7 +13,7 @@ public class CGameCtnGhostTests
     [Arguments(0x19, 0)]
     [Arguments(0x25, 0)]
     [Arguments(0x25, 1)]
-    public async Task ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version)
+    public async Task ReadWrite_ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version)
     {
         var payload = Payload(w =>
         {
@@ -54,7 +54,7 @@ public class CGameCtnGhostTests
     }
 
     [Test]
-    public async Task ValidationInputFlag_RemainsOnTheNodeWhenSeparateInputsAreUnsupported()
+    public async Task ReadWrite_ValidationInputFlag_RemainsOnTheNodeWhenSeparateInputsAreUnsupported()
     {
         using var stream = new MemoryStream(Payload(w => w.Write(1)));
         using var reader = new GbxReader(stream);
@@ -133,7 +133,7 @@ public class CGameCtnGhostTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task GhostUid_PreservesStringAndNumericIds(bool numeric)
+    public async Task ReadWrite_GhostUid_PreservesStringAndNumericIds(bool numeric)
     {
         var uid = numeric ? new Id(26) : new Id("GhostUid");
         var payload = Payload(w => w.Write(uid));
@@ -158,7 +158,7 @@ public class CGameCtnGhostTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task RecordContext_ReadsScopeAndGameMode(int scope)
+    public async Task ReadWrite_RecordContext_ReadsScopeAndGameMode(int scope)
     {
         var payload = Payload(w =>
         {
@@ -184,7 +184,7 @@ public class CGameCtnGhostTests
     [Test]
     [Arguments(-1)]
     [Arguments(120100)]
-    public async Task ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime)
+    public async Task ReadWrite_ValidationSettings_ReadsPackedRulesAndSimulationTime(int startTime)
     {
         const int gameRules = unchecked((int)0xFEDCBA98);
         var payload = Payload(w =>
@@ -248,7 +248,7 @@ public class CGameCtnGhostTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task RaceResult_ReadsNativeFormatAndPreservesUnknowns(int version)
+    public async Task ReadWrite_RaceResult_ReadsNativeFormatAndPreservesUnknowns(int version)
     {
         var payload = Payload(w =>
         {
@@ -305,7 +305,7 @@ public class CGameCtnGhostTests
     [Arguments(0, -1, true)]
     [Arguments(1, -1, true)]
     [Arguments(2, -1, true)]
-    public async Task LegacyRaceResult_DecodesRawAndDeltaTimes(int version, int raceTime, bool empty)
+    public async Task ReadWrite_LegacyRaceResult_DecodesRawAndDeltaTimes(int version, int raceTime, bool empty)
     {
         var payload = Payload(w =>
         {

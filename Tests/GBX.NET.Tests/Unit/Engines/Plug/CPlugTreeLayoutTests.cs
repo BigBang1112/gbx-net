@@ -11,7 +11,7 @@ public class CPlugTreeLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ModelReferenceControlsModelIdAndPropertyPayload(bool hasModel)
+    public async Task ReadWrite_ModelReference_ControlsModelIdAndPropertyPayload(bool hasModel)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -51,7 +51,7 @@ public class CPlugTreeLayoutTests
     [Arguments("")]
     [Arguments("Tree")]
     [Arguments("123")]
-    public async Task StringPlugIdsPreserveTheirRepresentation(string value)
+    public async Task ReadWrite_StringPlugIds_PreserveTheirRepresentation(string value)
     {
         var chunk = new CPlugTree.Chunk0904F00D();
         var expected = new Id(value);
@@ -74,7 +74,7 @@ public class CPlugTreeLayoutTests
     }
 
     [Test]
-    public async Task LegacyParameterIdsDoNotConsumeTheFollowingChunk()
+    public async Task ReadWrite_LegacyParameterIds_DoNotConsumeTheFollowingChunk()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -99,7 +99,7 @@ public class CPlugTreeLayoutTests
     [Test]
     [Arguments(0x00E, 3)]
     [Arguments(0x012, 4)]
-    public async Task LegacyPropertyChunksPreserveTheirReferenceOrder(int offset, int count)
+    public async Task ReadWrite_LegacyPropertyChunks_PreserveTheirReferenceOrder(int offset, int count)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -129,7 +129,7 @@ public class CPlugTreeLayoutTests
     [Arguments(0x018, true, 0x1F2812UL)]
     [Arguments(0x019, false, 0xFF1F2812UL)]
     [Arguments(0x01A, false, 0xFF1F2012UL)]
-    public async Task FlagUpgradesApplyOnlyOnRead(int offset, bool wide, ulong expected)
+    public async Task ReadWrite_FlagUpgrades_ApplyOnlyOnRead(int offset, bool wide, ulong expected)
     {
         var chunk = FlagChunk(offset);
         using var payload = new MemoryStream();
@@ -159,7 +159,7 @@ public class CPlugTreeLayoutTests
     }
 
     [Test]
-    public async Task LocationUsesTwelveFloatsAndReleaseSetsRooted()
+    public async Task ReadWrite_Location_UsesTwelveFloatsAndReleaseSetsRooted()
     {
         var location = new Iso4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
         using var payload = new MemoryStream();
@@ -179,7 +179,7 @@ public class CPlugTreeLayoutTests
     }
 
     [Test]
-    public async Task DefaultsAndExternalModelPresenceMatchTheNativeState()
+    public async Task Constructor_DefaultsAndExternalModelPresence_MatchNativeState()
     {
         var node = new CPlugTree();
         await Assert.That(node.Flags).IsEqualTo(0x1E80AUL);

@@ -14,7 +14,7 @@ public class CSystemConfigDisplayLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task DisplaySettingsPreserveVersionBranchesAndUnknownFields(int version)
+    public async Task ReadWrite_DisplaySettings_PreserveVersionBranchesAndUnknownFields(int version)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -50,7 +50,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task LegacyQualityEnumsKeepTheirOriginalValues()
+    public async Task ReadWrite_LegacyQualityEnums_KeepTheirOriginalValues()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -70,7 +70,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task ModernQualityEnumsUseModernPresetValues()
+    public async Task ReadWrite_ModernQualityEnums_UseModernPresetValues()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -90,7 +90,7 @@ public class CSystemConfigDisplayLayoutTests
     [Test]
     [Arguments(false, true)]
     [Arguments(true, false)]
-    public async Task DeprecatedDriverBooleanSlotsRoundTrip(bool disableShadowBuffer, bool ignoreDriverCrashes)
+    public async Task ReadWrite_DeprecatedDriverBooleanSlots_RoundTrip(bool disableShadowBuffer, bool ignoreDriverCrashes)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -113,7 +113,7 @@ public class CSystemConfigDisplayLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ColorWriteMaskRoundTripsBoolean(bool value)
+    public async Task ReadWrite_ColorWriteMask_PreservesBoolean(bool value)
     {
         using var payload = CreatePayload(writer => writer.Write(value));
         var node = new CSystemConfigDisplay();
@@ -128,7 +128,7 @@ public class CSystemConfigDisplayLayoutTests
     [Arguments(0x004, 1700652)]
     [Arguments(0x017, -1)]
     [Arguments(0x017, 1700652)]
-    public async Task BooleanSettingsNormalizeNoncanonicalTrueValues(int id, int value)
+    public async Task ReadWrite_BooleanSettings_NormalizesNoncanonicalTrueValues(int id, int value)
     {
         using var payload = CreatePayload(writer => writer.Write(value));
         var node = new CSystemConfigDisplay();
@@ -148,7 +148,7 @@ public class CSystemConfigDisplayLayoutTests
     [Arguments(0x004, true)]
     [Arguments(0x017, false)]
     [Arguments(0x017, true)]
-    public async Task BooleanSettingsReadTextTokensAndExportBinary(int id, bool value)
+    public async Task ReadWrite_BooleanSettings_ReadTextTokensAndExportBinary(int id, bool value)
     {
         using var payload = new MemoryStream([(byte)GbxFormat.Text, .. Encoding.UTF8.GetBytes($"{value}\r\n{sentinel}\r\n")]);
         using var reader = new GbxReader(payload);
@@ -177,7 +177,7 @@ public class CSystemConfigDisplayLayoutTests
     [Test]
     [Arguments(false, true)]
     [Arguments(true, false)]
-    public async Task DeprecatedDriverBooleanSlotsReadTextTokens(bool disableShadowBuffer, bool ignoreDriverCrashes)
+    public async Task ReadWrite_DeprecatedDriverBooleanSlots_ReadTextTokens(bool disableShadowBuffer, bool ignoreDriverCrashes)
     {
         using var payload = new MemoryStream([(byte)GbxFormat.Text, .. Encoding.UTF8.GetBytes($"{disableShadowBuffer}\r\n4\r\nTrue\r\n2\r\nFalse\r\n{ignoreDriverCrashes}\r\n{sentinel}\r\n")]);
         using var reader = new GbxReader(payload);
@@ -210,7 +210,7 @@ public class CSystemConfigDisplayLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task RenderReadBackRoundTripsBoolean(bool value)
+    public async Task ReadWrite_RenderReadBack_PreservesBoolean(bool value)
     {
         using var payload = CreatePayload(writer => writer.Write(value));
         var node = new CSystemConfigDisplay();
@@ -221,7 +221,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task LegacyGpuSynchronizationKeepsHalfFrameValues()
+    public async Task ReadWrite_LegacyGpuSynchronization_KeepsHalfFrameValues()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -242,7 +242,7 @@ public class CSystemConfigDisplayLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task TrackmaniaReflectionSettingUsesVersionOne(int version)
+    public async Task ReadWrite_TrackmaniaReflectionSetting_UsesVersionOne(int version)
     {
         using var payload = CreatePayload(writer =>
         {
@@ -261,7 +261,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task UnsupportedBlurVersionStopsBeforeReadingSettings()
+    public async Task ReadWrite_UnsupportedBlurVersion_StopsBeforeReadingSettings()
     {
         using var payload = CreatePayload(writer => writer.Write(2));
         payload.Position = 0;
@@ -272,7 +272,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task AutomaticSettingsIncludeMinimumFrameRate()
+    public async Task ReadWrite_AutomaticSettings_IncludeMinimumFrameRate()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -288,7 +288,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task LegacyCombinedSettingsKeepLightingAndFilteringInTheirNativeSlots()
+    public async Task ReadWrite_LegacyCombinedSettings_KeepLightingAndFilteringInTheirNativeSlots()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -309,7 +309,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task LegacyLightMapSettingsKeepUltraAndLightIndexSeparate()
+    public async Task ReadWrite_LegacyLightMapSettings_KeepUltraAndLightIndexSeparate()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -327,7 +327,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task IntermediateShaderQualityPreservesItsOriginalEnumValue()
+    public async Task ReadWrite_IntermediateShaderQuality_PreservesItsOriginalEnumValue()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -343,7 +343,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task AdditionalGpuSynchronizationKeepsEachGpuSetting()
+    public async Task ReadWrite_AdditionalGpuSynchronization_KeepsEachGpuSetting()
     {
         using var payload = CreatePayload(writer =>
         {
@@ -361,7 +361,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task GameContextSelectsNativeDefaultsAndChunkVersions()
+    public async Task Constructor_GameContext_SelectsNativeDefaultsAndChunkVersions()
     {
         var forever = new CSystemConfigDisplay(GameVersion.TMF);
         var maniaplanet = new CSystemConfigDisplay(GameVersion.MP4);
@@ -386,7 +386,7 @@ public class CSystemConfigDisplayLayoutTests
     }
 
     [Test]
-    public async Task UnsupportedDisplayVersionStopsBeforeReadingSettings()
+    public async Task ReadWrite_UnsupportedDisplayVersion_StopsBeforeReadingSettings()
     {
         using var payload = CreatePayload(writer => writer.Write(4));
         payload.Position = 0;

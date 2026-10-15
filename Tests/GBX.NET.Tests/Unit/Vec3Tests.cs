@@ -4,7 +4,7 @@ namespace GBX.NET.Tests.Unit;
 public class Vec3Tests
 {
     [Test]
-    public async Task MagnitudeAndNormalizationFollowThreeFourFiveTriangle()
+    public async Task GetMagnitudeAndGetNormalized_ThreeFourFiveTriangle_ReturnExpectedValues()
     {
         var vector = new Vec3(3, 4, 0);
 
@@ -14,13 +14,13 @@ public class Vec3Tests
     }
 
     [Test]
-    public async Task NormalizingZeroReturnsZero()
+    public async Task GetNormalized_ZeroVector_ReturnsZero()
     {
         await Assert.That(Vec3.Zero.GetNormalized()).IsEqualTo(Vec3.Zero);
     }
 
     [Test]
-    public async Task DotAndCrossProductsUseAllComponents()
+    public async Task GetDotProductAndGetCrossProduct_ThreeComponents_UseAllComponents()
     {
         var x = new Vec3(1, 0, 0);
         var y = new Vec3(0, 1, 0);
@@ -32,7 +32,7 @@ public class Vec3Tests
     }
 
     [Test]
-    public async Task ArithmeticKeepsComponentOrder()
+    public async Task ArithmeticOperators_ThreeComponents_PreserveComponentOrder()
     {
         var vector = new Vec3(2, 4, 6);
 

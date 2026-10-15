@@ -15,7 +15,7 @@ public class NodeRefTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task ScalarInterfacesPreserveExternalDescriptors(bool resource, bool combined)
+    public async Task ReadWriteNodeRef_ScalarInterfaces_PreservesExternalDescriptors(bool resource, bool combined)
     {
         var table = new GbxRefTable();
         GbxRefTableNode descriptor = resource
@@ -60,7 +60,7 @@ public class NodeRefTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ResourceResolutionReportsUnsupportedWithoutLosingItsDescriptor(bool asynchronous)
+    public async Task Resolve_UnsupportedResource_PreservesDescriptor(bool asynchronous)
     {
         var resource = new GbxRefTableResource(new GbxRefTable(), 4, true, 42);
         var reference = new NodeRef<CMwNod>();
@@ -81,7 +81,7 @@ public class NodeRefTests
     [Arguments(GbxCompression.Uncompressed, true)]
     [Arguments(GbxCompression.Compressed, false)]
     [Arguments(GbxCompression.Compressed, true)]
-    public async Task RootCyclesKeepIdentityAndNodeIndexesDuringRoundTrip(GbxCompression compression, bool asynchronous)
+    public async Task ReadWriteNodeRef_RootCycles_PreservesIdentityAndNodeIndexes(GbxCompression compression, bool asynchronous)
     {
         var root = new CGameItemModel();
         var child = new CGameItemModel { EntityModelEdition = root };
@@ -113,7 +113,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task EncapsulationStoresRegisteredRootsAsInlineNodes()
+    public async Task ReadWriteNodeRef_Encapsulation_StoresRegisteredRootsAsInlineNodes()
     {
         var root = new CMwNod();
         using var stream = new MemoryStream();
@@ -137,7 +137,7 @@ public class NodeRefTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ArgumentlessListReadsPreserveDescriptorsAndAllowResizing(bool deprecated)
+    public async Task ReadListNodeRef_ArgumentlessCall_PreservesDescriptorsAndAllowsResizing(bool deprecated)
     {
         var table = new GbxRefTable();
         var file = new GbxRefTableFile(table, 0, true, "unresolved.Gbx");
@@ -167,7 +167,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task ListReadsKeepIndependentHandlesForSharedNodesAndNullEntries()
+    public async Task ReadListNodeRef_SharedAndNullNodes_KeepsIndependentHandles()
     {
         var node = new CMwNod();
         var references = new NodeRefList<CMwNod> { node, node, null, null };
@@ -192,7 +192,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task EmbeddedListHandlesSupportConcurrentFirstAccess()
+    public async Task ReadListNodeRef_ConcurrentFirstAccess_PreservesEmbeddedHandles()
     {
         var node = new CMwNod();
         var references = new NodeRefList<CMwNod> { node };
@@ -218,7 +218,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task EmbeddedReferencesUseObjectIdentityInsteadOfValueEquality()
+    public async Task WriteNodeRef_ValueEqualNodes_UsesObjectIdentity()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
@@ -232,7 +232,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task MissingNodesReturnNullAndKeepTheirDescriptorUntilReplaced()
+    public async Task Resolve_MissingNode_ReturnsNullAndKeepsDescriptorUntilReplaced()
     {
         var table = new GbxRefTable();
         var file = new GbxRefTableFile(table, 0, true, "missing.Gbx");
@@ -259,7 +259,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task SharedEntriesLoadOnceAndMembersHaveIndependentReplacement()
+    public async Task Resolve_SharedEntries_LoadsOnceAndAllowsIndependentReplacement()
     {
         var calls = 0;
         var node = new CPlugCrystal();
@@ -279,7 +279,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task MissingAndFailedOutcomesAreCachedAndRetryIsExplicit()
+    public async Task Resolve_MissingAndFailedOutcomes_CachesUntilExplicitRetry()
     {
         var table = new GbxRefTable();
         var file = new GbxRefTableFile(table, 0, true, "dependency.Gbx");
@@ -303,7 +303,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task DeclaredTypesValidateWithoutChangingTheSharedResolution()
+    public async Task Resolve_DeclaredTypes_ValidatesWithoutChangingSharedResolution()
     {
         var table = new GbxRefTable();
         var node = new CPlugCrystal();
@@ -324,7 +324,7 @@ public class NodeRefTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task AsyncResolutionPrefersAsyncResolversAndFallsBackToSyncResolvers(bool hasAsyncResolver)
+    public async Task ResolveAsync_AsyncAndSyncResolvers_PrefersAsyncWithSyncFallback(bool hasAsyncResolver)
     {
         var table = new GbxRefTable();
         var syncNode = new CPlugCrystal();
@@ -349,7 +349,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task ConcurrentAsyncResolutionSharesWorkAndCancellationOnlyCancelsOneWaiter()
+    public async Task ResolveAsync_ConcurrentCalls_SharesWorkAndCancelsOnlyOneWaiter()
     {
         var table = new GbxRefTable();
         var source = new TaskCompletionSource<Gbx>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -370,7 +370,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task ReassignmentDuringAsyncResolutionDoesNotPublishTheOldNode()
+    public async Task ResolveAsync_ReassignedReference_DoesNotPublishOldNode()
     {
         var source = new TaskCompletionSource<Gbx>(TaskCreationOptions.RunContinuationsAsynchronously);
         var table = new GbxRefTable();
@@ -387,7 +387,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task CollectionReferenceViewExposesLiveReadOnlyHandlesWithoutResolving()
+    public async Task References_CollectionView_ExposesLiveReadOnlyHandlesWithoutResolving()
     {
         var owner = new CGameItemModel();
         var view = owner.References;
@@ -437,7 +437,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task JaggedCollectionReferenceViewExposesCurrentRowsWithoutResolving()
+    public async Task References_JaggedCollectionView_ExposesCurrentRowsWithoutResolving()
     {
         var calls = 0;
         var table = new GbxRefTable();
@@ -464,7 +464,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task CollectionAccessContinuesPastMissingNodesAndHandlesKeepEntryIdentity()
+    public async Task NodeAccess_CollectionWithMissingNodes_ContinuesAndKeepsEntryIdentity()
     {
         var list = new NodeRefList<CMwNod> { null, new CPlugCrystal() };
         var table = new GbxRefTable();
@@ -487,7 +487,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task WritingAndCloningKeepResourcesAndFilesWithoutResolvingThem()
+    public async Task WriteAndDeepClone_ResourceAndFileReferences_DoesNotResolveNodes()
     {
         var calls = 0;
         var table = new GbxRefTable();
@@ -522,7 +522,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task EncapsulationRejectsExternalReferencesEvenWithACachedNode()
+    public async Task WriteNodeRef_EncapsulatedExternalReference_ThrowsEvenWithCachedNode()
     {
         var reference = new NodeRef<CMwNod>();
         var table = new GbxRefTable();
@@ -537,7 +537,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task DistinctDescriptorsAreNotMergedWhenTheyResolveToTheSameNode()
+    public async Task Resolve_DistinctDescriptorsWithSameNode_DoesNotMergeDescriptors()
     {
         var table = new GbxRefTable();
         var node = new CPlugCrystal();
@@ -769,7 +769,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task SharedRetryInvalidatesMemberTypeErrorsAndCachedNodes()
+    public async Task Retry_SharedReference_InvalidatesMemberTypeErrorsAndCachedNodes()
     {
         var table = new GbxRefTable();
         table.ExternalNodes["changing.Gbx"] = () => new CPlugCrystal().ToGbx();
@@ -788,7 +788,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task ExplicitLengthReadsAllowStructuralChanges()
+    public async Task ReadListNodeRef_ExplicitLength_AllowsStructuralChanges()
     {
         using var stream = new MemoryStream(new byte[] { 255, 255, 255, 255, 255, 255, 255, 255 });
         using var reader = new GbxReader(stream);
@@ -808,7 +808,7 @@ public class NodeRefTests
     [Test]
     [Arguments(1)]
     [Arguments(3)]
-    public async Task ExplicitWireLengthPadsOrTruncatesWithoutResizingTheList(int count)
+    public async Task WriteListNodeRef_ExplicitWireLength_PadsOrTruncatesWithoutResizingList(int count)
     {
         var references = new NodeRefList<CMwNod>(Enumerable.Repeat<CMwNod?>(null, count));
         var captured = references.Get(0);
@@ -825,7 +825,7 @@ public class NodeRefTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task JaggedReferenceReadsKeepRowsResizableRegardlessOfWireLength(bool fixedLength)
+    public async Task ReadJaggedArrayNodeRef_ExplicitLength_KeepsRowsResizable(bool fixedLength)
     {
         var original = new[] { new NodeRefList<CMwNod> { null, null }, new NodeRefList<CMwNod> { null, null } };
         var innerLength = fixedLength ? 2 : (int?)null;
@@ -853,7 +853,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task HandwrittenPresenceFlagsKeepUnresolvedResourceReferences()
+    public async Task ReadWrite_HandwrittenPresenceFlags_KeepsUnresolvedResourceReferences()
     {
         var resource = new GbxRefTableResource(new GbxRefTable(), 4, true, 42);
         var material = new CPlugSurface.SurfMaterial();
@@ -872,7 +872,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task GeneratedPresenceFlagsRetainUnresolvedResourceReferences()
+    public async Task ReadWrite_GeneratedPresenceFlags_KeepsUnresolvedResourceReferences()
     {
         var resource = new GbxRefTableResource(new GbxRefTable(), 4, true, 42);
         var owner = new CGameItemModel();
@@ -891,7 +891,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task DescriptorImportRebasesPathsWithoutChangingTheSource()
+    public async Task Import_Descriptor_RebasesPathsWithoutChangingSource()
     {
         var root = Path.Combine(Path.GetTempPath(), "gbx-reference-rebase");
         var source = new GbxRefTable { FileSystemPath = Path.Combine(root, "source"), AncestorLevel = 1 };
@@ -905,7 +905,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task SavingANewParentPreservesTheFirstDescriptorsAncestorLevel()
+    public async Task Save_NewParent_PreservesFirstDescriptorAncestorLevel()
     {
         var table = new GbxRefTable { AncestorLevel = 2 };
         var file = new GbxRefTableFile(table, 32, true, "dependency.Gbx");
@@ -923,7 +923,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task FilesystemResolutionPreservesSettingsAndExternalCycles()
+    public async Task Resolve_FilesystemReferences_PreservesSettingsAndExternalCycles()
     {
         var directory = Path.Combine(Path.GetTempPath(), "gbx-reference-cycle-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
@@ -960,7 +960,7 @@ public class NodeRefTests
     }
 
     [Test]
-    public async Task LegacyReferenceCopiesPreserveResourceIdentityWithoutResolvingNodes()
+    public async Task Copy_LegacyReferences_PreservesResourceIdentityWithoutResolvingNodes()
     {
         var table = new GbxRefTable();
         var resource = new GbxRefTableResource(table, 4, true, 31);

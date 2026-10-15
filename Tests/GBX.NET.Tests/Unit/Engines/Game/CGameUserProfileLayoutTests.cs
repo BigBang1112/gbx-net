@@ -11,7 +11,7 @@ public class CGameUserProfileLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ContextTimesKeepTheVersionTwoCounter(int version)
+    public async Task ReadWrite_ContextTimes_KeepTheVersionTwoCounter(int version)
     {
         var payload = Payload(w =>
         {
@@ -46,7 +46,7 @@ public class CGameUserProfileLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task InputBindingsKeepFullLegacyVehicleIdentifiers(int version)
+    public async Task ReadWrite_InputBindings_KeepFullLegacyVehicleIdentifiers(int version)
     {
         var payload = Payload(w =>
         {
@@ -102,7 +102,7 @@ public class CGameUserProfileLayoutTests
     }
 
     [Test]
-    public async Task PersistentTraitsAreAnEncapsulatedDirectNode()
+    public async Task ReadWrite_PersistentTraits_AreAnEncapsulatedDirectNode()
     {
         var payload = Payload(w =>
         {
@@ -123,7 +123,7 @@ public class CGameUserProfileLayoutTests
     }
 
     [Test]
-    public async Task ShootParamsAreTwoDirectNodesWithoutReferenceIndices()
+    public async Task ReadWrite_ShootParams_AreTwoDirectNodesWithoutReferenceIndices()
     {
         var payload = Payload(w =>
         {
@@ -158,7 +158,7 @@ public class CGameUserProfileLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task BadgeVersionThreeStillContainsTheDiscardedWordAndString(int version)
+    public async Task ReadWrite_BadgeVersionThree_PreservesDiscardedWordAndString(int version)
     {
         var payload = Payload(w =>
         {
@@ -210,7 +210,7 @@ public class CGameUserProfileLayoutTests
     [Arguments(0)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task CampaignRecordsKeepTheMapUidAndMedalOrder(int version)
+    public async Task ReadWrite_CampaignRecords_KeepTheMapUidAndMedalOrder(int version)
     {
         var payload = Payload(w =>
         {
@@ -264,7 +264,7 @@ public class CGameUserProfileLayoutTests
     [Arguments(6)]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task EditorSettingsKeepTheBooleanWidthChangeAndEntryVersion(int version)
+    public async Task ReadWrite_EditorSettings_KeepTheBooleanWidthChangeAndEntryVersion(int version)
     {
         var payload = Payload(w =>
         {
@@ -323,7 +323,7 @@ public class CGameUserProfileLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task QuaternionSettingsUseTheirOwnArchiveVersion(int archiveVersion)
+    public async Task ReadWrite_QuaternionSettings_UseTheirOwnArchiveVersion(int archiveVersion)
     {
         var payload = Payload(w =>
         {
@@ -353,7 +353,7 @@ public class CGameUserProfileLayoutTests
     }
 
     [Test]
-    public async Task WriterMetadataExcludesReaderOnlyChunksAndUsesNativeVersions()
+    public async Task Write_DefaultChunks_ExcludesReaderOnlyChunksAndUsesNativeVersions()
     {
         await Assert.That(new CGameUserProfile.Chunk031CC000(GameVersion.TM2020).Version).IsEqualTo(16);
         await Assert.That(new CGameUserProfile.Chunk031CC007(GameVersion.TM2020).Version).IsEqualTo(3);

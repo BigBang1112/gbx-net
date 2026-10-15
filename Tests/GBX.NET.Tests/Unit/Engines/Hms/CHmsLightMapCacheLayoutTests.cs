@@ -14,7 +14,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task EarlyCacheVersionsKeepCloudBooleanAndOptionalAmbient(int version)
+    public async Task ReadWrite_EarlyCacheVersions_KeepCloudBooleanAndOptionalAmbient(int version)
     {
         var payload = Payload(w =>
         {
@@ -49,7 +49,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(0x00A)]
     [Arguments(0x00C)]
     [Arguments(0x010)]
-    public async Task LegacyMapRecordsKeepTheirNativeCountsAndWidths(int offset)
+    public async Task ReadWrite_LegacyMapRecords_KeepTheirNativeCountsAndWidths(int offset)
     {
         var payload = Payload(w =>
         {
@@ -96,7 +96,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task LegacyVersionedCachePreservesMappingAndHdrBranches(int version)
+    public async Task ReadWrite_LegacyVersionedCache_PreservesMappingAndHdrBranches(int version)
     {
         var payload = Payload(w =>
         {
@@ -138,7 +138,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(13)]
     [Arguments(14)]
     [Arguments(15)]
-    public async Task FrameVersionBranchesPreserveFollowingFields(int version)
+    public async Task ReadWrite_FrameVersionBranches_PreserveFollowingFields(int version)
     {
         var payload = Payload(w =>
         {
@@ -197,7 +197,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(6)]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task MappingCoordinatesUsePlanesBeforeVersion7AndPackedRecordsAfterwards(int version)
+    public async Task ReadWrite_MappingCoordinates_UsePlanesBeforeVersion7AndPackedRecordsAfterwards(int version)
     {
         var payload = Payload(w => WriteMapping(w, version, 2));
         var mapping = new CHmsLightMapCache.SMapping();
@@ -230,7 +230,7 @@ public class CHmsLightMapCacheLayoutTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task CacheIdDynamicTimeKeepsItsFullUInt32Range(int version)
+    public async Task ReadWrite_CacheIdDynamicTime_KeepsItsFullUInt32Range(int version)
     {
         var payload = Payload(w =>
         {
@@ -252,7 +252,7 @@ public class CHmsLightMapCacheLayoutTests
     }
 
     [Test]
-    public async Task LegacySkippabilityAndWriterMetadataMatchNativeFlags()
+    public async Task Write_LegacySkippabilityAndMetadata_MatchNativeFlags()
     {
         for (var offset = 0; offset <= 0x1A; offset++)
         {

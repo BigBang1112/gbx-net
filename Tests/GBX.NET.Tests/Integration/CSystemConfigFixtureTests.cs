@@ -10,7 +10,7 @@ public class CSystemConfigFixtureTests
     [Arguments("TMF")]
     [Arguments("MP3")]
     [Arguments("MP4")]
-    public async Task ParseSaveParse_SystemConfigFixture_PreservesSettingsAndVersions(string game)
+    public async Task SystemConfigFixturesPreserveSettingsAndVersionsAfterSavingAndReparsing(string game)
     {
         var path = TestFiles.Gbx("CSystemConfig", $"CSystemConfig {game} 001.SystemConfig.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };

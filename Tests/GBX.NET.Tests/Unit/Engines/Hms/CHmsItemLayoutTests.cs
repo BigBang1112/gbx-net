@@ -9,7 +9,7 @@ namespace GBX.NET.Tests.Unit.Engines.Hms;
 public class CHmsItemLayoutTests
 {
     [Test]
-    public async Task PackedPropertiesPreserveOtherBitsAndNativeStaticConstraints()
+    public async Task PackedProperties_WhenChanged_PreserveOtherBitsAndNativeStaticConstraints()
     {
         var node = new CHmsItem();
         await Assert.That(node.FlagsItem).IsEqualTo(0xFFF1C00018800000UL);
@@ -52,7 +52,7 @@ public class CHmsItemLayoutTests
     [Arguments(7)]
     [Arguments(8)]
     [Arguments(9)]
-    public async Task LegacyScalarPayloadsKeepWidthsAndRawFields(int offset)
+    public async Task ReadWrite_LegacyScalarPayloads_KeepWidthsAndRawFields(int offset)
     {
         var payload = Payload(w =>
         {
@@ -92,7 +92,7 @@ public class CHmsItemLayoutTests
     [Arguments(10, 15)]
     [Arguments(11, 11)]
     [Arguments(11, 4095)]
-    public async Task ObsoleteCasterIdsBecomeMasksAndKeepRawArchives(int offset, int groupId)
+    public async Task ReadWrite_ObsoleteCasterIds_BecomeMasksAndKeepRawArchives(int offset, int groupId)
     {
         var flags = ((ulong)groupId << 32) | 0xDA001234u;
         var payload = Payload(w =>
@@ -117,7 +117,7 @@ public class CHmsItemLayoutTests
     [Arguments(15, 0xFFFADEFA10001BFFUL)]
     [Arguments(16, 0xABCADEFA10001FFFUL)]
     [Arguments(17, 0xABCADEFA0001FFFFUL)]
-    public async Task PackedFlagsApplyChunkSpecificLegacyConversions(int offset, ulong expectedFlags)
+    public async Task ReadWrite_PackedFlags_ApplyChunkSpecificLegacyConversions(int offset, ulong expectedFlags)
     {
         var payload = Payload(w =>
         {
@@ -137,7 +137,7 @@ public class CHmsItemLayoutTests
     }
 
     [Test]
-    public async Task LatestWriterClearsOnlyTheTwoCurrentRuntimeBits()
+    public async Task ReadWrite_LatestWriter_ClearsOnlyTheTwoCurrentRuntimeBits()
     {
         var node = new CHmsItem { FlagsItem = ulong.MaxValue, VisibleId = ushort.MaxValue };
         var chunk = new CHmsItem.Chunk06003011();
@@ -153,7 +153,7 @@ public class CHmsItemLayoutTests
     }
 
     [Test]
-    public async Task LegacyPortalArrayUsesAPlainCountAndPreservesSharedReferences()
+    public async Task ReadWrite_LegacyPortalArray_UsesAPlainCountAndPreservesSharedReferences()
     {
         var portal = new CHmsPortal { CanSeeThrough = true, SeeThroughOpacity = 0.75f };
         portal.CreateChunk<CHmsPortal.Chunk06006002>();

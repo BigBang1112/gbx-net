@@ -11,7 +11,7 @@ namespace GBX.NET.Generators.Tests;
 public class ExistingTypeAnalysisTests
 {
     [Test]
-    public async Task MergesPartialsAndKeepsMembersInTheirOwnScope()
+    public async Task Analyze_PartialTypes_MergesMembersInTheirOwnScope()
     {
         var types = await Analyze(
             Parse("""
@@ -64,7 +64,7 @@ public class ExistingTypeAnalysisTests
     }
 
     [Test]
-    public async Task PreservesOverloadsExplicitMembersAndGenerationOptions()
+    public async Task Analyze_OverloadsAndExplicitMembers_PreservesSignaturesAndGenerationOptions()
     {
         var types = await Analyze(Parse("""
             namespace GBX.NET.Engines.Plug;
@@ -98,7 +98,7 @@ public class ExistingTypeAnalysisTests
     }
 
     [Test]
-    public async Task SeparatesNamespacesContainersAndGenericArities()
+    public async Task Analyze_NamespacesContainersAndGenericArities_KeepsTypesSeparate()
     {
         var types = await Analyze(Parse("""
             namespace GBX.NET.Engines.Game
@@ -120,7 +120,7 @@ public class ExistingTypeAnalysisTests
     }
 
     [Test]
-    public async Task FiltersOtherNamespacesAndFileLocalTypes()
+    public async Task Analyze_OtherNamespacesAndFileLocalTypes_ExcludesTypes()
     {
         var types = await Analyze(
             Parse("namespace GBX.NET.EnginesOther.Game; public partial class Example;"),
@@ -134,7 +134,7 @@ public class ExistingTypeAnalysisTests
     }
 
     [Test]
-    public async Task AnalyzesRealEngineSourcesWithoutMetadataReferences()
+    public async Task Analyze_RealEngineSources_WorksWithoutMetadataReferences()
     {
         var directory = TestPaths.GetEngineDirectory();
         var trees = Directory.EnumerateFiles(directory, "*.cs", SearchOption.AllDirectories)

@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnBlockTests
 {
     [Test]
-    public async Task NameUpdatesBlockModelWithoutLosingCollectionOrAuthor()
+    public async Task Name_WhenChanged_UpdatesBlockModelAndPreservesCollectionAndAuthor()
     {
         var block = new CGameCtnBlock { BlockModel = new Ident("Old", "Stadium", "Maker") };
 
@@ -18,7 +18,7 @@ public class CGameCtnBlockTests
     }
 
     [Test]
-    public async Task VariantAndSubVariantKeepOtherFlagsIntact()
+    public async Task VariantAndSubVariant_WhenChanged_PreserveOtherFlags()
     {
         var block = new CGameCtnBlock { Flags = (1 << 12) | (1 << 28) };
 
@@ -35,7 +35,7 @@ public class CGameCtnBlockTests
     }
 
     [Test]
-    public async Task FlagPropertiesCanBeSetAndClearedIndependently()
+    public async Task FlagProperties_WhenChanged_SetAndClearIndependently()
     {
         var block = new CGameCtnBlock
         {
@@ -60,7 +60,7 @@ public class CGameCtnBlockTests
     }
 
     [Test]
-    public async Task WaypointAndDecalFlagsFollowTheirValues()
+    public async Task WaypointAndDecal_WhenChanged_UpdateFlags()
     {
         var block = new CGameCtnBlock();
         block.WaypointSpecialProperty = new CGameWaypointSpecialProperty();

@@ -14,7 +14,7 @@ public class CPlugAdnRandomGenChunkTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task Chunk09140000_ReadsNativeTagSetPasses(int version)
+    public async Task ReadWrite_Chunk09140000_ReadsNativeTagSetPasses(int version)
     {
         var count = version < 3 ? 1 : 2;
         using var stream = new MemoryStream();

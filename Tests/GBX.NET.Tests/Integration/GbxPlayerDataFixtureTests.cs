@@ -38,7 +38,7 @@ public class GbxPlayerDataFixtureTests
 
     [Test]
     [MethodDataSource(nameof(Fixtures))]
-    public async Task ParseSaveParse_PlayerDataFixture_PreservesContentAndStableBytes(string filePath, GbxCompression compression, bool async)
+    public async Task PlayerDataFixturesPreserveContentAndStableBytesAfterSavingAndReparsing(string filePath, GbxCompression compression, bool async)
     {
         var path = TestFiles.Gbx(filePath);
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
@@ -63,7 +63,7 @@ public class GbxPlayerDataFixtureTests
 
     [Test]
     [MethodDataSource(nameof(FixtureFiles))]
-    public async Task Save_PlayerDataFixture_PreservesEditedData(string filePath)
+    public async Task PlayerDataFixturesPreserveEditsAfterSaving(string filePath)
     {
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
         var original = Gbx.Parse(TestFiles.Gbx(filePath), settings);

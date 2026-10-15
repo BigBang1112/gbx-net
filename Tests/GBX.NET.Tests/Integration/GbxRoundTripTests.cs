@@ -19,7 +19,7 @@ public class GbxRoundTripTests
 
     [Test]
     [MethodDataSource(nameof(Fixtures))]
-    public async Task ParseSaveParse_RealFixture_PreservesObjectGraph(string filePath, GbxCompression compression, bool async)
+    public async Task RealFixturesPreserveObjectGraphsAfterSavingAndReparsing(string filePath, GbxCompression compression, bool async)
     {
         // Arrange
         SkipReadOnlyReplay(filePath);
@@ -43,7 +43,7 @@ public class GbxRoundTripTests
 
     [Test]
     [MethodDataSource(nameof(Fixtures))]
-    public async Task Save_AfterRealFixtureRoundTrip_ProducesStableBytes(string filePath, GbxCompression compression, bool async)
+    public async Task RealFixturesProduceStableBytesAfterRoundTrip(string filePath, GbxCompression compression, bool async)
     {
         // Arrange
         SkipReadOnlyReplay(filePath);

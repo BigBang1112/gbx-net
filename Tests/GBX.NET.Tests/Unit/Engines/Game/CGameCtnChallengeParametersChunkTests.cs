@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnChallengeParametersChunkTests
 {
     [Test]
-    public async Task ConstructorUsesLayoutDefaults()
+    public async Task Constructor_NewNode_UsesLayoutDefaults()
     {
         var parameters = new CGameCtnChallengeParameters();
 
@@ -21,7 +21,7 @@ public class CGameCtnChallengeParametersChunkTests
     }
 
     [Test]
-    public async Task MedalChunkReadsTheTipAndAllMedalParameters()
+    public async Task ReadWrite_MedalChunk_ReadsTheTipAndAllMedalParameters()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -50,7 +50,7 @@ public class CGameCtnChallengeParametersChunkTests
     }
 
     [Test]
-    public async Task LegacyTimeLimitUsesTheSamePropertyAsStunts()
+    public async Task ReadWrite_LegacyTimeLimit_UsesTheSamePropertyAsStunts()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -70,7 +70,7 @@ public class CGameCtnChallengeParametersChunkTests
     [Arguments(4, 5)]
     [Arguments(5, 3)]
     [Arguments(6, 3)]
-    public async Task DiscardedLegacyDataIsPreservedForRewriting(int offset, int count)
+    public async Task ReadWrite_DiscardedLegacyData_IsPreservedForRewriting(int offset, int count)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -94,7 +94,7 @@ public class CGameCtnChallengeParametersChunkTests
     }
 
     [Test]
-    public async Task LegacyGhostArrayConsumesTheDeprecatedVersionPrefix()
+    public async Task ReadWrite_LegacyGhostArray_ConsumesTheDeprecatedVersionPrefix()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -113,7 +113,7 @@ public class CGameCtnChallengeParametersChunkTests
     }
 
     [Test]
-    public async Task LegacyMapTypeChunkConsumesItsVersion()
+    public async Task ReadWrite_LegacyMapTypeChunk_ConsumesItsVersion()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

@@ -12,7 +12,7 @@ public class CInputReplayLayoutTests
     [Arguments(1, 0, 4096u)]
     [Arguments(0, 3, 0u)]
     [Arguments(1, 3, 4096u)]
-    public async Task ReplayPreservesActionTableAndNineByteEvents(int version, int count, uint maxEventCount)
+    public async Task ReadWrite_Replay_PreservesActionTableAndNineByteEvents(int version, int count, uint maxEventCount)
     {
         var payload = Payload(version, count, maxEventCount, valueHighBits: false);
         var node = new CInputReplay();
@@ -42,7 +42,7 @@ public class CInputReplayLayoutTests
     }
 
     [Test]
-    public async Task ReplayMasksPackedValuesAndWritesZeroArchivePrefix()
+    public async Task ReadWrite_Replay_MasksPackedValuesAndWritesZeroArchivePrefix()
     {
         var node = new CInputReplay();
         var chunk = new CInputReplay.Chunk1300D000();
@@ -62,7 +62,7 @@ public class CInputReplayLayoutTests
     }
 
     [Test]
-    public async Task EmptyReplayWritesOnlyItsFiveHeaderWords()
+    public async Task ReadWrite_EmptyReplay_WritesOnlyItsFiveHeaderWords()
     {
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output))

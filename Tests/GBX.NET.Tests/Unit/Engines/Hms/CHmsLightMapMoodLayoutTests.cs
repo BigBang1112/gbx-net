@@ -15,7 +15,7 @@ public class CHmsLightMapMoodLayoutTests
     [Arguments(3, false)]
     [Arguments(4, false)]
     [Arguments(4, true)]
-    public async Task MoodChunksKeepNativeFieldOrderAndLegacyValues(int offset, bool skyUseClouds)
+    public async Task ReadWrite_MoodChunks_KeepNativeFieldOrderAndLegacyValues(int offset, bool skyUseClouds)
     {
         var payload = Payload(w =>
         {
@@ -76,7 +76,7 @@ public class CHmsLightMapMoodLayoutTests
     }
 
     [Test]
-    public async Task ConstructorDefaultsMatchNativeLegacyAndCurrentPayloads()
+    public async Task Constructor_DefaultSettings_MatchNativeLegacyAndCurrentPayloads()
     {
         var node = new CHmsLightMapMood();
         await Assert.That(node.AmbientRange).IsEqualTo(new Vec2(0.35f, 1));

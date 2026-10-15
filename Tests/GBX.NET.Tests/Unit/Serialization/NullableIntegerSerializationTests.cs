@@ -11,7 +11,7 @@ public class NullableIntegerSerializationTests
     [Arguments(32)]
     [Arguments(64)]
     [Arguments(128)]
-    public async Task SignedIntegersTranslateOnlyMinusOneAndPreserveTheirWidth(int bits)
+    public async Task ReadWrite_NullableSignedIntegers_TranslatesOnlyMinusOneAndPreservesWidth(int bits)
     {
         switch (bits)
         {

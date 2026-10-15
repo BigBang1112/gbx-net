@@ -9,7 +9,7 @@ public class CFuncSegmentTests
     [Test]
     [Arguments(0)]
     [Arguments(2)]
-    public async Task Keys_RoundTripTwentyByteRecordsWithoutAnArchiveVersion(int count)
+    public async Task ReadWrite_Keys_RoundTripTwentyByteRecordsWithoutAnArchiveVersion(int count)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

@@ -14,7 +14,7 @@ public class CPlugSolidPreLightGenTests
     [Arguments(3, 0, true)]
     [Arguments(3, 1, true)]
     [Arguments(3, 1, false)]
-    public async Task PreLightGen_PreservesFieldOrderAndIndependentArchiveVersion(int chunkVersion, int archiveVersion, bool hasData)
+    public async Task ReadWrite_PreLightGen_PreservesFieldOrderAndIndependentArchiveVersion(int chunkVersion, int archiveVersion, bool hasData)
     {
         using var input = new MemoryStream();
         using (var binary = new BinaryWriter(input, Encoding.UTF8, leaveOpen: true))
@@ -103,7 +103,7 @@ public class CPlugSolidPreLightGenTests
     }
 
     [Test]
-    public async Task PreLightGen_UsesNativeConstructorDefaults()
+    public async Task Constructor_PreLightGen_UsesNativeDefaults()
     {
         var data = new CPlugSolid.PreLightGen();
         var emptyBounds = new Rect(float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);

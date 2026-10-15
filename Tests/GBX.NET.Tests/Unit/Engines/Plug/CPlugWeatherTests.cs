@@ -34,7 +34,7 @@ public class CPlugWeatherTests
     [Arguments(0x016)]
     [Arguments(0x017)]
     [Arguments(0x018)]
-    public async Task Chunk_PreservesNativePayloadAndExternalReferences(int offset)
+    public async Task ReadWrite_Chunk_PreservesNativePayloadAndExternalReferences(int offset)
     {
         using var payload = new ObjectModelPayload();
         WriteChunk(payload, offset);
@@ -104,7 +104,7 @@ public class CPlugWeatherTests
     }
 
     [Test]
-    public async Task Constructor_UsesNativeDefaults()
+    public async Task Constructor_NewNode_UsesNativeDefaults()
     {
         var node = new CPlugWeather();
         await Assert.That(node.FogRGB).IsEqualTo(new Vec3(1, 1, 1));
@@ -123,7 +123,7 @@ public class CPlugWeatherTests
     }
 
     [Test]
-    public async Task FogSettings_PreserveOtherPackedBits()
+    public async Task FogSettings_WhenChanged_PreserveOtherPackedBits()
     {
         var node = new CPlugWeather { FogFlags = 0xFFFF0000 };
         node.FogByVertex = true;
@@ -139,7 +139,7 @@ public class CPlugWeatherTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task FogArchive_ClearsNonpersistentFlags(bool writing)
+    public async Task ReadWrite_FogArchive_ClearsNonpersistentFlags(bool writing)
     {
         var node = new CPlugWeather { FogFlags = 0xFFFF000D, DayFogFlags = 0xABCD0006 };
         var chunk = new CPlugWeather.Chunk0917E00E();
@@ -162,7 +162,7 @@ public class CPlugWeatherTests
     }
 
     [Test]
-    public async Task FogEmitter_VersionZeroPreservesReference()
+    public async Task ReadWrite_FogEmitter_VersionZeroPreservesReference()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0);
@@ -177,7 +177,7 @@ public class CPlugWeatherTests
     }
 
     [Test]
-    public async Task BitmapAndEmitterReferences_AcceptNativeNodeClasses()
+    public async Task ReadWrite_BitmapAndEmitterReferences_AcceptNativeNodeClasses()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.WriteNodeRef(new CPlugBitmap());
@@ -199,7 +199,7 @@ public class CPlugWeatherTests
     }
 
     [Test]
-    public async Task LegacyClassAndChunkIds_MapToWeather()
+    public async Task ReadWrite_LegacyClassAndChunkIds_MapToWeather()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(50);

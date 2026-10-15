@@ -9,7 +9,7 @@ public class BoundedStreamTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ReadsOnlyTheDeclaredRegionAndLeavesFollowingBytes(bool seekable)
+    public async Task Read_DeclaredRegion_LeavesFollowingBytesUnread(bool seekable)
     {
         using Stream source = seekable ? new MemoryStream([10, 20, 30, 99]) : new FragmentedReadStream([10, 20, 30, 99]);
         using var bounded = new BoundedStream(source, 3);
@@ -29,7 +29,7 @@ public class BoundedStreamTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task SeekingReplaysDataWithinTheRegion(bool seekable)
+    public async Task Seek_WithinRegion_ReplaysData(bool seekable)
     {
         using Stream source = seekable ? new MemoryStream([10, 20, 30, 99]) : new FragmentedReadStream([10, 20, 30, 99]);
         using var bounded = new BoundedStream(source, 3);
@@ -44,7 +44,7 @@ public class BoundedStreamTests
     }
 
     [Test]
-    public async Task UsesTheInitialOffsetWhenOtherReadersMoveTheUnderlyingStream()
+    public async Task Read_UnderlyingStreamPositionChanged_UsesInitialOffset()
     {
         using var source = new MemoryStream([99, 10, 20, 30, 88]);
         source.Position = 1;
@@ -62,7 +62,7 @@ public class BoundedStreamTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task AsyncReadsRespectTheBoundary(bool seekable, bool memoryOverload)
+    public async Task ReadAsync_DeclaredRegion_RespectsBoundary(bool seekable, bool memoryOverload)
     {
         using Stream source = seekable ? new MemoryStream([10, 20, 99]) : new FragmentedReadStream([10, 20, 99]);
         using var bounded = new BoundedStream(source, 2);
@@ -80,7 +80,7 @@ public class BoundedStreamTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task TruncatedInputDoesNotPretendToHaveReadTheDeclaredLength(bool seekable)
+    public async Task Read_TruncatedInput_ReturnsOnlyAvailableBytes(bool seekable)
     {
         using Stream source = seekable ? new MemoryStream([10]) : new FragmentedReadStream([10]);
         using var bounded = new BoundedStream(source, 3);
@@ -94,7 +94,7 @@ public class BoundedStreamTests
     }
 
     [Test]
-    public async Task DisposingTheViewLeavesTheSourceOpen()
+    public async Task Dispose_OpenSource_LeavesSourceOpen()
     {
         using var source = new MemoryStream([10, 20]);
         var bounded = new BoundedStream(source, 1);
@@ -103,7 +103,7 @@ public class BoundedStreamTests
     }
 
     [Test]
-    public void RejectsInvalidConstructionAndWrites()
+    public void ConstructorAndWrite_InvalidArguments_Throw()
     {
         using var source = new MemoryStream();
         Assert.Throws<ArgumentNullException>(() => new BoundedStream(null!, 0));

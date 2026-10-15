@@ -11,7 +11,7 @@ public class CPlugFileGenLayoutTests
     private const int Sentinel = 0x12345678;
 
     [Test]
-    public async Task ArchiveInterfaces_IncludeVersionPrefix()
+    public async Task ReadableWritable_ArchiveInterfaces_IncludesVersionPrefix()
     {
         var original = new CPlugFileGen
         {
@@ -51,7 +51,7 @@ public class CPlugFileGenLayoutTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task VersionedArchive_ReadsScriptInlineCurvesAndImageReferences(int version)
+    public async Task ReadWrite_VersionedArchive_ReadsScriptInlineCurvesAndImageReferences(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -88,7 +88,7 @@ public class CPlugFileGenLayoutTests
     [Arguments(-1, 6, 1, 4)]
     [Arguments(0, 5, 0, 3)]
     [Arguments(0, 6, 1, 4)]
-    public async Task LegacyRenderParameters_AreConvertedOnceAndSaveWithVersionMarker(int version, int kind, int flag, int expected)
+    public async Task ReadWrite_LegacyRenderParameters_AreConvertedOnceAndSaveWithVersionMarker(int version, int kind, int flag, int expected)
     {
         var parameters = new[] { 16, 32, 0 };
         var index = kind == 5 ? 2 : 1;
@@ -128,7 +128,7 @@ public class CPlugFileGenLayoutTests
 
     [Test]
     [MethodDataSource(nameof(PixelPayloads))]
-    public async Task PixelArchive_ConsumesRawDataWithoutLengthPrefix(int version, Func<int[]> createParameters, int byteCount)
+    public async Task ReadWrite_PixelArchive_ConsumesRawDataWithoutLengthPrefix(int version, Func<int[]> createParameters, int byteCount)
     {
         var parameters = createParameters();
         var pixels = Enumerable.Range(0, byteCount).Select(i => (byte)i).ToArray();
@@ -147,7 +147,7 @@ public class CPlugFileGenLayoutTests
     }
 
     [Test]
-    public async Task UnsupportedVersion_IsRejectedBeforeReadingParameters()
+    public async Task ReadWrite_UnsupportedVersion_IsRejectedBeforeReadingParameters()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload)) writer.Write(int.MinValue | 7);

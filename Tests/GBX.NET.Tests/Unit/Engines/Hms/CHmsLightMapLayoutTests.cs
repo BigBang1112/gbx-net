@@ -42,7 +42,7 @@ public class CHmsLightMapLayoutTests
     [Arguments(0x024, 1)]
     [Arguments(0x026, 1)]
     [Arguments(0x028, 6)]
-    public async Task ReferenceChunksPreserveFixedCountsAndExternalFiles(int offset, int count)
+    public async Task ReadWrite_ReferenceChunks_PreserveFixedCountsAndExternalFiles(int offset, int count)
     {
         var files = Files(count);
         var payload = Payload(w =>
@@ -86,7 +86,7 @@ public class CHmsLightMapLayoutTests
     [Arguments(5)]
     [Arguments(6)]
     [Arguments(7)]
-    public async Task ProbeGridFilesFollowEachVersionBranch(int version)
+    public async Task ReadWrite_ProbeGridFiles_FollowEachVersionBranch(int version)
     {
         var files = Files(version + 1);
         var payload = Payload(w =>
@@ -111,7 +111,7 @@ public class CHmsLightMapLayoutTests
     [Arguments(3, 5)]
     [Arguments(4, 6)]
     [Arguments(5, 7)]
-    public async Task ObsoleteShadersKeepReferencesAndUnsignedPayload(int version, int count)
+    public async Task ReadWrite_ObsoleteShaders_KeepReferencesAndUnsignedPayload(int version, int count)
     {
         var files = Files(count);
         var payload = Payload(w =>
@@ -133,7 +133,7 @@ public class CHmsLightMapLayoutTests
     [Test]
     [Arguments(0, 7)]
     [Arguments(1, 8)]
-    public async Task SpriteFilesKeepVersionOneInsertionBeforeTheFixedList(int version, int count)
+    public async Task ReadWrite_SpriteFiles_KeepVersionOneInsertionBeforeTheFixedList(int version, int count)
     {
         var files = Files(count);
         var payload = Payload(w =>
@@ -152,7 +152,7 @@ public class CHmsLightMapLayoutTests
     }
 
     [Test]
-    public async Task LightingSettingsKeepNativeDefaultsAndRawEnumBits()
+    public async Task ReadWrite_LightingSettings_KeepNativeDefaultsAndRawEnumBits()
     {
         var node = new CHmsLightMap();
         await Assert.That(node.SRGB).IsTrue();
@@ -195,7 +195,7 @@ public class CHmsLightMapLayoutTests
     [Arguments(0x012)]
     [Arguments(0x01C)]
     [Arguments(0x01D)]
-    public async Task LegacyBooleansKeepFourByteWidths(int offset)
+    public async Task ReadWrite_LegacyBooleans_KeepFourByteWidths(int offset)
     {
         var files = Files(offset == 0x012 ? 1 : 0);
         var payload = Payload(w =>

@@ -29,7 +29,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
 
     [Test]
     [MethodDataSource(nameof(Versions))]
-    public async Task Chunk000ReadsAndRoundTripsNativeBranches(int version, CGameCommonItemEntityModelEdition.EItemType itemType, bool details)
+    public async Task ReadWrite_Chunk000_ReadsAndRoundTripsNativeBranches(int version, CGameCommonItemEntityModelEdition.EItemType itemType, bool details)
     {
         var files = new Dictionary<int, GbxRefTableNode>();
         var payload = Payload(version, itemType, details, 5, files);
@@ -96,7 +96,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task SpotUsesTheSerializedTriggerVersion(int triggerVersion)
+    public async Task ReadWrite_Spot_UsesTheSerializedTriggerVersion(int triggerVersion)
     {
         var files = new Dictionary<int, GbxRefTableNode>();
         var payload = Payload(8, CGameCommonItemEntityModelEdition.EItemType.Spot, true, triggerVersion, files);
@@ -109,7 +109,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
     }
 
     [Test]
-    public async Task Chunk001PreservesItsSignedValueAndSkippableWriterMetadata()
+    public async Task ReadWrite_Chunk001_PreservesItsSignedValueAndSkippableWriterMetadata()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -134,7 +134,7 @@ public class CGameCommonItemEntityModelEditionLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstructors()
+    public async Task Constructor_Defaults_MatchNativeConstructors()
     {
         var node = new CGameCommonItemEntityModelEdition();
         var light = new CGameCommonItemEntityModelEdition.LightBallStateSimple();

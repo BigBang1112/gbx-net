@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Engines.Graphic;
 public class GxLightSpotLayoutTests
 {
     [Test]
-    public async Task OldestChunkDerivesFlareAngleAndKeepsArchivedFalloff()
+    public async Task ReadWrite_OldestChunk_DerivesFlareAngleAndKeepsArchivedFalloff()
     {
         var payload = Payload(w => WriteFloats(w, 12, 23, 2.5f));
         var node = new GxLightSpot { Flags = 0x40 };
@@ -36,7 +36,7 @@ public class GxLightSpotLayoutTests
     [Arguments(-10f, -10.001f, true)]
     [Arguments(1000000f, 1000005f, false)]
     [Arguments(1000000f, 1000020f, true)]
-    public async Task LegacyFlareUsesNativeRelativeTolerance(float outer, float flare, bool custom)
+    public async Task ReadWrite_LegacyFlare_UsesNativeRelativeTolerance(float outer, float flare, bool custom)
     {
         var payload = Payload(w => WriteFloats(w, 12, outer, flare, 2.5f));
         var node = new GxLightSpot { Flags = 0x40 };
@@ -55,7 +55,7 @@ public class GxLightSpotLayoutTests
     }
 
     [Test]
-    public async Task UnversionedModernChunkPreservesFlagsAndShadowAngles()
+    public async Task ReadWrite_UnversionedModernChunk_PreservesFlagsAndShadowAngles()
     {
         var payload = Payload(w =>
         {
@@ -75,7 +75,7 @@ public class GxLightSpotLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task VersionedChunkDistinguishesLegacyWordFromSubLightGrid(int version)
+    public async Task ReadWrite_VersionedChunk_DistinguishesLegacyWordFromSubLightGrid(int version)
     {
         var payload = Payload(w =>
         {
@@ -108,7 +108,7 @@ public class GxLightSpotLayoutTests
     }
 
     [Test]
-    public async Task NativeDefaultsAndCustomAnglePropertiesKeepFlagGroupsSeparate()
+    public async Task Constructor_NativeDefaultsAndCustomAngleProperties_KeepFlagGroupsSeparate()
     {
         var node = new GxLightSpot();
         await Assert.That(Angles(node)).IsEquivalentTo(new[] { 30f, 45f, 45f, 30f, 45f, 1f }, CollectionOrdering.Matching);

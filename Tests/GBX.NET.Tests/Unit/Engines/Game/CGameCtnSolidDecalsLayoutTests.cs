@@ -10,7 +10,7 @@ public class CGameCtnSolidDecalsLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyParametersKeepDiscardedValuesAndFourByteBooleans(bool enabled)
+    public async Task ReadWrite_LegacyParameters_KeepDiscardedValuesAndFourByteBooleans(bool enabled)
     {
         var payload = Payload(w =>
         {
@@ -42,7 +42,7 @@ public class CGameCtnSolidDecalsLayoutTests
     [Arguments(2, false)]
     [Arguments(2, true)]
     [Arguments(3, true)]
-    public async Task ModernChunksKeepOpaqueSceneDataAndUnsignedParameters(int version, bool hasData)
+    public async Task ReadWrite_ModernChunks_KeepOpaqueSceneDataAndUnsignedParameters(int version, bool hasData)
     {
         byte[] sceneDecals = hasData ? [2, 0, 0, 0, 0xFF, 0x80, 0, 0x7F, 0xFE] : [];
         var payload = Payload(w =>

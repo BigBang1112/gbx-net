@@ -18,7 +18,7 @@ public class CPlugVehicleCameraRace2ModelLayoutTests
     [Arguments(4, 2)]
     [Arguments(4, 3)]
     [Arguments(4, 4)]
-    public async Task VersionedCameraSettingsPreserveTheirWireLayout(int version, int curveVersion)
+    public async Task ReadWrite_VersionedCameraSettings_PreserveTheirWireLayout(int version, int curveVersion)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -81,7 +81,7 @@ public class CPlugVehicleCameraRace2ModelLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacySettingsPreserveCurveReferences(bool hasCurve)
+    public async Task ReadWrite_LegacySettings_PreserveCurveReferences(bool hasCurve)
     {
         var curve = new CFuncKeysReal
         {
@@ -140,7 +140,7 @@ public class CPlugVehicleCameraRace2ModelLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task RollInputChunkPreservesItsBoolean(bool value)
+    public async Task ReadWrite_RollInputChunk_PreservesItsBoolean(bool value)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -160,7 +160,7 @@ public class CPlugVehicleCameraRace2ModelLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeCameraSettings()
+    public async Task Constructor_Defaults_MatchNativeCameraSettings()
     {
         var node = new CPlugVehicleCameraRace2Model();
         await Assert.That(node.MinDist).IsEqualTo(0.1f);

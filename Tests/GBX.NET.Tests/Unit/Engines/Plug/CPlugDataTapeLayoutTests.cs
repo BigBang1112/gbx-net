@@ -12,7 +12,7 @@ public class CPlugDataTapeLayoutTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task StateAndNoticePayloadsPreserveIndependentCounts(bool legacy, bool empty)
+    public async Task ReadWrite_StateAndNoticePayloads_PreserveIndependentCounts(bool legacy, bool empty)
     {
         int[] times = empty ? [] : [100, 250];
         int[] offsets = empty ? [] : [0, 4, -1];
@@ -64,7 +64,7 @@ public class CPlugDataTapeLayoutTests
     }
 
     [Test]
-    public async Task LegacyChunkIsRegisteredForEmbeddedNodes()
+    public async Task ReadWrite_LegacyChunk_IsRegisteredForEmbeddedNodes()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

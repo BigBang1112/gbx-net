@@ -9,7 +9,7 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
-    public async Task SkipsReferenceViewsOnNodesAndArchivesWithoutReferences()
+    public async Task Generate_NodesAndArchivesWithoutReferences_SkipsReferenceViews()
     {
         var (result, compilation) = Run("", true, new[]
         {
@@ -43,7 +43,7 @@ public class GenerationTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task NodeViewsOnlyHideBaseViewsWhenReferencesExist(bool baseHasReferences)
+    public async Task Generate_NodeViews_HidesBaseViewsOnlyWhenReferencesExist(bool baseHasReferences)
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -78,7 +78,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task NodesWithHandwrittenReferencesKeepTheirViews()
+    public async Task Generate_HandwrittenReferences_KeepsNodeViews()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -94,7 +94,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ScalarNodePropertiesUseOnlyReferenceFields()
+    public async Task Generate_ScalarNodeProperties_UsesOnlyReferenceFields()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -115,7 +115,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task NullableReferenceFieldsAllocateOnlyOnDemandAndKeepCapturedHandles()
+    public async Task Generate_NullableReferenceFields_AllocatesOnDemandAndKeepsCapturedHandles()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -166,7 +166,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task NullableReferenceMemberValuesKeepTheirNonNullableWireTypes()
+    public async Task Generate_NullableReferenceMemberValues_KeepsNonNullableWireTypes()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Serialization
@@ -217,7 +217,7 @@ public class GenerationTests
     [Arguments(true, 0, true)]
     [Arguments(true, 1, false)]
     [Arguments(true, 1, true)]
-    public async Task ComputedReferenceMemberAssignmentsResolveNodeData(bool archive, int structureKind, bool qualified)
+    public async Task Generate_ComputedReferenceMemberAssignments_ResolvesNodeData(bool archive, int structureKind, bool qualified)
     {
         var reference = qualified ? archive ? "this.Target" : "n.Target" : "Target";
         var subjectType = archive ? "Entry" : "Example";
@@ -303,7 +303,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task NodeDefaultsAndComputedAccessorsWorkWithoutPrivateAliases()
+    public async Task Generate_NodeDefaultsAndComputedAccessors_WorksWithoutPrivateAliases()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -343,7 +343,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task MixedDirectNodesUseReferenceFieldsWithoutAliases(int structureKind)
+    public async Task Generate_MixedDirectNodes_UsesReferenceFieldsWithoutAliases(int structureKind)
     {
         var (result, compilation) = Run($$"""
             namespace GBX.NET.Engines.Game
@@ -397,7 +397,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task JaggedReferenceWireLengthsDoNotRequireCollectionSizeFlags(int structureKind)
+    public async Task Generate_JaggedReferenceWireLengths_DoesNotRequireCollectionSizeFlags(int structureKind)
     {
         var (result, compilation) = Run($$"""
             namespace GBX.NET.Engines.Game;
@@ -426,7 +426,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SkipsReferenceMembersOnChunksWithoutTheirOwnReferences()
+    public async Task Generate_ChunksWithoutOwnReferences_SkipsReferenceMembers()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -458,7 +458,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SkippedChunkViewsStillExposeInheritedReferences()
+    public async Task Generate_SkippedChunkViews_ExposesInheritedReferences()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -481,7 +481,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GeneratesChunkViewsForHandwrittenReferenceFields()
+    public async Task Generate_HandwrittenReferenceFields_EmitsChunkViews()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game
@@ -508,7 +508,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GeneratedGetIdUsesRuntimeClassAndIsInheritedByApplicationSubclasses()
+    public async Task Generate_GetId_UsesRuntimeClassAndSupportsApplicationSubclasses()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game
@@ -546,7 +546,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GeneratesTypedReferenceViewsAndPreservesInheritance()
+    public async Task Generate_TypedReferenceViews_PreservesInheritance()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -591,7 +591,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CollectionReferencesExposeHandleLists()
+    public async Task Generate_CollectionReferences_ExposesHandleLists()
     {
         var (result, compilation) = Run("", true, new[]
         {
@@ -628,7 +628,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task HandwrittenReferenceListsAreExposedAndPreservedThroughInheritance()
+    public async Task Generate_HandwrittenReferenceLists_PreservesViewsThroughInheritance()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -669,7 +669,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ArchiveReferenceListsArePreservedThroughMultipleInheritanceLevels()
+    public async Task Generate_ArchiveReferenceLists_PreservesViewsThroughMultipleInheritanceLevels()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -691,7 +691,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PreservesHandwrittenReferenceEnumeration()
+    public async Task Generate_HandwrittenReferenceEnumeration_PreservesImplementation()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game
@@ -717,7 +717,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReferenceHandleNamesAvoidExistingRefProperties()
+    public async Task Generate_ExistingRefProperties_UsesDistinctReferenceHandleNames()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -738,7 +738,7 @@ public class GenerationTests
     [Arguments("Source")]
     [Arguments("n.Source")]
     [Arguments("(n.source)")]
-    public async Task ReferenceAssignmentsCopyDescriptorsWithoutReadingTargets(string source)
+    public async Task Generate_ReferenceAssignments_CopiesDescriptorsWithoutReadingTargets(string source)
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
@@ -756,7 +756,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReferencePresenceConditionsUseStoredKindInsteadOfResolvingNodeGetters()
+    public async Task Generate_ReferencePresenceConditions_UsesStoredKindWithoutResolvingNodes()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -784,7 +784,7 @@ public class GenerationTests
     [Arguments("References")]
     [Arguments("NodeRefView")]
     [Arguments("EnumerateReferences")]
-    public async Task ReportsReservedReferenceMemberNames(string name)
+    public async Task Generate_ReservedReferenceMemberNames_ReportsDiagnostics(string name)
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  int {name}\n"));
         await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("reserved"));
@@ -794,7 +794,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task SerializesNodeReferencesThroughSharedBackingTypes(int structureKind)
+    public async Task Generate_NodeReferences_SerializesThroughSharedBackingTypes(int structureKind)
     {
         var (result, compilation) = Run($$"""
             namespace GBX.NET.Engines.Game
@@ -850,7 +850,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GeneratesPlugCurveBackingFieldsForSharedLegacyAndInlineCurves()
+    public async Task Generate_SharedLegacyAndInlineCurves_EmitsPlugCurveBackingFields()
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game
@@ -903,7 +903,7 @@ public class GenerationTests
     [Test]
     [Arguments("GBX.NET.Engines.Game")]
     [Arguments("GBX.NET")]
-    public async Task SerializesStandaloneHandwrittenArchives(string archiveNamespace)
+    public async Task Generate_StandaloneHandwrittenArchives_EmitsSerialization(string archiveNamespace)
     {
         var (result, compilation) = Run($$"""
             namespace {{archiveNamespace}}
@@ -968,7 +968,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task NumericCastsPreserveSharedStorageAndWireWidths(int structureKind)
+    public async Task Generate_NumericCasts_PreservesSharedStorageAndWireWidths(int structureKind)
     {
         var (result, compilation) = Run($$"""
             namespace GBX.NET.Engines.Game
@@ -1034,7 +1034,7 @@ public class GenerationTests
     [Arguments(false, 1)]
     [Arguments(true, 0)]
     [Arguments(true, 1)]
-    public async Task SerializationAssignmentsApplyOnlyWhenReading(bool archive, int structureKind)
+    public async Task Generate_SerializationAssignments_AppliesOnlyWhenReading(bool archive, int structureKind)
     {
         var targetType = archive ? "Child" : "Example";
         var write = archive ? "node.Write(writer)" : "chunk.Write(node, writer)";
@@ -1105,7 +1105,7 @@ public class GenerationTests
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task VersionDefaultsAreRejectedForChunksWithExplicitVersions(string keyword)
+    public async Task Generate_VersionDefaultsWithExplicitChunkVersions_ReportsDiagnostics(string keyword)
     {
         foreach (var qualifiers in new[] { "TM2020.v7", "TM10, TM2020.v7" })
         {
@@ -1120,7 +1120,7 @@ public class GenerationTests
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task VersionDefaultsRemainSupportedWithoutExplicitQualifierVersions(string keyword)
+    public async Task Generate_VersionDefaultsWithoutExplicitQualifierVersions_PreservesDefaults(string keyword)
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $"""
             Example 0x03043000
@@ -1138,7 +1138,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ChunkVersionBranchesHaveNoFallbackAssignment()
+    public async Task Generate_ChunkVersionBranches_OmitsFallbackAssignment()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1187,7 +1187,7 @@ public class GenerationTests
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task GameSpecificVersionDefaultsAreRejected(string keyword)
+    public async Task Generate_GameSpecificVersionDefaults_ReportsDiagnostics(string keyword)
     {
         foreach (var scope in new[] { "0x001 [TM10.v0]", "archive", "archive Child" })
         {
@@ -1202,7 +1202,7 @@ public class GenerationTests
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task ChunkConstructorsOnlyAssignExplicitQualifierVersions(string keyword)
+    public async Task Generate_ChunkConstructors_AssignsOnlyExplicitQualifierVersions(string keyword)
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1241,7 +1241,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ChunkVersionQualifiersKeepHandwrittenConstructors()
+    public async Task Generate_ChunkVersionQualifiers_KeepsHandwrittenConstructors()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1277,7 +1277,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GameDefaultConstructorsCombineEnumConditionsAndKeepExclusiveBranches()
+    public async Task Generate_GameDefaultConstructors_CombinesEnumConditionsAndKeepsExclusiveBranches()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1321,7 +1321,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GameDefaultsSelectOneExpressionInSourceOrderAcrossStoredScopes()
+    public async Task Generate_GameDefaults_SelectsOneExpressionInSourceOrderAcrossStoredScopes()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1395,7 +1395,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GameDefaultsKeepArchiveEmptyInstancesAndTimeValuesIndependent()
+    public async Task Generate_GameDefaults_KeepsArchiveInstancesAndTimeValuesIndependent()
     {
         const string source = """
             namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
@@ -1440,7 +1440,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task InlineGameDefaultsInitializeStorageBeforeComputedPropertySetters()
+    public async Task Generate_InlineGameDefaults_InitializesStorageBeforeComputedPropertySetters()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1470,7 +1470,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GameDefaultsGenerateMemberAttributesAlongsideContextConstructors()
+    public async Task Generate_GameDefaults_EmitsMemberAttributesAndContextConstructors()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -1521,7 +1521,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GameDefaultAttributesSupportTimeComputedAndPartialPropertiesWithHandwrittenConstructors()
+    public async Task Generate_GameDefaultAttributes_SupportsTimeComputedAndPartialPropertiesWithHandwrittenConstructors()
     {
         const string source = """
             namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
@@ -1575,14 +1575,14 @@ public class GenerationTests
     [Test]
     [Arguments("int Shared [TM10 = 1]", "short Shared [TM10 = 2]")]
     [Arguments("int Shared = 1 [TM10 = 3]", "short Shared = 2")]
-    public async Task ConflictingDefaultsAcrossRepeatedFieldsProduceAGenerationDiagnostic(string first, string second)
+    public async Task Generate_ConflictingRepeatedFieldDefaults_ReportsDiagnostic(string first, string second)
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001\n  {first}\n0x002\n  {second}\n"));
         await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" && x.GetMessage().Contains("Conflicting defaults"));
     }
 
     [Test]
-    public async Task EmptyGameDefaultsAreRecordedAsExpressions()
+    public async Task Generate_EmptyGameDefaults_RecordsExpressions()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -1596,7 +1596,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task NullableSignedIntegerAttributesSelectSentinelMethods(int structureKind)
+    public async Task Generate_NullableSignedIntegerAttributes_SelectsSentinelMethods(int structureKind)
     {
         var source = $$"""
             namespace TmEssentials { public readonly record struct TimeInt32(int TotalMilliseconds); }
@@ -1717,7 +1717,7 @@ public class GenerationTests
     [Arguments("short[] Values (nullable, list)")]
     [Arguments("dataint Value (nullable)")]
     [Arguments("int<Kind> Value (nullable)")]
-    public async Task ReportsUnsupportedNullableAttributes(string field)
+    public async Task Generate_UnsupportedNullableAttributes_ReportsDiagnostics(string field)
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", "Example 0x03043000\n0x001\n  " + field));
         await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" &&
@@ -1725,7 +1725,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SentinelReaderWriterMethodsAllowNullResultsFromNonNullInputs()
+    public async Task Generate_SentinelReaderWriterMethods_AllowsNullResultsFromNonNullInputs()
     {
         const string source = """
             namespace GBX.NET.Serialization
@@ -1771,7 +1771,7 @@ public class GenerationTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task TimeAttributesPreserveTypesAndSerializationMethods(int structureKind)
+    public async Task Generate_TimeAttributes_PreservesTypesAndSerializationMethods(int structureKind)
     {
         var source = $$"""
             namespace TmEssentials
@@ -1867,7 +1867,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PackedIntegerPropertiesConvertPromotedValuesAndRunTheirSettersFromChunks()
+    public async Task Generate_PackedIntegerProperties_ConvertsPromotedValuesAndRunsSettersFromChunks()
     {
         const string source = """
             namespace GBX.NET.Serialization
@@ -1932,7 +1932,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task EmptyNamedArchiveCreatesIndependentInstancesWithArchiveDefaults()
+    public async Task Generate_EmptyNamedArchive_CreatesIndependentInstancesWithDefaults()
     {
         const string source = """
             namespace GBX.NET.Serialization
@@ -1971,7 +1971,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task MapsZeroToTimeInt32ZeroUsingTheComparedFieldType()
+    public async Task Generate_ZeroComparison_UsesTimeInt32ZeroForComparedFieldType()
     {
         const string source = """
             namespace TmEssentials
@@ -2077,7 +2077,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SupportsNullableUnixTimeFieldsInChunksAndArchives()
+    public async Task Generate_NullableUnixTimeFields_SupportsChunksAndArchives()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -2126,7 +2126,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SupportsIPv4FieldsInChunksAndArchives()
+    public async Task Generate_IPv4Fields_SupportsChunksAndArchives()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -2178,7 +2178,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReportsIPv4CollectionsAsUnsupported()
+    public async Task Generate_IPv4Collections_ReportsUnsupportedDiagnostic()
     {
         foreach (var field in new[] { "ipv4[] Addresses", "ipv4[2] Addresses", "ipv4[][] Addresses", "ipv4[] Addresses (list)" })
         {
@@ -2189,7 +2189,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task KeepsLocalFieldsInSerializationScopeAndUsesWriteExpressionsOnlyWhenWriting()
+    public async Task Generate_LocalFields_KeepsSerializationScopeAndUsesWriteExpressionsOnlyWhenWriting()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2252,7 +2252,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CombinesWriteArgumentsForByteVersionsNarrowNumbersAndExternalLocals()
+    public async Task Generate_WriteArguments_CombinesByteVersionsNarrowNumbersAndExternalLocals()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2280,7 +2280,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SupportsLocalAndWriteFieldsInSeparateChunksAndArchives()
+    public async Task Generate_LocalAndWriteFields_SupportsSeparateChunksAndArchives()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2320,7 +2320,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReportsLocalFieldsWithoutWriteAndInvalidWriteExpressions()
+    public async Task Generate_MissingOrInvalidWriteExpressions_ReportsDiagnostics()
     {
         foreach (var flags in new[] { "local", "local, write", "write", "write: \"\"", "write: \"Value +\"" })
         {
@@ -2331,7 +2331,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task TracksLocalScopeForConditionsArrayLengthsAndPropertyAttributes()
+    public async Task Generate_LocalScope_TracksConditionsArrayLengthsAndPropertyAttributes()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2373,7 +2373,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task IndexedMemberLookupsPreservePartialSettersAndIgnoreUnrelatedSerializationSignatures()
+    public async Task Generate_IndexedMemberLookups_PreservesPartialSettersAndIgnoresUnrelatedSignatures()
     {
         const string source = """
             using IO = GBX.NET.Serialization.GbxReaderWriter;
@@ -2437,7 +2437,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesWithCustomPropertiesBackingFieldsOverloadsAndAliasedSerializationMethods()
+    public async Task Generate_CustomMembersAndAliasedSerialization_CompilesWithoutErrors()
     {
         const string source = """
             using IO = GBX.NET.Serialization.GbxReaderWriter;
@@ -2482,7 +2482,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ClonesSortedDictionaryFieldsAndProperties()
+    public async Task Generate_SortedDictionaryFieldsAndProperties_EmitsCloning()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2502,7 +2502,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task UsesPropertiesWhenThereIsNoBackingFieldAndKeepsUnknownsInTheirChunks()
+    public async Task Generate_MissingBackingField_UsesPropertyAndKeepsUnknownsInChunks()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2527,7 +2527,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesFixedInnerJaggedArchiveArray()
+    public async Task Generate_FixedInnerJaggedArchiveArray_CompilesWithoutErrors()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2554,7 +2554,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesDottedEnumAndNestedMemberExpressionsWithoutChangingStringLiterals()
+    public async Task Generate_DottedEnumAndNestedMemberExpressions_PreservesStringLiterals()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2616,7 +2616,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesJaggedArrayVariants()
+    public async Task Generate_JaggedArrayVariants_CompilesWithoutErrors()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2647,7 +2647,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task DemonstrationChunksDoNotGenerateFieldsOrProperties()
+    public async Task Generate_DemonstrationChunks_OmitsFieldsAndProperties()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2669,7 +2669,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PartialDemonstrationGeneratesMembersWithoutSerialization()
+    public async Task Generate_PartialDemonstration_EmitsMembersWithoutSerialization()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2688,7 +2688,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task GeneratesAttributesOnHandwrittenPartialProperties()
+    public async Task Generate_HandwrittenPartialProperties_EmitsAttributes()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2719,7 +2719,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task UsesInheritedPropertyWithoutGeneratingDuplicateStorage()
+    public async Task Generate_InheritedProperty_DoesNotDuplicateStorage()
     {
         var (result, compilation) = Run("", true,
         [
@@ -2746,7 +2746,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task AddsFormattingAttributeFromAnyFieldOccurrence()
+    public async Task Generate_FormattingOnAnyFieldOccurrence_AddsAttribute()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2772,7 +2772,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesPartialComputedPropertiesWithMergedChunkMetadata()
+    public async Task Generate_PartialComputedProperties_MergesChunkMetadataAndCompiles()
     {
         const string source = """
             using System.Collections.Generic;
@@ -2825,7 +2825,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task AnnotatesChunkPropertiesWithTheirSerializationVersionRanges()
+    public async Task Generate_ChunkProperties_AnnotatesSerializationVersionRanges()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2903,7 +2903,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PreservesWireWidthsDataIdentifiersContextualArchivesAndGameVersions()
+    public async Task Generate_WireTypesAndContexts_PreservesWidthsIdentifiersArchivesAndGameVersions()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -2946,7 +2946,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task EmitsArchiveInheritanceEnumsAndDeclaredThrowMessages()
+    public async Task Generate_ArchiveDeclarations_EmitsInheritanceEnumsAndThrowMessages()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -2977,7 +2977,7 @@ public class GenerationTests
     [Test]
     [Arguments("return")]
     [Arguments("throw (type: System.InvalidOperationException)")]
-    public async Task OmitsUnreachableSwitchBreaksAfterReturnOrThrow(string defaultExit)
+    public async Task Generate_SwitchReturnOrThrow_OmitsUnreachableBreaks(string defaultExit)
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
@@ -3007,7 +3007,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PassesCurrentVersionToArchivesAndHonorsExplicitOverrides()
+    public async Task Generate_ArchiveVersion_PassesCurrentVersionAndHonorsExplicitOverrides()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -3038,7 +3038,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PassesInheritedArchiveVersionToNestedArchives()
+    public async Task Generate_NestedArchives_PassesInheritedVersion()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -3060,7 +3060,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReusesNamedArchivesFromAnotherLayout()
+    public async Task Generate_SharedNamedArchive_ReusesArchiveFromAnotherLayout()
     {
         const string source = """
             namespace GBX.NET.Engines.Game
@@ -3139,7 +3139,7 @@ public class GenerationTests
     [Test]
     [Arguments("Missing.Spawn")]
     [Arguments("Shared.Missing")]
-    public async Task ReportsUnknownSharedArchive(string typeName)
+    public async Task Generate_UnknownSharedArchive_ReportsDiagnostic(string typeName)
     {
         var (result, _) = Run("", new Text("Engines/Game/Shared.chunkl", """
             Shared 0x0310D000
@@ -3156,7 +3156,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task EmitsEncapsulatedBlocksForCombinedAndSeparateSerialization()
+    public async Task Generate_EncapsulatedBlocks_SupportsCombinedAndSeparateSerialization()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -3188,7 +3188,7 @@ public class GenerationTests
     [Arguments("0x001", "int U01")]
     [Arguments("0x001", "version")]
     [Arguments("archive Named", "int Value")]
-    public async Task RejectsChunkAttributeOnFields(string scope, string field)
+    public async Task Generate_ChunkAttributeOnField_ReportsDiagnostic(string scope, string field)
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
@@ -3204,7 +3204,7 @@ public class GenerationTests
     [Arguments(0, 2, "0:7")]
     [Arguments(1, 0, "7:0")]
     [Arguments(1, 2, "7:9")]
-    public async Task ArchiveVersionBranchesSelectIndependentVersions(int archiveVersion, int callerVersion, string expected)
+    public async Task Generate_ArchiveVersionBranches_SelectsIndependentVersions(int archiveVersion, int callerVersion, string expected)
     {
         var (result, compilation) = Run("""
             namespace GBX.NET.Engines.Game;
@@ -3241,7 +3241,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task RequiresVersionSourceWhenAnArchiveHasTwoVersions()
+    public async Task Generate_TwoArchiveVersions_RequiresVersionSource()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -3256,7 +3256,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ReportsInvalidOverlapAndDuplicateLayoutsWithoutCrashingSiblingGenerationOrManagers()
+    public async Task Generate_InvalidOverlapsAndDuplicateLayouts_ReportsDiagnosticsAndKeepsSiblingGeneration()
     {
         var (result, _) = Run("namespace GBX.NET.Engines.Game; public class Bad { }",
             new Text("Engines/Game/Bad.chunkl", "Bad 0x03042000"),
@@ -3274,7 +3274,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task KeepsNotRemappedChunkIdsOutOfClassRemapping()
+    public async Task Generate_NotRemappedChunkIds_ExcludesFromClassRemapping()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03078000
@@ -3312,7 +3312,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task PreservesChunkOffsetsInRemappingAndReadsExtensionsAfterClassNames()
+    public async Task Generate_ClassRemapping_PreservesChunkOffsetsAndReadsExtensionsAfterClassNames()
     {
         var (result, _) = Run("",
             new Text("Engines/Game/Example.chunkl", "Example 0x03043000"),
@@ -3329,7 +3329,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task ExposesBuiltInCollectionsAndFallsBackToCustomCollectionNames()
+    public async Task Generate_Collections_ExposesBuiltInAndFallsBackToCustomNames()
     {
         var (result, output) = Run("", new Text("Resources/CollectionId.txt", "0 Speed\n6 Stadium\n"));
         await Assert.That(result.Diagnostics).IsEmpty();
@@ -3364,7 +3364,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task CompilesConstructorAndAccessorsAndStoresValueInsteadOfAssigningTheSetterParameter()
+    public async Task Generate_ConstructorAndAccessors_CompilesAndStoresValueInsteadOfSetterParameter()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
             Example 0x03043000
@@ -3391,7 +3391,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task UsesLayoutAccessorsForSerializedPropertiesWithNullableBackingFields()
+    public async Task Generate_SerializedPropertiesWithNullableBackingFields_UsesLayoutAccessors()
     {
         const string source = """
             namespace GBX.NET.Engines.Game;
@@ -3457,7 +3457,7 @@ public class GenerationTests
     }
 
     [Test]
-    public async Task SupportingGeneratorsHandleUnrelatedCompilations()
+    public async Task Generate_UnrelatedCompilation_SupportingGeneratorsCompleteWithoutErrors()
     {
         var compilation = CSharpCompilation.Create("Empty");
         var generators = new IIncrementalGenerator[] { new GbxReaderWriterGenerator(), new GbxReaderAndWriterArrayGenerator(), new InputWithTimeGenerator(), new CScriptTraitsMetadataMethodGenerator() };

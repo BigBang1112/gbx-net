@@ -34,7 +34,7 @@ public class GmSurfTests
 
     [Test]
     [MethodDataSource(nameof(Fixtures))]
-    public async Task Parse_NativeSurfaceFixture_ReturnsExpectedGeometry(int surfId, string? surfType, string suffix)
+    public async Task NativeSurfaceFixturesContainExpectedGeometry(int surfId, string? surfType, string suffix)
     {
         var path = TestFiles.Gbx("CPlugSurface", $"GmSurfFixture{surfId}{suffix}.Shape.Gbx");
         var gbx = Gbx.Parse(path);
@@ -103,7 +103,7 @@ public class GmSurfTests
 
     [Test]
     [MethodDataSource(nameof(SurfaceFixtures))]
-    public async Task Save_NativeSurfaceFixture_PreservesOriginalUncompressedArchive(string filePath)
+    public async Task NativeSurfaceFixturesPreserveOriginalUncompressedArchivesAfterSaving(string filePath)
     {
         // Arrange
         var path = TestFiles.Gbx(filePath);

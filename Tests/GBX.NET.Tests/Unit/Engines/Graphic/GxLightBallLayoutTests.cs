@@ -16,7 +16,7 @@ public class GxLightBallLayoutTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task LegacyChunksConvertCoefficientsAndKeepNativeFieldOrder(int offset)
+    public async Task ReadWrite_LegacyChunks_ConvertCoefficientsAndKeepNativeFieldOrder(int offset)
     {
         var node = new GxLightBall();
         var chunk = LegacyChunk(offset);
@@ -63,7 +63,7 @@ public class GxLightBallLayoutTests
     [Arguments(-1f, false)]
     [Arguments(-0.5f, false)]
     [Arguments(-0.25f, true)]
-    public async Task LegacyCoefficientSentinelControlsConversion(float linear, bool converts)
+    public async Task ReadWrite_LegacyCoefficientSentinel_ControlsConversion(float linear, bool converts)
     {
         var node = new GxLightBall { AttHTnLR = 17, AttHTnLR2 = 43 };
         var chunk = new GxLightBall.Chunk04002006();
@@ -84,7 +84,7 @@ public class GxLightBallLayoutTests
     [Arguments(-10f, -10.001f, true)]
     [Arguments(1000000f, 1000005f, false)]
     [Arguments(1000000f, 1000020f, true)]
-    public async Task LegacySpecularRadiusUsesRelativeTolerance(float radius, float specularRadius, bool custom)
+    public async Task ReadWrite_LegacySpecularRadius_UsesRelativeTolerance(float radius, float specularRadius, bool custom)
     {
         var payload = Payload(w =>
         {
@@ -104,7 +104,7 @@ public class GxLightBallLayoutTests
     [Test]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task ModernChunksKeepNormalizedAttenuationAndPackedFlags(int offset)
+    public async Task ReadWrite_ModernChunks_KeepNormalizedAttenuationAndPackedFlags(int offset)
     {
         var payload = Payload(w =>
         {
@@ -142,7 +142,7 @@ public class GxLightBallLayoutTests
     }
 
     [Test]
-    public async Task SeparateRadiusIndexAndHdrCoefficientChunksKeepTheirValues()
+    public async Task ReadWrite_SeparateRadiusIndexAndHdrCoefficientChunks_KeepTheirValues()
     {
         var node = new GxLightBall();
         var indexChunk = new GxLightBall.Chunk04002009();
@@ -159,7 +159,7 @@ public class GxLightBallLayoutTests
     }
 
     [Test]
-    public async Task NativeDefaultsKeepBallFlagsSeparateFromBaseFlags()
+    public async Task Constructor_NativeDefaults_KeepBallFlagsSeparateFromBaseFlags()
     {
         var node = new GxLightBall();
 

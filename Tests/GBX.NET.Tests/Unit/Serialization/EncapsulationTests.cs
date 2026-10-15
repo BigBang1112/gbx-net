@@ -67,7 +67,7 @@ public class EncapsulationTests : IDisposable
     }
 
     [Test]
-    public async Task Dispose_SetsReaderEncapsulationToNull()
+    public async Task Dispose_ReaderEncapsulation_ClearsReaderScope()
     {
         var encapsulation = new Encapsulation(reader);
         encapsulation.Dispose();
@@ -75,7 +75,7 @@ public class EncapsulationTests : IDisposable
     }
 
     [Test]
-    public async Task Dispose_SetsWriterEncapsulationToNull()
+    public async Task Dispose_WriterEncapsulation_ClearsWriterScope()
     {
         var encapsulation = new Encapsulation(writer);
         encapsulation.Dispose();
@@ -83,7 +83,7 @@ public class EncapsulationTests : IDisposable
     }
 
     [Test]
-    public async Task Dispose_ReleasesBothSidesAndAllowsAnotherScope()
+    public async Task Dispose_ReaderAndWriter_ReleasesBothSidesAndAllowsAnotherScope()
     {
         var encapsulation = new Encapsulation(readerWriter);
         encapsulation.Dispose();
@@ -98,7 +98,7 @@ public class EncapsulationTests : IDisposable
     }
 
     [Test]
-    public async Task FailedConstructionDoesNotAttachTheOtherSide()
+    public async Task Constructor_OtherSideAlreadyEncapsulated_DoesNotAttachFreeSide()
     {
         using var existingScope = new Encapsulation(writer);
 
@@ -109,7 +109,7 @@ public class EncapsulationTests : IDisposable
     }
 
     [Test]
-    public async Task ExceptionInsideScopeRestoresBothSides()
+    public async Task Dispose_ExceptionInsideScope_RestoresBothSides()
     {
         Assert.Throws<IOException>(() =>
         {

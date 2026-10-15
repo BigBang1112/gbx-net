@@ -17,7 +17,7 @@ public class CollectionSerializationTests
     [Arguments(3, 3)]
     [Arguments(3, 0)]
     [Arguments(1, 2050)]
-    public async Task FixedPrimitiveCollections_TruncateAndPadWithoutWritingLengthPrefixes(int count, int length)
+    public async Task WriteArrayAndWriteList_FixedLength_TruncatesAndPadsWithoutLengthPrefixes(int count, int length)
     {
         var values = count < 0 ? null : Enumerable.Range(1, count).Select(x => (short)x).ToArray();
 
@@ -54,7 +54,7 @@ public class CollectionSerializationTests
     [Arguments(0)]
     [Arguments(3)]
     [Arguments(5)]
-    public async Task FixedPrimitiveCollections_WithByteLengthsWriteExactlyTheRequestedBytes(int length)
+    public async Task WriteArrayAndWriteList_FixedByteLength_WritesExactlyRequestedBytes(int length)
     {
         short[] values = [0x1122, 0x3344];
 
@@ -81,7 +81,7 @@ public class CollectionSerializationTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task PrefixedPrimitiveCollections_UseElementOrByteLengthsAndRoundTrip(bool lengthInBytes, bool deprecated)
+    public async Task ReadAndWriteCollections_PrefixedLength_UsesElementOrByteLengthsAndRoundTrips(bool lengthInBytes, bool deprecated)
     {
         short[] values = [0x1122, 0x3344];
 
@@ -138,7 +138,7 @@ public class CollectionSerializationTests
     [Arguments(3, 1)]
     [Arguments(3, 3)]
     [Arguments(3, 0)]
-    public async Task FixedNodeCollections_PreserveReferencesAndPadWithNull(int count, int length)
+    public async Task ReadWriteArrayAndListNodeRef_FixedLength_PreservesReferencesAndPadsWithNull(int count, int length)
     {
         var node = new CGameCtnBlockInfoClip();
         var values = count < 0 ? null : Enumerable.Range(0, count).Select(i => i == 1 ? null : node).ToArray();
@@ -188,7 +188,7 @@ public class CollectionSerializationTests
     [Arguments(3, 1)]
     [Arguments(3, 3)]
     [Arguments(3, 0)]
-    public async Task FixedExternalNodeLists_PreserveFilesAndPadWithNull(int count, int length)
+    public async Task ReadWriteListExternalNodeRef_FixedLength_PreservesFilesAndPadsWithNull(int count, int length)
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "Clip.Gbx");
         var values = count < 0 ? null : Enumerable.Range(0, count)
@@ -214,7 +214,7 @@ public class CollectionSerializationTests
     }
 
     [Test]
-    public async Task FixedCollections_RejectNegativeLengthsBeforeWriting()
+    public async Task WriteArrayAndWriteList_NegativeLength_ThrowsBeforeWriting()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
@@ -227,7 +227,7 @@ public class CollectionSerializationTests
     }
 
     [Test]
-    public async Task Collections_RespectTheConfiguredByteLimitBeforeWriting()
+    public async Task WriteArrayAndWriteList_ConfiguredByteLimit_ThrowsBeforeWriting()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream, new GbxWriteSettings { MaxDataSize = 7 });

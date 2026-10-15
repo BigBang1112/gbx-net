@@ -9,7 +9,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnChallengeIgnoredChunkTests
 {
     [Test]
-    public async Task Chunk0304303A_PreservesDataAndIdentifiers()
+    public async Task ReadWrite_Chunk0304303A_PreservesDataAndIdentifiers()
     {
         var payload = Payload(w =>
         {
@@ -25,7 +25,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
-    public async Task Chunk03043041_ReadsEncapsulatedNode()
+    public async Task ReadWrite_Chunk03043041_ReadsEncapsulatedNode()
     {
         var payload = Payload(w => w.WriteEncapsulated(inner => WriteEmptyNode(inner, 0x01001000)));
         var chunk = new CGameCtnChallenge.Chunk03043041();
@@ -37,7 +37,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task Chunk0304304D_ReadsDeprecatedArrays(int version)
+    public async Task ReadWrite_Chunk0304304D_ReadsDeprecatedArrays(int version)
     {
         var payload = Payload(w =>
         {
@@ -58,7 +58,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Test]
     [Arguments(0)]
     [Arguments(5)]
-    public async Task Chunk0304304E_PassesTriggerArchiveVersion(int triggerVersion)
+    public async Task ReadWrite_Chunk0304304E_PassesTriggerArchiveVersion(int triggerVersion)
     {
         var payload = Payload(w =>
         {
@@ -89,7 +89,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
-    public async Task Chunk0304304E_DerivesTriggerCountWhenWriting()
+    public async Task ReadWrite_Chunk0304304E_DerivesTriggerCountWhenWriting()
     {
         var original = new CGameCtnChallenge { AnimationTriggers = [new CPlugTriggerAction()] };
         var payload = Payload(w =>
@@ -108,7 +108,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task Chunk03043057_ReadsVersionedRecordedPaths(int version)
+    public async Task ReadWrite_Chunk03043057_ReadsVersionedRecordedPaths(int version)
     {
         var payload = Payload(w =>
         {
@@ -142,7 +142,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task Chunk0304305C_ReadsLegacyArraysOnlyInVersionZero(int version)
+    public async Task ReadWrite_Chunk0304305C_ReadsLegacyArraysOnlyInVersionZero(int version)
     {
         var payload = Payload(w =>
         {
@@ -159,7 +159,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task Chunk0304305D_DerivesLeafSizeFromParent(int version)
+    public async Task ReadWrite_Chunk0304305D_DerivesLeafSizeFromParent(int version)
     {
         var payload = Payload(w =>
         {
@@ -190,7 +190,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(6, 9)]
     [Arguments(7, 12)]
     [Arguments(8, 14)]
-    public async Task Chunk0304305E_ReadsMacroblockArchiveVersions(int blockVersion, int itemVersion)
+    public async Task ReadWrite_Chunk0304305E_ReadsMacroblockArchiveVersions(int blockVersion, int itemVersion)
     {
         var payload = Payload(w =>
         {
@@ -234,7 +234,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task Chunk03043061_PreservesTemporaryEditorData(int version)
+    public async Task ReadWrite_Chunk03043061_PreservesTemporaryEditorData(int version)
     {
         var payload = Payload(w =>
         {
@@ -248,7 +248,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
-    public async Task Chunk03043064_ReadsEncapsulatedClipGroups()
+    public async Task ReadWrite_Chunk03043064_ReadsEncapsulatedClipGroups()
     {
         var payload = Payload(w =>
         {
@@ -272,7 +272,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(5)]
     [Arguments(6)]
     [Arguments(7)]
-    public async Task Chunk03043067_ReadsPopulatedCheckpointNode(int version)
+    public async Task ReadWrite_Chunk03043067_ReadsPopulatedCheckpointNode(int version)
     {
         var payload = Payload(w =>
         {
@@ -348,7 +348,7 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(31, 111)]
     [Arguments(32, 116)]
     [Arguments(33, 120)]
-    public async Task CheckpointSnapshots_PreservePackedRecordVersions(int version, int size)
+    public async Task ReadWrite_CheckpointSnapshots_PreservePackedRecordVersions(int version, int size)
     {
         var payload = Enumerable.Range(0, size).Select(x => (byte)x).ToArray();
         using var stream = new MemoryStream(payload);

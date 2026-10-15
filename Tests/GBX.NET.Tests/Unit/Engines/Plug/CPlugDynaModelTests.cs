@@ -10,7 +10,7 @@ public class CPlugDynaModelTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task OlderArchivesResetSettingsAbsentFromTheirPayload(int version)
+    public async Task ReadWrite_OlderArchives_ResetSettingsAbsentFromTheirPayload(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -40,7 +40,7 @@ public class CPlugDynaModelTests
     }
 
     [Test]
-    public async Task DefaultArchivePreservesNativePhysicalParameters()
+    public async Task ReadWrite_DefaultArchive_PreservesNativePhysicalParameters()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -64,7 +64,7 @@ public class CPlugDynaModelTests
     }
 
     [Test]
-    public async Task ObsoleteComponentsUpdateTheNamedArchiveMembers()
+    public async Task ObsoleteComponents_WhenChanged_UpdateNamedArchiveMembers()
     {
 #pragma warning disable CS0618
         var node = new CPlugDynaModel

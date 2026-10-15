@@ -4,7 +4,7 @@ namespace GBX.NET.Tests.Unit;
 public class ColorTests
 {
     [Test]
-    public async Task ArgbConstructorAndPackingPreserveChannelOrder()
+    public async Task Constructor_ArgbValue_PreservesChannelOrderAndPacking()
     {
         const int argb = unchecked((int)0x80123456);
         var color = new Color(argb);
@@ -18,7 +18,7 @@ public class ColorTests
     }
 
     [Test]
-    public async Task TupleAndVectorConversionsPreserveChannels()
+    public async Task Conversion_TupleAndVector_PreservesChannels()
     {
         Color tupleColor = (1, 2, 3, 4);
         var vectorColor = (Color)new Vec4(1, 2, 3, 4);

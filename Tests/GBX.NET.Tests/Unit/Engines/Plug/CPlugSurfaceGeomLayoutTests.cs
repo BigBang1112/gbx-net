@@ -9,7 +9,7 @@ public class CPlugSurfaceGeomLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task BoundingBoxPreservesGeometryAndEncryptionKey(bool encrypted)
+    public async Task ReadWrite_BoundingBox_PreservesGeometryAndEncryptionKey(bool encrypted)
     {
         BoxAligned bounds = (4, 5, 6, 17, 18, 19);
         using var payload = new MemoryStream();

@@ -9,7 +9,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnBlockInfoChunkTests
 {
     [Test]
-    public async Task Collector_NameAndIdentIdFillEachOtherWhenMissing()
+    public async Task NameAndIdent_MissingValue_FillEachOther()
     {
         var named = new CGameCtnCollector { Name = "NameOnly" };
         var identified = new CGameCtnCollector { Ident = new("IdOnly") };
@@ -22,7 +22,7 @@ public class CGameCtnBlockInfoChunkTests
     }
 
     [Test]
-    public async Task BlockInfo_NameUsesCollectorPropertyWithoutChangingIdent()
+    public async Task Name_WhenChanged_UsesCollectorPropertyWithoutChangingIdent()
     {
         CGameCtnCollector collector = new CGameCtnBlockInfoClassic
         {
@@ -38,7 +38,7 @@ public class CGameCtnBlockInfoChunkTests
     }
 
     [Test]
-    public async Task BlockInfo_InheritedNameRetainsCollectorChunkAttributes()
+    public async Task GetCustomAttributes_InheritedName_ReturnsCollectorChunkAttributes()
     {
         var property = typeof(CGameCtnBlockInfo).GetProperty(nameof(CGameCtnBlockInfo.Name))!;
         await Assert.That(property.DeclaringType).IsEqualTo(typeof(CGameCtnCollector));
@@ -53,7 +53,7 @@ public class CGameCtnBlockInfoChunkTests
     }
 
     [Test]
-    public async Task Chunk0304E005_RoundTripsFieldsAndJaggedMobils()
+    public async Task ReadWrite_Chunk0304E005_RoundTripsFieldsAndJaggedMobils()
     {
         var original = new CGameCtnBlockInfoClassic
         {
@@ -122,7 +122,7 @@ public class CGameCtnBlockInfoChunkTests
     }
 
     [Test]
-    public async Task Chunk0304E005_UsesNameWhenIdentIdIsEmpty()
+    public async Task ReadWrite_Chunk0304E005_UsesNameWhenIdentIdIsEmpty()
     {
         var original = new CGameCtnBlockInfoClassic { Name = "BlockName" };
 

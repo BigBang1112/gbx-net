@@ -10,7 +10,7 @@ public class CGameUserFileListTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public void FileInfo_RejectsUnknownFileTypes(bool read)
+    public void ReadWrite_FileInfo_RejectsUnknownFileTypes(bool read)
     {
         using var stream = read ? new MemoryStream(Payload((CGameUserFileList.FileType)2, 0)) : new MemoryStream();
         using var reader = new GbxReader(stream);

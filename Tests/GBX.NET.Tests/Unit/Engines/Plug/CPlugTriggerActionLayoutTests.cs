@@ -15,7 +15,7 @@ public class CPlugTriggerActionLayoutTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task ArchivePreservesNativeVersionBranches(int version)
+    public async Task ReadWrite_Archive_PreservesNativeVersionBranches(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -76,7 +76,7 @@ public class CPlugTriggerActionLayoutTests
     [Arguments(-1)]
     [Arguments(0)]
     [Arguments(4)]
-    public async Task WritingLegacyArchivePreservesVersionFiveValue(int version)
+    public async Task Write_LegacyArchive_PreservesVersionFiveValue(int version)
     {
         var node = new CPlugTriggerAction { U01 = 99 };
         using var output = new MemoryStream();
@@ -85,7 +85,7 @@ public class CPlugTriggerActionLayoutTests
     }
 
     [Test]
-    public async Task UnknownTriggerTypeRoundTrips()
+    public async Task ReadWrite_UnknownTriggerType_RoundTrips()
     {
         var node = new CPlugTriggerAction { Type = (CPlugTriggerAction.EType)104 };
         using var payload = new MemoryStream();

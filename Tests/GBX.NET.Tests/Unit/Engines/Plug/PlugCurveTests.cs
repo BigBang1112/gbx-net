@@ -11,7 +11,7 @@ public class PlugCurveTests
     [Test]
     [Arguments(-8)]
     [Arguments(-1)]
-    public async Task NegativeVersionsPreserveLegacyReferences(int version)
+    public async Task ReadWrite_NegativeVersions_PreserveLegacyReferences(int version)
     {
         using var payload = new ObjectModelPayload();
         payload.NodeRef("Legacy.Func.Gbx");
@@ -26,7 +26,7 @@ public class PlugCurveTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(8)]
-    public async Task NonNegativeVersionsUseInlineStorage(int version)
+    public async Task ReadWrite_NonNegativeVersions_UseInlineStorage(int version)
     {
         using var payload = new ObjectModelPayload();
         WriteCurve(payload, true, "Unused.Func.Gbx");
@@ -46,7 +46,7 @@ public class PlugCurveTests
     [Arguments(12)]
     [Arguments(13)]
     [Arguments(14)]
-    public async Task VehicleMaterial_SwitchesFromLegacyToInlineAtVersion12(int version)
+    public async Task ReadWrite_VehicleMaterial_SwitchesFromLegacyToInlineAtVersion12(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -96,7 +96,7 @@ public class PlugCurveTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task VehicleTuning_SwitchesFromLegacyToInlineAtVersion2(int version)
+    public async Task ReadWrite_VehicleTuning_SwitchesFromLegacyToInlineAtVersion2(int version)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(version);
@@ -123,7 +123,7 @@ public class PlugCurveTests
     }
 
     [Test]
-    public async Task VehicleTuning_UnversionedCurveFieldUsesInlineStorage()
+    public async Task ReadWrite_VehicleTuning_UnversionedCurveFieldUsesInlineStorage()
     {
         var curve = new PlugCurve { Flags = 0xFEDC, Count = 99, Values = [new(1.5f, 2.5f)] };
         var model = new CPlugVehicleCarPhyTuning { MaxSideFriction = curve };
@@ -144,7 +144,7 @@ public class PlugCurveTests
     }
 
     [Test]
-    public async Task Water_LegacyWriteCreatesSimpleCurveNodesFromControlPoints()
+    public async Task ReadWrite_Water_LegacyWriteCreatesSimpleCurveNodesFromControlPoints()
     {
         var model = new CPlugDynaWaterModel();
         using var saved = new MemoryStream();
@@ -161,7 +161,7 @@ public class PlugCurveTests
     }
 
     [Test]
-    public async Task Clone_CopiesControlPointsAndLegacyNodesWhilePreservingSharedReferences()
+    public async Task DeepClone_Node_CopiesControlPointsAndLegacyNodesWhilePreservingSharedReferences()
     {
         var curve = new PlugCurve
         {

@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnMediaBlockEntityTests
 {
     [Test]
-    public async Task TimeScaleDefaultsToNormalPlayback()
+    public async Task Constructor_NewEntityBlock_DefaultsToNormalPlaybackTimeScale()
     {
         await Assert.That(new CGameCtnMediaBlockEntity().TimeScale).IsEqualTo(1f);
     }
@@ -16,7 +16,7 @@ public class CGameCtnMediaBlockEntityTests
     [Arguments(0f)]
     [Arguments(0.5f)]
     [Arguments(2.5f)]
-    public async Task TimeScaleChunkReadsNativePayloadAndPreservesFollowingChunk(float timeScale)
+    public async Task ReadWrite_TimeScaleChunk_ReadsNativePayloadAndPreservesFollowingChunk(float timeScale)
     {
         const uint chunkId = 0x0329F003;
         const uint followingChunkId = 0x0329F0FE;

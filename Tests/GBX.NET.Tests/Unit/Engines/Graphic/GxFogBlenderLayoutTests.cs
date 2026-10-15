@@ -10,7 +10,7 @@ public class GxFogBlenderLayoutTests
     [Arguments(0, false, 0)]
     [Arguments(3, true, 0)]
     [Arguments(3, false, 43)]
-    public async Task NativeKeyListPreservesSettingsAndSharedFogReferences(int keyCount, bool enabled, int legacyMode)
+    public async Task ReadWrite_NativeKeyList_PreservesSettingsAndSharedFogReferences(int keyCount, bool enabled, int legacyMode)
     {
         var fog = new GxFog { DepthMax = 1234, Color = new Vec3(0.25f, 0.5f, 0.75f) };
         fog.CreateChunk<GxFog.Chunk04004000>();

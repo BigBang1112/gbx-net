@@ -20,7 +20,7 @@ public class CGameCommonItemEntityModelLayoutTests
     [Arguments(5, 1)]
     [Arguments(6, 0)]
     [Arguments(6, 1)]
-    public async Task Chunk000PreservesNativeVersionBranchesAndExternalReferences(int version, int lightCount)
+    public async Task ReadWrite_Chunk000_PreservesNativeVersionBranchesAndExternalReferences(int version, int lightCount)
     {
         var refTable = new GbxRefTable();
         var files = new Dictionary<int, GbxRefTableNode>();

@@ -20,7 +20,7 @@ public class MediaBlockLayoutTests
     [Arguments(8)]
     [Arguments(9)]
     [Arguments(10)]
-    public async Task CustomCameraKeysPreserveEveryNativeVersion(int version)
+    public async Task ReadWrite_CustomCameraKeys_PreserveEveryNativeVersion(int version)
     {
         var payload = Payload(w =>
         {
@@ -95,7 +95,7 @@ public class MediaBlockLayoutTests
     }
 
     [Test]
-    public async Task ScriptCameraVersionZeroEndsBeforeAnyKeys()
+    public async Task ReadWrite_ScriptCameraVersionZero_EndsBeforeAnyKeys()
     {
         var payload = Payload(w =>
         {
@@ -125,7 +125,7 @@ public class MediaBlockLayoutTests
     [Arguments(2, 2, 1)]
     [Arguments(2, 2, 2)]
     [Arguments(2, 2, 3)]
-    public async Task CapturableColoringPreservesOldFieldOrderAndModernWidths(int version, int keyVersion, int flags)
+    public async Task ReadWrite_CapturableColoring_PreservesOldFieldOrderAndModernWidths(int version, int keyVersion, int flags)
     {
         var payload = Payload(w =>
         {
@@ -173,7 +173,7 @@ public class MediaBlockLayoutTests
     [Arguments(2, 1, 0)]
     [Arguments(2, 2, 60000)]
     [Arguments(2, 2, 65535)]
-    public async Task BaseColoringPreservesEmblemVersionsAndUnsignedRange(int version, int keyVersion, int emblem)
+    public async Task ReadWrite_BaseColoring_PreservesEmblemVersionsAndUnsignedRange(int version, int keyVersion, int emblem)
     {
         var payload = Payload(w =>
         {
@@ -216,7 +216,7 @@ public class MediaBlockLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task ToneMappingKeysPreserveLegacyParameters(int version)
+    public async Task ReadWrite_ToneMappingKeys_PreserveLegacyParameters(int version)
     {
         var payload = Payload(w =>
         {
@@ -255,7 +255,7 @@ public class MediaBlockLayoutTests
     [Arguments(3, false)]
     [Arguments(3, true)]
     [Arguments(4, false)]
-    public async Task ToneMappingChunksSelectTheirFixedKeyArchive(int version, bool legacyFlag)
+    public async Task ReadWrite_ToneMappingChunks_SelectTheirFixedKeyArchive(int version, bool legacyFlag)
     {
         var payload = Payload(w =>
         {
@@ -319,7 +319,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task TrianglesPreserveThePositionMatrixAndOptionalTrailer(bool hasTrailer)
+    public async Task ReadWrite_Triangles_PreserveThePositionMatrixAndOptionalTrailer(bool hasTrailer)
     {
         var payload = Payload(w =>
         {
@@ -366,7 +366,7 @@ public class MediaBlockLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(43)]
-    public async Task TrianglesPreserveEditorPickingSettingsWithoutGeometry(int pickMode)
+    public async Task ReadWrite_Triangles_PreserveEditorPickingSettingsWithoutGeometry(int pickMode)
     {
         var payload = Payload(w =>
         {
@@ -404,7 +404,7 @@ public class MediaBlockLayoutTests
     [Arguments(2, 12345)]
     [Arguments(3, 12345)]
     [Arguments(3, 123456789)]
-    public async Task RaceEventsUseTheirStoredVersionAndIntegerRaceTimes(int version, int milliseconds)
+    public async Task ReadWrite_RaceEvents_UseTheirStoredVersionAndIntegerRaceTimes(int version, int milliseconds)
     {
         var payload = Payload(w =>
         {
@@ -447,7 +447,7 @@ public class MediaBlockLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task FxColorKeysUseTheParametersForTheirChunk(int version)
+    public async Task ReadWrite_FxColorKeys_UseTheParametersForTheirChunk(int version)
     {
         var payload = Payload(w =>
         {
@@ -485,7 +485,7 @@ public class MediaBlockLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task HdrBloomKeysPreserveLegacyLengths(int version)
+    public async Task ReadWrite_HdrBloomKeys_PreserveLegacyLengths(int version)
     {
         var payload = Payload(w =>
         {
@@ -508,7 +508,7 @@ public class MediaBlockLayoutTests
     [Arguments(5, 0f)]
     [Arguments(5, 1f)]
     [Arguments(5, 1.5f)]
-    public async Task GhostVersionsPreserveFlagsLightsAndTrailIntensity(int version, float trailIntensity)
+    public async Task ReadWrite_GhostVersions_PreserveFlagsLightsAndTrailIntensity(int version, float trailIntensity)
     {
         var payload = Payload(w =>
         {
@@ -563,7 +563,7 @@ public class MediaBlockLayoutTests
     }
 
     [Test]
-    public async Task CameraMapMarkerPrecedesTheTransform()
+    public async Task ReadWrite_CameraMapMarker_PrecedesTheTransform()
     {
         var payload = Payload(w =>
         {
@@ -593,7 +593,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task ObjectVisibilityPrecedesBothObjectFormats(int version)
+    public async Task ReadWrite_ObjectVisibility_PrecedesBothObjectFormats(int version)
     {
         var payload = Payload(w =>
         {
@@ -627,7 +627,7 @@ public class MediaBlockLayoutTests
     [Arguments(0f)]
     [Arguments(0.75f)]
     [Arguments(64f)]
-    public async Task SceneryKeysPreserveVortexRadiusAndWorldCenter(float radius)
+    public async Task ReadWrite_SceneryKeys_PreserveVortexRadiusAndWorldCenter(float radius)
     {
         var payload = Payload(w =>
         {
@@ -652,7 +652,7 @@ public class MediaBlockLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(11)]
-    public async Task SceneryCapturableCountPrecedesTheDataTapeReference(int count)
+    public async Task ReadWrite_SceneryCapturableCount_PrecedesTheDataTapeReference(int count)
     {
         var payload = Payload(w =>
         {
@@ -677,7 +677,7 @@ public class MediaBlockLayoutTests
     [Arguments(5, 1)]
     [Arguments(5, 0)]
     [Arguments(5, 2)]
-    public async Task SkelVersionsPreserveRootTransformsJointsAndLegacyFields(int version, int jointCount)
+    public async Task ReadWrite_SkelVersions_PreserveRootTransformsJointsAndLegacyFields(int version, int jointCount)
     {
         var payload = Payload(w =>
         {
@@ -751,7 +751,7 @@ public class MediaBlockLayoutTests
     }
 
     [Test]
-    public async Task FadeColorRetainsItsStoredAlphaSeparatelyFromKeyOpacity()
+    public async Task ReadWrite_FadeColor_RetainsItsStoredAlphaSeparatelyFromKeyOpacity()
     {
         var payload = Payload(w =>
         {
@@ -772,7 +772,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task SimpleCameraExposesItsInterpolationFlagOnTheBlock(int version)
+    public async Task ReadWrite_SimpleCamera_ExposesItsInterpolationFlagOnTheBlock(int version)
     {
         var payload = Payload(w =>
         {
@@ -793,7 +793,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task OrbitalCameraPreservesTheScalarAndTargetOffset(int version)
+    public async Task ReadWrite_OrbitalCamera_PreservesTheScalarAndTargetOffset(int version)
     {
         var payload = Payload(w =>
         {
@@ -832,7 +832,7 @@ public class MediaBlockLayoutTests
     [Arguments(3, 2)]
     [Arguments(4, 5)]
     [Arguments(4, 2)]
-    public async Task GameCameraPreservesHudPingAndCrosshairSettings(int version, int flags)
+    public async Task ReadWrite_GameCamera_PreservesHudPingAndCrosshairSettings(int version, int flags)
     {
         var payload = Payload(w =>
         {
@@ -879,7 +879,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(false, 0.25f, 0)]
     [Arguments(true, 0.75f, 1)]
-    public async Task DecalsPreserveOpacityFlipUAndImageIndex(bool flipU, float opacity, int imageIndex)
+    public async Task ReadWrite_Decals_PreserveOpacityFlipUAndImageIndex(bool flipU, float opacity, int imageIndex)
     {
         var payload = Payload(w =>
         {
@@ -920,7 +920,7 @@ public class MediaBlockLayoutTests
     [Arguments(9)]
     [Arguments(10)]
     [Arguments(11)]
-    public async Task EntityKeysPreserveTrailColorVersionsAndIntensityDefaults(int version)
+    public async Task ReadWrite_EntityKeys_PreserveTrailColorVersionsAndIntensityDefaults(int version)
     {
         var payload = Payload(w =>
         {
@@ -950,7 +950,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task EntityLegacyTrailOverrideUsesASeparateBoolean(bool forceTrail)
+    public async Task ReadWrite_EntityLegacyTrailOverride_UsesASeparateBoolean(bool forceTrail)
     {
         var payload = Payload(w =>
         {
@@ -981,7 +981,7 @@ public class MediaBlockLayoutTests
     [Arguments(8, 12345)]
     [Arguments(11, -1)]
     [Arguments(11, 12345)]
-    public async Task EntityRaceTimePreservesMillisecondsAndUnavailableSentinel(int version, int raceTime)
+    public async Task ReadWrite_EntityRaceTime_PreservesMillisecondsAndUnavailableSentinel(int version, int raceTime)
     {
         var payload = Payload(w =>
         {
@@ -1028,7 +1028,7 @@ public class MediaBlockLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task EntityBadgesPreserveStickerNamesAndSlots(int version)
+    public async Task ReadWrite_EntityBadges_PreserveStickerNamesAndSlots(int version)
     {
         var payload = Payload(w =>
         {

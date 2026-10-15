@@ -63,7 +63,7 @@ public class CGameObjectPhyModelLayoutTests
     [Arguments(25, true)]
     [Arguments(26, false)]
     [Arguments(26, true)]
-    public async Task MainChunkPreservesNativeBranches(int version, bool paths)
+    public async Task ReadWrite_MainChunk_PreservesNativeBranches(int version, bool paths)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -203,7 +203,7 @@ public class CGameObjectPhyModelLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task InlineDynaModelPreservesArchiveVersions(int version)
+    public async Task ReadWrite_InlineDynaModel_PreservesArchiveVersions(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -233,7 +233,7 @@ public class CGameObjectPhyModelLayoutTests
     }
 
     [Test]
-    public async Task MissingDynaModelConsumesOnlyPresenceFlag()
+    public async Task ReadWrite_MissingDynaModel_ConsumesOnlyPresenceFlag()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(false);
@@ -250,7 +250,7 @@ public class CGameObjectPhyModelLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task ThrowableSettingsPreserveVersionBranches(int version)
+    public async Task ReadWrite_ThrowableSettings_PreserveVersionBranches(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -272,7 +272,7 @@ public class CGameObjectPhyModelLayoutTests
     }
 
     [Test]
-    public async Task DeprecatedChunksPreserveTheirPayloads()
+    public async Task ReadWrite_DeprecatedChunks_PreserveTheirPayloads()
     {
         var node = new CGameObjectPhyModel();
         using (var payload = new ObjectModelPayload())
@@ -309,7 +309,7 @@ public class CGameObjectPhyModelLayoutTests
     }
 
     [Test]
-    public async Task DirectActionArrayRejectsNullEntriesAndInvalidCounts()
+    public async Task ReadWrite_DirectActionArray_RejectsNullEntriesAndInvalidCounts()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

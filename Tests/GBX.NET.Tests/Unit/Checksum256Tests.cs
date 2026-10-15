@@ -4,7 +4,7 @@ namespace GBX.NET.Tests.Unit;
 public class Checksum256Tests
 {
     [Test]
-    public async Task ReadsAndWritesThirtyTwoBytesInOrder()
+    public async Task WriteLittleEndian_ThirtyTwoByteChecksum_PreservesByteOrder()
     {
         byte[] source = Enumerable.Range(0, 36).Select(i => (byte)i).ToArray();
         var checksum = new Checksum256(source);
@@ -20,7 +20,7 @@ public class Checksum256Tests
     }
 
     [Test]
-    public void RejectsShortSourceAndDestination()
+    public void ConstructorAndWriteLittleEndian_ShortBuffers_ThrowArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Checksum256(new byte[31]));
         Assert.Throws<ArgumentException>(() => Checksum256.Zero.WriteLittleEndian(new byte[31]));

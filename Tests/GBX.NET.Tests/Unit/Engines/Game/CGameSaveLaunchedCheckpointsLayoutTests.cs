@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameSaveLaunchedCheckpointsLayoutTests
 {
     [Test]
-    public async Task CheckpointMetadataAndModelsFollowBothStateArrays()
+    public async Task ReadWrite_CheckpointMetadataAndModels_FollowBothStateArrays()
     {
         var payload = Payload(w =>
         {
@@ -51,7 +51,7 @@ public class CGameSaveLaunchedCheckpointsLayoutTests
     [Arguments(0u, 1u, 0)]
     [Arguments(1u, 1u, 1)]
     [Arguments(0xFFFFFFFFu, 2u, 0)]
-    public void SnapshotCountsCannotExceedTheAvailableArray(uint firstCount, uint secondCount, int snapshotCount)
+    public void ReadWrite_SnapshotCounts_CannotExceedTheAvailableArray(uint firstCount, uint secondCount, int snapshotCount)
     {
         var payload = Payload(w =>
         {

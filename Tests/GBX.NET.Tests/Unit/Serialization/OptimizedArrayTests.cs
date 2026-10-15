@@ -16,7 +16,7 @@ public class OptimizedArrayTests
 
     [Test]
     [MethodDataSource(nameof(Widths))]
-    public async Task IntegersUseTheExpectedWidthAndPreserveTheNextField(int determineFrom, int width, bool hasLengthPrefix)
+    public async Task ReadArrayOptimizedIntAndWriteArrayOptimizedInt_Integers_UsesExpectedWidthAndPreservesNextField(int determineFrom, int width, bool hasLengthPrefix)
     {
         int[] values = [0, 1, determineFrom - 1];
         using var stream = new MemoryStream();
@@ -40,7 +40,7 @@ public class OptimizedArrayTests
 
     [Test]
     [MethodDataSource(nameof(Widths))]
-    public async Task PairsUseTheExpectedWidthAndPreserveTheNextField(int determineFrom, int width, bool hasLengthPrefix)
+    public async Task ReadArrayOptimizedInt2AndWriteArrayOptimizedInt2_Pairs_UsesExpectedWidthAndPreservesNextField(int determineFrom, int width, bool hasLengthPrefix)
     {
         Int2[] values = [new(0, determineFrom - 1), new(determineFrom - 1, 1)];
         using var stream = new MemoryStream();
@@ -65,7 +65,7 @@ public class OptimizedArrayTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task NullAndEmptyArraysHaveTheSameEncoding(bool hasLengthPrefix)
+    public async Task WriteArrayOptimizedInt_NullAndEmptyArrays_UsesSameEncoding(bool hasLengthPrefix)
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);

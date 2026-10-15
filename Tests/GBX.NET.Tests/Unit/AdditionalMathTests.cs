@@ -4,7 +4,7 @@ namespace GBX.NET.Tests.Unit;
 public class AdditionalMathTests
 {
     [Test]
-    public async Task ConvertsCardinalDirectionAndDegreesToRadians()
+    public async Task ToRadians_CardinalDirectionAndDegrees_ReturnsExpectedAngles()
     {
         await Assert.That(MathF.Abs(AdditionalMath.ToRadians(Direction.East) - MathF.PI / 2)).IsLessThan(0.00001f);
         await Assert.That(MathF.Abs(AdditionalMath.ToRadians(180f) - MathF.PI)).IsLessThan(0.00001f);
@@ -12,7 +12,7 @@ public class AdditionalMathTests
     }
 
     [Test]
-    public async Task RotateAroundCenterMovesOnlyHorizontalCoordinates()
+    public async Task RotateAroundCenter_QuarterTurn_ChangesOnlyHorizontalCoordinates()
     {
         var point = new Vec3(3, 7, 4);
         var center = new Vec3(1, 2, 4);
@@ -25,7 +25,7 @@ public class AdditionalMathTests
     }
 
     [Test]
-    public async Task LerpSupportsInterpolationAndExtrapolation()
+    public async Task Lerp_InterpolationAndExtrapolation_ReturnsExpectedValues()
     {
         await Assert.That(AdditionalMath.Lerp(10f, 20f, 0.25f)).IsEqualTo(12.5f);
         await Assert.That(AdditionalMath.Lerp(new Vec3(0, 10, 20), new Vec3(8, 18, 28), 1.5f))
@@ -33,7 +33,7 @@ public class AdditionalMathTests
     }
 
     [Test]
-    public async Task ClampIncludesBothBounds()
+    public async Task Clamp_ValuesInsideAndOutsideBounds_ReturnsValueWithinInclusiveBounds()
     {
         await Assert.That(AdditionalMath.Clamp(-2, 0, 10)).IsEqualTo(0);
         await Assert.That(AdditionalMath.Clamp(5, 0, 10)).IsEqualTo(5);

@@ -9,7 +9,7 @@ namespace GBX.NET.Tests.Unit.Serialization;
 public class GbxReaderTests
 {
     [Test]
-    public async Task Contructor_Input_BaseStreamIsInput()
+    public async Task Constructor_InputStream_AssignsBaseStream()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -22,7 +22,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task Contructor_InputLeaveOpen_BaseStreamIsInput()
+    public async Task Constructor_InputStreamWithLeaveOpen_AssignsBaseStream()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -35,7 +35,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadGbxMagic_HasCorrectMagic()
+    public async Task ReadGbxMagic_CorrectMagic_ReturnsTrue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -53,7 +53,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadGbxMagic_HasIncorrectMagic()
+    public async Task ReadGbxMagic_IncorrectMagic_ReturnsFalse()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -85,7 +85,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadBoolean_Int32_IsCleanTrue()
+    public async Task ReadBoolean_Int32One_ReturnsTrue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -103,7 +103,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadBoolean_Int32_IsCleanFalse()
+    public async Task ReadBoolean_Int32Zero_ReturnsFalse()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -122,7 +122,7 @@ public class GbxReaderTests
 
     [Test]
     [NotInParallel]
-    public void ReadBoolean_Int32_IsDirtyThrows()
+    public void ReadBoolean_NoncanonicalInt32_ThrowsBooleanOutOfRangeException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -145,7 +145,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadBoolean_Int32_AsByteFalse()
+    public async Task ReadBoolean_Int32WithAsByteFalse_ReturnsExpectedValue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -163,7 +163,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadBoolean_Byte_IsCleanTrue()
+    public async Task ReadBoolean_ByteOne_ReturnsTrue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -182,7 +182,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadBoolean_Byte_IsCleanFalse()
+    public async Task ReadBoolean_ByteZero_ReturnsFalse()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -202,7 +202,7 @@ public class GbxReaderTests
 
     [Test]
     [NotInParallel]
-    public void ReadBoolean_Byte_IsDirtyThrows()
+    public void ReadBoolean_NoncanonicalByte_ThrowsBooleanOutOfRangeException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -226,7 +226,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadString_Int32()
+    public async Task ReadString_Int32LengthPrefix_ReturnsText()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -262,7 +262,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadString_Int32_NegativeLength_ThrowsArgumentOutOfRangeException()
+    public void ReadString_NegativeInt32Length_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -276,7 +276,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadString_Int32_TooLong_ThrowsLengthLimitException()
+    public void ReadString_Int32LengthOverLimit_ThrowsLengthLimitException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -290,7 +290,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadString_StringLengthPrefix_Byte()
+    public async Task ReadString_ByteLengthPrefix_ReturnsText()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -308,7 +308,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadString_StringLengthPrefix_Int32()
+    public async Task ReadString_ExplicitInt32LengthPrefix_ReturnsText()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -326,7 +326,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadString_StringLengthPrefix_Unknown_ThrowsArgumentException()
+    public void ReadString_UnknownLengthPrefix_ThrowsArgumentException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -340,7 +340,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadString_StringLengthPrefix_NegativeLength_ThrowsArgumentOutOfRangeException()
+    public void ReadString_NegativePrefixedLength_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -354,7 +354,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadString_StringLengthPrefix_TooLong_ThrowsLengthLimitException()
+    public void ReadString_PrefixedLengthOverLimit_ThrowsLengthLimitException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -368,7 +368,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadData_NoCount_TooLong_Throws()
+    public void ReadData_LengthOverLimit_ThrowsLengthLimitException()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -382,7 +382,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public void ReadBytes_WithCount_TooLong_ThrowsWithLength()
+    public void ReadBytes_CountOverLimit_ThrowsLengthLimitExceptionWithLength()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -625,7 +625,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadIdent_Reads3Ids()
+    public async Task ReadIdent_ThreeIds_ReturnsIdentifier()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -700,7 +700,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task IdVersion_InitiallyNull()
+    public async Task IdVersion_NewReader_IsNull()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -711,7 +711,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task IdVersion_SetAndGetWithoutEncapsulation()
+    public async Task IdVersion_WithoutEncapsulation_PreservesAssignedValue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -726,7 +726,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task IdVersion_SetAndGetWithEncapsulation()
+    public async Task IdVersion_WithEncapsulation_PreservesAssignedValue()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -742,7 +742,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task IdDict_InitiallyNotNull()
+    public async Task IdDict_NewReader_IsNotNull()
     {
         // Arrange
         using var ms = new MemoryStream();
@@ -753,7 +753,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadPackDesc_Version3_NoLocatorUrl()
+    public async Task ReadPackDesc_Version3WithoutLocatorUrl_ReturnsChecksumAndFilePath()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -782,7 +782,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadPackDesc_Version3_WithLocatorUrl()
+    public async Task ReadPackDesc_Version3WithLocatorUrl_ReturnsChecksumFilePathAndLocatorUrl()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -812,7 +812,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadPackDesc_Version3_NoFilePath()
+    public async Task ReadPackDesc_Version3WithoutFilePath_ReturnsChecksumAndLocatorUrl()
     {
         // Arrange
         var gibbrish = new byte[32];
@@ -842,7 +842,7 @@ public class GbxReaderTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ReadPackDesc_Version1And2_NoLocatorUrl_WithFilePath(byte version)
+    public async Task ReadPackDesc_Version1And2WithoutLocatorUrl_ReturnsFilePath(byte version)
     {
         // Arrange
         var filePath = "folder\\test.txt";
@@ -869,7 +869,7 @@ public class GbxReaderTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ReadPackDesc_Version1And2_WithLocatorUrl_WithFilePath(byte version)
+    public async Task ReadPackDesc_Version1And2WithLocatorUrl_ReturnsFilePathAndLocatorUrl(byte version)
     {
         // Arrange
         var filePath = "folder\\test.txt";
@@ -897,7 +897,7 @@ public class GbxReaderTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ReadPackDesc_Version1And2_NoFilePath(byte version)
+    public async Task ReadPackDesc_Version1And2WithoutFilePath_ReturnsEmptyPaths(byte version)
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] { version }
@@ -919,7 +919,7 @@ public class GbxReaderTests
     }
 
     [Test]
-    public async Task ReadPackDesc_Version0()
+    public async Task ReadPackDesc_Version0_ReturnsFilePathWithoutChecksumOrLocatorUrl()
     {
         // Arrange
         var filePath = "folder\\test.txt";

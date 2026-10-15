@@ -17,7 +17,7 @@ public class CPlugDecalModelLayoutTests
     [Arguments(5, true)]
     [Arguments(6, false)]
     [Arguments(6, true)]
-    public async Task TexturesPreserveVersionBranchesAndExternalReferences(int version, bool paths)
+    public async Task ReadWrite_Textures_PreserveVersionBranchesAndExternalReferences(int version, bool paths)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -81,7 +81,7 @@ public class CPlugDecalModelLayoutTests
     [Arguments(7, false)]
     [Arguments(8, false)]
     [Arguments(8, true)]
-    public async Task SpriteAndMacroDecalsPreserveTheirNativePayload(int version, bool svgPath)
+    public async Task ReadWrite_SpriteAndMacroDecals_PreserveTheirNativePayload(int version, bool svgPath)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -153,7 +153,7 @@ public class CPlugDecalModelLayoutTests
     }
 
     [Test]
-    public async Task LegacyChunksReadThroughTheNodeDispatcherAndPreserveFlagBits()
+    public async Task ReadWrite_LegacyChunks_ReadThroughTheNodeDispatcherAndPreserveFlagBits()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

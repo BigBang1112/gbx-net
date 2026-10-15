@@ -10,7 +10,7 @@ public class ChunkComparerTests
     private readonly ChunkComparer<IChunk> chunkComparer = new();
 
     [Test]
-    public async Task CollectorChunkAndMacroBlockChunk_CollectorChunkIsFirst()
+    public async Task Compare_CollectorAndMacroBlockChunks_OrdersCollectorFirst()
     {
         var collectorChunk = new CGameCtnCollector.Chunk2E00100E();
         var macroBlockChunk = new CGameCtnMacroBlockInfo.Chunk0310D000();

@@ -11,7 +11,7 @@ public class GxFogLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(43)]
-    public async Task DepthAndHeightSettingsKeepNativeOrder(int legacyMode)
+    public async Task ReadWrite_DepthAndHeightSettings_KeepNativeOrder(int legacyMode)
     {
         var node = new GxFog();
         var chunk = new GxFog.Chunk04004000();
@@ -40,7 +40,7 @@ public class GxFogLayoutTests
     }
 
     [Test]
-    public async Task ColorAndFogVersionUseIndependentVersionedChunks()
+    public async Task ReadWrite_ColorAndFogVersion_UseIndependentVersionedChunks()
     {
         var node = new GxFog();
         var colorChunk = new GxFog.Chunk04004001();
@@ -67,7 +67,7 @@ public class GxFogLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstructor()
+    public async Task Constructor_Defaults_MatchNativeConstructor()
     {
         var node = new GxFog();
 

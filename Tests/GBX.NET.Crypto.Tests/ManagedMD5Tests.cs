@@ -17,7 +17,7 @@ public class ManagedMD5Tests
 
     [Test]
     [MethodDataSource(nameof(LengthCases))]
-    public async Task Compute_MatchesReferenceMD5_ForVariousLengths(int length)
+    public async Task Compute_VariousLengths_MatchesReferenceMD5(int length)
     {
         var data = new byte[length];
         new Random(length).NextBytes(data);
@@ -36,7 +36,7 @@ public class ManagedMD5Tests
     [Arguments("abcdefghijklmnopqrstuvwxyz")]
     [Arguments("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")]
     [Arguments("12345678901234567890123456789012345678901234567890123456789012345678901234567890")]
-    public async Task Compute_MatchesReferenceMD5_ForKnownStrings(string text)
+    public async Task Compute_KnownStrings_MatchesReferenceMD5(string text)
     {
         var data = Encoding.ASCII.GetBytes(text);
 
@@ -82,7 +82,7 @@ public class ManagedMD5Tests
     }
 
     [Test]
-    public void Compute_IntoTooSmallDestination_Throws()
+    public void Compute_TooSmallDestination_ThrowsArgumentException()
     {
         var data = new byte[8];
 
@@ -94,7 +94,7 @@ public class ManagedMD5Tests
     }
 
     [Test]
-    public async Task Compute_MatchesReferenceMD5_AcrossManyRandomInputs()
+    public async Task Compute_ManyRandomInputs_MatchesReferenceMD5()
     {
         var random = new Random(12345);
 

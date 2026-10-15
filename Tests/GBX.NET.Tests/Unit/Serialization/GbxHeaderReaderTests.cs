@@ -151,7 +151,7 @@ public class GbxHeaderReaderTests
     }
 
     [Test]
-    public async Task Parse_KnownNode_Version6_ParsesCorrectly()
+    public async Task Parse_KnownNodeVersion6_ReturnsExpectedHeader()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -192,7 +192,7 @@ public class GbxHeaderReaderTests
     }
 
     [Test]
-    public async Task Parse_KnownNode_VersionLowerThan6_ParsesCorrectly()
+    public async Task Parse_KnownNodeBeforeVersion6_ReturnsExpectedHeader()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -228,7 +228,7 @@ public class GbxHeaderReaderTests
     }
 
     [Test]
-    public async Task Parse_UnknownNode_Version6_ParsesCorrectly()
+    public async Task Parse_UnknownNodeVersion6_ReturnsExpectedHeader()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {
@@ -269,7 +269,7 @@ public class GbxHeaderReaderTests
     }
 
     [Test]
-    public async Task Parse_UnknownNode_VersionLowerThan6_ParsesCorrectly()
+    public async Task Parse_UnknownNodeBeforeVersion6_ReturnsExpectedHeader()
     {
         // Arrange
         using var ms = new MemoryStream(new byte[] {

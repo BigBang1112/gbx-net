@@ -13,7 +13,7 @@ namespace GBX.NET.Generators.Tests;
 public class ChunkLParsingTests
 {
     [Test]
-    public async Task ParsesLayoutsAndCombinesThemWithExistingTypes()
+    public async Task Generate_LayoutsAndExistingTypes_CombinesParsedModels()
     {
         const string source = """
             Example 0x03043000
@@ -66,7 +66,7 @@ public class ChunkLParsingTests
     }
 
     [Test]
-    public async Task ReportsParserErrorsAtTheirSourcePositionAndKeepsValidSiblingFiles()
+    public async Task Generate_ParserErrors_ReportsSourcePositionsAndKeepsValidSiblingFiles()
     {
         var invalid = new MemoryAdditionalText("Engines/Game/Invalid.chunkl",
             "Invalid 0x03043000\n0x001\n int Value\n");
@@ -85,7 +85,7 @@ public class ChunkLParsingTests
     }
 
     [Test]
-    public async Task ReportsUnreadableAndEmptyFilesWithoutThrowing()
+    public async Task Generate_UnreadableAndEmptyFiles_ReportsDiagnosticsWithoutThrowing()
     {
         var unreadable = new MemoryAdditionalText("Engines/Game/Unreadable.chunkl", null);
         var empty = new MemoryAdditionalText("Engines/Game/Empty.chunkl", "");
@@ -103,7 +103,7 @@ public class ChunkLParsingTests
     }
 
     [Test]
-    public void PropagatesCancellation()
+    public void Generate_CanceledToken_PropagatesCancellation()
     {
         using var cancellation = new CancellationTokenSource();
         cancellation.Cancel();
@@ -112,7 +112,7 @@ public class ChunkLParsingTests
     }
 
     [Test]
-    public async Task ReusesUnchangedFileParsingWhenAnotherLayoutChanges()
+    public async Task Generate_OtherLayoutChanged_ReusesUnchangedFileParsing()
     {
         var original = new MemoryAdditionalText("Engines/Game/Example.chunkl", "Example 0x03043000");
         var other = new MemoryAdditionalText("Engines/Plug/Other.chunkl", "Other 0x09000000");
@@ -134,7 +134,7 @@ public class ChunkLParsingTests
     }
 
     [Test]
-    public async Task GeneratesEveryRealLayoutWithoutParserOrGenerationDiagnostics()
+    public async Task Generate_RealLayouts_ProducesNoParserOrGenerationDiagnostics()
     {
         var directory = TestPaths.GetEngineDirectory();
         var files = Directory.EnumerateFiles(directory, "*.chunkl", SearchOption.AllDirectories)

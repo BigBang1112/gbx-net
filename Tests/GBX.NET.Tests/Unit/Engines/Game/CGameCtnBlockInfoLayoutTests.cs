@@ -11,7 +11,7 @@ public class CGameCtnBlockInfoLayoutTests
 {
     [Test]
     [Arguments(0x0304E005u)]
-    public async Task LegacyBlockDimensions_PreserveOriginalFieldOrder(uint chunkId)
+    public async Task ReadWrite_LegacyBlockDimensions_PreserveOriginalFieldOrder(uint chunkId)
     {
         var node = await RoundTrip(Payload(w =>
         {
@@ -49,7 +49,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Arguments(GameVersion.TM10, 1)]
     [Arguments(GameVersion.TMPU, 1)]
     [Arguments(GameVersion.TMSX, 0)]
-    public async Task LegacyBlockDimensions_UseOriginalGameDefaults(GameVersion gameVersion, int size)
+    public async Task Constructor_LegacyBlockDimensions_UsesOriginalGameDefaults(GameVersion gameVersion, int size)
     {
         var node = new LegacyBlockInfo(gameVersion);
         await Assert.That(node.SizeX).IsEqualTo(size);
@@ -62,7 +62,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task Sounds_NullReferencesUseVersionSpecificLocations(int version)
+    public async Task ReadWrite_Sounds_NullReferencesUseVersionSpecificLocations(int version)
     {
         var payload = Payload(w =>
         {
@@ -88,7 +88,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task PrecalculatedParticles_PreserveReferenceAndLocation(bool external)
+    public async Task ReadWrite_PrecalculatedParticles_PreserveReferenceAndLocation(bool external)
     {
         var file = external ? new GbxRefTableFile(new(), 0, true, "Particles.Gbx") : null;
         var location = Iso4.Identity with { TX = 7, TY = 8, TZ = 9 };
@@ -131,7 +131,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Arguments(7, false)]
     [Arguments(8, false)]
     [Arguments(8, true)]
-    public async Task SpecialProperties_PreserveVersionBranchesAndPlacementTag(int version, bool hasTag)
+    public async Task ReadWrite_SpecialProperties_PreserveVersionBranchesAndPlacementTag(int version, bool hasTag)
     {
         var payload = Payload(w =>
         {
@@ -164,7 +164,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task PillarShape_UsesByteBooleans(int version)
+    public async Task ReadWrite_PillarShape_UsesByteBooleans(int version)
     {
         var payload = Payload(w =>
         {
@@ -186,7 +186,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Arguments(0, true)]
     [Arguments(1, false)]
     [Arguments(1, true)]
-    public async Task BlockModelAndMaterialModifiers_PreserveExternalReferencesAndVersionBoundary(int version, bool external)
+    public async Task ReadWrite_BlockModelAndMaterialModifiers_PreserveExternalReferencesAndVersionBoundary(int version, bool external)
     {
         var modelFile = new GbxRefTableFile(new(), 0, true, "Model.Block.Gbx");
         var modifierFile = new GbxRefTableFile(new(), 1, true, "Modifier.Gbx");
@@ -233,7 +233,7 @@ public class CGameCtnBlockInfoLayoutTests
     [Arguments(0, 2)]
     [Arguments(0, -1)]
     [Arguments(1, 0)]
-    public async Task BaseType_OnlyLegacyValueOneOverridesConductorAndPreservesExtraInteger(int version, int legacyValue)
+    public async Task ReadWrite_BaseType_OnlyLegacyValueOneOverridesConductorAndPreservesExtraInteger(int version, int legacyValue)
     {
         byte[] CreatePayload(CGameCtnBlockInfo.EBaseType baseType) => Payload(w =>
         {
@@ -264,7 +264,7 @@ public class CGameCtnBlockInfoLayoutTests
     }
 
     [Test]
-    public async Task LegacySymmetry_PreservesDirectionAndFlagBoundaries()
+    public async Task ReadWrite_LegacySymmetry_PreservesDirectionAndFlagBoundaries()
     {
         var node = await RoundTrip(Payload(w =>
         {
@@ -287,7 +287,7 @@ public class CGameCtnBlockInfoLayoutTests
     }
 
     [Test]
-    public async Task LegacySpawn_AppliesToGroundAndAir()
+    public async Task ReadWrite_LegacySpawn_AppliesToGroundAndAir()
     {
         var location = Iso4.Identity with { TX = 7, TY = 8, TZ = 9 };
         var node = await RoundTrip(Payload(w =>
@@ -301,7 +301,7 @@ public class CGameCtnBlockInfoLayoutTests
     }
 
     [Test]
-    public async Task DefaultsAndWriterMetadata_MatchVerifiedBinaries()
+    public async Task Constructor_DefaultsAndWriterMetadata_MatchVerifiedBinaries()
     {
         var node = new CGameCtnBlockInfoClassic();
         await Assert.That(node.WayPointType).IsEqualTo(CGameCtnBlockInfo.EWayPointType.None);

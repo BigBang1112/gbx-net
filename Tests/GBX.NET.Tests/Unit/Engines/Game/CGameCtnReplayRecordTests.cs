@@ -21,7 +21,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(true, false, true)]
     [Arguments(true, true, false)]
     [Arguments(true, true, true)]
-    public async Task Tm10Inputs_ArePassedToTheValidationGhost(bool legacyGhostList, bool ghostsFirst, bool empty)
+    public async Task ReadWrite_Tm10Inputs_ArePassedToTheValidationGhost(bool legacyGhostList, bool ghostsFirst, bool empty)
     {
         var payload = Payload(w =>
         {
@@ -54,7 +54,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task Tm10Inputs_HandlesZeroTimestampEntries(bool hasInputs, bool hasZeroTimestamps)
+    public async Task ReadWrite_Tm10Inputs_HandlesZeroTimestampEntries(bool hasInputs, bool hasZeroTimestamps)
     {
         int[] timestamps = (hasInputs, hasZeroTimestamps) switch
         {
@@ -101,7 +101,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task Tm10Inputs_AreReleasedAfterTheHandoff()
+    public async Task ReadWrite_Tm10Inputs_AreReleasedAfterTheHandoff()
     {
         var payload = Payload(w =>
         {
@@ -121,7 +121,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task Tm10Inputs_ResolveTheExternalValidationGhost(bool available)
+    public async Task ReadWrite_Tm10Inputs_ResolveTheExternalValidationGhost(bool available)
     {
         using var payload = new ObjectModelPayload();
         WriteTm10Inputs(payload.Writer);
@@ -155,7 +155,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ExecutableVersion_IsPassedDirectlyToTheGhost(bool hasGhost)
+    public async Task ReadWrite_ExecutableVersion_IsPassedDirectlyToTheGhost(bool hasGhost)
     {
         var records = Enumerable.Range(0, 144).Select(i => (byte)i).ToArray();
         var payload = Payload(w =>
@@ -193,7 +193,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task LegacyValidation_IsPassedOnlyToASingleGhost(int ghostCount)
+    public async Task ReadWrite_LegacyValidation_IsPassedOnlyToASingleGhost(int ghostCount)
     {
         var key = new UInt128(0x1122334455667788, 0x99AABBCCDDEEFF00);
         var payload = Payload(w =>
@@ -243,7 +243,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task GhostValidationBeforeTheGhostList_IsNotRetainedOnTheReplay()
+    public async Task ReadWrite_GhostValidationBeforeTheGhostList_IsNotRetainedOnTheReplay()
     {
         var payload = Payload(w =>
         {
@@ -263,7 +263,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task LegacyGhostList_AppliesItsVersionToEveryGhost()
+    public async Task ReadWrite_LegacyGhostList_AppliesItsVersionToEveryGhost()
     {
         var replay = await ReadChunk(Payload(w =>
         {
@@ -281,7 +281,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyValidation_ResolvesAnExternalGhostAndPreservesItsDescriptor(bool available)
+    public async Task ReadWrite_LegacyValidation_ResolvesAnExternalGhostAndPreservesItsDescriptor(bool available)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0x03093014u);
@@ -317,7 +317,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task EmbeddedMap_PreservesTheGhostUidsAndKeepsTheMapLazy()
+    public async Task ReadWrite_EmbeddedMap_PreservesTheGhostUidsAndKeepsTheMapLazy()
     {
         var map = new CGameCtnChallenge { MapInfo = new Ident("EmbeddedMap", "Stadium", "Author") };
         map.CreateChunk<CGameCtnChallenge.HeaderChunk03043003>();
@@ -343,7 +343,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyValidation_EmptyEventsClearTheInputsAndPreserveOtherGhostState(bool hasDuration)
+    public async Task ReadWrite_LegacyValidation_EmptyEventsClearTheInputsAndPreserveOtherGhostState(bool hasDuration)
     {
         var payload = Payload(w =>
         {
@@ -371,7 +371,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task RecordData_PreservesTheReplayAndGhostReferencesSeparately()
+    public async Task ReadWrite_RecordData_PreservesTheReplayAndGhostReferencesSeparately()
     {
         var ghost = new CGameCtnGhost { RecordData = new CPlugEntRecordData() };
         ghost.CreateChunk<CGameCtnGhost.Chunk03092000>().Version = 5;
@@ -404,7 +404,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(9999)]
     [Arguments(10000)]
     [Arguments(10001)]
-    public async Task Header_HandlesSpecialVersionsWithoutReadingAnAbsentLogin(int version)
+    public async Task ReadWrite_Header_HandlesSpecialVersionsWithoutReadingAnAbsentLogin(int version)
     {
         var payload = Payload(w =>
         {
@@ -434,7 +434,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task Scenery_ReadsMultipleKeysAndTrailingFields(bool hasTape)
+    public async Task ReadWrite_Scenery_ReadsMultipleKeysAndTrailingFields(bool hasTape)
     {
         var payload = Payload(w =>
         {
@@ -464,7 +464,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task SceneryCapturables_PreservesEmbeddedAndExternalTapes(bool external)
+    public async Task ReadWrite_SceneryCapturables_PreservesEmbeddedAndExternalTapes(bool external)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0);
@@ -506,7 +506,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task PlayersOfInterest_ReadsGhostIndicesAndReplayTimes(bool empty)
+    public async Task ReadWrite_PlayersOfInterest_ReadsGhostIndicesAndReplayTimes(bool empty)
     {
         var payload = Payload(w =>
         {
@@ -532,7 +532,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task Actions_ReadsInlineArchivesAndVersionedNames(int version)
+    public async Task ReadWrite_Actions_ReadsInlineArchivesAndVersionedNames(int version)
     {
         var payload = Payload(w =>
         {
@@ -553,7 +553,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task AnchoredObjects_ReadsTheLegacyArrayOnlyInVersionZero(int version)
+    public async Task ReadWrite_AnchoredObjects_ReadsTheLegacyArrayOnlyInVersionZero(int version)
     {
         var payload = Payload(w =>
         {
@@ -582,7 +582,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task ItemResources_VersionZeroHasNoSkinArray(int version)
+    public async Task ReadWrite_ItemResources_VersionZeroHasNoSkinArray(int version)
     {
         var payload = Payload(w =>
         {
@@ -599,7 +599,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task Minimap_ReadsThePlaygroundFeatureFlag(bool enabled)
+    public async Task ReadWrite_Minimap_ReadsThePlaygroundFeatureFlag(bool enabled)
     {
         var replay = await ReadChunk(Payload(w =>
         {
@@ -612,7 +612,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(80)]
     [Arguments(84)]
-    public async Task TimedCameraRecords_ReadsBothGameWidths(int recordSize)
+    public async Task ReadWrite_TimedCameraRecords_ReadsBothGameWidths(int recordSize)
     {
         var records = Enumerable.Range(0, recordSize * 2).Select(i => (byte)i).ToArray();
         var payload = Payload(w =>
@@ -634,7 +634,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task TimedCameraRecords_ReadsAnEmptyRecording()
+    public async Task ReadWrite_TimedCameraRecords_ReadsAnEmptyRecording()
     {
         var replay = await ReadChunk(Payload(w =>
         {
@@ -650,7 +650,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task SceneTapes_ReadsTheEmptyCarAndDeprecatedTurretRoles(bool recordData, bool external)
+    public async Task ReadWrite_SceneTapes_ReadsTheEmptyCarAndDeprecatedTurretRoles(bool recordData, bool external)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(recordData ? 1 : 0);
@@ -713,7 +713,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task BonusBumps_ReadsTimeAndBooleanForEveryKey()
+    public async Task ReadWrite_BonusBumps_ReadsTimeAndBooleanForEveryKey()
     {
         var payload = Payload(w =>
         {
@@ -739,7 +739,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(-1)]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task RecordData_VersionZeroOmitsTheSecondNode(int version)
+    public async Task ReadWrite_RecordData_VersionZeroOmitsTheSecondNode(int version)
     {
         var payload = Payload(w =>
         {
@@ -755,7 +755,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task EntityGhostMappings_ReadsTheFourthFieldInASeparatePass(int version)
+    public async Task ReadWrite_EntityGhostMappings_ReadsTheFourthFieldInASeparatePass(int version)
     {
         var payload = Payload(w =>
         {
@@ -777,7 +777,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(68)]
     [Arguments(72)]
-    public async Task LegacyCutKeys_PreservesEveryRecord(int recordSize)
+    public async Task ReadWrite_LegacyCutKeys_PreservesEveryRecord(int recordSize)
     {
         var records = Enumerable.Range(0, recordSize * 2).Select(i => (byte)i).ToArray();
         var payload = Payload(w =>
@@ -803,7 +803,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(0x005)]
     [Arguments(0x008)]
     [Arguments(0x013)]
-    public async Task LegacyCutKeys_ReadsEmptyArrays(int chunkId)
+    public async Task ReadWrite_LegacyCutKeys_ReadsEmptyArrays(int chunkId)
     {
         var payload = Payload(w =>
         {
@@ -824,7 +824,7 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(-1)]
     [Arguments(unchecked((int)0x89ABCDEF))]
-    public async Task UnusedLegacyValue_PreservesAllBits(int value)
+    public async Task ReadWrite_UnusedLegacyValue_PreservesAllBits(int value)
     {
         var chunk = new CGameCtnReplayRecord.Chunk03093007();
         await Assert.That(chunk.U01).IsEqualTo(-1);
@@ -833,7 +833,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task Tracks_ReadsEmbeddedTracksAndPreservesSharedReferencesWhenCloning()
+    public async Task ReadWrite_Tracks_ReadsEmbeddedTracksAndPreservesSharedReferencesWhenCloning()
     {
         var track = new CGameCtnMediaTrack { Name = "Legacy" };
         track.CreateChunk<CGameCtnMediaTrack.Chunk03078001>();
@@ -849,7 +849,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task Tracks_PreservesExternalReferencesWithoutLoadingThem()
+    public async Task ReadWrite_Tracks_PreservesExternalReferencesWithoutLoadingThem()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(10);
@@ -877,7 +877,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task HumanTimeToGameTimeFunc_ReadsTheConcreteSegmentNode()
+    public async Task ReadWrite_HumanTimeToGameTimeFunc_ReadsTheConcreteSegmentNode()
     {
         var segment = new CFuncSegment
         {
@@ -890,7 +890,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task HumanTimeToGameTimeFunc_PreservesAndResolvesATypedExternalReference()
+    public async Task ReadWrite_HumanTimeToGameTimeFunc_PreservesAndResolvesATypedExternalReference()
     {
         using var payload = new ObjectModelPayload();
         var file = payload.NodeRef("TimeFunction.Gbx");
@@ -916,7 +916,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task LegacyTapes_ReadsTheSameRolesWithBothFramings(bool encapsulated, bool hasArena)
+    public async Task ReadWrite_LegacyTapes_ReadsTheSameRolesWithBothFramings(bool encapsulated, bool hasArena)
     {
         var bullet = CreateTape(11);
         var character = CreateTape(22);
@@ -949,7 +949,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task LegacyTapes_PreservesExternalReferencesWithoutLoadingThem()
+    public async Task ReadWrite_LegacyTapes_PreservesExternalReferencesWithoutLoadingThem()
     {
         using var payload = new ObjectModelPayload();
         var bulletFile = payload.NodeRef("Bullet.Tape.Gbx");
@@ -979,7 +979,7 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task MissingLegacyChunks_ReadThroughTheNodeDispatcher()
+    public async Task ReadWrite_MissingLegacyChunks_ReadThroughTheNodeDispatcher()
     {
         var payload = Payload(w =>
         {
@@ -1024,7 +1024,7 @@ public class CGameCtnReplayRecordTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task GhostLists_ReadsRecordingDurationAndPreservesOldShowTimes(bool legacy, bool hasShowTimes)
+    public async Task ReadWrite_GhostLists_ReadsRecordingDurationAndPreservesOldShowTimes(bool legacy, bool hasShowTimes)
     {
         ulong[] records = hasShowTimes ? [0x0123456789ABCDEF, 0xFEDCBA9876543210] : [];
         var payload = Payload(w =>

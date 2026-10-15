@@ -13,7 +13,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task ChunksPreserveFieldOrderAndPackedFlags(int offset)
+    public async Task ReadWrite_Chunks_PreserveFieldOrderAndPackedFlags(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -52,7 +52,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task NodeBodiesRecognizeAllChunks(int offset)
+    public async Task ReadNode_NodeBodies_RecognizeAllChunks(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -74,7 +74,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
     [Test]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task ImageSpaceBitmapPreservesEmbeddedNodeReferences(int offset)
+    public async Task ReadWrite_ImageSpaceBitmap_PreservesEmbeddedNodeReferences(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -100,7 +100,7 @@ public class CPlugBitmapRenderCubeMapLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstruction()
+    public async Task Constructor_Defaults_MatchNativeConstruction()
     {
         var node = new CPlugBitmapRenderCubeMap();
         await Assert.That(node.CubeFaceCount).IsEqualTo(6);

@@ -12,7 +12,7 @@ public class CGameCtnPrecalcPartParamsChunkTests
     [Arguments(1, false)]
     [Arguments(2, false)]
     [Arguments(2, true)]
-    public async Task NativeLayout_PreservesVersionsAndExternalReferences(int version, bool collision)
+    public async Task ReadWrite_NativeLayout_PreservesVersionsAndExternalReferences(int version, bool collision)
     {
         var collisionFile = collision ? new GbxRefTableFile(new(), 0, true, "Collision.Surface.Gbx") : null;
         var decalFile = new GbxRefTableFile(new(), 0, true, "Particle.Decal.Gbx");
@@ -82,7 +82,7 @@ public class CGameCtnPrecalcPartParamsChunkTests
     }
 
     [Test]
-    public async Task Defaults_MatchNativeConstructor()
+    public async Task Constructor_Defaults_MatchNativeConstructor()
     {
         var node = new CGameCtnPrecalcPartParams();
         await Assert.That(node.FluidFriction).IsEqualTo(0.5f);
@@ -106,7 +106,7 @@ public class CGameCtnPrecalcPartParamsChunkTests
     }
 
     [Test]
-    public async Task BlockInfo_ReadsTypedInlineParticleParameters()
+    public async Task ReadWrite_BlockInfo_ReadsTypedInlineParticleParameters()
     {
         var parameters = new CGameCtnPrecalcPartParams { Mass = 2, IterCount = 42 };
         parameters.CreateChunk<CGameCtnPrecalcPartParams.Chunk0311C000>().Version = 2;

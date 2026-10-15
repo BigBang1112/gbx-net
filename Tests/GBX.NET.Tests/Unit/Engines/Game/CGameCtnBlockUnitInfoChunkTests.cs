@@ -12,7 +12,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task Chunk0303600C_ReadsNativeLayoutAndRoundTripsExternalClips(int version)
+    public async Task ReadWrite_Chunk0303600C_ReadsNativeLayoutAndRoundTripsExternalClips(int version)
     {
         // Counts are north=3, east=2, south=1, west=0, top=3, bottom=1.
         int[] counts = [3, 2, 1, 0, 3, 1];
@@ -94,7 +94,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task Chunk0303600C_LaterVersionsWriteSevenClipsPerDirection(int version)
+    public async Task ReadWrite_Chunk0303600C_LaterVersionsWriteSevenClipsPerDirection(int version)
     {
         var original = new CGameCtnBlockUnitInfo
         {
@@ -137,7 +137,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task Chunk0303600C_Version0RejectsMoreThanThreeClips(int direction)
+    public async Task ReadWrite_Chunk0303600C_Version0RejectsMoreThanThreeClips(int direction)
     {
         var clips = Enumerable.Range(0, 4).Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray();
         var original = new CGameCtnBlockUnitInfo
@@ -158,7 +158,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     }
 
     [Test]
-    public async Task Chunk0303600C_Version0WritesEmptyClipCounts()
+    public async Task ReadWrite_Chunk0303600C_Version0WritesEmptyClipCounts()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

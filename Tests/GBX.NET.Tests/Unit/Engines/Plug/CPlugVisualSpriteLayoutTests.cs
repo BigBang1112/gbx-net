@@ -9,7 +9,7 @@ public class CPlugVisualSpriteLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyRenderModePreservesOtherSpriteFlags(bool sorting)
+    public async Task ReadWrite_LegacyRenderMode_PreservesOtherSpriteFlags(bool sorting)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -56,7 +56,7 @@ public class CPlugVisualSpriteLayoutTests
     }
 
     [Test]
-    public async Task LegacySpriteChunksPreserveUnsignedFlagsAndAtlasCounts()
+    public async Task ReadWrite_LegacySpriteChunks_PreserveUnsignedFlagsAndAtlasCounts()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -94,7 +94,7 @@ public class CPlugVisualSpriteLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(2)]
-    public async Task AtlasRectanglesPreserveCountAndCoordinateOrder(int count)
+    public async Task ReadWrite_AtlasRectangles_PreserveCountAndCoordinateOrder(int count)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -127,7 +127,7 @@ public class CPlugVisualSpriteLayoutTests
     }
 
     [Test]
-    public async Task SpriteParametersAreEmbeddedWithoutAClassIdOrReferenceIndex()
+    public async Task ReadWrite_SpriteParameters_AreEmbeddedWithoutAClassIdOrReferenceIndex()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

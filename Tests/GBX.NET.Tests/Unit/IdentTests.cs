@@ -5,7 +5,7 @@ namespace GBX.NET.Tests.Unit;
 public class IdentTests
 {
     [Test]
-    public async Task Constructor_IsCorrect()
+    public async Task Constructor_NoArguments_InitializesEmptyValues()
     {
         // Arrange & Act
         var i = new Ident();
@@ -17,7 +17,7 @@ public class IdentTests
     }
 
     [Test]
-    public async Task Contructor_String_IsCorrect()
+    public async Task Constructor_String_InitializesIdentifier()
     {
         // Arrange & Act
         var i = new Ident("Test");
@@ -41,7 +41,7 @@ public class IdentTests
     }
 
     [Test]
-    public async Task ToString_ReturnsCorrect()
+    public async Task ToString_CollectionId_ReturnsFormattedIdentifier()
     {
         // Arrange
         var i = new Ident("Test", 12, "Hell");
@@ -54,7 +54,7 @@ public class IdentTests
     }
 
     [Test]
-    public async Task Empty_IsCorrect()
+    public async Task Empty_WhenAccessed_ReturnsEmptyIdentifier()
     {
         // Arrange & Act
         var i = Ident.Empty;
@@ -66,7 +66,7 @@ public class IdentTests
     }
 
     [Test]
-    public async Task ImplicitConversionFromTuple_IsCorrect()
+    public async Task ImplicitConversionFromTuple_IdCollectionAndAuthor_PreservesValues()
     {
         // Arrange
         var t = ("Test", new Id(12), "Hell");

@@ -12,7 +12,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task UnchangedZip_PreservesExpectedItemsAndOrder(int version)
+    public async Task ReadWrite_UnchangedZip_PreservesExpectedItemsAndOrder(int version)
     {
         using var payload = CreatePayload(version, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -27,7 +27,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task IdenticalReplacementZip_PreservesExpectedItems(int version)
+    public async Task ReadWrite_IdenticalReplacementZip_PreservesExpectedItems(int version)
     {
         using var payload = CreatePayload(version, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -41,7 +41,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task EmptyZip_PreservesExpectedItems(int version)
+    public async Task ReadWrite_EmptyZip_PreservesExpectedItems(int version)
     {
         using var payload = CreatePayload(version, [], ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -54,7 +54,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task UnchangedZip_DoesNotRequireReadableArchive(bool emptyExpectedItems)
+    public async Task ReadWrite_UnchangedZip_DoesNotRequireReadableArchive(bool emptyExpectedItems)
     {
         using var payload = CreatePayload(1, [1, 2, 3], emptyExpectedItems ? [] : ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -65,7 +65,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     }
 
     [Test]
-    public async Task ChangedZip_RebuildsExpectedItems()
+    public async Task ReadWrite_ChangedZip_RebuildsExpectedItems()
     {
         using var payload = CreatePayload(1, [1, 2, 3], ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -81,7 +81,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task NewOrReplacedZip_DiscoversItemIdentifiers(bool replaceOriginal)
+    public async Task ReadWrite_NewOrReplacedZip_DiscoversItemIdentifiers(bool replaceOriginal)
     {
         var node = new CGameCtnChallenge();
         var chunk = new CGameCtnChallenge.Chunk03043054 { Version = 1 };
@@ -107,7 +107,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     }
 
     [Test]
-    public async Task InPlaceZipMutation_RebuildsExpectedItems()
+    public async Task ReadWrite_InPlaceZipMutation_RebuildsExpectedItems()
     {
         using var payload = CreatePayload(1, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -123,7 +123,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task RemovedZip_DoesNotReuseExpectedItems(bool useNull)
+    public async Task ReadWrite_RemovedZip_DoesNotReuseExpectedItems(bool useNull)
     {
         using var payload = CreatePayload(1, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -139,7 +139,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task ZipUpdate_RebuildsExpectedItems(bool asyncUpdate)
+    public async Task ReadWrite_ZipUpdate_RebuildsExpectedItems(bool asyncUpdate)
     {
         using var payload = CreatePayload(1, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();
@@ -163,7 +163,7 @@ public class CGameCtnChallengeEmbeddedItemsTests
     }
 
     [Test]
-    public async Task Clone_PreservesExpectedItemsForUnchangedZip()
+    public async Task DeepClone_Node_PreservesExpectedItemsForUnchangedZip()
     {
         using var payload = CreatePayload(1, CreateZip(), ExpectedItems());
         var node = new CGameCtnChallenge();

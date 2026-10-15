@@ -13,7 +13,7 @@ public class CGameCtnMediaShootParamsLayoutTests
     [Arguments(0, true)]
     [Arguments(1, false)]
     [Arguments(1, true)]
-    public async Task LegacyChunksConvertBooleanSettings(int chunkOffset, bool enabled)
+    public async Task ReadWrite_LegacyChunks_ConvertBooleanSettings(int chunkOffset, bool enabled)
     {
         var payload = Payload(w =>
         {
@@ -58,7 +58,7 @@ public class CGameCtnMediaShootParamsLayoutTests
     [Arguments(1, 2)]
     [Arguments(1, 3)]
     [Arguments(1, 43)]
-    public async Task CurrentChunkKeepsCaptureAndEncoderSettings(int version, int motionBlur)
+    public async Task ReadWrite_CurrentChunk_KeepsCaptureAndEncoderSettings(int version, int motionBlur)
     {
         var payload = Payload(w =>
         {
@@ -117,7 +117,7 @@ public class CGameCtnMediaShootParamsLayoutTests
     }
 
     [Test]
-    public async Task VideoDefaultsAndEncoderAliasesMatchNativeSettings()
+    public async Task Constructor_VideoDefaultsAndEncoderAliases_MatchNativeSettings()
     {
         var node = new CGameCtnMediaShootParams();
 
@@ -167,7 +167,7 @@ public class CGameCtnMediaShootParamsLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(7)]
-    public async Task EncoderVersionsAreStoredIndependently(int version)
+    public async Task ReadWrite_EncoderVersions_AreStoredIndependently(int version)
     {
         var videoPayload = Payload(w =>
         {
@@ -194,7 +194,7 @@ public class CGameCtnMediaShootParamsLayoutTests
     }
 
     [Test]
-    public async Task CloningKeepsModernModesAndCopiesEncoders()
+    public async Task DeepClone_Node_KeepsModernModesAndCopiesEncoders()
     {
         var node = new CGameCtnMediaShootParams
         {

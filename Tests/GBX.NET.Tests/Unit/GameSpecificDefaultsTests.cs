@@ -10,7 +10,7 @@ namespace GBX.NET.Tests.Unit;
 public class GameSpecificDefaultsTests
 {
     [Test]
-    public async Task LayoutDefaultsAreAvailableAsPropertyMetadata()
+    public async Task GetCustomAttributes_LayoutDefaults_ReturnsGameSpecificPropertyMetadata()
     {
         var expected = new (Type Type, string Member, GameVersion Game, object Value)[]
         {
@@ -46,7 +46,7 @@ public class GameSpecificDefaultsTests
     }
 
     [Test]
-    public async Task ChunkVersionsAreAvailableAsChunkMetadata()
+    public async Task GetCustomAttributes_ChunkVersions_ReturnsGameSpecificVersionMetadata()
     {
         var expected = new (Type Type, GameVersion Game, int[] Versions)[]
         {
@@ -69,7 +69,7 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.TM2020, 0)]
     [Arguments(GameVersion.Unspecified, 0)]
     [Arguments(GameVersion.TM10 | GameVersion.TMPU, 0)]
-    public async Task MedalDefaultsRequireAnExactGameContext(GameVersion gameVersion, int bronze)
+    public async Task Constructor_MedalDefaults_RequiresExactGameContext(GameVersion gameVersion, int bronze)
     {
         var node = new CGameCtnChallengeGroup(gameVersion);
         await Assert.That(node.AllBronzeValue).IsEqualTo(bronze);
@@ -84,7 +84,7 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.MP4, 0.024f, 3f)]
     [Arguments(GameVersion.TM2020, 0.1f, 1.5f)]
     [Arguments(GameVersion.Unspecified, 0.1f, 1.5f)]
-    public async Task AmbientOcclusionDefaultsPreserveTheCurrentFallback(GameVersion gameVersion, float radius, float blur)
+    public async Task Constructor_AmbientOcclusionDefaults_PreservesCurrentFallback(GameVersion gameVersion, float radius, float blur)
     {
         var node = new CHmsAmbientOcc(gameVersion);
         await Assert.That(node.ImageRadius).IsEqualTo(radius);
@@ -97,7 +97,7 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.TMF, 0xFFF1C00019800000UL, (ushort)0)]
     [Arguments(GameVersion.TM2020, 0xFFF1C00018800000UL, (ushort)1)]
     [Arguments(GameVersion.Unspecified, 0xFFF1C00018800000UL, (ushort)1)]
-    public async Task ItemDefaultsSelectTheLegacyFlagsAndVisibleId(GameVersion gameVersion, ulong flags, ushort visibleId)
+    public async Task Constructor_LegacyItemDefaults_SelectsFlagsAndVisibleId(GameVersion gameVersion, ulong flags, ushort visibleId)
     {
         var node = new CHmsItem(gameVersion);
         await Assert.That(node.FlagsItem).IsEqualTo(flags);
@@ -113,7 +113,7 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.Unspecified, 0)]
     [Arguments(GameVersion.TMF, 0)]
     [Arguments(GameVersion.MP3 | GameVersion.MP4, 0)]
-    public async Task MapInfoChunkWritesTheSelectedVersion(GameVersion gameVersion, int version)
+    public async Task Write_MapInfoChunk_UsesSelectedVersion(GameVersion gameVersion, int version)
     {
         var chunk = new CGameCtnChallengeGroup.Chunk0308F00B(gameVersion);
         using var stream = new MemoryStream();
@@ -129,7 +129,7 @@ public class GameSpecificDefaultsTests
     }
 
     [Test]
-    public async Task ReadingAChunkReplacesItsGameSpecificVersionDefault()
+    public async Task Read_ChunkVersion_ReplacesGameSpecificDefault()
     {
         var chunk = new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP3);
         using var stream = new MemoryStream();
@@ -154,7 +154,7 @@ public class GameSpecificDefaultsTests
     [Arguments(GameVersion.TMF, 0)]
     [Arguments(GameVersion.Unspecified, 0)]
     [Arguments(GameVersion.MP4 | GameVersion.TM2020, 0)]
-    public async Task ClipVersionDefaultsRequireAnExactGameContext(GameVersion gameVersion, int version)
+    public async Task Constructor_ClipVersionDefaults_RequiresExactGameContext(GameVersion gameVersion, int version)
     {
         await Assert.That(new CGameCtnMediaClip.Chunk0307900D(gameVersion).Version).IsEqualTo(version);
         await Assert.That(new CGameCtnMediaClip.Chunk0307900D().Version).IsEqualTo(0);

@@ -16,7 +16,7 @@ public class CGameCtnChallengeTests
     [Arguments(8, true)]
     [Arguments(9, true)]
     [Arguments(10, true)]
-    public async Task EmptyLightmapFramesOmitCachePayload(int version, bool modernChunk)
+    public async Task ReadWrite_EmptyLightmapFrames_OmitCachePayload(int version, bool modernChunk)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -63,7 +63,7 @@ public class CGameCtnChallengeTests
     }
 
     [Test]
-    public async Task EmptyMapQueriesReturnNoElements()
+    public async Task GetBlocksAndGetAnchoredObjects_EmptyMap_ReturnNoElements()
     {
         var map = new CGameCtnChallenge();
 
@@ -176,7 +176,7 @@ public class CGameCtnChallengeTests
     }
 
     [Test]
-    public async Task IdentPlacementKeepsModelMetadataAndCreatesLegacyChunk()
+    public async Task PlaceBlock_IdentModel_PreservesMetadataAndCreatesLegacyChunk()
     {
         var map = new CGameCtnChallenge { Blocks = [] };
         var model = new Ident("Start", "Stadium", "Maker");
@@ -220,7 +220,7 @@ public class CGameCtnChallengeTests
     }
 
     [Test]
-    public async Task RemoveAllClearsBlocksItemsAndOffzones()
+    public async Task RemoveAll_BlocksItemsAndOffzones_ClearsAllCollections()
     {
         var map = new CGameCtnChallenge { Blocks = [], AnchoredObjects = [], Offzones = [] };
         map.PlaceBlock("Start", new Int3(), Direction.North);

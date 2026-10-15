@@ -11,7 +11,7 @@ public class CPlugShaderGenericLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task MaterialChunksPreserveFieldOrderAndFlags(int offset)
+    public async Task ReadWrite_MaterialChunks_PreserveFieldOrderAndFlags(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -61,7 +61,7 @@ public class CPlugShaderGenericLayoutTests
     [Arguments(GameVersion.TMNESWC, true)]
     [Arguments(GameVersion.VSK5, true)]
     [Arguments(GameVersion.TMF, true)]
-    public async Task MaterialDefaultsMatchNativeConstruction(GameVersion gameVersion, bool legacy)
+    public async Task Constructor_MaterialDefaults_MatchNativeConstruction(GameVersion gameVersion, bool legacy)
     {
         var material = new CPlugShaderGeneric(gameVersion).Material!;
         var color = legacy ? Vec3.One : Vec3.Zero;
@@ -78,7 +78,7 @@ public class CPlugShaderGenericLayoutTests
     }
 
     [Test]
-    public async Task LightingPropertiesPreserveOtherFlagBits()
+    public async Task LightingProperties_WhenChanged_PreserveOtherFlagBits()
     {
         var material = new CPlugShaderGeneric.SMaterial { Flags = 0xFFFFFC00 };
         material.UseAmbient = true;

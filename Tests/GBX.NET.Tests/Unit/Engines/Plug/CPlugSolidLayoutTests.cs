@@ -19,7 +19,7 @@ public class CPlugSolidLayoutTests
     [Arguments(17, true, true, false)]
     [Arguments(17, false, true, true)]
     [Arguments(17, true, true, true)]
-    public async Task ModelAndTree_ReadsConditionalModelReferences(int offset, bool useModel, bool hasModel, bool external)
+    public async Task ReadWrite_ModelAndTree_ReadsConditionalModelReferences(int offset, bool useModel, bool hasModel, bool external)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -64,7 +64,7 @@ public class CPlugSolidLayoutTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task AudioInstances_PreservesModelsTransformsAndVersionedTail(int version)
+    public async Task ReadWrite_AudioInstances_PreservesModelsTransformsAndVersionedTail(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -114,7 +114,7 @@ public class CPlugSolidLayoutTests
     [Arguments(4, 0)]
     [Arguments(4, 1)]
     [Arguments(4, 2)]
-    public async Task LodNormalMaps_PreservesTgaAndInlineImageArchives(int version, int archiveVersion)
+    public async Task ReadWrite_LodNormalMaps_PreservesTgaAndInlineImageArchives(int version, int archiveVersion)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -162,7 +162,7 @@ public class CPlugSolidLayoutTests
     [Arguments(2, 2, 1, 3u | (4u << 2) | (1u << 15), 96)]
     [Arguments(2, 2, 3, 1u | (4u << 2) | (1u << 15) | (1u << 27), 48)]
     [Arguments(3, 2, 1, 1u | (15u << 5) | (1u << 15), 24)]
-    public async Task ImageData_ConsumesMipLevelsCubeFacesAndArrayLayers(int width, int height, int depth, uint flags, int byteCount)
+    public async Task ReadWrite_ImageData_ConsumesMipLevelsCubeFacesAndArrayLayers(int width, int height, int depth, uint flags, int byteCount)
     {
         using var payload = new ObjectModelPayload();
         WriteImage(payload.Writer, new Int3(width, height, depth), flags, byteCount);
@@ -174,7 +174,7 @@ public class CPlugSolidLayoutTests
     }
 
     [Test]
-    public async Task PhysicalFlags_ConsumesTheLegacyFloatBeforeTheFinalInteger()
+    public async Task ReadWrite_PhysicalFlags_ConsumesTheLegacyFloatBeforeTheFinalInteger()
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -200,7 +200,7 @@ public class CPlugSolidLayoutTests
     [Test]
     [Arguments(6)]
     [Arguments(14)]
-    public async Task PhysicalParameters_ReadsMassCenterOfMassAndInverseInertia(int offset)
+    public async Task ReadWrite_PhysicalParameters_ReadsMassCenterOfMassAndInverseInertia(int offset)
     {
         using var payload = new ObjectModelPayload();
         var count = offset == 6 ? 15 : 16;
@@ -228,7 +228,7 @@ public class CPlugSolidLayoutTests
     }
 
     [Test]
-    public async Task TileCountU_PreservesLegacyByteWidth()
+    public async Task ReadWrite_TileCountU_PreservesLegacyByteWidth()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write((byte)4);
@@ -241,7 +241,7 @@ public class CPlugSolidLayoutTests
     }
 
     [Test]
-    public async Task NullLodImages_ConsumesOnlyTheNullFlags()
+    public async Task ReadWrite_NullLodImages_ConsumesOnlyTheNullFlags()
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;

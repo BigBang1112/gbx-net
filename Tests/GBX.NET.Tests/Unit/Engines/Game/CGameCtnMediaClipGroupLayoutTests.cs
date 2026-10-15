@@ -10,7 +10,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnMediaClipGroupLayoutTests
 {
     [Test]
-    public async Task CombinedClipEntriesKeepExternalDescriptorsWithoutResolvingDuringWriteOrClone()
+    public async Task ReadWrite_CombinedClipEntries_KeepExternalDescriptorsWithoutResolvingDuringWriteOrClone()
     {
         var calls = 0;
         var table = new GbxRefTable();
@@ -66,7 +66,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     [Arguments(1, true)]
     [Arguments(2, true)]
     [Arguments(3, true)]
-    public async Task GroupsKeepClipReferencesAndTriggerOrder(int version, bool hasClips)
+    public async Task ReadWrite_Groups_KeepClipReferencesAndTriggerOrder(int version, bool hasClips)
     {
         var payload = Payload(w =>
         {
@@ -124,7 +124,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task TriggerVersionsUseTheNativeFieldOrder(int version)
+    public async Task ReadWrite_TriggerVersions_UseTheNativeFieldOrder(int version)
     {
         var payload = Payload(w => Trigger(w, version, 2));
         var trigger = new CGameCtnMediaClipGroup.Trigger();
@@ -139,7 +139,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     [Test]
     [Arguments(-1)]
     [Arguments(0x12345678)]
-    public async Task DiscardedLegacyWordKeepsItsPayload(int value)
+    public async Task ReadWrite_DiscardedLegacyWord_KeepsItsPayload(int value)
     {
         var payload = Payload(w => w.Write(value));
         var group = new CGameCtnMediaClipGroup();
@@ -151,7 +151,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     }
 
     [Test]
-    public async Task ObsoleteTriggerAliasesChangeOnlyTheirComponents()
+    public async Task TriggerAliases_WhenChanged_ChangeOnlyTheirComponents()
     {
         var trigger = new CGameCtnMediaClipGroup.Trigger
         {
@@ -179,7 +179,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     }
 
     [Test]
-    public async Task GroupCloneKeepsClipIdentityAndCopiesTriggerCoordinates()
+    public async Task DeepClone_ClipGroup_PreservesClipIdentityAndCopiesTriggerCoordinates()
     {
         var clip = new CGameCtnMediaClip { Name = "Shared" };
         var group = new CGameCtnMediaClipGroup
@@ -204,7 +204,7 @@ public class CGameCtnMediaClipGroupLayoutTests
     }
 
     [Test]
-    public async Task TMUnlimiterMappingsKeepClipIndicesAndSharedResources()
+    public async Task ReadWrite_TMUnlimiterMappings_KeepClipIndicesAndSharedResources()
     {
         var payload = Payload(w =>
         {

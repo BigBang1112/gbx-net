@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugTreeGeneratorLayoutTests
 {
     [Test]
-    public async Task NativeDefaultsApplyToDerivedGenerators()
+    public async Task Constructor_NativeDefaults_ApplyToDerivedGenerators()
     {
         var node = new CPlugTreeGenerator();
         var crystal = new CPlugCrystal();
@@ -22,7 +22,7 @@ public class CPlugTreeGeneratorLayoutTests
     [Arguments(true, false, 0x80000001u)]
     [Arguments(false, true, 0x80000002u)]
     [Arguments(true, true, 0x80000003u)]
-    public async Task NativeFlagPropertiesPreserveOtherBits(bool saveGenerated, bool keepInRelease, uint expected)
+    public async Task FlagProperties_WhenChanged_PreserveOtherBits(bool saveGenerated, bool keepInRelease, uint expected)
     {
         var node = new CPlugTreeGenerator { Flags = 0x80000003u };
         node.IsSaveGenerated = saveGenerated;
@@ -43,7 +43,7 @@ public class CPlugTreeGeneratorLayoutTests
     [Arguments(2u)]
     [Arguments(3u)]
     [Arguments(uint.MaxValue)]
-    public async Task FlagsKeepTheirFourByteWireLayout(uint flags)
+    public async Task ReadWrite_Flags_KeepTheirFourByteWireLayout(uint flags)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

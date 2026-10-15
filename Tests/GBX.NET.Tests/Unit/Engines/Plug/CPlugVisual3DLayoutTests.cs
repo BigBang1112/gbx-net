@@ -9,7 +9,7 @@ public class CPlugVisual3DLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyChunks_PreservePositionNormalColorAndTangents(bool bitangents)
+    public async Task ReadWrite_LegacyChunks_PreservePositionNormalColorAndTangents(bool bitangents)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -56,7 +56,7 @@ public class CPlugVisual3DLayoutTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task PackedVertices_PreserveNativeNormalAndBgraColor(bool sprite, bool compressed)
+    public async Task ReadWrite_PackedVertices_PreserveNativeNormalAndBgraColor(bool sprite, bool compressed)
     {
         const int packedNormal = unchecked((int)0xC00FFFFF); // X=-1, Y=-1, Z=0, unused high bits set.
         const int packedColor = unchecked((int)0x80402010);
@@ -95,7 +95,7 @@ public class CPlugVisual3DLayoutTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task OptionalVertexElements_RespectPresenceFlagsAndNativeDefaults(bool normals, bool colors)
+    public async Task ReadWrite_OptionalVertexElements_RespectPresenceFlagsAndNativeDefaults(bool normals, bool colors)
     {
         var node = new CPlugVisual3D { VertexCount = 1, Flags = (1 << 22) | (normals ? 1 << 7 : 0) | (colors ? 1 << 8 : 0) };
         using var payload = new MemoryStream();
@@ -121,7 +121,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public async Task CompressedColors_UseNativeRounding()
+    public async Task ReadWrite_CompressedColors_UseNativeRounding()
     {
         var vertex = new CPlugVisual3D.Vertex(new Vec3(1, 2, 3), Color: new Vec4(0.5f, 0.25f, 0.75f, 0.1f));
         using var stream = new MemoryStream();
@@ -132,7 +132,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public async Task CompressedNormals_UseSignedTenBitComponentsAndTruncation()
+    public async Task ReadWrite_CompressedNormals_UseSignedTenBitComponentsAndTruncation()
     {
         var vertex = new CPlugVisual3D.Vertex(new Vec3(1, 2, 3), new Vec3(-0.5f, 1, 0));
         using var stream = new MemoryStream();
@@ -143,7 +143,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public async Task LegacyBlendShapeReference_PreservesClearingAfterRead()
+    public async Task ReadWrite_LegacyBlendShapeReference_PreservesClearingAfterRead()
     {
         var node = new CPlugVisual3D { BlendShapes = new CPlugVisual() };
         var chunk = new CPlugVisual3D.Chunk0902C002();
@@ -167,7 +167,7 @@ public class CPlugVisual3DLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task VertexStreams_OmitClassicVerticesButKeepTangentData(bool compressed)
+    public async Task ReadWrite_VertexStreams_OmitClassicVerticesButKeepTangentData(bool compressed)
     {
         var node = new CPlugVisual3D { VertexCount = 1, Flags = compressed ? 1 << 20 : 0,
             VertexStreams = [new CPlugVertexStream()] };
@@ -194,7 +194,7 @@ public class CPlugVisual3DLayoutTests
     [Test]
     [Arguments(-1)]
     [Arguments(2)]
-    public void InvalidTangentCounts_AreRejected(int count)
+    public void ReadWrite_InvalidTangentCounts_AreRejected(int count)
     {
         var node = new CPlugVisual3D { VertexCount = 1, VertexStreams = [new CPlugVertexStream()] };
         using var stream = new MemoryStream(BitConverter.GetBytes(count));
@@ -204,7 +204,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public void InvalidTangentLength_IsRejectedOnWrite()
+    public void ReadWrite_InvalidTangentLength_IsRejectedOnWrite()
     {
         var node = new CPlugVisual3D { VertexCount = 1, VertexStreams = [new CPlugVertexStream()] };
         var chunk = new CPlugVisual3D.Chunk0902C004 { TangentCount = 1, TangentData = new byte[4] };
@@ -215,7 +215,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public void TruncatedTangentData_IsRejected()
+    public void ReadWrite_TruncatedTangentData_IsRejected()
     {
         var node = new CPlugVisual3D { VertexCount = 1, Flags = 1 << 20, VertexStreams = [new CPlugVertexStream()] };
         using var stream = new MemoryStream([1, 0, 0, 0, 12, 34]);
@@ -225,7 +225,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public void InvalidVertexCount_IsRejectedOnWrite()
+    public void ReadWrite_InvalidVertexCount_IsRejectedOnWrite()
     {
         var node = new CPlugVisual3D { VertexCount = 1 };
         using var stream = new MemoryStream();
@@ -235,7 +235,7 @@ public class CPlugVisual3DLayoutTests
     }
 
     [Test]
-    public async Task LegacyColorAliases_MapToRgba()
+    public async Task LegacyColorAliases_WhenChanged_MapToRgba()
     {
 #pragma warning disable CS0618
         var vertex = new CPlugVisual3D.Vertex { U02 = new Vec3(0.25f, 0.5f, 0.75f), U03 = 1 };

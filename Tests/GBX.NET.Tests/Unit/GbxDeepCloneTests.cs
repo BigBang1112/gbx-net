@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit;
 public class GbxDeepCloneTests
 {
     [Test]
-    public async Task RootClonePreservesSharedReferencesAndCyclesWithoutSharingMutableState()
+    public async Task DeepClone_RootWithSharedReferencesAndCycles_CopiesMutableStateAndPreservesAliases()
     {
         const uint chunkId = 0x030430FE;
         var block = new CGameCtnBlock { Name = "Start", Coord = new Int3(1, 2, 3) };
@@ -56,7 +56,7 @@ public class GbxDeepCloneTests
     }
 
     [Test]
-    public async Task TypedRootCloneRetainsAliasesInsideMediaTracks()
+    public async Task DeepClone_TypedRoot_RetainsAliasesInsideMediaTracks()
     {
         var ghost = new CGameCtnGhost();
         var first = new CGameCtnMediaBlockGhost { GhostModel = ghost };
@@ -85,7 +85,7 @@ public class GbxDeepCloneTests
     }
 
     [Test]
-    public async Task CloneRemapsTriangleKeyBackReferenceToClonedBlock()
+    public async Task DeepClone_TriangleKeyBackReference_RemapsToClonedBlock()
     {
         var triangles = new CGameCtnMediaBlockTriangles { Vertices = new Vec4[3] };
         triangles.Keys.Add(new CGameCtnMediaBlockTriangles.Key(triangles));
@@ -107,7 +107,7 @@ public class GbxDeepCloneTests
     }
 
     [Test]
-    public async Task InterfaceCloneUsesGeneratedEngineFieldCopying()
+    public async Task DeepClone_InterfaceReference_UsesGeneratedEngineFieldCopying()
     {
         IClass original = new CGameCtnMediaClip
         {
@@ -124,7 +124,7 @@ public class GbxDeepCloneTests
     }
 
     [Test]
-    public async Task CloneCopiesMutablePayloadsAndScriptTraits()
+    public async Task DeepClone_MutablePayloadsAndScriptTraits_CopiesIndependentValues()
     {
         var trait = new CScriptTraitsMetadata.ScriptTrait<int>(
             new CScriptTraitsMetadata.ScriptType(CScriptTraitsMetadata.EScriptType.Integer), 7);

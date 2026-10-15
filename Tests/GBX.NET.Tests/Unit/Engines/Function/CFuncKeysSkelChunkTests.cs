@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Function;
 public class CFuncKeysSkelChunkTests
 {
     [Test]
-    public async Task Chunk05006001_RoundTripsFixedLengthLocationRows()
+    public async Task ReadWrite_Chunk05006001_RoundTripsFixedLengthLocationRows()
     {
         var original = new CFuncKeysSkel
         {
@@ -50,7 +50,7 @@ public class CFuncKeysSkelChunkTests
     }
 
     [Test]
-    public void Chunk05006001_RejectsRowsWithWrongBoneCount()
+    public void ReadWrite_Chunk05006001_RejectsRowsWithWrongBoneCount()
     {
         var node = new CFuncKeysSkel
         {
@@ -66,7 +66,7 @@ public class CFuncKeysSkelChunkTests
     }
 
     [Test]
-    public async Task Chunk05006001_WritesEmptyLocationsWithoutSkeleton()
+    public async Task ReadWrite_Chunk05006001_WritesEmptyLocationsWithoutSkeleton()
     {
         var node = new CFuncKeysSkel();
 

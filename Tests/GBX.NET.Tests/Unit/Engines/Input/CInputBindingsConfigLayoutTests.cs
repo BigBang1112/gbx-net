@@ -16,7 +16,7 @@ public class CInputBindingsConfigLayoutTests
     [Arguments(2, 2)]
     [Arguments(3, 0)]
     [Arguments(3, 2)]
-    public async Task BindingPayloadsPreserveNativeFieldOrder(int format, int count)
+    public async Task ReadWrite_BindingPayloads_PreserveNativeFieldOrder(int format, int count)
     {
         var payload = BindingPayload(format, count);
         var node = new CInputBindingsConfig();
@@ -55,7 +55,7 @@ public class CInputBindingsConfigLayoutTests
     [Test]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task SkippableIdPayloadsReuseEarlierIdsAndRestoreDictionaryCount(int chunkId)
+    public async Task ReadWrite_SkippableIdPayloads_ReusesEarlierIdsAndRestoresDictionaryCount(int chunkId)
     {
         using var expected = new MemoryStream();
         using (var writer = new BinaryWriter(expected, Encoding.UTF8, leaveOpen: true))
@@ -118,7 +118,7 @@ public class CInputBindingsConfigLayoutTests
     }
 
     [Test]
-    public async Task ConfigNameIsSharedByLegacyAndMetadataChunks()
+    public async Task ReadWrite_ConfigName_IsSharedByLegacyAndMetadataChunks()
     {
         var node = new CInputBindingsConfig();
         await Assert.That(node.Name).IsEqualTo("");
@@ -137,7 +137,7 @@ public class CInputBindingsConfigLayoutTests
     }
 
     [Test]
-    public async Task AdditionalSettingsWriteZeroPadding()
+    public async Task ReadWrite_AdditionalSettings_WriteZeroPadding()
     {
         var chunk = new CInputBindingsConfig.Chunk13006006 { U01 = 17, U02 = 42, U03 = 43 };
         using var output = new MemoryStream();

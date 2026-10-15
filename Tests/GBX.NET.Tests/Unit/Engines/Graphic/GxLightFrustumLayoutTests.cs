@@ -13,7 +13,7 @@ public class GxLightFrustumLayoutTests
     [Arguments(0, true)]
     [Arguments(1, false)]
     [Arguments(1, true)]
-    public async Task OldFrustumChunksConvertBoundsAndLegacyBooleans(int offset, bool orthographic)
+    public async Task ReadWrite_OldFrustumChunks_ConvertBoundsAndLegacyBooleans(int offset, bool orthographic)
     {
         var payload = Payload(orthographic, offset == 0 ? 0x80050u : uint.MaxValue, legacyBooleans: offset == 0);
         var node = new GxLightFrustum();
@@ -40,7 +40,7 @@ public class GxLightFrustumLayoutTests
     [Arguments(5, true)]
     [Arguments(6, false)]
     [Arguments(6, true)]
-    public async Task ModernGeometryKeepsAllSixValuesAndAppliesLegacyFlagMasks(int offset, bool orthographic)
+    public async Task ReadWrite_ModernGeometry_KeepsAllSixValuesAndAppliesLegacyFlagMasks(int offset, bool orthographic)
     {
         var node = new GxLightFrustum();
         ((GxLightBall)node).Flags = 0xDEADBEEF;
@@ -74,7 +74,7 @@ public class GxLightFrustumLayoutTests
     [Arguments(1u, 1u, 2u)]
     [Arguments(6u, 2u, 3u)]
     [Arguments(123u, 456u, 0u)]
-    public async Task LegacyBlendPairsMapToNativeApplyModes(uint source, uint destination, uint mode)
+    public async Task ReadWrite_LegacyBlendPairs_MapsToNativeApplyModes(uint source, uint destination, uint mode)
     {
         var node = new GxLightFrustum();
         ((GxLightBall)node).Flags = 0xDEADBEEF;
@@ -93,7 +93,7 @@ public class GxLightFrustumLayoutTests
     }
 
     [Test]
-    public async Task ConstructorUsesNativePerspectiveAndAttenuationDefaults()
+    public async Task Constructor_NewNode_UsesNativePerspectiveAndAttenuationDefaults()
     {
         var node = new GxLightFrustum();
         await Assert.That(node.Frustum).IsNotNull();

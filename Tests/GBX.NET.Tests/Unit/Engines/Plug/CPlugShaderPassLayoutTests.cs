@@ -18,7 +18,7 @@ public class CPlugShaderPassLayoutTests
     [Arguments(1, 0)]
     [Arguments(1, 1)]
     [Arguments(1, 2)]
-    public async Task PipelinePreservesAbsentEmbeddedAndExternalGpuPayloads(int version, int referenceKind)
+    public async Task ReadWrite_Pipeline_PreservesAbsentEmbeddedAndExternalGpuPayloads(int version, int referenceKind)
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "Shader.Gbx");
         using var payload = new MemoryStream();
@@ -57,7 +57,7 @@ public class CPlugShaderPassLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task Chunk00BPreservesDomainHullAndVersionedGeometryStages(int version)
+    public async Task ReadWrite_Chunk00B_PreservesDomainHullAndVersionedGeometryStages(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -85,7 +85,7 @@ public class CPlugShaderPassLayoutTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(8)]
-    public async Task LegacyChunksPreserveShadersConstantsAndRenderState(int offset)
+    public async Task ReadWrite_LegacyChunks_PreserveShadersConstantsAndRenderState(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -136,7 +136,7 @@ public class CPlugShaderPassLayoutTests
     }
 
     [Test]
-    public async Task TextureBindingsPreserveAllFiveStageArrays()
+    public async Task ReadWrite_TextureBindings_PreserveAllFiveStageArrays()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

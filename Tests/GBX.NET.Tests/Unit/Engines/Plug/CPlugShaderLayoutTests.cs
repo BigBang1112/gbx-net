@@ -35,7 +35,7 @@ public class CPlugShaderLayoutTests
     [Arguments(0x01E)]
     [Arguments(0x01F)]
     [Arguments(0x020)]
-    public async Task NativePayloadsPreserveFieldOrderAndValues(int offset)
+    public async Task ReadWrite_NativePayloads_PreserveFieldOrderAndValues(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -70,7 +70,7 @@ public class CPlugShaderLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task RequirementsVersionBoundariesPreserveUnknownHighBits(int version)
+    public async Task ReadWrite_RequirementsVersionBoundaries_PreserveUnknownHighBits(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -106,7 +106,7 @@ public class CPlugShaderLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task LegacySortingPreservesUpperWordOriginalEncodingAndWriterState(int mode)
+    public async Task ReadWrite_LegacySorting_PreservesUpperWordOriginalEncodingAndWriterState(int mode)
     {
         var flags = 0xFEDCBA9800040000UL | ((ulong)mode << 26);
         using var payload = new MemoryStream();
@@ -136,7 +136,7 @@ public class CPlugShaderLayoutTests
     [Arguments(-1, false)]
     [Arguments(0, false)]
     [Arguments(0, true)]
-    public async Task CustomShaderEntriesPreservePresenceAndOldEncoding(int version, bool hasShader)
+    public async Task ReadWrite_CustomShaderEntries_PreservePresenceAndOldEncoding(int version, bool hasShader)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -163,7 +163,7 @@ public class CPlugShaderLayoutTests
     }
 
     [Test]
-    public async Task LegacyReadReplacesExistingFlagsWithoutRunningTheWriterConversion()
+    public async Task Read_LegacyFlags_ReplacesValuesWithoutWriterConversion()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -181,7 +181,7 @@ public class CPlugShaderLayoutTests
     }
 
     [Test]
-    public async Task SignedSortingIndexAndGeometryColorUseIndependentFlagBits()
+    public async Task ReadWrite_SignedSortingIndexAndGeometryColor_UseIndependentFlagBits()
     {
         var node = new CPlugShader { RequirementFlags = 0xFEDCBA9800000000UL, RequirementFlags2 = 0 };
         node.SortIndexValue = -63;

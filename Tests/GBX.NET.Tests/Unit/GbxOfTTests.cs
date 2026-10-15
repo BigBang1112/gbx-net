@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit;
 public class GbxOfTTests
 {
     [Test]
-    public async Task ConstructorPreservesTypedNodeAndBasicHeader()
+    public async Task Constructor_TypedNodeAndBasicHeader_PreservesValues()
     {
         var node = new CGameCtnMediaClip();
         var basic = GbxHeaderBasic.Create(mode: GbxMode.Editor);
@@ -24,7 +24,7 @@ public class GbxOfTTests
     [Test]
     [Arguments(GbxCompression.Compressed)]
     [Arguments(GbxCompression.Uncompressed)]
-    public async Task SaveAndParsePreserveUnknownChunkPayload(GbxCompression compression)
+    public async Task SaveAndParse_UnknownChunk_PreservesPayload(GbxCompression compression)
     {
         const uint chunkId = 0x030790FE;
         byte[] payload = [0, 1, 255, 83, 75, 73, 80];
@@ -50,7 +50,7 @@ public class GbxOfTTests
     [Test]
     [Arguments(GbxCompression.Compressed)]
     [Arguments(GbxCompression.Uncompressed)]
-    public async Task SaveAndParsePreserveMultipleUnknownChunksIncludingEmptyPayload(GbxCompression compression)
+    public async Task SaveAndParse_MultipleUnknownChunks_PreservesEmptyAndNonemptyPayloads(GbxCompression compression)
     {
         const uint emptyChunkId = 0x030790FD;
         const uint largeChunkId = 0x030790FE;
@@ -72,7 +72,7 @@ public class GbxOfTTests
     }
 
     [Test]
-    public async Task DeepCloneCopiesTypedNodeHeaderAndChunkPayload()
+    public async Task DeepClone_TypedRoot_CopiesNodeHeaderAndChunkPayload()
     {
         const uint chunkId = 0x030790FE;
         var node = new CGameCtnMediaClip();

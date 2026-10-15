@@ -12,7 +12,7 @@ public class CPlugCharPhySpecialPropertyLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task VersionsPreserveNativeFieldOrderAndLegacyValues(int version)
+    public async Task ReadWrite_Versions_PreserveNativeFieldOrderAndLegacyValues(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -59,7 +59,7 @@ public class CPlugCharPhySpecialPropertyLayoutTests
     [Arguments(true, 2)]
     [Arguments(true, 3)]
     [Arguments(true, 4)]
-    public async Task NodeBodiesSupportCurrentAndLegacyChunkIds(bool legacyIds, int version)
+    public async Task ReadNode_NodeBodies_SupportCurrentAndLegacyChunkIds(bool legacyIds, int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -83,7 +83,7 @@ public class CPlugCharPhySpecialPropertyLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstruction()
+    public async Task Constructor_Defaults_MatchNativeConstruction()
     {
         var node = new CPlugCharPhySpecialProperty();
         await Assert.That(node.SpecialType).IsEqualTo(CPlugCharPhySpecialProperty.ESpecialType.JumpPad);

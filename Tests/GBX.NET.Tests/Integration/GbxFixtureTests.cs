@@ -12,7 +12,7 @@ public class GbxFixtureTests
     [Arguments(GbxCompression.Uncompressed, true)]
     [Arguments(GbxCompression.Compressed, false)]
     [Arguments(GbxCompression.Compressed, true)]
-    public async Task ParseSaveParse_MP4Crystal_PreservesEditableGeometry(GbxCompression compression, bool async)
+    public async Task MP4CrystalPreservesEditableGeometryAfterSavingAndReparsing(GbxCompression compression, bool async)
     {
         var path = TestFiles.Gbx("CPlugCrystal", "CPlugCrystal MP4 001.Crystal.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
@@ -42,7 +42,7 @@ public class GbxFixtureTests
     }
 
     [Test]
-    public async Task Save_MP4Crystal_PreservesEditedPositionsAndTexCoords()
+    public async Task MP4CrystalPreservesEditedPositionsAndTextureCoordinatesAfterSaving()
     {
         var path = TestFiles.Gbx("CPlugCrystal", "CPlugCrystal MP4 001.Crystal.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
@@ -66,7 +66,7 @@ public class GbxFixtureTests
     [Arguments("MP3", "Map")]
     [Arguments("MP4", "Map")]
     [Arguments("TM2020", "Map")]
-    public async Task ParseSaveParse_MapFixture_PreservesChallengeParameters(string game, string extension)
+    public async Task MapFixturesPreserveChallengeParametersAfterSavingAndReparsing(string game, string extension)
     {
         // Arrange
         var path = TestFiles.Gbx("CGameCtnChallenge", $"CGameCtnChallenge {game} 001.{extension}.Gbx");
@@ -85,7 +85,7 @@ public class GbxFixtureTests
     }
 
     [Test]
-    public async Task Parse_TM2020Replay_ReturnsCompleteGhostDataSynchronouslyAndAsynchronously()
+    public async Task TM2020ReplayReturnsCompleteGhostDataWithSynchronousAndAsynchronousParsing()
     {
         // Arrange
         var path = TestFiles.Gbx("CGameCtnReplayRecord", "CGameCtnReplayRecord TM2020 001.Replay.Gbx");
@@ -118,7 +118,7 @@ public class GbxFixtureTests
     [Arguments("TMT")]
     [Arguments("MP4")]
     [Arguments("TM2020")]
-    public async Task Parse_ReplayFixture_ReturnsGhostsWithoutIgnoringChunkFailures(string game)
+    public async Task ReplayFixturesReturnGhostsWithoutIgnoringChunkFailures(string game)
     {
         var path = TestFiles.Gbx("CGameCtnReplayRecord", $"CGameCtnReplayRecord {game} 001.Replay.Gbx");
         var gbx = Gbx.Parse<CGameCtnReplayRecord>(path, new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false });
@@ -140,7 +140,7 @@ public class GbxFixtureTests
     [Arguments("MP4 001")]
     [Arguments("MP4 002")]
     [Arguments("TM2020 001")]
-    public async Task LightmapCache_MapFixture_LoadsEmbeddedCacheAndMapping(string suffix)
+    public async Task MapFixturesLoadEmbeddedLightmapCacheAndMapping(string suffix)
     {
         var map = Gbx.ParseNode<GBX.NET.Engines.Game.CGameCtnChallenge>(
             TestFiles.Gbx("CGameCtnChallenge", $"CGameCtnChallenge {suffix}.Map.Gbx"));
@@ -155,7 +155,7 @@ public class GbxFixtureTests
     }
 
     [Test]
-    public async Task Parse_MP4Replay_ReturnsActionModelsAndItemNames()
+    public async Task MP4ReplayIncludesActionModelsAndItemNames()
     {
         var path = TestFiles.Gbx("CGameCtnReplayRecord", "CGameCtnReplayRecord MP4 001.Replay.Gbx");
 

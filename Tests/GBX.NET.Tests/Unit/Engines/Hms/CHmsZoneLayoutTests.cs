@@ -13,7 +13,7 @@ public class CHmsZoneLayoutTests
     [Arguments(10u)]
     [Arguments(15u)]
     [Arguments(uint.MaxValue)]
-    public async Task GlobalFogHas28BytesAndMasksNonpersistentFlags(uint flags)
+    public async Task ReadWrite_GlobalFog_Has28BytesAndMasksNonpersistentFlags(uint flags)
     {
         var payload = Payload(flags);
         var node = new CHmsZone();
@@ -49,7 +49,7 @@ public class CHmsZoneLayoutTests
     }
 
     [Test]
-    public async Task FogPropertiesPreserveAdjacentPackedSettings()
+    public async Task FogProperties_WhenChanged_PreserveAdjacentPackedSettings()
     {
         var node = new CHmsZone();
         await Assert.That(node.FogRGB).IsEqualTo(new Vec3(1, 1, 1));

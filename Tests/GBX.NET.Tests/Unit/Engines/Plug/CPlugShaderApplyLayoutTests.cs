@@ -17,7 +17,7 @@ public class CPlugShaderApplyLayoutTests
     [Arguments(0x009)]
     [Arguments(0x00A)]
     [Arguments(0x012)]
-    public async Task ApplyFieldsPreserveNativeWidthsAndPackedBits(int offset)
+    public async Task ReadWrite_ApplyFields_PreserveNativeWidthsAndPackedBits(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new BinaryWriter(payload, Encoding.UTF8, leaveOpen: true))
@@ -39,7 +39,7 @@ public class CPlugShaderApplyLayoutTests
     [Test]
     [Arguments(0x000)]
     [Arguments(0x001)]
-    public async Task LegacyBlendFactorsPrecedeTheCountedTexturesAndAlphaFlags(int offset)
+    public async Task ReadWrite_LegacyBlendFactors_PrecedeTheCountedTexturesAndAlphaFlags(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new BinaryWriter(payload, Encoding.UTF8, leaveOpen: true))
@@ -61,7 +61,7 @@ public class CPlugShaderApplyLayoutTests
     [Arguments(0x09063000)]
     [Arguments(0x09063001)]
     [Arguments(0x09063002)]
-    public async Task LegacyMaterialsKeepFiveTextureSlotsAndTheirFlags(int id)
+    public async Task ReadWrite_LegacyMaterials_KeepFiveTextureSlotsAndTheirFlags(int id)
     {
         using var payload = new MemoryStream();
         using (var writer = new BinaryWriter(payload, Encoding.UTF8, leaveOpen: true))
@@ -85,7 +85,7 @@ public class CPlugShaderApplyLayoutTests
     }
 
     [Test]
-    public async Task UnusedBitmapAddressesDoNotReplaceActiveTextures()
+    public async Task ReadWrite_UnusedBitmapAddresses_DoNotReplaceActiveTextures()
     {
         var active = new CPlugBitmapAddress();
         var node = new CPlugShaderApply { BitmapAddresses = [active] };
@@ -102,7 +102,7 @@ public class CPlugShaderApplyLayoutTests
     }
 
     [Test]
-    public async Task BitmapApplyArrayReferenceReadsItsTypedNodeAndDeprecatedArray()
+    public async Task ReadWrite_BitmapApplyArrayReference_PreservesTypedNodeAndDeprecatedArray()
     {
         var bitmapArray = new CPlugBitmapApplyArray { BitmapAddresses = [new CPlugBitmapAddress()] };
         bitmapArray.CreateChunk<CPlugBitmapApplyArray.Chunk090B8000>();
@@ -122,7 +122,7 @@ public class CPlugShaderApplyLayoutTests
     }
 
     [Test]
-    public async Task ConstructorDefaultsFollowTheVerifiedPackedState()
+    public async Task Constructor_DefaultSettings_MatchVerifiedPackedState()
     {
         var legacy = new CPlugShaderApply();
         var current = new CPlugShaderApply(GameVersion.TM2020);

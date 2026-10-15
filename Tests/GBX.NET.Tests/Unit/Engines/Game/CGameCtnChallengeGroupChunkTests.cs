@@ -12,7 +12,7 @@ public class CGameCtnChallengeGroupChunkTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task LegacyMapsKeepTheThreeMedalRequirements(int offset)
+    public async Task ReadWrite_LegacyMaps_KeepTheThreeMedalRequirements(int offset)
     {
         var metadata = new Ident("Map", "Desert", "Author");
         using var stream = new MemoryStream();
@@ -41,7 +41,7 @@ public class CGameCtnChallengeGroupChunkTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyMapListSelectsIdentifiersOrExternalFiles(bool usesMapFiles)
+    public async Task ReadWrite_LegacyMapList_SelectsIdentifiersOrExternalFiles(bool usesMapFiles)
     {
         var refTable = new GbxRefTable();
         var file = new GbxRefTableFile(refTable, 0, true, "Track.Challenge.Gbx");
@@ -78,7 +78,7 @@ public class CGameCtnChallengeGroupChunkTests
     [Test]
     [Arguments(3)]
     [Arguments(7)]
-    public async Task MedalValuesAndUnlockRequirementsKeepDistinctSignedFields(int offset)
+    public async Task ReadWrite_MedalValuesAndUnlockRequirements_KeepDistinctSignedFields(int offset)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -111,7 +111,7 @@ public class CGameCtnChallengeGroupChunkTests
     [Test]
     [Arguments(4)]
     [Arguments(8)]
-    public async Task LegacyFileReferencesPreserveTheReferenceTableEntry(int offset)
+    public async Task ReadWrite_LegacyFileReferences_PreserveTheReferenceTableEntry(int offset)
     {
         var refTable = new GbxRefTable();
         var file = new GbxRefTableFile(refTable, 0, true, "Collection.Gbx");
@@ -133,7 +133,7 @@ public class CGameCtnChallengeGroupChunkTests
     }
 
     [Test]
-    public async Task LinkedCampaignReadsANodeReference()
+    public async Task ReadWrite_LinkedCampaign_ReadsANodeReference()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

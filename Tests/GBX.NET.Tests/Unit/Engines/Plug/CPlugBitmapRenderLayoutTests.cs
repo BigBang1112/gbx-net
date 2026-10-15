@@ -26,7 +26,7 @@ public class CPlugBitmapRenderLayoutTests
     [Arguments(14)]
     [Arguments(15)]
     [Arguments(16)]
-    public async Task ChunksPreserveFieldOrderAndPackedValues(int offset)
+    public async Task ReadWrite_Chunks_PreserveFieldOrderAndPackedValues(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -102,7 +102,7 @@ public class CPlugBitmapRenderLayoutTests
     [Arguments(14)]
     [Arguments(15)]
     [Arguments(16)]
-    public async Task NodeBodiesRecognizeLegacyAndModernChunks(int offset)
+    public async Task ReadNode_NodeBodies_RecognizeLegacyAndModernChunks(int offset)
     {
         using var settings = new MemoryStream();
         using (var writer = new GbxWriter(settings)) WriteSettings(writer, offset);
@@ -147,7 +147,7 @@ public class CPlugBitmapRenderLayoutTests
     [Arguments(11, true)]
     [Arguments(12, true)]
     [Arguments(16, true)]
-    public async Task ReferencesPreserveEmbeddedNodesAndExternalFiles(int offset, bool external)
+    public async Task ReadWrite_References_PreserveEmbeddedNodesAndExternalFiles(int offset, bool external)
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "Bitmap.Gbx");
         using var payload = new MemoryStream();
@@ -197,7 +197,7 @@ public class CPlugBitmapRenderLayoutTests
     [Arguments(GameVersion.TMT, 0x8138, 0x7800u, 0u)]
     [Arguments(GameVersion.MP4, 0x8138, 0x7800u, 0u)]
     [Arguments(GameVersion.TM2020, 0x8130, 0x7800u, 0u)]
-    public async Task DefaultsMatchConstruction(GameVersion gameVersion, int mask, uint flags2, uint legacyFlags)
+    public async Task Constructor_Defaults_MatchConstruction(GameVersion gameVersion, int mask, uint flags2, uint legacyFlags)
     {
         var node = new CPlugBitmapRender(gameVersion);
         await Assert.That(node.ClearColor).IsEqualTo(0u);

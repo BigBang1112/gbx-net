@@ -30,7 +30,7 @@ public class CPlugSkelLayoutTests
     [Arguments(18)]
     [Arguments(19)]
     [Arguments(20)]
-    public async Task VersionsPreserveJointsSetupSocketsAndIndependentArrays(int version)
+    public async Task ReadWrite_Versions_PreserveJointsSetupSocketsAndIndependentArrays(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -103,7 +103,7 @@ public class CPlugSkelLayoutTests
     [Arguments(18)]
     [Arguments(19)]
     [Arguments(20)]
-    public async Task AbsentOptionalObjectsDoNotConsumeFollowingArrays(int version)
+    public async Task ReadWrite_AbsentOptionalObjects_DoNotConsumeFollowingArrays(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload)) WriteArchive(writer, version, optionalData: false);
@@ -127,7 +127,7 @@ public class CPlugSkelLayoutTests
     [Arguments(18)]
     [Arguments(19)]
     [Arguments(20)]
-    public async Task VersionedChunkRoundTripsTheCompleteNodeBody(int version)
+    public async Task ReadWrite_VersionedChunk_RoundTripsTheCompleteNodeBody(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -148,7 +148,7 @@ public class CPlugSkelLayoutTests
     }
 
     [Test]
-    public async Task JointCountUsesTheFullUnsignedSixteenBitRange()
+    public async Task ReadWrite_JointCount_UsesTheFullUnsignedSixteenBitRange()
     {
         var node = new CPlugSkel { Joints = Enumerable.Range(0, 32768).Select(_ => new CPlugSkel.Joint()).ToArray() };
         using var payload = new MemoryStream();
@@ -163,7 +163,7 @@ public class CPlugSkelLayoutTests
     }
 
     [Test]
-    public async Task ConstructionAndChunkVersionsMatchNativeDefaults()
+    public async Task Constructor_ConstructionAndChunkVersions_MatchNativeDefaults()
     {
         var node = new CPlugSkel();
         await Assert.That(node.Joints.Length).IsEqualTo(0);

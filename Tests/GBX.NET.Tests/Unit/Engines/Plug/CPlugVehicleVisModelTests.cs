@@ -25,7 +25,7 @@ public class CPlugVehicleVisModelTests
     [Arguments(16, 2, "")]
     [Arguments(17, 2, "")]
     [Arguments(18, 2, "")]
-    public async Task Model_ReadsNativeGeometryAndVersionBranches(int version, int surfVersion, string meshPath)
+    public async Task ReadWrite_Model_ReadsNativeGeometryAndVersionBranches(int version, int surfVersion, string meshPath)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -117,7 +117,7 @@ public class CPlugVehicleVisModelTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task Impact_ConvertsLegacyThresholdsWithoutMutatingOnWrite(int version)
+    public async Task ReadWrite_Impact_ConvertsLegacyThresholdsWithoutMutatingOnWrite(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -166,7 +166,7 @@ public class CPlugVehicleVisModelTests
     [Arguments(8, 15)]
     [Arguments(9, 17)]
     [Arguments(10, 20)]
-    public async Task Events_ReadsNativeCountsAndLegacyWheelJump(int version, int count)
+    public async Task ReadWrite_Events_ReadsNativeCountsAndLegacyWheelJump(int version, int count)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(version);

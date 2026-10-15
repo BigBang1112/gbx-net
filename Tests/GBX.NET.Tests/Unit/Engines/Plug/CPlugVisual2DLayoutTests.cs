@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugVisual2DLayoutTests
 {
     [Test]
-    public async Task LegacyComponents_WriteTheSameNativeRecord()
+    public async Task ReadWrite_LegacyComponents_WriteTheSameNativeRecord()
     {
 #pragma warning disable CS0618
         var vertex = new CPlugVisual2D.Vertex2D

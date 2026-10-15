@@ -13,7 +13,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Arguments(0, -1)]
     [Arguments(1, -1)]
     [Arguments(1, 17)]
-    public async Task NameAndBlocksKeepReferenceOrderAndLegacyFraming(int offset, int discardedWord)
+    public async Task ReadWrite_NameAndBlocks_KeepReferenceOrderAndLegacyFraming(int offset, int discardedWord)
     {
         var payload = Payload(w =>
         {
@@ -58,7 +58,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Arguments(3, true)]
     [Arguments(4, false)]
     [Arguments(4, true)]
-    public async Task LegacyParametersUseFourByteBooleans(int offset, bool enabled)
+    public async Task ReadWrite_LegacyParameters_UseFourByteBooleans(int offset, bool enabled)
     {
         var payload = Payload(w =>
         {
@@ -88,7 +88,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Arguments(1, false)]
     [Arguments(1, true)]
     [Arguments(2, true)]
-    public async Task CyclingParametersKeepVersionBranchesAndNullSentinels(int version, bool hasTimes)
+    public async Task ReadWrite_CyclingParameters_KeepVersionBranchesAndNullSentinels(int version, bool hasTimes)
     {
         var payload = Payload(w =>
         {
@@ -118,7 +118,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyKeepPlayingIsForcedForMusicEffectsOnlyOnRead(bool savedValue)
+    public async Task ReadWrite_LegacyMusicEffects_ForcesKeepPlayingOnlyOnRead(bool savedValue)
     {
         var track = new CGameCtnMediaTrack { Blocks = [new CGameCtnMediaBlockMusicEffect()] };
         var chunk = new CGameCtnMediaTrack.Chunk03078002();
@@ -140,7 +140,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Test]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task LaterParametersDoNotApplyTheLegacyMusicFixup(int offset)
+    public async Task ReadWrite_LaterParameters_DoNotApplyTheLegacyMusicFixup(int offset)
     {
         var track = new CGameCtnMediaTrack { Blocks = [new CGameCtnMediaBlockMusicEffect()] };
         Chunk<CGameCtnMediaTrack> chunk = offset == 4
@@ -175,7 +175,7 @@ public class CGameCtnMediaTrackLayoutTests
     [Arguments(0x24062000u, 1)]
     [Arguments(0x24062000u, 2)]
     [Arguments(0x24062000u, 3)]
-    public async Task GhostTrackAliasesKeepTheirPayloadAndConvertTheTrack(uint chunkId, int ghostKind)
+    public async Task ReadWrite_GhostTrackAliases_KeepTheirPayloadAndConvertTheTrack(uint chunkId, int ghostKind)
     {
         var payload = Payload(w =>
         {
@@ -251,7 +251,7 @@ public class CGameCtnMediaTrackLayoutTests
     }
 
     [Test]
-    public async Task NativeDefaultsAndCloningKeepCyclingAndBlockIdentity()
+    public async Task DeepClone_DefaultTrack_PreservesCyclingAndBlockIdentity()
     {
         var track = new CGameCtnMediaTrack();
         await Assert.That(track.IsKeepPlaying).IsFalse();

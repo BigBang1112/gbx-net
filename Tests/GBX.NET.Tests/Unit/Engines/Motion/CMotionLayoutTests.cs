@@ -15,7 +15,7 @@ public class CMotionLayoutTests
     [Arguments(1u)]
     [Arguments(2u)]
     [Arguments(3u)]
-    public async Task PlayerReadsConditionalStateBeforePhysicsAndTracks(uint savePlayState)
+    public async Task ReadWrite_Player_ReadsConditionalStateBeforePhysicsAndTracks(uint savePlayState)
     {
         var payload = Payload(w =>
         {
@@ -39,7 +39,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task CommandReadsParameterNodeAfterFiveScalarFields()
+    public async Task ReadWrite_Command_ReadsParameterNodeAfterFiveScalarFields()
     {
         var payload = Payload(w =>
         {
@@ -65,7 +65,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task LegacyCommandConvertsPeriodAndPhaseWithoutChangingArchivedValues()
+    public async Task ReadWrite_LegacyCommand_ConvertsPeriodAndPhaseWithoutChangingArchivedValues()
     {
         var payload = Payload(w =>
         {
@@ -83,7 +83,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task SharedLeavesChunkIdUsesTheOwningNodesLayout()
+    public async Task Read_SharedLeavesChunkId_UsesOwningNodeLayout()
     {
         var payload = Payload(w =>
         {
@@ -107,7 +107,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task ShaderReadsShaderAndFunctionNodeReferences()
+    public async Task ReadWrite_Shader_ReadsShaderAndFunctionNodeReferences()
     {
         var payload = Payload(w =>
         {
@@ -123,7 +123,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task ShaderWithMaterialWritesNullShaderWithoutClearingTheProperty()
+    public async Task ReadWrite_ShaderWithMaterial_WritesNullShaderWithoutClearingTheProperty()
     {
         var shader = new CPlugShader();
         var node = new CMotionShader
@@ -147,7 +147,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task DayTimeReadsMaterialReferencesAfterTheLegacyNode()
+    public async Task ReadWrite_DayTime_ReadsMaterialReferencesAfterTheLegacyNode()
     {
         var payload = Payload(w =>
         {
@@ -165,7 +165,7 @@ public class CMotionLayoutTests
     }
 
     [Test]
-    public async Task SkeletonValuesUseBoneCountWithoutAnArrayPrefix()
+    public async Task ReadWrite_SkeletonValues_UseBoneCountWithoutAnArrayPrefix()
     {
         var payload = Payload(w =>
         {

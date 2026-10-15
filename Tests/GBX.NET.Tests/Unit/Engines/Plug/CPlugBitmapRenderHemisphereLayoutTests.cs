@@ -12,7 +12,7 @@ public class CPlugBitmapRenderHemisphereLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task ChunksPreserveFieldOrderAndLegacyValues(int offset)
+    public async Task ReadWrite_Chunks_PreserveFieldOrderAndLegacyValues(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -46,7 +46,7 @@ public class CPlugBitmapRenderHemisphereLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task NodeBodiesRecognizeAllChunks(int offset)
+    public async Task ReadNode_NodeBodies_RecognizeAllChunks(int offset)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -71,7 +71,7 @@ public class CPlugBitmapRenderHemisphereLayoutTests
     [Arguments(GameVersion.TMNESWC, 20f)]
     [Arguments(GameVersion.VSK5, 20f)]
     [Arguments(GameVersion.TMF, 20f)]
-    public async Task DefaultsMatchNativeConstruction(GameVersion gameVersion, float power)
+    public async Task Constructor_Defaults_MatchNativeConstruction(GameVersion gameVersion, float power)
     {
         var node = new CPlugBitmapRenderHemisphere(gameVersion);
         await Assert.That(node.HemiLayout).IsEqualTo(CPlugBitmapRenderHemisphere.EHemiLayout._1);

@@ -5,7 +5,7 @@ namespace GBX.NET.Tests.Unit;
 public class Int3Tests
 {
     [Test]
-    public async Task Contructor_XYZIsCorrect()
+    public async Task Constructor_ThreeComponents_PreservesCoordinates()
     {
         // Arrange & Act
         var i = new Int3(1, 2, 3);
@@ -17,7 +17,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task Initializer_XYZIsCorrect()
+    public async Task Initializer_ThreeComponents_PreservesCoordinates()
     {
         // Arrange & Act
         var i = new Int3 { X = 1, Y = 2, Z = 3 };
@@ -29,7 +29,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task Zero_IsCorrect()
+    public async Task Zero_WhenAccessed_ReturnsZeroCoordinates()
     {
         // Arrange & Act
         var i = Int3.Zero;
@@ -41,7 +41,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task ToString_ReturnsCorrect()
+    public async Task ToString_ThreeComponents_ReturnsFormattedCoordinates()
     {
         // Arrange
         var i = new Int3(1, 2, 3);
@@ -54,7 +54,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task ImplicitConversionFromTuple_IsCorrect()
+    public async Task ImplicitConversionFromTuple_ThreeComponents_PreservesCoordinates()
     {
         // Arrange
         var t = (1, 2, 3);
@@ -69,7 +69,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task Equals_IsCorrect()
+    public async Task Equals_EqualAndDifferentCoordinates_ComparesAllComponents()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -82,7 +82,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task EqualsObject_IsCorrect()
+    public async Task EqualsObject_EqualAndDifferentCoordinates_ComparesAllComponents()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -95,7 +95,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task GetHashCode_IsCorrect()
+    public async Task GetHashCode_EqualAndDifferentCoordinates_ReturnsConsistentHashes()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);
@@ -108,7 +108,7 @@ public class Int3Tests
     }
 
     [Test]
-    public async Task EqualityOperator_IsCorrect()
+    public async Task EqualityOperator_EqualAndDifferentCoordinates_ComparesAllComponents()
     {
         // Arrange
         var i1 = new Int3(1, 2, 3);

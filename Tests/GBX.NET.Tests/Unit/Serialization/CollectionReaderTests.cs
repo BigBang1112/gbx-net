@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit.Serialization;
 public class CollectionReaderTests
 {
     [Test]
-    public async Task PrimitiveCollections_ReadAllBytesFromFragmentedStreams()
+    public async Task ReadArrayAndReadList_FragmentedStream_ReadsAllBytes()
     {
         byte[] data = [0x22, 0x11, 0x44, 0x33, 0x66, 0x55];
         using var stream = new FragmentedStream(data);
@@ -17,7 +17,7 @@ public class CollectionReaderTests
     }
 
     [Test]
-    public void PrimitiveCollections_RejectTruncatedData()
+    public void ReadArrayAndReadList_TruncatedData_ThrowsEndOfStreamException()
     {
         using var stream = new MemoryStream(new byte[] { 0x22, 0x11, 0x44 });
         using var reader = new GbxReader(stream);
@@ -27,7 +27,7 @@ public class CollectionReaderTests
     }
 
     [Test]
-    public async Task PrimitiveCollections_RejectInvalidLengthsBeforeReading()
+    public async Task ReadArrayAndReadList_InvalidLengths_ThrowsBeforeReading()
     {
         using var stream = new MemoryStream();
         using var reader = new GbxReader(stream, new GbxReadSettings { MaxDataSize = int.MaxValue });

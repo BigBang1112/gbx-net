@@ -12,7 +12,7 @@ public class GbxWriterExternalArrayTests
     [Arguments(0, 2)]
     [Arguments(1, 3)]
     [Arguments(3, 1)]
-    public async Task WriteArrayExternalNodeRef_WithFixedLengthWritesExactlyThatManyReferences(int count, int length)
+    public async Task WriteArrayExternalNodeRef_FixedLength_WritesExactlyRequestedReferences(int count, int length)
     {
         var clips = count < 0 ? null : Enumerable.Range(0, count)
             .Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray();
@@ -34,7 +34,7 @@ public class GbxWriterExternalArrayTests
     }
 
     [Test]
-    public async Task WriteArrayExternalNodeRef_WithNegativeLengthThrowsBeforeWriting()
+    public async Task WriteArrayExternalNodeRef_NegativeLength_ThrowsBeforeWriting()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);

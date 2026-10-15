@@ -12,7 +12,7 @@ public class CGameCtnMacroBlockInfoTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task LegacyBlockSpawn_PreservesMobilAndVariantFields(int version)
+    public async Task ReadWrite_LegacyBlockSpawn_PreservesMobilAndVariantFields(int version)
     {
         var payload = Payload(w =>
         {
@@ -36,7 +36,7 @@ public class CGameCtnMacroBlockInfoTests
     [Test]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task BlockSpawn_ColorAndLightmapQualityHaveIndependentVersionGates(int version)
+    public async Task ReadWrite_BlockSpawn_ColorAndLightmapQualityHaveIndependentVersionGates(int version)
     {
         var payload = Payload(w =>
         {
@@ -55,7 +55,7 @@ public class CGameCtnMacroBlockInfoTests
     }
 
     [Test]
-    public async Task LegacyBlockSkinSpawn_EndsAfterCoordinate()
+    public async Task ReadWrite_LegacyBlockSkinSpawn_EndsAfterCoordinate()
     {
         var payload = Payload(w =>
         {
@@ -76,7 +76,7 @@ public class CGameCtnMacroBlockInfoTests
     [Arguments(4)]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task ObjectSpawn_LegacyFieldsUseExactVersionRanges(int version)
+    public async Task ReadWrite_ObjectSpawn_LegacyFieldsUseExactVersionRanges(int version)
     {
         var payload = Payload(w =>
         {
@@ -106,7 +106,7 @@ public class CGameCtnMacroBlockInfoTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task SplineChunk_ReadsOnlyTheArraysForItsVersion(int version)
+    public async Task ReadWrite_SplineChunk_ReadsOnlyTheArraysForItsVersion(int version)
     {
         var payload = Payload(w =>
         {
@@ -128,7 +128,7 @@ public class CGameCtnMacroBlockInfoTests
     }
 
     [Test]
-    public async Task AutoTerrainChunk_PreservesNoncanonicalBoolean()
+    public async Task ReadWrite_AutoTerrainChunk_PreservesNoncanonicalBoolean()
     {
         var payload = Payload(w =>
         {
@@ -141,7 +141,7 @@ public class CGameCtnMacroBlockInfoTests
     }
 
     [Test]
-    public async Task LegacyMediaTrackerChunk_PreservesTheLeadingCount()
+    public async Task ReadWrite_LegacyMediaTrackerChunk_PreservesTheLeadingCount()
     {
         var payload = Payload(w =>
         {
@@ -154,7 +154,7 @@ public class CGameCtnMacroBlockInfoTests
     }
 
     [Test]
-    public async Task LegacyDecalChunk_WritesTheCountBeforeTheVersion()
+    public async Task ReadWrite_LegacyDecalChunk_WritesTheCountBeforeTheVersion()
     {
         var payload = Payload(w =>
         {

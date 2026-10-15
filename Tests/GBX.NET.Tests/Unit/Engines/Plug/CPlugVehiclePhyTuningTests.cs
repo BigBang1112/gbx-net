@@ -13,7 +13,7 @@ public class CPlugVehiclePhyTuningTests
     [Arguments("ABC", 0)]
     [Arguments("ABCD", 1)]
     [Arguments("Stadium", 1)]
-    public async Task Chunk090EB000_InitializesEncryptionOnlyWithFourCharacterPrefix(string name, int expectedCalls)
+    public async Task ReadWrite_Chunk090EB000_InitializesEncryptionOnlyWithFourCharacterPrefix(string name, int expectedCalls)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

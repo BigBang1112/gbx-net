@@ -19,7 +19,7 @@ public class StringSerializationTests
 
     [Test]
     [MethodDataSource(nameof(Strings))]
-    public async Task Utf8LengthCountsBytesAndSupportsPartialReads(string? value, StringLengthPrefix prefix)
+    public async Task ReadWriteString_Utf8Text_CountsBytesAndSupportsPartialReads(string? value, StringLengthPrefix prefix)
     {
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output))
@@ -43,7 +43,7 @@ public class StringSerializationTests
     [Test]
     [Arguments("a", 256)]
     [Arguments("é", 128)]
-    public async Task BytePrefixRejectsOversizedUtf8BeforeWriting(string character, int count)
+    public async Task WriteString_OversizedUtf8BytePrefix_ThrowsBeforeWriting(string character, int count)
     {
         using var output = new MemoryStream();
         using var writer = new GbxWriter(output);
@@ -54,7 +54,7 @@ public class StringSerializationTests
     }
 
     [Test]
-    public void TruncatedStringThrowsInsteadOfReturningPartialText()
+    public void ReadString_TruncatedText_ThrowsEndOfStreamException()
     {
         using var input = new FragmentedReadStream([5, 0, 0, 0, (byte)'a']);
         using var reader = new GbxReader(input);

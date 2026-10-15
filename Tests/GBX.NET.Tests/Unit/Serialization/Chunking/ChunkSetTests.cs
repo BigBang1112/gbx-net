@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Serialization.Chunking;
 public class ChunkSetTests
 {
     [Test]
-    public async Task CreateAndTryCreateShareTheSameInstanceAcrossLookups()
+    public async Task CreateAndTryCreate_ExistingChunk_ReturnsSameInstanceAcrossLookups()
     {
         var chunks = new ChunkSet(null);
         var chunk = chunks.Create<CGameCtnCollector.Chunk2E00100E>();
@@ -23,7 +23,7 @@ public class ChunkSetTests
     }
 
     [Test]
-    public async Task EnumerationOrdersBaseClassChunksBeforeDerivedClassChunks()
+    public async Task GetEnumerator_BaseAndDerivedChunks_OrdersBaseChunksFirst()
     {
         var chunks = new ChunkSet(null);
         var derivedChunk = chunks.Create<CGameCtnMacroBlockInfo.Chunk0310D000>();
@@ -36,7 +36,7 @@ public class ChunkSetTests
     [Arguments("id")]
     [Arguments("type")]
     [Arguments("instance")]
-    public async Task RemoveClearsAllLookupsAndAllowsRecreation(string lookup)
+    public async Task Remove_ExistingChunk_ClearsAllLookupsAndAllowsRecreation(string lookup)
     {
         var chunks = new ChunkSet(null);
         var chunk = chunks.Create<CGameCtnCollector.Chunk2E00100E>();
@@ -56,7 +56,7 @@ public class ChunkSetTests
     }
 
     [Test]
-    public async Task ClearRemovesKnownAndUnknownChunksFromAllLookups()
+    public async Task Clear_KnownAndUnknownChunks_ClearsAllLookups()
     {
         var chunks = new ChunkSet(null);
         var known = chunks.Create<CGameCtnCollector.Chunk2E00100E>();
@@ -73,7 +73,7 @@ public class ChunkSetTests
     }
 
     [Test]
-    public async Task CloningUnknownChunkCopiesItsPayload()
+    public async Task DeepClone_UnknownChunk_CopiesPayload()
     {
         var original = new SkippableChunk(0x2E001FFF) { Data = [1, 2, 3] };
         var clone = original.DeepClone();

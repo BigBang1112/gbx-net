@@ -54,7 +54,7 @@ public class CGameObjectVisModelLayoutTests
     [Arguments(21, true)]
     [Arguments(22, false)]
     [Arguments(22, true)]
-    public async Task MainChunkPreservesNativeBranchesAndNonemptyArrays(int version, bool paths)
+    public async Task ReadWrite_MainChunk_PreservesNativeBranchesAndNonemptyArrays(int version, bool paths)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -188,7 +188,7 @@ public class CGameObjectVisModelLayoutTests
     }
 
     [Test]
-    public async Task AnimationNodeIncludesVersion4Tail()
+    public async Task ReadWrite_AnimationNode_IncludesVersion4Tail()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0); // Outer CPlugAnimLocSimple chunk version.
@@ -204,7 +204,7 @@ public class CGameObjectVisModelLayoutTests
     }
 
     [Test]
-    public async Task DeprecatedAndSoundChunksPreserveTheirPayloads()
+    public async Task ReadWrite_DeprecatedAndSoundChunks_PreserveTheirPayloads()
     {
         var node = new CGameObjectVisModel();
         using (var payload = new ObjectModelPayload())

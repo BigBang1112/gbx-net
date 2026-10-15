@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Components;
 public class GbxHeaderTests
 {
     [Test]
-    public async Task Constructor_AssignsBasicProperty()
+    public async Task Constructor_BasicHeader_AssignsBasicProperty()
     {
         var basic = new GbxHeaderBasic();
         var header = new MockGbxHeader(basic);

@@ -15,7 +15,7 @@ public class CGameCtnMediaClipLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(5)]
-    public async Task LegacyTracksPreserveOrderAndRepeatedReferences(int chunkOffset)
+    public async Task ReadWrite_LegacyTracks_PreserveOrderAndRepeatedReferences(int chunkOffset)
     {
         var payload = Payload(w =>
         {
@@ -56,7 +56,7 @@ public class CGameCtnMediaClipLayoutTests
     [Arguments(1, 2)]
     [Arguments(1, 4)]
     [Arguments(1, 7)]
-    public async Task ModernClipKeepsBooleanOrderAndSharedFields(int version, int booleans)
+    public async Task ReadWrite_ModernClip_KeepsBooleanOrderAndSharedFields(int version, int booleans)
     {
         const string script = "// é\nSmShieldSizeScale = 0.5;";
         var payload = Payload(w =>
@@ -92,7 +92,7 @@ public class CGameCtnMediaClipLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacySettingsUseTheClipProperties(bool isScriptEvent)
+    public async Task ReadWrite_LegacySettings_UseTheClipProperties(bool isScriptEvent)
     {
         var payload = Payload(w =>
         {
@@ -119,7 +119,7 @@ public class CGameCtnMediaClipLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyIdUsesLookbackStrings(bool hasId)
+    public async Task ReadWrite_LegacyId_UsesLookbackStrings(bool hasId)
     {
         var payload = Payload(w =>
         {
@@ -141,7 +141,7 @@ public class CGameCtnMediaClipLayoutTests
     [Arguments(0u)]
     [Arguments(0x0A002000u)]
     [Arguments(0x0A003000u)]
-    public async Task LegacySceneAcceptsTheSceneBaseClass(uint sceneClassId)
+    public async Task ReadWrite_LegacyScene_AcceptsSceneBaseClass(uint sceneClassId)
     {
         var payload = Payload(w =>
         {
@@ -167,7 +167,7 @@ public class CGameCtnMediaClipLayoutTests
     [Arguments(1, 3)]
     [Arguments(1, int.MinValue + 2)]
     [Arguments(1, int.MinValue + 3)]
-    public async Task TriggerFlagsUseBitZeroAndPreserveOtherBits(int version, int flags)
+    public async Task ReadWrite_TriggerFlags_UseBitZeroAndPreserveOtherBits(int version, int flags)
     {
         var payload = Payload(w =>
         {

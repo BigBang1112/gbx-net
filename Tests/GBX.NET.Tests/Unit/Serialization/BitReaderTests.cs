@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit.Serialization;
 public class BitReaderTests
 {
     [Test]
-    public async Task ReadsLeastSignificantBitsFirstAcrossByteBoundaries()
+    public async Task ReadNumber_AcrossByteBoundaries_ReadsLeastSignificantBitsFirst()
     {
         var reader = new BitReader([0b11010110, 0b01101001]);
 
@@ -26,7 +26,7 @@ public class BitReaderTests
     [Arguments(9)]
     [Arguments(15)]
     [Arguments(16)]
-    public async Task ReadToEndRepacksRemainingBitsAndAdvancesToTheEnd(int offset)
+    public async Task ReadToEnd_BitOffset_RepacksRemainingBitsAndAdvancesToEnd(int offset)
     {
         var reader = new BitReader([0xA5, 0xC3]);
         reader.ReadNumber(offset);
@@ -39,7 +39,7 @@ public class BitReaderTests
     }
 
     [Test]
-    public async Task ReadsSignedValuesUsingTwosComplementAndLittleEndianOrder()
+    public async Task ReadSignedNumbers_TwosComplementBytes_UsesLittleEndianOrder()
     {
         var reader = new BitReader([0xFE, 0x00, 0x80, 0x78, 0x56, 0x34, 0x12]);
 
@@ -49,7 +49,7 @@ public class BitReaderTests
     }
 
     [Test]
-    public async Task ZeroBitReadDoesNotConsumeInput()
+    public async Task ReadNumber_ZeroBits_DoesNotConsumeInput()
     {
         var reader = new BitReader([]);
         await Assert.That(reader.ReadNumber(0)).IsEqualTo(0UL);

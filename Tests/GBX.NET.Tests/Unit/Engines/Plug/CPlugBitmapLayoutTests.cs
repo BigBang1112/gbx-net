@@ -21,7 +21,7 @@ public class CPlugBitmapLayoutTests
     [Arguments(true, 5)]
     [Arguments(true, 7)]
     [Arguments(true, 8)]
-    public async Task ImagePayload_SelectsSuffixFromPixelUpdate(bool modern, int pixelUpdate)
+    public async Task ReadWrite_ImagePayload_SelectsSuffixFromPixelUpdate(bool modern, int pixelUpdate)
     {
         using var payload = new MemoryStream();
         var flags = 0xAABBCCDD00000012UL | (ulong)pixelUpdate << 8;
@@ -74,7 +74,7 @@ public class CPlugBitmapLayoutTests
     }
 
     [Test]
-    public async Task LegacyFlags_ReadsFourBytesAndUpdatesPixelUpdate()
+    public async Task ReadWrite_LegacyFlags_ReadsFourBytesAndUpdatesPixelUpdate()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -95,7 +95,7 @@ public class CPlugBitmapLayoutTests
     }
 
     [Test]
-    public async Task AtlasCounts_ReadsUnsigned16BitPairs()
+    public async Task ReadWrite_AtlasCounts_ReadsUnsigned16BitPairs()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -119,7 +119,7 @@ public class CPlugBitmapLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task CubeAtlas_ReadsNestedVersionAndEntries(int version)
+    public async Task ReadWrite_CubeAtlas_ReadsNestedVersionAndEntries(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -150,7 +150,7 @@ public class CPlugBitmapLayoutTests
     }
 
     [Test]
-    public async Task GrassImage_ExternalReferenceSelectsTextureCoordinates()
+    public async Task ReadWrite_GrassImage_ExternalReferenceSelectsTextureCoordinates()
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "GrassId.dds");
         using var payload = new MemoryStream();
@@ -178,7 +178,7 @@ public class CPlugBitmapLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task ImageArray_ReadsExternalFids(int version)
+    public async Task ReadWrite_ImageArray_ReadsExternalFids(int version)
     {
         var file = new GbxRefTableFile(new GbxRefTable(), 0, true, "Layer.dds");
         using var payload = new MemoryStream();

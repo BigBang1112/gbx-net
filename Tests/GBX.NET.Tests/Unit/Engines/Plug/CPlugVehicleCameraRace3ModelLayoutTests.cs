@@ -23,7 +23,7 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
     [Arguments(8, 2)]
     [Arguments(8, 3)]
     [Arguments(8, 4)]
-    public async Task CameraSettingsPreserveVersionedWireLayout(int version, int curveVersion)
+    public async Task ReadWrite_CameraSettings_PreserveVersionedWireLayout(int version, int curveVersion)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -104,7 +104,7 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
     }
 
     [Test]
-    public async Task LegacyCurveReferencesBecomeInlineValues()
+    public async Task ReadWrite_LegacyCurveReferences_BecomeInlineValues()
     {
         var curve = new CFuncKeysReal
         {
@@ -147,7 +147,7 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeCameraSettings()
+    public async Task Constructor_Defaults_MatchNativeCameraSettings()
     {
         var node = new CPlugVehicleCameraRace3Model();
         await Assert.That(node.Up).IsEqualTo(2f);
@@ -161,7 +161,7 @@ public class CPlugVehicleCameraRace3ModelLayoutTests
     }
 
     [Test]
-    public async Task LookAtAndOrientationChunksExposeNamedSettings()
+    public async Task ReadWrite_LookAtAndOrientationChunks_ExposeNamedSettings()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))

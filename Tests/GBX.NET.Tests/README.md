@@ -37,7 +37,8 @@ dotnet test --project Tests/GBX.NET.Tests/GBX.NET.Tests.csproj -- --coverage --c
 
 ## Add tests
 
-- Follow the [unit testing best practices](https://milanjovanovic.tech/blog/unit-testing-best-practices-dotnet): arrange inputs, act on one behavior, then assert its observable result. Use `Method_Scenario_ExpectedResult` names for new and refactored tests.
+- Follow the [unit testing best practices](https://milanjovanovic.tech/blog/unit-testing-best-practices-dotnet): arrange inputs, act on one behavior, then assert its observable result.
+- Name unit tests using `Method_Scenario_Result`, for example `ReadString_TruncatedText_ThrowsEndOfStreamException`. Give integration tests descriptive PascalCase names, for example `RealFixturesPreserveObjectGraphsAfterSavingAndReparsing`.
 - Use `[Test]` with `[Arguments]` or `[MethodDataSource]` for boundary cases. Keep success and failure scenarios in separate tests so assertions do not branch between unrelated outcomes.
 - Keep constructed test data small and local. Extract a factory when several tests need the same setup. Mock external boundaries only when needed.
 - Await TUnit assertions. Compare serialized bytes with `CollectionOrdering.Matching` so changes in ordering fail the test.

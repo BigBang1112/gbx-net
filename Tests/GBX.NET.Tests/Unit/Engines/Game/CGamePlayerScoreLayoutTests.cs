@@ -27,7 +27,7 @@ public class CGamePlayerScoreLayoutTests
     [Arguments(16)]
     [Arguments(17)]
     [Arguments(18)]
-    public async Task ScoreVersionsKeepNativeFieldOrderAndSignedStatistics(int version)
+    public async Task ReadWrite_ScoreVersions_KeepNativeFieldOrderAndSignedStatistics(int version)
     {
         var payload = Payload(w =>
         {
@@ -146,7 +146,7 @@ public class CGamePlayerScoreLayoutTests
     [Arguments(3)]
     [Arguments(4)]
     [Arguments(5)]
-    public async Task DeprecatedLeagueScoresKeepArrayVersionMarkers(int version)
+    public async Task ReadWrite_DeprecatedLeagueScores_KeepArrayVersionMarkers(int version)
     {
         var payload = Payload(w =>
         {
@@ -185,7 +185,7 @@ public class CGamePlayerScoreLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task DeprecatedCampaignSkillsKeepIndependentFilteredScoreVersions(int version)
+    public async Task ReadWrite_DeprecatedCampaignSkills_KeepIndependentFilteredScoreVersions(int version)
     {
         var payload = Payload(w =>
         {
@@ -235,7 +235,7 @@ public class CGamePlayerScoreLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task LadderResultsOnlyStoreTheThreeBytesInTheNewChunk(int version)
+    public async Task ReadWrite_LadderResults_StoresThreeBytesOnlyInNewChunk(int version)
     {
         var payload = Payload(w =>
         {
@@ -261,7 +261,7 @@ public class CGamePlayerScoreLayoutTests
     }
 
     [Test]
-    public async Task MasterServerStatisticsKeepCurrentAndSubmittedValuesInterleaved()
+    public async Task ReadWrite_MasterServerStatistics_KeepCurrentAndSubmittedValuesInterleaved()
     {
         var payload = Payload(w =>
         {
@@ -287,7 +287,7 @@ public class CGamePlayerScoreLayoutTests
     [Arguments(0x00C, 1)]
     [Arguments(0x00E, 2)]
     [Arguments(0x00F, 0)]
-    public async Task LegacyOfficialScoresKeepTheirTrailingTimestamps(int chunkId, int timestamps)
+    public async Task ReadWrite_LegacyOfficialScores_KeepTheirTrailingTimestamps(int chunkId, int timestamps)
     {
         var payload = Payload(w =>
         {
@@ -310,7 +310,7 @@ public class CGamePlayerScoreLayoutTests
     }
 
     [Test]
-    public async Task NativeWriterDefaultsAndMetadataAreApplied()
+    public async Task Constructor_NativeWriterDefaultsAndMetadata_AreApplied()
     {
         var node = new CGamePlayerScore();
         var score = new CGamePlayerScore.Score();

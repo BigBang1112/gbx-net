@@ -25,7 +25,7 @@ public class NodeRefApiTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task PropertyAssignments_ReplaceStorageWithoutResolvingAndKeepHandleIdentity(bool untyped)
+    public async Task NodeAndDescriptor_PropertyAssignments_ReplacesStorageWithoutResolvingAndKeepsHandleIdentity(bool untyped)
     {
         var table = new GbxRefTable();
         var calls = 0;
@@ -362,7 +362,7 @@ public class NodeRefApiTests
     }
 
     [Test]
-    public async Task NonGenericReferenceCollection_MutationsPreserveHandlesWithoutResolving()
+    public async Task IList_Mutations_PreservesHandlesWithoutResolving()
     {
         var table = new GbxRefTable();
         var calls = 0;
@@ -400,7 +400,7 @@ public class NodeRefApiTests
     }
 
     [Test]
-    public async Task NonGenericReferenceCollection_IncompatibleValuesDoNotResolveOrReplaceEntries()
+    public async Task IList_IncompatibleValues_DoesNotResolveOrReplaceEntries()
     {
         var table = new GbxRefTable();
         var calls = 0;
@@ -426,7 +426,7 @@ public class NodeRefApiTests
     }
 
     [Test]
-    public async Task NonGenericReferenceCollection_QueriesEnumerationAndCopyToResolveNodes()
+    public async Task IList_QueriesEnumerationAndCopyTo_ResolvesNodes()
     {
         var table = new GbxRefTable();
         var calls = 0;
@@ -471,7 +471,7 @@ public class NodeRefApiTests
     [Arguments("type", 0)]
     [Arguments("index", -1)]
     [Arguments("index", 2)]
-    public async Task NonGenericReferenceCollection_CopyToRejectsInvalidDestinationsWithoutResolving(string scenario, int index)
+    public async Task CopyTo_InvalidDestinations_ThrowsWithoutResolving(string scenario, int index)
     {
         var table = new GbxRefTable();
         var calls = 0;

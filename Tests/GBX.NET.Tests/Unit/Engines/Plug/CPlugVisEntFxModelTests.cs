@@ -10,7 +10,7 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugVisEntFxModelTests
 {
     [Test]
-    public async Task LegacyChunk_PreservesEveryExternalReferenceAndRgb()
+    public async Task ReadWrite_LegacyChunk_PreservesEveryExternalReferenceAndRgb()
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(0);
@@ -39,7 +39,7 @@ public class CPlugVisEntFxModelTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task CurrentChunk_PreservesInlineCurveVersionsAndNativeOrder(int curveVersion)
+    public async Task ReadWrite_CurrentChunk_PreservesInlineCurveVersionsAndNativeOrder(int curveVersion)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -77,7 +77,7 @@ public class CPlugVisEntFxModelTests
     [Arguments(CFuncKeysReal.ERealInterp.Linear, 0)]
     [Arguments(CFuncKeysReal.ERealInterp.Hermite, 0x10)]
     [Arguments(CFuncKeysReal.ERealInterp.SmoothStep, 2)]
-    public async Task LegacyCurve_PreservesNodeAndConvertsValuesAndInterpolation(CFuncKeysReal.ERealInterp interpolation, int flags)
+    public async Task ReadWrite_LegacyCurve_PreservesNodeAndConvertsValuesAndInterpolation(CFuncKeysReal.ERealInterp interpolation, int flags)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -120,7 +120,7 @@ public class CPlugVisEntFxModelTests
     }
 
     [Test]
-    public async Task LegacyCurve_AcceptsCurrentSimpleCurveNode()
+    public async Task ReadWrite_LegacyCurve_AcceptsCurrentSimpleCurveNode()
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -144,7 +144,7 @@ public class CPlugVisEntFxModelTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task Constructor_PreservesNativeDefaultsWhenWrittenAsNode(int version)
+    public async Task Constructor_NewNode_PreservesNativeDefaultsWhenWrittenAsNode(int version)
     {
         var model = new CPlugVisEntFxModel();
         model.CreateChunk<CPlugVisEntFxModel.Chunk09115000>().Version = version;
@@ -168,7 +168,7 @@ public class CPlugVisEntFxModelTests
     }
 
     [Test]
-    public async Task Chunk_UsesVerifiedWriterVersions()
+    public async Task Constructor_ChunkVersions_MatchVerifiedWriters()
     {
         await Assert.That(new CPlugVisEntFxModel.Chunk09115000(GameVersion.MP4).Version).IsEqualTo(0);
         await Assert.That(new CPlugVisEntFxModel.Chunk09115000(GameVersion.TM2020).Version).IsEqualTo(1);

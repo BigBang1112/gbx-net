@@ -3,7 +3,7 @@
 public class PakTests
 {
     [Test]
-    public async Task ComputeKeyFromMasterServer_ValidDerivedKey()
+    public async Task ComputeKeyFromMasterServer_ValidKeyAndChecksum_ReturnsExpectedDerivedKey()
     {
         var key = "59D87AEFB33C595D00A864F27E591C54";
         var checksum = "25FA258CC701591F13702EAC817318D86ED3907404A2C5A84E663D2DCE52C67D";

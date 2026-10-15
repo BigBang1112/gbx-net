@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit;
 public class QuatTests
 {
     [Test]
-    public async Task IdentityLeavesAnotherQuaternionUnchanged()
+    public async Task Multiply_IdentityQuaternion_LeavesOtherQuaternionUnchanged()
     {
         var rotation = new Quat(1, 2, 3, 4);
 
@@ -15,7 +15,7 @@ public class QuatTests
     }
 
     [Test]
-    public async Task QuaternionProductFollowsAxisOrder()
+    public async Task Multiply_AxisRotations_PreservesOrder()
     {
         var xHalfTurn = new Quat(1, 0, 0, 0);
         var yHalfTurn = new Quat(0, 1, 0, 0);
@@ -25,7 +25,7 @@ public class QuatTests
     }
 
     [Test]
-    public async Task ConversionToSystemQuaternionPreservesComponents()
+    public async Task Conversion_SystemQuaternion_PreservesComponents()
     {
         var rotation = new Quat(1, 2, 3, 4);
         Quaternion systemRotation = rotation;

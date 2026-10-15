@@ -12,7 +12,7 @@ public class CPlugCurveSimpleNodLayoutTests
     [Arguments(2)]
     [Arguments(3)]
     [Arguments(4)]
-    public async Task CurvePreservesVersionedPayload(int version)
+    public async Task ReadWrite_Curve_PreservesVersionedPayload(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -50,7 +50,7 @@ public class CPlugCurveSimpleNodLayoutTests
     }
 
     [Test]
-    public async Task CloneCopiesTheSharedCurveAndControlPoints()
+    public async Task DeepClone_Node_CopiesTheSharedCurveAndControlPoints()
     {
         var node = new CPlugCurveSimpleNod
         {

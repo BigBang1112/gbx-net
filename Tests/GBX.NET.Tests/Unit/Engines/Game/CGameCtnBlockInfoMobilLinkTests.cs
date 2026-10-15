@@ -13,7 +13,7 @@ public class CGameCtnBlockInfoMobilLinkTests
     [Arguments(0, true)]
     [Arguments(1, false)]
     [Arguments(2, false)]
-    public async Task ReadWrite_ReadsNativeArchiveAndPreservesReferences(int version, bool externalVis)
+    public async Task ReadWrite_NativeArchive_ReadsNativeArchiveAndPreservesReferences(int version, bool externalVis)
     {
         var phy = new CGameObjectPhyModel();
         var vis = new CGameObjectVisModel();
@@ -76,7 +76,7 @@ public class CGameCtnBlockInfoMobilLinkTests
     }
 
     [Test]
-    public async Task Version0_CreatesModelForNullReferences()
+    public async Task ReadWrite_Version0_CreatesModelForNullReferences()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -100,7 +100,7 @@ public class CGameCtnBlockInfoMobilLinkTests
     }
 
     [Test]
-    public async Task NewLink_WritesVersion1WithOneNullModelReference()
+    public async Task ReadWrite_NewLink_WritesVersion1WithOneNullModelReference()
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))

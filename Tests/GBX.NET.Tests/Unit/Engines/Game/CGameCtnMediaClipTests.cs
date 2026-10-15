@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGameCtnMediaClipTests
 {
     [Test]
-    public async Task GetGhostsReturnsOnlyGhostModelsInTrackOrder()
+    public async Task GetGhosts_MixedTrackModels_ReturnsOnlyGhostsInTrackOrder()
     {
         var first = new CGameCtnGhost();
         var second = new CGameCtnGhost();

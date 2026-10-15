@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Script;
 public class CScriptTraitsMetadataBuilderTests
 {
     [Test]
-    public async Task TypeBuilderRecordsPrimitiveMemberTypesAndIgnoresSameTypeDuplicates()
+    public async Task Build_PrimitiveMembers_RecordsTypesAndIgnoresSameTypeDuplicates()
     {
         var builder = CScriptTraitsMetadata.ScriptStructType.Create("Vehicle")
             .WithBoolean("Active")
@@ -35,7 +35,7 @@ public class CScriptTraitsMetadataBuilderTests
     }
 
     [Test]
-    public async Task TraitBuilderKeepsValuesAndTheirDeclaredTypes()
+    public async Task Build_Traits_PreservesValuesAndDeclaredTypes()
     {
         var builder = CScriptTraitsMetadata.ScriptStructTrait.Create("Vehicle")
             .WithBoolean("Active", true)
@@ -56,7 +56,7 @@ public class CScriptTraitsMetadataBuilderTests
     }
 
     [Test]
-    public async Task NestedStructAndArrayTypeRetainTheirNames()
+    public async Task Build_NestedStructAndArrayType_PreservesNames()
     {
         var nested = CScriptTraitsMetadata.ScriptStructType.Create("Stats").WithInteger("Wins");
         var parent = CScriptTraitsMetadata.ScriptStructType.Create("Player").WithStruct("Stats", nested).Build();

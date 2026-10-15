@@ -8,7 +8,7 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGamePlayerProfileLayoutTests
 {
     [Test]
-    public async Task PlayerTagsPreserveConsultationFlagsAndDisplayOrder()
+    public async Task ReadWrite_PlayerTags_PreserveConsultationFlagsAndDisplayOrder()
     {
         var payload = Payload(w =>
         {
@@ -45,7 +45,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task UnsupportedPlayerTagsVersionHasNoArrayPayload()
+    public async Task ReadWrite_UnsupportedPlayerTagsVersion_HasNoArrayPayload()
     {
         var payload = BitConverter.GetBytes(1);
         var node = new CGamePlayerProfile();
@@ -66,7 +66,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task ProfileIdentitySharesItsUuidAcrossLegacyAndModernChunks()
+    public async Task ReadWrite_ProfileIdentity_SharesItsUuidAcrossLegacyAndModernChunks()
     {
         const string profileId = "01234567-89ab-cdef-0123-456789abcdef";
         var identity = Payload(w =>
@@ -110,7 +110,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task TmfInterfaceSettingsShareEditorHelpAndPainterColorsWithLegacyChunks()
+    public async Task ReadWrite_TmfInterfaceSettings_ShareEditorHelpAndPainterColorsWithLegacyChunks()
     {
         var colors = Enumerable.Range(0, 5).Select(i => new Vec3(i / 5f, (i + 1) / 6f, (i + 2) / 7f)).ToArray();
         var colorPayload = Payload(w =>
@@ -154,7 +154,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task TmfDisplaySettingsExposeTrailColorAndStereoParameters()
+    public async Task ReadWrite_TmfDisplaySettings_ExposeTrailColorAndStereoParameters()
     {
         var payload = Payload(w =>
         {
@@ -192,7 +192,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task TmfServerSettingsExposeServerCreationPreferences()
+    public async Task ReadWrite_TmfServerSettings_ExposeServerCreationPreferences()
     {
         var payload = Payload(w =>
         {
@@ -226,7 +226,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task TmfAccountFlagsExposeNicknameChangeCountAndConversionPrompt()
+    public async Task ReadWrite_TmfAccountFlags_ExposeNicknameChangeCountAndConversionPrompt()
     {
         var payload = Payload(w =>
         {
@@ -250,7 +250,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task MultiLocalProfileHeadersAreInlineVersionedArchives()
+    public async Task ReadWrite_MultiLocalProfileHeaders_AreInlineVersionedArchives()
     {
         var payload = Payload(w =>
         {
@@ -278,7 +278,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task BuddyVersionZeroUsesPackedSystemTime()
+    public async Task ReadWrite_BuddyVersionZero_UsesPackedSystemTime()
     {
         var date = new DateTime(2025, 7, 15, 12, 34, 56, 789);
         var packed = (ulong)date.Year | ((ulong)date.Month << 16) | ((ulong)date.DayOfWeek << 20)
@@ -302,7 +302,7 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task UnsupportedBuddyContainerVersionHasNoArrayPayload()
+    public async Task ReadWrite_UnsupportedBuddyContainerVersion_HasNoArrayPayload()
     {
         var payload = BitConverter.GetBytes(6);
         var node = new CGamePlayerProfile();
@@ -317,7 +317,7 @@ public class CGamePlayerProfileLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(4)]
-    public async Task CryptedPasswordUsesItsExplicitByteCount(int passwordLength)
+    public async Task ReadWrite_CryptedPassword_UsesItsExplicitByteCount(int passwordLength)
     {
         var cipher = new byte[] { 0xC0, 0xDE, 0xFE, 0xED };
         var payload = Payload(w =>
@@ -364,7 +364,7 @@ public class CGamePlayerProfileLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task VehicleChecksumWidthDependsOnContainerVersion(int version)
+    public async Task ReadWrite_VehicleChecksums_UsesContainerVersionWidth(int version)
     {
         var payload = Payload(w =>
         {
@@ -392,7 +392,7 @@ public class CGamePlayerProfileLayoutTests
     [Arguments(true, 0)]
     [Arguments(true, 1)]
     [Arguments(true, 2)]
-    public async Task ProfileContainersPreserveEmptyUnknownAndModernEntries(bool currentContainer, int version)
+    public async Task ReadWrite_ProfileContainers_PreserveEmptyUnknownAndModernEntries(bool currentContainer, int version)
     {
         var payload = Payload(w =>
         {
@@ -437,7 +437,7 @@ public class CGamePlayerProfileLayoutTests
     [Test]
     [Arguments(5)]
     [Arguments(6)]
-    public async Task AccountArchivesBeforeNodeVersionKeepTheirOwnVersion(int archiveVersion)
+    public async Task ReadWrite_AccountArchivesBeforeNodeVersion_KeepTheirOwnVersion(int archiveVersion)
     {
         var accountPayload = Payload(w =>
         {

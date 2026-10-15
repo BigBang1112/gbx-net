@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Serialization;
 public class JaggedArraySerializationTests
 {
     [Test]
-    public async Task JaggedArrayReadableWritable_RoundTripsAllLengthCombinations()
+    public async Task JaggedArrayReadableWritable_LengthCombinations_RoundTripsValues()
     {
         (int? InnerLength, int? OuterLength)[] lengths =
         [
@@ -55,7 +55,7 @@ public class JaggedArraySerializationTests
     }
 
     [Test]
-    public void JaggedArrayReadableWritable_RejectsMismatchedFixedLengths()
+    public void JaggedArrayReadableWritable_MismatchedFixedLengths_Throws()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
@@ -67,7 +67,7 @@ public class JaggedArraySerializationTests
     }
 
     [Test]
-    public async Task JaggedArray_RoundTripsAllLengthCombinations()
+    public async Task JaggedArray_LengthCombinations_RoundTripsValues()
     {
         (int? InnerLength, int? OuterLength)[] lengths =
         [
@@ -103,7 +103,7 @@ public class JaggedArraySerializationTests
     }
 
     [Test]
-    public async Task JaggedArrayIdsAndStrings_RoundTrip()
+    public async Task JaggedArray_IdsAndStrings_RoundTripsValues()
     {
         string[][] ids = [["First", "Second"], ["Third"]];
         string[][] strings = [["One"], ["Two", "Three"]];
@@ -130,7 +130,7 @@ public class JaggedArraySerializationTests
     }
 
     [Test]
-    public async Task JaggedArrayNodeReferences_SupportFixedLengths()
+    public async Task JaggedArray_NodeReferences_SupportsFixedLengths()
     {
         CFuncSkel?[][] nodeRefs = [[]];
         External<CFuncSkel>[][] externalRefs = [[]];
@@ -159,7 +159,7 @@ public class JaggedArraySerializationTests
     }
 
     [Test]
-    public async Task JaggedArray_RejectsMismatchedFixedLengths()
+    public async Task JaggedArray_MismatchedFixedLengths_Throws()
     {
         int[][] values = [[1]];
         using var stream = new MemoryStream();

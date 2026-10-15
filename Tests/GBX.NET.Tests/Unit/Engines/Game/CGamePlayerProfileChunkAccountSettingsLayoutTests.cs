@@ -12,7 +12,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task CredentialsPreserveEncryptedKeyAndVersionedConsent(int version)
+    public async Task ReadWrite_Credentials_PreserveEncryptedKeyAndVersionedConsent(int version)
     {
         const ulong packedTime = 0x0012345601234567;
         var payload = Payload(w =>
@@ -43,7 +43,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     }
 
     [Test]
-    public async Task WritingUnrememberedPasswordKeepsItInMemoryAndEmitsEmptyString()
+    public async Task ReadWrite_WritingUnrememberedPassword_KeepsItInMemoryAndEmitsEmptyString()
     {
         var node = new CGamePlayerProfileChunk_AccountSettings
         {
@@ -65,7 +65,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(0)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task OnlineCredentialsOmitLocalFieldsButKeepConsent(int version)
+    public async Task ReadWrite_OnlineCredentials_OmitLocalFieldsButKeepConsent(int version)
     {
         var payload = Payload(w =>
         {
@@ -89,7 +89,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(6, false)]
     [Arguments(7, false)]
     [Arguments(7, true)]
-    public async Task BuddiesKeepTheirOwnHeadersAndVersionedLocalBuffers(int version, bool online)
+    public async Task ReadWrite_Buddies_KeepTheirOwnHeadersAndVersionedLocalBuffers(int version, bool online)
     {
         var payload = Payload(w =>
         {
@@ -119,7 +119,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task MessagesUsePackedTimeAndEncapsulationStartingAtVersionTwo(int version)
+    public async Task ReadWrite_Messages_UsePackedTimeAndEncapsulationStartingAtVersionTwo(int version)
     {
         var messages = Payload(w =>
         {
@@ -142,7 +142,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     }
 
     [Test]
-    public async Task OnlineMessagesAndCheatsHaveOnlyTheirVersionHeader()
+    public async Task ReadWrite_OnlineMessagesAndCheats_HaveOnlyTheirVersionHeader()
     {
         var node = new CGamePlayerProfileChunk_AccountSettings { IsOnlineSaveArchivation = true, Flags2 = 3 };
         var messages = new CGamePlayerProfileChunk_AccountSettings.Chunk0312C005 { Version = 2 };
@@ -162,7 +162,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(1)]
     [Arguments(2)]
     [Arguments(3)]
-    public async Task InputTuningsExposeNamedFieldsInNativeOrder(int version)
+    public async Task ReadWrite_InputTunings_ExposeNamedFieldsInNativeOrder(int version)
     {
         var payload = Payload(w =>
         {
@@ -187,7 +187,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     }
 
     [Test]
-    public async Task Tm2020ChunkTenContainsTwoWordsAndPackedSystemTime()
+    public async Task ReadWrite_Tm2020ChunkTen_ContainsTwoWordsAndPackedSystemTime()
     {
         var payload = Payload(w => { w.Write(0); w.Write(123); w.Write(456); w.Write(0x0012345601234567UL); });
         var node = new CGamePlayerProfileChunk_AccountSettings();
@@ -202,7 +202,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     }
 
     [Test]
-    public async Task VersionEightReplacesLegacyBuddiesWithCurrentList()
+    public async Task ReadWrite_VersionEight_ReplacesLegacyBuddiesWithCurrentList()
     {
         var payload = Payload(w =>
         {
@@ -237,7 +237,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
     [Arguments(3)]
     [Arguments(5)]
     [Arguments(8)]
-    public async Task LegacyOnlineArchiveKeepsOnlySharedProfileData(int version)
+    public async Task ReadWrite_LegacyOnlineArchive_KeepsOnlySharedProfileData(int version)
     {
         var payload = Payload(w =>
         {

@@ -6,7 +6,7 @@ namespace GBX.NET.Tests.Unit;
 public class Vec3EqualityComparerTests
 {
     [Test]
-    public async Task HashSetCoalescesVectorsThatRoundToTheSameCoordinates()
+    public async Task Equals_CoordinatesWithSameRoundedValues_CoalescesHashSetEntries()
     {
         var comparer = new Vec3EqualityComparer(2);
         var first = new Vec3(1.231f, -2.341f, 3.451f);
@@ -21,7 +21,7 @@ public class Vec3EqualityComparerTests
     }
 
     [Test]
-    public async Task EachCoordinateParticipatesInEquality()
+    public async Task Equals_DifferentCoordinates_ComparesEveryComponent()
     {
         var comparer = new Vec3EqualityComparer(2);
         var origin = new Vec3(1, 2, 3);

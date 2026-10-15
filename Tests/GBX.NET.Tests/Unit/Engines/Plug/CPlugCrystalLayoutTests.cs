@@ -15,7 +15,7 @@ public class CPlugCrystalLayoutTests
     [Arguments(34)]
     [Arguments(35)]
     [Arguments(37)]
-    public async Task EditableCrystalPreservesSparseHandlesAndMeshAttributes(int version)
+    public async Task ReadWrite_EditableCrystal_PreservesSparseHandlesAndMeshAttributes(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload)) WriteEditableCrystalPayload(writer, version);
@@ -48,7 +48,7 @@ public class CPlugCrystalLayoutTests
     [Arguments(35, 0, 3)]
     [Arguments(36, 0, 3)]
     [Arguments(37, 0, 3)]
-    public async Task EmbeddedCrystalPreservesNativeVersionBranches(int version, int maximumMaterialIndex, int positionCount)
+    public async Task ReadWrite_EmbeddedCrystal_PreservesNativeVersionBranches(int version, int maximumMaterialIndex, int positionCount)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -85,7 +85,7 @@ public class CPlugCrystalLayoutTests
     [Arguments(6)]
     [Arguments(7)]
     [Arguments(8)]
-    public async Task VoxelSpacePreservesDimensionsAndVoxelAttributes(int version)
+    public async Task ReadWrite_VoxelSpace_PreservesDimensionsAndVoxelAttributes(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -121,7 +121,7 @@ public class CPlugCrystalLayoutTests
     }
 
     [Test]
-    public async Task DeformationLayerPreservesCachedCrystalAndTransforms()
+    public async Task ReadWrite_DeformationLayer_PreservesCachedCrystalAndTransforms()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -164,7 +164,7 @@ public class CPlugCrystalLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task LegacyVoxelChunkPreservesEveryCell(bool hasVertexValues)
+    public async Task ReadWrite_LegacyVoxelChunk_PreservesEveryCell(bool hasVertexValues)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -201,7 +201,7 @@ public class CPlugCrystalLayoutTests
     [Test]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task MaterialChunkResolvesFacesReadBeforeTheMaterialTable(int version)
+    public async Task ReadWrite_MaterialChunk_ResolvesFacesReadBeforeTheMaterialTable(int version)
     {
         var part = new CPlugCrystal.Part();
         var face = new CPlugCrystal.Face([], part, null, null) { MaterialIndex = 0 };
@@ -240,7 +240,7 @@ public class CPlugCrystalLayoutTests
     [Arguments(0, 8)]
     [Arguments(1, 8)]
     [Arguments(2, 12)]
-    public async Task EmptyLightmapChunkPreservesVersionedIndexArray(int version, int payloadLength)
+    public async Task ReadWrite_EmptyLightmapChunk_PreservesVersionedIndexArray(int version, int payloadLength)
     {
         var node = new CPlugCrystal();
         var chunk = new CPlugCrystal.Chunk09003006 { Version = version };
@@ -262,7 +262,7 @@ public class CPlugCrystalLayoutTests
     [Arguments(2, 0)]
     [Arguments(2, 2)]
     [Arguments(2, 3)]
-    public async Task LightmapChunkPreservesIndependentTablesAndIndexOrder(int version, int lightmapCount)
+    public async Task ReadWrite_LightmapChunk_PreservesIndependentTablesAndIndexOrder(int version, int lightmapCount)
     {
         var face = new CPlugCrystal.Face(
             [new(0, default, default), new(1, default, default), new(2, default, default)],

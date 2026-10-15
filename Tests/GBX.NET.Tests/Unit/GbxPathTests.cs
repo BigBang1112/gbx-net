@@ -8,14 +8,14 @@ public class GbxPathTests
     [Arguments("Race.Gbx", "Race", ".Gbx")]
     [Arguments("Race", "Race", "")]
     [Arguments("Race.Map.Replay.Gbx", "Race.Map", ".Replay.Gbx")]
-    public async Task FileNameAndExtensionHandleGbxSuffixes(string path, string fileName, string extension)
+    public async Task GetFileNameWithoutExtensionAndGetExtension_GbxSuffixes_ReturnExpectedParts(string path, string fileName, string extension)
     {
         await Assert.That(GbxPath.GetFileNameWithoutExtension(path)).IsEqualTo(fileName);
         await Assert.That(GbxPath.GetExtension(path)).IsEqualTo(extension);
     }
 
     [Test]
-    public async Task ChangeExtensionReplacesBothGbxSuffixesAndPreservesDirectory()
+    public async Task ChangeExtension_DoubleGbxSuffix_ReplacesSuffixAndPreservesDirectory()
     {
         var path = Path.Combine("Tracks", "Race.Map.Gbx");
 
@@ -26,7 +26,7 @@ public class GbxPathTests
     }
 
     [Test]
-    public async Task NullPathRemainsNull()
+    public async Task GetFileNameWithoutExtensionAndGetExtensionAndChangeExtension_NullPath_ReturnNull()
     {
         await Assert.That(GbxPath.GetFileNameWithoutExtension(null)).IsNull();
         await Assert.That(GbxPath.GetExtension(null)).IsNull();
@@ -34,7 +34,7 @@ public class GbxPathTests
     }
 
     [Test]
-    public async Task GetValidFileNameReplacesWindowsReservedAndControlCharacters()
+    public async Task GetValidFileName_ReservedAndControlCharacters_ReplacesInvalidCharacters()
     {
         const string input = "A:B/C\\D*E?F\"G|H<I>J\u0001K\u001fL";
 

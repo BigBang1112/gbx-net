@@ -12,7 +12,7 @@ public class CPlugSoundSurfaceLayoutTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ImpactSettingsPreserveVersionedPayload(int version)
+    public async Task ReadWrite_ImpactSettings_PreserveVersionedPayload(int version)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -46,7 +46,7 @@ public class CPlugSoundSurfaceLayoutTests
     }
 
     [Test]
-    public async Task LegacySoundsReadInterleavedReferencesWithoutArrayPrefixes()
+    public async Task ReadWrite_LegacySounds_ReadInterleavedReferencesWithoutArrayPrefixes()
     {
         var component = new CPlugSoundComponent { MaxVolume = 0.75f };
         component.CreateChunk<CPlugSoundComponent.Chunk0908F000>();
@@ -91,7 +91,7 @@ public class CPlugSoundSurfaceLayoutTests
     [Arguments(false, 1)]
     [Arguments(true, 0)]
     [Arguments(true, 1)]
-    public async Task ModernSoundsPreserveDirectCurveBodies(bool simple, int version)
+    public async Task ReadWrite_ModernSounds_PreserveDirectCurveBodies(bool simple, int version)
     {
         var original = new CPlugSoundSurface(simple ? GameVersion.TM2020 : GameVersion.MP4)
         {

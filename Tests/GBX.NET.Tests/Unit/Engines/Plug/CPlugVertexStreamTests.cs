@@ -15,7 +15,7 @@ public class CPlugVertexStreamTests
 
     [Test]
     [MethodDataSource(nameof(DeclarationTypes))]
-    public async Task CurrentChunk_PreservesEveryNativeDeclarationType(int type, int size)
+    public async Task ReadWrite_CurrentChunk_PreservesEveryNativeDeclarationType(int type, int size)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -44,7 +44,7 @@ public class CPlugVertexStreamTests
     [Arguments(0, true)]
     [Arguments(1, false)]
     [Arguments(1, true)]
-    public async Task Float3_CompressionDependsOnSpaceAndStoredFlag(int space, bool compressed)
+    public async Task ReadWrite_Float3_CompressionDependsOnSpaceAndStoredFlag(int space, bool compressed)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -75,7 +75,7 @@ public class CPlugVertexStreamTests
     [Test]
     [Arguments(-1)]
     [Arguments(0)]
-    public async Task StridedBuffers_PreserveSharedDeclarationsAndGeometryEdits(int version)
+    public async Task ReadWrite_StridedBuffers_PreserveSharedDeclarationsAndGeometryEdits(int version)
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -117,7 +117,7 @@ public class CPlugVertexStreamTests
     }
 
     [Test]
-    public async Task CurrentSharedDeclarations_HaveTheirOwnChannelPayload()
+    public async Task ReadWrite_CurrentSharedDeclarations_HaveTheirOwnChannelPayload()
     {
         using var payload = new ObjectModelPayload();
         var writer = payload.Writer;
@@ -146,7 +146,7 @@ public class CPlugVertexStreamTests
     [Arguments(-1)]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task EmptyStream_ConsumesTheCorrectHeader(int version)
+    public async Task ReadWrite_EmptyStream_ConsumesTheCorrectHeader(int version)
     {
         using var payload = new ObjectModelPayload();
         WriteHeader(payload.Writer, version, 0);
@@ -162,7 +162,7 @@ public class CPlugVertexStreamTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task StreamModel_PreservesExternalReferenceAndOmitsData(int version)
+    public async Task ReadWrite_StreamModel_PreservesExternalReferenceAndOmitsData(int version)
     {
         using var payload = new ObjectModelPayload();
         payload.Writer.Write(version);
@@ -183,7 +183,7 @@ public class CPlugVertexStreamTests
     [Arguments(GameVersion.TMSX)]
     [Arguments(GameVersion.TMNESWC)]
     [Arguments(GameVersion.VSK5)]
-    public async Task LegacyGameContext_ReadsAnAmbiguousOneVertexHeader(GameVersion game)
+    public async Task ReadWrite_LegacyGameContext_ReadsAnAmbiguousOneVertexHeader(GameVersion game)
     {
         using var stream = new MemoryStream();
         using (var writer = new GbxWriter(stream))
@@ -204,7 +204,7 @@ public class CPlugVertexStreamTests
     }
 
     [Test]
-    public async Task Constructor_UsesNativeFlagsAndWriterVersions()
+    public async Task Constructor_NewNode_UsesNativeFlagsAndWriterVersions()
     {
         var node = new CPlugVertexStream();
         await Assert.That(node.Flags).IsEqualTo(3u);
@@ -217,7 +217,7 @@ public class CPlugVertexStreamTests
     }
 
     [Test]
-    public async Task CombinedReadWrite_PreservesChannelBytes()
+    public async Task ReadWrite_CombinedReadWrite_PreservesChannelBytes()
     {
         using var input = new MemoryStream();
         using (var writer = new GbxWriter(input))
@@ -241,7 +241,7 @@ public class CPlugVertexStreamTests
     }
 
     [Test]
-    public async Task Clone_CopiesRawChannelBytesAndGeometryViews()
+    public async Task DeepClone_Node_CopiesRawChannelBytesAndGeometryViews()
     {
         var node = new CPlugVertexStream
         {
@@ -274,7 +274,7 @@ public class CPlugVertexStreamTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task SharedDeclaration_RejectsReferencesToItself(int version)
+    public async Task ReadWrite_SharedDeclaration_RejectsReferencesToItself(int version)
     {
         using var payload = new ObjectModelPayload();
         WriteHeader(payload.Writer, version, 1);

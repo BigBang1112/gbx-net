@@ -6,7 +6,7 @@ public class GbxCloneTests
     [Test]
     [Arguments("CGameCtnChallenge/CGameCtnChallenge TM2020 001.Map.Gbx")]
     [Arguments("CGameCtnMediaClip/CGameCtnMediaClip TM2020 001.Clip.Gbx")]
-    public async Task DeepClone_RealFixture_SerializesLikeIndependentOriginal(string filePath)
+    public async Task ClonedFixturesSerializeLikeTheirIndependentOriginals(string filePath)
     {
         // Arrange
         var original = Gbx.Parse(TestFiles.Gbx(filePath));

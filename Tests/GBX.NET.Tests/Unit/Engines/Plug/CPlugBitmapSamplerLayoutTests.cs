@@ -33,7 +33,7 @@ public class CPlugBitmapSamplerLayoutTests
     [Arguments(11, 0x18u, false)]
     [Arguments(11, 0x60u, false)]
     [Arguments(11, 0x1800u, false)]
-    public async Task SamplerStatesPreserveFlagsAndUseTheCorrectBorderCondition(int offset, uint flags, bool hasBorder)
+    public async Task ReadWrite_SamplerStates_PreserveFlagsAndUseTheCorrectBorderCondition(int offset, uint flags, bool hasBorder)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -64,7 +64,7 @@ public class CPlugBitmapSamplerLayoutTests
     }
 
     [Test]
-    public async Task SeparateLegacyFieldsPreserveFilteringAndAddressModes()
+    public async Task ReadWrite_SeparateLegacyFields_PreserveFilteringAndAddressModes()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -105,7 +105,7 @@ public class CPlugBitmapSamplerLayoutTests
     [Arguments(9, 0x60u, true)]
     [Arguments(10, 0x1800u, true)]
     [Arguments(11, 0xC00u, true)]
-    public async Task NodeBodiesRecognizeLegacyAndModernChunks(int offset, uint flags, bool hasBorder)
+    public async Task ReadNode_NodeBodies_RecognizeLegacyAndModernChunks(int offset, uint flags, bool hasBorder)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -125,7 +125,7 @@ public class CPlugBitmapSamplerLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstruction()
+    public async Task Constructor_Defaults_MatchNativeConstruction()
     {
         var node = new CPlugBitmapSampler();
         await Assert.That(node.Flags).IsEqualTo(0x1C018005u);

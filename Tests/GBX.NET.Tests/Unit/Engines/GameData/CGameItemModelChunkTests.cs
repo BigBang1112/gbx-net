@@ -32,7 +32,7 @@ public class CGameItemModelChunkTests
     [Arguments(CGameItemModel.EItemType.Block, 8, false)]
     [Arguments(CGameItemModel.EItemType.Block, 13, false)]
     [Arguments(CGameItemModel.EItemType.Block, 15, false)]
-    public async Task Chunk2E002019_ReadsNativeLayoutAtItemTypeAndVersionBoundaries(CGameItemModel.EItemType itemType, int version, bool legacyModels)
+    public async Task ReadWrite_Chunk2E002019_ReadsNativeLayoutAtItemTypeAndVersionBoundaries(CGameItemModel.EItemType itemType, int version, bool legacyModels)
     {
         var refTable = new GbxRefTable();
         var phyFile = new GbxRefTableFile(refTable, 0, true, "Physics.Gbx");
@@ -84,7 +84,7 @@ public class CGameItemModelChunkTests
     }
 
     [Test]
-    public async Task Chunk2E002019_PreservesExistingModelsAndWritesSentinels()
+    public async Task ReadWrite_Chunk2E002019_PreservesExistingModelsAndWritesSentinels()
     {
         var phy = new CMwNod();
         var vis = new CMwNod();
@@ -124,7 +124,7 @@ public class CGameItemModelChunkTests
     }
 
     [Test]
-    public async Task Chunk2E002019_RejectsBlockWithoutEditionModel()
+    public async Task ReadWrite_Chunk2E002019_RejectsBlockWithoutEditionModel()
     {
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
@@ -145,7 +145,7 @@ public class CGameItemModelChunkTests
     [Arguments(nameof(CGameItemModel.EntityModel), 8)]
     [Arguments(nameof(CGameItemModel.VFX), 13)]
     [Arguments(nameof(CGameItemModel.MaterialModifier), 15)]
-    public async Task ModelPropertiesHaveChunkVersionMetadata(string name, int sinceVersion)
+    public async Task GetCustomAttributes_ModelProperties_ReturnsChunkVersionMetadata(string name, int sinceVersion)
     {
         var attribute = typeof(CGameItemModel).GetProperty(name)!.GetCustomAttributes<AppliedWithChunkAttribute>().Single();
         await Assert.That(attribute.ChunkType).IsEqualTo(typeof(CGameItemModel.Chunk2E002019));

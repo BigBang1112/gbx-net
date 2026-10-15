@@ -9,7 +9,7 @@ public class CPlugCloudsParamLayoutTests
     [Test]
     [Arguments(false)]
     [Arguments(true)]
-    public async Task SettingsPreserveNativeFieldOrder(bool versioned)
+    public async Task ReadWrite_Settings_PreserveNativeFieldOrder(bool versioned)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -50,7 +50,7 @@ public class CPlugCloudsParamLayoutTests
     [Arguments(0)]
     [Arguments(2)]
     [Arguments(4)]
-    public async Task HeightPointsPreserveEverySerializedPair(int count)
+    public async Task ReadWrite_HeightPoints_PreserveEverySerializedPair(int count)
     {
         var points = Enumerable.Range(0, count).Select(i => new Vec2(i * 100f, i + 0.5f)).ToArray();
         using var payload = new MemoryStream();
@@ -82,7 +82,7 @@ public class CPlugCloudsParamLayoutTests
     [Arguments(false, true)]
     [Arguments(true, false)]
     [Arguments(true, true)]
-    public async Task NodeBodiesSupportCurrentAndLegacyChunkIds(bool legacyIds, bool versioned)
+    public async Task ReadNode_NodeBodies_SupportCurrentAndLegacyChunkIds(bool legacyIds, bool versioned)
     {
         var classId = legacyIds ? 0x05046000u : CPlugCloudsParam.Id;
         using var payload = new MemoryStream();
@@ -121,7 +121,7 @@ public class CPlugCloudsParamLayoutTests
     }
 
     [Test]
-    public async Task DefaultsMatchNativeConstruction()
+    public async Task Constructor_Defaults_MatchNativeConstruction()
     {
         var node = new CPlugCloudsParam();
         await Assert.That(node.HeightCenter).IsEqualTo(CPlugCloudsParam.EHeightCenter.Camera);

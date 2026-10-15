@@ -16,7 +16,7 @@ public class GbxActionTests
     [Arguments("MP4", GbxCompression.Uncompressed, true)]
     [Arguments("MP4", GbxCompression.Compressed, false)]
     [Arguments("MP4", GbxCompression.Compressed, true)]
-    public async Task ParseSaveParse_ActionFixture_PreservesActionData(string game, GbxCompression compression, bool async)
+    public async Task ActionFixturesPreserveActionDataAfterSavingAndReparsing(string game, GbxCompression compression, bool async)
     {
         var path = TestFiles.Gbx("CGameActionModel", $"CGameActionModel {game} 001.Action.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };
@@ -42,7 +42,7 @@ public class GbxActionTests
     [Test]
     [Arguments("MP3")]
     [Arguments("MP4")]
-    public async Task EditAndClone_ActionFixture_PreservesAnimationAndScriptChanges(string game)
+    public async Task ClonedActionFixturesPreserveAnimationAndScriptEditsAfterSaving(string game)
     {
         var path = TestFiles.Gbx("CGameActionModel", $"CGameActionModel {game} 001.Action.Gbx");
         var settings = new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false };

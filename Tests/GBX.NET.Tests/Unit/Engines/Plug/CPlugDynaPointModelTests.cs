@@ -7,7 +7,7 @@ namespace GBX.NET.Tests.Unit.Engines.Plug;
 public class CPlugDynaPointModelTests
 {
     [Test]
-    public async Task Archive_ReadsNativeFloatingPointFieldsAndPreservesBytes()
+    public async Task ReadWrite_Archive_ReadsNativeFloatingPointFieldsAndPreservesBytes()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -43,7 +43,7 @@ public class CPlugDynaPointModelTests
     }
 
     [Test]
-    public async Task DefaultArchive_UsesNativePhysicalParameters()
+    public async Task ReadWrite_DefaultArchive_UsesNativePhysicalParameters()
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
@@ -65,7 +65,7 @@ public class CPlugDynaPointModelTests
     }
 
     [Test]
-    public async Task ObsoleteIntegerProperties_PreserveFloatBits()
+    public async Task ObsoleteIntegerProperties_WhenChanged_PreserveFloatBits()
     {
         int[] bits = [0, unchecked((int)0x80000000), 0x7FC12345, 0x3FC00000, 0x40000000, 0x3E4CCCCD, 0x3F666666, unchecked((int)0xBF800000)];
 #pragma warning disable CS0618

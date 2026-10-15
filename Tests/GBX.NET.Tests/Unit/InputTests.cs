@@ -12,7 +12,7 @@ public class InputTests
     [Arguments("Respawn")]
     [Arguments("SteerLeft")]
     [Arguments("SteerRight")]
-    public async Task StateInputsPreserveNameAndPressedData(string name)
+    public async Task Parse_StateInputs_PreservesNameAndPressedData(string name)
     {
         var pressed = Input.Parse(default, name, 128);
         var released = Input.Parse(default, name, 0);
@@ -29,7 +29,7 @@ public class InputTests
     [Arguments(0xFF0000u, 65536)]
     [Arguments(0x00010000u, -65536)]
     [Arguments(0u, 0)]
-    public async Task SteerParsingPreservesSignedExtremes(uint data, int expectedValue)
+    public async Task Parse_SteerInput_PreservesSignedExtremes(uint data, int expectedValue)
     {
         var input = (Steer)Input.Parse(default, "Steer", data);
 
@@ -41,7 +41,7 @@ public class InputTests
     [Arguments(-65536, -1f)]
     [Arguments(32768, 0.5f)]
     [Arguments(0, 0f)]
-    public async Task RealInputValueUsesSignedSixteenBitFraction(int raw, float expected)
+    public async Task GetValue_RealInput_UsesSignedSixteenBitFraction(int raw, float expected)
     {
         var input = new Steer(default, raw);
 
@@ -50,7 +50,7 @@ public class InputTests
     }
 
     [Test]
-    public async Task UnknownInputKeepsOriginalNameAndPayload()
+    public async Task Parse_UnknownInput_PreservesOriginalNameAndPayload()
     {
         var input = Input.Parse(default, "CustomAction", 0xDEADBEEFu);
         var unknown = (await Assert.That(input).IsTypeOf<UnknownInput>())!;
