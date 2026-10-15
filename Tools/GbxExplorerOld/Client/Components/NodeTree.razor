@@ -14,6 +14,7 @@
     @{
     // This should be more flexible, and grouped by declaring type
     var declaringTypeGroups = Properties
+        .Where(x => !x.IsDefined(typeof(ObsoleteAttribute)))
         .OrderBy(x => x.Name)
         .GroupBy(x => x.DeclaringType ?? throw new Exception("Declaring type is null"))
         .ToDictionary(x => x.Key);

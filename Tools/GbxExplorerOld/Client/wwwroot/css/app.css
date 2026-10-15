@@ -220,14 +220,6 @@ input.file {
             box-shadow: inset 0px 0px 0px 2px #22262A88;
         }
 
-    .element-box.obsolete-member {
-        color: #FFB70F;
-        background-color: #FFB70F33;
-        box-shadow: inset 0px 0px 0px 1px #FFB70F66;
-        font-size: 0.7rem;
-        white-space: nowrap;
-    }
-
 input[type=text], select {
     padding: 4.5px 8px;
     background-color: #22262A88;
