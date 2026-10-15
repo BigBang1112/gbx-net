@@ -347,8 +347,6 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x057 (skippable) [MP4.v3, TM2020.v5] // recorded bot paths
   version
-  v6+
-    throw
   v1-
     LegacyRecordedBotPath[] LegacyRecordedBotPaths
   v1+

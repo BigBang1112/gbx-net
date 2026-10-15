@@ -439,6 +439,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 16)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec3(ref n.badgeColor);
 
             if (Version == 0)
@@ -569,6 +574,10 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {
@@ -608,6 +617,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Data(ref U01);
         }
     }
@@ -643,6 +657,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Data(ref U01);
         }
     }
@@ -699,6 +718,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref U01);
         }
     }
@@ -753,6 +777,10 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -857,6 +885,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Unknown2>(ref U01!, version: Version);
 
             if (Version >= 2)
@@ -954,6 +987,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.editor_ShowHelp);
 
             if (Version >= 1)
@@ -1048,6 +1086,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<DeviceSettings>(ref n.vehicleSettings!, version: Version);
         }
     }
@@ -1085,6 +1128,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
 
             if (Version >= 1)
@@ -1123,6 +1171,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Node<CGameCtnMediaShootParams>(ref n.shootParamsVideo);
             rw.Node<CGameCtnMediaShootParams>(ref n.shootParamsScreenshot);
         }
@@ -1167,6 +1220,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<Unknown6>(ref U01, version: Version);
 
             if (Version >= 2)
@@ -1218,6 +1276,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Unknown7>(ref U01!, version: Version);
         }
     }
@@ -1372,6 +1435,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<Unknown8>(ref U01, version: 5);
 
             if (Version >= 6)
@@ -1412,6 +1480,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Byte(ref U01);
         }
     }
@@ -1548,6 +1621,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
@@ -1636,6 +1714,11 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<Unknown8>(ref U01, version: Version);
             rw.UInt64(ref U02);
         }

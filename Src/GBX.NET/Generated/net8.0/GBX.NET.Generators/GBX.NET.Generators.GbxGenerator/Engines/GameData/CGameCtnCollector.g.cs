@@ -345,6 +345,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         {
             rw.Ident(ref n.ident);
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.pageName);
 
             if (Version == 5)
@@ -957,6 +962,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.defaultSkinRef);
 
             if (Version >= 1)
@@ -1021,6 +1031,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.isInternal);
             rw.Boolean(ref n.isAdvanced);
             rw.Int32(ref n.catalogPosition);

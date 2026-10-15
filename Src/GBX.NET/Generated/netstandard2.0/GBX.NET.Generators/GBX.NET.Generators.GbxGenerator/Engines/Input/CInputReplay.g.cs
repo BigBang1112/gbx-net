@@ -106,6 +106,11 @@ public partial class CInputReplay : CMwNod, IClass
         public override void ReadWrite(CInputReplay n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             U01 = rw.UInt32((uint)(rw.Writer is null ? default : (0)));
             rw.ArrayId(ref n.actionIds!);
             var eventCount = rw.Int32((rw.Writer is null ? default : (n.Events?.Length?? 0)));

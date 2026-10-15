@@ -1,5 +1,6 @@
 using GBX.NET.Components;
 using GBX.NET.Engines.System;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Engines.System;
@@ -218,9 +219,9 @@ public class CSystemConfigLayoutTests
         using var rw = new GbxReaderWriter(reader);
         var node = new CSystemConfig();
         if (inputs)
-            Assert.Throws<NotSupportedException>(() => new CSystemConfig.Chunk0B005060().ReadWrite(node, rw));
+            Assert.Throws<ChunkVersionNotSupportedException>(() => new CSystemConfig.Chunk0B005060().ReadWrite(node, rw));
         else
-            Assert.Throws<NotSupportedException>(() => new CSystemConfig.Chunk0B00505B().ReadWrite(node, rw));
+            Assert.Throws<ChunkVersionNotSupportedException>(() => new CSystemConfig.Chunk0B00505B().ReadWrite(node, rw));
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 
@@ -302,7 +303,7 @@ public class CSystemConfigLayoutTests
             0x05D => () => new CSystemConfig.Chunk0B00505D().ReadWrite(node, rw),
             _ => () => new CSystemConfig.Chunk0B00505E().ReadWrite(node, rw)
         };
-        Assert.Throws<NotSupportedException>(serialize);
+        Assert.Throws<ChunkVersionNotSupportedException>(serialize);
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 

@@ -622,6 +622,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.Int32(ref U02);
 
@@ -693,6 +698,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.Int32(ref U02);
         }
@@ -730,6 +740,11 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.bottomClipRef);
             rw.NodeRef(ref n.topClipRef);
             rw.EnumInt32<Direction>(ref n.bottomClipDir);

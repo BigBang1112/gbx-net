@@ -636,28 +636,20 @@ CSystemConfig 0x0B005000
 
 0x05B (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v2] // anti-cheat and bad-word URLs
   version
-  v3+
-    throw
   string AntiCheatServerUrl
   v2+
     string BadWordListUrl
 
 0x05C (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // SmMaxPlayerResimStepPerFrame
   version
-  v1+
-    throw
   int SmMaxPlayerResimStepPerFrame [MP4 = 100]
 
 0x05D (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // InstallUid
   version
-  v1+
-    throw
   string InstallUid
 
 0x05E (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // network speed and firewall tests
   version
-  v2+
-    throw
   bool NetworkUseProxy
   string NetworkProxyLogin
   string NetworkProxyPassword
@@ -682,8 +674,6 @@ CSystemConfig 0x0B005000
 
 0x060 (skippable) [TM2020.v0] // input joysticks
   version
-  v1+
-    throw
   bool InputsAlternateMethod
   bool InputsFreezeUnusedAxes
   bool InputsEnableRumble

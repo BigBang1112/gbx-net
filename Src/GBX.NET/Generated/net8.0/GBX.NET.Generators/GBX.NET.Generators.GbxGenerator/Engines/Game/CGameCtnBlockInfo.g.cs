@@ -1168,6 +1168,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.charPhySpecialPropertyRef);
 
             if (Version <= 6)
@@ -1461,6 +1466,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.sound1Ref);
 
             if (Version >= 1)
@@ -1523,6 +1533,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<EBaseType>(ref n.baseType);
 
             if (Version == 0)
@@ -1593,6 +1608,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.ProdState = rw.EnumInt32<CGameCtnCollector.EProdState>(n.ProdState);
         }
     }
@@ -1633,6 +1653,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.isPillar, asByte: true);
             rw.EnumByte<EMultiDir>(ref n.pillarShapeMultiDir);
 
@@ -1675,6 +1700,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.blockInfoModelFidRef);
             rw.NodeRef(ref n.materialModifierRef);
 

@@ -651,6 +651,10 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -725,6 +729,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<ObjectSpawn>(ref n.objectSpawns!, version: Version);
 
             if (Version <= 2)

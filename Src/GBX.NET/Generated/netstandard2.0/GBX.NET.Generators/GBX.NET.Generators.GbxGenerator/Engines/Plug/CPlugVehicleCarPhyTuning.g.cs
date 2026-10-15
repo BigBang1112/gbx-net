@@ -5748,6 +5748,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 10)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref n.dragForceFromFrontSpeed, version: Version- 10);
 
             if (Version <= 2)
@@ -5843,6 +5848,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.inputGasSmoothSpeed);
             rw.Single(ref n.inputBrakeSmoothSpeed);
             rw.Single(ref n.normal_InputSteerAngleSmoothSpeed_Steer);
@@ -6067,6 +6077,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 37)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 2)
             {
@@ -6340,10 +6354,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 2)
+            if (Version > 1)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Single(ref n.impulseGroundWheelRestCoef);
@@ -6398,10 +6411,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 7)
+            if (Version > 6)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Single(ref n.damperKeepContactDuration);
@@ -6504,10 +6516,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 5)
+            if (Version > 4)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             n.cameraModels = rw.ListNodeRef_deprec<CPlugCamControlModel>(n.cameraModels);
@@ -6574,10 +6585,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 6)
+            if (Version > 5)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Single(ref n.turboYellowAccelCoef);
@@ -6671,10 +6681,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 8)
+            if (Version > 7)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Int32(ref n.airControlDuration);
@@ -6780,10 +6789,9 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 6)
+            if (Version > 5)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Single(ref n.engineMaxRPM);
@@ -6860,6 +6868,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.bodyFrictionCoef_Concrete);
             rw.Single(ref n.bodyFrictionCoef_Metal);
             rw.Single(ref n.bodyRestCoef_Metal);
@@ -6907,6 +6920,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.aerialForce_AngleMinDeg);
             rw.Int32(ref n.aerialForce_Duration);
             rw.Single(ref n.aerialForce_Base);
@@ -6955,6 +6973,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.shapeRef);
         }
     }
@@ -6991,6 +7014,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.gearBoxRef);
         }
     }
@@ -7033,6 +7061,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.jumpClassicImpulseY);
             rw.Single(ref n.jumpClassicImpulseZ);
             rw.Single(ref n.jumpProgressiveImpulseY);
@@ -7228,6 +7261,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 21)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 17)
             {
@@ -7498,6 +7535,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 21)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -7708,6 +7749,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
@@ -7856,6 +7902,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 14)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 14);
             rw.Single(ref U02);
             rw.Single(ref U03);
@@ -7993,6 +8044,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 1)
             {
@@ -8067,6 +8122,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 2);
             rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
             rw.Single(ref U03);
@@ -8135,6 +8195,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 2);
             rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
             rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 2);
@@ -8273,6 +8338,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 13)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Int32(ref U03);
@@ -8434,6 +8504,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 18)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
 
             if (Version >= 1)
@@ -8612,6 +8687,10 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {
@@ -8750,6 +8829,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 15)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 11);
             rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 11);
             rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 11);
@@ -8971,6 +9055,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 19)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
@@ -9141,6 +9230,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 10)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 10);
 
@@ -9243,6 +9337,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 4);
@@ -9299,6 +9398,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
         }
     }
@@ -9340,6 +9444,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Single(ref U03);
@@ -9378,6 +9487,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }
@@ -9539,6 +9653,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 11)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 10);
             rw.Int32(ref U02);
             rw.Single(ref U03);
@@ -9651,6 +9770,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 2);
 
@@ -9703,6 +9827,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PlugCurve>(ref n.maxSideFriction, version: Version);
             rw.Single(ref n.maxSideFrictionSliding);
             rw.Single(ref n.groundSlowDownBase);
@@ -9817,6 +9946,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
 
             if (Version >= 1)

@@ -112,6 +112,11 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisStyles n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.randomGroups = rw.ListNodeRef<CPlugVehicleVisStyleRandomGroup>(n.randomGroups);
 
             if (Version >= 1)

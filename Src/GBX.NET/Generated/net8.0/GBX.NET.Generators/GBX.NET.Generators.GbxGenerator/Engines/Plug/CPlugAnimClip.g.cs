@@ -138,6 +138,11 @@ public partial class CPlugAnimClip : CMwNod, IClass
         public override void ReadWrite(CPlugAnimClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.flagsVersion);
             rw.Id(ref n.name);
             rw.NodeRef(ref n.bakedRef);

@@ -720,6 +720,11 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
         public override void ReadWrite(CPlugAudioEnvironment n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
 
             if (Version >= 1)

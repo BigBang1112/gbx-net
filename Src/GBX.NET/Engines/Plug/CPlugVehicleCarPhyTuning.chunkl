@@ -682,8 +682,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x08C [MP3, TMT.v1, MP4.v1, TM2020.v1] // collision response
   version
-  v2+
-    throw
   float ImpulseGroundWheelRestCoef = -0.8f
   float ImpulseGroundBodyRestCoef = -0.8f
   float ImpulseRestCoef
@@ -693,8 +691,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x08D [MP3, TMT.v4, MP4.v6, TM2020.v6] // damper contact and post-jump orientation
   version
-  v7+
-    throw
   float DamperKeepContactDuration = 10.0f
   bool DamperForceAllways
   v2+
@@ -714,8 +710,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x08E [MP3, TMT.v1, MP4.v3, TM2020.v4] // camera models
   version
-  v5+
-    throw
   CPlugCamControlModel[] CameraModels (deprec)
   v1+
     CPlugCamControlModel[] CameraModels_Console (deprec)
@@ -728,8 +722,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x094 [MP3, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
   version
-  v6+
-    throw
   float TurboYellowAccelCoef
   PlugCurve TurboYellowConstantFromSpeed (version: Version - 3)
   int TurboYellowAccelCoefDuration
@@ -751,8 +743,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x095 [MP3, TMT.v0, MP4.v0, TM2020.v7] // air control
   version
-  v8+
-    throw
   int AirControlDuration
   float AirControlMaxAngularSpeedY
   PlugCurve AirControlZCoefFromAngularSpeed (version: Version - 7)
@@ -780,8 +770,6 @@ CPlugVehicleCarPhyTuning 0x090ED000
 
 0x096 [MP3, TMT.v5, MP4.v5, TM2020.v5] // engine and gear ratios
   version
-  v6+
-    throw
   float EngineMaxRPM = 11000f
   float EngineIdleRPM = 2500f
   float

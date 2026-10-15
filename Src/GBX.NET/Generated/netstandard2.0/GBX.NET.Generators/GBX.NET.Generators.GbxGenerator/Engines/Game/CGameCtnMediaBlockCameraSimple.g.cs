@@ -162,6 +162,11 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         public override void ReadWrite(CGameCtnMediaBlockCameraSimple n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
             rw.Int32(ref U01);
             rw.Int32(ref U02);

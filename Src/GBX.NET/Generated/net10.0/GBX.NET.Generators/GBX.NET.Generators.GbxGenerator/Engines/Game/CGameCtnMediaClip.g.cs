@@ -461,6 +461,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.tracks = rw.ListNodeRef_deprec<CGameCtnMediaTrack>(n.tracks);
             rw.String(ref n.name);
             rw.Boolean(ref n.stopWhenLeave);
@@ -501,6 +506,11 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaClip n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.flags);
         }
     }

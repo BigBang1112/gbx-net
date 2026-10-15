@@ -774,6 +774,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.eulaVersion);
 
             if (!n.IsOnlineSaveArchivation)
@@ -855,6 +860,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.description);
             rw.String(ref n.avatarName);
             rw.ReadableWritable<SPlayerTagsConfig>(ref n.playerTagsConfig, version: Version);
@@ -895,6 +905,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.receiveNews, asByte: true);
         }
     }
@@ -936,6 +951,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 7)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.buddyArchiveVersion);
             rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies!, version: n.BuddyArchiveVersion);
 
@@ -995,6 +1015,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref U01);
         }
     }
@@ -1028,6 +1053,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (n.IsOnlineSaveArchivation)
             {
@@ -1084,6 +1113,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (!n.IsOnlineSaveArchivation)
             {
@@ -1156,6 +1189,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.clubLinkUrl);
         }
     }
@@ -1189,6 +1227,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Byte(ref n.fameStars);
         }
     }
@@ -1224,6 +1267,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.analogSensitivity);
             rw.Single(ref n.analogDeadZone);
 
@@ -1278,6 +1326,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.mouseReleaseKey);
 
             if (Version >= 1)

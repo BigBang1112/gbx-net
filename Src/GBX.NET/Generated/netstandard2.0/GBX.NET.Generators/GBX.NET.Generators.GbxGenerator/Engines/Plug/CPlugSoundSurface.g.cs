@@ -181,6 +181,11 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         public override void ReadWrite(CPlugSoundSurface n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.bigImpactAttenuation);
             rw.Single(ref n.smallImpactAttenuation);
             rw.Single(ref U01);

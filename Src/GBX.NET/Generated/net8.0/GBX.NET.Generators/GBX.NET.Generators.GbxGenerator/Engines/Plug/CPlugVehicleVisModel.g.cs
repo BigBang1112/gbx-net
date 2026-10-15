@@ -372,6 +372,11 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 10)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<SoundEventSet>(ref n.soundEvents, version: Version);
         }
     }

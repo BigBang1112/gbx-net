@@ -593,6 +593,11 @@ public partial class CPlugShaderPass : CPlug, IClass
         public override void ReadWrite(CPlugShaderPass n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<PipelineGpu>(ref n.domainPipeline, version: Version);
             rw.ReadableWritable<PipelineGpu>(ref n.hullPipeline, version: Version);
 

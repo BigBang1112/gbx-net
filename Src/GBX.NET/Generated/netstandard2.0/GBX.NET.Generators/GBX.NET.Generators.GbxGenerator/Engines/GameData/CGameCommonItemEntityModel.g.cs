@@ -271,6 +271,10 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
         public override void ReadWrite(CGameCommonItemEntityModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {

@@ -310,6 +310,11 @@ public partial class GxLightSpot : GxLightBall, IClass
         public override void ReadWrite(GxLightSpot n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt32(ref n.flags);
             rw.Single(ref n.angleInner);
             rw.Single(ref n.angleOuter);

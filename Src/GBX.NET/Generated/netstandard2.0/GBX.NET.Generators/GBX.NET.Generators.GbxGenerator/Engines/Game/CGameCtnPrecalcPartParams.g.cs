@@ -255,6 +255,11 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
         public override void ReadWrite(CGameCtnPrecalcPartParams n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.fluidFriction);
             rw.Single(ref n.mass);
             rw.Single(ref n.friction);

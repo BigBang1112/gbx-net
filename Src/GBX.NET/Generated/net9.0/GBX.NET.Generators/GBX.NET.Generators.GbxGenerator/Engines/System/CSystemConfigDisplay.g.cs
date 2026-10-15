@@ -2348,10 +2348,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 4)
+            if (Version > 3)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Int2(ref n.screenSizeFS);
@@ -2562,10 +2561,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
         public override void ReadWrite(CSystemConfigDisplay n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 2)
+            if (Version > 1)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.EnumInt32<EFxBlur>(ref n.fxBlur);

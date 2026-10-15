@@ -337,6 +337,11 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaShootParams n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.videoFps);
             rw.Int32(ref n.sizeX);
             rw.Int32(ref n.sizeY);

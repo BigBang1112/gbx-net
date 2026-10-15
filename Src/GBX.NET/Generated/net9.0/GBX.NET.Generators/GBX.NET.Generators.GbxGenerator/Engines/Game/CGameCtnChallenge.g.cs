@@ -1036,6 +1036,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
+            if (Version > 11)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Ident(ref n.mapInfo);
             rw.String(ref n.mapName);
             rw.EnumByte<MapKind>(ref n.kindInHeader);
@@ -1138,6 +1143,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
         }
     }
 
@@ -2417,6 +2426,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {
@@ -2682,10 +2695,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 6)
+            if (Version > 5)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             if (Version <= 1)
@@ -2879,6 +2891,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -2920,6 +2936,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.hasBlockOctree);
 
             if (n.HasBlockOctree)
@@ -2963,6 +2984,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {
@@ -3052,6 +3077,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Array<uint>(ref U02!);
             rw.Data(ref U03);

@@ -561,6 +561,11 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
         public override void ReadWrite(CGameCtnChallengeGroup n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<MapInfo>(ref n.mapInfos!, version: Version+ 2);
         }
     }

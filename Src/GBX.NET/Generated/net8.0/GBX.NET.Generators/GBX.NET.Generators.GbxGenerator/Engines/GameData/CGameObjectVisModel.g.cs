@@ -351,6 +351,10 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 22)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 1)
             {

@@ -1552,6 +1552,11 @@ public partial class CPlugWeather : CMwNod, IClass
         public override void ReadWrite(CPlugWeather n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.emitterInFogRef);
         }
     }

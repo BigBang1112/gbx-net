@@ -2,8 +2,6 @@ CPlugAnimFile 0x090B0000
 
 0x003 [MP3, TMT.v9, MP4.v11, TM2020]
   version
-  if Version > 11
-    throw
   v9-
     int SkelVersion
     int JointGroupVersion

@@ -85,6 +85,11 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
         public override void ReadWrite(CGameCtnMediaBlockSpectators n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

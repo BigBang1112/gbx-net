@@ -103,6 +103,11 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
         public override void ReadWrite(CPlugAdnRandomGenList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.datas = rw.ListNodeRef<CPlugAdnRandomGen>(n.datas);
         }
     }

@@ -151,6 +151,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.dirName);
 
             if (Version >= 1)

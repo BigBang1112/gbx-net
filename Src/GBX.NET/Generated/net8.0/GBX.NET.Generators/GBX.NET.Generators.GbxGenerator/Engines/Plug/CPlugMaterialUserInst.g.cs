@@ -224,6 +224,10 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 11)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 11)
             {

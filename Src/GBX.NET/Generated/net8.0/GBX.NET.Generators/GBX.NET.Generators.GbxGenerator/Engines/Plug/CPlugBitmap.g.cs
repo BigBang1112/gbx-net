@@ -1823,6 +1823,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt32(ref n.flags3);
         }
     }
@@ -1894,6 +1899,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.imageRef);
 
             if (Version >= 1)
@@ -1983,6 +1993,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt32(ref n.flags2);
         }
     }
@@ -2038,6 +2053,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.imageArrayRef);
 
             if (Version >= 1)
@@ -2092,6 +2112,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<TextureSettings>(ref n.textureInfo, version: Version);
         }
     }
@@ -2125,6 +2150,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.grassIdImageRef);
 
             if (Version== 0 || ((n.grassIdImageRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None))
@@ -2171,6 +2201,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<ImageArraySettings>(ref n.arraySettings, version: Version);
         }
     }
@@ -2204,6 +2239,11 @@ public partial class CPlugBitmap : CPlug, IClass
         public override void ReadWrite(CPlugBitmap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef<CPlugBitmapAtlas>(ref n.atlas);
             rw.UInt32(ref n.atlasCubeFlags);
 

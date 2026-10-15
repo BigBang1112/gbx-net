@@ -1840,6 +1840,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 7)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
@@ -2055,6 +2060,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.bitmapSprite3x3_LightRef);
             rw.NodeRef(ref n.bitmapSprite_PosAndRadiusRef);
             rw.NodeRef(ref n.bitmapSprite_ILightDirRef);

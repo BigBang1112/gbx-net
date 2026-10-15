@@ -587,6 +587,11 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref U01);
         }
     }

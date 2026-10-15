@@ -799,6 +799,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 9)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 9)
             {
@@ -1409,6 +1413,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<PlayerInputData>(ref n.playerInputs!, version: Version);
         }
     }
@@ -1695,6 +1704,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<ScopeType>(ref n.validate_ScopeType);
             rw.String(ref n.validate_ScopeId);
             rw.String(ref n.validate_GameMode);
@@ -1756,6 +1770,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 2)
             {

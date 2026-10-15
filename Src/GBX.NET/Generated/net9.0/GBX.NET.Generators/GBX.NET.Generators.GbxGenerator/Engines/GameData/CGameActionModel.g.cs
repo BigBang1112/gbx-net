@@ -477,10 +477,9 @@ public partial class CGameActionModel : CMwNod, IClass
         public override void ReadWrite(CGameActionModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version> 31)
+            if (Version > 31)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             if (Version >= 31)

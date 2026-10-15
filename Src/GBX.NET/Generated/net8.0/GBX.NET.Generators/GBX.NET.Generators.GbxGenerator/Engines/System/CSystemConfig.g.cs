@@ -4256,10 +4256,9 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 3)
+            if (Version > 2)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.String(ref n.antiCheatServerUrl);
@@ -4303,10 +4302,9 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 1)
+            if (Version > 0)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Int32(ref n.smMaxPlayerResimStepPerFrame);
@@ -4345,10 +4343,9 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 1)
+            if (Version > 0)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.String(ref n.installUid);
@@ -4387,10 +4384,9 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 2)
+            if (Version > 1)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Boolean(ref n.networkUseProxy);
@@ -4467,10 +4463,9 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version >= 1)
+            if (Version > 0)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Boolean(ref n.inputsAlternateMethod);

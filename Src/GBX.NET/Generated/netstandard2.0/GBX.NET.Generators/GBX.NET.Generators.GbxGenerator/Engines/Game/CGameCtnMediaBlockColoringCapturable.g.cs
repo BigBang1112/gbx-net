@@ -103,6 +103,10 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
         public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 2)
             {

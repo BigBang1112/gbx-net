@@ -104,6 +104,11 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         public override void ReadWrite(CGameCtnMediaBlockCameraOrbital n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

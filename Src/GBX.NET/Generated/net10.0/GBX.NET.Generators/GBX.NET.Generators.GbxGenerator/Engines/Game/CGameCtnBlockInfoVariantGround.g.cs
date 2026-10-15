@@ -136,6 +136,11 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
         public override void ReadWrite(CGameCtnBlockInfoVariantGround n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.autoTerrains = rw.ListNodeRef_deprec<CGameCtnAutoTerrain>(n.autoTerrains);
             rw.Int32(ref n.autoTerrainHeightOffset);
             rw.EnumInt32<EAutoTerrainPlaceType>(ref n.autoTerrainPlaceType);

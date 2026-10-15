@@ -229,6 +229,10 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
         public override void ReadWrite(CGameCtnMediaBlockGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 3)
             {

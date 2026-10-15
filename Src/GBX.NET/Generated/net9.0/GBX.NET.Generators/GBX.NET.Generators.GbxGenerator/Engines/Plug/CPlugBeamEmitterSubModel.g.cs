@@ -658,6 +658,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugBeamEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 11)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.uVScale);
             rw.Int32(ref n.cylinderSideCount);
 
@@ -795,6 +800,10 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugBeamEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 2)
             {
@@ -894,6 +903,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugBeamEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
@@ -975,6 +989,11 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugBeamEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.sharpIntensity);
             rw.Single(ref n.sharpScale);
 

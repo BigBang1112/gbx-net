@@ -242,6 +242,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         public override void ReadWrite(CGameCtnMediaBlockSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.playCount);
             rw.Boolean(ref n.isLooping);
             rw.Boolean(ref n.isMusic);
@@ -289,6 +294,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         {
             rw.PackDesc(ref n.sound);
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

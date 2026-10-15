@@ -1,4 +1,5 @@
 using GBX.NET.Engines.System;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using System.Text;
 
@@ -267,7 +268,7 @@ public class CSystemConfigDisplayLayoutTests
         payload.Position = 0;
         using var reader = new GbxReader(payload);
         using var rw = new GbxReaderWriter(reader);
-        Assert.Throws<NotSupportedException>(() => new CSystemConfigDisplay.Chunk0B01303E().ReadWrite(new CSystemConfigDisplay(), rw));
+        Assert.Throws<ChunkVersionNotSupportedException>(() => new CSystemConfigDisplay.Chunk0B01303E().ReadWrite(new CSystemConfigDisplay(), rw));
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 
@@ -392,7 +393,7 @@ public class CSystemConfigDisplayLayoutTests
         payload.Position = 0;
         using var reader = new GbxReader(payload);
         using var rw = new GbxReaderWriter(reader);
-        Assert.Throws<NotSupportedException>(() => new CSystemConfigDisplay.Chunk0B013036().ReadWrite(new CSystemConfigDisplay(), rw));
+        Assert.Throws<ChunkVersionNotSupportedException>(() => new CSystemConfigDisplay.Chunk0B013036().ReadWrite(new CSystemConfigDisplay(), rw));
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 

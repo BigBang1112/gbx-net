@@ -457,6 +457,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.symmetricalVariantIndex);
 
             if (Version == 0)
@@ -564,6 +569,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.mobils = rw.JaggedArrayNodeRef<CGameCtnBlockInfoMobil>(n.mobils);
 
             if (Version <= 1)
@@ -682,6 +692,10 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 10)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 8)
             {
@@ -773,6 +787,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.probeRef);
         }
     }
@@ -814,6 +833,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.blockUnitModels = rw.ListNodeRef<CGameCtnBlockUnitInfo>(n.blockUnitModels);
             rw.Int32(ref U01);
             rw.Boolean(ref n.hasManualSymmetryH);
@@ -870,6 +894,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<PlacedPillarParam>(ref U01!, version: Version);
 
             if (Version >= 1)
@@ -942,6 +971,10 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {
@@ -995,6 +1028,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<WaterVolume>(ref n.waterVolumes!, version: Version);
         }
     }
@@ -1030,6 +1068,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
 
             if (U01> 0)

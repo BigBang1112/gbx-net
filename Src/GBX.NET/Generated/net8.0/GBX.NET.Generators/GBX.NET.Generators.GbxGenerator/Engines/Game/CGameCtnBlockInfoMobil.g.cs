@@ -528,6 +528,10 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 23)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 0 && Version <= 1)
             {

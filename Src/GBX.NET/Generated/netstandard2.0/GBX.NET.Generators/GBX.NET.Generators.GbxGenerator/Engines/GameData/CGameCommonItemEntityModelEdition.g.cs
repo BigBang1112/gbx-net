@@ -479,6 +479,11 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<EItemType>(ref n.itemType);
             rw.NodeRef(ref n.meshCrystalRef);
             rw.String(ref n.solidRef);

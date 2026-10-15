@@ -682,6 +682,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.visibleMaxDist);
             rw.Single(ref n.visibleMinScreenHeight);
         }
@@ -741,6 +746,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version== 0)
@@ -807,6 +817,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.DataUInt32(ref n.requirementFlags2);
         }
     }
@@ -843,6 +858,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<ShaderCustom>(ref n.customShaders!, version: Version);
         }
     }
@@ -885,6 +905,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.DataUInt64(ref n.requirementFlags);
 
             if (Version>= 3)

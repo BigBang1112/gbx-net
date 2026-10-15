@@ -1103,6 +1103,103 @@ public class GenerationTests
     }
 
     [Test]
+    [Arguments("version", 0, false)]
+    [Arguments("version", 1, false)]
+    [Arguments("versionb", 0, false)]
+    [Arguments("versionb", 1, false)]
+    [Arguments("version", 0, true)]
+    [Arguments("version", 1, true)]
+    [Arguments("versionb", 0, true)]
+    [Arguments("versionb", 1, true)]
+    public async Task Generate_ChunkVersionGuard_RejectsNewerVersionsBeforePayload(string keyword, int structureKind, bool header)
+    {
+        var chunkName = (header ? "HeaderChunk" : "Chunk") + "03043001";
+        var read = structureKind == 0 ? "chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(reader))" : "chunk.Read(node, reader)";
+        var write = structureKind == 0 ? "chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer))" : "chunk.Write(node, writer)";
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class {{chunkName}} { }
+
+                public static string Verify(int version, bool writing)
+                {
+                    var node = new Example { Value = 17 };
+                    var chunk = new {{chunkName}} { Version = version };
+                    var reader = new GBX.NET.Serialization.GbxReader(version, 42, 99);
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    try
+                    {
+                        if (writing) { {{write}}; }
+                        else { {{read}}; }
+                        return writing ? "ok:" + string.Join(",", writer.Values) : "ok:" + node.Value + "," + reader.ReadInt32();
+                    }
+                    catch (GBX.NET.Exceptions.ChunkVersionNotSupportedException ex)
+                    {
+                        return "unsupported:" + ex.Version + ":" + (writing ? writer.Values.Count : reader.ReadInt32());
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001 {{(header ? "(header) " : "")}}[TM10.v2, TM2020.v5]
+              {{keyword}}
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var chunk = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == chunkName);
+        foreach (var method in chunk.Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText is "Read" or "Write" or "ReadWrite"))
+        {
+            var guard = (IfStatementSyntax)method.Body!.Statements[1];
+            await Assert.That(guard.Condition.ToString()).IsEqualTo("Version > 5");
+            await Assert.That(guard.Statement.ToString()).Contains("throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);");
+        }
+
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var verify = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!.GetMethod("Verify")!;
+        foreach (var version in new[] { 0, 2, 5 })
+        {
+            await Assert.That(verify.Invoke(null, [version, false])).IsEqualTo("ok:42,99");
+            await Assert.That(verify.Invoke(null, [version, true])).IsEqualTo("ok:" + version + ",17");
+        }
+        await Assert.That(verify.Invoke(null, [6, false])).IsEqualTo("unsupported:6:42");
+        await Assert.That(verify.Invoke(null, [6, true])).IsEqualTo("unsupported:6:1");
+    }
+
+    [Test]
+    [Arguments("version")]
+    [Arguments("versionb")]
+    public async Task Generate_ChunkVersionGuard_UsesExplicitMaximumIncludingZeroAndExcludesArchives(string keyword)
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            0x001 [TM2020.v0]
+              {{keyword}}
+            0x002 [TM2020]
+              {{keyword}} = 7
+              v9+
+                int Value
+            archive Entry
+              {{keyword}}
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
+        var versionZero = classes.Single(x => x.Identifier.ValueText == "Chunk03043001");
+        await Assert.That(versionZero.ToString()).Contains("if (Version > 0)");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043002").ToString()).DoesNotContain("ChunkVersionNotSupportedException");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Entry").ToString()).DoesNotContain("ChunkVersionNotSupportedException");
+    }
+
+    [Test]
     [Arguments("version")]
     [Arguments("versionb")]
     public async Task Generate_VersionDefaultsWithExplicitChunkVersions_ReportsDiagnostics(string keyword)
@@ -3213,7 +3310,7 @@ public class GenerationTests
                 public static string Verify(int archiveVersion, int callerVersion)
                 {
                     var entry = new Entry { Version = archiveVersion };
-                    using var rw = new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(7, 9));
+                    using var rw = new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(archiveVersion, 7, 9));
                     entry.ReadWrite(rw, callerVersion);
                     return entry.OwnValue + ":" + entry.CallerValue;
                 }
@@ -3491,6 +3588,13 @@ public class GenerationTests
     private const string Support = """
         namespace TmEssentials { }
         namespace GBX.NET.Components { public class GbxRefTableFile { } }
+        namespace GBX.NET.Exceptions
+        {
+            public class ChunkVersionNotSupportedException(int version) : System.Exception
+            {
+                public int Version { get; } = version;
+            }
+        }
         namespace GBX.NET
         {
             [System.Flags]
@@ -3579,6 +3683,7 @@ public class GenerationTests
                 public GBX.NET.NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod => [];
                 private readonly System.Collections.Generic.Queue<int> values = new(values);
                 public int ReadInt32() => values.Dequeue();
+                public byte ReadByte() => (byte)ReadInt32();
                 public T[] ReadArray<T>(int length) where T : struct => new T[length];
             }
             public partial class GbxWriter
@@ -3638,8 +3743,8 @@ public class GenerationTests
                     Writer?.Write(value);
                     return value;
                 }
-                public void VersionInt32(GBX.NET.IVersionable value) { }
-                public void VersionByte(GBX.NET.IVersionable value) { }
+                public void VersionInt32(GBX.NET.IVersionable value) => value.Version = Int32(value.Version);
+                public void VersionByte(GBX.NET.IVersionable value) => value.Version = Byte(value.Version);
                 public T[]? Array<T>(T[]? value, int length) where T : struct
                 {
                     if (Reader is not null) value = Reader.ReadArray<T>(length);
@@ -3673,6 +3778,7 @@ public class GenerationTests
                 public virtual void Read(T node, GBX.NET.Serialization.GbxReader r) { }
                 public virtual void Write(T node, GBX.NET.Serialization.GbxWriter w) { }
             }
+            public class HeaderChunk<T> : Chunk<T> { }
         }
         namespace GBX.NET.Engines.Game
         {

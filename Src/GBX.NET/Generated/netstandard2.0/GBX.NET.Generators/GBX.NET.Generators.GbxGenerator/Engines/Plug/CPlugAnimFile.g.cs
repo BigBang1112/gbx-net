@@ -432,10 +432,9 @@ public partial class CPlugAnimFile : CMwNod, IClass
         public override void ReadWrite(CPlugAnimFile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-
-            if (Version> 11)
+            if (Version > 11)
             {
-                throw new NotSupportedException();
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             if (Version <= 9)

@@ -750,6 +750,10 @@ public partial class CPlugSolid : CPlug, IClass
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 3)
             {
@@ -837,6 +841,11 @@ public partial class CPlugSolid : CPlug, IClass
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.sounds = rw.ListNodeRef_deprec<CPlugSound>(n.sounds);
             n.particleEmitterModels = rw.ListNodeRef_deprec<CPlugParticleEmitterModel>(n.particleEmitterModels);
             rw.ArrayReadableWritable<LocatedInstance>(ref n.soundInstances!, version: Version);
@@ -902,6 +911,10 @@ public partial class CPlugSolid : CPlug, IClass
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 2)
             {

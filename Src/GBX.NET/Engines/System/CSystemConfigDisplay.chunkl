@@ -255,8 +255,6 @@ CSystemConfigDisplay 0x0B013000
 
 0x036 (skippable) [MP3, TMT.v1, MP4.v3, TM2020.v3] // display settings and graphics adapter
   version
-  v4+
-    throw
   int2 ScreenSizeFS
   int ScreenSizeWin
   int<EColorDepth> ColorDepth // Deprecated, written as zero by MP and TM2020.
@@ -300,8 +298,6 @@ CSystemConfigDisplay 0x0B013000
 
 0x03E (skippable) [TM2020.v1] // blur and reflections
   version
-  v2+
-    throw
   int<EFxBlur> FxBlur
   v1+
     int<EEverywhereReflect> EverywhereReflect

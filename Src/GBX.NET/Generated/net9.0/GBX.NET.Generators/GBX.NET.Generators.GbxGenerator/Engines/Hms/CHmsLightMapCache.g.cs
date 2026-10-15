@@ -1167,6 +1167,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt64(ref n.lightmapCacheUid);
             n.Collection = rw.Id(n.Collection);
             rw.Id(ref n.decoration);
@@ -1310,6 +1315,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 13)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<SMap>(ref n.maps!, version: Version);
             rw.Int32(ref n.lightAmbSampleCount);
             rw.Int32(ref n.lightDirSampleCount);

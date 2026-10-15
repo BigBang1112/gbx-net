@@ -185,6 +185,11 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhySpecialProperty n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<ESpecialType>(ref n.specialType);
 
             if (Version <= 1)

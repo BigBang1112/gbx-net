@@ -83,6 +83,11 @@ public partial class CGameUserFileList : CMwNod, IClass
         public override void ReadWrite(CGameUserFileList n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<FileInfo>(ref n.files!, version: Version);
         }
     }

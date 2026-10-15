@@ -181,6 +181,11 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         public override void ReadWrite(CInputBindingsConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Binding>(ref n.bindings!, version: 1);
         }
     }

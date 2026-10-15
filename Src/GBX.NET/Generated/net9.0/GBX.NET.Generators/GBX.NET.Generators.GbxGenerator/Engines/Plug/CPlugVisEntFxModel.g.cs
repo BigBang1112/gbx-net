@@ -171,6 +171,11 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
         public override void ReadWrite(CPlugVisEntFxModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.part_DeactivatedShotRef);
             rw.NodeRef(ref n.part_DeactivatedRef);
             rw.NodeRef(ref n.part_TeleportUnspawnRef);

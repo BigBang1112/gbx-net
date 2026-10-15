@@ -407,6 +407,10 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 4)
             {
@@ -527,6 +531,11 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.solidRef);
             rw.Boolean(ref n.randomInstances);
 
@@ -628,6 +637,11 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt32(ref n.flags);
         }
     }

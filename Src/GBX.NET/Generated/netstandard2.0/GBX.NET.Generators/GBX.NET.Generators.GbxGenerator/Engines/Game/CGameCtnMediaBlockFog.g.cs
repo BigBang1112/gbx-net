@@ -85,6 +85,11 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, IClass, CGameCt
         public override void ReadWrite(CGameCtnMediaBlockFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

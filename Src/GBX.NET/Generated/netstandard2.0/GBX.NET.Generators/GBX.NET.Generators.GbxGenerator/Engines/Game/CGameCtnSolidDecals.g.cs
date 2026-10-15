@@ -150,6 +150,11 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         public override void ReadWrite(CGameCtnSolidDecals n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Data(ref n.sceneDecals);
         }
     }

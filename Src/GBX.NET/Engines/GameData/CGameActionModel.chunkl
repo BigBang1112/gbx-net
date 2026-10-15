@@ -2,8 +2,6 @@ CGameActionModel 0x2E008000
 
 0x000 (skippable) [MP3, TMT.v22, MP4.v31, TM2020] // action, animation and script
   version
-  if Version > 31
-    throw
   v31+
     bool UseVehicleGuns = true
   v30+

@@ -3284,6 +3284,10 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 6)
             {

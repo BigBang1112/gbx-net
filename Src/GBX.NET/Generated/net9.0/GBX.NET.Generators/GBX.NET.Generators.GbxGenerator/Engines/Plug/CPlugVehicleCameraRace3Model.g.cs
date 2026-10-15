@@ -1066,6 +1066,11 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
         public override void ReadWrite(CPlugVehicleCameraRace3Model n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.slerpSpeed);
             rw.Single(ref n.up);
             rw.Single(ref n.far);

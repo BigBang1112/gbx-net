@@ -117,6 +117,11 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisStyleRandomGroup n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.name);
 
             if (Version >= 1)

@@ -319,6 +319,10 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 26)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 10)
             {
@@ -648,6 +652,11 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.throwableEnabled);
             rw.Single(ref n.throwableDamageCoef);
 

@@ -90,6 +90,10 @@ public partial class CPlugRecastPolyMeshData : CMwNod, IClass
         public override void ReadWrite(CPlugRecastPolyMeshData n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 2)
             {

@@ -2577,6 +2577,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayId(ref n.decalsTypesId!);
 
             if (Version >= 1)
@@ -2622,6 +2627,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.fidFuncShaderCloudsX2Ref);
             rw.NodeRef(ref n.fidPlugBitmapCloudsX2Ref);
 
@@ -2665,6 +2675,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.offZone_FogMatterRef);
         }
     }
@@ -2730,6 +2745,10 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 7)
             {
@@ -2838,6 +2857,10 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 22)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -3002,6 +3025,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.blocksShadow);
             rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow);
             rw.Boolean(ref n.shadowCastBack);
@@ -3056,6 +3084,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.UInt32(ref n.turboColor_Roulette1);
             rw.UInt32(ref n.turboColor_Roulette2);
             rw.UInt32(ref n.turboColor_Roulette3);
@@ -3105,6 +3138,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.folderSpectators);
 
             if (Version >= 1)
@@ -3146,6 +3184,10 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {
@@ -3196,6 +3238,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.folderDefaultActions);
         }
     }
@@ -3232,6 +3279,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.folderDefaultActions2);
         }
     }
@@ -3268,6 +3320,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.colorBlindnessModifierRef);
         }
     }
@@ -3367,6 +3424,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.globalMaterialModifierRef);
         }
     }

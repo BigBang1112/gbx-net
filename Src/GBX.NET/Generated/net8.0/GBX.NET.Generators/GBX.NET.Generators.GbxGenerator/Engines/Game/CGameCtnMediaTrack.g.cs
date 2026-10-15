@@ -267,6 +267,11 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         public override void ReadWrite(CGameCtnMediaTrack n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.isKeepPlaying);
             rw.Boolean(ref n.isReadOnly);
             rw.Boolean(ref n.isCycling);
