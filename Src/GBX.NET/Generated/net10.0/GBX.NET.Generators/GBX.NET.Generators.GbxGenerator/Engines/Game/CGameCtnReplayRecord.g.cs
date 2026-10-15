@@ -118,13 +118,16 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         ((CGameCtnReplayRecord)clone).actionModels = context.Clone(this.actionModels)!;
         ((CGameCtnReplayRecord)clone).actionNames = context.Clone(this.actionNames)!;
         ((CGameCtnReplayRecord)clone).actionFileNames = context.Clone(this.actionFileNames)!;
-        ((CGameCtnReplayRecord)clone).itemNames = context.Clone(this.itemNames)!;
-        ((CGameCtnReplayRecord)clone).itemSkins = context.Clone(this.itemSkins)!;
+        ((CGameCtnReplayRecord)clone).items = context.Clone(this.items)!;
+        ((CGameCtnReplayRecord)clone).additionalItems = context.Clone(this.additionalItems)!;
         ((CGameCtnReplayRecord)clone).enableMinimap = context.Clone(this.enableMinimap)!;
         ((CGameCtnReplayRecord)clone).cameraRecord = context.CloneArray(this.cameraRecord, row0 => context.CloneArray(row0)!)!;
         ((CGameCtnReplayRecord)clone).emptyCarsVisDataTapeRef = context.Clone(this.emptyCarsVisDataTapeRef)!;
         ((CGameCtnReplayRecord)clone).bonusBumpKeys = context.Clone(this.bonusBumpKeys)!;
         ((CGameCtnReplayRecord)clone).sceneryTurretsDataTapeRef = context.Clone(this.sceneryTurretsDataTapeRef)!;
+        ((CGameCtnReplayRecord)clone).timeOfDay = context.Clone(this.timeOfDay)!;
+        ((CGameCtnReplayRecord)clone).dayPeriod = context.Clone(this.dayPeriod)!;
+        ((CGameCtnReplayRecord)clone).keepOnlyAuthorGhosts = context.Clone(this.keepOnlyAuthorGhosts)!;
         ((CGameCtnReplayRecord)clone).challenge = context.Clone(this.challenge)!;
         ((CGameCtnReplayRecord)clone).pendingInputs = context.Clone(this.pendingInputs)!;
         ((CGameCtnReplayRecord)clone).pendingEventsDuration = context.Clone(this.pendingEventsDuration)!;
@@ -135,6 +138,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         ((CGameCtnReplayRecord)clone).eventsRef = context.Clone(this.eventsRef)!;
         ((CGameCtnReplayRecord)clone).simpleEventsDisplayRef = context.Clone(this.simpleEventsDisplayRef)!;
         ((CGameCtnReplayRecord)clone).challengeParametersRef = context.Clone(this.challengeParametersRef)!;
+        ((CGameCtnReplayRecord)clone).anchoredObjectInfos = context.Clone(this.anchoredObjectInfos)!;
         ((CGameCtnReplayRecord)clone).sceneryObjectsRef = context.Clone(this.sceneryObjectsRef)!;
     }
 
@@ -639,7 +643,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309301F)clone).U01 = context.CloneArray(this.U01)!;
             ((Chunk0309301F)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -739,8 +742,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093025)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03093025)clone).U02 = context.Clone(this.U02)!;
             ((Chunk03093025)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -758,7 +759,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093026)clone).U02 = context.Clone(this.U02)!;
             ((Chunk03093026)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -773,8 +773,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093027)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk03093027)clone).U02 = context.CloneArray(this.U02)!;
             ((Chunk03093027)clone).Version = context.Clone(this.Version)!;
         }
     }
@@ -789,7 +787,6 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03093028)clone).U01 = context.Clone(this.U01)!;
         }
     }
 
@@ -818,8 +815,8 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((InterfaceScriptInfo)clone).u01 = context.CloneArray(this.u01)!;
-            ((InterfaceScriptInfo)clone).u02 = context.Clone(this.u02)!;
+            ((InterfaceScriptInfo)clone).manialinks = context.CloneArray(this.manialinks)!;
+            ((InterfaceScriptInfo)clone).time = context.Clone(this.time)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -847,10 +844,10 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((EntDataSceneUIdsToGhost)clone).u01 = context.Clone(this.u01)!;
-            ((EntDataSceneUIdsToGhost)clone).u02 = context.Clone(this.u02)!;
-            ((EntDataSceneUIdsToGhost)clone).u03 = context.Clone(this.u03)!;
-            ((EntDataSceneUIdsToGhost)clone).U04 = context.Clone(this.U04)!;
+            ((EntDataSceneUIdsToGhost)clone).time = context.Clone(this.time)!;
+            ((EntDataSceneUIdsToGhost)clone).entDataSceneUId = context.Clone(this.entDataSceneUId)!;
+            ((EntDataSceneUIdsToGhost)clone).ghostIndex = context.Clone(this.ghostIndex)!;
+            ((EntDataSceneUIdsToGhost)clone).SceneUId = context.Clone(this.SceneUId)!;
         }
 
         public virtual void Read(GbxReader r, int v = 0)

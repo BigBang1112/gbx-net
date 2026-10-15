@@ -155,13 +155,13 @@ public class GbxFixtureTests
     }
 
     [Test]
-    public async Task MP4ReplayIncludesActionModelsAndItemNames()
+    public async Task MP4ReplayIncludesActionModelsAndItems()
     {
         var path = TestFiles.Gbx("CGameCtnReplayRecord", "CGameCtnReplayRecord MP4 001.Replay.Gbx");
 
         var replay = Gbx.ParseNode<CGameCtnReplayRecord>(path);
 
         await Assert.That(replay.ActionModels).IsNotNull();
-        await Assert.That(replay.ItemNames).IsNotNull();
+        await Assert.That(replay.Items).IsNotNull();
     }
 }

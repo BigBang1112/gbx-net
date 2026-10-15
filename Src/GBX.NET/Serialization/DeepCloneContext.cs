@@ -78,6 +78,18 @@ internal sealed class DeepCloneContext
         throw new NotSupportedException("Deep cloning this value is not supported. Supply an explicit clone implementation.");
     }
 
+    public ImmutableList<T>? Clone<T>(ImmutableList<T>? source)
+    {
+        if (source is null) return null;
+        if (clones.TryGetValue(source, out var existing)) return (ImmutableList<T>)existing;
+
+        var clone = source.Select(item => Clone(item)!).ToImmutableList();
+        // An element's back-reference may already have cloned the immutable list.
+        if (clones.TryGetValue(source, out existing)) return (ImmutableList<T>)existing;
+        Register(source, clone);
+        return clone;
+    }
+
     public CMwNod CloneNode(CMwNod source)
     {
         if (clones.TryGetValue(source, out var existing))

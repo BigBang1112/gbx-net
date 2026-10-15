@@ -553,47 +553,199 @@ public class CGameCtnReplayRecordTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    public async Task ReadWrite_AnchoredObjects_ReadsTheLegacyArrayOnlyInVersionZero(int version)
+    [Arguments(3)]
+    public async Task Read_InterfaceScriptInfos_ReadsTimedManialinkSnapshots(int count)
+    {
+        string[][] pages = [[], ["<manialink id=\"Hud\" />"], ["<manialink>Žluťoučký</manialink>", "<manialink id=\"Score\" />"]];
+        int[] times = [2500, 0, 5678];
+        var payload = Payload(w =>
+        {
+            w.Write(0);
+            w.Write(count);
+            for (var i = 0; i < count; i++)
+            {
+                w.WriteArray(pages[i]);
+                w.Write(times[i]);
+            }
+        });
+        var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk0309301D());
+
+        await Assert.That(replay.InterfaceScriptInfos!.Count).IsEqualTo(count);
+        for (var i = 0; i < count; i++)
+        {
+            await Assert.That(replay.InterfaceScriptInfos[i].Manialinks!.SequenceEqual(pages[i])).IsTrue();
+            await Assert.That(replay.InterfaceScriptInfos[i].Time).IsEqualTo(new TimeInt32(times[i]));
+        }
+    }
+
+    [Test]
+    public async Task DeepClone_InterfaceScriptInfos_CopiesTheManialinkArray()
+    {
+        var info = new CGameCtnReplayRecord.InterfaceScriptInfo
+        {
+            Manialinks = ["<manialink id=\"Hud\" />"],
+            Time = new TimeInt32(1234)
+        };
+        var clone = new DeepCloneContext().Clone(info)!;
+        clone.Manialinks![0] = "<manialink id=\"Changed\" />";
+
+        await Assert.That(info.Manialinks![0]).IsEqualTo("<manialink id=\"Hud\" />");
+        await Assert.That(clone.Time).IsEqualTo(info.Time);
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Write_InterfaceScriptInfos_PreservesTheUnversionedArchiveLayout(bool empty)
+    {
+        string[] pages = empty ? [] : ["<manialink id=\"Hud\" />", "<manialink>Žluťoučký</manialink>"];
+        var info = new CGameCtnReplayRecord.InterfaceScriptInfo { Manialinks = pages, Time = new TimeInt32(1234) };
+        var expected = Payload(w =>
+        {
+            w.WriteArray(pages);
+            w.Write(1234);
+        });
+        var actual = Payload(w => info.Write(w));
+
+        await Assert.That(actual.SequenceEqual(expected)).IsTrue();
+    }
+
+    [Test]
+    [Arguments(-1)]
+    [Arguments(1)]
+    public async Task Read_InterfaceScriptInfos_RejectsUnsupportedVersionsBeforeReadingSnapshots(int version)
+    {
+        using var stream = new MemoryStream(BitConverter.GetBytes(version));
+        using var reader = new GbxReader(stream);
+        var chunk = new CGameCtnReplayRecord.Chunk0309301D();
+
+        Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => chunk.Read(new CGameCtnReplayRecord(), reader));
+        await Assert.That(stream.Position).IsEqualTo(4L);
+    }
+
+    [Test]
+    [Arguments(0, 0)]
+    [Arguments(0, 2)]
+    [Arguments(1, 0)]
+    public async Task Read_AnchoredObjects_ReadsTheLegacyListOnlyInVersionZero(int version, int count)
     {
         var payload = Payload(w =>
         {
             w.Write(version);
             if (version == 0)
             {
-                w.Write(1);
-                w.Write(true);
-                w.Write(12);
-                w.Write(1.25f);
-                w.Write(2.5f);
-                w.Write(3.75f);
-                w.Write(34);
+                w.Write(count);
+                for (var i = 0; i < count; i++)
+                {
+                    w.Write(i == 0);
+                    w.Write(12 + i);
+                    w.Write(1.25f + i);
+                    w.Write(2.5f + i);
+                    w.Write(3.75f + i);
+                    w.Write(34 + i);
+                }
             }
             else w.Write(-1);
         });
         var chunk = new CGameCtnReplayRecord.Chunk0309301F();
-        await ReadChunk(payload, chunk);
-        if (version == 0)
+        var replay = await ReadChunk(payload, chunk);
+        if (version == 1)
         {
-            await Assert.That(chunk.U01![0].U01).IsTrue();
-            await Assert.That(chunk.U01[0].U06).IsEqualTo(34);
+            await Assert.That(replay.AnchoredObjectInfos).IsNull();
+            return;
+        }
+
+        await Assert.That(replay.AnchoredObjectInfos!.Count).IsEqualTo(count);
+        for (var i = 0; i < count; i++)
+        {
+            var info = replay.AnchoredObjectInfos[i];
+            await Assert.That(info.U01).IsEqualTo(i == 0);
+            await Assert.That(info.U02).IsEqualTo(12 + i);
+            await Assert.That(info.U03).IsEqualTo(1.25f + i);
+            await Assert.That(info.U04).IsEqualTo(2.5f + i);
+            await Assert.That(info.U05).IsEqualTo(3.75f + i);
+            await Assert.That(info.U06).IsEqualTo(34 + i);
+        }
+
+#pragma warning disable GBXNET10001
+        var clone = (CGameCtnReplayRecord)replay.DeepClone();
+#pragma warning restore GBXNET10001
+        await Assert.That(clone.AnchoredObjectInfos!.Count).IsEqualTo(count);
+        if (count != 0)
+        {
+            clone.AnchoredObjectInfos[0].U06 = -1;
+            await Assert.That(replay.AnchoredObjectInfos[0].U06).IsEqualTo(34);
         }
     }
 
     [Test]
-    [Arguments(0)]
-    [Arguments(1)]
-    public async Task ReadWrite_ItemResources_VersionZeroHasNoSkinArray(int version)
+    [Arguments(0, false)]
+    [Arguments(0, true)]
+    [Arguments(1, false)]
+    [Arguments(1, true)]
+    public async Task Read_ItemResources_VersionZeroHasNoSkinArray(int version, bool empty)
     {
         var payload = Payload(w =>
         {
             w.Write(version);
-            w.WriteArray(new[] { "First", "Second" });
-            if (version != 0) w.WriteArray(new[] { new PackDesc("First.Item.Gbx"), PackDesc.Empty });
+            w.WriteArray(empty ? [] : new[] { "First", "Second" });
+            if (version != 0) w.WriteArray(empty ? [] : new[] { new PackDesc("First.Item.Gbx"), PackDesc.Empty });
         });
         var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093020());
-        await Assert.That(replay.ItemNames![1]).IsEqualTo("Second");
-        await Assert.That(replay.ItemSkins!.Count).IsEqualTo(2);
-        await Assert.That(replay.ItemSkins[0].FilePath).IsEqualTo(version == 0 ? "" : "First.Item.Gbx");
+        var items = replay.Items!;
+        await Assert.That(items.Count).IsEqualTo(empty ? 0 : 2);
+        if (!empty)
+        {
+            await Assert.That(items[1].Name).IsEqualTo("Second");
+            await Assert.That(items[0].Skin.FilePath).IsEqualTo(version == 0 ? "" : "First.Item.Gbx");
+            await Assert.That(items[1].Skin.FilePath).IsEmpty();
+        }
+        await Assert.That(replay.AdditionalItems).IsNull();
+    }
+
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Read_ItemResources_PreservesDuplicateNamesAndSkinPairing(bool additional)
+    {
+        var payload = Payload(w =>
+        {
+            w.Write(1);
+            w.WriteArray(new[] { "Same.Item.Gbx", "Same.Item.Gbx" });
+            w.WriteArray(new[] { new PackDesc("First.Skin.zip"), new PackDesc("Second.Skin.zip") });
+        });
+        Chunk<CGameCtnReplayRecord> chunk = additional
+            ? new CGameCtnReplayRecord.Chunk03093027()
+            : new CGameCtnReplayRecord.Chunk03093020();
+        var replay = await ReadChunk(payload, chunk);
+        var items = (additional ? replay.AdditionalItems : replay.Items)!;
+
+        await Assert.That(items.Count).IsEqualTo(2);
+        await Assert.That(items[0].Name).IsEqualTo("Same.Item.Gbx");
+        await Assert.That(items[1].Name).IsEqualTo("Same.Item.Gbx");
+        await Assert.That(items[0].Skin.FilePath).IsEqualTo("First.Skin.zip");
+        await Assert.That(items[1].Skin.FilePath).IsEqualTo("Second.Skin.zip");
+#pragma warning disable GBXNET10001
+        var clone = (CGameCtnReplayRecord)replay.DeepClone();
+#pragma warning restore GBXNET10001
+        var clonedItems = (additional ? clone.AdditionalItems : clone.Items)!;
+        await Assert.That(clonedItems.SequenceEqual(items)).IsTrue();
+    }
+
+    [Test]
+    public void Read_ItemResources_RejectsDifferentNameAndSkinCounts()
+    {
+        var payload = Payload(w =>
+        {
+            w.Write(1);
+            w.WriteArray(new[] { "First.Item.Gbx" });
+            w.WriteArray(Array.Empty<PackDesc>());
+        });
+        using var stream = new MemoryStream(payload);
+        using var reader = new GbxReader(stream);
+
+        Assert.Throws<InvalidDataException>(() => new CGameCtnReplayRecord.Chunk03093020()
+            .Read(new CGameCtnReplayRecord(), reader));
     }
 
     [Test]
@@ -713,25 +865,34 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    public async Task ReadWrite_BonusBumps_ReadsTimeAndBooleanForEveryKey()
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Read_BonusBumps_ReadsTimedEventsWithDurationsAndGoldStatus(bool empty)
     {
         var payload = Payload(w =>
         {
             w.Write(0);
             w.Write(-1);
-            w.Write(2);
+            w.Write(empty ? 0 : 2);
+            if (empty) return;
             w.Write(1.5f);
-            w.Write(12);
+            w.Write(1234);
             w.Write(true);
             w.Write(2.5f);
-            w.Write(34);
+            w.Write(3456);
             w.Write(false);
         });
         var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093023());
-        await Assert.That(replay.BonusBumpKeys![0].U02).IsTrue();
-        await Assert.That(replay.BonusBumpKeys[1].Time.TotalSeconds).IsEqualTo(2.5f);
-        await Assert.That(replay.BonusBumpKeys[1].U01).IsEqualTo(34);
-        await Assert.That(replay.BonusBumpKeys[1].U02).IsFalse();
+        await Assert.That(replay.BonusBumpKeys!.Count).IsEqualTo(empty ? 0 : 2);
+        if (!empty)
+        {
+            await Assert.That(replay.BonusBumpKeys[0].Time.TotalSeconds).IsEqualTo(1.5f);
+            await Assert.That(replay.BonusBumpKeys[0].Duration).IsEqualTo(new TimeInt32(1234));
+            await Assert.That(replay.BonusBumpKeys[0].IsGold).IsTrue();
+            await Assert.That(replay.BonusBumpKeys[1].Time.TotalSeconds).IsEqualTo(2.5f);
+            await Assert.That(replay.BonusBumpKeys[1].Duration).IsEqualTo(new TimeInt32(3456));
+            await Assert.That(replay.BonusBumpKeys[1].IsGold).IsFalse();
+        }
         await Assert.That(replay.EmptyCarsVisDataTape).IsNull();
     }
 
@@ -753,25 +914,114 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    [Arguments(0)]
-    [Arguments(1)]
-    public async Task ReadWrite_EntityGhostMappings_ReadsTheFourthFieldInASeparatePass(int version)
+    [Arguments(0, 0)]
+    [Arguments(0, 2)]
+    [Arguments(1, 0)]
+    [Arguments(1, 2)]
+    public async Task Read_EntityGhostMappings_ReadsRecordsAndSeparateSceneUidPass(int version, int count)
     {
         var payload = Payload(w =>
         {
             w.Write(version);
-            w.Write(2);
-            for (var i = 0; i < 6; i++) w.Write(10 + i);
+            w.Write(count);
+            for (var i = 0; i < count * 3; i++) w.Write(10 + i);
             if (version >= 1)
             {
-                w.Write(100);
-                w.Write(200);
+                for (var i = 0; i < count; i++) w.Write(100 * (i + 1));
             }
         });
-        var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093026());
-        await Assert.That(replay.EntDataSceneUIdsToGhosts![1].U01).IsEqualTo(13);
-        await Assert.That(replay.EntDataSceneUIdsToGhosts[0].U04).IsEqualTo(version == 0 ? 0x0FF00000 : 100);
-        await Assert.That(replay.EntDataSceneUIdsToGhosts[1].U04).IsEqualTo(version == 0 ? 0x0FF00000 : 200);
+        var chunk = new CGameCtnReplayRecord.Chunk03093026();
+        var replay = await ReadChunk(payload, chunk);
+
+        await Assert.That(replay.EntDataSceneUIdsToGhosts!.Count).IsEqualTo(count);
+        for (var i = 0; i < count; i++)
+        {
+            var mapping = replay.EntDataSceneUIdsToGhosts[i];
+            await Assert.That(mapping.Time).IsEqualTo(new TimeInt32(10 + i * 3));
+            await Assert.That(mapping.EntDataSceneUId).IsEqualTo(11 + i * 3);
+            await Assert.That(mapping.GhostIndex).IsEqualTo(12 + i * 3);
+            await Assert.That(mapping.SceneUId).IsEqualTo(version == 0 ? 0x0FF00000 : 100 * (i + 1));
+        }
+    }
+
+    [Test]
+    [Arguments(-1)]
+    [Arguments(2)]
+    public void Read_EntityGhostMappings_RejectsUnsupportedVersionsBeforeReadingRecords(int version)
+    {
+        using var stream = new MemoryStream(BitConverter.GetBytes(version));
+        using var reader = new GbxReader(stream);
+        var chunk = new CGameCtnReplayRecord.Chunk03093026();
+
+        Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => chunk.Read(new CGameCtnReplayRecord(), reader));
+    }
+
+    [Test]
+    [Arguments(0, 0)]
+    [Arguments(0, 2)]
+    [Arguments(1, 0)]
+    [Arguments(1, 2)]
+    public async Task Read_AdditionalItems_ReadsNamesAndSkinDescriptors(int version, int count)
+    {
+        var names = new[] { "First.Item.Gbx", "Second.Item.Gbx|Variant" }.Take(count).ToArray();
+        var checksum = new Checksum256(Enumerable.Range(0, 32).Select(i => (byte)i).ToArray());
+        var skins = new[] { new PackDesc("First.Skin.zip", checksum, "https://example.com/First.Skin.zip"), PackDesc.Empty with { Checksum = Checksum256.Zero } }
+            .Take(count).ToArray();
+        var payload = Payload(w =>
+        {
+            w.Write(version);
+            w.WriteArray(names);
+            w.WriteArray(skins);
+        });
+
+        var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093027());
+
+        var items = replay.AdditionalItems!;
+        await Assert.That(items.Select(x => x.Name).ToArray()).IsEquivalentTo(names, CollectionOrdering.Matching);
+        await Assert.That(items.Select(x => x.Skin).ToArray()).IsEquivalentTo(skins, CollectionOrdering.Matching);
+        await Assert.That(replay.Items).IsNull();
+    }
+
+    [Test]
+    [Arguments(-1)]
+    [Arguments(2)]
+    public void Read_AdditionalItems_RejectsUnsupportedVersionsBeforeReadingLists(int version)
+    {
+        using var stream = new MemoryStream(BitConverter.GetBytes(version));
+        using var reader = new GbxReader(stream);
+        var chunk = new CGameCtnReplayRecord.Chunk03093027();
+
+        Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => chunk.Read(new CGameCtnReplayRecord(), reader));
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public void Read_AdditionalItems_RejectsDifferentNameAndSkinCounts(int version)
+    {
+        var payload = Payload(w =>
+        {
+            w.Write(version);
+            w.WriteArray(new[] { "First.Item.Gbx" });
+            w.WriteArray(Array.Empty<PackDesc>());
+        });
+        using var stream = new MemoryStream(payload);
+        using var reader = new GbxReader(stream);
+
+        Assert.Throws<InvalidDataException>(() => new CGameCtnReplayRecord.Chunk03093027()
+            .Read(new CGameCtnReplayRecord(), reader));
+    }
+
+    [Test]
+    [Arguments(0, false)]
+    [Arguments(1, true)]
+    [Arguments(256, true)]
+    [Arguments(-1, true)]
+    public async Task Read_AuthorGhostFilter_ReadsAnUnversioned32BitSwitch(int value, bool expected)
+    {
+        var replay = await ReadChunk(Payload(w => w.Write(value)), new CGameCtnReplayRecord.Chunk03093028());
+
+        await Assert.That(replay.KeepOnlyAuthorGhosts).IsEqualTo(expected);
     }
 
     [Test]

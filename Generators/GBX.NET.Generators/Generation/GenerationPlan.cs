@@ -67,6 +67,7 @@ internal sealed class GenerationPlan
             }
         }
         
-        return new GenerationPlan(inputs.Existing, layouts.ToImmutable(), diagnostics.ToImmutable());
+        return new GenerationPlan(inputs.Existing, layouts.ToImmutable(),
+            diagnostics.Count == diagnostics.Capacity ? diagnostics.MoveToImmutable() : diagnostics.ToImmutable());
     }
 }

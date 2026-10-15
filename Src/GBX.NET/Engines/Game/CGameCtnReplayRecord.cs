@@ -41,13 +41,16 @@ public partial class CGameCtnReplayRecord
     private ImmutableList<CGameActionModel>? actionModels;
     private ImmutableList<string>? actionNames;
     private ImmutableList<string>? actionFileNames;
-    private ImmutableList<string>? itemNames;
-    private ImmutableList<PackDesc>? itemSkins;
+    private ImmutableList<ItemResource>? items;
+    private ImmutableList<ItemResource>? additionalItems;
     private bool enableMinimap;
     private byte[][]? cameraRecord;
     private NodeRef<CPlugDataTape>? emptyCarsVisDataTapeRef;
     private ImmutableList<BonusBumpKey>? bonusBumpKeys;
     private NodeRef<CPlugDataTape>? sceneryTurretsDataTapeRef;
+    private float timeOfDay = -1;
+    private TimeInt32 dayPeriod;
+    private bool keepOnlyAuthorGhosts;
     private CGameCtnChallenge? challenge;
     private ImmutableArray<IInput>? pendingInputs;
     private TimeInt32? pendingEventsDuration;
@@ -58,6 +61,7 @@ public partial class CGameCtnReplayRecord
     private NodeRef<CCtnMediaBlockEventTrackMania>? eventsRef;
     private NodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>? simpleEventsDisplayRef;
     private NodeRef<CGameCtnChallengeParameters>? challengeParametersRef;
+    private ImmutableList<AnchoredObjectInfo>? anchoredObjectInfos;
     private NodeRef<CGameReplayObjectVisData>? sceneryObjectsRef;
 
 #if NET9_0_OR_GREATER
@@ -289,6 +293,9 @@ public partial class CGameCtnReplayRecord
     [AppliedWithChunk<Chunk0309301C>]
     public string? PlaygroundScript => playgroundScript;
 
+    /// <summary>
+    /// Timed snapshots of the replay's Manialink interface layers.
+    /// </summary>
     [AppliedWithChunk<Chunk0309301D>(0, 0)]
     public ImmutableList<InterfaceScriptInfo>? InterfaceScriptInfos => interfaceScriptInfos;
 
@@ -299,7 +306,10 @@ public partial class CGameCtnReplayRecord
     [Obsolete("Use GetValidationGhost()?.Inputs instead.")]
     public ImmutableArray<IInput>? Inputs => GetValidationGhost()?.Inputs;
 
-    [AppliedWithChunk<Chunk03093026>]
+    /// <summary>
+    /// Time-dependent mappings from recorded entity scene UIDs to indices in <see cref="Ghosts"/>.
+    /// </summary>
+    [AppliedWithChunk<Chunk03093026>(0, 1)]
     public ImmutableList<EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts => entDataSceneUIdsToGhosts;
 
     [AppliedWithChunk<Chunk03093029>]
@@ -320,11 +330,23 @@ public partial class CGameCtnReplayRecord
     [AppliedWithChunk<Chunk0309301E>(1)]
     public ImmutableList<string>? ActionFileNames => actionFileNames;
 
+    /// <summary>
+    /// Item resources used by the replay.
+    /// </summary>
     [AppliedWithChunk<Chunk03093020>]
-    public ImmutableList<string>? ItemNames => itemNames;
+    public ImmutableList<ItemResource>? Items => items;
 
-    [AppliedWithChunk<Chunk03093020>(1)]
-    public ImmutableList<PackDesc>? ItemSkins => itemSkins;
+    /// <summary>
+    /// Additional item resources used to load the replay's item library, including any variant suffixes.
+    /// </summary>
+    [AppliedWithChunk<Chunk03093027>(0, 1)]
+    public ImmutableList<ItemResource>? AdditionalItems => additionalItems;
+
+    /// <summary>
+    /// Legacy anchored object records stored by version 0 of the scenery objects chunk.
+    /// </summary>
+    [AppliedWithChunk<Chunk0309301F>(0, 0)]
+    public ImmutableList<AnchoredObjectInfo>? AnchoredObjectInfos => anchoredObjectInfos;
 
     [AppliedWithChunk<Chunk0309301F>(1, 1)]
     public CGameReplayObjectVisData? SceneryObjects => sceneryObjectsRef?.Resolve();
@@ -347,6 +369,9 @@ public partial class CGameCtnReplayRecord
     [AppliedWithChunk<Chunk03093023>(0, 0)]
     public CPlugDataTape? EmptyCarsVisDataTape => emptyCarsVisDataTapeRef?.Resolve();
 
+    /// <summary>
+    /// Timed bump bonus events, including their durations and gold status.
+    /// </summary>
     [AppliedWithChunk<Chunk03093023>(0, 0)]
     public ImmutableList<BonusBumpKey>? BonusBumpKeys => bonusBumpKeys;
 
@@ -355,6 +380,24 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     [AppliedWithChunk<Chunk03093024>]
     public CPlugDataTape? SceneryTurretsDataTape => sceneryTurretsDataTapeRef?.Resolve();
+
+    /// <summary>
+    /// Time of day at the start of the replay, as a fraction of a day, or -1 when unspecified.
+    /// </summary>
+    [AppliedWithChunk<Chunk03093025>(0, 0)]
+    public float TimeOfDay => timeOfDay;
+
+    /// <summary>
+    /// Duration of the replay's day cycle. Zero keeps the time of day fixed.
+    /// </summary>
+    [AppliedWithChunk<Chunk03093025>(0, 0)]
+    public TimeInt32 DayPeriod => dayPeriod;
+
+    /// <summary>
+    /// Whether generated MediaTracker entity tracks are restricted to ghosts whose login matches <see cref="AuthorLogin"/>.
+    /// </summary>
+    [AppliedWithChunk<Chunk03093028>]
+    public bool KeepOnlyAuthorGhosts => keepOnlyAuthorGhosts;
 
     protected internal override bool IsWriteSupported => false;
 
@@ -588,7 +631,7 @@ public partial class CGameCtnReplayRecord
             }
 
             inputs.Reverse(); // Inputs are originally reversed
-            n.pendingInputs = inputs.ToImmutable();
+            n.pendingInputs = inputs.Count == inputs.Capacity ? inputs.MoveToImmutable() : inputs.ToImmutable();
 
             n.PassInputsToValidationGhost();
         }
@@ -604,6 +647,28 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     public readonly record struct PlayerOfInterest(int GhostIndex, TimeInt32 Time);
 
+    /// <summary>
+    /// An item resource name and its corresponding skin reference.
+    /// </summary>
+    /// <param name="Name">The item resource name, including any variant suffix.</param>
+    /// <param name="Skin">The skin reference, or <see cref="PackDesc.Empty"/> when unspecified.</param>
+    public readonly record struct ItemResource(string Name, PackDesc Skin);
+
+    private static ImmutableList<ItemResource> CreateItemResources(string[] names, PackDesc[]? skins)
+    {
+        if (skins is not null && skins.Length != names.Length)
+        {
+            throw new InvalidDataException("Item skin and name counts differ.");
+        }
+
+        var resources = ImmutableList.CreateBuilder<ItemResource>();
+        for (var i = 0; i < names.Length; i++)
+        {
+            resources.Add(new ItemResource(names[i], skins?[i] ?? PackDesc.Empty));
+        }
+        return resources.ToImmutable();
+    }
+
     public partial class Chunk03093004 : IVersionable
     {
         public int Version { get; set; }
@@ -617,10 +682,7 @@ public partial class CGameCtnReplayRecord
 
             foreach (var ghost in n.ghosts)
             {
-                if (ghost is not null)
-                {
-                    ghost.GhostVersion = Version;
-                }
+                ghost?.GhostVersion = Version;
             }
 
             n.recordDuration = r.ReadTimeInt32();
@@ -638,7 +700,9 @@ public partial class CGameCtnReplayRecord
 
     public partial class Chunk03093007
     {
-        // Unused legacy value; native code initializes it to -1.
+        /// <summary>
+        /// Unused legacy value.
+        /// </summary>
         public int U01 = -1;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
@@ -938,7 +1002,7 @@ public partial class CGameCtnReplayRecord
         {
             Version = r.ReadInt32();
 
-            if (Version > 0)
+            if (Version != 0)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -954,6 +1018,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
+
             var count = r.ReadInt32();
             if (count < 0)
             {
@@ -968,7 +1033,7 @@ public partial class CGameCtnReplayRecord
             }
             n.actionModels = models.ToImmutable();
 
-            if ((uint)Version >= 2)
+            if (Version >= 2)
             {
                 n.actionNames = r.ReadArrayString().ToImmutableList();
                 if (n.actionNames.Count != count)
@@ -983,7 +1048,7 @@ public partial class CGameCtnReplayRecord
                     .ToImmutableList();
             }
 
-            if (Version != 0)
+            if (Version >= 1)
             {
                 n.actionFileNames = r.ReadArrayString().ToImmutableList();
             }
@@ -993,7 +1058,6 @@ public partial class CGameCtnReplayRecord
     public partial class Chunk0309301F : IVersionable
     {
         public int Version { get; set; }
-        public AnchoredObjectInfo[]? U01;
 
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
@@ -1001,7 +1065,7 @@ public partial class CGameCtnReplayRecord
             switch (Version)
             {
                 case 0:
-                    U01 = r.ReadArrayReadable<AnchoredObjectInfo>();
+                    n.anchoredObjectInfos = r.ReadArrayReadable<AnchoredObjectInfo>().ToImmutableList();
                     break;
                 case 1:
                     r.ReadNodeRef(ref n.sceneryObjectsRef);
@@ -1019,20 +1083,9 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            n.itemNames = r.ReadArrayString().ToImmutableList();
-
-            if (Version == 0)
-            {
-                n.itemSkins = Enumerable.Repeat(PackDesc.Empty, n.itemNames.Count).ToImmutableList();
-            }
-            else
-            {
-                n.itemSkins = r.ReadArrayPackDesc().ToImmutableList();
-                if (n.itemSkins.Count != n.itemNames.Count)
-                {
-                    throw new InvalidDataException("Item skin and name counts differ.");
-                }
-            }
+            var names = r.ReadArrayString();
+            var skins = Version == 0 ? null : r.ReadArrayPackDesc();
+            n.items = CreateItemResources(names, skins);
         }
     }
 
@@ -1059,7 +1112,7 @@ public partial class CGameCtnReplayRecord
                 throw new ChunkVersionNotSupportedException(Version);
             }
 
-            // Both games use version 0, so the bounded skippable payload determines the width.
+            // Bounded skippable payload determines the width
             var count = r.ReadInt32();
             var remaining = r.BaseStream.Length - r.BaseStream.Position;
             if (count < 0 || (count == 0 ? remaining != 0 : remaining != (long)count * 80 && remaining != (long)count * 84))
@@ -1101,7 +1154,8 @@ public partial class CGameCtnReplayRecord
         {
             Version = r.ReadInt32();
             r.ReadNodeRef(ref n.sceneryTurretsDataTapeRef);
-            if (Version != 0)
+
+            if (Version >= 1)
             {
                 r.ReadNodeRef(ref n.recordDataRef);
             }
@@ -1112,14 +1166,16 @@ public partial class CGameCtnReplayRecord
     {
         public int Version { get; set; }
 
-        public float U01;
-        public int U02;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadSingle();
-            U02 = r.ReadInt32();
+            if (Version != 0)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            n.timeOfDay = r.ReadSingle();
+            n.dayPeriod = r.ReadTimeInt32();
         }
     }
 
@@ -1127,19 +1183,22 @@ public partial class CGameCtnReplayRecord
     {
         public int Version { get; set; }
 
-        public int U02;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
+            if (Version is < 0 or > 1)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
             n.entDataSceneUIdsToGhosts = r.ReadArrayReadable<EntDataSceneUIdsToGhost>().ToImmutableList();
 
             if (Version >= 1)
             {
-                // The fourth field is a separate pass over the entire array.
+                // Scene UIDs follow all three-field mapping records in a separate pass.
                 foreach (var entData in n.entDataSceneUIdsToGhosts)
                 {
-                    entData.U04 = r.ReadInt32();
+                    entData.SceneUId = r.ReadInt32();
                 }
             }
         }
@@ -1149,24 +1208,25 @@ public partial class CGameCtnReplayRecord
     {
         public int Version { get; set; }
 
-        public string[]? U01;
-        public PackDesc[]? U02;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadArrayString();
-            U02 = r.ReadArrayPackDesc();
+            if (Version is < 0 or > 1)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            var names = r.ReadArrayString();
+            var skins = r.ReadArrayPackDesc();
+            n.additionalItems = CreateItemResources(names, skins);
         }
     }
 
     public partial class Chunk03093028
     {
-        public int U01;
-
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
-            U01 = r.ReadInt32();
+            n.keepOnlyAuthorGhosts = r.ReadBoolean();
         }
     }
 
@@ -1180,35 +1240,76 @@ public partial class CGameCtnReplayRecord
 
     public partial class InterfaceScriptInfo
     {
-        private string[]? u01;
-        private int u02;
-        public string[]? U01 { get => u01; set => u01 = value; }
-        public int U02 { get => u02; set => u02 = value; }
+        private string[]? manialinks;
+        private TimeInt32 time;
+
+        /// <summary>
+        /// Manialink XML pages of the interface layers at <see cref="Time"/>. An empty array clears the interface.
+        /// </summary>
+        public string[]? Manialinks { get => manialinks; set => manialinks = value; }
+
+        /// <summary>
+        /// Time since replay recording started at which these interface layers apply.
+        /// </summary>
+        public TimeInt32 Time { get => time; set => time = value; }
+
+        [Obsolete("Use Manialinks instead.")]
+        public string[]? U01 { get => manialinks; set => manialinks = value; }
+
+        [Obsolete("Use Time instead.")]
+        public int U02 { get => time.TotalMilliseconds; set => time = new TimeInt32(value); }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.ArrayString(ref u01);
-            rw.Int32(ref u02);
+            rw.ArrayString(ref manialinks);
+            rw.TimeInt32(ref time);
         }
     }
 
     public partial class EntDataSceneUIdsToGhost
     {
-        private int u01;
-        private int u02;
-        private int u03;
-        public int U01 { get => u01; set => u01 = value; }
-        public int U02 { get => u02; set => u02 = value; }
-        public int U03 { get => u03; set => u03 = value; }
+        private TimeInt32 time;
+        private int entDataSceneUId;
+        private int ghostIndex;
 
+        /// <summary>
+        /// Replay time from which this mapping applies.
+        /// </summary>
+        public TimeInt32 Time { get => time; set => time = value; }
+
+        /// <summary>
+        /// Scene UID of the entity in the recorded entity data.
+        /// </summary>
+        public int EntDataSceneUId { get => entDataSceneUId; set => entDataSceneUId = value; }
+
+        /// <summary>
+        /// Index of the corresponding ghost in the replay's ghost list.
+        /// </summary>
+        public int GhostIndex { get => ghostIndex; set => ghostIndex = value; }
+
+        /// <summary>
+        /// Scene UID preferred for matching when both entities have one. Version 0 uses 0x0FF00000 for an unknown UID.
+        /// </summary>
         [AppliedWithChunk<Chunk03093026>(1)]
-        public int U04 { get; set; } = 0x0FF00000;
+        public int SceneUId { get; set; } = 0x0FF00000;
+
+        [Obsolete("Use Time instead.")]
+        public int U01 { get => time.TotalMilliseconds; set => time = new TimeInt32(value); }
+
+        [Obsolete("Use EntDataSceneUId instead.")]
+        public int U02 { get => entDataSceneUId; set => entDataSceneUId = value; }
+
+        [Obsolete("Use GhostIndex instead.")]
+        public int U03 { get => ghostIndex; set => ghostIndex = value; }
+
+        [Obsolete("Use SceneUId instead.")]
+        public int U04 { get => SceneUId; set => SceneUId = value; }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
-            rw.Int32(ref u03);
+            rw.TimeInt32(ref time);
+            rw.Int32(ref entDataSceneUId);
+            rw.Int32(ref ghostIndex);
         }
     }
 
@@ -1241,9 +1342,26 @@ public partial class CGameCtnReplayRecord
 
     public sealed class BonusBumpKey : IReadable, IDeepCloneable
     {
-        public TimeSingle Time;
-        public int U01;
-        public bool U02;
+        /// <summary>
+        /// Time since replay recording started at which the bump bonus begins.
+        /// </summary>
+        public TimeSingle Time { get; set; }
+
+        /// <summary>
+        /// Duration of the bump bonus event.
+        /// </summary>
+        public TimeInt32 Duration { get; set; }
+
+        /// <summary>
+        /// Whether the event uses the stronger gold bonus.
+        /// </summary>
+        public bool IsGold { get; set; }
+
+        [Obsolete("Use Duration instead.")]
+        public int U01 { get => Duration.TotalMilliseconds; set => Duration = new TimeInt32(value); }
+
+        [Obsolete("Use IsGold instead.")]
+        public bool U02 { get => IsGold; set => IsGold = value; }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
@@ -1255,8 +1373,8 @@ public partial class CGameCtnReplayRecord
         public void Read(GbxReader r, int v = 0)
         {
             Time = r.ReadTimeSingle();
-            U01 = r.ReadInt32();
-            U02 = r.ReadBoolean();
+            Duration = r.ReadTimeInt32();
+            IsGold = r.ReadBoolean();
         }
     }
 }
