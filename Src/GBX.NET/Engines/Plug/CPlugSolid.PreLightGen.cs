@@ -2,12 +2,6 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugSolid
 {
-    public partial class Chunk09005017
-    {
-        [Obsolete("Use HasPreLightGen instead.")]
-        public bool U01 { get => HasPreLightGen; set => HasPreLightGen = value; }
-    }
-
     public partial class PreLightGen
     {
         [Obsolete("Use TileCountU instead.")]

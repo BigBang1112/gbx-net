@@ -58,6 +58,11 @@ internal sealed class ScopeModel
 
         WireTypes.ValidateNullable(declaration);
 
+        if (LayoutModel.Has(declaration.Attributes, "chunk"))
+        {
+            throw new InvalidOperationException("The (chunk) attribute is only supported on version conditions.");
+        }
+
         var local = LayoutModel.Has(declaration.Attributes, "local");
         var write = LayoutModel.WriteExpression(declaration.Attributes);
         if (local && !LayoutModel.Has(declaration.Attributes, "write"))
@@ -85,7 +90,7 @@ internal sealed class ScopeModel
             return;
         }
 
-        var unknown = LayoutModel.Has(declaration.Attributes, "chunk") || string.IsNullOrEmpty(declaration.Name) ||
+        var unknown = string.IsNullOrEmpty(declaration.Name) ||
             (declaration.Name!.Length == 3 && declaration.Name[0] == 'U' && char.IsDigit(declaration.Name[1]) && char.IsDigit(declaration.Name[2]));
 
         if (unknown && !isVersion)

@@ -37,6 +37,8 @@ Reference a named archive from another class with its dotted type name, such as 
 
 A standalone handwritten type in the layout's engine namespace or the main `GBX.NET` namespace can also implement `IReadableWritable` and be used directly as an archive field. Implement `IReadable` and `IWritable` as well when separate read/write methods use it. This keeps shared serialization independent of a particular Gbx class.
 
+Scalar node presence checks such as `Model != null` or `Model is not null` test the stored `NodeRef.Kind`, including external file and resource references, without resolving the node. This also applies to property getters and field `write` expressions. A collection or an inline archive uses its ordinary null check.
+
 `GBX.NET.PlugCurve` handles legacy curve references and inline control points. Its field `version` argument selects the storage format (`-1` or any negative value for a node reference, zero or positive for inline points), while `PlugCurve.Version` selects the inline curve version. Bare `PlugCurve` fields use inline storage by default, so `(version: 1)` is unnecessary. Use `(version: Version - 8)` to switch to inline storage at chunk version 8. Fields that always store a legacy reference should use `CFuncKeysReal` directly. A handwritten `PlugCurve` backing field and its node conversions let legacy and inline declarations share one property.
 
 ## Computed assignments
@@ -54,6 +56,8 @@ For example, this upgrades flags after reading without changing them when writin
 The assignment's expression is also evaluated only when reading, so accessing `rw.Reader` there is safe. Conditions surrounding assignments are evaluated during writing too. Keep reader checks when they protect reader access in conditions, such as `if rw.Reader != null && rw.Reader.IsRelease`, or select different serialized fields for reading and writing.
 
 This rule applies to computed assignments in serialization bodies. Field defaults, constructor assignments, and property setters retain their own behavior.
+
+Computed assignments that dereference a referenced node call `Resolve()` when reading, so external files are loaded when their data is needed. Use the declared field name in the layout, such as `SymmetricalClipId = LegacySymmetricalClip.Ident.Id`. A missing node keeps the assignment's target value unchanged, while resolution errors propagate. Reference copies preserve descriptors without resolving them, and writing does not evaluate computed assignments.
 
 ## Numeric casts
 
@@ -130,6 +134,10 @@ ChunkL attributes describe how GBX.NET should generate a chunk:
 - `struct: Name` describes the raw name of a struct used for a header chunk.
 
 At the class level, `inherits: ParentClass` creates the C# inheritance relationship and makes inherited chunks available. Named archives can use `inherits: BaseArchive` and `contextual` when their serialization needs the enclosing class node.
+
+Named fields in chunk bodies become node properties shared by the chunks that declare them. Unnamed fields and names such as `U01` remain stored on the chunk. Use `(local, write: expression)` for temporary serialization values.
+
+`(chunk)` is supported only on version branches. In an archive with its own `version` or `versionb`, select `(archive)` to test that stored version or `(chunk)` to test the caller's version argument. Such archives require an explicit selector on each version branch. Archives without their own version test the caller's version by default, and chunk bodies test the chunk's stored version.
 
 Version lists such as `[TM10.v3, TMF.v11, TM2020.v13]` document the observed formats and select versions in generated chunk `GameVersion` constructors. Keep them accurate when adding or changing a layout. Serialization branches still use the stored version.
 

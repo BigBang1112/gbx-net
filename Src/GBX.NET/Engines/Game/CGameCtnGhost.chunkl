@@ -85,7 +85,10 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x011 (demonstration: partial) [TMU, VSK5] // validation TMU
   int EventsDuration (time)
   if EventsDuration != 0
-    // CInputEventsStore is handled in C# before the validation fields.
+    int InputStoreVersion
+    // Input names and event count are handled in C#.
+    int InputCountLimit
+    // Packed input records are handled in C# before the validation fields.
     string Validate_ExeVersion
     uint Validate_ExeChecksum
     int Validate_OsKind
@@ -174,7 +177,10 @@ CGameCtnGhost 0x03092000 // A ghost.
   v0-
     if EventsDuration == 0
       return
-  // CInputEventsStore is handled in C# before the validation fields.
+  int InputStoreVersion
+  // Input names and event count are handled in C#.
+  int InputCountLimit
+  // Packed input records are handled in C# before the validation fields.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
   int Validate_OsKind
@@ -227,7 +233,8 @@ CGameCtnGhost 0x03092000 // A ghost.
   unixtime? WalltimeEndTimestamp
 
 0x02D (skippable, demonstration: partial) [TM2020]
-  // HasInputs and the optional CInputEventsStore are handled in C#.
+  int HasInputs
+  // Input stores indicated by HasInputs are not supported yet.
   string Validate_ExeVersion
   uint Validate_ExeChecksum
   int Validate_OsKind
@@ -239,7 +246,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   int Validate_GameRules
   int? Validate_RaceStartTime (time)
   int? Validate_ValidationSeed
-  // SimulationFlags is handled in C#.
+  int SimulationFlags // bit 0 is SteeringWheelSensitivity
   string Validate_RaceSettings // native m_ValidationData.ExtraTool_Info in TM2020
 
 0x02E (skippable) [TM2020]

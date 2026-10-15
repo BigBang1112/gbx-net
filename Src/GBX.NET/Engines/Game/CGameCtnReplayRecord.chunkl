@@ -10,62 +10,49 @@ CGameCtnReplayRecord 0x03093000
 
 0x003 [TM10, TMPU] // validation TM1.0
 
-0x004 (demonstration: partial) [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // ghosts
-  CGameCtnGhost[] Ghosts
+0x004 [TM10, TMPU, TMSX, TMNESWC, TMU, VSK5] // ghosts
 
-0x005 [TM10]
+0x005 [TM10] // legacy cut keys (SOldCutKey)
 
-0x007 (skippable) [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT]
+0x007 (skippable) [TMPU, TMSX, TMNESWC, TMU, VSK5, TMF, MP3, TMT] // unused legacy value
 
-0x008 (skippable) [TMPU, TMSX, TMNESWC] // game
+0x008 (skippable) [TMPU, TMSX, TMNESWC] // validation executable version + legacy cut keys (SOldCutKey2)
 
 0x009
 
-0x00A (demonstration: partial) // legacy tracks
-  CGameCtnMediaTrack[] U01
+0x00A // legacy MediaTracker track references
 
-0x00B (demonstration: partial) // human time to game time function
-  CMwNod HumanTimeToGameTimeFunc (chunk)
+0x00B // HumanTimeToGameTimeFunc
 
-0x00C (demonstration: partial) [TMSX, TMNESWC, TMU, VSK5] // clip
-  CGameCtnMediaClip Clip
+0x00C [TMSX, TMNESWC, TMU, VSK5] // clip
 
-0x00D [TMSX, TMNESWC] // validation
+0x00D [TMSX, TMNESWC] // validation inputs
 
-0x00E (demonstration: partial) [TMSX, TMNESWC, TMU, VSK5] // events
-  CCtnMediaBlockEventTrackMania Events
+0x00E [TMSX, TMNESWC, TMU, VSK5] // events
 
-0x00F (skippable) [TMSX, TMNESWC]
+0x00F (skippable) [TMSX, TMNESWC] // validation metadata
 
-0x010 (demonstration: partial) // simple events display
-  CCtnMediaBlockUiTMSimpleEvtsDisplay SimpleEventsDisplay
+0x010 // simple events display
 
 0x011 [TMNESWC, TMU, VSK5]
 
-0x012
+0x012 // validation security key with ignored padding
 
-0x013 (skippable) [TMU, VSK5]
+0x013 (skippable) [TMU, VSK5] // legacy cut keys (SOldCutKey2)
 
 0x014 [TMF, MP3, TMT, MP4, TM2020] // ghosts
 
 0x015 [TMF, MP3, TMT, MP4, TM2020] // clip
 
-0x016 (demonstration: partial) // legacy data tapes
-  CPlugDataTape U01
-  CPlugDataTape U02
-  CPlugDataTape U03
+0x016 // legacy bullet, character, and arena visual data tapes
 
-0x017 (skippable, demonstration: partial) // encapsulated legacy data tapes
-  CPlugDataTape U01
-  CPlugDataTape U02
-  CPlugDataTape U03
+0x017 (skippable) // encapsulated legacy bullet, character, and arena visual data tapes
 
 0x018 (skippable) [MP3, TMT, MP4, TM2020] // author
 
 0x019 (skippable) // legacy scenery vortex keys
 
-0x01A (skippable, base: 0x019, demonstration: partial) [MP3, TMT, MP4, TM2020] // scenery vortex key
-  CPlugDataTape U02
+0x01A (skippable, base: 0x019) [MP3, TMT, MP4, TM2020] // scenery vortex key
 
 0x01B (skippable) [MP3, TMT, MP4, TM2020] // player of interest
 
@@ -75,21 +62,17 @@ CGameCtnReplayRecord 0x03093000
 
 0x01E (skippable) [MP3, TMT, MP4, TM2020] // actions
 
-0x01F (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // AnchoredObjectInfos
-  CGameReplayObjectVisData SceneryObjects
+0x01F (skippable) [MP3, TMT, MP4, TM2020] // AnchoredObjectInfos
 
 0x020 (skippable) [MP3, TMT, MP4, TM2020] // item skins and names
 
-0x021 (skippable) [MP3, TMT, MP4, TM2020]
+0x021 (skippable) [MP3, TMT, MP4, TM2020] // enable minimap
 
-0x022 (skippable) [TMT, MP4, TM2020] // TimedCamVal
+0x022 (skippable) [TMT, MP4, TM2020] // recorded Monoscreen camera values (STimedCamVal)
 
-0x023 (skippable, demonstration: partial) [TMT, MP4, TM2020] // BonusBumpKey
-  CPlugDataTape U01
+0x023 (skippable) [TMT, MP4, TM2020] // empty-car visual tape and bonus bump keys
 
-0x024 (demonstration: partial) [MP4.v1, TM2020.v1] // record data
-  CPlugDataTape U01
-  CPlugEntRecordData RecordData
+0x024 [MP4.v1, TM2020.v1] // deprecated scenery-turret tape and record data
 
 0x025 (skippable) [MP4, TM2020]
 
@@ -99,14 +82,8 @@ CGameCtnReplayRecord 0x03093000
 
 0x028 (skippable) [TM2020]
 
-0x029 (skippable, demonstration: partial) [TM2020]
-  CGameCtnChallengeParameters ChallengeParameters
+0x029 (skippable) [TM2020]
 
 archive InterfaceScriptInfo
-  string[]
-  int
 
 archive EntDataSceneUIdsToGhost
-  int
-  int
-  int

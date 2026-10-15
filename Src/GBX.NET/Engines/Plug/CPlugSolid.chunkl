@@ -46,7 +46,7 @@ CPlugSolid 0x09005000
 
 0x00D [TM10, TMPU, TMSX, TMNESWC] // model and tree
   bool UseModel = true
-  bool HasModel (chunk, write: "HasModel || n.References.Model.Kind != NodeRefKind.None")
+  bool HasModel (local, write: "Model is not null")
   if HasModel
     CPlugSolid Model
   if !HasModel
@@ -69,9 +69,9 @@ CPlugSolid 0x09005000
 
 0x011 [VSK5, TMF, MP3, TMT, MP4, TM2020] // model and tree
   bool UseModel = true
-  bool HasModel (chunk, write: "HasModel || n.References.Model.Kind != NodeRefKind.None")
+  bool HasModel (local, write: "Model is not null")
   if HasModel
-    bool? ModelIsExternal (chunk, write: "ModelIsExternal ?? (n.References.Model.Kind == NodeRefKind.ExternalFile)")
+    bool? ModelIsExternal (write: "ModelIsExternal ?? (n.References.Model.Kind == NodeRefKind.ExternalFile)")
     CPlugSolid Model
   if !HasModel
     CPlugTree Tree
@@ -82,7 +82,7 @@ CPlugSolid 0x09005000
 0x017 [MP3.v3, TMT.v3, MP4.v3, TM2020.v3] // SolidPreLightGen
   version
   v3+
-    bool HasPreLightGen (chunk)
+    bool HasPreLightGen
     if HasPreLightGen
       PreLightGen SolidPreLightGen
   v2-
@@ -120,7 +120,7 @@ CPlugSolid 0x09005000
   v2-
     data LodNormalMapTga
     v1=
-      bool HasVeryLQDiffuse (chunk, write: "VeryLQDiffuse != null")
+      bool HasVeryLQDiffuse (write: "VeryLQDiffuse != null")
       if HasVeryLQDiffuse
         FileImageData VeryLQDiffuse
   v4+

@@ -69,7 +69,7 @@ internal sealed class IdentifierRewriter(Func<string, string> map, Func<Expressi
         return name is null ? null : nodeRef?.Invoke(name);
     }
 
-    private static string? ReferenceName(ExpressionSyntax expression)
+    internal static string? ReferenceName(ExpressionSyntax expression)
     {
         expression = Unwrap(expression);
         return expression is IdentifierNameSyntax identifier ? identifier.Identifier.ValueText :

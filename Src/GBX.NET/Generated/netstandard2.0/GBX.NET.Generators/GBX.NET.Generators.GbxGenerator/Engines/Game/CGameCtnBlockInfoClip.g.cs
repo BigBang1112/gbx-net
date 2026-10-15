@@ -275,7 +275,10 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
+                    if (n.legacySymmetricalClipRef?.Resolve() is not null)
+                    {
+                        n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
+                    }
                 }
             }
         }
@@ -302,7 +305,10 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
             {
                 if (rw.Reader is not null)
                 {
-                    n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
+                    if (n.legacySymmetricalClipRef?.Resolve() is not null)
+                    {
+                        n.SymmetricalClipId = (n.legacySymmetricalClipRef?.CachedNode).Ident.Id;
+                    }
                 }
             }
         }

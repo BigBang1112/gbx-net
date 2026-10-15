@@ -122,9 +122,6 @@ public partial class CGameCtnGhost
 
     public partial class Chunk03092011
     {
-        public int InputStoreVersion;
-        public int InputCountLimit;
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.TimeInt32(ref n.eventsDuration);
@@ -138,7 +135,7 @@ public partial class CGameCtnGhost
         internal void ReadWriteInputs(CGameCtnGhost n, GbxReaderWriter rw)
         {
             // CInputEventsStore::Archive
-            rw.Int32(ref InputStoreVersion); // always 0 now
+            rw.Int32(ref n.inputStoreVersion); // always 0 now
 
             if (rw.Reader is not null)
             {
@@ -165,7 +162,7 @@ public partial class CGameCtnGhost
             Span<string> inputNames = r.ReadArrayId();
 
             var numInputs = r.ReadInt32();
-            InputCountLimit = r.ReadInt32();
+            n.InputCountLimit = r.ReadInt32();
 
             if (numInputs == 0)
             {
@@ -208,7 +205,7 @@ public partial class CGameCtnGhost
             w.WriteListId(inputNames);
 
             w.Write(n.inputs.Length);
-            w.Write(InputCountLimit);
+            w.Write(n.InputCountLimit);
 
             foreach (var input in n.inputs)
             {
@@ -373,14 +370,11 @@ public partial class CGameCtnGhost
 
     public partial class Chunk0309202D
     {
-        public int HasInputs;
-        public int SimulationFlags; // bit 0 is SteeringWheelSensitivity
-
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
-            rw.Int32(ref HasInputs);
+            rw.Int32(ref n.hasInputs);
 
-            if (HasInputs >= 1)
+            if (n.HasInputs >= 1)
             {
                 throw new Exception("Inputs stored separately");
             }
@@ -396,7 +390,7 @@ public partial class CGameCtnGhost
             rw.Int32(ref n.validate_GameRules);
             rw.TimeInt32Nullable(ref n.validate_RaceStartTime);
             rw.Int32(ref n.validate_ValidationSeed);
-            rw.Int32(ref SimulationFlags);
+            rw.Int32(ref n.simulationFlags);
             rw.String(ref n.validate_RaceSettings);
         }
     }

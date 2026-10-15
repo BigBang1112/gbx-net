@@ -197,11 +197,25 @@ internal sealed class SerializationWriter
                     var assignmentProperty = layout.FindProperty(assignment.TargetName);
                     var assignmentType = assignmentField is not null ? WireTypes.CSharp(assignmentField.Declaration) :
                         assignmentProperty is not null ? WireTypes.CSharp(assignmentProperty.Type) : null;
+                    var requiredNodes = mode is SerializationMode.Read or SerializationMode.ReadWrite
+                        ? sourceSyntax.DescendantNodesAndSelf().OfType<MemberAccessExpressionSyntax>()
+                            .Select(x => IdentifierRewriter.ReferenceName(x.Expression))
+                            .Where(static x => x is not null)
+                            .Select(x => CachedReferenceIdentifier(x!))
+                            .Where(static x => x is not null).Distinct().ToArray()
+                        : [];
+                    if (requiredNodes.Length > 0)
+                    {
+                        // Resolve data dependencies when reading. Presence checks and reference
+                        // copies can use descriptors alone, but derived values need the node.
+                        code.Open("if (" + string.Join(" && ", requiredNodes.Select(static x => x + "?.Resolve() is not null")) + ")");
+                    }
                     if (CachedReferenceIdentifier(assignment.TargetName) is { } assignmentHandle &&
                         ReferenceFieldByName(assignment.TargetName)?.Name != assignment.TargetName)
                         code.Line("NodeRef.SetEmbedded(ref " + assignmentHandle + ", " + Expression(assignment.Expression, assignmentType) + ");");
                     else
                         code.Line(Identifier(assignment.TargetName) + " = " + Expression(assignment.Expression, assignmentType) + ";");
+                    if (requiredNodes.Length > 0) code.Close();
                     if (mode == SerializationMode.ReadWrite) code.Close();
                     break;
 

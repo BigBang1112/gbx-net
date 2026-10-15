@@ -60,6 +60,7 @@ public class CPlugSolidPreLightGenTests
         using var readWrite = new GbxReaderWriter(reader);
         node.Read(readWrite);
         await Assert.That(input.Position).IsEqualTo(input.Length);
+        if (chunkVersion >= 3) await Assert.That(node.HasPreLightGen).IsEqualTo(hasData);
 
         if (chunkVersion >= 3 && hasData)
         {

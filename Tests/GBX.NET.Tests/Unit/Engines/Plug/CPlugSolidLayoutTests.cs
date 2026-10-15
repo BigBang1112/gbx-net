@@ -41,6 +41,7 @@ public class CPlugSolidLayoutTests
         Chunk<CPlugSolid> chunk = offset == 13 ? new CPlugSolid.Chunk0900500D() : new CPlugSolid.Chunk09005011();
         payload.Read(rw => chunk.ReadWrite(node, rw));
         await Assert.That(node.UseModel).IsEqualTo(useModel);
+        if (offset == 17 && hasModel) await Assert.That(node.ModelIsExternal).IsEqualTo((bool?)external);
         if (hasModel)
         {
             await Assert.That(node.Tree).IsNull();
@@ -53,6 +54,7 @@ public class CPlugSolidLayoutTests
             await Assert.That(node.Model).IsNull();
         }
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
+        if (external) await Assert.That(node.References.Model.State).IsEqualTo(NodeRefState.Unresolved);
     }
 
     [Test]

@@ -121,8 +121,18 @@ public class GbxFixtureTests
     public async Task Parse_ReplayFixture_ReturnsGhostsWithoutIgnoringChunkFailures(string game)
     {
         var path = TestFiles.Gbx("CGameCtnReplayRecord", $"CGameCtnReplayRecord {game} 001.Replay.Gbx");
-        var replay = Gbx.ParseNode<CGameCtnReplayRecord>(path, new GbxReadSettings { SafeSkippableChunks = false });
+        var gbx = Gbx.Parse<CGameCtnReplayRecord>(path, new GbxReadSettings { SafeSkippableChunks = false, IgnoreExceptionsInBody = false });
+        var replay = gbx.Node;
+        await Assert.That(gbx.Body.Exception).IsNull();
         await Assert.That(replay.GetGhosts().Any()).IsTrue();
+
+        if (replay.GetChunk<CGameCtnReplayRecord.Chunk03093004>() is { } legacyGhosts)
+        {
+            foreach (var ghost in replay.Ghosts!)
+            {
+                await Assert.That(ghost!.GhostVersion).IsEqualTo(legacyGhosts.Version);
+            }
+        }
     }
 
     [Test]

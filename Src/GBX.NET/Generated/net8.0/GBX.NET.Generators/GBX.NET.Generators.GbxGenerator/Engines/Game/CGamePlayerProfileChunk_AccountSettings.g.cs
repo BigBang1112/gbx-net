@@ -267,6 +267,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int buddyArchiveVersion = 5;
+    [AppliedWithChunk<Chunk0312C003>]
     public int BuddyArchiveVersion
     {
         get => this.buddyArchiveVersion;
@@ -905,7 +906,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override uint Id => 0x0312C003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int BuddyArchiveVersion;
         public string? U02;
         public string[]? U03;
         public byte[]? U04;
@@ -921,15 +921,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
             {
                 Version = 7;
             }
-
-            BuddyArchiveVersion = 5;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0312C003)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0312C003)clone).BuddyArchiveVersion = context.Clone(this.BuddyArchiveVersion)!;
             ((Chunk0312C003)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0312C003)clone).U03 = context.CloneArray(this.U03)!;
             ((Chunk0312C003)clone).U04 = context.CloneArray(this.U04)!;
@@ -939,8 +936,8 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.Int32(ref BuddyArchiveVersion);
-            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies!, version: BuddyArchiveVersion);
+            rw.Int32(ref n.buddyArchiveVersion);
+            rw.ArrayReadableWritable<CGameBuddy>(ref n.buddies!, version: n.BuddyArchiveVersion);
 
             if (Version >= 3)
             {

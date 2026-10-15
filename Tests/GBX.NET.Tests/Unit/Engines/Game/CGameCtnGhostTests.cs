@@ -1,5 +1,6 @@
 using GBX.NET.Engines.Game;
 using GBX.NET.Serialization;
+using GBX.NET.Serialization.Chunking;
 using TmEssentials;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
@@ -7,6 +8,63 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 [Category("Unit")]
 public class CGameCtnGhostTests
 {
+    [Test]
+    [Arguments(0x11, 0)]
+    [Arguments(0x19, 0)]
+    [Arguments(0x25, 0)]
+    [Arguments(0x25, 1)]
+    public async Task ValidationInputStore_ReadsNodeMembersAndWritesWithFreshChunks(int offset, int version)
+    {
+        var payload = Payload(w =>
+        {
+            if (offset == 0x25) w.Write(version);
+            w.Write(1200); // Events duration.
+            w.Write(7); // Input store version, preserved without interpretation.
+            w.Write(0); // Input name count.
+            w.Write(0); // Event count.
+            w.Write(456); // Input count limit.
+            w.Write("Executable");
+            w.Write(123u);
+            w.Write(2);
+            w.Write(3);
+            w.Write("Settings");
+            if (offset != 0x11) w.Write(9); // Validation seed.
+            if (offset == 0x25) w.Write(true);
+        });
+        using var stream = new MemoryStream(payload);
+        using var reader = new GbxReader(stream);
+        using var rw = new GbxReaderWriter(reader);
+        var ghost = new CGameCtnGhost();
+        ValidationInputChunk(offset, version).ReadWrite(ghost, rw);
+
+        await Assert.That(ghost.InputStoreVersion).IsEqualTo(7);
+        await Assert.That(ghost.InputCountLimit).IsEqualTo(456);
+        await Assert.That(stream.Position).IsEqualTo((long)payload.Length);
+#pragma warning disable GBXNET10001
+        var clone = (CGameCtnGhost)ghost.DeepClone();
+#pragma warning restore GBXNET10001
+        await Assert.That(clone.InputStoreVersion).IsEqualTo(7);
+        await Assert.That(clone.InputCountLimit).IsEqualTo(456);
+        var rewritten = Payload(w =>
+        {
+            using var writeRw = new GbxReaderWriter(w);
+            ValidationInputChunk(offset, version).ReadWrite(clone, writeRw);
+        });
+        await Assert.That(rewritten.SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
+    public async Task ValidationInputFlag_RemainsOnTheNodeWhenSeparateInputsAreUnsupported()
+    {
+        using var stream = new MemoryStream(Payload(w => w.Write(1)));
+        using var reader = new GbxReader(stream);
+        using var rw = new GbxReaderWriter(reader);
+        var ghost = new CGameCtnGhost();
+
+        await Assert.That(() => new CGameCtnGhost.Chunk0309202D().ReadWrite(ghost, rw)).Throws<Exception>();
+        await Assert.That(ghost.HasInputs).IsEqualTo(1);
+    }
+
     [Test]
     [Arguments(-1, 0)]
     [Arguments(0, 1)]
@@ -165,7 +223,7 @@ public class CGameCtnGhostTests
             w.Write(gameRules);
             w.Write(startTime);
             w.Write(-1); // validation seed
-            w.Write(0); // simulation flags
+            w.Write(0x12345679); // simulation flags, including bits beyond steering sensitivity
             w.Write(""); // race settings
         });
         using var validationStream = new MemoryStream(validationPayload);
@@ -176,11 +234,13 @@ public class CGameCtnGhostTests
         validationChunk.ReadWrite(validationGhost, validationRw);
         await Assert.That(validationGhost.Validate_GameRules).IsEqualTo(ghost.Validate_GameRules);
         await Assert.That(validationGhost.Validate_RaceStartTime).IsEqualTo(ghost.Validate_RaceStartTime);
+        await Assert.That(validationGhost.HasInputs).IsEqualTo(0);
+        await Assert.That(validationGhost.SimulationFlags).IsEqualTo(0x12345679);
         await Assert.That(validationStream.Position).IsEqualTo((long)validationPayload.Length);
         var validationRewritten = Payload(w =>
         {
             using var writerWriter = new GbxReaderWriter(w);
-            validationChunk.ReadWrite(validationGhost, writerWriter);
+            new CGameCtnGhost.Chunk0309202D().ReadWrite(validationGhost, writerWriter);
         });
         await Assert.That(validationRewritten.SequenceEqual(validationPayload)).IsTrue();
     }
@@ -330,6 +390,14 @@ public class CGameCtnGhostTests
         });
         await Assert.That(rewritten.SequenceEqual(payload)).IsTrue();
     }
+
+    private static Chunk<CGameCtnGhost> ValidationInputChunk(int offset, int version) => offset switch
+    {
+        0x11 => new CGameCtnGhost.Chunk03092011(),
+        0x19 => new CGameCtnGhost.Chunk03092019(),
+        0x25 => new CGameCtnGhost.Chunk03092025 { Version = version },
+        _ => throw new ArgumentOutOfRangeException(nameof(offset))
+    };
 
     private static byte[] Payload(Action<GbxWriter> write)
     {

@@ -209,6 +209,100 @@ public class GenerationTests
     }
 
     [Test]
+    [Arguments(false, 0, false)]
+    [Arguments(false, 0, true)]
+    [Arguments(false, 1, false)]
+    [Arguments(false, 1, true)]
+    [Arguments(true, 0, false)]
+    [Arguments(true, 0, true)]
+    [Arguments(true, 1, false)]
+    [Arguments(true, 1, true)]
+    public async Task ComputedReferenceMemberAssignmentsResolveNodeData(bool archive, int structureKind, bool qualified)
+    {
+        var reference = qualified ? archive ? "this.Target" : "n.Target" : "Target";
+        var subjectType = archive ? "Entry" : "Example";
+        var read = structureKind == 0
+            ? archive ? "subject.ReadWrite(rw)" : "chunk.ReadWrite(subject, rw)"
+            : archive ? "subject.Read(reader)" : "chunk.Read(subject, reader)";
+        var write = structureKind == 0
+            ? archive ? "subject.ReadWrite(writeRw)" : "chunk.ReadWrite(subject, writeRw)"
+            : archive ? "subject.Write(writer)" : "chunk.Write(subject, writer)";
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public class Referenced : CMwNod
+            {
+                public readonly record struct InfoData(int Count);
+                public InfoData Info { get; set; } = new(42);
+            }
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Chunk03043001 { }
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Entry { }
+
+                public static bool Verify()
+                {
+                    var subject = new {{subjectType}} { Value = 11, Other = 5 };
+                    var chunk = new Chunk03043001();
+                    var reader = new GBX.NET.Serialization.GbxReader();
+                    using var rw = new GBX.NET.Serialization.GbxReaderWriter(reader);
+                    var file = new GBX.NET.Components.GbxRefTableFile();
+                    subject.References.Target.Descriptor = file;
+                    subject.References.Second.Node = new Referenced();
+                    {{read}};
+                    if (subject.Value != 11 || subject.Other != 5 || !ReferenceEquals(subject.References.Target.File, file)) return false;
+                    var loads = 0;
+                    file = new GBX.NET.Components.GbxRefTableFile();
+                    subject.References.Target.Descriptor = file;
+                    subject.References.Target.Resolver = () => { loads++; return new Referenced(); };
+                    {{read}};
+                    if (subject.Value != 42 || subject.Other != 84 || loads != 1 || !ReferenceEquals(subject.References.Target.File, file)) return false;
+                    subject.References.Target.Node = new Referenced { Info = new(52) };
+                    {{read}};
+                    if (subject.Value != 52 || subject.Other != 94 || loads != 1) return false;
+                    subject.Value = 13;
+                    subject.Other = 17;
+                    subject.References.Target.Descriptor = new GBX.NET.Components.GbxRefTableFile();
+                    var writer = new GBX.NET.Serialization.GbxWriter();
+                    using var writeRw = new GBX.NET.Serialization.GbxReaderWriter(writer);
+                    {{write}};
+                    if (subject.Value != 13 || subject.Other != 17 || loads != 1) return false;
+                    subject.References.Target.Clear();
+                    {{read}};
+                    return subject.Value == 13 && subject.Other == 17;
+                }
+            }
+            {{(archive ? "public partial class Example { public partial class Entry" : "public partial class Example")}}
+            {
+                public int Value { get; set; }
+                public int Other { get; set; }
+            }
+            {{(archive ? "}" : "")}}
+            """, new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            {{(archive ? "archive Entry" : "0x001")}}
+              Referenced Target
+              Referenced Second
+              if Target != null
+                Value = {{reference}}.Info.Count
+              Other = {{reference}}.Info.Count + Second.Info.Count
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("targetRef?.Kind ?? NodeRefKind.None");
+        await Assert.That(generated).Contains("targetRef?.Resolve() is not null");
+        await Assert.That(generated).Contains("secondRef?.Resolve() is not null");
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That((bool)type.GetMethod("Verify")!.Invoke(null, null)!).IsTrue();
+    }
+
+    [Test]
     public async Task NodeDefaultsAndComputedAccessorsWorkWithoutPrivateAliases()
     {
         var (result, compilation) = Run("""
@@ -3090,6 +3184,63 @@ public class GenerationTests
     }
 
     [Test]
+    [Arguments("0x001", "int Value")]
+    [Arguments("0x001", "int U01")]
+    [Arguments("0x001", "version")]
+    [Arguments("archive Named", "int Value")]
+    public async Task RejectsChunkAttributeOnFields(string scope, string field)
+    {
+        var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            {{scope}}
+              {{field}} (chunk)
+            """));
+
+        await Assert.That(result.Diagnostics).Contains(x => x.Id == "GBXNETGEN200" &&
+            x.GetMessage().Contains("The (chunk) attribute is only supported on version conditions."));
+    }
+
+    [Test]
+    [Arguments(0, 2, "0:7")]
+    [Arguments(1, 0, "7:0")]
+    [Arguments(1, 2, "7:9")]
+    public async Task ArchiveVersionBranchesSelectIndependentVersions(int archiveVersion, int callerVersion, string expected)
+    {
+        var (result, compilation) = Run("""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                public static string Verify(int archiveVersion, int callerVersion)
+                {
+                    var entry = new Entry { Version = archiveVersion };
+                    using var rw = new GBX.NET.Serialization.GbxReaderWriter(new GBX.NET.Serialization.GbxReader(7, 9));
+                    entry.ReadWrite(rw, callerVersion);
+                    return entry.OwnValue + ":" + entry.CallerValue;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            archive Entry
+              version
+              v1+ (archive)
+                int OwnValue
+              v2+ (chunk)
+                int CallerValue
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("if (Version >= 1)");
+        await Assert.That(generated).Contains("if (v >= 2)");
+        using var stream = new MemoryStream();
+        var emitted = compilation.Emit(stream);
+        await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+        var type = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!;
+        await Assert.That(type.GetMethod("Verify")!.Invoke(null, [archiveVersion, callerVersion])).IsEqualTo(expected);
+    }
+
+    [Test]
     public async Task RequiresVersionSourceWhenAnArchiveHasTwoVersions()
     {
         var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", """
@@ -3377,7 +3528,12 @@ public class GenerationTests
                     get => File;
                     set { File = (GBX.NET.Components.GbxRefTableFile?)value; CachedNode = null; Kind = File is null ? NodeRefKind.None : NodeRefKind.ExternalFile; }
                 }
-                public T? Resolve() => CachedNode;
+                public System.Func<T?>? Resolver { get; set; }
+                public T? Resolve()
+                {
+                    if (CachedNode is null && File is not null) CachedNode = Resolver?.Invoke();
+                    return CachedNode;
+                }
                 public void Clear() => Node = null;
                 public void CopyFrom(NodeRef<T> reference) { if (reference.File is { } file) Descriptor = file; else Node = reference.CachedNode; }
             }

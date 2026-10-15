@@ -122,6 +122,14 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.maxDistPerStep = value;
     }
 
+    private bool? modelIsExternal;
+    [AppliedWithChunk<Chunk09005011>]
+    public bool? ModelIsExternal
+    {
+        get => this.modelIsExternal;
+        set => this.modelIsExternal = value;
+    }
+
     private byte tileCountU;
     [AppliedWithChunk<Chunk09005012>]
     [AppliedWithChunk<Chunk09005017>(0, 2)]
@@ -129,6 +137,14 @@ public partial class CPlugSolid : CPlug, IClass
     {
         get => this.tileCountU;
         set => this.tileCountU = value;
+    }
+
+    private bool hasPreLightGen;
+    [AppliedWithChunk<Chunk09005017>(3)]
+    public bool HasPreLightGen
+    {
+        get => this.hasPreLightGen;
+        set => this.hasPreLightGen = value;
     }
 
     private PreLightGen? solidPreLightGen;
@@ -243,6 +259,14 @@ public partial class CPlugSolid : CPlug, IClass
         set => this.lodNormalMapTga = value;
     }
 
+    private bool hasVeryLQDiffuse;
+    [AppliedWithChunk<Chunk0900501A>(1, 1)]
+    public bool HasVeryLQDiffuse
+    {
+        get => this.hasVeryLQDiffuse;
+        set => this.hasVeryLQDiffuse = value;
+    }
+
     private FileImageData? veryLQDiffuse;
     [AppliedWithChunk<Chunk0900501A>(1, 1)]
     public FileImageData? VeryLQDiffuse
@@ -300,7 +324,9 @@ public partial class CPlugSolid : CPlug, IClass
         ((CPlugSolid)clone).linearFluidFriction = context.Clone(this.linearFluidFriction)!;
         ((CPlugSolid)clone).angularFluidFriction = context.Clone(this.angularFluidFriction)!;
         ((CPlugSolid)clone).maxDistPerStep = context.Clone(this.maxDistPerStep)!;
+        ((CPlugSolid)clone).modelIsExternal = context.Clone(this.modelIsExternal)!;
         ((CPlugSolid)clone).tileCountU = context.Clone(this.tileCountU)!;
+        ((CPlugSolid)clone).hasPreLightGen = context.Clone(this.hasPreLightGen)!;
         ((CPlugSolid)clone).solidPreLightGen = context.Clone(this.solidPreLightGen)!;
         ((CPlugSolid)clone).meterByUv = context.Clone(this.meterByUv)!;
         ((CPlugSolid)clone).isComputed = context.Clone(this.isComputed)!;
@@ -315,6 +341,7 @@ public partial class CPlugSolid : CPlug, IClass
         ((CPlugSolid)clone).particleInstances = context.CloneArray(this.particleInstances)!;
         ((CPlugSolid)clone).pathRef = context.Clone(this.pathRef)!;
         ((CPlugSolid)clone).lodNormalMapTga = context.CloneArray(this.lodNormalMapTga)!;
+        ((CPlugSolid)clone).hasVeryLQDiffuse = context.Clone(this.hasVeryLQDiffuse)!;
         ((CPlugSolid)clone).veryLQDiffuse = context.Clone(this.veryLQDiffuse)!;
         ((CPlugSolid)clone).solidLodNormalMap = context.Clone(this.solidLodNormalMap)!;
     }
@@ -516,25 +543,23 @@ public partial class CPlugSolid : CPlug, IClass
     {
         public override uint Id => 0x0900500D;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public bool HasModel;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0900500D)clone).HasModel = context.Clone(this.HasModel)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.useModel);
-            HasModel = rw.Boolean((rw.Writer is null ? default : (HasModel|| n.References.Model.Kind != NodeRefKind.None)));
+            var hasModel = rw.Boolean((rw.Writer is null ? default : ((n.modelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
-            if (HasModel)
+            if (hasModel)
             {
                 rw.NodeRef(ref n.modelRef);
             }
 
-            if (!HasModel)
+            if (!hasModel)
             {
                 rw.NodeRef(ref n.treeRef);
             }
@@ -648,28 +673,24 @@ public partial class CPlugSolid : CPlug, IClass
     {
         public override uint Id => 0x09005011;
         public override GameVersion GameVersion => GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public bool HasModel;
-        public bool? ModelIsExternal;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk09005011)clone).HasModel = context.Clone(this.HasModel)!;
-            ((Chunk09005011)clone).ModelIsExternal = context.Clone(this.ModelIsExternal)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.useModel);
-            HasModel = rw.Boolean((rw.Writer is null ? default : (HasModel|| n.References.Model.Kind != NodeRefKind.None)));
+            var hasModel = rw.Boolean((rw.Writer is null ? default : ((n.modelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)));
 
-            if (HasModel)
+            if (hasModel)
             {
-                ModelIsExternal = rw.Boolean((rw.Writer is null ? default : (ModelIsExternal?? (n.References.Model.Kind == NodeRefKind.ExternalFile))));
+                n.modelIsExternal = rw.Boolean((rw.Writer is null ? default : (n.ModelIsExternal?? (n.References.Model.Kind == NodeRefKind.ExternalFile))));
                 rw.NodeRef(ref n.modelRef);
             }
 
-            if (!HasModel)
+            if (!hasModel)
             {
                 rw.NodeRef(ref n.treeRef);
             }
@@ -707,7 +728,6 @@ public partial class CPlugSolid : CPlug, IClass
         public override uint Id => 0x09005017;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool HasPreLightGen;
 
         public Chunk09005017() : this(GameVersion.Unspecified)
         {
@@ -725,7 +745,6 @@ public partial class CPlugSolid : CPlug, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09005017)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09005017)clone).HasPreLightGen = context.Clone(this.HasPreLightGen)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
@@ -734,9 +753,9 @@ public partial class CPlugSolid : CPlug, IClass
 
             if (Version >= 3)
             {
-                rw.Boolean(ref HasPreLightGen);
+                rw.Boolean(ref n.hasPreLightGen);
 
-                if (HasPreLightGen)
+                if (n.HasPreLightGen)
                 {
                     rw.ReadableWritable<PreLightGen>(ref n.solidPreLightGen, version: Version);
                 }
@@ -861,7 +880,6 @@ public partial class CPlugSolid : CPlug, IClass
         public override uint Id => 0x0900501A;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool HasVeryLQDiffuse;
 
         public Chunk0900501A() : this(GameVersion.Unspecified)
         {
@@ -879,7 +897,6 @@ public partial class CPlugSolid : CPlug, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0900501A)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0900501A)clone).HasVeryLQDiffuse = context.Clone(this.HasVeryLQDiffuse)!;
         }
 
         public override void ReadWrite(CPlugSolid n, GbxReaderWriter rw)
@@ -892,9 +909,9 @@ public partial class CPlugSolid : CPlug, IClass
 
                 if (Version == 1)
                 {
-                    HasVeryLQDiffuse = rw.Boolean((rw.Writer is null ? default : (n.VeryLQDiffuse!= null)));
+                    n.hasVeryLQDiffuse = rw.Boolean((rw.Writer is null ? default : (n.VeryLQDiffuse!= null)));
 
-                    if (HasVeryLQDiffuse)
+                    if (n.HasVeryLQDiffuse)
                     {
                         rw.ReadableWritable<FileImageData>(ref n.veryLQDiffuse, version: Version);
                     }

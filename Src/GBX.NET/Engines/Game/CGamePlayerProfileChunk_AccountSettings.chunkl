@@ -89,17 +89,17 @@ archive
 
 0x003 (skippable) [MP3, TMT, MP4.v7, TM2020.v7]
   version
-  int BuddyArchiveVersion = 5 (chunk)
+  int BuddyArchiveVersion = 5
   CGameBuddy[] Buddies (version: BuddyArchiveVersion)
   v3+
-    string
+    string U02
   v4=
-    string[]
+    string[] U03
   if !IsOnlineSaveArchivation
     v6+
-      data
+      data U04
     v7+
-      data
+      data U05
 
 0x004 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
   version

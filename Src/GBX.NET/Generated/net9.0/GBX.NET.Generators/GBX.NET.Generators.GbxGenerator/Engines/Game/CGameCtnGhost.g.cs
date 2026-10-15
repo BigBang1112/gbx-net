@@ -243,6 +243,26 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.eventsDuration = value;
     }
 
+    private int inputStoreVersion;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    public int InputStoreVersion
+    {
+        get => this.inputStoreVersion;
+        set => this.inputStoreVersion = value;
+    }
+
+    private int inputCountLimit;
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    public int InputCountLimit
+    {
+        get => this.inputCountLimit;
+        set => this.inputCountLimit = value;
+    }
+
     private string? validate_ExeVersion;
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
@@ -596,6 +616,25 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.walltimeEndTimestamp = value;
     }
 
+    private int hasInputs;
+    [AppliedWithChunk<Chunk0309202D>]
+    public int HasInputs
+    {
+        get => this.hasInputs;
+        set => this.hasInputs = value;
+    }
+
+    private int simulationFlags;
+    /// <summary>
+    /// bit 0 is SteeringWheelSensitivity
+    /// </summary>
+    [AppliedWithChunk<Chunk0309202D>]
+    public int SimulationFlags
+    {
+        get => this.simulationFlags;
+        set => this.simulationFlags = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -645,6 +684,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).ghostLogin = context.Clone(this.ghostLogin)!;
         ((CGameCtnGhost)clone).validate_ChallengeUid = context.Clone(this.validate_ChallengeUid)!;
         ((CGameCtnGhost)clone).eventsDuration = context.Clone(this.eventsDuration)!;
+        ((CGameCtnGhost)clone).inputStoreVersion = context.Clone(this.inputStoreVersion)!;
+        ((CGameCtnGhost)clone).inputCountLimit = context.Clone(this.inputCountLimit)!;
         ((CGameCtnGhost)clone).validate_ExeVersion = context.Clone(this.validate_ExeVersion)!;
         ((CGameCtnGhost)clone).validate_ExeChecksum = context.Clone(this.validate_ExeChecksum)!;
         ((CGameCtnGhost)clone).validate_OsKind = context.Clone(this.validate_OsKind)!;
@@ -685,6 +726,8 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).spawnLandmarkId = context.Clone(this.spawnLandmarkId)!;
         ((CGameCtnGhost)clone).walltimeStartTimestamp = context.Clone(this.walltimeStartTimestamp)!;
         ((CGameCtnGhost)clone).walltimeEndTimestamp = context.Clone(this.walltimeEndTimestamp)!;
+        ((CGameCtnGhost)clone).hasInputs = context.Clone(this.hasInputs)!;
+        ((CGameCtnGhost)clone).simulationFlags = context.Clone(this.simulationFlags)!;
         ((CGameCtnGhost)clone).ghostUid = context.Clone(this.ghostUid)!;
         ((CGameCtnGhost)clone).inputs = context.Clone(this.inputs)!;
     }
@@ -1124,8 +1167,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03092011)clone).InputStoreVersion = context.Clone(this.InputStoreVersion)!;
-            ((Chunk03092011)clone).InputCountLimit = context.Clone(this.InputCountLimit)!;
         }
     }
 
@@ -1762,8 +1803,6 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0309202D)clone).HasInputs = context.Clone(this.HasInputs)!;
-            ((Chunk0309202D)clone).SimulationFlags = context.Clone(this.SimulationFlags)!;
         }
     }
 

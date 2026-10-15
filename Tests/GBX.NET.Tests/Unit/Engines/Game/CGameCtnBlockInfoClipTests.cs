@@ -2,6 +2,7 @@ using GBX.NET.Engines.Game;
 using GBX.NET.Engines.GameData;
 using GBX.NET.Serialization;
 using GBX.NET.Serialization.Chunking;
+using GBX.NET.Tests.Unit.Engines.GameData;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
 
@@ -100,6 +101,55 @@ public class CGameCtnBlockInfoClipTests
         await Assert.That(node.SymmetricalClipId).IsEqualTo(hasReference ? "SymmetricalClip" : "PreviousClip");
         await Assert.That(node.LegacySymmetricalClip?.Ident.Id).IsEqualTo(hasReference ? "SymmetricalClip" : null);
         await Assert.That(chunk is ISkippableChunk).IsEqualTo(offset == 0);
+    }
+
+    [Test]
+    [Arguments(0, false)]
+    [Arguments(0, true)]
+    [Arguments(1, false)]
+    [Arguments(1, true)]
+    public async Task ReadWrite_LegacyExternalClipReference_ResolvesIdAndPreservesDescriptor(int offset, bool available)
+    {
+        using var payload = new ObjectModelPayload();
+        var file = payload.NodeRef("SymmetricalClip.Block.Gbx");
+        var loads = 0;
+        if (available)
+        {
+            file.RefTable.ExternalNodes[file.FilePath] = () =>
+            {
+                loads++;
+                return new Gbx<CGameCtnCollector>(new CGameCtnCollector { Ident = new Ident("ExternalClip", "Stadium", "Nadeo") });
+            };
+        }
+        payload.Finish();
+        var node = new CGameCtnBlockInfoClip { SymmetricalClipId = "PreviousClip" };
+        Chunk<CGameCtnBlockInfoClip> chunk = offset == 0
+            ? new CGameCtnBlockInfoClip.Chunk03053000() : new CGameCtnBlockInfoClip.Chunk03053001();
+
+        payload.Read(rw => chunk.ReadWrite(node, rw));
+        await Assert.That(node.SymmetricalClipId).IsEqualTo(available ? "ExternalClip" : "PreviousClip");
+        await Assert.That(node.References.LegacySymmetricalClip.File).IsSameReferenceAs(file);
+        await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));
+        await Assert.That(node.References.LegacySymmetricalClip.State).IsEqualTo(available ? NodeRefState.Resolved : NodeRefState.Missing);
+        await Assert.That(loads).IsEqualTo(available ? 1 : 0);
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task ReadWrite_LegacyExternalClipReference_PropagatesResolutionErrors(int offset)
+    {
+        using var payload = new ObjectModelPayload();
+        var file = payload.NodeRef("InvalidClip.Block.Gbx");
+        file.RefTable.ExternalNodes[file.FilePath] = () => throw new InvalidDataException("Invalid clip dependency.");
+        payload.Finish();
+        var node = new CGameCtnBlockInfoClip { SymmetricalClipId = "PreviousClip" };
+        Chunk<CGameCtnBlockInfoClip> chunk = offset == 0
+            ? new CGameCtnBlockInfoClip.Chunk03053000() : new CGameCtnBlockInfoClip.Chunk03053001();
+
+        await Assert.That(() => payload.Read(rw => chunk.ReadWrite(node, rw))).Throws<InvalidDataException>();
+        await Assert.That(node.SymmetricalClipId).IsEqualTo("PreviousClip");
+        await Assert.That(node.References.LegacySymmetricalClip.State).IsEqualTo(NodeRefState.Failed);
     }
 
     [Test]

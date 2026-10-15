@@ -10,8 +10,8 @@ archive
   CPlugSurface DynaShape
   v0..2 (archive)
     CPlugDynaModel* DynaModel
-    if dynaModel != null
-      Mass = dynaModel.LinearMass
+    if DynaModel != null
+      Mass = DynaModel.LinearMass
   v0= (archive)
     staticShape = dynaShape
   v1+ (archive)

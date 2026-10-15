@@ -94,7 +94,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
         var payload = Payload(w =>
         {
             w.Write(version);
-            w.Write(5); // Container buddy version.
+            w.Write(9); // Container buddy version differs from the node default.
             w.Write(1);
             w.Write(0); // Each buddy also has its own archive version.
             String(w, "buddy-login");
@@ -111,7 +111,7 @@ public class CGamePlayerProfileChunkAccountSettingsLayoutTests
 
         await Assert.That(node.Buddies![0].Login).IsEqualTo("buddy-login");
         await Assert.That(node.Buddies[0].Version).IsEqualTo(0);
-        await Assert.That(node.BuddyArchiveVersion).IsEqualTo(5);
+        await Assert.That(node.BuddyArchiveVersion).IsEqualTo(9);
         await Assert.That(Write(rw => chunk.ReadWrite(node, rw)).SequenceEqual(payload)).IsTrue();
     }
 
