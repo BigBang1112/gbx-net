@@ -39,7 +39,7 @@ CPlugMaterial 0x09079000
 
 0x014 (skippable, ignore) [MP4, TM2020]
 
-0x015 [TM2020]
+0x015 [TM2020.v7]
   version
   CPlug Shader
   if Shader == null
@@ -56,7 +56,7 @@ CPlugMaterial 0x09079000
   version
   uint
 
-0x017 [TM2020]
+0x017 [TM2020.v1]
   version
   v1+
     byte<CPlugSurface.MaterialId> SurfaceId

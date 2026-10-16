@@ -180,13 +180,25 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     /// CPlugVehicleCameraInternalModel 0x000 chunk
     /// </summary>
     [Chunk(0x090F7000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 8)]
     public partial class Chunk090F7000 : Chunk<CPlugVehicleCameraInternalModel>, IVersionable
     {
         public override uint Id => 0x090F7000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec3 U01;
+
+        public Chunk090F7000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F7000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -198,6 +210,11 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
         public override void ReadWrite(CPlugVehicleCameraInternalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.name);
 
             if (Version >= 2)

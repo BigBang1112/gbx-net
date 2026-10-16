@@ -41,7 +41,7 @@ CPlugBitmapSampler 0x0907E000
 
 0x00A (base: 0x009)
 
-0x00B [TMT.v0, MP4.v0, TM2020.v0] // sampler state
+0x00B [TMT, MP4, TM2020] // sampler state
   version
   id Name
   CPlugBitmap Bitmap

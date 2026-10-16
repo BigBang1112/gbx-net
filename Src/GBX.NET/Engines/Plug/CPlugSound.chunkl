@@ -41,7 +41,7 @@ CPlugSound 0x0901A000
   bool IsContinuous
   float Priority
 
-0x00E [MP3, TMT, MP4, TM2020]
+0x00E [MP3, TMT, MP4, TM2020.v9]
   version
   int<EMode> Mode
   float
@@ -65,7 +65,7 @@ CPlugSound 0x0901A000
                 v9+
                   id GroupDuplicate
 
-0x00F [MP3, TMT, MP4, TM2020]
+0x00F [MP3, TMT, MP4, TM2020.v12]
   version
   float RefDistance
   float MaxDistance

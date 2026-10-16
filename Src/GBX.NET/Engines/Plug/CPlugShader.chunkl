@@ -81,7 +81,7 @@ CPlugShader 0x09002000
 0x01A // VisibleMaxDist
   float VisibleMaxDist = -1
 
-0x01B [MP3, TMT.v0, MP4.v0, TM2020.v0] // visibility distances
+0x01B [MP3, TMT, MP4, TM2020] // visibility distances
   version
   float VisibleMaxDist = -1
   float VisibleMinScreenHeight = -1
@@ -101,7 +101,7 @@ CPlugShader 0x09002000
   version
   datauint RequirementFlags2 = 0x1FFE001E [TMF = 0x40]
 
-0x01F [MP3, TMT.v0, MP4.v0, TM2020.v0] // custom shaders
+0x01F [MP3, TMT, MP4, TM2020] // custom shaders
   version
   ShaderCustom[] CustomShaders = empty (version: Version)
 

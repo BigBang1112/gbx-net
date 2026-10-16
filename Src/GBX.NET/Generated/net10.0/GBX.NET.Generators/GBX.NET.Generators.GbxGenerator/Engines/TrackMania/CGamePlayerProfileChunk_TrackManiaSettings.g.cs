@@ -50,13 +50,25 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x240D5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk240D5000 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte U01;
+
+        public Chunk240D5000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk240D5000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -68,6 +80,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Byte(ref U01);
         }
     }
@@ -76,13 +93,25 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x240D5001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk240D5001 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
+
+        public Chunk240D5001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk240D5001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -94,6 +123,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<byte>(ref U01!);
         }
     }
@@ -102,13 +136,25 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x002 skippable chunk
     /// </summary>
     [Chunk(0x240D5002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk240D5002 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
+
+        public Chunk240D5002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk240D5002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -120,6 +166,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<byte>(ref U01!);
         }
     }
@@ -145,7 +196,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x004 skippable chunk
     /// </summary>
     [Chunk(0x240D5004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk240D5004 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5004;
@@ -153,6 +204,18 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public int Version { get; set; }
         public int U01;
         public int U02;
+
+        public Chunk240D5004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk240D5004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -165,6 +228,11 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
         }

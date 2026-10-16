@@ -41,7 +41,6 @@ public class CGameCtnSolidDecalsLayoutTests
     [Arguments(0, false)]
     [Arguments(2, false)]
     [Arguments(2, true)]
-    [Arguments(3, true)]
     public async Task ReadWrite_ModernChunks_KeepOpaqueSceneDataAndUnsignedParameters(int version, bool hasData)
     {
         byte[] sceneDecals = hasData ? [2, 0, 0, 0, 0xFF, 0x80, 0, 0x7F, 0xFE] : [];

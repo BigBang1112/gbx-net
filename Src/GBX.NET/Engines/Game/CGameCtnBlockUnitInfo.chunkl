@@ -48,7 +48,7 @@ CGameCtnBlockUnitInfo 0x03036000
   CGameCtnBlockInfoClip BottomClip
   CGameCtnBlockInfoClip TopClip
 
-0x009 [MP3.v0, TMT.v0]
+0x009 [MP3, TMT]
   version
   CMwNod // pillar stuff?
   int
@@ -57,19 +57,19 @@ CGameCtnBlockUnitInfo 0x03036000
   v2=
     byte
 
-0x00A [MP3.v0, TMT.v0]
+0x00A [MP3, TMT]
   version
   CMwNod // pillar stuff?
   int
 
-0x00B [MP3.v0, TMT.v0, MP4.v0] // bottom+top clip with dir
+0x00B [MP3, TMT, MP4] // bottom+top clip with dir
   version
   CGameCtnBlockInfoClip BottomClip
   CGameCtnBlockInfoClip TopClip
   int<Direction>? BottomClipDir
   int<Direction>? TopClipDir
 
-0x00C [TM2020]
+0x00C [TM2020.v2]
   version (write: "ValidateClipCounts(n)")
   v0=
     ushort ClipCountBits (local, write: "(ushort)((ClipsNorth?.Count ?? 0) | (ClipsEast?.Count ?? 0) << 2 | (ClipsSouth?.Count ?? 0) << 4 | (ClipsWest?.Count ?? 0) << 6 | (ClipsTop?.Count ?? 0) << 8 | (ClipsBottom?.Count ?? 0) << 10)") // Six 2-bit counts: north, east, south, west, top, bottom.

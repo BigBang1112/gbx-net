@@ -671,13 +671,25 @@ public partial class CPlugSound : CPlugAudio, IClass
     /// CPlugSound 0x00E chunk
     /// </summary>
     [Chunk(0x0901A00E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 9)]
     public partial class Chunk0901A00E : Chunk<CPlugSound>, IVersionable
     {
         public override uint Id => 0x0901A00E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
+
+        public Chunk0901A00E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901A00E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 9;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -689,6 +701,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 9)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<EMode>(ref n.mode);
             rw.Single(ref U01);
             rw.Boolean(ref n.isLooping);
@@ -741,7 +758,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     /// CPlugSound 0x00F chunk
     /// </summary>
     [Chunk(0x0901A00F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 12)]
     public partial class Chunk0901A00F : Chunk<CPlugSound>, IVersionable
     {
         public override uint Id => 0x0901A00F;
@@ -754,6 +771,18 @@ public partial class CPlugSound : CPlugAudio, IClass
         public float U05;
         public float U06;
         public float U07;
+
+        public Chunk0901A00F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901A00F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 12;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -771,6 +800,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 12)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.refDistance);
             rw.Single(ref n.maxDistance);
             rw.Boolean(ref n.enableDoppler);

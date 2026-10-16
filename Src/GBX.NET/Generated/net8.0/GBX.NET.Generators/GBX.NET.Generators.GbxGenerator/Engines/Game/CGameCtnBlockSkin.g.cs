@@ -166,12 +166,24 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     /// CGameCtnBlockSkin 0x003 chunk (secondary skin)
     /// </summary>
     [Chunk(0x03059003, "secondary skin")]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk03059003 : Chunk<CGameCtnBlockSkin>, IVersionable
     {
         public override uint Id => 0x03059003;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03059003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03059003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -182,6 +194,11 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockSkin n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.PackDesc(ref n.foregroundPackDesc);
         }
     }

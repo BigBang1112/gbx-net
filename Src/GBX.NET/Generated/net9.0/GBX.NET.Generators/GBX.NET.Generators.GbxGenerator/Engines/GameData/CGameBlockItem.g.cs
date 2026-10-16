@@ -53,7 +53,7 @@ public partial class CGameBlockItem : CMwNod, IClass
     /// CGameBlockItem 0x000 chunk
     /// </summary>
     [Chunk(0x2E025000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
     public partial class Chunk2E025000 : Chunk<CGameBlockItem>
     {
         public override uint Id => 0x2E025000;

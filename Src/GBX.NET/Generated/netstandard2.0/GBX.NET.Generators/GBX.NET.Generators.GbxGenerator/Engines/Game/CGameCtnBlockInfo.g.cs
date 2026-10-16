@@ -1635,24 +1635,12 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// CGameCtnBlockInfo 0x02E chunk (ProdState)
     /// </summary>
     [Chunk(0x0304E02E, "ProdState")]
-    [ChunkGameVersion(GameVersion.MP3, 0)]
+    [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0304E02E : Chunk<CGameCtnBlockInfo>, IVersionable
     {
         public override uint Id => 0x0304E02E;
         public override GameVersion GameVersion => GameVersion.MP3;
         public int Version { get; set; }
-
-        public Chunk0304E02E() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0304E02E(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1663,11 +1651,6 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             n.ProdState = rw.EnumInt32<CGameCtnCollector.EProdState>(n.ProdState);
         }
     }

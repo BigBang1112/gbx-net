@@ -74,7 +74,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x000 chunk
     /// </summary>
     [Chunk(0x090C6000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 6)]
     public partial class Chunk090C6000 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6000;
@@ -89,6 +89,18 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public float U07;
         public bool U08;
         public bool U09;
+
+        public Chunk090C6000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C6000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -108,6 +120,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
@@ -140,7 +157,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x001 chunk
     /// </summary>
     [Chunk(0x090C6001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
     public partial class Chunk090C6001 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6001;
@@ -151,6 +168,18 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public bool U03;
         public bool U04;
         public bool U05;
+
+        public Chunk090C6001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C6001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -166,6 +195,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
 
@@ -186,7 +220,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x002 chunk
     /// </summary>
     [Chunk(0x090C6002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 22)]
     public partial class Chunk090C6002 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6002;
@@ -243,6 +277,18 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090C6002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C6002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 22;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -282,6 +328,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 22)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
 
             if (Version <= 6)
@@ -379,7 +430,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x003 chunk
     /// </summary>
     [Chunk(0x090C6003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk090C6003 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6003;
@@ -387,6 +438,18 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public int Version { get; set; }
         public float U01;
         public float U02;
+
+        public Chunk090C6003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C6003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -399,6 +462,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleGpuModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
         }

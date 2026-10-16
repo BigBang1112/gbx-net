@@ -213,12 +213,24 @@ public partial class CPlugLight : CPlug, IClass
     /// CPlugLight 0x003 chunk
     /// </summary>
     [Chunk(0x0901D003)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0901D003 : Chunk<CPlugLight>, IVersionable
     {
         public override uint Id => 0x0901D003;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0901D003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901D003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -229,6 +241,11 @@ public partial class CPlugLight : CPlug, IClass
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.imageAnimRef);
             rw.Single(ref n.animPeriodMin);
             rw.Single(ref n.animPeriodMax);
@@ -244,7 +261,7 @@ public partial class CPlugLight : CPlug, IClass
     /// CPlugLight 0x004 chunk
     /// </summary>
     [Chunk(0x0901D004)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk0901D004 : Chunk<CPlugLight>, IVersionable
     {
         public override uint Id => 0x0901D004;
@@ -255,6 +272,18 @@ public partial class CPlugLight : CPlug, IClass
         public int U03;
         public int U04;
         public int U05;
+
+        public Chunk0901D004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0901D004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -270,6 +299,11 @@ public partial class CPlugLight : CPlug, IClass
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.lightRef);
             rw.Int32(ref U01);
             rw.Int32(ref U02);

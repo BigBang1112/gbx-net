@@ -43,7 +43,7 @@ constructor
   v4+
     boolbyte IsAntiClip
 
-0x007 [MP3, TMT.v0, MP4.v0] // passing point
+0x007 [MP3, TMT, MP4] // passing point
   version
   bool HasPassingPoint
   if HasPassingPoint

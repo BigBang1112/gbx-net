@@ -74,7 +74,7 @@ CGameCtnCampaign 0x03090000
   version
   string ModeScriptName
 
-0x012 (skippable) [MP4, TM2020] // official mode
+0x012 (skippable) [MP4, TM2020.v2] // official mode
   version
   v1-
     string ScoreContext

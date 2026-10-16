@@ -70,7 +70,7 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     /// CPlugPolyLine3 0x000 chunk
     /// </summary>
     [Chunk(0x09118000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 8)]
     public partial class Chunk09118000 : Chunk<CPlugPolyLine3>, IVersionable
     {
         public override uint Id => 0x09118000;
@@ -86,6 +86,18 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
         public byte U08;
         public byte U09;
         public string? U10;
+
+        public Chunk09118000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09118000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -106,6 +118,11 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
         public override void ReadWrite(CPlugPolyLine3 n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<Vec3>(ref n.poss!);
 
             if (Version >= 2)

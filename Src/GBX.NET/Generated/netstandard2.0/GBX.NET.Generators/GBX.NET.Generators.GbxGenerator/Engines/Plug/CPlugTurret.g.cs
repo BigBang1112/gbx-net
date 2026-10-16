@@ -536,7 +536,7 @@ public partial class CPlugTurret : CMwNod, IClass
     /// CPlugTurret 0x000 chunk
     /// </summary>
     [Chunk(0x0910F000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 20)]
     public partial class Chunk0910F000 : Chunk<CPlugTurret>, IVersionable
     {
         public override uint Id => 0x0910F000;
@@ -550,6 +550,18 @@ public partial class CPlugTurret : CMwNod, IClass
         public string[]? U06;
         public int[]? U07;
         public int U36;
+
+        public Chunk0910F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0910F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 20;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -568,6 +580,10 @@ public partial class CPlugTurret : CMwNod, IClass
         public override void ReadWrite(CPlugTurret n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 20)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 4)
             {

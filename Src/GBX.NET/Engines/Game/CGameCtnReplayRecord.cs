@@ -997,7 +997,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -1024,7 +1024,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -1054,7 +1054,7 @@ public partial class CGameCtnReplayRecord
         {
             Version = r.ReadInt32();
 
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -1159,7 +1159,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -1188,7 +1188,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -1221,7 +1221,7 @@ public partial class CGameCtnReplayRecord
         public override void Read(CGameCtnReplayRecord n, GbxReader r)
         {
             Version = r.ReadInt32();
-            if (Version != 0)
+            if (Version >= 1)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }

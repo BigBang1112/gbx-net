@@ -640,11 +640,11 @@ CSystemConfig 0x0B005000
   v2+
     string BadWordListUrl
 
-0x05C (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // SmMaxPlayerResimStepPerFrame
+0x05C (skippable) [MP3, TMT, MP4, TM2020] // SmMaxPlayerResimStepPerFrame
   version
   int SmMaxPlayerResimStepPerFrame [MP4 = 100]
 
-0x05D (skippable) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // InstallUid
+0x05D (skippable) [MP3, TMT, MP4, TM2020] // InstallUid
   version
   string InstallUid
 
@@ -672,7 +672,7 @@ CSystemConfig 0x0B005000
   bool NetworkUseProxy
   string NetworkProxyUrl
 
-0x060 (skippable) [TM2020.v0] // input joysticks
+0x060 (skippable) [TM2020] // input joysticks
   version
   bool InputsAlternateMethod
   bool InputsFreezeUnusedAxes

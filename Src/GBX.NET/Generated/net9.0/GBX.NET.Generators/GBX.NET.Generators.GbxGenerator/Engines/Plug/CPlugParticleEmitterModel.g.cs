@@ -141,12 +141,24 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     /// CPlugParticleEmitterModel 0x002 chunk
     /// </summary>
     [Chunk(0x090B3002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk090B3002 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090B3002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090B3002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -157,6 +169,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.isSplashMode);
 
             if (Version >= 3)
@@ -170,13 +187,25 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     /// CPlugParticleEmitterModel 0x003 chunk
     /// </summary>
     [Chunk(0x090B3003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk090B3003 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string[]? U01;
+
+        public Chunk090B3003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090B3003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -188,6 +217,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayString(ref U01!);
         }
     }
@@ -196,7 +230,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     /// CPlugParticleEmitterModel 0x004 chunk
     /// </summary>
     [Chunk(0x090B3004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 6)]
     public partial class Chunk090B3004 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3004;
@@ -214,6 +248,18 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public bool U10;
         public int U11;
         public bool U12;
+
+        public Chunk090B3004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090B3004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -236,6 +282,10 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {

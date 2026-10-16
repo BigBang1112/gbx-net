@@ -90,13 +90,25 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     /// CPlugSpawnModel 0x000 chunk
     /// </summary>
     [Chunk(0x0917A000)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk0917A000 : Chunk<CPlugSpawnModel>, IVersionable
     {
         public override uint Id => 0x0917A000;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        public Chunk0917A000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0917A000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -108,6 +120,11 @@ public partial class CPlugSpawnModel : CMwNod, IClass
         public override void ReadWrite(CPlugSpawnModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Iso4(ref n.loc);
             rw.Single(ref n.torqueX);
             rw.TimeInt32(ref n.torqueDuration);

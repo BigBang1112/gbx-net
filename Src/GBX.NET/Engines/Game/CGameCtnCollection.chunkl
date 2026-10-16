@@ -266,7 +266,7 @@ CGameCtnCollection 0x03033000
     CPlugBitmap VehicleEnvLayer_FidBitmap
     int<EVehicleEnvLayer> VehicleEnvLayer
 
-0x036 [MP3, TMT.v0, MP4.v0, TM2020.v0] // OffZone_FogMatter
+0x036 [MP3, TMT, MP4, TM2020] // OffZone_FogMatter
   version
   CPlugFogMatter OffZone_FogMatter
 
@@ -410,15 +410,15 @@ CGameCtnCollection 0x03033000
   v1+
     CPlugBitmap BitmapDisplayControlDefaultTVProgram_155
 
-0x03E [TM2020.v0] // FolderDefaultActions
+0x03E [TM2020] // FolderDefaultActions
   version
   string FolderDefaultActions
 
-0x03F [TM2020.v0] // FolderDefaultActions2
+0x03F [TM2020] // FolderDefaultActions2
   version
   string FolderDefaultActions2
 
-0x040 [TM2020.v0] // ColorBlindnessModifier
+0x040 [TM2020] // ColorBlindnessModifier
   version
   CPlugGameSkinAndFolder ColorBlindnessModifier
 
@@ -431,7 +431,7 @@ CGameCtnCollection 0x03033000
 0x043 [TM2020] // FolderMaterialModifiers
   string FolderMaterialModifiers
 
-0x044 [TM2020.v0] // GlobalMaterialModifier
+0x044 [TM2020] // GlobalMaterialModifier
   version
   CPlugGameSkinAndFolder GlobalMaterialModifier
 

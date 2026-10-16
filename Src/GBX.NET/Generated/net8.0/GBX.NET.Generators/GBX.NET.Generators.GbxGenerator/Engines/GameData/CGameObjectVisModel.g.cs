@@ -528,12 +528,24 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     /// CGameObjectVisModel 0x002 skippable chunk
     /// </summary>
     [Chunk(0x2E007002)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
     public partial class Chunk2E007002 : SkippableChunk<CGameObjectVisModel>, IVersionable
     {
         public override uint Id => 0x2E007002;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E007002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E007002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -544,6 +556,11 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.soundRefSpawn);
             rw.String(ref n.soundRefUnspawn);
             rw.String(ref n.soundRefGrab);

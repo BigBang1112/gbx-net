@@ -185,12 +185,24 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     /// CGameCtnZoneTransition 0x005 chunk
     /// </summary>
     [Chunk(0x0314D005)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk0314D005 : Chunk<CGameCtnZoneTransition>, IVersionable
     {
         public override uint Id => 0x0314D005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0314D005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0314D005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -201,6 +213,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.replacementZoneId);
         }
     }
@@ -209,13 +226,25 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     /// CGameCtnZoneTransition 0x006 chunk
     /// </summary>
     [Chunk(0x0314D006)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk0314D006 : Chunk<CGameCtnZoneTransition>, IVersionable
     {
         public override uint Id => 0x0314D006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        public Chunk0314D006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0314D006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -227,6 +256,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }
@@ -235,7 +269,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     /// CGameCtnZoneTransition 0x007 chunk
     /// </summary>
     [Chunk(0x0314D007)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk0314D007 : Chunk<CGameCtnZoneTransition>, IVersionable
     {
         public override uint Id => 0x0314D007;
@@ -244,6 +278,18 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public string? U01;
         public string? U02;
         public string? U03;
+
+        public Chunk0314D007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0314D007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -257,6 +303,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref U01);
             rw.Id(ref U02);
             rw.Id(ref U03);
@@ -267,12 +318,24 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     /// CGameCtnZoneTransition 0x008 chunk
     /// </summary>
     [Chunk(0x0314D008)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk0314D008 : Chunk<CGameCtnZoneTransition>, IVersionable
     {
         public override uint Id => 0x0314D008;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0314D008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0314D008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -283,6 +346,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<EBorderType>(ref n.border_North);
             rw.Node<CGameCtnZoneGenealogy>(ref n.genealogy_North);
             rw.EnumInt32<EBorderType>(ref n.border_East);

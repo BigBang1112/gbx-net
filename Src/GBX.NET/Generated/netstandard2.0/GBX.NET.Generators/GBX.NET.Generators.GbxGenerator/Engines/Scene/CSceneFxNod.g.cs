@@ -134,7 +134,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     /// CSceneFxNod 0x002 chunk
     /// </summary>
     [Chunk(0x0A03A002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk0A03A002 : Chunk<CSceneFxNod>, IVersionable
     {
         public override uint Id => 0x0A03A002;
@@ -171,6 +171,18 @@ public partial class CSceneFxNod : CMwNod, IClass
             yield break;
         }
 
+        public Chunk0A03A002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A03A002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -182,6 +194,11 @@ public partial class CSceneFxNod : CMwNod, IClass
         public override void ReadWrite(CSceneFxNod n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
         }

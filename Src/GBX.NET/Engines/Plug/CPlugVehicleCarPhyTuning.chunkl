@@ -822,11 +822,11 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v2+
     bool AerialMove_UseVehicleUp
 
-0x099 [TMT.v0, MP4.v0, TM2020.v0] // Shape
+0x099 [TMT, MP4, TM2020] // Shape
   version
   CPlugVehicleCarPhyShape Shape
 
-0x09A [TMT.v0, MP4.v0, TM2020.v0] // GearBox
+0x09A [TMT, MP4, TM2020] // GearBox
   version
   CPlugVehicleGearBox GearBox
 
@@ -1390,7 +1390,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v3+
     PlugCurve (version: Version - 4)
 
-0x0AA [TM2020.v0]
+0x0AA [TM2020]
   version
   float
 
@@ -1401,7 +1401,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   float
   PlugCurve (version: Version - 1)
 
-0x0AC [TM2020.v0]
+0x0AC [TM2020]
   version
   int
 
@@ -1459,7 +1459,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v1+
     float
 
-0x0AF [TM2020.v0] // inline legacy gameplay curves and forces
+0x0AF [TM2020] // inline legacy gameplay curves and forces
   version
   PlugCurve MaxSideFriction
   float MaxSideFrictionSliding

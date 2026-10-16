@@ -41,7 +41,7 @@ CGameCtnDecorationMood 0x0303A000
   int ToneMapFilmCurve
   CFuncKeysReal ToneMapAutoExp_FidAvgLumiToKeyValue
 
-0x00F [MP3, TMT, MP4, TM2020]
+0x00F [MP3, TMT, MP4, TM2020.v3]
   version
   vec3 Tech3SpecularFake_ExpScaleMax
   vec2 Tech3SpecularLocal
@@ -55,7 +55,7 @@ CGameCtnDecorationMood 0x0303A000
       v3+
         CPlugMoodBlender MoodBlender
 
-0x012 [MP3, TMT, MP4, TM2020]
+0x012 [MP3, TMT, MP4, TM2020.v1]
   version
   float RemappedStartDayTime
   bool IsNight

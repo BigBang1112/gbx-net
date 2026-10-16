@@ -4412,24 +4412,12 @@ public partial class CSystemConfig : CMwNod, IClass
     /// CSystemConfig 0x05C skippable chunk (SmMaxPlayerResimStepPerFrame)
     /// </summary>
     [Chunk(0x0B00505C, "SmMaxPlayerResimStepPerFrame")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00505C : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505C;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0B00505C() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0B00505C(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4440,11 +4428,6 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Int32(ref n.smMaxPlayerResimStepPerFrame);
         }
     }
@@ -4453,24 +4436,12 @@ public partial class CSystemConfig : CMwNod, IClass
     /// CSystemConfig 0x05D skippable chunk (InstallUid)
     /// </summary>
     [Chunk(0x0B00505D, "InstallUid")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0B00505D : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B00505D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0B00505D() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0B00505D(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4481,11 +4452,6 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.String(ref n.installUid);
         }
     }
@@ -4573,24 +4539,12 @@ public partial class CSystemConfig : CMwNod, IClass
     /// CSystemConfig 0x060 skippable chunk (input joysticks)
     /// </summary>
     [Chunk(0x0B005060, "input joysticks")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0B005060 : SkippableChunk<CSystemConfig>, IVersionable
     {
         public override uint Id => 0x0B005060;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0B005060() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0B005060(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -4601,11 +4555,6 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Boolean(ref n.inputsAlternateMethod);
             rw.Boolean(ref n.inputsFreezeUnusedAxes);
             rw.Boolean(ref n.inputsEnableRumble);

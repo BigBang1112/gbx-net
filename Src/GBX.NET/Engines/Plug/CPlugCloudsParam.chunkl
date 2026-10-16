@@ -11,7 +11,7 @@ CPlugCloudsParam 0x09182000
 0x001 [MP3, TMT, MP4, TM2020] // distance and height pairs
   vec2[] Points
 
-0x002 (base: 0x000) [MP3.v0, TMT.v0, MP4.v0, TM2020.v0] // cloud settings
+0x002 (base: 0x000) [MP3, TMT, MP4, TM2020] // cloud settings
   version
   base
   bool MaterialUseT3b

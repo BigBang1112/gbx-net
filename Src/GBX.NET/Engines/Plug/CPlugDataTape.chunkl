@@ -7,7 +7,7 @@ CPlugDataTape 0x090CE000
   data StateData = empty
   NoticeCount = 0
 
-0x001 [MP3, TMT.v0, MP4.v0, TM2020.v0] // states and notices
+0x001 [MP3, TMT, MP4, TM2020] // states and notices
   version
   TapeHeader Header
   int[] StateTimes = empty

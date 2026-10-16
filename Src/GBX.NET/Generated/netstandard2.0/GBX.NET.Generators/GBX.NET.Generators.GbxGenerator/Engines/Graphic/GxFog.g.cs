@@ -226,24 +226,12 @@ public partial class GxFog : CMwNod, IClass
     /// GxFog 0x001 chunk
     /// </summary>
     [Chunk(0x04004001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04004001 : Chunk<GxFog>, IVersionable
     {
         public override uint Id => 0x04004001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk04004001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk04004001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -254,11 +242,6 @@ public partial class GxFog : CMwNod, IClass
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Vec3(ref n.color);
         }
     }
@@ -267,24 +250,12 @@ public partial class GxFog : CMwNod, IClass
     /// GxFog 0x002 chunk
     /// </summary>
     [Chunk(0x04004002)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk04004002 : Chunk<GxFog>, IVersionable
     {
         public override uint Id => 0x04004002;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk04004002() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk04004002(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -295,11 +266,6 @@ public partial class GxFog : CMwNod, IClass
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Int32(ref n.fogVersion);
         }
     }

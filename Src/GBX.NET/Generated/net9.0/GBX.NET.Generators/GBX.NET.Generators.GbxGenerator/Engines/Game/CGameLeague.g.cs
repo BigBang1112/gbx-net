@@ -133,7 +133,7 @@ public partial class CGameLeague : CMwNod, IClass
     /// CGameLeague 0x002 chunk
     /// </summary>
     [Chunk(0x0308E002)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
     public partial class Chunk0308E002 : Chunk<CGameLeague>, IVersionable
     {
         public override uint Id => 0x0308E002;
@@ -142,6 +142,18 @@ public partial class CGameLeague : CMwNod, IClass
         public string? U01;
         public string? U02;
         public byte U03;
+
+        public Chunk0308E002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0308E002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -155,6 +167,11 @@ public partial class CGameLeague : CMwNod, IClass
         public override void ReadWrite(CGameLeague n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref U01);
             rw.String(ref U02);
             rw.String(ref n.name);

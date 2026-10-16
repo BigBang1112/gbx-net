@@ -148,7 +148,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// CGamePlayerProfileChunk_ManiaPlanetStations 0x002 skippable chunk (Stations)
     /// </summary>
     [Chunk(0x03180002, "Stations")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 6)]
     public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>
     {
         public override uint Id => 0x03180002;
@@ -169,12 +169,24 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// CGamePlayerProfileChunk_ManiaPlanetStations 0x003 skippable chunk (LatestTitleIdLoaded)
     /// </summary>
     [Chunk(0x03180003, "LatestTitleIdLoaded")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk03180003 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
     {
         public override uint Id => 0x03180003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03180003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03180003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -185,6 +197,11 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         public override void ReadWrite(CGamePlayerProfileChunk_ManiaPlanetStations n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.latestTitleIdLoaded);
         }
     }

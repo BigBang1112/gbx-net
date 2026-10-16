@@ -70,12 +70,24 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     /// CGamePlayerProfileChunk_InputBindingsConfig 0x000 skippable chunk
     /// </summary>
     [Chunk(0x0312F000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk0312F000 : SkippableChunk<CGamePlayerProfileChunk_InputBindingsConfig>, IVersionable
     {
         public override uint Id => 0x0312F000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0312F000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0312F000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -86,6 +98,10 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
         public override void ReadWrite(CGamePlayerProfileChunk_InputBindingsConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {

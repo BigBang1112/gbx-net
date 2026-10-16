@@ -11,7 +11,6 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    [Arguments(3)]
     public async Task ReadWrite_Chunk0303600C_ReadsNativeLayoutAndRoundTripsExternalClips(int version)
     {
         // Counts are north=3, east=2, south=1, west=0, top=3, bottom=1.

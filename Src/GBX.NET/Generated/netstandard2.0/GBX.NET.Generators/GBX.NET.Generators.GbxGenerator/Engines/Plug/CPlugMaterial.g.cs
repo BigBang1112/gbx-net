@@ -416,7 +416,7 @@ public partial class CPlugMaterial : CPlug, IClass
     /// CPlugMaterial 0x015 chunk
     /// </summary>
     [Chunk(0x09079015)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 7)]
     public partial class Chunk09079015 : Chunk<CPlugMaterial>, IVersionable
     {
         public override uint Id => 0x09079015;
@@ -453,6 +453,18 @@ public partial class CPlugMaterial : CPlug, IClass
             yield break;
         }
 
+        public Chunk09079015() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09079015(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -466,6 +478,11 @@ public partial class CPlugMaterial : CPlug, IClass
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 7)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.shaderRef);
 
             if ((n.shaderRef?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
@@ -521,7 +538,7 @@ public partial class CPlugMaterial : CPlug, IClass
     /// CPlugMaterial 0x017 chunk
     /// </summary>
     [Chunk(0x09079017)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk09079017 : Chunk<CPlugMaterial>, IVersionable
     {
         public override uint Id => 0x09079017;
@@ -531,6 +548,18 @@ public partial class CPlugMaterial : CPlug, IClass
         public int U02;
         public short U03;
         public string? U04;
+
+        public Chunk09079017() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09079017(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -545,6 +574,10 @@ public partial class CPlugMaterial : CPlug, IClass
         public override void ReadWrite(CPlugMaterial n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 1)
             {

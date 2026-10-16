@@ -52,7 +52,7 @@ CPlugVehicleMaterial 0x090F1000
   float
   float
 
-0x010 [MP3, MP4, TM2020]
+0x010 [MP3, MP4, TM2020.v14]
   version
   float
   float

@@ -50,7 +50,7 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
     /// CPlugVehicleGearBox 0x001 chunk
     /// </summary>
     [Chunk(0x09094001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 2)]
     public partial class Chunk09094001 : Chunk<CPlugVehicleGearBox>, IVersionable
     {
         public override uint Id => 0x09094001;
@@ -68,6 +68,18 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
         public float U10;
         public float? U11;
         public float? U12;
+
+        public Chunk09094001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09094001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -90,6 +102,11 @@ public partial class CPlugVehicleGearBox : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleGearBox n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<float>(ref U01!);
             rw.Boolean(ref U02);
             rw.Int32(ref U03);

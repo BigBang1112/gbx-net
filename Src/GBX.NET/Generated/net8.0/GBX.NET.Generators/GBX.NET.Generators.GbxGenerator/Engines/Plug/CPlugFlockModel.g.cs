@@ -372,13 +372,25 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x000 chunk
     /// </summary>
     [Chunk(0x090E5000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, -1, -1, 6)]
     public partial class Chunk090E5000 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5000;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
+
+        public Chunk090E5000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E5000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -390,6 +402,10 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 5)
             {
@@ -438,12 +454,24 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x001 chunk
     /// </summary>
     [Chunk(0x090E5001)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2)]
     public partial class Chunk090E5001 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090E5001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E5001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -454,6 +482,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.birdModelFidRef);
             rw.Int32(ref n.animPeriod);
 
@@ -473,12 +506,24 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x002 chunk
     /// </summary>
     [Chunk(0x090E5002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk090E5002 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090E5002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E5002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -489,6 +534,11 @@ public partial class CPlugFlockModel : CMwNod, IClass
         public override void ReadWrite(CPlugFlockModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.soundLoopRef);
 
             if (Version >= 2)

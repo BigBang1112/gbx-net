@@ -580,24 +580,12 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     /// CPlugShaderApply 0x011 chunk (BitmapApplyArray)
     /// </summary>
     [Chunk(0x09026011, "BitmapApplyArray")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09026011 : Chunk<CPlugShaderApply>, IVersionable
     {
         public override uint Id => 0x09026011;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09026011() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09026011(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -608,11 +596,6 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref n.bitmapApplyArrayRef);
         }
     }
@@ -621,24 +604,12 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     /// CPlugShaderApply 0x012 chunk (apply fields)
     /// </summary>
     [Chunk(0x09026012, "apply fields")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09026012 : Chunk0902600A, IVersionable
     {
         public override uint Id => 0x09026012;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09026012() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09026012(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -649,11 +620,6 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         public override void ReadWrite(CPlugShaderApply n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             base.ReadWrite(n, rw);
         }
     }

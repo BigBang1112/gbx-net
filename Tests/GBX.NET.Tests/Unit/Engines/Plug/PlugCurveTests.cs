@@ -95,7 +95,6 @@ public class PlugCurveTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    [Arguments(3)]
     public async Task ReadWrite_VehicleTuning_SwitchesFromLegacyToInlineAtVersion2(int version)
     {
         using var payload = new ObjectModelPayload();

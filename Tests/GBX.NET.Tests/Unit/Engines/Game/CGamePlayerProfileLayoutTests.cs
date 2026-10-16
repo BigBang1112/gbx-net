@@ -302,16 +302,16 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task ReadWrite_UnsupportedBuddyContainerVersion_HasNoArrayPayload()
+    public async Task ReadWrite_UnsupportedBuddyContainerVersion_ThrowsBeforeArrayPayload()
     {
         var payload = BitConverter.GetBytes(6);
         var node = new CGamePlayerProfile();
         var chunk = new CGamePlayerProfile.Chunk0308C056();
-        Read(payload, rw => chunk.ReadWrite(node, rw));
+        Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => Read(payload, rw => chunk.ReadWrite(node, rw)));
 
         await Assert.That(chunk.Version).IsEqualTo(6);
         await Assert.That(node.Buddies).IsNull();
-        await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload);
+        Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => Write(rw => chunk.ReadWrite(node, rw)));
     }
 
     [Test]

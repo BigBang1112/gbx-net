@@ -654,12 +654,24 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     /// CGameCtnDecorationMood 0x00F chunk
     /// </summary>
     [Chunk(0x0303A00F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
     public partial class Chunk0303A00F : Chunk<CGameCtnDecorationMood>, IVersionable
     {
         public override uint Id => 0x0303A00F;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0303A00F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0303A00F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -670,6 +682,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec3(ref n.tech3SpecularFake_ExpScaleMax);
             rw.Vec2(ref n.tech3SpecularLocal);
             rw.Vec3(ref n.tech3Bloom);
@@ -697,12 +714,24 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     /// CGameCtnDecorationMood 0x012 chunk
     /// </summary>
     [Chunk(0x0303A012)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk0303A012 : Chunk<CGameCtnDecorationMood>, IVersionable
     {
         public override uint Id => 0x0303A012;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0303A012() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0303A012(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -713,6 +742,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.remappedStartDayTime);
             rw.Boolean(ref n.isNight);
             rw.NodeRef(ref n.remappingRef);

@@ -742,12 +742,24 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     /// CGameCtnBlockInfoMobil 0x004 chunk (DynaLinks)
     /// </summary>
     [Chunk(0x03122004, "DynaLinks")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk03122004 : Chunk<CGameCtnBlockInfoMobil>, IVersionable
     {
         public override uint Id => 0x03122004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03122004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03122004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -758,6 +770,11 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.dynaLinks = rw.ListNodeRef_deprec<CGameCtnBlockInfoMobilLink>(n.dynaLinks);
         }
     }

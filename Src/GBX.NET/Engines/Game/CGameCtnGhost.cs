@@ -1,4 +1,4 @@
-﻿using GBX.NET.Inputs;
+using GBX.NET.Inputs;
 using System.Buffers.Binary;
 using System.Collections.Immutable;
 
@@ -329,7 +329,7 @@ public partial class CGameCtnGhost
             var count = rw.Writer is null ? 0 : n.checkpoints?.Length ?? 0;
             count = Version == 0 ? rw.Int32(count) : rw.UInt16(checked((ushort)count));
 
-            if (count < 0 || (Version != 0 && count > 10000))
+            if (count < 0 || (Version >= 1 && count > 10000))
             {
                 throw new LengthLimitException(count);
             }

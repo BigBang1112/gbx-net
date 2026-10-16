@@ -74,7 +74,7 @@ public partial class CPlugFxLightning : CPlug, IClass
     /// CPlugFxLightning 0x000 chunk
     /// </summary>
     [Chunk(0x090D8000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk090D8000 : Chunk<CPlugFxLightning>, IVersionable
     {
         public override uint Id => 0x090D8000;
@@ -108,6 +108,18 @@ public partial class CPlugFxLightning : CPlug, IClass
             yield break;
         }
 
+        public Chunk090D8000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090D8000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -126,6 +138,11 @@ public partial class CPlugFxLightning : CPlug, IClass
         public override void ReadWrite(CPlugFxLightning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.soundRef);
             U01 = rw.ListNodeRef_deprec<CFuncKeysReal>(U01);
             rw.Single(ref U02);

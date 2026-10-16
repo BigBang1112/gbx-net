@@ -23,5 +23,7 @@ Do not edit generated files directly.
 
 ## Development notes
 
+- In chunk serialization, use `value >= 1` instead of `value != 0` for signed integer versions, including when the native unsigned version check uses `!= 0`.
+- Omit `.v0` from chunk game qualifiers unless another game has a nonzero version.
 - Prefer combined `ReadWrite` serialization. Remove separate `Read`/`Write` implementations and `SeparateReadAndWrite` options whenever a combined method can preserve the behavior, including after generator improvements. But don't always switch to `ReadWrite` if it complicates the code unnecessarily.
 - [.agents/generator-verification.md](.agents/generator-verification.md) lists build and test commands for generator changes

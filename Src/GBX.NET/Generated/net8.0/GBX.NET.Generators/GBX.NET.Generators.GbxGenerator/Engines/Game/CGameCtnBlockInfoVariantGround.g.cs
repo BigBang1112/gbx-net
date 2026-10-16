@@ -111,7 +111,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     /// CGameCtnBlockInfoVariantGround 0x001 chunk
     /// </summary>
     [Chunk(0x0315C001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 2, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 2, 2)]
     public partial class Chunk0315C001 : Chunk<CGameCtnBlockInfoVariantGround>, IVersionable
     {
         public override uint Id => 0x0315C001;
@@ -128,7 +128,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
             {
                 Version = 0;
             }
-            else if (gameVersion == GameVersion.MP4)
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

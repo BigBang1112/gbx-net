@@ -60,13 +60,25 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     /// CGamePlayerProfileChunk_ChallengesStats 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03148000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk03148000 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable
     {
         public override uint Id => 0x03148000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        public Chunk03148000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03148000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -78,6 +90,11 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesStats n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }
@@ -86,12 +103,24 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     /// CGamePlayerProfileChunk_ChallengesStats 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03148001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk03148001 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable
     {
         public override uint Id => 0x03148001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03148001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03148001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -102,6 +131,11 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesStats n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<SChallengeStats>(ref n.challengeStats!, version: Version);
         }
     }

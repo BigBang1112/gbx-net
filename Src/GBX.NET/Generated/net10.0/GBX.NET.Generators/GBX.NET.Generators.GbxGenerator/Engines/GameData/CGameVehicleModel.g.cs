@@ -96,7 +96,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
     /// CGameVehicleModel 0x000 chunk
     /// </summary>
     [Chunk(0x2E01C000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 3)]
     public partial class Chunk2E01C000 : Chunk<CGameVehicleModel>, IVersionable
     {
         public override uint Id => 0x2E01C000;
@@ -131,6 +131,18 @@ public partial class CGameVehicleModel : CMwNod, IClass
             yield break;
         }
 
+        public Chunk2E01C000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01C000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -142,6 +154,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
         public override void ReadWrite(CGameVehicleModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.phyModelRef);
             rw.NodeRef(ref n.visModelRef);
             rw.ArrayReadableWritable<ItemOccupantSlotModel>(ref n.itemOccupantSlotModels!, version: Version);

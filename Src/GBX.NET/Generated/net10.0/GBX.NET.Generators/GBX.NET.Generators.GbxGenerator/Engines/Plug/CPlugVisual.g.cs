@@ -435,24 +435,12 @@ public partial class CPlugVisual : CPlug, IClass
     /// CPlugVisual 0x010 chunk (Morphs)
     /// </summary>
     [Chunk(0x09006010, "Morphs")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09006010 : Chunk<CPlugVisual>, IVersionable
     {
         public override uint Id => 0x09006010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09006010() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09006010(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -463,11 +451,6 @@ public partial class CPlugVisual : CPlug, IClass
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.ArrayReadableWritable<Morph>(ref n.morphs!, version: Version);
         }
     }

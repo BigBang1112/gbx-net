@@ -97,12 +97,24 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     /// CPlugBitmapDecals 0x000 chunk
     /// </summary>
     [Chunk(0x09078000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk09078000 : Chunk<CPlugBitmapDecals>, IVersionable
     {
         public override uint Id => 0x09078000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk09078000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09078000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -113,6 +125,11 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         public override void Read(CPlugBitmapDecals n, GbxReader r)
         {
             Version = r.ReadInt32();
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.decalModels = r.ReadListNodeRef_deprec<CPlugDecalModel>();
             n.decalSets = r.ReadArrayReadable<DecalSet>(version: Version);
 
@@ -125,6 +142,11 @@ public partial class CPlugBitmapDecals : CPlug, IClass
         public override void Write(CPlugBitmapDecals n, GbxWriter w)
         {
             w.Write(Version);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             w.WriteListNodeRef_deprec(n.decalModels);
             w.WriteArrayWritable<DecalSet>(n.decalSets, version: Version);
 

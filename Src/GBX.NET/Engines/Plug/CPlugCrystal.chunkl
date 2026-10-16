@@ -17,12 +17,12 @@ CPlugCrystal 0x09003000
   v1+
     int EditorDataFlags
 
-0x005 [MP4.v0, TM2020.v0] // layers
+0x005 [MP4, TM2020] // layers
   version
 
 0x006 [MP4.v0, TM2020.v2] // lightmap UVs
 
-0x007 [MP4.v0, TM2020.v0] // smoothing groups
+0x007 [MP4, TM2020] // smoothing groups
   version
   float[] SmoothingGroups
   int[] FaceSmoothingGroupIndices

@@ -490,12 +490,24 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// CGameCtnCollector 0x008 chunk (default skin)
     /// </summary>
     [Chunk(0x2E001008, "default skin")]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class HeaderChunk2E001008 : HeaderChunk<CGameCtnCollector>, IVersionable
     {
         public override uint Id => 0x2E001008;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public HeaderChunk2E001008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public HeaderChunk2E001008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -506,6 +518,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.defaultSkinName);
         }
     }
@@ -1098,12 +1115,24 @@ public partial class CGameCtnCollector : CMwNod, IClass
     /// CGameCtnCollector 0x012 chunk (icon render)
     /// </summary>
     [Chunk(0x2E001012, "icon render")]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk2E001012 : Chunk<CGameCtnCollector>, IVersionable
     {
         public override uint Id => 0x2E001012;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk2E001012() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E001012(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1114,6 +1143,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.iconUseAutoRender);
             rw.Int32(ref n.iconQuarterRotationY);
             rw.Single(ref n.iconPhase01);

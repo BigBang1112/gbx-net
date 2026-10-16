@@ -1,6 +1,6 @@
 CPlugCurveSimpleNod 0x09185000
 - inherits: CFuncKeysReal
 
-0x000 [TM2020.v0] // Curve
+0x000 [TM2020] // Curve
   version
   PlugCurve Curve (version: 0)

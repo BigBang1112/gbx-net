@@ -104,7 +104,7 @@ public partial class CPlugSurface : CPlug, IClass
     /// CPlugSurface 0x003 chunk
     /// </summary>
     [Chunk(0x0900C003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 2, 2, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 2, 2, 5)]
     public partial class Chunk0900C003 : Chunk<CPlugSurface>
     {
         public override uint Id => 0x0900C003;

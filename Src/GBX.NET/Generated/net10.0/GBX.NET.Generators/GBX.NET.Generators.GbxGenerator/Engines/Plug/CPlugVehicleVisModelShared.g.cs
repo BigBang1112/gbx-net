@@ -449,7 +449,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x01E chunk
     /// </summary>
     [Chunk(0x090E801E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk090E801E : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801E;
@@ -621,6 +621,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090E801E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E801E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -649,6 +661,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
@@ -695,7 +712,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x01F chunk
     /// </summary>
     [Chunk(0x090E801F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 19)]
     public partial class Chunk090E801F : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801F;
@@ -901,6 +918,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090E801F() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E801F(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 19;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -931,6 +960,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 19)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
@@ -1015,7 +1049,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x020 chunk
     /// </summary>
     [Chunk(0x090E8020)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk090E8020 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8020;
@@ -1025,6 +1059,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public float U02;
         public float U03;
         public float U04;
+
+        public Chunk090E8020() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E8020(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1039,6 +1085,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
 
@@ -1054,7 +1105,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x021 chunk
     /// </summary>
     [Chunk(0x090E8021)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
     public partial class Chunk090E8021 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8021;
@@ -1091,6 +1142,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090E8021() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E8021(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1102,6 +1165,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
         }
@@ -1111,7 +1179,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x022 chunk
     /// </summary>
     [Chunk(0x090E8022)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 12)]
     public partial class Chunk090E8022 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8022;
@@ -1364,6 +1432,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090E8022() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E8022(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 12;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1399,6 +1479,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 12)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
             rw.NodeRef(ref U03Ref);
@@ -1460,7 +1545,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x023 chunk
     /// </summary>
     [Chunk(0x090E8023)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk090E8023 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8023;
@@ -1501,6 +1586,18 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090E8023() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090E8023(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -1516,6 +1613,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
 

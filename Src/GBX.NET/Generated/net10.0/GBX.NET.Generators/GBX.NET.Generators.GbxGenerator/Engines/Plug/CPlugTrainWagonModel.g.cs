@@ -234,7 +234,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     /// CPlugTrainWagonModel 0x000 chunk
     /// </summary>
     [Chunk(0x0911C000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 12)]
     public partial class Chunk0911C000 : Chunk<CPlugTrainWagonModel>, IVersionable
     {
         public override uint Id => 0x0911C000;
@@ -272,6 +272,18 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
             yield break;
         }
 
+        public Chunk0911C000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0911C000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 12;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -284,6 +296,11 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
         public override void ReadWrite(CPlugTrainWagonModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 12)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.shapeRef);
             rw.NodeRef(ref n.meshRef);
 

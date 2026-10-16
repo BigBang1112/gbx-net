@@ -436,24 +436,12 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     /// CPlugBitmapSampler 0x00B chunk (sampler state)
     /// </summary>
     [Chunk(0x0907E00B, "sampler state")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0907E00B : Chunk<CPlugBitmapSampler>, IVersionable
     {
         public override uint Id => 0x0907E00B;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0907E00B() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0907E00B(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -464,11 +452,6 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         public override void ReadWrite(CPlugBitmapSampler n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Id(ref n.name);
             rw.NodeRef(ref n.bitmapRef);
             rw.DataUInt32(ref n.flags);

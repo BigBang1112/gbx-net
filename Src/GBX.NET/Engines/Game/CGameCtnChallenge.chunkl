@@ -65,13 +65,13 @@ CGameCtnChallenge 0x03043000 // A map.
 0x005 (header, struct: SHeaderCommunity) [TMS, TMO, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // xml
   string Xml
 
-0x007 (header, struct: SHeaderThumbnail, demonstration: partial) [TMU, TMF, MP3, TMT, MP4, TM2020] // thumbnail
-  version = 1
+0x007 (header, struct: SHeaderThumbnail, demonstration: partial) [TMU, TMF, MP3, TMT, MP4, TM2020.v1] // thumbnail
+  version
   v1+
     data Thumbnail
     string Comments (formatted)
 
-0x008 (header, struct: SHeaderAuthorInfo) [MP3, TMT, MP4, TM2020] // author info
+0x008 (header, struct: SHeaderAuthorInfo) [MP3, TMT, MP4, TM2020.v1] // author info
   version
   int AuthorVersion
   string AuthorLogin
@@ -236,7 +236,7 @@ CGameCtnChallenge 0x03043000 // A map.
     throw
   CSceneVehicleCarMarksSamples[] CarMarksBuffer (deprec)
 
-0x040 (skippable, demonstration: partial) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
+0x040 (skippable, demonstration: partial) [MP3.v2, TMT.v4, MP4.v4, TM2020.v8] // items
   version
   block (encapsulated)
     CGameCtnAnchoredObject[] AnchoredObjects (deprec, list)
@@ -245,8 +245,8 @@ CGameCtnChallenge 0x03043000 // A map.
   block (encapsulated)
     CMwNod
 
-0x042 (skippable) [MP3, TMT, MP4, TM2020] // author
-  version = 1
+0x042 (skippable) [MP3, TMT, MP4, TM2020.v1] // author
+  version
   int AuthorVersion
   string AuthorLogin
   string AuthorNickname (formatted)
@@ -273,8 +273,8 @@ CGameCtnChallenge 0x03043000 // A map.
   CGameCtnBlock*[] BakedBlocks (list) // Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
   SBakedClipsAdditionalData[] BakedClipsAdditionalData (list) // Preceded by U01.
 
-0x049 [MP3, TMT, MP4, TM2020] // mediatracker
-  version = 2
+0x049 [MP3, TMT, MP4, TM2020.v2] // mediatracker
+  version
   CGameCtnMediaClip ClipIntro
   CGameCtnMediaClip ClipPodium
   CGameCtnMediaClipGroup ClipGroupInGame
@@ -308,7 +308,7 @@ CGameCtnChallenge 0x03043000 // A map.
     int U01 = 5
     CPlugTriggerAction[AnimationTriggerCount] AnimationTriggers (version: U01)
 
-0x04F (skippable) [MP3, TMT, MP4, TM2020]
+0x04F (skippable) [MP3, TMT, MP4, TM2020.v3]
 
 0x050 (skippable) [MP3, TMT, MP4, TM2020] // offzones
   version
@@ -324,11 +324,11 @@ CGameCtnChallenge 0x03043000 // A map.
   version
   int DecoBaseHeightOffset
 
-0x053 (skippable) [MP3, TMT, MP4, TM2020] // bot paths
+0x053 (skippable) [MP3, TMT, MP4, TM2020.v3] // bot paths
   version
   BotPath[] BotPaths (list)
 
-0x054 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // embedded objects
+0x054 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020.v1] // embedded objects
   version
   block (encapsulated)
     data EmbeddedZipData // Preceded by the expected embedded item model identifiers.
@@ -337,8 +337,8 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x055 (skippable) [MP3, TMT, MP4, TM2020]
 
-0x056 (skippable) [MP4, TM2020] // light settings
-  version = 3
+0x056 (skippable) [MP4, TM2020.v3] // light settings
+  version
   int
   timeofday? DayTime
   int
@@ -358,7 +358,7 @@ CGameCtnChallenge 0x03043000 // A map.
   if U01 > 0
     throw
 
-0x059 (skippable) [MP4, TM2020] // world distortion
+0x059 (skippable) [MP4, TM2020.v3] // world distortion
   version
   vec3 WorldDistortion
   v0=
@@ -427,7 +427,7 @@ CGameCtnChallenge 0x03043000 // A map.
   block (encapsulated)
     CGameSaveLaunchedCheckpoints LaunchedCheckpoints
 
-0x068 (skippable) [TM2020] // MapElemLmQuality
+0x068 (skippable) [TM2020.v1] // MapElemLmQuality
 
 0x069 (skippable, demonstration: partial) [TM2020] // macroblock instances
   version

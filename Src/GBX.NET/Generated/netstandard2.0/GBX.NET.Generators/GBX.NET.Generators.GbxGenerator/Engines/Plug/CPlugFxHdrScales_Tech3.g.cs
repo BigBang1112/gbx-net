@@ -50,7 +50,7 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
     /// CPlugFxHdrScales_Tech3 0x000 chunk
     /// </summary>
     [Chunk(0x090F5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk090F5000 : Chunk<CPlugFxHdrScales_Tech3>, IVersionable
     {
         public override uint Id => 0x090F5000;
@@ -60,6 +60,18 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
         public float U02;
         public float U03;
         public float U04;
+
+        public Chunk090F5000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F5000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -74,6 +86,11 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
         public override void ReadWrite(CPlugFxHdrScales_Tech3 n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
 
             if (Version >= 1)

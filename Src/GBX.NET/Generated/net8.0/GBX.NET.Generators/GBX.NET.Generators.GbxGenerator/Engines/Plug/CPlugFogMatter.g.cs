@@ -50,7 +50,7 @@ public partial class CPlugFogMatter : CMwNod, IClass
     /// CPlugFogMatter 0x000 chunk
     /// </summary>
     [Chunk(0x090D3000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk090D3000 : Chunk<CPlugFogMatter>, IVersionable
     {
         public override uint Id => 0x090D3000;
@@ -60,6 +60,18 @@ public partial class CPlugFogMatter : CMwNod, IClass
         public float U02;
         public float U03;
         public float U04;
+
+        public Chunk090D3000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090D3000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -74,6 +86,11 @@ public partial class CPlugFogMatter : CMwNod, IClass
         public override void ReadWrite(CPlugFogMatter n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);

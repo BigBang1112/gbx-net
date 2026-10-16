@@ -5,7 +5,7 @@ CGameGateModel 0x2E00B000
   CGameArmorModel Armor
   CPlugSurface Shape
 
-0x001 [MP3, TMT, MP4, TM2020]
+0x001 [MP3, TMT, MP4, TM2020.v1]
   version
   CPlugSound GateOpenSound
   CPlugSound GateCloseSound

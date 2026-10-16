@@ -50,7 +50,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     /// CPlugParticleSplashModel 0x000 chunk
     /// </summary>
     [Chunk(0x090B5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
     public partial class Chunk090B5000 : Chunk<CPlugParticleSplashModel>, IVersionable
     {
         public override uint Id => 0x090B5000;
@@ -106,6 +106,18 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090B5000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090B5000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -144,6 +156,11 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleSplashModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);

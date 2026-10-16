@@ -70,12 +70,24 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
     /// CGameReplayObjectVisData 0x000 chunk
     /// </summary>
     [Chunk(0x031A8000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk031A8000 : Chunk<CGameReplayObjectVisData>, IVersionable
     {
         public override uint Id => 0x031A8000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk031A8000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk031A8000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -86,6 +98,11 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         public override void ReadWrite(CGameReplayObjectVisData n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<ObjectVisKey>(ref n.keys!, version: Version);
             rw.ListReadableWritable<ObjectVis>(ref n.visList!, version: Version);
         }

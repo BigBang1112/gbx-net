@@ -60,7 +60,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03130000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk03130000 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130000;
@@ -68,6 +68,18 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public int Version { get; set; }
         public string? U01;
         public byte[]? U02;
+
+        public Chunk03130000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03130000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -80,6 +92,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref U01);
             rw.Data(ref U02!, 32);
         }
@@ -89,14 +106,28 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03130001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
     public partial class Chunk03130001 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Vec3 U01;
-        public float U02 = 1;
+        public float U02;
+
+        public Chunk03130001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03130001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+
+            U02 = 1;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -109,6 +140,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec3(ref U01);
 
             if (Version >= 2)
@@ -122,12 +158,24 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x002 skippable chunk (VehicleProfiles)
     /// </summary>
     [Chunk(0x03130002, "VehicleProfiles")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk03130002 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03130002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03130002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -138,6 +186,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<VehicleProfile>(ref n.vehicleProfiles!, version: Version);
         }
     }
@@ -146,7 +199,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x003 skippable chunk
     /// </summary>
     [Chunk(0x03130003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 7)]
     public partial class Chunk03130003 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130003;
@@ -164,6 +217,18 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public ushort[]? U10;
         public TransQuat[]? U11;
         public TransQuat[]? U12;
+
+        public Chunk03130003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03130003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -186,6 +251,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 7)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<TransQuat>(ref U01!);
 
             if (Version >= 2)
@@ -231,13 +301,25 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03130004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 4)]
     public partial class Chunk03130004 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130004;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public Unknown[]? U01;
+
+        public Chunk03130004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03130004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -249,6 +331,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_VehiclesSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Unknown>(ref U01!, version: Version);
         }
     }

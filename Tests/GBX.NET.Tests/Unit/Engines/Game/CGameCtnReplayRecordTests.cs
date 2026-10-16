@@ -541,13 +541,13 @@ public class CGameCtnReplayRecordTests
             w.Write(0xFACADE01u);
             w.Write(0xFACADE01u);
             if (version >= 2) w.WriteArray(new[] { "First", "Second" });
-            if (version != 0) w.WriteArray(new[] { "Actions\\Shoot.Action.Gbx" });
+            if (version >= 1) w.WriteArray(new[] { "Actions\\Shoot.Action.Gbx" });
         });
         var chunk = new CGameCtnReplayRecord.Chunk0309301E();
         var replay = await ReadChunk(payload, chunk);
         await Assert.That(replay.ActionModels!.Count).IsEqualTo(2);
         await Assert.That(replay.ActionNames![1]).IsEqualTo(version >= 2 ? "Second" : "*Replay*\\Action001");
-        await Assert.That(replay.ActionFileNames?.Single()).IsEqualTo(version != 0 ? "Actions\\Shoot.Action.Gbx" : null);
+        await Assert.That(replay.ActionFileNames?.Single()).IsEqualTo(version >= 1 ? "Actions\\Shoot.Action.Gbx" : null);
     }
 
     [Test]
@@ -689,7 +689,7 @@ public class CGameCtnReplayRecordTests
         {
             w.Write(version);
             w.WriteArray(empty ? [] : new[] { "First", "Second" });
-            if (version != 0) w.WriteArray(empty ? [] : new[] { new PackDesc("First.Item.Gbx"), PackDesc.Empty });
+            if (version >= 1) w.WriteArray(empty ? [] : new[] { new PackDesc("First.Item.Gbx"), PackDesc.Empty });
         });
         var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093020());
         var items = replay.Items!;
@@ -906,11 +906,11 @@ public class CGameCtnReplayRecordTests
         {
             w.Write(version);
             w.Write(-1);
-            if (version != 0) w.WriteNodeRef(new CPlugEntRecordData());
+            if (version >= 1) w.WriteNodeRef(new CPlugEntRecordData());
         });
         var replay = await ReadChunk(payload, new CGameCtnReplayRecord.Chunk03093024());
         await Assert.That(replay.SceneryTurretsDataTape).IsNull();
-        await Assert.That(replay.RecordData is not null).IsEqualTo(version != 0);
+        await Assert.That(replay.RecordData is not null).IsEqualTo(version >= 1);
     }
 
     [Test]

@@ -11,7 +11,7 @@ CPlugLight 0x0901D000
   base
   int<EFlags> Flags
 
-0x003 [TM2020]
+0x003 [TM2020.v1]
   version
   CPlugFileImg ImageAnim
   float AnimPeriodMin

@@ -608,7 +608,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x009 chunk
     /// </summary>
     [Chunk(0x03036009)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk03036009 : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x03036009;
@@ -642,18 +642,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
             yield break;
         }
 
-        public Chunk03036009() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03036009(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -667,11 +655,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref U01Ref);
             rw.Int32(ref U02);
 
@@ -691,7 +674,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00A chunk
     /// </summary>
     [Chunk(0x0303600A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0303600A : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600A;
@@ -723,18 +706,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
             yield break;
         }
 
-        public Chunk0303600A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0303600A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -746,11 +717,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref U01Ref);
             rw.Int32(ref U02);
         }
@@ -760,24 +726,12 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00B chunk (bottom+top clip with dir)
     /// </summary>
     [Chunk(0x0303600B, "bottom+top clip with dir")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303600B : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
-
-        public Chunk0303600B() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0303600B(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -788,11 +742,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref n.bottomClipRef);
             rw.NodeRef(ref n.topClipRef);
             rw.EnumInt32<Direction>(ref n.bottomClipDir);
@@ -804,7 +753,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00C chunk
     /// </summary>
     [Chunk(0x0303600C)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600C;
@@ -814,6 +763,18 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public short? U02;
         public int? U03;
         public int? U04;
+
+        public Chunk0303600C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0303600C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -828,6 +789,10 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GbxReaderWriter rw)
         {
             Version = rw.Int32((rw.Writer is null ? default : (ValidateClipCounts(n))));
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {

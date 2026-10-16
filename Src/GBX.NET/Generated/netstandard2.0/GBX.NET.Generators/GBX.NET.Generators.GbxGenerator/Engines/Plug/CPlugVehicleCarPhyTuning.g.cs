@@ -7589,24 +7589,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x099 chunk (Shape)
     /// </summary>
     [Chunk(0x090ED099, "Shape")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090ED099 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED099;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090ED099() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED099(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7617,11 +7605,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref n.shapeRef);
         }
     }
@@ -7630,24 +7613,12 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x09A chunk (GearBox)
     /// </summary>
     [Chunk(0x090ED09A, "GearBox")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090ED09A : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED09A;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090ED09A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED09A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -7658,11 +7629,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.NodeRef(ref n.gearBoxRef);
         }
     }
@@ -10057,25 +10023,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x0AA chunk
     /// </summary>
     [Chunk(0x090ED0AA)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AA : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AA;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-
-        public Chunk090ED0AA() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0AA(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -10087,11 +10041,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Single(ref U01);
         }
     }
@@ -10152,25 +10101,13 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x0AC chunk
     /// </summary>
     [Chunk(0x090ED0AC)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AC : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AC;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
-
-        public Chunk090ED0AC() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0AC(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -10182,11 +10119,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Int32(ref U01);
         }
     }
@@ -10490,7 +10422,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x0AF chunk (inline legacy gameplay curves and forces)
     /// </summary>
     [Chunk(0x090ED0AF, "inline legacy gameplay curves and forces")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090ED0AF : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED0AF;
@@ -10501,18 +10433,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public PlugCurve? U03;
         public PlugCurve? U04;
         public float U05;
-
-        public Chunk090ED0AF() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090ED0AF(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -10528,11 +10448,6 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.ReadableWritable<PlugCurve>(ref n.maxSideFriction, version: Version);
             rw.Single(ref n.maxSideFrictionSliding);
             rw.Single(ref n.groundSlowDownBase);

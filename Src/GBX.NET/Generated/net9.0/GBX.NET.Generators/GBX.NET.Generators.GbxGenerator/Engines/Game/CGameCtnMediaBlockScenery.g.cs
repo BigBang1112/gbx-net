@@ -99,12 +99,24 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     /// CGameCtnMediaBlockScenery 0x000 chunk
     /// </summary>
     [Chunk(0x03188000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
     public partial class Chunk03188000 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03188000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03188000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -115,6 +127,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }
@@ -123,12 +140,24 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     /// CGameCtnMediaBlockScenery 0x001 chunk
     /// </summary>
     [Chunk(0x03188001)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
     public partial class Chunk03188001 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         public override uint Id => 0x03188001;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03188001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03188001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -139,6 +168,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.capturableCount);
             rw.NodeRef(ref n.dataTapeRef);
         }

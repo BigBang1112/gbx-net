@@ -51,7 +51,7 @@ public partial class CScriptTraitsPersistent : CMwNod, IClass
     /// CScriptTraitsPersistent 0x000 chunk
     /// </summary>
     [Chunk(0x11001000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 5)]
     public partial class Chunk11001000 : Chunk<CScriptTraitsPersistent>
     {
         public override uint Id => 0x11001000;

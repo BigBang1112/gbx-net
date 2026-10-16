@@ -438,7 +438,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     /// CPlugAnimFile 0x003 chunk
     /// </summary>
     [Chunk(0x090B0003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 9, 11, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 9, 11, 24)]
     public partial class Chunk090B0003 : Chunk<CPlugAnimFile>, IVersionable
     {
         public override uint Id => 0x090B0003;
@@ -459,6 +459,10 @@ public partial class CPlugAnimFile : CMwNod, IClass
             {
                 Version = 11;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 24;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -470,7 +474,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
         public override void ReadWrite(CPlugAnimFile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 11)
+            if (Version > 24)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

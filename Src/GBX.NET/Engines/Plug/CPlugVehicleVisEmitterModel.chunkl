@@ -73,6 +73,6 @@ CPlugVehicleVisEmitterModel 0x090E6000
 0x006 [MP3, TMT, MP4, TM2020] // ParticleEmitterModelShoot
   CPlugParticleEmitterModel ParticleEmitterModelShoot // Used when rendering videos.
 
-0x007 [TM2020.v0] // Additional emission flag
+0x007 [TM2020] // Additional emission flag
   version
   bool

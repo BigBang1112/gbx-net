@@ -609,7 +609,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     /// CGameCtnCampaign 0x012 skippable chunk (official mode)
     /// </summary>
     [Chunk(0x03090012, "official mode")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 2)]
     public partial class Chunk03090012 : SkippableChunk<CGameCtnCampaign>, IVersionable
     {
         public override uint Id => 0x03090012;
@@ -621,6 +621,18 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public string? U04;
         public bool? U05;
         public bool? U06;
+
+        public Chunk03090012() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03090012(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -637,6 +649,10 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {

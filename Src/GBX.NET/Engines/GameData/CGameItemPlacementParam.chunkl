@@ -2,7 +2,7 @@ CGameItemPlacementParam 0x2E020000
 
 0x000 (skippable) [MP3, TMT, MP4, TM2020]
   version
-  if Version != 0
+  if Version >= 1
     throw (message: Unsupported item placement settings version.)
   short Flags = 1
   vec3 CubeCenter

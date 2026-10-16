@@ -170,7 +170,7 @@ constructor
 0x02C [MP3, TMT, MP4, TM2020] // AdditionalVariantsAir
   CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir (deprec)
 
-0x02E [MP3.v0] // ProdState
+0x02E [MP3] // ProdState
   version
   int<CGameCtnCollector.EProdState> ProdState (inherited)
 

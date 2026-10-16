@@ -486,7 +486,7 @@ public partial class CGameActionModel : CMwNod, IClass
     /// CGameActionModel 0x000 skippable chunk (action, animation and script)
     /// </summary>
     [Chunk(0x2E008000, "action, animation and script")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 22, 31, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 22, 31, 44)]
     public partial class Chunk2E008000 : SkippableChunk<CGameActionModel>, IVersionable
     {
         public override uint Id => 0x2E008000;
@@ -507,6 +507,10 @@ public partial class CGameActionModel : CMwNod, IClass
             {
                 Version = 31;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 44;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -518,7 +522,7 @@ public partial class CGameActionModel : CMwNod, IClass
         public override void ReadWrite(CGameActionModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 31)
+            if (Version > 44)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

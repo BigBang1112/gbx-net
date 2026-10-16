@@ -321,7 +321,7 @@ CPlugBitmap 0x09011000
 0x02C [MP3, TMT, MP4, TM2020]
   CPlugBitmapDecals Decals
 
-0x02D [MP3, TMT, MP4.v0, TM2020.v0]
+0x02D [MP3, TMT, MP4, TM2020]
   version
   uint Flags3 = 0x3C00
 
@@ -357,7 +357,7 @@ CPlugBitmap 0x09011000
   ulong Flags
   uint FlagsHigh
 
-0x032 [TMT, MP4.v0, TM2020.v0]
+0x032 [TMT, MP4, TM2020]
   version
   uint Flags2 = 0x49000800
 
@@ -377,7 +377,7 @@ CPlugBitmap 0x09011000
   v4=
     AdditionalParameters ImageArrayAdditional
 
-0x035 [TM2020.v0]
+0x035 [TM2020]
   version
   TextureSettings TextureInfo
 
@@ -392,11 +392,11 @@ CPlugBitmap 0x09011000
     float GrassIdTexCoordRotate = 0
   CMwNod GrassMatterArray
 
-0x037 [TM2020.v0]
+0x037 [TM2020]
   version
   ImageArraySettings ArraySettings
 
-0x038 [TM2020.v0]
+0x038 [TM2020]
   version
   CPlugBitmapAtlas Atlas
   uint AtlasCubeFlags // Bit 0 includes cube-atlas input.

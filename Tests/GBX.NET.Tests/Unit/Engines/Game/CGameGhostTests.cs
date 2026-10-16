@@ -11,7 +11,6 @@ public class CGameGhostTests
     [Arguments(false, 0, 16)]
     [Arguments(true, 0, 16)]
     [Arguments(true, 1, 0)]
-    [Arguments(true, 2, 0)]
     public async Task SampleData_ChunkReadAndWrite_PreservesChunkVersion(bool versionedChunk, int archiveVersion, int stateVersion)
     {
         var payload = CreateEmptyArchive(archiveVersion, stateVersion);

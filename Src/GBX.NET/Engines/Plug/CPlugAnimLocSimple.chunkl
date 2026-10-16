@@ -1,18 +1,18 @@
 CPlugAnimLocSimple 0x090F8000
 
 0x000 [MP3, TMT, MP4, TM2020]
-  int
   version
+  int AnimationVersion = 4
   int RotPeriod
   int TransPeriod
   float TransY
-  v1+
+  if AnimationVersion >= 1
     int Axis
-    v2+
+    if AnimationVersion >= 2
       int RotPeriodMax
       int TransPeriodMax
-      v3+
+      if AnimationVersion >= 3
         byte RotFunc
         float RotAngle
-        v4+
+        if AnimationVersion >= 4
           int U02

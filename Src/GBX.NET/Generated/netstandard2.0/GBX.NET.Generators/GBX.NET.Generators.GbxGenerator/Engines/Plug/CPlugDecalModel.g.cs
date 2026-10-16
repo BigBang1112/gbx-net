@@ -637,24 +637,12 @@ public partial class CPlugDecalModel : CPlug, IClass
     /// CPlugDecalModel 0x006 chunk (flags)
     /// </summary>
     [Chunk(0x090A7006, "flags")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A7006 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090A7006() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090A7006(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -665,11 +653,6 @@ public partial class CPlugDecalModel : CPlug, IClass
         public override void ReadWrite(CPlugDecalModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.UInt32(ref n.flags);
         }
     }

@@ -48,7 +48,7 @@ public partial class CPlugCrystal
 
             if (rw.Writer is not null) UpdateEditableMesh();
             EditableMesh.ReadWrite(rw);
-            if (EditableMesh.Version != 0) throw new VersionNotSupportedException(EditableMesh.Version);
+            if (EditableMesh.Version >= 1) throw new VersionNotSupportedException(EditableMesh.Version);
             FaceTypes = Resize(FaceTypes, EditableMesh.Faces.Length);
             FaceTypes = rw.Array(FaceTypes, EditableMesh.Faces.Length)!;
 

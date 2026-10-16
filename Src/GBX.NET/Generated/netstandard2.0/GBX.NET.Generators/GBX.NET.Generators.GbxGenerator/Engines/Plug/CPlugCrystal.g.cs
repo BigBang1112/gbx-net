@@ -256,24 +256,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     /// CPlugCrystal 0x005 chunk (layers)
     /// </summary>
     [Chunk(0x09003005, "layers")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09003005 : Chunk<CPlugCrystal>, IVersionable
     {
         public override uint Id => 0x09003005;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09003005() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09003005(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -306,24 +294,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     /// CPlugCrystal 0x007 chunk (smoothing groups)
     /// </summary>
     [Chunk(0x09003007, "smoothing groups")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09003007 : Chunk<CPlugCrystal>, IVersionable
     {
         public override uint Id => 0x09003007;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09003007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09003007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -334,11 +310,6 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Array<float>(ref n.smoothingGroups!);
             rw.Array<int>(ref n.faceSmoothingGroupIndices!);
         }

@@ -188,7 +188,6 @@ public class CGameCtnBlockInfoMobilTests
     [Arguments(20)]
     [Arguments(22)]
     [Arguments(23)]
-    [Arguments(24)]
     public async Task ReadWrite_RoadReferences_UseSpecificClassesAndPreserveLegacyPayload(int version)
     {
         CPlugRoadChunk road = version < 23 ? new CPlugRoadChunk() : new CPlugRoadChunkTraffic();
@@ -218,18 +217,20 @@ public class CGameCtnBlockInfoMobilTests
         if (version >= 20) await VerifyRoadReferences(node.PlacementPatches);
         if (version >= 15) await Assert.That(node.RecastPolyMeshData).IsNotNull();
 
+        if (version != 23) return;
+
         using var output = new MemoryStream();
         using (var writer = new GbxWriter(output))
         using (var rw = new GbxReaderWriter(writer))
-            new CGameCtnBlockInfoMobil.Chunk03122003 { Version = 24 }.ReadWrite(node, rw);
-        output.Position = 0;
-        var restored = new CGameCtnBlockInfoMobil();
-        using (var reader = new GbxReader(output))
-        using (var rw = new GbxReaderWriter(reader))
-            new CGameCtnBlockInfoMobil.Chunk03122003().ReadWrite(restored, rw);
-        await VerifyRoadReferences(restored.RoadChunks);
-        if (version >= 17) await VerifyRoadReferences(restored.CitizenRoadChunks);
-        if (version >= 20) await VerifyRoadReferences(restored.PlacementPatches);
+        {
+            new CGameCtnBlockInfoMobil.Chunk03122003 { Version = 23 }.ReadWrite(node, rw);
+            writer.Write(Sentinel);
+        }
+        // Native version 23 writes placement patches without the legacy prefix that it reads.
+        var expected = NativePayload(23, reading: false, scaleType: node.VFXScaleType,
+            road: node.RoadChunks![0], citizen: node.CitizenRoadChunks?.FirstOrDefault(),
+            placement: node.PlacementPatches?.FirstOrDefault(), recast: node.RecastPolyMeshData);
+        await Assert.That(output.ToArray()).IsEquivalentTo(expected, CollectionOrdering.Matching);
     }
 
     private static async Task VerifyRoadReferences<T>(NodeRefList<T>? references) where T : CPlugRoadChunk

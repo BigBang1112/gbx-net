@@ -3,7 +3,7 @@ CPlugSolid2Model 0x090BB000
 0x000 (header, struct: SHeaderFileVersion) // file version
   int FileVersion
 
-0x000 (demonstration: partial) [MP3, TMT, MP4, TM2020]
+0x000 (demonstration: partial) [MP3, TMT, MP4, TM2020.v37]
   CPlugVisual[] Visuals
   CPlugMaterial[] Materials
   CPlugSkel* Skel

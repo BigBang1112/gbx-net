@@ -1430,11 +1430,23 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// CGameCtnGhost 0x01B skippable chunk (race result)
     /// </summary>
     [Chunk(0x0309201B, "race result")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk0309201B : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309201B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+
+        public Chunk0309201B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0309201B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1543,12 +1555,24 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// CGameCtnGhost 0x022 skippable chunk (settings info)
     /// </summary>
     [Chunk(0x03092022, "settings info")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk03092022 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092022;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03092022() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03092022(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1559,6 +1583,10 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {
@@ -1576,7 +1604,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// CGameCtnGhost 0x023 skippable chunk (anticheat system info)
     /// </summary>
     [Chunk(0x03092023, "anticheat system info")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
     public partial class Chunk03092023 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092023;
@@ -1585,6 +1613,18 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public int U01;
         public int U02;
         public byte U03;
+
+        public Chunk03092023() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03092023(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1598,6 +1638,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 3)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.cpuDescription);
             rw.Int32(ref n.cpuKind);
             rw.String(ref n.gpuDescription);
@@ -1704,12 +1749,24 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// CGameCtnGhost 0x027 skippable chunk (screen captures)
     /// </summary>
     [Chunk(0x03092027, "screen captures")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
     public partial class Chunk03092027 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x03092027;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk03092027() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03092027(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1720,6 +1777,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.screenCaptures = rw.ListNodeRef<CPlugTimedPixelArray>(n.screenCaptures);
 
             if (Version >= 1)
@@ -1880,12 +1942,24 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// CGameCtnGhost 0x02C skippable chunk
     /// </summary>
     [Chunk(0x0309202C)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0309202C : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         public override uint Id => 0x0309202C;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0309202C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0309202C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1896,6 +1970,11 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         public override void ReadWrite(CGameCtnGhost n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.walltimeStartTimestamp = rw.UnixTime(n.walltimeStartTimestamp);
             n.walltimeEndTimestamp = rw.UnixTime(n.walltimeEndTimestamp);
         }

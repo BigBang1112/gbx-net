@@ -652,13 +652,25 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     /// CGameCommonItemEntityModelEdition 0x001 skippable chunk
     /// </summary>
     [Chunk(0x2E026001)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk2E026001 : SkippableChunk<CGameCommonItemEntityModelEdition>, IVersionable
     {
         public override uint Id => 0x2E026001;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
+
+        public Chunk2E026001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E026001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -670,6 +682,11 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }

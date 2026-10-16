@@ -216,7 +216,7 @@ CHmsLightMapCache 0x06022000
 0x019 (skippable) [MP3, TMT, MP4, TM2020]
   int<EQualityVer> QualityVer = EQualityVer.BounceShadowFiltered
 
-0x01A (skippable) [MP3, TMT, MP4.v9, TM2020.v13]
+0x01A (skippable) [MP3, TMT, MP4.v9, TM2020.v15]
   version
   SMap[] Maps
   int LightAmbSampleCount

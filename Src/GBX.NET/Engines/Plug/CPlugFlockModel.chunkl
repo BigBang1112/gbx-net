@@ -1,6 +1,6 @@
 CPlugFlockModel 0x090E5000
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020.v6]
   version
   v5-
     float Range
@@ -29,7 +29,7 @@ CPlugFlockModel 0x090E5000
           v5+
             CMwNod BirdModel
 
-0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020.v2]
   version
   CMwNod BirdModelFid
   int AnimPeriod
@@ -41,7 +41,7 @@ CPlugFlockModel 0x090E5000
     int AnimFlappingStart
     int AnimFlappingEnd
 
-0x002 [MP3, TMT, MP4, TM2020]
+0x002 [MP3, TMT, MP4, TM2020.v2]
   version
   CPlugSound SoundLoop
   v2+

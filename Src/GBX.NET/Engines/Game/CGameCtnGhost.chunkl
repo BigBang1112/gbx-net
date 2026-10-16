@@ -124,8 +124,8 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x01A (skippable) [MP3, TMT, MP4, TM2020] // checkpoint count
 
-0x01B (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // race result
-  version = 2
+0x01B (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020.v2] // race result
+  version
   // RaceTime, StuntScore, Respawns and checkpoint times are handled in C#.
   // v0 uses raw times, v1 uses reverse deltas, v2 uses forward deltas.
   v2=
@@ -142,14 +142,14 @@ CGameCtnGhost 0x03092000 // A ghost.
 
 0x021 (skippable, ignore) // OldKeyStrokes
 
-0x022 (skippable) [MP3, TMT, MP4, TM2020] // settings info
+0x022 (skippable) [MP3, TMT, MP4, TM2020.v4] // settings info
   version
   v1-
     OldSettingsInfos[] OldSettings
   v2+
     SettingsInfos[] Settings
 
-0x023 (skippable) [MP3, TMT, MP4, TM2020] // anticheat system info
+0x023 (skippable) [MP3, TMT, MP4, TM2020.v3] // anticheat system info
   version
   string CpuDescription
   int CpuKind
@@ -192,7 +192,7 @@ CGameCtnGhost 0x03092000 // A ghost.
 0x026 (skippable) [MP3, TMT, MP4, TM2020] // GhostUid128
   checksum128? GhostUid128
 
-0x027 (skippable) [MP3, TMT, MP4, TM2020] // screen captures
+0x027 (skippable) [MP3, TMT, MP4, TM2020.v4] // screen captures
   version
   CPlugTimedPixelArray[] ScreenCaptures
   v1+
@@ -227,7 +227,7 @@ CGameCtnGhost 0x03092000 // A ghost.
   Checkpoint[] Checkpoints (version: 2)
   int? RaceStartTime (time)
 
-0x02C (skippable) [TM2020]
+0x02C (skippable) [TM2020.v1]
   version
   unixtime? WalltimeStartTimestamp
   unixtime? WalltimeEndTimestamp

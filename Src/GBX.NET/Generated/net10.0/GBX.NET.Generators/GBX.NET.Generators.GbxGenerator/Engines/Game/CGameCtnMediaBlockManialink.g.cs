@@ -139,24 +139,12 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     /// CGameCtnMediaBlockManialink 0x001 chunk
     /// </summary>
     [Chunk(0x0312A001)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312A001 : Chunk<CGameCtnMediaBlockManialink>, IVersionable
     {
         public override uint Id => 0x0312A001;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0312A001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312A001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -167,11 +155,6 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
         public override void ReadWrite(CGameCtnMediaBlockManialink n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
             rw.String(ref n.manialinkUrl);

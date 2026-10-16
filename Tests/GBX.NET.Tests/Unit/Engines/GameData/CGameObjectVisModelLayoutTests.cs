@@ -197,7 +197,8 @@ public class CGameObjectVisModelLayoutTests
         var node = new CPlugAnimLocSimple();
         var chunk = new CPlugAnimLocSimple.Chunk090F8000();
         payload.Read(rw => chunk.ReadWrite(node, rw));
-        await Assert.That(chunk.Version).IsEqualTo(4);
+        await Assert.That(chunk.Version).IsEqualTo(0);
+        await Assert.That(node.AnimationVersion).IsEqualTo(4);
         await Assert.That(chunk.U02).IsEqualTo(123);
         await Assert.That(node.RotAngle).IsEqualTo(1.5f);
         await payload.AssertRoundTrip(rw => chunk.ReadWrite(node, rw));

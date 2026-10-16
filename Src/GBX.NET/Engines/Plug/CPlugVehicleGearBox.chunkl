@@ -1,6 +1,6 @@
 CPlugVehicleGearBox 0x09094000
 
-0x001 [MP4, TM2020]
+0x001 [MP4, TM2020.v2]
   version
   float[]
   bool

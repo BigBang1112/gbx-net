@@ -150,7 +150,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     /// CPlugVehiclePhyModel 0x008 chunk
     /// </summary>
     [Chunk(0x090EA008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 14)]
     public partial class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA008;
@@ -159,6 +159,18 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public Vec3[]? U01;
         public int U02;
         public int U03;
+
+        public Chunk090EA008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090EA008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 14;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -172,6 +184,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 14)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.phyShapeRef);
 
             if (Version >= 1)
@@ -203,7 +220,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     /// CPlugVehiclePhyModel 0x009 chunk
     /// </summary>
     [Chunk(0x090EA009)]
-    [ChunkGameVersion(GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk090EA009 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA009;
@@ -240,6 +257,18 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
             yield break;
         }
 
+        public Chunk090EA009() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090EA009(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -251,6 +280,10 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 1)
             {

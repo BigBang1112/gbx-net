@@ -181,24 +181,12 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     /// CPlugCloudsParam 0x002 chunk (cloud settings)
     /// </summary>
     [Chunk(0x09182002, "cloud settings")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09182002 : Chunk09182000, IVersionable
     {
         public override uint Id => 0x09182002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09182002() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09182002(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -209,11 +197,6 @@ public partial class CPlugCloudsParam : CMwNod, IClass
         public override void ReadWrite(CPlugCloudsParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             base.ReadWrite(n, rw);
             rw.Boolean(ref n.materialUseT3b);
         }

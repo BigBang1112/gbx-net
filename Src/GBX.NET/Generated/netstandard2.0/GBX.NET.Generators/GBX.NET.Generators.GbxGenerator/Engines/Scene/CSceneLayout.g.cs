@@ -664,7 +664,7 @@ public partial class CSceneLayout : CScene, IClass
     /// CSceneLayout 0x01C chunk
     /// </summary>
     [Chunk(0x0A00301C)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 5)]
     public partial class Chunk0A00301C : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A00301C;
@@ -716,6 +716,18 @@ public partial class CSceneLayout : CScene, IClass
             yield break;
         }
 
+        public Chunk0A00301C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A00301C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -744,6 +756,10 @@ public partial class CSceneLayout : CScene, IClass
         public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version <= 2)
             {

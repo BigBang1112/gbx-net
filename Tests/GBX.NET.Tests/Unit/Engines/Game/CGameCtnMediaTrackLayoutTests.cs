@@ -87,7 +87,6 @@ public class CGameCtnMediaTrackLayoutTests
     [Arguments(0, false)]
     [Arguments(1, false)]
     [Arguments(1, true)]
-    [Arguments(2, true)]
     public async Task ReadWrite_CyclingParameters_KeepVersionBranchesAndNullSentinels(int version, bool hasTimes)
     {
         var payload = Payload(w =>

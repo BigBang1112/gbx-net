@@ -67,7 +67,7 @@ public partial class CScriptTraitsMetadata : CMwNod, IClass
     /// CScriptTraitsMetadata 0x000 chunk
     /// </summary>
     [Chunk(0x11002000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 6)]
     public partial class Chunk11002000 : Chunk<CScriptTraitsMetadata>
     {
         public override uint Id => 0x11002000;

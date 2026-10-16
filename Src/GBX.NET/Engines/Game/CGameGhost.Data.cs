@@ -1,4 +1,4 @@
-﻿using GBX.NET.Managers;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Engines.Game;
 
@@ -142,7 +142,7 @@ public partial class CGameGhost
         {
             SavedMobilClassId = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
 
-            if (SavedMobilClassId == uint.MaxValue && version != 0)
+            if (SavedMobilClassId == uint.MaxValue && version >= 1)
             {
                 return;
             }
@@ -180,7 +180,7 @@ public partial class CGameGhost
                 // CGameGhostTMData::ArchiveStateTimes
                 stateTimes = r.ReadArray<int>();
 
-                if (version != 0)
+                if (version >= 1)
                 {
                     for (var i = 1; i < stateTimes.Length; i++)
                     {
@@ -195,7 +195,7 @@ public partial class CGameGhost
             }
 
             // ArchiveStateTimes uses the containing chunk's version, not the vehicle-state version.
-            FirstSampleTime = IsFixedTimeStep && version != 0 ? r.ReadTimeInt32() : null;
+            FirstSampleTime = IsFixedTimeStep && version >= 1 ? r.ReadTimeInt32() : null;
 
             if (r.BaseStream.Position != r.BaseStream.Length)
             {
@@ -237,7 +237,7 @@ public partial class CGameGhost
         {
             w.Write(SavedMobilClassId);
 
-            if (SavedMobilClassId == uint.MaxValue && version != 0)
+            if (SavedMobilClassId == uint.MaxValue && version >= 1)
             {
                 return;
             }
@@ -305,12 +305,12 @@ public partial class CGameGhost
                 foreach (var sample in Samples)
                 {
                     var time = sample.Time.TotalMilliseconds;
-                    w.Write(version != 0 ? time - previousTime : time);
+                    w.Write(version >= 1 ? time - previousTime : time);
                     previousTime = time;
                 }
             }
 
-            if (IsFixedTimeStep && version != 0)
+            if (IsFixedTimeStep && version >= 1)
             {
                 w.Write(FirstSampleTime ?? (Samples.Count > 0 ? Samples[0].Time : TimeInt32.Zero));
             }

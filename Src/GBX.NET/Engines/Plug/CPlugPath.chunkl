@@ -1,7 +1,7 @@
 CPlugPath 0x09119000
 
-0x000 [MP4, TM2020]
-  version = 2
+0x000 [MP4, TM2020.v3]
+  version
   CPlugPolyLine3[] PolyLines
   v2+
     bool

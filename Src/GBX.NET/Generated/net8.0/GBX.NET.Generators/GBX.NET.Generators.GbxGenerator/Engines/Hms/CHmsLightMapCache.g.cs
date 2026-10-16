@@ -1403,7 +1403,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     /// CHmsLightMapCache 0x01A skippable chunk
     /// </summary>
     [Chunk(0x0602201A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 13)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 15)]
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x0602201A;
@@ -1426,7 +1426,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
             }
             else if (gameVersion == GameVersion.TM2020)
             {
-                Version = 13;
+                Version = 15;
             }
         }
 
@@ -1443,7 +1443,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         public override void ReadWrite(CHmsLightMapCache n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 13)
+            if (Version > 15)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

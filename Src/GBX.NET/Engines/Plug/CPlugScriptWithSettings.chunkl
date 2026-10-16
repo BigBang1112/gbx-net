@@ -4,6 +4,6 @@ CPlugScriptWithSettings 0x09083000
   CPlugFileTextScript* Script
   int SettingCount (local, write: "n.Settings?.Length ?? 0")
   int SettingsVersion
-  if SettingsVersion != 0
+  if SettingsVersion >= 1
     throw
   CScriptSetting[SettingCount] Settings

@@ -579,25 +579,13 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// CPlugVehicleVisEmitterModel 0x007 chunk (Additional emission flag)
     /// </summary>
     [Chunk(0x090E6007, "Additional emission flag")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090E6007 : Chunk<CPlugVehicleVisEmitterModel>, IVersionable
     {
         public override uint Id => 0x090E6007;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        public Chunk090E6007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090E6007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -609,11 +597,6 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehicleVisEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
-            {
-                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
-            }
-
             rw.Boolean(ref U01);
         }
     }

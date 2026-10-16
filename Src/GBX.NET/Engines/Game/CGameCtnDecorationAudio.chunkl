@@ -9,7 +9,7 @@ CGameCtnDecorationAudio 0x03039000
 0x002 [TMSX, TMNESWC, VSK5, TMF]
   float SoundAttenuationInEditor
 
-0x003 [MP3, TMT, MP4, TM2020]
+0x003 [MP3, TMT, MP4, TM2020.v9]
   version
   v1+
     v3-
@@ -51,7 +51,7 @@ CGameCtnDecorationAudio 0x03039000
             v8+
               CPlugAudioBalance AudioBalance_SM_EvtBulletTime
 
-0x004 [MP3, TMT, MP4, TM2020]
+0x004 [MP3, TMT, MP4, TM2020.v1]
   version
   CPlugAudioEnvironment AudioEnvOutsideOpen
   CPlugAudioEnvironment AudioEnvOutsideEnclosed

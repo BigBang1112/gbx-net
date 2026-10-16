@@ -37,6 +37,15 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private int animationVersion = 4;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
+    public int AnimationVersion
+    {
+        get => this.animationVersion;
+        set => this.animationVersion = value;
+    }
+
     private int rotPeriod;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>]
@@ -65,8 +74,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int axis;
-    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090F8000>(1)]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
     public int Axis
     {
         get => this.axis;
@@ -74,8 +83,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int rotPeriodMax;
-    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090F8000>(2)]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
     public int RotPeriodMax
     {
         get => this.rotPeriodMax;
@@ -83,8 +92,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int transPeriodMax;
-    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090F8000>(2)]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
     public int TransPeriodMax
     {
         get => this.transPeriodMax;
@@ -92,8 +101,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private byte rotFunc;
-    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090F8000>(3)]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
     public byte RotFunc
     {
         get => this.rotFunc;
@@ -101,8 +110,8 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private float rotAngle;
-    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090F8000>(3)]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F8000>]
     public float RotAngle
     {
         get => this.rotAngle;
@@ -112,6 +121,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugAnimLocSimple)clone).animationVersion = context.Clone(this.animationVersion)!;
         ((CPlugAnimLocSimple)clone).rotPeriod = context.Clone(this.rotPeriod)!;
         ((CPlugAnimLocSimple)clone).transPeriod = context.Clone(this.transPeriod)!;
         ((CPlugAnimLocSimple)clone).transY = context.Clone(this.transY)!;
@@ -130,46 +140,61 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     /// CPlugAnimLocSimple 0x000 chunk
     /// </summary>
     [Chunk(0x090F8000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk090F8000 : Chunk<CPlugAnimLocSimple>, IVersionable
     {
         public override uint Id => 0x090F8000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
         public int Version { get; set; }
         public int U02;
+
+        public Chunk090F8000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F8000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 0;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk090F8000)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F8000)clone).Version = context.Clone(this.Version)!;
             ((Chunk090F8000)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugAnimLocSimple n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Int32(ref n.animationVersion);
             rw.Int32(ref n.rotPeriod);
             rw.Int32(ref n.transPeriod);
             rw.Single(ref n.transY);
 
-            if (Version >= 1)
+            if (n.AnimationVersion>= 1)
             {
                 rw.Int32(ref n.axis);
 
-                if (Version >= 2)
+                if (n.AnimationVersion>= 2)
                 {
                     rw.Int32(ref n.rotPeriodMax);
                     rw.Int32(ref n.transPeriodMax);
 
-                    if (Version >= 3)
+                    if (n.AnimationVersion>= 3)
                     {
                         rw.Byte(ref n.rotFunc);
                         rw.Single(ref n.rotAngle);
 
-                        if (Version >= 4)
+                        if (n.AnimationVersion>= 4)
                         {
                             rw.Int32(ref U02);
                         }

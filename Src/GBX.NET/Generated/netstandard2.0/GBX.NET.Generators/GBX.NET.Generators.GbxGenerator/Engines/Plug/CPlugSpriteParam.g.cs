@@ -137,12 +137,24 @@ public partial class CPlugSpriteParam : CPlug, IClass
     /// CPlugSpriteParam 0x001 chunk
     /// </summary>
     [Chunk(0x090AC001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk090AC001 : Chunk090AC000, IVersionable
     {
         public override uint Id => 0x090AC001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk090AC001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090AC001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -153,6 +165,11 @@ public partial class CPlugSpriteParam : CPlug, IClass
         public override void ReadWrite(CPlugSpriteParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             base.ReadWrite(n, rw);
             rw.Single(ref n.textureHeightInWorld);
 

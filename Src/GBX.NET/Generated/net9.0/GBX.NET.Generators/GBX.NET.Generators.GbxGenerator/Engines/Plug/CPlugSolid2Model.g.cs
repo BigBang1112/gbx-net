@@ -145,7 +145,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     /// CPlugSolid2Model 0x000 chunk
     /// </summary>
     [Chunk(0x090BB000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 37)]
     public partial class Chunk090BB000 : Chunk<CPlugSolid2Model>
     {
         public override uint Id => 0x090BB000;
