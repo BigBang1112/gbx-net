@@ -38,6 +38,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnDecorationSize>? decoSizeRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk03038011>]
     public CGameCtnDecorationSize? DecoSize
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnDecorationAudio>? decoAudioRef;
+    /// <remarks>Applied with: 0x012, 0x019 body chunks</remarks>
     [AppliedWithChunk<Chunk03038012>]
     [AppliedWithChunk<Chunk03038019>]
     public CGameCtnDecorationAudio? DecoAudio
@@ -55,6 +57,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnDecorationMood>? decoMoodRef;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk03038013>]
     public CGameCtnDecorationMood? DecoMood
     {
@@ -63,6 +66,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugDecoratorSolid>? decoratorSolidWarpRef;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk03038014>]
     public CPlugDecoratorSolid? DecoratorSolidWarp
     {
@@ -71,6 +75,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnDecorationTerrainModifier>? terrainModifierCoveredRef;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk03038015>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierCovered
     {
@@ -79,6 +84,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnDecorationTerrainModifier>? terrainModifierBaseRef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk03038016>]
     public CGameCtnDecorationTerrainModifier? TerrainModifierBase
     {
@@ -87,6 +93,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private string? decorationZoneFrontierId;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk03038017>]
     public string? DecorationZoneFrontierId
     {
@@ -95,6 +102,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private bool isWaterOutsidePlayField;
+    /// <remarks>Applied with: 0x017 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03038017>(1)]
     public bool IsWaterOutsidePlayField
     {
@@ -103,6 +111,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugGameSkin>? vehicleFxSkinRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk03038018>]
     public CPlugGameSkin? VehicleFxSkin
     {
@@ -111,6 +120,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private string? vehicleFxFolder;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk03038018>]
     public string? VehicleFxFolder
     {
@@ -119,6 +129,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugSound>? decoAudioAmbientRef;
+    /// <remarks>Applied with: 0x019 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03038019>(1)]
     public CPlugSound? DecoAudioAmbient
     {
@@ -127,6 +138,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnDecorationMaterialModifiers>? decoMaterialModifiersRef;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
     [AppliedWithChunk<Chunk0303801A>]
     public CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers
     {
@@ -135,6 +147,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnChallenge>? decoMapRef;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
     [AppliedWithChunk<Chunk0303801B>]
     public CGameCtnChallenge? DecoMap
     {
@@ -146,6 +159,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// <summary>
     /// Deco.LightMap.Gbx of the DecoMap like from cache - zip with LightMapCache.Gbx inside
     /// </summary>
+    /// <remarks>Applied with: 0x01B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303801B>(1)]
     public CMwNod? DecoMapLightMap
     {

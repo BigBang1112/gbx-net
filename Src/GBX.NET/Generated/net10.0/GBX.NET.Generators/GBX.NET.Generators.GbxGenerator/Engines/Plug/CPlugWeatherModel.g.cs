@@ -38,6 +38,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugWeather>? weathers;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090BF001>]
     public NodeRefList<CPlugWeather>? Weathers
     {
@@ -46,6 +47,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSpecularDirRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090BF001>]
     public CPlugBitmap? BitmapSpecularDir
     {
@@ -54,6 +56,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncDayTime>? funcDayTimeRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090BF002>]
     public CFuncDayTime? FuncDayTime
     {
@@ -62,6 +65,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapWaterFogRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk090BF003>]
     public CPlugBitmap? BitmapWaterFog
     {
@@ -70,6 +74,7 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugMoodSetting>? moodSettingRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090BF004>]
     public CPlugMoodSetting? MoodSetting
     {

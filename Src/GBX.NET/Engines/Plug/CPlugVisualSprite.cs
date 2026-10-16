@@ -4,6 +4,7 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugVisualSprite
 {
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010000>]
     [AppliedWithChunk<Chunk09010001>]
     [AppliedWithChunk<Chunk09010002>]
@@ -14,6 +15,7 @@ public partial class CPlugVisualSprite
         set => SpriteFlags = (SpriteFlags & 0xFFFFFFF8) | ((uint)value & 7);
     }
 
+    /// <remarks>Applied with: 0x001, 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010001>]
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]

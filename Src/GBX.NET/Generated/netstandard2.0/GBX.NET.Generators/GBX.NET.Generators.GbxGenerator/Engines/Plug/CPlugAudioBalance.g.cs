@@ -38,6 +38,7 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
     internal override uint GetId() => Id;
 
     private Group[]? groups;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09034000>]
     public Group[]? Groups
     {

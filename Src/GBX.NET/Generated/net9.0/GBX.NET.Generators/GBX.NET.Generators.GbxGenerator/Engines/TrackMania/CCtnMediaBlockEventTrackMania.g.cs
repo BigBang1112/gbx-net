@@ -38,6 +38,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk2407F000>]
     [AppliedWithChunk<Chunk2407F001>]
     [AppliedWithChunk<Chunk2407F002>]
@@ -50,6 +51,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk2407F000>]
     [AppliedWithChunk<Chunk2407F001>]
     [AppliedWithChunk<Chunk2407F002>]
@@ -62,6 +64,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     }
 
     private Stunt[]? stunts;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2407F000>]
     public Stunt[]? Stunts
     {
@@ -70,6 +73,7 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
     }
 
     private Event[]? events;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk2407F001>]
     [AppliedWithChunk<Chunk2407F002>]
     [AppliedWithChunk<Chunk2407F003>]

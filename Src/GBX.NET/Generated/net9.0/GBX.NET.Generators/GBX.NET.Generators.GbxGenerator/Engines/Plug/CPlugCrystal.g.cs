@@ -38,6 +38,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     internal override uint GetId() => Id;
 
     private int generateMode;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09003002>]
     public int GenerateMode
     {
@@ -46,6 +47,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private float spriteSize = 0.1f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09003002>]
     public float SpriteSize
     {
@@ -54,6 +56,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private List<Material> materials = new();
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09003003>]
     public List<Material> Materials
     {
@@ -62,6 +65,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private byte[]? editorData;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09003004>]
     public byte[]? EditorData
     {
@@ -70,6 +74,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private int editorDataFlags;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09003004>(1)]
     public int EditorDataFlags
     {
@@ -78,6 +83,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private float[]? smoothingGroups;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09003007>]
     public float[]? SmoothingGroups
     {
@@ -86,6 +92,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private int[]? faceSmoothingGroupIndices;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09003007>]
     public int[]? FaceSmoothingGroupIndices
     {
@@ -94,6 +101,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private bool hasLegacyVoxelSpace;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk09003008>]
     public bool HasLegacyVoxelSpace
     {
@@ -102,6 +110,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     private LegacyVoxelSpace? legacyVoxels;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk09003008>]
     public LegacyVoxelSpace? LegacyVoxels
     {

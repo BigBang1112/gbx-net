@@ -38,6 +38,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CGameCtnChallengeGroup>? challengeGroups;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03090000>]
     public NodeRefList<CGameCtnChallengeGroup>? ChallengeGroups
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? iconId;
+    /// <remarks>Applied with: 0x002, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk03090002>]
     [AppliedWithChunk<Chunk0309000C>]
     public string? IconId
@@ -55,6 +57,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x003, 0x004, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk03090003>]
     [AppliedWithChunk<Chunk03090004>]
     [AppliedWithChunk<Chunk0309000F>]
@@ -65,6 +68,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private EType @type;
+    /// <remarks>Applied with: 0x003, 0x004, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk03090003>]
     [AppliedWithChunk<Chunk03090004>]
     [AppliedWithChunk<Chunk0309000F>]
@@ -75,6 +79,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private bool isInternal;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk03090003>]
     [AppliedWithChunk<Chunk03090004>]
     public bool IsInternal
@@ -84,6 +89,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? campaignId;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk03090006>]
     public string? CampaignId
     {
@@ -92,6 +98,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private int index;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0309000A>]
     public int Index
     {
@@ -100,6 +107,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? unlockedByCampaign;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0309000B>]
     public string? UnlockedByCampaign
     {
@@ -108,6 +116,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private EUnlockType unlockType;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0309000D>]
     public EUnlockType UnlockType
     {
@@ -116,6 +125,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private ERequiredPlayersCount requiredPlayersCount;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0309000E>]
     public ERequiredPlayersCount RequiredPlayersCount
     {
@@ -124,6 +134,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? modeScriptName;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk03090010>]
     public string? ModeScriptName
     {
@@ -132,6 +143,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private string? scoreContext;
+    /// <remarks>Applied with: 0x012 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk03090012>(0, 1)]
     public string? ScoreContext
     {
@@ -140,6 +152,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     private bool officialRecordEnabled;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk03090012>]
     public bool OfficialRecordEnabled
     {

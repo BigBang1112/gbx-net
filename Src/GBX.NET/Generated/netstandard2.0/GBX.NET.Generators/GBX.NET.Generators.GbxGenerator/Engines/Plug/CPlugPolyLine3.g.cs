@@ -38,6 +38,7 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec3[]? poss;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09118000>]
     public Vec3[]? Poss
     {
@@ -46,6 +47,7 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     }
 
     private Vec3[]? lefts;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09118000>(2)]
     public Vec3[]? Lefts
     {

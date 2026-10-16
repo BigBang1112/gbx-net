@@ -38,6 +38,7 @@ public partial class CMotionSkelSimple : CMotionTrack, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CFuncSkelValues>? skelValuesRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08036000>]
     public CFuncSkelValues? SkelValues
     {

@@ -41,6 +41,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0901A000>]
     public CMwNod? PlugFile
     {
@@ -49,6 +50,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private EMode mode;
+    /// <remarks>Applied with: 0x009, 0x00D, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0901A009>]
     [AppliedWithChunk<Chunk0901A00D>]
     [AppliedWithChunk<Chunk0901A00E>]
@@ -59,6 +61,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float volume;
+    /// <remarks>Applied with: 0x009, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0901A009>]
     [AppliedWithChunk<Chunk0901A00D>]
     public float Volume
@@ -68,6 +71,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private bool isLooping;
+    /// <remarks>Applied with: 0x009, 0x00D, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0901A009>]
     [AppliedWithChunk<Chunk0901A00D>]
     [AppliedWithChunk<Chunk0901A00E>]
@@ -78,6 +82,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private bool isContinuous;
+    /// <remarks>Applied with: 0x009, 0x00D, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0901A009>]
     [AppliedWithChunk<Chunk0901A00D>]
     [AppliedWithChunk<Chunk0901A00E>]
@@ -88,6 +93,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float priority;
+    /// <remarks>Applied with: 0x009, 0x00D, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0901A009>]
     [AppliedWithChunk<Chunk0901A00D>]
     [AppliedWithChunk<Chunk0901A00E>]
@@ -98,6 +104,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private ESoundKind soundKind;
+    /// <remarks>Applied with: 0x00B, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
     [AppliedWithChunk<Chunk0901A011>]
     public ESoundKind SoundKind
@@ -107,6 +114,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int insideConeAngle;
+    /// <remarks>Applied with: 0x00B, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
     [AppliedWithChunk<Chunk0901A011>]
     public int InsideConeAngle
@@ -116,6 +124,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int outsideConeAngle;
+    /// <remarks>Applied with: 0x00B, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
     [AppliedWithChunk<Chunk0901A011>]
     public int OutsideConeAngle
@@ -125,6 +134,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float coneOutsideAttenuation;
+    /// <remarks>Applied with: 0x00B, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
     [AppliedWithChunk<Chunk0901A011>]
     public float ConeOutsideAttenuation
@@ -134,6 +144,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float coneOutsideAttenuationHF;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00B>]
     public float ConeOutsideAttenuationHF
     {
@@ -142,6 +153,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float refDistance;
+    /// <remarks>Applied with: 0x00C, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>]
     public float RefDistance
@@ -151,6 +163,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float maxDistanceOmni;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     public float MaxDistanceOmni
     {
@@ -159,6 +172,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private bool enableDoppler;
+    /// <remarks>Applied with: 0x00C, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>]
     public bool EnableDoppler
@@ -168,6 +182,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float volumeAttenuationDirect;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     public float VolumeAttenuationDirect
     {
@@ -176,6 +191,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float volumeAttenuationDirectHF;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     public float VolumeAttenuationDirectHF
     {
@@ -184,6 +200,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float volumeAttenuationRoom;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     public float VolumeAttenuationRoom
     {
@@ -192,6 +209,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float volumeAttenuationRoomHF;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     public float VolumeAttenuationRoomHF
     {
@@ -200,6 +218,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float dopplerFactor;
+    /// <remarks>Applied with: 0x00C, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>]
     public float DopplerFactor
@@ -209,6 +228,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float rolloffFactor;
+    /// <remarks>Applied with: 0x00C, 0x00F v1+ body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>(1)]
     public float RolloffFactor
@@ -218,6 +238,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float roomRolloffFactor;
+    /// <remarks>Applied with: 0x00C, 0x00F v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>(4)]
     public float RoomRolloffFactor
@@ -227,6 +248,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float airAbsorptionFactor;
+    /// <remarks>Applied with: 0x00C, 0x00F v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk0901A00C>]
     [AppliedWithChunk<Chunk0901A00F>(4)]
     public float AirAbsorptionFactor
@@ -236,6 +258,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private bool useLowPassFilter;
+    /// <remarks>Applied with: 0x00E v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(1)]
     public bool UseLowPassFilter
     {
@@ -244,6 +267,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int maxDuplicates;
+    /// <remarks>Applied with: 0x00E v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(2)]
     public int MaxDuplicates
     {
@@ -252,6 +276,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int balanceGroup;
+    /// <remarks>Applied with: 0x00E v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(3)]
     public int BalanceGroup
     {
@@ -260,6 +285,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int duplicatesIntervalMin;
+    /// <remarks>Applied with: 0x00E v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(4)]
     public int DuplicatesIntervalMin
     {
@@ -268,6 +294,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float fadeStopDuration;
+    /// <remarks>Applied with: 0x00E v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(5)]
     public float FadeStopDuration
     {
@@ -276,6 +303,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float pitch;
+    /// <remarks>Applied with: 0x00E v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(6)]
     public float Pitch
     {
@@ -284,6 +312,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float fadePlayDuration;
+    /// <remarks>Applied with: 0x00E v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(7)]
     public float FadePlayDuration
     {
@@ -292,6 +321,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private string? groupDuplicate;
+    /// <remarks>Applied with: 0x00E v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00E>(9)]
     public string? GroupDuplicate
     {
@@ -300,6 +330,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float maxDistance;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>]
     public float MaxDistance
     {
@@ -308,6 +339,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRef<CFuncKeysReal>? volumeFromDistanceRef;
+    /// <remarks>Applied with: 0x00F v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(2)]
     public CFuncKeysReal? VolumeFromDistance
     {
@@ -316,6 +348,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int roomFxSend;
+    /// <remarks>Applied with: 0x00F v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(3)]
     public int RoomFxSend
     {
@@ -324,6 +357,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int pitchFromDistMode;
+    /// <remarks>Applied with: 0x00F v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(7)]
     public int PitchFromDistMode
     {
@@ -332,6 +366,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private int ignoreSourceProperties;
+    /// <remarks>Applied with: 0x00F v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(7)]
     public int IgnoreSourceProperties
     {
@@ -340,6 +375,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRef<CFuncKeysReal>? pitchFromDistanceRef;
+    /// <remarks>Applied with: 0x00F v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(8)]
     public CFuncKeysReal? PitchFromDistance
     {
@@ -348,6 +384,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRef<CFuncKeysReal>? volumeFormSpeedKmhRef;
+    /// <remarks>Applied with: 0x00F v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(9)]
     public CFuncKeysReal? VolumeFormSpeedKmh
     {
@@ -356,6 +393,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float radius;
+    /// <remarks>Applied with: 0x00F v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(10)]
     public float Radius
     {
@@ -364,6 +402,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private float panAngleDeg;
+    /// <remarks>Applied with: 0x00F v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901A00F>(11)]
     public float PanAngleDeg
     {
@@ -372,6 +411,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRefList<CPlugSound>? oldSubSources;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk0901A010>]
     public NodeRefList<CPlugSound>? OldSubSources
     {
@@ -380,6 +420,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRef<CPlugSound>? backingSoundRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0901A012>]
     public CPlugSound? BackingSound
     {
@@ -388,6 +429,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     }
 
     private NodeRef<CPlugSound>? focusedSoundRef;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk0901A013>]
     public CPlugSound? FocusedSound
     {

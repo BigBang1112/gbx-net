@@ -46,6 +46,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     private NodeRef<CMwNod>? specialPropertiesRef;
 
     private CPlugDynaModel? dynaModel;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk2E006003>]
     public CPlugDynaModel? DynaModel
     {
@@ -54,6 +55,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     private bool throwableEnabled;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk2E006005>]
     public bool ThrowableEnabled
     {
@@ -62,6 +64,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     private float throwableDamageCoef = 1;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk2E006005>]
     public float ThrowableDamageCoef
     {
@@ -70,6 +73,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     private int throwableStunnedDuration = 1000;
+    /// <remarks>Applied with: 0x005 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E006005>(1)]
     public int ThrowableStunnedDuration
     {
@@ -78,6 +82,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     private int throwableCooldownBetweenTakeAndThrow = 400;
+    /// <remarks>Applied with: 0x005 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E006005>(2)]
     public int ThrowableCooldownBetweenTakeAndThrow
     {
@@ -86,6 +91,7 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     }
 
     private float staminaThrowCost = 750;
+    /// <remarks>Applied with: 0x005 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E006005>(3)]
     public float StaminaThrowCost
     {

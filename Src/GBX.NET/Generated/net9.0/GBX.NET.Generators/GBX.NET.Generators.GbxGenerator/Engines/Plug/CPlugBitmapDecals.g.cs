@@ -38,6 +38,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugDecalModel>? decalModels;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09078000>]
     public NodeRefList<CPlugDecalModel>? DecalModels
     {
@@ -46,6 +47,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     }
 
     private DecalSet[]? decalSets;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09078000>]
     public DecalSet[]? DecalSets
     {
@@ -54,6 +56,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     }
 
     private string? matterId;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09078000>(4)]
     public string? MatterId
     {

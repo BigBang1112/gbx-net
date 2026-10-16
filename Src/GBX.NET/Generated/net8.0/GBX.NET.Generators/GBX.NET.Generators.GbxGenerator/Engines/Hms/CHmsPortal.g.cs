@@ -38,6 +38,7 @@ public partial class CHmsPortal : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool needClipping2D;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk06006000>]
     [AppliedWithChunk<Chunk06006002>]
     public bool NeedClipping2D
@@ -47,6 +48,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool needClipping3D;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk06006000>]
     [AppliedWithChunk<Chunk06006002>]
     public bool NeedClipping3D
@@ -56,6 +58,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool isVisualVisible = true;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk06006000>]
     [AppliedWithChunk<Chunk06006002>]
     public bool IsVisualVisible
@@ -65,6 +68,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool isPickingPossible;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk06006000>]
     [AppliedWithChunk<Chunk06006002>]
     public bool IsPickingPossible
@@ -74,6 +78,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool canPassThrough;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk06006000>]
     [AppliedWithChunk<Chunk06006002>]
     public bool CanPassThrough
@@ -83,6 +88,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool soundCanPassThrough = true;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public bool SoundCanPassThrough
     {
@@ -91,6 +97,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool isDirectPathSet;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public bool IsDirectPathSet
     {
@@ -99,6 +106,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private int directOcclusion;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public int DirectOcclusion
     {
@@ -107,6 +115,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float directOcclusionSpectralRatio = 0.25f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public float DirectOcclusionSpectralRatio
     {
@@ -115,6 +124,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float directOcclusionRatio = 0.5f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public float DirectOcclusionRatio
     {
@@ -123,6 +133,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private int indirectOcclusion;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public int IndirectOcclusion
     {
@@ -131,6 +142,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float indirectOcclusionSpectralRatio = 0.25f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public float IndirectOcclusionSpectralRatio
     {
@@ -139,6 +151,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float indirectOcclusionRatio = 0.5f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public float IndirectOcclusionRatio
     {
@@ -147,6 +160,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private int indirectObstruction;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public int IndirectObstruction
     {
@@ -155,6 +169,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float indirectObstructionSpectralRatio;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06006001>]
     public float IndirectObstructionSpectralRatio
     {
@@ -163,6 +178,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private bool canSeeThrough;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06006002>]
     public bool CanSeeThrough
     {
@@ -171,6 +187,7 @@ public partial class CHmsPortal : CMwNod, IClass
     }
 
     private float seeThroughOpacity = 0.5f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06006002>]
     public float SeeThroughOpacity
     {

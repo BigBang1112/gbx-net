@@ -38,6 +38,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugMaterial>? materialRef;
+    /// <remarks>Applied with: 0x011, 0x031 body chunks</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugMaterial? Material
@@ -47,6 +48,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugShader>? shaderRef;
+    /// <remarks>Applied with: 0x011, 0x031 body chunks</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugShader? Shader
@@ -56,6 +58,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float sizeBirthRatioXY;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float SizeBirthRatioXY
     {
@@ -64,6 +67,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private Vec2 spritePivotPoint;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public Vec2 SpritePivotPoint
     {
@@ -72,6 +76,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncColorGradient>? colorGradientRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncColorGradient? ColorGradient
     {
@@ -80,6 +85,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int colorGradientUse;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int ColorGradientUse
     {
@@ -88,6 +94,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool colorModulateWithTransparency;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public bool ColorModulateWithTransparency
     {
@@ -96,6 +103,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int maxParticleCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int MaxParticleCount
     {
@@ -104,6 +112,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float spawnPeriod;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float SpawnPeriod
     {
@@ -112,6 +121,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float life;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float Life
     {
@@ -120,6 +130,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float lifeVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float LifeVariation
     {
@@ -128,6 +139,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float sizeBirth;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float SizeBirth
     {
@@ -136,6 +148,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float sizeBirthVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float SizeBirthVariation
     {
@@ -144,6 +157,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float weightBirth;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float WeightBirth
     {
@@ -152,6 +166,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float weightBirthVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float WeightBirthVariation
     {
@@ -160,6 +175,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float rollSpeedBirth;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float RollSpeedBirth
     {
@@ -168,6 +184,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float rollSpeedBirthVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float RollSpeedBirthVariation
     {
@@ -176,6 +193,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float transparencyBirth;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float TransparencyBirth
     {
@@ -184,6 +202,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float transparencyBirthVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float TransparencyBirthVariation
     {
@@ -192,6 +211,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnvelope>? sizeOverLifeRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? SizeOverLife
     {
@@ -200,6 +220,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnvelope>? transparencyOverLifeRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? TransparencyOverLife
     {
@@ -208,6 +229,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private EPlugParticleEmitterSubModel particleEmitterSubModel;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public EPlugParticleEmitterSubModel ParticleEmitterSubModel
     {
@@ -216,6 +238,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int multiStateRenderMode;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int MultiStateRenderMode
     {
@@ -224,6 +247,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int spawnCond;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int SpawnCond
     {
@@ -232,6 +256,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float spawnMinDist;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float SpawnMinDist
     {
@@ -240,6 +265,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float uScaleDist;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float UScaleDist
     {
@@ -248,6 +274,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int standardRenderMode;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int StandardRenderMode
     {
@@ -256,6 +283,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float vScaleDist;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float VScaleDist
     {
@@ -264,6 +292,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float fluidFrictionBirth;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float FluidFrictionBirth
     {
@@ -272,6 +301,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float fluidFrictionBirthVariation;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public float FluidFrictionBirthVariation
     {
@@ -280,6 +310,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnvelope>? sizeXOverLifeRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public CFuncEnvelope? SizeXOverLife
     {
@@ -288,6 +319,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool sizeUseSizeX;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public bool SizeUseSizeX
     {
@@ -296,6 +328,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool sizeBirthUseEmissionZone;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public bool SizeBirthUseEmissionZone
     {
@@ -304,6 +337,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int circularTrailVertPerPartCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2011>]
     public int CircularTrailVertPerPartCount
     {
@@ -312,6 +346,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool sizeBirthUseIntensity;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2015>]
     public bool SizeBirthUseIntensity
     {
@@ -320,6 +355,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool colorBirthUseIntensity;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2015>]
     public bool ColorBirthUseIntensity
     {
@@ -328,6 +364,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool transparencyBirthUseIntensity;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2015>]
     public bool TransparencyBirthUseIntensity
     {
@@ -336,6 +373,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float sizeBirthEmissionZoneScale;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2016>]
     public float SizeBirthEmissionZoneScale
     {
@@ -344,6 +382,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float fluidFrictionBirthIntensityBase;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2017>]
     public float FluidFrictionBirthIntensityBase
     {
@@ -352,6 +391,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool fluidFrictionBirthUseIntensity;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2017>]
     public bool FluidFrictionBirthUseIntensity
     {
@@ -360,6 +400,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnvelope>? intensityFilterRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2018>]
     public CFuncEnvelope? IntensityFilter
     {
@@ -368,6 +409,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool multiState_IsAsyncLink;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
     [AppliedWithChunk<Chunk090B201B>]
     public bool MultiState_IsAsyncLink
     {
@@ -376,6 +418,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int textureAtlas;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk090B201C>]
     public int TextureAtlas
     {
@@ -384,6 +427,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int textureAtlasDimX;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk090B201C>]
     public int TextureAtlasDimX
     {
@@ -392,6 +436,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int textureAtlasDimY;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk090B201C>]
     public int TextureAtlasDimY
     {
@@ -400,6 +445,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int textureAtlasFixedIndex;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk090B201C>]
     public int TextureAtlasFixedIndex
     {
@@ -408,6 +454,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float beamLengthSpeedScale;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
     [AppliedWithChunk<Chunk090B201F>]
     public float BeamLengthSpeedScale
     {
@@ -416,6 +463,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool precalcEnabled;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public bool PrecalcEnabled
     {
@@ -424,6 +472,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int precalcPartCount;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public int PrecalcPartCount
     {
@@ -432,6 +481,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private int precalcSampleRate;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public int PrecalcSampleRate
     {
@@ -440,6 +490,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool collisionEnabled;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public bool CollisionEnabled
     {
@@ -448,6 +499,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float collisionBounce;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public float CollisionBounce
     {
@@ -456,6 +508,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float collisionRadius;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2020>]
     public float CollisionRadius
     {
@@ -464,6 +517,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private float collisionDamper;
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2021>]
     public float CollisionDamper
     {
@@ -472,6 +526,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private bool sortSprites;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2022>]
     public bool SortSprites
     {
@@ -480,6 +535,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugVisual>? visualRef;
+    /// <remarks>Applied with: 0x031 v0-4 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2031>(0, 4)]
     public CPlugVisual? Visual
     {
@@ -488,6 +544,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid2Model>? solid2ModelRef;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
     [AppliedWithChunk<Chunk090B2031>]
     public CPlugSolid2Model? Solid2Model
     {

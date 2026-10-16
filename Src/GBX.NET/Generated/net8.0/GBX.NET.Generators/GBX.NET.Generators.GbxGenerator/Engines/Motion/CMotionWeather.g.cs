@@ -38,6 +38,7 @@ public partial class CMotionWeather : CMotionManaged, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? legacyModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08054000>]
     public CMwNod? LegacyModel
     {

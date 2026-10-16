@@ -38,6 +38,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     internal override uint GetId() => Id;
 
     private uint spriteFlags;
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]
     public uint SpriteFlags
@@ -47,6 +48,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private Vec3 globalDirection = (0, 1, 0);
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk09010005>]
     public Vec3 GlobalDirection
     {
@@ -55,6 +57,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private Vec2 pivotPoint;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk09010005>]
     public Vec2 PivotPoint
     {
@@ -63,6 +66,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private ushort atlasGridCountU = 1;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk09010006>]
     public ushort AtlasGridCountU
     {
@@ -71,6 +75,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private ushort atlasGridCountV = 1;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk09010006>]
     public ushort AtlasGridCountV
     {
@@ -79,6 +84,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private CPlugSpriteParam? spriteParam;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk09010008>]
     public CPlugSpriteParam? SpriteParam
     {
@@ -87,6 +93,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     private Rect[]? atlasTexCoords;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk09010009>]
     public Rect[]? AtlasTexCoords
     {
@@ -106,6 +113,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         ((CPlugVisualSprite)clone).atlasTexCoords = context.CloneArray(this.atlasTexCoords)!;
     }
 
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]
     public bool RadiusInScreen
@@ -124,6 +132,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]
     public bool UseGlobalDir
@@ -142,6 +151,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk09010002>]
     [AppliedWithChunk<Chunk09010005>]
     public bool UseTextureAtlas

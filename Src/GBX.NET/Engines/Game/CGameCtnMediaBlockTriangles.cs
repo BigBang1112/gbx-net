@@ -5,12 +5,14 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
     private Vec4[] vertices = [];
     private Int3[] triangles = [];
 
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public List<Key> Keys { get; set; } = [];
 
     IEnumerable<IKey> IHasKeys.Keys => Keys;
 
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices
@@ -35,6 +37,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock.IHasKeys
         }
     }
 
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03029000>]
     [AppliedWithChunk<Chunk03029001>]
     public Int3[] Triangles

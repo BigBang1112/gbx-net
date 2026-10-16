@@ -38,6 +38,7 @@ public partial class CSceneLayout : CScene, IClass
     internal override uint GetId() => Id;
 
     private float cameraFarZ;
+    /// <remarks>Applied with: 0x010, 0x01C body chunks</remarks>
     [AppliedWithChunk<Chunk0A003010>]
     [AppliedWithChunk<Chunk0A00301C>]
     public float CameraFarZ
@@ -47,6 +48,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private Vec3 cameraClearColor;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003010>]
     public Vec3 CameraClearColor
     {
@@ -55,6 +57,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneSector>? sectors;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public NodeRefList<CSceneSector>? Sectors
@@ -64,6 +67,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneMobil[]? scene;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public SceneMobil[]? Scene
@@ -73,6 +77,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneLoc[]? sceneLocations;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public SceneLoc[]? SceneLocations
@@ -82,6 +87,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneLight>? lights;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public NodeRefList<CSceneLight>? Lights
@@ -91,6 +97,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneLoc[]? lightLocations;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public SceneLoc[]? LightLocations
@@ -100,6 +107,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneObject>? sounds;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public NodeRefList<CSceneObject>? Sounds
@@ -109,6 +117,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneLoc[]? soundLocations;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public SceneLoc[]? SoundLocations
@@ -118,6 +127,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneObject>? locations;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public NodeRefList<CSceneObject>? Locations
@@ -127,6 +137,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneLoc[]? locationLocations;
+    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public SceneLoc[]? LocationLocations
@@ -136,6 +147,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneObject>? fields;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public NodeRefList<CSceneObject>? Fields
     {
@@ -144,6 +156,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private SceneLoc[]? fieldLocations;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public SceneLoc[]? FieldLocations
     {
@@ -152,6 +165,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneGate>? gates;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public NodeRefList<CSceneGate>? Gates
     {
@@ -160,6 +174,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CScenePath>? paths;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public NodeRefList<CScenePath>? Paths
     {
@@ -168,6 +183,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public CSceneTrafficGraph? TrafficGraph
     {
@@ -176,6 +192,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneTrafficPath>? trafficPaths;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     public NodeRefList<CSceneTrafficPath>? TrafficPaths
     {
@@ -184,6 +201,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CSceneFxNod>? sceneFxNodRef;
+    /// <remarks>Applied with: 0x018, 0x01B, 0x01C body chunks</remarks>
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     [AppliedWithChunk<Chunk0A00301C>]
@@ -194,6 +212,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneObject>? objects;
+    /// <remarks>Applied with: 0x01C v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>(0, 2)]
     public NodeRefList<CSceneObject>? Objects
     {
@@ -202,6 +221,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private Iso4[]? objectLocations;
+    /// <remarks>Applied with: 0x01C v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>(0, 2)]
     public Iso4[]? ObjectLocations
     {
@@ -210,6 +230,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CPlugWeatherModel>? weatherModels;
+    /// <remarks>Applied with: 0x01C v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>(0, 1)]
     public NodeRefList<CPlugWeatherModel>? WeatherModels
     {
@@ -218,6 +239,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CPlugWeatherModel>? weatherModelRef;
+    /// <remarks>Applied with: 0x01C v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>(2)]
     public CPlugWeatherModel? WeatherModel
     {
@@ -226,6 +248,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapWaterFogRef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapWaterFog
     {
@@ -234,6 +257,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapCubeReflectHardSpecARef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapCubeReflectHardSpecA
     {
@@ -242,6 +266,7 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapCubeReflectHdrAlpha2Ref;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0A00301C>]
     public CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {

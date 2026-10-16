@@ -38,6 +38,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int fileVersion;
+    /// <remarks>Applied with: 0x000 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk090BB000>]
     public int FileVersion
     {
@@ -48,6 +49,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     private NodeRef<CPlugSkel>? skelRef;
 
     private FakeOccProj[]? fakeOccProjs;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090BB002>]
     public FakeOccProj[]? FakeOccProjs
     {

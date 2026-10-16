@@ -38,6 +38,7 @@ public partial class GxFogBlender : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool enabled = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04008000>]
     public bool Enabled
     {
@@ -49,6 +50,7 @@ public partial class GxFogBlender : CMwNod, IClass
     /// <summary>
     /// Copied to GxFog in TMF, written as 1 and ignored on read in later games
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04008000>]
     public int LegacyMode
     {
@@ -57,6 +59,7 @@ public partial class GxFogBlender : CMwNod, IClass
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04008000>]
     public List<Key>? Keys
     {

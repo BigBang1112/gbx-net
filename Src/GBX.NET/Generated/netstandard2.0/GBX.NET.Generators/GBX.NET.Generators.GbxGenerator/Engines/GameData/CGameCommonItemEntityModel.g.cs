@@ -41,6 +41,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     /// <summary>
     /// CGameObjectPhyModel
     /// </summary>
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? PhyModel
     {
@@ -52,6 +53,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     /// <summary>
     /// CGameObjectVisModel
     /// </summary>
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(0, 0)]
     public CMwNod? VisModel
     {
@@ -60,6 +62,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugStaticObjectModel>? staticObjectRef;
+    /// <remarks>Applied with: 0x000 v1-2, 0x000 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk2E027000>(1, 2)]
     [AppliedWithChunk<Chunk2E027000>(4)]
     public CPlugStaticObjectModel? StaticObject
@@ -72,6 +75,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     /// <summary>
     /// CPlugSurface
     /// </summary>
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CMwNod? TriggerShape
     {
@@ -80,6 +84,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private Iso4 spawnLoc = Iso4.Identity;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public Iso4 SpawnLoc
     {
@@ -88,6 +93,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? particleEmitterModelRef;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public CPlugParticleEmitterModel? ParticleEmitterModel
     {
@@ -96,6 +102,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private NodeRefList<CGameActionModel>? actions;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public NodeRefList<CGameActionModel>? Actions
     {
@@ -104,6 +111,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private string? soundRefSpawn;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public string? SoundRefSpawn
     {
@@ -112,6 +120,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private string? soundRefUnspawn;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public string? SoundRefUnspawn
     {
@@ -120,6 +129,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private string? soundRefGrab;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public string? SoundRefGrab
     {
@@ -128,6 +138,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private string? soundRefSmashed;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public string? SoundRefSmashed
     {
@@ -136,6 +147,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private string? soundRefPermanent;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public string? SoundRefPermanent
     {
@@ -144,6 +156,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     }
 
     private Iso4 soundLocPermanent = Iso4.Identity;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public Iso4 SoundLocPermanent
     {
@@ -155,6 +168,7 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     /// <summary>
     /// Native CFixedDynArray capacity is one.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E027000>(2)]
     public LightBallStateSimple[]? LightBallStates
     {

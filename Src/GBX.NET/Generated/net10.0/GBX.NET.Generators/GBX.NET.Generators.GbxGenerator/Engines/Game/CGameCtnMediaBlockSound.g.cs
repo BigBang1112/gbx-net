@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A7000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A7000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk030A7000>]
     [AppliedWithChunk<Chunk030A7001>]
     [AppliedWithChunk<Chunk030A7004>]
@@ -64,6 +67,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private PackDesc? sound;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk030A7001>]
     [AppliedWithChunk<Chunk030A7004>]
     public PackDesc? Sound
@@ -73,6 +77,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private int playCount;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk030A7002>]
     [AppliedWithChunk<Chunk030A7003>]
     public int PlayCount
@@ -82,6 +87,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool isLooping;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk030A7002>]
     [AppliedWithChunk<Chunk030A7003>]
     public bool IsLooping
@@ -91,6 +97,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool isMusic;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk030A7003>]
     public bool IsMusic
     {
@@ -99,6 +106,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool stopWithClip;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk030A7003>(1)]
     public bool StopWithClip
     {
@@ -107,6 +115,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool audioToSpeech;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk030A7003>(2)]
     public bool AudioToSpeech
     {
@@ -115,6 +124,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     }
 
     private int audioToSpeechTarget;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk030A7003>(2)]
     public int AudioToSpeechTarget
     {

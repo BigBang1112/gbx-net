@@ -38,6 +38,7 @@ public partial class CPlugBitmapRenderSub : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugShader>? shaderToForceRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09091000>]
     public CPlugShader? ShaderToForce
     {

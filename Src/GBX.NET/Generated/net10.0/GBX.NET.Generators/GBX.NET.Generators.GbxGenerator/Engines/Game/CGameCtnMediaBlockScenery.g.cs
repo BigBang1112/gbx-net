@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03188000>]
     public List<Key>? Keys
     {
@@ -49,6 +50,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     /// <summary>
     /// Passed to ImportCapturables(DataTape, CapturableCount).
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03188001>]
     public int CapturableCount
     {
@@ -57,6 +59,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, IClass, CGa
     }
 
     private NodeRef<CPlugDataTape>? dataTapeRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03188001>]
     public CPlugDataTape? DataTape
     {

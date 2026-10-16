@@ -38,6 +38,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private SimulationWheel[]? simulationWheels;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090E8005>]
     public SimulationWheel[]? SimulationWheels
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     private NodeRefList<CPlugVehicleMaterialGroup>? vehicleMaterialGroups;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk090E8012>]
     public NodeRefList<CPlugVehicleMaterialGroup>? VehicleMaterialGroups
     {
@@ -54,6 +56,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     }
 
     private NodeRefList<CPlugVehicleVisEmitterModel>? vehicleEmitters;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk090E8014>]
     public NodeRefList<CPlugVehicleVisEmitterModel>? VehicleEmitters
     {

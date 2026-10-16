@@ -38,6 +38,7 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugVehiclePhyTunings>? vehicleTuningsRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehiclePhyTunings? VehicleTunings
     {
@@ -46,6 +47,7 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     }
 
     private NodeRef<CMwRefBuffer>? vehicleMaterialsRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A060000>]
     public CMwRefBuffer? VehicleMaterials
     {
@@ -54,6 +56,7 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     }
 
     private NodeRef<CSceneVehicleEnvironment>? environmentRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A060000>]
     public CSceneVehicleEnvironment? Environment
     {
@@ -62,6 +65,7 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     }
 
     private NodeRef<CPlugVehicleVisModelShared>? vehicleStructRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A060000>]
     public CPlugVehicleVisModelShared? VehicleStruct
     {

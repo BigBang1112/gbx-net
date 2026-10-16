@@ -38,6 +38,7 @@ public partial class CGameHighScore : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int time;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03047002>]
     public int Time
     {
@@ -46,6 +47,7 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     private int rank;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03047002>]
     public int Rank
     {
@@ -54,6 +56,7 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     private int count;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03047002>]
     public int Count
     {
@@ -62,6 +65,7 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03047002>]
     public string? Name
     {
@@ -70,6 +74,7 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     private string? score;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03047002>]
     public string? Score
     {
@@ -78,6 +83,7 @@ public partial class CGameHighScore : CMwNod, IClass
     }
 
     private string? ghostUrl;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03047004>]
     public string? GhostUrl
     {

@@ -41,6 +41,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string name = string.Empty;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
     public string Name
@@ -49,11 +50,13 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         set => this.name = value;
     }
 
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03078000>]
     [AppliedWithChunk<Chunk03078001>]
     public partial NodeRefList<CGameCtnMediaBlock> Blocks { get; set; }
 
     private bool isKeepPlaying;
+    /// <remarks>Applied with: 0x002, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk03078002>]
     [AppliedWithChunk<Chunk03078004>]
     [AppliedWithChunk<Chunk03078005>]
@@ -64,6 +67,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private bool isReadOnly;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk03078003>]
     [AppliedWithChunk<Chunk03078004>]
     [AppliedWithChunk<Chunk03078005>]
@@ -74,6 +78,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private bool isCycling;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03078005>]
     public bool IsCycling
     {
@@ -82,6 +87,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private TimeSingle? repeatingSegmentStart;
+    /// <remarks>Applied with: 0x005 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03078005>(1)]
     public TimeSingle? RepeatingSegmentStart
     {
@@ -90,6 +96,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     private TimeSingle? repeatingSegmentEnd;
+    /// <remarks>Applied with: 0x005 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03078005>(1)]
     public TimeSingle? RepeatingSegmentEnd
     {

@@ -38,6 +38,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     internal override uint GetId() => Id;
 
     private Vec3 radiusScale;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public Vec3 RadiusScale
@@ -47,6 +48,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private Vec2 rotateSpeed;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public Vec2 RotateSpeed
@@ -56,6 +58,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private bool occlusionIsEnable;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public bool OcclusionIsEnable
@@ -65,6 +68,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float mouseBorderMoveSize;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float MouseBorderMoveSize
@@ -74,6 +78,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float occlusionTargetRadius;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float OcclusionTargetRadius
@@ -83,6 +88,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float occlusionDistFromHit;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float OcclusionDistFromHit
@@ -92,6 +98,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radius;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float Radius
@@ -101,6 +108,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitude;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float Latitude
@@ -110,6 +118,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float longitude;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float Longitude
@@ -119,6 +128,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radiusMin;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float RadiusMin
@@ -128,6 +138,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radiusMax;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float RadiusMax
@@ -137,6 +148,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitudeMin;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float LatitudeMin
@@ -146,6 +158,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitudeMax;
+    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
     public float LatitudeMax
@@ -155,6 +168,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float wheelSensitivity;
+    /// <remarks>Applied with: 0x003, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E003>]
     [AppliedWithChunk<Chunk0306E005>]
     public float WheelSensitivity
@@ -164,6 +178,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float fovKeySensitivity;
+    /// <remarks>Applied with: 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E004>]
     [AppliedWithChunk<Chunk0306E005>]
     public float FovKeySensitivity
@@ -173,6 +188,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float zoomKeySensitivity;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0306E006>]
     public float ZoomKeySensitivity
     {
@@ -181,6 +197,7 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float defaultRadius;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0306E007>]
     public float DefaultRadius
     {

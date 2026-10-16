@@ -38,6 +38,7 @@ public partial class CMwRefBuffer : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private uint nodClassId;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk01026000>]
     public uint NodClassId
     {
@@ -46,6 +47,7 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     private bool useAddRefRelease;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk01026000>]
     public bool UseAddRefRelease
     {
@@ -54,6 +56,7 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     private NodeRefList<CMwNod>? nods;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk01026000>]
     public NodeRefList<CMwNod>? Nods
     {
@@ -62,6 +65,7 @@ public partial class CMwRefBuffer : CMwNod, IClass
     }
 
     private string? bufferId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk01026001>]
     public string? BufferId
     {

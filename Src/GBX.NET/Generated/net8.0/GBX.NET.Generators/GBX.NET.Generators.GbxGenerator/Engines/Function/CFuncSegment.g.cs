@@ -41,6 +41,7 @@ public partial class CFuncSegment : CFunc, IClass
     internal override uint GetId() => Id;
 
     private Key[]? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05037000>]
     public Key[]? Keys
     {

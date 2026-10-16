@@ -3004,6 +3004,42 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task Generate_ChunkProperties_DocumentsAppliedChunksAndVersions()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              version = 3
+              int Shared // Serialized value.
+              v0=
+                int Disjoint
+              v3+
+                int Disjoint
+              CMwNod Target
+            0x002
+              int Shared
+            0x003 (header)
+              version = 2
+              v2+
+                int Shared
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var properties = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
+            .Single(x => x.Identifier.ValueText == "Example").Members.OfType<PropertyDeclarationSyntax>()
+            .ToDictionary(x => x.Identifier.ValueText);
+        var shared = properties["Shared"].GetLeadingTrivia().ToFullString();
+        await Assert.That(shared).Contains("/// Serialized value.");
+        await Assert.That(shared).Contains("<remarks>Applied with: 0x001, 0x002 body chunks, 0x003 v2+ header chunk</remarks>");
+        await Assert.That(properties["Disjoint"].GetLeadingTrivia().ToFullString())
+            .Contains("<remarks>Applied with: 0x001 v0-0, 0x001 v3+ body chunks</remarks>");
+        await Assert.That(properties["Target"].GetLeadingTrivia().ToFullString())
+            .Contains("<remarks>Applied with: 0x001 body chunk</remarks>");
+        await Assert.That(properties["Id"].GetLeadingTrivia().ToFullString()).DoesNotContain("Applied with:");
+    }
+
+    [Test]
     public async Task Generate_ChunkProperties_AnnotatesSerializationVersionRanges()
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """

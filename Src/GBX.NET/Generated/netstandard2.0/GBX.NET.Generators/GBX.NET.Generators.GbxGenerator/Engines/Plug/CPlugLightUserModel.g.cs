@@ -38,6 +38,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec3 color;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public Vec3 Color
     {
@@ -46,6 +47,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float intensity;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float Intensity
     {
@@ -54,6 +56,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float distance;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float Distance
     {
@@ -62,6 +65,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float pointEmissionRadius;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float PointEmissionRadius
     {
@@ -70,6 +74,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float pointEmissionLength;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float PointEmissionLength
     {
@@ -78,6 +83,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float spotInnerAngle;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float SpotInnerAngle
     {
@@ -86,6 +92,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float spotOuterAngle;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float SpotOuterAngle
     {
@@ -94,6 +101,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float spotEmissionSizeX;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float SpotEmissionSizeX
     {
@@ -102,6 +110,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private float spotEmissionSizeY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>]
     public float SpotEmissionSizeY
     {
@@ -110,6 +119,7 @@ public partial class CPlugLightUserModel : CMwNod, IClass
     }
 
     private bool nightOnly;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F9000>(1)]
     public bool NightOnly
     {

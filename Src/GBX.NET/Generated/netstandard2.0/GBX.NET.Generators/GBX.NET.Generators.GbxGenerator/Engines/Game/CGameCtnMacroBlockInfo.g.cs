@@ -38,6 +38,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     internal override uint GetId() => Id;
 
     private List<BlockSpawn>? blockSpawns;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D000>]
     public List<BlockSpawn>? BlockSpawns
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private List<BlockSkinSpawn>? blockSkinSpawns;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D001>]
     public List<BlockSkinSpawn>? BlockSkinSpawns
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private List<CardEventsSpawn>? cardEventsSpawns;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D002>]
     public List<CardEventsSpawn>? CardEventsSpawns
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnAnchoredObject>? legacyAnchoredObjects;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D003>]
     public NodeRefList<CGameCtnAnchoredObject>? LegacyAnchoredObjects
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnMacroBlockInfo>? legacyMacroBlocks;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D004>]
     public NodeRefList<CGameCtnMacroBlockInfo>? LegacyMacroBlocks
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private string[]? legacyDecalModelPaths;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D005>]
     public string[]? LegacyDecalModelPaths
     {
@@ -86,6 +92,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private LegacyDecal[]? legacyDecals;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D005>]
     public LegacyDecal[]? LegacyDecals
     {
@@ -94,6 +101,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private byte[]? sceneDecals;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D006>]
     public byte[]? SceneDecals
     {
@@ -102,6 +110,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnMediaClipGroup>? clipGroupInGameRef;
+    /// <remarks>Applied with: 0x007, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
@@ -111,6 +120,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnMediaClipGroup>? clipGroupEndRaceRef;
+    /// <remarks>Applied with: 0x007, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0310D007>]
     [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
@@ -120,6 +130,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D008>]
     public NodeRefList<CGameCtnAutoTerrain>? AutoTerrains
     {
@@ -128,6 +139,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private CScriptTraitsMetadata? scriptMetadata;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00B>]
     public CScriptTraitsMetadata? ScriptMetadata
     {
@@ -136,6 +148,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private List<ObjectSpawn>? objectSpawns;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00E>]
     public List<ObjectSpawn>? ObjectSpawns
     {
@@ -144,6 +157,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int2[]? objectNeighbourPairsLegacy;
+    /// <remarks>Applied with: 0x00E v1-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00E>(1, 2)]
     public Int2[]? ObjectNeighbourPairsLegacy
     {
@@ -152,6 +166,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int4[]? objectNeighbourPairs;
+    /// <remarks>Applied with: 0x00E v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00E>(3)]
     public Int4[]? ObjectNeighbourPairs
     {
@@ -160,6 +175,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int3 offzoneOffset;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00F>]
     public Int3 OffzoneOffset
     {
@@ -168,6 +184,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int3 offzoneTriggerSize = (3, 1, 3);
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00F>]
     public Int3 OffzoneTriggerSize
     {
@@ -176,6 +193,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private BoxInt3[]? offzones;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0310D00F>]
     public BoxInt3[]? Offzones
     {
@@ -184,6 +202,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private int iconSize;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D010>]
     public int IconSize
     {
@@ -192,6 +211,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int3 clipOffset;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D011>]
     public Int3 ClipOffset
     {
@@ -200,6 +220,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     private Int3 clipTriggerSize = (3, 1, 3);
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0310D011>]
     public Int3 ClipTriggerSize
     {

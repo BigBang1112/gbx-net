@@ -38,6 +38,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int videoFps = 30;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -48,6 +49,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private int sizeX = 1920;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -58,6 +60,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private int sizeY = 1080;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -68,6 +71,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hq = true;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -81,6 +85,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     /// <summary>
     /// Native default is 3 when the render device supports FX SSAA, otherwise 1.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -91,6 +96,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqSoftShadows;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -101,6 +107,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqAmbientOcc;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -111,6 +118,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool isAudioStream = true;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060000>]
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
@@ -121,6 +129,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private EStereo3d stereo3d;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03060001>]
     [AppliedWithChunk<Chunk03060002>]
     public EStereo3d Stereo3d
@@ -130,6 +139,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private int dofSampleCount = 1;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public int DofSampleCount
     {
@@ -138,6 +148,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private EMotionBlur motionBlur;
+    /// <remarks>Applied with: 0x002 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>(1)]
     public EMotionBlur MotionBlur
     {
@@ -146,6 +157,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqDOF;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public bool HqDOF
     {
@@ -154,6 +166,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hqCarReflects = true;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public bool HqCarReflects
     {
@@ -162,6 +175,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool reflectSubSample;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public bool ReflectSubSample
     {
@@ -170,6 +184,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool reflectRayCast;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public bool ReflectRayCast
     {
@@ -178,6 +193,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private EExtScreen extScreen;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public EExtScreen ExtScreen
     {
@@ -186,6 +202,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private EExtVideo extVideo = EExtVideo.Webm;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public EExtVideo ExtVideo
     {
@@ -194,6 +211,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private bool hud3d;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public bool Hud3d
     {
@@ -202,6 +220,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private EQualityPreset webmVideoAutoBitrate = EQualityPreset.Medium;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public EQualityPreset WebmVideoAutoBitrate
     {
@@ -210,6 +229,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private VideoEnc? videoEncoding;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public VideoEnc? VideoEncoding
     {
@@ -218,6 +238,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     }
 
     private AudioEnc? audioEncoding;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03060002>]
     public AudioEnc? AudioEncoding
     {

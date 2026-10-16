@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, IClass, C
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03083000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, IClass, C
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03083000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, IClass, C
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03083001>]
     public List<Key>? Keys
     {

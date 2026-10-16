@@ -41,6 +41,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     /// <summary>
     /// Editor vertex picking mode.
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03029001>]
     public E3DPickMode PickMode3D
     {
@@ -49,6 +50,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     }
 
     private Vec3 pickPlaneNormal = (0, 0, 1);
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03029001>]
     public Vec3 PickPlaneNormal
     {
@@ -60,6 +62,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     /// <summary>
     /// A point on the editor picking plane.
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03029001>]
     public Vec3 PickPlanePosition
     {
@@ -71,6 +74,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     /// <summary>
     /// SGameClipEntityId.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03029002>]
     public int ClipEntId
     {

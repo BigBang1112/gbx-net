@@ -38,6 +38,7 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Iso4 loc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0917A000>]
     public Iso4 Loc
     {
@@ -46,6 +47,7 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     }
 
     private float torqueX;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0917A000>]
     public float TorqueX
     {
@@ -54,6 +56,7 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     }
 
     private TimeInt32 torqueDuration;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0917A000>]
     public TimeInt32 TorqueDuration
     {
@@ -62,6 +65,7 @@ public partial class CPlugSpawnModel : CMwNod, IClass
     }
 
     private Vec3 defaultGravitySpawn;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0917A000>]
     public Vec3 DefaultGravitySpawn
     {

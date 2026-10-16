@@ -38,6 +38,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugShader>? shaderRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09080000>]
     [AppliedWithChunk<Chunk09080001>]
     [AppliedWithChunk<Chunk09080002>]
@@ -48,6 +49,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
     }
 
     private NodeRefList<CPlugBitmap>? legacyBitmaps;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk09080000>]
     [AppliedWithChunk<Chunk09080001>]
     public NodeRefList<CPlugBitmap>? LegacyBitmaps
@@ -57,6 +59,7 @@ public partial class CPlugBitmapShader : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapToSwapRef;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09080001>]
     [AppliedWithChunk<Chunk09080002>]
     public CPlugBitmap? BitmapToSwap

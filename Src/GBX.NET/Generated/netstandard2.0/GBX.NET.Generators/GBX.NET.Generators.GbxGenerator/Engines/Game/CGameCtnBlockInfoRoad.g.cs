@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoRoad : CGameCtnBlockInfo, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnBlockInfoSlope>? slopeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03052000>]
     public CGameCtnBlockInfoSlope? Slope
     {

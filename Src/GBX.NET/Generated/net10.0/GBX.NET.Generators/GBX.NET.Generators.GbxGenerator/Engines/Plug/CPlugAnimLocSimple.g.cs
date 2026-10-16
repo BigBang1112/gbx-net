@@ -38,6 +38,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int rotPeriod;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>]
     public int RotPeriod
     {
@@ -46,6 +47,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int transPeriod;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>]
     public int TransPeriod
     {
@@ -54,6 +56,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private float transY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>]
     public float TransY
     {
@@ -62,6 +65,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int axis;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>(1)]
     public int Axis
     {
@@ -70,6 +74,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int rotPeriodMax;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>(2)]
     public int RotPeriodMax
     {
@@ -78,6 +83,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private int transPeriodMax;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>(2)]
     public int TransPeriodMax
     {
@@ -86,6 +92,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private byte rotFunc;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>(3)]
     public byte RotFunc
     {
@@ -94,6 +101,7 @@ public partial class CPlugAnimLocSimple : CMwNod, IClass
     }
 
     private float rotAngle;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F8000>(3)]
     public float RotAngle
     {

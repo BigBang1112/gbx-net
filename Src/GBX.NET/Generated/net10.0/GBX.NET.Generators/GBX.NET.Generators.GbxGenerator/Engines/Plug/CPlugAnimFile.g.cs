@@ -38,6 +38,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int skelVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int SkelVersion
     {
@@ -46,6 +47,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int jointGroupVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int JointGroupVersion
     {
@@ -54,6 +56,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int legacyRootMotionVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int LegacyRootMotionVersion
     {
@@ -62,6 +65,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int bakedVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int BakedVersion
     {
@@ -70,6 +74,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int timingFixedPeriodVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int TimingFixedPeriodVersion
     {
@@ -78,6 +83,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int clipVersion;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public int ClipVersion
     {
@@ -86,6 +92,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int skelEditionVersion;
+    /// <remarks>Applied with: 0x003 v3-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(3, 9)]
     public int SkelEditionVersion
     {
@@ -94,6 +101,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int clipFlagsVersion;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int ClipFlagsVersion
     {
@@ -102,6 +110,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int poseGroupVersion;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int PoseGroupVersion
     {
@@ -110,6 +119,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int poseGridVersion;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int PoseGridVersion
     {
@@ -118,6 +128,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int graphVersion;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public int GraphVersion
     {
@@ -126,6 +137,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int variantGroupVersion;
+    /// <remarks>Applied with: 0x003 v5-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(5, 9)]
     public int VariantGroupVersion
     {
@@ -134,6 +146,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int spotVersion;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(6)]
     public int SpotVersion
     {
@@ -142,6 +155,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int skelEditionStateVersion;
+    /// <remarks>Applied with: 0x003 v8-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(8, 9)]
     public int SkelEditionStateVersion
     {
@@ -150,6 +164,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int legacyEditionVersion;
+    /// <remarks>Applied with: 0x003 v8-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(8, 9)]
     public int LegacyEditionVersion
     {
@@ -158,6 +173,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int legacyVersion1;
+    /// <remarks>Applied with: 0x003 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 0)]
     public int LegacyVersion1
     {
@@ -166,6 +182,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int legacyVersion2;
+    /// <remarks>Applied with: 0x003 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 0)]
     public int LegacyVersion2
     {
@@ -174,6 +191,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private CPlugSkel[]? skels;
+    /// <remarks>Applied with: 0x003 v0-9, 0x003 v11+ body chunks</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     [AppliedWithChunk<Chunk090B0003>(11)]
     public CPlugSkel[]? Skels
@@ -183,6 +201,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private LegacyJointGroup[]? jointGroups;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public LegacyJointGroup[]? JointGroups
     {
@@ -191,6 +210,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private LegacyRootMotion[]? legacyRootMotions;
+    /// <remarks>Applied with: 0x003 v0-6 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 6)]
     public LegacyRootMotion[]? LegacyRootMotions
     {
@@ -199,6 +219,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private LegacyBaked[]? bakedClips;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public LegacyBaked[]? BakedClips
     {
@@ -207,6 +228,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private LegacyEdition[]? editionClips;
+    /// <remarks>Applied with: 0x003 v3-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(3, 9)]
     public LegacyEdition[]? EditionClips
     {
@@ -215,6 +237,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private LegacyClip[]? legacyClips;
+    /// <remarks>Applied with: 0x003 v0-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
     public LegacyClip[]? LegacyClips
     {
@@ -223,6 +246,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimPoseGroup>? poseGroups;
+    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4)]
     public NodeRefList<CPlugAnimPoseGroup>? PoseGroups
     {
@@ -231,6 +255,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimPoseGrid>? poseGrids;
+    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4)]
     public NodeRefList<CPlugAnimPoseGrid>? PoseGrids
     {
@@ -239,6 +264,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimGraph>? graphs;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
     public NodeRefList<CPlugAnimGraph>? Graphs
     {
@@ -247,6 +273,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimGraphStack>? graphStacks;
+    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4)]
     public NodeRefList<CPlugAnimGraphStack>? GraphStacks
     {
@@ -255,6 +282,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimVariantGroup>? variantGroups;
+    /// <remarks>Applied with: 0x003 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(5)]
     public NodeRefList<CPlugAnimVariantGroup>? VariantGroups
     {
@@ -263,6 +291,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private CPlugAnimSpotModel[]? spots;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(6)]
     public CPlugAnimSpotModel[]? Spots
     {
@@ -271,6 +300,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimSkelEditionPose>? editionPoses;
+    /// <remarks>Applied with: 0x003 v8-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(8, 9)]
     public NodeRefList<CPlugAnimSkelEditionPose>? EditionPoses
     {
@@ -279,6 +309,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private int legacyData;
+    /// <remarks>Applied with: 0x003 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 0)]
     public int LegacyData
     {
@@ -287,6 +318,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private string? importString;
+    /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(9)]
     public string? ImportString
     {
@@ -295,6 +327,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private string? updateString;
+    /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(9)]
     public string? UpdateString
     {
@@ -303,6 +336,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimClip>? clips;
+    /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(10)]
     public NodeRefList<CPlugAnimClip>? Clips
     {

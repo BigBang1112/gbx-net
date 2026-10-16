@@ -37,6 +37,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x005, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03079000>]
     [AppliedWithChunk<Chunk03079001>]
     [AppliedWithChunk<Chunk03079002>]
@@ -45,15 +46,17 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     [AppliedWithChunk<Chunk0307900D>]
     public partial NodeRefList<CGameCtnMediaTrack> Tracks { get; set; }
 
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x005, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03079001>]
     [AppliedWithChunk<Chunk03079002>]
     [AppliedWithChunk<Chunk03079003>]
     [AppliedWithChunk<Chunk03079005>]
     [AppliedWithChunk<Chunk0307900D>]
+    [SupportsFormatting]
     public partial string? Name { get; set; }
 
     private NodeRef<CScene>? sceneRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03079004>]
     public CScene? Scene
     {
@@ -65,6 +68,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     /// <summary>
     /// also called LocalPlayerGhostId
     /// </summary>
+    /// <remarks>Applied with: 0x007, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03079007>]
     [AppliedWithChunk<Chunk0307900D>]
     public int LocalPlayerClipEntIndex
@@ -74,6 +78,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     private float stereoSepMax = 0.2f;
+    /// <remarks>Applied with: 0x008, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03079008>]
     [AppliedWithChunk<Chunk0307900D>]
     public float StereoSepMax
@@ -83,6 +88,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     private string configScript = "";
+    /// <remarks>Applied with: 0x009, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03079009>]
     [AppliedWithChunk<Chunk0307900D>]
     public string ConfigScript
@@ -92,6 +98,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     private bool stopWhenLeave;
+    /// <remarks>Applied with: 0x00A, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0307900A>]
     [AppliedWithChunk<Chunk0307900D>]
     public bool StopWhenLeave
@@ -104,6 +111,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     /// <summary>
     /// Discarded by Trackmania.
     /// </summary>
+    /// <remarks>Applied with: 0x00B, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0307900B>]
     [AppliedWithChunk<Chunk0307900D>]
     public bool IsScriptEvent
@@ -113,6 +121,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     private bool stopWhenRespawn;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0307900D>]
     public bool StopWhenRespawn
     {
@@ -124,6 +133,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     /// <summary>
     /// Bit 0: TriggersBeforeRaceStart.
     /// </summary>
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0307900E>]
     public int Flags
     {

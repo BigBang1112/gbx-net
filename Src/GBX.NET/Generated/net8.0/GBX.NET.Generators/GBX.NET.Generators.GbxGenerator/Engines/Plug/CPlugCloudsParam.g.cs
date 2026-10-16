@@ -38,6 +38,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private EHeightCenter heightCenter;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public EHeightCenter HeightCenter
@@ -47,6 +48,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private Vec2 heightCenterXZ;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public Vec2 HeightCenterXZ
@@ -56,6 +58,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private float bottomNearZ = 1000f;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public float BottomNearZ
@@ -65,6 +68,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private float bottomFarZ = 1000f;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public float BottomFarZ
@@ -74,6 +78,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private float speedScale = 97.192f;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public float SpeedScale
@@ -83,6 +88,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private ELighting lighting;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09182000>]
     [AppliedWithChunk<Chunk09182002>]
     public ELighting Lighting
@@ -92,6 +98,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private Vec2[]? points;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09182001>]
     public Vec2[]? Points
     {
@@ -100,6 +107,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     private bool materialUseT3b;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09182002>]
     public bool MaterialUseT3b
     {

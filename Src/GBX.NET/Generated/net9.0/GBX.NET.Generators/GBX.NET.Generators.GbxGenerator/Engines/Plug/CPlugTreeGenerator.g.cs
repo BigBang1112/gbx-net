@@ -38,6 +38,7 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     internal override uint GetId() => Id;
 
     private uint flags = 2;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09051000>]
     public uint Flags
     {
@@ -51,6 +52,7 @@ public partial class CPlugTreeGenerator : CPlug, IClass
         ((CPlugTreeGenerator)clone).flags = context.Clone(this.flags)!;
     }
 
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09051000>]
     public bool IsSaveGenerated
     {
@@ -68,6 +70,7 @@ public partial class CPlugTreeGenerator : CPlug, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09051000>]
     public bool IsToKeepInSaveAsRelease
     {

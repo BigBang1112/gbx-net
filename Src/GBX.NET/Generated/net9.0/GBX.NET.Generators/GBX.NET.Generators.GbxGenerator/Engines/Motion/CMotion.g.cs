@@ -38,6 +38,7 @@ public abstract partial class CMotion : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08001000>]
     public string? Name
     {

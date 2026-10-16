@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CGameCtnBlockUnitInfo>? blockUnitModels;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public NodeRefList<CGameCtnBlockUnitInfo>? BlockUnitModels
@@ -47,6 +48,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private bool hasManualSymmetryH;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryH
@@ -56,6 +58,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private bool hasManualSymmetryV;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryV
@@ -65,6 +68,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private bool hasManualSymmetryD1;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryD1
@@ -74,6 +78,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private bool hasManualSymmetryD2;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryD2
@@ -83,6 +88,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private Iso4 spawnLoc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     public Iso4 SpawnLoc
     {
@@ -91,6 +97,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x000, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0315B000>]
     [AppliedWithChunk<Chunk0315B008>]
     public string? Name
@@ -100,6 +107,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private EMultiDir multiDir;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B002>]
     public EMultiDir MultiDir
     {
@@ -108,6 +116,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private int symmetricalVariantIndex;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B003>]
     public int SymmetricalVariantIndex
     {
@@ -116,6 +125,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private ECardinalDir cardinalDir;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B003>]
     public ECardinalDir CardinalDir
     {
@@ -124,6 +134,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private EVariantBaseType variantBaseType;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B003>(1)]
     public EVariantBaseType VariantBaseType
     {
@@ -132,6 +143,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private byte noPillarBelowIndex;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B003>(2)]
     public byte NoPillarBelowIndex
     {
@@ -140,6 +152,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoMobil>[]? mobils;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B005>]
     public NodeRefList<CGameCtnBlockInfoMobil>[]? Mobils
     {
@@ -148,6 +161,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? helperSolidFidRef;
+    /// <remarks>Applied with: 0x005 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B005>(2)]
     public CPlugSolid? HelperSolidFid
     {
@@ -156,6 +170,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? facultativeHelperSolidFidRef;
+    /// <remarks>Applied with: 0x005 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B005>(2)]
     public CPlugSolid? FacultativeHelperSolidFid
     {
@@ -164,6 +179,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? screenInteractionTriggerSolidRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? ScreenInteractionTriggerSolid
     {
@@ -172,6 +188,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? waypointTriggerSolidRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? WaypointTriggerSolid
     {
@@ -180,6 +197,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameGateModel>? gateRef;
+    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(2)]
     public CGameGateModel? Gate
     {
@@ -188,6 +206,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameTeleporterModel>? teleporterRef;
+    /// <remarks>Applied with: 0x006 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(3)]
     public CGameTeleporterModel? Teleporter
     {
@@ -196,6 +215,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameTurbineModel>? turbineRef;
+    /// <remarks>Applied with: 0x006 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(6)]
     public CGameTurbineModel? Turbine
     {
@@ -204,6 +224,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CPlugFlockModel>? flockModelRef;
+    /// <remarks>Applied with: 0x006 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(7)]
     public CPlugFlockModel? FlockModel
     {
@@ -212,6 +233,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private FlockEmitterState? flockEmmiter;
+    /// <remarks>Applied with: 0x006 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(7)]
     public FlockEmitterState? FlockEmmiter
     {
@@ -220,6 +242,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameSpawnModel>? spawnModelRef;
+    /// <remarks>Applied with: 0x006 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(8)]
     public CGameSpawnModel? SpawnModel
     {
@@ -228,6 +251,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRefList<CPlugEntitySpawner>? entitySpawners;
+    /// <remarks>Applied with: 0x006 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(10)]
     public NodeRefList<CPlugEntitySpawner>? EntitySpawners
     {
@@ -236,6 +260,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CPlugProbe>? probeRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B007>]
     public CPlugProbe? Probe
     {
@@ -244,6 +269,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private Vec3 spawnTrans;
+    /// <remarks>Applied with: 0x008 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public Vec3 SpawnTrans
     {
@@ -252,6 +278,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private float spawnYaw;
+    /// <remarks>Applied with: 0x008 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public float SpawnYaw
     {
@@ -260,6 +287,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private float spawnPitch;
+    /// <remarks>Applied with: 0x008 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B008>(0, 1)]
     public float SpawnPitch
     {
@@ -268,6 +296,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameObjectPhyCompoundModel>? compoundModelRef;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B00A>(2)]
     public CGameObjectPhyCompoundModel? CompoundModel
     {
@@ -276,6 +305,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private Iso4 compoundLoc;
+    /// <remarks>Applied with: 0x00A v2-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B00A>(2, 2)]
     public Iso4 CompoundLoc
     {
@@ -284,6 +314,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private WaterVolume[]? waterVolumes;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0315B00B>]
     public WaterVolume[]? WaterVolumes
     {

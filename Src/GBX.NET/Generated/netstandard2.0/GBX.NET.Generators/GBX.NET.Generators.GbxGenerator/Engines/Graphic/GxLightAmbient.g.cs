@@ -38,6 +38,7 @@ public partial class GxLightAmbient : GxLight, IClass
     internal override uint GetId() => Id;
 
     private float shadeMinY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04005000>]
     public float ShadeMinY
     {
@@ -46,6 +47,7 @@ public partial class GxLightAmbient : GxLight, IClass
     }
 
     private float shadeMaxY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04005000>]
     public float ShadeMaxY
     {

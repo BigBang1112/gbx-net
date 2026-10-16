@@ -38,6 +38,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float sampleMinDist = 2f;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
@@ -49,6 +50,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float width = 0.3f;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
@@ -60,6 +62,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float groundOffset = 0.1f;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
@@ -71,6 +74,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float texVPerMeter = 1f;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
@@ -82,6 +86,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082000>]
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
@@ -96,6 +101,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     /// <summary>
     /// Discarded by the native mark generator
     /// </summary>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -106,6 +112,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float fadeDist = 1f;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -116,6 +123,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float alpha = 1f;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -126,6 +134,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float widthCoefForceX;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -136,6 +145,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private bool condGroundContact = true;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -146,6 +156,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private bool condSliding = true;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -156,6 +167,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private byte condMaterialId = 28;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -166,6 +178,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float condForceXGreaterThan;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082001>]
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
@@ -176,6 +189,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float widthCoefForceZ;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
     public float WidthCoefForceZ
@@ -185,6 +199,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float condForceZGreaterThan;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A082002>]
     [AppliedWithChunk<Chunk0A082003>]
     public float CondForceZGreaterThan
@@ -194,6 +209,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float widthMax = 50f;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A082003>]
     public float WidthMax
     {
@@ -202,6 +218,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float alphaCoefForceX;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A082003>]
     public float AlphaCoefForceX
     {
@@ -210,6 +227,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float alphaCoefForceZ;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A082003>]
     public float AlphaCoefForceZ
     {
@@ -218,6 +236,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     private float alphaMax = 1f;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A082003>]
     public float AlphaMax
     {

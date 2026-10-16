@@ -38,6 +38,7 @@ public partial class CFuncShaders : CFuncShader, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CFuncShader>? funcShaders;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05014000>]
     public NodeRefList<CFuncShader>? FuncShaders
     {

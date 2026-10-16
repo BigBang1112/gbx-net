@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private PackDesc? image;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03186000>]
     public PackDesc? Image
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03186001>]
     public List<Key>? Keys
     {

@@ -41,6 +41,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Packed ARGB clear color.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004, 0x005, 0x006, 0x007, 0x009, 0x00B, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk09086000>]
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
@@ -60,8 +61,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Original packed render flags before the current bit layout.
     /// </summary>
-    [GameVersionDefault(GameVersion.TM10, 0x0E8007E1)]
-    [GameVersionDefault(GameVersion.TMPU, 0x2E8007E1)]
+    /// <remarks>Applied with: 0x000, 0x001, 0x004, 0x005, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk09086000>]
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
@@ -69,6 +69,8 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [AppliedWithChunk<Chunk09086006>]
     [AppliedWithChunk<Chunk09086007>]
     [AppliedWithChunk<Chunk09086009>]
+    [GameVersionDefault(GameVersion.TM10, 0x0E8007E1)]
+    [GameVersionDefault(GameVersion.TMPU, 0x2E8007E1)]
     public uint LegacyRenderFlags
     {
         get => this.legacyRenderFlags;
@@ -76,6 +78,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapClearRef;
+    /// <remarks>Applied with: 0x001, 0x004, 0x005, 0x006, 0x007, 0x009, 0x00B, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
     [AppliedWithChunk<Chunk09086005>]
@@ -91,6 +94,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private Vec2? bitmapClearUV;
+    /// <remarks>Applied with: 0x001, 0x004, 0x005, 0x006, 0x007, 0x009, 0x00B, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk09086001>]
     [AppliedWithChunk<Chunk09086004>]
     [AppliedWithChunk<Chunk09086005>]
@@ -109,6 +113,9 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Shader visibility bits to check.
     /// </summary>
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
+    [AppliedWithChunk<Chunk09086002>]
+    [AppliedWithChunk<Chunk09086003>]
     [GameVersionDefault(GameVersion.TM10, 0)]
     [GameVersionDefault(GameVersion.TMPU, 0)]
     [GameVersionDefault(GameVersion.TMSX, 0x138)]
@@ -116,8 +123,6 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [GameVersionDefault(GameVersion.VSK5, 0x338)]
     [GameVersionDefault(GameVersion.TMF, 0x338)]
     [GameVersionDefault(GameVersion.TM2020, 0x8130)]
-    [AppliedWithChunk<Chunk09086002>]
-    [AppliedWithChunk<Chunk09086003>]
     public ushort SVIdMask
     {
         get => this.sVIdMask;
@@ -128,6 +133,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Required shader visibility bits.
     /// </summary>
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09086002>]
     [AppliedWithChunk<Chunk09086003>]
     public ushort SVIdRef
@@ -140,6 +146,8 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Item visibility bits to check.
     /// </summary>
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk09086003>]
     [GameVersionDefault(GameVersion.TM10, 0)]
     [GameVersionDefault(GameVersion.TMPU, 0)]
     [GameVersionDefault(GameVersion.TMSX, 0x138)]
@@ -147,7 +155,6 @@ public partial class CPlugBitmapRender : CPlug, IClass
     [GameVersionDefault(GameVersion.VSK5, 0x338)]
     [GameVersionDefault(GameVersion.TMF, 0x338)]
     [GameVersionDefault(GameVersion.TM2020, 0x8130)]
-    [AppliedWithChunk<Chunk09086003>]
     public ushort IVIdMask
     {
         get => this.iVIdMask;
@@ -158,6 +165,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Required item visibility bits.
     /// </summary>
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09086003>]
     public ushort IVIdRef
     {
@@ -166,6 +174,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private ERenderPath renderPath;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk09086008>]
     public ERenderPath RenderPath
     {
@@ -174,6 +183,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private ERenderPathFails renderPathFails;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk09086008>]
     public ERenderPathFails RenderPathFails
     {
@@ -182,6 +192,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private float fogCustomFarZ;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0908600A>]
     public float FogCustomFarZ
     {
@@ -193,6 +204,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Packed render, clear-bitmap and color-write settings.
     /// </summary>
+    /// <remarks>Applied with: 0x00B, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0908600B>]
     [AppliedWithChunk<Chunk09086010>]
     public uint RenderFlags
@@ -202,6 +214,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmapRenderSub>? renderSubRef;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0908600C>]
     public CPlugBitmapRenderSub? RenderSub
     {
@@ -213,11 +226,12 @@ public partial class CPlugBitmapRender : CPlug, IClass
     /// <summary>
     /// Packed blur, fog and lighting settings.
     /// </summary>
-    [GameVersionDefault(GameVersion.TMNESWC, 0)]
-    [GameVersionDefault(GameVersion.VSK5, 0)]
+    /// <remarks>Applied with: 0x00D, 0x00E, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0908600D>]
     [AppliedWithChunk<Chunk0908600E>]
     [AppliedWithChunk<Chunk0908600F>]
+    [GameVersionDefault(GameVersion.TMNESWC, 0)]
+    [GameVersionDefault(GameVersion.VSK5, 0)]
     public uint RenderFlags2
     {
         get => this.renderFlags2;

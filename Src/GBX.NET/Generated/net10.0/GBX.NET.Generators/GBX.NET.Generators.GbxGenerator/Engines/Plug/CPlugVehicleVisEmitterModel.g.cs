@@ -38,6 +38,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugParticleEmitterModel>? particleEmitterModel1Ref;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -51,11 +52,12 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Obsolete wheel attachment.
     /// </summary>
-    [GameVersionDefault(GameVersion.TMF, -1)]
-    [GameVersionDefault(GameVersion.VSK5, -1)]
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
+    [GameVersionDefault(GameVersion.TMF, -1)]
+    [GameVersionDefault(GameVersion.VSK5, -1)]
     public int WheelIndex
     {
         get => this.wheelIndex;
@@ -66,11 +68,12 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Obsolete visual attachment.
     /// </summary>
-    [GameVersionDefault(GameVersion.TMF, -1)]
-    [GameVersionDefault(GameVersion.VSK5, -1)]
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
+    [GameVersionDefault(GameVersion.TMF, -1)]
+    [GameVersionDefault(GameVersion.VSK5, -1)]
     public int VisualHandlerIndex
     {
         get => this.visualHandlerIndex;
@@ -78,6 +81,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private int materialGroupIndex;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -88,6 +92,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private bool onlyWhenSliding;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -101,11 +106,12 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Obsolete owner transform flag.
     /// </summary>
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.VSK5, true)]
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.VSK5, true)]
     public bool UseOwnerLoc
     {
         get => this.useOwnerLoc;
@@ -116,6 +122,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Obsolete event emission flag.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -126,6 +133,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private float emitIntensity;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -139,6 +147,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Coefficients for absolute local velocity components.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -149,6 +158,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private float emitIntensityOnTurbo;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -162,6 +172,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Base local particle velocity.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -175,6 +186,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Coefficients for local vehicle velocity.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -185,6 +197,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private Vec3 emitSpeedBySpeedOnTurbo;
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6000>]
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
@@ -195,6 +208,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private Iso4 loc;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090E6001>]
     [AppliedWithChunk<Chunk090E6004>]
     public Iso4 Loc
@@ -204,6 +218,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private bool orientWithVelocity;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6002>]
     public bool OrientWithVelocity
     {
@@ -212,6 +227,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private Vec3 position;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6003>]
     public Vec3 Position
     {
@@ -223,6 +239,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Radians
     /// </summary>
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6003>]
     public Vec3 PitchYawRoll
     {
@@ -234,6 +251,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Visual quality index 0.
     /// </summary>
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6004>]
     public CPlugParticleEmitterModel? ParticleEmitterModel0
     {
@@ -245,6 +263,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Visual quality index 2.
     /// </summary>
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6004>]
     public CPlugParticleEmitterModel? ParticleEmitterModel2
     {
@@ -253,6 +272,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     private bool onlyWhenAllWheelsSliding;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6005>]
     public bool OnlyWhenAllWheelsSliding
     {
@@ -264,6 +284,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     /// <summary>
     /// Used when rendering videos.
     /// </summary>
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk090E6006>]
     public CPlugParticleEmitterModel? ParticleEmitterModelShoot
     {

@@ -38,6 +38,7 @@ public partial class CPlugPointsInSphereOpt : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Pack[]? packs;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09066000>]
     public Pack[]? Packs
     {

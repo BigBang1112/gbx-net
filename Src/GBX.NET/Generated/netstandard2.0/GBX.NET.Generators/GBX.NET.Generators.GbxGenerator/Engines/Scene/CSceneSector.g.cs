@@ -38,6 +38,7 @@ public partial class CSceneSector : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int scene;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A004000>]
     public int Scene
     {
@@ -46,6 +47,7 @@ public partial class CSceneSector : CMwNod, IClass
     }
 
     private NodeRef<CHmsZone>? zoneRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A004000>]
     public CHmsZone? Zone
     {

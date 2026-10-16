@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     internal override uint GetId() => Id;
 
     private VehicleProfile[]? vehicleProfiles;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03130002>]
     public VehicleProfile[]? VehicleProfiles
     {

@@ -38,6 +38,7 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSurface>? moveShapeRef;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910E000>(1)]
     public CPlugSurface? MoveShape
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehicleCarPhyShape : CMwNod, IClass
     }
 
     private BoxAligned carVsCarShapeBox;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0910E000>]
     public BoxAligned CarVsCarShapeBox
     {

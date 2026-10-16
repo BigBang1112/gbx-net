@@ -38,6 +38,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int cacheDuration;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03049000>]
     public int CacheDuration
     {
@@ -46,6 +47,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
     }
 
     private bool updated;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03049000>]
     public bool Updated
     {
@@ -54,6 +56,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
     }
 
     private DateTime? timestamp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03049000>]
     public DateTime? Timestamp
     {
@@ -62,6 +65,7 @@ public partial class CGameLeagueManager : CMwNod, IClass
     }
 
     private NodeRefList<CGameLeague>? leagues;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03049000>]
     public NodeRefList<CGameLeague>? Leagues
     {

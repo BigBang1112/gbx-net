@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03139000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03139000>]
     public TimeSingle End
     {
@@ -57,6 +59,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     /// <summary>
     /// GmCamVal marker precedes the transform.
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public byte ArchiveMarker
     {
@@ -65,6 +68,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     private Iso4 transform = Iso4.Identity;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public Iso4 Transform
     {
@@ -76,6 +80,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     /// <summary>
     /// Degrees.
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public float Fov
     {
@@ -84,6 +89,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     private float nearZ = -1;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public float NearZ
     {
@@ -92,6 +98,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     private float farZ = -1;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public float FarZ
     {
@@ -100,6 +107,7 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
     }
 
     private PackDesc? image;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03139001>]
     public PackDesc? Image
     {

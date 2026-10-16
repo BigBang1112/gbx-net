@@ -38,6 +38,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Iso4 spawnLoc;
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00C000>(0, 0)]
     public Iso4 SpawnLoc
     {
@@ -46,6 +47,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     }
 
     private NodeRef<CGameSpawnModel>? spawnRef;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00C000>(1)]
     public CGameSpawnModel? Spawn
     {
@@ -54,6 +56,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSurface>? triggerShapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00C000>]
     public CPlugSurface? TriggerShape
     {
@@ -62,6 +65,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     }
 
     private Vec3 centerPos;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00C000>(2)]
     public Vec3 CenterPos
     {

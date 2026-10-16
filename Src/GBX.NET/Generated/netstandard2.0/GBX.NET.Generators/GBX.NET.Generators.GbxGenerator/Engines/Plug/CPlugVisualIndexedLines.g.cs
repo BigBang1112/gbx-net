@@ -38,6 +38,7 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     internal override uint GetId() => Id;
 
     private ERenderMode renderMode;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09009001>]
     public ERenderMode RenderMode
     {

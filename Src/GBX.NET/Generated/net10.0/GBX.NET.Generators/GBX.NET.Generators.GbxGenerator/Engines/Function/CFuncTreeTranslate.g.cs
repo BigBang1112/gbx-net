@@ -38,6 +38,7 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     internal override uint GetId() => Id;
 
     private Vec3 startPoint;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0500D000>]
     public Vec3 StartPoint
     {
@@ -46,6 +47,7 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     }
 
     private Vec3 endPoint;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0500D000>]
     public Vec3 EndPoint
     {
@@ -54,6 +56,7 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     }
 
     private EFlags flags;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0500D001>]
     public EFlags Flags
     {

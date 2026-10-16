@@ -38,6 +38,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CSceneFx>? fxRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A03A000>]
     public CSceneFx? Fx
     {
@@ -46,6 +47,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     }
 
     private NodeRefList<CSceneFxNod>? nodInputs;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A03A001>]
     public NodeRefList<CSceneFxNod>? NodInputs
     {

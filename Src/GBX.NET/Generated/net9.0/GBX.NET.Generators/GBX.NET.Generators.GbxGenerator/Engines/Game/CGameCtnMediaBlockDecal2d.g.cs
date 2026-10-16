@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031AA000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031AA000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     }
 
     private PackDesc[]? images;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031AA000>]
     public PackDesc[]? Images
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockDecal2d : CGameCtnMediaBlock, IClass, CGa
     }
 
     private List<Decal>? decals;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031AA000>]
     public List<Decal>? Decals
     {

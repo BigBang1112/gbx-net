@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0316D000>]
     public List<Key>? Keys
     {

@@ -38,6 +38,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     internal override uint GetId() => Id;
 
     private Vec3 relativeTargetPos;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     public Vec3 RelativeTargetPos
     {
@@ -46,6 +47,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool isFirstPerson;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -56,6 +58,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool canCameraMove;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -66,6 +69,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool isFollowing;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -76,6 +80,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxSpeed;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -86,6 +91,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float planeDist;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -96,6 +102,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minDist;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -106,6 +113,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxDist;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -116,6 +124,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float fov;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -126,6 +135,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultFov;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -136,6 +146,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useForcedLocation;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -146,6 +157,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Iso4 forcedLocation;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -156,6 +168,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useOnlyFollowedMobilPosition;
+    /// <remarks>Applied with: 0x002, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B002>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
@@ -166,6 +179,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x003, 0x004, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306B003>]
     [AppliedWithChunk<Chunk0306B004>]
     [AppliedWithChunk<Chunk0306B009>]
@@ -177,6 +191,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Vec3 relativeFollowedPos;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public Vec3 RelativeFollowedPos
@@ -186,6 +201,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minFov;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MinFov
@@ -195,6 +211,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxFov;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MaxFov
@@ -204,6 +221,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useForcedUp;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public bool UseForcedUp
@@ -213,6 +231,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Vec3 forcedUp;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public Vec3 ForcedUp
@@ -222,6 +241,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultNearZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float DefaultNearZ
@@ -231,6 +251,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minNearZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MinNearZ
@@ -240,6 +261,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxNearZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MaxNearZ
@@ -249,6 +271,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultFarZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float DefaultFarZ
@@ -258,6 +281,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minFarZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MinFarZ
@@ -267,6 +291,7 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxFarZ;
+    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
     public float MaxFarZ

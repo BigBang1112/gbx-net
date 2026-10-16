@@ -38,6 +38,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int flagsVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>]
     public int FlagsVersion
     {
@@ -46,6 +47,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private int timingVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>]
     public int TimingVersion
     {
@@ -54,6 +56,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private TimingFixedPeriod? timing;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>]
     public TimingFixedPeriod? Timing
     {
@@ -62,6 +65,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimSkelJointGroup>? jointGroupRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>]
     public CPlugAnimSkelJointGroup? JointGroup
     {
@@ -70,6 +74,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private TransQuat[]? localJointsData;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>]
     public TransQuat[]? LocalJointsData
     {
@@ -78,6 +83,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private int legacyData;
+    /// <remarks>Applied with: 0x000 v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>(1, 1)]
     public int LegacyData
     {
@@ -86,6 +92,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private CPlugAnimClip.ClipFlags? flags;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>(3)]
     public CPlugAnimClip.ClipFlags? Flags
     {
@@ -94,6 +101,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private CPlugAnimFile.RootMotionFrame[]? rootMotionFrames;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>(4)]
     public CPlugAnimFile.RootMotionFrame[]? RootMotionFrames
     {
@@ -102,6 +110,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private string[]? floatChannelIds;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>(5)]
     public string[]? FloatChannelIds
     {
@@ -110,6 +119,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private float[]? floatChannelData;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09132000>(5)]
     public float[]? FloatChannelData
     {

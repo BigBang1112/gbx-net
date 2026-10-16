@@ -38,6 +38,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     internal override uint GetId() => Id;
 
     private float inputGasDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputGasDistDelta
     {
@@ -46,6 +47,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputGasDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputGasDistTimeUp
     {
@@ -54,6 +56,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputGasDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputGasDistTimeDown
     {
@@ -62,6 +65,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputBrakeDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputBrakeDistDelta
     {
@@ -70,6 +74,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputBrakeDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputBrakeDistTimeUp
     {
@@ -78,6 +83,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputBrakeDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputBrakeDistTimeDown
     {
@@ -86,6 +92,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputSteerDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputSteerDistDelta
     {
@@ -94,6 +101,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputSteerDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputSteerDistTimeUp
     {
@@ -102,6 +110,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputSteerDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputSteerDistTimeDown
     {
@@ -110,6 +119,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float eventTurboFovDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float EventTurboFovDelta
     {
@@ -118,6 +128,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventTurboFovTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventTurboFovTimeUp
     {
@@ -126,6 +137,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventTurboFovTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventTurboFovTimeDown
     {
@@ -134,6 +146,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float eventTurboDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float EventTurboDistDelta
     {
@@ -142,6 +155,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventTurboDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventTurboDistTimeUp
     {
@@ -150,6 +164,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventTurboDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventTurboDistTimeDown
     {
@@ -158,6 +173,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float eventChangeGearDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float EventChangeGearDistDelta
     {
@@ -166,6 +182,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventChangeGearDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventChangeGearDistTimeUp
     {
@@ -174,6 +191,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventChangeGearDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventChangeGearDistTimeDown
     {
@@ -182,6 +200,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float eventBurningLookAtFactorDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float EventBurningLookAtFactorDelta
     {
@@ -190,6 +209,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventBurningLookAtFactorTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventBurningLookAtFactorTimeUp
     {
@@ -198,6 +218,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventBurningLookAtFactorTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventBurningLookAtFactorTimeDown
     {
@@ -206,6 +227,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float eventBurningDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float EventBurningDistDelta
     {
@@ -214,6 +236,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventBurningDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventBurningDistTimeUp
     {
@@ -222,6 +245,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int eventBurningDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int EventBurningDistTimeDown
     {
@@ -230,6 +254,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float stateFlyingDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float StateFlyingDistDelta
     {
@@ -238,6 +263,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingDistTimeUp
     {
@@ -246,6 +272,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingDistTimeDown
     {
@@ -254,6 +281,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float stateFlyingPlaneDistDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float StateFlyingPlaneDistDelta
     {
@@ -262,6 +290,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingPlaneDistTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingPlaneDistTimeUp
     {
@@ -270,6 +299,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingPlaneDistTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingPlaneDistTimeDown
     {
@@ -278,6 +308,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float stateFlyingLookAtFactorDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float StateFlyingLookAtFactorDelta
     {
@@ -286,6 +317,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingLookAtFactorTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingLookAtFactorTimeUp
     {
@@ -294,6 +326,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingLookAtFactorTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingLookAtFactorTimeDown
     {
@@ -302,6 +335,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputLeftSteerRollDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputLeftSteerRollDelta
     {
@@ -310,6 +344,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputLeftSteerRollTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputLeftSteerRollTimeUp
     {
@@ -318,6 +353,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputLeftSteerRollTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputLeftSteerRollTimeDown
     {
@@ -326,6 +362,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputRightSteerRollDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputRightSteerRollDelta
     {
@@ -334,6 +371,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputRightSteerRollTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputRightSteerRollTimeUp
     {
@@ -342,6 +380,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputRightSteerRollTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputRightSteerRollTimeDown
     {
@@ -350,6 +389,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputLeftSteerYawDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputLeftSteerYawDelta
     {
@@ -358,6 +398,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputLeftSteerYawTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputLeftSteerYawTimeUp
     {
@@ -366,6 +407,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputLeftSteerYawTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputLeftSteerYawTimeDown
     {
@@ -374,6 +416,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float inputRightSteerYawDelta;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float InputRightSteerYawDelta
     {
@@ -382,6 +425,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputRightSteerYawTimeUp;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputRightSteerYawTimeUp
     {
@@ -390,6 +434,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputRightSteerYawTimeDown;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputRightSteerYawTimeDown
     {
@@ -398,6 +443,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float stateFlyingLookAtStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float StateFlyingLookAtStep
     {
@@ -406,6 +452,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float minSpeed;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float MinSpeed
     {
@@ -414,6 +461,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingDurationBeforeFlyingMode;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingDurationBeforeFlyingMode
     {
@@ -422,6 +470,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int stateFlyingDurationBeforeCameraMove;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int StateFlyingDurationBeforeCameraMove
     {
@@ -430,6 +479,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputSteerDurationBeforeBurnoutShowView;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputSteerDurationBeforeBurnoutShowView
     {
@@ -438,6 +488,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputSteerDurationBeforeAnticipatingTurnTriggered;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputSteerDurationBeforeAnticipatingTurnTriggered
     {
@@ -446,6 +497,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputSteerDurationBeforeRollTriggered;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputSteerDurationBeforeRollTriggered
     {
@@ -454,6 +506,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private int inputNoSteerDurationBeforeReset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public int InputNoSteerDurationBeforeReset
     {
@@ -462,6 +515,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float maxDeltaPlaneDistStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float MaxDeltaPlaneDistStep
     {
@@ -470,6 +524,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float maxDeltaFovStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float MaxDeltaFovStep
     {
@@ -478,6 +533,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private NodeRef<CFuncKeysReal>? lookAtFactorFromUpSpeedRatioRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? LookAtFactorFromUpSpeedRatio
     {
@@ -486,6 +542,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private NodeRef<CFuncKeysReal>? yawFromSpeedRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? YawFromSpeed
     {
@@ -494,6 +551,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private NodeRef<CFuncKeysReal>? rollFromSpeedRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public CFuncKeysReal? RollFromSpeed
     {
@@ -502,6 +560,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float deltaDistDamperKi;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float DeltaDistDamperKi
     {
@@ -510,6 +569,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float deltaDistDamperKa;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float DeltaDistDamperKa
     {
@@ -518,6 +578,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float deltaLookAtFactorDamperKi;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float DeltaLookAtFactorDamperKi
     {
@@ -526,6 +587,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private float deltaLookAtFactorDamperKa;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24086000>]
     public float DeltaLookAtFactorDamperKa
     {
@@ -534,6 +596,7 @@ public partial class CGameControlCameraTrackManiaRace2 : CGameControlCameraTarge
     }
 
     private bool isRollFromInput;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24086001>]
     public bool IsRollFromInput
     {

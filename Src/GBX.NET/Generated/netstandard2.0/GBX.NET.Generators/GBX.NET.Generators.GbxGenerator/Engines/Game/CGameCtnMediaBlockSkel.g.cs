@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0314A000>]
     public List<Key>? Keys
     {
@@ -49,6 +50,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     /// <summary>
     /// Root-transform composition in version 3. Discarded in version 4.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v3-4 body chunk</remarks>
     [AppliedWithChunk<Chunk0314A000>(3, 4)]
     public float LegacyRootTranslationX
     {
@@ -57,6 +59,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     }
 
     private float legacyRootTranslationY = 1;
+    /// <remarks>Applied with: 0x000 v3-4 body chunk</remarks>
     [AppliedWithChunk<Chunk0314A000>(3, 4)]
     public float LegacyRootTranslationY
     {
@@ -65,6 +68,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     }
 
     private float legacyRootTranslationZ = 100;
+    /// <remarks>Applied with: 0x000 v3-4 body chunk</remarks>
     [AppliedWithChunk<Chunk0314A000>(3, 4)]
     public float LegacyRootTranslationZ
     {
@@ -76,6 +80,7 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     /// <summary>
     /// Radians.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v3-4 body chunk</remarks>
     [AppliedWithChunk<Chunk0314A000>(3, 4)]
     public float LegacyRootYaw
     {

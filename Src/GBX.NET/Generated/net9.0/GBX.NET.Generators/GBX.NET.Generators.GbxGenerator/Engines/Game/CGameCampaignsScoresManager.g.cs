@@ -38,6 +38,7 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CGameChallengeScores>? challengeScores;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03061000>]
     public NodeRefList<CGameChallengeScores>? ChallengeScores
     {
@@ -46,6 +47,7 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     }
 
     private NodeRefList<CGameCampaignScores>? campaignScores;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03061000>]
     public NodeRefList<CGameCampaignScores>? CampaignScores
     {
@@ -54,6 +56,7 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     }
 
     private NodeRef<CGameGeneralScores>? generalScoresRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03061000>]
     public CGameGeneralScores? GeneralScores
     {
@@ -62,6 +65,7 @@ public partial class CGameCampaignsScoresManager : CMwNod, IClass
     }
 
     private NodeRef<CGameSkillScoreComputer>? skillScoreComputerRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03061000>]
     public CGameSkillScoreComputer? SkillScoreComputer
     {

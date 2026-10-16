@@ -38,6 +38,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnBlockInfoTransition>? blockInfoTransitionRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D000>]
     public CGameCtnBlockInfoTransition? BlockInfoTransition
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private string? replacementZoneId;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D005>]
     public string? ReplacementZoneId
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private EBorderType border_North;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public EBorderType Border_North
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private CGameCtnZoneGenealogy? genealogy_North;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public CGameCtnZoneGenealogy? Genealogy_North
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private EBorderType border_East;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public EBorderType Border_East
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private CGameCtnZoneGenealogy? genealogy_East;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public CGameCtnZoneGenealogy? Genealogy_East
     {
@@ -86,6 +92,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private EBorderType border_South;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public EBorderType Border_South
     {
@@ -94,6 +101,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private CGameCtnZoneGenealogy? genealogy_South;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public CGameCtnZoneGenealogy? Genealogy_South
     {
@@ -102,6 +110,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private EBorderType border_West;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public EBorderType Border_West
     {
@@ -110,6 +119,7 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     }
 
     private CGameCtnZoneGenealogy? genealogy_West;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0314D008>]
     public CGameCtnZoneGenealogy? Genealogy_West
     {

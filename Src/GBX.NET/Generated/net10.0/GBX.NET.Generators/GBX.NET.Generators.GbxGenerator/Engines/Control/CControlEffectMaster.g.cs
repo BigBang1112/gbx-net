@@ -38,6 +38,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CControlEffect>? focusEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusEffect
@@ -47,6 +48,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? focusGainedEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedEffect
@@ -56,6 +58,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? focusLostEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostEffect
@@ -65,6 +68,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? focusGainedByAnotherEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusGainedByAnotherEffect
@@ -74,6 +78,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? focusLostByAnotherEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? FocusLostByAnotherEffect
@@ -83,6 +88,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? sleepingEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? SleepingEffect
@@ -92,6 +98,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? showingEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ShowingEffect
@@ -101,6 +108,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? hidingEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? HidingEffect
@@ -110,6 +118,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? actionEffectRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0701C000>]
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ActionEffect
@@ -119,6 +128,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CControlEffect>? managedEffectRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0701C002>]
     public CControlEffect? ManagedEffect
     {
@@ -127,6 +137,7 @@ public partial class CControlEffectMaster : CMwNod, IClass
     }
 
     private NodeRef<CMwRefBuffer>? specialEffectRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0701C003>]
     public CMwRefBuffer? SpecialEffect
     {

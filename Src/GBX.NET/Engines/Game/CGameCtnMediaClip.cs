@@ -14,6 +14,7 @@ public partial class CGameCtnMediaClip
 
     public TMUnlimiter? TMUnlimiterData { get; set; }
 
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0307900E>]
     public bool TriggersBeforeRaceStart
     {

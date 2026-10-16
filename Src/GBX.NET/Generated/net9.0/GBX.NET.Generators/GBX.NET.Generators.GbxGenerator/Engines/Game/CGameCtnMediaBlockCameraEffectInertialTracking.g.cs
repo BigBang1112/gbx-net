@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03166000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03166000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     }
 
     private bool tracking;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03166000>]
     public bool Tracking
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     }
 
     private bool autoZoom;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03166000>]
     public bool AutoZoom
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
     }
 
     private bool autoFocus;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03166000>]
     public bool AutoFocus
     {

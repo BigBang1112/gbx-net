@@ -38,6 +38,7 @@ public partial class CPlugVertexStream : CPlug, IClass
     internal override uint GetId() => Id;
 
     private int vertexCount;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09056000>]
     public int VertexCount
     {
@@ -46,6 +47,7 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     private uint flags = 3;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09056000>]
     public uint Flags
     {
@@ -54,6 +56,7 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     private NodeRef<CPlugVertexStream>? streamModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09056000>]
     public CPlugVertexStream? StreamModel
     {
@@ -62,6 +65,7 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     private DataDecl[]? dataDecls;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09056000>]
     public DataDecl[]? DataDecls
     {
@@ -70,6 +74,7 @@ public partial class CPlugVertexStream : CPlug, IClass
     }
 
     private bool compressLocalFloat3 = true;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09056000>(1)]
     public bool CompressLocalFloat3
     {

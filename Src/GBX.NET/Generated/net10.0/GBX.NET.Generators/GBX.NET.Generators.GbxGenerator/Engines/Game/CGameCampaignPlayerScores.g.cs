@@ -38,6 +38,7 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? campaignId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk030EA001>]
     public string? CampaignId
     {
@@ -46,6 +47,7 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
     }
 
     private SGameModeScores[]? gameModeScores;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk030EA001>]
     public SGameModeScores[]? GameModeScores
     {

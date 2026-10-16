@@ -38,6 +38,7 @@ public partial class CPlugSolid : CPlug, IClass
     internal override uint GetId() => Id;
 
     private int plugIdCounter = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09005000>]
     public int PlugIdCounter
     {
@@ -46,6 +47,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private float mass = 1;
+    /// <remarks>Applied with: 0x006, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09005006>]
     [AppliedWithChunk<Chunk0900500E>]
     public float Mass
@@ -55,6 +57,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private Vec3 centerOfMass;
+    /// <remarks>Applied with: 0x006, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09005006>]
     [AppliedWithChunk<Chunk0900500E>]
     public Vec3 CenterOfMass
@@ -64,6 +67,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private Mat3 inverseInertiaMatrix = (0.23873241f, 0, 0, 0, 0.23873241f, 0, 0, 0, 0.23873241f);
+    /// <remarks>Applied with: 0x006, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09005006>]
     [AppliedWithChunk<Chunk0900500E>]
     public Mat3 InverseInertiaMatrix
@@ -73,6 +77,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private bool useModel = true;
+    /// <remarks>Applied with: 0x00D, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public bool UseModel
@@ -82,6 +87,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private NodeRef<CPlugSolid>? modelRef;
+    /// <remarks>Applied with: 0x00D, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public CPlugSolid? Model
@@ -91,6 +97,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private NodeRef<CPlugTree>? treeRef;
+    /// <remarks>Applied with: 0x00D, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public CPlugTree? Tree
@@ -100,6 +107,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private float linearFluidFriction = 0.1f;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0900500E>]
     public float LinearFluidFriction
     {
@@ -108,6 +116,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private float angularFluidFriction = 0.3f;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0900500E>]
     public float AngularFluidFriction
     {
@@ -116,6 +125,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private float maxDistPerStep = 0.3f;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0900500E>]
     public float MaxDistPerStep
     {
@@ -124,6 +134,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private bool? modelIsExternal;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk09005011>]
     public bool? ModelIsExternal
     {
@@ -132,6 +143,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private byte tileCountU;
+    /// <remarks>Applied with: 0x012, 0x017 v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk09005012>]
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public byte TileCountU
@@ -141,6 +153,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private bool hasPreLightGen;
+    /// <remarks>Applied with: 0x017 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(3)]
     public bool HasPreLightGen
     {
@@ -149,6 +162,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private PreLightGen? solidPreLightGen;
+    /// <remarks>Applied with: 0x017 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(3)]
     public PreLightGen? SolidPreLightGen
     {
@@ -157,6 +171,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private float meterByUv = -1;
+    /// <remarks>Applied with: 0x017 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public float MeterByUv
     {
@@ -165,6 +180,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private bool isComputed;
+    /// <remarks>Applied with: 0x017 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public bool IsComputed
     {
@@ -173,6 +189,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private Rect uvBBox = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+    /// <remarks>Applied with: 0x017 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public Rect UvBBox
     {
@@ -181,6 +198,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private Rect uvBBoxSH = (float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+    /// <remarks>Applied with: 0x017 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public Rect UvBBoxSH
     {
@@ -189,6 +207,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private Int2 spriteCount;
+    /// <remarks>Applied with: 0x017 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(0, 2)]
     public Int2 SpriteCount
     {
@@ -197,6 +216,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private BoxAligned[]? probeBoxes;
+    /// <remarks>Applied with: 0x017 v1-2 body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(1, 2)]
     public BoxAligned[]? ProbeBoxes
     {
@@ -205,6 +225,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private DateTime? fileWriteTime;
+    /// <remarks>Applied with: 0x017 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09005017>(2)]
     public DateTime? FileWriteTime
     {
@@ -213,6 +234,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private NodeRefList<CPlugSound>? sounds;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk09005019>]
     public NodeRefList<CPlugSound>? Sounds
     {
@@ -221,6 +243,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private NodeRefList<CPlugParticleEmitterModel>? particleEmitterModels;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk09005019>]
     public NodeRefList<CPlugParticleEmitterModel>? ParticleEmitterModels
     {
@@ -229,6 +252,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private LocatedInstance[]? soundInstances;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk09005019>]
     public LocatedInstance[]? SoundInstances
     {
@@ -237,6 +261,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private LocatedInstance[]? particleInstances;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk09005019>]
     public LocatedInstance[]? ParticleInstances
     {
@@ -245,6 +270,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private NodeRef<CPlugPath>? pathRef;
+    /// <remarks>Applied with: 0x019 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09005019>(5)]
     public CPlugPath? Path
     {
@@ -253,6 +279,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private byte[]? lodNormalMapTga;
+    /// <remarks>Applied with: 0x01A v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0900501A>(0, 2)]
     public byte[]? LodNormalMapTga
     {
@@ -261,6 +288,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private bool hasVeryLQDiffuse;
+    /// <remarks>Applied with: 0x01A v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0900501A>(1, 1)]
     public bool HasVeryLQDiffuse
     {
@@ -269,6 +297,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private FileImageData? veryLQDiffuse;
+    /// <remarks>Applied with: 0x01A v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0900501A>(1, 1)]
     public FileImageData? VeryLQDiffuse
     {
@@ -277,6 +306,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     private LodNormalMap? solidLodNormalMap;
+    /// <remarks>Applied with: 0x01A v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk0900501A>(4)]
     public LodNormalMap? SolidLodNormalMap
     {

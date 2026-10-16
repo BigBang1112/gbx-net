@@ -41,6 +41,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Obsolete collision-group switch, used by TMF
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x003, 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk06003000>]
     [AppliedWithChunk<Chunk06003003>]
     [AppliedWithChunk<Chunk06003004>]
@@ -57,6 +58,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Obsolete contact-interest switch, used by TMF
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk06003000>]
     [AppliedWithChunk<Chunk06003003>]
     [AppliedWithChunk<Chunk06003004>]
@@ -74,6 +76,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Obsolete dynamic-type switch, used by TMF
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x003, 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk06003000>]
     [AppliedWithChunk<Chunk06003003>]
     [AppliedWithChunk<Chunk06003004>]
@@ -87,6 +90,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? solidRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06003001>]
     public CPlugSolid? Solid
     {
@@ -98,6 +102,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Native readers discard these portals after loading
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06003002>]
     public NodeRefList<CHmsPortal>? Portals
     {
@@ -106,6 +111,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private bool castsShadowLegacy;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk06003003>]
     public bool CastsShadowLegacy
     {
@@ -114,6 +120,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private byte countShadowTexCastedLegacy;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk06003004>]
     [AppliedWithChunk<Chunk06003005>]
     [AppliedWithChunk<Chunk06003006>]
@@ -125,6 +132,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private bool isBackgroundLegacy;
+    /// <remarks>Applied with: 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk06003005>]
     [AppliedWithChunk<Chunk06003006>]
     [AppliedWithChunk<Chunk06003007>]
@@ -138,6 +146,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Used by TMF; discarded by Maniaplanet
     /// </summary>
+    /// <remarks>Applied with: 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk06003006>]
     [AppliedWithChunk<Chunk06003007>]
     public bool LightEmitterLegacy
@@ -147,6 +156,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private uint flagsLegacy32;
+    /// <remarks>Applied with: 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk06003008>]
     [AppliedWithChunk<Chunk06003009>]
     public uint FlagsLegacy32
@@ -156,6 +166,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private ulong flagsLegacy64;
+    /// <remarks>Applied with: 0x00A, 0x00B, 0x00C, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0600300A>]
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
@@ -167,7 +178,7 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private ushort visibleId;
-    [GameVersionDefault(GameVersion.TMF, 0)]
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -175,6 +186,7 @@ public partial class CHmsItem : CMwNod, IClass
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
     [AppliedWithChunk<Chunk06003011>]
+    [GameVersionDefault(GameVersion.TMF, 0)]
     public ushort VisibleId
     {
         get => this.visibleId;
@@ -182,11 +194,12 @@ public partial class CHmsItem : CMwNod, IClass
     }
 
     private ulong flagsItem;
-    [GameVersionDefault(GameVersion.TMF, 0xFFF1C00019800000)]
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
     [AppliedWithChunk<Chunk06003011>]
+    [GameVersionDefault(GameVersion.TMF, 0xFFF1C00019800000)]
     public ulong FlagsItem
     {
         get => this.flagsItem;
@@ -230,6 +243,7 @@ public partial class CHmsItem : CMwNod, IClass
         ((CHmsItem)clone).flagsItem = context.Clone(this.flagsItem)!;
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -248,6 +262,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -268,6 +283,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -288,6 +304,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -308,6 +325,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -328,6 +346,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -348,6 +367,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -368,6 +388,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -388,6 +409,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -408,6 +430,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -428,6 +451,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -448,6 +472,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -468,6 +493,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -486,6 +512,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -499,6 +526,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300E>]
     [AppliedWithChunk<Chunk0600300F>]
     [AppliedWithChunk<Chunk06003010>]
@@ -512,6 +540,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -535,6 +564,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -558,6 +588,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -581,6 +612,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -604,6 +636,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -627,6 +660,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -650,6 +684,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -676,6 +711,7 @@ public partial class CHmsItem : CMwNod, IClass
     /// <summary>
     /// Foilage in the native parameter table
     /// </summary>
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -699,6 +735,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -722,6 +759,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -745,6 +783,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -768,6 +807,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -791,6 +831,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -814,6 +855,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -837,6 +879,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -860,6 +903,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]
     [AppliedWithChunk<Chunk0600300D>]
@@ -883,6 +927,7 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x00A, 0x00B, 0x00C, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0600300A>]
     [AppliedWithChunk<Chunk0600300B>]
     [AppliedWithChunk<Chunk0600300C>]

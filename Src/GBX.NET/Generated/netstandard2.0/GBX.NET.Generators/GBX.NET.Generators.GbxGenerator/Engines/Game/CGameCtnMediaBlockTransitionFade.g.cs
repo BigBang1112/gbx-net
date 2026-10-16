@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030AB000>]
     public List<Key>? Keys
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
     }
 
     private Vec4 color;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030AB000>]
     public Vec4 Color
     {

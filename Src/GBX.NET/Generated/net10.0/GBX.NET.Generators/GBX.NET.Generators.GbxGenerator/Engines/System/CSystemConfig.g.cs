@@ -38,6 +38,7 @@ public partial class CSystemConfig : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int displayResolutionPreset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     public int DisplayResolutionPreset
     {
@@ -46,6 +47,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayTexturesQuality;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -63,6 +65,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayColorDepth;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -80,6 +83,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayShaderQuality;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -97,6 +101,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayAntialiasing;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -114,6 +119,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayRefreshRate;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -131,6 +137,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayVSync;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -148,6 +155,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayFullScreen;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -165,6 +173,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayMaxFiltering;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -182,6 +191,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayShadows;
+    /// <remarks>Applied with: 0x000, 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005000>]
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
@@ -199,6 +209,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? masterServerLogin;
+    /// <remarks>Applied with: 0x001, 0x007, 0x00D, 0x012, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B005007>]
     [AppliedWithChunk<Chunk0B00500D>]
@@ -211,6 +222,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? masterServerPassword;
+    /// <remarks>Applied with: 0x001, 0x007, 0x00D, 0x012, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B005007>]
     [AppliedWithChunk<Chunk0B00500D>]
@@ -223,6 +235,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkUseProxy;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E, 0x05F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -242,6 +255,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkProxyLogin;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -260,6 +274,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkProxyPassword;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -278,6 +293,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkMasterServerAddress;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -289,8 +305,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkServerPort;
-    [GameVersionDefault(GameVersion.TMF, 2350)]
-    [GameVersionDefault(GameVersion.MP4, 2350)]
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -302,6 +317,8 @@ public partial class CSystemConfig : CMwNod, IClass
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, 2350)]
+    [GameVersionDefault(GameVersion.MP4, 2350)]
     public int NetworkServerPort
     {
         get => this.networkServerPort;
@@ -309,6 +326,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkClientPort;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -327,6 +345,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkForceUseLocalAddress;
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -345,8 +364,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkForceServerAddress;
-    [GameVersionDefault(GameVersion.TMF, "0.0.0.0:0")]
-    [GameVersionDefault(GameVersion.MP4, "0.0.0.0:0")]
+    /// <remarks>Applied with: 0x001, 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005001>]
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
@@ -358,6 +376,8 @@ public partial class CSystemConfig : CMwNod, IClass
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, "0.0.0.0:0")]
+    [GameVersionDefault(GameVersion.MP4, "0.0.0.0:0")]
     public string? NetworkForceServerAddress
     {
         get => this.networkForceServerAddress;
@@ -365,6 +385,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? masterServerKey;
+    /// <remarks>Applied with: 0x002, 0x007, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005002>]
     [AppliedWithChunk<Chunk0B005007>]
     [AppliedWithChunk<Chunk0B005012>]
@@ -375,13 +396,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioEnabled;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool AudioEnabled
     {
         get => this.audioEnabled;
@@ -389,13 +411,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float audioSoundVolume;
-    [GameVersionDefault(GameVersion.TMF, 1.0f)]
-    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
+    [GameVersionDefault(GameVersion.TMF, 1.0f)]
+    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
     public float AudioSoundVolume
     {
         get => this.audioSoundVolume;
@@ -403,13 +426,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float audioMusicVolume;
-    [GameVersionDefault(GameVersion.TMF, 1.0f)]
-    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
+    [GameVersionDefault(GameVersion.TMF, 1.0f)]
+    [GameVersionDefault(GameVersion.MP4, 0.31622776f)]
     public float AudioMusicVolume
     {
         get => this.audioMusicVolume;
@@ -417,6 +441,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EAudioAcceleration audioAcceleration_Dx9;
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
@@ -429,6 +454,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EAudioQuality3d audioQuality3d_Dx9;
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
@@ -441,11 +467,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioUseEAX;
-    [GameVersionDefault(GameVersion.TMF, true)]
+    /// <remarks>Applied with: 0x004, 0x026, 0x028, 0x03B body chunks</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
+    [GameVersionDefault(GameVersion.TMF, true)]
     public bool AudioUseEAX
     {
         get => this.audioUseEAX;
@@ -453,6 +480,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int audioMaxSounds;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     public int AudioMaxSounds
     {
@@ -461,6 +489,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int audioUpdatePeriod;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     public int AudioUpdatePeriod
     {
@@ -469,6 +498,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int audioSoundsPerUpdate;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005004>]
     public int AudioSoundsPerUpdate
     {
@@ -477,6 +507,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EVsk3SeaQuality vsk3SeaQuality;
+    /// <remarks>Applied with: 0x005, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0B005005>]
     [AppliedWithChunk<Chunk0B00500B>]
     public EVsk3SeaQuality Vsk3SeaQuality
@@ -486,6 +517,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EVsk3BoatVisibility vsk3TeamMate;
+    /// <remarks>Applied with: 0x005, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0B005005>]
     [AppliedWithChunk<Chunk0B00500B>]
     public EVsk3BoatVisibility Vsk3TeamMate
@@ -495,6 +527,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EVsk3BoatVisibility vsk3Stem;
+    /// <remarks>Applied with: 0x005, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0B005005>]
     [AppliedWithChunk<Chunk0B00500B>]
     public EVsk3BoatVisibility Vsk3Stem
@@ -504,6 +537,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private Int2 displayScreenSizeFS;
+    /// <remarks>Applied with: 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
     [AppliedWithChunk<Chunk0B005014>]
@@ -520,6 +554,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayHLQuality;
+    /// <remarks>Applied with: 0x006, 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005006>]
     [AppliedWithChunk<Chunk0B00500A>]
     [AppliedWithChunk<Chunk0B005014>]
@@ -536,6 +571,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool masterServerIsRegistred;
+    /// <remarks>Applied with: 0x007, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005007>]
     [AppliedWithChunk<Chunk0B005012>]
     public bool MasterServerIsRegistred
@@ -545,6 +581,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? desiredLanguageId;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005008>]
     public string? DesiredLanguageId
     {
@@ -553,6 +590,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayDisableShadowBuffer;
+    /// <remarks>Applied with: 0x00A, 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500A>]
     [AppliedWithChunk<Chunk0B005014>]
     [AppliedWithChunk<Chunk0B005015>]
@@ -568,6 +606,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EVsk3BoatQuality vsk3BoatQuality;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0B00500B>]
     public EVsk3BoatQuality Vsk3BoatQuality
     {
@@ -576,6 +615,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool isIgnorePlayerSkins;
+    /// <remarks>Applied with: 0x00C, 0x01D, 0x03D, 0x04A body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500C>]
     [AppliedWithChunk<Chunk0B00501D>]
     [AppliedWithChunk<Chunk0B00503D>]
@@ -587,6 +627,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkConnection;
+    /// <remarks>Applied with: 0x00D, 0x01A, 0x024, 0x02D, 0x031, 0x032, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500D>]
     [AppliedWithChunk<Chunk0B00501A>]
     [AppliedWithChunk<Chunk0B005024>]
@@ -601,6 +642,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int tmCarQuality;
+    /// <remarks>Applied with: 0x00E, 0x010, 0x011, 0x013, 0x01B, 0x01C, 0x01E, 0x02C, 0x033, 0x034, 0x052 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500E>]
     [AppliedWithChunk<Chunk0B005010>]
     [AppliedWithChunk<Chunk0B005011>]
@@ -619,6 +661,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private ETmCarParticlesQuality tmCarParticlesQuality;
+    /// <remarks>Applied with: 0x00E, 0x010, 0x011, 0x013, 0x01B, 0x01C, 0x01E, 0x02C, 0x033, 0x034, 0x052 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500E>]
     [AppliedWithChunk<Chunk0B005010>]
     [AppliedWithChunk<Chunk0B005011>]
@@ -637,6 +680,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int tmOpponents;
+    /// <remarks>Applied with: 0x00E, 0x010, 0x011, 0x013, 0x01B, 0x01C, 0x01E, 0x02C, 0x033, 0x034, 0x052 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500E>]
     [AppliedWithChunk<Chunk0B005010>]
     [AppliedWithChunk<Chunk0B005011>]
@@ -655,6 +699,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float inputsDeadZone;
+    /// <remarks>Applied with: 0x00F, 0x021, 0x022 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500F>]
     [AppliedWithChunk<Chunk0B005021>]
     [AppliedWithChunk<Chunk0B005022>]
@@ -665,6 +710,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float inputsSensitivity;
+    /// <remarks>Applied with: 0x00F, 0x021, 0x022 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00500F>]
     [AppliedWithChunk<Chunk0B005021>]
     [AppliedWithChunk<Chunk0B005022>]
@@ -675,6 +721,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private ETmCarProjector tmCarProjector;
+    /// <remarks>Applied with: 0x010, 0x011, 0x013, 0x01B, 0x01C, 0x01E, 0x02C, 0x033, 0x034 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005010>]
     [AppliedWithChunk<Chunk0B005011>]
     [AppliedWithChunk<Chunk0B005013>]
@@ -691,6 +738,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool tmOppShadows;
+    /// <remarks>Applied with: 0x013, 0x01B, 0x01C, 0x01E, 0x02C, 0x033, 0x034 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005013>]
     [AppliedWithChunk<Chunk0B00501B>]
     [AppliedWithChunk<Chunk0B00501C>]
@@ -705,6 +753,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayGpuSync;
+    /// <remarks>Applied with: 0x014, 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005014>]
     [AppliedWithChunk<Chunk0B005015>]
     [AppliedWithChunk<Chunk0B005016>]
@@ -719,6 +768,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayEmulateCursorGDI;
+    /// <remarks>Applied with: 0x015, 0x016, 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005015>]
     [AppliedWithChunk<Chunk0B005016>]
     [AppliedWithChunk<Chunk0B005017>]
@@ -732,6 +782,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayScreenSizeWin;
+    /// <remarks>Applied with: 0x017, 0x018, 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005017>]
     [AppliedWithChunk<Chunk0B005018>]
     [AppliedWithChunk<Chunk0B005019>]
@@ -743,6 +794,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayForceSoftVP;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005018>]
     public bool DisplayForceSoftVP
     {
@@ -751,6 +803,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int displayVertexProcess;
+    /// <remarks>Applied with: 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005019>]
     [AppliedWithChunk<Chunk0B00501F>]
     public int DisplayVertexProcess
@@ -760,6 +813,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkEnableAvatarDownload;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
     [AppliedWithChunk<Chunk0B00501A>]
     public bool NetworkEnableAvatarDownload
     {
@@ -768,6 +822,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool displayOptimPartDynaGeom;
+    /// <remarks>Applied with: 0x01B, 0x01C, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0B00501B>]
     [AppliedWithChunk<Chunk0B00501C>]
     [AppliedWithChunk<Chunk0B00501F>]
@@ -778,6 +833,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool isSkipRollingDemo;
+    /// <remarks>Applied with: 0x01D, 0x03D, 0x04A body chunks</remarks>
     [AppliedWithChunk<Chunk0B00501D>]
     [AppliedWithChunk<Chunk0B00503D>]
     [AppliedWithChunk<Chunk0B00504A>]
@@ -788,6 +844,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool isSafeMode;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005020>]
     public bool IsSafeMode
     {
@@ -796,6 +853,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private CSystemConfigDisplay? display;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005020>]
     public CSystemConfigDisplay? Display
     {
@@ -804,6 +862,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsAlternateMethod;
+    /// <remarks>Applied with: 0x021, 0x022, 0x040, 0x045, 0x060 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005021>]
     [AppliedWithChunk<Chunk0B005022>]
     [AppliedWithChunk<Chunk0B005040>]
@@ -816,12 +875,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsFreezeUnusedAxes;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x022, 0x040, 0x045, 0x060 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005022>]
     [AppliedWithChunk<Chunk0B005040>]
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool InputsFreezeUnusedAxes
     {
         get => this.inputsFreezeUnusedAxes;
@@ -829,8 +889,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableDownload;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x023, 0x029, 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005023>]
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
@@ -838,6 +897,8 @@ public partial class CSystemConfig : CMwNod, IClass
     [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableDownload
     {
         get => this.fileTransferEnableDownload;
@@ -845,8 +906,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUpload;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x023, 0x029, 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005023>]
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
@@ -854,6 +914,8 @@ public partial class CSystemConfig : CMwNod, IClass
     [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableUpload
     {
         get => this.fileTransferEnableUpload;
@@ -861,13 +923,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private uint fileTransferMaxCacheSize32;
-    [GameVersionDefault(GameVersion.TMF, 629145600)]
+    /// <remarks>Applied with: 0x023, 0x029, 0x02A, 0x02E, 0x02F, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005023>]
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
     [AppliedWithChunk<Chunk0B00502E>]
     [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
+    [GameVersionDefault(GameVersion.TMF, 629145600)]
     public uint FileTransferMaxCacheSize32
     {
         get => this.fileTransferMaxCacheSize32;
@@ -875,6 +938,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? autoUpdateLocatorDBUrl;
+    /// <remarks>Applied with: 0x023, 0x029, 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005023>]
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
@@ -889,6 +953,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? blackListUrl;
+    /// <remarks>Applied with: 0x023, 0x029, 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005023>]
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
@@ -903,6 +968,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EAudioSpeakerConfig audioSpeakerConfig;
+    /// <remarks>Applied with: 0x025, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005025>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
@@ -914,12 +980,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int audioGlobalQuality;
-    [GameVersionDefault(GameVersion.TMF, 1)]
-    [GameVersionDefault(GameVersion.MP4, 1)]
+    /// <remarks>Applied with: 0x026, 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005026>]
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
+    [GameVersionDefault(GameVersion.TMF, 1)]
+    [GameVersionDefault(GameVersion.MP4, 1)]
     public int AudioGlobalQuality
     {
         get => this.audioGlobalQuality;
@@ -927,6 +994,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioDisableDoppler;
+    /// <remarks>Applied with: 0x028, 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B005028>]
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
@@ -937,6 +1005,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool autoUpdateFromLocatorAtInternetConnection;
+    /// <remarks>Applied with: 0x029, 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005029>]
     [AppliedWithChunk<Chunk0B00502A>]
     [AppliedWithChunk<Chunk0B00502E>]
@@ -950,13 +1019,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool enableLocators;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x02A, 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00502A>]
     [AppliedWithChunk<Chunk0B00502E>]
     [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool EnableLocators
     {
         get => this.enableLocators;
@@ -964,9 +1034,10 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EAdvertisingEnabled advertising_Enabled;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
+    [AppliedWithChunk<Chunk0B00502B>]
     [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EAdvertisingEnabled.Configurable")]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EAdvertisingEnabled.Configurable")]
-    [AppliedWithChunk<Chunk0B00502B>]
     public EAdvertisingEnabled Advertising_Enabled
     {
         get => this.advertising_Enabled;
@@ -974,6 +1045,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool advertising_DisabledByUser;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk0B00502B>]
     public bool Advertising_DisabledByUser
     {
@@ -982,6 +1054,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private float advertising_TunningCoef;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk0B00502B>]
     public float Advertising_TunningCoef
     {
@@ -990,6 +1063,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int tmMaxOpponents;
+    /// <remarks>Applied with: 0x02C, 0x033, 0x034, 0x052 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00502C>]
     [AppliedWithChunk<Chunk0B005033>]
     [AppliedWithChunk<Chunk0B005034>]
@@ -1001,12 +1075,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool enableCrashLogUpload;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x02E, 0x02F, 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00502E>]
     [AppliedWithChunk<Chunk0B00502F>]
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool EnableCrashLogUpload
     {
         get => this.enableCrashLogUpload;
@@ -1014,10 +1089,11 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool autoUpdateFromLocator;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x030, 0x054 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005030>]
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool AutoUpdateFromLocator
     {
         get => this.autoUpdateFromLocator;
@@ -1025,6 +1101,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkUseNatUPnP;
+    /// <remarks>Applied with: 0x031, 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005031>]
     [AppliedWithChunk<Chunk0B005032>]
     [AppliedWithChunk<Chunk0B005036>]
@@ -1038,13 +1115,14 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkP2PServerPort;
-    [GameVersionDefault(GameVersion.TMF, 3450)]
-    [GameVersionDefault(GameVersion.MP4, 3450)]
+    /// <remarks>Applied with: 0x032, 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005032>]
     [AppliedWithChunk<Chunk0B005036>]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, 3450)]
+    [GameVersionDefault(GameVersion.MP4, 3450)]
     public int NetworkP2PServerPort
     {
         get => this.networkP2PServerPort;
@@ -1052,6 +1130,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int tmBackgroundQuality;
+    /// <remarks>Applied with: 0x034, 0x052 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005034>]
     [AppliedWithChunk<Chunk0B005052>]
     public int TmBackgroundQuality
@@ -1061,12 +1140,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool networkTestInternetConnection;
-    [GameVersionDefault(GameVersion.TMF, true)]
+    /// <remarks>Applied with: 0x035, 0x043, 0x044, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005035>]
     [AppliedWithChunk<Chunk0B005043>]
     [AppliedWithChunk<Chunk0B005044>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, true)]
     public bool NetworkTestInternetConnection
     {
         get => this.networkTestInternetConnection;
@@ -1074,12 +1154,13 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkServerBroadcastLength;
-    [GameVersionDefault(GameVersion.TMF, 10)]
-    [GameVersionDefault(GameVersion.MP4, 50)]
+    /// <remarks>Applied with: 0x036, 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005036>]
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, 10)]
+    [GameVersionDefault(GameVersion.MP4, 50)]
     public int NetworkServerBroadcastLength
     {
         get => this.networkServerBroadcastLength;
@@ -1090,6 +1171,7 @@ public partial class CSystemConfig : CMwNod, IClass
     /// <summary>
     /// Plaintext legacy key. Later chunks store an encrypted representation.
     /// </summary>
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005037>]
     public string? InstallCdKey
     {
@@ -1098,9 +1180,10 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool profileEnableMulti;
-    [GameVersionDefault(GameVersion.TMF, true)]
+    /// <remarks>Applied with: 0x038, 0x048 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005038>]
     [AppliedWithChunk<Chunk0B005048>]
+    [GameVersionDefault(GameVersion.TMF, true)]
     public bool ProfileEnableMulti
     {
         get => this.profileEnableMulti;
@@ -1108,6 +1191,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? profileName;
+    /// <remarks>Applied with: 0x038, 0x048 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005038>]
     [AppliedWithChunk<Chunk0B005048>]
     public string? ProfileName
@@ -1117,11 +1201,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkDownloadRate;
-    [GameVersionDefault(GameVersion.TMF, 1048576)]
-    [GameVersionDefault(GameVersion.MP4, 688128)]
+    /// <remarks>Applied with: 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, 1048576)]
+    [GameVersionDefault(GameVersion.MP4, 688128)]
     public int NetworkDownloadRate
     {
         get => this.networkDownloadRate;
@@ -1129,11 +1214,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkUploadRate;
-    [GameVersionDefault(GameVersion.TMF, 65536)]
-    [GameVersionDefault(GameVersion.MP4, 43008)]
+    /// <remarks>Applied with: 0x039, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005039>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.TMF, 65536)]
+    [GameVersionDefault(GameVersion.MP4, 43008)]
     public int NetworkUploadRate
     {
         get => this.networkUploadRate;
@@ -1141,10 +1227,11 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? audioDevice_Oal;
-    [GameVersionDefault(GameVersion.TMF, "|Device|Default")]
-    [GameVersionDefault(GameVersion.MP4, "|Device|Default")]
+    /// <remarks>Applied with: 0x03B, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0B00503B>]
     [AppliedWithChunk<Chunk0B00504F>]
+    [GameVersionDefault(GameVersion.TMF, "|Device|Default")]
+    [GameVersionDefault(GameVersion.MP4, "|Device|Default")]
     public string? AudioDevice_Oal
     {
         get => this.audioDevice_Oal;
@@ -1152,11 +1239,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int playerInfoDisplaySize;
-    [GameVersionDefault(GameVersion.TMF, 3)]
-    [GameVersionDefault(GameVersion.MP4, 3)]
+    /// <remarks>Applied with: 0x03C, 0x03D, 0x04A body chunks</remarks>
     [AppliedWithChunk<Chunk0B00503C>]
     [AppliedWithChunk<Chunk0B00503D>]
     [AppliedWithChunk<Chunk0B00504A>]
+    [GameVersionDefault(GameVersion.TMF, 3)]
+    [GameVersionDefault(GameVersion.MP4, 3)]
     public int PlayerInfoDisplaySize
     {
         get => this.playerInfoDisplaySize;
@@ -1164,6 +1252,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private DateTime? parentalLockLastUnlockedTime;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0B00503E>]
     public DateTime? ParentalLockLastUnlockedTime
     {
@@ -1172,6 +1261,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private UInt128 parentalLockPasswordHash;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0B00503E>]
     public UInt128 ParentalLockPasswordHash
     {
@@ -1183,6 +1273,7 @@ public partial class CSystemConfig : CMwNod, IClass
     /// <summary>
     /// Encrypted key as hexadecimal text.
     /// </summary>
+    /// <remarks>Applied with: 0x03F, 0x046, 0x04B, 0x04D, 0x055 body chunks</remarks>
     [AppliedWithChunk<Chunk0B00503F>]
     [AppliedWithChunk<Chunk0B005046>]
     [AppliedWithChunk<Chunk0B00504B>]
@@ -1195,11 +1286,12 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsEnableRumble;
-    [GameVersionDefault(GameVersion.TMF, true)]
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x040, 0x045, 0x060 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005040>]
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
+    [GameVersionDefault(GameVersion.TMF, true)]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool InputsEnableRumble
     {
         get => this.inputsEnableRumble;
@@ -1207,6 +1299,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? menuSkin;
+    /// <remarks>Applied with: 0x041 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005041>]
     public string? MenuSkin
     {
@@ -1215,6 +1308,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkLastUsedMSAddress;
+    /// <remarks>Applied with: 0x043, 0x044, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005043>]
     [AppliedWithChunk<Chunk0B005044>]
     [AppliedWithChunk<Chunk0B005057>]
@@ -1226,6 +1320,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkLastUsedMSPath;
+    /// <remarks>Applied with: 0x043, 0x044, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005043>]
     [AppliedWithChunk<Chunk0B005044>]
     [AppliedWithChunk<Chunk0B005057>]
@@ -1237,6 +1332,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private uint[]? networkFirewallTestedExeChecksums;
+    /// <remarks>Applied with: 0x044, 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005044>]
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
@@ -1247,6 +1343,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsCaptureKeyboard;
+    /// <remarks>Applied with: 0x045, 0x060 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005045>]
     [AppliedWithChunk<Chunk0B005060>]
     public bool InputsCaptureKeyboard
@@ -1256,9 +1353,10 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EPlayerInfoDisplayType playerInfoDisplayType;
+    /// <remarks>Applied with: 0x04A body chunk</remarks>
+    [AppliedWithChunk<Chunk0B00504A>]
     [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EPlayerInfoDisplayType.AvatarAndName")]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EPlayerInfoDisplayType.AvatarAndName")]
-    [AppliedWithChunk<Chunk0B00504A>]
     public EPlayerInfoDisplayType PlayerInfoDisplayType
     {
         get => this.playerInfoDisplayType;
@@ -1266,6 +1364,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string[]? keyHashes;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk0B00504E>]
     public string[]? KeyHashes
     {
@@ -1277,9 +1376,10 @@ public partial class CSystemConfig : CMwNod, IClass
     /// <summary>
     /// Legacy games use EAX.
     /// </summary>
+    /// <remarks>Applied with: 0x04F body chunk</remarks>
+    [AppliedWithChunk<Chunk0B00504F>]
     [GameVersionDefault(GameVersion.TMF, true)]
     [GameVersionDefault(GameVersion.MP4, true)]
-    [AppliedWithChunk<Chunk0B00504F>]
     public bool AudioAllowEFX
     {
         get => this.audioAllowEFX;
@@ -1287,6 +1387,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool edDontConnect;
+    /// <remarks>Applied with: 0x050 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005050>]
     public bool EdDontConnect
     {
@@ -1295,6 +1396,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int playerShadow;
+    /// <remarks>Applied with: 0x052 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005052>]
     public int PlayerShadow
     {
@@ -1303,6 +1405,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EPlayerOcclusion playerOcclusion;
+    /// <remarks>Applied with: 0x052 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005052>]
     public EPlayerOcclusion PlayerOcclusion
     {
@@ -1311,6 +1414,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioSoundHdr;
+    /// <remarks>Applied with: 0x053, 0x056 body chunks</remarks>
     [AppliedWithChunk<Chunk0B005053>]
     [AppliedWithChunk<Chunk0B005056>]
     public bool AudioSoundHdr
@@ -1320,8 +1424,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private ulong fileTransferMaxCacheSize;
-    [GameVersionDefault(GameVersion.MP4, 629145600)]
+    /// <remarks>Applied with: 0x054 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005054>]
+    [GameVersionDefault(GameVersion.MP4, 629145600)]
     public ulong FileTransferMaxCacheSize
     {
         get => this.fileTransferMaxCacheSize;
@@ -1329,8 +1434,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool audioAllowHRTF;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x056 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005056>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool AudioAllowHRTF
     {
         get => this.audioAllowHRTF;
@@ -1338,6 +1444,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int audioDontMuteWhenApplicationUnfocused;
+    /// <remarks>Applied with: 0x056 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005056>]
     public int AudioDontMuteWhenApplicationUnfocused
     {
@@ -1346,9 +1453,10 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int networkSpeed;
-    [GameVersionDefault(GameVersion.MP4, 3)]
+    /// <remarks>Applied with: 0x057, 0x05E body chunks</remarks>
     [AppliedWithChunk<Chunk0B005057>]
     [AppliedWithChunk<Chunk0B00505E>]
+    [GameVersionDefault(GameVersion.MP4, 3)]
     public int NetworkSpeed
     {
         get => this.networkSpeed;
@@ -1356,6 +1464,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private EGamePackQuality gamePackQuality;
+    /// <remarks>Applied with: 0x058 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005058>]
     public EGamePackQuality GamePackQuality
     {
@@ -1364,8 +1473,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableAvatarDownload
     {
         get => this.fileTransferEnableAvatarDownload;
@@ -1373,8 +1483,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableAvatarUpload
     {
         get => this.fileTransferEnableAvatarUpload;
@@ -1382,8 +1493,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableAvatarLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableAvatarLocators
     {
         get => this.fileTransferEnableAvatarLocators;
@@ -1391,8 +1503,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapDownload
     {
         get => this.fileTransferEnableMapDownload;
@@ -1400,8 +1513,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapUpload
     {
         get => this.fileTransferEnableMapUpload;
@@ -1409,8 +1523,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapLocators
     {
         get => this.fileTransferEnableMapLocators;
@@ -1418,8 +1533,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapModDownload
     {
         get => this.fileTransferEnableMapModDownload;
@@ -1427,8 +1543,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapModUpload
     {
         get => this.fileTransferEnableMapModUpload;
@@ -1436,8 +1553,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapModLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapModLocators
     {
         get => this.fileTransferEnableMapModLocators;
@@ -1445,8 +1563,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapSkinDownload
     {
         get => this.fileTransferEnableMapSkinDownload;
@@ -1454,8 +1573,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapSkinUpload
     {
         get => this.fileTransferEnableMapSkinUpload;
@@ -1463,8 +1583,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableMapSkinLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableMapSkinLocators
     {
         get => this.fileTransferEnableMapSkinLocators;
@@ -1472,8 +1593,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableTagSkinDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableTagSkinDownload
     {
         get => this.fileTransferEnableTagSkinDownload;
@@ -1481,8 +1603,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableTagSkinUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableTagSkinUpload
     {
         get => this.fileTransferEnableTagSkinUpload;
@@ -1490,8 +1613,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableTagSkinLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableTagSkinLocators
     {
         get => this.fileTransferEnableTagSkinLocators;
@@ -1499,8 +1623,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableVehicleSkinDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableVehicleSkinDownload
     {
         get => this.fileTransferEnableVehicleSkinDownload;
@@ -1508,8 +1633,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableVehicleSkinUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableVehicleSkinUpload
     {
         get => this.fileTransferEnableVehicleSkinUpload;
@@ -1517,8 +1643,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableVehicleSkinLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableVehicleSkinLocators
     {
         get => this.fileTransferEnableVehicleSkinLocators;
@@ -1526,8 +1653,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeDownload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableUnknownTypeDownload
     {
         get => this.fileTransferEnableUnknownTypeDownload;
@@ -1535,8 +1663,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeUpload;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableUnknownTypeUpload
     {
         get => this.fileTransferEnableUnknownTypeUpload;
@@ -1544,8 +1673,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool fileTransferEnableUnknownTypeLocators;
-    [GameVersionDefault(GameVersion.MP4, true)]
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005059>]
+    [GameVersionDefault(GameVersion.MP4, true)]
     public bool FileTransferEnableUnknownTypeLocators
     {
         get => this.fileTransferEnableUnknownTypeLocators;
@@ -1553,6 +1683,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool disableReplayRecording;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505A>]
     public bool DisableReplayRecording
     {
@@ -1561,6 +1692,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? antiCheatServerUrl;
+    /// <remarks>Applied with: 0x05B body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505B>]
     public string? AntiCheatServerUrl
     {
@@ -1569,6 +1701,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? badWordListUrl;
+    /// <remarks>Applied with: 0x05B v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505B>(2)]
     public string? BadWordListUrl
     {
@@ -1577,8 +1710,9 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private int smMaxPlayerResimStepPerFrame;
-    [GameVersionDefault(GameVersion.MP4, 100)]
+    /// <remarks>Applied with: 0x05C body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505C>]
+    [GameVersionDefault(GameVersion.MP4, 100)]
     public int SmMaxPlayerResimStepPerFrame
     {
         get => this.smMaxPlayerResimStepPerFrame;
@@ -1586,6 +1720,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? installUid;
+    /// <remarks>Applied with: 0x05D body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505D>]
     public string? InstallUid
     {
@@ -1594,6 +1729,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private string? networkProxyUrl;
+    /// <remarks>Applied with: 0x05F body chunk</remarks>
     [AppliedWithChunk<Chunk0B00505F>]
     public string? NetworkProxyUrl
     {
@@ -1602,6 +1738,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     private bool inputsEnableJoysticks;
+    /// <remarks>Applied with: 0x060 body chunk</remarks>
     [AppliedWithChunk<Chunk0B005060>]
     public bool InputsEnableJoysticks
     {

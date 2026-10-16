@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private string? text;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk030A8001>]
     public string? Text
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
     }
 
     private NodeRef<CControlEffectSimi>? effectRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk030A8001>]
     public CControlEffectSimi? Effect
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockText : CGameCtnMediaBlock, IClass
     }
 
     private Vec3 color;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk030A8002>]
     public Vec3 Color
     {

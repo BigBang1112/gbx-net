@@ -38,6 +38,7 @@ public partial class CMotionShader : CMotionTrack, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugMaterial>? materialRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0802B000>]
     public CPlugMaterial? Material
     {
@@ -46,6 +47,7 @@ public partial class CMotionShader : CMotionTrack, IClass
     }
 
     private NodeRef<CPlugShader>? shaderRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0802B000>]
     public CPlugShader? Shader
     {
@@ -54,6 +56,7 @@ public partial class CMotionShader : CMotionTrack, IClass
     }
 
     private NodeRef<CFuncShader>? funcShaderRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0802B000>]
     public CFuncShader? FuncShader
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int currentIndex;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0311D001>]
     [AppliedWithChunk<Chunk0311D002>]
     public int CurrentIndex
@@ -47,6 +48,7 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     }
 
     private Direction dir;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0311D001>]
     [AppliedWithChunk<Chunk0311D002>]
     public Direction Dir
@@ -56,6 +58,7 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     }
 
     private string[]? zoneIds;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0311D002>]
     public string[]? ZoneIds
     {
@@ -64,6 +67,7 @@ public partial class CGameCtnZoneGenealogy : CMwNod, IClass
     }
 
     private string? currentZoneId;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0311D002>]
     public string? CurrentZoneId
     {

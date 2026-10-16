@@ -4,6 +4,7 @@ namespace GBX.NET.Engines.Hms;
 
 public partial class CHmsZone
 {
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public EGxFogFormula FogFormula
     {
@@ -11,6 +12,7 @@ public partial class CHmsZone
         set => FogFlags = (FogFlags & 0xFFFFFFF9) | (((uint)value & 3) << 1);
     }
 
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public EGxFogSpace FogSpace
     {

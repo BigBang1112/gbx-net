@@ -38,6 +38,7 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugGameSkin>? remappingRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303C000>]
     public CPlugGameSkin? Remapping
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     }
 
     private string? remapFolder;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303C000>]
     public string? RemapFolder
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     }
 
     private string? idName;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0303C001>]
     public string? IdName
     {

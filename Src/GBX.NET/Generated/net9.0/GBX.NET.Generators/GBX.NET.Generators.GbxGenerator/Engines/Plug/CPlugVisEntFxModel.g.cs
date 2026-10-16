@@ -38,6 +38,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedShotRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_DeactivatedShot
     {
@@ -46,6 +47,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? part_DeactivatedRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_Deactivated
     {
@@ -54,6 +56,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? part_TeleportUnspawnRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportUnspawn
     {
@@ -62,6 +65,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? part_TeleportSpawnRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public CPlugParticleEmitterModel? Part_TeleportSpawn
     {
@@ -70,6 +74,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private PlugCurve? eliminatedTeleportIntens;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public PlugCurve? EliminatedTeleportIntens
     {
@@ -78,6 +83,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private PlugCurve? eliminatedHighlight;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public PlugCurve? EliminatedHighlight
     {
@@ -86,6 +92,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private Vec3 eliminatedHighlightRgb = (1, 0.8f, 0.4f);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public Vec3 EliminatedHighlightRgb
     {
@@ -94,6 +101,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     private NodeRef<GxLightBall>? tacticalLightRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09115000>]
     public GxLightBall? TacticalLight
     {

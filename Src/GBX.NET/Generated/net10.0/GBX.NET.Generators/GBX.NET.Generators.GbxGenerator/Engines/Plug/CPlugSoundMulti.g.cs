@@ -38,6 +38,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? additionalSoundsRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09064000>]
     public CMwNod? AdditionalSounds
     {
@@ -46,6 +47,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private ESoundInputMapping inputMapping;
+    /// <remarks>Applied with: 0x000, 0x001, 0x003 v2+ body chunks</remarks>
     [AppliedWithChunk<Chunk09064000>]
     [AppliedWithChunk<Chunk09064001>]
     [AppliedWithChunk<Chunk09064003>(2)]
@@ -56,6 +58,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private NodeRefList<CMwNod>? additionalSounds2;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09064001>]
     public NodeRefList<CMwNod>? AdditionalSounds2
     {
@@ -64,6 +67,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private float pitchVariancePos;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09064002>]
     public float PitchVariancePos
     {
@@ -72,6 +76,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private float volumeVariance;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09064002>]
     public float VolumeVariance
     {
@@ -80,6 +85,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private bool avoidDuplicates;
+    /// <remarks>Applied with: 0x002 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09064002>(1)]
     public bool AvoidDuplicates
     {
@@ -88,6 +94,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private bool alternateParity;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09064002>(2)]
     public bool AlternateParity
     {
@@ -96,6 +103,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private float pitchVarianceNeg;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09064002>(3)]
     public float PitchVarianceNeg
     {
@@ -104,6 +112,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private Vec3[]? preferedDistances;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09064003>]
     public Vec3[]? PreferedDistances
     {
@@ -112,6 +121,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     }
 
     private NodeRef<CFuncKeysReal>? volumeFromInputRef;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09064003>(1)]
     public CFuncKeysReal? VolumeFromInput
     {

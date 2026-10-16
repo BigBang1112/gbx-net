@@ -2,6 +2,7 @@
 
 public partial class CPlugGameSkin
 {
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090F4001>]
     public Fid[]? CustomizableFids2 { get; set; }
 

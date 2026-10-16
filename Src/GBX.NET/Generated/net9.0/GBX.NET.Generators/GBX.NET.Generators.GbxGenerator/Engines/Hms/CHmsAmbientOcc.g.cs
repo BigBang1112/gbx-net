@@ -38,10 +38,11 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float imageRadius;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk06026000>]
     [GameVersionDefault(GameVersion.TMF, 0.024f)]
     [GameVersionDefault(GameVersion.MP3, 0.024f)]
     [GameVersionDefault(GameVersion.MP4, 0.024f)]
-    [AppliedWithChunk<Chunk06026000>]
     public float ImageRadius
     {
         get => this.imageRadius;
@@ -49,10 +50,11 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     }
 
     private float blurPower;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk06026000>]
     [GameVersionDefault(GameVersion.TMF, 3f)]
     [GameVersionDefault(GameVersion.MP3, 3f)]
     [GameVersionDefault(GameVersion.MP4, 3f)]
-    [AppliedWithChunk<Chunk06026000>]
     public float BlurPower
     {
         get => this.blurPower;
@@ -63,6 +65,7 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
     /// <summary>
     /// Gaussian blur kernel width, normalized to an odd value by the renderer
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk06026000>]
     public uint BlurTexelCount
     {

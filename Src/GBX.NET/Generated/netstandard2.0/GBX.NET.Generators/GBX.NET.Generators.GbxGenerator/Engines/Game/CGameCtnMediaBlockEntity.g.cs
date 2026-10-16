@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugEntRecordData>? recordDataRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>]
     public CPlugEntRecordData? RecordData
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle? start;
+    /// <remarks>Applied with: 0x000 v0-3 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(0, 3)]
     public TimeSingle? Start
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle? end;
+    /// <remarks>Applied with: 0x000 v0-3 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(0, 3)]
     public TimeSingle? End
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle startOffset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>]
     public TimeSingle StartOffset
     {
@@ -73,6 +77,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// <summary>
     /// SPlugEntRecord array
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>]
     public int[]? NoticeRecords
     {
@@ -81,6 +86,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool noDamage;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(2)]
     public bool NoDamage
     {
@@ -92,6 +98,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// <summary>
     /// Legacy trail override, converted to intensity 0.6 by TM2020.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceTrail
     {
@@ -100,6 +107,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool forceLight;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceLight
     {
@@ -108,6 +116,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool forceHue;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(2)]
     public bool ForceHue
     {
@@ -116,6 +125,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private int appearanceArchiveVersion = 1;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(11)]
     public int AppearanceArchiveVersion
     {
@@ -124,6 +134,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private Ident playerModel = Ident.Empty;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public Ident PlayerModel
     {
@@ -132,6 +143,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private Vec3? appearanceColor;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public Vec3? AppearanceColor
     {
@@ -140,6 +152,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private List<PackDesc>? skinNames;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public List<PackDesc>? SkinNames
     {
@@ -148,6 +161,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool hasBadges;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public bool HasBadges
     {
@@ -156,6 +170,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private SBadge? badge;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(3)]
     public SBadge? Badge
     {
@@ -164,6 +179,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? skinOptions;
+    /// <remarks>Applied with: 0x000 v11+, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0329F000>(11)]
     [AppliedWithChunk<Chunk0329F002>]
     public string? SkinOptions
@@ -173,6 +189,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(4)]
     public List<Key>? Keys
     {
@@ -184,6 +201,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// <summary>
     /// Copied into each key on load.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v5-5 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(5, 5)]
     public float LegacyTrailIntensity
     {
@@ -192,6 +210,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private string? ghostName;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(7)]
     public string? GhostName
     {
@@ -200,6 +219,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeInt32? raceTime;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0329F000>(8)]
     public TimeInt32? RaceTime
     {
@@ -211,6 +231,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// <summary>
     /// Record time = StartOffset + (clip time - Start) * TimeScale.
     /// </summary>
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0329F003>]
     public float TimeScale
     {

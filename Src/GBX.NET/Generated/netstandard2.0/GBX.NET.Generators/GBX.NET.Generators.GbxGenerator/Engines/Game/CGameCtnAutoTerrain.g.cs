@@ -38,6 +38,7 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Int3 offset;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03120001>]
     public Int3 Offset
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnZoneGenealogy>? genealogyRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03120001>]
     public CGameCtnZoneGenealogy? Genealogy
     {

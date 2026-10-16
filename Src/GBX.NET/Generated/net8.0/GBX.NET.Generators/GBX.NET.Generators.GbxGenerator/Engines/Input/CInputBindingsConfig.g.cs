@@ -38,6 +38,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string name = "";
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk13006000>]
     [AppliedWithChunk<Chunk13006002>]
     public string Name
@@ -47,6 +48,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     private Binding[]? bindings;
+    /// <remarks>Applied with: 0x000, 0x003, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk13006000>]
     [AppliedWithChunk<Chunk13006003>]
     [AppliedWithChunk<Chunk13006005>]
@@ -57,6 +59,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     private string[]? configuredDevices;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk13006001>]
     public string[]? ConfiguredDevices
     {
@@ -68,6 +71,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     /// <summary>
     /// Binding configuration revision, compared with the input map's default revision.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk13006002>]
     public int Version
     {
@@ -76,6 +80,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     private string[]? configuredDeviceModels;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk13006004>]
     public string[]? ConfiguredDeviceModels
     {

@@ -38,6 +38,7 @@ public abstract partial class CScene : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CSceneConfig>? sceneConfigRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A001003>]
     public CSceneConfig? SceneConfig
     {
@@ -46,6 +47,7 @@ public abstract partial class CScene : CMwNod, IClass
     }
 
     private NodeRefList<CMotionManager>? motionManagerModels;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0A001005>]
     public NodeRefList<CMotionManager>? MotionManagerModels
     {
@@ -54,6 +56,7 @@ public abstract partial class CScene : CMwNod, IClass
     }
 
     private OldSceneMobil[]? oldMobils;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0A001006>]
     public OldSceneMobil[]? OldMobils
     {

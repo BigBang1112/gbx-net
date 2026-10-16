@@ -41,6 +41,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     internal override uint GetId() => Id;
 
     private int appearanceVersion;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(9)]
     public int AppearanceVersion
     {
@@ -49,6 +50,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private Ident? playerModel;
+    /// <remarks>Applied with: 0x000, 0x003, 0x006, 0x00D, 0x018 body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092003>]
     [AppliedWithChunk<Chunk03092006>]
@@ -61,6 +63,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private Vec3 lightTrailColor;
+    /// <remarks>Applied with: 0x000, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092007>]
     [AppliedWithChunk<Chunk03092009>]
@@ -71,6 +74,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private List<PackDesc>? skinPackDescs;
+    /// <remarks>Applied with: 0x000, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092017>]
     public List<PackDesc>? SkinPackDescs
@@ -80,6 +84,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private bool hasBadges;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>]
     public bool HasBadges
     {
@@ -88,6 +93,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private SBadge? badge;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>]
     public SBadge? Badge
     {
@@ -96,6 +102,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? skinCustomization;
+    /// <remarks>Applied with: 0x000, 0x02E body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk0309202E>]
     public string? SkinCustomization
@@ -105,13 +112,14 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostNickname;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000, 0x003, 0x006, 0x00D, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092003>]
     [AppliedWithChunk<Chunk03092006>]
     [AppliedWithChunk<Chunk0309200D>]
     [AppliedWithChunk<Chunk03092015>]
     [AppliedWithChunk<Chunk03092017>]
+    [SupportsFormatting]
     public string? GhostNickname
     {
         get => this.ghostNickname;
@@ -119,6 +127,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostAvatarName;
+    /// <remarks>Applied with: 0x000, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092017>]
     public string? GhostAvatarName
@@ -128,6 +137,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? recordingContext;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(2)]
     public string? RecordingContext
     {
@@ -136,6 +146,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private NodeRef<CPlugEntRecordData>? recordDataRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(5)]
     public CPlugEntRecordData? RecordData
     {
@@ -144,6 +155,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostTrigram;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(6)]
     public string? GhostTrigram
     {
@@ -152,6 +164,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostCountryPath;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(7)]
     public string? GhostCountryPath
     {
@@ -160,8 +173,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? ghostClubTag;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092000>(8)]
+    [SupportsFormatting]
     public string? GhostClubTag
     {
         get => this.ghostClubTag;
@@ -169,6 +183,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? skinFile;
+    /// <remarks>Applied with: 0x003, 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk03092003>]
     [AppliedWithChunk<Chunk03092006>]
     [AppliedWithChunk<Chunk0309200D>]
@@ -179,6 +194,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private Checkpoint[]? checkpoints;
+    /// <remarks>Applied with: 0x004, 0x00B, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk03092004>]
     [AppliedWithChunk<Chunk0309200B>]
     [AppliedWithChunk<Chunk0309202B>]
@@ -189,6 +205,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private TimeInt32? raceTime;
+    /// <remarks>Applied with: 0x005, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk03092005>]
     [AppliedWithChunk<Chunk0309202B>]
     public TimeInt32? RaceTime
@@ -198,6 +215,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int? respawns;
+    /// <remarks>Applied with: 0x008, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk03092008>]
     [AppliedWithChunk<Chunk0309202B>]
     public int? Respawns
@@ -207,6 +225,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int? stuntScore;
+    /// <remarks>Applied with: 0x00A, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk0309200A>]
     [AppliedWithChunk<Chunk0309202B>]
     public int? StuntScore
@@ -215,10 +234,12 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         set => this.stuntScore = value;
     }
 
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0309200E>]
     public partial Id? GhostUid { get; set; }
 
     private string? ghostLogin;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0309200F>]
     public string? GhostLogin
     {
@@ -227,6 +248,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_ChallengeUid;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk03092010>]
     public string? Validate_ChallengeUid
     {
@@ -235,6 +257,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private TimeInt32 eventsDuration;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -245,6 +268,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int inputStoreVersion;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -255,6 +279,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int inputCountLimit;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -265,6 +290,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_ExeVersion;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -276,6 +302,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private uint validate_ExeChecksum;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -287,6 +314,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int validate_OsKind;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -298,6 +326,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int validate_CpuKind;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -309,6 +338,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_RaceSettings;
+    /// <remarks>Applied with: 0x011, 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
@@ -320,6 +350,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private UInt128? securityKey128;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk03092012>]
     public UInt128? SecurityKey128
     {
@@ -328,6 +359,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int? ghostVersion;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk03092014>]
     public int? GhostVersion
     {
@@ -336,6 +368,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int? validate_ValidationSeed;
+    /// <remarks>Applied with: 0x019, 0x025, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]
     [AppliedWithChunk<Chunk0309202D>]
@@ -346,6 +379,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private TimeInt32? raceStartTime;
+    /// <remarks>Applied with: 0x01B v2-2, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk0309201B>(2, 2)]
     [AppliedWithChunk<Chunk0309202B>]
     public TimeInt32? RaceStartTime
@@ -355,6 +389,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private UInt256? securityKey256;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0309201C>]
     public UInt256? SecurityKey256
     {
@@ -363,6 +398,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private PlayerInputData[]? playerInputs;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0309201D>]
     public PlayerInputData[]? PlayerInputs
     {
@@ -371,6 +407,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private OldSettingsInfos[]? oldSettings;
+    /// <remarks>Applied with: 0x022 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk03092022>(0, 1)]
     public OldSettingsInfos[]? OldSettings
     {
@@ -379,6 +416,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private SettingsInfos[]? settings;
+    /// <remarks>Applied with: 0x022 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092022>(2)]
     public SettingsInfos[]? Settings
     {
@@ -387,6 +425,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? cpuDescription;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public string? CpuDescription
     {
@@ -395,6 +434,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int cpuKind;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public int CpuKind
     {
@@ -403,6 +443,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? gpuDescription;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public string? GpuDescription
     {
@@ -411,6 +452,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int gpuDeviceId;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public int GpuDeviceId
     {
@@ -419,6 +461,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int gpuVendorId;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public int GpuVendorId
     {
@@ -427,6 +470,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? hardwareUid;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public string? HardwareUid
     {
@@ -435,6 +479,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private global::System.Net.IPAddress? networkAddress;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public global::System.Net.IPAddress? NetworkAddress
     {
@@ -443,6 +488,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? loggedUserName;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>]
     public string? LoggedUserName
     {
@@ -451,6 +497,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private byte gpuCount;
+    /// <remarks>Applied with: 0x023 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>(2)]
     public byte GpuCount
     {
@@ -459,6 +506,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private byte hasHmd;
+    /// <remarks>Applied with: 0x023 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092023>(3)]
     public byte HasHmd
     {
@@ -467,6 +515,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private MatchReplaySeparator[]? matchReplaySeparators;
+    /// <remarks>Applied with: 0x024 body chunk</remarks>
     [AppliedWithChunk<Chunk03092024>]
     public MatchReplaySeparator[]? MatchReplaySeparators
     {
@@ -475,6 +524,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private bool steeringWheelSensitivity;
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
     [AppliedWithChunk<Chunk03092025>]
     public bool SteeringWheelSensitivity
     {
@@ -483,6 +533,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private Checksum128? ghostUid128;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk03092026>]
     public Checksum128? GhostUid128
     {
@@ -491,6 +542,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private NodeRefList<CPlugTimedPixelArray>? screenCaptures;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk03092027>]
     public NodeRefList<CPlugTimedPixelArray>? ScreenCaptures
     {
@@ -499,6 +551,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int[]? screenCaptureKeyframeIndices;
+    /// <remarks>Applied with: 0x027 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092027>(1)]
     public int[]? ScreenCaptureKeyframeIndices
     {
@@ -507,6 +560,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private NodeRefList<CPlugTimedPixelArray>? screenCaptures_Difference;
+    /// <remarks>Applied with: 0x027 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03092027>(3)]
     public NodeRefList<CPlugTimedPixelArray>? ScreenCaptures_Difference
     {
@@ -515,6 +569,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_TitleId;
+    /// <remarks>Applied with: 0x028, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092028>]
     [AppliedWithChunk<Chunk0309202D>]
     public string? Validate_TitleId
@@ -524,6 +579,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private Checksum256? validate_TitleChecksum;
+    /// <remarks>Applied with: 0x028, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk03092028>]
     [AppliedWithChunk<Chunk0309202D>]
     public Checksum256? Validate_TitleChecksum
@@ -533,6 +589,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private ScopeType validate_ScopeType;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03092029>]
     public ScopeType Validate_ScopeType
     {
@@ -541,6 +598,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_ScopeId;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03092029>]
     public string? Validate_ScopeId
     {
@@ -549,6 +607,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_GameMode;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03092029>]
     public string? Validate_GameMode
     {
@@ -557,6 +616,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private string? validate_GameModeCustomData;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03092029>]
     public string? Validate_GameModeCustomData
     {
@@ -568,6 +628,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// <summary>
     /// packed gameplay settings, also serialized in 0x02D
     /// </summary>
+    /// <remarks>Applied with: 0x02A, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202A>]
     [AppliedWithChunk<Chunk0309202D>]
     public int Validate_GameRules
@@ -580,6 +641,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// <summary>
     /// simulation time, also serialized in 0x02D
     /// </summary>
+    /// <remarks>Applied with: 0x02A, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202A>]
     [AppliedWithChunk<Chunk0309202D>]
     public TimeInt32? Validate_RaceStartTime
@@ -592,6 +654,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// <summary>
     /// extra race-result field
     /// </summary>
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk0309202B>]
     public int? SpawnLandmarkId
     {
@@ -600,6 +663,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private DateTimeOffset? walltimeStartTimestamp;
+    /// <remarks>Applied with: 0x02C, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
     public DateTimeOffset? WalltimeStartTimestamp
@@ -609,6 +673,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private DateTimeOffset? walltimeEndTimestamp;
+    /// <remarks>Applied with: 0x02C, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
     public DateTimeOffset? WalltimeEndTimestamp
@@ -618,6 +683,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     private int hasInputs;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
     [AppliedWithChunk<Chunk0309202D>]
     public int HasInputs
     {
@@ -629,6 +695,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     /// <summary>
     /// bit 0 is SteeringWheelSensitivity
     /// </summary>
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
     [AppliedWithChunk<Chunk0309202D>]
     public int SimulationFlags
     {
@@ -733,6 +800,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         ((CGameCtnGhost)clone).inputs = context.Clone(this.inputs)!;
     }
 
+    /// <remarks>Applied with: 0x02C, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk0309202C>]
     [AppliedWithChunk<Chunk0309202D>]
     public TimeSpan? WalltimeDuration

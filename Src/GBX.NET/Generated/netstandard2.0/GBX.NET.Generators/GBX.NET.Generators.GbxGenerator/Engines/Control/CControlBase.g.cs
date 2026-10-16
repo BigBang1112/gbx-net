@@ -38,6 +38,7 @@ public partial class CControlBase : CSceneToy, IClass
     internal override uint GetId() => Id;
 
     private string? stackText;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0700100C>]
     public string? StackText
     {
@@ -46,6 +47,7 @@ public partial class CControlBase : CSceneToy, IClass
     }
 
     private NodeRef<CControlLayout>? layoutRef;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0700100E>]
     public CControlLayout? Layout
     {

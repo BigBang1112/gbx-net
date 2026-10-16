@@ -38,6 +38,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugBitmapAddress>? bitmapAddresses = new();
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09026000>]
     [AppliedWithChunk<Chunk09026001>]
     [AppliedWithChunk<Chunk09026002>]
@@ -48,6 +49,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint legacyAlphaFlags;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09026001>]
     public uint LegacyAlphaFlags
     {
@@ -56,6 +58,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint legacyApplyField;
+    /// <remarks>Applied with: 0x003, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk09026003>]
     [AppliedWithChunk<Chunk09026005>]
     [AppliedWithChunk<Chunk09026006>]
@@ -69,6 +72,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     /// <summary>
     /// Packed BGRA texture-operation constant.
     /// </summary>
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09026004>]
     public uint TexOpConstant
     {
@@ -80,12 +84,13 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     /// <summary>
     /// Packed blending and alpha-test state.
     /// </summary>
-    [GameVersionDefault(GameVersion.TM2020, 0x06200001)]
+    /// <remarks>Applied with: 0x007, 0x008, 0x009, 0x00A, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk09026007>]
     [AppliedWithChunk<Chunk09026008>]
     [AppliedWithChunk<Chunk09026009>]
     [AppliedWithChunk<Chunk0902600A>]
     [AppliedWithChunk<Chunk09026012>]
+    [GameVersionDefault(GameVersion.TM2020, 0x06200001)]
     public uint ApplyField
     {
         get => this.applyField;
@@ -93,11 +98,12 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint applyField2;
-    [GameVersionDefault(GameVersion.TM2020, 0x007F807F)]
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk09026008>]
     [AppliedWithChunk<Chunk09026009>]
     [AppliedWithChunk<Chunk0902600A>]
     [AppliedWithChunk<Chunk09026012>]
+    [GameVersionDefault(GameVersion.TM2020, 0x007F807F)]
     public uint ApplyField2
     {
         get => this.applyField2;
@@ -105,6 +111,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint applyField3;
+    /// <remarks>Applied with: 0x009, 0x00A, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk09026009>]
     [AppliedWithChunk<Chunk0902600A>]
     [AppliedWithChunk<Chunk09026012>]
@@ -115,6 +122,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRefList<CPlugBitmapAddress>? unusedBitmapAddresses = new();
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0902600C>]
     public NodeRefList<CPlugBitmapAddress>? UnusedBitmapAddresses
     {
@@ -123,6 +131,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private byte applyFlags;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk09026010>]
     public byte ApplyFlags
     {
@@ -131,6 +140,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapApplyArray>? bitmapApplyArrayRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk09026011>]
     public CPlugBitmapApplyArray? BitmapApplyArray
     {
@@ -139,6 +149,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint legacyMaterialFlags0;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09063000>]
     public uint LegacyMaterialFlags0
     {
@@ -147,6 +158,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private int envMapTexOp;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -157,6 +169,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapAddress>? diffuseRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -167,6 +180,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapAddress>? lightMapRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -177,6 +191,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapAddress>? bumpMapRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -187,6 +202,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapAddress>? selfIllumRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -197,6 +213,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private NodeRef<CPlugBitmapAddress>? envMapRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063000>]
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
@@ -207,6 +224,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     private uint legacyMaterialFlags;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09063001>]
     [AppliedWithChunk<Chunk09063002>]
     public uint LegacyMaterialFlags

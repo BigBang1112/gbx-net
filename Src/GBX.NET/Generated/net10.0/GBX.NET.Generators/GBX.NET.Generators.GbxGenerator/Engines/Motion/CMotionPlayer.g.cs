@@ -38,6 +38,7 @@ public partial class CMotionPlayer : CMotion, IClass
     internal override uint GetId() => Id;
 
     private bool hasBaseLegacy;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk08034000>]
     [AppliedWithChunk<Chunk08034001>]
     public bool HasBaseLegacy
@@ -47,6 +48,7 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private NodeRef<CMotionCmdBase>? baseRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk08034000>]
     [AppliedWithChunk<Chunk08034001>]
     [AppliedWithChunk<Chunk08034002>]
@@ -59,6 +61,7 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private NodeRef<CMwNod>? legacyModelRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk08034002>]
     public CMwNod? LegacyModel
     {
@@ -70,6 +73,7 @@ public partial class CMotionPlayer : CMotion, IClass
     /// <summary>
     /// 0: playing, 1: paused, 2: stopped, 3: save the current state.
     /// </summary>
+    /// <remarks>Applied with: 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk08034002>]
     [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
@@ -80,6 +84,7 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private uint playState = 2;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk08034002>]
     [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
@@ -90,6 +95,7 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private NodeRefList<CMotionTrack>? tracks = new();
+    /// <remarks>Applied with: 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk08034002>]
     [AppliedWithChunk<Chunk08034003>]
     [AppliedWithChunk<Chunk08034004>]
@@ -100,6 +106,7 @@ public partial class CMotionPlayer : CMotion, IClass
     }
 
     private bool isPhysics = false;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk08034004>]
     public bool IsPhysics
     {

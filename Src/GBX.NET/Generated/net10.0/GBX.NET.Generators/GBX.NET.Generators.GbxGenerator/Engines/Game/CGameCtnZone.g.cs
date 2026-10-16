@@ -38,6 +38,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int height;
+    /// <remarks>Applied with: 0x003, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk0305C003>]
     [AppliedWithChunk<Chunk0305C008>]
     public int Height
@@ -47,6 +48,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private string? zoneId;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C003>]
     public string? ZoneId
     {
@@ -55,6 +57,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private string? surfaceId;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C003>]
     public string? SurfaceId
     {
@@ -63,6 +66,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private int depth;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C004>]
     public int Depth
     {
@@ -71,6 +75,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private bool oldZone;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C004>]
     public bool OldZone
     {
@@ -79,6 +84,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private bool hasWater;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C005>]
     public bool HasWater
     {
@@ -87,6 +93,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private bool isLargeZone;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C006>]
     public bool IsLargeZone
     {
@@ -95,6 +102,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private float visualTopGroundHeight;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0305C007>]
     public float VisualTopGroundHeight
     {
@@ -103,6 +111,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private string? waterId;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0305C00B>]
     public string? WaterId
     {
@@ -111,6 +120,7 @@ public partial class CGameCtnZone : CMwNod, IClass
     }
 
     private string? forcedParentZoneFrontierId;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0305C00C>]
     public string? ForcedParentZoneFrontierId
     {

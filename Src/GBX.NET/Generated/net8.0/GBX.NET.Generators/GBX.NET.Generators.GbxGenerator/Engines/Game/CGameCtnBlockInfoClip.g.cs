@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnCollector>? legacySymmetricalClipRef;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03053000>]
     [AppliedWithChunk<Chunk03053001>]
     public CGameCtnCollector? LegacySymmetricalClip
@@ -47,6 +48,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private string? symmetricalClipId;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03053002>]
     public string? SymmetricalClipId
     {
@@ -55,6 +57,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool isFullFreeClip;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03053004>]
     public bool IsFullFreeClip
     {
@@ -63,6 +66,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool isExclusiveFreeClip;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03053004>]
     public bool IsExclusiveFreeClip
     {
@@ -71,6 +75,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private EClipType clipType;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03053005>]
     public EClipType ClipType
     {
@@ -79,6 +84,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool canBeDeletedByFullFreeClip = true;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk03053006>]
     public bool CanBeDeletedByFullFreeClip
     {
@@ -87,6 +93,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private EMultiDir topBottomMultiDir;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053006>(1)]
     public EMultiDir TopBottomMultiDir
     {
@@ -95,6 +102,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool isAlwaysVisibleFreeClip;
+    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053006>(2)]
     public bool IsAlwaysVisibleFreeClip
     {
@@ -103,6 +111,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool isFCTOrFCBIgnoredByVFC;
+    /// <remarks>Applied with: 0x006 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053006>(3)]
     public bool IsFCTOrFCBIgnoredByVFC
     {
@@ -111,6 +120,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool isAntiClip;
+    /// <remarks>Applied with: 0x006 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053006>(4)]
     public bool IsAntiClip
     {
@@ -119,6 +129,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private bool hasPassingPoint;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03053007>]
     public bool HasPassingPoint
     {
@@ -127,6 +138,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private Vec2 passingPointPos;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03053007>]
     public Vec2 PassingPointPos
     {
@@ -135,6 +147,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private float passingPointRoll;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03053007>]
     public float PassingPointRoll
     {
@@ -143,6 +156,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private float passingPointPitch;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03053007>]
     public float PassingPointPitch
     {
@@ -151,6 +165,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private string? clipGroupId;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk03053008>]
     public string? ClipGroupId
     {
@@ -159,6 +174,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private string? symmetricalClipGroupId;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk03053008>]
     public string? SymmetricalClipGroupId
     {
@@ -167,6 +183,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private string? clipGroupId2;
+    /// <remarks>Applied with: 0x008 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053008>(1)]
     public string? ClipGroupId2
     {
@@ -175,6 +192,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     private string? symmetricalClipGroupId2;
+    /// <remarks>Applied with: 0x008 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03053008>(1)]
     public string? SymmetricalClipGroupId2
     {

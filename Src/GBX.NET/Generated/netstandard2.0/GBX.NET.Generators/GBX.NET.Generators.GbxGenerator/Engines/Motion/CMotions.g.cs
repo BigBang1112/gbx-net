@@ -38,6 +38,7 @@ public partial class CMotions : CMotion, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CMotion>? motions = new();
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk08028000>]
     [AppliedWithChunk<Chunk08028001>]
     public NodeRefList<CMotion>? Motions

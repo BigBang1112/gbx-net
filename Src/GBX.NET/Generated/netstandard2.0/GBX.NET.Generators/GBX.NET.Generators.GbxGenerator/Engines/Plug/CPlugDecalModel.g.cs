@@ -38,6 +38,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugBitmap>? diffuseANodeRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? DiffuseA
@@ -47,6 +48,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? normalNodeRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk090A7000>]
     [AppliedWithChunk<Chunk090A7002>]
     public CPlugBitmap? Normal
@@ -56,6 +58,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugSolid>? solidRef;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk090A7001>]
     [AppliedWithChunk<Chunk090A7004>]
     public CPlugSolid? Solid
@@ -65,6 +68,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float texelByMeter = 256;
+    /// <remarks>Applied with: 0x002 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(1)]
     public float TexelByMeter
     {
@@ -73,6 +77,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private bool fadeNormalAndZ = true;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(2)]
     public bool FadeNormalAndZ
     {
@@ -81,6 +86,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float maxAngleNCos = 0.087155804f;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(3)]
     public float MaxAngleNCos
     {
@@ -89,6 +95,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? specularNodeRef;
+    /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(4)]
     public CPlugBitmap? Specular
     {
@@ -97,6 +104,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string diffuseARef = "";
+    /// <remarks>Applied with: 0x002 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(5)]
     public string DiffuseARef
     {
@@ -105,6 +113,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string normalRef = "";
+    /// <remarks>Applied with: 0x002 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(5)]
     public string NormalRef
     {
@@ -113,6 +122,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string specularRef = "";
+    /// <remarks>Applied with: 0x002 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(5)]
     public string SpecularRef
     {
@@ -121,6 +131,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string roughnessRef = "";
+    /// <remarks>Applied with: 0x002 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(6)]
     public string RoughnessRef
     {
@@ -129,6 +140,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? roughnessNodeRef;
+    /// <remarks>Applied with: 0x002 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7002>(6)]
     public CPlugBitmap? Roughness
     {
@@ -137,6 +149,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? iconRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk090A7003>]
     public CPlugBitmap? Icon
     {
@@ -145,6 +158,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private bool randomInstances = true;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>]
     public bool RandomInstances
     {
@@ -153,6 +167,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float maxAngleN3dCos = 0.49999997f;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(2)]
     public float MaxAngleN3dCos
     {
@@ -161,6 +176,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? sprite3dBitmapRef;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(3)]
     public CPlugBitmap? Sprite3dBitmap
     {
@@ -169,6 +185,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string? sprite3dGroupId;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(3)]
     public string? Sprite3dGroupId
     {
@@ -177,6 +194,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private string svgRef = "";
+    /// <remarks>Applied with: 0x004 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(4)]
     public string SvgRef
     {
@@ -185,6 +203,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRef<CMwNod>? svgNodeRef;
+    /// <remarks>Applied with: 0x004 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(4)]
     public CMwNod? Svg
     {
@@ -193,6 +212,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float svgSize = 1;
+    /// <remarks>Applied with: 0x004 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(5)]
     public float SvgSize
     {
@@ -201,6 +221,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float svgAlpha = 1;
+    /// <remarks>Applied with: 0x004 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(6)]
     public float SvgAlpha
     {
@@ -209,6 +230,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private int minAngleN3d;
+    /// <remarks>Applied with: 0x004 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(7)]
     public int MinAngleN3d
     {
@@ -217,6 +239,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private NodeRefList<CPlugDecalModel>? decalModels = new();
+    /// <remarks>Applied with: 0x004 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(8)]
     public NodeRefList<CPlugDecalModel>? DecalModels
     {
@@ -225,6 +248,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private MacroDecalSet[] macroDecalSets = [];
+    /// <remarks>Applied with: 0x004 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk090A7004>(8)]
     public MacroDecalSet[] MacroDecalSets
     {
@@ -233,6 +257,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private float impactSize = 0.1f;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090A7005>]
     public float ImpactSize
     {
@@ -241,6 +266,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     private uint flags;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk090A7006>]
     public uint Flags
     {
@@ -312,6 +338,7 @@ public partial class CPlugDecalModel : CPlug, IClass
         ((CPlugDecalModel)clone).flags = context.Clone(this.flags)!;
     }
 
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk090A7006>]
     public bool IsObsolete
     {

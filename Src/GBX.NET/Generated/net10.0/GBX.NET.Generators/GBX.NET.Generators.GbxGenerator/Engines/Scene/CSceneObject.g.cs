@@ -38,6 +38,7 @@ public abstract partial class CSceneObject : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A005001>]
     public string? Name
     {
@@ -46,6 +47,7 @@ public abstract partial class CSceneObject : CMwNod, IClass
     }
 
     private NodeRef<CMotion>? motionRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A005003>]
     public CMotion? Motion
     {

@@ -38,6 +38,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSound>? plugSoundRef;
+    /// <remarks>Applied with: 0x000, 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0600D000>]
     [AppliedWithChunk<Chunk0600D002>]
     [AppliedWithChunk<Chunk0600D005>]
@@ -48,6 +49,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private float volume;
+    /// <remarks>Applied with: 0x001, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0600D001>]
     [AppliedWithChunk<Chunk0600D003>]
     public float Volume
@@ -57,6 +59,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private float pitch;
+    /// <remarks>Applied with: 0x001, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0600D001>]
     [AppliedWithChunk<Chunk0600D003>]
     public float Pitch
@@ -66,6 +69,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private float priorityAdjustement;
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0600D002>]
     [AppliedWithChunk<Chunk0600D005>]
     public float PriorityAdjustement
@@ -75,6 +79,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private bool useLowQuality;
+    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0600D002>]
     [AppliedWithChunk<Chunk0600D005>]
     public bool UseLowQuality
@@ -84,6 +89,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private float rpmOrSpeed;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0600D003>]
     public float RpmOrSpeed
     {
@@ -92,6 +98,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     private Vec3 volumicSize;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0600D004>]
     public Vec3 VolumicSize
     {

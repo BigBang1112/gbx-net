@@ -41,9 +41,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// Legacy block width in units, discarded since Sunrise
     /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk0304E005>]
     [GameVersionDefault(GameVersion.TM10, 1)]
     [GameVersionDefault(GameVersion.TMPU, 1)]
-    [AppliedWithChunk<Chunk0304E005>]
     public int SizeX
     {
         get => this.sizeX;
@@ -54,9 +55,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// Legacy block height in units, discarded since Sunrise
     /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk0304E005>]
     [GameVersionDefault(GameVersion.TM10, 1)]
     [GameVersionDefault(GameVersion.TMPU, 1)]
-    [AppliedWithChunk<Chunk0304E005>]
     public int SizeY
     {
         get => this.sizeY;
@@ -67,9 +69,10 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// Legacy block depth in units, discarded since Sunrise
     /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk0304E005>]
     [GameVersionDefault(GameVersion.TM10, 1)]
     [GameVersionDefault(GameVersion.TMPU, 1)]
-    [AppliedWithChunk<Chunk0304E005>]
     public int SizeZ
     {
         get => this.sizeZ;
@@ -77,6 +80,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool isPillar;
+    /// <remarks>Applied with: 0x005, 0x006, 0x009, 0x01D, 0x02F body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E006>]
     [AppliedWithChunk<Chunk0304E009>]
@@ -89,6 +93,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private ESelection selection;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     public ESelection Selection
     {
@@ -97,6 +102,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoClassic>? pillarRef;
+    /// <remarks>Applied with: 0x005, 0x01D body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
     public CGameCtnBlockInfoClassic? Pillar
@@ -106,6 +112,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockUnitInfo?>? groundBlockUnitInfos;
+    /// <remarks>Applied with: 0x005, 0x01D body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
     public NodeRefList<CGameCtnBlockUnitInfo?>? GroundBlockUnitInfos
@@ -115,6 +122,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockUnitInfo?>? airBlockUnitInfos;
+    /// <remarks>Applied with: 0x005, 0x01D body chunks</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     [AppliedWithChunk<Chunk0304E01D>]
     public NodeRefList<CGameCtnBlockUnitInfo?>? AirBlockUnitInfos
@@ -124,6 +132,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CSceneMobil>[]? groundMobils;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     public NodeRefList<CSceneMobil>[]? GroundMobils
     {
@@ -132,6 +141,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CSceneMobil>[]? airMobils;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E005>]
     public NodeRefList<CSceneMobil>[]? AirMobils
     {
@@ -140,6 +150,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4? spawnLocGround;
+    /// <remarks>Applied with: 0x007, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0304E007>]
     [AppliedWithChunk<Chunk0304E00C>]
     public Iso4? SpawnLocGround
@@ -149,6 +160,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private EWayPointType wayPointType;
+    /// <remarks>Applied with: 0x00A, 0x00B, 0x00E, 0x026 body chunks</remarks>
     [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
@@ -160,6 +172,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? groundHelperMobilRef;
+    /// <remarks>Applied with: 0x00A, 0x00B, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
@@ -170,6 +183,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? airHelperMobilRef;
+    /// <remarks>Applied with: 0x00A, 0x00B, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0304E00A>]
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
@@ -180,6 +194,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? constructionModeHelperMobilRef;
+    /// <remarks>Applied with: 0x00B, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0304E00B>]
     [AppliedWithChunk<Chunk0304E00E>]
     public CSceneMobil? ConstructionModeHelperMobil
@@ -189,6 +204,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4? spawnLocAir;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0304E00C>]
     public Iso4? SpawnLocAir
     {
@@ -197,6 +213,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool isReplacement;
+    /// <remarks>Applied with: 0x00D, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0304E00D>]
     [AppliedWithChunk<Chunk0304E01A>]
     public bool IsReplacement
@@ -206,6 +223,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool noRespawn;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0304E00F>]
     public bool NoRespawn
     {
@@ -214,6 +232,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? screenInteractionTriggerGroundRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E012>]
     public CSceneMobil? ScreenInteractionTriggerGround
     {
@@ -222,6 +241,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? screenInteractionTriggerAirRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E012>]
     public CSceneMobil? ScreenInteractionTriggerAir
     {
@@ -230,6 +250,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool iconAutoUseGround;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E013>]
     public bool IconAutoUseGround
     {
@@ -238,6 +259,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnPrecalcPartParams>? precalcPartParamsRef;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E015>]
     public CGameCtnPrecalcPartParams? PrecalcPartParams
     {
@@ -246,6 +268,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4 precalcPartLoc;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E015>]
     public Iso4 PrecalcPartLoc
     {
@@ -254,6 +277,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnAutoTerrain>? autoTerrainsGround;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
     [AppliedWithChunk<Chunk0304E01A>]
     public NodeRefList<CGameCtnAutoTerrain>? AutoTerrainsGround
     {
@@ -262,6 +286,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private int autoTerrainPlaceTypeGround;
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
     [AppliedWithChunk<Chunk0304E01A>]
     public int AutoTerrainPlaceTypeGround
     {
@@ -270,6 +295,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoMobil>[]? groundBlockInfoMobils;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0304E01E>]
     public NodeRefList<CGameCtnBlockInfoMobil>[]? GroundBlockInfoMobils
     {
@@ -278,6 +304,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoMobil>[]? airBlockInfoMobils;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0304E01E>]
     public NodeRefList<CGameCtnBlockInfoMobil>[]? AirBlockInfoMobils
     {
@@ -286,6 +313,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugCharPhySpecialProperty>? charPhySpecialPropertyRef;
+    /// <remarks>Applied with: 0x01F, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk0304E01F>]
     [AppliedWithChunk<Chunk0304E020>]
     public CPlugCharPhySpecialProperty? CharPhySpecialProperty
@@ -295,6 +323,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
+    /// <remarks>Applied with: 0x020 v0-6 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(0, 6)]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
@@ -306,6 +335,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
+    /// <remarks>Applied with: 0x020 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(2)]
     public CMwNod? PodiumInfo
     {
@@ -317,6 +347,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// CGamePodiumInfo or CPlugMediaClipList
     /// </summary>
+    /// <remarks>Applied with: 0x020 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(3)]
     public CMwNod? IntroInfo
     {
@@ -325,6 +356,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool charPhySpecialPropertyCustomizable;
+    /// <remarks>Applied with: 0x020 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(4)]
     public bool CharPhySpecialPropertyCustomizable
     {
@@ -333,6 +365,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool spawnUnderground;
+    /// <remarks>Applied with: 0x020 v5-5 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(5, 5)]
     public bool SpawnUnderground
     {
@@ -341,6 +374,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private MaterialModifierPlacementTag? matModifierPlacementTag;
+    /// <remarks>Applied with: 0x020 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E020>(8)]
     public MaterialModifierPlacementTag? MatModifierPlacementTag
     {
@@ -349,6 +383,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Direction dir;
+    /// <remarks>Applied with: 0x021, 0x024, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk0304E021>]
     [AppliedWithChunk<Chunk0304E024>]
     [AppliedWithChunk<Chunk0304E028>]
@@ -359,6 +394,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private SymmetryFlags? symmetryGround;
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E021>]
     public SymmetryFlags? SymmetryGround
     {
@@ -367,6 +403,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private SymmetryFlags? symmetryAir;
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E021>]
     public SymmetryFlags? SymmetryAir
     {
@@ -375,6 +412,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameCtnMacroBlockInfo>? iconMacroBlockInfoRef;
+    /// <remarks>Applied with: 0x022 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E022>]
     public CGameCtnMacroBlockInfo? IconMacroBlockInfo
     {
@@ -383,6 +421,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private CGameCtnBlockInfoVariantGround? variantBaseGround;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E023>]
     public CGameCtnBlockInfoVariantGround? VariantBaseGround
     {
@@ -391,6 +430,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private CGameCtnBlockInfoVariantAir? variantBaseAir;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E023>]
     public CGameCtnBlockInfoVariantAir? VariantBaseAir
     {
@@ -399,6 +439,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoVariantGround>? additionalVariantsGround;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E027>]
     public NodeRefList<CGameCtnBlockInfoVariantGround>? AdditionalVariantsGround
     {
@@ -407,6 +448,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private string? symmetricalBlockInfoId;
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E028>]
     public string? SymmetricalBlockInfoId
     {
@@ -415,6 +457,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugFogVolumeBox>? fogVolumeBoxRef;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E029>]
     public CPlugFogVolumeBox? FogVolumeBox
     {
@@ -423,6 +466,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugSound>? sound1Ref;
+    /// <remarks>Applied with: 0x02A body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02A>]
     public CPlugSound? Sound1
     {
@@ -431,6 +475,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugSound>? sound2Ref;
+    /// <remarks>Applied with: 0x02A v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02A>(1)]
     public CPlugSound? Sound2
     {
@@ -439,6 +484,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4 sound1Loc;
+    /// <remarks>Applied with: 0x02A v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02A>(1)]
     public Iso4 Sound1Loc
     {
@@ -447,6 +493,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private Iso4 sound2Loc;
+    /// <remarks>Applied with: 0x02A v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02A>(1)]
     public Iso4 Sound2Loc
     {
@@ -455,6 +502,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private EBaseType baseType;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02B>]
     public EBaseType BaseType
     {
@@ -463,6 +511,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoVariantAir>? additionalVariantsAir;
+    /// <remarks>Applied with: 0x02C body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02C>]
     public NodeRefList<CGameCtnBlockInfoVariantAir>? AdditionalVariantsAir
     {
@@ -471,6 +520,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private EMultiDir pillarShapeMultiDir;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02F>]
     public EMultiDir PillarShapeMultiDir
     {
@@ -479,6 +529,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private bool isMultiHeightPillarOrVFC;
+    /// <remarks>Applied with: 0x02F v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E02F>(1)]
     public bool IsMultiHeightPillarOrVFC
     {
@@ -490,6 +541,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     /// <summary>
     /// Source model copied when the concrete block classes match
     /// </summary>
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E031>]
     public CGameCtnBlockInfo? BlockInfoModelFid
     {
@@ -498,6 +550,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugGameSkinAndFolder>? materialModifierRef;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
     [AppliedWithChunk<Chunk0304E031>]
     public CPlugGameSkinAndFolder? MaterialModifier
     {
@@ -506,6 +559,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugGameSkinAndFolder>? materialModifier2Ref;
+    /// <remarks>Applied with: 0x031 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0304E031>(1)]
     public CPlugGameSkinAndFolder? MaterialModifier2
     {

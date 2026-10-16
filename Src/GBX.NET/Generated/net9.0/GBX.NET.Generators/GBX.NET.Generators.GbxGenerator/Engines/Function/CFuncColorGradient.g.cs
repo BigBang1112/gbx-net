@@ -38,6 +38,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     internal override uint GetId() => Id;
 
     private Vec3 keyFrameValue0;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public Vec3 KeyFrameValue0
@@ -47,6 +48,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private Vec3 keyFrameValue1;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public Vec3 KeyFrameValue1
@@ -56,6 +58,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private Vec3 keyFrameValue2;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public Vec3 KeyFrameValue2
@@ -65,6 +68,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private Vec3 keyFrameValue3;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public Vec3 KeyFrameValue3
@@ -74,6 +78,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private float keyFramePos1;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public float KeyFramePos1
@@ -83,6 +88,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private float keyFramePos2;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk05038000>]
     [AppliedWithChunk<Chunk05038001>]
     public float KeyFramePos2
@@ -92,6 +98,7 @@ public partial class CFuncColorGradient : CFunc, IClass
     }
 
     private EColorSpace colorSpace;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk05038001>]
     public EColorSpace ColorSpace
     {

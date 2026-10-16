@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0325E000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0325E000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
     }
 
     private NodeRef<CPlugDataTape>? dataTapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0325E000>]
     public CPlugDataTape? DataTape
     {

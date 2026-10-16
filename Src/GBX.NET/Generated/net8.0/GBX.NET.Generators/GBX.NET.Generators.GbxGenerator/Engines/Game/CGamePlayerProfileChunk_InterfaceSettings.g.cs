@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     internal override uint GetId() => Id;
 
     private string? menuLeagueFilter;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312E000>]
     public string? MenuLeagueFilter
     {
@@ -46,6 +47,7 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     }
 
     private byte menuInternetView;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312E000>]
     public byte MenuInternetView
     {
@@ -54,6 +56,7 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     }
 
     private int dynamicLoadScreenIndex;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312E002>]
     public int DynamicLoadScreenIndex
     {
@@ -62,6 +65,7 @@ public partial class CGamePlayerProfileChunk_InterfaceSettings : CGamePlayerProf
     }
 
     private SCampaignSettings[]? campaignSettings;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0312E004>]
     public SCampaignSettings[]? CampaignSettings
     {

@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     internal override uint GetId() => Id;
 
     private SPluginSettings[]? pluginSettings;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03179001>]
     public SPluginSettings[]? PluginSettings
     {
@@ -46,6 +47,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     }
 
     private bool openWebLinksInSteamOverlay;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03179004>]
     public bool OpenWebLinksInSteamOverlay
     {
@@ -54,6 +56,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     }
 
     private bool synchonizeSteamWorkshopFiles;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03179004>(1)]
     public bool SynchonizeSteamWorkshopFiles
     {
@@ -62,6 +65,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     }
 
     private bool preferSteamScreenshots;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03179004>(2)]
     public bool PreferSteamScreenshots
     {

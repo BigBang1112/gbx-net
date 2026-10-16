@@ -38,6 +38,7 @@ public partial class CGameActionModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool useVehicleGuns = true;
+    /// <remarks>Applied with: 0x000 v31+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(31)]
     public bool UseVehicleGuns
     {
@@ -46,6 +47,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRefList<CPlugBulletModel>? bulletModels_Nadeo;
+    /// <remarks>Applied with: 0x000 v30+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(30)]
     public NodeRefList<CPlugBulletModel>? BulletModels_Nadeo
     {
@@ -54,6 +56,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugShieldModel>? shieldModelRef;
+    /// <remarks>Applied with: 0x000 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(25)]
     public CPlugShieldModel? ShieldModel
     {
@@ -62,6 +65,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private LegacyShieldModel? legacyShield;
+    /// <remarks>Applied with: 0x000 v24-24 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(24, 24)]
     public LegacyShieldModel? LegacyShield
     {
@@ -70,6 +74,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x000 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(23)]
     public string? Name
     {
@@ -78,6 +83,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int inventoryItemClass;
+    /// <remarks>Applied with: 0x000 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(22)]
     public int InventoryItemClass
     {
@@ -86,6 +92,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int[]? legacyInventoryValues;
+    /// <remarks>Applied with: 0x000 v21-23 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(21, 23)]
     public int[]? LegacyInventoryValues
     {
@@ -94,6 +101,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int spriteBlockVersion;
+    /// <remarks>Applied with: 0x000 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(19)]
     public int SpriteBlockVersion
     {
@@ -102,6 +110,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private SpriteBlock[]? spriteBlocks;
+    /// <remarks>Applied with: 0x000 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(19)]
     public SpriteBlock[]? SpriteBlocks
     {
@@ -110,6 +119,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? description;
+    /// <remarks>Applied with: 0x000 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(17)]
     public string? Description
     {
@@ -118,6 +128,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int beamVersion = 1;
+    /// <remarks>Applied with: 0x000 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(16)]
     public int BeamVersion
     {
@@ -126,6 +137,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugCustomBeamModel[]? beams;
+    /// <remarks>Applied with: 0x000 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(16)]
     public CPlugCustomBeamModel[]? Beams
     {
@@ -134,6 +146,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool isCustom;
+    /// <remarks>Applied with: 0x000 v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(15)]
     public bool IsCustom
     {
@@ -142,6 +155,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string actionName = "Action";
+    /// <remarks>Applied with: 0x000 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(14)]
     public string ActionName
     {
@@ -150,6 +164,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int actionType;
+    /// <remarks>Applied with: 0x000 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(13)]
     public int ActionType
     {
@@ -158,6 +173,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string gaugeId = "FXGauge_Gauge_EnergyBall_Normal";
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(9)]
     public string GaugeId
     {
@@ -166,6 +182,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private ScriptParams? cooldown;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(8)]
     public ScriptParams? Cooldown
     {
@@ -174,6 +191,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int scriptParamsVersion = 2;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(10)]
     public int ScriptParamsVersion
     {
@@ -182,6 +200,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int actionScriptEffectVersion;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(10)]
     public int ActionScriptEffectVersion
     {
@@ -190,6 +209,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private ActionScriptEffect[]? actionScriptEffects;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(10)]
     public ActionScriptEffect[]? ActionScriptEffects
     {
@@ -198,6 +218,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int customBulletVersion;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(7)]
     public int CustomBulletVersion
     {
@@ -206,6 +227,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private CPlugCustomBulletModel[]? projectiles;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(6)]
     public CPlugCustomBulletModel[]? Projectiles
     {
@@ -214,6 +236,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int soundBlockVersion = 2;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(5)]
     public int SoundBlockVersion
     {
@@ -222,6 +245,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int particleBlockVersion = 1;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(5)]
     public int ParticleBlockVersion
     {
@@ -230,6 +254,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? legacyText;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>]
     public string? LegacyText
     {
@@ -238,6 +263,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRefList<CPlugBulletModel>? bulletModels;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(0, 5)]
     public NodeRefList<CPlugBulletModel>? BulletModels
     {
@@ -246,6 +272,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimFile>? animRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>]
     public CPlugAnimFile? Anim
     {
@@ -254,6 +281,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileTextScript>? legacyScriptRef;
+    /// <remarks>Applied with: 0x000 v0-10 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(0, 10)]
     public CPlugFileTextScript? LegacyScript
     {
@@ -262,6 +290,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugScriptWithSettings>? scriptRef;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(11)]
     public CPlugScriptWithSettings? Script
     {
@@ -270,6 +299,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? legacyIconRef;
+    /// <remarks>Applied with: 0x000 v0-11 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(0, 11)]
     public CPlugBitmap? LegacyIcon
     {
@@ -278,6 +308,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? iconRef;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(12)]
     public string? IconRef
     {
@@ -286,6 +317,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? iconNodeRef;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(12)]
     public CPlugFileImg? Icon
     {
@@ -294,6 +326,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private string? crossHairRef;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(12)]
     public string? CrossHairRef
     {
@@ -302,6 +335,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? crossHairNodeRef;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(12)]
     public CPlugFileImg? CrossHair
     {
@@ -310,6 +344,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private ParticleBlock[]? particleBlocks;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(1)]
     public ParticleBlock[]? ParticleBlocks
     {
@@ -318,6 +353,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private SoundBlock[]? soundBlocks;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(1)]
     public SoundBlock[]? SoundBlocks
     {
@@ -326,6 +362,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool legacyFlag;
+    /// <remarks>Applied with: 0x000 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(20)]
     public bool LegacyFlag
     {
@@ -334,6 +371,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private bool isLockModeActive;
+    /// <remarks>Applied with: 0x000 v27+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(27)]
     public bool IsLockModeActive
     {
@@ -342,6 +380,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private LegacyLockModeData? legacyLockMode;
+    /// <remarks>Applied with: 0x000 v28-28 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(28, 28)]
     public LegacyLockModeData? LegacyLockMode
     {
@@ -350,6 +389,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     private int[]? legacyLockModeValues;
+    /// <remarks>Applied with: 0x000 v27-27 body chunk</remarks>
     [AppliedWithChunk<Chunk2E008000>(27, 27)]
     public int[]? LegacyLockModeValues
     {

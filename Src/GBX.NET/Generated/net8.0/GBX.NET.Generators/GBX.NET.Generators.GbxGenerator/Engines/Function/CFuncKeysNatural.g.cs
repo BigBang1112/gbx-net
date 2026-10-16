@@ -38,6 +38,7 @@ public partial class CFuncKeysNatural : CFuncKeys, IClass
     internal override uint GetId() => Id;
 
     private int[]? naturals;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05030000>]
     public int[]? Naturals
     {

@@ -10,6 +10,7 @@ public partial class CPlugSurface
     public CPlugSkel? Skel { get => skelRef?.Resolve(); set => NodeRef.SetEmbedded(ref skelRef, value); }
 
     private SurfMaterial[] materials = [];
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0900C000>]
     [AppliedWithChunk<Chunk0900C003>]
     public SurfMaterial[] Materials { get => materials; set => materials = value; }

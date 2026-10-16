@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x002, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk030A1000>]
     [AppliedWithChunk<Chunk030A1002>]
     [AppliedWithChunk<Chunk0309F002>]
@@ -51,6 +52,7 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
     /// <summary>
     /// Applies 3*t*t - 2*t*t*t.
     /// </summary>
+    /// <remarks>Applied with: 0x002 v2+, 0x002 v2+ body chunks</remarks>
     [AppliedWithChunk<Chunk030A1002>(2)]
     [AppliedWithChunk<Chunk0309F002>(2)]
     public bool UseSmoothInterpolation

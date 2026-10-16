@@ -38,6 +38,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameObjectPhyModel>? phyRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectPhyModel? Phy
     {
@@ -46,6 +47,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private NodeRef<CGameObjectVisModel>? visRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectVisModel? Vis
     {
@@ -54,6 +56,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private string? inventoryName;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(1)]
     public string? InventoryName
     {
@@ -62,6 +65,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private string? inventoryDescription;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(1)]
     public string? InventoryDescription
     {
@@ -70,6 +74,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private EGameInventoryItemClass inventoryItemClass;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(1)]
     public EGameInventoryItemClass InventoryItemClass
     {
@@ -78,6 +83,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private int? inventoryOccupation;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(1)]
     public int? InventoryOccupation
     {
@@ -86,6 +92,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private NodeRef<CGameObjectModel>? slaveHealDomeRef;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(2)]
     public CGameObjectModel? SlaveHealDome
     {
@@ -94,6 +101,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private NodeRef<CGameObjectModel>? slaveShieldDomeRef;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(3)]
     public CGameObjectModel? SlaveShieldDome
     {
@@ -102,6 +110,7 @@ public partial class CGameObjectModel : CMwNod, IClass
     }
 
     private string? scriptId;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E01D000>(4)]
     public string? ScriptId
     {

@@ -3,6 +3,7 @@
 public partial class CPlugMaterial
 {
     private DeviceMat[]? deviceMaterials;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0907900D>]
     public DeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 

@@ -38,6 +38,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float latitude;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A000>]
     public float Latitude
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float longitude;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A000>]
     public float Longitude
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float deltaGMT;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A000>]
     public float DeltaGMT
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private TimeInt32 timeSunRise;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A000>]
     public TimeInt32 TimeSunRise
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private TimeInt32 timeSunFall;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A000>]
     public TimeInt32 TimeSunFall
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float remappedStartDayTime;
+    /// <remarks>Applied with: 0x001, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public float RemappedStartDayTime
@@ -87,6 +93,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugGameSkin>? remappingRef;
+    /// <remarks>Applied with: 0x001, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugGameSkin? Remapping
@@ -96,6 +103,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private string? remapFolder;
+    /// <remarks>Applied with: 0x001, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public string? RemapFolder
@@ -105,6 +113,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private int shadowCountCarHuman;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A002>]
     public int ShadowCountCarHuman
     {
@@ -113,6 +122,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private int shadowCountCarOpponent;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A002>]
     public int ShadowCountCarOpponent
     {
@@ -121,6 +131,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float shadowCarIntensity;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A002>]
     public float ShadowCarIntensity
     {
@@ -129,6 +140,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private bool shadowScene;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A002>]
     public bool ShadowScene
     {
@@ -137,6 +149,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private bool backgroundIsLocallyLighted;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A002>]
     public bool BackgroundIsLocallyLighted
     {
@@ -145,6 +158,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private bool solidLightAreSkinned;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A003>]
     public bool SolidLightAreSkinned
     {
@@ -153,6 +167,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CHmsLightMap>? hmsLightMapRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A004>]
     public CHmsLightMap? HmsLightMap
     {
@@ -161,6 +176,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CHmsAmbientOcc>? hmsAmbientOccRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A005>]
     public CHmsAmbientOcc? HmsAmbientOcc
     {
@@ -169,6 +185,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float sunMoonIntensity;
+    /// <remarks>Applied with: 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk0303A006>]
     [AppliedWithChunk<Chunk0303A007>]
     public float SunMoonIntensity
@@ -178,6 +195,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float localLightScale;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A007>]
     public float LocalLightScale
     {
@@ -186,6 +204,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float toneMapExposureStaticBase;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00C>]
     public float ToneMapExposureStaticBase
     {
@@ -194,6 +213,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private int toneMapFilmCurve;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00C>]
     public int ToneMapFilmCurve
     {
@@ -202,6 +222,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CFuncKeysReal>? toneMapAutoExp_FidAvgLumiToKeyValueRef;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00C>]
     public CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
     {
@@ -210,6 +231,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private Vec3 tech3SpecularFake_ExpScaleMax;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>]
     public Vec3 Tech3SpecularFake_ExpScaleMax
     {
@@ -218,6 +240,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private Vec2 tech3SpecularLocal;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>]
     public Vec2 Tech3SpecularLocal
     {
@@ -226,6 +249,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private Vec3 tech3Bloom;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>]
     public Vec3 Tech3Bloom
     {
@@ -234,6 +258,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private Vec4 tech3ToneMapAutoExp;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>]
     public Vec4 Tech3ToneMapAutoExp
     {
@@ -242,6 +267,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CFuncKeysReal>? fxBloom_FidFuncIntensAtHdrNormRef;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>]
     public CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
     {
@@ -250,6 +276,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private bool waterReflectFakeCube;
+    /// <remarks>Applied with: 0x00F v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>(1)]
     public bool WaterReflectFakeCube
     {
@@ -258,6 +285,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFxHdrScales_Tech3>? fxHdrScalesT3Ref;
+    /// <remarks>Applied with: 0x00F v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>(2)]
     public CPlugFxHdrScales_Tech3? FxHdrScalesT3
     {
@@ -266,6 +294,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugMoodBlender>? moodBlenderRef;
+    /// <remarks>Applied with: 0x00F v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303A00F>(3)]
     public CPlugMoodBlender? MoodBlender
     {
@@ -276,6 +305,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     private bool isNight;
 
     private bool enableStars;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>]
     public bool EnableStars
     {
@@ -284,6 +314,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CFuncCloudsSolids>? cloudsSolidsRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>]
     public CFuncCloudsSolids? CloudsSolids
     {
@@ -292,6 +323,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFxLightning>? fxLightningRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxLightning? FxLightning
     {
@@ -300,6 +332,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFxWindOnDecal>? fxWindOnDecalRef;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>]
     public CPlugFxWindOnDecal? FxWindOnDecal
     {
@@ -308,6 +341,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFxWindOnTreeSprite>? fxWindOnTreeSpriteRef;
+    /// <remarks>Applied with: 0x012 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>(1)]
     public CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
     {
@@ -316,6 +350,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     }
 
     private float editorHelperHdrScale;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A013>]
     public float EditorHelperHdrScale
     {
@@ -398,6 +433,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         ((CGameCtnDecorationMood)clone).editorHelperHdrScale = context.Clone(this.editorHelperHdrScale)!;
     }
 
+    /// <remarks>Applied with: 0x001, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0303A001>]
     [AppliedWithChunk<Chunk0303A012>]
     public bool IsNight

@@ -38,6 +38,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugBitmap>? bitmapRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090C6002>]
     public CPlugBitmap? Bitmap
     {

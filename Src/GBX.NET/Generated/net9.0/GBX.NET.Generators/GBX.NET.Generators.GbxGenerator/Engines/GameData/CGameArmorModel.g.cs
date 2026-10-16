@@ -38,6 +38,7 @@ public partial class CGameArmorModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int armorMax;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00D000>]
     public int ArmorMax
     {
@@ -46,6 +47,7 @@ public partial class CGameArmorModel : CMwNod, IClass
     }
 
     private int replenishDelayAfterDamage;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00D000>]
     public int ReplenishDelayAfterDamage
     {

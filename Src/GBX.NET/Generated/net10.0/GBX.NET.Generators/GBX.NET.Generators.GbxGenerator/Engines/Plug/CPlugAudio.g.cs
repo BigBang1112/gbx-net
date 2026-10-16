@@ -38,6 +38,7 @@ public abstract partial class CPlugAudio : CPlug, IClass
     internal override uint GetId() => Id;
 
     private int canHaveFx;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09001000>]
     public int CanHaveFx
     {
@@ -46,6 +47,7 @@ public abstract partial class CPlugAudio : CPlug, IClass
     }
 
     private string name = string.Empty;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09001001>]
     public string Name
     {

@@ -38,6 +38,7 @@ public partial class CGameGateModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameArmorModel>? armorRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00B000>]
     public CGameArmorModel? Armor
     {
@@ -46,6 +47,7 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSurface>? shapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00B000>]
     public CPlugSurface? Shape
     {
@@ -54,6 +56,7 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? gateOpenSoundRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateOpenSound
     {
@@ -62,6 +65,7 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? gateCloseSoundRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00B001>]
     public CPlugSound? GateCloseSound
     {
@@ -70,6 +74,7 @@ public partial class CGameGateModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? gateSoundRef;
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00B001>(1)]
     public CPlugSound? GateSound
     {

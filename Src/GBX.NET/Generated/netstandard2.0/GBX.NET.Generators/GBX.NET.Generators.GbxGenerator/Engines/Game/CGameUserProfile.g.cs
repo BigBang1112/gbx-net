@@ -38,6 +38,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec3 badgeColor = (1, 0, 0);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>]
     public Vec3 BadgeColor
     {
@@ -46,6 +47,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private Sticker[]? stickers;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>(3)]
     public Sticker[]? Stickers
     {
@@ -54,6 +56,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private string[]? layers;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>(3)]
     public string[]? Layers
     {
@@ -62,6 +65,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private bool useBadge = true;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>(4)]
     public bool UseBadge
     {
@@ -70,6 +74,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private string skinName = "";
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>(4)]
     public string SkinName
     {
@@ -78,6 +83,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private string? clubTag;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC000>(7)]
     public string? ClubTag
     {
@@ -86,6 +92,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private CScriptTraitsPersistent? scriptPersistentTraits;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC001>]
     public CScriptTraitsPersistent? ScriptPersistentTraits
     {
@@ -94,6 +101,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private ContextTime[]? contextTimes;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC004>]
     public ContextTime[]? ContextTimes
     {
@@ -102,6 +110,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private ContextMapRecordForProfile[]? contextMapRecordsForProfile;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC006>]
     public ContextMapRecordForProfile[]? ContextMapRecordsForProfile
     {
@@ -110,6 +119,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private NodeRefList<CInputBindingsConfig>? inputBindingsConfigs;
+    /// <remarks>Applied with: 0x007 v0-0, 0x007 v2+ body chunks</remarks>
     [AppliedWithChunk<Chunk031CC007>(0, 0)]
     [AppliedWithChunk<Chunk031CC007>(2)]
     public NodeRefList<CInputBindingsConfig>? InputBindingsConfigs
@@ -119,6 +129,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private NodeRef<CInputBindingsConfig>? inputBindingsConfigRef;
+    /// <remarks>Applied with: 0x007 v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>(1, 1)]
     public CInputBindingsConfig? InputBindingsConfig
     {
@@ -127,6 +138,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float rumbleIntensity = 1;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float RumbleIntensity
     {
@@ -135,6 +147,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float centerSpringIntensity;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float CenterSpringIntensity
     {
@@ -143,6 +156,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private bool mouseLookInvertY;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public bool MouseLookInvertY
     {
@@ -151,6 +165,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private EMouseReleaseKey mouseReleaseKey;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public EMouseReleaseKey MouseReleaseKey
     {
@@ -159,6 +174,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private bool mouseAccel;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public bool MouseAccel
     {
@@ -167,6 +183,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float mouseScaleY = 1;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float MouseScaleY
     {
@@ -175,6 +192,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float mouseScaleFreeLook = 1;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float MouseScaleFreeLook
     {
@@ -183,6 +201,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float mouseAccelQuantity = 0.001f;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float MouseAccelQuantity
     {
@@ -191,6 +210,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private bool mouseSensitivities_EnableSpecific = true;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public bool MouseSensitivities_EnableSpecific
     {
@@ -199,6 +219,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float mouseSensitivity_Default = 0.5f;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float MouseSensitivity_Default
     {
@@ -207,6 +228,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private float mouseSensitivity_Laser = 0.4f;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>]
     public float MouseSensitivity_Laser
     {
@@ -215,6 +237,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private Unknown[]? legacyVehicleSettings;
+    /// <remarks>Applied with: 0x007 v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC007>(0, 2)]
     public Unknown[]? LegacyVehicleSettings
     {
@@ -223,6 +246,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint camName;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk031CC008>]
     public uint CamName
     {
@@ -231,6 +255,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint totalMedals;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00A>(2)]
     public uint TotalMedals
     {
@@ -239,6 +264,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint authorMedalCount;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00A>(2)]
     public uint AuthorMedalCount
     {
@@ -247,6 +273,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint bronzeMedalCount;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00A>(2)]
     public uint BronzeMedalCount
     {
@@ -255,6 +282,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint goldMedalCount;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00A>(2)]
     public uint GoldMedalCount
     {
@@ -263,6 +291,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private uint silverMedalCount;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00A>(2)]
     public uint SilverMedalCount
     {
@@ -271,6 +300,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private bool editor_ShowHelp = true;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00B>]
     public bool Editor_ShowHelp
     {
@@ -279,6 +309,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private DeviceSettings[]? vehicleSettings;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00C>]
     public DeviceSettings[]? VehicleSettings
     {
@@ -287,6 +318,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private CGameCtnMediaShootParams? shootParamsVideo;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00E>]
     public CGameCtnMediaShootParams? ShootParamsVideo
     {
@@ -295,6 +327,7 @@ public partial class CGameUserProfile : CMwNod, IClass
     }
 
     private CGameCtnMediaShootParams? shootParamsScreenshot;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk031CC00E>]
     public CGameCtnMediaShootParams? ShootParamsScreenshot
     {

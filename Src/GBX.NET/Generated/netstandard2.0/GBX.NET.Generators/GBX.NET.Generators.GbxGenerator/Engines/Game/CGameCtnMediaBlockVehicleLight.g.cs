@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03133000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03133000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, IClass
     }
 
     private int target;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03133001>]
     public int Target
     {

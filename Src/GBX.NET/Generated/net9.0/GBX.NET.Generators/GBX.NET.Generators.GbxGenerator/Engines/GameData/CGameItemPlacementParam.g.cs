@@ -38,6 +38,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private short flags = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public short Flags
     {
@@ -46,6 +47,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private Vec3 cubeCenter;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public Vec3 CubeCenter
     {
@@ -54,6 +56,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float cubeSize;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float CubeSize
     {
@@ -62,6 +65,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float gridSnapHStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float GridSnapHStep
     {
@@ -70,6 +74,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float gridSnapVStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float GridSnapVStep
     {
@@ -78,6 +83,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float gridSnapHOffset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float GridSnapHOffset
     {
@@ -86,6 +92,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float gridSnapVOffset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float GridSnapVOffset
     {
@@ -94,6 +101,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float flyVStep;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float FlyVStep
     {
@@ -102,6 +110,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float flyVOffset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float FlyVOffset
     {
@@ -110,6 +119,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private float pivotSnapDistance = -1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020000>]
     public float PivotSnapDistance
     {
@@ -118,6 +128,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private Vec3[]? pivotPositions;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020001>]
     public Vec3[]? PivotPositions
     {
@@ -126,6 +137,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private Quat[]? pivotRotations;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020001>]
     public Quat[]? PivotRotations
     {
@@ -134,6 +146,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private MagnetLoc[]? magnetLocs;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020004>]
     public MagnetLoc[]? MagnetLocs
     {
@@ -142,6 +155,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     private NodeRef<NPlugItemPlacement_SClass>? placementClassRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk2E020005>]
     public NPlugItemPlacement_SClass? PlacementClass
     {

@@ -73,6 +73,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Map UID, environment, and author login of the map the replay orients in.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v4-9998, 0x000 v10000+ header chunks</remarks>
     [AppliedWithChunk<HeaderChunk03093000>(4, 9998)]
     [AppliedWithChunk<HeaderChunk03093000>(10000)]
     public Ident? MapInfo => mapInfo;
@@ -80,6 +81,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// The record time.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v4-9998, 0x000 v10000+ header chunks</remarks>
     [AppliedWithChunk<HeaderChunk03093000>(4, 9998)]
     [AppliedWithChunk<HeaderChunk03093000>(10000)]
     public TimeInt32? Time => time;
@@ -87,6 +89,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Duration of the legacy replay recording, including time recorded after the finish.
     /// </summary>
+    /// <remarks>Applied with: 0x004, 0x014 body chunks</remarks>
     [AppliedWithChunk<Chunk03093004>]
     [AppliedWithChunk<Chunk03093014>]
     public TimeInt32? RecordDuration => recordDuration;
@@ -94,6 +97,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Legacy show-time records whose contents are preserved as opaque 8-byte values.
     /// </summary>
+    /// <remarks>Applied with: 0x004, 0x014 body chunks</remarks>
     [AppliedWithChunk<Chunk03093004>]
     [AppliedWithChunk<Chunk03093014>]
     public ImmutableArray<OldShowTime>? OldShowTimes => oldShowTimes;
@@ -101,12 +105,14 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Native SOldCutKey records, each preserved as 68 opaque bytes.
     /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03093005>]
     public byte[][]? OldCutKeys => oldCutKeys;
 
     /// <summary>
     /// Native SOldCutKey2 records, each preserved as 72 opaque bytes.
     /// </summary>
+    /// <remarks>Applied with: 0x008, 0x013 body chunks</remarks>
     [AppliedWithChunk<Chunk03093008>]
     [AppliedWithChunk<Chunk03093013>]
     public byte[][]? OldCutKeys2 => oldCutKeys2;
@@ -114,12 +120,14 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Legacy MediaTracker track references.
     /// </summary>
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0309300A>]
     public NodeRefList<CGameCtnMediaTrack>? Tracks => tracks;
 
     /// <summary>
     /// Legacy bullet visual states and notices for the replay scene.
     /// </summary>
+    /// <remarks>Applied with: 0x016, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03093016>]
     [AppliedWithChunk<Chunk03093017>]
     public CPlugDataTape? BulletVisDataTape => bulletVisDataTapeRef?.Resolve();
@@ -127,6 +135,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Legacy character visual states and notices for the replay scene.
     /// </summary>
+    /// <remarks>Applied with: 0x016, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03093016>]
     [AppliedWithChunk<Chunk03093017>]
     public CPlugDataTape? CharVisDataTape => charVisDataTapeRef?.Resolve();
@@ -134,6 +143,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Legacy arena visual notices for the replay scene.
     /// </summary>
+    /// <remarks>Applied with: 0x016, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk03093016>]
     [AppliedWithChunk<Chunk03093017>]
     public CPlugDataTape? ArenaVisDataTape => arenaVisDataTapeRef?.Resolve();
@@ -141,6 +151,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Nickname of the record owner.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v4-9998, 0x000 v10000+ header chunks</remarks>
     [SupportsFormatting]
     [AppliedWithChunk<HeaderChunk03093000>(4, 9998)]
     [AppliedWithChunk<HeaderChunk03093000>(10000)]
@@ -149,6 +160,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Login of the record owner.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v6-9998, 0x000 v10001+ header chunks</remarks>
     [AppliedWithChunk<HeaderChunk03093000>(6, 9998)]
     [AppliedWithChunk<HeaderChunk03093000>(10001)]
     public string? PlayerLogin => playerLogin;
@@ -156,6 +168,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Title pack the replay orients in.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v8+ header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093000>(8)]
     [AppliedWithChunk<Chunk03093018>]
     public string? TitleId => titleId;
@@ -163,9 +176,11 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// XML replay information.
     /// </summary>
+    /// <remarks>Applied with: 0x001 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093001>]
     public string? Xml => xml;
 
+    /// <remarks>Applied with: 0x002 header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093002>]
     [AppliedWithChunk<Chunk03093018>]
     public int? AuthorVersion => authorVersion;
@@ -173,6 +188,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Login of the replay creator.
     /// </summary>
+    /// <remarks>Applied with: 0x002 header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093002>]
     [AppliedWithChunk<Chunk03093018>]
     public string? AuthorLogin => authorLogin;
@@ -180,6 +196,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Nickname of the replay creator.
     /// </summary>
+    /// <remarks>Applied with: 0x002 header chunk, 0x018 body chunk</remarks>
     [SupportsFormatting]
     [AppliedWithChunk<HeaderChunk03093002>]
     [AppliedWithChunk<Chunk03093018>]
@@ -188,20 +205,24 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Zone of the replay creator.
     /// </summary>
+    /// <remarks>Applied with: 0x002 header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093002>]
     [AppliedWithChunk<Chunk03093018>]
     public string? AuthorZone => authorZone;
 
+    /// <remarks>Applied with: 0x002 header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03093002>]
     [AppliedWithChunk<Chunk03093018>]
     public string? AuthorExtraInfo => authorExtraInfo;
 
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03093002>]
     public RawData? ChallengeGbxData => challengeGbxData;
 
     /// <summary>
     /// The map the replay orients in. Null if only the header was read.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03093002>]
     public CGameCtnChallenge? Challenge
     {
@@ -235,35 +256,42 @@ public partial class CGameCtnReplayRecord
     /// Ghosts in the replay. Null if only the header was read.
     /// </summary>
     /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
+    /// <remarks>Applied with: 0x004, 0x014 body chunks</remarks>
     [AppliedWithChunk<Chunk03093004>]
     [AppliedWithChunk<Chunk03093014>]
     public NodeRefList<CGameCtnGhost>? Ghosts => ghosts;
 
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0309300B>]
     public CFuncSegment? HumanTimeToGameTimeFunc => humanTimeToGameTimeFuncRef?.Resolve();
 
     /// <summary>
     /// MediaTracker clip of the replay.
     /// </summary>
+    /// <remarks>Applied with: 0x00C, 0x015 body chunks</remarks>
     [AppliedWithChunk<Chunk0309300C>]
     [AppliedWithChunk<Chunk03093015>]
     public CGameCtnMediaClip? Clip => clipRef?.Resolve();
 
+    /// <remarks>Applied with: 0x024 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03093024>(1)]
     public CPlugEntRecordData? RecordData => recordDataRef?.Resolve();
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0309300E>]
     public CCtnMediaBlockEventTrackMania? Events => eventsRef?.Resolve();
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk03093010>]
     public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay => simpleEventsDisplayRef?.Resolve();
 
+    /// <remarks>Applied with: 0x019 v0-0, 0x01A v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk03093019>(0, 0)]
     [AppliedWithChunk<Chunk0309301A>(0, 0)]
     public ImmutableList<CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys => sceneryVortexKeys;
@@ -271,6 +299,7 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Decrease in vortex radius per second, used to extend the last scenery key to the end of the replay.
     /// </summary>
+    /// <remarks>Applied with: 0x019 v0-0, 0x01A v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk03093019>(0, 0)]
     [AppliedWithChunk<Chunk0309301A>(0, 0)]
     public float SceneryVortexShrinkSpeed => sceneryVortexShrinkSpeed;
@@ -278,30 +307,36 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Recorded capturable scenery states, imported together with <see cref="SceneryCapturableCount"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x01A v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301A>(0, 0)]
     public CPlugDataTape? SceneryCapturableDataTape => sceneryCapturableDataTapeRef?.Resolve();
 
+    /// <remarks>Applied with: 0x01A v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301A>(0, 0)]
     public int SceneryCapturableCount => sceneryCapturableCount;
 
     /// <summary>
     /// Ghost indices and replay times used to select the camera's player of interest.
     /// </summary>
+    /// <remarks>Applied with: 0x01B v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301B>(0, 0)]
     public ImmutableArray<PlayerOfInterest>? PlayersOfInterest => playersOfInterest;
 
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0309301C>]
     public string? PlaygroundScript => playgroundScript;
 
     /// <summary>
     /// Timed snapshots of the replay's Manialink interface layers.
     /// </summary>
+    /// <remarks>Applied with: 0x01D v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301D>(0, 0)]
     public ImmutableList<InterfaceScriptInfo>? InterfaceScriptInfos => interfaceScriptInfos;
 
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the replay ONLY from TM1.0 (2003). For inputs stored in other games: see <see cref="CGameCtnGhost.Inputs"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs are available in <see cref="Ghosts"/> in <see cref="CGameCtnGhost.PlayerInputs"/>. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03093003>]
     [Obsolete("Use GetValidationGhost()?.Inputs instead.")]
     public ImmutableArray<IInput>? Inputs => GetValidationGhost()?.Inputs;
@@ -309,93 +344,110 @@ public partial class CGameCtnReplayRecord
     /// <summary>
     /// Time-dependent mappings from recorded entity scene UIDs to indices in <see cref="Ghosts"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x026 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk03093026>(0, 1)]
     public ImmutableList<EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts => entDataSceneUIdsToGhosts;
 
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03093029>]
     public CGameCtnChallengeParameters? ChallengeParameters => challengeParametersRef?.Resolve();
 
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0309301E>]
     public ImmutableList<CGameActionModel>? ActionModels => actionModels;
 
     /// <summary>
     /// Names assigned to the aggregated models in <see cref="ActionModels"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x01E v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0309301E>(2)]
     public ImmutableList<string>? ActionNames => actionNames;
 
     /// <summary>
     /// Relative filenames of action resources, separate from the aggregated model names in <see cref="ActionNames"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x01E v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0309301E>(1)]
     public ImmutableList<string>? ActionFileNames => actionFileNames;
 
     /// <summary>
     /// Item resources used by the replay.
     /// </summary>
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk03093020>]
     public ImmutableList<ItemResource>? Items => items;
 
     /// <summary>
     /// Additional item resources used to load the replay's item library, including any variant suffixes.
     /// </summary>
+    /// <remarks>Applied with: 0x027 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk03093027>(0, 1)]
     public ImmutableList<ItemResource>? AdditionalItems => additionalItems;
 
     /// <summary>
     /// Legacy anchored object records stored by version 0 of the scenery objects chunk.
     /// </summary>
+    /// <remarks>Applied with: 0x01F v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301F>(0, 0)]
     public ImmutableList<AnchoredObjectInfo>? AnchoredObjectInfos => anchoredObjectInfos;
 
+    /// <remarks>Applied with: 0x01F v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0309301F>(1, 1)]
     public CGameReplayObjectVisData? SceneryObjects => sceneryObjectsRef?.Resolve();
 
     /// <summary>
     /// Whether the playground's minimap is enabled during replay playback.
     /// </summary>
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk03093021>]
     public bool EnableMinimap => enableMinimap;
 
     /// <summary>
     /// Recorded Monoscreen camera values (STimedCamVal), preserved as 80-byte records in Maniaplanet or 84-byte records in Trackmania.
     /// </summary>
+    /// <remarks>Applied with: 0x022 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03093022>(0, 0)]
     public byte[][]? CameraRecord => cameraRecord;
 
     /// <summary>
     /// Recorded visual states of empty cars, used to create <see cref="CGameCtnMediaBlockCheatEmptyCars"/> blocks.
     /// </summary>
+    /// <remarks>Applied with: 0x023 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03093023>(0, 0)]
     public CPlugDataTape? EmptyCarsVisDataTape => emptyCarsVisDataTapeRef?.Resolve();
 
     /// <summary>
     /// Timed bump bonus events, including their durations and gold status.
     /// </summary>
+    /// <remarks>Applied with: 0x023 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03093023>(0, 0)]
     public ImmutableList<BonusBumpKey>? BonusBumpKeys => bonusBumpKeys;
 
     /// <summary>
     /// Legacy recorded scenery-turret states. Newer replays use <see cref="RecordData"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x024 body chunk</remarks>
     [AppliedWithChunk<Chunk03093024>]
     public CPlugDataTape? SceneryTurretsDataTape => sceneryTurretsDataTapeRef?.Resolve();
 
     /// <summary>
     /// Time of day at the start of the replay, as a fraction of a day, or -1 when unspecified.
     /// </summary>
+    /// <remarks>Applied with: 0x025 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03093025>(0, 0)]
     public float TimeOfDay => timeOfDay;
 
     /// <summary>
     /// Duration of the replay's day cycle. Zero keeps the time of day fixed.
     /// </summary>
+    /// <remarks>Applied with: 0x025 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03093025>(0, 0)]
     public TimeInt32 DayPeriod => dayPeriod;
 
     /// <summary>
     /// Whether generated MediaTracker entity tracks are restricted to ghosts whose login matches <see cref="AuthorLogin"/>.
     /// </summary>
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk03093028>]
     public bool KeepOnlyAuthorGhosts => keepOnlyAuthorGhosts;
 
@@ -1290,6 +1342,7 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// Scene UID preferred for matching when both entities have one. Version 0 uses 0x0FF00000 for an unknown UID.
         /// </summary>
+        /// <remarks>Applied with: 0x026 v1+ body chunk</remarks>
         [AppliedWithChunk<Chunk03093026>(1)]
         public int SceneUId { get; set; } = 0x0FF00000;
 

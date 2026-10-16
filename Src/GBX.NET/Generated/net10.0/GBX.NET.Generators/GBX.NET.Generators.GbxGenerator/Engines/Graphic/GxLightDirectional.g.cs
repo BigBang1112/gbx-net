@@ -38,6 +38,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     internal override uint GetId() => Id;
 
     private bool useBoundaryHint;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk04007001>]
     [AppliedWithChunk<Chunk04007002>]
     public bool UseBoundaryHint
@@ -47,6 +48,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private Vec3 boundaryHintPos;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk04007001>]
     [AppliedWithChunk<Chunk04007002>]
     public Vec3 BoundaryHintPos
@@ -56,6 +58,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private float dazzleAngleMax;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk04007002>]
     public float DazzleAngleMax
     {
@@ -64,6 +67,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private float dazzleIntensity;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk04007002>]
     public float DazzleIntensity
     {
@@ -72,6 +76,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private Vec3 dblSidedRGB;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk04007003>]
     public Vec3 DblSidedRGB
     {
@@ -80,6 +85,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private Vec3 reverseRGB;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk04007004>]
     public Vec3 ReverseRGB
     {
@@ -88,6 +94,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private float reverseIntens;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk04007004>]
     public float ReverseIntens
     {
@@ -96,6 +103,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private float emittAngularSize;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk04007005>]
     public float EmittAngularSize
     {
@@ -104,6 +112,7 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     }
 
     private float flareAngularSize;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk04007005>]
     public float FlareAngularSize
     {

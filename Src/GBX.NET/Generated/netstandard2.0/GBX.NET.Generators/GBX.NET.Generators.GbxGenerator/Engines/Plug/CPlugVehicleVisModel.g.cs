@@ -38,6 +38,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugVehicleVisModelShared>? sharedRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>]
     public CPlugVehicleVisModelShared? Shared
     {
@@ -46,8 +47,9 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private int surfVersion;
-    [GameVersionDefault(GameVersion.TM2020, 2)]
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(5)]
+    [GameVersionDefault(GameVersion.TM2020, 2)]
     public int SurfVersion
     {
         get => this.surfVersion;
@@ -55,6 +57,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private SoundSet sounds = default!;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>]
     public SoundSet Sounds
     {
@@ -63,6 +66,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float defaultDamperMinLen;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(1)]
     public float DefaultDamperMinLen
     {
@@ -71,6 +75,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float defaultWheelOffsetY;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(1)]
     public float DefaultWheelOffsetY
     {
@@ -79,6 +84,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float defaultSparkleRelSpeedThreshold;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(9)]
     public float DefaultSparkleRelSpeedThreshold
     {
@@ -87,6 +93,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float defaultSparkleScale;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(9)]
     public float DefaultSparkleScale
     {
@@ -97,6 +104,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     /// <summary>
     /// Damage surfaces use SurfVersion, or 0 before version 5.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(3)]
     public CPlugVehicleVisGeomModel GeomModel
     {
@@ -105,6 +113,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugFxSystem>? fxSystemRef;
+    /// <remarks>Applied with: 0x000 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7000>(17)]
     public CPlugFxSystem? FxSystem
     {
@@ -113,6 +122,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private SoundEventSet soundEvents = default!;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7001>]
     public SoundEventSet SoundEvents
     {
@@ -124,6 +134,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     /// <summary>
     /// Before version 5, stored in metres per second.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>]
     public float SoundWheelImpact_Hard_ThresholdKmh
     {
@@ -132,6 +143,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float soundWheelImpact_Soft_ThresholdKmh;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>]
     public float SoundWheelImpact_Soft_ThresholdKmh
     {
@@ -140,6 +152,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float soundBodyImpact_Hard_ThresholdKmh;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>]
     public float SoundBodyImpact_Hard_ThresholdKmh
     {
@@ -148,6 +161,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private float soundBodyImpact_Soft_ThresholdKmh;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>]
     public float SoundBodyImpact_Soft_ThresholdKmh
     {
@@ -156,6 +170,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvironmentForFirstPersonRef;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>(3)]
     public CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
     {
@@ -164,6 +179,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private Vec3 soundImpactWheelFrontPos;
+    /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>(4)]
     public Vec3 SoundImpactWheelFrontPos
     {
@@ -172,6 +188,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     private Vec3 soundImpactWheelBackPos;
+    /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E7002>(4)]
     public Vec3 SoundImpactWheelBackPos
     {

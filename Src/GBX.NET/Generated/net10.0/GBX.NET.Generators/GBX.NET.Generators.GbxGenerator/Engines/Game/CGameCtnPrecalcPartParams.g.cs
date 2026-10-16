@@ -38,6 +38,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float fluidFriction = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float FluidFriction
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float mass = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float Mass
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float friction = 0.8f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float Friction
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float restitution = 0.2f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float Restitution
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private uint collGroupFlags = 8;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public uint CollGroupFlags
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private bool leafMotion = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public bool LeafMotion
     {
@@ -86,6 +92,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float leafMotionFreq = 10;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float LeafMotionFreq
     {
@@ -94,6 +101,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float leafMotionScale = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float LeafMotionScale
     {
@@ -102,6 +110,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private NodeRef<CPlugSurface>? collSurfRef;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>(2)]
     public CPlugSurface? CollSurf
     {
@@ -110,6 +119,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private int iterCount = 500;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public int IterCount
     {
@@ -118,6 +128,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float timeStep = 0.01f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float TimeStep
     {
@@ -126,6 +137,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private int randValSeed = 15000;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public int RandValSeed
     {
@@ -134,6 +146,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private Vec3 phyZoneGravity = (0, -4, 0);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public Vec3 PhyZoneGravity
     {
@@ -142,6 +155,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private Vec3 phyZoneWind = (0, 0, 2);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public Vec3 PhyZoneWind
     {
@@ -150,6 +164,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private NodeRef<CPlugDecalModel>? decalModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public CPlugDecalModel? DecalModel
     {
@@ -158,6 +173,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float decalSizeBase = 0.3f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float DecalSizeBase
     {
@@ -166,6 +182,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float decalSizeVar = 0.1f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float DecalSizeVar
     {
@@ -174,6 +191,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     private float decalBoxDepth = 0.05f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0311C000>]
     public float DecalBoxDepth
     {

@@ -38,6 +38,7 @@ public partial class CFuncSkelValues : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CFuncSkel>? skelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05007000>]
     public CFuncSkel? Skel
     {
@@ -46,6 +47,7 @@ public partial class CFuncSkelValues : CMwNod, IClass
     }
 
     private CFuncKeysSkel.Loc[]? locations;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05007000>]
     public CFuncKeysSkel.Loc[]? Locations
     {

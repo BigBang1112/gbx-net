@@ -38,6 +38,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugShader>? leafShaderRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -49,6 +50,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafRadiusBase;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -60,6 +62,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafRadiusRandom;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -71,6 +74,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private int leafMaxCount;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -82,6 +86,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafFallingSpeedBase;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -93,6 +98,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafAlphaSpeedMax;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -104,6 +110,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafBetaSpeedlMax;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -115,6 +122,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private Vec3 wind;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -126,6 +134,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float respawnPeriod;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E000>]
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
@@ -137,6 +146,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafFallingSpeedRandom;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
@@ -147,6 +157,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafOscillationAmplitudeBase;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
@@ -157,6 +168,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafOscillationAmplitudeRandom;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
@@ -167,6 +179,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafOscillationPeriodBase;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
@@ -177,6 +190,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float leafOscillationPeriodRandom;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E002>]
     [AppliedWithChunk<Chunk0A05E003>]
@@ -187,6 +201,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float farZ;
+    /// <remarks>Applied with: 0x001, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A05E001>]
     [AppliedWithChunk<Chunk0A05E003>]
     public float FarZ
@@ -196,6 +211,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private int leafEmitterMaxCount;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A05E003>]
     public int LeafEmitterMaxCount
     {
@@ -204,6 +220,7 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     }
 
     private float curvature;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A05E003>]
     public float Curvature
     {

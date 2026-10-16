@@ -38,6 +38,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugVehiclePhyModel>? phyModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehiclePhyModel? PhyModel
     {
@@ -46,6 +47,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugVehicleVisModel>? visModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E01C000>]
     public CPlugVehicleVisModel? VisModel
     {
@@ -54,6 +56,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
     }
 
     private ItemOccupantSlotModel[]? itemOccupantSlotModels;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E01C000>]
     public ItemOccupantSlotModel[]? ItemOccupantSlotModels
     {

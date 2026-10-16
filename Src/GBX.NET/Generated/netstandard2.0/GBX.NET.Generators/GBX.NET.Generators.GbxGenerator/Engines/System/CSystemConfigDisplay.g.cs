@@ -38,6 +38,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Int2 screenSizeFS;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -50,6 +51,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int screenSizeWin;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -62,6 +64,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ETexturesQuality texturesQuality;
+    /// <remarks>Applied with: 0x000, 0x002, 0x007, 0x00C, 0x00D, 0x022, 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013002>]
     [AppliedWithChunk<Chunk0B013007>]
@@ -77,6 +80,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EColorDepth colorDepth;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -89,6 +93,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EShaderQualityOld shaderQualityOld;
+    /// <remarks>Applied with: 0x000, 0x002, 0x007, 0x00C, 0x00D, 0x022 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013002>]
     [AppliedWithChunk<Chunk0B013007>]
@@ -102,6 +107,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EAntialiasing antialiasing;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -114,6 +120,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int refreshRate;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -126,6 +133,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool vSync;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     public bool VSync
@@ -135,6 +143,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool fullScreen;
+    /// <remarks>Applied with: 0x000, 0x001, 0x029 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013001>]
     [AppliedWithChunk<Chunk0B013029>]
@@ -145,6 +154,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int maxFiltering;
+    /// <remarks>Applied with: 0x000, 0x002, 0x007, 0x00C, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013002>]
     [AppliedWithChunk<Chunk0B013007>]
@@ -157,6 +167,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EShadows shadows;
+    /// <remarks>Applied with: 0x000, 0x002, 0x007, 0x00C, 0x00D, 0x022, 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013002>]
     [AppliedWithChunk<Chunk0B013007>]
@@ -175,6 +186,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Legacy lighting quality, later converted to a graphics preset.
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     public int HL_Quality
     {
@@ -183,6 +195,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableShadowBuffer;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013003>]
     public bool DisableShadowBuffer
@@ -192,6 +205,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EGpuSyncOld gpuSync;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013003>]
     public EGpuSyncOld GpuSync
@@ -201,6 +215,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool emulateCursorGDI;
+    /// <remarks>Applied with: 0x000, 0x003, 0x026 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013003>]
     [AppliedWithChunk<Chunk0B013026>]
@@ -211,6 +226,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EVertexProcess vertexProcess;
+    /// <remarks>Applied with: 0x000, 0x003, 0x026 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013003>]
     [AppliedWithChunk<Chunk0B013026>]
@@ -221,6 +237,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool optimizePartialDynaGeom;
+    /// <remarks>Applied with: 0x000, 0x003, 0x026 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013000>]
     [AppliedWithChunk<Chunk0B013003>]
     [AppliedWithChunk<Chunk0B013026>]
@@ -234,6 +251,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Older lighting quality values converted to a graphics preset.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013002>]
     public int GfxQualityOld
     {
@@ -242,8 +260,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool ignoreDriverCrashes;
-    [GameVersionDefault(GameVersion.TMF, true)]
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013003>]
+    [GameVersionDefault(GameVersion.TMF, true)]
     public bool IgnoreDriverCrashes
     {
         get => this.ignoreDriverCrashes;
@@ -251,6 +270,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableColorWMask;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013004>]
     public bool DisableColorWMask
     {
@@ -259,6 +279,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool enableFullscreenGDI;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013005>]
     public bool EnableFullscreenGDI
     {
@@ -267,6 +288,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int anisoQuality;
+    /// <remarks>Applied with: 0x006, 0x007, 0x00C, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0B013006>]
     [AppliedWithChunk<Chunk0B013007>]
     [AppliedWithChunk<Chunk0B01300C>]
@@ -278,6 +300,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int gfxQuality;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013007>]
     public int GfxQuality
     {
@@ -286,6 +309,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EZClip zClip;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013008>]
     public EZClip ZClip
     {
@@ -294,10 +318,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EZClipAuto zClipAuto;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013008>]
     [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EZClipAuto.Medium")]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EZClipAuto.Medium")]
     [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EZClipAuto.Medium")]
-    [AppliedWithChunk<Chunk0B013008>]
     public EZClipAuto ZClipAuto
     {
         get => this.zClipAuto;
@@ -305,10 +330,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int zClipNbBlock;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013008>]
     [GameVersionDefault(GameVersion.TMF, 10)]
     [GameVersionDefault(GameVersion.MP4, 10)]
     [GameVersionDefault(GameVersion.TM2020, 10)]
-    [AppliedWithChunk<Chunk0B013008>]
     public int ZClipNbBlock
     {
         get => this.zClipNbBlock;
@@ -319,6 +345,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// TMF stores the older WaterGeom boolean in this slot.
     /// </summary>
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013009>]
     public EWaterReflect WaterReflect
     {
@@ -327,6 +354,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool postFxEnable;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013009>]
     public bool PostFxEnable
     {
@@ -335,6 +363,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool showBackground;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013009>]
     public bool ShowBackground
     {
@@ -343,6 +372,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool forceFxColors;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300A>]
     public bool ForceFxColors
     {
@@ -351,6 +381,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool forceFxMotionBlur;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300A>]
     public bool ForceFxMotionBlur
     {
@@ -359,6 +390,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableZBufferRange;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300B>]
     public bool DisableZBufferRange
     {
@@ -367,6 +399,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private float agpUseFactor;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300B>]
     public float AgpUseFactor
     {
@@ -375,6 +408,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool customize;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x022, 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B01300C>]
     [AppliedWithChunk<Chunk0B01300D>]
     [AppliedWithChunk<Chunk0B013022>]
@@ -387,6 +421,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EPresetOld presetOld;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x022 body chunks</remarks>
     [AppliedWithChunk<Chunk0B01300C>]
     [AppliedWithChunk<Chunk0B01300D>]
     [AppliedWithChunk<Chunk0B013022>]
@@ -397,12 +432,13 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EAutoScale autoScale;
-    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EAutoScale.Normal")]
-    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EAutoScale.Normal")]
+    /// <remarks>Applied with: 0x00D, 0x022, 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B01300D>]
     [AppliedWithChunk<Chunk0B013022>]
     [AppliedWithChunk<Chunk0B013028>]
     [AppliedWithChunk<Chunk0B01302A>]
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EAutoScale.Normal")]
+    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EAutoScale.Normal")]
     public EAutoScale AutoScale
     {
         get => this.autoScale;
@@ -410,6 +446,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool waterComplex;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300E>]
     public bool WaterComplex
     {
@@ -418,6 +455,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool fastLoad;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0B01300F>]
     public bool FastLoad
     {
@@ -426,10 +464,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private float geomLodScaleZ;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013010>]
     [GameVersionDefault(GameVersion.TMF, 1.0f)]
     [GameVersionDefault(GameVersion.MP4, 1.0f)]
     [GameVersionDefault(GameVersion.TM2020, 1.0f)]
-    [AppliedWithChunk<Chunk0B013010>]
     public float GeomLodScaleZ
     {
         get => this.geomLodScaleZ;
@@ -437,6 +476,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool forceFxBloom;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013011>]
     public bool ForceFxBloom
     {
@@ -448,6 +488,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Converted to SafeMode when true and Normal when false.
     /// </summary>
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013014>]
     public bool LightMapSafeMode
     {
@@ -456,6 +497,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableWindowedAntiAlias;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013015>]
     public bool DisableWindowedAntiAlias
     {
@@ -464,9 +506,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool enableCheckLags;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013016>]
     [GameVersionDefault(GameVersion.MP4, true)]
     [GameVersionDefault(GameVersion.TM2020, true)]
-    [AppliedWithChunk<Chunk0B013016>]
     public bool EnableCheckLags
     {
         get => this.enableCheckLags;
@@ -474,8 +517,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool enableRenderReadBack;
-    [GameVersionDefault(GameVersion.TMF, true)]
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013017>]
+    [GameVersionDefault(GameVersion.TMF, true)]
     public bool EnableRenderReadBack
     {
         get => this.enableRenderReadBack;
@@ -483,8 +527,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ELightMapCompute lightMapCompute;
-    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "ELightMapCompute.Normal")]
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013019>]
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "ELightMapCompute.Normal")]
     public ELightMapCompute LightMapCompute
     {
         get => this.lightMapCompute;
@@ -495,6 +540,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Legacy boolean converted to a light-map quality enum in TMF.
     /// </summary>
+    /// <remarks>Applied with: 0x01A body chunk</remarks>
     [AppliedWithChunk<Chunk0B01301A>]
     public bool EnableLightMap
     {
@@ -503,10 +549,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ELightFromMap lightFromMap;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01301B>]
     [GameVersionDefault(GameVersion.TMF, DefaultExpression = "ELightFromMap.AllVehicles")]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "ELightFromMap.AllVehicles")]
     [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "ELightFromMap.AllVehicles")]
-    [AppliedWithChunk<Chunk0B01301B>]
     public ELightFromMap LightFromMap
     {
         get => this.lightFromMap;
@@ -514,10 +561,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool multiThreadEnable;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01301C>]
     [GameVersionDefault(GameVersion.TMF, true)]
     [GameVersionDefault(GameVersion.MP4, true)]
     [GameVersionDefault(GameVersion.TM2020, true)]
-    [AppliedWithChunk<Chunk0B01301C>]
     public bool MultiThreadEnable
     {
         get => this.multiThreadEnable;
@@ -525,10 +573,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int multiThreadCountMax;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01301C>]
     [GameVersionDefault(GameVersion.TMF, 4)]
     [GameVersionDefault(GameVersion.MP4, 4)]
     [GameVersionDefault(GameVersion.TM2020, 4)]
-    [AppliedWithChunk<Chunk0B01301C>]
     public int MultiThreadCountMax
     {
         get => this.multiThreadCountMax;
@@ -536,9 +585,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ELightMapQualityOld lightMapQualityOld;
-    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "ELightMapQualityOld._2k")]
+    /// <remarks>Applied with: 0x01D, 0x024 body chunks</remarks>
     [AppliedWithChunk<Chunk0B01301D>]
     [AppliedWithChunk<Chunk0B013024>]
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "ELightMapQualityOld._2k")]
     public ELightMapQualityOld LightMapQualityOld
     {
         get => this.lightMapQualityOld;
@@ -546,6 +596,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool treeAlwaysHq;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0B01301E>]
     public bool TreeAlwaysHq
     {
@@ -554,6 +605,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool stereoscopyByDefault;
+    /// <remarks>Applied with: 0x01F, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk0B01301F>]
     [AppliedWithChunk<Chunk0B013020>]
     public bool StereoscopyByDefault
@@ -563,10 +615,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool stereoscopyAdvanced;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013020>]
     [GameVersionDefault(GameVersion.TMF, true)]
     [GameVersionDefault(GameVersion.MP4, true)]
     [GameVersionDefault(GameVersion.TM2020, true)]
-    [AppliedWithChunk<Chunk0B013020>]
     public bool StereoscopyAdvanced
     {
         get => this.stereoscopyAdvanced;
@@ -574,6 +627,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool waterGeomStadium;
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013021>]
     public bool WaterGeomStadium
     {
@@ -582,12 +636,13 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EFilterAnisoQ filterAnisoQ;
-    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EFilterAnisoQ.Anisotropic__4x")]
-    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EFilterAnisoQ.Anisotropic_16x")]
-    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EFilterAnisoQ.Anisotropic_16x")]
+    /// <remarks>Applied with: 0x022, 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B013022>]
     [AppliedWithChunk<Chunk0B013028>]
     [AppliedWithChunk<Chunk0B01302A>]
+    [GameVersionDefault(GameVersion.TMF, DefaultExpression = "EFilterAnisoQ.Anisotropic__4x")]
+    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EFilterAnisoQ.Anisotropic_16x")]
+    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EFilterAnisoQ.Anisotropic_16x")]
     public EFilterAnisoQ FilterAnisoQ
     {
         get => this.filterAnisoQ;
@@ -595,6 +650,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool lightMapQualityUltra;
+    /// <remarks>Applied with: 0x024, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013024>]
     [AppliedWithChunk<Chunk0B013030>]
     public bool LightMapQualityUltra
@@ -604,9 +660,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool lightMapLightIndex;
-    [GameVersionDefault(GameVersion.TM2020, true)]
+    /// <remarks>Applied with: 0x024, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013024>]
     [AppliedWithChunk<Chunk0B013030>]
+    [GameVersionDefault(GameVersion.TM2020, true)]
     public bool LightMapLightIndex
     {
         get => this.lightMapLightIndex;
@@ -614,8 +671,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EDeferredAA deferredAA;
-    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EDeferredAA.FXAA")]
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013025>]
+    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EDeferredAA.FXAA")]
     public EDeferredAA DeferredAA
     {
         get => this.deferredAA;
@@ -623,6 +681,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EFxBloomHdr fxBloomHdr;
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013025>]
     public EFxBloomHdr FxBloomHdr
     {
@@ -631,6 +690,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableShadowBufferRaw;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013026>]
     public bool DisableShadowBufferRaw
     {
@@ -639,6 +699,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EGpuSync gpuSync0;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013026>]
     public EGpuSync GpuSync0
     {
@@ -647,6 +708,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool ignoreDriverCrashesRaw;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013026>]
     public bool IgnoreDriverCrashesRaw
     {
@@ -655,10 +717,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ELightMapQuality lightMapQuality;
-    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "ELightMapQuality.VeryFast")]
-    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "ELightMapQuality.VeryFast")]
+    /// <remarks>Applied with: 0x027, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013027>]
     [AppliedWithChunk<Chunk0B013030>]
+    [GameVersionDefault(GameVersion.MP4, DefaultExpression = "ELightMapQuality.VeryFast")]
+    [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "ELightMapQuality.VeryFast")]
     public ELightMapQuality LightMapQuality
     {
         get => this.lightMapQuality;
@@ -666,6 +729,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EPreset preset;
+    /// <remarks>Applied with: 0x028, 0x02A body chunks</remarks>
     [AppliedWithChunk<Chunk0B013028>]
     [AppliedWithChunk<Chunk0B01302A>]
     public EPreset Preset
@@ -678,6 +742,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Converted by ShaderQFromOld2 in MP4 and Turbo.
     /// </summary>
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013028>]
     public int ShaderQualityIntermediate
     {
@@ -686,6 +751,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EDisplaySync displaySync;
+    /// <remarks>Applied with: 0x029, 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013029>]
     [AppliedWithChunk<Chunk0B013034>]
     [AppliedWithChunk<Chunk0B013036>]
@@ -696,6 +762,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EShaderQ shaderQuality;
+    /// <remarks>Applied with: 0x02A body chunk</remarks>
     [AppliedWithChunk<Chunk0B01302A>]
     public EShaderQ ShaderQuality
     {
@@ -704,6 +771,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EVehicleReflect vehicleReflect;
+    /// <remarks>Applied with: 0x02C body chunk</remarks>
     [AppliedWithChunk<Chunk0B01302C>]
     public EVehicleReflect VehicleReflect
     {
@@ -712,6 +780,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EFxMotionBlur fxMotionBlur;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
     [AppliedWithChunk<Chunk0B01302D>]
     public EFxMotionBlur FxMotionBlur
     {
@@ -720,6 +789,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool enableD3D9Ex;
+    /// <remarks>Applied with: 0x02E body chunk</remarks>
     [AppliedWithChunk<Chunk0B01302E>]
     public bool EnableD3D9Ex
     {
@@ -728,9 +798,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int maxFps;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01302F>]
     [GameVersionDefault(GameVersion.MP4, 150)]
     [GameVersionDefault(GameVersion.TM2020, 150)]
-    [AppliedWithChunk<Chunk0B01302F>]
     public int MaxFps
     {
         get => this.maxFps;
@@ -738,6 +809,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ELightMapSizeMax lightMapSizeMax;
+    /// <remarks>Applied with: 0x030 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013030>]
     public ELightMapSizeMax LightMapSizeMax
     {
@@ -746,9 +818,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool textureDecals_3D;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013031>]
     [GameVersionDefault(GameVersion.MP4, true)]
     [GameVersionDefault(GameVersion.TM2020, true)]
-    [AppliedWithChunk<Chunk0B013031>]
     public bool TextureDecals_3D
     {
         get => this.textureDecals_3D;
@@ -756,9 +829,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool textureDecals_2D;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013031>]
     [GameVersionDefault(GameVersion.MP4, true)]
     [GameVersionDefault(GameVersion.TM2020, true)]
-    [AppliedWithChunk<Chunk0B013031>]
     public bool TextureDecals_2D
     {
         get => this.textureDecals_2D;
@@ -769,6 +843,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Selects settings migrations. Native writers use 3 in MP and 7 in TM2020.
     /// </summary>
+    /// <remarks>Applied with: 0x032 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013032>]
     public int ConfigVersion
     {
@@ -777,6 +852,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool disableHdrCubeRenderMipMap;
+    /// <remarks>Applied with: 0x033 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013033>]
     public bool DisableHdrCubeRenderMipMap
     {
@@ -785,6 +861,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EDisplayMode displayMode;
+    /// <remarks>Applied with: 0x034, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0B013034>]
     [AppliedWithChunk<Chunk0B013036>]
     public EDisplayMode DisplayMode
@@ -794,6 +871,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private float fxMotionBlurIntens;
+    /// <remarks>Applied with: 0x035 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013035>]
     public float FxMotionBlurIntens
     {
@@ -802,6 +880,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ETripleBuffer tripleBuffer;
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013036>]
     public ETripleBuffer TripleBuffer
     {
@@ -810,9 +889,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private ERenderingApi renderingApi;
+    /// <remarks>Applied with: 0x036 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0B013036>(1)]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "ERenderingApi.D3D11")]
     [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "ERenderingApi.D3D11")]
-    [AppliedWithChunk<Chunk0B013036>(1)]
     public ERenderingApi RenderingApi
     {
         get => this.renderingApi;
@@ -820,6 +900,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private string? adapterDesc;
+    /// <remarks>Applied with: 0x036 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0B013036>(3)]
     public string? AdapterDesc
     {
@@ -828,6 +909,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EGpuSync gpuSync1;
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013037>]
     public EGpuSync GpuSync1
     {
@@ -836,6 +918,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EGpuSync gpuSync2;
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013037>]
     public EGpuSync GpuSync2
     {
@@ -844,6 +927,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EGpuSync gpuSync3;
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013037>]
     public EGpuSync GpuSync3
     {
@@ -852,6 +936,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool enableD3D9_BC4_BC5;
+    /// <remarks>Applied with: 0x038 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013038>]
     public bool EnableD3D9_BC4_BC5
     {
@@ -860,6 +945,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EScreenShotExt screenShotExt;
+    /// <remarks>Applied with: 0x039 body chunk</remarks>
     [AppliedWithChunk<Chunk0B013039>]
     public EScreenShotExt ScreenShotExt
     {
@@ -871,9 +957,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// MP4 uses 4 for automatic selection before loading.
     /// </summary>
+    /// <remarks>Applied with: 0x03A body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01303A>]
     [GameVersionDefault(GameVersion.MP4, DefaultExpression = "EGeometryQuality.VeryNice + 1")]
     [GameVersionDefault(GameVersion.TM2020, DefaultExpression = "EGeometryQuality.Nice")]
-    [AppliedWithChunk<Chunk0B01303A>]
     public EGeometryQuality GeometryQuality
     {
         get => this.geometryQuality;
@@ -881,9 +968,10 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private float particleMaxGpuLoadMs;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
+    [AppliedWithChunk<Chunk0B01303B>]
     [GameVersionDefault(GameVersion.MP4, 1.7f)]
     [GameVersionDefault(GameVersion.TM2020, 1.7f)]
-    [AppliedWithChunk<Chunk0B01303B>]
     public float ParticleMaxGpuLoadMs
     {
         get => this.particleMaxGpuLoadMs;
@@ -894,6 +982,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// <summary>
     /// Caps the requested D3D11 feature level at 10_0 in MP4.
     /// </summary>
+    /// <remarks>Applied with: 0x03C body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303C>]
     public bool ForceD3D11FeatureLevel10
     {
@@ -902,6 +991,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool asyncRenderEnabled;
+    /// <remarks>Applied with: 0x03D body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303D>]
     public bool AsyncRenderEnabled
     {
@@ -910,6 +1000,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EFxBlur fxBlur;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303E>]
     public EFxBlur FxBlur
     {
@@ -918,6 +1009,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private EEverywhereReflect everywhereReflect;
+    /// <remarks>Applied with: 0x03E v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303E>(1)]
     public EEverywhereReflect EverywhereReflect
     {
@@ -926,8 +1018,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private bool automaticEnabled;
-    [GameVersionDefault(GameVersion.TM2020, true)]
+    /// <remarks>Applied with: 0x03F body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303F>]
+    [GameVersionDefault(GameVersion.TM2020, true)]
     public bool AutomaticEnabled
     {
         get => this.automaticEnabled;
@@ -935,8 +1028,9 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     private int automaticMinFps;
-    [GameVersionDefault(GameVersion.TM2020, 30)]
+    /// <remarks>Applied with: 0x03F body chunk</remarks>
     [AppliedWithChunk<Chunk0B01303F>]
+    [GameVersionDefault(GameVersion.TM2020, 30)]
     public int AutomaticMinFps
     {
         get => this.automaticMinFps;

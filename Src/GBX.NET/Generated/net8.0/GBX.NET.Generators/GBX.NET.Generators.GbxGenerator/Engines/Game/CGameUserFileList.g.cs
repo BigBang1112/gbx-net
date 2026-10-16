@@ -38,6 +38,7 @@ public partial class CGameUserFileList : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private FileInfo[]? files;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031B7000>]
     public FileInfo[]? Files
     {

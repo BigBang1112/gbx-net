@@ -38,6 +38,7 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     internal override uint GetId() => Id;
 
     private Iso4 location;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03072001>]
     public Iso4 Location
     {
@@ -46,6 +47,7 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     private bool isUpLinked;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03072001>]
     public bool IsUpLinked
     {
@@ -54,6 +56,7 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     private bool interpolate;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03072001>]
     public bool Interpolate
     {
@@ -62,6 +65,7 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     private float lookAtFactor;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03072001>]
     public float LookAtFactor
     {
@@ -70,6 +74,7 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     }
 
     private bool canUseRelativeTargetLocation;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03072002>]
     public bool CanUseRelativeTargetLocation
     {

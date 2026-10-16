@@ -38,6 +38,7 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CSceneMobilLeaves>? mobilLeavesRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0804C000>]
     public CSceneMobilLeaves? MobilLeaves
     {

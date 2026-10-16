@@ -38,6 +38,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Iso4 loc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00E000>]
     public Iso4 Loc
     {
@@ -46,6 +47,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private bool underground;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E00E000>]
     public bool Underground
     {
@@ -54,6 +56,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private float torqueX;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00E000>(1)]
     public float TorqueX
     {
@@ -62,6 +65,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private int torqueDuration;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00E000>(2)]
     public int TorqueDuration
     {
@@ -70,6 +74,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
     }
 
     private Vec3 defaultGravitySpawn;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00E000>(3)]
     public Vec3 DefaultGravitySpawn
     {

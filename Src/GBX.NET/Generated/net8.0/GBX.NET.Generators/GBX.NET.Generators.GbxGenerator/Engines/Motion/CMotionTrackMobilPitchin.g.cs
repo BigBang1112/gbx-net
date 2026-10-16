@@ -38,6 +38,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     internal override uint GetId() => Id;
 
     private float flottaison = 500.01f;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08041000>]
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
@@ -48,6 +49,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private float tangage = 1;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08041000>]
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
@@ -58,6 +60,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private float roulis = 1;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08041000>]
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
@@ -68,6 +71,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private float offsetHauteur = 0;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08041000>]
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
@@ -78,6 +82,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private NodeRef<CMwNod>? seaRef;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08041001>]
     [AppliedWithChunk<Chunk08041002>]
     public CMwNod? Sea
@@ -87,6 +92,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private EPitchinMode pitchinMode = EPitchinMode.Normal;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk08041002>]
     public EPitchinMode PitchinMode
     {
@@ -95,6 +101,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private float periodDelta = 0.5f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk08041002>]
     public float PeriodDelta
     {
@@ -103,6 +110,7 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     }
 
     private float maxAngle = 10;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk08041002>]
     public float MaxAngle
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]
     [AppliedWithChunk<Chunk03084002>]
@@ -53,6 +54,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]
     [AppliedWithChunk<Chunk03084002>]
@@ -68,6 +70,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private EGameCamOld? gameCamOld;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03084000>]
     [AppliedWithChunk<Chunk03084001>]
     public EGameCamOld? GameCamOld
@@ -77,6 +80,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private int clipEntId;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084001>]
     [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
@@ -91,6 +95,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private string? gameCamId;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005, 0x006, 0x007 v0-1 body chunks</remarks>
     [AppliedWithChunk<Chunk03084002>]
     [AppliedWithChunk<Chunk03084003>]
     [AppliedWithChunk<Chunk03084004>]
@@ -107,6 +112,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     /// <summary>
     /// Legacy anchor identifier, used only to decide whether ClipEntId is present.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03084002>]
     public string? AnchorId
     {
@@ -115,6 +121,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private Vec3 camPosition;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -126,6 +133,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private Vec3 camPitchYawRoll;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -137,6 +145,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float camFov = 90;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -148,6 +157,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float focusZ = 10;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -159,6 +169,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float lensSize;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -170,6 +181,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float camNearClipPlane = -1;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -181,6 +193,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float camFarClipPlane = -1;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084004>]
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
@@ -192,6 +205,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private bool showHUD = true;
+    /// <remarks>Applied with: 0x005, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084005>]
     [AppliedWithChunk<Chunk03084006>]
     [AppliedWithChunk<Chunk03084007>]
@@ -202,6 +216,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private bool showPing = true;
+    /// <remarks>Applied with: 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk03084006>]
     [AppliedWithChunk<Chunk03084007>]
     public bool ShowPing
@@ -211,6 +226,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private EGameCam gameCam;
+    /// <remarks>Applied with: 0x007 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03084007>(2)]
     public EGameCam GameCam
     {
@@ -219,6 +235,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private bool showCrossHair = true;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03084007>]
     public bool ShowCrossHair
     {
@@ -227,6 +244,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     }
 
     private float crossHairSizeScale = 1;
+    /// <remarks>Applied with: 0x007 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03084007>(1)]
     public float CrossHairSizeScale
     {
@@ -238,6 +256,7 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
     /// <summary>
     /// Discarded scene UID, written as 0x0FF00000.
     /// </summary>
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03084007>(3)]
     public int LegacySceneUId
     {

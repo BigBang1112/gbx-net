@@ -38,6 +38,7 @@ public partial class CPlugBitmap : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugFileImg>? imageRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x007, 0x008, 0x009, 0x00A, 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -69,6 +70,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float mipMapLowerAlpha = 0;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x007, 0x008, 0x009, 0x00A, 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -100,6 +102,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float bumpScaleFactor = 1;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x007, 0x008, 0x009, 0x00A, 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -131,6 +134,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugShader>? legacyShaderRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk09011000>]
     [AppliedWithChunk<Chunk09011001>]
     [AppliedWithChunk<Chunk09011002>]
@@ -146,6 +150,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private SpecularSubMapCat[]? specularSubMapCats;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005, 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011002>]
     [AppliedWithChunk<Chunk09011003>]
     [AppliedWithChunk<Chunk09011004>]
@@ -171,6 +176,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private ulong flags = 0x10004E1200280000;
+    /// <remarks>Applied with: 0x004, 0x005, 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 v1+, 0x031 body chunks</remarks>
     [AppliedWithChunk<Chunk09011004>]
     [AppliedWithChunk<Chunk09011005>]
     [AppliedWithChunk<Chunk0901100B>]
@@ -195,6 +201,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private LegacyBitmapOptions? legacyOptions;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09011007>]
     public LegacyBitmapOptions? LegacyOptions
     {
@@ -203,6 +210,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private AdditionalParameters? legacyRender;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09011007>]
     public AdditionalParameters? LegacyRender
     {
@@ -211,6 +219,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private CPlugBitmapShader? bitmapShader;
+    /// <remarks>Applied with: 0x00B, 0x00C, 0x00D, 0x00E, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0901100B>]
     [AppliedWithChunk<Chunk0901100C>]
     [AppliedWithChunk<Chunk0901100D>]
@@ -232,6 +241,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private int borderRGB = 0;
+    /// <remarks>Applied with: 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk0901100F>]
     [AppliedWithChunk<Chunk09011010>]
     [AppliedWithChunk<Chunk09011011>]
@@ -249,6 +259,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmapRender>? bitmapRenderRef;
+    /// <remarks>Applied with: 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011010>]
     [AppliedWithChunk<Chunk09011011>]
     [AppliedWithChunk<Chunk09011012>]
@@ -268,6 +279,7 @@ public partial class CPlugBitmap : CPlug, IClass
     /// <summary>
     /// BGRA clear color.
     /// </summary>
+    /// <remarks>Applied with: 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011010>]
     [AppliedWithChunk<Chunk09011011>]
     [AppliedWithChunk<Chunk09011012>]
@@ -284,6 +296,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float mipMapLodBiasDefault = 0;
+    /// <remarks>Applied with: 0x012, 0x013, 0x014, 0x015, 0x018, 0x022, 0x030 body chunks</remarks>
     [AppliedWithChunk<Chunk09011012>]
     [AppliedWithChunk<Chunk09011013>]
     [AppliedWithChunk<Chunk09011014>]
@@ -298,6 +311,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private uint flags2 = 0x49000800;
+    /// <remarks>Applied with: 0x016, 0x017, 0x01A, 0x01B, 0x01F, 0x021, 0x024, 0x027, 0x02E, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk09011016>]
     [AppliedWithChunk<Chunk09011017>]
     [AppliedWithChunk<Chunk0901101A>]
@@ -315,6 +329,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private Vec2 defaultTexCoordScale = (1, 1);
+    /// <remarks>Applied with: 0x017, 0x01A, 0x01C, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk09011017>]
     [AppliedWithChunk<Chunk0901101A>]
     [AppliedWithChunk<Chunk0901101C>]
@@ -326,6 +341,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float bumpScaleMipLevel = 0.5f;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk09011019>]
     public float BumpScaleMipLevel
     {
@@ -334,6 +350,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private Vec2 defaultTexCoordTrans = (0, 0);
+    /// <remarks>Applied with: 0x01A, 0x01C, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk0901101A>]
     [AppliedWithChunk<Chunk0901101C>]
     [AppliedWithChunk<Chunk09011025>]
@@ -344,6 +361,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float defaultTexCoordRotate = 0;
+    /// <remarks>Applied with: 0x01C, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk0901101C>]
     [AppliedWithChunk<Chunk09011025>]
     public float DefaultTexCoordRotate
@@ -353,6 +371,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private ushort atlasCountU;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0901101D>]
     public ushort AtlasCountU
     {
@@ -361,6 +380,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private ushort atlasCountV;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0901101D>]
     public ushort AtlasCountV
     {
@@ -369,6 +389,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private AtlasCount[]? atlasCountUVs;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0901101E>]
     public AtlasCount[]? AtlasCountUVs
     {
@@ -377,6 +398,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float[] mipMapFadeAlphas = [];
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk09011020>]
     public float[] MipMapFadeAlphas
     {
@@ -385,6 +407,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private AdditionalParameters? additional;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk09011023>]
     public AdditionalParameters? Additional
     {
@@ -396,6 +419,7 @@ public partial class CPlugBitmap : CPlug, IClass
     /// <summary>
     /// BGRA
     /// </summary>
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
     [AppliedWithChunk<Chunk09011025>]
     public uint DefaultRenderClearColor
     {
@@ -404,6 +428,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private CPlugBitmapAtlas? atlas;
+    /// <remarks>Applied with: 0x026, 0x02B, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk09011026>]
     [AppliedWithChunk<Chunk0901102B>]
     [AppliedWithChunk<Chunk09011038>]
@@ -414,6 +439,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private uint renderSizeMul = 1;
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk09011028>]
     public uint RenderSizeMul
     {
@@ -422,6 +448,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private uint renderSizeDiv = 1;
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk09011028>]
     public uint RenderSizeDiv
     {
@@ -430,6 +457,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private uint flags3 = 0x3C00;
+    /// <remarks>Applied with: 0x029, 0x02D body chunks</remarks>
     [AppliedWithChunk<Chunk09011029>]
     [AppliedWithChunk<Chunk0901102D>]
     public uint Flags3
@@ -439,6 +467,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugSpriteParam>? spriteParamRef;
+    /// <remarks>Applied with: 0x02A body chunk</remarks>
     [AppliedWithChunk<Chunk0901102A>]
     public CPlugSpriteParam? SpriteParam
     {
@@ -447,6 +476,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmapDecals>? decalsRef;
+    /// <remarks>Applied with: 0x02C body chunk</remarks>
     [AppliedWithChunk<Chunk0901102C>]
     public CPlugBitmapDecals? Decals
     {
@@ -455,6 +485,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private LegacyShareSize? shareSize;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
     [AppliedWithChunk<Chunk0901102F>]
     public LegacyShareSize? ShareSize
     {
@@ -466,6 +497,7 @@ public partial class CPlugBitmap : CPlug, IClass
     /// <summary>
     /// Third word of the current packed fields.
     /// </summary>
+    /// <remarks>Applied with: 0x030 v1+, 0x031 body chunks</remarks>
     [AppliedWithChunk<Chunk09011030>(1)]
     [AppliedWithChunk<Chunk09011031>]
     public uint FlagsHigh
@@ -475,6 +507,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugFileImg>? grassIdImageRef;
+    /// <remarks>Applied with: 0x030 v2-2, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk09011030>(2, 2)]
     [AppliedWithChunk<Chunk09011036>]
     public CPlugFileImg? GrassIdImage
@@ -484,6 +517,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float heightInMeters = 1;
+    /// <remarks>Applied with: 0x033 body chunk</remarks>
     [AppliedWithChunk<Chunk09011033>]
     public float HeightInMeters
     {
@@ -492,6 +526,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugImageArray>? imageArrayRef;
+    /// <remarks>Applied with: 0x034 body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>]
     public CPlugImageArray? ImageArray
     {
@@ -500,6 +535,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string imageArraySuffix = string.Empty;
+    /// <remarks>Applied with: 0x034 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>(1)]
     public string ImageArraySuffix
     {
@@ -508,6 +544,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRefList<CPlugFileImg>? imageArrayFids = new();
+    /// <remarks>Applied with: 0x034 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>(2)]
     public NodeRefList<CPlugFileImg>? ImageArrayFids
     {
@@ -516,6 +553,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmapArray>? bitmapArrayRef;
+    /// <remarks>Applied with: 0x034 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>(3)]
     public CPlugBitmapArray? BitmapArray
     {
@@ -524,6 +562,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string bitmapArrayElemName = string.Empty;
+    /// <remarks>Applied with: 0x034 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>(3)]
     public string BitmapArrayElemName
     {
@@ -532,6 +571,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private AdditionalParameters? imageArrayAdditional;
+    /// <remarks>Applied with: 0x034 v4-4 body chunk</remarks>
     [AppliedWithChunk<Chunk09011034>(4, 4)]
     public AdditionalParameters? ImageArrayAdditional
     {
@@ -540,6 +580,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private TextureSettings? textureInfo;
+    /// <remarks>Applied with: 0x035 body chunk</remarks>
     [AppliedWithChunk<Chunk09011035>]
     public TextureSettings? TextureInfo
     {
@@ -548,6 +589,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private string grassId = string.Empty;
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk09011036>]
     public string GrassId
     {
@@ -556,6 +598,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private Vec2 grassIdTexCoordSize = (1, 1);
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk09011036>]
     public Vec2 GrassIdTexCoordSize
     {
@@ -564,6 +607,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private Vec2 grassIdTexCoordTrans = (0, 0);
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk09011036>]
     public Vec2 GrassIdTexCoordTrans
     {
@@ -572,6 +616,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private float grassIdTexCoordRotate = 0;
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk09011036>]
     public float GrassIdTexCoordRotate
     {
@@ -580,6 +625,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CMwNod>? grassMatterArrayRef;
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk09011036>]
     public CMwNod? GrassMatterArray
     {
@@ -588,6 +634,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private ImageArraySettings? arraySettings;
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk09011037>]
     public ImageArraySettings? ArraySettings
     {
@@ -599,6 +646,7 @@ public partial class CPlugBitmap : CPlug, IClass
     /// <summary>
     /// Bit 0 includes cube-atlas input.
     /// </summary>
+    /// <remarks>Applied with: 0x038 body chunk</remarks>
     [AppliedWithChunk<Chunk09011038>]
     public uint AtlasCubeFlags
     {
@@ -607,6 +655,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private CubeAtlasInput? atlasCubeIn;
+    /// <remarks>Applied with: 0x038 body chunk</remarks>
     [AppliedWithChunk<Chunk09011038>]
     public CubeAtlasInput? AtlasCubeIn
     {
@@ -615,6 +664,7 @@ public partial class CPlugBitmap : CPlug, IClass
     }
 
     private NodeRef<CPlugFileImg>? legacyImageRef;
+    /// <remarks>Applied with: 0x03A body chunk</remarks>
     [AppliedWithChunk<Chunk0901103A>]
     public CPlugFileImg? LegacyImage
     {

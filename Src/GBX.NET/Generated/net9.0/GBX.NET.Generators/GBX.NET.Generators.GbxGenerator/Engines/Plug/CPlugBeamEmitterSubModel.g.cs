@@ -38,6 +38,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float uVScale;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>]
     public float UVScale
     {
@@ -46,6 +47,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int cylinderSideCount;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>]
     public int CylinderSideCount
     {
@@ -54,6 +56,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int duration;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(2)]
     public int Duration
     {
@@ -62,6 +65,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float uSpeed;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(3)]
     public float USpeed
     {
@@ -70,6 +74,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float vSpeed;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(3)]
     public float VSpeed
     {
@@ -78,6 +83,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool backFace;
+    /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(4)]
     public bool BackFace
     {
@@ -86,6 +92,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int helix_VerticesCountPerTurn;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public int Helix_VerticesCountPerTurn
     {
@@ -94,6 +101,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float helix_TurnLength;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public float Helix_TurnLength
     {
@@ -102,6 +110,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float helix_OutterRadius;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public float Helix_OutterRadius
     {
@@ -110,6 +119,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float helix_InnerRadius;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public float Helix_InnerRadius
     {
@@ -118,6 +128,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float helix_DistLOD;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public float Helix_DistLOD
     {
@@ -126,6 +137,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float helix_CoeffLowDef;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(5)]
     public float Helix_CoeffLowDef
     {
@@ -134,6 +146,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int helix_MaxHelixCount;
+    /// <remarks>Applied with: 0x001 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(6)]
     public int Helix_MaxHelixCount
     {
@@ -142,6 +155,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRefList<CPlugMaterial>? additionalMaterials;
+    /// <remarks>Applied with: 0x001 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(7)]
     public NodeRefList<CPlugMaterial>? AdditionalMaterials
     {
@@ -150,6 +164,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float lightningDistStep;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(8)]
     public float LightningDistStep
     {
@@ -158,6 +173,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float lightningMaxJitterDistPerStep;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(8)]
     public float LightningMaxJitterDistPerStep
     {
@@ -166,6 +182,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float lightningJitterRadius;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(8)]
     public float LightningJitterRadius
     {
@@ -174,6 +191,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int lightningBeamCount;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(8)]
     public int LightningBeamCount
     {
@@ -182,6 +200,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float lightningLenMax;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(8)]
     public float LightningLenMax
     {
@@ -190,6 +209,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float fadeTimeOffset;
+    /// <remarks>Applied with: 0x001 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(9)]
     public float FadeTimeOffset
     {
@@ -198,6 +218,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float fadeTimeScale;
+    /// <remarks>Applied with: 0x001 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(9)]
     public float FadeTimeScale
     {
@@ -206,6 +227,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool materialsAsStrings;
+    /// <remarks>Applied with: 0x001 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(10)]
     public bool MaterialsAsStrings
     {
@@ -214,6 +236,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private string[]? additionalMaterialPaths;
+    /// <remarks>Applied with: 0x001 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(10)]
     public string[]? AdditionalMaterialPaths
     {
@@ -222,6 +245,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float doubleHelix_StartAngle;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float DoubleHelix_StartAngle
     {
@@ -230,6 +254,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool doubleHelix_ClockWise;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public bool DoubleHelix_ClockWise
     {
@@ -238,6 +263,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int beamWithCylinders_NbSubDiv;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public int BeamWithCylinders_NbSubDiv
     {
@@ -246,6 +272,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_StepSize;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_StepSize
     {
@@ -254,6 +281,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_InnerRadius;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_InnerRadius
     {
@@ -262,6 +290,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_OutterRadius;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_OutterRadius
     {
@@ -270,6 +299,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_HalfWidth;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_HalfWidth
     {
@@ -278,6 +308,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_FadeSpeed;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_FadeSpeed
     {
@@ -286,6 +317,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithCylinders_TimeStartFade;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithCylinders_TimeStartFade
     {
@@ -294,6 +326,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int beamWithSpheres_NbVerticalSubDiv;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public int BeamWithSpheres_NbVerticalSubDiv
     {
@@ -302,6 +335,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int beamWithSpheres_NbSpheresPerMeter;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public int BeamWithSpheres_NbSpheresPerMeter
     {
@@ -310,6 +344,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithSpheres_Radius;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithSpheres_Radius
     {
@@ -318,6 +353,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithSpheres_StartDistance;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithSpheres_StartDistance
     {
@@ -326,6 +362,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithSpheres_EndDistance;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithSpheres_EndDistance
     {
@@ -334,6 +371,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float beamWithSpheres_Speed;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105001>(11)]
     public float BeamWithSpheres_Speed
     {
@@ -342,6 +380,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private string? materialPath;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09105002>]
     public string? MaterialPath
     {
@@ -350,6 +389,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09105002>]
     public CPlugMaterial? Material
     {
@@ -358,6 +398,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float radius;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09105002>]
     public float Radius
     {
@@ -366,6 +407,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private int displayType;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09105002>]
     public int DisplayType
     {
@@ -374,6 +416,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float startOffsetAtEndLife;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105003>(1)]
     public float StartOffsetAtEndLife
     {
@@ -382,6 +425,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool enableTriLaser;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105003>(2)]
     public bool EnableTriLaser
     {
@@ -390,6 +434,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float laserRadius;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105003>(2)]
     public float LaserRadius
     {
@@ -398,6 +443,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool enableCenterLaser;
+    /// <remarks>Applied with: 0x003 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105003>(3)]
     public bool EnableCenterLaser
     {
@@ -406,6 +452,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float sharpIntensity;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>]
     public float SharpIntensity
     {
@@ -414,6 +461,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float sharpScale;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>]
     public float SharpScale
     {
@@ -422,6 +470,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool bloomEnabled;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(1)]
     public bool BloomEnabled
     {
@@ -430,6 +479,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool sharpEnabled;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(1)]
     public bool SharpEnabled
     {
@@ -438,6 +488,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float bloomIntensity;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(1)]
     public float BloomIntensity
     {
@@ -446,6 +497,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool sharpShrinkOverLife;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public bool SharpShrinkOverLife
     {
@@ -454,6 +506,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool sharpFadeOut;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public bool SharpFadeOut
     {
@@ -462,6 +515,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float sharpEnergy;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public float SharpEnergy
     {
@@ -470,6 +524,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float sharpFadeEndAtEndLife;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public float SharpFadeEndAtEndLife
     {
@@ -478,6 +533,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float bloomScale;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public float BloomScale
     {
@@ -486,6 +542,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool bloomShrinkOverLife;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public bool BloomShrinkOverLife
     {
@@ -494,6 +551,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private bool bloomFadeOut;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public bool BloomFadeOut
     {
@@ -502,6 +560,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float bloomEnergy;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public float BloomEnergy
     {
@@ -510,6 +569,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float bloomFadeEndAtEndLife;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(2)]
     public float BloomFadeEndAtEndLife
     {
@@ -518,6 +578,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float bloomStartOffset;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(3)]
     public float BloomStartOffset
     {
@@ -526,6 +587,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     private float sharpStartOffset;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09105004>(3)]
     public float SharpStartOffset
     {

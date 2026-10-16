@@ -38,6 +38,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int recordVersion = 33;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03262000>(3)]
     public int RecordVersion
     {
@@ -46,6 +47,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     }
 
     private Checkpoint[]? checkpoints;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03262000>]
     public Checkpoint[]? Checkpoints
     {
@@ -54,6 +56,7 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     }
 
     private Snapshot[]? snapshots;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03262000>(1)]
     public Snapshot[]? Snapshots
     {

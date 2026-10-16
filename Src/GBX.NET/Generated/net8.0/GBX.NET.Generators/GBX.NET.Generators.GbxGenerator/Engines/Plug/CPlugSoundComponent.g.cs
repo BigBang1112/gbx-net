@@ -41,6 +41,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     /// <summary>
     /// CPlugFileSnd
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0908F000>]
     public CMwNod? PlugFile
     {
@@ -49,6 +50,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float minVolume;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0908F000>]
     public float MinVolume
     {
@@ -57,6 +59,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float maxVolume;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0908F000>]
     public float MaxVolume
     {
@@ -65,11 +68,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float fadeInStartSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 0f)]
     [GameVersionDefault(GameVersion.TMNESWC, 0f)]
     [GameVersionDefault(GameVersion.VSK5, 0f)]
     [GameVersionDefault(GameVersion.TMF, 0f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float FadeInStartSpeedKmh
     {
         get => this.fadeInStartSpeedKmh;
@@ -77,11 +81,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float fadeInEndSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 2000f)]
     [GameVersionDefault(GameVersion.TMNESWC, 2000f)]
     [GameVersionDefault(GameVersion.VSK5, 2000f)]
     [GameVersionDefault(GameVersion.TMF, 2000f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float FadeInEndSpeedKmh
     {
         get => this.fadeInEndSpeedKmh;
@@ -89,11 +94,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float fadeOutStartSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 8000f)]
     [GameVersionDefault(GameVersion.TMNESWC, 8000f)]
     [GameVersionDefault(GameVersion.VSK5, 8000f)]
     [GameVersionDefault(GameVersion.TMF, 8000f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float FadeOutStartSpeedKmh
     {
         get => this.fadeOutStartSpeedKmh;
@@ -101,6 +107,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float fadeOutEndSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0908F000>]
     public float FadeOutEndSpeedKmh
     {
@@ -109,11 +116,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float minPitch;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 0.5f)]
     [GameVersionDefault(GameVersion.TMNESWC, 0.5f)]
     [GameVersionDefault(GameVersion.VSK5, 0.5f)]
     [GameVersionDefault(GameVersion.TMF, 0.5f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float MinPitch
     {
         get => this.minPitch;
@@ -121,11 +129,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float maxPitch;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 2f)]
     [GameVersionDefault(GameVersion.TMNESWC, 2f)]
     [GameVersionDefault(GameVersion.VSK5, 2f)]
     [GameVersionDefault(GameVersion.TMF, 2f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float MaxPitch
     {
         get => this.maxPitch;
@@ -133,11 +142,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float pitchShiftStartSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 1000f)]
     [GameVersionDefault(GameVersion.TMNESWC, 1000f)]
     [GameVersionDefault(GameVersion.VSK5, 1000f)]
     [GameVersionDefault(GameVersion.TMF, 1000f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float PitchShiftStartSpeedKmh
     {
         get => this.pitchShiftStartSpeedKmh;
@@ -145,11 +155,12 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     private float pitchShiftEndSpeedKmh;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0908F000>]
     [GameVersionDefault(GameVersion.TMSX, 9000f)]
     [GameVersionDefault(GameVersion.TMNESWC, 9000f)]
     [GameVersionDefault(GameVersion.VSK5, 9000f)]
     [GameVersionDefault(GameVersion.TMF, 9000f)]
-    [AppliedWithChunk<Chunk0908F000>]
     public float PitchShiftEndSpeedKmh
     {
         get => this.pitchShiftEndSpeedKmh;

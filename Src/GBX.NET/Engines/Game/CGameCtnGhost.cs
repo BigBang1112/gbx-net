@@ -10,6 +10,7 @@ public partial class CGameCtnGhost
     public partial Id? GhostUid { get => ghostUid; set => ghostUid = value; }
 
     private ImmutableArray<IInput> inputs = [];
+    /// <remarks>Applied with: 0x011, 0x019, 0x025 body chunks</remarks>
     [AppliedWithChunk<Chunk03092011>]
     [AppliedWithChunk<Chunk03092019>]
     [AppliedWithChunk<Chunk03092025>]

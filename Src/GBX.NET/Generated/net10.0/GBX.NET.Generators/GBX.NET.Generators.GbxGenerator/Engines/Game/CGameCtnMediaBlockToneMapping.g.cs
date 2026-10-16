@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk03127000>]
     [AppliedWithChunk<Chunk03127001>]
     [AppliedWithChunk<Chunk03127002>]

@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockTurret : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugDataTape>? dataTapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03294000>]
     public CPlugDataTape? DataTape
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvOutsideOpenRef;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideOpen
@@ -47,6 +48,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvOutsideEnclosedRef;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk03039001>]
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvOutsideEnclosed
@@ -56,6 +58,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private float soundAttenuationInEditor;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03039002>]
     public float SoundAttenuationInEditor
     {
@@ -64,6 +67,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_PlaygroundLoudRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_PlaygroundLoud
     {
@@ -72,6 +76,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_ReplayLoudRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_ReplayLoud
     {
@@ -80,6 +85,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_PodiumRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_Podium
     {
@@ -88,6 +94,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_PlaygroundSoftRef;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_PlaygroundSoft
     {
@@ -96,6 +103,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_ReplaySoftRef;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(6)]
     public CPlugAudioBalance? AudioBalance_ReplaySoft
     {
@@ -104,6 +112,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtStartLineRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtStartLine
     {
@@ -112,6 +121,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtCheckpointRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCheckpoint
     {
@@ -120,6 +130,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtRespawnRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtRespawn
     {
@@ -128,6 +139,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtCrashRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtCrash
     {
@@ -136,6 +148,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtFlyingRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_TM_EvtFlying
     {
@@ -144,6 +157,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_TM_EvtSwimmingRef;
+    /// <remarks>Applied with: 0x003 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(7)]
     public CPlugAudioBalance? AudioBalance_TM_EvtSwimming
     {
@@ -152,6 +166,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtSpawnRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>]
     public CPlugAudioBalance? AudioBalance_SM_EvtSpawn
     {
@@ -160,6 +175,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_Overlay_UndergroundRef;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Underground
     {
@@ -168,6 +184,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_Overlay_FarRef;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_Overlay_Far
     {
@@ -176,6 +193,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtUnspawnRef;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtUnspawn
     {
@@ -184,6 +202,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtHitRef;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(2)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHit
     {
@@ -192,6 +211,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtFireRef;
+    /// <remarks>Applied with: 0x003 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(3)]
     public CPlugAudioBalance? AudioBalance_SM_EvtFire
     {
@@ -200,6 +220,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtHitEliminatedRef;
+    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(4)]
     public CPlugAudioBalance? AudioBalance_SM_EvtHitEliminated
     {
@@ -208,6 +229,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtBulletTimeRef;
+    /// <remarks>Applied with: 0x003 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk03039003>(8)]
     public CPlugAudioBalance? AudioBalance_SM_EvtBulletTime
     {
@@ -216,6 +238,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvUndergroundOpenRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundOpen
     {
@@ -224,6 +247,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvUndergroundEnclosedRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03039004>]
     public CPlugAudioEnvironment? AudioEnvUndergroundEnclosed
     {
@@ -232,6 +256,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private float cameraWooshMinSpeedKmh;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03039005>]
     public float CameraWooshMinSpeedKmh
     {
@@ -240,6 +265,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private float reverbMinBlockDist;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03039005>]
     public float ReverbMinBlockDist
     {
@@ -248,6 +274,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private float reverbMaxBlockDist;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03039005>]
     public float ReverbMaxBlockDist
     {
@@ -256,6 +283,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private float[]? reverbMaterialGains;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03039005>]
     public float[]? ReverbMaterialGains
     {
@@ -264,6 +292,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileText>? modifierXmlFileRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk03039006>]
     public CPlugFileText? ModifierXmlFile
     {

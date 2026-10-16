@@ -38,6 +38,7 @@ public partial class CPlugWeather : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugMaterial>? materialSky_NightRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -54,6 +55,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSky_SunRiseRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -70,6 +72,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSky_DayRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -86,6 +89,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSky_SunFallRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -102,6 +106,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSea0Ref;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -118,6 +123,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageLightAmbRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -136,6 +142,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageLightDirSunRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -154,6 +161,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec3 fogRGB = (1, 1, 1);
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -172,6 +180,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float fogLinearStart;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -190,6 +199,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float fogLinearEnd = 1;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -208,6 +218,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float fogExpDensity = 1;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -226,6 +237,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private uint fogFlags = 6;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -244,6 +256,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float cameraFarZ = 31000;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E003>]
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
@@ -259,6 +272,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec3 dayFogColor = (1, 1, 1);
+    /// <remarks>Applied with: 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
     [AppliedWithChunk<Chunk0917E008>]
@@ -273,6 +287,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float dayFogStart;
+    /// <remarks>Applied with: 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
     [AppliedWithChunk<Chunk0917E008>]
@@ -287,6 +302,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float dayFogEnd = 1;
+    /// <remarks>Applied with: 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
     [AppliedWithChunk<Chunk0917E008>]
@@ -301,6 +317,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float dayFogDensity = 1;
+    /// <remarks>Applied with: 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
     [AppliedWithChunk<Chunk0917E008>]
@@ -315,6 +332,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private uint dayFogFlags = 6;
+    /// <remarks>Applied with: 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E004>]
     [AppliedWithChunk<Chunk0917E005>]
     [AppliedWithChunk<Chunk0917E008>]
@@ -329,6 +347,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensNight;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensNight
@@ -338,6 +357,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensDay;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensDay
@@ -347,6 +367,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec2 lDirSpecIntens;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public Vec2 LDirSpecIntens
@@ -356,6 +377,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec2 lDirSpecPower;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public Vec2 LDirSpecPower
@@ -365,6 +387,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec3 seaTwkWaterColor_Night;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public Vec3 SeaTwkWaterColor_Night
@@ -374,6 +397,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private Vec3 seaTwkWaterColor_Day;
+    /// <remarks>Applied with: 0x006, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk0917E006>]
     [AppliedWithChunk<Chunk0917E00D>]
     public Vec3 SeaTwkWaterColor_Day
@@ -383,6 +407,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapRainFidRef;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E008>]
     [AppliedWithChunk<Chunk0917E009>]
     [AppliedWithChunk<Chunk0917E00A>]
@@ -395,6 +420,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? sceneFxFidRef;
+    /// <remarks>Applied with: 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E009>]
     [AppliedWithChunk<Chunk0917E00A>]
     [AppliedWithChunk<Chunk0917E00C>]
@@ -406,6 +432,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSea1Ref;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00B>]
     public CPlugMaterial? MaterialSea1
     {
@@ -414,6 +441,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageLightDirMoonRef;
+    /// <remarks>Applied with: 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E00C>]
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugFileImg? ImageLightDirMoon
@@ -423,6 +451,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensMidNight = 0.3f;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensMidNight
     {
@@ -431,6 +460,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensMidDay = 0.3f;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensMidDay
     {
@@ -439,6 +469,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensTMNight = 1;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensTMNight
     {
@@ -447,6 +478,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensTMDay = 1;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensTMDay
     {
@@ -455,6 +487,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensTMmidNight = 0.3f;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensTMmidNight
     {
@@ -463,6 +496,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float seaTwkReflecIntensTMmidDay = 0.3f;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00D>]
     public float SeaTwkReflecIntensTMmidDay
     {
@@ -471,6 +505,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapFlareSunRef;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugBitmap? BitmapFlareSun
     {
@@ -479,6 +514,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapFlareMoonRef;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00E>]
     public CPlugBitmap? BitmapFlareMoon
     {
@@ -487,6 +523,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float flareAngularSizeSun = 20;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00E>]
     public float FlareAngularSizeSun
     {
@@ -495,6 +532,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private float flareAngularSizeMoon = 5;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00E>]
     public float FlareAngularSizeMoon
     {
@@ -503,6 +541,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageLightDirDblSidedRef;
+    /// <remarks>Applied with: 0x00F body chunk</remarks>
     [AppliedWithChunk<Chunk0917E00F>]
     public CPlugFileImg? ImageLightDirDblSided
     {
@@ -511,6 +550,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSkyGradVRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E011>]
     public CPlugBitmap? BitmapSkyGradV
     {
@@ -519,6 +559,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageFogColorRef;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E013>]
     public CPlugFileImg? ImageFogColor
     {
@@ -527,6 +568,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageSeaColorRef;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E014>]
     public CPlugFileImg? ImageSeaColor
     {
@@ -535,6 +577,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugClouds>? cloudsRef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E016>]
     public CPlugClouds? Clouds
     {
@@ -543,6 +586,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<GxFogBlender>? fogBlenderRef;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E017>]
     public GxFogBlender? FogBlender
     {
@@ -551,6 +595,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? emitterInFogRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk0917E018>]
     public CPlugParticleEmitterModel? EmitterInFog
     {
@@ -660,6 +705,7 @@ public partial class CPlugWeather : CMwNod, IClass
         ((CPlugWeather)clone).emitterInFogRef = context.Clone(this.emitterInFogRef)!;
     }
 
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]

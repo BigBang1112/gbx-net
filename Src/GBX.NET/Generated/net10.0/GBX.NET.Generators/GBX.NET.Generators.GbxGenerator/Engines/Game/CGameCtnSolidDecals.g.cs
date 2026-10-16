@@ -38,6 +38,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string typeId = string.Empty;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk03121000>]
     [AppliedWithChunk<Chunk03121003>]
     public string TypeId
@@ -47,6 +48,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     }
 
     private uint typeIntensity = 1;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk03121000>]
     [AppliedWithChunk<Chunk03121003>]
     public uint TypeIntensity
@@ -59,6 +61,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     /// <summary>
     /// CSceneDecalsManager::ArchiveDecals buffer.
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03121001>]
     public byte[] SceneDecals
     {
@@ -67,6 +70,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     }
 
     private string name = "Unnamed";
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03121002>]
     public string Name
     {
@@ -75,6 +79,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     }
 
     private uint decalFrequency = 1;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03121004>]
     public uint DecalFrequency
     {

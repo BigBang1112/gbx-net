@@ -38,6 +38,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     internal override uint GetId() => Id;
 
     private float edMaxSpeedKmh = 500f;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0905E000>]
     [AppliedWithChunk<Chunk0905E003>]
     public float EdMaxSpeedKmh
@@ -46,6 +47,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         set => this.edMaxSpeedKmh = value;
     }
 
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0905E000>]
     [AppliedWithChunk<Chunk0905E003>]
     public MaterialSound[] MaterialSounds
@@ -55,6 +57,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     private float bigImpactAttenuation = 1.2f;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0905E001>]
     [AppliedWithChunk<Chunk0905E002>]
     public float BigImpactAttenuation
@@ -64,6 +67,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     private float smallImpactAttenuation = 0.8f;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0905E001>]
     [AppliedWithChunk<Chunk0905E002>]
     public float SmallImpactAttenuation
@@ -73,6 +77,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     private bool impactOnlyMode;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0905E002>(2)]
     public bool ImpactOnlyMode
     {
@@ -80,6 +85,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
         set => this.impactOnlyMode = value;
     }
 
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0905E003>]
     public CFuncKeysReal? SkidVolumeFromIntensity
     {

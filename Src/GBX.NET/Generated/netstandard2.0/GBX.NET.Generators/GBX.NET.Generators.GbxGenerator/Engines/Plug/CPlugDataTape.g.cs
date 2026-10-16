@@ -38,6 +38,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private TapeHeader? header;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090CE000>]
     [AppliedWithChunk<Chunk090CE001>]
     public TapeHeader? Header
@@ -47,6 +48,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     private int[] stateTimes = [];
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090CE000>]
     [AppliedWithChunk<Chunk090CE001>]
     public int[] StateTimes
@@ -56,6 +58,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     private int[] stateOffsets = [];
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090CE000>]
     [AppliedWithChunk<Chunk090CE001>]
     public int[] StateOffsets
@@ -65,6 +68,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     private byte[] stateData = [];
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090CE000>]
     [AppliedWithChunk<Chunk090CE001>]
     public byte[] StateData
@@ -74,6 +78,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     private int noticeCount;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090CE001>]
     public int NoticeCount
     {
@@ -82,6 +87,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     private byte[] noticeData = [];
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090CE001>]
     public byte[] NoticeData
     {

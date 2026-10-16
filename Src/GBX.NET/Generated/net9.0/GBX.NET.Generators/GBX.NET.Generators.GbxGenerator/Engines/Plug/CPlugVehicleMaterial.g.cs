@@ -38,6 +38,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private byte materialId;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
@@ -48,6 +49,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private bool trailIsOnlyWhenSliding;
+    /// <remarks>Applied with: 0x001, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     public bool TrailIsOnlyWhenSliding
@@ -57,6 +59,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private NodeRef<CPlugShader>? trailShaderRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     public CPlugShader? TrailShader
     {
@@ -65,6 +68,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float vibrationSpeedCoef;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
@@ -75,6 +79,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float vibrationMax;
+    /// <remarks>Applied with: 0x001, 0x009, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk090F1001>]
     [AppliedWithChunk<Chunk090F1009>]
     [AppliedWithChunk<Chunk090F100E>]
@@ -85,6 +90,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? materialHeightDetailBitmapRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1004>]
     public CPlugBitmap? MaterialHeightDetailBitmap
     {
@@ -93,6 +99,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private Vec2 materialHeightDetailScale;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1004>]
     public Vec2 MaterialHeightDetailScale
     {
@@ -101,6 +108,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float speed;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1005>]
     public float Speed
     {
@@ -109,6 +117,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float grip;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1005>]
     public float Grip
     {
@@ -117,6 +126,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float accelerationCoef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1005>]
     public float AccelerationCoef
     {
@@ -125,6 +135,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private float brakeCoef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1005>]
     public float BrakeCoef
     {
@@ -133,6 +144,7 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     }
 
     private NodeRef<CPlugFlockModel>? trailManagerModelRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk090F1006>]
     public CPlugFlockModel? TrailManagerModel
     {

@@ -38,6 +38,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugFileTextScript>? scriptRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09083000>]
     public CPlugFileTextScript? Script
     {
@@ -46,6 +47,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     }
 
     private int settingsVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09083000>]
     public int SettingsVersion
     {
@@ -54,6 +56,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     }
 
     private CScriptSetting[]? settings;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09083000>]
     public CScriptSetting[]? Settings
     {

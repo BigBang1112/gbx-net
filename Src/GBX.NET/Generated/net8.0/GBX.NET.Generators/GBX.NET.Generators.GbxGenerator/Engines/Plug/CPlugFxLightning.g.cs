@@ -38,6 +38,7 @@ public partial class CPlugFxLightning : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSound>? soundRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090D8000>]
     public CPlugSound? Sound
     {

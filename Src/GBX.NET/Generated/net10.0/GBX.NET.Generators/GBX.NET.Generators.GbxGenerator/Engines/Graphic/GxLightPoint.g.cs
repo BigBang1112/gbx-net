@@ -38,6 +38,7 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     internal override uint GetId() => Id;
 
     private float flareSize;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk04003003>]
     [AppliedWithChunk<Chunk04003004>]
     public float FlareSize
@@ -47,6 +48,7 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     }
 
     private float flareBiasZ;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk04003004>]
     public float FlareBiasZ
     {

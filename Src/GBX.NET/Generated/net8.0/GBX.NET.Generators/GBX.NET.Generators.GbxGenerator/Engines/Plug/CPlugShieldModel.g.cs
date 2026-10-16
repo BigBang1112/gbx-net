@@ -38,6 +38,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSound>? shieldActiveSoundRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldActiveSound
     {
@@ -46,6 +47,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? shieldTouchSoundRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldTouchSound
     {
@@ -54,6 +56,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? shieldDestroySoundRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugSound? ShieldDestroySound
     {
@@ -62,6 +65,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private string? shieldTouchParticleRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(7)]
     public string? ShieldTouchParticleRef
     {
@@ -70,6 +74,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? shieldTouchParticleNodeRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(7)]
     public CPlugParticleEmitterModel? ShieldTouchParticle
     {
@@ -78,6 +83,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int textureNotches;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(4)]
     public int TextureNotches
     {
@@ -86,6 +92,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private Vec3 relativePos;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(3)]
     public Vec3 RelativePos
     {
@@ -94,6 +101,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private bool needActivation;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(2)]
     public bool NeedActivation
     {
@@ -102,6 +110,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private bool isBouncing;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(1)]
     public bool IsBouncing
     {
@@ -110,6 +119,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int shieldArmor;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(1)]
     public int ShieldArmor
     {
@@ -118,6 +128,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private int shieldDuration;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>(1)]
     public int ShieldDuration
     {
@@ -126,6 +137,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private string? shapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>]
     public string? ShapeRef
     {
@@ -134,6 +146,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSurface>? shapeNodeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>]
     public CPlugSurface? Shape
     {
@@ -142,6 +155,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private string? shapeVisModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>]
     public string? ShapeVisModelRef
     {
@@ -150,6 +164,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid2Model>? shapeVisModelNodeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09111000>]
     public CPlugSolid2Model? ShapeVisModel
     {

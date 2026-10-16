@@ -38,6 +38,7 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string name = string.Empty;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090EB000>]
     public string Name
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     }
 
     private bool inTuningCycle;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090EB001>]
     public bool InTuningCycle
     {

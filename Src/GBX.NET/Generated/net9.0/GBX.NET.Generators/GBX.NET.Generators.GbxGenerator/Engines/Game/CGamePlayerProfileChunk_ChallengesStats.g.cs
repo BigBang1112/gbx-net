@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     internal override uint GetId() => Id;
 
     private SChallengeStats[]? challengeStats;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03148001>]
     public SChallengeStats[]? ChallengeStats
     {

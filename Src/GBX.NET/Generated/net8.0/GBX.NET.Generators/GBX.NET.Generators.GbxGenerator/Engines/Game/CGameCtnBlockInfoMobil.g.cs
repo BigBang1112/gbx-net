@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CSceneMobil>? oldMobilRef;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk03122000>]
     [AppliedWithChunk<Chunk03122003>]
     public CSceneMobil? OldMobil
@@ -47,6 +48,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private int solidFrequency = 1;
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk03122000>]
     [AppliedWithChunk<Chunk03122003>]
     public int SolidFrequency
@@ -56,6 +58,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnSolidDecals>? solidDecals;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03122001>]
     [AppliedWithChunk<Chunk03122002>]
     public NodeRefList<CGameCtnSolidDecals>? SolidDecals
@@ -65,6 +68,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private int noDecalFrequency;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03122002>]
     public int NoDecalFrequency
     {
@@ -73,6 +77,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private bool hasGeomTransformation;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(1)]
     public bool HasGeomTransformation
     {
@@ -81,6 +86,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 geomTranslation;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(1)]
     public Vec3 GeomTranslation
     {
@@ -89,6 +95,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 geomRotation;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(1)]
     public Vec3 GeomRotation
     {
@@ -97,6 +104,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? solidFidRef;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(2)]
     public CPlugSolid? SolidFid
     {
@@ -105,6 +113,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugPrefab>? prefabFidRef;
+    /// <remarks>Applied with: 0x003 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(14)]
     public CPlugPrefab? PrefabFid
     {
@@ -113,6 +122,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? oldSolidAggregRef;
+    /// <remarks>Applied with: 0x003 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(3)]
     public CPlugSolid? OldSolidAggreg
     {
@@ -121,6 +131,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRefList<CPlugPolyLine3>? legacyRailPolylines;
+    /// <remarks>Applied with: 0x003 v4-5 body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(4, 5)]
     public NodeRefList<CPlugPolyLine3>? LegacyRailPolylines
     {
@@ -129,6 +140,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugPath>? railPathRef;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(6)]
     public CPlugPath? RailPath
     {
@@ -137,6 +149,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugPath>? trafficPathRef;
+    /// <remarks>Applied with: 0x003 v7-22 body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(7, 22)]
     public CPlugPath? TrafficPath
     {
@@ -145,6 +158,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugRecastPolyMeshData>? recastPolyMeshDataRef;
+    /// <remarks>Applied with: 0x003 v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(15)]
     public CPlugRecastPolyMeshData? RecastPolyMeshData
     {
@@ -155,6 +169,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     private NodeRefList<CPlugRoadChunk>? legacyRoadChunks;
 
     private NodeRefList<CPlugRoadChunkTraffic>? roadChunks;
+    /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(23)]
     public NodeRefList<CPlugRoadChunkTraffic>? RoadChunks
     {
@@ -163,6 +178,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugPath>? citizenNetworkPathRef;
+    /// <remarks>Applied with: 0x003 v16-22 body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(16, 22)]
     public CPlugPath? CitizenNetworkPath
     {
@@ -173,6 +189,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     private NodeRefList<CPlugRoadChunk>? legacyCitizenRoadChunks;
 
     private NodeRefList<CPlugRoadChunkCitizen>? citizenRoadChunks;
+    /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(23)]
     public NodeRefList<CPlugRoadChunkCitizen>? CitizenRoadChunks
     {
@@ -181,6 +198,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRef<CPlugVFXFile>? vFXsRef;
+    /// <remarks>Applied with: 0x003 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18)]
     public CPlugVFXFile? VFXs
     {
@@ -189,6 +207,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private byte vFXScaleType = 3;
+    /// <remarks>Applied with: 0x003 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18)]
     public byte VFXScaleType
     {
@@ -197,6 +216,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private float vFXScale;
+    /// <remarks>Applied with: 0x003 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18)]
     public float VFXScale
     {
@@ -205,6 +225,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private float vFXScale2;
+    /// <remarks>Applied with: 0x003 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18)]
     public float VFXScale2
     {
@@ -213,6 +234,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Iso4 legacyVFXLoc = Iso4.Identity;
+    /// <remarks>Applied with: 0x003 v18-18 body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18, 18)]
     public Iso4 LegacyVFXLoc
     {
@@ -221,6 +243,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 vFXPosition;
+    /// <remarks>Applied with: 0x003 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(19)]
     public Vec3 VFXPosition
     {
@@ -229,6 +252,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private Vec3 vFXDirection = (0, 0, 1);
+    /// <remarks>Applied with: 0x003 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(19)]
     public Vec3 VFXDirection
     {
@@ -237,6 +261,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private float vFXAngle;
+    /// <remarks>Applied with: 0x003 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(18)]
     public float VFXAngle
     {
@@ -247,6 +272,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     private NodeRefList<CPlugRoadChunk>? legacyPlacementPatches;
 
     private NodeRefList<CPlugPlacementPatch>? placementPatches;
+    /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk03122003>(20)]
     public NodeRefList<CPlugPlacementPatch>? PlacementPatches
     {
@@ -255,6 +281,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoMobilLink>? dynaLinks;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03122004>]
     public NodeRefList<CGameCtnBlockInfoMobilLink>? DynaLinks
     {

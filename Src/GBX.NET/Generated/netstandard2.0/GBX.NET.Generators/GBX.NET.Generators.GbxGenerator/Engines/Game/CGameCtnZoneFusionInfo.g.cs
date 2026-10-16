@@ -38,6 +38,7 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? compatibleZoneId;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03151000>]
     public string? CompatibleZoneId
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     }
 
     private int fusionType;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03151000>]
     public int FusionType
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     }
 
     private string? mergedZoneId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03151001>]
     public string? MergedZoneId
     {

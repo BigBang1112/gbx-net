@@ -38,6 +38,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x001, 0x002, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk07010001>]
     [AppliedWithChunk<Chunk07010002>]
     [AppliedWithChunk<Chunk07010004>]
@@ -49,6 +50,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     private bool centered;
+    /// <remarks>Applied with: 0x001, 0x002, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk07010001>]
     [AppliedWithChunk<Chunk07010002>]
     [AppliedWithChunk<Chunk07010004>]
@@ -60,6 +62,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     private EColorBlendMode colorBlendMode;
+    /// <remarks>Applied with: 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk07010004>]
     [AppliedWithChunk<Chunk07010005>]
     public EColorBlendMode ColorBlendMode
@@ -69,6 +72,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     private bool isContinousEffect;
+    /// <remarks>Applied with: 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk07010004>]
     [AppliedWithChunk<Chunk07010005>]
     public bool IsContinousEffect
@@ -78,6 +82,7 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     }
 
     private bool isInterpolated;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk07010005>]
     public bool IsInterpolated
     {

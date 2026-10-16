@@ -2,9 +2,11 @@
 
 public partial class CGameCtnDecorationAudio
 {
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03039000>]
     public Dictionary<string, NodeRef<CPlugSound>>? Sounds { get; set; }
 
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03039000>]
     public Dictionary<string, NodeRef<CPlugSound>>? Musics { get; set; }
 

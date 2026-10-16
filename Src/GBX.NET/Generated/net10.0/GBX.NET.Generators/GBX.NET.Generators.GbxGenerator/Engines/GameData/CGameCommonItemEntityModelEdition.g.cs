@@ -38,6 +38,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private EItemType itemType;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public EItemType ItemType
     {
@@ -46,6 +47,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugCrystal>? meshCrystalRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugCrystal? MeshCrystal
     {
@@ -54,6 +56,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? solidRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SolidRef
     {
@@ -62,6 +65,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? solidNodeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugSolid? Solid
     {
@@ -70,6 +74,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private ImageRef[]? images;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public ImageRef[]? Images
     {
@@ -78,6 +83,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private SpriteParam[]? spriteParams;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public SpriteParam[]? SpriteParams
     {
@@ -86,6 +92,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? destroyParticleModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugParticleEmitterModel? DestroyParticleModel
     {
@@ -94,6 +101,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimLocSimple>? locAnimRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugAnimLocSimple? LocAnim
     {
@@ -105,6 +113,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     /// <summary>
     /// Native CFixedDynArray capacity is one.
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public LightBallStateSimple[]? LightBallStates
     {
@@ -113,6 +122,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? particleModelAliveRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? ParticleModelAliveRef
     {
@@ -121,6 +131,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private Vec3 particleModelAlivePos;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public Vec3 ParticleModelAlivePos
     {
@@ -129,6 +140,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? smashParticleRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SmashParticleRef
     {
@@ -137,6 +149,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? soundRefSpawn;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SoundRefSpawn
     {
@@ -145,6 +158,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? soundRefUnspawn;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SoundRefUnspawn
     {
@@ -153,6 +167,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? soundRefGrab;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SoundRefGrab
     {
@@ -161,6 +176,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? soundRefSmashed;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SoundRefSmashed
     {
@@ -169,6 +185,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? soundRefPermanent;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public string? SoundRefPermanent
     {
@@ -177,6 +194,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private Iso4 soundLocPermanent = Iso4.Identity;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public Iso4 SoundLocPermanent
     {
@@ -185,6 +203,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private bool useMeshAsMoveShape = true;
+    /// <remarks>Applied with: 0x000 v0-4 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(0, 4)]
     public bool UseMeshAsMoveShape
     {
@@ -193,6 +212,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugCrystal>? customMoveShapeCrystalRef;
+    /// <remarks>Applied with: 0x000 v0-4 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(0, 4)]
     public CPlugCrystal? CustomMoveShapeCrystal
     {
@@ -201,6 +221,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private float mass = 1;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(3)]
     public float Mass
     {
@@ -209,6 +230,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private bool useMeshAsHitShape = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public bool UseMeshAsHitShape
     {
@@ -217,6 +239,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugCrystal>? customHitShapeCrystalRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugCrystal? CustomHitShapeCrystal
     {
@@ -225,6 +248,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private bool useMeshAsTriggerShape = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public bool UseMeshAsTriggerShape
     {
@@ -233,6 +257,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CPlugCrystal>? customTriggerShapeCrystalRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugCrystal? CustomTriggerShapeCrystal
     {
@@ -241,6 +266,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRef<CGameActionModel>? pickupActionModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CGameActionModel? PickupActionModel
     {
@@ -249,6 +275,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private NodeRefList<CGameActionModel>? triggeredActions;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public NodeRefList<CGameActionModel>? TriggeredActions
     {
@@ -257,6 +284,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private int triggerActionVersion = 5;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public int TriggerActionVersion
     {
@@ -265,6 +293,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private CPlugTriggerAction[]? triggers;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugTriggerAction[]? Triggers
     {
@@ -273,6 +302,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private CPlugDynaPointModel? dynaPointModel;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CPlugDynaPointModel? DynaPointModel
     {
@@ -281,6 +311,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private CGameObjectPhyModel.EProgram program;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>]
     public CGameObjectPhyModel.EProgram Program
     {
@@ -292,6 +323,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     /// <summary>
     /// Removed from the payload in version 4.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v0-3 body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(0, 3)]
     public Iso4 SpawnLoc
     {
@@ -300,6 +332,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? inventoryName;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(1)]
     public string? InventoryName
     {
@@ -308,6 +341,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private string? inventoryDescription;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(1)]
     public string? InventoryDescription
     {
@@ -316,6 +350,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private int inventoryItemClass;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(1)]
     public int InventoryItemClass
     {
@@ -324,6 +359,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     }
 
     private int inventoryOccupation = 1000;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E026000>(1)]
     public int InventoryOccupation
     {

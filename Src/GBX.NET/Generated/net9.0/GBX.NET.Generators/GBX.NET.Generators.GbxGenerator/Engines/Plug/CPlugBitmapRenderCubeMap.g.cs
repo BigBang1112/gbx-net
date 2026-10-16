@@ -38,6 +38,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private int cubeFaceCount = 6;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public int CubeFaceCount
@@ -47,6 +48,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private float nearZ = 0.5f;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public float NearZ
@@ -56,6 +58,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private float farZ = 1000f;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09088000>]
     [AppliedWithChunk<Chunk09088002>]
     public float FarZ
@@ -65,6 +68,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private uint flags;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09088001>]
     public uint Flags
     {
@@ -73,6 +77,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private float minDistToUpdate = 1f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09088002>]
     public float MinDistToUpdate
     {
@@ -81,6 +86,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapImageSpaceRef;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09088003>]
     [AppliedWithChunk<Chunk09088004>]
     public CPlugBitmap? BitmapImageSpace
@@ -90,6 +96,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private float bitmapImageSpaceDistToCenter;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09088003>]
     [AppliedWithChunk<Chunk09088004>]
     public float BitmapImageSpaceDistToCenter
@@ -99,6 +106,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     private float bitmapImageSpaceScaleHeight = 1f;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09088004>]
     public float BitmapImageSpaceScaleHeight
     {

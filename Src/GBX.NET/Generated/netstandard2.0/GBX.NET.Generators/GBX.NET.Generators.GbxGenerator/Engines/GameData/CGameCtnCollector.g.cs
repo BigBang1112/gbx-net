@@ -40,12 +40,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    /// <remarks>Applied with: 0x003 header chunk, 0x002, 0x00B body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>]
     [AppliedWithChunk<Chunk2E001002>]
     [AppliedWithChunk<Chunk2E00100B>]
     public partial Ident Ident { get; set; }
 
     private string? pageName;
+    /// <remarks>Applied with: 0x003 header chunk, 0x000, 0x001, 0x003, 0x004, 0x009 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>]
     [AppliedWithChunk<Chunk2E001000>]
     [AppliedWithChunk<Chunk2E001001>]
@@ -59,6 +61,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? parentCollectorId;
+    /// <remarks>Applied with: 0x003 v4+ header chunk, 0x009 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(4)]
     [AppliedWithChunk<Chunk2E001009>]
     public string? ParentCollectorId
@@ -68,6 +71,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private ECollectorFlags flags = ECollectorFlags.IsInternal;
+    /// <remarks>Applied with: 0x003 v3+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(3)]
     public ECollectorFlags Flags
     {
@@ -75,18 +79,21 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.flags = value;
     }
 
+    /// <remarks>Applied with: 0x003 v2+ header chunk, 0x005, 0x007, 0x011 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(2)]
     [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     [AppliedWithChunk<Chunk2E001011>]
     public partial int CatalogPosition { get; set; }
 
+    /// <remarks>Applied with: 0x003 v2-5 header chunk, 0x005, 0x007 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
     [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     public partial int NbAvailableMin { get; set; }
 
     private int copperPrice = 100;
+    /// <remarks>Applied with: 0x003 v2-5 header chunk, 0x005, 0x007 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
     [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
@@ -96,16 +103,19 @@ public partial class CGameCtnCollector : CMwNod, IClass
         set => this.copperPrice = value;
     }
 
+    /// <remarks>Applied with: 0x003 v2-5 header chunk, 0x005, 0x007 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(2, 5)]
     [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     public partial int NbAvailableMax { get; set; }
 
+    /// <remarks>Applied with: 0x003 v7+ header chunk, 0x00C body chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(7)]
     [AppliedWithChunk<Chunk2E00100C>]
     public partial string? Name { get; set; }
 
     private EProdState prodState = EProdState.Release;
+    /// <remarks>Applied with: 0x003 v8+ header chunk, 0x011 v1+ body chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001003>(8)]
     [AppliedWithChunk<Chunk2E001011>(1)]
     public EProdState ProdState
@@ -115,6 +125,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private DateTime? lightmapComputeTime;
+    /// <remarks>Applied with: 0x006 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001006>]
     public DateTime? LightmapComputeTime
     {
@@ -123,6 +134,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? defaultSkinName;
+    /// <remarks>Applied with: 0x008 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001008>]
     public string? DefaultSkinName
     {
@@ -131,12 +143,14 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? iconFidRef;
+    /// <remarks>Applied with: 0x003, 0x004, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk2E001003>]
     [AppliedWithChunk<Chunk2E001004>]
     [AppliedWithChunk<Chunk2E001009>]
     public partial CMwNod? IconFid { get; set; }
 
     private bool isInternal;
+    /// <remarks>Applied with: 0x005, 0x007, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk2E001005>]
     [AppliedWithChunk<Chunk2E001007>]
     [AppliedWithChunk<Chunk2E001011>]
@@ -147,6 +161,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private ESkinKind skinKind;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk2E001006>]
     public ESkinKind SkinKind
     {
@@ -155,6 +170,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private bool needUnlock;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk2E001007>]
     public bool NeedUnlock
     {
@@ -163,6 +179,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? description;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk2E00100D>]
     public string? Description
     {
@@ -171,6 +188,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private bool iconUseAutoRender;
+    /// <remarks>Applied with: 0x00E, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk2E00100E>]
     [AppliedWithChunk<Chunk2E001012>]
     public bool IconUseAutoRender
@@ -180,6 +198,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private int iconQuarterRotationY;
+    /// <remarks>Applied with: 0x00E, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk2E00100E>]
     [AppliedWithChunk<Chunk2E001012>]
     public int IconQuarterRotationY
@@ -189,6 +208,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private string? skinDirectory;
+    /// <remarks>Applied with: 0x00F, 0x010 v1+ body chunks</remarks>
     [AppliedWithChunk<Chunk2E00100F>]
     [AppliedWithChunk<Chunk2E001010>(1)]
     public string? SkinDirectory
@@ -198,6 +218,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileZip>? defaultSkinRef;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk2E001010>]
     public CPlugFileZip? DefaultSkin
     {
@@ -206,6 +227,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? modelKitDbRef;
+    /// <remarks>Applied with: 0x010 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDb
     {
@@ -214,6 +236,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? modelKitDbReleaseRef;
+    /// <remarks>Applied with: 0x010 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E001010>(4)]
     public CMwNod? ModelKitDbRelease
     {
@@ -222,6 +245,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private bool isAdvanced;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E001011>]
     public bool IsAdvanced
     {
@@ -230,6 +254,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     private float iconPhase01;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E001012>]
     public float IconPhase01
     {

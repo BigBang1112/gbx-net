@@ -38,6 +38,7 @@ public abstract partial class CScenePoc : CSceneObject, IClass
     internal override uint GetId() => Id;
 
     private bool isActive;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A009000>]
     public bool IsActive
     {

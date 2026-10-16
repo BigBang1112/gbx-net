@@ -38,6 +38,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private ESpecialType specialType;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public ESpecialType SpecialType
     {
@@ -46,6 +47,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private bool jumpPadFixedVel;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public bool JumpPadFixedVel
     {
@@ -54,6 +56,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private TimeInt32 speedUpDuration = new TimeInt32(5000);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public TimeInt32 SpeedUpDuration
     {
@@ -62,6 +65,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private float speedUpCoef = 3f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public float SpeedUpCoef
     {
@@ -70,6 +74,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private TimeInt32 turboDuration = new TimeInt32(3000);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public TimeInt32 TurboDuration
     {
@@ -78,6 +83,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private float turboVal = 3f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>]
     public float TurboVal
     {
@@ -86,6 +92,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private TimeInt32 freeWheelingDuration = new TimeInt32(3000);
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>(1)]
     public TimeInt32 FreeWheelingDuration
     {
@@ -94,6 +101,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private Vec3 jumpPadDestinationOffset = (0, 5, 0);
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>(2)]
     public Vec3 JumpPadDestinationOffset
     {
@@ -102,6 +110,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private float trajectoryCurve = 0.5f;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>(2)]
     public float TrajectoryCurve
     {
@@ -110,6 +119,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     private int jumpPadSize;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>(3)]
     public int JumpPadSize
     {
@@ -121,6 +131,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     /// <summary>
     /// Adjusts horizontal velocity to center the jump on the pad.
     /// </summary>
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090F2000>(4)]
     public bool JumpPadCenterOnPad
     {

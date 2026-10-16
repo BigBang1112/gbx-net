@@ -38,6 +38,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool isUsingGameMaterial;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(11)]
     public bool IsUsingGameMaterial
     {
@@ -46,6 +47,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? materialName;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>]
     public string? MaterialName
     {
@@ -54,6 +56,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? model;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>]
     public string? Model
     {
@@ -62,6 +65,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? baseTexture;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>]
     public string? BaseTexture
     {
@@ -70,6 +74,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private CPlugSurface.MaterialId surfacePhysicId;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>]
     public CPlugSurface.MaterialId SurfacePhysicId
     {
@@ -78,6 +83,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private CPlugSurface.GameplayId surfaceGameplayId;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(10)]
     public CPlugSurface.GameplayId SurfaceGameplayId
     {
@@ -86,6 +92,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? link;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(1)]
     public string? Link
     {
@@ -94,6 +101,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private Cst[]? csts;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(2)]
     public Cst[]? Csts
     {
@@ -102,6 +110,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private int[]? color;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(2)]
     public int[]? Color
     {
@@ -110,6 +119,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private UvAnim[]? uvAnims;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(3)]
     public UvAnim[]? UvAnims
     {
@@ -118,6 +128,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private UserTexture[]? userTextures;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(6)]
     public UserTexture[]? UserTextures
     {
@@ -126,6 +137,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private string? hidingGroup;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD000>(7)]
     public string? HidingGroup
     {
@@ -134,6 +146,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private ETexAddress tilingU;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD001>(3)]
     public ETexAddress TilingU
     {
@@ -142,6 +155,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private ETexAddress tilingV;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD001>(3)]
     public ETexAddress TilingV
     {
@@ -150,6 +164,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private float textureSizeInMeters;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD001>(3)]
     public float TextureSizeInMeters
     {
@@ -158,6 +173,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     }
 
     private bool isNatural;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090FD001>(5)]
     public bool IsNatural
     {

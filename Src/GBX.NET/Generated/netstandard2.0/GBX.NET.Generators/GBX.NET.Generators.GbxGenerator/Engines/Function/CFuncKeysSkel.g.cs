@@ -38,6 +38,7 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CFuncSkel>? skelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05006000>]
     public CFuncSkel? Skel
     {
@@ -46,6 +47,7 @@ public partial class CFuncKeysSkel : CFuncKeys, IClass
     }
 
     private Loc[][]? locations;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk05006001>]
     public Loc[][]? Locations
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool needUnlock;
+    /// <remarks>Applied with: 0x001 header chunk, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033001>]
     [AppliedWithChunk<Chunk03033006>]
     [AppliedWithChunk<Chunk03033007>]
@@ -49,6 +50,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? iconFullName;
+    /// <remarks>Applied with: 0x001 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(1)]
     public string? IconFullName
     {
@@ -57,6 +59,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? iconSmallFullName;
+    /// <remarks>Applied with: 0x001 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(1)]
     public string? IconSmallFullName
     {
@@ -65,6 +68,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int sortIndex;
+    /// <remarks>Applied with: 0x001 v2+ header chunk, 0x00E body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(2)]
     [AppliedWithChunk<Chunk0303300E>]
     public int SortIndex
@@ -74,6 +78,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? defaultZoneId;
+    /// <remarks>Applied with: 0x001 v3+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(3)]
     public string? DefaultZoneId
     {
@@ -82,6 +87,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicle;
+    /// <remarks>Applied with: 0x001 v4+ header chunk, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(4)]
     [AppliedWithChunk<Chunk03033007>]
     [AppliedWithChunk<Chunk03033009>]
@@ -92,6 +98,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? mapFullName;
+    /// <remarks>Applied with: 0x001 v5+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(5)]
     public string? MapFullName
     {
@@ -100,6 +107,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Rect mapRect;
+    /// <remarks>Applied with: 0x001 v5+ header chunk, 0x017, 0x018, 0x01A body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(5)]
     [AppliedWithChunk<Chunk03033017>]
     [AppliedWithChunk<Chunk03033018>]
@@ -111,6 +119,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordElem;
+    /// <remarks>Applied with: 0x001 v5+ header chunk, 0x017, 0x018, 0x01A body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(5)]
     [AppliedWithChunk<Chunk03033017>]
     [AppliedWithChunk<Chunk03033018>]
@@ -122,6 +131,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordIcon;
+    /// <remarks>Applied with: 0x001 v6+ header chunk, 0x018, 0x01A body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(6)]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
@@ -132,6 +142,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? loadScreen;
+    /// <remarks>Applied with: 0x001 v7+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(7)]
     public string? LoadScreen
     {
@@ -140,6 +151,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec2 mapCoordDesc;
+    /// <remarks>Applied with: 0x001 v8+ header chunk, 0x01A body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(8)]
     [AppliedWithChunk<Chunk0303301A>]
     public Vec2 MapCoordDesc
@@ -149,6 +161,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? longDesc;
+    /// <remarks>Applied with: 0x001 v8+ header chunk, 0x01A body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(8)]
     [AppliedWithChunk<Chunk0303301A>]
     public string? LongDesc
@@ -158,6 +171,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? displayName;
+    /// <remarks>Applied with: 0x001 v9+ header chunk, 0x021 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(9)]
     [AppliedWithChunk<Chunk03033021>]
     public string? DisplayName
@@ -167,6 +181,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool isEditable;
+    /// <remarks>Applied with: 0x001 v10+ header chunk, 0x00C body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033001>(10)]
     [AppliedWithChunk<Chunk0303300C>]
     public bool IsEditable
@@ -176,6 +191,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderBlockInfo;
+    /// <remarks>Applied with: 0x002 header chunk, 0x01C, 0x020 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033002>]
     [AppliedWithChunk<Chunk0303301C>]
     [AppliedWithChunk<Chunk03033020>]
@@ -186,6 +202,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderItem;
+    /// <remarks>Applied with: 0x002 header chunk, 0x01C, 0x020 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033002>]
     [AppliedWithChunk<Chunk0303301C>]
     [AppliedWithChunk<Chunk03033020>]
@@ -196,6 +213,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderDecoration;
+    /// <remarks>Applied with: 0x002 header chunk, 0x01C, 0x020 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03033002>]
     [AppliedWithChunk<Chunk0303301C>]
     [AppliedWithChunk<Chunk03033020>]
@@ -206,6 +224,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? legacyFolderItem;
+    /// <remarks>Applied with: 0x002 v1-2 header chunk, 0x026 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(1, 2)]
     [AppliedWithChunk<Chunk03033026>]
     public string? LegacyFolderItem
@@ -215,6 +234,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderCardEventInfo;
+    /// <remarks>Applied with: 0x002 v2+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(2)]
     public string? FolderCardEventInfo
     {
@@ -223,6 +243,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMacroBlockInfo;
+    /// <remarks>Applied with: 0x002 v3+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(3)]
     public string? FolderMacroBlockInfo
     {
@@ -231,6 +252,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMacroDecals;
+    /// <remarks>Applied with: 0x002 v4+ header chunk, 0x031 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(4)]
     [AppliedWithChunk<Chunk03033031>]
     public string? FolderMacroDecals
@@ -240,6 +262,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMacroblock;
+    /// <remarks>Applied with: 0x002 v5+ header chunk, 0x041 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(5)]
     [AppliedWithChunk<Chunk03033041>]
     public string? FolderMacroblock
@@ -249,6 +272,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMaterialModifiers;
+    /// <remarks>Applied with: 0x002 v6+ header chunk, 0x043 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033002>(6)]
     [AppliedWithChunk<Chunk03033043>]
     public string? FolderMaterialModifiers
@@ -258,6 +282,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderMenusIcons;
+    /// <remarks>Applied with: 0x003 header chunk, 0x020 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03033003>]
     [AppliedWithChunk<Chunk03033020>]
     public string? FolderMenusIcons
@@ -267,6 +292,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnZone>? completeZoneList;
+    /// <remarks>Applied with: 0x004, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk03033004>]
     [AppliedWithChunk<Chunk03033006>]
     [AppliedWithChunk<Chunk03033007>]
@@ -278,6 +304,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnZone>? defaultZoneRef;
+    /// <remarks>Applied with: 0x004, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk03033004>]
     [AppliedWithChunk<Chunk03033006>]
     [AppliedWithChunk<Chunk03033007>]
@@ -289,13 +316,15 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnDecoration>? defaultDecorationRef;
+    /// <remarks>Applied with: 0x008, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk03033008>]
     [AppliedWithChunk<Chunk03033011>]
     public partial CGameCtnDecoration? DefaultDecoration { get; set; }
 
     private float squareSize;
-    [GameVersionDefault(GameVersion.TM2020, 32f)]
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk03033009>]
+    [GameVersionDefault(GameVersion.TM2020, 32f)]
     public float SquareSize
     {
         get => this.squareSize;
@@ -303,8 +332,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float squareHeight;
-    [GameVersionDefault(GameVersion.TM2020, 8f)]
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk03033009>]
+    [GameVersionDefault(GameVersion.TM2020, 8f)]
     public float SquareHeight
     {
         get => this.squareHeight;
@@ -312,6 +342,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int blocksShadow;
+    /// <remarks>Applied with: 0x00B, 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk0303300B>]
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
@@ -325,6 +356,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private ECollectionType collectionType;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303300C>]
     public ECollectionType CollectionType
     {
@@ -333,6 +365,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? iconFidRef;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0303300D>]
     public CPlugBitmap? IconFid
     {
@@ -341,6 +374,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? iconSmallFidRef;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0303300D>]
     public CPlugBitmap? IconSmallFid
     {
@@ -349,6 +383,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterTop;
+    /// <remarks>Applied with: 0x013, 0x01E, 0x02D, 0x038 v0-3 body chunks</remarks>
     [AppliedWithChunk<Chunk03033013>]
     [AppliedWithChunk<Chunk0303301E>]
     [AppliedWithChunk<Chunk0303302D>]
@@ -360,6 +395,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterBottom;
+    /// <remarks>Applied with: 0x013, 0x01E, 0x02D, 0x038 v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk03033013>]
     [AppliedWithChunk<Chunk0303301E>]
     [AppliedWithChunk<Chunk0303302D>]
@@ -371,6 +407,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float cameraMinHeight;
+    /// <remarks>Applied with: 0x013, 0x01E, 0x02D, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk03033013>]
     [AppliedWithChunk<Chunk0303301E>]
     [AppliedWithChunk<Chunk0303302D>]
@@ -382,6 +419,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool shadowCastBack;
+    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -394,6 +432,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float shadowSoftSizeInWorld;
+    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -406,6 +445,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float colorVertexMin;
+    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -418,6 +458,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float colorVertexMax;
+    /// <remarks>Applied with: 0x016, 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033016>]
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
@@ -430,6 +471,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? mapFidRef;
+    /// <remarks>Applied with: 0x017, 0x018, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk03033017>]
     [AppliedWithChunk<Chunk03033018>]
     [AppliedWithChunk<Chunk0303301A>]
@@ -440,6 +482,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? loadScreenFidRef;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk03033019>]
     public CPlugBitmap? LoadScreenFid
     {
@@ -448,6 +491,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private EVertexLighting vertexLighting;
+    /// <remarks>Applied with: 0x01B, 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk0303301B>]
     [AppliedWithChunk<Chunk03033024>]
     [AppliedWithChunk<Chunk03033025>]
@@ -459,6 +503,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private ZoneString[]? zoneStrings;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0303301D>]
     public ZoneString[]? ZoneStrings
     {
@@ -467,6 +512,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnDecorationTerrainModifier>? replacementTerrainModifiers;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0303301D>]
     public NodeRefList<CGameCtnDecorationTerrainModifier>? ReplacementTerrainModifiers
     {
@@ -475,6 +521,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool isWaterOutsidePlayField;
+    /// <remarks>Applied with: 0x01E, 0x02D, 0x038 v0-3 body chunks</remarks>
     [AppliedWithChunk<Chunk0303301E>]
     [AppliedWithChunk<Chunk0303302D>]
     [AppliedWithChunk<Chunk03033038>(0, 3)]
@@ -485,6 +532,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRefList<CPlugParticleEmitterModel>? particleEmitterModelsFids;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
     [AppliedWithChunk<Chunk0303301F>]
     public NodeRefList<CPlugParticleEmitterModel>? ParticleEmitterModelsFids
     {
@@ -493,6 +541,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool isWaterMultiHeight;
+    /// <remarks>Applied with: 0x022, 0x02D, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk03033022>]
     [AppliedWithChunk<Chunk0303302D>]
     [AppliedWithChunk<Chunk03033038>]
@@ -503,6 +552,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool? carCanBeDirty;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk03033023>]
     public bool? CarCanBeDirty
     {
@@ -511,6 +561,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private EBackgroundShadow backgroundShadow;
+    /// <remarks>Applied with: 0x024, 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033024>]
     [AppliedWithChunk<Chunk03033025>]
     [AppliedWithChunk<Chunk0303303A>]
@@ -521,6 +572,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int lightMapMapper;
+    /// <remarks>Applied with: 0x025, 0x03A body chunks</remarks>
     [AppliedWithChunk<Chunk03033025>]
     [AppliedWithChunk<Chunk0303303A>]
     public int LightMapMapper
@@ -530,6 +582,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float boardSquareHeight;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk03033027>]
     public float BoardSquareHeight
     {
@@ -538,6 +591,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float boardSquareBorder;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk03033027>]
     public float BoardSquareBorder
     {
@@ -546,6 +600,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderAdditionalItem1;
+    /// <remarks>Applied with: 0x028 body chunk</remarks>
     [AppliedWithChunk<Chunk03033028>]
     public string? FolderAdditionalItem1
     {
@@ -554,6 +609,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderAdditionalItem2;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03033029>]
     public string? FolderAdditionalItem2
     {
@@ -562,6 +618,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderDecalModels;
+    /// <remarks>Applied with: 0x02A body chunk</remarks>
     [AppliedWithChunk<Chunk0303302A>]
     public string? FolderDecalModels
     {
@@ -570,6 +627,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnDecoration>? legacyDecorationRef;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk0303302B>]
     public CGameCtnDecoration? LegacyDecoration
     {
@@ -578,6 +636,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Int128 collectionPackMask;
+    /// <remarks>Applied with: 0x02C body chunk</remarks>
     [AppliedWithChunk<Chunk0303302C>]
     public Int128 CollectionPackMask
     {
@@ -586,6 +645,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float legacyWaterFogDepthScale;
+    /// <remarks>Applied with: 0x02D, 0x038 v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk0303302D>]
     [AppliedWithChunk<Chunk03033038>(0, 2)]
     public float LegacyWaterFogDepthScale
@@ -595,6 +655,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterFogClampAboveDist;
+    /// <remarks>Applied with: 0x02D, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0303302D>]
     [AppliedWithChunk<Chunk03033038>]
     public float WaterFogClampAboveDist
@@ -604,6 +665,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string[]? decalsTypeNames;
+    /// <remarks>Applied with: 0x02E body chunk</remarks>
     [AppliedWithChunk<Chunk0303302E>]
     public string[]? DecalsTypeNames
     {
@@ -612,6 +674,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec3 tech3TunnelSpecularExpScaleMax;
+    /// <remarks>Applied with: 0x02F body chunk</remarks>
     [AppliedWithChunk<Chunk0303302F>]
     public Vec3 Tech3TunnelSpecularExpScaleMax
     {
@@ -620,6 +683,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CSceneVehicleCarMarksModel>? marksModelRef;
+    /// <remarks>Applied with: 0x030 body chunk</remarks>
     [AppliedWithChunk<Chunk03033030>]
     public CSceneVehicleCarMarksModel? MarksModel
     {
@@ -628,6 +692,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CFuncShaderLayerUV>? fidFuncShaderCloudsX2Ref;
+    /// <remarks>Applied with: 0x032, 0x034 body chunks</remarks>
     [AppliedWithChunk<Chunk03033032>]
     [AppliedWithChunk<Chunk03033034>]
     public CFuncShaderLayerUV? FidFuncShaderCloudsX2
@@ -637,6 +702,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string[]? decalsTypesId;
+    /// <remarks>Applied with: 0x033 body chunk</remarks>
     [AppliedWithChunk<Chunk03033033>]
     public string[]? DecalsTypesId
     {
@@ -645,6 +711,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int decalFade_cBlock_FullDensity;
+    /// <remarks>Applied with: 0x033 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033033>(1)]
     public int DecalFade_cBlock_FullDensity
     {
@@ -653,6 +720,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? fidPlugBitmapCloudsX2Ref;
+    /// <remarks>Applied with: 0x034 body chunk</remarks>
     [AppliedWithChunk<Chunk03033034>]
     public CPlugBitmap? FidPlugBitmapCloudsX2
     {
@@ -661,6 +729,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? vehicleEnvLayer_FidBitmapRef;
+    /// <remarks>Applied with: 0x034 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033034>(1)]
     public CPlugBitmap? VehicleEnvLayer_FidBitmap
     {
@@ -669,6 +738,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private EVehicleEnvLayer vehicleEnvLayer;
+    /// <remarks>Applied with: 0x034 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033034>(1)]
     public EVehicleEnvLayer VehicleEnvLayer
     {
@@ -677,6 +747,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFogMatter>? offZone_FogMatterRef;
+    /// <remarks>Applied with: 0x036 body chunk</remarks>
     [AppliedWithChunk<Chunk03033036>]
     public CPlugFogMatter? OffZone_FogMatter
     {
@@ -685,6 +756,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float terrainHeightOffset;
+    /// <remarks>Applied with: 0x037 body chunk</remarks>
     [AppliedWithChunk<Chunk03033037>]
     public float TerrainHeightOffset
     {
@@ -693,6 +765,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float legacyWaterOffsetBottom;
+    /// <remarks>Applied with: 0x038 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(0, 0)]
     public float LegacyWaterOffsetBottom
     {
@@ -701,6 +774,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water1;
+    /// <remarks>Applied with: 0x038 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(1)]
     public Water? Water1
     {
@@ -709,6 +783,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water2;
+    /// <remarks>Applied with: 0x038 v1-7 body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(1, 7)]
     public Water? Water2
     {
@@ -717,6 +792,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water3;
+    /// <remarks>Applied with: 0x038 v4-7 body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(4, 7)]
     public Water? Water3
     {
@@ -725,6 +801,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Water? water4;
+    /// <remarks>Applied with: 0x038 v4-7 body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(4, 7)]
     public Water? Water4
     {
@@ -733,6 +810,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterialWaterArray>? waterArrayRef;
+    /// <remarks>Applied with: 0x038 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(8)]
     public CPlugMaterialWaterArray? WaterArray
     {
@@ -741,6 +819,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int water0Version;
+    /// <remarks>Applied with: 0x038 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(8)]
     public int Water0Version
     {
@@ -749,6 +828,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? waterG_BitmapNormalRef;
+    /// <remarks>Applied with: 0x038 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(5)]
     public CPlugBitmap? WaterG_BitmapNormal
     {
@@ -757,6 +837,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterG_BumpSpeedUV;
+    /// <remarks>Applied with: 0x038 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterG_BumpSpeedUV
     {
@@ -765,6 +846,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterG_BumpScaleUV;
+    /// <remarks>Applied with: 0x038 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterG_BumpScaleUV
     {
@@ -773,6 +855,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterG_BumpScale;
+    /// <remarks>Applied with: 0x038 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterG_BumpScale
     {
@@ -781,6 +864,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float waterG_RefracPertub;
+    /// <remarks>Applied with: 0x038 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(5)]
     public float WaterG_RefracPertub
     {
@@ -789,6 +873,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private bool waterG_FogUseRefractRay;
+    /// <remarks>Applied with: 0x038 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033038>(7)]
     public bool WaterG_FogUseRefractRay
     {
@@ -797,6 +882,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Vec3 legacyVehicleStyleColor;
+    /// <remarks>Applied with: 0x039 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(0, 0)]
     public Vec3 LegacyVehicleStyleColor
     {
@@ -805,6 +891,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugVehicleVisStyles>? vehicleStylesRef;
+    /// <remarks>Applied with: 0x039 body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>]
     public CPlugVehicleVisStyles? VehicleStyles
     {
@@ -813,6 +900,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<NPlugItemPlacement_SGroups>? itemPlacementGroupsRef;
+    /// <remarks>Applied with: 0x039 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(2)]
     public NPlugItemPlacement_SGroups? ItemPlacementGroups
     {
@@ -821,6 +909,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugAdnRandomGenList>? adnRandomGenListRef;
+    /// <remarks>Applied with: 0x039 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(3)]
     public CPlugAdnRandomGenList? AdnRandomGenList
     {
@@ -829,6 +918,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CGameBlockInfoGroups>? fidBlockInfoGroupsRef;
+    /// <remarks>Applied with: 0x039 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(4)]
     public CGameBlockInfoGroups? FidBlockInfoGroups
     {
@@ -837,6 +927,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private SCustomizableDeco? customDeco;
+    /// <remarks>Applied with: 0x039 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(5)]
     public SCustomizableDeco? CustomDeco
     {
@@ -845,6 +936,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? legacyCustomDecoImageRef;
+    /// <remarks>Applied with: 0x039 v8-10 body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(8, 10)]
     public CPlugFileImg? LegacyCustomDecoImage
     {
@@ -853,6 +945,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? fidBlockInfoInventoryRef;
+    /// <remarks>Applied with: 0x039 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(6)]
     public CMwNod? FidBlockInfoInventory
     {
@@ -861,6 +954,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? legacyInventoryRef;
+    /// <remarks>Applied with: 0x039 v7-8 body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(7, 8)]
     public CMwNod? LegacyInventory
     {
@@ -869,6 +963,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? fidItemModelInventoryRef;
+    /// <remarks>Applied with: 0x039 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(10)]
     public CMwNod? FidItemModelInventory
     {
@@ -877,6 +972,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? legacyFolderMaterial;
+    /// <remarks>Applied with: 0x039 v12-12 body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(12, 12)]
     public string? LegacyFolderMaterial
     {
@@ -885,6 +981,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? customDeco_Default_FidDecalSponsor1x1BigRef;
+    /// <remarks>Applied with: 0x039 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(20)]
     public CPlugFileImg? CustomDeco_Default_FidDecalSponsor1x1Big
     {
@@ -893,6 +990,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? customDeco_Default_FidDecalSponsor4x1Ref;
+    /// <remarks>Applied with: 0x039 v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecalSponsor4x1
     {
@@ -901,6 +999,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen16x9Ref;
+    /// <remarks>Applied with: 0x039 v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x9
     {
@@ -909,6 +1008,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen8x1Ref;
+    /// <remarks>Applied with: 0x039 v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen8x1
     {
@@ -917,6 +1017,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? customDeco_Default_FidDecorationScreen16x1Ref;
+    /// <remarks>Applied with: 0x039 v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(21)]
     public CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x1
     {
@@ -925,6 +1026,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement16x9Ref;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement16x9
     {
@@ -933,6 +1035,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement1x1Ref;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement1x1
     {
@@ -941,6 +1044,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement2x1Ref;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x1
     {
@@ -949,6 +1053,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement2x3Ref;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement2x3
     {
@@ -957,6 +1062,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidAdvertisement4x1Ref;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidAdvertisement4x1
     {
@@ -965,6 +1071,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? blockSkins_Default_FidItemFlagRef;
+    /// <remarks>Applied with: 0x039 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(22)]
     public CPlugFileImg? BlockSkins_Default_FidItemFlag
     {
@@ -973,6 +1080,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? defaultMaterialRef;
+    /// <remarks>Applied with: 0x039 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(13)]
     public CPlugMaterial? DefaultMaterial
     {
@@ -981,6 +1089,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? fidMacroBlockInfoInventoryRef;
+    /// <remarks>Applied with: 0x039 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(14)]
     public CMwNod? FidMacroBlockInfoInventory
     {
@@ -989,6 +1098,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugMediaClipList>? defaultSpawnClipListRef;
+    /// <remarks>Applied with: 0x039 v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(15)]
     public CPlugMediaClipList? DefaultSpawnClipList
     {
@@ -997,6 +1107,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicleTransform_CarSnow;
+    /// <remarks>Applied with: 0x039 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(16)]
     public Ident? VehicleTransform_CarSnow
     {
@@ -1005,6 +1116,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicleTransform_CarRally;
+    /// <remarks>Applied with: 0x039 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(17)]
     public Ident? VehicleTransform_CarRally
     {
@@ -1013,6 +1125,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private Ident? vehicleTransform_CarDesert;
+    /// <remarks>Applied with: 0x039 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(18)]
     public Ident? VehicleTransform_CarDesert
     {
@@ -1021,6 +1134,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private int legacyVehicleTransformFlags;
+    /// <remarks>Applied with: 0x039 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk03033039>(19)]
     public int LegacyVehicleTransformFlags
     {
@@ -1029,6 +1143,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float visMeshLodDistScale;
+    /// <remarks>Applied with: 0x03A body chunk</remarks>
     [AppliedWithChunk<Chunk0303303A>]
     public float VisMeshLodDistScale
     {
@@ -1037,6 +1152,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? legacyLightMapRef;
+    /// <remarks>Applied with: 0x03A v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0303303A>(1, 1)]
     public CMwNod? LegacyLightMap
     {
@@ -1045,6 +1161,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private float editorHelperAmbientScale;
+    /// <remarks>Applied with: 0x03A v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303A>(3)]
     public float EditorHelperAmbientScale
     {
@@ -1053,6 +1170,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint turboColor_Roulette1;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>]
     public uint TurboColor_Roulette1
     {
@@ -1061,6 +1179,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint turboColor_Roulette2;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>]
     public uint TurboColor_Roulette2
     {
@@ -1069,6 +1188,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint turboColor_Roulette3;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>]
     public uint TurboColor_Roulette3
     {
@@ -1077,6 +1197,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint turboColor_Turbo;
+    /// <remarks>Applied with: 0x03B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>(1)]
     public uint TurboColor_Turbo
     {
@@ -1085,6 +1206,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private uint turboColor_Turbo2;
+    /// <remarks>Applied with: 0x03B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>(1)]
     public uint TurboColor_Turbo2
     {
@@ -1093,6 +1215,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterialColorTargetTable>? fidColorTargetTableRef;
+    /// <remarks>Applied with: 0x03B v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303B>(2)]
     public CPlugMaterialColorTargetTable? FidColorTargetTable
     {
@@ -1101,6 +1224,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderSpectators;
+    /// <remarks>Applied with: 0x03C body chunk</remarks>
     [AppliedWithChunk<Chunk0303303C>]
     public string? FolderSpectators
     {
@@ -1109,6 +1233,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderSpectatorSkins;
+    /// <remarks>Applied with: 0x03C v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303C>(1)]
     public string? FolderSpectatorSkins
     {
@@ -1117,6 +1242,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? legacyBitmapDisplayControlDefaultTVProgramRef;
+    /// <remarks>Applied with: 0x03D v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>(0, 1)]
     public CPlugBitmap? LegacyBitmapDisplayControlDefaultTVProgram
     {
@@ -1125,6 +1251,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10ARef;
+    /// <remarks>Applied with: 0x03D body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10A
     {
@@ -1133,6 +1260,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10BRef;
+    /// <remarks>Applied with: 0x03D body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10B
     {
@@ -1141,6 +1269,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_64x10CRef;
+    /// <remarks>Applied with: 0x03D body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_64x10C
     {
@@ -1149,6 +1278,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_2x3Ref;
+    /// <remarks>Applied with: 0x03D body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_2x3
     {
@@ -1157,6 +1287,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapDisplayControlDefaultTVProgram_155Ref;
+    /// <remarks>Applied with: 0x03D v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0303303D>(1)]
     public CPlugBitmap? BitmapDisplayControlDefaultTVProgram_155
     {
@@ -1165,6 +1296,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderDefaultActions;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0303303E>]
     public string? FolderDefaultActions
     {
@@ -1173,6 +1305,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderDefaultActions2;
+    /// <remarks>Applied with: 0x03F body chunk</remarks>
     [AppliedWithChunk<Chunk0303303F>]
     public string? FolderDefaultActions2
     {
@@ -1181,6 +1314,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugGameSkinAndFolder>? colorBlindnessModifierRef;
+    /// <remarks>Applied with: 0x040 body chunk</remarks>
     [AppliedWithChunk<Chunk03033040>]
     public CPlugGameSkinAndFolder? ColorBlindnessModifier
     {
@@ -1189,6 +1323,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private string? folderAdditionalItem3;
+    /// <remarks>Applied with: 0x042 body chunk</remarks>
     [AppliedWithChunk<Chunk03033042>]
     public string? FolderAdditionalItem3
     {
@@ -1197,6 +1332,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     private NodeRef<CPlugGameSkinAndFolder>? globalMaterialModifierRef;
+    /// <remarks>Applied with: 0x044 body chunk</remarks>
     [AppliedWithChunk<Chunk03033044>]
     public CPlugGameSkinAndFolder? GlobalMaterialModifier
     {

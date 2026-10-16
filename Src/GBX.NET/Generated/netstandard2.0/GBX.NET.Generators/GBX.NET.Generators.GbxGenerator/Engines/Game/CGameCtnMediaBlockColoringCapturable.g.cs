@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     internal override uint GetId() => Id;
 
     private int keyArchiveVersion = 2;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0316C000>(2)]
     public int KeyArchiveVersion
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0316C000>]
     public List<Key>? Keys
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     }
 
     private int capturableIndex;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0316C000>(1)]
     public int CapturableIndex
     {

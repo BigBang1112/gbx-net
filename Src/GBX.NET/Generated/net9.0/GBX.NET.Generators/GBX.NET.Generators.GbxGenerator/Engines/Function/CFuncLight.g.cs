@@ -38,6 +38,7 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
     internal override uint GetId() => Id;
 
     private EFctType fctType;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05018000>]
     public EFctType FctType
     {
@@ -46,6 +47,7 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
     }
 
     private float flickPeriod;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05018000>]
     public float FlickPeriod
     {
@@ -54,6 +56,7 @@ public abstract partial class CFuncLight : CFuncPlug, IClass
     }
 
     private int flickCount;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05018000>]
     public int FlickCount
     {

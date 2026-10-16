@@ -38,6 +38,7 @@ public partial class CPlugMaterial : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugMaterialCustom>? customMaterialRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09079007>]
     public CPlugMaterialCustom? CustomMaterial
     {
@@ -46,6 +47,7 @@ public partial class CPlugMaterial : CPlug, IClass
     }
 
     private CPlugSurface.MaterialId surfaceId;
+    /// <remarks>Applied with: 0x00E, 0x017 v1+ body chunks</remarks>
     [AppliedWithChunk<Chunk0907900E>]
     [AppliedWithChunk<Chunk09079017>(1)]
     public CPlugSurface.MaterialId SurfaceId
@@ -55,6 +57,7 @@ public partial class CPlugMaterial : CPlug, IClass
     }
 
     private NodeRef<CPlug>? shaderRef;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk09079015>]
     public CPlug? Shader
     {
@@ -63,6 +66,7 @@ public partial class CPlugMaterial : CPlug, IClass
     }
 
     private CPlugSurface.GameplayId gameplayId;
+    /// <remarks>Applied with: 0x017 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09079017>(1)]
     public CPlugSurface.GameplayId GameplayId
     {

@@ -38,6 +38,7 @@ public partial class CPlugTree : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugTree>? children = new();
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0904F006>]
     public NodeRefList<CPlugTree>? Children
     {
@@ -46,6 +47,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private string[] nodParameterIds = default!;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0904F00C>]
     public string[] NodParameterIds
     {
@@ -54,6 +56,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private string plugId = default!;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0904F00D>]
     public string PlugId
     {
@@ -62,6 +65,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CPlugSolid>? modelSolidRef;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0904F00D>]
     public CPlugSolid? ModelSolid
     {
@@ -70,6 +74,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private string? modelPlugId;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0904F00D>]
     public string? ModelPlugId
     {
@@ -78,6 +83,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CPlugVisual>? visualRef;
+    /// <remarks>Applied with: 0x00E, 0x012, 0x016 body chunks</remarks>
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
@@ -88,6 +94,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CPlug>? shaderRef;
+    /// <remarks>Applied with: 0x00E, 0x012, 0x016 body chunks</remarks>
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
@@ -98,6 +105,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CPlug>? surfaceRef;
+    /// <remarks>Applied with: 0x00E, 0x012, 0x016 body chunks</remarks>
     [AppliedWithChunk<Chunk0904F00E>]
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
@@ -108,15 +116,16 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private ulong flags;
-    [GameVersionDefault(GameVersion.TM10, 0x1E00A)]
-    [GameVersionDefault(GameVersion.TMPU, 0x1E00A)]
-    [GameVersionDefault(GameVersion.TMSX, 0x1E00A)]
+    /// <remarks>Applied with: 0x010, 0x013, 0x015, 0x018, 0x019, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0904F010>]
     [AppliedWithChunk<Chunk0904F013>]
     [AppliedWithChunk<Chunk0904F015>]
     [AppliedWithChunk<Chunk0904F018>]
     [AppliedWithChunk<Chunk0904F019>]
     [AppliedWithChunk<Chunk0904F01A>]
+    [GameVersionDefault(GameVersion.TM10, 0x1E00A)]
+    [GameVersionDefault(GameVersion.TMPU, 0x1E00A)]
+    [GameVersionDefault(GameVersion.TMSX, 0x1E00A)]
     public ulong Flags
     {
         get => this.flags;
@@ -124,6 +133,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private Iso4? location;
+    /// <remarks>Applied with: 0x010, 0x013, 0x015, 0x018, 0x019, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0904F010>]
     [AppliedWithChunk<Chunk0904F013>]
     [AppliedWithChunk<Chunk0904F015>]
@@ -137,6 +147,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CFuncTree>? funcTreeRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0904F011>]
     public CFuncTree? FuncTree
     {
@@ -145,6 +156,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CPlugTreeGenerator>? generatorRef;
+    /// <remarks>Applied with: 0x012, 0x016 body chunks</remarks>
     [AppliedWithChunk<Chunk0904F012>]
     [AppliedWithChunk<Chunk0904F016>]
     public CPlugTreeGenerator? Generator
@@ -154,6 +166,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     private NodeRef<CMwRefBuffer>? refBufferRef;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk0904F017>]
     public CMwRefBuffer? RefBuffer
     {
@@ -210,6 +223,7 @@ public partial class CPlugTree : CPlug, IClass
         ((CPlugTree)clone).refBufferRef = context.Clone(this.refBufferRef)!;
     }
 
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0904F00D>]
     public bool HasModel
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     internal override uint GetId() => Id;
 
     private NodeRef<CControlContainer>? userInterfaceRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0307D000>]
     public CControlContainer? UserInterface
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     }
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0307D000>]
     [AppliedWithChunk<Chunk0307D001>]
     public TimeSingle Start
@@ -55,6 +57,7 @@ public partial class CGameCtnMediaBlockUi : CGameCtnMediaBlock, IClass, CGameCtn
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0307D000>]
     [AppliedWithChunk<Chunk0307D001>]
     public TimeSingle End

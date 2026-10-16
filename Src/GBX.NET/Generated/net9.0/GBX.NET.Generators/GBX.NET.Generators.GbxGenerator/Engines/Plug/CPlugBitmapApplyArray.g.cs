@@ -38,6 +38,7 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugBitmapAddress>? bitmapAddresses = new();
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090B8000>]
     public NodeRefList<CPlugBitmapAddress>? BitmapAddresses
     {

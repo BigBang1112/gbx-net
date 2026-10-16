@@ -38,6 +38,7 @@ public partial class CFuncSkel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string[]? bones;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk05005002>]
     public string[]? Bones
     {
@@ -51,6 +52,7 @@ public partial class CFuncSkel : CMwNod, IClass
         ((CFuncSkel)clone).bones = context.CloneArray(this.bones)!;
     }
 
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk05005002>]
     public int BonesCount
     {

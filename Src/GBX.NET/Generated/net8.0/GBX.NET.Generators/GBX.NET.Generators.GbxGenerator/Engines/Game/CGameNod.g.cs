@@ -38,6 +38,7 @@ public partial class CGameNod : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03008000>]
     public string? Name
     {

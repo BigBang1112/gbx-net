@@ -38,6 +38,7 @@ public partial class CGameTurbineModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Iso4 loc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E010000>]
     public Iso4 Loc
     {
@@ -46,6 +47,7 @@ public partial class CGameTurbineModel : CMwNod, IClass
     }
 
     private float silencerBubble_RadiusMute;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E010000>]
     public float SilencerBubble_RadiusMute
     {
@@ -54,6 +56,7 @@ public partial class CGameTurbineModel : CMwNod, IClass
     }
 
     private float silencerBubble_RadiusFade;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E010000>]
     public float SilencerBubble_RadiusFade
     {
@@ -62,6 +65,7 @@ public partial class CGameTurbineModel : CMwNod, IClass
     }
 
     private bool silencerBubble_OnlyPlayerSounds;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E010000>]
     public bool SilencerBubble_OnlyPlayerSounds
     {

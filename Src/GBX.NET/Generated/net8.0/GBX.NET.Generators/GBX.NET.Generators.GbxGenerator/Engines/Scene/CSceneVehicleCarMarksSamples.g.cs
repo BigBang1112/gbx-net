@@ -38,6 +38,7 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private uint[]? stops;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0A083002>]
     public uint[]? Stops
     {
@@ -46,6 +47,7 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A083003>]
     public string? Name
     {
@@ -54,6 +56,7 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     private bool disabled;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0A083004>]
     public bool Disabled
     {
@@ -62,6 +65,7 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     }
 
     private Sample[]? samples;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0A083006>]
     public Sample[]? Samples
     {

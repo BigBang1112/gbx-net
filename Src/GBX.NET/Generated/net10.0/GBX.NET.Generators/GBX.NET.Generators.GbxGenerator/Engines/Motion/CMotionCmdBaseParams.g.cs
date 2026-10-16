@@ -38,6 +38,7 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private TimeInt32 period = new TimeInt32(10000);
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0802D000>]
     public TimeInt32 Period
     {
@@ -46,6 +47,7 @@ public partial class CMotionCmdBaseParams : CMwNod, IClass
     }
 
     private float phase = 0;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0802D000>]
     public float Phase
     {

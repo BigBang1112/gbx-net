@@ -38,8 +38,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     internal override uint GetId() => Id;
 
     private string? description;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C001>]
+    [SupportsFormatting]
     public string? Description
     {
         get => this.description;
@@ -47,8 +48,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? nickName;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [SupportsFormatting]
     public string? NickName
     {
         get => this.nickName;
@@ -56,6 +58,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private byte flags = 14;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public byte Flags
     {
@@ -64,6 +67,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineLogin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? OnlineLogin
     {
@@ -72,6 +76,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlinePassword;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? OnlinePassword
     {
@@ -80,6 +85,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineValidationCode;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? OnlineValidationCode
     {
@@ -88,6 +94,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? onlineSupportKey;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? OnlineSupportKey
     {
@@ -96,6 +103,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastUsedMSAddress;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? LastUsedMSAddress
     {
@@ -104,6 +112,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastUsedMSPath;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? LastUsedMSPath
     {
@@ -112,6 +121,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? lastSessionId;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? LastSessionId
     {
@@ -120,8 +130,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? league;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
+    [SupportsFormatting]
     public string? League
     {
         get => this.league;
@@ -136,6 +147,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int onlineRemainingNickNamesChangesCount = -1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public int OnlineRemainingNickNamesChangesCount
     {
@@ -144,6 +156,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int onlinePlanets;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public int OnlinePlanets
     {
@@ -152,6 +165,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? rSAPrivateKey;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? RSAPrivateKey
     {
@@ -174,6 +188,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private CGameBuddy[]? buddies;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C003>]
     public CGameBuddy[]? Buddies
     {
@@ -189,6 +204,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C005>]
     public NodeRefList<CGameNetOnlineMessage>? InboxMessages
     {
@@ -197,6 +213,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? readMessages;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C005>]
     public NodeRefList<CGameNetOnlineMessage>? ReadMessages
     {
@@ -205,6 +222,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private NodeRefList<CGameNetOnlineMessage>? outboxMessages;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C005>]
     public NodeRefList<CGameNetOnlineMessage>? OutboxMessages
     {
@@ -213,6 +231,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private byte flags2;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C006>]
     public byte Flags2
     {
@@ -228,8 +247,9 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? avatarName;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C001>]
+    [SupportsFormatting]
     public string? AvatarName
     {
         get => this.avatarName;
@@ -237,6 +257,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private SPlayerTagsConfig? playerTagsConfig;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C001>]
     public SPlayerTagsConfig? PlayerTagsConfig
     {
@@ -245,6 +266,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool receiveNews;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C002>]
     public bool ReceiveNews
     {
@@ -260,6 +282,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int eulaVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public int EulaVersion
     {
@@ -268,6 +291,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int buddyArchiveVersion = 5;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C003>]
     public int BuddyArchiveVersion
     {
@@ -276,6 +300,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? encryptedKeyHexa;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
     public string? EncryptedKeyHexa
     {
@@ -284,6 +309,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int privacyPolicyVersion;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>(3)]
     public int PrivacyPolicyVersion
     {
@@ -292,6 +318,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int age;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>(3)]
     public int Age
     {
@@ -300,6 +327,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? trigram;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312C001>(2)]
     public string? Trigram
     {
@@ -308,6 +336,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private DateTime? receivedMessagesAt;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C005>]
     public DateTime? ReceivedMessagesAt
     {
@@ -316,6 +345,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? broadcastLogin;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public string? BroadcastLogin
     {
@@ -324,6 +354,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoWidth = 1280;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoWidth
     {
@@ -332,6 +363,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoHeight = 720;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoHeight
     {
@@ -340,6 +372,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoKbps = 1500;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoKbps
     {
@@ -348,6 +381,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoMaxKbps = 1500;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoMaxKbps
     {
@@ -356,6 +390,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoTargetFps = 30;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoTargetFps
     {
@@ -364,6 +399,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int broadcastVideoCpuUsage;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public int BroadcastVideoCpuUsage
     {
@@ -372,6 +408,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool broadcastAudioEnable = true;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public bool BroadcastAudioEnable
     {
@@ -380,6 +417,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float broadcastAudioVolumePlayback = 1;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public float BroadcastAudioVolumePlayback
     {
@@ -388,6 +426,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float broadcastAudioVolumeRecorder = 1;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public float BroadcastAudioVolumeRecorder
     {
@@ -396,6 +435,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? broadcastPasswordEncryptedHexa;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C007>]
     public string? BroadcastPasswordEncryptedHexa
     {
@@ -404,6 +444,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? clubLinkUrl;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C008>]
     public string? ClubLinkUrl
     {
@@ -412,6 +453,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private byte fameStars;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C009>]
     public byte FameStars
     {
@@ -420,6 +462,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float analogSensitivity = 1;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float AnalogSensitivity
     {
@@ -428,6 +471,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float analogDeadZone = 0.1f;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float AnalogDeadZone
     {
@@ -436,6 +480,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float rumbleIntensity = 1;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float RumbleIntensity
     {
@@ -444,6 +489,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool mouseLookInvertY;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public bool MouseLookInvertY
     {
@@ -452,6 +498,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool mouseAccel;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public bool MouseAccel
     {
@@ -460,6 +507,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float mouseScaleY = 1;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float MouseScaleY
     {
@@ -468,6 +516,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float mouseAccelQuantity = 0.001f;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float MouseAccelQuantity
     {
@@ -476,6 +525,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private bool mouseSensitivities_EnableSpecific = true;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public bool MouseSensitivities_EnableSpecific
     {
@@ -484,6 +534,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float mouseScaleFreeLook = 1;
+    /// <remarks>Applied with: 0x00A v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>(3)]
     public float MouseScaleFreeLook
     {
@@ -492,6 +543,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float mouseSensitivity_Default = 0.75f;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float MouseSensitivity_Default
     {
@@ -500,6 +552,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float mouseSensitivity_Laser = 0.4f;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00A>]
     public float MouseSensitivity_Laser
     {
@@ -508,6 +561,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private int mouseReleaseKey;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00B>]
     public int MouseReleaseKey
     {
@@ -516,6 +570,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private float centerSpringIntensity;
+    /// <remarks>Applied with: 0x00B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00B>(1)]
     public float CenterSpringIntensity
     {
@@ -524,6 +579,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private string? youtubeRefreshToken;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00C>]
     public string? YoutubeRefreshToken
     {
@@ -532,6 +588,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private YoutubeUpload[]? youtubeUploads;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00C>]
     public YoutubeUpload[]? YoutubeUploads
     {
@@ -540,6 +597,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     }
 
     private ulong steamId;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0312C00E>]
     public ulong SteamId
     {

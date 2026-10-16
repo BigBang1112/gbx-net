@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk03129000>]
     [AppliedWithChunk<Chunk03085000>]
     public List<Key>? Keys

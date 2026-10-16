@@ -38,6 +38,7 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     internal override uint GetId() => Id;
 
     private VisualVehicle[]? visualVehicles;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0A02B009>]
     public VisualVehicle[]? VisualVehicles
     {

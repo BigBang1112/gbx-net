@@ -38,6 +38,7 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private TransactionalNatural? globalScore;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03095000>]
     [AppliedWithChunk<Chunk03095001>]
     public TransactionalNatural? GlobalScore
@@ -47,6 +48,7 @@ public partial class CGamePlayerOfficialScores : CMwNod, IClass
     }
 
     private FilteredPlayerRank[]? filteredPlayerRanks;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk03095000>]
     [AppliedWithChunk<Chunk03095001>]
     public FilteredPlayerRank[]? FilteredPlayerRanks

@@ -4,6 +4,7 @@ namespace GBX.NET.Engines.Plug;
 
 public partial class CPlugWeather
 {
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]
@@ -21,6 +22,7 @@ public partial class CPlugWeather
         set => FogFlags = (FogFlags & 0xFFFFFFF9) | (((uint)value & 3) << 1);
     }
 
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008, 0x009, 0x00A, 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0917E000>]
     [AppliedWithChunk<Chunk0917E001>]
     [AppliedWithChunk<Chunk0917E002>]

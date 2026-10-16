@@ -38,6 +38,7 @@ public partial class CMotionSkel : CMotionSkelSimple, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CFuncKeysSkel>? keysSkelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08037000>]
     public CFuncKeysSkel? KeysSkel
     {

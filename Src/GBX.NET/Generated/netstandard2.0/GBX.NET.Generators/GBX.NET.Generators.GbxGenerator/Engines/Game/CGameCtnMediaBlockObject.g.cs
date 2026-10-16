@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03196000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03196000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private bool showObjects = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03196000>]
     public bool ShowObjects
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private AnchoredObjectInfo[]? anchoredObjectInfos;
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03196000>(0, 0)]
     public AnchoredObjectInfo[]? AnchoredObjectInfos
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnMediaBlockObject : CGameCtnMediaBlock, IClass, CGam
     }
 
     private NodeRef<CGameReplayObjectVisData>? visDataRef;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03196000>(1)]
     public CGameReplayObjectVisData? VisData
     {

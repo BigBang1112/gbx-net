@@ -38,6 +38,7 @@ public partial class CPlugTurret : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? skelRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(5)]
     public string? SkelRef
     {
@@ -46,6 +47,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugSkel>? skelNodeRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugSkel? Skel
     {
@@ -54,6 +56,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? bulletModelRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(5)]
     public string? BulletModelRef
     {
@@ -62,6 +65,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugBulletModel>? bulletModelNodeRef;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(5)]
     public CPlugBulletModel? BulletModel
     {
@@ -70,6 +74,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? meshRef;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(6)]
     public string? MeshRef
     {
@@ -78,6 +83,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid2Model>? meshNodeRef;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(6)]
     public CPlugSolid2Model? Mesh
     {
@@ -86,6 +92,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? visEntFxRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(7)]
     public string? VisEntFxRef
     {
@@ -94,6 +101,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugVisEntFxModel>? visEntFxNodeRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(7)]
     public CPlugVisEntFxModel? VisEntFx
     {
@@ -102,6 +110,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? shapeRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(8)]
     public string? ShapeRef
     {
@@ -110,6 +119,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugSurface>? shapeNodeRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(8)]
     public CPlugSurface? Shape
     {
@@ -118,6 +128,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? joint0Name;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(9)]
     public string? Joint0Name
     {
@@ -126,6 +137,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? joint1Name;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(9)]
     public string? Joint1Name
     {
@@ -134,6 +146,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? jointFireName;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public string? JointFireName
     {
@@ -142,6 +155,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 joint0LocalAxis;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 Joint0LocalAxis
     {
@@ -150,6 +164,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 joint1LocalAxis;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 Joint1LocalAxis
     {
@@ -158,6 +173,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private Vec3 jointFireLocalAxis;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public Vec3 JointFireLocalAxis
     {
@@ -166,6 +182,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0MinAngleDeg;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint0MinAngleDeg
     {
@@ -174,6 +191,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0MaxAngleDeg;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint0MaxAngleDeg
     {
@@ -182,6 +200,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1MinAngleDeg;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint1MinAngleDeg
     {
@@ -190,6 +209,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1MaxAngleDeg;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(10)]
     public float Joint1MaxAngleDeg
     {
@@ -198,6 +218,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0SpeedDegPerS;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(11)]
     public float Joint0SpeedDegPerS
     {
@@ -206,6 +227,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1SpeedDegPerS;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(11)]
     public float Joint1SpeedDegPerS
     {
@@ -214,6 +236,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimDetectRadius;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimDetectRadius
     {
@@ -222,6 +245,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimDetectFOVDeg;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimDetectFOVDeg
     {
@@ -230,6 +254,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimMaxTrackDist;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimMaxTrackDist
     {
@@ -238,6 +263,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimAnticipation;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimAnticipation
     {
@@ -246,6 +272,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int aimKeepAimingDurationMs;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public int AimKeepAimingDurationMs
     {
@@ -254,6 +281,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int aimFireTargetChangeDelayMs;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public int AimFireTargetChangeDelayMs
     {
@@ -262,6 +290,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimFireMaxAngleDeg;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float AimFireMaxAngleDeg
     {
@@ -270,6 +299,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private ETurretFixedAngleSignal fixedAngleSignal;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public ETurretFixedAngleSignal FixedAngleSignal
     {
@@ -278,6 +308,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int fixedAnglePeriodMs;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public int FixedAnglePeriodMs
     {
@@ -286,6 +317,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float fixedAngleMinDeg;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float FixedAngleMinDeg
     {
@@ -294,6 +326,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float fixedAngleMaxDeg;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public float FixedAngleMaxDeg
     {
@@ -302,6 +335,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int firePeriodMs;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(12)]
     public int FirePeriodMs
     {
@@ -310,6 +344,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? rotateSound1Ref;
+    /// <remarks>Applied with: 0x000 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(13)]
     public string? RotateSound1Ref
     {
@@ -318,6 +353,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? rotateSound1NodeRef;
+    /// <remarks>Applied with: 0x000 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(13)]
     public CMwNod? RotateSound1
     {
@@ -326,6 +362,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint0NextJointUpdateAngleMaxDeg;
+    /// <remarks>Applied with: 0x000 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(14)]
     public float Joint0NextJointUpdateAngleMaxDeg
     {
@@ -334,6 +371,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float joint1NextJointUpdateAngleMaxDeg;
+    /// <remarks>Applied with: 0x000 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(14)]
     public float Joint1NextJointUpdateAngleMaxDeg
     {
@@ -342,6 +380,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private float aimFireMaxDist;
+    /// <remarks>Applied with: 0x000 v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(14)]
     public float AimFireMaxDist
     {
@@ -350,6 +389,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private bool aimEnabled;
+    /// <remarks>Applied with: 0x000 v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(15)]
     public bool AimEnabled
     {
@@ -358,6 +398,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private string? jointRadarName;
+    /// <remarks>Applied with: 0x000 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(16)]
     public string? JointRadarName
     {
@@ -366,6 +407,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int lifeArmorMax;
+    /// <remarks>Applied with: 0x000 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(17)]
     public int LifeArmorMax
     {
@@ -374,6 +416,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private EOnArmorEmtpy lifeOnArmorEmtpy;
+    /// <remarks>Applied with: 0x000 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(17)]
     public EOnArmorEmtpy LifeOnArmorEmtpy
     {
@@ -382,6 +425,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private int lifeDisabledDuration;
+    /// <remarks>Applied with: 0x000 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(17)]
     public int LifeDisabledDuration
     {
@@ -390,6 +434,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private bool isControllable;
+    /// <remarks>Applied with: 0x000 v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(18)]
     public bool IsControllable
     {
@@ -398,6 +443,7 @@ public partial class CPlugTurret : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? onFireParticleRef;
+    /// <remarks>Applied with: 0x000 v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk0910F000>(19)]
     public CPlugParticleEmitterModel? OnFireParticle
     {

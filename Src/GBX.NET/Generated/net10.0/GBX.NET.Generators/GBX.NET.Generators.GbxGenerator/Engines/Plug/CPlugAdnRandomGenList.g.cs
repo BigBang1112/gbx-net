@@ -38,6 +38,7 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugAdnRandomGen>? datas;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09157000>]
     public NodeRefList<CPlugAdnRandomGen>? Datas
     {

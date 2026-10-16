@@ -38,6 +38,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     internal override uint GetId() => Id;
 
     private EItemType itemType;
+    /// <remarks>Applied with: 0x000 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E002000>]
     public EItemType ItemType
     {
@@ -46,6 +47,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CSceneMobil>? vehicleRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002000>]
     public CSceneMobil? Vehicle
     {
@@ -54,6 +56,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugGameSkin>? gameSkinRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002001>]
     public CPlugGameSkin? GameSkin
     {
@@ -62,6 +65,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CScene2d>? raceInterfaceFidRef;
+    /// <remarks>Applied with: 0x002, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk2E002002>]
     [AppliedWithChunk<Chunk2E00200C>]
     public CScene2d? RaceInterfaceFid
@@ -71,6 +75,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugSolid>? lowQualitySolidRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002003>]
     public CPlugSolid? LowQualitySolid
     {
@@ -79,6 +84,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private int defaultCamIndex;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002006>]
     public int DefaultCamIndex
     {
@@ -87,6 +93,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialSkinRef;
+    /// <remarks>Applied with: 0x007, 0x00E, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
@@ -97,6 +104,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialGlassRef;
+    /// <remarks>Applied with: 0x007, 0x00E, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
@@ -107,6 +115,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialDetailsRef;
+    /// <remarks>Applied with: 0x007, 0x00E, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk2E002007>]
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
@@ -117,6 +126,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CMwNod?>? nadeoSkinFids;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002008>]
     public NodeRefList<CMwNod?>? NadeoSkinFids
     {
@@ -125,6 +135,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CMwNod>? cameras;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002009>]
     public NodeRefList<CMwNod>? Cameras
     {
@@ -133,6 +144,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugDecoratorSolid>? decoratorSolidRef;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk2E00200A>]
     public CPlugDecoratorSolid? DecoratorSolid
     {
@@ -141,6 +153,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? stemMaterialRef;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk2E00200B>]
     public CPlugMaterial? StemMaterial
     {
@@ -149,6 +162,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? stemBumpMaterialRef;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk2E00200B>]
     public CPlugMaterial? StemBumpMaterial
     {
@@ -157,6 +171,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CMwNod>? forcedSkinsFids;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk2E00200D>]
     public NodeRefList<CMwNod>? ForcedSkinsFids
     {
@@ -165,6 +180,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialPilotRef;
+    /// <remarks>Applied with: 0x00E, 0x011 body chunks</remarks>
     [AppliedWithChunk<Chunk2E00200E>]
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugMaterial? MaterialPilot
@@ -174,6 +190,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugBitmap>? bannerProfileFidRef;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002010>]
     public CPlugBitmap? BannerProfileFid
     {
@@ -182,6 +199,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugLight>? frontLightRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? FrontLight
     {
@@ -190,6 +208,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugLight>? frontLightSmallRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? FrontLightSmall
     {
@@ -198,6 +217,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugLight>? rearLightRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? RearLight
     {
@@ -206,6 +226,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugLight>? projShadowRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? ProjShadow
     {
@@ -214,6 +235,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugLight>? projFrontRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002011>]
     public CPlugLight? ProjFront
     {
@@ -222,6 +244,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private Vec3 groundPoint;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public Vec3 GroundPoint
     {
@@ -230,6 +253,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private float painterGroundMargin;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public float PainterGroundMargin
     {
@@ -238,6 +262,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private float orbitalCenterHeightFromGround;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public float OrbitalCenterHeightFromGround
     {
@@ -246,6 +271,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private float orbitalRadiusBase;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public float OrbitalRadiusBase
     {
@@ -254,6 +280,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private float orbitalPreviewAngle;
+    /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002012>]
     public float OrbitalPreviewAngle
     {
@@ -262,6 +289,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugAudioEnvironment>? audioEnvironmentInCarRef;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002013>]
     public CPlugAudioEnvironment? AudioEnvironmentInCar
     {
@@ -270,6 +298,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private EItemType itemTypeE;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002015>]
     public EItemType ItemTypeE
     {
@@ -278,6 +307,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CMwNod>? phyModelCustomRef;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>]
     public CMwNod? PhyModelCustom
     {
@@ -286,6 +316,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CMwNod>? visModelCustomRef;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>]
     public CMwNod? VisModelCustom
     {
@@ -294,6 +325,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private string? defaultWeaponName;
+    /// <remarks>Applied with: 0x019 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(3)]
     public string? DefaultWeaponName
     {
@@ -302,6 +334,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRefList<CGameActionModel>? actions;
+    /// <remarks>Applied with: 0x019 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(6)]
     public NodeRefList<CGameActionModel>? Actions
     {
@@ -310,6 +343,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private EDefaultCam defaultCam;
+    /// <remarks>Applied with: 0x019 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(7)]
     public EDefaultCam DefaultCam
     {
@@ -321,6 +355,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     /// <summary>
     /// CGameCommonItemEntityModelEdition, CGameBlockItem, CPlugVegetTreeModel
     /// </summary>
+    /// <remarks>Applied with: 0x019 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(8)]
     public CMwNod? EntityModelEdition
     {
@@ -329,6 +364,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CMwNod>? entityModelRef;
+    /// <remarks>Applied with: 0x019 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(8)]
     public CMwNod? EntityModel
     {
@@ -337,6 +373,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugVFXFile>? vFXRef;
+    /// <remarks>Applied with: 0x019 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(13)]
     public CPlugVFXFile? VFX
     {
@@ -345,6 +382,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CPlugGameSkinAndFolder>? materialModifierRef;
+    /// <remarks>Applied with: 0x019 v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E002019>(15)]
     public CPlugGameSkinAndFolder? MaterialModifier
     {
@@ -353,6 +391,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameItemPlacementParam>? defaultPlacementRef;
+    /// <remarks>Applied with: 0x01C v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201C>(5)]
     public CGameItemPlacementParam? DefaultPlacement
     {
@@ -361,6 +400,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private string? archetypeRef;
+    /// <remarks>Applied with: 0x01E v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201E>(2)]
     public string? ArchetypeRef
     {
@@ -369,6 +409,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private NodeRef<CGameItemModel>? archetypeFidRef;
+    /// <remarks>Applied with: 0x01E v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201E>(5)]
     public CGameItemModel? ArchetypeFid
     {
@@ -377,6 +418,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private EWaypointType waypointType;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201F>]
     public EWaypointType WaypointType
     {
@@ -385,6 +427,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private bool disableLightmap;
+    /// <remarks>Applied with: 0x01F v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E00201F>(6)]
     public bool DisableLightmap
     {
@@ -393,6 +436,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private string? iconFid;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002020>]
     public string? IconFid
     {
@@ -401,6 +445,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     private ItemGroupElement[]? itemGroupElements;
+    /// <remarks>Applied with: 0x021 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002021>]
     public ItemGroupElement[]? ItemGroupElements
     {

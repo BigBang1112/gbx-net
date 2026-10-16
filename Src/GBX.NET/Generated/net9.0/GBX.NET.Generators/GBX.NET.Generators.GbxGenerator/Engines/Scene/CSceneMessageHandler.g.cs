@@ -38,6 +38,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? onClickScriptRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A01F000>]
     public CMwNod? OnClickScript
     {
@@ -46,6 +47,7 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? onContactScriptRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A01F001>]
     public CMwNod? OnContactScript
     {

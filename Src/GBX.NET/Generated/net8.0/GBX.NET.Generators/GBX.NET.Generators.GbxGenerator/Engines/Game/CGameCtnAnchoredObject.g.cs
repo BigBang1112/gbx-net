@@ -38,6 +38,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Ident itemModel = Ident.Empty;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public Ident ItemModel
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private Vec3 yawPitchRoll;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public Vec3 YawPitchRoll
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private Byte3 blockUnitCoord;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public Byte3 BlockUnitCoord
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private string? anchorTreeId;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public string? AnchorTreeId
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private Vec3 absolutePositionInMap;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public Vec3 AbsolutePositionInMap
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private NodeRef<CGameWaypointSpecialProperty>? waypointSpecialPropertyRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
@@ -86,6 +92,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private short flags;
+    /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(4)]
     public short Flags
     {
@@ -94,6 +101,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private Vec3 pivotPosition;
+    /// <remarks>Applied with: 0x002 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(5)]
     public Vec3 PivotPosition
     {
@@ -102,6 +110,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private float scale;
+    /// <remarks>Applied with: 0x002 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(6)]
     public float Scale
     {
@@ -110,6 +119,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private PackDesc? packDesc;
+    /// <remarks>Applied with: 0x002 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(7)]
     public PackDesc? PackDesc
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnBlockInfoFlat>? blockInfoFlatRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoClip>? blockInfoClipRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoRoad>? blockInfoRoadRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoPylon>? blockInfoPylonRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     }
 
     private bool groundOnly;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D002>]
     public bool GroundOnly
     {
@@ -78,6 +83,7 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     }
 
     private bool autoSimplifyGenealogy;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0305D003>]
     public bool AutoSimplifyGenealogy
     {

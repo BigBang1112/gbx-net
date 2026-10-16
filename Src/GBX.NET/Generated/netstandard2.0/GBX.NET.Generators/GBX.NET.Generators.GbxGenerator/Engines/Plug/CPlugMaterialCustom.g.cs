@@ -38,6 +38,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     internal override uint GetId() => Id;
 
     private Bitmap[]? textures;
+    /// <remarks>Applied with: 0x006, 0x013 body chunks</remarks>
     [AppliedWithChunk<Chunk0903A006>]
     [AppliedWithChunk<Chunk0903A013>]
     public Bitmap[]? Textures
@@ -47,6 +48,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     }
 
     private GpuFx[]? gpuFxs1;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0903A00A>]
     public GpuFx[]? GpuFxs1
     {
@@ -55,6 +57,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     }
 
     private GpuFx[]? gpuFxs2;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0903A00A>]
     public GpuFx[]? GpuFxs2
     {
@@ -63,6 +66,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     }
 
     private BitmapSkip[]? skipSamplers;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0903A00C>]
     public BitmapSkip[]? SkipSamplers
     {

@@ -38,6 +38,7 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private List<ObjectVisKey>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031A8000>]
     public List<ObjectVisKey>? Keys
     {
@@ -46,6 +47,7 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
     }
 
     private List<ObjectVis>? visList;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk031A8000>]
     public List<ObjectVis>? VisList
     {

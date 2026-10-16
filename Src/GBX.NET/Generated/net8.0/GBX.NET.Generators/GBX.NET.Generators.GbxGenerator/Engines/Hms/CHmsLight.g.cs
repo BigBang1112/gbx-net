@@ -38,6 +38,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<GxLight>? mainGxLightRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0600C000>]
     [AppliedWithChunk<Chunk0600C001>]
     [AppliedWithChunk<Chunk0600C002>]
@@ -49,6 +50,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapFlareRef;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0600C002>]
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapFlare
@@ -58,6 +60,7 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSpriteRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0600C003>]
     public CPlugBitmap? BitmapSprite
     {

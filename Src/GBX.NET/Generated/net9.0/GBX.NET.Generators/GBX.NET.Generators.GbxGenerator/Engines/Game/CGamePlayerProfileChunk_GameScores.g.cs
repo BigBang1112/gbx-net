@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     internal override uint GetId() => Id;
 
     private STrainingMedalsScores[]? trainingMedalsScores;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03146000>]
     public STrainingMedalsScores[]? TrainingMedalsScores
     {
@@ -50,6 +51,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     private NodeRef<CGamePlayerOfficialScores>? officialScores2Ref;
 
     private LadderMatchResult[]? ladderMatchResults;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03146005>]
     public LadderMatchResult[]? LadderMatchResults
     {

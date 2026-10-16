@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, IClass, C
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03195000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, IClass, C
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03195000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, IClass, C
     }
 
     private bool showInterface;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03195000>]
     public bool ShowInterface
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, IClass, C
     }
 
     private string? manialink;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03195000>]
     public string? Manialink
     {

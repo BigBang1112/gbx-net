@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk030A6000>]
     [AppliedWithChunk<Chunk030A6001>]
     public List<Key>? Keys

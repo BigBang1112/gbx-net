@@ -41,6 +41,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? tip;
+    /// <remarks>Applied with: 0x001, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B001>]
     [AppliedWithChunk<Chunk0305B00A>]
     public string? Tip
@@ -50,6 +51,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private TimeInt32? bronzeTime;
+    /// <remarks>Applied with: 0x004, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B004>]
     [AppliedWithChunk<Chunk0305B00A>]
     public TimeInt32? BronzeTime
@@ -59,6 +61,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private TimeInt32? silverTime;
+    /// <remarks>Applied with: 0x004, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B004>]
     [AppliedWithChunk<Chunk0305B00A>]
     public TimeInt32? SilverTime
@@ -68,6 +71,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private TimeInt32? goldTime;
+    /// <remarks>Applied with: 0x004, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B004>]
     [AppliedWithChunk<Chunk0305B00A>]
     public TimeInt32? GoldTime
@@ -77,6 +81,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private TimeInt32? authorTime;
+    /// <remarks>Applied with: 0x004, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B004>]
     [AppliedWithChunk<Chunk0305B00A>]
     public TimeInt32? AuthorTime
@@ -85,10 +90,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorTime = value;
     }
 
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0305B006>]
     public partial int[]? Items { get; set; }
 
     private TimeInt32 timeLimit = new TimeInt32(60000);
+    /// <remarks>Applied with: 0x007, 0x008, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B007>]
     [AppliedWithChunk<Chunk0305B008>]
     [AppliedWithChunk<Chunk0305B00A>]
@@ -99,6 +106,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private int? authorScore;
+    /// <remarks>Applied with: 0x008, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0305B008>]
     [AppliedWithChunk<Chunk0305B00A>]
     public int? AuthorScore
@@ -107,10 +115,12 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         set => this.authorScore = value;
     }
 
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0305B00B>]
     public partial NodeRefList<CGameCtnGhost>? LegacyValidateGhosts { get; set; }
 
     private string? mapType;
+    /// <remarks>Applied with: 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0305B00C>]
     [AppliedWithChunk<Chunk0305B00E>]
     public string? MapType
@@ -120,6 +130,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private string? mapStyle;
+    /// <remarks>Applied with: 0x00C, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk0305B00C>]
     [AppliedWithChunk<Chunk0305B00E>]
     public string? MapStyle
@@ -129,6 +140,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnGhost>? raceValidateGhostRef;
+    /// <remarks>Applied with: 0x00D, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0305B00D>]
     [AppliedWithChunk<Chunk0305B00F>]
     public CGameCtnGhost? RaceValidateGhost
@@ -138,6 +150,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     private bool isValidatedForScriptModes;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0305B00E>]
     public bool IsValidatedForScriptModes
     {

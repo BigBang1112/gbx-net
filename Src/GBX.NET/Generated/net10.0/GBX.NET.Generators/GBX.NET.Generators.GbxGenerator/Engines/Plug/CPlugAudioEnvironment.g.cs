@@ -38,6 +38,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     internal override uint GetId() => Id;
 
     private EEAXPreset eAXPreset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public EEAXPreset EAXPreset
     {
@@ -46,6 +47,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float sizeFactor;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float SizeFactor
     {
@@ -54,6 +56,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float diffusion;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float Diffusion
@@ -63,6 +66,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float room;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float Room
     {
@@ -71,6 +75,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomHFRatio;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float RoomHFRatio
     {
@@ -79,6 +84,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomLFRatio;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float RoomLFRatio
     {
@@ -87,6 +93,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float decayTime;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float DecayTime
@@ -96,6 +103,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float decayHFRatio;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float DecayHFRatio
@@ -105,6 +113,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float decayLFRatio;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float DecayLFRatio
@@ -114,6 +123,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float reflections;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float Reflections
     {
@@ -122,6 +132,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float reflectionsDelay;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float ReflectionsDelay
@@ -131,6 +142,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float reverb;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float Reverb
     {
@@ -139,6 +151,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float reverbDelay;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float ReverbDelay
     {
@@ -147,6 +160,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float echoTime;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float EchoTime
@@ -156,6 +170,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float echoDepth;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float EchoDepth
@@ -165,6 +180,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float modulationTime;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float ModulationTime
@@ -174,6 +190,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float modulationDepth;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float ModulationDepth
@@ -183,6 +200,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float rolloffFactor;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float RolloffFactor
     {
@@ -191,6 +209,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float airAbsorbtionHF;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public float AirAbsorbtionHF
     {
@@ -199,6 +218,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float hFReference;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float HFReference
@@ -208,6 +228,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float lFReference;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk09039000>]
     [AppliedWithChunk<Chunk09039002>]
     public float LFReference
@@ -217,6 +238,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool decayTimeScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool DecayTimeScale
     {
@@ -225,6 +247,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool reflectionsScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool ReflectionsScale
     {
@@ -233,6 +256,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool reflectionsDelayScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool ReflectionsDelayScale
     {
@@ -241,6 +265,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool reverbScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool ReverbScale
     {
@@ -249,6 +274,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool reverbDelayScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool ReverbDelayScale
     {
@@ -257,6 +283,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool echoTimeScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool EchoTimeScale
     {
@@ -265,6 +292,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool modulationTimeScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool ModulationTimeScale
     {
@@ -273,6 +301,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool decayHFLimitScale;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09039000>]
     public bool DecayHFLimitScale
     {
@@ -281,6 +310,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float dopplerFactor;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09039001>]
     public float DopplerFactor
     {
@@ -289,6 +319,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float density;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float Density
     {
@@ -297,8 +328,9 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float gain;
-    [GameVersionDefault(GameVersion.TMF, 0.32f)]
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
+    [GameVersionDefault(GameVersion.TMF, 0.32f)]
     public float Gain
     {
         get => this.gain;
@@ -306,8 +338,9 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float gainHF;
-    [GameVersionDefault(GameVersion.TMF, 0.89f)]
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
+    [GameVersionDefault(GameVersion.TMF, 0.89f)]
     public float GainHF
     {
         get => this.gainHF;
@@ -315,6 +348,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float gainLF;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float GainLF
     {
@@ -323,6 +357,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float reflectionsGain;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float ReflectionsGain
     {
@@ -331,6 +366,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float lateReverbGain;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float LateReverbGain
     {
@@ -339,6 +375,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float lateReverbDelay;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float LateReverbDelay
     {
@@ -347,6 +384,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float airAbsorptionGainHF;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float AirAbsorptionGainHF
     {
@@ -355,6 +393,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomRolloffFactor;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public float RoomRolloffFactor
     {
@@ -363,6 +402,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private bool decayHFLimit;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09039002>]
     public bool DecayHFLimit
     {
@@ -371,6 +411,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxLowGain;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxLowGain
     {
@@ -379,6 +420,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxLowGainHF;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxLowGainHF
     {
@@ -387,6 +429,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxMidGain;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxMidGain
     {
@@ -395,6 +438,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxMidGainHF;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxMidGainHF
     {
@@ -403,6 +447,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxHighGain;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxHighGain
     {
@@ -411,6 +456,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxHighGainHF;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float RoomFxHighGainHF
     {
@@ -419,6 +465,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float lowPassGain;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float LowPassGain
     {
@@ -427,6 +474,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float lowPassGainHF;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(2)]
     public float LowPassGainHF
     {
@@ -435,6 +483,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxUIGain;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(3)]
     public float RoomFxUIGain
     {
@@ -443,6 +492,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxUIGainHF;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(3)]
     public float RoomFxUIGainHF
     {
@@ -451,6 +501,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxMusicGain;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(3)]
     public float RoomFxMusicGain
     {
@@ -459,6 +510,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     private float roomFxMusicGainHF;
+    /// <remarks>Applied with: 0x004 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09039004>(3)]
     public float RoomFxMusicGainHF
     {

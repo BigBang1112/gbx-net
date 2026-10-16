@@ -38,6 +38,7 @@ public partial class CMwCmdBlock : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CMwCmdScript>? cmds;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk01030004>]
     public NodeRefList<CMwCmdScript>? Cmds
     {

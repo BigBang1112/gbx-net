@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     internal override uint GetId() => Id;
 
     private string script = string.Empty;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03161000>]
     public string Script
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private TimeSingle? start;
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03161000>(0, 0)]
     public TimeSingle? Start
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private TimeSingle? end;
+    /// <remarks>Applied with: 0x000 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03161000>(0, 0)]
     public TimeSingle? End
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03161000>(1)]
     public List<Key>? Keys
     {

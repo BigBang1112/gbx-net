@@ -38,6 +38,7 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSound>? soundRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09061000>]
     public CPlugSound? Sound
     {
@@ -46,6 +47,7 @@ public partial class CPlugLocatedSound : CMwNod, IClass
     }
 
     private Iso4 loc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09061000>]
     public Iso4 Loc
     {

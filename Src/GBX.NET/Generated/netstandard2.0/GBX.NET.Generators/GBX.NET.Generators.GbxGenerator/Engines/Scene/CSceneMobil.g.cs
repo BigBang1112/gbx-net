@@ -38,6 +38,7 @@ public partial class CSceneMobil : CSceneObject, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CSceneObjectLink>? objectLink;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A011003>]
     public NodeRefList<CSceneObjectLink>? ObjectLink
     {
@@ -46,6 +47,7 @@ public partial class CSceneMobil : CSceneObject, IClass
     }
 
     private CHmsItem? item;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0A011005>]
     public CHmsItem? Item
     {
@@ -54,6 +56,7 @@ public partial class CSceneMobil : CSceneObject, IClass
     }
 
     private NodeRef<CSceneMessageHandler>? messageHandlerRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0A011006>]
     public CSceneMessageHandler? MessageHandler
     {

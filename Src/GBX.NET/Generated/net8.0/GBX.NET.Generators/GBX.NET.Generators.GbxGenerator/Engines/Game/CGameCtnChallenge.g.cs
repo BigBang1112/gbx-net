@@ -40,6 +40,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    /// <remarks>Applied with: 0x002 v0-2, 0x003 header chunks, 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk0304300F>]
@@ -47,12 +48,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304301F>]
     public partial Ident MapInfo { get; set; }
 
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x002 v0-2, 0x003 header chunks, 0x012, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk03043012>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
+    [SupportsFormatting]
     public string MapName
     {
         get => this.mapName;
@@ -60,6 +62,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool needUnlock;
+    /// <remarks>Applied with: 0x002 header chunk, 0x00F, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>]
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk0304301F>]
@@ -69,19 +72,24 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.needUnlock = value;
     }
 
+    /// <remarks>Applied with: 0x002 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(1)]
     public partial TimeInt32? BronzeTime { get; set; }
 
+    /// <remarks>Applied with: 0x002 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(1)]
     public partial TimeInt32? SilverTime { get; set; }
 
+    /// <remarks>Applied with: 0x002 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(1)]
     public partial TimeInt32? GoldTime { get; set; }
 
+    /// <remarks>Applied with: 0x002 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(1)]
     public partial TimeInt32? AuthorTime { get; set; }
 
     private int cost;
+    /// <remarks>Applied with: 0x002 v4+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(4)]
     public int Cost
     {
@@ -90,6 +98,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool isLapRace;
+    /// <remarks>Applied with: 0x002 v5+ header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(5)]
     [AppliedWithChunk<Chunk03043018>]
     public bool IsLapRace
@@ -99,6 +108,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private PlayMode mode;
+    /// <remarks>Applied with: 0x002 v6+ header chunk, 0x01C body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(6)]
     [AppliedWithChunk<Chunk0304301C>]
     public PlayMode Mode
@@ -108,6 +118,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool hasClones;
+    /// <remarks>Applied with: 0x002 v9+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(9)]
     public bool HasClones
     {
@@ -115,10 +126,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.hasClones = value;
     }
 
+    /// <remarks>Applied with: 0x002 v10+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(10)]
     public partial int? AuthorScore { get; set; }
 
     private EditorMode editor;
+    /// <remarks>Applied with: 0x002 v11+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(11)]
     public EditorMode Editor
     {
@@ -127,6 +140,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int nbCheckpoints;
+    /// <remarks>Applied with: 0x002 v13+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(13)]
     public int NbCheckpoints
     {
@@ -135,6 +149,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int nbLaps;
+    /// <remarks>Applied with: 0x002 v13+ header chunk, 0x018 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(13)]
     [AppliedWithChunk<Chunk03043018>]
     public int NbLaps
@@ -144,6 +159,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private MapKind kindInHeader;
+    /// <remarks>Applied with: 0x003 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>]
     public MapKind KindInHeader
     {
@@ -152,6 +168,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? password;
+    /// <remarks>Applied with: 0x003 v1+ header chunk, 0x014 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(1)]
     [AppliedWithChunk<Chunk03043014>]
     public string? Password
@@ -160,6 +177,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.password = value;
     }
 
+    /// <remarks>Applied with: 0x003 v2+ header chunk, 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(2)]
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
@@ -167,6 +185,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial Ident Decoration { get; set; }
 
     private Vec2 mapCoordOrigin;
+    /// <remarks>Applied with: 0x003 v3+ header chunk, 0x023, 0x025 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(3)]
     [AppliedWithChunk<Chunk03043023>]
     [AppliedWithChunk<Chunk03043025>]
@@ -177,6 +196,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Vec2 mapCoordTarget;
+    /// <remarks>Applied with: 0x003 v4+ header chunk, 0x025 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(4)]
     [AppliedWithChunk<Chunk03043025>]
     public Vec2 MapCoordTarget
@@ -186,6 +206,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private UInt128 packMask;
+    /// <remarks>Applied with: 0x003 v5+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(5)]
     public UInt128 PackMask
     {
@@ -193,13 +214,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.packMask = value;
     }
 
+    /// <remarks>Applied with: 0x003 v6+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(6)]
     public partial string? MapType { get; set; }
 
+    /// <remarks>Applied with: 0x003 v6+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(6)]
     public partial string? MapStyle { get; set; }
 
     private ulong lightmapCacheUid;
+    /// <remarks>Applied with: 0x003 v8+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(8)]
     public ulong LightmapCacheUid
     {
@@ -207,12 +231,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.lightmapCacheUid = value;
     }
 
+    /// <remarks>Applied with: 0x003 v9+ header chunk, 0x03D, 0x05B body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(9)]
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial int? LightmapVersion { get; set; }
 
     private string? titleId;
+    /// <remarks>Applied with: 0x003 v11+ header chunk, 0x051 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043003>(11)]
     [AppliedWithChunk<Chunk03043051>]
     public string? TitleId
@@ -222,6 +248,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? xml;
+    /// <remarks>Applied with: 0x005 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043005>]
     public string? Xml
     {
@@ -229,14 +256,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.xml = value;
     }
 
+    /// <remarks>Applied with: 0x007 v1+ header chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043007>(1)]
     public partial byte[]? Thumbnail { get; set; }
 
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x007 v1+ header chunk, 0x028, 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043007>(1)]
     [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
+    [SupportsFormatting]
     public string? Comments
     {
         get => this.comments;
@@ -244,6 +273,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int authorVersion;
+    /// <remarks>Applied with: 0x008 header chunk, 0x042 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk03043042>]
     public int AuthorVersion
@@ -252,6 +282,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.authorVersion = value;
     }
 
+    /// <remarks>Applied with: 0x002 v0-2, 0x003, 0x008 header chunks, 0x00F, 0x013, 0x01F, 0x042 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<HeaderChunk03043008>]
@@ -262,9 +293,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     public partial string AuthorLogin { get; set; }
 
     private string? authorNickname;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x008 header chunk, 0x042 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk03043042>]
+    [SupportsFormatting]
     public string? AuthorNickname
     {
         get => this.authorNickname;
@@ -272,6 +304,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? authorZone;
+    /// <remarks>Applied with: 0x008 header chunk, 0x042 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk03043042>]
     public string? AuthorZone
@@ -281,6 +314,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? authorExtraInfo;
+    /// <remarks>Applied with: 0x008 header chunk, 0x042 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk03043008>]
     [AppliedWithChunk<Chunk03043042>]
     public string? AuthorExtraInfo
@@ -290,6 +324,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Ident? playerModel;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0304300D>]
     public Ident? PlayerModel
     {
@@ -297,17 +332,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.playerModel = value;
     }
 
+    /// <remarks>Applied with: 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
     public partial Int3 Size { get; set; }
 
+    /// <remarks>Applied with: 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
     public partial NodeRefList<CGameCtnBlock>? Blocks { get; set; }
 
     private NodeRef<CGameCtnCollectorList>? blockStockRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnCollectorList? BlockStock
     {
@@ -316,6 +354,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnChallengeParameters>? challengeParametersRef;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk03043011>]
     public CGameCtnChallengeParameters? ChallengeParameters
     {
@@ -324,6 +363,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private MapKind kind;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk03043011>]
     public MapKind Kind
     {
@@ -332,6 +372,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private List<Int3>? checkpoints;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk03043017>]
     public List<Int3>? Checkpoints
     {
@@ -340,6 +381,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private PackDesc? modPackDesc;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk03043019>]
     public PackDesc? ModPackDesc
     {
@@ -348,6 +390,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaClip>? clipIntroRef;
+    /// <remarks>Applied with: 0x020, 0x021, 0x049 body chunks</remarks>
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
@@ -358,6 +401,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaClipGroup>? clipGroupInGameRef;
+    /// <remarks>Applied with: 0x020, 0x021, 0x049 body chunks</remarks>
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
@@ -368,6 +412,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaClipGroup>? clipGroupEndRaceRef;
+    /// <remarks>Applied with: 0x020, 0x021, 0x049 body chunks</remarks>
     [AppliedWithChunk<Chunk03043020>]
     [AppliedWithChunk<Chunk03043021>]
     [AppliedWithChunk<Chunk03043049>]
@@ -378,6 +423,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private PackDesc? customMusicPackDesc;
+    /// <remarks>Applied with: 0x024 body chunk</remarks>
     [AppliedWithChunk<Chunk03043024>]
     public PackDesc? CustomMusicPackDesc
     {
@@ -386,6 +432,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaClip>? clipGlobalRef;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk03043026>]
     public CGameCtnMediaClip? ClipGlobal
     {
@@ -393,11 +440,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref clipGlobalRef, value);
     }
 
+    /// <remarks>Applied with: 0x027, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     public partial bool HasCustomCamThumbnail { get; set; }
 
     private Mat3 thumbnailRotationMatrix;
+    /// <remarks>Applied with: 0x027, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     public Mat3 ThumbnailRotationMatrix
@@ -406,34 +455,40 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.thumbnailRotationMatrix = value;
     }
 
+    /// <remarks>Applied with: 0x027, 0x028, 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public partial Vec3 ThumbnailPosition { get; set; }
 
+    /// <remarks>Applied with: 0x027, 0x028, 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public partial float ThumbnailFov { get; set; }
 
+    /// <remarks>Applied with: 0x027, 0x028, 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public partial float ThumbnailNearClipPlane { get; set; }
 
+    /// <remarks>Applied with: 0x027, 0x028, 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk03043027>]
     [AppliedWithChunk<Chunk03043028>]
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public partial float ThumbnailFarClipPlane { get; set; }
 
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03043029>]
     public partial Checksum128? HashedPassword { get; set; }
 
     private uint crc32;
+    /// <remarks>Applied with: 0x029 body chunk</remarks>
     [AppliedWithChunk<Chunk03043029>]
     public uint Crc32
     {
@@ -441,11 +496,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.crc32 = value;
     }
 
+    /// <remarks>Applied with: 0x02D, 0x036 body chunks</remarks>
     [AppliedWithChunk<Chunk0304302D>]
     [AppliedWithChunk<Chunk03043036>]
     public partial Vec3 ThumbnailPitchYawRoll { get; set; }
 
     private byte[]? challengeDecals;
+    /// <remarks>Applied with: 0x034 body chunk</remarks>
     [AppliedWithChunk<Chunk03043034>]
     public byte[]? ChallengeDecals
     {
@@ -454,6 +511,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private SChallengeCardEventIds[]? challengeCardEventIds;
+    /// <remarks>Applied with: 0x038 body chunk</remarks>
     [AppliedWithChunk<Chunk03043038>]
     public SChallengeCardEventIds[]? ChallengeCardEventIds
     {
@@ -461,24 +519,29 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.challengeCardEventIds = value;
     }
 
+    /// <remarks>Applied with: 0x03D, 0x05B body chunks</remarks>
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial bool HasLightmaps { get; set; }
 
     private NodeRef<CHmsLightMapCache>? lightmapCacheRef;
+    /// <remarks>Applied with: 0x03D, 0x05B body chunks</remarks>
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial CHmsLightMapCache? LightmapCache { get; set; }
 
+    /// <remarks>Applied with: 0x03D, 0x05B body chunks</remarks>
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
 
+    /// <remarks>Applied with: 0x03D, 0x05B body chunks</remarks>
     [AppliedWithChunk<Chunk0304303D>]
     [AppliedWithChunk<Chunk0304305B>]
     public partial ZlibData? LightmapCacheData { get; set; }
 
     private NodeRefList<CSceneVehicleCarMarksSamples>? carMarksBuffer;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0304303E>]
     public NodeRefList<CSceneVehicleCarMarksSamples>? CarMarksBuffer
     {
@@ -486,28 +549,34 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => carMarksBuffer = value;
     }
 
+    /// <remarks>Applied with: 0x040 body chunk</remarks>
     [AppliedWithChunk<Chunk03043040>]
     public partial NodeRefList<CGameCtnAnchoredObject>? AnchoredObjects { get; set; }
 
+    /// <remarks>Applied with: 0x043 body chunk</remarks>
     [AppliedWithChunk<Chunk03043043>]
     public partial NodeRefList<CGameCtnZoneGenealogy>? ZoneGenealogy { get; set; }
 
+    /// <remarks>Applied with: 0x044 body chunk</remarks>
     [AppliedWithChunk<Chunk03043044>]
     public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
 
     /// <summary>
     /// Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
     /// </summary>
+    /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk03043048>]
     public partial NodeRefList<CGameCtnBlock>? BakedBlocks { get; set; }
 
     /// <summary>
     /// Preceded by U01.
     /// </summary>
+    /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk03043048>]
     public partial List<SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
 
     private NodeRef<CGameCtnMediaClip>? clipPodiumRef;
+    /// <remarks>Applied with: 0x049 body chunk</remarks>
     [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipPodium
     {
@@ -516,6 +585,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaClip>? clipAmbianceRef;
+    /// <remarks>Applied with: 0x049 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043049>(2)]
     public CGameCtnMediaClip? ClipAmbiance
     {
@@ -524,6 +594,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Int3 clipTriggerSize = (1, 1, 1);
+    /// <remarks>Applied with: 0x049 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043049>(1)]
     public Int3 ClipTriggerSize
     {
@@ -532,6 +603,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? objectiveTextAuthor;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
     [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextAuthor
     {
@@ -540,6 +612,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? objectiveTextGold;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
     [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextGold
     {
@@ -548,6 +621,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? objectiveTextSilver;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
     [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextSilver
     {
@@ -556,6 +630,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? objectiveTextBronze;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
     [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextBronze
     {
@@ -564,6 +639,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimFile>? challengeAnimationRef;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk0304304E>]
     public CPlugAnimFile? ChallengeAnimation
     {
@@ -572,6 +648,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private CPlugTriggerAction[]? animationTriggers;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk0304304E>]
     public CPlugTriggerAction[]? AnimationTriggers
     {
@@ -580,6 +657,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Int3 offzoneTriggerSize;
+    /// <remarks>Applied with: 0x050 body chunk</remarks>
     [AppliedWithChunk<Chunk03043050>]
     public Int3 OffzoneTriggerSize
     {
@@ -588,6 +666,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private List<BoxInt3>? offzones;
+    /// <remarks>Applied with: 0x050 body chunk</remarks>
     [AppliedWithChunk<Chunk03043050>]
     public List<BoxInt3>? Offzones
     {
@@ -596,6 +675,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private string? buildVersion;
+    /// <remarks>Applied with: 0x051 body chunk</remarks>
     [AppliedWithChunk<Chunk03043051>]
     public string? BuildVersion
     {
@@ -604,6 +684,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private int decoBaseHeightOffset;
+    /// <remarks>Applied with: 0x052 body chunk</remarks>
     [AppliedWithChunk<Chunk03043052>]
     public int DecoBaseHeightOffset
     {
@@ -612,6 +693,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private List<BotPath>? botPaths;
+    /// <remarks>Applied with: 0x053 body chunk</remarks>
     [AppliedWithChunk<Chunk03043053>]
     public List<BotPath>? BotPaths
     {
@@ -622,13 +704,16 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// <summary>
     /// Preceded by the expected embedded item model identifiers.
     /// </summary>
+    /// <remarks>Applied with: 0x054 body chunk</remarks>
     [AppliedWithChunk<Chunk03043054>]
     public partial byte[]? EmbeddedZipData { get; set; }
 
+    /// <remarks>Applied with: 0x054 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043054>(1)]
     private partial List<string>? Textures { get; set; }
 
     private TimeSpan? dayTime;
+    /// <remarks>Applied with: 0x056, 0x06B body chunks</remarks>
     [AppliedWithChunk<Chunk03043056>]
     [AppliedWithChunk<Chunk0304306B>]
     public TimeSpan? DayTime
@@ -638,6 +723,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool dynamicDaylight;
+    /// <remarks>Applied with: 0x056, 0x06B body chunks</remarks>
     [AppliedWithChunk<Chunk03043056>]
     [AppliedWithChunk<Chunk0304306B>]
     public bool DynamicDaylight
@@ -647,6 +733,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private TimeInt32? dayDuration;
+    /// <remarks>Applied with: 0x056, 0x06B body chunks</remarks>
     [AppliedWithChunk<Chunk03043056>]
     [AppliedWithChunk<Chunk0304306B>]
     public TimeInt32? DayDuration
@@ -656,6 +743,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private LegacyRecordedBotPath[]? legacyRecordedBotPaths;
+    /// <remarks>Applied with: 0x057 v0-1 body chunk</remarks>
     [AppliedWithChunk<Chunk03043057>(0, 1)]
     public LegacyRecordedBotPath[]? LegacyRecordedBotPaths
     {
@@ -664,6 +752,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private RecordedBotPath[]? recordedBotPaths;
+    /// <remarks>Applied with: 0x057 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043057>(1)]
     public RecordedBotPath[]? RecordedBotPaths
     {
@@ -672,6 +761,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private Vec3 worldDistortion;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk03043059>]
     public Vec3 WorldDistortion
     {
@@ -680,6 +770,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private bool hasBlockOctree;
+    /// <remarks>Applied with: 0x05D body chunk</remarks>
     [AppliedWithChunk<Chunk0304305D>]
     public bool HasBlockOctree
     {
@@ -688,6 +779,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private BlockOctreeData? blockOctree;
+    /// <remarks>Applied with: 0x05D body chunk</remarks>
     [AppliedWithChunk<Chunk0304305D>]
     public BlockOctreeData? BlockOctree
     {
@@ -696,6 +788,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private MacroblockData[]? legacyMacroblocks;
+    /// <remarks>Applied with: 0x05E body chunk</remarks>
     [AppliedWithChunk<Chunk0304305E>]
     public MacroblockData[]? LegacyMacroblocks
     {
@@ -704,6 +797,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnMediaClipGroup>? clipGroups;
+    /// <remarks>Applied with: 0x064 body chunk</remarks>
     [AppliedWithChunk<Chunk03043064>]
     public NodeRefList<CGameCtnMediaClipGroup>? ClipGroups
     {
@@ -712,6 +806,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     private NodeRef<CGameSaveLaunchedCheckpoints>? launchedCheckpointsRef;
+    /// <remarks>Applied with: 0x067 body chunk</remarks>
     [AppliedWithChunk<Chunk03043067>]
     public CGameSaveLaunchedCheckpoints? LaunchedCheckpoints
     {
@@ -722,10 +817,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// <summary>
     /// Instance ID and flags pairs, preceded by an instance ID for each block and item.
     /// </summary>
+    /// <remarks>Applied with: 0x069 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk03043069>(0, 0)]
     public partial List<MacroblockInstance>? MacroblockInstances { get; set; }
 
     private PaletteColor palette;
+    /// <remarks>Applied with: 0x06C body chunk</remarks>
     [AppliedWithChunk<Chunk0304306C>]
     public PaletteColor Palette
     {
@@ -905,6 +1002,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).TMUnlimiterData = context.Clone(this.TMUnlimiterData)!;
     }
 
+    /// <remarks>Applied with: 0x002 v0-2, 0x003 header chunks, 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk0304300F>]
@@ -912,6 +1010,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304301F>]
     public partial string MapUid { get; set; }
 
+    /// <remarks>Applied with: 0x002 v0-2, 0x003 header chunks, 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<HeaderChunk03043002>(0, 2)]
     [AppliedWithChunk<HeaderChunk03043003>]
     [AppliedWithChunk<Chunk0304300F>]
@@ -919,11 +1018,13 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk0304301F>]
     public partial Id? Collection { get; }
 
+    /// <remarks>Applied with: 0x00F, 0x013, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0304300F>]
     [AppliedWithChunk<Chunk03043013>]
     [AppliedWithChunk<Chunk0304301F>]
     public partial int? NbBlocks { get; }
 
+    /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk03043048>]
     public partial int? NbBakedBlocks { get; }
 

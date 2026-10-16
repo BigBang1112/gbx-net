@@ -38,6 +38,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int nbBronzeRequired;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F001>]
     public int NbBronzeRequired
@@ -47,6 +48,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbSilverRequired;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F001>]
     public int NbSilverRequired
@@ -56,6 +58,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbGoldRequired;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F001>]
     public int NbGoldRequired
@@ -65,6 +68,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnChallenge>? mapFiles;
+    /// <remarks>Applied with: 0x000, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0308F000>]
     [AppliedWithChunk<Chunk0308F006>]
     public NodeRefList<CGameCtnChallenge>? MapFiles
@@ -74,6 +78,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private List<MapInfo>? mapInfos;
+    /// <remarks>Applied with: 0x001, 0x006, 0x00A, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0308F001>]
     [AppliedWithChunk<Chunk0308F006>]
     [AppliedWithChunk<Chunk0308F00A>]
@@ -85,6 +90,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F002>]
     public string? Name
     {
@@ -93,9 +99,10 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allBronzeValue;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0308F003>]
     [GameVersionDefault(GameVersion.TM10, 100)]
     [GameVersionDefault(GameVersion.TMPU, 100)]
-    [AppliedWithChunk<Chunk0308F003>]
     public int AllBronzeValue
     {
         get => this.allBronzeValue;
@@ -103,9 +110,10 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allSilverValue;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0308F003>]
     [GameVersionDefault(GameVersion.TM10, 200)]
     [GameVersionDefault(GameVersion.TMPU, 200)]
-    [AppliedWithChunk<Chunk0308F003>]
     public int AllSilverValue
     {
         get => this.allSilverValue;
@@ -113,9 +121,10 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int allGoldValue;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0308F003>]
     [GameVersionDefault(GameVersion.TM10, 300)]
     [GameVersionDefault(GameVersion.TMPU, 300)]
-    [AppliedWithChunk<Chunk0308F003>]
     public int AllGoldValue
     {
         get => this.allGoldValue;
@@ -123,6 +132,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private NodeRefList<CMwNod>? files;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F004>]
     public NodeRefList<CMwNod>? Files
     {
@@ -131,6 +141,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnCampaign>? linkedCampaignRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F005>]
     public CGameCtnCampaign? LinkedCampaign
     {
@@ -139,6 +150,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private bool usesMapFiles;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F006>]
     public bool UsesMapFiles
     {
@@ -147,6 +159,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbBronzeMedalRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbBronzeMedalRequired
     {
@@ -155,6 +168,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbSilverMedalRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbSilverMedalRequired
     {
@@ -163,6 +177,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbGoldMedalRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbGoldMedalRequired
     {
@@ -171,6 +186,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbBronzeCupRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbBronzeCupRequired
     {
@@ -179,6 +195,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbSilverCupRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbSilverCupRequired
     {
@@ -187,6 +204,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private int nbGoldCupRequired;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F007>]
     public int NbGoldCupRequired
     {
@@ -195,6 +213,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnCollection>? associatedCollectionRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F008>]
     public CGameCtnCollection? AssociatedCollection
     {
@@ -203,6 +222,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     private string? associatedCollectionId;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk0308F009>]
     public string? AssociatedCollectionId
     {

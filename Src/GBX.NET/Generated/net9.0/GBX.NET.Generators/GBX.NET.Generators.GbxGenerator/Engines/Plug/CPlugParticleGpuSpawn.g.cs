@@ -38,6 +38,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private ParticleGpuSpawn? spawn;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C5000>(1)]
     public ParticleGpuSpawn? Spawn
     {

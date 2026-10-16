@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     internal override uint GetId() => Id;
 
     private NodeRefList<CGameCtnAutoTerrain>? autoTerrains;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0315C001>]
     public NodeRefList<CGameCtnAutoTerrain>? AutoTerrains
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     }
 
     private int autoTerrainHeightOffset;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0315C001>]
     public int AutoTerrainHeightOffset
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     }
 
     private EAutoTerrainPlaceType autoTerrainPlaceType;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0315C001>]
     public EAutoTerrainPlaceType AutoTerrainPlaceType
     {

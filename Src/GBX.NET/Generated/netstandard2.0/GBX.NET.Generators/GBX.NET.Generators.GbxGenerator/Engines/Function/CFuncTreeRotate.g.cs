@@ -38,6 +38,7 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
     internal override uint GetId() => Id;
 
     private Vec3 axis;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0501E001>]
     public Vec3 Axis
     {
@@ -46,6 +47,7 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
     }
 
     private float angleMin;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0501E001>]
     public float AngleMin
     {
@@ -54,6 +56,7 @@ public partial class CFuncTreeRotate : CFuncTree, IClass
     }
 
     private float angleMax;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0501E001>]
     public float AngleMax
     {

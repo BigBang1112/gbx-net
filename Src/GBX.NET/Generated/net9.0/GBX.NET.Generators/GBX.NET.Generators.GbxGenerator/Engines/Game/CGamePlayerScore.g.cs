@@ -41,6 +41,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? playerName;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D000>]
     [AppliedWithChunk<Chunk0308D001>]
     [AppliedWithChunk<Chunk0308D002>]
@@ -53,6 +54,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private Score[]? scores;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D000>]
     [AppliedWithChunk<Chunk0308D001>]
     [AppliedWithChunk<Chunk0308D002>]
@@ -65,6 +67,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private string? playerId;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D001>]
     [AppliedWithChunk<Chunk0308D002>]
     [AppliedWithChunk<Chunk0308D003>]
@@ -76,6 +79,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int scoresVersion = 18;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D001>]
     [AppliedWithChunk<Chunk0308D002>]
     [AppliedWithChunk<Chunk0308D003>]
@@ -87,9 +91,10 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private string? nickName;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D003>]
     [AppliedWithChunk<Chunk0308D004>]
+    [SupportsFormatting]
     public string? NickName
     {
         get => this.nickName;
@@ -97,6 +102,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private SurvivalScore[]? survivalScores;
+    /// <remarks>Applied with: 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D005>]
     [AppliedWithChunk<Chunk0308D006>]
     public SurvivalScore[]? SurvivalScores
@@ -106,6 +112,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int survivalScoresVersion = 2;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D006>]
     public int SurvivalScoresVersion
     {
@@ -114,6 +121,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private CampaignRecordsState[]? campaignRecordsStates;
+    /// <remarks>Applied with: 0x00B, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D00B>]
     [AppliedWithChunk<Chunk0308D010>]
     public CampaignRecordsState[]? CampaignRecordsStates
@@ -123,6 +131,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private NodeRef<CGamePlayerOfficialScores>? playerOfficialScoresRef;
+    /// <remarks>Applied with: 0x00C, 0x00E, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
@@ -133,6 +142,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private TrainingMedalsScore[]? trainingMedalsScores;
+    /// <remarks>Applied with: 0x00C, 0x00E, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
@@ -143,6 +153,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private NodeRefList<CGameCampaignPlayerScores>? campaignPlayerScores;
+    /// <remarks>Applied with: 0x00C, 0x00E, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0308D00C>]
     [AppliedWithChunk<Chunk0308D00E>]
     [AppliedWithChunk<Chunk0308D00F>]
@@ -153,6 +164,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private LadderMatchResult[]? ladderMatchResults;
+    /// <remarks>Applied with: 0x00D, 0x012 body chunks</remarks>
     [AppliedWithChunk<Chunk0308D00D>]
     [AppliedWithChunk<Chunk0308D012>]
     public LadderMatchResult[]? LadderMatchResults
@@ -162,6 +174,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private byte campaignRecordsStateVersion = 1;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D010>]
     public byte CampaignRecordsStateVersion
     {
@@ -170,6 +183,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int soloRaceTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SoloRaceTimeSeconds
     {
@@ -178,6 +192,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedSoloRaceTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedSoloRaceTimeSeconds
     {
@@ -186,6 +201,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int soloPuzzleTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SoloPuzzleTimeSeconds
     {
@@ -194,6 +210,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedSoloPuzzleTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedSoloPuzzleTimeSeconds
     {
@@ -202,6 +219,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int soloPlatformTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SoloPlatformTimeSeconds
     {
@@ -210,6 +228,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedSoloPlatformTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedSoloPlatformTimeSeconds
     {
@@ -218,6 +237,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int soloStuntsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SoloStuntsTimeSeconds
     {
@@ -226,6 +246,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedSoloStuntsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedSoloStuntsTimeSeconds
     {
@@ -234,6 +255,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int hotSeatTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int HotSeatTimeSeconds
     {
@@ -242,6 +264,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedHotSeatTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedHotSeatTimeSeconds
     {
@@ -250,6 +273,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int networkTimeAttackTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int NetworkTimeAttackTimeSeconds
     {
@@ -258,6 +282,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedNetworkTimeAttackTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedNetworkTimeAttackTimeSeconds
     {
@@ -266,6 +291,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int networkRoundsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int NetworkRoundsTimeSeconds
     {
@@ -274,6 +300,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedNetworkRoundsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedNetworkRoundsTimeSeconds
     {
@@ -282,6 +309,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int networkLapsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int NetworkLapsTimeSeconds
     {
@@ -290,6 +318,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedNetworkLapsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedNetworkLapsTimeSeconds
     {
@@ -298,6 +327,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int networkStuntsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int NetworkStuntsTimeSeconds
     {
@@ -306,6 +336,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedNetworkStuntsTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedNetworkStuntsTimeSeconds
     {
@@ -314,6 +345,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int networkCupTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int NetworkCupTimeSeconds
     {
@@ -322,6 +354,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedNetworkCupTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedNetworkCupTimeSeconds
     {
@@ -330,6 +363,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int mapEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int MapEditorTimeSeconds
     {
@@ -338,6 +372,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedMapEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedMapEditorTimeSeconds
     {
@@ -346,6 +381,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int replayEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int ReplayEditorTimeSeconds
     {
@@ -354,6 +390,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedReplayEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedReplayEditorTimeSeconds
     {
@@ -362,6 +399,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int skinEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SkinEditorTimeSeconds
     {
@@ -370,6 +408,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedSkinEditorTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedSkinEditorTimeSeconds
     {
@@ -378,6 +417,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int maniaLinkTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int ManiaLinkTimeSeconds
     {
@@ -386,6 +426,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedManiaLinkTimeSeconds;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedManiaLinkTimeSeconds
     {
@@ -394,6 +435,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int mapCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int MapCount
     {
@@ -402,6 +444,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedMapCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedMapCount
     {
@@ -410,6 +453,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int resetCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int ResetCount
     {
@@ -418,6 +462,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedResetCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedResetCount
     {
@@ -426,6 +471,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int finishCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int FinishCount
     {
@@ -434,6 +480,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     private int submittedFinishCount;
+    /// <remarks>Applied with: 0x011 body chunk</remarks>
     [AppliedWithChunk<Chunk0308D011>]
     public int SubmittedFinishCount
     {

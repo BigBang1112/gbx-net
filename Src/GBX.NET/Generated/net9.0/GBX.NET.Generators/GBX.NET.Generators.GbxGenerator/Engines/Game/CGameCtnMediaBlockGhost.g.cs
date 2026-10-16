@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>(0, 2)]
@@ -48,6 +49,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>(0, 2)]
@@ -58,6 +60,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private NodeRef<CGameCtnGhost>? ghostModelRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk030E5000>]
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>]
@@ -68,6 +71,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private float startOffset;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk030E5001>]
     [AppliedWithChunk<Chunk030E5002>]
     public float StartOffset
@@ -77,6 +81,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk030E5002>(3)]
     public List<Key>? Keys
     {
@@ -85,6 +90,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool noDamage;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk030E5002>]
     public bool NoDamage
     {
@@ -93,6 +99,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool forceLight;
+    /// <remarks>Applied with: 0x002 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk030E5002>(1)]
     public bool ForceLight
     {
@@ -101,6 +108,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private bool forceHue;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk030E5002>(2)]
     public bool ForceHue
     {
@@ -109,6 +117,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, IClass, CGame
     }
 
     private float trailIntensity;
+    /// <remarks>Applied with: 0x002 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk030E5002>(5)]
     public float TrailIntensity
     {

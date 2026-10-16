@@ -38,6 +38,7 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     internal override uint GetId() => Id;
 
     private CFuncKeysNatural? subKeys;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk05031000>]
     [AppliedWithChunk<Chunk05031002>]
     public CFuncKeysNatural? SubKeys
@@ -47,6 +48,7 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     }
 
     private bool simpleModeIsLooping;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk05031003>]
     public bool SimpleModeIsLooping
     {
@@ -55,6 +57,7 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     }
 
     private int simpleModeStartIndex;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk05031003>]
     public int SimpleModeStartIndex
     {
@@ -63,6 +66,7 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     }
 
     private int simpleModeEndIndex;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk05031003>]
     public int SimpleModeEndIndex
     {

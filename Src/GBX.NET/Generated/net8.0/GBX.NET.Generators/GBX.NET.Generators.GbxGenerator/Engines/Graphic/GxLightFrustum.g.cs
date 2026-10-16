@@ -38,6 +38,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
     internal override uint GetId() => Id;
 
     private FrustumData frustum = new();
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0400A000>]
     [AppliedWithChunk<Chunk0400A001>]
     [AppliedWithChunk<Chunk0400A002>]
@@ -55,6 +56,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
     /// <summary>
     /// Packed face, attenuation, apply-mode, technique and shadow-group bits
     /// </summary>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0400A001>]
     [AppliedWithChunk<Chunk0400A002>]
     [AppliedWithChunk<Chunk0400A003>]
@@ -68,6 +70,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
     }
 
     private uint legacyBlendSource;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0400A003>]
     public uint LegacyBlendSource
     {
@@ -76,6 +79,7 @@ public partial class GxLightFrustum : GxLightBall, IClass
     }
 
     private uint legacyBlendDestination;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0400A003>]
     public uint LegacyBlendDestination
     {

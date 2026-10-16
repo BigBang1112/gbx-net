@@ -38,6 +38,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? onlineLogin;
+    /// <remarks>Applied with: 0x000 header chunk, 0x02C, 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x078 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk0308C000>]
     [AppliedWithChunk<Chunk0308C02C>]
     [AppliedWithChunk<Chunk0308C037>]
@@ -61,6 +62,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Has AllowUnprintableStrings around it, so it can contain any odd character.
     /// </summary>
+    /// <remarks>Applied with: 0x000 header chunk, 0x078 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk0308C000>]
     [AppliedWithChunk<Chunk0308C078>]
     public string? OnlineSupportKey
@@ -70,6 +72,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? profileName;
+    /// <remarks>Applied with: 0x000, 0x00F, 0x01F, 0x036, 0x03D, 0x05B, 0x07C, 0x07D, 0x07E body chunks</remarks>
     [AppliedWithChunk<Chunk0308C000>]
     [AppliedWithChunk<Chunk0308C00F>]
     [AppliedWithChunk<Chunk0308C01F>]
@@ -86,7 +89,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? nickName;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000, 0x00F, 0x01F, 0x036, 0x03D, 0x05B, 0x077 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C000>]
     [AppliedWithChunk<Chunk0308C00F>]
     [AppliedWithChunk<Chunk0308C01F>]
@@ -94,6 +97,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [AppliedWithChunk<Chunk0308C03D>]
     [AppliedWithChunk<Chunk0308C05B>]
     [AppliedWithChunk<Chunk0308C077>]
+    [SupportsFormatting]
     public string? NickName
     {
         get => this.nickName;
@@ -101,6 +105,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? profileId;
+    /// <remarks>Applied with: 0x000, 0x00F, 0x01F, 0x036, 0x03D, 0x05B, 0x07C, 0x07D, 0x07E body chunks</remarks>
     [AppliedWithChunk<Chunk0308C000>]
     [AppliedWithChunk<Chunk0308C00F>]
     [AppliedWithChunk<Chunk0308C01F>]
@@ -117,6 +122,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRef<CInputBindingsConfig>? bindingsForCompatConfigRef;
+    /// <remarks>Applied with: 0x006, 0x039, 0x03E, 0x051, 0x062 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C006>]
     [AppliedWithChunk<Chunk0308C039>]
     [AppliedWithChunk<Chunk0308C03E>]
@@ -129,6 +135,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool unlockAllCheat;
+    /// <remarks>Applied with: 0x00A, 0x039, 0x03E, 0x051, 0x063 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C00A>]
     [AppliedWithChunk<Chunk0308C039>]
     [AppliedWithChunk<Chunk0308C03E>]
@@ -141,6 +148,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool allowDownload = true;
+    /// <remarks>Applied with: 0x013, 0x03B body chunks</remarks>
     [AppliedWithChunk<Chunk0308C013>]
     [AppliedWithChunk<Chunk0308C03B>]
     public bool AllowDownload
@@ -150,6 +158,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? serverName;
+    /// <remarks>Applied with: 0x013, 0x03B body chunks</remarks>
     [AppliedWithChunk<Chunk0308C013>]
     [AppliedWithChunk<Chunk0308C03B>]
     public string? ServerName
@@ -159,6 +168,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool showEditorHelp = true;
+    /// <remarks>Applied with: 0x014, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C014>]
     [AppliedWithChunk<Chunk0308C038>]
     public bool ShowEditorHelp
@@ -168,6 +178,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private byte maxPlayerCount = 6;
+    /// <remarks>Applied with: 0x015, 0x017, 0x01D, 0x020, 0x026, 0x03B body chunks</remarks>
     [AppliedWithChunk<Chunk0308C015>]
     [AppliedWithChunk<Chunk0308C017>]
     [AppliedWithChunk<Chunk0308C01D>]
@@ -181,6 +192,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool enableAvatars = true;
+    /// <remarks>Applied with: 0x018, 0x019, 0x027, 0x039, 0x03E, 0x051, 0x063 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C018>]
     [AppliedWithChunk<Chunk0308C019>]
     [AppliedWithChunk<Chunk0308C027>]
@@ -195,6 +207,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 painterCustomColor1;
+    /// <remarks>Applied with: 0x021, 0x025, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C021>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C038>]
@@ -205,6 +218,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 painterCustomColor2;
+    /// <remarks>Applied with: 0x021, 0x025, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C021>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C038>]
@@ -215,6 +229,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 painterCustomColor3;
+    /// <remarks>Applied with: 0x021, 0x025, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C021>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C038>]
@@ -225,6 +240,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 painterCustomColor4;
+    /// <remarks>Applied with: 0x021, 0x025, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C021>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C038>]
@@ -235,6 +251,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 painterCustomColor5;
+    /// <remarks>Applied with: 0x021, 0x025, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C021>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C038>]
@@ -245,6 +262,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Vec3 trailColor = (1, 0, 0);
+    /// <remarks>Applied with: 0x022, 0x025, 0x039, 0x03E, 0x051, 0x063 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C022>]
     [AppliedWithChunk<Chunk0308C025>]
     [AppliedWithChunk<Chunk0308C039>]
@@ -258,6 +276,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool enableCarSkinGeom;
+    /// <remarks>Applied with: 0x027, 0x039, 0x03E, 0x051, 0x063 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C027>]
     [AppliedWithChunk<Chunk0308C039>]
     [AppliedWithChunk<Chunk0308C03E>]
@@ -270,7 +289,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? description;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x029, 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C029>]
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
@@ -282,6 +301,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [AppliedWithChunk<Chunk0308C05C>]
     [AppliedWithChunk<Chunk0308C05D>]
     [AppliedWithChunk<Chunk0308C069>]
+    [SupportsFormatting]
     public string? Description
     {
         get => this.description;
@@ -289,6 +309,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int bindingsForCompatVersion = 7;
+    /// <remarks>Applied with: 0x02A, 0x03A, 0x062 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02A>]
     [AppliedWithChunk<Chunk0308C03A>]
     [AppliedWithChunk<Chunk0308C062>]
@@ -299,6 +320,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? onlinePassword;
+    /// <remarks>Applied with: 0x02C, 0x037, 0x03C, 0x045, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02C>]
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
@@ -311,6 +333,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool loginValidated;
+    /// <remarks>Applied with: 0x02C, 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02C>]
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
@@ -330,6 +353,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool rememberOnlinePassword = true;
+    /// <remarks>Applied with: 0x02C, 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02C>]
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
@@ -349,6 +373,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private CGameBuddy[]? buddies;
+    /// <remarks>Applied with: 0x02D, 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x056 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C02D>]
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
@@ -364,6 +389,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? currentSoloPlaylistName;
+    /// <remarks>Applied with: 0x032, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C032>]
     [AppliedWithChunk<Chunk0308C038>]
     public string? CurrentSoloPlaylistName
@@ -373,6 +399,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? currentSoloPlaylistPath;
+    /// <remarks>Applied with: 0x032, 0x038 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C032>]
     [AppliedWithChunk<Chunk0308C038>]
     public string? CurrentSoloPlaylistPath
@@ -382,6 +409,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? serverComment;
+    /// <remarks>Applied with: 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x077 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
     [AppliedWithChunk<Chunk0308C045>]
@@ -400,6 +428,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int vehicleNetQuality;
+    /// <remarks>Applied with: 0x037, 0x03C, 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x077 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C037>]
     [AppliedWithChunk<Chunk0308C03C>]
     [AppliedWithChunk<Chunk0308C045>]
@@ -418,6 +447,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private byte maxSpectatorCount = 6;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0308C03B>]
     public byte MaxSpectatorCount
     {
@@ -426,6 +456,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool showAdvancedServerSettings;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0308C03B>]
     public bool ShowAdvancedServerSettings
     {
@@ -434,6 +465,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int networkGameMode = 1;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk0308C03B>]
     public int NetworkGameMode
     {
@@ -442,6 +474,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? legacyOnlineValidationCode;
+    /// <remarks>Applied with: 0x03C, 0x045, 0x049, 0x04F body chunks</remarks>
     [AppliedWithChunk<Chunk0308C03C>]
     [AppliedWithChunk<Chunk0308C045>]
     [AppliedWithChunk<Chunk0308C049>]
@@ -453,6 +486,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private DateTime? updatedAt;
+    /// <remarks>Applied with: 0x040 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C040>]
     public DateTime? UpdatedAt
     {
@@ -461,6 +495,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool autoConnect = true;
+    /// <remarks>Applied with: 0x041 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C041>]
     public bool AutoConnect
     {
@@ -469,6 +504,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private VehicleProfile[]? vehicleProfiles;
+    /// <remarks>Applied with: 0x043 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C043>]
     public VehicleProfile[]? VehicleProfiles
     {
@@ -477,6 +513,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool isShowPlayerGhost = true;
+    /// <remarks>Applied with: 0x044 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C044>]
     public bool IsShowPlayerGhost
     {
@@ -485,6 +522,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int ladderMode = 1;
+    /// <remarks>Applied with: 0x045, 0x049, 0x04F, 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x077 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C045>]
     [AppliedWithChunk<Chunk0308C049>]
     [AppliedWithChunk<Chunk0308C04F>]
@@ -501,6 +539,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRefList<CGameNetOnlineMessage>? inboxMessages;
+    /// <remarks>Applied with: 0x047 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C047>]
     public NodeRefList<CGameNetOnlineMessage>? InboxMessages
     {
@@ -509,6 +548,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRefList<CGameNetOnlineMessage>? readMessages;
+    /// <remarks>Applied with: 0x047 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C047>]
     public NodeRefList<CGameNetOnlineMessage>? ReadMessages
     {
@@ -517,6 +557,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRefList<CGameNetOnlineMessage>? outboxMessages;
+    /// <remarks>Applied with: 0x047 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C047>]
     public NodeRefList<CGameNetOnlineMessage>? OutboxMessages
     {
@@ -525,6 +566,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool enableChat = true;
+    /// <remarks>Applied with: 0x048, 0x063 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C048>]
     [AppliedWithChunk<Chunk0308C063>]
     public bool EnableChat
@@ -534,6 +576,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private MultiLocalProfileHeader[]? multiLocalProfileHeaders;
+    /// <remarks>Applied with: 0x04A body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04A>]
     public MultiLocalProfileHeader[]? MultiLocalProfileHeaders
     {
@@ -542,6 +585,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRef<CInputBindingsConfig>? bindingsConfigRef;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04B>]
     public CInputBindingsConfig? BindingsConfig
     {
@@ -550,6 +594,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int leagueCacheDuration;
+    /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
     public int LeagueCacheDuration
     {
@@ -558,6 +603,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool hasLeagueCache;
+    /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
     public bool HasLeagueCache
     {
@@ -566,6 +612,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private DateTime? leagueCacheUpdatedAt;
+    /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
     public DateTime? LeagueCacheUpdatedAt
     {
@@ -574,6 +621,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRefList<CGameLeague>? leagues;
+    /// <remarks>Applied with: 0x04C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04C>]
     public NodeRefList<CGameLeague>? Leagues
     {
@@ -582,6 +630,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private DateTime? receivedMessagesAt;
+    /// <remarks>Applied with: 0x04D body chunk</remarks>
     [AppliedWithChunk<Chunk0308C04D>]
     public DateTime? ReceivedMessagesAt
     {
@@ -589,10 +638,12 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.receivedMessagesAt = value;
     }
 
+    /// <remarks>Applied with: 0x050 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C050>]
     public partial int? OnlineRemainingNickNamesChangesCount { get; set; }
 
     private string? avatarName;
+    /// <remarks>Applied with: 0x052 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C052>]
     public string? AvatarName
     {
@@ -601,6 +652,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? hornName;
+    /// <remarks>Applied with: 0x052 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C052>]
     public string? HornName
     {
@@ -609,6 +661,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? leaguePath;
+    /// <remarks>Applied with: 0x053 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C053>]
     public string? LeaguePath
     {
@@ -617,6 +670,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? legacyOnlineValidationKeyHexa;
+    /// <remarks>Applied with: 0x055, 0x057 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C055>]
     [AppliedWithChunk<Chunk0308C057>]
     public string? LegacyOnlineValidationKeyHexa
@@ -625,6 +679,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         set => this.legacyOnlineValidationKeyHexa = value;
     }
 
+    /// <remarks>Applied with: 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C055>]
     [AppliedWithChunk<Chunk0308C057>]
     [AppliedWithChunk<Chunk0308C05C>]
@@ -633,6 +688,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     [AppliedWithChunk<Chunk0308C078>]
     public partial string? LastUsedMSAddress { get; set; }
 
+    /// <remarks>Applied with: 0x055, 0x057, 0x05C, 0x05D, 0x069, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C055>]
     [AppliedWithChunk<Chunk0308C057>]
     [AppliedWithChunk<Chunk0308C05C>]
@@ -642,6 +698,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     public partial string? LastUsedMSPath { get; set; }
 
     private bool askOpponents = true;
+    /// <remarks>Applied with: 0x058 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C058>]
     public bool AskOpponents
     {
@@ -650,6 +707,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool lockHigherDifficulties = true;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C059>]
     public bool LockHigherDifficulties
     {
@@ -658,6 +716,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private float rumbleIntensity = 1;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
     [AppliedWithChunk<Chunk0308C05A>]
     public float RumbleIntensity
     {
@@ -666,6 +725,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? onlineValidationCode;
+    /// <remarks>Applied with: 0x05C, 0x074, 0x075, 0x078 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C05C>]
     [AppliedWithChunk<Chunk0308C074>]
     [AppliedWithChunk<Chunk0308C075>]
@@ -677,6 +737,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? onlineValidationKeyHexa;
+    /// <remarks>Applied with: 0x05D, 0x069 body chunks</remarks>
     [AppliedWithChunk<Chunk0308C05D>]
     [AppliedWithChunk<Chunk0308C069>]
     public string? OnlineValidationKeyHexa
@@ -686,6 +747,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnMediaShootParams>? shootParamsRef;
+    /// <remarks>Applied with: 0x05E body chunk</remarks>
     [AppliedWithChunk<Chunk0308C05E>]
     public CGameCtnMediaShootParams? ShootParams
     {
@@ -697,6 +759,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Used to sort local profiles
     /// </summary>
+    /// <remarks>Applied with: 0x05F body chunk</remarks>
     [AppliedWithChunk<Chunk0308C05F>]
     public int PlayTime
     {
@@ -705,6 +768,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private float stereoscopyStrength01 = 1;
+    /// <remarks>Applied with: 0x060 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C060>]
     public float StereoscopyStrength01
     {
@@ -713,6 +777,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private float stereoscopyAdvancedSeparation = 0.05f;
+    /// <remarks>Applied with: 0x060 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C060>]
     public float StereoscopyAdvancedSeparation
     {
@@ -721,6 +786,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private float stereoscopyAdvancedScreenDist = 8;
+    /// <remarks>Applied with: 0x060 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C060>]
     public float StereoscopyAdvancedScreenDist
     {
@@ -732,6 +798,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Last selected zone name
     /// </summary>
+    /// <remarks>Applied with: 0x061 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C061>]
     public string? MenuLeagueFilter
     {
@@ -740,6 +807,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool enableUnlimitedHorns = true;
+    /// <remarks>Applied with: 0x063 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C063>]
     public bool EnableUnlimitedHorns
     {
@@ -748,6 +816,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private PlayerTagConfig[]? playerTags;
+    /// <remarks>Applied with: 0x064 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C064>(0, 0)]
     public PlayerTagConfig[]? PlayerTags
     {
@@ -759,6 +828,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Indices into PlayerTags, in display order; the menu allows up to three.
     /// </summary>
+    /// <remarks>Applied with: 0x064 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C064>(0, 0)]
     public int[]? TagDisplayList
     {
@@ -770,6 +840,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// 0: All, 1: Favorites, 2: Suggested.
     /// </summary>
+    /// <remarks>Applied with: 0x065 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C065>]
     public int MenuInternetView
     {
@@ -778,6 +849,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private int encryptedPasswordLength;
+    /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
     public int EncryptedPasswordLength
     {
@@ -786,6 +858,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private Checksum128 cryptedPassword;
+    /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
     public Checksum128 CryptedPassword
     {
@@ -794,6 +867,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private byte[]? encryptedPassword;
+    /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
     public byte[]? EncryptedPassword
     {
@@ -805,6 +879,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Hexadecimal encrypted support key.
     /// </summary>
+    /// <remarks>Applied with: 0x069 body chunk</remarks>
     [AppliedWithChunk<Chunk0308C069>]
     public string? OnlineSupportKeyHexa
     {
@@ -813,6 +888,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool askForAccountConversion = true;
+    /// <remarks>Applied with: 0x06A body chunk</remarks>
     [AppliedWithChunk<Chunk0308C06A>]
     public bool AskForAccountConversion
     {
@@ -821,6 +897,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool receiveNews;
+    /// <remarks>Applied with: 0x06B body chunk</remarks>
     [AppliedWithChunk<Chunk0308C06B>]
     public bool ReceiveNews
     {
@@ -832,6 +909,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// <summary>
     /// Next loading-screen tip page, resets to 1 when the resource is missing.
     /// </summary>
+    /// <remarks>Applied with: 0x06C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C06C>]
     public int DynamicLoadScreenIndex
     {
@@ -840,6 +918,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private string? lastSessionId;
+    /// <remarks>Applied with: 0x07A body chunk</remarks>
     [AppliedWithChunk<Chunk0308C07A>]
     public string? LastSessionId
     {
@@ -848,6 +927,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private ChallengeOpponent[]? challengeOpponents;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk240B5006>]
     public ChallengeOpponent[]? ChallengeOpponents
     {
@@ -856,6 +936,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private CampaignUnlock[]? campaignUnlocks;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk240B5007>]
     public CampaignUnlock[]? CampaignUnlocks
     {
@@ -864,6 +945,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnCampaign>? customCampaigns;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk240B500B>]
     public NodeRefList<CGameCtnCampaign>? CustomCampaigns
     {
@@ -872,6 +954,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     private bool clickedOnShare;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk240B5010>]
     public bool ClickedOnShare
     {

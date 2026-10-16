@@ -38,6 +38,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -48,6 +49,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOff;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -58,6 +60,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOffFocused;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -68,6 +71,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOffGrayed;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -78,6 +82,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOn;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -88,6 +93,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOnFocused;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -98,6 +104,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOnGrayed;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
@@ -108,6 +115,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int marginPercentU;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
     public int MarginPercentU
@@ -117,6 +125,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int marginPercentV;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0702B002>]
     public int MarginPercentV
     {
@@ -125,6 +134,7 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private Vec2 marginSize;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0702B002>]
     public Vec2 MarginSize
     {

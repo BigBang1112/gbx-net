@@ -38,6 +38,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugParticleEmitterSubModel>? particleEmitterSubModels;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090B3000>]
     public NodeRefList<CPlugParticleEmitterSubModel>? ParticleEmitterSubModels
     {
@@ -46,6 +47,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     }
 
     private bool isSplashMode;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090B3002>]
     public bool IsSplashMode
     {
@@ -54,6 +56,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     }
 
     private float shadowMapTexelSize;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090B3002>(3)]
     public float ShadowMapTexelSize
     {

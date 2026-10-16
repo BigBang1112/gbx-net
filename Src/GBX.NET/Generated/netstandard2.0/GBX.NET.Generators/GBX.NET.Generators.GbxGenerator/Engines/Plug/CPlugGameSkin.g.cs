@@ -38,6 +38,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? dirName;
+    /// <remarks>Applied with: 0x000 header chunk, 0x004 body chunk</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>]
     [AppliedWithChunk<Chunk090F4004>]
     public string? DirName
@@ -47,6 +48,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterTextureName;
+    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+ body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
     [AppliedWithChunk<Chunk090F4004>(1)]
@@ -57,6 +59,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterSceneId;
+    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+ body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
     [AppliedWithChunk<Chunk090F4004>(1)]
@@ -67,6 +70,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private HeaderFid[]? headerFids;
+    /// <remarks>Applied with: 0x000 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>]
     public HeaderFid[]? HeaderFids
     {
@@ -75,6 +79,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? dirNameAlt;
+    /// <remarks>Applied with: 0x000 v4+ header chunk, 0x004 v4+ body chunk</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(4)]
     [AppliedWithChunk<Chunk090F4004>(4)]
     public string? DirNameAlt
@@ -84,6 +89,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private Fid[]? customizableFids;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090F4004>]
     public Fid[]? CustomizableFids
     {

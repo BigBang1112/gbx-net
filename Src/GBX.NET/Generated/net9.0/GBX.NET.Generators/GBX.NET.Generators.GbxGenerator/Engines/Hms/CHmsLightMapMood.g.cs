@@ -41,6 +41,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     /// <summary>
     /// GPU constant uses Y-X as the ambient scale and X as the ambient offset
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk06023000>]
     [AppliedWithChunk<Chunk06023001>]
     public Vec2 AmbientRange
@@ -53,6 +54,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     /// <summary>
     /// Second scale component of FxLightGenP_ScaleAD_TransDA
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk06023000>]
     [AppliedWithChunk<Chunk06023001>]
     public float DirectionalScale
@@ -62,6 +64,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     private float maxHDR = 3;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk06023001>]
     [AppliedWithChunk<Chunk06023002>]
     [AppliedWithChunk<Chunk06023003>]
@@ -73,6 +76,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     private float bounceFactor = 1;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk06023003>]
     [AppliedWithChunk<Chunk06023004>]
     public float BounceFactor
@@ -82,6 +86,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     private float skyFactor = 1;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk06023003>]
     [AppliedWithChunk<Chunk06023004>]
     public float SkyFactor
@@ -91,6 +96,7 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     }
 
     private bool skyUseClouds = true;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk06023004>]
     public bool SkyUseClouds
     {

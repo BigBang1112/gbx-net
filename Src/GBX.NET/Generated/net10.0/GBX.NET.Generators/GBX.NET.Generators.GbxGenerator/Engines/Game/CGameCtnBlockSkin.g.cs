@@ -38,6 +38,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? text;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03059000>]
     [AppliedWithChunk<Chunk03059001>]
     [AppliedWithChunk<Chunk03059002>]
@@ -50,10 +51,12 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     /// <summary>
     /// Ignored by games from TMS onward
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03059000>]
     public partial string? SkinName { get; set; }
 
     private PackDesc? packDesc;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk03059001>]
     [AppliedWithChunk<Chunk03059002>]
     public PackDesc? PackDesc
@@ -63,6 +66,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     private PackDesc? parentPackDesc;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03059002>]
     public PackDesc? ParentPackDesc
     {
@@ -71,6 +75,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     private PackDesc? foregroundPackDesc;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03059003>]
     public PackDesc? ForegroundPackDesc
     {

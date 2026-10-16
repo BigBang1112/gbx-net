@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0316A000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0316A000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockCharVis : CGameCtnMediaBlock, IClass, CGa
     }
 
     private NodeRef<CPlugDataTape>? dataTapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0316A000>]
     public CPlugDataTape? DataTape
     {

@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     internal override uint GetId() => Id;
 
     private SContextMapRecordForProfile[]? contextMapRecordsForProfile;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03149002>]
     public SContextMapRecordForProfile[]? ContextMapRecordsForProfile
     {

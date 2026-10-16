@@ -38,6 +38,7 @@ public partial class CPlugSurface : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSurfaceGeom>? geomRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0900C000>]
     public CPlugSurfaceGeom? Geom
     {

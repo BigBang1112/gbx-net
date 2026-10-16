@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private int keyArchiveVersion = 2;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03172000>(2)]
     public int KeyArchiveVersion
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     }
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03172000>]
     public List<Key>? Keys
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     }
 
     private int baseIndex;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03172000>(1)]
     public int BaseIndex
     {

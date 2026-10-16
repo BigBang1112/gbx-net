@@ -38,6 +38,7 @@ public partial class CInputReplay : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string[]? actionIds;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk1300D000>]
     public string[]? ActionIds
     {
@@ -49,6 +50,7 @@ public partial class CInputReplay : CMwNod, IClass
     /// <summary>
     /// CFastBufferWheel capacity limit; zero allows an unbounded store.
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk1300D000>]
     public uint MaxEventCount
     {
@@ -57,6 +59,7 @@ public partial class CInputReplay : CMwNod, IClass
     }
 
     private Event[]? events;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk1300D000>]
     public Event[]? Events
     {

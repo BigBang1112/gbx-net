@@ -38,6 +38,7 @@ public partial class CFuncEnum : CFunc, IClass
     internal override uint GetId() => Id;
 
     private int wantedCount;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public int WantedCount
     {
@@ -46,6 +47,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private NodeRefList<CPlug>? values;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public NodeRefList<CPlug>? Values
     {
@@ -54,6 +56,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public string? Name
     {
@@ -62,6 +65,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private Int2 atlas;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public Int2 Atlas
     {
@@ -70,6 +74,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private int[]? valuesAtlasYx;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public int[]? ValuesAtlasYx
     {
@@ -78,6 +83,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private Vec2 minTexCoord;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public Vec2 MinTexCoord
     {
@@ -86,6 +92,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private Vec2 maxTexCoord;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E005>]
     public Vec2 MaxTexCoord
     {
@@ -94,6 +101,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private NodeRef<CMwRefBuffer>? iconIndexsRef;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E006>]
     public CMwRefBuffer? IconIndexs
     {
@@ -102,6 +110,7 @@ public partial class CFuncEnum : CFunc, IClass
     }
 
     private Vec2 texSize;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk0500E007>]
     public Vec2 TexSize
     {

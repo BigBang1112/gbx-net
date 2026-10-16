@@ -38,6 +38,7 @@ public partial class CPlugClouds : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugSolid>? solidFids;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public NodeRefList<CPlugSolid>? SolidFids
@@ -47,6 +48,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private float bottomNearZ;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public float BottomNearZ
@@ -56,6 +58,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private float bottomFarZ;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public float BottomFarZ
@@ -65,6 +68,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageColorMinRef;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMin
@@ -74,6 +78,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageColorMaxRef;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public CPlugFileImg? ImageColorMax
@@ -83,6 +88,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private int lighting;
+    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
     [AppliedWithChunk<Chunk09180004>]
     public int Lighting
@@ -92,6 +98,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private Vec2[]? pointHeights;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09180002>]
     public Vec2[]? PointHeights
     {
@@ -100,6 +107,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private int heightCenter;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09180003>]
     public int HeightCenter
     {
@@ -108,6 +116,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private Vec2 heightCenterXZ;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09180003>]
     public Vec2 HeightCenterXZ
     {
@@ -116,6 +125,7 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private float speedScale;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09180004>]
     public float SpeedScale
     {

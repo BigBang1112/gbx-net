@@ -38,6 +38,7 @@ public partial class CControlContainer : CControlBase, IClass
     internal override uint GetId() => Id;
 
     private bool acceptOwnControls;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk07002005>]
     public bool AcceptOwnControls
     {
@@ -46,6 +47,7 @@ public partial class CControlContainer : CControlBase, IClass
     }
 
     private bool useScript;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk07002005>]
     public bool UseScript
     {

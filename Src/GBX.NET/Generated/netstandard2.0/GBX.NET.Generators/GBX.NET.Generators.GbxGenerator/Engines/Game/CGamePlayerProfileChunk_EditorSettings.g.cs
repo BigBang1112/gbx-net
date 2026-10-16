@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     internal override uint GetId() => Id;
 
     private PluginInfo[]? pluginInfos;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03163000>]
     public PluginInfo[]? PluginInfos
     {
@@ -46,6 +47,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     }
 
     private int mapEditorCoppersLimit;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03163001>]
     public int MapEditorCoppersLimit
     {

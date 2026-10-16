@@ -38,6 +38,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? blendShapesRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0902C002>]
     public CMwNod? BlendShapes
     {

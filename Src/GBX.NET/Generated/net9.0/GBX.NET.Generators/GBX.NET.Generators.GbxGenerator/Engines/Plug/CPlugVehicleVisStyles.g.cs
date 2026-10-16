@@ -38,6 +38,7 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugVehicleVisStyleRandomGroup>? randomGroups;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09146000>]
     public NodeRefList<CPlugVehicleVisStyleRandomGroup>? RandomGroups
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
     }
 
     private string? unwantedTrafficVehiclesMatchName;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09146000>(1)]
     public string? UnwantedTrafficVehiclesMatchName
     {

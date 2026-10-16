@@ -41,6 +41,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     /// <summary>
     /// Period in milliseconds.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08029000>]
     [AppliedWithChunk<Chunk08029001>]
     [AppliedWithChunk<Chunk08029002>]
@@ -54,6 +55,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     /// <summary>
     /// Fraction of a period.
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08029000>]
     [AppliedWithChunk<Chunk08029001>]
     [AppliedWithChunk<Chunk08029002>]
@@ -64,6 +66,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private EWaveType waveType = EWaveType.SawTooth;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk08029000>]
     [AppliedWithChunk<Chunk08029001>]
     [AppliedWithChunk<Chunk08029002>]
@@ -77,6 +80,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private bool isOnce = false;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk08029000>]
     [AppliedWithChunk<Chunk08029001>]
     [AppliedWithChunk<Chunk08029002>]
@@ -89,6 +93,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private bool isAbsolutePhase = false;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk08029001>]
     [AppliedWithChunk<Chunk08029002>]
     public bool IsAbsolutePhase
@@ -98,6 +103,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private NodeRef<CMotionCmdBaseParams>? cmdBaseParamsRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk08029002>]
     public CMotionCmdBaseParams? CmdBaseParams
     {
@@ -106,6 +112,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private uint legacyPeriod;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0802A000>]
     [AppliedWithChunk<Chunk0802A001>]
     [AppliedWithChunk<Chunk0802A002>]
@@ -117,6 +124,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private float legacySpeed;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0802A000>]
     [AppliedWithChunk<Chunk0802A001>]
     [AppliedWithChunk<Chunk0802A002>]
@@ -128,6 +136,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     private int legacyPhase;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0802A003>]
     public int LegacyPhase
     {

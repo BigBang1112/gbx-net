@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     internal override uint GetId() => Id;
 
     private OldGameStationDesc[]? oldStations;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03180000>]
     public OldGameStationDesc[]? OldStations
     {
@@ -46,6 +47,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     private DisplayInfo[]? displayInfos;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03180001>]
     public DisplayInfo[]? DisplayInfos
     {
@@ -54,6 +56,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     private bool isFirstLaunch;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk03180001>(2)]
     public bool IsFirstLaunch
     {
@@ -62,6 +65,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     private string? latestTitleIdLoaded;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03180003>]
     public string? LatestTitleIdLoaded
     {

@@ -38,6 +38,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwRefBuffer>? refBufferRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090EA002>]
     public CMwRefBuffer? RefBuffer
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugVehiclePhyTunings>? tuningsRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk090EA003>]
     public CPlugVehiclePhyTunings? Tunings
     {
@@ -54,6 +56,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugVehicleCarPhyShape>? phyShapeRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk090EA008>]
     public CPlugVehicleCarPhyShape? PhyShape
     {
@@ -62,6 +65,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     }
 
     private OccupantSlot[]? occupantSlots;
+    /// <remarks>Applied with: 0x008 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090EA008>(1)]
     public OccupantSlot[]? OccupantSlots
     {

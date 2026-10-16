@@ -38,6 +38,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CGameCtnBlockInfoFrontier>? blockInfoFrontierRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E001>]
     public CGameCtnBlockInfoFrontier? BlockInfoFrontier
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private string? parentZoneId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E001>]
     public string? ParentZoneId
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private string? childZoneId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E001>]
     public string? ChildZoneId
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private int blockYOffsetFromParent;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E002>]
     public int BlockYOffsetFromParent
     {
@@ -70,6 +74,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private bool frontierParentBorder_AcceptPylons;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0305E003>]
     [AppliedWithChunk<Chunk0305E004>]
     public bool FrontierParentBorder_AcceptPylons
@@ -79,6 +84,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private bool frontierChildBorder_AcceptPylons;
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0305E003>]
     [AppliedWithChunk<Chunk0305E004>]
     public bool FrontierChildBorder_AcceptPylons
@@ -88,6 +94,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private bool frontierTransitionMiddle_AcceptPylons;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E004>]
     public bool FrontierTransitionMiddle_AcceptPylons
     {
@@ -96,6 +103,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private bool frontierStraightMiddle_AcceptPylons;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E004>]
     public bool FrontierStraightMiddle_AcceptPylons
     {
@@ -104,6 +112,7 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     }
 
     private NodeRefList<CGameCtnZoneFusionInfo>? compatibleZones;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0305E005>]
     public NodeRefList<CGameCtnZoneFusionInfo>? CompatibleZones
     {

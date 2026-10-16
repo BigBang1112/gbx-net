@@ -38,6 +38,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int placePylons;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03036000>]
     public int PlacePylons
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private Int3 relativeOffset;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03036000>]
     public Int3 RelativeOffset
     {
@@ -57,6 +59,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// <summary>
     /// also called Junctions
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03036000>]
     public NodeRefList<CGameCtnBlockInfoClip>? Clips
     {
@@ -65,6 +68,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private string? surface;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03036001>]
     public string? Surface
     {
@@ -73,6 +77,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private int frontier;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03036001>]
     public int Frontier
     {
@@ -81,6 +86,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private Direction dir;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk03036001>]
     public Direction Dir
     {
@@ -89,6 +95,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private bool underground;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03036002>]
     public bool Underground
     {
@@ -97,6 +104,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfo>? replacementBlockInfoRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03036003>]
     public CGameCtnBlockInfo? ReplacementBlockInfo
     {
@@ -105,6 +113,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private string? replacementId;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03036003>]
     public string? ReplacementId
     {
@@ -113,6 +122,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private ReplacementDir multiDir;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk03036003>]
     public ReplacementDir MultiDir
     {
@@ -121,6 +131,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private int acceptPylons;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03036004>]
     public int AcceptPylons
     {
@@ -129,6 +140,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private string? terrainModifierId;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk03036005>]
     public string? TerrainModifierId
     {
@@ -137,6 +149,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoPylon>? pylonNorthRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03036007>]
     public CGameCtnBlockInfoPylon? PylonNorth
     {
@@ -145,6 +158,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoPylon>? pylonEastRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03036007>]
     public CGameCtnBlockInfoPylon? PylonEast
     {
@@ -153,6 +167,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoPylon>? pylonSouthRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03036007>]
     public CGameCtnBlockInfoPylon? PylonSouth
     {
@@ -161,6 +176,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoPylon>? pylonWestRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk03036007>]
     public CGameCtnBlockInfoPylon? PylonWest
     {
@@ -169,6 +185,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoClip>? bottomClipRef;
+    /// <remarks>Applied with: 0x008, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk03036008>]
     [AppliedWithChunk<Chunk0303600B>]
     public CGameCtnBlockInfoClip? BottomClip
@@ -178,6 +195,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRef<CGameCtnBlockInfoClip>? topClipRef;
+    /// <remarks>Applied with: 0x008, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk03036008>]
     [AppliedWithChunk<Chunk0303600B>]
     public CGameCtnBlockInfoClip? TopClip
@@ -187,6 +205,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private Direction? bottomClipDir;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0303600B>]
     public Direction? BottomClipDir
     {
@@ -195,6 +214,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private Direction? topClipDir;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0303600B>]
     public Direction? TopClipDir
     {
@@ -203,6 +223,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsNorth;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsNorth
     {
@@ -211,6 +232,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsEast;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsEast
     {
@@ -219,6 +241,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsSouth;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsSouth
     {
@@ -227,6 +250,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsWest;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsWest
     {
@@ -235,6 +259,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsTop;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsTop
     {
@@ -243,6 +268,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     private NodeRefList<CGameCtnBlockInfoClip>? clipsBottom;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0303600C>]
     public NodeRefList<CGameCtnBlockInfoClip>? ClipsBottom
     {

@@ -41,6 +41,7 @@ public partial class CGameGhost : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private uint? savedMobilClassId;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0303F004>]
     public uint? SavedMobilClassId
     {

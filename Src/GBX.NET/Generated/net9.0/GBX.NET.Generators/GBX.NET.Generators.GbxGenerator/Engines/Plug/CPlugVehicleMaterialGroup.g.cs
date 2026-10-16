@@ -38,6 +38,7 @@ public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int[] materialIds = [];
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090E9000>]
     public int[] MaterialIds
     {

@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
     internal override uint GetId() => Id;
 
     private string? verticalClipGroupId;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03340000>]
     public string? VerticalClipGroupId
     {

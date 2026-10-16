@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     internal override uint GetId() => Id;
 
     private int opponentsVersionLast;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D000>]
     public int OpponentsVersionLast
     {
@@ -46,6 +47,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private SChallengeOpponents[]? challengeOpponents;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D000>]
     public SChallengeOpponents[]? ChallengeOpponents
     {
@@ -54,6 +56,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private string? serverName;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D002>]
     public string? ServerName
     {
@@ -62,6 +65,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private string? serverComment;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D002>]
     public string? ServerComment
     {
@@ -70,6 +74,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private int networkGameMode;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D002>]
     public int NetworkGameMode
     {
@@ -78,6 +83,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private byte maxSpectatorCount;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D002>]
     public byte MaxSpectatorCount
     {
@@ -86,6 +92,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private byte opponentVisibility;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312D002>(3)]
     public byte OpponentVisibility
     {
@@ -94,6 +101,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private bool editorHelp;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0312D003>(2)]
     public bool EditorHelp
     {
@@ -102,6 +110,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private float mouseSensitivity_Default;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D004>]
     public float MouseSensitivity_Default
     {
@@ -110,6 +119,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private float mouseAccelQuantity;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D004>]
     public float MouseAccelQuantity
     {
@@ -118,6 +128,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private float stereoscopyStrength01;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D005>]
     public float StereoscopyStrength01
     {
@@ -126,6 +137,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private float stereoscopyAdvancedScreenDist;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D005>]
     public float StereoscopyAdvancedScreenDist
     {
@@ -134,6 +146,7 @@ public partial class CGamePlayerProfileChunk_GameSettings : CGamePlayerProfileCh
     }
 
     private CGameCtnMediaShootParams? shootParamsVideo;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0312D005>]
     public CGameCtnMediaShootParams? ShootParamsVideo
     {

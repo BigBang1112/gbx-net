@@ -38,6 +38,7 @@ public partial class CPlugTreeLight : CPlugTree, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugLight>? plugLightRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09062004>]
     public CPlugLight? PlugLight
     {

@@ -38,6 +38,7 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     internal override uint GetId() => Id;
 
     private BoxAligned? uVTransfoIso3;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09047007>]
     public BoxAligned? UVTransfoIso3
     {
@@ -46,6 +47,7 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     }
 
     private Mat4? uVTransfoMat4;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09047007>]
     public Mat4? UVTransfoMat4
     {
@@ -54,6 +56,7 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     }
 
     private float bumpEnvScale;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk09047009>]
     public float BumpEnvScale
     {

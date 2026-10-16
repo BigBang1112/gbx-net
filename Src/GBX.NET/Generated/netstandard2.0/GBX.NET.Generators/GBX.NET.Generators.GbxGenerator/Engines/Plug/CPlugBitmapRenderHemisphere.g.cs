@@ -38,6 +38,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private EHemiLayout hemiLayout;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09058000>]
     [AppliedWithChunk<Chunk09058001>]
     [AppliedWithChunk<Chunk09058002>]
@@ -49,14 +50,15 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     private float specularPower0;
-    [GameVersionDefault(GameVersion.TMSX, 20f)]
-    [GameVersionDefault(GameVersion.TMNESWC, 20f)]
-    [GameVersionDefault(GameVersion.VSK5, 20f)]
-    [GameVersionDefault(GameVersion.TMF, 20f)]
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09058000>]
     [AppliedWithChunk<Chunk09058001>]
     [AppliedWithChunk<Chunk09058002>]
     [AppliedWithChunk<Chunk09058003>]
+    [GameVersionDefault(GameVersion.TMSX, 20f)]
+    [GameVersionDefault(GameVersion.TMNESWC, 20f)]
+    [GameVersionDefault(GameVersion.VSK5, 20f)]
+    [GameVersionDefault(GameVersion.TMF, 20f)]
     public float SpecularPower0
     {
         get => this.specularPower0;
@@ -64,6 +66,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     private float specularPower1;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09058001>]
     [AppliedWithChunk<Chunk09058002>]
     [AppliedWithChunk<Chunk09058003>]
@@ -74,6 +77,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     private bool autoScaleWithPower;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09058002>]
     [AppliedWithChunk<Chunk09058003>]
     public bool AutoScaleWithPower
@@ -83,6 +87,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     private bool useLightDir;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk09058003>]
     public bool UseLightDir
     {

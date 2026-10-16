@@ -38,6 +38,7 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugDecoratorTree>? treeDecorators;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090A3000>]
     public NodeRefList<CPlugDecoratorTree>? TreeDecorators
     {

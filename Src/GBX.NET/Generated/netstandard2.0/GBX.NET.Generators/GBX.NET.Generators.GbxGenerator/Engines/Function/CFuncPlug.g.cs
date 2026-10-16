@@ -38,6 +38,7 @@ public partial class CFuncPlug : CFunc, IClass
     internal override uint GetId() => Id;
 
     private float period;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0500B003>]
     [AppliedWithChunk<Chunk0500B004>]
     [AppliedWithChunk<Chunk0500B005>]
@@ -48,6 +49,7 @@ public partial class CFuncPlug : CFunc, IClass
     }
 
     private float phase;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0500B003>]
     [AppliedWithChunk<Chunk0500B004>]
     [AppliedWithChunk<Chunk0500B005>]
@@ -58,6 +60,7 @@ public partial class CFuncPlug : CFunc, IClass
     }
 
     private bool autoCreateMotion;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0500B003>]
     [AppliedWithChunk<Chunk0500B004>]
     [AppliedWithChunk<Chunk0500B005>]
@@ -68,6 +71,7 @@ public partial class CFuncPlug : CFunc, IClass
     }
 
     private bool randomizePhase;
+    /// <remarks>Applied with: 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<Chunk0500B004>]
     [AppliedWithChunk<Chunk0500B005>]
     public bool RandomizePhase
@@ -77,6 +81,7 @@ public partial class CFuncPlug : CFunc, IClass
     }
 
     private string? inputValId;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0500B005>]
     public string? InputValId
     {

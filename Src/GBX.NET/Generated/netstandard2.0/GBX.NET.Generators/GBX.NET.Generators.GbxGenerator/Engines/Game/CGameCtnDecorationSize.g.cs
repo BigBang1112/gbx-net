@@ -38,6 +38,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec2 editionZoneMin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303B000>]
     public Vec2 EditionZoneMin
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private Vec2 editionZoneMax;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0303B000>]
     public Vec2 EditionZoneMax
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private int baseHeightBase;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0303B001>]
     [AppliedWithChunk<Chunk0303B002>]
     public int BaseHeightBase
@@ -63,6 +66,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private Int3 size;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0303B001>]
     [AppliedWithChunk<Chunk0303B002>]
     public Int3 Size
@@ -72,6 +76,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private NodeRef<CSceneLayout>? sceneRef;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0303B001>]
     [AppliedWithChunk<Chunk0303B002>]
     public CSceneLayout? Scene
@@ -81,6 +86,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private bool offsetBlockY;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303B002>]
     public bool OffsetBlockY
     {
@@ -89,6 +95,7 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     }
 
     private int baseHeightOffset;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0303B003>]
     public int BaseHeightOffset
     {

@@ -38,6 +38,7 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugCamShakeModel>? shakeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0910C000>]
     public CPlugCamShakeModel? Shake
     {

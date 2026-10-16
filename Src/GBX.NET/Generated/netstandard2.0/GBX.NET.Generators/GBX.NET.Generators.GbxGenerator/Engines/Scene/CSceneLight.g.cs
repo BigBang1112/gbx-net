@@ -38,6 +38,7 @@ public partial class CSceneLight : CScenePoc, IClass
     internal override uint GetId() => Id;
 
     private CHmsLight? light;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A00B000>]
     public CHmsLight? Light
     {

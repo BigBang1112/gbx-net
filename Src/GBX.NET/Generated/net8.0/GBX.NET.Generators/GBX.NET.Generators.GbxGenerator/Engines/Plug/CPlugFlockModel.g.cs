@@ -38,6 +38,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float range;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Range
     {
@@ -46,6 +47,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float cosViewAngle;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float CosViewAngle
     {
@@ -54,6 +56,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float minSpeed;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float MinSpeed
     {
@@ -62,6 +65,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float maxSpeed;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float MaxSpeed
     {
@@ -70,6 +74,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int updateFrequency;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public int UpdateFrequency
     {
@@ -78,6 +83,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float variance;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Variance
     {
@@ -86,6 +92,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vAvoidance;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VAvoidance
     {
@@ -94,6 +101,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kAvoidance;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KAvoidance
     {
@@ -102,6 +110,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vGrouping;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VGrouping
     {
@@ -110,6 +119,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kGrouping;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KGrouping
     {
@@ -118,6 +128,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vMatching;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VMatching
     {
@@ -126,6 +137,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kMatching;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KMatching
     {
@@ -134,6 +146,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float volatility;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float Volatility
     {
@@ -142,6 +155,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float vGroundAvoid;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float VGroundAvoid
     {
@@ -150,6 +164,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private float kGroundAvoid;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public float KGroundAvoid
     {
@@ -158,6 +173,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int standingDuration;
+    /// <remarks>Applied with: 0x000 v0-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(0, 5)]
     public int StandingDuration
     {
@@ -166,6 +182,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private EFlockType flockType;
+    /// <remarks>Applied with: 0x000 v2-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(2, 5)]
     public EFlockType FlockType
     {
@@ -174,6 +191,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? animFileFidRef;
+    /// <remarks>Applied with: 0x000 v3-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(3, 5)]
     public CMwNod? AnimFileFid
     {
@@ -182,6 +200,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int defSpawnCount;
+    /// <remarks>Applied with: 0x000 v4-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(4, 5)]
     public int DefSpawnCount
     {
@@ -190,6 +209,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? birdModelRef;
+    /// <remarks>Applied with: 0x000 v5-5 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5000>(5, 5)]
     public CMwNod? BirdModel
     {
@@ -198,6 +218,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? birdModelFidRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>]
     public CMwNod? BirdModelFid
     {
@@ -206,6 +227,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animPeriod;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>]
     public int AnimPeriod
     {
@@ -214,6 +236,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animStandingStart;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimStandingStart
     {
@@ -222,6 +245,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animStandingEnd;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimStandingEnd
     {
@@ -230,6 +254,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animGlidingStart;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimGlidingStart
     {
@@ -238,6 +263,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animGlidingEnd;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimGlidingEnd
     {
@@ -246,6 +272,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animFlappingStart;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimFlappingStart
     {
@@ -254,6 +281,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private int animFlappingEnd;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5001>(2)]
     public int AnimFlappingEnd
     {
@@ -262,6 +290,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundLoopRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090E5002>]
     public CPlugSound? SoundLoop
     {
@@ -270,6 +299,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundEventTakeOffRef;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090E5002>(2)]
     public CPlugSound? SoundEventTakeOff
     {

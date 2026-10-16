@@ -38,6 +38,7 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CSceneVehicleCarMarksModelSub>? models;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A081000>]
     public NodeRefList<CSceneVehicleCarMarksModelSub>? Models
     {
@@ -46,6 +47,7 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     }
 
     private bool disabled;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A081001>]
     public bool Disabled
     {

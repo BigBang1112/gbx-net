@@ -38,6 +38,7 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     internal override uint GetId() => Id;
 
     private int flagsVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09134000>]
     public int FlagsVersion
     {
@@ -46,6 +47,7 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     }
 
     private NodeRef<CPlugSkel>? skelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09134000>]
     public CPlugSkel? Skel
     {

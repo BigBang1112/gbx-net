@@ -38,6 +38,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     internal override uint GetId() => Id;
 
     private float radius = 10;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002000>]
     [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
@@ -57,6 +58,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     /// <summary>
     /// Legacy linear coefficient, scaled by Radius when loaded
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk04002000>]
     [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
@@ -74,6 +76,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     /// <summary>
     /// Legacy quadratic coefficient, scaled by Radius squared when loaded
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk04002000>]
     [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
@@ -88,6 +91,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float emittingRadius;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002001>]
     [AppliedWithChunk<Chunk04002002>]
     [AppliedWithChunk<Chunk04002003>]
@@ -103,6 +107,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private Vec3 ambientRGB;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002002>]
     [AppliedWithChunk<Chunk04002003>]
     [AppliedWithChunk<Chunk04002004>]
@@ -117,6 +122,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float radiusSpecular = 10;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002003>]
     [AppliedWithChunk<Chunk04002004>]
     [AppliedWithChunk<Chunk04002005>]
@@ -133,6 +139,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     /// <summary>
     /// Packed custom-radius, attenuation-type and HyperNorm2 tweak bits
     /// </summary>
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002004>]
     [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
@@ -145,6 +152,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float radiusShadow = 10;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002004>]
     [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
@@ -157,6 +165,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float radiusFlare = 40;
+    /// <remarks>Applied with: 0x005, 0x006, 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002005>]
     [AppliedWithChunk<Chunk04002006>]
     [AppliedWithChunk<Chunk04002007>]
@@ -168,6 +177,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float attHTnLR = 10;
+    /// <remarks>Applied with: 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float AttHTnLR
@@ -177,6 +187,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float attHTnLR2;
+    /// <remarks>Applied with: 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float AttHTnLR2
@@ -186,6 +197,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float attHyper2DerivAt0 = -1.5f;
+    /// <remarks>Applied with: 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float AttHyper2DerivAt0
@@ -195,6 +207,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float attHyper2Tension = 0.3f;
+    /// <remarks>Applied with: 0x007, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk04002007>]
     [AppliedWithChunk<Chunk04002008>]
     public float AttHyper2Tension
@@ -204,6 +217,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float emittingCylinderLenZ;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk04002008>]
     public float EmittingCylinderLenZ
     {
@@ -212,6 +226,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float radiusIndex = 10;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk04002009>]
     public float RadiusIndex
     {
@@ -220,6 +235,7 @@ public partial class GxLightBall : GxLightPoint, IClass
     }
 
     private float attHdrRadiusCoef = 0.015625f;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0400200A>]
     public float AttHdrRadiusCoef
     {

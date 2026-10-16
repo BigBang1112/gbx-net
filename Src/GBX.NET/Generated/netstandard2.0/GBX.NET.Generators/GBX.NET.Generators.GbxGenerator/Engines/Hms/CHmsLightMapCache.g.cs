@@ -38,6 +38,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? challengeIdLegacy;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk06022000>]
     [AppliedWithChunk<Chunk06022001>]
     [AppliedWithChunk<Chunk06022002>]
@@ -58,6 +59,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private Int2[]? mapSizesLegacy;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk06022000>]
     [AppliedWithChunk<Chunk06022001>]
     public Int2[]? MapSizesLegacy
@@ -67,6 +69,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int lightDirSampleCount = 25;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022000>]
     [AppliedWithChunk<Chunk06022001>]
     [AppliedWithChunk<Chunk06022002>]
@@ -89,6 +92,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int lightPntSampleCount = 25;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022000>]
     [AppliedWithChunk<Chunk06022001>]
     [AppliedWithChunk<Chunk06022002>]
@@ -111,6 +115,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int lightAmbSampleCount = 32;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022001>]
     [AppliedWithChunk<Chunk06022002>]
     [AppliedWithChunk<Chunk06022003>]
@@ -132,6 +137,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private SMapOld1[]? mapsLegacy;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk06022002>]
     [AppliedWithChunk<Chunk06022003>]
     [AppliedWithChunk<Chunk06022004>]
@@ -144,6 +150,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private ESortMode sortMode;
+    /// <remarks>Applied with: 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022003>]
     [AppliedWithChunk<Chunk06022004>]
     [AppliedWithChunk<Chunk06022005>]
@@ -163,6 +170,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EAllocMode allocMode;
+    /// <remarks>Applied with: 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022004>]
     [AppliedWithChunk<Chunk06022005>]
     [AppliedWithChunk<Chunk06022006>]
@@ -181,6 +189,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private string? decoration;
+    /// <remarks>Applied with: 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x015 body chunks</remarks>
     [AppliedWithChunk<Chunk06022005>]
     [AppliedWithChunk<Chunk06022006>]
     [AppliedWithChunk<Chunk06022007>]
@@ -197,6 +206,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private SMap[]? maps;
+    /// <remarks>Applied with: 0x007, 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022007>]
     [AppliedWithChunk<Chunk06022008>]
     [AppliedWithChunk<Chunk06022009>]
@@ -212,6 +222,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private bool hasBumpLegacy;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A, 0x00C, 0x010, 0x015 v0-3 body chunks</remarks>
     [AppliedWithChunk<Chunk06022008>]
     [AppliedWithChunk<Chunk06022009>]
     [AppliedWithChunk<Chunk0602200A>]
@@ -225,6 +236,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float maxHDRLegacy;
+    /// <remarks>Applied with: 0x009, 0x00A, 0x00C, 0x010, 0x014, 0x01A v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk06022009>]
     [AppliedWithChunk<Chunk0602200A>]
     [AppliedWithChunk<Chunk0602200C>]
@@ -238,6 +250,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int allocModeT3;
+    /// <remarks>Applied with: 0x00A, 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0602200A>]
     [AppliedWithChunk<Chunk0602200C>]
     [AppliedWithChunk<Chunk06022010>]
@@ -253,6 +266,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     /// <summary>
     /// SMapT3 contains TotalLmSurfaceMeter, stored as raw float records.
     /// </summary>
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0602200B>]
     public float[]? MapT3s
     {
@@ -261,6 +275,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private ECompressMode compressMode;
+    /// <remarks>Applied with: 0x00C, 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk0602200C>]
     [AppliedWithChunk<Chunk06022010>]
     [AppliedWithChunk<Chunk06022014>]
@@ -272,6 +287,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EQuality quality = EQuality.Default;
+    /// <remarks>Applied with: 0x00D, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0602200D>]
     [AppliedWithChunk<Chunk0602200F>]
     public EQuality Quality
@@ -281,6 +297,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int qualityLegacy;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0602200E>]
     public int QualityLegacy
     {
@@ -289,6 +306,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int canFlipU = 1;
+    /// <remarks>Applied with: 0x00E, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0602200E>]
     [AppliedWithChunk<Chunk0602200F>]
     public int CanFlipU
@@ -298,6 +316,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int bumpNorm = 1;
+    /// <remarks>Applied with: 0x010, 0x014, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022010>]
     [AppliedWithChunk<Chunk06022014>]
     [AppliedWithChunk<Chunk0602201A>]
@@ -308,6 +327,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private bool isOnlyIndirectDir0;
+    /// <remarks>Applied with: 0x011, 0x013 body chunks</remarks>
     [AppliedWithChunk<Chunk06022011>]
     [AppliedWithChunk<Chunk06022013>]
     public bool IsOnlyIndirectDir0
@@ -317,6 +337,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private bool isSpriteLDirInAlpha;
+    /// <remarks>Applied with: 0x012, 0x013 body chunks</remarks>
     [AppliedWithChunk<Chunk06022012>]
     [AppliedWithChunk<Chunk06022013>]
     public bool IsSpriteLDirInAlpha
@@ -326,6 +347,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private DateTime? timeWriteMostRecentSolid;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk06022013>]
     public DateTime? TimeWriteMostRecentSolid
     {
@@ -334,6 +356,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int mapperTexelCountX = 2048;
+    /// <remarks>Applied with: 0x014 v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk06022014>(1, 1)]
     public int MapperTexelCountX
     {
@@ -342,6 +365,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private SMapping? mapping;
+    /// <remarks>Applied with: 0x014 v2+, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022014>(2)]
     [AppliedWithChunk<Chunk0602201A>]
     public SMapping? Mapping
@@ -351,6 +375,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float maxHDRMoodLegacy;
+    /// <remarks>Applied with: 0x014 v5+, 0x01A v0-2 body chunks</remarks>
     [AppliedWithChunk<Chunk06022014>(5)]
     [AppliedWithChunk<Chunk0602201A>(0, 2)]
     public float MaxHDRMoodLegacy
@@ -360,6 +385,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private bool spriteOriginY_WasWronglyTop = true;
+    /// <remarks>Applied with: 0x014 v6+, 0x01A body chunks</remarks>
     [AppliedWithChunk<Chunk06022014>(6)]
     [AppliedWithChunk<Chunk0602201A>]
     public bool SpriteOriginY_WasWronglyTop
@@ -369,6 +395,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private ulong lightmapCacheUid;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>]
     public ulong LightmapCacheUid
     {
@@ -377,6 +404,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EBump bumpMode = EBump.None;
+    /// <remarks>Applied with: 0x015 body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>]
     public EBump BumpMode
     {
@@ -385,6 +413,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int timeOfDayVersion;
+    /// <remarks>Applied with: 0x015 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>(2)]
     public int TimeOfDayVersion
     {
@@ -393,6 +422,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private TimeSpan? timeOfDay;
+    /// <remarks>Applied with: 0x015 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>(2)]
     public TimeSpan? TimeOfDay
     {
@@ -401,6 +431,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int dynamicTimeVersion;
+    /// <remarks>Applied with: 0x015 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>(3)]
     public int DynamicTimeVersion
     {
@@ -409,6 +440,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private uint dynamicTime;
+    /// <remarks>Applied with: 0x015 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>(3)]
     public uint DynamicTime
     {
@@ -417,6 +449,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private string? challengeMapUid;
+    /// <remarks>Applied with: 0x015 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk06022015>(5)]
     public string? ChallengeMapUid
     {
@@ -425,6 +458,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EVersion version = EVersion._2011_07_19_Beta1;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk06022016>]
     public EVersion Version
     {
@@ -433,6 +467,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int decal2D;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk06022017>]
     public int Decal2D
     {
@@ -441,6 +476,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private int decal3D;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk06022017>]
     public int Decal3D
     {
@@ -449,6 +485,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private DateTime? timeWriteMostRecentBlock;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk06022018>]
     public DateTime? TimeWriteMostRecentBlock
     {
@@ -457,6 +494,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EQualityVer qualityVer = EQualityVer.BounceShadowFiltered;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk06022019>]
     public EQualityVer QualityVer
     {
@@ -465,6 +503,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EBump bump = EBump.None;
+    /// <remarks>Applied with: 0x01A v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(6)]
     public EBump Bump
     {
@@ -473,6 +512,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float bounceFactorLegacy;
+    /// <remarks>Applied with: 0x01A v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(0, 2)]
     public float BounceFactorLegacy
     {
@@ -481,6 +521,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float skyFactorLegacy;
+    /// <remarks>Applied with: 0x01A v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(0, 2)]
     public float SkyFactorLegacy
     {
@@ -489,6 +530,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private bool skyUseCloudsLegacy;
+    /// <remarks>Applied with: 0x01A v0-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(0, 2)]
     public bool SkyUseCloudsLegacy
     {
@@ -497,6 +539,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private SFrame[]? frames;
+    /// <remarks>Applied with: 0x01A v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(3)]
     public SFrame[]? Frames
     {
@@ -505,6 +548,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private EPlugGpuPlatform gpuPlatform;
+    /// <remarks>Applied with: 0x01A v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(1)]
     public EPlugGpuPlatform GpuPlatform
     {
@@ -513,6 +557,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private Vec3 lAmbientLegacy;
+    /// <remarks>Applied with: 0x01A v2-2 body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(2, 2)]
     public Vec3 LAmbientLegacy
     {
@@ -521,6 +566,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     }
 
     private float allocatedTexelByMeter;
+    /// <remarks>Applied with: 0x01A v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0602201A>(5)]
     public float AllocatedTexelByMeter
     {

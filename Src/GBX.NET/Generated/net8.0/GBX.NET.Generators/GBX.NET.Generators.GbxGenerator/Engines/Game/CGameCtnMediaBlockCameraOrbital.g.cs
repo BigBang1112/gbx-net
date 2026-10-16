@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk030A0000>]
     [AppliedWithChunk<Chunk030A0001>]
     public List<Key>? Keys

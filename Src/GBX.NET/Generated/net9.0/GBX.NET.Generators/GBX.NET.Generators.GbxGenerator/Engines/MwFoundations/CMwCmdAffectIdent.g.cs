@@ -38,6 +38,7 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwCmdExp>? valueRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk01032000>]
     public CMwCmdExp? Value
     {

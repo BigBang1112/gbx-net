@@ -38,6 +38,7 @@ public partial class CFuncLightColor : CFuncLight, IClass
     internal override uint GetId() => Id;
 
     private Vec4 color0;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk05019001>]
     [AppliedWithChunk<Chunk05019002>]
     public Vec4 Color0
@@ -47,6 +48,7 @@ public partial class CFuncLightColor : CFuncLight, IClass
     }
 
     private Vec4 color1;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk05019001>]
     [AppliedWithChunk<Chunk05019002>]
     public Vec4 Color1
@@ -56,6 +58,7 @@ public partial class CFuncLightColor : CFuncLight, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk05019002>]
     public CPlugFileImg? Image
     {

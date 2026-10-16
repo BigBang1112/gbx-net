@@ -38,6 +38,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private int objectCountPerAxisMin;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public int ObjectCountPerAxisMin
     {
@@ -46,6 +47,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private int objectCountPerAxisMax;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public int ObjectCountPerAxisMax
     {
@@ -54,6 +56,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float cameraNearZ_FactorInObject;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float CameraNearZ_FactorInObject
     {
@@ -62,6 +65,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float cameraFarZ_ToAdd;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float CameraFarZ_ToAdd
     {
@@ -70,6 +74,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMin_Night;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMin_Night
     {
@@ -78,6 +83,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMax_Night;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMax_Night
     {
@@ -86,6 +92,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMin_DayAmb;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMin_DayAmb
     {
@@ -94,6 +101,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMax_DayAmb;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMax_DayAmb
     {
@@ -102,6 +110,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMin_DayDir;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMin_DayDir
     {
@@ -110,6 +119,7 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMax_DayDir;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMax_DayDir
     {

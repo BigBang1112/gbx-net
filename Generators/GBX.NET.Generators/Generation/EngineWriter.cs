@@ -388,15 +388,15 @@ internal static class EngineWriter
                 }
 
                 Documentation(code, field.Declaration.TrailingComment?.Text);
-                GameDefaultAttributesWriter.Write(code, field);
-
-                if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "formatted")))
-                    code.Line("[SupportsFormatting]");
-
                 if (ReferenceEquals(scope, layout.Scope))
                 {
                     AppliedWithChunkAttributes(code, layout, field.Name);
                 }
+
+                GameDefaultAttributesWriter.Write(code, field);
+
+                if (field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "formatted")))
+                    code.Line("[SupportsFormatting]");
 
                 if (partialProperty is not null)
                 {
@@ -446,8 +446,8 @@ internal static class EngineWriter
         if (!SyntaxOverlap.Has(scope.Existing, field.Name) || partialProperty is not null)
         {
             Documentation(code, field.Declaration.TrailingComment?.Text);
-            GameDefaultAttributesWriter.Write(code, field);
             if (!chunk && ReferenceEquals(scope, layout.Scope)) AppliedWithChunkAttributes(code, layout, field.Name);
+            GameDefaultAttributesWriter.Write(code, field);
             if (partialProperty is not null) PartialProperty(code, partialProperty);
             else if (!scalar && chunk) code.Line($"public {type} {property};");
             else
@@ -639,14 +639,22 @@ internal static class EngineWriter
             }
         }
 
-        foreach (var applied in layout.Chunks)
+        var applications = layout.Chunks.SelectMany(chunk =>
+            AppliedWithChunkRanges.Get(chunk, fields, layout.Chunks, layout.Id).Select(range => (Chunk: chunk, Range: range))).ToArray();
+        if (applications.Length == 0) return;
+
+        var groups = applications.GroupBy(static x => x.Chunk.IsHeader).Select(group =>
+            string.Join(", ", group.Select(static x => $"0x{x.Chunk.Id & 0xFFF:X3}" +
+                (x.Range.End < int.MaxValue ? $" v{x.Range.Start}-{x.Range.End}" : x.Range.Start > 0 ? $" v{x.Range.Start}+" : ""))) +
+            (group.Key ? " header" : " body") + (group.Count() == 1 ? " chunk" : " chunks"));
+        code.Line("/// <remarks>Applied with: " + string.Join(", ", groups) + "</remarks>");
+
+        foreach (var application in applications)
         {
-            foreach (var range in AppliedWithChunkRanges.Get(applied, fields, layout.Chunks, layout.Id))
-            {
-                var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
-                    range.Start > 0 ? $"({range.Start})" : "";
-                code.Line("[AppliedWithChunk<" + applied.Name + ">" + arguments + "]");
-            }
+            var range = application.Range;
+            var arguments = range.End < int.MaxValue ? $"({range.Start}, {range.End})" :
+                range.Start > 0 ? $"({range.Start})" : "";
+            code.Line("[AppliedWithChunk<" + application.Chunk.Name + ">" + arguments + "]");
         }
     }
 

@@ -38,6 +38,7 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     internal override uint GetId() => Id;
 
     private int nbPointX;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0903B000>]
     public int NbPointX
     {
@@ -46,6 +47,7 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     }
 
     private int nbPointZ;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0903B000>]
     public int NbPointZ
     {
@@ -54,6 +56,7 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     }
 
     private float rangeX;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0903B000>]
     public float RangeX
     {
@@ -62,6 +65,7 @@ public partial class CPlugVisualGrid : CPlugVisual3D, IClass
     }
 
     private float rangeZ;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0903B000>]
     public float RangeZ
     {

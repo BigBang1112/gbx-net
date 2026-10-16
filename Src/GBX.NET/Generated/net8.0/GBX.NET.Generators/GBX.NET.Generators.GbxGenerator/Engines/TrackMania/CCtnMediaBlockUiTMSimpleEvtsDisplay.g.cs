@@ -38,6 +38,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     internal override uint GetId() => Id;
 
     private bool stuntFigures;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24092001>]
     public bool StuntFigures
     {
@@ -46,6 +47,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     private bool checkpoints;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24092001>]
     public bool Checkpoints
     {
@@ -54,6 +56,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     private bool endOfRace;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24092001>]
     public bool EndOfRace
     {
@@ -62,6 +65,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     private bool endOfLaps;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24092001>]
     public bool EndOfLaps
     {
@@ -70,6 +74,7 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     }
 
     private bool ghostsName;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk24092001>]
     public bool GhostsName
     {

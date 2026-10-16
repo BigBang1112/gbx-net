@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A4000>]
     public List<Key>? Keys
     {

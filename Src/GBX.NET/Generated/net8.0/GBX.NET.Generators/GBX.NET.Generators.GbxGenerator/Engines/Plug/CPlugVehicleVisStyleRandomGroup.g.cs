@@ -38,6 +38,7 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09147000>]
     public string? Name
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     }
 
     private string? matchName;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk09147000>(1)]
     public string? MatchName
     {
@@ -54,6 +56,7 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     }
 
     private float groupProba;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09147000>(4)]
     public float GroupProba
     {
@@ -62,6 +65,7 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     }
 
     private SPlugVehicleVisStyle[]? styles;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09147000>]
     public SPlugVehicleVisStyle[]? Styles
     {

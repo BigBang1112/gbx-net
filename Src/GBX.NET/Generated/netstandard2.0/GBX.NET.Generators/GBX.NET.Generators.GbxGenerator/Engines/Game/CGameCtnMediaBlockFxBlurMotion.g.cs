@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03082000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03082000>]
     public TimeSingle End
     {

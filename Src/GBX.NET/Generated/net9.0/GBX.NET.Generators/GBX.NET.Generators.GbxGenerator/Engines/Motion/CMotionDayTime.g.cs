@@ -38,6 +38,7 @@ public partial class CMotionDayTime : CMotionManaged, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? legacyModelRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08055000>]
     public CMwNod? LegacyModel
     {
@@ -46,6 +47,7 @@ public partial class CMotionDayTime : CMotionManaged, IClass
     }
 
     private NodeRef<CPlugMaterial>? dayMaterialRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? DayMaterial
     {
@@ -54,6 +56,7 @@ public partial class CMotionDayTime : CMotionManaged, IClass
     }
 
     private NodeRef<CPlugMaterial>? nightMaterialRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk08055000>]
     public CPlugMaterial? NightMaterial
     {

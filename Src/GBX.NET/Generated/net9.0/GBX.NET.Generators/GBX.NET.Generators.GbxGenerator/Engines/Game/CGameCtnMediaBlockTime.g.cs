@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, IClass, CGameC
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03085000>]
     public List<Key>? Keys
     {

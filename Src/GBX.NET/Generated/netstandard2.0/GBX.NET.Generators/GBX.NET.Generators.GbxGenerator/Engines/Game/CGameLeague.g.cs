@@ -38,6 +38,7 @@ public partial class CGameLeague : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? path;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]
     public string? Path
@@ -47,6 +48,7 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]
     public string? Name
@@ -56,6 +58,7 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     private string? description;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]
     public string? Description
@@ -65,6 +68,7 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     private string? login;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]
     public string? Login
@@ -74,6 +78,7 @@ public partial class CGameLeague : CMwNod, IClass
     }
 
     private string? flagUrl;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0308E001>]
     [AppliedWithChunk<Chunk0308E002>]
     public string? FlagUrl

@@ -15,6 +15,7 @@ public partial class CGameCtnCollector
         set => ident = value;
     }
 
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<GBX.NET.Engines.Game.CGameCtnBlockInfo.Chunk0304E005>]
     public partial string? Name
     {
@@ -36,12 +37,14 @@ public partial class CGameCtnCollector
     /// <summary>
     /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
     /// </summary>
+    /// <remarks>Applied with: 0x004 header chunk</remarks>
     [AppliedWithChunk<HeaderChunk2E001004>]
     public Color[,]? Icon { get; set; }
 
     /// <summary>
     /// Icon of the collector in WebP format from TM2020 icons since April 2022 update.
     /// </summary>
+    /// <remarks>Applied with: 0x004 header chunk</remarks>
     [WebpData]
     [AppliedWithChunk<HeaderChunk2E001004>]
     public byte[]? IconWebP { get; set; }

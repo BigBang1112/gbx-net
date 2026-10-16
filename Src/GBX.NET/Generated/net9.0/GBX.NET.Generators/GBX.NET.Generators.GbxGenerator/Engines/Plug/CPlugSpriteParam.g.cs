@@ -38,6 +38,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     internal override uint GetId() => Id;
 
     private Vec3 globalDirection;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090AC000>]
     [AppliedWithChunk<Chunk090AC001>]
     public Vec3 GlobalDirection
@@ -47,6 +48,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private Vec2 pivotPoint;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090AC000>]
     [AppliedWithChunk<Chunk090AC001>]
     public Vec2 PivotPoint
@@ -56,6 +58,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float globalDirTiltFactor;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk090AC000>]
     [AppliedWithChunk<Chunk090AC001>]
     public float GlobalDirTiltFactor
@@ -65,6 +68,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float textureHeightInWorld;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090AC001>]
     public float TextureHeightInWorld
     {
@@ -73,6 +77,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float? visibleMaxDistAtFov90;
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090AC001>(1)]
     public float? VisibleMaxDistAtFov90
     {
@@ -81,6 +86,7 @@ public partial class CPlugSpriteParam : CPlug, IClass
     }
 
     private float? visibleMinScreenHeight01;
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090AC001>(1)]
     public float? VisibleMinScreenHeight01
     {

@@ -38,6 +38,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugBitmap>? bitmapRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -57,6 +58,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexFilter wantedFiltering;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     public ETexFilter WantedFiltering
     {
@@ -65,6 +67,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexAddress texAddressU;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     public ETexAddress TexAddressU
     {
@@ -73,6 +76,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private ETexAddress texAddressV;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     public ETexAddress TexAddressV
     {
@@ -81,6 +85,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private float mipMapLodBias;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0907E000>]
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
@@ -103,8 +108,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     /// <summary>
     /// Packed sampler flags in the legacy bit layout.
     /// </summary>
-    [GameVersionDefault(GameVersion.TM10, 5)]
-    [GameVersionDefault(GameVersion.TMPU, 5)]
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0907E001>]
     [AppliedWithChunk<Chunk0907E002>]
     [AppliedWithChunk<Chunk0907E003>]
@@ -115,6 +119,8 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     [AppliedWithChunk<Chunk0907E008>]
     [AppliedWithChunk<Chunk0907E009>]
     [AppliedWithChunk<Chunk0907E00A>]
+    [GameVersionDefault(GameVersion.TM10, 5)]
+    [GameVersionDefault(GameVersion.TMPU, 5)]
     public uint LegacyFlags
     {
         get => this.legacyFlags;
@@ -122,6 +128,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x002, 0x003, 0x004, 0x005, 0x006, 0x007, 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0907E002>]
     [AppliedWithChunk<Chunk0907E003>]
     [AppliedWithChunk<Chunk0907E004>]
@@ -142,6 +149,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     /// <summary>
     /// Packed ARGB border color.
     /// </summary>
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A, 0x00B body chunks</remarks>
     [AppliedWithChunk<Chunk0907E008>]
     [AppliedWithChunk<Chunk0907E009>]
     [AppliedWithChunk<Chunk0907E00A>]
@@ -156,6 +164,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     /// <summary>
     /// Packed sampler flags with three bits per filtering or address mode.
     /// </summary>
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0907E00B>]
     public uint Flags
     {

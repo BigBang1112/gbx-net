@@ -38,6 +38,7 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     internal override uint GetId() => Id;
 
     private float pylonOffset;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03055002>]
     public float PylonOffset
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     private EPylonAmount pylonAmount;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03055002>]
     public EPylonAmount PylonAmount
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     private EPylonPlacement pylonPlacement;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03055002>]
     public EPylonPlacement PylonPlacement
     {
@@ -62,6 +65,7 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     }
 
     private int blockHeightOffset;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03055002>]
     public int BlockHeightOffset
     {

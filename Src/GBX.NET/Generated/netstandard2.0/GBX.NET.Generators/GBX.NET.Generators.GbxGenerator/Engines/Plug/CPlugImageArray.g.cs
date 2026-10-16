@@ -38,6 +38,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? folder;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0914C000>]
     public string? Folder
     {
@@ -46,6 +47,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private Elem[]? layers;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0914C000>]
     public Elem[]? Layers
     {
@@ -54,6 +56,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private NodeRef<CMwNod>? material_VIdRef;
+    /// <remarks>Applied with: 0x000 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk0914C000>(4)]
     public CMwNod? Material_VId
     {
@@ -62,6 +65,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private float maskScale;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0914C000>(5)]
     public float MaskScale
     {
@@ -70,6 +74,7 @@ public partial class CPlugImageArray : CMwNod, IClass
     }
 
     private string? folder_TextureDecals;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0914C000>(6)]
     public string? Folder_TextureDecals
     {

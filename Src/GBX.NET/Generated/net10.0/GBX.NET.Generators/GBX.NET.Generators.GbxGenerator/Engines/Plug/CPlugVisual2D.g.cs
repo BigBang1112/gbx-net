@@ -38,6 +38,7 @@ public partial class CPlugVisual2D : CPlugVisual, IClass
     internal override uint GetId() => Id;
 
     private Vertex2D[] vertices2D = [];
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0904A000>]
     public Vertex2D[] Vertices2D
     {

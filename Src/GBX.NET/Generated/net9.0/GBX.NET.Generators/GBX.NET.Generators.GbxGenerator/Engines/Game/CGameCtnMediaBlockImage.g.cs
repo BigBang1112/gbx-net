@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CControlEffectSimi>? effectRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A5000>]
     public CControlEffectSimi? Effect
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     }
 
     private PackDesc? image;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A5000>]
     public PackDesc? Image
     {

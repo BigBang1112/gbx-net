@@ -12,10 +12,12 @@ public partial class CGamePlayerProfile
     public partial int? OnlineRemainingNickNamesChangesCount { get => onlineRemainingNickNamesChangesCount; set => onlineRemainingNickNamesChangesCount = value; }
 
     private CGamePlayerProfileChunk[]? oldProfileChunks;
+    /// <remarks>Applied with: 0x07C body chunk</remarks>
     [AppliedWithChunk<Chunk0308C07C>]
     public CGamePlayerProfileChunk[]? OldProfileChunks { get => oldProfileChunks; set => oldProfileChunks = value; }
 
     private CGamePlayerProfileChunk[]? profileChunks;
+    /// <remarks>Applied with: 0x07D, 0x07E body chunks</remarks>
     [AppliedWithChunk<Chunk0308C07D>]
     [AppliedWithChunk<Chunk0308C07E>]
     public CGamePlayerProfileChunk[]? ProfileChunks { get => profileChunks; set => profileChunks = value; }

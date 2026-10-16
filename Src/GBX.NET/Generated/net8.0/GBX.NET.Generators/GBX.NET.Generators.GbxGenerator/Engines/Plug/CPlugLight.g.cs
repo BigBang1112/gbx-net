@@ -38,6 +38,7 @@ public partial class CPlugLight : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<GxLight>? lightRef;
+    /// <remarks>Applied with: 0x000, 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     [AppliedWithChunk<Chunk0901D004>]
@@ -48,6 +49,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CFuncLight>? funcLightRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CFuncLight? FuncLight
@@ -57,6 +59,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapFlareRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CPlugBitmap? BitmapFlare
@@ -66,6 +69,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapProjectorRef;
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0901D000>]
     [AppliedWithChunk<Chunk0901D002>]
     public CPlugBitmap? BitmapProjector
@@ -75,6 +79,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private EFlags flags;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0901D002>]
     public EFlags Flags
     {
@@ -83,6 +88,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageAnimRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0901D003>]
     public CPlugFileImg? ImageAnim
     {
@@ -91,6 +97,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private float animPeriodMin;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0901D003>]
     public float AnimPeriodMin
     {
@@ -99,6 +106,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private float animPeriodMax;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0901D003>]
     public float AnimPeriodMax
     {
@@ -107,6 +115,7 @@ public partial class CPlugLight : CPlug, IClass
     }
 
     private string? animTimerName;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0901D003>(1)]
     public string? AnimTimerName
     {

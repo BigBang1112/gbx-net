@@ -38,6 +38,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugPointsInSphereOpt>? pointsInSphereOptRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk06021001>]
     public CPlugPointsInSphereOpt? PointsInSphereOpt
     {
@@ -46,6 +47,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CHmsLightMapMood>? moodRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk06021003>]
     public CHmsLightMapMood? Mood
     {
@@ -54,6 +56,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRefList<CPlugBitmap>? bitmapLightSumBumpLegacy;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk06021006>]
     public NodeRefList<CPlugBitmap>? BitmapLightSumBumpLegacy
     {
@@ -62,6 +65,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool clampDir_PosY = false;
+    /// <remarks>Applied with: 0x008, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk06021008>]
     [AppliedWithChunk<Chunk0602100E>]
     public bool ClampDir_PosY
@@ -71,6 +75,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool useHDR = false;
+    /// <remarks>Applied with: 0x009, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk06021009>]
     [AppliedWithChunk<Chunk06021017>]
     public bool UseHDR
@@ -80,6 +85,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSM_ColorPeeledRef;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
@@ -90,6 +96,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapLM_ILightInputRef;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
@@ -100,6 +107,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapLM_ILightDirRef;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x00F body chunks</remarks>
     [AppliedWithChunk<Chunk0602100C>]
     [AppliedWithChunk<Chunk0602100D>]
     [AppliedWithChunk<Chunk0602100F>]
@@ -110,6 +118,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool clampAmb_PosY = false;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0602100E>]
     public bool ClampAmb_PosY
     {
@@ -121,6 +130,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// <summary>
     /// Native member: sRGB
     /// </summary>
+    /// <remarks>Applied with: 0x012, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk06021012>]
     [AppliedWithChunk<Chunk06021017>]
     public bool SRGB
@@ -130,6 +140,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmapArray>? bitmapArrayLightSHRef;
+    /// <remarks>Applied with: 0x013 body chunk</remarks>
     [AppliedWithChunk<Chunk06021013>]
     public CPlugBitmapArray? BitmapArrayLightSH
     {
@@ -138,6 +149,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmapArray>? bitmapLightSumBumpRef;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk06021014>]
     public CPlugBitmapArray? BitmapLightSumBump
     {
@@ -146,6 +158,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private ECompressMode compressMode = ECompressMode.Ldr_DXT1;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk06021017>]
     public ECompressMode CompressMode
     {
@@ -154,6 +167,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSprite3x3_LightRef;
+    /// <remarks>Applied with: 0x018, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite3x3_Light
@@ -163,6 +177,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSprite_PosAndRadiusRef;
+    /// <remarks>Applied with: 0x018, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite_PosAndRadius
@@ -172,6 +187,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSprite_ILightDirRef;
+    /// <remarks>Applied with: 0x018, 0x02B body chunks</remarks>
     [AppliedWithChunk<Chunk06021018>]
     [AppliedWithChunk<Chunk0602102B>]
     public CPlugBitmap? BitmapSprite_ILightDir
@@ -181,6 +197,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapShadowRef;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk06021019>]
     public CPlugBitmap? BitmapShadow
     {
@@ -189,6 +206,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapLM_LListUVRef;
+    /// <remarks>Applied with: 0x01B, 0x021, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk0602101B>]
     [AppliedWithChunk<Chunk06021021>]
     [AppliedWithChunk<Chunk06021028>]
@@ -199,6 +217,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool storeLDir0Legacy;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0602101C>]
     public bool StoreLDir0Legacy
     {
@@ -207,6 +226,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool isSpriteLDirInAlpha = false;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0602101D>]
     public bool IsSpriteLDirInAlpha
     {
@@ -215,6 +235,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapLM_LListWRef;
+    /// <remarks>Applied with: 0x020, 0x021, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk06021020>]
     [AppliedWithChunk<Chunk06021021>]
     [AppliedWithChunk<Chunk06021028>]
@@ -225,6 +246,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapSM_DepthToPeelRef;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk06021023>]
     public CPlugBitmap? BitmapSM_DepthToPeel
     {
@@ -233,6 +255,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapProbeGeom_BBoxInvHDiag_ThroughBounceRef;
+    /// <remarks>Applied with: 0x024 body chunk</remarks>
     [AppliedWithChunk<Chunk06021024>]
     public CPlugBitmap? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce
     {
@@ -241,6 +264,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private EStoreLDir0 storeLDir0 = EStoreLDir0.Sinc;
+    /// <remarks>Applied with: 0x025 body chunk</remarks>
     [AppliedWithChunk<Chunk06021025>]
     public EStoreLDir0 StoreLDir0
     {
@@ -249,6 +273,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapLM_LocalDirectRef;
+    /// <remarks>Applied with: 0x026, 0x028 body chunks</remarks>
     [AppliedWithChunk<Chunk06021026>]
     [AppliedWithChunk<Chunk06021028>]
     public CPlugBitmap? BitmapLM_LocalDirect
@@ -258,6 +283,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private bool backgroundUseClouds = false;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk06021027>]
     public bool BackgroundUseClouds
     {
@@ -266,6 +292,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private uint gameTimerSeconds = 250;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk06021027>]
     public uint GameTimerSeconds
     {
@@ -274,6 +301,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapProbeGridAmbSVRef;
+    /// <remarks>Applied with: 0x029 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk06021029>(6)]
     public CPlugBitmap? BitmapProbeGridAmbSV
     {
@@ -282,6 +310,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapProbeGridAmbSV_Spread1Ref;
+    /// <remarks>Applied with: 0x029 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk06021029>(7)]
     public CPlugBitmap? BitmapProbeGridAmbSV_Spread1
     {

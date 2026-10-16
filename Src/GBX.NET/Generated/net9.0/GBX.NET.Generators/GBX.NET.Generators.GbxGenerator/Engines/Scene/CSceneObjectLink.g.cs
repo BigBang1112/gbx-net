@@ -38,6 +38,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CSceneMobil>? mobilRef;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A014001>]
     public CSceneMobil? Mobil
     {
@@ -46,6 +47,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0A014001>]
     public string? Name
     {
@@ -54,6 +56,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     private NodeRef<CSceneObject>? objectRef;
+    /// <remarks>Applied with: 0x001, 0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk0A014001>]
     [AppliedWithChunk<Chunk0A00F000>]
     public CSceneObject? Object
@@ -63,6 +66,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     private Iso4 relativeLocation;
+    /// <remarks>Applied with: 0x001, 0x000 body chunks</remarks>
     [AppliedWithChunk<Chunk0A014001>]
     [AppliedWithChunk<Chunk0A00F000>]
     public Iso4 RelativeLocation
@@ -72,6 +76,7 @@ public partial class CSceneObjectLink : CMwNod, IClass
     }
 
     private string? mobilTreeId;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0A014002>]
     public string? MobilTreeId
     {

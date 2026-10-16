@@ -38,6 +38,7 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
     internal override uint GetId() => Id;
 
     private SMaterial? material;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk09004000>]
     [AppliedWithChunk<Chunk09004001>]
     [AppliedWithChunk<Chunk09004002>]

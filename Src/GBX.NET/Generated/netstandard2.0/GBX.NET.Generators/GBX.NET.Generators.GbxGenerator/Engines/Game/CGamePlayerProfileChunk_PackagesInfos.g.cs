@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     internal override uint GetId() => Id;
 
     private PackageInfo[]? packagesInfos;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03140000>]
     public PackageInfo[]? PackagesInfos
     {

@@ -38,6 +38,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMotionManagerLeaves>? managerModelRef;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public CMotionManagerLeaves? ManagerModel
@@ -47,6 +48,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     }
 
     private Vec3 pos;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0804C000>]
     [AppliedWithChunk<Chunk0804C001>]
     public Vec3 Pos
@@ -56,6 +58,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     }
 
     private float uniformRadiusLegacy = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0804C000>]
     public float UniformRadiusLegacy
     {
@@ -64,6 +67,7 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     }
 
     private Vec3 radius = (1, 1, 1);
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0804C001>]
     public Vec3 Radius
     {

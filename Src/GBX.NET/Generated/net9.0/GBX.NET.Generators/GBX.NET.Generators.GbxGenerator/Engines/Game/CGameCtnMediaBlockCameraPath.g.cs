@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, IC
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk030A1000>]
     [AppliedWithChunk<Chunk030A1001>]
     [AppliedWithChunk<Chunk030A1002>]

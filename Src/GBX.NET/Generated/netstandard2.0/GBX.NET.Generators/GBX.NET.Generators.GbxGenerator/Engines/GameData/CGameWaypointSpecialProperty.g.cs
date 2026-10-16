@@ -38,6 +38,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int spawn;
+    /// <remarks>Applied with: 0x000 v1-1 body chunk</remarks>
     [AppliedWithChunk<Chunk2E009000>(1, 1)]
     public int Spawn
     {
@@ -46,6 +47,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     private int order;
+    /// <remarks>Applied with: 0x000 v1-2 body chunk</remarks>
     [AppliedWithChunk<Chunk2E009000>(1, 2)]
     public int Order
     {
@@ -54,6 +56,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     private string? tag;
+    /// <remarks>Applied with: 0x000 v2-2 body chunk</remarks>
     [AppliedWithChunk<Chunk2E009000>(2, 2)]
     public string? Tag
     {
@@ -62,6 +65,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     }
 
     private CScriptTraitsMetadata? scriptMetadata;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk2E009001>]
     public CScriptTraitsMetadata? ScriptMetadata
     {

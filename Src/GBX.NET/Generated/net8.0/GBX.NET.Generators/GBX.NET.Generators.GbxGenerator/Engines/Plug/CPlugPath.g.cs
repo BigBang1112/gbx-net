@@ -38,6 +38,7 @@ public partial class CPlugPath : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugPolyLine3>? polyLines;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09119000>]
     public NodeRefList<CPlugPolyLine3>? PolyLines
     {
@@ -49,6 +50,7 @@ public partial class CPlugPath : CMwNod, IClass
     /// <summary>
     /// length must equal PolyLines
     /// </summary>
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09119000>(2)]
     public byte[]? LineGroups
     {

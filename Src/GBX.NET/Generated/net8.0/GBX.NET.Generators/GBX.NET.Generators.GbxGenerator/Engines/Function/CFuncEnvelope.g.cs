@@ -38,6 +38,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     internal override uint GetId() => Id;
 
     private float keyFrameValue0;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFrameValue0
     {
@@ -46,6 +47,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float keyFrameValue1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFrameValue1
     {
@@ -54,6 +56,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float keyFrameValue2;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFrameValue2
     {
@@ -62,6 +65,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float keyFrameValue3;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFrameValue3
     {
@@ -70,6 +74,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float keyFramePos1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float KeyFramePos1
     {
@@ -78,6 +83,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float frequency;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float Frequency
     {
@@ -86,6 +92,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private float amplitude;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public float Amplitude
     {
@@ -94,6 +101,7 @@ public partial class CFuncEnvelope : CFunc, IClass
     }
 
     private EModulation modFunc;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk05036000>]
     public EModulation ModFunc
     {

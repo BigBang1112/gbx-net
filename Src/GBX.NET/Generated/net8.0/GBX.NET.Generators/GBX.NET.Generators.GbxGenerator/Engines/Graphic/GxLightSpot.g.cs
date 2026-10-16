@@ -38,6 +38,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     internal override uint GetId() => Id;
 
     private float angleInner = 30;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
@@ -49,6 +50,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     private float angleOuter = 45;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
@@ -63,6 +65,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     /// <summary>
     /// Retained for legacy archives; discarded by later native readers
     /// </summary>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B000>]
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
@@ -77,6 +80,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     /// <summary>
     /// Constructor's angle-update helper copies AngleOuter when CustomAngleFlare is unset
     /// </summary>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B001>]
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
@@ -90,6 +94,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     /// <summary>
     /// CustomAngleFlare (bit 0), CustomAngleShadow (bit 1)
     /// </summary>
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public uint Flags
@@ -99,6 +104,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     private float angleInnerShadow = 30;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public float AngleInnerShadow
@@ -108,6 +114,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     private float angleOuterShadow = 45;
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public float AngleOuterShadow
@@ -117,6 +124,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     private byte subLightCountX = 1;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0400B003>(1)]
     public byte SubLightCountX
     {
@@ -125,6 +133,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     }
 
     private byte subLightCountY = 1;
+    /// <remarks>Applied with: 0x003 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0400B003>(1)]
     public byte SubLightCountY
     {
@@ -136,6 +145,7 @@ public partial class GxLightSpot : GxLightBall, IClass
     /// <summary>
     /// Discarded by the native v0 reader; purpose unknown
     /// </summary>
+    /// <remarks>Applied with: 0x003 v0-0 body chunk</remarks>
     [AppliedWithChunk<Chunk0400B003>(0, 0)]
     public int LegacyValue
     {
@@ -158,6 +168,7 @@ public partial class GxLightSpot : GxLightBall, IClass
         ((GxLightSpot)clone).legacyValue = context.Clone(this.legacyValue)!;
     }
 
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public bool CustomAngleFlare
@@ -176,6 +187,7 @@ public partial class GxLightSpot : GxLightBall, IClass
         }
     }
 
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0400B002>]
     [AppliedWithChunk<Chunk0400B003>]
     public bool CustomAngleShadow

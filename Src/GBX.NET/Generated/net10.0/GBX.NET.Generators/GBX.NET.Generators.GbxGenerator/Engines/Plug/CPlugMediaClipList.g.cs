@@ -38,6 +38,7 @@ public partial class CPlugMediaClipList : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CMwNod>? mediaClipFids;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09189000>]
     public NodeRefList<CMwNod>? MediaClipFids
     {

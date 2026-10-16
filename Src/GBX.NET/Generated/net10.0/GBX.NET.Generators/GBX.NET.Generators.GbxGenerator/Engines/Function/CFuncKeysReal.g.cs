@@ -38,6 +38,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     internal override uint GetId() => Id;
 
     private float[]? ys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0501A000>]
     [AppliedWithChunk<Chunk0501A001>]
     [AppliedWithChunk<Chunk0501A002>]
@@ -48,6 +49,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     private ERealInterp realInterp;
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk0501A001>]
     [AppliedWithChunk<Chunk0501A002>]
     public ERealInterp RealInterp
@@ -57,6 +59,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     private bool forceTangentMinX;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0501A002>]
     public bool ForceTangentMinX
     {
@@ -65,6 +68,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     private bool forceTangentMaxX;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0501A002>]
     public bool ForceTangentMaxX
     {
@@ -73,6 +77,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     private float forcedTangentMinX;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0501A002>]
     public float ForcedTangentMinX
     {
@@ -81,6 +86,7 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     }
 
     private float forcedTangentMaxX;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0501A002>]
     public float ForcedTangentMaxX
     {

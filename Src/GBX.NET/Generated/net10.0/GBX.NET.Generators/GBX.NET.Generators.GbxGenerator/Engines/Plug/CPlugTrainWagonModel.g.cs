@@ -38,6 +38,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugSurface>? shapeRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>]
     public CPlugSurface? Shape
     {
@@ -46,6 +47,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid2Model>? meshRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>]
     public CPlugSolid2Model? Mesh
     {
@@ -54,6 +56,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private bool isLoco;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(2)]
     public bool IsLoco
     {
@@ -62,6 +65,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundEngineRef;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundEngine
     {
@@ -70,6 +74,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundBrakeRef;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundBrake
     {
@@ -78,6 +83,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundRailContactRef;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundRailContact
     {
@@ -86,6 +92,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? soundCollisionRef;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(3)]
     public CPlugSound? SoundCollision
     {
@@ -94,6 +101,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private float wagonLength;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(5)]
     public float WagonLength
     {
@@ -102,6 +110,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private float wagonColOffset;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(5)]
     public float WagonColOffset
     {
@@ -110,6 +119,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private bool genLengthFromShape;
+    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(5)]
     public bool GenLengthFromShape
     {
@@ -118,6 +128,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CFuncKeysReal>? accelCurveRef;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(6)]
     public CFuncKeysReal? AccelCurve
     {
@@ -126,6 +137,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? smokeEmitterModelRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(7)]
     public CPlugParticleEmitterModel? SmokeEmitterModel
     {
@@ -134,6 +146,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? dustEmitterModelRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? DustEmitterModel
     {
@@ -142,6 +155,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugParticleEmitterModel>? sparkleParticleRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(8)]
     public CPlugParticleEmitterModel? SparkleParticle
     {
@@ -150,6 +164,7 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimFile>? animFileRef;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk0911C000>(10)]
     public CPlugAnimFile? AnimFile
     {

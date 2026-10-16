@@ -38,6 +38,7 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugMaterial>? materials;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0A033002>]
     public NodeRefList<CPlugMaterial>? Materials
     {

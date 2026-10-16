@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk03080000>]
     [AppliedWithChunk<Chunk03080001>]
     [AppliedWithChunk<Chunk03080002>]

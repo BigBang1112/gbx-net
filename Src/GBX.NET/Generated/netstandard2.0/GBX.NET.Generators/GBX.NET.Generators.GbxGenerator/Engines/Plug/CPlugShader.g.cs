@@ -38,6 +38,7 @@ public partial class CPlugShader : CPlug, IClass
     internal override uint GetId() => Id;
 
     private float lightMapQuality;
+    /// <remarks>Applied with: 0x000, 0x00B, 0x00C, 0x00D, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x016, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk09002000>]
     [AppliedWithChunk<Chunk0900200B>]
     [AppliedWithChunk<Chunk0900200C>]
@@ -58,6 +59,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRef<CFuncShader>? funcShaderRef;
+    /// <remarks>Applied with: 0x007, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09002007>]
     [AppliedWithChunk<Chunk0900200E>]
     public CFuncShader? FuncShader
@@ -67,6 +69,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRefList<CPlugShaderPass>? passes = new();
+    /// <remarks>Applied with: 0x007, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09002007>]
     [AppliedWithChunk<Chunk0900200E>]
     public NodeRefList<CPlugShaderPass>? Passes
@@ -76,6 +79,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRef<CPlugBitmapApply>? solidWiredApplyRef;
+    /// <remarks>Applied with: 0x007, 0x00E body chunks</remarks>
     [AppliedWithChunk<Chunk09002007>]
     [AppliedWithChunk<Chunk0900200E>]
     public CPlugBitmapApply? SolidWiredApply
@@ -85,6 +89,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRef<CPlugMaterialFx>? materialFxRef;
+    /// <remarks>Applied with: 0x00C, 0x00D, 0x00F, 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x016, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk0900200C>]
     [AppliedWithChunk<Chunk0900200D>]
     [AppliedWithChunk<Chunk0900200F>]
@@ -103,6 +108,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRefList<CPlugShader>? legacyCustomShaders = new();
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0900200E>]
     public NodeRefList<CPlugShader>? LegacyCustomShaders
     {
@@ -111,6 +117,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private ushort visibleIdFlags;
+    /// <remarks>Applied with: 0x010, 0x011, 0x012, 0x013, 0x014, 0x015, 0x016, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk09002010>]
     [AppliedWithChunk<Chunk09002011>]
     [AppliedWithChunk<Chunk09002012>]
@@ -126,11 +133,12 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private ulong requirementFlags;
-    [GameVersionDefault(GameVersion.TMF, 0x0000FFF0B003F800)]
-    [GameVersionDefault(GameVersion.TM2020, 0x0000FFF00C007800)]
+    /// <remarks>Applied with: 0x015, 0x016, 0x020 body chunks</remarks>
     [AppliedWithChunk<Chunk09002015>]
     [AppliedWithChunk<Chunk09002016>]
     [AppliedWithChunk<Chunk09002020>]
+    [GameVersionDefault(GameVersion.TMF, 0x0000FFF0B003F800)]
+    [GameVersionDefault(GameVersion.TM2020, 0x0000FFF00C007800)]
     public ulong RequirementFlags
     {
         get => this.requirementFlags;
@@ -138,6 +146,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private uint flags;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk09002018>]
     public uint Flags
     {
@@ -146,6 +155,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private ShaderCustom[] customShaders = default!;
+    /// <remarks>Applied with: 0x019, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk09002019>]
     [AppliedWithChunk<Chunk0900201F>]
     public ShaderCustom[] CustomShaders
@@ -155,6 +165,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private float visibleMaxDist;
+    /// <remarks>Applied with: 0x01A, 0x01B body chunks</remarks>
     [AppliedWithChunk<Chunk0900201A>]
     [AppliedWithChunk<Chunk0900201B>]
     public float VisibleMaxDist
@@ -164,6 +175,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private float visibleMinScreenHeight;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
     [AppliedWithChunk<Chunk0900201B>]
     public float VisibleMinScreenHeight
     {
@@ -172,6 +184,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private NodeRef<CPlugFileGPUV>? gPURef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0900201C>]
     public CPlugFileGPUV? GPU
     {
@@ -180,8 +193,9 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     private uint requirementFlags2;
-    [GameVersionDefault(GameVersion.TMF, 0x40)]
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0900201E>]
+    [GameVersionDefault(GameVersion.TMF, 0x40)]
     public uint RequirementFlags2
     {
         get => this.requirementFlags2;

@@ -38,6 +38,7 @@ public partial class CGameAdvertising : CGameNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CMwNod>? files;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0303D001>]
     public NodeRefList<CMwNod>? Files
     {
@@ -46,6 +47,7 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     private NodeRefList<CMwNod>? filesOrig;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk0303D002>]
     public NodeRefList<CMwNod>? FilesOrig
     {
@@ -54,6 +56,7 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     private EMode mode;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0303D003>]
     public EMode Mode
     {
@@ -62,6 +65,7 @@ public partial class CGameAdvertising : CGameNod, IClass
     }
 
     private string? radial_Config;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0303D004>]
     public string? Radial_Config
     {

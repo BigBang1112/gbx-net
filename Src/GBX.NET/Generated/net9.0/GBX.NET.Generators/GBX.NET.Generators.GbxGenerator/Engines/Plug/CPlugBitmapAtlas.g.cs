@@ -38,6 +38,7 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
     internal override uint GetId() => Id;
 
     private SubTex[]? subTextures;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090A8002>]
     public SubTex[]? SubTextures
     {

@@ -38,6 +38,7 @@ public partial class GxFog : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private bool enabled = true;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public bool Enabled
     {
@@ -46,6 +47,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private int legacyMode = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public int LegacyMode
     {
@@ -54,6 +56,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float depthMin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float DepthMin
     {
@@ -62,6 +65,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float depthMax = 50000;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float DepthMax
     {
@@ -73,6 +77,7 @@ public partial class GxFog : CMwNod, IClass
     /// <summary>
     /// Exponant in the native XML
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float Exponent
     {
@@ -81,6 +86,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float heightYBottom;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float HeightYBottom
     {
@@ -89,6 +95,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float heightYTop = 1000;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float HeightYTop
     {
@@ -97,6 +104,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float heightMulBottom = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float HeightMulBottom
     {
@@ -105,6 +113,7 @@ public partial class GxFog : CMwNod, IClass
     }
 
     private float heightMulTop = 1;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float HeightMulTop
     {
@@ -116,6 +125,7 @@ public partial class GxFog : CMwNod, IClass
     /// <summary>
     /// IntensMin in the native XML
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float IntensityMin
     {
@@ -127,6 +137,7 @@ public partial class GxFog : CMwNod, IClass
     /// <summary>
     /// IntensMax in the native XML
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk04004000>]
     public float IntensityMax
     {
@@ -138,6 +149,7 @@ public partial class GxFog : CMwNod, IClass
     /// <summary>
     /// Linear RGB
     /// </summary>
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk04004001>]
     public Vec3 Color
     {
@@ -149,6 +161,7 @@ public partial class GxFog : CMwNod, IClass
     /// <summary>
     /// Version attribute of the native fog XML
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk04004002>]
     public int FogVersion
     {

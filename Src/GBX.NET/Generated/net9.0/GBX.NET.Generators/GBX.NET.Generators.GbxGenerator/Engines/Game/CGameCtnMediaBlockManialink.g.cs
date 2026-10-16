@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0312A000>]
     [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle Start
@@ -47,6 +48,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
     [AppliedWithChunk<Chunk0312A000>]
     [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle End
@@ -56,6 +58,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     }
 
     private NodeRef<CPlugFileTextScript>? scriptRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312A000>]
     public CPlugFileTextScript? Script
     {
@@ -64,6 +67,7 @@ public partial class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, IClass, C
     }
 
     private string? manialinkUrl;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0312A001>]
     public string? ManialinkUrl
     {

@@ -38,6 +38,7 @@ public partial class GxLight : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec3 color;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -48,6 +49,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float intensity;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -58,6 +60,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private EFlags flags;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -68,6 +71,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float shadowIntensity;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -78,6 +82,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float flareIntensity;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -88,6 +93,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private Vec3 shadowRGB;
+    /// <remarks>Applied with: 0x008, 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
@@ -98,6 +104,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float diffuseIntensity;
+    /// <remarks>Applied with: 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk04001009>]
     [AppliedWithChunk<Chunk0400100A>]
     public float DiffuseIntensity
@@ -107,6 +114,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float specularIntens;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk04001009>]
     public float SpecularIntens
     {
@@ -115,6 +123,7 @@ public partial class GxLight : CMwNod, IClass
     }
 
     private float specularPower;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk04001009>]
     public float SpecularPower
     {

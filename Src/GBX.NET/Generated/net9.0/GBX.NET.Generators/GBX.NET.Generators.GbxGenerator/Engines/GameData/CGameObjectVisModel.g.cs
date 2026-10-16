@@ -40,6 +40,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     private NodeRef<CPlugSolid2Model>? meshShadedRef;
 
     private LegacyLocAnim[]? legacyLocAnims;
+    /// <remarks>Applied with: 0x001 v2-4 body chunk</remarks>
     [AppliedWithChunk<Chunk2E007001>(2, 4)]
     public LegacyLocAnim[]? LegacyLocAnims
     {
@@ -48,6 +49,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private NodeRefList<CPlugAnimLocSimple>? legacyLocAnimRefs;
+    /// <remarks>Applied with: 0x001 v5-5 body chunk</remarks>
     [AppliedWithChunk<Chunk2E007001>(5, 5)]
     public NodeRefList<CPlugAnimLocSimple>? LegacyLocAnimRefs
     {
@@ -58,6 +60,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     private NodeRef<CPlugAnimLocSimple>? locAnimRef;
 
     private CGameCommonItemEntityModel.LightBallStateSimple[]? lightBallStates;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E007001>(2)]
     public CGameCommonItemEntityModel.LightBallStateSimple[]? LightBallStates
     {
@@ -66,6 +69,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private string? soundRefSpawn;
+    /// <remarks>Applied with: 0x001 v3-16, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk2E007001>(3, 16)]
     [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefSpawn
@@ -75,6 +79,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private string? soundRefUnspawn;
+    /// <remarks>Applied with: 0x001 v3-16, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk2E007001>(3, 16)]
     [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefUnspawn
@@ -84,6 +89,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private string? soundRefGrab;
+    /// <remarks>Applied with: 0x001 v3-16, 0x002 body chunks</remarks>
     [AppliedWithChunk<Chunk2E007001>(3, 16)]
     [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefGrab
@@ -93,6 +99,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private CGameCommonItemEntityModelEdition.ImageRef[]? images;
+    /// <remarks>Applied with: 0x001 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E007001>(13)]
     public CGameCommonItemEntityModelEdition.ImageRef[]? Images
     {
@@ -101,6 +108,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private CGameCommonItemEntityModelEdition.SpriteParam[]? spriteParams;
+    /// <remarks>Applied with: 0x001 v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk2E007001>(13)]
     public CGameCommonItemEntityModelEdition.SpriteParam[]? SpriteParams
     {
@@ -113,6 +121,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     private NodeRef<CMwNod>? meshShadedFidRef;
 
     private string? soundRefSmashed;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefSmashed
     {
@@ -121,6 +130,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private string? soundRefPermanent;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefPermanent
     {
@@ -129,6 +139,7 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     }
 
     private Iso4 soundLocPermanent;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk2E007002>]
     public Iso4 SoundLocPermanent
     {

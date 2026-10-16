@@ -38,6 +38,7 @@ public partial class CScene2d : CScene, IClass
     internal override uint GetId() => Id;
 
     private Rect overlay;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A002000>]
     public Rect Overlay
     {
@@ -46,6 +47,7 @@ public partial class CScene2d : CScene, IClass
     }
 
     private NodeRef<CSceneSector>? sectorRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A002000>]
     public CSceneSector? Sector
     {

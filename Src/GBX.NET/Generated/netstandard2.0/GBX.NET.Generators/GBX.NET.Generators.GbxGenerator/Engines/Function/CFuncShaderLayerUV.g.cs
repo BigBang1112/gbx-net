@@ -38,6 +38,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     internal override uint GetId() => Id;
 
     private string? layerName;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk05015005>]
     public string? LayerName
     {

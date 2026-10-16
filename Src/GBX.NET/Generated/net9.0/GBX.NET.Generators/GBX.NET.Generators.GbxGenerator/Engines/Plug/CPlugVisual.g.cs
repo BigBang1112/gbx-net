@@ -38,6 +38,7 @@ public partial class CPlugVisual : CPlug, IClass
     internal override uint GetId() => Id;
 
     private string? visualId;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09006001>]
     public string? VisualId
     {
@@ -46,6 +47,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private NodeRef<CMwNod>? funcVisualRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk09006004>]
     public CMwNod? FuncVisual
     {
@@ -57,6 +59,7 @@ public partial class CPlugVisual : CPlug, IClass
     /// <summary>
     /// SSubVisual records
     /// </summary>
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk09006005>]
     public Int3[] SubVisuals
     {
@@ -65,6 +68,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private bool isInverse;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk09006007>]
     public bool IsInverse
     {
@@ -73,6 +77,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private float nPatchTessLevel;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk09006009>]
     public float NPatchTessLevel
     {
@@ -81,10 +86,12 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private NodeRefList<CPlugVertexStream>? vertexStreams;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0900600A>]
     public partial NodeRefList<CPlugVertexStream> VertexStreams { get; set; }
 
     private Split[] splits = [];
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0900600B>]
     public Split[] Splits
     {
@@ -93,6 +100,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private BitmapElemToPack[] bitmapElemToPacks = [];
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0900600E>]
     public BitmapElemToPack[] BitmapElemToPacks
     {
@@ -101,6 +109,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     private Morph[] morphs = [];
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk09006010>]
     public Morph[] Morphs
     {

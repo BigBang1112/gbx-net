@@ -38,6 +38,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? treeId;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -49,6 +50,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? materialRef;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -60,6 +62,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private NodeRef<CPlugTreeLight>? treeLightRef;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -71,6 +74,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private int visibleCond;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -82,6 +86,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private bool visibleApplyOnChilds;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -93,6 +98,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private int shadowCasterCond;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -104,6 +110,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private bool shadowCasterApplyOnChilds;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -115,6 +122,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private bool transformVisualToSurface;
+    /// <remarks>Applied with: 0x006, 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2006>]
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
@@ -126,6 +134,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private int existCond;
+    /// <remarks>Applied with: 0x007, 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2007>]
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
@@ -136,6 +145,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private bool noLocation;
+    /// <remarks>Applied with: 0x008, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk090A2008>]
     [AppliedWithChunk<Chunk090A2009>]
     public bool NoLocation
@@ -145,6 +155,7 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     }
 
     private int collidableCond;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk090A2009>]
     public int CollidableCond
     {

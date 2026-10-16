@@ -38,6 +38,7 @@ public partial class CFuncKeys : CFunc, IClass
     internal override uint GetId() => Id;
 
     private float[]? xs;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk05002001>]
     public float[]? Xs
     {

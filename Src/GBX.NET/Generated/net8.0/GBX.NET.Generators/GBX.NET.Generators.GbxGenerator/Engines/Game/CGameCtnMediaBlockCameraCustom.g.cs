@@ -41,6 +41,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk030A2000>]
     [AppliedWithChunk<Chunk030A2001>]
     [AppliedWithChunk<Chunk030A2002>]

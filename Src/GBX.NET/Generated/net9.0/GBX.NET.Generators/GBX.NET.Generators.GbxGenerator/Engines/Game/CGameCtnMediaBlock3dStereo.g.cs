@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, IClass, CG
     internal override uint GetId() => Id;
 
     private List<Key>? keys;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03024000>]
     public List<Key>? Keys
     {

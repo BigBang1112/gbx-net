@@ -4,6 +4,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugTreeVisualMip
 {
     private List<Level> levels = [];
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk09015002>]
     public List<Level> Levels { get => levels; set => levels = value; }
 

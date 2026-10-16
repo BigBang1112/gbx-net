@@ -38,6 +38,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     internal override uint GetId() => Id;
 
     private float steerRadiusMin = 1f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float SteerRadiusMin
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerRadiusCoef = 0.5f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float SteerRadiusCoef
     {
@@ -54,6 +56,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float maxSpeed = 55.555557f;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float MaxSpeed
     {
@@ -62,6 +65,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperKi;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DamperKi
     {
@@ -70,6 +74,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperKa;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DamperKa
     {
@@ -78,6 +83,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperLengthMin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DamperLengthMin
     {
@@ -86,6 +92,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperLengthMax;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DamperLengthMax
     {
@@ -94,6 +101,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperLengthRest;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DamperLengthRest
     {
@@ -102,6 +110,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float relSpeedMultCoef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float RelSpeedMultCoef
     {
@@ -110,6 +119,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float debugAbsorbCoef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED000>]
     public float DebugAbsorbCoef
     {
@@ -118,6 +128,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED001>]
     public string? Name
     {
@@ -126,6 +137,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float mass = 800f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED002>]
     public float Mass
     {
@@ -134,6 +146,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float centerOfMassZNormed;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED002>]
     public float CenterOfMassZNormed
     {
@@ -142,6 +155,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float centerOfMassY;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED002>]
     public float CenterOfMassY
     {
@@ -150,6 +164,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool isFakeEngine;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED004>]
     public bool IsFakeEngine
     {
@@ -158,6 +173,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundGravityCoef = 1f;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED005>]
     public float GroundGravityCoef
     {
@@ -166,6 +182,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerSpeed = 20f;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED007>]
     public float SteerSpeed
     {
@@ -174,6 +191,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float reverseMaxSpeed = 13.888889f;
+    /// <remarks>Applied with: 0x008, 0x060, 0x08B v12+ body chunks</remarks>
     [AppliedWithChunk<Chunk090ED008>]
     [AppliedWithChunk<Chunk090ED060>]
     [AppliedWithChunk<Chunk090ED08B>(12)]
@@ -184,6 +202,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float turboYellowAccelCoef = 3f;
+    /// <remarks>Applied with: 0x008, 0x060, 0x094 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED008>]
     [AppliedWithChunk<Chunk090ED060>]
     [AppliedWithChunk<Chunk090ED094>]
@@ -194,6 +213,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeBase = 20f;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED009>]
     public float BrakeBase
     {
@@ -202,6 +222,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float linearFluidFrictionCoef = 0.1f;
+    /// <remarks>Applied with: 0x00A, 0x018 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED00A>]
     [AppliedWithChunk<Chunk090ED018>]
     public float LinearFluidFrictionCoef
@@ -211,6 +232,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airAngularFluidFrictionCoef1 = 0.5f;
+    /// <remarks>Applied with: 0x00A, 0x018 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED00A>]
     [AppliedWithChunk<Chunk090ED018>]
     public float AirAngularFluidFrictionCoef1
@@ -220,6 +242,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float inertiaMass = 1.0f;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED00B>]
     public float InertiaMass
     {
@@ -228,6 +251,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private Vec3 inertiaHalfDiag = (0.5f, 0.5f, 0.5f);
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED00B>]
     public Vec3 InertiaHalfDiag
     {
@@ -236,6 +260,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int tireMaterial = 9;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED00D>]
     public int TireMaterial
     {
@@ -244,6 +269,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int damperModel = 2;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED00E>]
     public int DamperModel
     {
@@ -252,6 +278,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int gameplayModel = 6;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED010>]
     public int GameplayModel
     {
@@ -260,6 +287,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerGroundTorque = 0.01f;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED010>]
     public float SteerGroundTorque
     {
@@ -268,6 +296,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundEngineVolume;
+    /// <remarks>Applied with: 0x012, 0x015, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED012>]
     [AppliedWithChunk<Chunk090ED015>]
     [AppliedWithChunk<Chunk090ED032>]
@@ -278,6 +307,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundSkidSandVolume;
+    /// <remarks>Applied with: 0x012, 0x015, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED012>]
     [AppliedWithChunk<Chunk090ED015>]
     [AppliedWithChunk<Chunk090ED032>]
@@ -288,6 +318,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundImpactVolume;
+    /// <remarks>Applied with: 0x012, 0x015, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED012>]
     [AppliedWithChunk<Chunk090ED015>]
     [AppliedWithChunk<Chunk090ED032>]
@@ -298,6 +329,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundBodyImpact_Hard_Threshold;
+    /// <remarks>Applied with: 0x012, 0x015, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED012>]
     [AppliedWithChunk<Chunk090ED015>]
     [AppliedWithChunk<Chunk090ED032>]
@@ -308,6 +340,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundSkidConcreteVolume;
+    /// <remarks>Applied with: 0x015, 0x032 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED015>]
     [AppliedWithChunk<Chunk090ED032>]
     public float SoundSkidConcreteVolume
@@ -317,6 +350,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float displaySteerRadiusMin;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED016>]
     public float DisplaySteerRadiusMin
     {
@@ -325,6 +359,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float displaySteerRadiusCoef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED016>]
     public float DisplaySteerRadiusCoef
     {
@@ -333,6 +368,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float decrepitudeImpactVal;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED017>]
     public float DecrepitudeImpactVal
     {
@@ -341,6 +377,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float decrepitudeCoef;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED017>]
     public float DecrepitudeCoef
     {
@@ -349,6 +386,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float vibrationPeriodSpeedCoef;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED017>]
     public float VibrationPeriodSpeedCoef
     {
@@ -357,6 +395,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airAngularFluidFrictionCoef2 = 1f;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED018>]
     public float AirAngularFluidFrictionCoef2
     {
@@ -365,6 +404,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float bodyFrictionCoef_Concrete = 0.8f;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float BodyFrictionCoef_Concrete
@@ -374,6 +414,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float bodyFrictionCoef_Metal = 0.4f;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float BodyFrictionCoef_Metal
@@ -383,6 +424,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float bodyRestCoef_Metal;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float BodyRestCoef_Metal
@@ -392,6 +434,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float bodyRestCoef_Concrete;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float BodyRestCoef_Concrete
@@ -401,6 +444,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float wheelFrictionCoef_Concrete;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     public float WheelFrictionCoef_Concrete
     {
@@ -409,6 +453,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float wheelRestCoef_Concrete;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float WheelRestCoef_Concrete
@@ -418,6 +463,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float wheelFrictionCoef_Metal;
+    /// <remarks>Applied with: 0x019 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     public float WheelFrictionCoef_Metal
     {
@@ -426,6 +472,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float wheelRestCoef_Metal;
+    /// <remarks>Applied with: 0x019, 0x097 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED019>]
     [AppliedWithChunk<Chunk090ED097>]
     public float WheelRestCoef_Metal
@@ -435,6 +482,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airGravityCoef = 1f;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED01D>]
     public float AirGravityCoef
     {
@@ -443,6 +491,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float rolloverAxial;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED01D>]
     public float RolloverAxial
     {
@@ -451,6 +500,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int airControlDuration;
+    /// <remarks>Applied with: 0x01E, 0x095 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED01E>]
     [AppliedWithChunk<Chunk090ED095>]
     public int AirControlDuration
@@ -460,6 +510,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerAngleMax = 0.5235988f;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED020>]
     public float SteerAngleMax
     {
@@ -468,6 +519,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float slipAngleForceMax = 0.08726647f;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED020>]
     public float SlipAngleForceMax
     {
@@ -476,6 +528,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float slipAngleForceCoef1 = 10f;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED020>]
     public float SlipAngleForceCoef1
     {
@@ -484,6 +537,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float slipAngleForceCoef2 = 0.01f;
+    /// <remarks>Applied with: 0x020 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED020>]
     public float SlipAngleForceCoef2
     {
@@ -492,6 +546,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float angularSpeedImpulseScale = 1f;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED023>]
     public float AngularSpeedImpulseScale
     {
@@ -500,6 +555,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerLowSpeed = 20f;
+    /// <remarks>Applied with: 0x023 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED023>]
     public float SteerLowSpeed
     {
@@ -508,6 +564,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? accelCurve;
+    /// <remarks>Applied with: 0x024, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED024>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? AccelCurve
@@ -517,6 +574,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float lateralSlopeAdherenceMin;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED026>]
     public float LateralSlopeAdherenceMin
     {
@@ -525,6 +583,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float lateralSlopeAdherenceMax;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED026>]
     public float LateralSlopeAdherenceMax
     {
@@ -533,6 +592,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float axialSlopeAdherenceMin;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED026>]
     public float AxialSlopeAdherenceMin
     {
@@ -541,6 +601,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float axialSlopeAdherenceMax;
+    /// <remarks>Applied with: 0x026 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED026>]
     public float AxialSlopeAdherenceMax
     {
@@ -549,6 +610,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerGroundTorqueSlippingCoef;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED027>]
     public float SteerGroundTorqueSlippingCoef
     {
@@ -557,6 +619,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float maxSideFrictionBlendCoef;
+    /// <remarks>Applied with: 0x027 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED027>]
     public float MaxSideFrictionBlendCoef
     {
@@ -565,6 +628,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? maxSideFriction;
+    /// <remarks>Applied with: 0x028, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED028>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? MaxSideFriction
@@ -574,6 +638,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float maxSideFrictionSliding = 0.6f;
+    /// <remarks>Applied with: 0x028, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED028>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float MaxSideFrictionSliding
@@ -583,6 +648,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundSlowDownBase = 1f;
+    /// <remarks>Applied with: 0x028, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED028>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float GroundSlowDownBase
@@ -592,6 +658,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperTension = 5f;
+    /// <remarks>Applied with: 0x028, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED028>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float DamperTension
@@ -601,6 +668,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float sideFriction1 = -1f;
+    /// <remarks>Applied with: 0x029, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED029>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float SideFriction1
@@ -610,6 +678,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? rolloverLateral;
+    /// <remarks>Applied with: 0x029, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED029>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? RolloverLateral
@@ -619,6 +688,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? lateralContactSlowDown;
+    /// <remarks>Applied with: 0x02A, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02A>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? LateralContactSlowDown
@@ -628,6 +698,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? steerSlowDown;
+    /// <remarks>Applied with: 0x02B, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02B>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? SteerSlowDown
@@ -637,6 +708,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float sideFriction2;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED02B>]
     public float SideFriction2
     {
@@ -645,6 +717,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float rubberBallElasticity;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED02B>]
     public float RubberBallElasticity
     {
@@ -653,6 +726,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int steerSlowDownFadeInDuration;
+    /// <remarks>Applied with: 0x02B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED02B>]
     public int SteerSlowDownFadeInDuration
     {
@@ -661,6 +735,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? rolloverLateralFromAngle;
+    /// <remarks>Applied with: 0x02C, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? RolloverLateralFromAngle
@@ -670,6 +745,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airControlMaxAngularSpeedY = 3.1415927f;
+    /// <remarks>Applied with: 0x02C, 0x095, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED095>]
     [AppliedWithChunk<Chunk090ED0AF>]
@@ -680,6 +756,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeCoef;
+    /// <remarks>Applied with: 0x02C, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float BrakeCoef
@@ -689,6 +766,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeMax = 500f;
+    /// <remarks>Applied with: 0x02C, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float BrakeMax
@@ -698,6 +776,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeMaxDynamic = 500f;
+    /// <remarks>Applied with: 0x02C, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float BrakeMaxDynamic
@@ -707,6 +786,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundSlowDownCoef;
+    /// <remarks>Applied with: 0x02C, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02C>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float GroundSlowDownCoef
@@ -716,6 +796,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int steerSlowDownFadeOutDuration;
+    /// <remarks>Applied with: 0x02D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED02D>]
     public int SteerSlowDownFadeOutDuration
     {
@@ -724,6 +805,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerSlowDownCoef;
+    /// <remarks>Applied with: 0x02E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED02E>]
     public float SteerSlowDownCoef
     {
@@ -732,6 +814,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int turboYellowAccelCoefDuration = 1000;
+    /// <remarks>Applied with: 0x02F, 0x060, 0x094 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED02F>]
     [AppliedWithChunk<Chunk090ED060>]
     [AppliedWithChunk<Chunk090ED094>]
@@ -745,6 +828,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// <summary>
     /// encryption trick here
     /// </summary>
+    /// <remarks>Applied with: 0x030, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED030>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? SteerDriveTorque
@@ -754,6 +838,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float limitToMaxSpeedForce = 10f;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED031>]
     public float LimitToMaxSpeedForce
     {
@@ -762,6 +847,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float slopeSpeedGainLimit;
+    /// <remarks>Applied with: 0x031 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED031>]
     public float SlopeSpeedGainLimit
     {
@@ -770,6 +856,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundWheelImpact_Hard_Threshold;
+    /// <remarks>Applied with: 0x032 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED032>]
     public float SoundWheelImpact_Hard_Threshold
     {
@@ -778,6 +865,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundWheelImpact_Soft_Threshold;
+    /// <remarks>Applied with: 0x032 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED032>]
     public float SoundWheelImpact_Soft_Threshold
     {
@@ -786,6 +874,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float soundBodyImpact_Soft_Threshold;
+    /// <remarks>Applied with: 0x032 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED032>]
     public float SoundBodyImpact_Soft_Threshold
     {
@@ -794,6 +883,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float angularSpeedClamp = 100f;
+    /// <remarks>Applied with: 0x033 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED033>]
     public float AngularSpeedClamp
     {
@@ -802,6 +892,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float linearSpeed2PositiveDeltaMax = 10000f;
+    /// <remarks>Applied with: 0x034 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED034>]
     public float LinearSpeed2PositiveDeltaMax
     {
@@ -810,6 +901,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool noSteerSlowDownWhenSlipping;
+    /// <remarks>Applied with: 0x035 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED035>]
     public bool NoSteerSlowDownWhenSlipping
     {
@@ -818,6 +910,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionSquareForce = 1f;
+    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4LateralFrictionSquareForce
@@ -827,6 +920,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionTorque = 1f;
+    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4LateralFrictionTorque
@@ -836,6 +930,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionForce = 1f;
+    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4LateralFrictionForce
@@ -845,6 +940,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m4SteerRadiusFromSpeed;
+    /// <remarks>Applied with: 0x036, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED036>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M4SteerRadiusFromSpeed
@@ -854,6 +950,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m4MaxFrictionTorqueFromSpeed;
+    /// <remarks>Applied with: 0x037, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED037>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M4MaxFrictionTorqueFromSpeed
@@ -863,6 +960,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4MaxFrictionTorqueWhenSlippingCoef = 1f;
+    /// <remarks>Applied with: 0x038, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED038>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4MaxFrictionTorqueWhenSlippingCoef
@@ -872,6 +970,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m4MaxFrictionForceFromSpeed;
+    /// <remarks>Applied with: 0x038, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED038>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M4MaxFrictionForceFromSpeed
@@ -881,6 +980,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4MaxFrictionForceWhenSlipping = 1f;
+    /// <remarks>Applied with: 0x038, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED038>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4MaxFrictionForceWhenSlipping
@@ -890,6 +990,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4SteerRadiusWhenSlippingCoef = 1f;
+    /// <remarks>Applied with: 0x038, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED038>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M4SteerRadiusWhenSlippingCoef
@@ -899,6 +1000,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LateralFrictionSquareTorque;
+    /// <remarks>Applied with: 0x039 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED039>]
     public float M4LateralFrictionSquareTorque
     {
@@ -907,6 +1009,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4SlipAngleSpeed = 0.005f;
+    /// <remarks>Applied with: 0x03A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED03A>]
     public float M4SlipAngleSpeed
     {
@@ -915,6 +1018,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4SteerRadiusCoefFromSlipAngle = 0.3f;
+    /// <remarks>Applied with: 0x03A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED03A>]
     public float M4SteerRadiusCoefFromSlipAngle
     {
@@ -923,6 +1027,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4LeaveSlippingSpeed = 1f;
+    /// <remarks>Applied with: 0x03B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED03B>]
     public float M4LeaveSlippingSpeed
     {
@@ -931,6 +1036,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m4SteerAngleWhenSlippingMax = 0.7853982f;
+    /// <remarks>Applied with: 0x03C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED03C>]
     public float M4SteerAngleWhenSlippingMax
     {
@@ -939,6 +1045,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m5SlippingAccelCurve;
+    /// <remarks>Applied with: 0x03D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED03D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M5SlippingAccelCurve
@@ -948,6 +1055,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m5LateralConstantSlowDownDuration = 500;
+    /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED03E>]
     public int M5LateralConstantSlowDownDuration
     {
@@ -956,6 +1064,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m5SteerCoefFromSpeed;
+    /// <remarks>Applied with: 0x03F, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED03F>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M5SteerCoefFromSpeed
@@ -965,6 +1074,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m5SmoothInputSteerDurationFromSpeed;
+    /// <remarks>Applied with: 0x040, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED040>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M5SmoothInputSteerDurationFromSpeed
@@ -974,6 +1084,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m5MaxAxialRolloverTorque = 20f;
+    /// <remarks>Applied with: 0x041 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED041>]
     public float M5MaxAxialRolloverTorque
     {
@@ -982,6 +1093,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m5KeepSlidingAccelDuration;
+    /// <remarks>Applied with: 0x041 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED041>]
     public int M5KeepSlidingAccelDuration
     {
@@ -990,6 +1102,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m5KeepSteerSlowDownDurarion = 1;
+    /// <remarks>Applied with: 0x042 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED042>]
     public int M5KeepSteerSlowDownDurarion
     {
@@ -998,6 +1111,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m5KeepNoSteerSlowDownWhenSlippingDuration;
+    /// <remarks>Applied with: 0x043 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED043>]
     public int M5KeepNoSteerSlowDownWhenSlippingDuration
     {
@@ -1006,6 +1120,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m5AccelSlipCoefMax = 1f;
+    /// <remarks>Applied with: 0x044 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED044>]
     public float M5AccelSlipCoefMax
     {
@@ -1014,6 +1129,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterGravity = 1.0f;
+    /// <remarks>Applied with: 0x045, 0x046 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED045>]
     [AppliedWithChunk<Chunk090ED046>]
     public float WaterGravity
@@ -1023,6 +1139,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterReboundMinHSpeed = 55.555557f;
+    /// <remarks>Applied with: 0x045, 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED045>]
     [AppliedWithChunk<Chunk090ED046>]
     [AppliedWithChunk<Chunk090ED0AF>]
@@ -1033,6 +1150,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterBumpMinSpeed = 50f;
+    /// <remarks>Applied with: 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED046>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float WaterBumpMinSpeed
@@ -1042,6 +1160,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? waterBumpSlowDownFromSpeedRatio;
+    /// <remarks>Applied with: 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED046>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? WaterBumpSlowDownFromSpeedRatio
@@ -1051,6 +1170,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? waterFrictionFromSpeed;
+    /// <remarks>Applied with: 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED046>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? WaterFrictionFromSpeed
@@ -1060,6 +1180,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? waterReboundFromSpeedRatio;
+    /// <remarks>Applied with: 0x046, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED046>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? WaterReboundFromSpeedRatio
@@ -1069,6 +1190,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterAngularFriction = 0.1f;
+    /// <remarks>Applied with: 0x047 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED047>]
     public float WaterAngularFriction
     {
@@ -1077,6 +1199,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CFuncKeysReal>? waterSplashFromSpeedRef;
+    /// <remarks>Applied with: 0x048 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED048>]
     public CFuncKeysReal? WaterSplashFromSpeed
     {
@@ -1085,6 +1208,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? modulationFromWheelCompression;
+    /// <remarks>Applied with: 0x049, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED049>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? ModulationFromWheelCompression
@@ -1094,6 +1218,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6InertialMass = 5f;
+    /// <remarks>Applied with: 0x04A, 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED04A>]
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
@@ -1104,6 +1229,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6ForceEpsilon = 0.01f;
+    /// <remarks>Applied with: 0x04D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED04D>]
     public float M6ForceEpsilon
     {
@@ -1112,6 +1238,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6InertialTorqueModualtionX = 0.1f;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED04E>]
     public float M6InertialTorqueModualtionX
     {
@@ -1120,6 +1247,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6InertialTorqueModulationZ = 0.1f;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED04E>]
     public float M6InertialTorqueModulationZ
     {
@@ -1128,6 +1256,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxSpeed4Burnout = 10f;
+    /// <remarks>Applied with: 0x04F, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED04F>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MaxSpeed4Burnout
@@ -1137,6 +1266,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m6BurnoutRadius;
+    /// <remarks>Applied with: 0x04F, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED04F>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M6BurnoutRadius
@@ -1146,6 +1276,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutFricMod = 0.01f;
+    /// <remarks>Applied with: 0x051 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED051>]
     public float M6BurnoutFricMod
     {
@@ -1154,6 +1285,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m6RolloverLateralFromSpeedRatio;
+    /// <remarks>Applied with: 0x052, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED052>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M6RolloverLateralFromSpeedRatio
@@ -1163,6 +1295,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutCenterForceCoeff2 = 0.2f;
+    /// <remarks>Applied with: 0x053 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED053>]
     public float M6BurnoutCenterForceCoeff2
     {
@@ -1171,6 +1304,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutRpmAcc = 5000f;
+    /// <remarks>Applied with: 0x056 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED056>]
     public float M6BurnoutRpmAcc
     {
@@ -1179,6 +1313,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AirRpmAcc = 12000f;
+    /// <remarks>Applied with: 0x056 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED056>]
     public float M6AirRpmAcc
     {
@@ -1187,6 +1322,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AirRpmDeadening = 8000f;
+    /// <remarks>Applied with: 0x056 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED056>]
     public float M6AirRpmDeadening
     {
@@ -1195,6 +1331,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float[]? m6RpmWantedOnGearUp;
+    /// <remarks>Applied with: 0x057 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED057>]
     public float[]? M6RpmWantedOnGearUp
     {
@@ -1203,6 +1340,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmLossCoefOnGearUp = 10000f;
+    /// <remarks>Applied with: 0x058 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED058>]
     public float M6RpmLossCoefOnGearUp
     {
@@ -1211,6 +1349,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmGainCoefOnGearDown = 7000f;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED059>]
     public float M6RpmGainCoefOnGearDown
     {
@@ -1219,6 +1358,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitPositiveForTakeOffFront = 10f;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED059>]
     public float M6SpeedLimitPositiveForTakeOffFront
     {
@@ -1227,6 +1367,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmGainOnTakeOff = 10000f;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED059>]
     public float M6RpmGainOnTakeOff
     {
@@ -1235,6 +1376,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6RpmLossOnTakeOffFinished = 4000f;
+    /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED059>]
     public float M6RpmLossOnTakeOffFinished
     {
@@ -1243,6 +1385,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitPositiveForTakeOffRear = 2f;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
     public float M6SpeedLimitPositiveForTakeOffRear
     {
@@ -1251,6 +1394,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitNegForTakeOffFront = -2f;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
     public float M6SpeedLimitNegForTakeOffFront
     {
@@ -1259,6 +1403,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6SpeedLimitNegTakeOffRear = -10f;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05A>]
     public float M6SpeedLimitNegTakeOffRear
     {
@@ -1267,6 +1412,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CFuncKeysReal>? brakeHeatSpeedFromFBrakeRef;
+    /// <remarks>Applied with: 0x05B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05B>]
     public CFuncKeysReal? BrakeHeatSpeedFromFBrake
     {
@@ -1275,6 +1421,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeCoolingSpeed;
+    /// <remarks>Applied with: 0x05B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05B>]
     public float BrakeCoolingSpeed
     {
@@ -1283,6 +1430,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeMaxRear = 100f;
+    /// <remarks>Applied with: 0x05C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05C>]
     public float M6BrakeMaxRear
     {
@@ -1291,6 +1439,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeMaxDynamicRear = 50f;
+    /// <remarks>Applied with: 0x05C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05C>]
     public float M6BrakeMaxDynamicRear
     {
@@ -1299,6 +1448,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxDiffBtwnPropulsionAndSpeed = 200f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MaxDiffBtwnPropulsionAndSpeed
@@ -1308,6 +1458,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? accelCurveRear;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? AccelCurveRear
@@ -1317,6 +1468,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m6BurnoutLateralSpeed;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M6BurnoutLateralSpeed
@@ -1326,6 +1478,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutLateralSpeedCoeff = 1f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutLateralSpeedCoeff
@@ -1335,6 +1488,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MinSpeed4Burnout = 3f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MinSpeed4Burnout
@@ -1344,6 +1498,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutSteerCoeff = 6f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutSteerCoeff
@@ -1353,6 +1508,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutCenterForceCoeff = 1f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutCenterForceCoeff
@@ -1362,6 +1518,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutRadiusMax = 20f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutRadiusMax
@@ -1371,6 +1528,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutLateralSpeedMax = 10f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutLateralSpeedMax
@@ -1380,6 +1538,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutSteerCoeff2 = 2f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutSteerCoeff2
@@ -1389,6 +1548,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutSteerCoeff3 = 0.5f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutSteerCoeff3
@@ -1398,6 +1558,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeModulationWhenSlipping = 0.5f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BrakeModulationWhenSlipping
@@ -1407,6 +1568,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m6BurnoutDuration = 1000;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public int M6BurnoutDuration
@@ -1416,6 +1578,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutAccMod = 0.5f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutAccMod
@@ -1425,6 +1588,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AfterBurnoutAccMod = 4f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6AfterBurnoutAccMod
@@ -1434,6 +1598,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int m6AfterBurnoutDuration = 500;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public int M6AfterBurnoutDuration
@@ -1443,6 +1608,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6FrictionModulationWhenSlipNBrake = 0.2f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6FrictionModulationWhenSlipNBrake
@@ -1452,6 +1618,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeSmokeIntensity = 1f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BrakeSmokeIntensity
@@ -1461,6 +1628,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutSmokeVelocity = 1f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutSmokeVelocity
@@ -1470,6 +1638,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutSmokeIntensity = 5f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutSmokeIntensity
@@ -1479,6 +1648,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m6BurnoutRolloverFromSpeed;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M6BurnoutRolloverFromSpeed
@@ -1488,6 +1658,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? m6DonutRolloverFromSpeed;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? M6DonutRolloverFromSpeed
@@ -1497,6 +1668,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxDiffBtwGroundNormal = 0.35f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MaxDiffBtwGroundNormal
@@ -1506,6 +1678,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BurnoutWheelAngularRotation = 150f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6BurnoutWheelAngularRotation
@@ -1515,6 +1688,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxPosAngle4Burnout = 1.7453f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MaxPosAngle4Burnout
@@ -1524,6 +1698,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxNegAngle4Burnout = 0.785f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6MaxNegAngle4Burnout
@@ -1533,6 +1708,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6AfterBurnoutImpulse = 10f;
+    /// <remarks>Applied with: 0x05D, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float M6AfterBurnoutImpulse
@@ -1542,6 +1718,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6MaxRpm;
+    /// <remarks>Applied with: 0x05D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     public float M6MaxRpm
     {
@@ -1550,6 +1727,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float[]? engineGearRatios;
+    /// <remarks>Applied with: 0x05D, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED096>]
     public float[]? EngineGearRatios
@@ -1559,6 +1737,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float[]? engineAutoGearMaxRPMs;
+    /// <remarks>Applied with: 0x05D, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED096>]
     public float[]? EngineAutoGearMaxRPMs
@@ -1568,6 +1747,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float[]? engineAutoGearMinRPMs;
+    /// <remarks>Applied with: 0x05D, 0x096 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     [AppliedWithChunk<Chunk090ED096>]
     public float[]? EngineAutoGearMinRPMs
@@ -1577,6 +1757,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int steerDurationBeforeSteerSlowDown;
+    /// <remarks>Applied with: 0x05D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05D>]
     public int SteerDurationBeforeSteerSlowDown
     {
@@ -1585,6 +1766,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? airControlZCoefFromAngularSpeed;
+    /// <remarks>Applied with: 0x05E, 0x095 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED05E>]
     [AppliedWithChunk<Chunk090ED095>]
     public PlugCurve? AirControlZCoefFromAngularSpeed
@@ -1594,6 +1776,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float waterAngularFrictionSq = 0.2f;
+    /// <remarks>Applied with: 0x05F body chunk</remarks>
     [AppliedWithChunk<Chunk090ED05F>]
     public float WaterAngularFrictionSq
     {
@@ -1602,6 +1785,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float turboRedAccelCoef = 3f;
+    /// <remarks>Applied with: 0x060, 0x094 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED060>]
     [AppliedWithChunk<Chunk090ED094>]
     public float TurboRedAccelCoef
@@ -1611,6 +1795,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int turboRedAccelCoefDuration = 1000;
+    /// <remarks>Applied with: 0x060, 0x094 body chunks</remarks>
     [AppliedWithChunk<Chunk090ED060>]
     [AppliedWithChunk<Chunk090ED094>]
     public int TurboRedAccelCoefDuration
@@ -1620,6 +1805,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? visualSteerAngleFromSpeed;
+    /// <remarks>Applied with: 0x061, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED061>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? VisualSteerAngleFromSpeed
@@ -1629,6 +1815,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeMaxFront = 0.05f;
+    /// <remarks>Applied with: 0x062 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED062>]
     public float M6BrakeMaxFront
     {
@@ -1637,6 +1824,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float m6BrakeMaxDynamicFront = 20f;
+    /// <remarks>Applied with: 0x063 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED063>]
     public float M6BrakeMaxDynamicFront
     {
@@ -1645,6 +1833,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float linearSpeedClamp = 277.77777f;
+    /// <remarks>Applied with: 0x06A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED06A>]
     public float LinearSpeedClamp
     {
@@ -1653,6 +1842,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperOffset;
+    /// <remarks>Applied with: 0x06E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED06E>]
     public float DamperOffset
     {
@@ -1661,6 +1851,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float inputSteerAngleMaxDeg = 30f;
+    /// <remarks>Applied with: 0x072 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED072>]
     public float InputSteerAngleMaxDeg
     {
@@ -1669,6 +1860,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int driveModel;
+    /// <remarks>Applied with: 0x072 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED072>]
     public int DriveModel
     {
@@ -1677,6 +1869,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float brakeTorqueCoef = 1f;
+    /// <remarks>Applied with: 0x077, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED077>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float BrakeTorqueCoef
@@ -1686,6 +1879,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float accelTorqueCoef = 1f;
+    /// <remarks>Applied with: 0x077, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED077>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public float AccelTorqueCoef
@@ -1695,6 +1889,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_InputSteerRadiusFromSpeed;
+    /// <remarks>Applied with: 0x077, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED077>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? Drifting_InputSteerRadiusFromSpeed
@@ -1704,6 +1899,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float steerTorqueZMax = 1000f;
+    /// <remarks>Applied with: 0x078 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED078>]
     public float SteerTorqueZMax
     {
@@ -1712,6 +1908,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int inputBrakeSwitchCountMax = 4;
+    /// <remarks>Applied with: 0x07D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED07D>]
     public int InputBrakeSwitchCountMax
     {
@@ -1720,6 +1917,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normal_InputSteerAngleSmoothSpeed_OverSteer = 4.0f;
+    /// <remarks>Applied with: 0x07D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED07D>]
     public float Normal_InputSteerAngleSmoothSpeed_OverSteer
     {
@@ -1728,6 +1926,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_VehicleLateralForce_FromVehicleLateralSpeed;
+    /// <remarks>Applied with: 0x082, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED082>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? Drifting_VehicleLateralForce_FromVehicleLateralSpeed
@@ -1737,6 +1936,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_BackCoefIntensityFromSpeed;
+    /// <remarks>Applied with: 0x082, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED082>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? Drifting_BackCoefIntensityFromSpeed
@@ -1746,6 +1946,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_WheelLateralForce_FromWheelLateralSpeed;
+    /// <remarks>Applied with: 0x082, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED082>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? Drifting_WheelLateralForce_FromWheelLateralSpeed
@@ -1755,6 +1956,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_BackCoefFromSlipAngle;
+    /// <remarks>Applied with: 0x082, 0x0AF body chunks</remarks>
     [AppliedWithChunk<Chunk090ED082>]
     [AppliedWithChunk<Chunk090ED0AF>]
     public PlugCurve? Drifting_BackCoefFromSlipAngle
@@ -1764,6 +1966,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_BackCoefSmoothSpeed_Steer = 3f;
+    /// <remarks>Applied with: 0x084 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED084>]
     public float Drifting_BackCoefSmoothSpeed_Steer
     {
@@ -1772,6 +1975,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_BackCoefSmoothSpeed_StopSteer = 1f;
+    /// <remarks>Applied with: 0x084 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED084>]
     public float Drifting_BackCoefSmoothSpeed_StopSteer
     {
@@ -1780,6 +1984,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_BackCoefSmoothSpeed_CounterSteer = 3f;
+    /// <remarks>Applied with: 0x084 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED084>]
     public float Drifting_BackCoefSmoothSpeed_CounterSteer
     {
@@ -1788,6 +1993,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool normalEnv;
+    /// <remarks>Applied with: 0x085 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED085>]
     public bool NormalEnv
     {
@@ -1796,6 +2002,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normalEnvBody_FlatZoneYMin = 0.2f;
+    /// <remarks>Applied with: 0x085 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED085>]
     public float NormalEnvBody_FlatZoneYMin
     {
@@ -1804,6 +2011,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normalEnvBody_FlatZoneYMax = 0.6f;
+    /// <remarks>Applied with: 0x085 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED085>]
     public float NormalEnvBody_FlatZoneYMax
     {
@@ -1812,6 +2020,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normalEnvBody_HalfSizeX = 0.2f;
+    /// <remarks>Applied with: 0x085 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED085>]
     public float NormalEnvBody_HalfSizeX
     {
@@ -1820,6 +2029,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normalEnvBody_HalfSizeZ = 1.7f;
+    /// <remarks>Applied with: 0x085 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED085>]
     public float NormalEnvBody_HalfSizeZ
     {
@@ -1828,6 +2038,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normalEnvWheel_WidthCoef1 = 0.5f;
+    /// <remarks>Applied with: 0x086 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED086>]
     public float NormalEnvWheel_WidthCoef1
     {
@@ -1836,6 +2047,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float maxDistPerStep = 0.3f;
+    /// <remarks>Applied with: 0x088 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED088>]
     public float MaxDistPerStep
     {
@@ -1844,6 +2056,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? dragForceFromFrontSpeed;
+    /// <remarks>Applied with: 0x089 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>]
     public PlugCurve? DragForceFromFrontSpeed
     {
@@ -1852,6 +2065,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceVel_VelYMin;
+    /// <remarks>Applied with: 0x089 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(2)]
     public float? AdherenceVel_VelYMin
     {
@@ -1860,6 +2074,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceVel_VelYMax = 10f;
+    /// <remarks>Applied with: 0x089 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(2)]
     public float? AdherenceVel_VelYMax
     {
@@ -1868,6 +2083,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceVel_VelHMin = 130f;
+    /// <remarks>Applied with: 0x089 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(2)]
     public float? AdherenceVel_VelHMin
     {
@@ -1876,6 +2092,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceVel_VelHMax = 230f;
+    /// <remarks>Applied with: 0x089 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(2)]
     public float? AdherenceVel_VelHMax
     {
@@ -1884,6 +2101,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAngleMinDeg = 45f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAngleMinDeg
     {
@@ -1892,6 +2110,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAngleMaxDeg = 80f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAngleMaxDeg
     {
@@ -1900,6 +2119,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAngleMinDeg_Roll = 40f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAngleMinDeg_Roll
     {
@@ -1908,6 +2128,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAngleMaxDeg_Roll = 60f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAngleMaxDeg_Roll
     {
@@ -1916,6 +2137,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceMin_ForTorque = 0.3f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceMin_ForTorque
     {
@@ -1924,6 +2146,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceMin_ForDragForce = 1f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceMin_ForDragForce
     {
@@ -1932,6 +2155,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceVelMax = 1f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceVelMax
     {
@@ -1940,6 +2164,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAntiSteerUpCoef = 1f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAntiSteerUpCoef
     {
@@ -1948,6 +2173,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAngleMinDeg_AntiSteerUp = 80f;
+    /// <remarks>Applied with: 0x089 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(4)]
     public float? AdherenceAngleMinDeg_AntiSteerUp
     {
@@ -1956,6 +2182,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? adherenceAccelDirYCoef;
+    /// <remarks>Applied with: 0x089 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(6)]
     public float? AdherenceAccelDirYCoef
     {
@@ -1964,6 +2191,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool? adherenceUseMaxForAccel;
+    /// <remarks>Applied with: 0x089 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(7)]
     public bool? AdherenceUseMaxForAccel
     {
@@ -1972,6 +2200,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? accelCurveTargetSpeedTruck;
+    /// <remarks>Applied with: 0x089 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(8)]
     public PlugCurve? AccelCurveTargetSpeedTruck
     {
@@ -1980,6 +2209,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? targetSpeedFromSpeedTruck;
+    /// <remarks>Applied with: 0x089 v8+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(8)]
     public PlugCurve? TargetSpeedFromSpeedTruck
     {
@@ -1988,6 +2218,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? targetSpeedFromSpeedTruckRear;
+    /// <remarks>Applied with: 0x089 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED089>(9)]
     public PlugCurve? TargetSpeedFromSpeedTruckRear
     {
@@ -1996,6 +2227,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float inputGasSmoothSpeed = 5f;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public float InputGasSmoothSpeed
     {
@@ -2004,6 +2236,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float inputBrakeSmoothSpeed = 5f;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public float InputBrakeSmoothSpeed
     {
@@ -2012,6 +2245,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normal_InputSteerAngleSmoothSpeed_Steer = 5f;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public float Normal_InputSteerAngleSmoothSpeed_Steer
     {
@@ -2020,6 +2254,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normal_InputSteerAngleSmoothSpeedReset = 2f;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public float Normal_InputSteerAngleSmoothSpeedReset
     {
@@ -2028,6 +2263,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? normal_InputSteerRadiusFromSpeed;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public PlugCurve? Normal_InputSteerRadiusFromSpeed
     {
@@ -2036,6 +2272,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_Steer
     {
@@ -2044,6 +2281,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_StopSteer
     {
@@ -2052,6 +2290,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer;
+    /// <remarks>Applied with: 0x08A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>]
     public PlugCurve? Drifting_InputSteerAngleSmoothSpeedFromSlipAngle_CounterSteer
     {
@@ -2060,6 +2299,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? normal_InputSteerSensitivityFromSpeed;
+    /// <remarks>Applied with: 0x08A v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(4)]
     public PlugCurve? Normal_InputSteerSensitivityFromSpeed
     {
@@ -2068,6 +2308,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_InputSteerSensitivityFromSpeed;
+    /// <remarks>Applied with: 0x08A v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(4)]
     public PlugCurve? Drifting_InputSteerSensitivityFromSpeed
     {
@@ -2076,6 +2317,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int? inputSteerAlgo;
+    /// <remarks>Applied with: 0x08A v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(3)]
     public int? InputSteerAlgo
     {
@@ -2084,6 +2326,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? inputSteerPowFromSpeed;
+    /// <remarks>Applied with: 0x08A v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(6)]
     public PlugCurve? InputSteerPowFromSpeed
     {
@@ -2092,6 +2335,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool? inputRawGasBrake;
+    /// <remarks>Applied with: 0x08A v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08A>(7)]
     public bool? InputRawGasBrake
     {
@@ -2100,6 +2344,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float rollover;
+    /// <remarks>Applied with: 0x08B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>]
     public float Rollover
     {
@@ -2108,6 +2353,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool useRealGroundReferential = true;
+    /// <remarks>Applied with: 0x08B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(1)]
     public bool UseRealGroundReferential
     {
@@ -2116,6 +2362,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? steerSlowDownFromSpeed;
+    /// <remarks>Applied with: 0x08B v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(4)]
     public PlugCurve? SteerSlowDownFromSpeed
     {
@@ -2124,6 +2371,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? antiWallHitDurationInc_FromLateralContactRelSpeed;
+    /// <remarks>Applied with: 0x08B v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(9)]
     public PlugCurve? AntiWallHitDurationInc_FromLateralContactRelSpeed
     {
@@ -2132,6 +2380,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? antiWallHitAccelCoefFromSpeed;
+    /// <remarks>Applied with: 0x08B v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(22)]
     public PlugCurve? AntiWallHitAccelCoefFromSpeed
     {
@@ -2140,6 +2389,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float antiWallHitSpeedTransfertCoef = 0.1f;
+    /// <remarks>Applied with: 0x08B v13+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(13)]
     public float AntiWallHitSpeedTransfertCoef
     {
@@ -2148,6 +2398,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? engineSlowDownFromSpeed;
+    /// <remarks>Applied with: 0x08B v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(6)]
     public PlugCurve? EngineSlowDownFromSpeed
     {
@@ -2156,6 +2407,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? normal_WheelLateralForce_FromWheelLateralSpeed;
+    /// <remarks>Applied with: 0x08B v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(10)]
     public PlugCurve? Normal_WheelLateralForce_FromWheelLateralSpeed
     {
@@ -2164,6 +2416,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? normal_VehicleBrakeForce_FromVehicleBrakeSpeed;
+    /// <remarks>Applied with: 0x08B v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(10)]
     public PlugCurve? Normal_VehicleBrakeForce_FromVehicleBrakeSpeed
     {
@@ -2172,6 +2425,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? drifting_VehicleBrakeForce_FromVehicleBrakeSpeed;
+    /// <remarks>Applied with: 0x08B v10+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(10)]
     public PlugCurve? Drifting_VehicleBrakeForce_FromVehicleBrakeSpeed
     {
@@ -2180,6 +2434,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_VehicleLateralSpeedMin = 5f;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public float Drifting_VehicleLateralSpeedMin
     {
@@ -2188,6 +2443,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_VehicleBrakeSpeedMin = 1f;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public float Drifting_VehicleBrakeSpeedMin
     {
@@ -2196,6 +2452,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float drifting_TransfertForceCoef = 1f;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public float Drifting_TransfertForceCoef
     {
@@ -2204,6 +2461,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normal_VehicleLateralSpeedMax = 10f;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public float Normal_VehicleLateralSpeedMax
     {
@@ -2212,6 +2470,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float normal_VehicleBrakeSpeedMax = 3f;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public float Normal_VehicleBrakeSpeedMax
     {
@@ -2220,6 +2479,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? impulseDamperReduceCoef_FromLocalVelY;
+    /// <remarks>Applied with: 0x08B v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(11)]
     public PlugCurve? ImpulseDamperReduceCoef_FromLocalVelY
     {
@@ -2228,6 +2488,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? airFrictionFromSpeed_Variable;
+    /// <remarks>Applied with: 0x08B v14+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(14)]
     public PlugCurve? AirFrictionFromSpeed_Variable
     {
@@ -2236,6 +2497,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? airFrictionFromSpeed;
+    /// <remarks>Applied with: 0x08B v15+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(15)]
     public PlugCurve? AirFrictionFromSpeed
     {
@@ -2244,6 +2506,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? antiWallHitForceFromSpeed;
+    /// <remarks>Applied with: 0x08B v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(16)]
     public PlugCurve? AntiWallHitForceFromSpeed
     {
@@ -2252,6 +2515,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int antiWallHitDurationMax = 500;
+    /// <remarks>Applied with: 0x08B v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(17)]
     public int AntiWallHitDurationMax
     {
@@ -2260,6 +2524,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int drifting_BackCoefDisableDurationAfterLanding = 1000;
+    /// <remarks>Applied with: 0x08B v18+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(18)]
     public int Drifting_BackCoefDisableDurationAfterLanding
     {
@@ -2268,6 +2533,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? groundSlowDownFromSpeed;
+    /// <remarks>Applied with: 0x08B v19+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(19)]
     public PlugCurve? GroundSlowDownFromSpeed
     {
@@ -2276,6 +2542,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundAngularFluidFrictionSpeedMin;
+    /// <remarks>Applied with: 0x08B v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(20)]
     public float GroundAngularFluidFrictionSpeedMin
     {
@@ -2284,6 +2551,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundAngularFluidFrictionCoef1;
+    /// <remarks>Applied with: 0x08B v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(20)]
     public float GroundAngularFluidFrictionCoef1
     {
@@ -2292,6 +2560,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float groundAngularFluidFrictionCoef2;
+    /// <remarks>Applied with: 0x08B v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(20)]
     public float GroundAngularFluidFrictionCoef2
     {
@@ -2300,6 +2569,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int keepContactDuration = 50;
+    /// <remarks>Applied with: 0x08B v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(21)]
     public int KeepContactDuration
     {
@@ -2308,6 +2578,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int wheelKeepContactDuration = 200;
+    /// <remarks>Applied with: 0x08B v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(21)]
     public int WheelKeepContactDuration
     {
@@ -2316,6 +2587,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int keepDragForceDuration;
+    /// <remarks>Applied with: 0x08B v21+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(21)]
     public int KeepDragForceDuration
     {
@@ -2324,6 +2596,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool magnetic = true;
+    /// <remarks>Applied with: 0x08B v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(23)]
     public bool Magnetic
     {
@@ -2332,6 +2605,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float magneticForce = 9.81f;
+    /// <remarks>Applied with: 0x08B v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(23)]
     public float MagneticForce
     {
@@ -2340,6 +2614,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float magneticGravity = 0.3333f;
+    /// <remarks>Applied with: 0x08B v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(23)]
     public float MagneticGravity
     {
@@ -2348,6 +2623,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? magneticSuperDragForceFromSpeedKmh;
+    /// <remarks>Applied with: 0x08B v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(23)]
     public PlugCurve? MagneticSuperDragForceFromSpeedKmh
     {
@@ -2356,6 +2632,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int magneticKeepContactDuration = 400;
+    /// <remarks>Applied with: 0x08B v24+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(24)]
     public int MagneticKeepContactDuration
     {
@@ -2364,6 +2641,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool magneticHackEnabled;
+    /// <remarks>Applied with: 0x08B v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(25)]
     public bool MagneticHackEnabled
     {
@@ -2372,6 +2650,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float magneticHackSpeedOffset_Val = 3f;
+    /// <remarks>Applied with: 0x08B v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(25)]
     public float MagneticHackSpeedOffset_Val
     {
@@ -2380,6 +2659,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float magneticHackAccelCoef_Val = 1.1f;
+    /// <remarks>Applied with: 0x08B v26+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(26)]
     public float MagneticHackAccelCoef_Val
     {
@@ -2388,6 +2668,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int turboBrakeDuration = 1000;
+    /// <remarks>Applied with: 0x08B v29+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(29)]
     public int TurboBrakeDuration
     {
@@ -2396,6 +2677,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float turboBrakeCoef = 2f;
+    /// <remarks>Applied with: 0x08B v29+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(29)]
     public float TurboBrakeCoef
     {
@@ -2404,6 +2686,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float turboBrakeMinSpeedZKmh = 10f;
+    /// <remarks>Applied with: 0x08B v29+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08B>(29)]
     public float TurboBrakeMinSpeedZKmh
     {
@@ -2412,6 +2695,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float impulseGroundWheelRestCoef = -0.8f;
+    /// <remarks>Applied with: 0x08C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08C>]
     public float ImpulseGroundWheelRestCoef
     {
@@ -2420,6 +2704,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float impulseGroundBodyRestCoef = -0.8f;
+    /// <remarks>Applied with: 0x08C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08C>]
     public float ImpulseGroundBodyRestCoef
     {
@@ -2428,6 +2713,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float impulseRestCoef;
+    /// <remarks>Applied with: 0x08C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08C>]
     public float ImpulseRestCoef
     {
@@ -2436,6 +2722,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float impulseFriction;
+    /// <remarks>Applied with: 0x08C body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08C>]
     public float ImpulseFriction
     {
@@ -2444,6 +2731,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? impulseRotationCoef = 1.0f;
+    /// <remarks>Applied with: 0x08C v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08C>(1)]
     public float? ImpulseRotationCoef
     {
@@ -2452,6 +2740,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float damperKeepContactDuration = 10.0f;
+    /// <remarks>Applied with: 0x08D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>]
     public float DamperKeepContactDuration
     {
@@ -2460,6 +2749,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool damperForceAllways;
+    /// <remarks>Applied with: 0x08D body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>]
     public bool DamperForceAllways
     {
@@ -2468,6 +2758,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool? damperForceSmoothStop;
+    /// <remarks>Applied with: 0x08D v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>(2)]
     public bool? DamperForceSmoothStop
     {
@@ -2476,6 +2767,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? afterJumpOrientationForceDuration = 10.0f;
+    /// <remarks>Applied with: 0x08D v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>(1)]
     public float? AfterJumpOrientationForceDuration
     {
@@ -2484,6 +2776,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? afterJumpOrientationForceCoef;
+    /// <remarks>Applied with: 0x08D v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>(1)]
     public float? AfterJumpOrientationForceCoef
     {
@@ -2492,6 +2785,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float afterJumpOrientationAngularSpeedThreshold = 0.01f;
+    /// <remarks>Applied with: 0x08D v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>(4)]
     public float AfterJumpOrientationAngularSpeedThreshold
     {
@@ -2500,6 +2794,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool? magneticHackDamperForceAllways = true;
+    /// <remarks>Applied with: 0x08D v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08D>(5)]
     public bool? MagneticHackDamperForceAllways
     {
@@ -2508,6 +2803,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRefList<CPlugCamControlModel>? cameraModels;
+    /// <remarks>Applied with: 0x08E body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08E>]
     public NodeRefList<CPlugCamControlModel>? CameraModels
     {
@@ -2516,6 +2812,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRefList<CPlugCamControlModel>? cameraModels_Console;
+    /// <remarks>Applied with: 0x08E v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08E>(1)]
     public NodeRefList<CPlugCamControlModel>? CameraModels_Console
     {
@@ -2524,6 +2821,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CPlugCamControlModel>? camModelRearRef;
+    /// <remarks>Applied with: 0x08E v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08E>(2)]
     public CPlugCamControlModel? CamModelRear
     {
@@ -2532,6 +2830,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CPlugCamControlModel>? camModelIronSightRef;
+    /// <remarks>Applied with: 0x08E v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED08E>(3)]
     public CPlugCamControlModel? CamModelIronSight
     {
@@ -2540,6 +2839,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? turboYellowConstantFromSpeed;
+    /// <remarks>Applied with: 0x094 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>]
     public PlugCurve? TurboYellowConstantFromSpeed
     {
@@ -2548,6 +2848,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? turboRedConstantFromSpeed;
+    /// <remarks>Applied with: 0x094 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>]
     public PlugCurve? TurboRedConstantFromSpeed
     {
@@ -2556,6 +2857,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int? turboYellowConstantDuration = 1000;
+    /// <remarks>Applied with: 0x094 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(1)]
     public int? TurboYellowConstantDuration
     {
@@ -2564,6 +2866,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int? turboRedConstantDuration = 1000;
+    /// <remarks>Applied with: 0x094 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(1)]
     public int? TurboRedConstantDuration
     {
@@ -2572,6 +2875,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? turboCheatAccelCoef = 3f;
+    /// <remarks>Applied with: 0x094 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(2)]
     public float? TurboCheatAccelCoef
     {
@@ -2580,6 +2884,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private PlugCurve? turboCheatConstantFromSpeed;
+    /// <remarks>Applied with: 0x094 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(2)]
     public PlugCurve? TurboCheatConstantFromSpeed
     {
@@ -2588,6 +2893,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int? turboCheatAccelCoefDuration = 1000;
+    /// <remarks>Applied with: 0x094 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(2)]
     public int? TurboCheatAccelCoefDuration
     {
@@ -2596,6 +2902,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int? turboCheatConstantDuration = 1000;
+    /// <remarks>Applied with: 0x094 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED094>(2)]
     public int? TurboCheatConstantDuration
     {
@@ -2604,6 +2911,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool airControlNewModel7;
+    /// <remarks>Applied with: 0x095 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED095>]
     public bool AirControlNewModel7
     {
@@ -2612,6 +2920,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airControlYKeepFrictionCoef;
+    /// <remarks>Applied with: 0x095 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED095>]
     public float AirControlYKeepFrictionCoef
     {
@@ -2620,6 +2929,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airControlYStopFrictionCoef = 5f;
+    /// <remarks>Applied with: 0x095 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED095>]
     public float AirControlYStopFrictionCoef
     {
@@ -2628,6 +2938,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float airControlXStopFrictionCoef = 5f;
+    /// <remarks>Applied with: 0x095 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED095>]
     public float AirControlXStopFrictionCoef
     {
@@ -2636,6 +2947,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float engineMaxRPM = 11000f;
+    /// <remarks>Applied with: 0x096 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>]
     public float EngineMaxRPM
     {
@@ -2644,6 +2956,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float engineIdleRPM = 2500f;
+    /// <remarks>Applied with: 0x096 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>]
     public float EngineIdleRPM
     {
@@ -2652,6 +2965,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float declutchingDuration = 0.225f;
+    /// <remarks>Applied with: 0x096 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>]
     public float DeclutchingDuration
     {
@@ -2660,6 +2974,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float takeOffBoost = 5f;
+    /// <remarks>Applied with: 0x096 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>]
     public float TakeOffBoost
     {
@@ -2668,6 +2983,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool takeOffBoost_Enable;
+    /// <remarks>Applied with: 0x096 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>(4)]
     public bool TakeOffBoost_Enable
     {
@@ -2676,6 +2992,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float takeOffBoost_MaxRPMCoef = 1f;
+    /// <remarks>Applied with: 0x096 v5+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED096>(5)]
     public float TakeOffBoost_MaxRPMCoef
     {
@@ -2684,6 +3001,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool noBodyBottomFriction;
+    /// <remarks>Applied with: 0x097 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED097>]
     public bool NoBodyBottomFriction
     {
@@ -2692,6 +3010,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CMwRefBuffer>? materialsRef;
+    /// <remarks>Applied with: 0x097 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED097>(2)]
     public CMwRefBuffer? Materials
     {
@@ -2700,6 +3019,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialForce_AngleMinDeg = 80f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialForce_AngleMinDeg
     {
@@ -2708,6 +3028,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int aerialForce_Duration = 150;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public int AerialForce_Duration
     {
@@ -2716,6 +3037,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialForce_Base = 0.6f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialForce_Base
     {
@@ -2724,6 +3046,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialForce_VelYMin = 0.5f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialForce_VelYMin
     {
@@ -2732,6 +3055,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int aerialMove_Duration = 50;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public int AerialMove_Duration
     {
@@ -2740,6 +3064,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialMove_Dist = 0.2f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialMove_Dist
     {
@@ -2748,6 +3073,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialMove_SpeedMin = 5f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialMove_SpeedMin
     {
@@ -2756,6 +3082,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float aerialMove_SpeedMax = 10f;
+    /// <remarks>Applied with: 0x098 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>]
     public float AerialMove_SpeedMax
     {
@@ -2764,6 +3091,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private bool aerialMove_UseVehicleUp;
+    /// <remarks>Applied with: 0x098 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED098>(2)]
     public bool AerialMove_UseVehicleUp
     {
@@ -2772,6 +3100,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CPlugVehicleCarPhyShape>? shapeRef;
+    /// <remarks>Applied with: 0x099 body chunk</remarks>
     [AppliedWithChunk<Chunk090ED099>]
     public CPlugVehicleCarPhyShape? Shape
     {
@@ -2780,6 +3109,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private NodeRef<CPlugVehicleGearBox>? gearBoxRef;
+    /// <remarks>Applied with: 0x09A body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09A>]
     public CPlugVehicleGearBox? GearBox
     {
@@ -2788,6 +3118,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpClassicImpulseY = 25.0f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpClassicImpulseY
     {
@@ -2796,6 +3127,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpClassicImpulseZ = 15.0f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpClassicImpulseZ
     {
@@ -2804,6 +3136,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpProgressiveImpulseY = 10.0f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpProgressiveImpulseY
     {
@@ -2812,6 +3145,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpProgressiveImpulseZ = 6.0f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpProgressiveImpulseZ
     {
@@ -2820,6 +3154,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpProgressiveForceY = 0.5f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpProgressiveForceY
     {
@@ -2828,6 +3163,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float jumpProgressiveForceZ = 0.2f;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public float JumpProgressiveForceZ
     {
@@ -2836,6 +3172,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int jumpClassicDuration = 300;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public int JumpClassicDuration
     {
@@ -2844,6 +3181,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int jumpProgressiveDuration = 150;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public int JumpProgressiveDuration
     {
@@ -2852,6 +3190,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private int jumpCooldown = 2000;
+    /// <remarks>Applied with: 0x09B body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>]
     public int JumpCooldown
     {
@@ -2860,6 +3199,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpSpeed0;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpSpeed0
     {
@@ -2868,6 +3208,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpSpeed1;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpSpeed1
     {
@@ -2876,6 +3217,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpSpeed2;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpSpeed2
     {
@@ -2884,6 +3226,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpSpeed3;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpSpeed3
     {
@@ -2892,6 +3235,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpSpeed4;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpSpeed4
     {
@@ -2900,6 +3244,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpAccelFactor0;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpAccelFactor0
     {
@@ -2908,6 +3253,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpAccelFactor1;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpAccelFactor1
     {
@@ -2916,6 +3262,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpAccelFactor2;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpAccelFactor2
     {
@@ -2924,6 +3271,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? catchUpAccelFactor3;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? CatchUpAccelFactor3
     {
@@ -2932,6 +3280,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? ultraCatchUpAccelFactor0;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? UltraCatchUpAccelFactor0
     {
@@ -2940,6 +3289,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? ultraCatchUpAccelFactor1;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? UltraCatchUpAccelFactor1
     {
@@ -2948,6 +3298,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? ultraCatchUpAccelFactor2;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? UltraCatchUpAccelFactor2
     {
@@ -2956,6 +3307,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? ultraCatchUpAccelFactor3;
+    /// <remarks>Applied with: 0x09B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(1)]
     public float? UltraCatchUpAccelFactor3
     {
@@ -2964,6 +3316,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? frictionFactor;
+    /// <remarks>Applied with: 0x09B v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(2)]
     public float? FrictionFactor
     {
@@ -2972,6 +3325,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? bigCarAccelCoef = 1.5f;
+    /// <remarks>Applied with: 0x09B v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(3)]
     public float? BigCarAccelCoef
     {
@@ -2980,6 +3334,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? bigCarGravityCoef = 1.5f;
+    /// <remarks>Applied with: 0x09B v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(3)]
     public float? BigCarGravityCoef
     {
@@ -2988,6 +3343,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? bigCarControlCoef = 1.5f;
+    /// <remarks>Applied with: 0x09B v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(3)]
     public float? BigCarControlCoef
     {
@@ -2996,6 +3352,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private float? bigCarScale = 1.5f;
+    /// <remarks>Applied with: 0x09B v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(3)]
     public float? BigCarScale
     {
@@ -3004,6 +3361,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     }
 
     private Vec3? hookPos;
+    /// <remarks>Applied with: 0x09B v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk090ED09B>(3)]
     public Vec3? HookPos
     {

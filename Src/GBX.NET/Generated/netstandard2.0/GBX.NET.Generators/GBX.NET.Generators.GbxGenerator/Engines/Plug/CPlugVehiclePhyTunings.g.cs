@@ -38,6 +38,7 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugVehiclePhyTuning>? tuning;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090EC000>]
     public NodeRefList<CPlugVehiclePhyTuning>? Tuning
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehiclePhyTunings : CMwNod, IClass
     }
 
     private int tuningIndex;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk090EC000>]
     public int TuningIndex
     {

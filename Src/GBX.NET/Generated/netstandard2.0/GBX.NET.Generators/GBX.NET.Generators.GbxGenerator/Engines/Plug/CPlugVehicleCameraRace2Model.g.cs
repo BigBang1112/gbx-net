@@ -38,6 +38,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     internal override uint GetId() => Id;
 
     private float inputGasDistDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputGasDistDelta
@@ -47,6 +48,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputGasDistTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputGasDistTimeUp
@@ -56,6 +58,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputGasDistTimeDown = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputGasDistTimeDown
@@ -65,6 +68,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputBrakeDistDelta = -0.7f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputBrakeDistDelta
@@ -74,6 +78,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputBrakeDistTimeUp = 750;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputBrakeDistTimeUp
@@ -83,6 +88,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputBrakeDistTimeDown = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputBrakeDistTimeDown
@@ -92,6 +98,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputSteerDistDelta = -0.8f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputSteerDistDelta
@@ -101,6 +108,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputSteerDistTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputSteerDistTimeUp
@@ -110,6 +118,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputSteerDistTimeDown = 1500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputSteerDistTimeDown
@@ -119,6 +128,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float eventTurboFovDelta = 10.5f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float EventTurboFovDelta
@@ -128,6 +138,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventTurboFovTimeUp = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventTurboFovTimeUp
@@ -137,6 +148,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventTurboFovTimeDown = 1400;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventTurboFovTimeDown
@@ -146,6 +158,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float eventTurboDistDelta = -0.6f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float EventTurboDistDelta
@@ -155,6 +168,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventTurboDistTimeUp = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventTurboDistTimeUp
@@ -164,6 +178,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventTurboDistTimeDown = 1400;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventTurboDistTimeDown
@@ -173,6 +188,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float eventChangeGearDistDelta = -0.35f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float EventChangeGearDistDelta
@@ -182,6 +198,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventChangeGearDistTimeUp = 500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventChangeGearDistTimeUp
@@ -191,6 +208,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventChangeGearDistTimeDown = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventChangeGearDistTimeDown
@@ -200,6 +218,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float eventBurningLookAtFactorDelta = -0.4f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float EventBurningLookAtFactorDelta
@@ -209,6 +228,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventBurningLookAtFactorTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventBurningLookAtFactorTimeUp
@@ -218,6 +238,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventBurningLookAtFactorTimeDown = 1500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventBurningLookAtFactorTimeDown
@@ -227,6 +248,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float eventBurningDistDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float EventBurningDistDelta
@@ -236,6 +258,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventBurningDistTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventBurningDistTimeUp
@@ -245,6 +268,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int eventBurningDistTimeDown = 1500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int EventBurningDistTimeDown
@@ -254,6 +278,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float stateFlyingDistDelta = 2.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float StateFlyingDistDelta
@@ -263,6 +288,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingDistTimeUp = 3000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingDistTimeUp
@@ -272,6 +298,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingDistTimeDown = 2500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingDistTimeDown
@@ -281,6 +308,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float stateFlyingPlaneDistDelta = 4.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float StateFlyingPlaneDistDelta
@@ -290,6 +318,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingPlaneDistTimeUp = 3000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingPlaneDistTimeUp
@@ -299,6 +328,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingPlaneDistTimeDown = 2500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingPlaneDistTimeDown
@@ -308,6 +338,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float stateFlyingLookAtFactorDelta = -0.2f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float StateFlyingLookAtFactorDelta
@@ -317,6 +348,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingLookAtFactorTimeUp = 3000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingLookAtFactorTimeUp
@@ -326,6 +358,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingLookAtFactorTimeDown = 2500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingLookAtFactorTimeDown
@@ -335,6 +368,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputLeftSteerRollDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputLeftSteerRollDelta
@@ -344,6 +378,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputLeftSteerRollTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputLeftSteerRollTimeUp
@@ -353,6 +388,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputLeftSteerRollTimeDown = 1200;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputLeftSteerRollTimeDown
@@ -362,6 +398,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputRightSteerRollDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputRightSteerRollDelta
@@ -371,6 +408,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputRightSteerRollTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputRightSteerRollTimeUp
@@ -380,6 +418,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputRightSteerRollTimeDown = 1200;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputRightSteerRollTimeDown
@@ -389,6 +428,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputLeftSteerYawDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputLeftSteerYawDelta
@@ -398,6 +438,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputLeftSteerYawTimeUp = 2500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputLeftSteerYawTimeUp
@@ -407,6 +448,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputLeftSteerYawTimeDown = 1500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputLeftSteerYawTimeDown
@@ -416,6 +458,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float inputRightSteerYawDelta = 1.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float InputRightSteerYawDelta
@@ -425,6 +468,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputRightSteerYawTimeUp = 2000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputRightSteerYawTimeUp
@@ -434,6 +478,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputRightSteerYawTimeDown = 1500;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputRightSteerYawTimeDown
@@ -443,6 +488,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float stateFlyingLookAtStep = 0.5f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float StateFlyingLookAtStep
@@ -452,6 +498,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float minSpeed = 20.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float MinSpeed
@@ -461,6 +508,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingDurationBeforeFlyingMode = 200;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingDurationBeforeFlyingMode
@@ -470,6 +518,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int stateFlyingDurationBeforeCameraMove = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int StateFlyingDurationBeforeCameraMove
@@ -479,6 +528,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputSteerDurationBeforeBurnoutShowView = 1000;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputSteerDurationBeforeBurnoutShowView
@@ -488,6 +538,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputSteerDurationBeforeAnticipatingTurnTriggered = 200;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputSteerDurationBeforeAnticipatingTurnTriggered
@@ -497,6 +548,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputSteerDurationBeforeRollTriggered = 300;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputSteerDurationBeforeRollTriggered
@@ -506,6 +558,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private int inputNoSteerDurationBeforeReset = 150;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public int InputNoSteerDurationBeforeReset
@@ -515,6 +568,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float maxDeltaPlaneDistStep = 2.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float MaxDeltaPlaneDistStep
@@ -524,6 +578,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float maxDeltaFovStep = 19.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float MaxDeltaFovStep
@@ -532,6 +587,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         set => this.maxDeltaFovStep = value;
     }
 
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public PlugCurve? LookAtFactorFromUpSpeedRatio
@@ -540,6 +596,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         set => this.lookAtFactorFromUpSpeedRatio = value;
     }
 
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public PlugCurve? YawFromSpeed
@@ -548,6 +605,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
         set => this.yawFromSpeed = value;
     }
 
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public PlugCurve? RollFromSpeed
@@ -557,6 +615,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float deltaDistDamperKi = 10.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float DeltaDistDamperKi
@@ -566,6 +625,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float deltaDistDamperKa = 5.0f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float DeltaDistDamperKa
@@ -575,6 +635,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float deltaLookAtFactorDamperKi = 1.5f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float DeltaLookAtFactorDamperKi
@@ -584,6 +645,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float deltaLookAtFactorDamperKa = 0.7f;
+    /// <remarks>Applied with: 0x000, 0x002 v4+ body chunks</remarks>
     [AppliedWithChunk<Chunk090F6000>]
     [AppliedWithChunk<Chunk090F6002>(4)]
     public float DeltaLookAtFactorDamperKa
@@ -593,6 +655,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private bool isRollFromInput = true;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6001>]
     public bool IsRollFromInput
     {
@@ -601,6 +664,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float minDist = 0.1f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6002>]
     public float MinDist
     {
@@ -609,6 +673,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float maxDist = 3.5f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6002>]
     public float MaxDist
     {
@@ -617,6 +682,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float planeDist = 4.0f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6002>]
     public float PlaneDist
     {
@@ -625,6 +691,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float lookAtFactor = 0.5f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6002>]
     public float LookAtFactor
     {
@@ -633,6 +700,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     private float defaultFov = 75.0f;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090F6002>]
     public float DefaultFov
     {

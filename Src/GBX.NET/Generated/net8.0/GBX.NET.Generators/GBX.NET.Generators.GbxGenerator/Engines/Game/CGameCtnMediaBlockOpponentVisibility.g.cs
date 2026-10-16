@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0338B000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0338B000>]
     public TimeSingle End
     {
@@ -54,6 +56,7 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     }
 
     private EVisibility visibility;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk0338B001>]
     public EVisibility Visibility
     {

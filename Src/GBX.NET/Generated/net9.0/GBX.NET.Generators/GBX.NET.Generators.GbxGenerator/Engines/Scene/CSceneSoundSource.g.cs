@@ -41,6 +41,7 @@ public partial class CSceneSoundSource : CScenePoc, IClass
     /// <summary>
     /// Gliding/AfterBurnout/Burnout
     /// </summary>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0A00E000>]
     public CHmsSoundSource? SoundSource
     {

@@ -38,6 +38,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CPlugFileGPU>? vertexShaderRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067000>]
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
@@ -52,6 +53,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private NodeRef<CPlugFileGPU>? pixelShaderRef;
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067000>]
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
@@ -66,6 +68,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Vec4[] vertexFxValues = [];
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003, 0x004, 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067000>]
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
@@ -80,6 +83,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private NodeRef<CMwNod>? unusedShaderRef;
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09067001>]
     [AppliedWithChunk<Chunk09067002>]
     [AppliedWithChunk<Chunk09067003>]
@@ -91,6 +95,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Vec4[] pixelFxValues = [];
+    /// <remarks>Applied with: 0x004, 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067004>]
     [AppliedWithChunk<Chunk09067005>]
     [AppliedWithChunk<Chunk09067008>]
@@ -101,6 +106,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private GpuLoadFx[] vertexLoadFxs = [];
+    /// <remarks>Applied with: 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067005>]
     [AppliedWithChunk<Chunk09067008>]
     public GpuLoadFx[] VertexLoadFxs
@@ -110,6 +116,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private GpuLoadFx[] pixelLoadFxs = [];
+    /// <remarks>Applied with: 0x005, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk09067005>]
     [AppliedWithChunk<Chunk09067008>]
     public GpuLoadFx[] PixelLoadFxs
@@ -119,6 +126,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private NodeRefList<CPlugBitmapSampler>? vertexTextures = new();
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk09067006>]
     public NodeRefList<CPlugBitmapSampler>? VertexTextures
     {
@@ -127,6 +135,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private uint flags = 1;
+    /// <remarks>Applied with: 0x007, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk09067007>]
     [AppliedWithChunk<Chunk0906700C>]
     public uint Flags
@@ -139,6 +148,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     /// <summary>
     /// Names prefixed with DTwkVSkipMap_ or DTwkPSkipMap_.
     /// </summary>
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk09067009>]
     public string[] LegacySkipSamplers
     {
@@ -147,6 +157,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private PipelineGpu? vertexPipeline;
+    /// <remarks>Applied with: 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk09067009>]
     [AppliedWithChunk<Chunk0906700A>]
     public PipelineGpu? VertexPipeline
@@ -156,6 +167,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private PipelineGpu? pixelPipeline;
+    /// <remarks>Applied with: 0x009, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk09067009>]
     [AppliedWithChunk<Chunk0906700A>]
     public PipelineGpu? PixelPipeline
@@ -165,6 +177,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private string[] skipSamplers = [];
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
     [AppliedWithChunk<Chunk0906700A>]
     public string[] SkipSamplers
     {
@@ -173,6 +186,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private PipelineGpu? domainPipeline;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0906700B>]
     public PipelineGpu? DomainPipeline
     {
@@ -181,6 +195,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private PipelineGpu? hullPipeline;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0906700B>]
     public PipelineGpu? HullPipeline
     {
@@ -189,6 +204,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private PipelineGpu? geometryPipeline;
+    /// <remarks>Applied with: 0x00B v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk0906700B>(1)]
     public PipelineGpu? GeometryPipeline
     {
@@ -197,6 +213,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Sampler[] vertexSamplers = [];
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0906700D>]
     public Sampler[] VertexSamplers
     {
@@ -205,6 +222,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Sampler[] pixelSamplers = [];
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0906700D>]
     public Sampler[] PixelSamplers
     {
@@ -213,6 +231,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Sampler[] domainSamplers = [];
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0906700D>]
     public Sampler[] DomainSamplers
     {
@@ -221,6 +240,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Sampler[] hullSamplers = [];
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0906700D>]
     public Sampler[] HullSamplers
     {
@@ -229,6 +249,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     private Sampler[] geometrySamplers = [];
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0906700D>]
     public Sampler[] GeometrySamplers
     {

@@ -38,6 +38,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : CGamePlayerPr
     internal override uint GetId() => Id;
 
     private NodeRef<CInputBindingsConfig>? configRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312F000>]
     public partial CInputBindingsConfig? Config { get; set; }
 

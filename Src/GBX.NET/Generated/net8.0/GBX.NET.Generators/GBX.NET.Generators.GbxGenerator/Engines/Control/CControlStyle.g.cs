@@ -38,6 +38,7 @@ public partial class CControlStyle : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwCmdBlockMain>? focusGainedScriptRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk07017000>]
     public CMwCmdBlockMain? FocusGainedScript
     {
@@ -46,6 +47,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CMwCmdBlockMain>? focusLostScriptRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk07017000>]
     public CMwCmdBlockMain? FocusLostScript
     {
@@ -54,6 +56,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? focusSoundRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk07017000>]
     public CPlugSound? FocusSound
     {
@@ -62,6 +65,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? entrySoundRef;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk07017004>]
     public CPlugSound? EntrySound
     {
@@ -70,6 +74,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugShader>? defaultShaderRef;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
     [AppliedWithChunk<Chunk07017009>]
     public CPlugShader? DefaultShader
     {
@@ -78,6 +83,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private bool fitTextSize;
+    /// <remarks>Applied with: 0x00B body chunk</remarks>
     [AppliedWithChunk<Chunk0701700B>]
     public bool FitTextSize
     {
@@ -86,6 +92,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? enumSoundRef;
+    /// <remarks>Applied with: 0x00D, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public CPlugSound? EnumSound
@@ -95,6 +102,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugShader>? enumListShaderRef;
+    /// <remarks>Applied with: 0x00D, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public CPlugShader? EnumListShader
@@ -104,6 +112,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private int enumMaxElemCount;
+    /// <remarks>Applied with: 0x00D, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public int EnumMaxElemCount
@@ -113,6 +122,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float enumIconWidth;
+    /// <remarks>Applied with: 0x00D, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public float EnumIconWidth
@@ -122,6 +132,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float enumIconHeight;
+    /// <remarks>Applied with: 0x00D, 0x010 body chunks</remarks>
     [AppliedWithChunk<Chunk0701700D>]
     [AppliedWithChunk<Chunk07017010>]
     public float EnumIconHeight
@@ -131,6 +142,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? actionSoundRef;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0701700E>]
     public CPlugSound? ActionSound
     {
@@ -139,6 +151,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float buttonIconWidth;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0701700E>]
     public float ButtonIconWidth
     {
@@ -147,6 +160,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float buttonIconHeight;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0701700E>]
     public float ButtonIconHeight
     {
@@ -155,6 +169,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnum>? buttonDefaultIconsRef;
+    /// <remarks>Applied with: 0x00E body chunk</remarks>
     [AppliedWithChunk<Chunk0701700E>]
     public CFuncEnum? ButtonDefaultIcons
     {
@@ -163,6 +178,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private int enumForceDisplayType;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk07017010>]
     public int EnumForceDisplayType
     {
@@ -171,6 +187,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnum>? enumForceIconsRef;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk07017010>]
     public CFuncEnum? EnumForceIcons
     {
@@ -179,6 +196,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private bool quadIsLines;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -189,6 +207,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private bool quadIsFill;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -199,6 +218,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float quadZ;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -209,6 +229,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float quadZLines;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -219,6 +240,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec4 quadGradientColor0;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -229,6 +251,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec4 quadGradientColor1;
+    /// <remarks>Applied with: 0x014, 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017014>]
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
@@ -239,6 +262,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec4 quadLinesColor;
+    /// <remarks>Applied with: 0x014 body chunk</remarks>
     [AppliedWithChunk<Chunk07017014>]
     public Vec4 QuadLinesColor
     {
@@ -247,6 +271,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec2 quad_UvTopLeft;
+    /// <remarks>Applied with: 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
     public Vec2 Quad_UvTopLeft
@@ -256,6 +281,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec2 quad_UvBottomRight;
+    /// <remarks>Applied with: 0x015, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk07017015>]
     [AppliedWithChunk<Chunk07017017>]
     public Vec2 Quad_UvBottomRight
@@ -265,6 +291,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CControlEffectMaster>? effectMasterRef;
+    /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk07017016>]
     public CControlEffectMaster? EffectMaster
     {
@@ -273,6 +300,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float skew;
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
     [AppliedWithChunk<Chunk07017017>]
     public float Skew
     {
@@ -281,6 +309,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec4 lineGradientColor0;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk07017018>]
     public Vec4 LineGradientColor0
     {
@@ -289,6 +318,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private Vec4 lineGradientColor1;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
     [AppliedWithChunk<Chunk07017018>]
     public Vec4 LineGradientColor1
     {
@@ -297,6 +327,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugFont>? fontRef;
+    /// <remarks>Applied with: 0x01B body chunk</remarks>
     [AppliedWithChunk<Chunk0701701B>]
     public CPlugFont? Font
     {
@@ -305,6 +336,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float sliderBarWidth;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public float SliderBarWidth
     {
@@ -313,6 +345,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float sliderBarHeight;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public float SliderBarHeight
     {
@@ -321,6 +354,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float sliderCursorWidth;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public float SliderCursorWidth
     {
@@ -329,6 +363,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float sliderCursorHeight;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public float SliderCursorHeight
     {
@@ -337,6 +372,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? sliderSoundRef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public CPlugSound? SliderSound
     {
@@ -345,6 +381,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnum>? sliderBarIconsRef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public CFuncEnum? SliderBarIcons
     {
@@ -353,6 +390,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnum>? sliderCursorIconsRef;
+    /// <remarks>Applied with: 0x01C body chunk</remarks>
     [AppliedWithChunk<Chunk0701701C>]
     public CFuncEnum? SliderCursorIcons
     {
@@ -361,6 +399,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private bool focusAreaEnable;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public bool FocusAreaEnable
     {
@@ -369,6 +408,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? focusAreaMaterialRef;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterial
     {
@@ -377,6 +417,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? focusAreaMaterialReadOnlyRef;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialReadOnly
     {
@@ -385,6 +426,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? focusAreaMaterialSelectedRef;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialSelected
     {
@@ -393,6 +435,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugMaterial>? focusAreaMaterialFocusedRef;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugMaterial? FocusAreaMaterialFocused
     {
@@ -401,6 +444,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float focusAreaMinWidth;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public float FocusAreaMinWidth
     {
@@ -409,6 +453,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float focusAreaMinHeight;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public float FocusAreaMinHeight
     {
@@ -417,6 +462,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float focusAreaXMargin;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public float FocusAreaXMargin
     {
@@ -425,6 +471,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float focusAreaYMargin;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public float FocusAreaYMargin
     {
@@ -433,6 +480,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSolid>? focusAreaSolidRef;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public CPlugSolid? FocusAreaSolid
     {
@@ -441,6 +489,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float focusAreaZOffset;
+    /// <remarks>Applied with: 0x01D body chunk</remarks>
     [AppliedWithChunk<Chunk0701701D>]
     public float FocusAreaZOffset
     {
@@ -449,6 +498,7 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private string? buttonDefaultIconId;
+    /// <remarks>Applied with: 0x01E body chunk</remarks>
     [AppliedWithChunk<Chunk0701701E>]
     public string? ButtonDefaultIconId
     {

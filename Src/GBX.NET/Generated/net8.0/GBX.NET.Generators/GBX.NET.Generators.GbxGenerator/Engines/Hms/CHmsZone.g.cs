@@ -38,6 +38,7 @@ public partial class CHmsZone : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CHmsFogPlane>? fogPlanes;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public NodeRefList<CHmsFogPlane>? FogPlanes
     {
@@ -49,6 +50,7 @@ public partial class CHmsZone : CMwNod, IClass
     /// <summary>
     /// sRGB, verified by FogSetColorLinear converting into this field.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public Vec3 FogRGB
     {
@@ -57,6 +59,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private float fogLinearStart;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public float FogLinearStart
     {
@@ -65,6 +68,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private float fogLinearEnd = 1;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public float FogLinearEnd
     {
@@ -73,6 +77,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private float fogExpDensity = 1;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public float FogExpDensity
     {
@@ -84,6 +89,7 @@ public partial class CHmsZone : CMwNod, IClass
     /// <summary>
     /// Bit 0: FogByVertex; bits 1-2: FogFormula; bit 3: FogSpace.
     /// </summary>
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public uint FogFlags
     {
@@ -92,6 +98,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private bool mRIsForced;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk06004003>]
     public bool MRIsForced
     {
@@ -100,6 +107,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private Vec3 mRPoint;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk06004003>]
     public Vec3 MRPoint
     {
@@ -108,6 +116,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private Vec3 mRNormal;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk06004003>]
     public Vec3 MRNormal
     {
@@ -116,6 +125,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private NodeRefList<CHmsPrecalcRender>? precalcRenders;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk06004005>]
     public NodeRefList<CHmsPrecalcRender>? PrecalcRenders
     {
@@ -124,6 +134,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapCubeReflectHardSpecARef;
+    /// <remarks>Applied with: 0x006, 0x008 body chunks</remarks>
     [AppliedWithChunk<Chunk06004006>]
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHardSpecA
@@ -133,6 +144,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapCubeReflectHdrAlpha2Ref;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
     [AppliedWithChunk<Chunk06004008>]
     public CPlugBitmap? BitmapCubeReflectHdrAlpha2
     {
@@ -183,6 +195,7 @@ public partial class CHmsZone : CMwNod, IClass
         ((CHmsZone)clone).bitmapCubeReflectHdrAlpha2Ref = context.Clone(this.bitmapCubeReflectHdrAlpha2Ref)!;
     }
 
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk06004002>]
     public bool FogByVertex
     {

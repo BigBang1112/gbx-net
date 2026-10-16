@@ -37,6 +37,7 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0910B000>]
     public CamShakeParams[] Params
     {

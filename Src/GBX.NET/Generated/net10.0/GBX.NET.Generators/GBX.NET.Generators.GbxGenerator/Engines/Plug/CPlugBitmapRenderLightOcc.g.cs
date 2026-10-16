@@ -38,6 +38,7 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private float fovY;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0909F000>]
     public float FovY
     {
@@ -46,6 +47,7 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     }
 
     private float opacity;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0909F000>]
     public float Opacity
     {
@@ -54,6 +56,7 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapToModulateRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0909F000>]
     public CPlugBitmap? BitmapToModulate
     {

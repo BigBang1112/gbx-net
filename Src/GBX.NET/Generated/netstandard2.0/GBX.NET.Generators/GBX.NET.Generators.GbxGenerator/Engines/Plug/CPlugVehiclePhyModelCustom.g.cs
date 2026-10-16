@@ -38,6 +38,7 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private float accelCoef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0911E000>]
     public float AccelCoef
     {
@@ -46,6 +47,7 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     }
 
     private float controlCoef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0911E000>]
     public float ControlCoef
     {
@@ -54,6 +56,7 @@ public partial class CPlugVehiclePhyModelCustom : CMwNod, IClass
     }
 
     private float gravityCoef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0911E000>]
     public float GravityCoef
     {

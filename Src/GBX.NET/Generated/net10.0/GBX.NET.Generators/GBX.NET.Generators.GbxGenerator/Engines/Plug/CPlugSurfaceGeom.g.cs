@@ -38,6 +38,7 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     internal override uint GetId() => Id;
 
     private BoxAligned boundingBox = (0, 0, 0, -1, -1, -1);
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk0900F004>]
     public BoxAligned BoundingBox
     {

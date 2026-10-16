@@ -38,6 +38,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private int flagsVersion;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09135000>]
     public int FlagsVersion
     {
@@ -46,6 +47,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     }
 
     private string? name;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09135000>]
     public string? Name
     {
@@ -54,6 +56,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimSkelBaked>? bakedRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09135000>]
     public CPlugAnimSkelBaked? Baked
     {
@@ -62,6 +65,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     }
 
     private NodeRef<CPlugAnimSkelEdition>? editionRef;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk09135000>(2)]
     public CPlugAnimSkelEdition? Edition
     {
@@ -70,6 +74,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     }
 
     private ClipFlags? flags;
+    /// <remarks>Applied with: 0x000 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09135000>(3)]
     public ClipFlags? Flags
     {

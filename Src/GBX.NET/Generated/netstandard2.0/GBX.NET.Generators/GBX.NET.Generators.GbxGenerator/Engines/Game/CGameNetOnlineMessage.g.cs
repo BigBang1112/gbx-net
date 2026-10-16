@@ -38,6 +38,7 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? receiverLogin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
     public string? ReceiverLogin
     {
@@ -46,6 +47,7 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     }
 
     private string? senderLogin;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
     public string? SenderLogin
     {
@@ -54,6 +56,7 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     }
 
     private string? subject;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
     public string? Subject
     {
@@ -62,8 +65,9 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     }
 
     private string? message;
-    [SupportsFormatting]
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
+    [SupportsFormatting]
     public string? Message
     {
         get => this.message;
@@ -71,6 +75,7 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     }
 
     private int donation;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
     public int Donation
     {
@@ -79,6 +84,7 @@ public partial class CGameNetOnlineMessage : CMwNod, IClass
     }
 
     private DateTime? date;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk03028000>]
     public DateTime? Date
     {

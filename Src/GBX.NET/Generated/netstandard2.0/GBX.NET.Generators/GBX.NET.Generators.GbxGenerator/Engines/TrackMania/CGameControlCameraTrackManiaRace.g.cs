@@ -38,6 +38,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     internal override uint GetId() => Id;
 
     private float coneAperture;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float ConeAperture
     {
@@ -46,6 +47,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float coneMinSpeed;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float ConeMinSpeed
     {
@@ -54,6 +56,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float coneMaxSpeed;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float ConeMaxSpeed
     {
@@ -62,6 +65,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private bool useSpeedDir;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public bool UseSpeedDir
     {
@@ -70,6 +74,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float carCameraHeight;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float CarCameraHeight
     {
@@ -78,6 +83,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float carCameraDistance;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float CarCameraDistance
     {
@@ -86,6 +92,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float carCameraTargetDistance;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float CarCameraTargetDistance
     {
@@ -94,6 +101,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float carCameraAlign;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float CarCameraAlign
     {
@@ -102,6 +110,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private bool isSegmentCast;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public bool IsSegmentCast
     {
@@ -110,6 +119,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float segmentCastMinDist;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float SegmentCastMinDist
     {
@@ -118,6 +128,7 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     }
 
     private float segmentCastLength;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk24085000>]
     public float SegmentCastLength
     {

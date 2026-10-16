@@ -38,6 +38,7 @@ public partial class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, IClass, CGam
     internal override uint GetId() => Id;
 
     private TimeSingle start;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A9000>]
     public TimeSingle Start
     {
@@ -46,6 +47,7 @@ public partial class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, IClass, CGam
     }
 
     private TimeSingle end;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030A9000>]
     public TimeSingle End
     {

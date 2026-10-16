@@ -18,6 +18,7 @@ public partial class CGameGhost
 #endif
 
     /// <exception cref="ZLibNotDefinedException">Zlib is not defined.</exception>
+    /// <remarks>Applied with: 0x003, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk0303F003>]
     [AppliedWithChunk<Chunk0303F005>]
     [AppliedWithChunk<Chunk0303F006>]
