@@ -104,12 +104,24 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     /// CGameCtnMediaBlockCameraEffectScript 0x000 chunk
     /// </summary>
     [Chunk(0x03161000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 1, 1)]
     public partial class Chunk03161000 : Chunk<CGameCtnMediaBlockCameraEffectScript>, IVersionable
     {
         public override uint Id => 0x03161000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03161000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03161000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -120,6 +132,11 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectScript n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.script);
 
             if (Version == 0)

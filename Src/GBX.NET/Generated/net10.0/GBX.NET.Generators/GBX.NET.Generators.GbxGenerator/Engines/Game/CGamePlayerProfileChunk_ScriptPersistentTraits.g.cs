@@ -51,7 +51,7 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
     /// CGamePlayerProfileChunk_ScriptPersistentTraits 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03170000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03170000 : SkippableChunk<CGamePlayerProfileChunk_ScriptPersistentTraits>, IVersionable
     {
         public override uint Id => 0x03170000;
@@ -64,7 +64,7 @@ public partial class CGamePlayerProfileChunk_ScriptPersistentTraits : CGamePlaye
 
         public Chunk03170000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

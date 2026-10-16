@@ -106,6 +106,11 @@ public partial class CGameTurbineModel : CMwNod, IClass
         public override void ReadWrite(CGameTurbineModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Iso4(ref n.loc);
             rw.Single(ref n.silencerBubble_RadiusMute);
             rw.Single(ref n.silencerBubble_RadiusFade);

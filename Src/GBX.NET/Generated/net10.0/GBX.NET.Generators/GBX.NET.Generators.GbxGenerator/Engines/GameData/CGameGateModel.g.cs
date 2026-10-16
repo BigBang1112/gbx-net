@@ -138,6 +138,11 @@ public partial class CGameGateModel : CMwNod, IClass
         public override void ReadWrite(CGameGateModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.armorRef);
             rw.NodeRef(ref n.shapeRef);
         }
@@ -147,7 +152,7 @@ public partial class CGameGateModel : CMwNod, IClass
     /// CGameGateModel 0x001 chunk
     /// </summary>
     [Chunk(0x2E00B001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk2E00B001 : Chunk<CGameGateModel>, IVersionable
     {
         public override uint Id => 0x2E00B001;
@@ -160,7 +165,7 @@ public partial class CGameGateModel : CMwNod, IClass
 
         public Chunk2E00B001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

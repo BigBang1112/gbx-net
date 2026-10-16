@@ -50,7 +50,7 @@ public partial class CPlugRoadChunk : CMwNod, IClass
     /// CPlugRoadChunk 0x000 chunk
     /// </summary>
     [Chunk(0x09128000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 12)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 12)]
     public partial class Chunk09128000 : Chunk<CPlugRoadChunk>
     {
         public override uint Id => 0x09128000;

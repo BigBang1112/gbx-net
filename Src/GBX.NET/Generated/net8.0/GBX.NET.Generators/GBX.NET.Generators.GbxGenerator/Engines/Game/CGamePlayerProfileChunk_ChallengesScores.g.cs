@@ -78,6 +78,11 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }
@@ -102,6 +107,11 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<SContextMapRecordForProfile>(ref n.contextMapRecordsForProfile!, version: Version);
         }
     }

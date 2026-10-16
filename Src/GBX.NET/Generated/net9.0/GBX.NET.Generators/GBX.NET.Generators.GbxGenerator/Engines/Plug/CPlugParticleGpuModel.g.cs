@@ -74,7 +74,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x000 chunk
     /// </summary>
     [Chunk(0x090C6000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 6)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 6, 6, 6)]
     public partial class Chunk090C6000 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6000;
@@ -96,7 +96,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
         public Chunk090C6000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 6;
             }
@@ -157,7 +161,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x001 chunk
     /// </summary>
     [Chunk(0x090C6001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 2, 3)]
     public partial class Chunk090C6001 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6001;
@@ -175,7 +179,15 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
         public Chunk090C6001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -220,7 +232,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x002 chunk
     /// </summary>
     [Chunk(0x090C6002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 22)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 7, 7, 11, 22)]
     public partial class Chunk090C6002 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6002;
@@ -283,7 +295,15 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
         public Chunk090C6002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 11;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 22;
             }
@@ -430,7 +450,7 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     /// CPlugParticleGpuModel 0x003 chunk
     /// </summary>
     [Chunk(0x090C6003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 2)]
     public partial class Chunk090C6003 : Chunk<CPlugParticleGpuModel>, IVersionable
     {
         public override uint Id => 0x090C6003;
@@ -445,7 +465,11 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
 
         public Chunk090C6003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

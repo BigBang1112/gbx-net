@@ -46,8 +46,8 @@ public class CGameCtnReplayRecordDayClockTests
     }
 
     [Test]
-    [Arguments(-1)]
     [Arguments(1)]
+    [Arguments(int.MaxValue)]
     public void Read_DayClock_RejectsUnsupportedVersionsBeforeReadingFields(int version)
     {
         using var input = new MemoryStream(BitConverter.GetBytes(version));

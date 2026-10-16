@@ -731,6 +731,10 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
         }
     }
 
@@ -808,6 +812,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int3(ref n.offzoneOffset);
             rw.Int3(ref n.offzoneTriggerSize);
             rw.Array<BoxInt3>(ref n.offzones!);
@@ -834,6 +843,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.iconSize);
         }
     }
@@ -858,6 +872,10 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {

@@ -4428,6 +4428,11 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.smMaxPlayerResimStepPerFrame);
         }
     }
@@ -4452,6 +4457,11 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.installUid);
         }
     }
@@ -4555,6 +4565,11 @@ public partial class CSystemConfig : CMwNod, IClass
         public override void ReadWrite(CSystemConfig n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.inputsAlternateMethod);
             rw.Boolean(ref n.inputsFreezeUnusedAxes);
             rw.Boolean(ref n.inputsEnableRumble);

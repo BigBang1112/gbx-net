@@ -506,6 +506,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.defaultSkinName);
         }
     }
@@ -1114,6 +1119,11 @@ public partial class CGameCtnCollector : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollector n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref n.iconUseAutoRender);
             rw.Int32(ref n.iconQuarterRotationY);
             rw.Single(ref n.iconPhase01);

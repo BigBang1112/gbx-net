@@ -1185,16 +1185,26 @@ public class GenerationTests
     }
 
     [Test]
-    [Arguments("version", 0, false)]
-    [Arguments("version", 1, false)]
-    [Arguments("versionb", 0, false)]
-    [Arguments("versionb", 1, false)]
-    [Arguments("version", 0, true)]
-    [Arguments("version", 1, true)]
-    [Arguments("versionb", 0, true)]
-    [Arguments("versionb", 1, true)]
-    public async Task Generate_ChunkVersionGuard_RejectsNewerVersionsBeforePayload(string keyword, int structureKind, bool header)
+    [Arguments("version", 0, false, false)]
+    [Arguments("version", 1, false, false)]
+    [Arguments("versionb", 0, false, false)]
+    [Arguments("versionb", 1, false, false)]
+    [Arguments("version", 0, true, false)]
+    [Arguments("version", 1, true, false)]
+    [Arguments("versionb", 0, true, false)]
+    [Arguments("versionb", 1, true, false)]
+    [Arguments("version", 0, false, true)]
+    [Arguments("version", 1, false, true)]
+    [Arguments("versionb", 0, false, true)]
+    [Arguments("versionb", 1, false, true)]
+    [Arguments("version", 0, true, true)]
+    [Arguments("version", 1, true, true)]
+    [Arguments("versionb", 0, true, true)]
+    [Arguments("versionb", 1, true, true)]
+    public async Task Generate_ChunkVersionGuard_RejectsNewerVersionsBeforePayload(
+        string keyword, int structureKind, bool header, bool implicitZero)
     {
+        var maximum = implicitZero ? 0 : 5;
         var chunkName = (header ? "HeaderChunk" : "Chunk") + "03043001";
         var read = structureKind == 0 ? "chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(reader))" : "chunk.Read(node, reader)";
         var write = structureKind == 0 ? "chunk.ReadWrite(node, new GBX.NET.Serialization.GbxReaderWriter(writer))" : "chunk.Write(node, writer)";
@@ -1225,7 +1235,7 @@ public class GenerationTests
             }
             """, new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
-            0x001 {{(header ? "(header) " : "")}}[TM10.v2, TM2020.v5]
+            0x001 {{(header ? "(header) " : "")}}[{{(implicitZero ? "TM10, TM2020" : "TM10.v2, TM2020.v5")}}]
               {{keyword}}
               int Value
             """), compile: true);
@@ -1237,7 +1247,7 @@ public class GenerationTests
         foreach (var method in chunk.Members.OfType<MethodDeclarationSyntax>().Where(x => x.Identifier.ValueText is "Read" or "Write" or "ReadWrite"))
         {
             var guard = (IfStatementSyntax)method.Body!.Statements[1];
-            await Assert.That(guard.Condition.ToString()).IsEqualTo("Version > 5");
+            await Assert.That(guard.Condition.ToString()).IsEqualTo("Version > " + maximum);
             await Assert.That(guard.Statement.ToString()).Contains("throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);");
         }
 
@@ -1245,28 +1255,30 @@ public class GenerationTests
         var emitted = compilation.Emit(stream);
         await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
         var verify = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!.GetMethod("Verify")!;
-        foreach (var version in new[] { 0, 2, 5 })
+        foreach (var version in implicitZero ? new[] { 0 } : new[] { 0, 2, 5 })
         {
             await Assert.That(verify.Invoke(null, [version, false])).IsEqualTo("ok:42,99");
             await Assert.That(verify.Invoke(null, [version, true])).IsEqualTo("ok:" + version + ",17");
         }
-        await Assert.That(verify.Invoke(null, [6, false])).IsEqualTo("unsupported:6:42");
-        await Assert.That(verify.Invoke(null, [6, true])).IsEqualTo("unsupported:6:1");
+        await Assert.That(verify.Invoke(null, [maximum + 1, false])).IsEqualTo("unsupported:" + (maximum + 1) + ":42");
+        await Assert.That(verify.Invoke(null, [maximum + 1, true])).IsEqualTo("unsupported:" + (maximum + 1) + ":1");
     }
 
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task Generate_ChunkVersionGuard_UsesExplicitMaximumIncludingZeroAndExcludesArchives(string keyword)
+    public async Task Generate_ChunkVersionGuard_TreatsBareGamesAsZeroAndExcludesUnqualifiedChunksAndArchives(string keyword)
     {
         var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", $$"""
             Example 0x03043000
             0x001 [TM2020.v0]
               {{keyword}}
             0x002 [TM2020]
+              {{keyword}}
+            0x003
+              {{keyword}}
+            0x004 [TM2020]
               {{keyword}} = 7
-              v9+
-                int Value
             archive Entry
               {{keyword}}
               int Value
@@ -1277,7 +1289,9 @@ public class GenerationTests
         var classes = Engine(result).GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToArray();
         var versionZero = classes.Single(x => x.Identifier.ValueText == "Chunk03043001");
         await Assert.That(versionZero.ToString()).Contains("if (Version > 0)");
-        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043002").ToString()).DoesNotContain("ChunkVersionNotSupportedException");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043002").ToString()).Contains("if (Version > 0)");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043003").ToString()).DoesNotContain("ChunkVersionNotSupportedException");
+        await Assert.That(classes.Single(x => x.Identifier.ValueText == "Chunk03043004").ToString()).Contains("if (Version > 7)");
         await Assert.That(classes.Single(x => x.Identifier.ValueText == "Entry").ToString()).DoesNotContain("ChunkVersionNotSupportedException");
     }
 
@@ -3265,6 +3279,7 @@ public class GenerationTests
         await Assert.That(generated).Contains("throw new InvalidOperationException(\"Unsupported format\")");
         await Assert.That(generated).Contains("First = 1,");
     }
+
 
     [Test]
     [Arguments("return")]

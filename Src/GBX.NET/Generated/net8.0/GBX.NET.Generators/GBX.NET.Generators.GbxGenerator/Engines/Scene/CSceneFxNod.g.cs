@@ -134,7 +134,7 @@ public partial class CSceneFxNod : CMwNod, IClass
     /// CSceneFxNod 0x002 chunk
     /// </summary>
     [Chunk(0x0A03A002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk0A03A002 : Chunk<CSceneFxNod>, IVersionable
     {
         public override uint Id => 0x0A03A002;
@@ -177,7 +177,11 @@ public partial class CSceneFxNod : CMwNod, IClass
 
         public Chunk0A03A002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

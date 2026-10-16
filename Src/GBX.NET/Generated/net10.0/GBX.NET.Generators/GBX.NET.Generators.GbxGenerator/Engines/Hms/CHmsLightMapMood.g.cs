@@ -258,6 +258,11 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         public override void ReadWrite(CHmsLightMapMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.maxHDR);
             rw.Single(ref n.bounceFactor);
             rw.Single(ref n.skyFactor);

@@ -16,6 +16,7 @@ internal sealed class ScopeModel
     public IReadOnlyList<FieldModel> Fields => fields;
     public Dictionary<FieldDeclaration, FieldModel> Occurrences { get; } = [];
     public IReadOnlyDictionary<string, int> ChunkVersions { get; }
+    public bool HasGameQualifiers { get; }
     public bool HasVersion { get; private set; }
     public bool Separate { get; }
 
@@ -31,6 +32,7 @@ internal sealed class ScopeModel
                 x.Modifiers.Any(static t => t.ValueText == "override")) == true;
         ChunkVersions = chunk?.VersionQualifiers.Where(static x => x.MaxVersion.HasValue)
             .ToDictionary(static x => x.Label, static x => x.MaxVersion!.Value, StringComparer.Ordinal) ?? new Dictionary<string, int>();
+        HasGameQualifiers = chunk?.VersionQualifiers.Count > 0;
 
         foreach (var field in Walk(body).OfType<FieldDeclaration>())
         {

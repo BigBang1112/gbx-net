@@ -106,7 +106,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
     /// CGameTeleporterModel 0x000 chunk
     /// </summary>
     [Chunk(0x2E00C000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk2E00C000 : Chunk<CGameTeleporterModel>, IVersionable
     {
         public override uint Id => 0x2E00C000;
@@ -119,7 +119,7 @@ public partial class CGameTeleporterModel : CMwNod, IClass
 
         public Chunk2E00C000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

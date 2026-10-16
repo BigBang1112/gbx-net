@@ -237,7 +237,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     /// CGameCtnMediaBlockSound 0x003 chunk
     /// </summary>
     [Chunk(0x030A7003)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 2, 2, 2)]
     public partial class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         public override uint Id => 0x030A7003;
@@ -250,7 +250,11 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
 
         public Chunk030A7003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMF)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -291,7 +295,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
     /// CGameCtnMediaBlockSound 0x004 chunk
     /// </summary>
     [Chunk(0x030A7004)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         public override uint Id => 0x030A7004;
@@ -304,7 +308,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
 
         public Chunk030A7004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

@@ -399,7 +399,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// CGameCtnDecoration 0x017 chunk
     /// </summary>
     [Chunk(0x03038017)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03038017 : Chunk<CGameCtnDecoration>, IVersionable
     {
         public override uint Id => 0x03038017;
@@ -412,7 +412,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public Chunk03038017(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -445,7 +445,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// CGameCtnDecoration 0x018 chunk
     /// </summary>
     [Chunk(0x03038018)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 2)]
     public partial class Chunk03038018 : Chunk<CGameCtnDecoration>, IVersionable
     {
         public override uint Id => 0x03038018;
@@ -458,7 +458,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public Chunk03038018(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -487,7 +491,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
     /// CGameCtnDecoration 0x019 chunk
     /// </summary>
     [Chunk(0x03038019)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk03038019 : Chunk<CGameCtnDecoration>, IVersionable
     {
         public override uint Id => 0x03038019;
@@ -500,7 +504,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
 
         public Chunk03038019(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -549,6 +553,11 @@ public partial class CGameCtnDecoration : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnDecoration n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.decoMaterialModifiersRef);
         }
     }

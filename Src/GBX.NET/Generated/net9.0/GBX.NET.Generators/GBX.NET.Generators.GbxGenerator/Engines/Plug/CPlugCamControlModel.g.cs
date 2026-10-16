@@ -74,24 +74,12 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     /// CPlugCamControlModel 0x000 chunk
     /// </summary>
     [Chunk(0x0910C000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0910C000 : Chunk<CPlugCamControlModel>, IVersionable
     {
         public override uint Id => 0x0910C000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0910C000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0910C000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

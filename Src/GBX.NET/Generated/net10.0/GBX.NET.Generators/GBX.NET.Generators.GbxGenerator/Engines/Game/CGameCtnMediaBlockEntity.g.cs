@@ -302,7 +302,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     /// CGameCtnMediaBlockEntity 0x000 chunk
     /// </summary>
     [Chunk(0x0329F000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 11)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 11)]
     public partial class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
     {
         public override uint Id => 0x0329F000;
@@ -317,7 +317,11 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
         public Chunk0329F000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 11;
             }
@@ -382,7 +386,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
 
                 if (Version >= 11)
                 {
-                    if (n.AppearanceArchiveVersion!= 0)
+                    if (n.AppearanceArchiveVersion>= 1)
                     {
                         rw.String(ref n.skinOptions);
                     }

@@ -449,7 +449,7 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     /// CGameCommonItemEntityModelEdition 0x000 chunk
     /// </summary>
     [Chunk(0x2E026000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 8)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 8)]
     public partial class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>, IVersionable
     {
         public override uint Id => 0x2E026000;
@@ -500,7 +500,11 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
 
         public Chunk2E026000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 8;
             }
@@ -670,6 +674,11 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }

@@ -1,4 +1,5 @@
 using GBX.NET.Engines.Game;
+using GBX.NET.Exceptions;
 using GBX.NET.Serialization;
 using System.Text;
 
@@ -45,17 +46,17 @@ public class CGamePlayerProfileLayoutTests
     }
 
     [Test]
-    public async Task ReadWrite_UnsupportedPlayerTagsVersion_HasNoArrayPayload()
+    public async Task ReadWrite_UnsupportedPlayerTagsVersion_RejectsChunkAndPreservesArchive()
     {
         var payload = BitConverter.GetBytes(1);
         var node = new CGamePlayerProfile();
         var chunk = new CGamePlayerProfile.Chunk0308C064();
-        Read(payload, rw => chunk.ReadWrite(node, rw));
+        Read(payload, rw => Assert.Throws<ChunkVersionNotSupportedException>(() => chunk.ReadWrite(node, rw)));
 
         await Assert.That(chunk.Version).IsEqualTo(1);
         await Assert.That(node.PlayerTags).IsNull();
         await Assert.That(node.TagDisplayList).IsNull();
-        await Assert.That(Write(rw => chunk.ReadWrite(node, rw))).IsEquivalentTo(payload);
+        Assert.Throws<ChunkVersionNotSupportedException>(() => Write(rw => chunk.ReadWrite(node, rw)));
 
         var accountConfig = new CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig();
         Read(payload, rw => accountConfig.ReadWrite(rw));

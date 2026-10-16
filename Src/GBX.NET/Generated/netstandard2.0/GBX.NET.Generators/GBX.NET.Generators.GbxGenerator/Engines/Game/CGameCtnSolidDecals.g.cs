@@ -134,7 +134,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     /// CGameCtnSolidDecals 0x001 chunk
     /// </summary>
     [Chunk(0x03121001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk03121001 : Chunk<CGameCtnSolidDecals>, IVersionable
     {
         public override uint Id => 0x03121001;
@@ -147,7 +147,7 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
 
         public Chunk03121001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

@@ -521,6 +521,11 @@ public partial class CSceneLayout : CScene, IClass
         {
             n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<SceneMobil>(ref n.scene!, version: Version);
             rw.ArrayReadableWritable<SceneLoc>(ref n.sceneLocations!, version: Version);
             U01 = rw.ListNodeRef_deprec<CSceneObject>(U01);
@@ -644,6 +649,11 @@ public partial class CSceneLayout : CScene, IClass
         {
             n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<SceneMobil>(ref n.scene!, version: Version);
             rw.ArrayReadableWritable<SceneLoc>(ref n.sceneLocations!, version: Version);
             U01 = rw.ListNodeRef_deprec<CSceneObject>(U01);
@@ -664,7 +674,7 @@ public partial class CSceneLayout : CScene, IClass
     /// CSceneLayout 0x01C chunk
     /// </summary>
     [Chunk(0x0A00301C)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 5)]
     public partial class Chunk0A00301C : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A00301C;
@@ -722,7 +732,11 @@ public partial class CSceneLayout : CScene, IClass
 
         public Chunk0A00301C(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }

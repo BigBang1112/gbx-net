@@ -97,7 +97,7 @@ public partial class CPlugBitmapDecals : CPlug, IClass
     /// CPlugBitmapDecals 0x000 chunk
     /// </summary>
     [Chunk(0x09078000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 3, 4)]
     public partial class Chunk09078000 : Chunk<CPlugBitmapDecals>, IVersionable
     {
         public override uint Id => 0x09078000;
@@ -110,7 +110,15 @@ public partial class CPlugBitmapDecals : CPlug, IClass
 
         public Chunk09078000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

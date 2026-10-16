@@ -60,7 +60,7 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
     /// CPlugBitmapAtlas 0x002 chunk
     /// </summary>
     [Chunk(0x090A8002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 3)]
     public partial class Chunk090A8002 : Chunk<CPlugBitmapAtlas>, IVersionable
     {
         public override uint Id => 0x090A8002;
@@ -73,7 +73,7 @@ public partial class CPlugBitmapAtlas : CPlug, IClass
 
         public Chunk090A8002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

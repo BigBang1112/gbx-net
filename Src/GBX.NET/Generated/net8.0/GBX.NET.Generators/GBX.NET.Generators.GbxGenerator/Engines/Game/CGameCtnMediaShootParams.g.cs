@@ -340,7 +340,7 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
     /// CGameCtnMediaShootParams 0x002 chunk
     /// </summary>
     [Chunk(0x03060002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1, 1)]
     public partial class Chunk03060002 : Chunk<CGameCtnMediaShootParams>, IVersionable
     {
         public override uint Id => 0x03060002;
@@ -353,7 +353,11 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
 
         public Chunk03060002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

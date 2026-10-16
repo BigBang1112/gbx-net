@@ -463,7 +463,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x003 chunk
     /// </summary>
     [Chunk(0x03039003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 9)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 7, 7, 9)]
     public partial class Chunk03039003 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039003;
@@ -551,7 +551,15 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public Chunk03039003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 9;
             }
@@ -657,7 +665,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x004 chunk
     /// </summary>
     [Chunk(0x03039004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk03039004 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039004;
@@ -670,7 +678,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public Chunk03039004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -719,6 +731,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref n.cameraWooshMinSpeedKmh);
             rw.Single(ref n.reverbMinBlockDist);
@@ -747,6 +764,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.modifierXmlFileRef);
         }
     }

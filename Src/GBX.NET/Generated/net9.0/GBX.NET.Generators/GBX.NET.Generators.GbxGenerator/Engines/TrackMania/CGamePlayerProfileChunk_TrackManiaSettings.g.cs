@@ -50,7 +50,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x240D5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk240D5000 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5000;
@@ -64,7 +64,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
 
         public Chunk240D5000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -93,7 +93,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x240D5001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk240D5001 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5001;
@@ -107,7 +107,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
 
         public Chunk240D5001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -136,7 +136,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x002 skippable chunk
     /// </summary>
     [Chunk(0x240D5002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk240D5002 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5002;
@@ -150,7 +150,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
 
         public Chunk240D5002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -196,7 +196,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     /// CGamePlayerProfileChunk_TrackManiaSettings 0x004 skippable chunk
     /// </summary>
     [Chunk(0x240D5004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk240D5004 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5004;
@@ -211,7 +211,7 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
 
         public Chunk240D5004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

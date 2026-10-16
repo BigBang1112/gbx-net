@@ -201,6 +201,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.replacementZoneId);
         }
     }
@@ -227,6 +232,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }
@@ -257,6 +267,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref U01);
             rw.Id(ref U02);
             rw.Id(ref U03);
@@ -283,6 +298,11 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         public override void ReadWrite(CGameCtnZoneTransition n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<EBorderType>(ref n.border_North);
             rw.Node<CGameCtnZoneGenealogy>(ref n.genealogy_North);
             rw.EnumInt32<EBorderType>(ref n.border_East);

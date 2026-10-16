@@ -1,6 +1,6 @@
 CGameWaypointSpecialProperty 0x2E009000
 
-0x000 [MP3, TMT, MP4, TM2020.v2]
+0x000 [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
   version
   v1=
     int Spawn

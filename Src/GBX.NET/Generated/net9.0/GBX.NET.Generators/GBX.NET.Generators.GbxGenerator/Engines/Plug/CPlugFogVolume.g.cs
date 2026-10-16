@@ -50,25 +50,13 @@ public partial class CPlugFogVolume : CPlug, IClass
     /// CPlugFogVolume 0x001 chunk
     /// </summary>
     [Chunk(0x090D4001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090D4001 : Chunk<CPlugFogVolume>, IVersionable
     {
         public override uint Id => 0x090D4001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
-
-        public Chunk090D4001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090D4001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

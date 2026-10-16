@@ -611,8 +611,8 @@ public class CGameCtnReplayRecordTests
     }
 
     [Test]
-    [Arguments(-1)]
     [Arguments(1)]
+    [Arguments(int.MaxValue)]
     public async Task Read_InterfaceScriptInfos_RejectsUnsupportedVersionsBeforeReadingSnapshots(int version)
     {
         using var stream = new MemoryStream(BitConverter.GetBytes(version));

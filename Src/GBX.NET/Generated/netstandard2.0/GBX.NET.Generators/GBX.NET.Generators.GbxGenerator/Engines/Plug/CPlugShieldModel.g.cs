@@ -224,7 +224,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
     /// CPlugShieldModel 0x000 chunk
     /// </summary>
     [Chunk(0x09111000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 7)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 7, 7)]
     public partial class Chunk09111000 : Chunk<CPlugShieldModel>, IVersionable
     {
         public override uint Id => 0x09111000;
@@ -244,7 +244,7 @@ public partial class CPlugShieldModel : CMwNod, IClass
 
         public Chunk09111000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 7;
             }

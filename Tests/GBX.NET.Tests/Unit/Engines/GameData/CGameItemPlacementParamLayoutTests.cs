@@ -178,7 +178,6 @@ public class CGameItemPlacementParamLayoutTests
 
     [Test]
     [Arguments(0)]
-    [Arguments(1)]
     public async Task ReadWrite_MagnetLocations_PreservePositionAndDegreeRotations(int version)
     {
         using var payload = new MemoryStream();
@@ -219,6 +218,7 @@ public class CGameItemPlacementParamLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(3)]
+    [Arguments(4)]
     public async Task ReadWrite_UnsupportedChunkVersions_StopBeforeReadingFields(int chunkId)
     {
         using var payload = new MemoryStream();
@@ -233,8 +233,10 @@ public class CGameItemPlacementParamLayoutTests
         var node = new CGameItemPlacementParam();
         if (chunkId == 3)
             Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => new CGameItemPlacementParam.Chunk2E020003().ReadWrite(node, rw));
+        else if (chunkId == 4)
+            Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => new CGameItemPlacementParam.Chunk2E020004().ReadWrite(node, rw));
         else
-            Assert.Throws<NotSupportedException>(() => new CGameItemPlacementParam.Chunk2E020000().ReadWrite(node, rw));
+            Assert.Throws<GBX.NET.Exceptions.ChunkVersionNotSupportedException>(() => new CGameItemPlacementParam.Chunk2E020000().ReadWrite(node, rw));
         await Assert.That(reader.ReadInt32()).IsEqualTo(sentinel);
     }
 

@@ -115,7 +115,7 @@ public partial class CGameGhost : CMwNod, IClass
     /// CGameGhost 0x006 chunk
     /// </summary>
     [Chunk(0x0303F006)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0303F006 : Chunk0303F005, IVersionable
     {
         public override uint Id => 0x0303F006;
@@ -128,7 +128,7 @@ public partial class CGameGhost : CMwNod, IClass
 
         public Chunk0303F006(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

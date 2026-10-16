@@ -78,6 +78,11 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
         public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

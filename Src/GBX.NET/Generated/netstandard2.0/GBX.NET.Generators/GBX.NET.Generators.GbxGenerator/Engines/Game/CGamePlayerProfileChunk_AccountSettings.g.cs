@@ -1225,6 +1225,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.broadcastLogin);
             rw.Int32(ref n.broadcastVideoWidth);
             rw.Int32(ref n.broadcastVideoHeight);
@@ -1455,6 +1460,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.youtubeRefreshToken);
             rw.ArrayReadableWritable<YoutubeUpload>(ref n.youtubeUploads!, version: Version);
         }
@@ -1484,6 +1494,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
         }
@@ -1511,6 +1526,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (n.IsOnlineSaveArchivation)
             {
@@ -1544,6 +1563,10 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (!n.IsOnlineSaveArchivation)
             {
@@ -1578,6 +1601,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.UInt64(ref U03);

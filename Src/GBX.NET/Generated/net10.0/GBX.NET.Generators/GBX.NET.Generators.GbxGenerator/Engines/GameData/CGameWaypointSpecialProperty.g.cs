@@ -90,7 +90,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     /// CGameWaypointSpecialProperty 0x000 chunk
     /// </summary>
     [Chunk(0x2E009000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>, IVersionable
     {
         public override uint Id => 0x2E009000;
@@ -103,7 +103,7 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
 
         public Chunk2E009000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -157,6 +157,11 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
         public override void ReadWrite(CGameWaypointSpecialProperty n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             var hasScriptMetadata = rw.Boolean((rw.Writer is null ? default : (n.ScriptMetadata is not null)));
 
             if (hasScriptMetadata)

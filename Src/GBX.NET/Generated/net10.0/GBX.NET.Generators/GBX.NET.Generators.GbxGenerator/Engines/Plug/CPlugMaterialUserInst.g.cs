@@ -325,7 +325,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     /// CPlugMaterialUserInst 0x001 chunk
     /// </summary>
     [Chunk(0x090FD001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 5)]
     public partial class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
         public override uint Id => 0x090FD001;
@@ -360,7 +360,7 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
 
         public Chunk090FD001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -430,6 +430,11 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         public override void ReadWrite(CPlugMaterialUserInst n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }

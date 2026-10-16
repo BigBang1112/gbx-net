@@ -118,6 +118,11 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
         public override void ReadWrite(CGameCtnZoneFusionInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.mergedZoneId);
         }
     }

@@ -820,24 +820,12 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     /// CGameCtnBlockInfoVariant 0x007 chunk
     /// </summary>
     [Chunk(0x0315B007)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0315B007 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B007;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0315B007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0315B007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

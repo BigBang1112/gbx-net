@@ -758,6 +758,11 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
         public override void ReadWrite(CGameCtnBlockInfoMobil n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.dynaLinks = rw.ListNodeRef_deprec<CGameCtnBlockInfoMobilLink>(n.dynaLinks);
         }
     }

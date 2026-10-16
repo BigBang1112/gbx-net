@@ -25,18 +25,18 @@ CGameCtnDecoration 0x03038000
 0x016 [VSK5, TMF, MP3, TMT, MP4] // TerrainModifierBase
   CGameCtnDecorationTerrainModifier TerrainModifierBase
 
-0x017 [MP3, TMT, MP4, TM2020.v1]
+0x017 [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   id? DecorationZoneFrontierId
   v1+
     bool IsWaterOutsidePlayField
 
-0x018 [MP3, TMT, MP4, TM2020.v2]
+0x018 [MP3.v0, TMT.v0, MP4.v0, TM2020.v2]
   version
   CPlugGameSkin VehicleFxSkin
   string VehicleFxFolder
 
-0x019 [TMT, MP4, TM2020.v1]
+0x019 [TMT.v1, MP4.v1, TM2020.v1]
   version
   CGameCtnDecorationAudio DecoAudio
   v1+

@@ -68,6 +68,11 @@ public partial class CPlugFogVolume : CPlug, IClass
         public override void ReadWrite(CPlugFogVolume n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref U01);
         }
     }

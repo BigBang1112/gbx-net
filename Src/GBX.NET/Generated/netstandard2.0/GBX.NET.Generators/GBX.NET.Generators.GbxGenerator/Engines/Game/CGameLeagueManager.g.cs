@@ -123,6 +123,11 @@ public partial class CGameLeagueManager : CMwNod, IClass
         public override void ReadWrite(CGameLeagueManager n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.cacheDuration);
             rw.Boolean(ref n.updated);
 

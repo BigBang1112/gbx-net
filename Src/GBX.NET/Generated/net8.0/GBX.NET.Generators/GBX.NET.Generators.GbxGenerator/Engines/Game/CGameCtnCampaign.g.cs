@@ -585,24 +585,12 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     /// CGameCtnCampaign 0x010 chunk (mode script name)
     /// </summary>
     [Chunk(0x03090010, "mode script name")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03090010 : Chunk<CGameCtnCampaign>, IVersionable
     {
         public override uint Id => 0x03090010;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk03090010() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03090010(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -626,7 +614,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     /// CGameCtnCampaign 0x012 skippable chunk (official mode)
     /// </summary>
     [Chunk(0x03090012, "official mode")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 2)]
     public partial class Chunk03090012 : SkippableChunk<CGameCtnCampaign>, IVersionable
     {
         public override uint Id => 0x03090012;
@@ -645,7 +633,11 @@ public partial class CGameCtnCampaign : CMwNod, IClass
 
         public Chunk03090012(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

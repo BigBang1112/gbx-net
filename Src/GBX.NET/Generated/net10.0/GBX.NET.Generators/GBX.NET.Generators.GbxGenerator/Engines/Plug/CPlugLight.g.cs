@@ -287,6 +287,11 @@ public partial class CPlugLight : CPlug, IClass
         public override void ReadWrite(CPlugLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.lightRef);
             rw.Int32(ref U01);
             rw.Int32(ref U02);

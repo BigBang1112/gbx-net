@@ -51,7 +51,7 @@ public class GameSpecificDefaultsTests
         var expected = new (Type Type, GameVersion Game, int[] Versions)[]
         {
             (typeof(CGameCtnChallengeGroup.Chunk0308F00B), GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, [0, 0, 1, 1]),
-            (typeof(CGameCtnMediaClip.Chunk0307900D), GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, [-1, 0, 1])
+            (typeof(CGameCtnMediaClip.Chunk0307900D), GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, [0, 0, 1])
         };
 
         foreach (var (type, game, versions) in expected)

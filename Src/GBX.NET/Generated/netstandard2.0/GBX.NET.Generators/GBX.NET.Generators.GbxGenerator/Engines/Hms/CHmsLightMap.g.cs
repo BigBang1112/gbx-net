@@ -1890,7 +1890,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x029 chunk
     /// </summary>
     [Chunk(0x06021029)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 7)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, 1, 1, 7)]
     public partial class Chunk06021029 : Chunk<CHmsLightMap>, IVersionable
     {
         public override uint Id => 0x06021029;
@@ -1972,7 +1972,11 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public Chunk06021029(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 7;
             }
@@ -2128,6 +2132,11 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref U01Ref);
 
             if (Version >= 1)
@@ -2161,7 +2170,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x02B chunk
     /// </summary>
     [Chunk(0x0602102B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk0602102B : Chunk<CHmsLightMap>, IVersionable
     {
         public override uint Id => 0x0602102B;
@@ -2202,7 +2211,7 @@ public partial class CHmsLightMap : CMwNod, IClass
 
         public Chunk0602102B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

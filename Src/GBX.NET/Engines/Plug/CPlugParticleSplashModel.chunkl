@@ -1,6 +1,6 @@
 CPlugParticleSplashModel 0x090B5000
 
-0x000 [MP3, TMT, MP4, TM2020.v5]
+0x000 [MP3.v4, TMT.v4, MP4.v4, TM2020.v5]
   version
   int
   float

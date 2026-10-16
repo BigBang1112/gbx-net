@@ -86,6 +86,11 @@ public partial class CGameReplayObjectVisData : CMwNod, IClass
         public override void ReadWrite(CGameReplayObjectVisData n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<ObjectVisKey>(ref n.keys!, version: Version);
             rw.ListReadableWritable<ObjectVis>(ref n.visList!, version: Version);
         }

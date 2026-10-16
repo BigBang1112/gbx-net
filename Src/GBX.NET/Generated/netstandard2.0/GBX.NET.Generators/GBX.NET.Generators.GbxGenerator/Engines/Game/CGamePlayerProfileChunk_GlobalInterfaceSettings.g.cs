@@ -90,7 +90,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03179001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03179001 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
     {
         public override uint Id => 0x03179001;
@@ -103,7 +103,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
 
         public Chunk03179001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -149,6 +149,11 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         public override void ReadWrite(CGamePlayerProfileChunk_GlobalInterfaceSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Byte(ref U01);
         }
     }
@@ -175,6 +180,11 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         public override void ReadWrite(CGamePlayerProfileChunk_GlobalInterfaceSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Byte(ref U01);
         }
     }
@@ -183,7 +193,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03179004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk03179004 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
     {
         public override uint Id => 0x03179004;
@@ -196,7 +206,7 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
 
         public Chunk03179004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -252,6 +262,11 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         public override void ReadWrite(CGamePlayerProfileChunk_GlobalInterfaceSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
         }
     }

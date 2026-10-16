@@ -28,7 +28,7 @@ CPlugMaterialCustom 0x0903A000
     short U03
     short U04
 
-0x00F (skippable) [MP3, TMT, MP4, TM2020.v2]
+0x00F (skippable) [MP3.v1, TMT.v1, MP4.v2, TM2020.v2]
   version
   float
   float
@@ -50,11 +50,11 @@ CPlugMaterialCustom 0x0903A000
   version
   Bitmap[] Textures (version: 1)
 
-0x014 [MP4, TM2020.v1]
+0x014 [MP4.v0, TM2020.v1]
   version
   CBuffer[]
 
-0x015 [MP4, TM2020.v2]
+0x015 [MP4.v1, TM2020.v2]
   version
   v1+
     int U01

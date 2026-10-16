@@ -185,7 +185,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x002 chunk (author)
     /// </summary>
     [Chunk(0x03093002, "author")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class HeaderChunk03093002 : HeaderChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093002;
@@ -576,7 +576,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x01B skippable chunk (player of interest)
     /// </summary>
     [Chunk(0x0309301B, "player of interest")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309301B : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301B;
@@ -593,7 +593,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x01C skippable chunk
     /// </summary>
     [Chunk(0x0309301C)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301C;
@@ -610,7 +610,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x01D skippable chunk (InterfaceScriptInfos)
     /// </summary>
     [Chunk(0x0309301D, "InterfaceScriptInfos")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309301D : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301D;
@@ -627,7 +627,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x01E skippable chunk (actions)
     /// </summary>
     [Chunk(0x0309301E, "actions")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk0309301E : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301E;
@@ -644,7 +644,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x01F skippable chunk (AnchoredObjectInfos)
     /// </summary>
     [Chunk(0x0309301F, "AnchoredObjectInfos")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0309301F : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x0309301F;
@@ -661,7 +661,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x020 skippable chunk (item skins and names)
     /// </summary>
     [Chunk(0x03093020, "item skins and names")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03093020 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093020;
@@ -678,7 +678,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x021 skippable chunk (enable minimap)
     /// </summary>
     [Chunk(0x03093021, "enable minimap")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093021 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093021;
@@ -695,7 +695,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x022 skippable chunk (recorded Monoscreen camera values (STimedCamVal))
     /// </summary>
     [Chunk(0x03093022, "recorded Monoscreen camera values (STimedCamVal)")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093022 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093022;
@@ -712,7 +712,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x023 skippable chunk (empty-car visual tape and bonus bump keys)
     /// </summary>
     [Chunk(0x03093023, "empty-car visual tape and bonus bump keys")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093023 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093023;
@@ -746,7 +746,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x025 skippable chunk
     /// </summary>
     [Chunk(0x03093025)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093025 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093025;
@@ -763,7 +763,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     /// CGameCtnReplayRecord 0x026 skippable chunk (EntDataSceneUIdsToGhost)
     /// </summary>
     [Chunk(0x03093026, "EntDataSceneUIdsToGhost")]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
     public partial class Chunk03093026 : SkippableChunk<CGameCtnReplayRecord>
     {
         public override uint Id => 0x03093026;

@@ -284,9 +284,11 @@ internal sealed class SerializationWriter
                 _ => $"rw.Version{(declaration.Type.Name == "versionb" ? "Byte" : "Int32")}(this);"
             });
 
-            if (chunk && scope.ChunkVersions.Count > 0)
+            if (chunk && scope.HasGameQualifiers)
             {
-                code.Open($"if (Version > {scope.ChunkVersions.Values.Max()})");
+                var maximum = scope.ChunkVersions.Count > 0 ? scope.ChunkVersions.Values.Max().ToString() :
+                    declaration.DefaultValue is { } defaultVersion ? Expression(defaultVersion) : "0";
+                code.Open($"if (Version > {maximum})");
                 code.Line("throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);");
                 code.Close();
                 code.BlankLine();

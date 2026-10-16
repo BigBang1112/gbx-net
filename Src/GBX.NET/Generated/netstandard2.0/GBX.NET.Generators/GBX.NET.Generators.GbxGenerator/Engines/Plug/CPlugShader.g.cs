@@ -736,6 +736,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.visibleMaxDist);
             rw.Single(ref n.visibleMinScreenHeight);
         }
@@ -898,6 +903,11 @@ public partial class CPlugShader : CPlug, IClass
         public override void ReadWrite(CPlugShader n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<ShaderCustom>(ref n.customShaders!, version: Version);
         }
     }

@@ -671,7 +671,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     /// CPlugSound 0x00E chunk
     /// </summary>
     [Chunk(0x0901A00E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 9)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 9, 9, 9, 9)]
     public partial class Chunk0901A00E : Chunk<CPlugSound>, IVersionable
     {
         public override uint Id => 0x0901A00E;
@@ -685,7 +685,7 @@ public partial class CPlugSound : CPlugAudio, IClass
 
         public Chunk0901A00E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 9;
             }
@@ -758,7 +758,7 @@ public partial class CPlugSound : CPlugAudio, IClass
     /// CPlugSound 0x00F chunk
     /// </summary>
     [Chunk(0x0901A00F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 12)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 8, 12, 12, 12)]
     public partial class Chunk0901A00F : Chunk<CPlugSound>, IVersionable
     {
         public override uint Id => 0x0901A00F;
@@ -778,7 +778,11 @@ public partial class CPlugSound : CPlugAudio, IClass
 
         public Chunk0901A00F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 8;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 12;
             }
@@ -890,6 +894,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.oldSubSources = rw.ListNodeRef_deprec<CPlugSound>(n.oldSubSources);
         }
     }
@@ -914,6 +923,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.EnumInt32<ESoundKind>(ref n.soundKind);
             rw.Int32(ref n.insideConeAngle);
             rw.Int32(ref n.outsideConeAngle);
@@ -941,6 +955,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.backingSoundRef);
         }
     }
@@ -965,6 +984,11 @@ public partial class CPlugSound : CPlugAudio, IClass
         public override void ReadWrite(CPlugSound n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.focusedSoundRef);
         }
     }

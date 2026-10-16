@@ -372,7 +372,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x000 chunk
     /// </summary>
     [Chunk(0x090E5000)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, -1, -1, 6)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, 1, 1, 5, 6)]
     public partial class Chunk090E5000 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5000;
@@ -386,7 +386,15 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
         public Chunk090E5000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 6;
             }
@@ -454,7 +462,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x001 chunk
     /// </summary>
     [Chunk(0x090E5001)]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, 2, 2, 2, 2)]
     public partial class Chunk090E5001 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5001;
@@ -467,7 +475,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
         public Chunk090E5001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -506,7 +514,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
     /// CPlugFlockModel 0x002 chunk
     /// </summary>
     [Chunk(0x090E5002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk090E5002 : Chunk<CPlugFlockModel>, IVersionable
     {
         public override uint Id => 0x090E5002;
@@ -519,7 +527,7 @@ public partial class CPlugFlockModel : CMwNod, IClass
 
         public Chunk090E5002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

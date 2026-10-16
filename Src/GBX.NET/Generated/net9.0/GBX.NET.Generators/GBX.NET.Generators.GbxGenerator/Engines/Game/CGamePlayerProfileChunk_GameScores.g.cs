@@ -108,6 +108,11 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<STrainingMedalsScores>(ref n.trainingMedalsScores!, version: Version);
         }
     }
@@ -132,6 +137,10 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {
@@ -160,6 +169,10 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             rw.Encapsulated(rw =>
             {
@@ -188,6 +201,11 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<LadderMatchResult>(ref n.ladderMatchResults!, version: Version);
         }
     }

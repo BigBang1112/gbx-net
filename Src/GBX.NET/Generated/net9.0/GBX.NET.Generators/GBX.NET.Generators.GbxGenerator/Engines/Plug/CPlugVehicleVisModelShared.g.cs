@@ -449,7 +449,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x01E chunk
     /// </summary>
     [Chunk(0x090E801E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 4, 4)]
     public partial class Chunk090E801E : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801E;
@@ -627,7 +627,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E801E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -712,7 +716,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x01F chunk
     /// </summary>
     [Chunk(0x090E801F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 19)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 5, 14, 19)]
     public partial class Chunk090E801F : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E801F;
@@ -924,7 +928,19 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E801F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 14;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 19;
             }
@@ -1049,7 +1065,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x020 chunk
     /// </summary>
     [Chunk(0x090E8020)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 2)]
     public partial class Chunk090E8020 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8020;
@@ -1066,7 +1082,11 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E8020(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -1105,7 +1125,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x021 chunk
     /// </summary>
     [Chunk(0x090E8021)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 3, 5)]
     public partial class Chunk090E8021 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8021;
@@ -1148,7 +1168,19 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E8021(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -1179,7 +1211,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x022 chunk
     /// </summary>
     [Chunk(0x090E8022)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 12)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 7, 12)]
     public partial class Chunk090E8022 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8022;
@@ -1438,7 +1470,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E8022(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 12;
             }
@@ -1545,7 +1585,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     /// CPlugVehicleVisModelShared 0x023 chunk
     /// </summary>
     [Chunk(0x090E8023)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]
     public partial class Chunk090E8023 : Chunk<CPlugVehicleVisModelShared>, IVersionable
     {
         public override uint Id => 0x090E8023;
@@ -1592,7 +1632,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
         public Chunk090E8023(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

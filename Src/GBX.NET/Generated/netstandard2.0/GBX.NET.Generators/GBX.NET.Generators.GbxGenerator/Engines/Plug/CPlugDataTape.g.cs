@@ -156,6 +156,11 @@ public partial class CPlugDataTape : CMwNod, IClass
         public override void ReadWrite(CPlugDataTape n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ReadableWritable<TapeHeader>(ref n.header, version: Version);
             rw.Array<int>(ref n.stateTimes!);
             rw.Array<int>(ref n.stateOffsets!);

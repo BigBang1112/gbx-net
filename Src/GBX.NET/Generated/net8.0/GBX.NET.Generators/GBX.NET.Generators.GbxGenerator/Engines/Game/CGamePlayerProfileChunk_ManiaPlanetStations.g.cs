@@ -148,7 +148,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// CGamePlayerProfileChunk_ManiaPlanetStations 0x002 skippable chunk (Stations)
     /// </summary>
     [Chunk(0x03180002, "Stations")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 6)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 6, 6)]
     public partial class Chunk03180002 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>
     {
         public override uint Id => 0x03180002;
@@ -169,7 +169,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     /// CGamePlayerProfileChunk_ManiaPlanetStations 0x003 skippable chunk (LatestTitleIdLoaded)
     /// </summary>
     [Chunk(0x03180003, "LatestTitleIdLoaded")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03180003 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
     {
         public override uint Id => 0x03180003;
@@ -182,7 +182,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
 
         public Chunk03180003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

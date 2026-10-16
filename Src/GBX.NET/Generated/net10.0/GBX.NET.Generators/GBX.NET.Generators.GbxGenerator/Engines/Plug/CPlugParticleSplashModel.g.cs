@@ -50,7 +50,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     /// CPlugParticleSplashModel 0x000 chunk
     /// </summary>
     [Chunk(0x090B5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 4, 5)]
     public partial class Chunk090B5000 : Chunk<CPlugParticleSplashModel>, IVersionable
     {
         public override uint Id => 0x090B5000;
@@ -112,7 +112,11 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
 
         public Chunk090B5000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }

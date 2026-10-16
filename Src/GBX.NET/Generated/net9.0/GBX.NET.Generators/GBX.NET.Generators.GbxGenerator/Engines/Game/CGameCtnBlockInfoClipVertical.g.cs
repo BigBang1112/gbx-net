@@ -60,24 +60,12 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
     /// CGameCtnBlockInfoClipVertical 0x000 chunk
     /// </summary>
     [Chunk(0x03340000)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03340000 : Chunk<CGameCtnBlockInfoClipVertical>, IVersionable
     {
         public override uint Id => 0x03340000;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk03340000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03340000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -6,7 +6,7 @@ CPlugParticleEmitterModel 0x090B3000
 0x001 [MP3, TMT, MP4, TM2020]
   id
 
-0x002 [MP3, TMT, MP4, TM2020.v4]
+0x002 [MP3.v0, TMT.v0, MP4.v4, TM2020.v4]
   version
   bool IsSplashMode
   v3+
@@ -16,7 +16,7 @@ CPlugParticleEmitterModel 0x090B3000
   version
   string[]
 
-0x004 [MP4, TM2020.v6]
+0x004 [MP4.v3, TM2020.v6]
   version
   v1-
     v1=

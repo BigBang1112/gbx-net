@@ -26,7 +26,7 @@ CGameCtnMediaShootParams 0x03060000
   bool IsAudioStream
   int<EStereo3d> Stereo3d
 
-0x002 [MP3, TMT, MP4, TM2020.v1]
+0x002 [MP3.v0, TMT.v0, MP4.v1, TM2020.v1]
   version
   int VideoFps
   int SizeX

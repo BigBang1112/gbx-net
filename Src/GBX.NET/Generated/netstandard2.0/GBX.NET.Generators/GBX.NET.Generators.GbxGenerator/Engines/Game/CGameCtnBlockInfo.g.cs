@@ -1651,6 +1651,11 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
         public override void ReadWrite(CGameCtnBlockInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.ProdState = rw.EnumInt32<CGameCtnCollector.EProdState>(n.ProdState);
         }
     }

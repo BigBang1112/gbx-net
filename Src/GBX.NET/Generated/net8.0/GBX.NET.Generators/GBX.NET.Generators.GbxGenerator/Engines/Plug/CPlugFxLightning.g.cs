@@ -74,7 +74,7 @@ public partial class CPlugFxLightning : CPlug, IClass
     /// CPlugFxLightning 0x000 chunk
     /// </summary>
     [Chunk(0x090D8000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090D8000 : Chunk<CPlugFxLightning>, IVersionable
     {
         public override uint Id => 0x090D8000;
@@ -114,7 +114,7 @@ public partial class CPlugFxLightning : CPlug, IClass
 
         public Chunk090D8000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

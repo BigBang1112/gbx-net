@@ -452,7 +452,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     /// CGameCtnMediaClip 0x00D chunk (MP tracks)
     /// </summary>
     [Chunk(0x0307900D, "MP tracks")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1)]
     public partial class Chunk0307900D : Chunk<CGameCtnMediaClip>, IVersionable
     {
         public override uint Id => 0x0307900D;
@@ -465,7 +465,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
 
         public Chunk0307900D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 0;
             }

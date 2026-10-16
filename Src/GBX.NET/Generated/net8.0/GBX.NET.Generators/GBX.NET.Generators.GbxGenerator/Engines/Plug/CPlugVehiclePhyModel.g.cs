@@ -150,7 +150,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     /// CPlugVehiclePhyModel 0x008 chunk
     /// </summary>
     [Chunk(0x090EA008)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 14)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 9, 14)]
     public partial class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
         public override uint Id => 0x090EA008;
@@ -166,7 +166,11 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
         public Chunk090EA008(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 9;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 14;
             }

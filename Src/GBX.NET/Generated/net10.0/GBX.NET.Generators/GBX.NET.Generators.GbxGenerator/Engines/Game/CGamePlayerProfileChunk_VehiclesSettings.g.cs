@@ -60,7 +60,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03130000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03130000 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130000;
@@ -75,7 +75,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
 
         public Chunk03130000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -106,7 +106,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03130001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 5)]
     public partial class Chunk03130001 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130001;
@@ -121,7 +121,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
 
         public Chunk03130001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -158,7 +162,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x002 skippable chunk (VehicleProfiles)
     /// </summary>
     [Chunk(0x03130002, "VehicleProfiles")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 4, 4, 4)]
     public partial class Chunk03130002 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130002;
@@ -171,7 +175,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
 
         public Chunk03130002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -199,7 +207,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x003 skippable chunk
     /// </summary>
     [Chunk(0x03130003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 7)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 7, 7, 7, 7)]
     public partial class Chunk03130003 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130003;
@@ -224,7 +232,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
 
         public Chunk03130003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 7;
             }
@@ -301,7 +309,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     /// CGamePlayerProfileChunk_VehiclesSettings 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03130004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 4)]
     public partial class Chunk03130004 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
     {
         public override uint Id => 0x03130004;
@@ -315,7 +323,11 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
 
         public Chunk03130004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

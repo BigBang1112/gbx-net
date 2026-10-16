@@ -85,7 +85,7 @@ CGameItemModel 0x2E002000
 0x015 [MP3, TMT, MP4, TM2020] // ItemTypeE
   int<EItemType> ItemTypeE
 
-0x019 [MP3, TMT, MP4, TM2020.v16] // model
+0x019 [MP3.v4, TMT.v7, MP4.v12, TM2020.v16] // model
   version
   if ItemType == EItemType.Ornament || ItemType == EItemType.PickUp || ItemType == EItemType.Spot
     v8-
@@ -132,7 +132,7 @@ CGameItemModel 0x2E002000
 0x01B [MP3, TMT]
   CMwNod
 
-0x01C [MP3, TMT, MP4, TM2020.v5] // default placement
+0x01C [MP3.v5, TMT.v5, MP4.v5, TM2020.v5] // default placement
   version
   v5+
     CGameItemPlacementParam DefaultPlacement
@@ -160,7 +160,7 @@ CGameItemModel 0x2E002000
 0x01D
   short
 
-0x01E [MP3, TMT, MP4, TM2020.v7]
+0x01E [MP3.v5, TMT.v6, MP4.v6, TM2020.v7]
   version
   v2+
     string ArchetypeRef
@@ -172,7 +172,7 @@ CGameItemModel 0x2E002000
         v7+
           int // -1
 
-0x01F [MP3, TMT, MP4, TM2020.v13]
+0x01F [MP3.v3, TMT.v4, MP4.v8, TM2020.v13]
   version
   v6-
     v5+
@@ -197,7 +197,7 @@ CGameItemModel 0x2E002000
           int?
           int?
 
-0x020 [MP3, TMT, MP4, TM2020.v3]
+0x020 [MP3.v1, TMT.v1, MP4.v3, TM2020.v3]
   version
   v1-
     string

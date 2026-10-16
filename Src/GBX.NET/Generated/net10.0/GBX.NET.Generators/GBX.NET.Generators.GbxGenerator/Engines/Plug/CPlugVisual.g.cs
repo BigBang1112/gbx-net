@@ -451,6 +451,11 @@ public partial class CPlugVisual : CPlug, IClass
         public override void ReadWrite(CPlugVisual n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Morph>(ref n.morphs!, version: Version);
         }
     }

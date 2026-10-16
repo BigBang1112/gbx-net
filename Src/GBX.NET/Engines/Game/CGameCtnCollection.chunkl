@@ -252,13 +252,13 @@ CGameCtnCollection 0x03033000
 0x032 // legacy cloud shader
   CFuncShaderLayerUV FidFuncShaderCloudsX2
 
-0x033 [MP3, TMT.v0, MP4.v0, TM2020.v1] // decal types
+0x033 [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // decal types
   version
   id[] DecalsTypesId
   v1+
     int DecalFade_cBlock_FullDensity
 
-0x034 [MP3, TMT.v0, MP4.v0, TM2020.v1] // clouds and vehicle environment layer
+0x034 [MP3.v0, TMT.v0, MP4.v0, TM2020.v1] // clouds and vehicle environment layer
   version
   CFuncShaderLayerUV FidFuncShaderCloudsX2
   CPlugBitmap FidPlugBitmapCloudsX2

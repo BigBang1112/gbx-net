@@ -70,24 +70,12 @@ public partial class CGameArmorModel : CMwNod, IClass
     /// CGameArmorModel 0x000 chunk
     /// </summary>
     [Chunk(0x2E00D000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00D000 : Chunk<CGameArmorModel>, IVersionable
     {
         public override uint Id => 0x2E00D000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk2E00D000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2E00D000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

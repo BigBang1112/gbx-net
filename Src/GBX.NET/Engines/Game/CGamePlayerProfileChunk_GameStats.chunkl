@@ -1,7 +1,7 @@
 CGamePlayerProfileChunk_GameStats 0x03147000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable) [MP3, TMT, MP4, TM2020.v2]
+0x000 (skippable) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
   version
   int TotalTimePlay
   int TotalTimeInSolo

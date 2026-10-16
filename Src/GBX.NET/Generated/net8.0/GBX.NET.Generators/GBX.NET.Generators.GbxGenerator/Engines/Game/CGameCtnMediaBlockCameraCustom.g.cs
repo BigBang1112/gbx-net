@@ -192,7 +192,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     /// CGameCtnMediaBlockCameraCustom 0x006 chunk (ManiaPlanet)
     /// </summary>
     [Chunk(0x030A2006, "ManiaPlanet")]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 3, 4)]
     public partial class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>, IVersionable
     {
         public override uint Id => 0x030A2006;
@@ -205,7 +205,15 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
 
         public Chunk030A2006(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

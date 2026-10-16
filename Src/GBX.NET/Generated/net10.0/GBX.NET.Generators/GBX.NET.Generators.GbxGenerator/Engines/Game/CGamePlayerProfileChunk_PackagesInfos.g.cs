@@ -60,7 +60,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     /// CGamePlayerProfileChunk_PackagesInfos 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03140000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03140000 : SkippableChunk<CGamePlayerProfileChunk_PackagesInfos>, IVersionable
     {
         public override uint Id => 0x03140000;
@@ -73,7 +73,7 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
 
         public Chunk03140000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

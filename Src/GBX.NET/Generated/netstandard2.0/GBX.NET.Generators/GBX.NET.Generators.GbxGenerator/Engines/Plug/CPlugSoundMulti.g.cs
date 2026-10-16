@@ -224,7 +224,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     /// CPlugSoundMulti 0x002 chunk
     /// </summary>
     [Chunk(0x09064002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 3)]
     public partial class Chunk09064002 : Chunk<CPlugSoundMulti>, IVersionable
     {
         public override uint Id => 0x09064002;
@@ -237,7 +237,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
         public Chunk09064002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -281,7 +281,7 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     /// CPlugSoundMulti 0x003 chunk
     /// </summary>
     [Chunk(0x09064003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 2, 2, 2)]
     public partial class Chunk09064003 : Chunk<CPlugSoundMulti>, IVersionable
     {
         public override uint Id => 0x09064003;
@@ -295,7 +295,11 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
 
         public Chunk09064003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

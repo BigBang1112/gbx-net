@@ -77,24 +77,12 @@ public partial class CPlugMediaClipList : CMwNod, IClass
     /// CPlugMediaClipList 0x000 chunk
     /// </summary>
     [Chunk(0x09189000)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09189000 : Chunk<CPlugMediaClipList>, IVersionable
     {
         public override uint Id => 0x09189000;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk09189000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk09189000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

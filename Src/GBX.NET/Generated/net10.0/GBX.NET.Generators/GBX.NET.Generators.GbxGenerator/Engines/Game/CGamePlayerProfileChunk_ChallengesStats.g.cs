@@ -60,7 +60,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     /// CGamePlayerProfileChunk_ChallengesStats 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03148000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03148000 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable
     {
         public override uint Id => 0x03148000;
@@ -74,7 +74,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
 
         public Chunk03148000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -103,7 +103,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     /// CGamePlayerProfileChunk_ChallengesStats 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03148001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk03148001 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable
     {
         public override uint Id => 0x03148001;
@@ -116,7 +116,7 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
 
         public Chunk03148001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

@@ -50,7 +50,7 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
     /// CPlugFxHdrScales_Tech3 0x000 chunk
     /// </summary>
     [Chunk(0x090F5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 1, 1)]
     public partial class Chunk090F5000 : Chunk<CPlugFxHdrScales_Tech3>, IVersionable
     {
         public override uint Id => 0x090F5000;
@@ -67,7 +67,11 @@ public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
 
         public Chunk090F5000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

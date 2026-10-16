@@ -61,7 +61,7 @@ public partial class CPlugEntRecordData : CMwNod, IClass
     /// CPlugEntRecordData 0x000 chunk
     /// </summary>
     [Chunk(0x0911F000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 11)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 11)]
     public partial class Chunk0911F000 : Chunk<CPlugEntRecordData>
     {
         public override uint Id => 0x0911F000;

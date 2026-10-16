@@ -78,6 +78,11 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, IClass, C
         public override void ReadWrite(CGameCtnMediaBlockDirtyLens n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
         }
     }

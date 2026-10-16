@@ -1165,7 +1165,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x02D chunk
     /// </summary>
     [Chunk(0x090B202D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 4, 4)]
     public partial class Chunk090B202D : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202D;
@@ -1189,7 +1189,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B202D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -1255,7 +1259,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x02E chunk
     /// </summary>
     [Chunk(0x090B202E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202E : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202E;
@@ -1281,18 +1285,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
-        }
-
-        public Chunk090B202E() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B202E(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1321,7 +1313,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x02F chunk
     /// </summary>
     [Chunk(0x090B202F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 2, 2, 3)]
     public partial class Chunk090B202F : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202F;
@@ -1359,7 +1351,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B202F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -1407,7 +1407,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x030 chunk
     /// </summary>
     [Chunk(0x090B2030)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2030 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2030;
@@ -1416,18 +1416,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U01;
         public float U02;
         public int U03;
-
-        public Chunk090B2030() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B2030(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1456,7 +1444,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x031 chunk
     /// </summary>
     [Chunk(0x090B2031)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 14)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 8, 10, 13, 14)]
     public partial class Chunk090B2031 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2031;
@@ -1524,7 +1512,19 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2031(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 8;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 10;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 13;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 14;
             }
@@ -1645,7 +1645,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x032 chunk
     /// </summary>
     [Chunk(0x090B2032)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2032 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2032;
@@ -1659,18 +1659,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int U06;
         public int U07;
         public bool U08;
-
-        public Chunk090B2032() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B2032(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1709,7 +1697,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x033 chunk
     /// </summary>
     [Chunk(0x090B2033)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 4, 5)]
     public partial class Chunk090B2033 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2033;
@@ -1800,7 +1788,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2033(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -1899,7 +1895,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x034 chunk
     /// </summary>
     [Chunk(0x090B2034)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 2, 3)]
     public partial class Chunk090B2034 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2034;
@@ -1953,7 +1949,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2034(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -1998,7 +2002,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x035 chunk
     /// </summary>
     [Chunk(0x090B2035)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090B2035 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2035;
@@ -2032,7 +2036,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2035(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2066,7 +2070,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x036 chunk
     /// </summary>
     [Chunk(0x090B2036)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2036 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2036;
@@ -2075,18 +2079,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U01;
         public int U02;
         public int U03;
-
-        public Chunk090B2036() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B2036(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2115,7 +2107,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x037 chunk
     /// </summary>
     [Chunk(0x090B2037)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk090B2037 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2037;
@@ -2182,7 +2174,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2037(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2245,7 +2241,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x038 chunk
     /// </summary>
     [Chunk(0x090B2038)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2038 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2038;
@@ -2253,18 +2249,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int Version { get; set; }
         public float U01;
         public float U02;
-
-        public Chunk090B2038() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B2038(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2291,7 +2275,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x039 chunk
     /// </summary>
     [Chunk(0x090B2039)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2039 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2039;
@@ -2308,18 +2292,6 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U09;
         public float U10;
         public bool U11;
-
-        public Chunk090B2039() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090B2039(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -2364,7 +2336,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x03A chunk
     /// </summary>
     [Chunk(0x090B203A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090B203A : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203A;
@@ -2407,7 +2379,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B203A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2441,7 +2413,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x03B chunk
     /// </summary>
     [Chunk(0x090B203B)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090B203B : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203B;
@@ -2465,7 +2437,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B203B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

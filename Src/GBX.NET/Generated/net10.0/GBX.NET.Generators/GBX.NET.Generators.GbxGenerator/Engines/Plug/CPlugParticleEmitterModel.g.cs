@@ -141,7 +141,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     /// CPlugParticleEmitterModel 0x002 chunk
     /// </summary>
     [Chunk(0x090B3002)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 4, 4)]
     public partial class Chunk090B3002 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3002;
@@ -154,7 +154,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
 
         public Chunk090B3002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -205,6 +209,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayString(ref U01!);
         }
     }
@@ -213,7 +222,7 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     /// CPlugParticleEmitterModel 0x004 chunk
     /// </summary>
     [Chunk(0x090B3004)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 6)]
     public partial class Chunk090B3004 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3004;
@@ -238,7 +247,11 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
 
         public Chunk090B3004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 6;
             }

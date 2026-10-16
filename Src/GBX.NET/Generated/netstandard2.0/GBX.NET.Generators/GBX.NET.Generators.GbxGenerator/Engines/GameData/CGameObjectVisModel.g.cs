@@ -544,6 +544,11 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         public override void ReadWrite(CGameObjectVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.soundRefSpawn);
             rw.String(ref n.soundRefUnspawn);
             rw.String(ref n.soundRefGrab);

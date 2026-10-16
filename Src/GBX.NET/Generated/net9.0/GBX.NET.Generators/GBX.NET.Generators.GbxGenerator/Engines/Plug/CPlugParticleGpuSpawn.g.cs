@@ -60,7 +60,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
     /// CPlugParticleGpuSpawn 0x000 chunk
     /// </summary>
     [Chunk(0x090C5000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090C5000 : Chunk<CPlugParticleGpuSpawn>, IVersionable
     {
         public override uint Id => 0x090C5000;
@@ -74,7 +74,7 @@ public partial class CPlugParticleGpuSpawn : CMwNod, IClass
 
         public Chunk090C5000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

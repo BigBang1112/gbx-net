@@ -116,6 +116,11 @@ public partial class CGameSpawnModel : CMwNod, IClass
         public override void ReadWrite(CGameSpawnModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Iso4(ref n.loc);
             rw.Boolean(ref n.underground);
 

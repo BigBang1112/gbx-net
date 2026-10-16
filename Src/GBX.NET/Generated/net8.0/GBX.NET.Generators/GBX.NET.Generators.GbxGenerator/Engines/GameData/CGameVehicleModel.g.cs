@@ -96,7 +96,7 @@ public partial class CGameVehicleModel : CMwNod, IClass
     /// CGameVehicleModel 0x000 chunk
     /// </summary>
     [Chunk(0x2E01C000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 3)]
     public partial class Chunk2E01C000 : Chunk<CGameVehicleModel>, IVersionable
     {
         public override uint Id => 0x2E01C000;
@@ -137,7 +137,11 @@ public partial class CGameVehicleModel : CMwNod, IClass
 
         public Chunk2E01C000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

@@ -1,6 +1,6 @@
 CGameVehicleModel 0x2E01C000
 
-0x000 [MP4, TM2020.v3]
+0x000 [MP4.v0, TM2020.v3]
   version
   CPlugVehiclePhyModel PhyModel
   CPlugVehicleVisModel VisModel

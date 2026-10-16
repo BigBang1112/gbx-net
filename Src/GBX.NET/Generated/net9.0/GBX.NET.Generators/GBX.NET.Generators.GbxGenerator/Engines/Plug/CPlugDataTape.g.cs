@@ -140,24 +140,12 @@ public partial class CPlugDataTape : CMwNod, IClass
     /// CPlugDataTape 0x001 chunk (states and notices)
     /// </summary>
     [Chunk(0x090CE001, "states and notices")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090CE001 : Chunk<CPlugDataTape>, IVersionable
     {
         public override uint Id => 0x090CE001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk090CE001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk090CE001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

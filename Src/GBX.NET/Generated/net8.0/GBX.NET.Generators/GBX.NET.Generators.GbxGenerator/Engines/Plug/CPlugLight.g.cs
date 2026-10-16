@@ -261,7 +261,7 @@ public partial class CPlugLight : CPlug, IClass
     /// CPlugLight 0x004 chunk
     /// </summary>
     [Chunk(0x0901D004)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0901D004 : Chunk<CPlugLight>, IVersionable
     {
         public override uint Id => 0x0901D004;
@@ -272,18 +272,6 @@ public partial class CPlugLight : CPlug, IClass
         public int U03;
         public int U04;
         public int U05;
-
-        public Chunk0901D004() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0901D004(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -93,6 +93,11 @@ public partial class CGamePodiumInfo : CMwNod, IClass
         public override void ReadWrite(CGamePodiumInfo n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             n.mediaClipFids = rw.ListNodeRef<CMwNod>(n.mediaClipFids);
         }
     }

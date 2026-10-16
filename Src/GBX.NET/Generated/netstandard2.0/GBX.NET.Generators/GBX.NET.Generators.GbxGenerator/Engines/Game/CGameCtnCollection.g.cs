@@ -2718,7 +2718,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// CGameCtnCollection 0x033 chunk (decal types)
     /// </summary>
     [Chunk(0x03033033, "decal types")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk03033033 : Chunk<CGameCtnCollection>, IVersionable
     {
         public override uint Id => 0x03033033;
@@ -2731,7 +2731,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public Chunk03033033(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 0;
             }
@@ -2768,7 +2768,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// CGameCtnCollection 0x034 chunk (clouds and vehicle environment layer)
     /// </summary>
     [Chunk(0x03033034, "clouds and vehicle environment layer")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk03033034 : Chunk<CGameCtnCollection>, IVersionable
     {
         public override uint Id => 0x03033034;
@@ -2781,7 +2781,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public Chunk03033034(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 0;
             }
@@ -2836,6 +2836,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.offZone_FogMatterRef);
         }
     }
@@ -3382,6 +3387,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.folderDefaultActions);
         }
     }
@@ -3406,6 +3416,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.folderDefaultActions2);
         }
     }
@@ -3430,6 +3445,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.colorBlindnessModifierRef);
         }
     }
@@ -3517,6 +3537,11 @@ public partial class CGameCtnCollection : CMwNod, IClass
         public override void ReadWrite(CGameCtnCollection n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.NodeRef(ref n.globalMaterialModifierRef);
         }
     }

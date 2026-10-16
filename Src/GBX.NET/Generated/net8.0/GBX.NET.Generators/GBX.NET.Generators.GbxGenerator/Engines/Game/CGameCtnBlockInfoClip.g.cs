@@ -500,24 +500,12 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     /// CGameCtnBlockInfoClip 0x007 chunk (passing point)
     /// </summary>
     [Chunk(0x03053007, "passing point")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, -1, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03053007 : Chunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053007;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
-
-        public Chunk03053007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03053007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

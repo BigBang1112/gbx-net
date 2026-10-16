@@ -82,7 +82,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
     /// CGameCtnMediaBlockColoringBase 0x000 chunk
     /// </summary>
     [Chunk(0x03172000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2)]
     public partial class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>, IVersionable
     {
         public override uint Id => 0x03172000;
@@ -95,7 +95,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, IClass
 
         public Chunk03172000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

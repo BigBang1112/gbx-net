@@ -130,6 +130,11 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
         public override void ReadWrite(CGameCtnMediaBlockSkel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ListReadableWritable<Key>(ref n.keys!, version: Version);
 
             if (Version >= 1)

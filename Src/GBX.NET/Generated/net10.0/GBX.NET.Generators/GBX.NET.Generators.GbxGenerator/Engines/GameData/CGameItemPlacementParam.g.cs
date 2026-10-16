@@ -220,8 +220,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
-            if (Version!= 0)
+            if (Version>= 1)
             {
                 throw new NotSupportedException("Unsupported item placement settings version .");
             }
@@ -297,6 +301,11 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         public override void ReadWrite(CGameItemPlacementParam n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<MagnetLoc>(ref n.magnetLocs!, version: Version);
         }
     }

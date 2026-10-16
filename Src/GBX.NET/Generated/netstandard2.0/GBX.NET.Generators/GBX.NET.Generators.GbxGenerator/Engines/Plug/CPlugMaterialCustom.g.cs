@@ -256,7 +256,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     /// CPlugMaterialCustom 0x00F skippable chunk
     /// </summary>
     [Chunk(0x0903A00F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 2, 2)]
     public partial class Chunk0903A00F : SkippableChunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A00F;
@@ -273,7 +273,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
 
         public Chunk0903A00F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -441,6 +445,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         public override void ReadWrite(CPlugMaterialCustom n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Bitmap>(ref n.textures!, version: 1);
         }
     }
@@ -449,7 +458,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     /// CPlugMaterialCustom 0x014 chunk
     /// </summary>
     [Chunk(0x0903A014)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
     public partial class Chunk0903A014 : Chunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A014;
@@ -463,7 +472,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
 
         public Chunk0903A014(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -492,7 +505,7 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     /// CPlugMaterialCustom 0x015 chunk
     /// </summary>
     [Chunk(0x0903A015)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 2)]
     public partial class Chunk0903A015 : Chunk<CPlugMaterialCustom>, IVersionable
     {
         public override uint Id => 0x0903A015;
@@ -510,7 +523,11 @@ public partial class CPlugMaterialCustom : CPlug, IClass
 
         public Chunk0903A015(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

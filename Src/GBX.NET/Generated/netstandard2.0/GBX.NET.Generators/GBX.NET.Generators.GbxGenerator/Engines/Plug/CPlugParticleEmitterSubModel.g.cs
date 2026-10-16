@@ -1165,7 +1165,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x02D chunk
     /// </summary>
     [Chunk(0x090B202D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 4, 4)]
     public partial class Chunk090B202D : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202D;
@@ -1189,7 +1189,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B202D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }
@@ -1293,6 +1297,10 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -1305,7 +1313,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x02F chunk
     /// </summary>
     [Chunk(0x090B202F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 2, 2, 3)]
     public partial class Chunk090B202F : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B202F;
@@ -1343,7 +1351,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B202F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -1413,6 +1429,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Int32(ref U03);
@@ -1423,7 +1444,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x031 chunk
     /// </summary>
     [Chunk(0x090B2031)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 14)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 8, 10, 13, 14)]
     public partial class Chunk090B2031 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2031;
@@ -1491,7 +1512,19 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2031(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 8;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 10;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 13;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 14;
             }
@@ -1644,6 +1677,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
@@ -1659,7 +1697,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x033 chunk
     /// </summary>
     [Chunk(0x090B2033)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 4, 5)]
     public partial class Chunk090B2033 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2033;
@@ -1750,7 +1788,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2033(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -1849,7 +1895,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x034 chunk
     /// </summary>
     [Chunk(0x090B2034)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 2, 3)]
     public partial class Chunk090B2034 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2034;
@@ -1903,7 +1949,15 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2034(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -1948,7 +2002,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x035 chunk
     /// </summary>
     [Chunk(0x090B2035)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090B2035 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2035;
@@ -1982,7 +2036,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2035(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2038,6 +2092,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Boolean(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
@@ -2048,7 +2107,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x037 chunk
     /// </summary>
     [Chunk(0x090B2037)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk090B2037 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B2037;
@@ -2115,7 +2174,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B2037(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2198,6 +2261,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
         }
@@ -2245,6 +2313,11 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Boolean(ref U03);
@@ -2263,7 +2336,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x03A chunk
     /// </summary>
     [Chunk(0x090B203A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090B203A : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203A;
@@ -2306,7 +2379,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B203A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -2340,7 +2413,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     /// CPlugParticleEmitterSubModel 0x03B chunk
     /// </summary>
     [Chunk(0x090B203B)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090B203B : Chunk<CPlugParticleEmitterSubModel>, IVersionable
     {
         public override uint Id => 0x090B203B;
@@ -2364,7 +2437,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
         public Chunk090B203B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

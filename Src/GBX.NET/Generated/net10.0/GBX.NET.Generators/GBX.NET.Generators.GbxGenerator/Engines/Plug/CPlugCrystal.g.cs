@@ -310,6 +310,11 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
         public override void ReadWrite(CPlugCrystal n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Array<float>(ref n.smoothingGroups!);
             rw.Array<int>(ref n.faceSmoothingGroupIndices!);
         }

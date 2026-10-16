@@ -654,7 +654,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     /// CGameCtnDecorationMood 0x00F chunk
     /// </summary>
     [Chunk(0x0303A00F)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 3, 3)]
     public partial class Chunk0303A00F : Chunk<CGameCtnDecorationMood>, IVersionable
     {
         public override uint Id => 0x0303A00F;
@@ -667,7 +667,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public Chunk0303A00F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }
@@ -714,7 +718,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     /// CGameCtnDecorationMood 0x012 chunk
     /// </summary>
     [Chunk(0x0303A012)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0303A012 : Chunk<CGameCtnDecorationMood>, IVersionable
     {
         public override uint Id => 0x0303A012;
@@ -727,7 +731,7 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
 
         public Chunk0303A012(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -783,6 +787,11 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         public override void ReadWrite(CGameCtnDecorationMood n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Single(ref n.editorHelperHdrScale);
         }
     }

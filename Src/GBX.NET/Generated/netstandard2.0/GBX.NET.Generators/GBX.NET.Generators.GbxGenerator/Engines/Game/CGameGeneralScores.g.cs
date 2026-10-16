@@ -68,6 +68,11 @@ public partial class CGameGeneralScores : CMwNod, IClass
         public override void ReadWrite(CGameGeneralScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<Unknown>(ref U01!, version: Version);
         }
     }

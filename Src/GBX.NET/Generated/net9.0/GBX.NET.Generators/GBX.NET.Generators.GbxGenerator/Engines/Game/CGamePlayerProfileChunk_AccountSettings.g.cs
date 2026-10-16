@@ -1209,24 +1209,12 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// CGamePlayerProfileChunk_AccountSettings 0x007 skippable chunk
     /// </summary>
     [Chunk(0x0312C007)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312C007 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C007;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0312C007() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312C007(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1472,6 +1460,11 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public override void ReadWrite(CGamePlayerProfileChunk_AccountSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref n.youtubeRefreshToken);
             rw.ArrayReadableWritable<YoutubeUpload>(ref n.youtubeUploads!, version: Version);
         }
@@ -1481,7 +1474,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// CGamePlayerProfileChunk_AccountSettings 0x00D skippable chunk
     /// </summary>
     [Chunk(0x0312C00D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312C00D : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C00D;
@@ -1489,18 +1482,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int Version { get; set; }
         public int U01;
         public int U02;
-
-        public Chunk0312C00D() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312C00D(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1527,25 +1508,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// CGamePlayerProfileChunk_AccountSettings 0x00E skippable chunk
     /// </summary>
     [Chunk(0x0312C00E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312C00E : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C00E;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        public Chunk0312C00E() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312C00E(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1576,25 +1545,13 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// CGamePlayerProfileChunk_AccountSettings 0x00F skippable chunk
     /// </summary>
     [Chunk(0x0312C00F)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0312C00F : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C00F;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public string? U01;
-
-        public Chunk0312C00F() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312C00F(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -1622,7 +1579,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     /// CGamePlayerProfileChunk_AccountSettings 0x010 skippable chunk
     /// </summary>
     [Chunk(0x0312C010)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0312C010 : SkippableChunk<CGamePlayerProfileChunk_AccountSettings>, IVersionable
     {
         public override uint Id => 0x0312C010;
@@ -1631,18 +1588,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         public int U01;
         public int U02;
         public ulong U03;
-
-        public Chunk0312C010() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0312C010(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

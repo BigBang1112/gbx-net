@@ -80,6 +80,11 @@ public partial class CGameChallengeScores : CMwNod, IClass
         public override void ReadWrite(CGameChallengeScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref U01);
             rw.String(ref U02);
             rw.Boolean(ref U03);

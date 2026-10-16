@@ -9,7 +9,7 @@ CPlugSoundMulti 0x09064000
   CMwNod[] AdditionalSounds2 (deprec)
   int<ESoundInputMapping> InputMapping
 
-0x002 [MP3, TMT, MP4, TM2020.v3]
+0x002 [MP3.v3, TMT.v3, MP4.v3, TM2020.v3]
   version
   float PitchVariancePos
   float VolumeVariance
@@ -20,7 +20,7 @@ CPlugSoundMulti 0x09064000
       v3+
         float PitchVarianceNeg
 
-0x003 [MP3, TMT, MP4, TM2020.v2]
+0x003 [MP3.v0, TMT.v2, MP4.v2, TM2020.v2]
   version
   bool // is Distance from ESoundInputMapping
   vec3[] PreferedDistances

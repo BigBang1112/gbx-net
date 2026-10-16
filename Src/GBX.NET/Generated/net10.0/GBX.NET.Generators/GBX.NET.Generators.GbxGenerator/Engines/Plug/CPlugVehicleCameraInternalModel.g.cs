@@ -180,7 +180,7 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
     /// CPlugVehicleCameraInternalModel 0x000 chunk
     /// </summary>
     [Chunk(0x090F7000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 8)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 4, 5, 8)]
     public partial class Chunk090F7000 : Chunk<CPlugVehicleCameraInternalModel>, IVersionable
     {
         public override uint Id => 0x090F7000;
@@ -194,7 +194,19 @@ public partial class CPlugVehicleCameraInternalModel : CPlugCamControlModel, ICl
 
         public Chunk090F7000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 8;
             }

@@ -242,6 +242,11 @@ public partial class GxFog : CMwNod, IClass
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec3(ref n.color);
         }
     }
@@ -266,6 +271,11 @@ public partial class GxFog : CMwNod, IClass
         public override void ReadWrite(GxFog n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.fogVersion);
         }
     }

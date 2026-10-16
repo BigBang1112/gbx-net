@@ -1,7 +1,7 @@
 CGamePlayerProfileChunk_EditorSettings 0x03163000
 - inherits: CGamePlayerProfileChunk
 
-0x000 (skippable) [MP3, TMT, MP4, TM2020.v1]
+0x000 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   PluginInfo[] PluginInfos
 

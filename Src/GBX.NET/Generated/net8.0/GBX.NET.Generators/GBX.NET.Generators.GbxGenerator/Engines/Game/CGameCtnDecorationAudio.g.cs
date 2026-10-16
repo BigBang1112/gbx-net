@@ -463,7 +463,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x003 chunk
     /// </summary>
     [Chunk(0x03039003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 9)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 7, 7, 9)]
     public partial class Chunk03039003 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039003;
@@ -551,7 +551,15 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public Chunk03039003(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 7;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 9;
             }
@@ -657,7 +665,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x004 chunk
     /// </summary>
     [Chunk(0x03039004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
     public partial class Chunk03039004 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039004;
@@ -670,7 +678,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
         public Chunk03039004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -701,25 +713,13 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x005 chunk
     /// </summary>
     [Chunk(0x03039005)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039005 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-
-        public Chunk03039005() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03039005(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -748,24 +748,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     /// CGameCtnDecorationAudio 0x006 chunk
     /// </summary>
     [Chunk(0x03039006)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039006 : Chunk<CGameCtnDecorationAudio>, IVersionable
     {
         public override uint Id => 0x03039006;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk03039006() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03039006(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

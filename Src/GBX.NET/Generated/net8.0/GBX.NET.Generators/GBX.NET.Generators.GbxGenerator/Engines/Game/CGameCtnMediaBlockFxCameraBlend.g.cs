@@ -62,24 +62,12 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
     /// CGameCtnMediaBlockFxCameraBlend 0x000 chunk
     /// </summary>
     [Chunk(0x0316D000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>, IVersionable
     {
         public override uint Id => 0x0316D000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk0316D000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0316D000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

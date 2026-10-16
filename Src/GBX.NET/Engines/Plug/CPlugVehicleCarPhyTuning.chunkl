@@ -741,7 +741,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v4+
         int
 
-0x095 [MP3, TMT.v0, MP4.v0, TM2020.v7] // air control
+0x095 [MP3.v0, TMT.v0, MP4.v0, TM2020.v7] // air control
   version
   int AirControlDuration
   float AirControlMaxAngularSpeedY
@@ -1074,7 +1074,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                             int?
                             int?
 
-0x0A0 [MP4, TM2020.v2]
+0x0A0 [MP4.v1, TM2020.v2]
   version
   v1+
     float

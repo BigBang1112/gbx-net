@@ -204,24 +204,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     /// CGameItemPlacementParam 0x000 skippable chunk
     /// </summary>
     [Chunk(0x2E020000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E020000 : SkippableChunk<CGameItemPlacementParam>, IVersionable
     {
         public override uint Id => 0x2E020000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk2E020000() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2E020000(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -237,7 +225,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version!= 0)
+            if (Version>= 1)
             {
                 throw new NotSupportedException("Unsupported item placement settings version .");
             }
@@ -297,24 +285,12 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     /// CGameItemPlacementParam 0x004 skippable chunk (magnet locations)
     /// </summary>
     [Chunk(0x2E020004, "magnet locations")]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E020004 : SkippableChunk<CGameItemPlacementParam>, IVersionable
     {
         public override uint Id => 0x2E020004;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk2E020004() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk2E020004(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

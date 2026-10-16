@@ -70,7 +70,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     /// CGamePlayerProfileChunk_EditorSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03163000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03163000 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>, IVersionable
     {
         public override uint Id => 0x03163000;
@@ -83,7 +83,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
 
         public Chunk03163000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -111,24 +111,12 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     /// CGamePlayerProfileChunk_EditorSettings 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03163001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03163001 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>, IVersionable
     {
         public override uint Id => 0x03163001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        public Chunk03163001() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03163001(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

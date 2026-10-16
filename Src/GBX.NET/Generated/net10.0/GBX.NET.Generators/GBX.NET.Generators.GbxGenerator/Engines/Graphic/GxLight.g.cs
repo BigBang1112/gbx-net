@@ -224,6 +224,11 @@ public partial class GxLight : CMwNod, IClass
         public override void ReadWrite(GxLight n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Vec3(ref n.color);
             rw.EnumInt32<EFlags>(ref n.flags);
             rw.Single(ref n.intensity);

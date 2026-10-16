@@ -3985,6 +3985,10 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         public override void ReadWrite(CGamePlayerProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version == 0)
             {
@@ -4613,7 +4617,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     /// CGamePlayerProfile 0x07E skippable chunk
     /// </summary>
     [Chunk(0x0308C07E)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
     public partial class Chunk0308C07E : SkippableChunk<CGamePlayerProfile>, IVersionable
     {
         public override uint Id => 0x0308C07E;
@@ -4625,7 +4629,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
 
         public Chunk0308C07E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

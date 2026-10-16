@@ -169,6 +169,10 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         public override void ReadWrite(CSceneVehicleCarMarksSamples n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
 
             if (Version >= 1)
             {

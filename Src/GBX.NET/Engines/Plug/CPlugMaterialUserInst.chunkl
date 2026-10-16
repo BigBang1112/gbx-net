@@ -33,7 +33,7 @@ CPlugMaterialUserInst 0x090FD000
             v7+
               id HidingGroup
 
-0x001 [MP4, TM2020.v5]
+0x001 [MP4.v5, TM2020.v5]
   version
   CPlugBitmapAtlas
   v2=

@@ -70,7 +70,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     /// CGamePlayerProfileChunk_EditorSettings 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03163000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk03163000 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>, IVersionable
     {
         public override uint Id => 0x03163000;
@@ -83,7 +83,7 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
 
         public Chunk03163000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -127,6 +127,11 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
         public override void ReadWrite(CGamePlayerProfileChunk_EditorSettings n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.mapEditorCoppersLimit);
         }
     }

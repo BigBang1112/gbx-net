@@ -76,6 +76,11 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
         public override void ReadWrite(CGameCtnBlockInfoClipVertical n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Id(ref n.verticalClipGroupId);
         }
     }

@@ -608,7 +608,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x009 chunk
     /// </summary>
     [Chunk(0x03036009)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk03036009 : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x03036009;
@@ -640,18 +640,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield break;
-        }
-
-        public Chunk03036009() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk03036009(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -691,7 +679,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00A chunk
     /// </summary>
     [Chunk(0x0303600A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0303600A : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600A;
@@ -723,18 +711,6 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
             yield break;
         }
 
-        public Chunk0303600A() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0303600A(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
-            {
-                Version = 0;
-            }
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -760,24 +736,12 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00B chunk (bottom+top clip with dir)
     /// </summary>
     [Chunk(0x0303600B, "bottom+top clip with dir")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 0, 0)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303600B : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600B;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
-
-        public Chunk0303600B() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0303600B(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -885,25 +849,13 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     /// CGameCtnBlockUnitInfo 0x00D chunk
     /// </summary>
     [Chunk(0x0303600D)]
-    [ChunkGameVersion(GameVersion.TM2020, 0)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0303600D : Chunk<CGameCtnBlockUnitInfo>, IVersionable
     {
         public override uint Id => 0x0303600D;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
         public byte[]? U01;
-
-        public Chunk0303600D() : this(GameVersion.Unspecified)
-        {
-        }
-
-        public Chunk0303600D(GameVersion gameVersion)
-        {
-            if (gameVersion == GameVersion.TM2020)
-            {
-                Version = 0;
-            }
-        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

@@ -155,6 +155,11 @@ public partial class CGameLeague : CMwNod, IClass
         public override void ReadWrite(CGameLeague n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.String(ref U01);
             rw.String(ref U02);
             rw.String(ref n.name);
