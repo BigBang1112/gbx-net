@@ -1,8 +1,6 @@
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Serialization;
 
-#pragma warning error CS8600, CS8602, CS8604, CS8619, CS8620, CS8625, CS8631, CS8634
-
 namespace GBX.NET.Tests.Unit.Serialization;
 
 [Category("Unit")]

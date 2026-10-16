@@ -21,7 +21,7 @@ public class ExternalCompatibilityTests
 
         await Assert.That(methods.Length).IsGreaterThan(0);
         foreach (var method in methods)
-            await Assert.That(method.GetCustomAttribute<ObsoleteAttribute>()).IsNotNull().Because(method.ToString());
+            await Assert.That(method.GetCustomAttribute<ObsoleteAttribute>()).IsNotNull().Because(type.Name + "." + method.Name);
     }
 
     private static bool ContainsExternal(Type type) => type.HasElementType

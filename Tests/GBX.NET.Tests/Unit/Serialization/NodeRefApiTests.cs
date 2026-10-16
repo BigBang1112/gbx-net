@@ -287,9 +287,9 @@ public class NodeRefApiTests
         var calls = 0;
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var file = table.CreateFile("unloaded.Gbx");
-        var reference = new NodeRef<CMwNod>();
+        var reference = new NodeRef<CMwNod?>();
         reference.Descriptor = file;
-        var list = new NodeRefList<CMwNod> { null };
+        var list = new NodeRefList<CMwNod?> { null };
 
         list.Insert(0, reference);
         var stored = list.EnumerateReferences().ToArray();
@@ -310,9 +310,9 @@ public class NodeRefApiTests
         var calls = 0;
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var descriptor = table.CreateFile("unloaded.Gbx");
-        var reference = new NodeRef<CPlugCrystal> { Descriptor = descriptor };
+        var reference = new NodeRef<CPlugCrystal?> { Descriptor = descriptor };
         var node = new CPlugCrystal();
-        var list = new NodeRefList<CPlugCrystal>();
+        var list = new NodeRefList<CPlugCrystal?>();
 
         list.Add(null);
         list.Insert(0, null);
@@ -332,8 +332,8 @@ public class NodeRefApiTests
         await Assert.That(list.Get(2).Kind).IsEqualTo(NodeRefKind.None);
         await Assert.That(list.Get(3).Kind).IsEqualTo(NodeRefKind.None);
         await Assert.That(calls).IsEqualTo(0);
-        await Assert.That(() => list.Add((NodeRef<CPlugCrystal>)null!)).Throws<ArgumentNullException>();
-        await Assert.That(() => list.Insert(0, (NodeRef<CPlugCrystal>)null!)).Throws<ArgumentNullException>();
+        await Assert.That(() => list.Add((NodeRef<CPlugCrystal?>)null!)).Throws<ArgumentNullException>();
+        await Assert.That(() => list.Insert(0, (NodeRef<CPlugCrystal?>)null!)).Throws<ArgumentNullException>();
     }
 
     [Test]
@@ -343,7 +343,7 @@ public class NodeRefApiTests
         var material = new CPlugMaterial();
         var last = new CPlugCrystal();
         CMwNod?[] nodes = [first, material, null, last];
-        var references = new NodeRefList<CMwNod>(nodes);
+        var references = new NodeRefList<CMwNod?>(nodes);
         var handles = references.EnumerateReferences().ToArray();
         var visited = new List<CMwNod?>();
 
@@ -369,7 +369,7 @@ public class NodeRefApiTests
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var first = new CPlugCrystal();
         var replacement = new CPlugCrystal();
-        var references = new NodeRefList<CPlugCrystal> { null, first };
+        var references = new NodeRefList<CPlugCrystal?> { null, first };
         references.Get(0).Descriptor = table.CreateFile("unloaded.Gbx");
         var handle = references.Get(0);
         IList list = references;
@@ -406,7 +406,7 @@ public class NodeRefApiTests
         var calls = 0;
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var descriptor = table.CreateFile("unloaded.Gbx");
-        var references = new NodeRefList<CPlugCrystal> { null };
+        var references = new NodeRefList<CPlugCrystal?> { null };
         references.Get(0).Descriptor = descriptor;
         IList list = references;
         var incompatible = new CPlugMaterial();
@@ -433,7 +433,7 @@ public class NodeRefApiTests
         var external = new CPlugCrystal();
         var embedded = new CPlugMaterial();
         table.ExternalNodes["node.Gbx"] = () => { calls++; return external.ToGbx(); };
-        var references = new NodeRefList<CMwNod> { null, embedded, null };
+        var references = new NodeRefList<CMwNod?> { null, embedded, null };
         var descriptor = table.CreateFile("node.Gbx");
         references.Get(0).Descriptor = descriptor;
         IList list = references;
@@ -476,7 +476,7 @@ public class NodeRefApiTests
         var table = new GbxRefTable();
         var calls = 0;
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
-        var references = new NodeRefList<CPlugCrystal> { null };
+        var references = new NodeRefList<CPlugCrystal?> { null };
         references.Get(0).Descriptor = table.CreateFile("unloaded.Gbx");
         ICollection collection = references;
         var array = scenario switch

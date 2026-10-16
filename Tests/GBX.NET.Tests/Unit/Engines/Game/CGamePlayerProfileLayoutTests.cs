@@ -281,9 +281,9 @@ public class CGamePlayerProfileLayoutTests
     public async Task ReadWrite_BuddyVersionZero_UsesPackedSystemTime()
     {
         var date = new DateTime(2025, 7, 15, 12, 34, 56, 789);
-        var packed = (ulong)date.Year | ((ulong)date.Month << 16) | ((ulong)date.DayOfWeek << 20)
-            | ((ulong)date.Day << 23) | ((ulong)date.Hour << 32) | ((ulong)date.Minute << 37)
-            | ((ulong)date.Second << 43) | ((ulong)date.Millisecond << 49);
+        var packed = (ulong)(uint)date.Year | ((ulong)(uint)date.Month << 16) | ((ulong)(uint)date.DayOfWeek << 20)
+            | ((ulong)(uint)date.Day << 23) | ((ulong)(uint)date.Hour << 32) | ((ulong)(uint)date.Minute << 37)
+            | ((ulong)(uint)date.Second << 43) | ((ulong)(uint)date.Millisecond << 49);
         var payload = Payload(w =>
         {
             w.Write(0); // Container version.

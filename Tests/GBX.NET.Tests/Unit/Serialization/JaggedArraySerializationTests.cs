@@ -129,6 +129,7 @@ public class JaggedArraySerializationTests
         await Assert.That(restoredStrings[1]).IsEquivalentTo(strings[1]);
     }
 
+#pragma warning disable CS0618 // This test exercises obsolete compatibility APIs.
     [Test]
     public async Task JaggedArray_NodeReferences_SupportsFixedLengths()
     {
@@ -157,6 +158,7 @@ public class JaggedArraySerializationTests
         await Assert.That(restoredExternals).Count().IsEqualTo(1);
         await Assert.That(restoredExternals![0]).IsEmpty();
     }
+#pragma warning restore CS0618
 
     [Test]
     public async Task JaggedArray_MismatchedFixedLengths_Throws()

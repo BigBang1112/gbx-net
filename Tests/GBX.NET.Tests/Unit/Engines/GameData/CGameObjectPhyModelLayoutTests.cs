@@ -185,7 +185,7 @@ public class CGameObjectPhyModelLayoutTests
         {
             await Assert.That(node.Armor).IsEqualTo(150);
             await Assert.That(node.ThrowSpeed).IsEqualTo(31.5f);
-            await Assert.That(chunk.U22).IsEqualTo(true);
+            await Assert.That(chunk.U22).IsTrue();
         }
         if (version >= 21 && paths)
         {

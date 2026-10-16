@@ -93,6 +93,7 @@ public class CGameCtnChallengeParametersChunkTests
         await ReadAndRewrite(stream, chunk);
     }
 
+#pragma warning disable CS0618 // This test exercises obsolete compatibility APIs.
     [Test]
     public async Task ReadWrite_LegacyGhostArray_ConsumesTheDeprecatedVersionPrefix()
     {
@@ -111,6 +112,7 @@ public class CGameCtnChallengeParametersChunkTests
         await Assert.That(restored.LegacyValidateGhosts[0]).IsNotNull();
         await Assert.That(restored.LegacyValidateGhosts[1]).IsNull();
     }
+#pragma warning restore CS0618
 
     [Test]
     public async Task ReadWrite_LegacyMapTypeChunk_ConsumesItsVersion()

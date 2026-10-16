@@ -181,6 +181,7 @@ public class CollectionSerializationTests
         }
     }
 
+#pragma warning disable CS0618 // This test exercises obsolete compatibility APIs.
     [Test]
     [Arguments(-1, 2)]
     [Arguments(0, 2)]
@@ -212,7 +213,9 @@ public class CollectionSerializationTests
         }
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x11223344);
     }
+#pragma warning restore CS0618
 
+#pragma warning disable CS0618 // This test exercises obsolete compatibility APIs.
     [Test]
     public async Task WriteArrayAndWriteList_NegativeLength_ThrowsBeforeWriting()
     {
@@ -225,7 +228,9 @@ public class CollectionSerializationTests
         Assert.Throws<ArgumentOutOfRangeException>(() => writer.WriteListExternalNodeRef<CGameCtnBlockInfoClip>(null, -1));
         await Assert.That(stream.Length).IsEqualTo(0);
     }
+#pragma warning restore CS0618
 
+#pragma warning disable CS0618 // This test exercises obsolete compatibility APIs.
     [Test]
     public async Task WriteArrayAndWriteList_ConfiguredByteLimit_ThrowsBeforeWriting()
     {
@@ -240,4 +245,6 @@ public class CollectionSerializationTests
         Assert.Throws<LengthLimitException>(() => writer.WriteListExternalNodeRef<CGameCtnBlockInfoClip>(null, 8));
         await Assert.That(stream.Length).IsEqualTo(0);
     }
+#pragma warning restore CS0618
+
 }

@@ -3597,10 +3597,10 @@ public class GenerationTests
         await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
         var mapping = System.Reflection.Assembly.Load(stream.ToArray()).GetType("Mapping")!
             .GetMethod("IsChunkIdRemapped")!;
-        await Assert.That(mapping.Invoke(null, [0x0307B000u])).IsEqualTo(false);
-        await Assert.That(mapping.Invoke(null, [0x24062000u])).IsEqualTo(false);
-        await Assert.That(mapping.Invoke(null, [0x03078000u])).IsEqualTo(true);
-        await Assert.That(mapping.Invoke(null, [0x03078001u])).IsEqualTo(true);
+        await Assert.That((bool)mapping.Invoke(null, [0x0307B000u])!).IsFalse();
+        await Assert.That((bool)mapping.Invoke(null, [0x24062000u])!).IsFalse();
+        await Assert.That((bool)mapping.Invoke(null, [0x03078000u])!).IsTrue();
+        await Assert.That((bool)mapping.Invoke(null, [0x03078001u])!).IsTrue();
     }
 
     [Test]

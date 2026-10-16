@@ -98,8 +98,8 @@ public class CGameCtnBlockUnitInfoChunkTests
     {
         var original = new CGameCtnBlockUnitInfo
         {
-            ClipsNorth = Enumerable.Range(0, 7).Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray(),
-            ClipsBottom = Enumerable.Range(0, 7).Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray()
+            ClipsNorth = CreateEmptyClips(7),
+            ClipsBottom = CreateEmptyClips(7)
         };
         var chunk = new CGameCtnBlockUnitInfo.Chunk0303600C { Version = version };
         using var stream = new MemoryStream();
@@ -139,7 +139,7 @@ public class CGameCtnBlockUnitInfoChunkTests
     [Arguments(5)]
     public async Task ReadWrite_Chunk0303600C_Version0RejectsMoreThanThreeClips(int direction)
     {
-        var clips = Enumerable.Range(0, 4).Select(_ => new External<CGameCtnBlockInfoClip>(null, null)).ToArray();
+        var clips = CreateEmptyClips(4);
         var original = new CGameCtnBlockUnitInfo
         {
             ClipsNorth = direction == 0 ? clips : null,
@@ -167,5 +167,12 @@ public class CGameCtnBlockUnitInfoChunkTests
             new CGameCtnBlockUnitInfo.Chunk0303600C { Version = 0 }.ReadWrite(new CGameCtnBlockUnitInfo(), rw);
         }
         await Assert.That(stream.ToArray().SequenceEqual(new byte[14])).IsTrue();
+    }
+
+    private static NodeRefList<CGameCtnBlockInfoClip> CreateEmptyClips(int count)
+    {
+        var clips = new NodeRefList<CGameCtnBlockInfoClip>(count);
+        for (var i = 0; i < count; i++) clips.Add(new NodeRef<CGameCtnBlockInfoClip>());
+        return clips;
     }
 }

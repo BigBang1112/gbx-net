@@ -142,7 +142,7 @@ public class NodeRefTests
         var table = new GbxRefTable();
         var file = new GbxRefTableFile(table, 0, true, "unresolved.Gbx");
         var resource = new GbxRefTableResource(table, 4, true, 31);
-        var references = new NodeRefList<CMwNod> { null, null, null };
+        var references = new NodeRefList<CMwNod?> { null, null, null };
         references.Get(0).Descriptor = file;
         references.Get(1).Descriptor = resource;
         using var stream = new MemoryStream();
@@ -155,7 +155,7 @@ public class NodeRefTests
         using var reader = new GbxReader(stream);
         reader.LoadRefTable(writer.NodeDict.ToDictionary(x => x.Value, x => (GbxRefTableNode)x.Key));
         IGbxReader typedReader = reader;
-        var restored = deprecated ? typedReader.ReadListNodeRef_deprec<CMwNod>() : typedReader.ReadListNodeRef<CMwNod>();
+        var restored = deprecated ? typedReader.ReadListNodeRef_deprec<CMwNod?>() : typedReader.ReadListNodeRef<CMwNod?>();
         await Assert.That(restored.Count).IsEqualTo(3);
         await Assert.That(restored.Get(0).File).IsSameReferenceAs(file);
         await Assert.That(restored.Get(1).Resource).IsSameReferenceAs(resource);
@@ -170,14 +170,14 @@ public class NodeRefTests
     public async Task ReadListNodeRef_SharedAndNullNodes_KeepsIndependentHandles()
     {
         var node = new CMwNod();
-        var references = new NodeRefList<CMwNod> { node, node, null, null };
+        var references = new NodeRefList<CMwNod?> { node, node, null, null };
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
         writer.WriteListNodeRef(references);
 
         stream.Position = 0;
         using var reader = new GbxReader(stream);
-        var restored = reader.ReadListNodeRef<CMwNod>();
+        var restored = reader.ReadListNodeRef<CMwNod?>();
 
         await Assert.That(restored[0]).IsSameReferenceAs(restored[1]);
         await Assert.That(restored.Get(0)).IsNotSameReferenceAs(restored.Get(1));
@@ -398,7 +398,7 @@ public class NodeRefTests
         var table = new GbxRefTable();
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var file = table.CreateFile("unloaded.Gbx");
-        var nodes = new NodeRefList<CMwNod> { null, null };
+        var nodes = new NodeRefList<CMwNod?> { null, null };
         nodes.Get(0).Descriptor = file;
         owner.NadeoSkinFids = nodes;
         var handles = view.NadeoSkinFids!;
@@ -427,7 +427,7 @@ public class NodeRefTests
         handles[0].Descriptor = file;
         await Assert.That(nodes.Get(0).File).IsSameReferenceAs(file);
 
-        owner.NadeoSkinFids = new NodeRefList<CMwNod> { null };
+        owner.NadeoSkinFids = new NodeRefList<CMwNod?> { null };
         await Assert.That(view.NadeoSkinFids![0]).IsSameReferenceAs(owner.NadeoSkinFids.Get(0));
         await Assert.That(view.NadeoSkinFids).IsNotSameReferenceAs(handles);
         await Assert.That(handles.Count).IsEqualTo(2);
@@ -443,7 +443,7 @@ public class NodeRefTests
         var table = new GbxRefTable();
         table.ExternalNodes["unloaded.Gbx"] = () => { calls++; throw new Exception("Must not resolve"); };
         var file = table.CreateFile("unloaded.Gbx");
-        var row = new NodeRefList<CGameCtnBlockInfoMobil> { null };
+        var row = new NodeRefList<CGameCtnBlockInfoMobil> { new NodeRef<CGameCtnBlockInfoMobil>() };
         row.Get(0).Descriptor = file;
         var owner = new CGameCtnBlockInfoVariant { Mobils = [row, null!] };
         var view = owner.References;
@@ -453,9 +453,9 @@ public class NodeRefTests
         await Assert.That(handles[0]![0]).IsSameReferenceAs(row.Get(0));
         await Assert.That(handles[0]![0].File).IsSameReferenceAs(file);
         await Assert.That(handles[1]).IsNull();
-        row.Add(null);
+        row.Add(new NodeRef<CGameCtnBlockInfoMobil>());
         await Assert.That(handles[0]!.Count).IsEqualTo(2);
-        owner.Mobils[1] = new NodeRefList<CGameCtnBlockInfoMobil> { null };
+        owner.Mobils[1] = new NodeRefList<CGameCtnBlockInfoMobil> { new NodeRef<CGameCtnBlockInfoMobil>() };
         var current = view.Mobils!;
         await Assert.That(current[0]).IsSameReferenceAs(handles[0]);
         await Assert.That(current[1]![0]).IsSameReferenceAs(owner.Mobils[1].Get(0));
@@ -466,7 +466,7 @@ public class NodeRefTests
     [Test]
     public async Task NodeAccess_CollectionWithMissingNodes_ContinuesAndKeepsEntryIdentity()
     {
-        var list = new NodeRefList<CMwNod> { null, new CPlugCrystal() };
+        var list = new NodeRefList<CMwNod?> { null, new CPlugCrystal() };
         var table = new GbxRefTable();
         var file = new GbxRefTableFile(table, 0, true, "missing.Gbx");
         var first = list.Get(0);
@@ -480,7 +480,7 @@ public class NodeRefTests
 
         var owner = new CGameItemModel { NadeoSkinFids = list };
         var captured = owner.NadeoSkinFids;
-        owner.NadeoSkinFids = new NodeRefList<CMwNod> { null };
+        owner.NadeoSkinFids = new NodeRefList<CMwNod?> { null };
         await Assert.That(captured).IsSameReferenceAs(list);
         await Assert.That(owner.EnumerateReferences().Single(x => x.Key == "NadeoSkinFids[0]").Value)
             .IsSameReferenceAs(owner.NadeoSkinFids.Get(0));
@@ -792,7 +792,7 @@ public class NodeRefTests
     {
         using var stream = new MemoryStream(new byte[] { 255, 255, 255, 255, 255, 255, 255, 255 });
         using var reader = new GbxReader(stream);
-        var references = reader.ReadListNodeRef<CMwNod>(length: 2);
+        var references = reader.ReadListNodeRef<CMwNod?>(length: 2);
         references[0] = new CPlugMaterial();
         var captured = references.Get(0);
         await Assert.That(references.Count).IsEqualTo(2);
@@ -810,7 +810,7 @@ public class NodeRefTests
     [Arguments(3)]
     public async Task WriteListNodeRef_ExplicitWireLength_PadsOrTruncatesWithoutResizingList(int count)
     {
-        var references = new NodeRefList<CMwNod>(Enumerable.Repeat<CMwNod?>(null, count));
+        var references = new NodeRefList<CMwNod?>(Enumerable.Repeat<CMwNod?>(null, count));
         var captured = references.Get(0);
         using var stream = new MemoryStream();
         using var writer = new GbxWriter(stream);
@@ -827,13 +827,13 @@ public class NodeRefTests
     [Arguments(true)]
     public async Task ReadJaggedArrayNodeRef_ExplicitLength_KeepsRowsResizable(bool fixedLength)
     {
-        var original = new[] { new NodeRefList<CMwNod> { null, null }, new NodeRefList<CMwNod> { null, null } };
+        var original = new[] { new NodeRefList<CMwNod?> { null, null }, new NodeRefList<CMwNod?> { null, null } };
         var innerLength = fixedLength ? 2 : (int?)null;
         using var input = new MemoryStream();
         using (var writer = new GbxWriter(input)) writer.WriteJaggedArrayNodeRef(original, innerLength, outerLength: 2);
         input.Position = 0;
         using var reader = new GbxReader(input);
-        var rows = ((IGbxReader)reader).ReadJaggedListNodeRef<CMwNod>(innerLength, outerLength: 2);
+        var rows = ((IGbxReader)reader).ReadJaggedListNodeRef<CMwNod?>(innerLength, outerLength: 2);
         var captured = rows[0].Get(0);
 
         rows[0].Add(null);
@@ -846,7 +846,7 @@ public class NodeRefTests
         await Assert.That(rows[0].Get(0)).IsSameReferenceAs(captured);
         output.Position = 0;
         using var outputReader = new GbxReader(output);
-        var restored = outputReader.ReadJaggedListNodeRef<CMwNod>(innerLength, outerLength: 2);
+        var restored = outputReader.ReadJaggedListNodeRef<CMwNod?>(innerLength, outerLength: 2);
         await Assert.That(restored[0].Count).IsEqualTo(fixedLength ? 2 : 3);
         await Assert.That(restored[1].Count).IsEqualTo(fixedLength ? 2 : 1);
         await Assert.That(output.Position).IsEqualTo(output.Length);
