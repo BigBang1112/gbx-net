@@ -720,7 +720,7 @@ public class MediaBlockLayoutTests
             }
         });
         var block = new CGameCtnMediaBlockSkel();
-        var chunk = new CGameCtnMediaBlockSkel.Chunk0314A000();
+        var chunk = new CGameCtnMediaBlockSkel.Chunk0314A000(GameVersion.MP4);
 
         await Assert.That(chunk.Version).IsEqualTo(5);
         await Assert.That(chunk.U01).IsEqualTo(8);

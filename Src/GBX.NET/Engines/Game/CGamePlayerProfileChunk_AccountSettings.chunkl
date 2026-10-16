@@ -46,7 +46,7 @@ archive
       int BuddyArchiveVersion = 5
       CGameBuddy[] Buddies (version: BuddyArchiveVersion)
 
-0x000 (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
+0x000 (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v3]
   version
   int EulaVersion
   if !IsOnlineSaveArchivation
@@ -75,7 +75,7 @@ archive
     int PrivacyPolicyVersion
     int Age
 
-0x001 (skippable) [MP3, TMT, MP4.v1, TM2020.v2]
+0x001 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v2]
   version
   string Description (formatted)
   string AvatarName (formatted)
@@ -83,11 +83,11 @@ archive
   v2+
     string Trigram
 
-0x002 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x002 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   boolbyte ReceiveNews
 
-0x003 (skippable) [MP3, TMT, MP4.v7, TM2020.v7]
+0x003 (skippable) [MP3.v6, TMT.v6, MP4.v7, TM2020.v7]
   version
   int BuddyArchiveVersion = 5
   CGameBuddy[] Buddies (version: BuddyArchiveVersion)
@@ -101,11 +101,11 @@ archive
     v7+
       data U05
 
-0x004 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x004 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   string
 
-0x005 (skippable) [MP3, TMT, MP4.v2, TM2020.v2]
+0x005 (skippable) [MP3.v2, TMT.v2, MP4.v2, TM2020.v2]
   version
   if IsOnlineSaveArchivation
     return
@@ -121,7 +121,7 @@ archive
       CGameNetOnlineMessage[] ReadMessages (deprec)
       CGameNetOnlineMessage[] OutboxMessages (deprec)
 
-0x006 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x006 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   if !IsOnlineSaveArchivation
     byte Flags2
@@ -141,15 +141,15 @@ archive
   if !IsOnlineSaveArchivation
     string BroadcastPasswordEncryptedHexa
 
-0x008 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x008 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   string ClubLinkUrl
 
-0x009 (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x009 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   byte FameStars
 
-0x00A (skippable) [MP3, TMT, MP4.v3, TM2020.v3]
+0x00A (skippable) [MP3.v3, TMT.v3, MP4.v3, TM2020.v3]
   version
   float AnalogSensitivity = 1
   float AnalogDeadZone = 0.1f
@@ -166,7 +166,7 @@ archive
   float MouseSensitivity_Default = 0.75f
   float MouseSensitivity_Laser = 0.4f
 
-0x00B (skippable) [MP3, TMT, MP4.v1, TM2020.v1]
+0x00B (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   int MouseReleaseKey
   v1+

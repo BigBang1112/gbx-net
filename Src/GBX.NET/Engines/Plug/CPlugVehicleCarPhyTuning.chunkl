@@ -509,7 +509,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
 0x088 [MP3, TMT, MP4, TM2020] // MaxDistPerStep
   float MaxDistPerStep = 0.3f
 
-0x089 [MP3, TMT.v7, MP4.v9, TM2020.v10] // drag force and adherence
+0x089 [MP3.v6, TMT.v7, MP4.v9, TM2020.v10] // drag force and adherence
   version
   PlugCurve DragForceFromFrontSpeed (version: Version - 10)
   v2-
@@ -541,7 +541,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
             v9+
               PlugCurve TargetSpeedFromSpeedTruckRear (version: Version - 10)
 
-0x08A [MP3, TMT.v7, MP4.v7, TM2020.v8] // input smoothing and steering
+0x08A [MP3.v2, TMT.v7, MP4.v7, TM2020.v8] // input smoothing and steering
   version
   float InputGasSmoothSpeed = 5f
   float InputBrakeSmoothSpeed = 5f
@@ -567,7 +567,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v7+
           bool? InputRawGasBrake
 
-0x08B [MP3, TMT.v23, MP4.v34, TM2020.v37] // ground forces, drifting and magnetic grip
+0x08B [MP3.v22, TMT.v23, MP4.v34, TM2020.v37] // ground forces, drifting and magnetic grip
   version
   v2-
     float?
@@ -680,7 +680,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
                                                   PlugCurve (version: Version - 37)
                                                   CFuncKeysReal
 
-0x08C [MP3, TMT.v1, MP4.v1, TM2020.v1] // collision response
+0x08C [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // collision response
   version
   float ImpulseGroundWheelRestCoef = -0.8f
   float ImpulseGroundBodyRestCoef = -0.8f
@@ -689,7 +689,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
   v1+
     float? ImpulseRotationCoef = 1.0f
 
-0x08D [MP3, TMT.v4, MP4.v6, TM2020.v6] // damper contact and post-jump orientation
+0x08D [MP3.v4, TMT.v4, MP4.v6, TM2020.v6] // damper contact and post-jump orientation
   version
   float DamperKeepContactDuration = 10.0f
   bool DamperForceAllways
@@ -708,7 +708,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
     v5=
       MagneticHackDamperForceAllways = false
 
-0x08E [MP3, TMT.v1, MP4.v3, TM2020.v4] // camera models
+0x08E [MP3.v0, TMT.v1, MP4.v3, TM2020.v4] // camera models
   version
   CPlugCamControlModel[] CameraModels (deprec)
   v1+
@@ -720,7 +720,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
         v4+
           CPlugCamControlModel[]
 
-0x094 [MP3, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
+0x094 [MP3.v1, TMT.v2, MP4.v2, TM2020.v5] // turbo acceleration
   version
   float TurboYellowAccelCoef
   PlugCurve TurboYellowConstantFromSpeed (version: Version - 3)
@@ -768,7 +768,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
             v6+
               PlugCurve (version: Version - 7)
 
-0x096 [MP3, TMT.v5, MP4.v5, TM2020.v5] // engine and gear ratios
+0x096 [MP3.v5, TMT.v5, MP4.v5, TM2020.v5] // engine and gear ratios
   version
   float EngineMaxRPM = 11000f
   float EngineIdleRPM = 2500f
@@ -797,7 +797,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v5+
         float TakeOffBoost_MaxRPMCoef = 1f
 
-0x097 [MP3, TMT.v2, MP4.v2, TM2020.v2] // contact materials
+0x097 [MP3.v1, TMT.v2, MP4.v2, TM2020.v2] // contact materials
   version
   float BodyFrictionCoef_Concrete
   float BodyFrictionCoef_Metal

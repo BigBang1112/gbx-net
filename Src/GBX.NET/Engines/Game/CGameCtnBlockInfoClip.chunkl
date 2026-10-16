@@ -31,7 +31,7 @@ constructor
 0x005 [MP3, TMT, MP4, TM2020] // ClipType
   int<EClipType> ClipType
 
-0x006 [MP3, TMT.v1, MP4.v1, TM2020.v4] // free clip behavior and direction
+0x006 [MP3.v1, TMT.v1, MP4.v1, TM2020.v4] // free clip behavior and direction
   version
   bool CanBeDeletedByFullFreeClip = true
   v1+

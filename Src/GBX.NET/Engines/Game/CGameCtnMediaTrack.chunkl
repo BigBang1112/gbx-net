@@ -19,7 +19,7 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
   bool IsKeepPlaying
   bool IsReadOnly
 
-0x005 [MP3.v1, TMT, MP4.v1, TM2020.v1] // MP parameters
+0x005 [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // MP parameters
   version
   bool IsKeepPlaying
   bool IsReadOnly

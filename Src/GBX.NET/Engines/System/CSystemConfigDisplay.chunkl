@@ -253,7 +253,7 @@ CSystemConfigDisplay 0x0B013000
 0x035 (skippable) [MP3, TMT, MP4, TM2020] // FxMotionBlurIntens
   float FxMotionBlurIntens
 
-0x036 (skippable) [MP3, TMT.v1, MP4.v3, TM2020.v3] // display settings and graphics adapter
+0x036 (skippable) [MP3.v0, TMT.v1, MP4.v3, TM2020.v3] // display settings and graphics adapter
   version
   int2 ScreenSizeFS
   int ScreenSizeWin

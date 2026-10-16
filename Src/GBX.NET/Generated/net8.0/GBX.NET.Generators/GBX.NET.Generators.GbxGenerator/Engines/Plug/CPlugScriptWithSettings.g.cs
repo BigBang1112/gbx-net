@@ -111,7 +111,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
             var settingCount = rw.Int32((rw.Writer is null ? default : (n.Settings?.Length?? 0)));
             rw.Int32(ref n.settingsVersion);
 
-            if (n.SettingsVersion!= 0)
+            if (n.SettingsVersion>= 1)
             {
                 throw new NotSupportedException();
             }

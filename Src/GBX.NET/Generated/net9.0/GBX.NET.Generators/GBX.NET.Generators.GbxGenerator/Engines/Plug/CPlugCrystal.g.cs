@@ -141,7 +141,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     /// CPlugCrystal 0x000 chunk (one layer only)
     /// </summary>
     [Chunk(0x09003000, "one layer only")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT, 19, 19, 19, 19, 19, 19, 20, 20)]
     public partial class Chunk09003000 : Chunk<CPlugCrystal>
     {
         public override uint Id => 0x09003000;

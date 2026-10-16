@@ -60,7 +60,7 @@ public partial class CGameUserFileList : CMwNod, IClass
     /// CGameUserFileList 0x000 chunk
     /// </summary>
     [Chunk(0x031B7000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, -1, 1)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 1, 1)]
     public partial class Chunk031B7000 : Chunk<CGameUserFileList>, IVersionable
     {
         public override uint Id => 0x031B7000;
@@ -73,7 +73,7 @@ public partial class CGameUserFileList : CMwNod, IClass
 
         public Chunk031B7000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 1;
             }

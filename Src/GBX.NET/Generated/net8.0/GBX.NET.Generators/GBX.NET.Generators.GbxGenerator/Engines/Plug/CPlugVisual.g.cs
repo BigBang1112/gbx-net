@@ -395,7 +395,7 @@ public partial class CPlugVisual : CPlug, IClass
     /// CPlugVisual 0x00F chunk (geometry, skin, UV groups, and packed data)
     /// </summary>
     [Chunk(0x0900600F, "geometry, skin, UV groups, and packed data")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 4, 5, 6)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 5, 6)]
     public partial class Chunk0900600F : Chunk0900600E, IVersionable
     {
         public override uint Id => 0x0900600F;
@@ -408,7 +408,7 @@ public partial class CPlugVisual : CPlug, IClass
 
         public Chunk0900600F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 4;
             }

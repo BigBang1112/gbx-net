@@ -82,10 +82,6 @@ internal sealed class ScopeModel
         {
             throw new InvalidOperationException("Game-specific version defaults are not supported. Specify versions on the chunk with game.vN qualifiers instead.");
         }
-        if (isVersion && declaration.DefaultValue is not null && ChunkVersions.Count > 0)
-        {
-            throw new InvalidOperationException("A version default is not supported when the chunk declares explicit game versions. Use the game.vN qualifiers instead.");
-        }
 
         if (declaration.IsSpecialKeyword && !isVersion)
         {

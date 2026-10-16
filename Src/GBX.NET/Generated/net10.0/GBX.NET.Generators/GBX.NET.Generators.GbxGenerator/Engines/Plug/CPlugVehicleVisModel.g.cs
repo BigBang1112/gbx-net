@@ -268,7 +268,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     /// CPlugVehicleVisModel 0x000 chunk (Shared model, sounds and geometry)
     /// </summary>
     [Chunk(0x090E7000, "Shared model, sounds and geometry")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 6, 9, 18)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 6, 9, 18)]
     public partial class Chunk090E7000 : Chunk<CPlugVehicleVisModel>, IVersionable
     {
         public override uint Id => 0x090E7000;
@@ -329,7 +329,11 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
 
         public Chunk090E7000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 6;
             }

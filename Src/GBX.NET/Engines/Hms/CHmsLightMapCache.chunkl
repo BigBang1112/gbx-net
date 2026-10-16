@@ -186,7 +186,7 @@ CHmsLightMapCache 0x06022000
   v6+
     bool SpriteOriginY_WasWronglyTop = true
 
-0x015 (skippable) [MP3, TMT, MP4.v4, TM2020.v5]
+0x015 (skippable) [MP3.v1, TMT.v1, MP4.v4, TM2020.v5]
   version
   ulong LightmapCacheUid
   id Collection
@@ -216,7 +216,7 @@ CHmsLightMapCache 0x06022000
 0x019 (skippable) [MP3, TMT, MP4, TM2020]
   int<EQualityVer> QualityVer = EQualityVer.BounceShadowFiltered
 
-0x01A (skippable) [MP3, TMT, MP4.v9, TM2020.v15]
+0x01A (skippable) [MP3.v0, TMT.v1, MP4.v9, TM2020.v15]
   version
   SMap[] Maps
   int LightAmbSampleCount

@@ -50,13 +50,25 @@ public partial class CGameGeneralScores : CMwNod, IClass
     /// CGameGeneralScores 0x001 chunk
     /// </summary>
     [Chunk(0x03065001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3, 1, 1)]
     public partial class Chunk03065001 : Chunk<CGameGeneralScores>, IVersionable
     {
         public override uint Id => 0x03065001;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3;
         public int Version { get; set; }
         public Unknown[]? U01;
+
+        public Chunk03065001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03065001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF || gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -68,7 +80,7 @@ public partial class CGameGeneralScores : CMwNod, IClass
         public override void ReadWrite(CGameGeneralScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

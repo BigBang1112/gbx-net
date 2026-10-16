@@ -750,7 +750,7 @@ public partial class CPlugShader : CPlug, IClass
     /// CPlugShader 0x01C chunk (GPU shader file)
     /// </summary>
     [Chunk(0x0900201C, "GPU shader file")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0900201C : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201C;
@@ -784,7 +784,7 @@ public partial class CPlugShader : CPlug, IClass
 
         public Chunk0900201C(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -846,7 +846,7 @@ public partial class CPlugShader : CPlug, IClass
     /// CPlugShader 0x01E chunk (RequirementFlags2)
     /// </summary>
     [Chunk(0x0900201E, "RequirementFlags2")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk0900201E : Chunk<CPlugShader>, IVersionable
     {
         public override uint Id => 0x0900201E;
@@ -859,7 +859,7 @@ public partial class CPlugShader : CPlug, IClass
 
         public Chunk0900201E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }

@@ -1,7 +1,7 @@
 CPlugCrystal 0x09003000
 - inherits: CPlugTreeGenerator
 
-0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT] // one layer only
+0x000 [TM10.v19, TMPU.v19, TMSX.v19, TMNESWC.v19, VSK5.v19, TMF.v19, MP3.v20, TMT.v20] // one layer only
 
 0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF] // legacy tree generation
   int GenerateMode

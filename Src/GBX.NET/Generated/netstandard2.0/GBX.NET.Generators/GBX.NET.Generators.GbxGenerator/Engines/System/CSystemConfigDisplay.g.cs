@@ -2403,7 +2403,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     /// CSystemConfigDisplay 0x036 skippable chunk (display settings and graphics adapter)
     /// </summary>
     [Chunk(0x0B013036, "display settings and graphics adapter")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 3, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 3, 3)]
     public partial class Chunk0B013036 : SkippableChunk<CSystemConfigDisplay>, IVersionable
     {
         public override uint Id => 0x0B013036;
@@ -2420,7 +2420,11 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
 
         public Chunk0B013036(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 1;
             }

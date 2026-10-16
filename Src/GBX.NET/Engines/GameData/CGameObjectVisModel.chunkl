@@ -4,7 +4,7 @@ CGameObjectVisModel 0x2E007000
   CPlugSolid2Model MeshShaded
   CMwNod // Deprecated CPlugAnimFile.
 
-0x001 [MP3, TMT, MP4.v21, TM2020.v22]
+0x001 [MP3.v12, TMT.v17, MP4.v21, TM2020.v22]
   version
   v1=
     int U23

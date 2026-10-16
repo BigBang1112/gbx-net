@@ -273,7 +273,7 @@ CGameCtnCollection 0x03033000
 0x037 [MP3, TMT, MP4, TM2020] // TerrainHeightOffset
   float TerrainHeightOffset
 
-0x038 [MP3, TMT.v1, MP4.v5, TM2020.v8] // water and fog
+0x038 [MP3.v1, TMT.v1, MP4.v5, TM2020.v8] // water and fog
   version
   v7-
     v3-
@@ -366,7 +366,7 @@ CGameCtnCollection 0x03033000
   v19+
     int LegacyVehicleTransformFlags
 
-0x03A [MP3, TMT.v0, MP4.v2, TM2020.v3] // lighting
+0x03A [MP3.v0, TMT.v0, MP4.v2, TM2020.v3] // lighting
   version
   int BlocksShadow
   int<EBackgroundShadow> BackgroundShadow

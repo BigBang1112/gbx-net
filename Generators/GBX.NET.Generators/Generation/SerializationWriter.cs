@@ -288,6 +288,10 @@ internal sealed class SerializationWriter
             {
                 var maximum = scope.ChunkVersions.Count > 0 ? scope.ChunkVersions.Values.Max().ToString() :
                     declaration.DefaultValue is { } defaultVersion ? Expression(defaultVersion) : "0";
+                if (scope.ChunkVersions.Count > 0 && declaration.DefaultValue is { } fallbackVersion)
+                {
+                    maximum = $"global::System.Math.Max({maximum}, {Expression(fallbackVersion)})";
+                }
                 code.Open($"if (Version > {maximum})");
                 code.Line("throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);");
                 code.Close();

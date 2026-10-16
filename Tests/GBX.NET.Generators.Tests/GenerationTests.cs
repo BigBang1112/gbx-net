@@ -1298,15 +1298,32 @@ public class GenerationTests
     [Test]
     [Arguments("version")]
     [Arguments("versionb")]
-    public async Task Generate_VersionDefaultsWithExplicitChunkVersions_ReportsDiagnostics(string keyword)
+    public async Task Generate_VersionDefaultsWithExplicitChunkVersions_PreservesFallbackAndCompatibilityLimit(string keyword)
     {
-        foreach (var qualifiers in new[] { "TM2020.v7", "TM10, TM2020.v7" })
+        foreach (var gameMaximum in new[] { 2, 7 })
         {
-            var (result, _) = Run("", new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001 [{qualifiers}]\n  {keyword} = 7\n"));
-            var diagnostic = await Assert.That(result.Diagnostics).HasSingleItem();
-            await Assert.That(diagnostic.Id).IsEqualTo("GBXNETGEN200");
-            await Assert.That(diagnostic.GetMessage()).Contains("A version default is not supported when the chunk declares explicit game versions");
-            await Assert.That(result.GeneratedSources).IsEmpty();
+            var (result, compilation) = Run("""
+                namespace GBX.NET.Engines.Game
+                {
+                    public partial class Example
+                    {
+                        public static string Verify() => new Chunk03043001().Version + ","
+                            + new Chunk03043001(GBX.NET.GameVersion.TM10).Version + ","
+                            + new Chunk03043001(GBX.NET.GameVersion.Unspecified).Version + ","
+                            + new Chunk03043001(GBX.NET.GameVersion.TM2020).Version + ","
+                            + new Chunk03043001(GBX.NET.GameVersion.TM10 | GBX.NET.GameVersion.TM2020).Version;
+                    }
+                }
+                """, new Text("Engines/Game/Example.chunkl", $"Example 0x03043000\n0x001 [TM10.v{gameMaximum}]\n  {keyword} = 5\n"), compile: true);
+            await Assert.That(result.Diagnostics).IsEmpty();
+            await AssertNoErrors(compilation);
+            await Assert.That(Engine(result).GetRoot().ToString()).Contains($"if (Version > global::System.Math.Max({gameMaximum}, 5))");
+
+            using var stream = new MemoryStream();
+            var emitted = compilation.Emit(stream);
+            await Assert.That(emitted.Success).IsTrue().Because(string.Join(Environment.NewLine, emitted.Diagnostics));
+            var verify = System.Reflection.Assembly.Load(stream.ToArray()).GetType("GBX.NET.Engines.Game.Example")!.GetMethod("Verify")!;
+            await Assert.That(verify.Invoke(null, null)).IsEqualTo($"5,{gameMaximum},5,5,5");
         }
     }
 

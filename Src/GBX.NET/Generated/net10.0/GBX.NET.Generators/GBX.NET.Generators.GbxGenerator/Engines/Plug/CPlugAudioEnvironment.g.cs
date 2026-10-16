@@ -739,7 +739,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     /// CPlugAudioEnvironment 0x004 chunk (Room effect and low-pass gains)
     /// </summary>
     [Chunk(0x09039004, "Room effect and low-pass gains")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 3, 3, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 3)]
     public partial class Chunk09039004 : Chunk<CPlugAudioEnvironment>, IVersionable
     {
         public override uint Id => 0x09039004;
@@ -754,7 +754,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 
         public Chunk09039004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 3;
             }

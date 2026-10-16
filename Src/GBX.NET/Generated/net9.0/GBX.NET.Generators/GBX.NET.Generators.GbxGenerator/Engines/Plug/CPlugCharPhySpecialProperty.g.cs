@@ -163,7 +163,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     /// CPlugCharPhySpecialProperty 0x000 chunk (character movement effects)
     /// </summary>
     [Chunk(0x090F2000, "character movement effects")]
-    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, 4, 4, 4)]
+    [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, 4, 4, 4, 4)]
     public partial class Chunk090F2000 : Chunk<CPlugCharPhySpecialProperty>, IVersionable
     {
         public override uint Id => 0x090F2000;
@@ -179,7 +179,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
 
         public Chunk090F2000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 4;
             }

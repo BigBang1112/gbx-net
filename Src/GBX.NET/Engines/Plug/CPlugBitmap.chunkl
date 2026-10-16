@@ -331,7 +331,7 @@ CPlugBitmap 0x09011000
 0x02F
   LegacyShareSize ShareSize
 
-0x030 [TMT, MP4.v1, TM2020.v5]
+0x030 [TMT.v1, MP4.v1, TM2020.v5]
   version
   CPlugFileImg Image
   v1+

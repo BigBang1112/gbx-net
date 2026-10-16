@@ -6330,7 +6330,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x089 chunk (drag force and adherence)
     /// </summary>
     [Chunk(0x090ED089, "drag force and adherence")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 7, 9, 10)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 7, 9, 10)]
     public partial class Chunk090ED089 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED089;
@@ -6366,7 +6366,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED089(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 6;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 7;
             }
@@ -6454,7 +6458,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x08A chunk (input smoothing and steering)
     /// </summary>
     [Chunk(0x090ED08A, "input smoothing and steering")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 7, 7, 8)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 7, 7, 8)]
     public partial class Chunk090ED08A : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08A;
@@ -6470,7 +6474,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED08A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 7;
             }
@@ -6547,7 +6555,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x08B chunk (ground forces, drifting and magnetic grip)
     /// </summary>
     [Chunk(0x090ED08B, "ground forces, drifting and magnetic grip")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 23, 34, 37)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 22, 23, 34, 37)]
     public partial class Chunk090ED08B : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08B;
@@ -6670,7 +6678,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED08B(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 22;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 23;
             }
@@ -6970,7 +6982,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x08C chunk (collision response)
     /// </summary>
     [Chunk(0x090ED08C, "collision response")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
     public partial class Chunk090ED08C : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08C;
@@ -6983,7 +6995,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED08C(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -7019,7 +7031,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x08D chunk (damper contact and post-jump orientation)
     /// </summary>
     [Chunk(0x090ED08D, "damper contact and post-jump orientation")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 4, 6, 6)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 4, 6, 6)]
     public partial class Chunk090ED08D : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08D;
@@ -7034,7 +7046,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED08D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 4;
             }
@@ -7104,7 +7116,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x08E chunk (camera models)
     /// </summary>
     [Chunk(0x090ED08E, "camera models")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 3, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 3, 4)]
     public partial class Chunk090ED08E : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED08E;
@@ -7136,7 +7148,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED08E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 1;
             }
@@ -7193,7 +7209,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x094 chunk (turbo acceleration)
     /// </summary>
     [Chunk(0x090ED094, "turbo acceleration")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 2, 2, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 2, 5)]
     public partial class Chunk090ED094 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED094;
@@ -7208,7 +7224,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED094(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 2;
             }
@@ -7379,7 +7399,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x096 chunk (engine and gear ratios)
     /// </summary>
     [Chunk(0x090ED096, "engine and gear ratios")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 5, 5, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 5, 5)]
     public partial class Chunk090ED096 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED096;
@@ -7405,7 +7425,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED096(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 5;
             }
@@ -7484,7 +7504,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
     /// CPlugVehicleCarPhyTuning 0x097 chunk (contact materials)
     /// </summary>
     [Chunk(0x090ED097, "contact materials")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 2, 2, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 2, 2)]
     public partial class Chunk090ED097 : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public override uint Id => 0x090ED097;
@@ -7497,7 +7517,11 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
         public Chunk090ED097(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

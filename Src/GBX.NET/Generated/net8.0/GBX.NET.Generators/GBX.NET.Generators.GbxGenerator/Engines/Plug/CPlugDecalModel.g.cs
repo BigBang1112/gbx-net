@@ -403,7 +403,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     /// CPlugDecalModel 0x002 chunk (textures and projection limits)
     /// </summary>
     [Chunk(0x090A7002, "textures and projection limits")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 5, 6, 6)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 4, 5, 6, 6)]
     public partial class Chunk090A7002 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7002;
@@ -416,7 +416,11 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         public Chunk090A7002(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 4;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 5;
             }
@@ -527,7 +531,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     /// CPlugDecalModel 0x004 chunk (solid, sprite, SVG, and macro decals)
     /// </summary>
     [Chunk(0x090A7004, "solid, sprite, SVG, and macro decals")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 7, 8, 8)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 7, 8, 8)]
     public partial class Chunk090A7004 : Chunk<CPlugDecalModel>, IVersionable
     {
         public override uint Id => 0x090A7004;
@@ -540,7 +544,11 @@ public partial class CPlugDecalModel : CPlug, IClass
 
         public Chunk090A7004(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 3;
+            }
+            else if (gameVersion == GameVersion.TMT)
             {
                 Version = 7;
             }

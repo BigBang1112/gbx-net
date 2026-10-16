@@ -10,8 +10,7 @@ public class CGameUserProfileLayoutTests
     [Test]
     [Arguments(0)]
     [Arguments(1)]
-    [Arguments(2)]
-    public async Task ReadWrite_ContextTimes_KeepTheVersionTwoCounter(int version)
+    public async Task ReadWrite_ContextTimes_KeepNativeCounters(int version)
     {
         var payload = Payload(w =>
         {
@@ -21,10 +20,6 @@ public class CGameUserProfileLayoutTests
             {
                 String(w, context);
                 w.Write(0xFEDCBA98u);
-                if (version >= 2)
-                {
-                    w.Write(0x87654321u);
-                }
                 w.Write(0x80000001u);
             }
         });
@@ -37,7 +32,7 @@ public class CGameUserProfileLayoutTests
         await Assert.That(node.ContextTimes[1].Context).IsEqualTo("clubs");
         await Assert.That(node.ContextTimes[1].GameModeTimeSeconds).IsEqualTo(0xFEDCBA98u);
         await Assert.That(node.ContextTimes[1].PlayTimeSeconds).IsEqualTo(0x80000001u);
-        await Assert.That(node.ContextTimes[1].U04).IsEqualTo(version >= 2 ? 0x87654321u : 0u);
+        await Assert.That(node.ContextTimes[1].U04).IsEqualTo(0u);
         await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TMT | GameVersion.MP4);
     }
 

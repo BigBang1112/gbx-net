@@ -1,6 +1,6 @@
 CPlugVehicleVisModel 0x090E7000
 
-0x000 [MP3, TMT.v6, MP4.v9, TM2020.v18] // Shared model, sounds and geometry
+0x000 [MP3.v2, TMT.v6, MP4.v9, TM2020.v18] // Shared model, sounds and geometry
   version
   CPlugVehicleVisModelShared Shared
   CPlugSolid

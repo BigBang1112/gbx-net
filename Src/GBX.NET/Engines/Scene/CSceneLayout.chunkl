@@ -16,7 +16,7 @@ CSceneLayout 0x0A003000
 
 0x017 (ignore) [VSK5]
 
-0x018 [TMF]
+0x018 [TMF.v1]
   CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene
@@ -51,7 +51,7 @@ CSceneLayout 0x0A003000
   float
   float
 
-0x01B [MP3, TMT]
+0x01B [MP3.v1, TMT.v1]
   CSceneSector[] Sectors (deprec)
   version
   SceneMobil[] Scene

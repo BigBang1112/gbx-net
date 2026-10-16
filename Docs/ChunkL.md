@@ -120,7 +120,9 @@ Declare chunk versions with `.vN` qualifiers instead of field defaults on `versi
   version
 ```
 
-The generated chunk constructor selects the version for an exact game context. For example, `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP4)` starts at version 1. Parameterless construction, `Unspecified`, games without an explicit version qualifier, and combinations of games leave `Version` unassigned. The qualifiers are recorded in `ChunkGameVersionAttribute` on the chunk type. A version field with game-specific defaults, or a plain version default combined with explicit chunk versions, produces a generator diagnostic.
+The generated chunk constructor selects the version for an exact game context. For example, `new CGameCtnChallengeGroup.Chunk0308F00B(GameVersion.MP4)` starts at version 1. Parameterless construction, `Unspecified`, games without an explicit version qualifier, and combinations of games use the ordinary version default, or leave `Version` unassigned when no default is declared. The qualifiers are recorded in `ChunkGameVersionAttribute` on the chunk type. A version field with game-specific defaults produces a generator diagnostic.
+
+A plain version default can preserve a later compatibility format when the listed games write older versions. For example, `CHmsLightMap` chunk `0x02A` declares `[MP3.v2, TMT.v2]` and `version = 5` because MP4 and TM2020 retain read support through v5. Its game constructors select v2, while the fallback stays v5. The generated version guard uses the greater of the ordinary default and the explicit game versions. Chunks whose game qualifiers are all bare and which have no version default still generate a v0 limit.
 
 Reading replaces the initial value with the serialized version. A partial type with a handwritten constructor owns its initialization and must supply its own `GameVersion` constructor when handling game-specific defaults.
 

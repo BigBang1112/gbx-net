@@ -1,6 +1,6 @@
 CPlugSkel 0x090BA000
 
-0x000 [MP3, TMT.v12, MP4.v14, TM2020.v20] // skeleton
+0x000 [MP3.v12, TMT.v12, MP4.v14, TM2020.v20] // skeleton
   version
 
 archive

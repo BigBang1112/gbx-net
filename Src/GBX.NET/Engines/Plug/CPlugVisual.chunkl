@@ -36,7 +36,7 @@ CPlugVisual 0x09006000
   base
   BitmapElemToPack[] BitmapElemToPacks = empty
 
-0x00F (base: 0x00E) [MP3, TMT.v4, MP4.v5, TM2020.v6] // geometry, skin, UV groups, and packed data
+0x00F (base: 0x00E) [MP3.v4, TMT.v4, MP4.v5, TM2020.v6] // geometry, skin, UV groups, and packed data
   version
 
 0x010 [MP3, TMT, MP4, TM2020] // Morphs

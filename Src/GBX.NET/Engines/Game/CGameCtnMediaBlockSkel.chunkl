@@ -1,8 +1,8 @@
 CGameCtnMediaBlockSkel 0x0314A000
 - inherits: CGameCtnMediaBlock
 
-0x000 [TMT, MP4]
-  version = 5
+0x000 [TMT.v5, MP4.v5]
+  version
   Key[] Keys (list)
   v1+
     int = 8 // Unidentified native field, initialized to 8 in both binaries.

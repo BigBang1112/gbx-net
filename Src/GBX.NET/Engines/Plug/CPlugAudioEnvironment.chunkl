@@ -58,7 +58,7 @@ CPlugAudioEnvironment 0x09039000
   float RoomRolloffFactor
   bool DecayHFLimit = true
 
-0x004 [MP3, TMT.v3, MP4.v3, TM2020.v3] // Room effect and low-pass gains
+0x004 [MP3.v3, TMT.v3, MP4.v3, TM2020.v3] // Room effect and low-pass gains
   version
   float = 1
   v1+

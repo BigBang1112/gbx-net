@@ -50,7 +50,7 @@ public partial class CGameChallengeScores : CMwNod, IClass
     /// CGameChallengeScores 0x001 chunk
     /// </summary>
     [Chunk(0x03064001)]
-    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
+    [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3, 1, 2)]
     public partial class Chunk03064001 : Chunk<CGameChallengeScores>, IVersionable
     {
         public override uint Id => 0x03064001;
@@ -63,6 +63,22 @@ public partial class CGameChallengeScores : CMwNod, IClass
         public int U05;
         public DateTime? U06;
         public Unknown[]? U07;
+
+        public Chunk03064001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03064001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP3)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -80,7 +96,7 @@ public partial class CGameChallengeScores : CMwNod, IClass
         public override void ReadWrite(CGameChallengeScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 2)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

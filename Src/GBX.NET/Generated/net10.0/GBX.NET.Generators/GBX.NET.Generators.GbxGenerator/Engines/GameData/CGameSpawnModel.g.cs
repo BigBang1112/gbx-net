@@ -100,12 +100,32 @@ public partial class CGameSpawnModel : CMwNod, IClass
     /// CGameSpawnModel 0x000 chunk
     /// </summary>
     [Chunk(0x2E00E000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 2, 3)]
     public partial class Chunk2E00E000 : Chunk<CGameSpawnModel>, IVersionable
     {
         public override uint Id => 0x2E00E000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk2E00E000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E00E000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -116,7 +136,7 @@ public partial class CGameSpawnModel : CMwNod, IClass
         public override void ReadWrite(CGameSpawnModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

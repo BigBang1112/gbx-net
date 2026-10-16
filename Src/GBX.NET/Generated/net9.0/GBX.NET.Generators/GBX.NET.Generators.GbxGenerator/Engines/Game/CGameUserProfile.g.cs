@@ -720,12 +720,24 @@ public partial class CGameUserProfile : CMwNod, IClass
     /// CGameUserProfile 0x004 skippable chunk
     /// </summary>
     [Chunk(0x031CC004)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 1, 1)]
     public partial class Chunk031CC004 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC004;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 2;
+        public int Version { get; set; }
+
+        public Chunk031CC004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk031CC004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -736,7 +748,7 @@ public partial class CGameUserProfile : CMwNod, IClass
         public override void ReadWrite(CGameUserProfile n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -792,12 +804,28 @@ public partial class CGameUserProfile : CMwNod, IClass
     /// CGameUserProfile 0x006 skippable chunk
     /// </summary>
     [Chunk(0x031CC006)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 1, 3)]
     public partial class Chunk031CC006 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC006;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 3;
+        public int Version { get; set; }
+
+        public Chunk031CC006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk031CC006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4)
+            {
+                Version = 3;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -896,12 +924,24 @@ public partial class CGameUserProfile : CMwNod, IClass
     /// CGameUserProfile 0x008 skippable chunk
     /// </summary>
     [Chunk(0x031CC008)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 1, 1)]
     public partial class Chunk031CC008 : SkippableChunk<CGameUserProfile>, IVersionable
     {
         public override uint Id => 0x031CC008;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 1;
+        public int Version { get; set; }
+
+        public Chunk031CC008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk031CC008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

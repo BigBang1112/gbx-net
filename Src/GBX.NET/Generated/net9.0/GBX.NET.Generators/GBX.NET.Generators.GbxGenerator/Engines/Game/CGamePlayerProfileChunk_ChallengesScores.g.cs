@@ -60,13 +60,25 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     /// CGamePlayerProfileChunk_ChallengesScores 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03149000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 1, 1, 1)]
     public partial class Chunk03149000 : SkippableChunk<CGamePlayerProfileChunk_ChallengesScores>, IVersionable
     {
         public override uint Id => 0x03149000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
         public int U01;
+
+        public Chunk03149000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03149000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -78,7 +90,7 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -91,12 +103,24 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
     /// CGamePlayerProfileChunk_ChallengesScores 0x002 skippable chunk
     /// </summary>
     [Chunk(0x03149002)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4, 2)]
     public partial class Chunk03149002 : SkippableChunk<CGamePlayerProfileChunk_ChallengesScores>, IVersionable
     {
         public override uint Id => 0x03149002;
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03149002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03149002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -107,7 +131,7 @@ public partial class CGamePlayerProfileChunk_ChallengesScores : CGamePlayerProfi
         public override void ReadWrite(CGamePlayerProfileChunk_ChallengesScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 2)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

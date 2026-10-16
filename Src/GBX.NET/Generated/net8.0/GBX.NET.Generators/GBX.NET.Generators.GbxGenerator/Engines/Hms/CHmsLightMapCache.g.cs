@@ -1248,7 +1248,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     /// CHmsLightMapCache 0x015 skippable chunk
     /// </summary>
     [Chunk(0x06022015)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4, 5)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 4, 5)]
     public partial class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x06022015;
@@ -1261,7 +1261,11 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
         public Chunk06022015(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4)
             {
                 Version = 4;
             }
@@ -1403,7 +1407,7 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     /// CHmsLightMapCache 0x01A skippable chunk
     /// </summary>
     [Chunk(0x0602201A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 15)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 9, 15)]
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         public override uint Id => 0x0602201A;
@@ -1420,7 +1424,15 @@ public partial class CHmsLightMapCache : CMwNod, IClass
 
         public Chunk0602201A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 0;
+            }
+            else if (gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4)
             {
                 Version = 9;
             }

@@ -2045,12 +2045,12 @@ public partial class CHmsLightMap : CMwNod, IClass
     /// CHmsLightMap 0x02A chunk
     /// </summary>
     [Chunk(0x0602102A)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 2, 2)]
     public partial class Chunk0602102A : Chunk<CHmsLightMap>, IVersionable
     {
         public override uint Id => 0x0602102A;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
-        public int Version { get; set; } = 5;
+        public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
         /// <summary>
@@ -2117,6 +2117,22 @@ public partial class CHmsLightMap : CMwNod, IClass
             yield break;
         }
 
+        public Chunk0602102A() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0602102A(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 2;
+            }
+            else
+            {
+                Version = 5;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -2132,7 +2148,7 @@ public partial class CHmsLightMap : CMwNod, IClass
         public override void ReadWrite(CHmsLightMap n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 5)
+            if (Version > global::System.Math.Max(2, 5))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

@@ -435,7 +435,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     /// CGameCtnBlockInfoClip 0x006 chunk (free clip behavior and direction)
     /// </summary>
     [Chunk(0x03053006, "free clip behavior and direction")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 4)]
     public partial class Chunk03053006 : Chunk<CGameCtnBlockInfoClip>, IVersionable
     {
         public override uint Id => 0x03053006;
@@ -448,7 +448,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 
         public Chunk03053006(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
             {
                 Version = 1;
             }

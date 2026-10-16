@@ -2870,7 +2870,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// CGameCtnCollection 0x038 chunk (water and fog)
     /// </summary>
     [Chunk(0x03033038, "water and fog")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 5, 8)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 5, 8)]
     public partial class Chunk03033038 : Chunk<CGameCtnCollection>, IVersionable
     {
         public override uint Id => 0x03033038;
@@ -2883,7 +2883,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public Chunk03033038(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 1;
             }
@@ -3150,7 +3150,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     /// CGameCtnCollection 0x03A chunk (lighting)
     /// </summary>
     [Chunk(0x0303303A, "lighting")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 2, 3)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 2, 3)]
     public partial class Chunk0303303A : Chunk<CGameCtnCollection>, IVersionable
     {
         public override uint Id => 0x0303303A;
@@ -3163,7 +3163,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
 
         public Chunk0303303A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 0;
             }

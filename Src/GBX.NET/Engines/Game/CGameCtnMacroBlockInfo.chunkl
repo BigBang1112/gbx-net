@@ -47,7 +47,7 @@ CGameCtnMacroBlockInfo 0x0310D000
   block (encapsulated)
     CScriptTraitsMetadata ScriptMetadata (direct)
 
-0x00C (skippable) [MP3, TMT, MP4.v2, TM2020.v2] // splines
+0x00C (skippable) [MP3.v1, TMT.v1, MP4.v2, TM2020.v2] // splines
   version
   v0=
     CMwNod[] (deprec)
@@ -65,7 +65,7 @@ CGameCtnMacroBlockInfo 0x0310D000
 0x00D (skippable) [MP3]
   version
 
-0x00E [MP3, TMT, MP4.v2, TM2020.v2] // object spawns
+0x00E [MP3.v1, TMT.v2, MP4.v2, TM2020.v2] // object spawns
   version
   ObjectSpawn[] ObjectSpawns (list)
   v2-

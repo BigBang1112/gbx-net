@@ -482,7 +482,7 @@ public partial class CSceneLayout : CScene, IClass
     /// CSceneLayout 0x018 chunk
     /// </summary>
     [Chunk(0x0A003018)]
-    [ChunkGameVersion(GameVersion.TMF)]
+    [ChunkGameVersion(GameVersion.TMF, 1)]
     public partial class Chunk0A003018 : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A003018;
@@ -509,6 +509,18 @@ public partial class CSceneLayout : CScene, IClass
             yield break;
         }
 
+        public Chunk0A003018() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A003018(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMF)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -521,7 +533,7 @@ public partial class CSceneLayout : CScene, IClass
         {
             n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -606,7 +618,7 @@ public partial class CSceneLayout : CScene, IClass
     /// CSceneLayout 0x01B chunk
     /// </summary>
     [Chunk(0x0A00301B)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 1, 1)]
     public partial class Chunk0A00301B : Chunk<CSceneLayout>, IVersionable
     {
         public override uint Id => 0x0A00301B;
@@ -635,6 +647,18 @@ public partial class CSceneLayout : CScene, IClass
             yield break;
         }
 
+        public Chunk0A00301B() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A00301B(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+        }
+
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
@@ -649,7 +673,7 @@ public partial class CSceneLayout : CScene, IClass
         {
             n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

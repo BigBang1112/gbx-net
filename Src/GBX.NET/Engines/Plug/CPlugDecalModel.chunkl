@@ -16,7 +16,7 @@ property bool IsObsolete
 0x001 // Solid
   CPlugSolid Solid
 
-0x002 [MP3, TMT.v5, MP4.v6, TM2020.v6] // textures and projection limits
+0x002 [MP3.v4, TMT.v5, MP4.v6, TM2020.v6] // textures and projection limits
   version
   v4-
     CPlugBitmap DiffuseA
@@ -47,7 +47,7 @@ property bool IsObsolete
 0x003 [MP3, TMT, MP4, TM2020] // Icon
   CPlugBitmap Icon
 
-0x004 [MP3, TMT.v7, MP4.v8, TM2020.v8] // solid, sprite, SVG, and macro decals
+0x004 [MP3.v3, TMT.v7, MP4.v8, TM2020.v8] // solid, sprite, SVG, and macro decals
   version
   CPlugSolid Solid
   bool RandomInstances = true

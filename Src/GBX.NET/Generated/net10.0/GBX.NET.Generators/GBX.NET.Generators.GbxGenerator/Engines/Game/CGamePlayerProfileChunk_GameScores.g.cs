@@ -92,12 +92,24 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     /// CGamePlayerProfileChunk_GameScores 0x000 skippable chunk
     /// </summary>
     [Chunk(0x03146000)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 1, 1, 1)]
     public partial class Chunk03146000 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03146000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03146000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -108,7 +120,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -121,12 +133,24 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     /// CGamePlayerProfileChunk_GameScores 0x001 skippable chunk
     /// </summary>
     [Chunk(0x03146001)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 1, 1, 1)]
     public partial class Chunk03146001 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03146001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03146001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -137,7 +161,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -153,12 +177,24 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     /// CGamePlayerProfileChunk_GameScores 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03146004)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 1, 1, 1)]
     public partial class Chunk03146004 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03146004() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03146004(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -169,7 +205,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -185,12 +221,24 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     /// CGamePlayerProfileChunk_GameScores 0x005 skippable chunk
     /// </summary>
     [Chunk(0x03146005)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 1, 1, 1)]
     public partial class Chunk03146005 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
     {
         public override uint Id => 0x03146005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
         public int Version { get; set; }
+
+        public Chunk03146005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03146005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -201,7 +249,7 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         public override void ReadWrite(CGamePlayerProfileChunk_GameScores n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 0)
+            if (Version > 1)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }

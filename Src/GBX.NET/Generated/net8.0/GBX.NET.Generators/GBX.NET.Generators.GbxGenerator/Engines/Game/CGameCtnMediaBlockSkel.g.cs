@@ -108,15 +108,29 @@ public partial class CGameCtnMediaBlockSkel : CGameCtnMediaBlock, IClass, CGameC
     /// CGameCtnMediaBlockSkel 0x000 chunk
     /// </summary>
     [Chunk(0x0314A000)]
-    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, 5, 5)]
     public partial class Chunk0314A000 : Chunk<CGameCtnMediaBlockSkel>, IVersionable
     {
         public override uint Id => 0x0314A000;
         public override GameVersion GameVersion => GameVersion.TMT | GameVersion.MP4;
-        public int Version { get; set; } = 5;
-        public int U01 = 8;
+        public int Version { get; set; }
+        public int U01;
         public int U02;
         public float U07;
+
+        public Chunk0314A000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0314A000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4)
+            {
+                Version = 5;
+            }
+
+            U01 = 8;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {

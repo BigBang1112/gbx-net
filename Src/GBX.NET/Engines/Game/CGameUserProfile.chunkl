@@ -63,16 +63,16 @@ CGameUserProfile 0x031CC000
   version
   data
 
-0x004 (skippable) [TMT, MP4]
-  version = 2
+0x004 (skippable) [TMT.v1, MP4.v1]
+  version
   ContextTime[] ContextTimes
 
 0x005 (skippable) [TMT.v1, MP4.v1, TM2020.v1]
   version
   string
 
-0x006 (skippable) [TMT, MP4]
-  version = 3
+0x006 (skippable) [TMT.v1, MP4.v3]
+  version
   ContextMapRecordForProfile[] ContextMapRecordsForProfile
 
 0x007 (skippable) [TMT.v1, MP4.v1, TM2020.v3]
@@ -97,8 +97,8 @@ CGameUserProfile 0x031CC000
   v2-
     Unknown[] LegacyVehicleSettings
 
-0x008 (skippable) [TMT, MP4]
-  version = 1
+0x008 (skippable) [TMT.v1, MP4.v1]
+  version
   uint CamName
 
 0x009 (skippable) [MP4.v1, TM2020.v1]

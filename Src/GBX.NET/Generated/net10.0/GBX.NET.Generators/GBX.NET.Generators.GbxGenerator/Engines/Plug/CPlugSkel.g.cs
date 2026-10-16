@@ -252,7 +252,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     /// CPlugSkel 0x000 chunk (skeleton)
     /// </summary>
     [Chunk(0x090BA000, "skeleton")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 12, 14, 20)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 12, 12, 14, 20)]
     public partial class Chunk090BA000 : Chunk<CPlugSkel>, IVersionable
     {
         public override uint Id => 0x090BA000;
@@ -265,7 +265,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
 
         public Chunk090BA000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMT)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 12;
             }

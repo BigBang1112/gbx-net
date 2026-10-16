@@ -599,7 +599,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     /// CGameCtnMacroBlockInfo 0x00C skippable chunk (splines)
     /// </summary>
     [Chunk(0x0310D00C, "splines")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 2, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 2, 2)]
     public partial class Chunk0310D00C : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
     {
         public override uint Id => 0x0310D00C;
@@ -662,7 +662,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public Chunk0310D00C(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -742,7 +746,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     /// CGameCtnMacroBlockInfo 0x00E chunk (object spawns)
     /// </summary>
     [Chunk(0x0310D00E, "object spawns")]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 2, 2)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 2, 2, 2)]
     public partial class Chunk0310D00E : Chunk<CGameCtnMacroBlockInfo>, IVersionable
     {
         public override uint Id => 0x0310D00E;
@@ -755,7 +759,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 
         public Chunk0310D00E(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }

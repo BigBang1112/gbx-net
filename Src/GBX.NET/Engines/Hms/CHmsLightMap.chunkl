@@ -188,8 +188,8 @@ CHmsLightMap 0x06021000
   v7+
     CPlugBitmap BitmapProbeGridAmbSV_Spread1
 
-0x02A [MP3, TMT]
-  version = 5
+0x02A [MP3.v2, TMT.v2]
+  version = 5 // MP4 and TM2020 retain read support through v5
   CMwNod // CPlugFilePHlsl
   v1+
     CMwNod // CPlugFilePHlsl

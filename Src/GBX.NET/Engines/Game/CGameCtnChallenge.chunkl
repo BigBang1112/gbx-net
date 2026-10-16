@@ -139,7 +139,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x01E
   CMwNod // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
 
-0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, VSK5, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
+0x01F (demonstration: partial) [TMS.v1, TMO.v1, TMSX.v1, TMNESWC.v1, TMU.v1, VSK5.v1, TMF.v1, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // block data
   ident MapInfo = empty
   string MapName (formatted)
   ident Decoration
@@ -290,7 +290,7 @@ CGameCtnChallenge 0x03043000 // A map.
   string ObjectiveTextSilver
   string ObjectiveTextBronze
 
-0x04D (skippable) [MP3.v2, TMT, MP4]
+0x04D (skippable) [MP3.v2, TMT.v2]
   version
   block (encapsulated)
     CMwNod[] (deprec)
@@ -347,8 +347,10 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x057 (skippable) [MP4.v3, TM2020.v5] // recorded bot paths
   version
-  v1-
-    LegacyRecordedBotPath[] LegacyRecordedBotPaths
+  v0=
+    RecordedBotPath[] RecordedBotPaths (version: -1) // Legacy entries omit BotPathIndex.
+  v1=
+    RecordedBotPath[] (version: -1) // Retain the additional legacy array for round-tripping.
   v1+
     RecordedBotPath[] RecordedBotPaths (version: Version)
 
@@ -387,7 +389,7 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x05D (skippable) [TM2020.v1] // block octree
   version
-  bool HasBlockOctree
+  bool HasBlockOctree (local, write: "n.BlockOctree is not null")
   if HasBlockOctree
     BlockOctreeData BlockOctree (version: Version)
 
@@ -496,12 +498,9 @@ archive MacroblockReferences
   int
   CMwNod[] Nodes
 
-archive LegacyRecordedBotPath
-  vec3[] Path
-  uint[] Times
-
 archive RecordedBotPath
-  int BotPathIndex
+  v0+
+    int BotPathIndex
   vec3[] Path
   v4-
     uint[] Times

@@ -12,7 +12,7 @@ CInputBindingsConfig 0x13006000
   string Name = ""
   int Version // Binding configuration revision, compared with the input map's default revision.
 
-0x003 [MP3, TMT, MP4.v1, TM2020.v1]
+0x003 [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version
   Binding[] Bindings (version: 1) // Chunk versions 0 and 1 use the same binding layout.
 

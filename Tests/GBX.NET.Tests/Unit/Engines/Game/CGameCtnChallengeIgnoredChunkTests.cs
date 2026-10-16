@@ -124,7 +124,7 @@ public class CGameCtnChallengeIgnoredChunkTests
                 w.Write(1);
                 w.Write(3);
                 WritePath(w);
-                if (version <= 4) WriteTimes(w);
+                if (version <= 4) WriteTimes(w, 456u);
                 if (version >= 3)
                 {
                     w.Write(1);
@@ -133,9 +133,15 @@ public class CGameCtnChallengeIgnoredChunkTests
                 if (version >= 4) w.Write(new Ident("Car", "Stadium", "Author"));
             }
         });
-        var node = await RoundTrip(payload, new CGameCtnChallenge.Chunk03043057());
-        if (version <= 1) await Assert.That(node.LegacyRecordedBotPaths![0].Times![0]).IsEqualTo(123u);
-        if (version >= 1) await Assert.That(node.RecordedBotPaths![0].BotPathIndex).IsEqualTo(3);
+        var chunk = new CGameCtnChallenge.Chunk03043057();
+        var node = await RoundTrip(payload, chunk);
+        if (version == 0) await Assert.That(node.RecordedBotPaths![0].Times![0]).IsEqualTo(123u);
+        if (version == 1) await Assert.That(chunk.U01![0].Times![0]).IsEqualTo(123u);
+        if (version >= 1)
+        {
+            await Assert.That(node.RecordedBotPaths![0].BotPathIndex).IsEqualTo(3);
+            if (version <= 4) await Assert.That(node.RecordedBotPaths[0].Times![0]).IsEqualTo(456u);
+        }
         if (version == 5) await Assert.That(node.RecordedBotPaths![0].Times).IsNull();
     }
 
@@ -426,10 +432,10 @@ public class CGameCtnChallengeIgnoredChunkTests
         w.Write(new Vec3(1, 2, 3));
     }
 
-    private static void WriteTimes(GbxWriter w)
+    private static void WriteTimes(GbxWriter w, uint time = 123u)
     {
         w.Write(1);
-        w.Write(123u);
+        w.Write(time);
     }
 
     private static void WriteChildren(GbxWriter w, uint first)

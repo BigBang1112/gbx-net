@@ -742,18 +742,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.dayDuration = value;
     }
 
-    private LegacyRecordedBotPath[]? legacyRecordedBotPaths;
-    /// <remarks>Applied with: 0x057 v0-1 body chunk</remarks>
-    [AppliedWithChunk<Chunk03043057>(0, 1)]
-    public LegacyRecordedBotPath[]? LegacyRecordedBotPaths
-    {
-        get => this.legacyRecordedBotPaths;
-        set => this.legacyRecordedBotPaths = value;
-    }
-
     private RecordedBotPath[]? recordedBotPaths;
-    /// <remarks>Applied with: 0x057 v1+ body chunk</remarks>
-    [AppliedWithChunk<Chunk03043057>(1)]
+    /// <summary>
+    /// Legacy entries omit BotPathIndex.
+    /// </summary>
+    /// <remarks>Applied with: 0x057 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043057>]
     public RecordedBotPath[]? RecordedBotPaths
     {
         get => this.recordedBotPaths;
@@ -767,15 +761,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         get => this.worldDistortion;
         set => this.worldDistortion = value;
-    }
-
-    private bool hasBlockOctree;
-    /// <remarks>Applied with: 0x05D body chunk</remarks>
-    [AppliedWithChunk<Chunk0304305D>]
-    public bool HasBlockOctree
-    {
-        get => this.hasBlockOctree;
-        set => this.hasBlockOctree = value;
     }
 
     private BlockOctreeData? blockOctree;
@@ -957,10 +942,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).dayTime = context.Clone(this.dayTime)!;
         ((CGameCtnChallenge)clone).dynamicDaylight = context.Clone(this.dynamicDaylight)!;
         ((CGameCtnChallenge)clone).dayDuration = context.Clone(this.dayDuration)!;
-        ((CGameCtnChallenge)clone).legacyRecordedBotPaths = context.CloneArray(this.legacyRecordedBotPaths)!;
         ((CGameCtnChallenge)clone).recordedBotPaths = context.CloneArray(this.recordedBotPaths)!;
         ((CGameCtnChallenge)clone).worldDistortion = context.Clone(this.worldDistortion)!;
-        ((CGameCtnChallenge)clone).hasBlockOctree = context.Clone(this.hasBlockOctree)!;
         ((CGameCtnChallenge)clone).blockOctree = context.Clone(this.blockOctree)!;
         ((CGameCtnChallenge)clone).legacyMacroblocks = context.CloneArray(this.legacyMacroblocks)!;
         ((CGameCtnChallenge)clone).clipGroups = context.Clone(this.clipGroups)!;
@@ -1771,7 +1754,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// CGameCtnChallenge 0x01F chunk (block data)
     /// </summary>
     [Chunk(0x0304301F, "block data")]
-    [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1, 1, -1, 1, 6, 6, 6, 6)]
+    [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1, 1, 1, 1, 6, 6, 6, 6)]
     public partial class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304301F;
@@ -1783,7 +1766,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public Chunk0304301F(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU || gameVersion == GameVersion.TMF)
+            if (gameVersion == GameVersion.TMS || gameVersion == GameVersion.TMO || gameVersion == GameVersion.TMSX || gameVersion == GameVersion.TMNESWC || gameVersion == GameVersion.TMU || gameVersion == GameVersion.VSK5 || gameVersion == GameVersion.TMF)
             {
                 Version = 1;
             }
@@ -2555,11 +2538,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     /// CGameCtnChallenge 0x04D skippable chunk
     /// </summary>
     [Chunk(0x0304304D)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, -1, -1)]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 2, 2)]
     public partial class Chunk0304304D : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304304D;
-        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
 
         public NodeRefList<CMwNod>? U01;
@@ -2608,7 +2591,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public Chunk0304304D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP3)
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT)
             {
                 Version = 2;
             }
@@ -2941,6 +2924,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043057;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public RecordedBotPath[]? U01;
 
         public Chunk03043057() : this(GameVersion.Unspecified)
         {
@@ -2962,6 +2946,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043057)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03043057)clone).U01 = context.CloneArray(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -2972,9 +2957,14 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version <= 1)
+            if (Version == 0)
             {
-                rw.ArrayReadableWritable<LegacyRecordedBotPath>(ref n.legacyRecordedBotPaths!, version: Version);
+                rw.ArrayReadableWritable<RecordedBotPath>(ref n.recordedBotPaths!, version: - 1);
+            }
+
+            if (Version == 1)
+            {
+                rw.ArrayReadableWritable<RecordedBotPath>(ref U01!, version: - 1);
             }
 
             if (Version >= 1)
@@ -3257,9 +3247,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Boolean(ref n.hasBlockOctree);
+            var hasBlockOctree = rw.Boolean((rw.Writer is null ? default : (n.BlockOctree is not null)));
 
-            if (n.HasBlockOctree)
+            if (hasBlockOctree)
             {
                 rw.ReadableWritable<BlockOctreeData>(ref n.blockOctree, version: Version);
             }
@@ -3978,55 +3968,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
-    public partial class LegacyRecordedBotPath : IReadableWritable, IReadable, IWritable, IDeepCloneable
-    {
-        private Vec3[]? path;
-        public Vec3[]? Path
-        {
-            get => this.path;
-            set => this.path = value;
-        }
-
-        private uint[]? times;
-        public uint[]? Times
-        {
-            get => this.times;
-            set => this.times = value;
-        }
-
-        object IDeepCloneable.DeepClone(DeepCloneContext context)
-        {
-            var clone = (LegacyRecordedBotPath)MemberwiseClone();
-            context.Register(this, clone);
-            DeepCloneArchiveFields(clone, context);
-            return clone;
-        }
-
-        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
-        {
-            ((LegacyRecordedBotPath)clone).path = context.CloneArray(this.path)!;
-            ((LegacyRecordedBotPath)clone).times = context.CloneArray(this.times)!;
-        }
-
-        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
-        {
-            rw.Array<Vec3>(ref this.path!);
-            rw.Array<uint>(ref this.times!);
-        }
-
-        public virtual void Read(GbxReader r, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(r);
-            ReadWrite(rw, v);
-        }
-
-        public virtual void Write(GbxWriter w, int v = 0)
-        {
-            using var rw = new GbxReaderWriter(w);
-            ReadWrite(rw, v);
-        }
-    }
-
     public partial class RecordedBotPath : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private int botPathIndex;
@@ -4083,7 +4024,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Int32(ref this.botPathIndex);
+            if (v >= 0)
+            {
+                rw.Int32(ref this.botPathIndex);
+            }
+
             rw.Array<Vec3>(ref this.path!);
 
             if (v <= 4)

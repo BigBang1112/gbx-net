@@ -86,7 +86,7 @@ CPlugShader 0x09002000
   float VisibleMaxDist = -1
   float VisibleMinScreenHeight = -1
 
-0x01C [MP3, TMT.v1, MP4.v1, TM2020.v1] // GPU shader file
+0x01C [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // GPU shader file
   version
   CPlugFileText*
   if Version == 0
@@ -97,7 +97,7 @@ CPlugShader 0x09002000
 0x01D [MP3, TMT, MP4, TM2020]
   datauint
 
-0x01E [MP3, TMT.v1, MP4.v1, TM2020.v1] // RequirementFlags2
+0x01E [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // RequirementFlags2
   version
   datauint RequirementFlags2 = 0x1FFE001E [TMF = 0x40]
 
