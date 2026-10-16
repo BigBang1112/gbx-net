@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090C6000</remarks>
 [Class(0x090C6000)]
 public partial class CPlugParticleGpuModel : CMwNod, IClass
 {
@@ -68,6 +69,9 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugParticleGpuModel 0x000 chunk
+    /// </summary>
     [Chunk(0x090C6000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6000 : Chunk<CPlugParticleGpuModel>, IVersionable
@@ -131,6 +135,9 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleGpuModel 0x001 chunk
+    /// </summary>
     [Chunk(0x090C6001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6001 : Chunk<CPlugParticleGpuModel>, IVersionable
@@ -174,6 +181,9 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleGpuModel 0x002 chunk
+    /// </summary>
     [Chunk(0x090C6002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6002 : Chunk<CPlugParticleGpuModel>, IVersionable
@@ -364,6 +374,9 @@ public partial class CPlugParticleGpuModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleGpuModel 0x003 chunk
+    /// </summary>
     [Chunk(0x090C6003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C6003 : Chunk<CPlugParticleGpuModel>, IVersionable

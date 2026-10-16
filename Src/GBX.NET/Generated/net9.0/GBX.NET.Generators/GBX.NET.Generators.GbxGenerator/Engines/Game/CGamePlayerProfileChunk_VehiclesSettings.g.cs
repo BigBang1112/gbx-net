@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03130000</remarks>
 [Class(0x03130000)]
 public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfileChunk, IClass
 {
@@ -54,6 +55,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_VehiclesSettings 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03130000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130000 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
@@ -80,6 +84,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_VehiclesSettings 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03130001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130001 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
@@ -111,7 +118,7 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
     }
 
     /// <summary>
-    /// VehicleProfiles
+    /// CGamePlayerProfileChunk_VehiclesSettings 0x002 skippable chunk (VehicleProfiles)
     /// </summary>
     [Chunk(0x03130002, "VehicleProfiles")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -134,6 +141,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_VehiclesSettings 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x03130003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130003 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable
@@ -216,6 +226,9 @@ public partial class CGamePlayerProfileChunk_VehiclesSettings : CGamePlayerProfi
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_VehiclesSettings 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x03130004)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03130004 : SkippableChunk<CGamePlayerProfileChunk_VehiclesSettings>, IVersionable

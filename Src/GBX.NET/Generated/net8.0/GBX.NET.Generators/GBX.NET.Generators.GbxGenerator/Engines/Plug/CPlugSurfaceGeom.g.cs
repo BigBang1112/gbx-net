@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0900F000</remarks>
 [Class(0x0900F000)]
 public partial class CPlugSurfaceGeom : CPlug, IClass
 {
@@ -56,6 +57,9 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugSurfaceGeom 0x000 chunk
+    /// </summary>
     [Chunk(0x0900C000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0900C000 : Chunk<CPlugSurfaceGeom>
@@ -76,6 +80,9 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSurfaceGeom 0x001 chunk
+    /// </summary>
     [Chunk(0x0900C001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900C001 : Chunk<CPlugSurfaceGeom>
@@ -96,6 +103,9 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSurfaceGeom 0x002 chunk
+    /// </summary>
     [Chunk(0x0900D002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900D002 : Chunk<CPlugSurfaceGeom>
@@ -109,6 +119,9 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSurfaceGeom 0x002 chunk
+    /// </summary>
     [Chunk(0x0900F002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
@@ -123,7 +136,7 @@ public partial class CPlugSurfaceGeom : CPlug, IClass
     }
 
     /// <summary>
-    /// bounding box and geometry
+    /// CPlugSurfaceGeom 0x004 chunk (bounding box and geometry)
     /// </summary>
     [Chunk(0x0900F004, "bounding box and geometry")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]

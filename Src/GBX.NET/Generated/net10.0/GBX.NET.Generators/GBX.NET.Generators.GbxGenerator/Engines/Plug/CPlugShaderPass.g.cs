@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09067000</remarks>
 [Class(0x09067000)]
 public partial class CPlugShaderPass : CPlug, IClass
 {
@@ -288,6 +289,9 @@ public partial class CPlugShaderPass : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x000 chunk
+    /// </summary>
     [Chunk(0x09067000)]
     public partial class Chunk09067000 : Chunk<CPlugShaderPass>
     {
@@ -310,6 +314,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x001 chunk
+    /// </summary>
     [Chunk(0x09067001)]
     public partial class Chunk09067001 : Chunk<CPlugShaderPass>
     {
@@ -333,6 +340,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x002 chunk
+    /// </summary>
     [Chunk(0x09067002)]
     public partial class Chunk09067002 : Chunk<CPlugShaderPass>
     {
@@ -358,6 +368,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x003 chunk
+    /// </summary>
     [Chunk(0x09067003)]
     public partial class Chunk09067003 : Chunk<CPlugShaderPass>
     {
@@ -384,6 +397,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x004 chunk
+    /// </summary>
     [Chunk(0x09067004)]
     public partial class Chunk09067004 : Chunk09067003
     {
@@ -406,7 +422,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// blending, culling and GPU effects
+    /// CPlugShaderPass 0x005 chunk (blending, culling and GPU effects)
     /// </summary>
     [Chunk(0x09067005, "blending, culling and GPU effects")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -444,7 +460,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// VertexTextures
+    /// CPlugShaderPass 0x006 chunk (VertexTextures)
     /// </summary>
     [Chunk(0x09067006, "VertexTextures")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -465,7 +481,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// render-state flags
+    /// CPlugShaderPass 0x007 chunk (render-state flags)
     /// </summary>
     [Chunk(0x09067007, "render-state flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
@@ -486,7 +502,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// vertex and pixel GPU effects
+    /// CPlugShaderPass 0x008 chunk (vertex and pixel GPU effects)
     /// </summary>
     [Chunk(0x09067008, "vertex and pixel GPU effects")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -520,6 +536,9 @@ public partial class CPlugShaderPass : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderPass 0x009 chunk
+    /// </summary>
     [Chunk(0x09067009)]
     public partial class Chunk09067009 : Chunk<CPlugShaderPass>
     {
@@ -539,7 +558,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// sampler exclusions and GPU effects
+    /// CPlugShaderPass 0x00A chunk (sampler exclusions and GPU effects)
     /// </summary>
     [Chunk(0x0906700A, "sampler exclusions and GPU effects")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -562,7 +581,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// tessellation and geometry GPU effects
+    /// CPlugShaderPass 0x00B chunk (tessellation and geometry GPU effects)
     /// </summary>
     [Chunk(0x0906700B, "tessellation and geometry GPU effects")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
@@ -609,7 +628,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// Flags
+    /// CPlugShaderPass 0x00C chunk (Flags)
     /// </summary>
     [Chunk(0x0906700C, "Flags")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -630,7 +649,7 @@ public partial class CPlugShaderPass : CPlug, IClass
     }
 
     /// <summary>
-    /// texture bindings for each GPU stage
+    /// CPlugShaderPass 0x00D chunk (texture bindings for each GPU stage)
     /// </summary>
     [Chunk(0x0906700D, "texture bindings for each GPU stage")]
     [ChunkGameVersion(GameVersion.TM2020)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03148000</remarks>
 [Class(0x03148000)]
 public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfileChunk, IClass
 {
@@ -54,6 +55,9 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_ChallengesStats 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03148000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03148000 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable
@@ -77,6 +81,9 @@ public partial class CGamePlayerProfileChunk_ChallengesStats : CGamePlayerProfil
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_ChallengesStats 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03148001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03148001 : SkippableChunk<CGamePlayerProfileChunk_ChallengesStats>, IVersionable

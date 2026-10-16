@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// MediaTracker track.
 /// </summary>
+/// <remarks>ID: 0x03078000</remarks>
 [Class(0x03078000)]
 public partial class CGameCtnMediaTrack : CMwNod, IClass
 {
@@ -134,6 +135,9 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x000 chunk
+    /// </summary>
     [Chunk(0x03078000)]
     public partial class Chunk03078000 : Chunk<CGameCtnMediaTrack>
     {
@@ -152,7 +156,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
-    /// name and blocks
+    /// CGameCtnMediaTrack 0x001 chunk (name and blocks)
     /// </summary>
     [Chunk(0x03078001, "name and blocks")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -177,7 +181,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
-    /// TMS/TMU IsKeepPlaying
+    /// CGameCtnMediaTrack 0x002 chunk (TMS/TMU IsKeepPlaying)
     /// </summary>
     [Chunk(0x03078002, "TMS/TMU IsKeepPlaying")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -193,7 +197,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
-    /// TMS/TMU IsReadOnly
+    /// CGameCtnMediaTrack 0x003 chunk (TMS/TMU IsReadOnly)
     /// </summary>
     [Chunk(0x03078003, "TMS/TMU IsReadOnly")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -214,7 +218,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
-    /// TMF parameters
+    /// CGameCtnMediaTrack 0x004 chunk (TMF parameters)
     /// </summary>
     [Chunk(0x03078004, "TMF parameters")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -236,7 +240,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
     }
 
     /// <summary>
-    /// MP parameters
+    /// CGameCtnMediaTrack 0x005 chunk (MP parameters)
     /// </summary>
     [Chunk(0x03078005, "MP parameters")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, -1, 1, 1)]
@@ -284,6 +288,9 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x000 chunk
+    /// </summary>
     [Chunk(0x0307B000)]
     public partial class Chunk0307B000 : Chunk<CGameCtnMediaTrack>
     {
@@ -295,6 +302,9 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x000 chunk
+    /// </summary>
     [Chunk(0x24062000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24062000 : Chunk0307B000

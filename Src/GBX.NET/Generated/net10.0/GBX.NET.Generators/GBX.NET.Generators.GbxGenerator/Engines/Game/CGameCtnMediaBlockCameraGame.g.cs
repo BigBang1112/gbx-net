@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03084000</remarks>
 [Class(0x03084000)]
 public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -284,6 +285,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x000 chunk
+    /// </summary>
     [Chunk(0x03084000)]
     public partial class Chunk03084000 : Chunk<CGameCtnMediaBlockCameraGame>
     {
@@ -302,6 +306,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x001 chunk
+    /// </summary>
     [Chunk(0x03084001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk03084001 : Chunk03084000
@@ -321,6 +328,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x002 chunk
+    /// </summary>
     [Chunk(0x03084002)]
     public partial class Chunk03084002 : Chunk<CGameCtnMediaBlockCameraGame>
     {
@@ -347,6 +357,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x003 chunk
+    /// </summary>
     [Chunk(0x03084003)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03084003 : Chunk<CGameCtnMediaBlockCameraGame>
@@ -368,6 +381,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x004 chunk
+    /// </summary>
     [Chunk(0x03084004)]
     public partial class Chunk03084004 : Chunk03084003
     {
@@ -391,6 +407,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x005 chunk
+    /// </summary>
     [Chunk(0x03084005)]
     public partial class Chunk03084005 : Chunk03084004
     {
@@ -408,6 +427,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x006 chunk
+    /// </summary>
     [Chunk(0x03084006)]
     public partial class Chunk03084006 : Chunk03084005
     {
@@ -425,6 +447,9 @@ public partial class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, IC
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x007 chunk
+    /// </summary>
     [Chunk(0x03084007)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4)]
     public partial class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>, IVersionable

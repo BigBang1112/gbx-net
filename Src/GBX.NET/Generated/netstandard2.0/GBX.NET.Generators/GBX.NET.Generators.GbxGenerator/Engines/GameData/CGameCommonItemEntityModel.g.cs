@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E027000</remarks>
 [Class(0x2E027000)]
 public partial class CGameCommonItemEntityModel : CMwNod, IClass
 {
@@ -211,6 +212,9 @@ public partial class CGameCommonItemEntityModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCommonItemEntityModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E027000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 6)]
     public partial class Chunk2E027000 : Chunk<CGameCommonItemEntityModel>, IVersionable

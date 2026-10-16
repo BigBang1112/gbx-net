@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03072000</remarks>
 [Class(0x03072000)]
 public partial class CGameControlCameraTarget : CGameControlCamera, IClass
 {
@@ -90,6 +91,9 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
     {
     }
 
+    /// <summary>
+    /// CGameControlCameraTarget 0x001 chunk
+    /// </summary>
     [Chunk(0x03072001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03072001 : Chunk<CGameControlCameraTarget>
@@ -111,6 +115,9 @@ public partial class CGameControlCameraTarget : CGameControlCamera, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraTarget 0x002 chunk
+    /// </summary>
     [Chunk(0x03072002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk03072002 : Chunk<CGameControlCameraTarget>

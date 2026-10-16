@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0316D000</remarks>
 [Class(0x0316D000)]
 public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -56,6 +57,9 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, IClas
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxCameraBlend 0x000 chunk
+    /// </summary>
     [Chunk(0x0316D000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>, IVersionable

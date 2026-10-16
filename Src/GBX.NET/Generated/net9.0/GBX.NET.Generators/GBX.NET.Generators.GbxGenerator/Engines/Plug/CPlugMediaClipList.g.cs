@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09189000</remarks>
 [Class(0x09189000)]
 public partial class CPlugMediaClipList : CMwNod, IClass
 {
@@ -71,6 +72,9 @@ public partial class CPlugMediaClipList : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugMediaClipList 0x000 chunk
+    /// </summary>
     [Chunk(0x09189000)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk09189000 : Chunk<CPlugMediaClipList>, IVersionable

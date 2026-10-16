@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x031CC000</remarks>
 [Class(0x031CC000)]
 public partial class CGameUserProfile : CMwNod, IClass
 {
@@ -362,6 +363,9 @@ public partial class CGameUserProfile : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x031CC000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 16)]
     public partial class Chunk031CC000 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -545,6 +549,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x031CC001)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk031CC001 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -586,6 +593,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x031CC002)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk031CC002 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -626,6 +636,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x031CC003)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk031CC003 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -666,6 +679,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x031CC004)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk031CC004 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -687,6 +703,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x005 skippable chunk
+    /// </summary>
     [Chunk(0x031CC005)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk031CC005 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -727,6 +746,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x006 skippable chunk
+    /// </summary>
     [Chunk(0x031CC006)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk031CC006 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -748,6 +770,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x007 skippable chunk
+    /// </summary>
     [Chunk(0x031CC007)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 3)]
     public partial class Chunk031CC007 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -816,6 +841,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x008 skippable chunk
+    /// </summary>
     [Chunk(0x031CC008)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk031CC008 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -837,6 +865,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x009 skippable chunk
+    /// </summary>
     [Chunk(0x031CC009)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 1)]
     public partial class Chunk031CC009 : SkippableChunk<CGameUserProfile>
@@ -852,6 +883,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00A skippable chunk
+    /// </summary>
     [Chunk(0x031CC00A)]
     [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk031CC00A : SkippableChunk<CGameUserProfile>, IVersionable
@@ -908,6 +942,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00B skippable chunk
+    /// </summary>
     [Chunk(0x031CC00B)]
     [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk031CC00B : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1057,6 +1094,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00C skippable chunk
+    /// </summary>
     [Chunk(0x031CC00C)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC00C : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1095,6 +1135,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00D skippable chunk
+    /// </summary>
     [Chunk(0x031CC00D)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC00D : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1142,6 +1185,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00E skippable chunk
+    /// </summary>
     [Chunk(0x031CC00E)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC00E : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1181,6 +1227,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x00F skippable chunk
+    /// </summary>
     [Chunk(0x031CC00F)]
     [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk031CC00F : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1245,6 +1294,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x010 skippable chunk
+    /// </summary>
     [Chunk(0x031CC010)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC010 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1285,6 +1337,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x011 skippable chunk
+    /// </summary>
     [Chunk(0x031CC011)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC011 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1314,6 +1369,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x012 skippable chunk
+    /// </summary>
     [Chunk(0x031CC012)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC012 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1337,6 +1395,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x014 skippable chunk
+    /// </summary>
     [Chunk(0x031CC014)]
     public partial class Chunk031CC014 : SkippableChunk<CGameUserProfile>, IVersionable
     {
@@ -1358,6 +1419,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x015 skippable chunk
+    /// </summary>
     [Chunk(0x031CC015)]
     public partial class Chunk031CC015 : SkippableChunk<CGameUserProfile>, IVersionable
     {
@@ -1379,6 +1443,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x016 skippable chunk
+    /// </summary>
     [Chunk(0x031CC016)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC016 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1402,6 +1469,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x017 skippable chunk
+    /// </summary>
     [Chunk(0x031CC017)]
     [ChunkGameVersion(GameVersion.TM2020, 6)]
     public partial class Chunk031CC017 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1449,6 +1519,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x018 skippable chunk
+    /// </summary>
     [Chunk(0x031CC018)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC018 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1489,6 +1562,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x019 skippable chunk
+    /// </summary>
     [Chunk(0x031CC019)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC019 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1512,6 +1588,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01A skippable chunk
+    /// </summary>
     [Chunk(0x031CC01A)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01A : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1535,6 +1614,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01B skippable chunk
+    /// </summary>
     [Chunk(0x031CC01B)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01B : SkippableChunk<CGameUserProfile>
@@ -1548,6 +1630,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01C skippable chunk
+    /// </summary>
     [Chunk(0x031CC01C)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01C : SkippableChunk<CGameUserProfile>
@@ -1568,6 +1653,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01D skippable chunk
+    /// </summary>
     [Chunk(0x031CC01D)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk031CC01D : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1641,6 +1729,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01E skippable chunk
+    /// </summary>
     [Chunk(0x031CC01E)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01E : SkippableChunk<CGameUserProfile>
@@ -1661,6 +1752,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x01F skippable chunk
+    /// </summary>
     [Chunk(0x031CC01F)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC01F : SkippableChunk<CGameUserProfile>
@@ -1681,6 +1775,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x020 skippable chunk
+    /// </summary>
     [Chunk(0x031CC020)]
     [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk031CC020 : SkippableChunk<CGameUserProfile>, IVersionable
@@ -1724,6 +1821,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x021 skippable chunk
+    /// </summary>
     [Chunk(0x031CC021)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC021 : SkippableChunk<CGameUserProfile>
@@ -1737,6 +1837,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x022 skippable chunk
+    /// </summary>
     [Chunk(0x031CC022)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC022 : SkippableChunk<CGameUserProfile>
@@ -1757,6 +1860,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x023 skippable chunk
+    /// </summary>
     [Chunk(0x031CC023)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC023 : SkippableChunk<CGameUserProfile>
@@ -1777,6 +1883,9 @@ public partial class CGameUserProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameUserProfile 0x024 skippable chunk
+    /// </summary>
     [Chunk(0x031CC024)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk031CC024 : SkippableChunk<CGameUserProfile>

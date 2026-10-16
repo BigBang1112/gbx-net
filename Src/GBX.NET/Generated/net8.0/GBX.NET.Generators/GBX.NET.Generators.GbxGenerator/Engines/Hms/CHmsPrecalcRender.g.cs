@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06011000</remarks>
 [Class(0x06011000)]
 public partial class CHmsPrecalcRender : CMwNod, IClass
 {

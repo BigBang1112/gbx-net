@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09134000</remarks>
 [Class(0x09134000)]
 public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
@@ -107,7 +108,7 @@ public partial class CPlugAnimSkelEdition : CMwNod, IClass, IReadableWritable, I
     }
 
     /// <summary>
-    /// editable animation
+    /// CPlugAnimSkelEdition 0x000 chunk (editable animation)
     /// </summary>
     [Chunk(0x09134000, "editable animation")]
     public partial class Chunk09134000 : Chunk<CPlugAnimSkelEdition>, IVersionable

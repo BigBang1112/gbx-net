@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A083000</remarks>
 [Class(0x0A083000)]
 public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
 {
@@ -81,6 +82,9 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneVehicleCarMarksSamples 0x002 chunk
+    /// </summary>
     [Chunk(0x0A083002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083002 : Chunk<CSceneVehicleCarMarksSamples>
@@ -99,6 +103,9 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCarMarksSamples 0x003 chunk
+    /// </summary>
     [Chunk(0x0A083003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083003 : Chunk<CSceneVehicleCarMarksSamples>
@@ -117,6 +124,9 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCarMarksSamples 0x004 chunk
+    /// </summary>
     [Chunk(0x0A083004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083004 : Chunk<CSceneVehicleCarMarksSamples>
@@ -135,6 +145,9 @@ public partial class CSceneVehicleCarMarksSamples : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCarMarksSamples 0x006 chunk
+    /// </summary>
     [Chunk(0x0A083006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A083006 : Chunk<CSceneVehicleCarMarksSamples>, IVersionable

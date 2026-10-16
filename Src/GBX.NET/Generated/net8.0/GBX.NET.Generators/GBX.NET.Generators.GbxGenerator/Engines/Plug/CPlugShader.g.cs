@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09002000</remarks>
 [Class(0x09002000)]
 public partial class CPlugShader : CPlug, IClass
 {
@@ -273,6 +274,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x000 chunk
+    /// </summary>
     [Chunk(0x09002000)]
     public partial class Chunk09002000 : Chunk<CPlugShader>
     {
@@ -292,6 +296,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x005 chunk
+    /// </summary>
     [Chunk(0x09002005)]
     public partial class Chunk09002005 : Chunk<CPlugShader>
     {
@@ -311,7 +318,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// shader function and passes
+    /// CPlugShader 0x007 chunk (shader function and passes)
     /// </summary>
     [Chunk(0x09002007, "shader function and passes")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -333,6 +340,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x008 chunk
+    /// </summary>
     [Chunk(0x09002008)]
     public partial class Chunk09002008 : Chunk<CPlugShader>
     {
@@ -351,6 +361,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x009 chunk
+    /// </summary>
     [Chunk(0x09002009)]
     public partial class Chunk09002009 : Chunk<CPlugShader>
     {
@@ -369,6 +382,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00A chunk
+    /// </summary>
     [Chunk(0x0900200A)]
     public partial class Chunk0900200A : Chunk<CPlugShader>
     {
@@ -387,6 +403,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00B chunk
+    /// </summary>
     [Chunk(0x0900200B)]
     public partial class Chunk0900200B : Chunk<CPlugShader>
     {
@@ -406,6 +425,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00C chunk
+    /// </summary>
     [Chunk(0x0900200C)]
     public partial class Chunk0900200C : Chunk<CPlugShader>
     {
@@ -426,6 +448,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00D chunk
+    /// </summary>
     [Chunk(0x0900200D)]
     public partial class Chunk0900200D : Chunk<CPlugShader>
     {
@@ -446,6 +471,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00E chunk
+    /// </summary>
     [Chunk(0x0900200E)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0900200E : Chunk09002007
@@ -465,6 +493,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x00F chunk
+    /// </summary>
     [Chunk(0x0900200F)]
     public partial class Chunk0900200F : Chunk0900200D
     {
@@ -476,6 +507,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x010 chunk
+    /// </summary>
     [Chunk(0x09002010)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09002010 : Chunk<CPlugShader>
@@ -499,6 +533,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x011 chunk
+    /// </summary>
     [Chunk(0x09002011)]
     public partial class Chunk09002011 : Chunk<CPlugShader>
     {
@@ -520,6 +557,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x012 chunk
+    /// </summary>
     [Chunk(0x09002012)]
     public partial class Chunk09002012 : Chunk09002011
     {
@@ -531,6 +571,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x013 chunk
+    /// </summary>
     [Chunk(0x09002013)]
     public partial class Chunk09002013 : Chunk09002011
     {
@@ -542,6 +585,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x014 chunk
+    /// </summary>
     [Chunk(0x09002014)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk09002014 : Chunk<CPlugShader>
@@ -558,7 +604,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// requirements and visibility
+    /// CPlugShader 0x015 chunk (requirements and visibility)
     /// </summary>
     [Chunk(0x09002015, "requirements and visibility")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -581,6 +627,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x016 chunk
+    /// </summary>
     [Chunk(0x09002016)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk09002016 : Chunk09002015
@@ -595,7 +644,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// Flags
+    /// CPlugShader 0x018 chunk (Flags)
     /// </summary>
     [Chunk(0x09002018, "Flags")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -615,6 +664,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x019 chunk
+    /// </summary>
     [Chunk(0x09002019)]
     public partial class Chunk09002019 : Chunk<CPlugShader>
     {
@@ -632,7 +684,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// VisibleMaxDist
+    /// CPlugShader 0x01A chunk (VisibleMaxDist)
     /// </summary>
     [Chunk(0x0900201A, "VisibleMaxDist")]
     public partial class Chunk0900201A : Chunk<CPlugShader>
@@ -651,7 +703,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// visibility distances
+    /// CPlugShader 0x01B chunk (visibility distances)
     /// </summary>
     [Chunk(0x0900201B, "visibility distances")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
@@ -693,7 +745,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// GPU shader file
+    /// CPlugShader 0x01C chunk (GPU shader file)
     /// </summary>
     [Chunk(0x0900201C, "GPU shader file")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
@@ -765,6 +817,9 @@ public partial class CPlugShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShader 0x01D chunk
+    /// </summary>
     [Chunk(0x0900201D)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0900201D : Chunk<CPlugShader>
@@ -786,7 +841,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// RequirementFlags2
+    /// CPlugShader 0x01E chunk (RequirementFlags2)
     /// </summary>
     [Chunk(0x0900201E, "RequirementFlags2")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 1)]
@@ -827,7 +882,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// custom shaders
+    /// CPlugShader 0x01F chunk (custom shaders)
     /// </summary>
     [Chunk(0x0900201F, "custom shaders")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
@@ -868,7 +923,7 @@ public partial class CPlugShader : CPlug, IClass
     }
 
     /// <summary>
-    /// requirements and visibility
+    /// CPlugShader 0x020 chunk (requirements and visibility)
     /// </summary>
     [Chunk(0x09002020, "requirements and visibility")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 3)]

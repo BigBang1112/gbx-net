@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0908F000</remarks>
 [Class(0x0908F000)]
 public partial class CPlugSoundComponent : CMwNod, IClass
 {
@@ -225,7 +226,7 @@ public partial class CPlugSoundComponent : CMwNod, IClass
     }
 
     /// <summary>
-    /// volume and pitch from speed (RPM in legacy games)
+    /// CPlugSoundComponent 0x000 chunk (volume and pitch from speed (RPM in legacy games))
     /// </summary>
     [Chunk(0x0908F000, "volume and pitch from speed (RPM in legacy games)")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

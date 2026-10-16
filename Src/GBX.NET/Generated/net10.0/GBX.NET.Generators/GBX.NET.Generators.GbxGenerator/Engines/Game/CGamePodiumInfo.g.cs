@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03168000</remarks>
 [Class(0x03168000)]
 public partial class CGamePodiumInfo : CMwNod, IClass
 {
@@ -71,6 +72,9 @@ public partial class CGamePodiumInfo : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGamePodiumInfo 0x000 chunk
+    /// </summary>
     [Chunk(0x03168000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03168000 : Chunk<CGamePodiumInfo>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09107000</remarks>
 [Class(0x09107000)]
 public partial class CPlugCustomBeamModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

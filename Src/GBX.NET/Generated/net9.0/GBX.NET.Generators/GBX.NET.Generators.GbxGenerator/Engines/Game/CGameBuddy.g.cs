@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03153000</remarks>
 [Class(0x03153000)]
 public partial class CGameBuddy : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0314D000</remarks>
 [Class(0x0314D000)]
 public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
 {
@@ -149,6 +150,9 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnZoneTransition 0x000 chunk
+    /// </summary>
     [Chunk(0x0314D000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0314D000 : Chunk<CGameCtnZoneTransition>
@@ -167,6 +171,9 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneTransition 0x005 chunk
+    /// </summary>
     [Chunk(0x0314D005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0314D005 : Chunk<CGameCtnZoneTransition>, IVersionable
@@ -188,6 +195,9 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneTransition 0x006 chunk
+    /// </summary>
     [Chunk(0x0314D006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0314D006 : Chunk<CGameCtnZoneTransition>, IVersionable
@@ -211,6 +221,9 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneTransition 0x007 chunk
+    /// </summary>
     [Chunk(0x0314D007)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0314D007 : Chunk<CGameCtnZoneTransition>, IVersionable
@@ -240,6 +253,9 @@ public partial class CGameCtnZoneTransition : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneTransition 0x008 chunk
+    /// </summary>
     [Chunk(0x0314D008)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0314D008 : Chunk<CGameCtnZoneTransition>, IVersionable

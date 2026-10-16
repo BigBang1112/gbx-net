@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Deprecated base for MediaTracker event blocks; no own chunks.
 /// </summary>
+/// <remarks>ID: 0x03087000</remarks>
 [Class(0x03087000)]
 public partial class CGameCtnMediaBlockEvent : CGameCtnMediaBlock, IClass
 {

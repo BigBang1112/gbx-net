@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03340000</remarks>
 [Class(0x03340000)]
 public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, IClass
 {
@@ -54,6 +55,9 @@ public partial class CGameCtnBlockInfoClipVertical : CGameCtnBlockInfoClip, ICla
     {
     }
 
+    /// <summary>
+    /// CGameCtnBlockInfoClipVertical 0x000 chunk
+    /// </summary>
     [Chunk(0x03340000)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03340000 : Chunk<CGameCtnBlockInfoClipVertical>, IVersionable

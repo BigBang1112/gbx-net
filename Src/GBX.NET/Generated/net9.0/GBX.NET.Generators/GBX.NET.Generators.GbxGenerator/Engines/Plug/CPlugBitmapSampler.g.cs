@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0907E000</remarks>
 [Class(0x0907E000)]
 public partial class CPlugBitmapSampler : CPlug, IClass
 {
@@ -211,7 +212,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy filtering and texture addressing
+    /// CPlugBitmapSampler 0x000 chunk (legacy filtering and texture addressing)
     /// </summary>
     [Chunk(0x0907E000, "legacy filtering and texture addressing")]
     public partial class Chunk0907E000 : Chunk<CPlugBitmapSampler>
@@ -234,7 +235,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy sampler state
+    /// CPlugBitmapSampler 0x001 chunk (legacy sampler state)
     /// </summary>
     [Chunk(0x0907E001, "legacy sampler state")]
     public partial class Chunk0907E001 : Chunk<CPlugBitmapSampler>
@@ -255,7 +256,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     /// <summary>
-    /// named legacy sampler state
+    /// CPlugBitmapSampler 0x002 chunk (named legacy sampler state)
     /// </summary>
     [Chunk(0x0907E002, "named legacy sampler state")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -276,6 +277,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x003 chunk
+    /// </summary>
     [Chunk(0x0907E003)]
     public partial class Chunk0907E003 : Chunk0907E001
     {
@@ -293,6 +297,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x004 chunk
+    /// </summary>
     [Chunk(0x0907E004)]
     public partial class Chunk0907E004 : Chunk0907E003
     {
@@ -304,6 +311,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x005 chunk
+    /// </summary>
     [Chunk(0x0907E005)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0907E005 : Chunk0907E002
@@ -317,6 +327,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x006 chunk
+    /// </summary>
     [Chunk(0x0907E006)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0907E006 : Chunk0907E002
@@ -330,6 +343,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x007 chunk
+    /// </summary>
     [Chunk(0x0907E007)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0907E007 : Chunk0907E002
@@ -343,6 +359,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x008 chunk
+    /// </summary>
     [Chunk(0x0907E008)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0907E008 : Chunk0907E002
@@ -366,6 +385,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x009 chunk
+    /// </summary>
     [Chunk(0x0907E009)]
     public partial class Chunk0907E009 : Chunk0907E003
     {
@@ -387,6 +409,9 @@ public partial class CPlugBitmapSampler : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapSampler 0x00A chunk
+    /// </summary>
     [Chunk(0x0907E00A)]
     public partial class Chunk0907E00A : Chunk0907E009
     {
@@ -399,7 +424,7 @@ public partial class CPlugBitmapSampler : CPlug, IClass
     }
 
     /// <summary>
-    /// sampler state
+    /// CPlugBitmapSampler 0x00B chunk (sampler state)
     /// </summary>
     [Chunk(0x0907E00B, "sampler state")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0)]

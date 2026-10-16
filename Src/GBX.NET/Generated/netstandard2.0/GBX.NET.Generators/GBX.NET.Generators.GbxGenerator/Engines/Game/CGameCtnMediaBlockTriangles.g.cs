@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03029000</remarks>
 [Class(0x03029000)]
 public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
 {
@@ -94,7 +95,7 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
     }
 
     /// <summary>
-    /// Key times, rectangular position matrix, colors and triangle indices are handled in C#.
+    /// CGameCtnMediaBlockTriangles 0x000 chunk (Key times, rectangular position matrix, colors and triangle indices are handled in C#.)
     /// </summary>
     [Chunk(0x03029000, "Key times, rectangular position matrix, colors and triangle indices are handled in C#.")]
     public partial class Chunk03029000 : Chunk<CGameCtnMediaBlockTriangles>
@@ -107,6 +108,9 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockTriangles 0x001 chunk
+    /// </summary>
     [Chunk(0x03029001)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03029001 : Chunk03029000
@@ -128,6 +132,9 @@ public partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockTriangles 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x03029002)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>

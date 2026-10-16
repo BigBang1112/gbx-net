@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0310D000</remarks>
 [Class(0x0310D000)]
 public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
 {
@@ -272,7 +273,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// block spawns
+    /// CGameCtnMacroBlockInfo 0x000 chunk (block spawns)
     /// </summary>
     [Chunk(0x0310D000, "block spawns")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -293,7 +294,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// block skin spawns
+    /// CGameCtnMacroBlockInfo 0x001 chunk (block skin spawns)
     /// </summary>
     [Chunk(0x0310D001, "block skin spawns")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -314,7 +315,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// card events spawns
+    /// CGameCtnMacroBlockInfo 0x002 chunk (card events spawns)
     /// </summary>
     [Chunk(0x0310D002, "card events spawns")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -335,7 +336,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy object spawns
+    /// CGameCtnMacroBlockInfo 0x003 chunk (legacy object spawns)
     /// </summary>
     [Chunk(0x0310D003, "legacy object spawns")]
     public partial class Chunk0310D003 : Chunk<CGameCtnMacroBlockInfo>
@@ -354,7 +355,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy nested macroblocks
+    /// CGameCtnMacroBlockInfo 0x004 chunk (legacy nested macroblocks)
     /// </summary>
     [Chunk(0x0310D004, "legacy nested macroblocks")]
     public partial class Chunk0310D004 : Chunk<CGameCtnMacroBlockInfo>
@@ -373,7 +374,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy scene decals
+    /// CGameCtnMacroBlockInfo 0x005 chunk (legacy scene decals)
     /// </summary>
     [Chunk(0x0310D005, "legacy scene decals")]
     public partial class Chunk0310D005 : Chunk<CGameCtnMacroBlockInfo>
@@ -390,6 +391,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x006 chunk
+    /// </summary>
     [Chunk(0x0310D006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
@@ -411,6 +415,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x007 chunk
+    /// </summary>
     [Chunk(0x0310D007)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0310D007 : Chunk<CGameCtnMacroBlockInfo>
@@ -456,6 +463,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x008 chunk
+    /// </summary>
     [Chunk(0x0310D008)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
@@ -481,7 +491,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy macroblock junctions
+    /// CGameCtnMacroBlockInfo 0x009 chunk (legacy macroblock junctions)
     /// </summary>
     [Chunk(0x0310D009, "legacy macroblock junctions")]
     public partial class Chunk0310D009 : Chunk<CGameCtnMacroBlockInfo>
@@ -519,6 +529,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x00A chunk
+    /// </summary>
     [Chunk(0x0310D00A)]
     public partial class Chunk0310D00A : Chunk<CGameCtnMacroBlockInfo>
     {
@@ -538,7 +551,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// script metadata
+    /// CGameCtnMacroBlockInfo 0x00B skippable chunk (script metadata)
     /// </summary>
     [Chunk(0x0310D00B, "script metadata")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -562,7 +575,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// splines
+    /// CGameCtnMacroBlockInfo 0x00C skippable chunk (splines)
     /// </summary>
     [Chunk(0x0310D00C, "splines")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 2, 2)]
@@ -677,6 +690,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x00D skippable chunk
+    /// </summary>
     [Chunk(0x0310D00D)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0310D00D : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
@@ -698,7 +714,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// object spawns
+    /// CGameCtnMacroBlockInfo 0x00E chunk (object spawns)
     /// </summary>
     [Chunk(0x0310D00E, "object spawns")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 2, 2)]
@@ -751,6 +767,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x00F chunk
+    /// </summary>
     [Chunk(0x0310D00F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>, IVersionable
@@ -774,6 +793,9 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x010 skippable chunk
+    /// </summary>
     [Chunk(0x0310D010)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0310D010 : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
@@ -796,7 +818,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// mediatracker
+    /// CGameCtnMacroBlockInfo 0x011 skippable chunk (mediatracker)
     /// </summary>
     [Chunk(0x0310D011, "mediatracker")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

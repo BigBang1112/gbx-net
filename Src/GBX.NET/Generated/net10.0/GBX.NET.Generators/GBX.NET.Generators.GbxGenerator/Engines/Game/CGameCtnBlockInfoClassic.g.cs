@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03051000</remarks>
 [Class(0x03051000)]
 public partial class CGameCtnBlockInfoClassic : CGameCtnBlockInfo, IClass
 {

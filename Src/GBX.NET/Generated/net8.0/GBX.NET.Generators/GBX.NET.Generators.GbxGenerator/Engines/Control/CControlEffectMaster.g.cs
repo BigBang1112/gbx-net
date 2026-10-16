@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x0701C000</remarks>
 [Class(0x0701C000)]
 public partial class CControlEffectMaster : CMwNod, IClass
 {
@@ -187,6 +188,9 @@ public partial class CControlEffectMaster : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CControlEffectMaster 0x000 chunk
+    /// </summary>
     [Chunk(0x0701C000)]
     public partial class Chunk0701C000 : Chunk<CControlEffectMaster>
     {
@@ -211,6 +215,9 @@ public partial class CControlEffectMaster : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectMaster 0x001 chunk
+    /// </summary>
     [Chunk(0x0701C001)]
     public partial class Chunk0701C001 : Chunk<CControlEffectMaster>
     {
@@ -232,6 +239,9 @@ public partial class CControlEffectMaster : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectMaster 0x002 chunk
+    /// </summary>
     [Chunk(0x0701C002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701C002 : Chunk<CControlEffectMaster>
@@ -259,6 +269,9 @@ public partial class CControlEffectMaster : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectMaster 0x003 chunk
+    /// </summary>
     [Chunk(0x0701C003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701C003 : Chunk<CControlEffectMaster>

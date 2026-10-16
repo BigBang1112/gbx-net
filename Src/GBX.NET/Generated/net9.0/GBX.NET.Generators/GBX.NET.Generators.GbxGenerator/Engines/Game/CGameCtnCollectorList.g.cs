@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// A list of puzzle pieces.
 /// </summary>
+/// <remarks>ID: 0x0301B000</remarks>
 [Class(0x0301B000)]
 public partial class CGameCtnCollectorList : CMwNod, IClass
 {
@@ -57,6 +58,9 @@ public partial class CGameCtnCollectorList : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnCollectorList 0x000 chunk
+    /// </summary>
     [Chunk(0x0301B000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0301B000 : Chunk<CGameCtnCollectorList>

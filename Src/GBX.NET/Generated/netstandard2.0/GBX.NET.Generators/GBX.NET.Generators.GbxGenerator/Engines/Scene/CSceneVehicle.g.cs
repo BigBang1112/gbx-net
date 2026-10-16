@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A060000</remarks>
 [Class(0x0A060000)]
 public partial class CSceneVehicle : CSceneMobil, IClass
 {
@@ -104,6 +105,9 @@ public partial class CSceneVehicle : CSceneMobil, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneVehicle 0x000 chunk
+    /// </summary>
     [Chunk(0x0A060000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A060000 : Chunk<CSceneVehicle>

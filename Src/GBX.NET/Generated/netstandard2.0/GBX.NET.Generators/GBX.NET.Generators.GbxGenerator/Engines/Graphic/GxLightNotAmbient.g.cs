@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04006000</remarks>
 [Class(0x04006000)]
 public partial class GxLightNotAmbient : GxLight, IClass
 {

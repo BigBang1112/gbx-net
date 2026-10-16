@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09026000</remarks>
 [Class(0x09026000)]
 public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
 {
@@ -304,6 +305,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         legacyMaterialFlags = 0x30;
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x000 chunk
+    /// </summary>
     [Chunk(0x09026000)]
     public partial class Chunk09026000 : Chunk<CPlugShaderApply>
     {
@@ -322,6 +326,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x001 chunk
+    /// </summary>
     [Chunk(0x09026001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09026001 : Chunk09026000
@@ -342,7 +349,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// BitmapAddresses
+    /// CPlugShaderApply 0x002 chunk (BitmapAddresses)
     /// </summary>
     [Chunk(0x09026002, "BitmapAddresses")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -362,6 +369,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x003 chunk
+    /// </summary>
     [Chunk(0x09026003)]
     public partial class Chunk09026003 : Chunk<CPlugShaderApply>
     {
@@ -379,7 +389,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// TexOpConstant
+    /// CPlugShaderApply 0x004 chunk (TexOpConstant)
     /// </summary>
     [Chunk(0x09026004, "TexOpConstant")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -399,6 +409,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x005 chunk
+    /// </summary>
     [Chunk(0x09026005)]
     public partial class Chunk09026005 : Chunk09026003
     {
@@ -410,6 +423,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x006 chunk
+    /// </summary>
     [Chunk(0x09026006)]
     public partial class Chunk09026006 : Chunk09026003
     {
@@ -422,7 +438,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// ApplyField
+    /// CPlugShaderApply 0x007 chunk (ApplyField)
     /// </summary>
     [Chunk(0x09026007, "ApplyField")]
     [ChunkGameVersion(GameVersion.VSK5)]
@@ -442,6 +458,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x008 chunk
+    /// </summary>
     [Chunk(0x09026008)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09026008 : Chunk09026007
@@ -461,6 +480,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x009 chunk
+    /// </summary>
     [Chunk(0x09026009)]
     public partial class Chunk09026009 : Chunk09026008
     {
@@ -478,6 +500,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x00A chunk
+    /// </summary>
     [Chunk(0x0902600A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0902600A : Chunk09026009
@@ -491,6 +516,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x00C chunk
+    /// </summary>
     [Chunk(0x0902600C)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0902600C : Chunk<CPlugShaderApply>
@@ -510,7 +538,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// ApplyFlags
+    /// CPlugShaderApply 0x010 chunk (ApplyFlags)
     /// </summary>
     [Chunk(0x09026010, "ApplyFlags")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -531,7 +559,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// BitmapApplyArray
+    /// CPlugShaderApply 0x011 chunk (BitmapApplyArray)
     /// </summary>
     [Chunk(0x09026011, "BitmapApplyArray")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
@@ -572,7 +600,7 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
     }
 
     /// <summary>
-    /// apply fields
+    /// CPlugShaderApply 0x012 chunk (apply fields)
     /// </summary>
     [Chunk(0x09026012, "apply fields")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
@@ -612,6 +640,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x000 chunk
+    /// </summary>
     [Chunk(0x09063000)]
     public partial class Chunk09063000 : Chunk<CPlugShaderApply>
     {
@@ -634,6 +665,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x001 chunk
+    /// </summary>
     [Chunk(0x09063001)]
     public partial class Chunk09063001 : Chunk<CPlugShaderApply>
     {
@@ -656,6 +690,9 @@ public partial class CPlugShaderApply : CPlugShaderGeneric, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x002 chunk
+    /// </summary>
     [Chunk(0x09063002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09063002 : Chunk09063001

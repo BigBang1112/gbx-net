@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Ghost data.
 /// </summary>
+/// <remarks>ID: 0x0303F000</remarks>
 [Class(0x0303F000)]
 public partial class CGameGhost : CMwNod, IClass
 {
@@ -61,6 +62,9 @@ public partial class CGameGhost : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameGhost 0x003 chunk
+    /// </summary>
     [Chunk(0x0303F003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0303F003 : Chunk<CGameGhost>
@@ -74,6 +78,9 @@ public partial class CGameGhost : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameGhost 0x004 chunk
+    /// </summary>
     [Chunk(0x0303F004)]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0303F004 : Chunk<CGameGhost>
@@ -92,6 +99,9 @@ public partial class CGameGhost : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameGhost 0x005 chunk
+    /// </summary>
     [Chunk(0x0303F005)]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0303F005 : Chunk<CGameGhost>
@@ -100,6 +110,9 @@ public partial class CGameGhost : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF;
     }
 
+    /// <summary>
+    /// CGameGhost 0x006 chunk
+    /// </summary>
     [Chunk(0x0303F006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303F006 : Chunk0303F005, IVersionable
@@ -121,6 +134,9 @@ public partial class CGameGhost : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameGhost 0x007 skippable chunk
+    /// </summary>
     [Chunk(0x0303F007)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303F007 : SkippableChunk<CGameGhost>

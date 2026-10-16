@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03166000</remarks>
 [Class(0x03166000)]
 public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlockCameraEffect, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -102,6 +103,9 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMe
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraEffectInertialTracking 0x000 chunk
+    /// </summary>
     [Chunk(0x03166000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03166000 : Chunk<CGameCtnMediaBlockCameraEffectInertialTracking>, IVersionable

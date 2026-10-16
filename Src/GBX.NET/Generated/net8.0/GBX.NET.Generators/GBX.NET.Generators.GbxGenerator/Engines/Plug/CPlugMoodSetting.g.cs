@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090FE000</remarks>
 [Class(0x090FE000)]
 public partial class CPlugMoodSetting : CPlug, IClass
 {

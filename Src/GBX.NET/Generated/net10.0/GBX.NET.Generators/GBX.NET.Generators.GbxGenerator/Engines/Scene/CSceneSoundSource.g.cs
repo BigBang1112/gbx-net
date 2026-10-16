@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A00E000</remarks>
 [Class(0x0A00E000)]
 public partial class CSceneSoundSource : CScenePoc, IClass
 {
@@ -57,6 +58,9 @@ public partial class CSceneSoundSource : CScenePoc, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneSoundSource 0x000 chunk
+    /// </summary>
     [Chunk(0x0A00E000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0A00E000 : Chunk<CSceneSoundSource>

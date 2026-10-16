@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03090000</remarks>
 [Class(0x03090000)]
 public partial class CGameCtnCampaign : CMwNod, IClass
 {
@@ -187,7 +188,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// map groups
+    /// CGameCtnCampaign 0x000 chunk (map groups)
     /// </summary>
     [Chunk(0x03090000, "map groups")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -207,6 +208,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x001 chunk
+    /// </summary>
     [Chunk(0x03090001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk03090001 : Chunk<CGameCtnCampaign>
@@ -233,6 +237,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x002 chunk
+    /// </summary>
     [Chunk(0x03090002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk03090002 : Chunk<CGameCtnCampaign>
@@ -259,6 +266,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x003 chunk
+    /// </summary>
     [Chunk(0x03090003)]
     public partial class Chunk03090003 : Chunk<CGameCtnCampaign>
     {
@@ -280,6 +290,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x004 chunk
+    /// </summary>
     [Chunk(0x03090004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03090004 : Chunk<CGameCtnCampaign>
@@ -306,6 +319,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x005 chunk
+    /// </summary>
     [Chunk(0x03090005)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk03090005 : Chunk<CGameCtnCampaign>
@@ -327,7 +343,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// campaign ID
+    /// CGameCtnCampaign 0x006 chunk (campaign ID)
     /// </summary>
     [Chunk(0x03090006, "campaign ID")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -347,6 +363,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x007 chunk
+    /// </summary>
     [Chunk(0x03090007)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk03090007 : Chunk<CGameCtnCampaign>
@@ -369,6 +388,9 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCampaign 0x008 chunk
+    /// </summary>
     [Chunk(0x03090008)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk03090008 : Chunk<CGameCtnCampaign>
@@ -390,7 +412,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// collection ID
+    /// CGameCtnCampaign 0x009 skippable chunk (collection ID)
     /// </summary>
     [Chunk(0x03090009, "collection ID")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -414,7 +436,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// index
+    /// CGameCtnCampaign 0x00A skippable chunk (index)
     /// </summary>
     [Chunk(0x0309000A, "index")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -435,7 +457,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// unlocked by campaign
+    /// CGameCtnCampaign 0x00B skippable chunk (unlocked by campaign)
     /// </summary>
     [Chunk(0x0309000B, "unlocked by campaign")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -459,7 +481,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// icon ID
+    /// CGameCtnCampaign 0x00C skippable chunk (icon ID)
     /// </summary>
     [Chunk(0x0309000C, "icon ID")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -480,7 +502,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// unlock type
+    /// CGameCtnCampaign 0x00D chunk (unlock type)
     /// </summary>
     [Chunk(0x0309000D, "unlock type")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -501,7 +523,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// required players count
+    /// CGameCtnCampaign 0x00E chunk (required players count)
     /// </summary>
     [Chunk(0x0309000E, "required players count")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -522,7 +544,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// name
+    /// CGameCtnCampaign 0x00F skippable chunk (name)
     /// </summary>
     [Chunk(0x0309000F, "name")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -547,7 +569,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// mode script name
+    /// CGameCtnCampaign 0x010 chunk (mode script name)
     /// </summary>
     [Chunk(0x03090010, "mode script name")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -571,7 +593,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     }
 
     /// <summary>
-    /// official mode
+    /// CGameCtnCampaign 0x012 skippable chunk (official mode)
     /// </summary>
     [Chunk(0x03090012, "official mode")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]

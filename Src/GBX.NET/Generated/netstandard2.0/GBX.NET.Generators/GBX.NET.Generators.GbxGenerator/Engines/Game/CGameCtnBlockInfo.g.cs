@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0304E000</remarks>
 [Class(0x0304E000)]
 public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
 {
@@ -704,7 +705,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy block units and mobils
+    /// CGameCtnBlockInfo 0x005 chunk (legacy block units and mobils)
     /// </summary>
     [Chunk(0x0304E005, "legacy block units and mobils")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -750,7 +751,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy pillar flag and ID
+    /// CGameCtnBlockInfo 0x006 chunk (legacy pillar flag and ID)
     /// </summary>
     [Chunk(0x0304E006, "legacy pillar flag and ID")]
     public partial class Chunk0304E006 : Chunk<CGameCtnBlockInfo>
@@ -772,7 +773,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy shared spawn location
+    /// CGameCtnBlockInfo 0x007 chunk (legacy shared spawn location)
     /// </summary>
     [Chunk(0x0304E007, "legacy shared spawn location")]
     public partial class Chunk0304E007 : Chunk<CGameCtnBlockInfo>
@@ -795,7 +796,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// IsPillar
+    /// CGameCtnBlockInfo 0x009 chunk (IsPillar)
     /// </summary>
     [Chunk(0x0304E009, "IsPillar")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
@@ -816,7 +817,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy waypoint and helper mobils
+    /// CGameCtnBlockInfo 0x00A chunk (legacy waypoint and helper mobils)
     /// </summary>
     [Chunk(0x0304E00A, "legacy waypoint and helper mobils")]
     public partial class Chunk0304E00A : Chunk<CGameCtnBlockInfo>
@@ -837,7 +838,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy waypoint and helper mobils
+    /// CGameCtnBlockInfo 0x00B chunk (legacy waypoint and helper mobils)
     /// </summary>
     [Chunk(0x0304E00B, "legacy waypoint and helper mobils")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -861,7 +862,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy spawn locations
+    /// CGameCtnBlockInfo 0x00C chunk (legacy spawn locations)
     /// </summary>
     [Chunk(0x0304E00C, "legacy spawn locations")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -883,7 +884,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// IsReplacement
+    /// CGameCtnBlockInfo 0x00D chunk (IsReplacement)
     /// </summary>
     [Chunk(0x0304E00D, "IsReplacement")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -904,7 +905,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy waypoint and helper mobils
+    /// CGameCtnBlockInfo 0x00E chunk (legacy waypoint and helper mobils)
     /// </summary>
     [Chunk(0x0304E00E, "legacy waypoint and helper mobils")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -928,7 +929,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// NoRespawn
+    /// CGameCtnBlockInfo 0x00F chunk (NoRespawn)
     /// </summary>
     [Chunk(0x0304E00F, "NoRespawn")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -949,7 +950,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// screen interaction triggers
+    /// CGameCtnBlockInfo 0x012 chunk (screen interaction triggers)
     /// </summary>
     [Chunk(0x0304E012, "screen interaction triggers")]
     public partial class Chunk0304E012 : Chunk<CGameCtnBlockInfo>
@@ -969,7 +970,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// IconAutoUseGround
+    /// CGameCtnBlockInfo 0x013 chunk (IconAutoUseGround)
     /// </summary>
     [Chunk(0x0304E013, "IconAutoUseGround")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -990,7 +991,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// precalculated particle parameters and location
+    /// CGameCtnBlockInfo 0x015 chunk (precalculated particle parameters and location)
     /// </summary>
     [Chunk(0x0304E015, "precalculated particle parameters and location")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
@@ -1012,7 +1013,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// block flag
+    /// CGameCtnBlockInfo 0x017 chunk (block flag)
     /// </summary>
     [Chunk(0x0304E017, "block flag")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1035,7 +1036,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy auto terrain placement
+    /// CGameCtnBlockInfo 0x01A chunk (legacy auto terrain placement)
     /// </summary>
     [Chunk(0x0304E01A, "legacy auto terrain placement")]
     public partial class Chunk0304E01A : Chunk<CGameCtnBlockInfo>
@@ -1056,7 +1057,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy block units
+    /// CGameCtnBlockInfo 0x01D chunk (legacy block units)
     /// </summary>
     [Chunk(0x0304E01D, "legacy block units")]
     public partial class Chunk0304E01D : Chunk<CGameCtnBlockInfo>
@@ -1090,7 +1091,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy block info mobils
+    /// CGameCtnBlockInfo 0x01E chunk (legacy block info mobils)
     /// </summary>
     [Chunk(0x0304E01E, "legacy block info mobils")]
     public partial class Chunk0304E01E : Chunk<CGameCtnBlockInfo>
@@ -1110,7 +1111,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// CharPhySpecialProperty
+    /// CGameCtnBlockInfo 0x01F chunk (CharPhySpecialProperty)
     /// </summary>
     [Chunk(0x0304E01F, "CharPhySpecialProperty")]
     public partial class Chunk0304E01F : Chunk<CGameCtnBlockInfo>
@@ -1129,7 +1130,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// special properties and presentation clips
+    /// CGameCtnBlockInfo 0x020 chunk (special properties and presentation clips)
     /// </summary>
     [Chunk(0x0304E020, "special properties and presentation clips")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 7, 8)]
@@ -1213,7 +1214,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy symmetry reference, direction and flags
+    /// CGameCtnBlockInfo 0x021 chunk (legacy symmetry reference, direction and flags)
     /// </summary>
     [Chunk(0x0304E021, "legacy symmetry reference, direction and flags")]
     public partial class Chunk0304E021 : Chunk<CGameCtnBlockInfo>
@@ -1257,7 +1258,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// IconMacroBlockInfo
+    /// CGameCtnBlockInfo 0x022 chunk (IconMacroBlockInfo)
     /// </summary>
     [Chunk(0x0304E022, "IconMacroBlockInfo")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1278,7 +1279,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// base variants
+    /// CGameCtnBlockInfo 0x023 chunk (base variants)
     /// </summary>
     [Chunk(0x0304E023, "base variants")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1300,7 +1301,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// legacy symmetry reference and direction
+    /// CGameCtnBlockInfo 0x024 chunk (legacy symmetry reference and direction)
     /// </summary>
     [Chunk(0x0304E024, "legacy symmetry reference and direction")]
     public partial class Chunk0304E024 : Chunk<CGameCtnBlockInfo>
@@ -1342,7 +1343,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// WayPointType
+    /// CGameCtnBlockInfo 0x026 chunk (WayPointType)
     /// </summary>
     [Chunk(0x0304E026, "WayPointType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1363,7 +1364,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// AdditionalVariantsGround
+    /// CGameCtnBlockInfo 0x027 chunk (AdditionalVariantsGround)
     /// </summary>
     [Chunk(0x0304E027, "AdditionalVariantsGround")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1384,7 +1385,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// symmetrical block ID and direction
+    /// CGameCtnBlockInfo 0x028 chunk (symmetrical block ID and direction)
     /// </summary>
     [Chunk(0x0304E028, "symmetrical block ID and direction")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1406,7 +1407,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// FogVolumeBox
+    /// CGameCtnBlockInfo 0x029 chunk (FogVolumeBox)
     /// </summary>
     [Chunk(0x0304E029, "FogVolumeBox")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1427,7 +1428,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// sounds and locations
+    /// CGameCtnBlockInfo 0x02A chunk (sounds and locations)
     /// </summary>
     [Chunk(0x0304E02A, "sounds and locations")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 2, 3)]
@@ -1500,7 +1501,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// BaseType
+    /// CGameCtnBlockInfo 0x02B chunk (BaseType)
     /// </summary>
     [Chunk(0x0304E02B, "BaseType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
@@ -1556,7 +1557,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// AdditionalVariantsAir
+    /// CGameCtnBlockInfo 0x02C chunk (AdditionalVariantsAir)
     /// </summary>
     [Chunk(0x0304E02C, "AdditionalVariantsAir")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1577,7 +1578,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// ProdState
+    /// CGameCtnBlockInfo 0x02E chunk (ProdState)
     /// </summary>
     [Chunk(0x0304E02E, "ProdState")]
     [ChunkGameVersion(GameVersion.MP3, 0)]
@@ -1618,7 +1619,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// pillar shape
+    /// CGameCtnBlockInfo 0x02F chunk (pillar shape)
     /// </summary>
     [Chunk(0x0304E02F, "pillar shape")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]
@@ -1669,7 +1670,7 @@ public abstract partial class CGameCtnBlockInfo : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// block model and material modifiers
+    /// CGameCtnBlockInfo 0x031 chunk (block model and material modifiers)
     /// </summary>
     [Chunk(0x0304E031, "block model and material modifiers")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]

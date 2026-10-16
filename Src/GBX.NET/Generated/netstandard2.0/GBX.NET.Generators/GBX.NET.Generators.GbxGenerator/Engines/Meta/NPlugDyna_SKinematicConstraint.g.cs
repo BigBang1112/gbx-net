@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Meta;
 
+/// <remarks>ID: 0x2F0CA000</remarks>
 [Class(0x2F0CA000)]
 public partial class NPlugDyna_SKinematicConstraint : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

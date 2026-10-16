@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0913A000</remarks>
 [Class(0x0913A000)]
 public partial class CPlugAnimSkelEditionPose : CMwNod, IClass
 {

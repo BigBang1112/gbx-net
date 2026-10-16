@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A01F000</remarks>
 [Class(0x0A01F000)]
 public partial class CSceneMessageHandler : CMwNod, IClass
 {
@@ -79,6 +80,9 @@ public partial class CSceneMessageHandler : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneMessageHandler 0x000 chunk
+    /// </summary>
     [Chunk(0x0A01F000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A01F000 : Chunk<CSceneMessageHandler>
@@ -97,6 +101,9 @@ public partial class CSceneMessageHandler : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneMessageHandler 0x001 chunk
+    /// </summary>
     [Chunk(0x0A01F001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A01F001 : Chunk<CSceneMessageHandler>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0307F000</remarks>
 [Class(0x0307F000)]
 public abstract partial class CGameCtnMediaBlockFxBlur : CGameCtnMediaBlockFx, IClass
 {

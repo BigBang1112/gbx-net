@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030A6000</remarks>
 [Class(0x030A6000)]
 public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -57,6 +58,9 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockMusicEffect 0x000 chunk
+    /// </summary>
     [Chunk(0x030A6000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
@@ -75,6 +79,9 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockMusicEffect 0x001 chunk
+    /// </summary>
     [Chunk(0x030A6001)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030A6001 : Chunk<CGameCtnMediaBlockMusicEffect>

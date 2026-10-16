@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A033000</remarks>
 [Class(0x0A033000)]
 public partial class CSceneVehicleEnvironment : CMwNod, IClass
 {
@@ -71,6 +72,9 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneVehicleEnvironment 0x000 chunk
+    /// </summary>
     [Chunk(0x0A033000)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A033000 : Chunk<CSceneVehicleEnvironment>
@@ -91,6 +95,9 @@ public partial class CSceneVehicleEnvironment : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleEnvironment 0x002 chunk
+    /// </summary>
     [Chunk(0x0A033002)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A033002 : Chunk<CSceneVehicleEnvironment>

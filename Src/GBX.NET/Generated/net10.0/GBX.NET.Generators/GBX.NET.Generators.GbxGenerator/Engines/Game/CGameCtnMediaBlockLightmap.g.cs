@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030C0000</remarks>
 [Class(0x030C0000)]
 public partial class CGameCtnMediaBlockLightmap : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -75,6 +76,9 @@ public partial class CGameCtnMediaBlockLightmap : CGameCtnMediaBlock, IClass, CG
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockLightmap 0x000 chunk
+    /// </summary>
     [Chunk(0x030C0000)]
     public partial class Chunk030C0000 : Chunk<CGameCtnMediaBlockLightmap>, IVersionable
     {

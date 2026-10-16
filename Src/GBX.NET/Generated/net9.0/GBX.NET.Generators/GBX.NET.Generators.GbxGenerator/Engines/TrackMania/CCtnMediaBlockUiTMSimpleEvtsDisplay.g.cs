@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x24092000</remarks>
 [Class(0x24092000)]
 public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiSimpleEvtsDisplay, IClass
 {
@@ -91,6 +92,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
     {
     }
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x000 chunk
+    /// </summary>
     [Chunk(0x24092000)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
@@ -106,6 +110,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x001 chunk
+    /// </summary>
     [Chunk(0x24092001)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092001 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
@@ -128,6 +135,9 @@ public partial class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUiS
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x002 chunk
+    /// </summary>
     [Chunk(0x24092002)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>

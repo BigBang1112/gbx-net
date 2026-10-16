@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Block groups stored in the game's JSON files
 /// </summary>
+/// <remarks>ID: 0x03346000</remarks>
 [Class(0x03346000)]
 public partial class CGameBlockInfoGroups : CMwNod, IClass
 {

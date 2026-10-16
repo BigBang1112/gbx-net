@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09015000</remarks>
 [Class(0x09015000)]
 public partial class CPlugTreeVisualMip : CPlugTree, IClass
 {
@@ -46,6 +47,9 @@ public partial class CPlugTreeVisualMip : CPlugTree, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugTreeVisualMip 0x002 chunk
+    /// </summary>
     [Chunk(0x09015002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09015002 : Chunk<CPlugTreeVisualMip>

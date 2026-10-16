@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03163000</remarks>
 [Class(0x03163000)]
 public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfileChunk, IClass
 {
@@ -63,6 +64,9 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_EditorSettings 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03163000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03163000 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>, IVersionable
@@ -84,6 +88,9 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_EditorSettings 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03163001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03163001 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>, IVersionable
@@ -105,6 +112,9 @@ public partial class CGamePlayerProfileChunk_EditorSettings : CGamePlayerProfile
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_EditorSettings 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x03163002)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03163002 : SkippableChunk<CGamePlayerProfileChunk_EditorSettings>

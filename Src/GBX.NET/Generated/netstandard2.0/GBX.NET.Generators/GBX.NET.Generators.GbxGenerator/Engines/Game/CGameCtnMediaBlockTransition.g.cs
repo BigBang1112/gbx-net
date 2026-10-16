@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030AA000</remarks>
 [Class(0x030AA000)]
 public abstract partial class CGameCtnMediaBlockTransition : CGameCtnMediaBlock, IClass
 {

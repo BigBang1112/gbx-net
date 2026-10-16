@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0308F000</remarks>
 [Class(0x0308F000)]
 public partial class CGameCtnChallengeGroup : CMwNod, IClass
 {
@@ -277,7 +278,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// medal requirements + map files
+    /// CGameCtnChallengeGroup 0x000 chunk (medal requirements + map files)
     /// </summary>
     [Chunk(0x0308F000, "medal requirements + map files")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -301,7 +302,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// medal requirements + map identifiers
+    /// CGameCtnChallengeGroup 0x001 chunk (medal requirements + map identifiers)
     /// </summary>
     [Chunk(0x0308F001, "medal requirements + map identifiers")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -325,7 +326,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// name
+    /// CGameCtnChallengeGroup 0x002 chunk (name)
     /// </summary>
     [Chunk(0x0308F002, "name")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -346,7 +347,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// medal values
+    /// CGameCtnChallengeGroup 0x003 chunk (medal values)
     /// </summary>
     [Chunk(0x0308F003, "medal values")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -369,7 +370,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file list
+    /// CGameCtnChallengeGroup 0x004 chunk (legacy file list)
     /// </summary>
     [Chunk(0x0308F004, "legacy file list")]
     public partial class Chunk0308F004 : Chunk<CGameCtnChallengeGroup>
@@ -388,7 +389,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// LinkedCampaign
+    /// CGameCtnChallengeGroup 0x005 chunk (LinkedCampaign)
     /// </summary>
     [Chunk(0x0308F005, "LinkedCampaign")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -409,7 +410,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// map identifiers or map files
+    /// CGameCtnChallengeGroup 0x006 chunk (map identifiers or map files)
     /// </summary>
     [Chunk(0x0308F006, "map identifiers or map files")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -439,7 +440,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// medal and cup requirements
+    /// CGameCtnChallengeGroup 0x007 chunk (medal and cup requirements)
     /// </summary>
     [Chunk(0x0308F007, "medal and cup requirements")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -465,7 +466,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// AssociatedCollection
+    /// CGameCtnChallengeGroup 0x008 chunk (AssociatedCollection)
     /// </summary>
     [Chunk(0x0308F008, "AssociatedCollection")]
     [ChunkGameVersion(GameVersion.TMSX)]
@@ -486,7 +487,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// AssociatedCollectionId
+    /// CGameCtnChallengeGroup 0x009 chunk (AssociatedCollectionId)
     /// </summary>
     [Chunk(0x0308F009, "AssociatedCollectionId")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -507,7 +508,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy map identifiers
+    /// CGameCtnChallengeGroup 0x00A chunk (legacy map identifiers)
     /// </summary>
     [Chunk(0x0308F00A, "legacy map identifiers")]
     public partial class Chunk0308F00A : Chunk<CGameCtnChallengeGroup>
@@ -526,7 +527,7 @@ public partial class CGameCtnChallengeGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// map identifiers + file paths
+    /// CGameCtnChallengeGroup 0x00B chunk (map identifiers + file paths)
     /// </summary>
     [Chunk(0x0308F00B, "map identifiers + file paths")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1, 1)]

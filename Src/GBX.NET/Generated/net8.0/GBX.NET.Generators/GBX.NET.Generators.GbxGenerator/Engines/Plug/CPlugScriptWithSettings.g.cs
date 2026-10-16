@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09083000</remarks>
 [Class(0x09083000)]
 public partial class CPlugScriptWithSettings : CMwNod, IClass
 {
@@ -87,7 +88,7 @@ public partial class CPlugScriptWithSettings : CMwNod, IClass
     }
 
     /// <summary>
-    /// script and settings
+    /// CPlugScriptWithSettings 0x000 chunk (script and settings)
     /// </summary>
     [Chunk(0x09083000, "script and settings")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]

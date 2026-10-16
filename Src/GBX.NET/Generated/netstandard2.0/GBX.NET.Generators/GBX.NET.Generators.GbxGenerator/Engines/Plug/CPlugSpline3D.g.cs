@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090CF000</remarks>
 [Class(0x090CF000)]
 public partial class CPlugSpline3D : CMwNod, IClass
 {

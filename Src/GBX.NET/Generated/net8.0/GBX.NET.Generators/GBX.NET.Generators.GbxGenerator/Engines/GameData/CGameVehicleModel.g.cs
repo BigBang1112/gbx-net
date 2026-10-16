@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E01C000</remarks>
 [Class(0x2E01C000)]
 public partial class CGameVehicleModel : CMwNod, IClass
 {
@@ -88,6 +89,9 @@ public partial class CGameVehicleModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameVehicleModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E01C000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E01C000 : Chunk<CGameVehicleModel>, IVersionable

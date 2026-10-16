@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x0500E000</remarks>
 [Class(0x0500E000)]
 public partial class CFuncEnum : CFunc, IClass
 {
@@ -145,6 +146,9 @@ public partial class CFuncEnum : CFunc, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncEnum 0x005 chunk
+    /// </summary>
     [Chunk(0x0500E005)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0500E005 : Chunk<CFuncEnum>
@@ -169,6 +173,9 @@ public partial class CFuncEnum : CFunc, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncEnum 0x006 chunk
+    /// </summary>
     [Chunk(0x0500E006)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0500E006 : Chunk<CFuncEnum>
@@ -187,6 +194,9 @@ public partial class CFuncEnum : CFunc, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncEnum 0x007 chunk
+    /// </summary>
     [Chunk(0x0500E007)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0500E007 : Chunk<CFuncEnum>

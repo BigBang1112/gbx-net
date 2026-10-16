@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090BD000</remarks>
 [Class(0x090BD000)]
 public partial class CPlugTimedPixelArray : CPlug, IClass
 {

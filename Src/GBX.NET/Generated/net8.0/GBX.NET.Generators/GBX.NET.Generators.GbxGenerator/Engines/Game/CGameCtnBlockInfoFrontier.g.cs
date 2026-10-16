@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03050000</remarks>
 [Class(0x03050000)]
 public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
 {
@@ -48,7 +49,7 @@ public partial class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// frontier flag
+    /// CGameCtnBlockInfoFrontier 0x000 chunk (frontier flag)
     /// </summary>
     [Chunk(0x03050000, "frontier flag")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

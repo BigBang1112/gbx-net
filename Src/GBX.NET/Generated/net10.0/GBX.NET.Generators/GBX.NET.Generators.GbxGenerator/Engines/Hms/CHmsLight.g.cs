@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x0600C000</remarks>
 [Class(0x0600C000)]
 public partial class CHmsLight : CHmsPocEmitter, IClass
 {
@@ -94,6 +95,9 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsLight 0x000 chunk
+    /// </summary>
     [Chunk(0x0600C000)]
     public partial class Chunk0600C000 : Chunk<CHmsLight>
     {
@@ -113,6 +117,9 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLight 0x001 chunk
+    /// </summary>
     [Chunk(0x0600C001)]
     public partial class Chunk0600C001 : Chunk0600C000
     {
@@ -129,6 +136,9 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLight 0x002 chunk
+    /// </summary>
     [Chunk(0x0600C002)]
     public partial class Chunk0600C002 : Chunk0600C001
     {
@@ -146,6 +156,9 @@ public partial class CHmsLight : CHmsPocEmitter, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLight 0x003 chunk
+    /// </summary>
     [Chunk(0x0600C003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0600C003 : Chunk0600C002

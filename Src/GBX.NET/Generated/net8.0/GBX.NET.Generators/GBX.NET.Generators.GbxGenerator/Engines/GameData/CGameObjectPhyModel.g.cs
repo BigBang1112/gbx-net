@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E006000</remarks>
 [Class(0x2E006000)]
 public partial class CGameObjectPhyModel : CMwNod, IClass
 {
@@ -157,6 +158,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E006000)]
     public partial class Chunk2E006000 : Chunk<CGameObjectPhyModel>
     {
@@ -200,6 +204,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x001 chunk
+    /// </summary>
     [Chunk(0x2E006001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 21, 26)]
     public partial class Chunk2E006001 : Chunk<CGameObjectPhyModel>, IVersionable
@@ -516,6 +523,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x2E006002)]
     public partial class Chunk2E006002 : SkippableChunk<CGameObjectPhyModel>
     {
@@ -554,6 +564,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x003 chunk
+    /// </summary>
     [Chunk(0x2E006003)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E006003 : Chunk<CGameObjectPhyModel>
@@ -579,6 +592,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x004 chunk
+    /// </summary>
     [Chunk(0x2E006004)]
     public partial class Chunk2E006004 : Chunk<CGameObjectPhyModel>, IVersionable
     {
@@ -623,6 +639,9 @@ public partial class CGameObjectPhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectPhyModel 0x005 chunk
+    /// </summary>
     [Chunk(0x2E006005)]
     [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk2E006005 : Chunk<CGameObjectPhyModel>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09056000</remarks>
 [Class(0x09056000)]
 public partial class CPlugVertexStream : CPlug, IClass
 {
@@ -116,6 +117,9 @@ public partial class CPlugVertexStream : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugVertexStream 0x000 chunk
+    /// </summary>
     [Chunk(0x09056000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, 1, 0, 1, 1)]
     public partial class Chunk09056000 : Chunk<CPlugVertexStream>, IVersionable

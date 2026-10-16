@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07010000</remarks>
 [Class(0x07010000)]
 public partial class CControlEffectSimi : CControlEffect, IClass
 {
@@ -98,6 +99,9 @@ public partial class CControlEffectSimi : CControlEffect, IClass
     {
     }
 
+    /// <summary>
+    /// CControlEffectSimi 0x001 chunk
+    /// </summary>
     [Chunk(0x07010001)]
     public partial class Chunk07010001 : Chunk<CControlEffectSimi>
     {
@@ -115,6 +119,9 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectSimi 0x002 chunk
+    /// </summary>
     [Chunk(0x07010002)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk07010002 : Chunk<CControlEffectSimi>
@@ -134,6 +141,9 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectSimi 0x004 chunk
+    /// </summary>
     [Chunk(0x07010004)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk07010004 : Chunk<CControlEffectSimi>
@@ -155,6 +165,9 @@ public partial class CControlEffectSimi : CControlEffect, IClass
         }
     }
 
+    /// <summary>
+    /// CControlEffectSimi 0x005 chunk
+    /// </summary>
     [Chunk(0x07010005)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07010005 : Chunk<CControlEffectSimi>

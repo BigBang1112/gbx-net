@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0911C000</remarks>
 [Class(0x0911C000)]
 public partial class CPlugTrainWagonModel : CMwNod, IClass
 {
@@ -214,6 +215,9 @@ public partial class CPlugTrainWagonModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugTrainWagonModel 0x000 chunk
+    /// </summary>
     [Chunk(0x0911C000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0911C000 : Chunk<CPlugTrainWagonModel>, IVersionable

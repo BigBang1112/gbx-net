@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06023000</remarks>
 [Class(0x06023000)]
 public partial class CHmsLightMapMood : CMwNod, IClass
 {
@@ -112,6 +113,9 @@ public partial class CHmsLightMapMood : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsLightMapMood 0x000 chunk
+    /// </summary>
     [Chunk(0x06023000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06023000 : Chunk<CHmsLightMapMood>
@@ -137,6 +141,9 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapMood 0x001 chunk
+    /// </summary>
     [Chunk(0x06023001)]
     public partial class Chunk06023001 : Chunk<CHmsLightMapMood>
     {
@@ -161,6 +168,9 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapMood 0x002 chunk
+    /// </summary>
     [Chunk(0x06023002)]
     public partial class Chunk06023002 : Chunk<CHmsLightMapMood>
     {
@@ -186,6 +196,9 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapMood 0x003 chunk
+    /// </summary>
     [Chunk(0x06023003)]
     public partial class Chunk06023003 : Chunk<CHmsLightMapMood>
     {
@@ -213,6 +226,9 @@ public partial class CHmsLightMapMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapMood 0x004 chunk
+    /// </summary>
     [Chunk(0x06023004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 0)]
     public partial class Chunk06023004 : Chunk<CHmsLightMapMood>, IVersionable

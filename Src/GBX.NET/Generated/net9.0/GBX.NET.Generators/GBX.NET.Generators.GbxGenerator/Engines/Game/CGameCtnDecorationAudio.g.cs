@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03039000</remarks>
 [Class(0x03039000)]
 public partial class CGameCtnDecorationAudio : CMwNod, IClass
 {
@@ -370,6 +371,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x000 chunk
+    /// </summary>
     [Chunk(0x03039000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039000 : Chunk<CGameCtnDecorationAudio>
@@ -383,6 +387,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x001 chunk
+    /// </summary>
     [Chunk(0x03039001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03039001 : Chunk<CGameCtnDecorationAudio>
@@ -402,6 +409,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x002 chunk
+    /// </summary>
     [Chunk(0x03039002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03039002 : Chunk<CGameCtnDecorationAudio>
@@ -420,6 +430,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x003 chunk
+    /// </summary>
     [Chunk(0x03039003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039003 : Chunk<CGameCtnDecorationAudio>, IVersionable
@@ -595,6 +608,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x004 chunk
+    /// </summary>
     [Chunk(0x03039004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039004 : Chunk<CGameCtnDecorationAudio>, IVersionable
@@ -619,6 +635,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x005 chunk
+    /// </summary>
     [Chunk(0x03039005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039005 : Chunk<CGameCtnDecorationAudio>, IVersionable
@@ -646,6 +665,9 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x006 chunk
+    /// </summary>
     [Chunk(0x03039006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03039006 : Chunk<CGameCtnDecorationAudio>, IVersionable

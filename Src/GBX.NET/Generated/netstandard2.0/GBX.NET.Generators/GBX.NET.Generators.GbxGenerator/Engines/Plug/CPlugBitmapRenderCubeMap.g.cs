@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09088000</remarks>
 [Class(0x09088000)]
 public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
 {
@@ -139,7 +140,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// legacy cube settings
+    /// CPlugBitmapRenderCubeMap 0x000 chunk (legacy cube settings)
     /// </summary>
     [Chunk(0x09088000, "legacy cube settings")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -162,7 +163,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// flags
+    /// CPlugBitmapRenderCubeMap 0x001 chunk (flags)
     /// </summary>
     [Chunk(0x09088001, "flags")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -183,7 +184,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// cube settings and update distance
+    /// CPlugBitmapRenderCubeMap 0x002 chunk (cube settings and update distance)
     /// </summary>
     [Chunk(0x09088002, "cube settings and update distance")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -205,7 +206,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// image-space bitmap and distance
+    /// CPlugBitmapRenderCubeMap 0x003 chunk (image-space bitmap and distance)
     /// </summary>
     [Chunk(0x09088003, "image-space bitmap and distance")]
     public partial class Chunk09088003 : Chunk<CPlugBitmapRenderCubeMap>
@@ -225,7 +226,7 @@ public partial class CPlugBitmapRenderCubeMap : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// image-space bitmap and scaling
+    /// CPlugBitmapRenderCubeMap 0x004 chunk (image-space bitmap and scaling)
     /// </summary>
     [Chunk(0x09088004, "image-space bitmap and scaling")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

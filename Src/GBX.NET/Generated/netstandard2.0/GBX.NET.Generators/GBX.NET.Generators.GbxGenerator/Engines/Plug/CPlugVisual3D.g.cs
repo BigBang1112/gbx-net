@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0902C000</remarks>
 [Class(0x0902C000)]
 public partial class CPlugVisual3D : CPlugVisual, IClass
 {
@@ -74,7 +75,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     }
 
     /// <summary>
-    /// Legacy vertices and tangents
+    /// CPlugVisual3D 0x001 chunk (Legacy vertices and tangents)
     /// </summary>
     [Chunk(0x0902C001, "Legacy vertices and tangents")]
     public partial class Chunk0902C001 : Chunk<CPlugVisual3D>
@@ -88,7 +89,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     }
 
     /// <summary>
-    /// BlendShapes
+    /// CPlugVisual3D 0x002 chunk (BlendShapes)
     /// </summary>
     [Chunk(0x0902C002, "BlendShapes")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -106,7 +107,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     }
 
     /// <summary>
-    /// Legacy vertices, tangents and bitangents
+    /// CPlugVisual3D 0x003 chunk (Legacy vertices, tangents and bitangents)
     /// </summary>
     [Chunk(0x0902C003, "Legacy vertices, tangents and bitangents")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -128,7 +129,7 @@ public partial class CPlugVisual3D : CPlugVisual, IClass
     }
 
     /// <summary>
-    /// Vertices and tangents
+    /// CPlugVisual3D 0x004 chunk (Vertices and tangents)
     /// </summary>
     [Chunk(0x0902C004, "Vertices and tangents")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090F4000</remarks>
 [Class(0x090F4000)]
 public partial class CPlugGameSkin : CMwNod, IClass
 {
@@ -106,6 +107,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x000 chunk
+    /// </summary>
     [Chunk(0x090F4000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 4, 5, 5, 5)]
     public partial class HeaderChunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
@@ -193,6 +197,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x000 chunk
+    /// </summary>
     [Chunk(0x090F4000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F4000 : Chunk<CPlugGameSkin>
@@ -206,6 +213,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x001 chunk
+    /// </summary>
     [Chunk(0x090F4001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F4001 : Chunk<CPlugGameSkin>
@@ -219,6 +229,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x003 chunk
+    /// </summary>
     [Chunk(0x090F4003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F4003 : Chunk<CPlugGameSkin>
@@ -238,6 +251,9 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x004 chunk
+    /// </summary>
     [Chunk(0x090F4004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090F4004 : Chunk<CPlugGameSkin>, IVersionable

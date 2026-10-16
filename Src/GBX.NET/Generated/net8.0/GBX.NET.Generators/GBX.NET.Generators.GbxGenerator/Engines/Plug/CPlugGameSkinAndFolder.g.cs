@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0915D000</remarks>
 [Class(0x0915D000)]
 public partial class CPlugGameSkinAndFolder : CMwNod, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugGameSkinAndFolder 0x000 chunk
+    /// </summary>
     [Chunk(0x0915D000)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0915D000 : Chunk<CPlugGameSkinAndFolder>
@@ -59,6 +63,9 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkinAndFolder 0x001 chunk
+    /// </summary>
     [Chunk(0x0915D001)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0915D001 : Chunk<CPlugGameSkinAndFolder>

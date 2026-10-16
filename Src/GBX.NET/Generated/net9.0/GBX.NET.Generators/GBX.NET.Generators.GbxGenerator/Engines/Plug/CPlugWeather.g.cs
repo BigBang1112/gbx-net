@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0917E000</remarks>
 [Class(0x0917E000)]
 public partial class CPlugWeather : CMwNod, IClass
 {
@@ -691,7 +692,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy materials, lighting and fog
+    /// CPlugWeather 0x000 chunk (Legacy materials, lighting and fog)
     /// </summary>
     [Chunk(0x0917E000, "Legacy materials, lighting and fog")]
     public partial class Chunk0917E000 : Chunk<CPlugWeather>
@@ -761,7 +762,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy materials, lighting and fog
+    /// CPlugWeather 0x001 chunk (Legacy materials, lighting and fog)
     /// </summary>
     [Chunk(0x0917E001, "Legacy materials, lighting and fog")]
     public partial class Chunk0917E001 : Chunk<CPlugWeather>
@@ -834,7 +835,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy paired sky and sea materials
+    /// CPlugWeather 0x002 chunk (Legacy paired sky and sea materials)
     /// </summary>
     [Chunk(0x0917E002, "Legacy paired sky and sea materials")]
     public partial class Chunk0917E002 : Chunk<CPlugWeather>
@@ -951,6 +952,9 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeather 0x003 chunk
+    /// </summary>
     [Chunk(0x0917E003)]
     public partial class Chunk0917E003 : Chunk0917E002
     {
@@ -969,7 +973,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy fog and sea settings
+    /// CPlugWeather 0x004 chunk (Legacy fog and sea settings)
     /// </summary>
     [Chunk(0x0917E004, "Legacy fog and sea settings")]
     public partial class Chunk0917E004 : Chunk0917E005
@@ -988,7 +992,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy paired materials and day fog
+    /// CPlugWeather 0x005 chunk (Legacy paired materials and day fog)
     /// </summary>
     [Chunk(0x0917E005, "Legacy paired materials and day fog")]
     public partial class Chunk0917E005 : Chunk<CPlugWeather>
@@ -1096,7 +1100,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Sea reflection and water colors
+    /// CPlugWeather 0x006 chunk (Sea reflection and water colors)
     /// </summary>
     [Chunk(0x0917E006, "Sea reflection and water colors")]
     public partial class Chunk0917E006 : Chunk<CPlugWeather>
@@ -1119,6 +1123,9 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeather 0x007 chunk
+    /// </summary>
     [Chunk(0x0917E007)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0917E007 : Chunk<CPlugWeather>
@@ -1132,6 +1139,9 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeather 0x008 chunk
+    /// </summary>
     [Chunk(0x0917E008)]
     public partial class Chunk0917E008 : Chunk0917E005
     {
@@ -1149,6 +1159,9 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeather 0x009 chunk
+    /// </summary>
     [Chunk(0x0917E009)]
     public partial class Chunk0917E009 : Chunk0917E008
     {
@@ -1167,7 +1180,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy lighting, fog and effects
+    /// CPlugWeather 0x00A chunk (Legacy lighting, fog and effects)
     /// </summary>
     [Chunk(0x0917E00A, "Legacy lighting, fog and effects")]
     public partial class Chunk0917E00A : Chunk<CPlugWeather>
@@ -1223,7 +1236,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Sky and sea materials
+    /// CPlugWeather 0x00B chunk (Sky and sea materials)
     /// </summary>
     [Chunk(0x0917E00B, "Sky and sea materials")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1248,6 +1261,9 @@ public partial class CPlugWeather : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeather 0x00C chunk
+    /// </summary>
     [Chunk(0x0917E00C)]
     public partial class Chunk0917E00C : Chunk0917E00A
     {
@@ -1266,7 +1282,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Sea reflection and water colors
+    /// CPlugWeather 0x00D chunk (Sea reflection and water colors)
     /// </summary>
     [Chunk(0x0917E00D, "Sea reflection and water colors")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1293,7 +1309,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Lighting, fog and effects
+    /// CPlugWeather 0x00E chunk (Lighting, fog and effects)
     /// </summary>
     [Chunk(0x0917E00E, "Lighting, fog and effects")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1353,7 +1369,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// ImageLightDirDblSided
+    /// CPlugWeather 0x00F chunk (ImageLightDirDblSided)
     /// </summary>
     [Chunk(0x0917E00F, "ImageLightDirDblSided")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1374,7 +1390,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy cloud solids and near distance
+    /// CPlugWeather 0x010 chunk (Legacy cloud solids and near distance)
     /// </summary>
     [Chunk(0x0917E010, "Legacy cloud solids and near distance")]
     public partial class Chunk0917E010 : Chunk<CPlugWeather>
@@ -1388,7 +1404,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// BitmapSkyGradV
+    /// CPlugWeather 0x011 chunk (BitmapSkyGradV)
     /// </summary>
     [Chunk(0x0917E011, "BitmapSkyGradV")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1409,7 +1425,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy cloud far distance and colors
+    /// CPlugWeather 0x012 chunk (Legacy cloud far distance and colors)
     /// </summary>
     [Chunk(0x0917E012, "Legacy cloud far distance and colors")]
     public partial class Chunk0917E012 : Chunk0917E010
@@ -1423,7 +1439,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// ImageFogColor
+    /// CPlugWeather 0x013 chunk (ImageFogColor)
     /// </summary>
     [Chunk(0x0917E013, "ImageFogColor")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1444,7 +1460,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// ImageSeaColor
+    /// CPlugWeather 0x014 chunk (ImageSeaColor)
     /// </summary>
     [Chunk(0x0917E014, "ImageSeaColor")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1465,7 +1481,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy cloud lighting
+    /// CPlugWeather 0x015 chunk (Legacy cloud lighting)
     /// </summary>
     [Chunk(0x0917E015, "Legacy cloud lighting")]
     public partial class Chunk0917E015 : Chunk0917E012
@@ -1479,7 +1495,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// Clouds
+    /// CPlugWeather 0x016 chunk (Clouds)
     /// </summary>
     [Chunk(0x0917E016, "Clouds")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1500,7 +1516,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// FogBlender
+    /// CPlugWeather 0x017 chunk (FogBlender)
     /// </summary>
     [Chunk(0x0917E017, "FogBlender")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1521,7 +1537,7 @@ public partial class CPlugWeather : CMwNod, IClass
     }
 
     /// <summary>
-    /// EmitterInFog
+    /// CPlugWeather 0x018 chunk (EmitterInFog)
     /// </summary>
     [Chunk(0x0917E018, "EmitterInFog")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]

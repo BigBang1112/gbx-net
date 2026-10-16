@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E1000</remarks>
 [Class(0x090E1000)]
 public partial class CPlugFxWindOnTreeSprite : CPlug, IClass
 {

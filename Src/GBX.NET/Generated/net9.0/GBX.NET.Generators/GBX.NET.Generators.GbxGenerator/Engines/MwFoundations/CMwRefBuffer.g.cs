@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.MwFoundations;
 
+/// <remarks>ID: 0x01026000</remarks>
 [Class(0x01026000)]
 public partial class CMwRefBuffer : CMwNod, IClass
 {
@@ -98,6 +99,9 @@ public partial class CMwRefBuffer : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CMwRefBuffer 0x000 chunk
+    /// </summary>
     [Chunk(0x01026000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk01026000 : Chunk<CMwRefBuffer>
@@ -118,6 +122,9 @@ public partial class CMwRefBuffer : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CMwRefBuffer 0x001 chunk
+    /// </summary>
     [Chunk(0x01026001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk01026001 : Chunk<CMwRefBuffer>

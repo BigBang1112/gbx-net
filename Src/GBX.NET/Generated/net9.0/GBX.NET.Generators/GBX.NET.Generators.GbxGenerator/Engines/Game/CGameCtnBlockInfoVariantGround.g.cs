@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0315C000</remarks>
 [Class(0x0315C000)]
 public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, IClass
 {
@@ -103,6 +104,9 @@ public partial class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant, 
     {
     }
 
+    /// <summary>
+    /// CGameCtnBlockInfoVariantGround 0x001 chunk
+    /// </summary>
     [Chunk(0x0315C001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 2, -1)]
     public partial class Chunk0315C001 : Chunk<CGameCtnBlockInfoVariantGround>, IVersionable

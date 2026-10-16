@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x0804E000</remarks>
 [Class(0x0804E000)]
 public abstract partial class CMotionManaged : CMotion, IClass
 {

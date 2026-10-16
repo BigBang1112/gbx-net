@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04001000</remarks>
 [Class(0x04001000)]
 public partial class GxLight : CMwNod, IClass
 {
@@ -139,6 +140,9 @@ public partial class GxLight : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// GxLight 0x008 chunk
+    /// </summary>
     [Chunk(0x04001008)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk04001008 : Chunk<GxLight>
@@ -162,6 +166,9 @@ public partial class GxLight : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// GxLight 0x009 chunk
+    /// </summary>
     [Chunk(0x04001009)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk04001009 : Chunk<GxLight>
@@ -188,6 +195,9 @@ public partial class GxLight : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// GxLight 0x00A chunk
+    /// </summary>
     [Chunk(0x0400100A)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0400100A : Chunk<GxLight>, IVersionable

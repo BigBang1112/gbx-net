@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090D3000</remarks>
 [Class(0x090D3000)]
 public partial class CPlugFogMatter : CMwNod, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugFogMatter : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugFogMatter 0x000 chunk
+    /// </summary>
     [Chunk(0x090D3000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090D3000 : Chunk<CPlugFogMatter>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07001000</remarks>
 [Class(0x07001000)]
 public partial class CControlBase : CSceneToy, IClass
 {
@@ -80,6 +81,9 @@ public partial class CControlBase : CSceneToy, IClass
     {
     }
 
+    /// <summary>
+    /// CControlBase 0x00C chunk
+    /// </summary>
     [Chunk(0x0700100C)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700100C : Chunk<CControlBase>
@@ -110,6 +114,9 @@ public partial class CControlBase : CSceneToy, IClass
         }
     }
 
+    /// <summary>
+    /// CControlBase 0x00E chunk
+    /// </summary>
     [Chunk(0x0700100E)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700100E : Chunk<CControlBase>
@@ -137,6 +144,9 @@ public partial class CControlBase : CSceneToy, IClass
         }
     }
 
+    /// <summary>
+    /// CControlBase 0x00F chunk
+    /// </summary>
     [Chunk(0x0700100F)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0700100F : Chunk<CControlBase>
@@ -157,6 +167,9 @@ public partial class CControlBase : CSceneToy, IClass
         }
     }
 
+    /// <summary>
+    /// CControlBase 0x010 chunk
+    /// </summary>
     [Chunk(0x07001010)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07001010 : Chunk<CControlBase>

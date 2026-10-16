@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A062000</remarks>
 [Class(0x0A062000)]
 public partial class CSceneTrafficGraph : CMwNod, IClass
 {
@@ -45,6 +46,9 @@ public partial class CSceneTrafficGraph : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneTrafficGraph 0x004 chunk
+    /// </summary>
     [Chunk(0x0A062004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A062004 : Chunk<CSceneTrafficGraph>
@@ -58,6 +62,9 @@ public partial class CSceneTrafficGraph : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneTrafficGraph 0x005 chunk
+    /// </summary>
     [Chunk(0x0A062005)]
     public partial class Chunk0A062005 : Chunk<CSceneTrafficGraph>
     {

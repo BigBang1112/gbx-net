@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06007000</remarks>
 [Class(0x06007000)]
 public partial class CHmsPoc : CHmsZoneElem, IClass
 {

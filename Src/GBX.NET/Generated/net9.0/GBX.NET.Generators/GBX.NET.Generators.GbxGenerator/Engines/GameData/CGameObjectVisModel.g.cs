@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E007000</remarks>
 [Class(0x2E007000)]
 public partial class CGameObjectVisModel : CMwNod, IClass
 {
@@ -189,6 +190,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameObjectVisModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E007000)]
     public partial class Chunk2E007000 : Chunk<CGameObjectVisModel>
     {
@@ -231,6 +235,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectVisModel 0x001 chunk
+    /// </summary>
     [Chunk(0x2E007001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 21, 22)]
     public partial class Chunk2E007001 : Chunk<CGameObjectVisModel>, IVersionable
@@ -506,6 +513,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectVisModel 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x2E007002)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E007002 : SkippableChunk<CGameObjectVisModel>, IVersionable
@@ -532,6 +542,9 @@ public partial class CGameObjectVisModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameObjectVisModel 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x2E007003)]
     public partial class Chunk2E007003 : SkippableChunk<CGameObjectVisModel>
     {

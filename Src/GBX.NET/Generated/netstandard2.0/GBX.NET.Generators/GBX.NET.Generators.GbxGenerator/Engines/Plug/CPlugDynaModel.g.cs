@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0912F000</remarks>
 [Class(0x0912F000)]
 public partial class CPlugDynaModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

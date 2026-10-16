@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03079000</remarks>
 [Class(0x03079000)]
 public partial class CGameCtnMediaClip : CMwNod, IClass
 {
@@ -170,7 +171,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy tracks
+    /// CGameCtnMediaClip 0x000 chunk (legacy tracks)
     /// </summary>
     [Chunk(0x03079000, "legacy tracks")]
     public partial class Chunk03079000 : Chunk<CGameCtnMediaClip>
@@ -189,7 +190,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy tracks and name
+    /// CGameCtnMediaClip 0x001 chunk (legacy tracks and name)
     /// </summary>
     [Chunk(0x03079001, "legacy tracks and name")]
     public partial class Chunk03079001 : Chunk<CGameCtnMediaClip>
@@ -209,7 +210,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// tracks
+    /// CGameCtnMediaClip 0x002 chunk (tracks)
     /// </summary>
     [Chunk(0x03079002, "tracks")]
     public partial class Chunk03079002 : Chunk<CGameCtnMediaClip>
@@ -232,7 +233,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// tracks with sorting
+    /// CGameCtnMediaClip 0x003 chunk (tracks with sorting)
     /// </summary>
     [Chunk(0x03079003, "tracks with sorting")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -254,7 +255,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// Scene
+    /// CGameCtnMediaClip 0x004 chunk (Scene)
     /// </summary>
     [Chunk(0x03079004, "Scene")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -275,7 +276,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// tracks without sorting
+    /// CGameCtnMediaClip 0x005 chunk (tracks without sorting)
     /// </summary>
     [Chunk(0x03079005, "tracks without sorting")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
@@ -291,7 +292,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// discarded legacy ID
+    /// CGameCtnMediaClip 0x006 chunk (discarded legacy ID)
     /// </summary>
     [Chunk(0x03079006, "discarded legacy ID")]
     public partial class Chunk03079006 : Chunk<CGameCtnMediaClip>
@@ -312,7 +313,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// LocalPlayerClipEntIndex
+    /// CGameCtnMediaClip 0x007 chunk (LocalPlayerClipEntIndex)
     /// </summary>
     [Chunk(0x03079007, "LocalPlayerClipEntIndex")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
@@ -332,6 +333,9 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x008 chunk
+    /// </summary>
     [Chunk(0x03079008)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk03079008 : Chunk<CGameCtnMediaClip>
@@ -350,6 +354,9 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x009 chunk
+    /// </summary>
     [Chunk(0x03079009)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk03079009 : Chunk<CGameCtnMediaClip>
@@ -369,7 +376,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// StopWhenLeave
+    /// CGameCtnMediaClip 0x00A chunk (StopWhenLeave)
     /// </summary>
     [Chunk(0x0307900A, "StopWhenLeave")]
     [ChunkGameVersion(GameVersion.MP3)]
@@ -389,6 +396,9 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x00B chunk
+    /// </summary>
     [Chunk(0x0307900B)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0307900B : Chunk<CGameCtnMediaClip>
@@ -407,6 +417,9 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x00C chunk
+    /// </summary>
     [Chunk(0x0307900C)]
     public partial class Chunk0307900C : Chunk<CGameCtnMediaClip>
     {
@@ -426,7 +439,7 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// MP tracks
+    /// CGameCtnMediaClip 0x00D chunk (MP tracks)
     /// </summary>
     [Chunk(0x0307900D, "MP tracks")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 1)]
@@ -477,6 +490,9 @@ public partial class CGameCtnMediaClip : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x00E skippable chunk
+    /// </summary>
     [Chunk(0x0307900E)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0307900E : SkippableChunk<CGameCtnMediaClip>, IVersionable

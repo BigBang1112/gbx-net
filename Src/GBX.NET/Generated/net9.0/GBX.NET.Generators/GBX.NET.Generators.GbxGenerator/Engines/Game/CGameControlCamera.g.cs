@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0306B000</remarks>
 [Class(0x0306B000)]
 public partial class CGameControlCamera : CSceneController, IClass
 {
@@ -308,6 +309,9 @@ public partial class CGameControlCamera : CSceneController, IClass
     {
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x001 chunk
+    /// </summary>
     [Chunk(0x0306B001)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306B001 : Chunk<CGameControlCamera>
@@ -337,6 +341,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x002 chunk
+    /// </summary>
     [Chunk(0x0306B002)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306B002 : Chunk<CGameControlCamera>
@@ -355,6 +362,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x003 chunk
+    /// </summary>
     [Chunk(0x0306B003)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306B003 : Chunk<CGameControlCamera>
@@ -373,6 +383,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x004 chunk
+    /// </summary>
     [Chunk(0x0306B004)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306B004 : Chunk<CGameControlCamera>
@@ -391,6 +404,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x009 chunk
+    /// </summary>
     [Chunk(0x0306B009)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0306B009 : Chunk<CGameControlCamera>
@@ -436,6 +452,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x00A chunk
+    /// </summary>
     [Chunk(0x0306B00A)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306B00A : Chunk<CGameControlCamera>
@@ -454,6 +473,9 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x00B chunk
+    /// </summary>
     [Chunk(0x0306B00B)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0306B00B : Chunk<CGameControlCamera>

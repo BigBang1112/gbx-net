@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A082000</remarks>
 [Class(0x0A082000)]
 public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
 {
@@ -267,7 +268,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy mark dimensions and material
+    /// CSceneVehicleCarMarksModelSub 0x000 chunk (legacy mark dimensions and material)
     /// </summary>
     [Chunk(0x0A082000, "legacy mark dimensions and material")]
     public partial class Chunk0A082000 : Chunk<CSceneVehicleCarMarksModelSub>
@@ -290,7 +291,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     /// <summary>
-    /// mark dimensions and conditions
+    /// CSceneVehicleCarMarksModelSub 0x001 chunk (mark dimensions and conditions)
     /// </summary>
     [Chunk(0x0A082001, "mark dimensions and conditions")]
     public partial class Chunk0A082001 : Chunk<CSceneVehicleCarMarksModelSub>
@@ -321,7 +322,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     /// <summary>
-    /// longitudinal force conditions
+    /// CSceneVehicleCarMarksModelSub 0x002 chunk (longitudinal force conditions)
     /// </summary>
     [Chunk(0x0A082002, "longitudinal force conditions")]
     public partial class Chunk0A082002 : Chunk0A082001
@@ -342,7 +343,7 @@ public partial class CSceneVehicleCarMarksModelSub : CMwNod, IClass
     }
 
     /// <summary>
-    /// width and opacity limits
+    /// CSceneVehicleCarMarksModelSub 0x003 chunk (width and opacity limits)
     /// </summary>
     [Chunk(0x0A082003, "width and opacity limits")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

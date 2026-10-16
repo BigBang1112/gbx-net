@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A081000</remarks>
 [Class(0x0A081000)]
 public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
 {
@@ -81,7 +82,7 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// mark models
+    /// CSceneVehicleCarMarksModel 0x000 chunk (mark models)
     /// </summary>
     [Chunk(0x0A081000, "mark models")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -102,7 +103,7 @@ public partial class CSceneVehicleCarMarksModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Disabled
+    /// CSceneVehicleCarMarksModel 0x001 chunk (Disabled)
     /// </summary>
     [Chunk(0x0A081001, "Disabled")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

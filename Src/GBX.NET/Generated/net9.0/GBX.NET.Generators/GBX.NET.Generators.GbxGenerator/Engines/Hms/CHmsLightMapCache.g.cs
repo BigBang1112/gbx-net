@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06022000</remarks>
 [Class(0x06022000)]
 public partial class CHmsLightMapCache : CMwNod, IClass
 {
@@ -583,6 +584,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x000 chunk
+    /// </summary>
     [Chunk(0x06022000)]
     public partial class Chunk06022000 : Chunk<CHmsLightMapCache>
     {
@@ -602,6 +606,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x001 chunk
+    /// </summary>
     [Chunk(0x06022001)]
     public partial class Chunk06022001 : Chunk<CHmsLightMapCache>
     {
@@ -631,6 +638,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x002 chunk
+    /// </summary>
     [Chunk(0x06022002)]
     public partial class Chunk06022002 : Chunk<CHmsLightMapCache>
     {
@@ -660,6 +670,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x003 chunk
+    /// </summary>
     [Chunk(0x06022003)]
     public partial class Chunk06022003 : Chunk06022002
     {
@@ -677,6 +690,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x004 chunk
+    /// </summary>
     [Chunk(0x06022004)]
     public partial class Chunk06022004 : Chunk06022003
     {
@@ -694,6 +710,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x005 chunk
+    /// </summary>
     [Chunk(0x06022005)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk06022005 : Chunk<CHmsLightMapCache>
@@ -728,6 +747,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x006 chunk
+    /// </summary>
     [Chunk(0x06022006)]
     public partial class Chunk06022006 : Chunk<CHmsLightMapCache>
     {
@@ -763,6 +785,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x007 chunk
+    /// </summary>
     [Chunk(0x06022007)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06022007 : Chunk<CHmsLightMapCache>
@@ -800,6 +825,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x008 skippable chunk
+    /// </summary>
     [Chunk(0x06022008)]
     public partial class Chunk06022008 : SkippableChunk<CHmsLightMapCache>
     {
@@ -836,6 +864,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x009 skippable chunk
+    /// </summary>
     [Chunk(0x06022009)]
     public partial class Chunk06022009 : Chunk06022008
     {
@@ -853,6 +884,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00A skippable chunk
+    /// </summary>
     [Chunk(0x0602200A)]
     public partial class Chunk0602200A : SkippableChunk<CHmsLightMapCache>
     {
@@ -891,6 +925,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00B skippable chunk
+    /// </summary>
     [Chunk(0x0602200B)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602200B : SkippableChunk<CHmsLightMapCache>
@@ -909,6 +946,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00C skippable chunk
+    /// </summary>
     [Chunk(0x0602200C)]
     public partial class Chunk0602200C : Chunk0602200A
     {
@@ -926,6 +966,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00D skippable chunk
+    /// </summary>
     [Chunk(0x0602200D)]
     public partial class Chunk0602200D : SkippableChunk<CHmsLightMapCache>
     {
@@ -942,6 +985,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00E skippable chunk
+    /// </summary>
     [Chunk(0x0602200E)]
     public partial class Chunk0602200E : SkippableChunk<CHmsLightMapCache>
     {
@@ -959,6 +1005,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x00F skippable chunk
+    /// </summary>
     [Chunk(0x0602200F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0602200F : SkippableChunk<CHmsLightMapCache>
@@ -978,6 +1027,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x010 skippable chunk
+    /// </summary>
     [Chunk(0x06022010)]
     public partial class Chunk06022010 : SkippableChunk<CHmsLightMapCache>
     {
@@ -1018,6 +1070,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x011 skippable chunk
+    /// </summary>
     [Chunk(0x06022011)]
     public partial class Chunk06022011 : SkippableChunk<CHmsLightMapCache>
     {
@@ -1034,6 +1089,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x012 skippable chunk
+    /// </summary>
     [Chunk(0x06022012)]
     public partial class Chunk06022012 : SkippableChunk<CHmsLightMapCache>
     {
@@ -1050,6 +1108,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x013 skippable chunk
+    /// </summary>
     [Chunk(0x06022013)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022013 : SkippableChunk<CHmsLightMapCache>
@@ -1070,6 +1131,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x014 skippable chunk
+    /// </summary>
     [Chunk(0x06022014)]
     public partial class Chunk06022014 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
@@ -1134,6 +1198,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x015 skippable chunk
+    /// </summary>
     [Chunk(0x06022015)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4, 5)]
     public partial class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
@@ -1201,6 +1268,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x016 skippable chunk
+    /// </summary>
     [Chunk(0x06022016)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022016 : SkippableChunk<CHmsLightMapCache>
@@ -1219,6 +1289,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x017 skippable chunk
+    /// </summary>
     [Chunk(0x06022017)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022017 : SkippableChunk<CHmsLightMapCache>
@@ -1238,6 +1311,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x018 skippable chunk
+    /// </summary>
     [Chunk(0x06022018)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022018 : SkippableChunk<CHmsLightMapCache>
@@ -1256,6 +1332,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x019 skippable chunk
+    /// </summary>
     [Chunk(0x06022019)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06022019 : SkippableChunk<CHmsLightMapCache>
@@ -1274,6 +1353,9 @@ public partial class CHmsLightMapCache : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMapCache 0x01A skippable chunk
+    /// </summary>
     [Chunk(0x0602201A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 13)]
     public partial class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable

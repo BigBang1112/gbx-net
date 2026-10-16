@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x0501A000</remarks>
 [Class(0x0501A000)]
 public partial class CFuncKeysReal : CFuncKeys, IClass
 {
@@ -102,6 +103,9 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncKeysReal 0x000 chunk
+    /// </summary>
     [Chunk(0x0501A000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0501A000 : Chunk<CFuncKeysReal>
@@ -120,6 +124,9 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncKeysReal 0x001 chunk
+    /// </summary>
     [Chunk(0x0501A001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0501A001 : Chunk<CFuncKeysReal>
@@ -139,6 +146,9 @@ public partial class CFuncKeysReal : CFuncKeys, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncKeysReal 0x002 chunk
+    /// </summary>
     [Chunk(0x0501A002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0501A002 : Chunk0501A001

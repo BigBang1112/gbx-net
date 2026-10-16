@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A03A000</remarks>
 [Class(0x0A03A000)]
 public partial class CSceneFxNod : CMwNod, IClass
 {
@@ -82,6 +83,9 @@ public partial class CSceneFxNod : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneFxNod 0x000 chunk
+    /// </summary>
     [Chunk(0x0A03A000)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A03A000 : Chunk<CSceneFxNod>
@@ -100,6 +104,9 @@ public partial class CSceneFxNod : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneFxNod 0x001 chunk
+    /// </summary>
     [Chunk(0x0A03A001)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A03A001 : Chunk<CSceneFxNod>
@@ -121,6 +128,9 @@ public partial class CSceneFxNod : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneFxNod 0x002 chunk
+    /// </summary>
     [Chunk(0x0A03A002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A03A002 : Chunk<CSceneFxNod>, IVersionable

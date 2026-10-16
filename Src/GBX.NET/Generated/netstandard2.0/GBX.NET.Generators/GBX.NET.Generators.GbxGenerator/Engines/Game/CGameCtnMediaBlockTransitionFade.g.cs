@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030AB000</remarks>
 [Class(0x030AB000)]
 public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransition, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -65,6 +66,9 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlockTransi
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockTransitionFade 0x000 chunk
+    /// </summary>
     [Chunk(0x030AB000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>

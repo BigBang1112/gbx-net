@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090A7000</remarks>
 [Class(0x090A7000)]
 public partial class CPlugDecalModel : CPlug, IClass
 {
@@ -333,7 +334,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy textures
+    /// CPlugDecalModel 0x000 chunk (legacy textures)
     /// </summary>
     [Chunk(0x090A7000, "legacy textures")]
     public partial class Chunk090A7000 : Chunk<CPlugDecalModel>
@@ -353,7 +354,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// Solid
+    /// CPlugDecalModel 0x001 chunk (Solid)
     /// </summary>
     [Chunk(0x090A7001, "Solid")]
     public partial class Chunk090A7001 : Chunk<CPlugDecalModel>
@@ -372,7 +373,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// textures and projection limits
+    /// CPlugDecalModel 0x002 chunk (textures and projection limits)
     /// </summary>
     [Chunk(0x090A7002, "textures and projection limits")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 5, 6, 6)]
@@ -475,7 +476,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// Icon
+    /// CPlugDecalModel 0x003 chunk (Icon)
     /// </summary>
     [Chunk(0x090A7003, "Icon")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -496,7 +497,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// solid, sprite, SVG, and macro decals
+    /// CPlugDecalModel 0x004 chunk (solid, sprite, SVG, and macro decals)
     /// </summary>
     [Chunk(0x090A7004, "solid, sprite, SVG, and macro decals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 7, 8, 8)]
@@ -584,7 +585,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// ImpactSize
+    /// CPlugDecalModel 0x005 chunk (ImpactSize)
     /// </summary>
     [Chunk(0x090A7005, "ImpactSize")]
     public partial class Chunk090A7005 : Chunk<CPlugDecalModel>, IVersionable
@@ -606,7 +607,7 @@ public partial class CPlugDecalModel : CPlug, IClass
     }
 
     /// <summary>
-    /// flags
+    /// CPlugDecalModel 0x006 chunk (flags)
     /// </summary>
     [Chunk(0x090A7006, "flags")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]

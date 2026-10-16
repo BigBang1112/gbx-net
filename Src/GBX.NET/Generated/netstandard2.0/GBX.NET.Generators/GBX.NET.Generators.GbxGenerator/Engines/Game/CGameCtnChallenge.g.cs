@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// A map.
 /// </summary>
+/// <remarks>ID: 0x03043000</remarks>
 [Class(0x03043000)]
 public partial class CGameCtnChallenge : CMwNod, IClass
 {
@@ -931,7 +932,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// description
+    /// CGameCtnChallenge 0x002 chunk (description)
     /// </summary>
     [Chunk(0x03043002, "description")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 4, 7, 7, 10, 10, 10, 11, 13, 13, 13, 13)]
@@ -985,7 +986,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// common
+    /// CGameCtnChallenge 0x003 chunk (common)
     /// </summary>
     [Chunk(0x03043003, "common")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 1, 1, 4, 4, 5, 5, 11, 11, 11, 11)]
@@ -1100,7 +1101,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// version
+    /// CGameCtnChallenge 0x004 chunk (version)
     /// </summary>
     [Chunk(0x03043004, "version")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6)]
@@ -1151,7 +1152,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// xml
+    /// CGameCtnChallenge 0x005 chunk (xml)
     /// </summary>
     [Chunk(0x03043005, "xml")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1172,7 +1173,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// thumbnail
+    /// CGameCtnChallenge 0x007 chunk (thumbnail)
     /// </summary>
     [Chunk(0x03043007, "thumbnail")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1189,7 +1190,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// author info
+    /// CGameCtnChallenge 0x008 chunk (author info)
     /// </summary>
     [Chunk(0x03043008, "author info")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1217,7 +1218,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// vehicle
+    /// CGameCtnChallenge 0x00D chunk (vehicle)
     /// </summary>
     [Chunk(0x0304300D, "vehicle")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1238,7 +1239,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// TM1.0 block data
+    /// CGameCtnChallenge 0x00F chunk (TM1.0 block data)
     /// </summary>
     [Chunk(0x0304300F, "TM1.0 block data")]
     [ChunkGameVersion(GameVersion.TM10)]
@@ -1263,7 +1264,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// parameters
+    /// CGameCtnChallenge 0x011 chunk (parameters)
     /// </summary>
     [Chunk(0x03043011, "parameters")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1286,7 +1287,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// TM1.0 map name
+    /// CGameCtnChallenge 0x012 chunk (TM1.0 map name)
     /// </summary>
     [Chunk(0x03043012, "TM1.0 map name")]
     [ChunkGameVersion(GameVersion.TM10)]
@@ -1307,7 +1308,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy block data
+    /// CGameCtnChallenge 0x013 chunk (legacy block data)
     /// </summary>
     [Chunk(0x03043013, "legacy block data")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -1347,7 +1348,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy password
+    /// CGameCtnChallenge 0x014 skippable chunk (legacy password)
     /// </summary>
     [Chunk(0x03043014, "legacy password")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -1370,6 +1371,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x016 skippable chunk
+    /// </summary>
     [Chunk(0x03043016)]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk03043016 : SkippableChunk<CGameCtnChallenge>
@@ -1391,7 +1395,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// checkpoints
+    /// CGameCtnChallenge 0x017 skippable chunk (checkpoints)
     /// </summary>
     [Chunk(0x03043017, "checkpoints")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1412,7 +1416,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// laps
+    /// CGameCtnChallenge 0x018 skippable chunk (laps)
     /// </summary>
     [Chunk(0x03043018, "laps")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1434,7 +1438,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// mod
+    /// CGameCtnChallenge 0x019 skippable chunk (mod)
     /// </summary>
     [Chunk(0x03043019, "mod")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1454,6 +1458,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x01A chunk
+    /// </summary>
     [Chunk(0x0304301A)]
     public partial class Chunk0304301A : Chunk<CGameCtnChallenge>
     {
@@ -1496,7 +1503,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// OldIgs
+    /// CGameCtnChallenge 0x01B chunk (OldIgs)
     /// </summary>
     [Chunk(0x0304301B, "OldIgs")]
     public partial class Chunk0304301B : Chunk<CGameCtnChallenge>
@@ -1522,7 +1529,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// play mode
+    /// CGameCtnChallenge 0x01C skippable chunk (play mode)
     /// </summary>
     [Chunk(0x0304301C, "play mode")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1542,6 +1549,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x01D chunk
+    /// </summary>
     [Chunk(0x0304301D)]
     public partial class Chunk0304301D : Chunk<CGameCtnChallenge>
     {
@@ -1583,6 +1593,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x01E chunk
+    /// </summary>
     [Chunk(0x0304301E)]
     public partial class Chunk0304301E : Chunk<CGameCtnChallenge>
     {
@@ -1625,7 +1638,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// block data
+    /// CGameCtnChallenge 0x01F chunk (block data)
     /// </summary>
     [Chunk(0x0304301F, "block data")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1, 1, -1, 1, 6, 6, 6, 6)]
@@ -1658,7 +1671,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy legacy mediatracker
+    /// CGameCtnChallenge 0x020 chunk (legacy legacy mediatracker)
     /// </summary>
     [Chunk(0x03043020, "legacy legacy mediatracker")]
     public partial class Chunk03043020 : Chunk<CGameCtnChallenge>
@@ -1713,7 +1726,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy mediatracker
+    /// CGameCtnChallenge 0x021 chunk (legacy mediatracker)
     /// </summary>
     [Chunk(0x03043021, "legacy mediatracker")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1735,6 +1748,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x022 chunk
+    /// </summary>
     [Chunk(0x03043022)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03043022 : Chunk<CGameCtnChallenge>
@@ -1756,7 +1772,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// map origin
+    /// CGameCtnChallenge 0x023 chunk (map origin)
     /// </summary>
     [Chunk(0x03043023, "map origin")]
     public partial class Chunk03043023 : Chunk<CGameCtnChallenge>
@@ -1779,7 +1795,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// music
+    /// CGameCtnChallenge 0x024 chunk (music)
     /// </summary>
     [Chunk(0x03043024, "music")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1800,7 +1816,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// map origin and target
+    /// CGameCtnChallenge 0x025 chunk (map origin and target)
     /// </summary>
     [Chunk(0x03043025, "map origin and target")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1822,7 +1838,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// clip global
+    /// CGameCtnChallenge 0x026 chunk (clip global)
     /// </summary>
     [Chunk(0x03043026, "clip global")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1843,7 +1859,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// old realtime thumbnail
+    /// CGameCtnChallenge 0x027 chunk (old realtime thumbnail)
     /// </summary>
     [Chunk(0x03043027, "old realtime thumbnail")]
     public partial class Chunk03043027 : Chunk<CGameCtnChallenge>
@@ -1876,7 +1892,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// old realtime thumbnail + comments
+    /// CGameCtnChallenge 0x028 chunk (old realtime thumbnail + comments)
     /// </summary>
     [Chunk(0x03043028, "old realtime thumbnail + comments")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1898,7 +1914,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// password
+    /// CGameCtnChallenge 0x029 skippable chunk (password)
     /// </summary>
     [Chunk(0x03043029, "password")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1920,7 +1936,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// CreatedWithSimpleEditor
+    /// CGameCtnChallenge 0x02A chunk (CreatedWithSimpleEditor)
     /// </summary>
     [Chunk(0x0304302A, "CreatedWithSimpleEditor")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1941,7 +1957,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// realtime thumbnail + comments
+    /// CGameCtnChallenge 0x02D skippable chunk (realtime thumbnail + comments)
     /// </summary>
     [Chunk(0x0304302D, "realtime thumbnail + comments")]
     public partial class Chunk0304302D : SkippableChunk<CGameCtnChallenge>
@@ -1971,7 +1987,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// ChallengeDecals
+    /// CGameCtnChallenge 0x034 skippable chunk (ChallengeDecals)
     /// </summary>
     [Chunk(0x03043034, "ChallengeDecals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1992,7 +2008,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// realtime thumbnail + comments
+    /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail + comments)
     /// </summary>
     [Chunk(0x03043036, "realtime thumbnail + comments")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2008,7 +2024,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// ChallengeCardEventIds
+    /// CGameCtnChallenge 0x038 skippable chunk (ChallengeCardEventIds)
     /// </summary>
     [Chunk(0x03043038, "ChallengeCardEventIds")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2028,6 +2044,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x03A skippable chunk
+    /// </summary>
     [Chunk(0x0304303A)]
     public partial class Chunk0304303A : SkippableChunk<CGameCtnChallenge>
     {
@@ -2053,7 +2072,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// lightmaps
+    /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
     /// </summary>
     [Chunk(0x0304303D, "lightmaps")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -2069,7 +2088,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// CarMarksBuffer
+    /// CGameCtnChallenge 0x03E skippable chunk (CarMarksBuffer)
     /// </summary>
     [Chunk(0x0304303E, "CarMarksBuffer")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2099,7 +2118,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// items
+    /// CGameCtnChallenge 0x040 skippable chunk (items)
     /// </summary>
     [Chunk(0x03043040, "items")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 4, 7)]
@@ -2136,6 +2155,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x041 skippable chunk
+    /// </summary>
     [Chunk(0x03043041)]
     public partial class Chunk03043041 : SkippableChunk<CGameCtnChallenge>
     {
@@ -2178,7 +2200,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// author
+    /// CGameCtnChallenge 0x042 skippable chunk (author)
     /// </summary>
     [Chunk(0x03043042, "author")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2206,7 +2228,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// genealogies
+    /// CGameCtnChallenge 0x043 skippable chunk (genealogies)
     /// </summary>
     [Chunk(0x03043043, "genealogies")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2222,7 +2244,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// metadata
+    /// CGameCtnChallenge 0x044 skippable chunk (metadata)
     /// </summary>
     [Chunk(0x03043044, "metadata")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2245,6 +2267,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x047 skippable chunk
+    /// </summary>
     [Chunk(0x03043047)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk03043047 : SkippableChunk<CGameCtnChallenge>, IVersionable
@@ -2274,7 +2299,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// baked blocks
+    /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
     [Chunk(0x03043048, "baked blocks")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2293,7 +2318,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// mediatracker
+    /// CGameCtnChallenge 0x049 chunk (mediatracker)
     /// </summary>
     [Chunk(0x03043049, "mediatracker")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2330,7 +2355,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// objectives
+    /// CGameCtnChallenge 0x04B skippable chunk (objectives)
     /// </summary>
     [Chunk(0x0304304B, "objectives")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2353,6 +2378,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x04D skippable chunk
+    /// </summary>
     [Chunk(0x0304304D)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, -1, -1)]
     public partial class Chunk0304304D : SkippableChunk<CGameCtnChallenge>, IVersionable
@@ -2450,7 +2478,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// animation triggers
+    /// CGameCtnChallenge 0x04E skippable chunk (animation triggers)
     /// </summary>
     [Chunk(0x0304304E, "animation triggers")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -2482,6 +2510,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x04F skippable chunk
+    /// </summary>
     [Chunk(0x0304304F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0304304F : SkippableChunk<CGameCtnChallenge>
@@ -2499,7 +2530,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// offzones
+    /// CGameCtnChallenge 0x050 skippable chunk (offzones)
     /// </summary>
     [Chunk(0x03043050, "offzones")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2524,7 +2555,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// title info
+    /// CGameCtnChallenge 0x051 skippable chunk (title info)
     /// </summary>
     [Chunk(0x03043051, "title info")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2549,7 +2580,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// deco height
+    /// CGameCtnChallenge 0x052 skippable chunk (deco height)
     /// </summary>
     [Chunk(0x03043052, "deco height")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2573,7 +2604,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// bot paths
+    /// CGameCtnChallenge 0x053 skippable chunk (bot paths)
     /// </summary>
     [Chunk(0x03043053, "bot paths")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2597,7 +2628,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// embedded objects
+    /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
     /// </summary>
     [Chunk(0x03043054, "embedded objects")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2613,6 +2644,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x055 skippable chunk
+    /// </summary>
     [Chunk(0x03043055)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03043055 : SkippableChunk<CGameCtnChallenge>
@@ -2628,7 +2662,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// light settings
+    /// CGameCtnChallenge 0x056 skippable chunk (light settings)
     /// </summary>
     [Chunk(0x03043056, "light settings")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -2660,7 +2694,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// recorded bot paths
+    /// CGameCtnChallenge 0x057 skippable chunk (recorded bot paths)
     /// </summary>
     [Chunk(0x03043057, "recorded bot paths")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 5)]
@@ -2713,7 +2747,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// SubMapsInfos
+    /// CGameCtnChallenge 0x058 skippable chunk (SubMapsInfos)
     /// </summary>
     [Chunk(0x03043058, "SubMapsInfos")]
     [ChunkGameVersion(GameVersion.MP4)]
@@ -2744,7 +2778,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// world distortion
+    /// CGameCtnChallenge 0x059 skippable chunk (world distortion)
     /// </summary>
     [Chunk(0x03043059, "world distortion")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -2816,6 +2850,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x05A skippable chunk
+    /// </summary>
     [Chunk(0x0304305A)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0304305A : SkippableChunk<CGameCtnChallenge>
@@ -2840,7 +2877,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// lightmaps TM2020
+    /// CGameCtnChallenge 0x05B skippable chunk (lightmaps TM2020)
     /// </summary>
     [Chunk(0x0304305B, "lightmaps TM2020")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -2858,6 +2895,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x05C skippable chunk
+    /// </summary>
     [Chunk(0x0304305C)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0304305C : SkippableChunk<CGameCtnChallenge>, IVersionable
@@ -2905,7 +2945,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// block octree
+    /// CGameCtnChallenge 0x05D skippable chunk (block octree)
     /// </summary>
     [Chunk(0x0304305D, "block octree")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -2951,7 +2991,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy macroblocks
+    /// CGameCtnChallenge 0x05E skippable chunk (legacy macroblocks)
     /// </summary>
     [Chunk(0x0304305E, "legacy macroblocks")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -2998,7 +3038,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// free blocks
+    /// CGameCtnChallenge 0x05F skippable chunk (free blocks)
     /// </summary>
     [Chunk(0x0304305F, "free blocks")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3014,6 +3054,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x060 skippable chunk
+    /// </summary>
     [Chunk(0x03043060)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03043060 : SkippableChunk<CGameCtnChallenge>, IVersionable
@@ -3038,7 +3081,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// temporary editor data
+    /// CGameCtnChallenge 0x061 skippable chunk (temporary editor data)
     /// </summary>
     [Chunk(0x03043061, "temporary editor data")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -3094,7 +3137,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// MapElemColor
+    /// CGameCtnChallenge 0x062 skippable chunk (MapElemColor)
     /// </summary>
     [Chunk(0x03043062, "MapElemColor")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3111,7 +3154,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// AnimPhaseOffset
+    /// CGameCtnChallenge 0x063 skippable chunk (AnimPhaseOffset)
     /// </summary>
     [Chunk(0x03043063, "AnimPhaseOffset")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3128,7 +3171,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// mediatracker groups
+    /// CGameCtnChallenge 0x064 skippable chunk (mediatracker groups)
     /// </summary>
     [Chunk(0x03043064, "mediatracker groups")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3156,7 +3199,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// foreground pack desc
+    /// CGameCtnChallenge 0x065 skippable chunk (foreground pack desc)
     /// </summary>
     [Chunk(0x03043065, "foreground pack desc")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3173,7 +3216,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// launched checkpoints
+    /// CGameCtnChallenge 0x067 skippable chunk (launched checkpoints)
     /// </summary>
     [Chunk(0x03043067, "launched checkpoints")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3201,7 +3244,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// MapElemLmQuality
+    /// CGameCtnChallenge 0x068 skippable chunk (MapElemLmQuality)
     /// </summary>
     [Chunk(0x03043068, "MapElemLmQuality")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3218,7 +3261,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// macroblock instances
+    /// CGameCtnChallenge 0x069 skippable chunk (macroblock instances)
     /// </summary>
     [Chunk(0x03043069, "macroblock instances")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3235,7 +3278,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// light settings 2
+    /// CGameCtnChallenge 0x06B skippable chunk (light settings 2)
     /// </summary>
     [Chunk(0x0304306B, "light settings 2")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3264,7 +3307,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// color palette
+    /// CGameCtnChallenge 0x06C skippable chunk (color palette)
     /// </summary>
     [Chunk(0x0304306C, "color palette")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3287,6 +3330,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x3F001000)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk3F001000 : SkippableChunk<CGameCtnChallenge>
@@ -3302,6 +3348,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x3F001001)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk3F001001 : SkippableChunk<CGameCtnChallenge>
@@ -3316,6 +3365,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x3F001002)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk3F001002 : Chunk3F001001
@@ -3329,6 +3381,9 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallenge 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x3F001003)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk3F001003 : Chunk3F001001

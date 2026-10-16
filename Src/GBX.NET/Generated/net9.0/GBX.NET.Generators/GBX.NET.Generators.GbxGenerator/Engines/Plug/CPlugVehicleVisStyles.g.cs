@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09146000</remarks>
 [Class(0x09146000)]
 public partial class CPlugVehicleVisStyles : CMwNod, IClass
 {
@@ -81,7 +82,7 @@ public partial class CPlugVehicleVisStyles : CMwNod, IClass
     }
 
     /// <summary>
-    /// vehicle style groups
+    /// CPlugVehicleVisStyles 0x000 chunk (vehicle style groups)
     /// </summary>
     [Chunk(0x09146000, "vehicle style groups")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]

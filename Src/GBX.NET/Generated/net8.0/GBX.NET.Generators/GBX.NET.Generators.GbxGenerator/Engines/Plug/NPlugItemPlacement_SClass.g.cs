@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09187000</remarks>
 [Class(0x09187000)]
 public partial class NPlugItemPlacement_SClass : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090BA000</remarks>
 [Class(0x090BA000)]
 public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
@@ -248,7 +249,7 @@ public partial class CPlugSkel : CMwNod, IClass, IReadableWritable, IReadable, I
     }
 
     /// <summary>
-    /// skeleton
+    /// CPlugSkel 0x000 chunk (skeleton)
     /// </summary>
     [Chunk(0x090BA000, "skeleton")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 12, 14, 20)]

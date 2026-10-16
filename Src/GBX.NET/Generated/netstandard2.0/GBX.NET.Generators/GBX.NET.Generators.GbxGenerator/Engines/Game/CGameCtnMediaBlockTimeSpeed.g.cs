@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03129000</remarks>
 [Class(0x03129000)]
 public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -57,6 +58,9 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockTimeSpeed 0x000 chunk
+    /// </summary>
     [Chunk(0x03085000)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk03085000 : Chunk<CGameCtnMediaBlockTimeSpeed>
@@ -75,6 +79,9 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, IClass, C
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockTimeSpeed 0x000 chunk
+    /// </summary>
     [Chunk(0x03129000)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03129000 : Chunk<CGameCtnMediaBlockTimeSpeed>

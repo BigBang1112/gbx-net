@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090FD000</remarks>
 [Class(0x090FD000)]
 public partial class CPlugMaterialUserInst : CMwNod, IClass
 {
@@ -189,6 +190,9 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugMaterialUserInst 0x000 chunk
+    /// </summary>
     [Chunk(0x090FD000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 9, 11)]
     public partial class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
@@ -301,6 +305,9 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialUserInst 0x001 chunk
+    /// </summary>
     [Chunk(0x090FD001)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
@@ -368,6 +375,9 @@ public partial class CPlugMaterialUserInst : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialUserInst 0x002 chunk
+    /// </summary>
     [Chunk(0x090FD002)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090FD002 : Chunk<CPlugMaterialUserInst>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05015000</remarks>
 [Class(0x05015000)]
 public partial class CFuncShaderLayerUV : CFuncShader, IClass
 {
@@ -54,6 +55,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x005 chunk
+    /// </summary>
     [Chunk(0x05015005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015005 : Chunk<CFuncShaderLayerUV>
@@ -75,6 +79,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x009 chunk
+    /// </summary>
     [Chunk(0x05015009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05015009 : Chunk<CFuncShaderLayerUV>
@@ -98,6 +105,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00A chunk
+    /// </summary>
     [Chunk(0x0501500A)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0501500A : Chunk05015009
@@ -119,6 +129,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00D chunk
+    /// </summary>
     [Chunk(0x0501500D)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0501500D : Chunk<CFuncShaderLayerUV>
@@ -145,6 +158,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x011 chunk
+    /// </summary>
     [Chunk(0x05015011)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk05015011 : Chunk<CFuncShaderLayerUV>
@@ -200,6 +216,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x012 chunk
+    /// </summary>
     [Chunk(0x05015012)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk05015012 : Chunk<CFuncShaderLayerUV>
@@ -223,6 +242,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x013 chunk
+    /// </summary>
     [Chunk(0x05015013)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk05015013 : Chunk0501500A
@@ -236,6 +258,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x014 chunk
+    /// </summary>
     [Chunk(0x05015014)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk05015014 : Chunk<CFuncShaderLayerUV>
@@ -262,6 +287,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x015 chunk
+    /// </summary>
     [Chunk(0x05015015)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk05015015 : Chunk<CFuncShaderLayerUV>
@@ -291,6 +319,9 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x016 chunk
+    /// </summary>
     [Chunk(0x05015016)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk05015016 : Chunk<CFuncShaderLayerUV>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09064000</remarks>
 [Class(0x09064000)]
 public partial class CPlugSoundMulti : CPlugSound, IClass
 {
@@ -165,6 +166,9 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugSoundMulti 0x000 chunk
+    /// </summary>
     [Chunk(0x09064000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09064000 : Chunk<CPlugSoundMulti>
@@ -184,6 +188,9 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSoundMulti 0x001 chunk
+    /// </summary>
     [Chunk(0x09064001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09064001 : Chunk<CPlugSoundMulti>
@@ -203,6 +210,9 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSoundMulti 0x002 chunk
+    /// </summary>
     [Chunk(0x09064002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09064002 : Chunk<CPlugSoundMulti>, IVersionable
@@ -240,6 +250,9 @@ public partial class CPlugSoundMulti : CPlugSound, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSoundMulti 0x003 chunk
+    /// </summary>
     [Chunk(0x09064003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09064003 : Chunk<CPlugSoundMulti>, IVersionable

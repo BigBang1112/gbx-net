@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03120000</remarks>
 [Class(0x03120000)]
 public partial class CGameCtnAutoTerrain : CMwNod, IClass
 {
@@ -77,6 +78,9 @@ public partial class CGameCtnAutoTerrain : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnAutoTerrain 0x001 chunk
+    /// </summary>
     [Chunk(0x03120001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03120001 : Chunk<CGameCtnAutoTerrain>

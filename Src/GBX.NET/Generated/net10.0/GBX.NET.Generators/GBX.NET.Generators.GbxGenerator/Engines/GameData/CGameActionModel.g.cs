@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E008000</remarks>
 [Class(0x2E008000)]
 public partial class CGameActionModel : CMwNod, IClass
 {
@@ -442,7 +443,7 @@ public partial class CGameActionModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// action, animation and script
+    /// CGameActionModel 0x000 skippable chunk (action, animation and script)
     /// </summary>
     [Chunk(0x2E008000, "action, animation and script")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 22, 31, -1)]

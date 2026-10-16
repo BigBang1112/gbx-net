@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06003000</remarks>
 [Class(0x06003000)]
 public partial class CHmsItem : CMwNod, IClass
 {
@@ -911,6 +912,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x000 chunk
+    /// </summary>
     [Chunk(0x06003000)]
     public partial class Chunk06003000 : Chunk<CHmsItem>
     {
@@ -936,6 +940,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x001 chunk
+    /// </summary>
     [Chunk(0x06003001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06003001 : Chunk<CHmsItem>
@@ -954,6 +961,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x002 chunk
+    /// </summary>
     [Chunk(0x06003002)]
     public partial class Chunk06003002 : Chunk<CHmsItem>
     {
@@ -970,6 +980,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x003 chunk
+    /// </summary>
     [Chunk(0x06003003)]
     public partial class Chunk06003003 : Chunk<CHmsItem>
     {
@@ -1016,6 +1029,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x004 chunk
+    /// </summary>
     [Chunk(0x06003004)]
     public partial class Chunk06003004 : Chunk<CHmsItem>
     {
@@ -1050,6 +1066,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x005 chunk
+    /// </summary>
     [Chunk(0x06003005)]
     public partial class Chunk06003005 : Chunk<CHmsItem>
     {
@@ -1098,6 +1117,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x006 chunk
+    /// </summary>
     [Chunk(0x06003006)]
     public partial class Chunk06003006 : Chunk<CHmsItem>
     {
@@ -1147,6 +1169,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x007 chunk
+    /// </summary>
     [Chunk(0x06003007)]
     public partial class Chunk06003007 : Chunk<CHmsItem>
     {
@@ -1192,6 +1217,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x008 chunk
+    /// </summary>
     [Chunk(0x06003008)]
     public partial class Chunk06003008 : Chunk<CHmsItem>
     {
@@ -1220,6 +1248,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x009 chunk
+    /// </summary>
     [Chunk(0x06003009)]
     public partial class Chunk06003009 : Chunk<CHmsItem>
     {
@@ -1248,6 +1279,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00A chunk
+    /// </summary>
     [Chunk(0x0600300A)]
     public partial class Chunk0600300A : Chunk<CHmsItem>
     {
@@ -1288,6 +1322,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00B chunk
+    /// </summary>
     [Chunk(0x0600300B)]
     public partial class Chunk0600300B : Chunk<CHmsItem>
     {
@@ -1324,6 +1361,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00C chunk
+    /// </summary>
     [Chunk(0x0600300C)]
     public partial class Chunk0600300C : Chunk<CHmsItem>
     {
@@ -1345,6 +1385,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00D chunk
+    /// </summary>
     [Chunk(0x0600300D)]
     public partial class Chunk0600300D : Chunk<CHmsItem>
     {
@@ -1366,6 +1409,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00E chunk
+    /// </summary>
     [Chunk(0x0600300E)]
     [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk0600300E : Chunk<CHmsItem>
@@ -1389,6 +1435,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x00F chunk
+    /// </summary>
     [Chunk(0x0600300F)]
     [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0600300F : Chunk<CHmsItem>
@@ -1412,6 +1461,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x010 chunk
+    /// </summary>
     [Chunk(0x06003010)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk06003010 : Chunk<CHmsItem>
@@ -1435,6 +1487,9 @@ public partial class CHmsItem : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsItem 0x011 chunk
+    /// </summary>
     [Chunk(0x06003011)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06003011 : Chunk<CHmsItem>

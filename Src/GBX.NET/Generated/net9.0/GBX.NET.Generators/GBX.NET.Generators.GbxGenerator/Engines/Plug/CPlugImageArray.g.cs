@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0914C000</remarks>
 [Class(0x0914C000)]
 public partial class CPlugImageArray : CMwNod, IClass
 {
@@ -104,6 +105,9 @@ public partial class CPlugImageArray : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugImageArray 0x000 chunk
+    /// </summary>
     [Chunk(0x0914C000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0914C000 : Chunk<CPlugImageArray>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090A2000</remarks>
 [Class(0x090A2000)]
 public partial class CPlugDecoratorTree : CMwNod, IClass
 {
@@ -187,6 +188,9 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugDecoratorTree 0x006 chunk
+    /// </summary>
     [Chunk(0x090A2006)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk090A2006 : Chunk<CPlugDecoratorTree>
@@ -212,6 +216,9 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugDecoratorTree 0x007 chunk
+    /// </summary>
     [Chunk(0x090A2007)]
     public partial class Chunk090A2007 : Chunk<CPlugDecoratorTree>
     {
@@ -236,6 +243,9 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugDecoratorTree 0x008 chunk
+    /// </summary>
     [Chunk(0x090A2008)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk090A2008 : Chunk090A2007
@@ -255,6 +265,9 @@ public partial class CPlugDecoratorTree : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugDecoratorTree 0x009 chunk
+    /// </summary>
     [Chunk(0x090A2009)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A2009 : Chunk090A2008

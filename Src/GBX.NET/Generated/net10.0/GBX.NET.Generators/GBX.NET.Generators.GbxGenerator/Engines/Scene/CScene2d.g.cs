@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A002000</remarks>
 [Class(0x0A002000)]
 public partial class CScene2d : CScene, IClass
 {
@@ -79,6 +80,9 @@ public partial class CScene2d : CScene, IClass
     {
     }
 
+    /// <summary>
+    /// CScene2d 0x000 chunk
+    /// </summary>
     [Chunk(0x0A002000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A002000 : Chunk<CScene2d>
@@ -98,6 +102,9 @@ public partial class CScene2d : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CScene2d 0x003 chunk
+    /// </summary>
     [Chunk(0x0A002003)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A002003 : Chunk<CScene2d>

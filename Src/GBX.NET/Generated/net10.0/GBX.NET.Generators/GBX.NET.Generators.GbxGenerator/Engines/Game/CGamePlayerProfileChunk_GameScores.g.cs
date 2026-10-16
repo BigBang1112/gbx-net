@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03146000</remarks>
 [Class(0x03146000)]
 public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChunk, IClass
 {
@@ -85,6 +86,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GameScores 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03146000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03146000 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
@@ -106,6 +110,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GameScores 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03146001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03146001 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
@@ -131,6 +138,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GameScores 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x03146004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03146004 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable
@@ -156,6 +166,9 @@ public partial class CGamePlayerProfileChunk_GameScores : CGamePlayerProfileChun
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GameScores 0x005 skippable chunk
+    /// </summary>
     [Chunk(0x03146005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03146005 : SkippableChunk<CGamePlayerProfileChunk_GameScores>, IVersionable

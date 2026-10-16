@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E5000</remarks>
 [Class(0x090E5000)]
 public partial class CPlugFlockModel : CMwNod, IClass
 {
@@ -337,6 +338,9 @@ public partial class CPlugFlockModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugFlockModel 0x000 chunk
+    /// </summary>
     [Chunk(0x090E5000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E5000 : Chunk<CPlugFlockModel>, IVersionable
@@ -400,6 +404,9 @@ public partial class CPlugFlockModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugFlockModel 0x001 chunk
+    /// </summary>
     [Chunk(0x090E5001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E5001 : Chunk<CPlugFlockModel>, IVersionable
@@ -432,6 +439,9 @@ public partial class CPlugFlockModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugFlockModel 0x002 chunk
+    /// </summary>
     [Chunk(0x090E5002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E5002 : Chunk<CPlugFlockModel>, IVersionable

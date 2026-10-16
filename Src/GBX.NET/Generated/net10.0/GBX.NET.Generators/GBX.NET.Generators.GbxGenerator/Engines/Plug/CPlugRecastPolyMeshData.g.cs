@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09150000</remarks>
 [Class(0x09150000)]
 public partial class CPlugRecastPolyMeshData : CMwNod, IClass
 {
@@ -55,7 +56,7 @@ public partial class CPlugRecastPolyMeshData : CMwNod, IClass
     }
 
     /// <summary>
-    /// navigation mesh and heightfield layers
+    /// CPlugRecastPolyMeshData 0x000 chunk (navigation mesh and heightfield layers)
     /// </summary>
     [Chunk(0x09150000, "navigation mesh and heightfield layers")]
     [ChunkGameVersion(GameVersion.TM2020, 5)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090D5000</remarks>
 [Class(0x090D5000)]
 public partial class CPlugFogVolumeBox : CPlugFogVolume, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090B3000</remarks>
 [Class(0x090B3000)]
 public partial class CPlugParticleEmitterModel : CMwNod, IClass
 {
@@ -89,6 +90,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterModel 0x000 chunk
+    /// </summary>
     [Chunk(0x090B3000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B3000 : Chunk<CPlugParticleEmitterModel>
@@ -107,6 +111,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterModel 0x001 chunk
+    /// </summary>
     [Chunk(0x090B3001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B3001 : Chunk<CPlugParticleEmitterModel>
@@ -127,6 +134,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterModel 0x002 chunk
+    /// </summary>
     [Chunk(0x090B3002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B3002 : Chunk<CPlugParticleEmitterModel>, IVersionable
@@ -153,6 +163,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterModel 0x003 chunk
+    /// </summary>
     [Chunk(0x090B3003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B3003 : Chunk<CPlugParticleEmitterModel>, IVersionable
@@ -176,6 +189,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterModel 0x004 chunk
+    /// </summary>
     [Chunk(0x090B3004)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B3004 : Chunk<CPlugParticleEmitterModel>, IVersionable

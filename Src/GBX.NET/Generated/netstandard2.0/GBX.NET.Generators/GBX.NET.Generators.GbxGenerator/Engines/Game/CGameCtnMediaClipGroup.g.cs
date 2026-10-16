@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// MediaTracker clip group. Clips and triggers are matched by array index.
 /// </summary>
+/// <remarks>ID: 0x0307A000</remarks>
 [Class(0x0307A000)]
 public partial class CGameCtnMediaClipGroup : CMwNod, IClass
 {
@@ -49,18 +50,27 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x000 chunk
+    /// </summary>
     [Chunk(0x0307A000)]
     public partial class Chunk0307A000 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A000;
     }
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x001 chunk
+    /// </summary>
     [Chunk(0x0307A001)]
     public partial class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
     {
         public override uint Id => 0x0307A001;
     }
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x002 chunk
+    /// </summary>
     [Chunk(0x0307A002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
@@ -69,6 +79,9 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
     }
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x003 chunk
+    /// </summary>
     [Chunk(0x0307A003)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
@@ -77,6 +90,9 @@ public partial class CGameCtnMediaClipGroup : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
     }
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x0307A004)]
     public partial class Chunk0307A004 : SkippableChunk<CGameCtnMediaClipGroup>
     {

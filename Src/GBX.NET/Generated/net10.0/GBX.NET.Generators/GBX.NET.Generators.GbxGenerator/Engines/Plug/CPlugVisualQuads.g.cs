@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09027000</remarks>
 [Class(0x09027000)]
 public partial class CPlugVisualQuads : CPlugVisual3D, IClass
 {

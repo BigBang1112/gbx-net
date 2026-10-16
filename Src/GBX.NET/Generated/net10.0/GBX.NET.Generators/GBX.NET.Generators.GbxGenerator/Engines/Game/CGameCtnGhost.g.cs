@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// A ghost.
 /// </summary>
+/// <remarks>ID: 0x03092000</remarks>
 [Class(0x03092000)]
 public partial class CGameCtnGhost : CGameGhost, IClass
 {
@@ -744,7 +745,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// TMCP
+    /// CGameCtnGhost 0x001 skippable chunk (TMCP)
     /// </summary>
     [Chunk(0x0304F001, "TMCP")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -760,6 +761,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03092000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 9)]
     public partial class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
@@ -860,6 +864,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x003 chunk
+    /// </summary>
     [Chunk(0x03092003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk03092003 : Chunk<CGameCtnGhost>
@@ -881,7 +888,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// checkpoints TMPU
+    /// CGameCtnGhost 0x004 skippable chunk (checkpoints TMPU)
     /// </summary>
     [Chunk(0x03092004, "checkpoints TMPU")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -902,7 +909,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// race time
+    /// CGameCtnGhost 0x005 skippable chunk (race time)
     /// </summary>
     [Chunk(0x03092005, "race time")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -922,6 +929,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x006 chunk
+    /// </summary>
     [Chunk(0x03092006)]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk03092006 : Chunk<CGameCtnGhost>
@@ -946,7 +956,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// old light trail color
+    /// CGameCtnGhost 0x007 chunk (old light trail color)
     /// </summary>
     [Chunk(0x03092007, "old light trail color")]
     public partial class Chunk03092007 : Chunk<CGameCtnGhost>
@@ -965,7 +975,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// respawns
+    /// CGameCtnGhost 0x008 skippable chunk (respawns)
     /// </summary>
     [Chunk(0x03092008, "respawns")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -986,7 +996,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// light trail color
+    /// CGameCtnGhost 0x009 skippable chunk (light trail color)
     /// </summary>
     [Chunk(0x03092009, "light trail color")]
     [ChunkGameVersion(GameVersion.TMS | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -1007,7 +1017,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// stunt score
+    /// CGameCtnGhost 0x00A skippable chunk (stunt score)
     /// </summary>
     [Chunk(0x0309200A, "stunt score")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1028,7 +1038,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// checkpoint times
+    /// CGameCtnGhost 0x00B skippable chunk (checkpoint times)
     /// </summary>
     [Chunk(0x0309200B, "checkpoint times")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1048,6 +1058,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x00C chunk
+    /// </summary>
     [Chunk(0x0309200C)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309200C : Chunk<CGameCtnGhost>
@@ -1068,6 +1081,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x00D chunk
+    /// </summary>
     [Chunk(0x0309200D)]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk0309200D : Chunk<CGameCtnGhost>
@@ -1101,7 +1117,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// GhostUid
+    /// CGameCtnGhost 0x00E chunk (GhostUid)
     /// </summary>
     [Chunk(0x0309200E, "GhostUid")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1117,7 +1133,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// ghost login
+    /// CGameCtnGhost 0x00F chunk (ghost login)
     /// </summary>
     [Chunk(0x0309200F, "ghost login")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1138,7 +1154,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// validation map UID
+    /// CGameCtnGhost 0x010 chunk (validation map UID)
     /// </summary>
     [Chunk(0x03092010, "validation map UID")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1159,7 +1175,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// validation TMU
+    /// CGameCtnGhost 0x011 chunk (validation TMU)
     /// </summary>
     [Chunk(0x03092011, "validation TMU")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
@@ -1175,7 +1191,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// old security key
+    /// CGameCtnGhost 0x012 chunk (old security key)
     /// </summary>
     [Chunk(0x03092012, "old security key")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1198,6 +1214,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x013 skippable chunk
+    /// </summary>
     [Chunk(0x03092013)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03092013 : SkippableChunk<CGameCtnGhost>
@@ -1222,7 +1241,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// ghost version
+    /// CGameCtnGhost 0x014 skippable chunk (ghost version)
     /// </summary>
     [Chunk(0x03092014, "ghost version")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1243,7 +1262,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// ghost nickname
+    /// CGameCtnGhost 0x015 chunk (ghost nickname)
     /// </summary>
     [Chunk(0x03092015, "ghost nickname")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -1264,7 +1283,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// ghost metadata
+    /// CGameCtnGhost 0x017 skippable chunk (ghost metadata)
     /// </summary>
     [Chunk(0x03092017, "ghost metadata")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
@@ -1287,7 +1306,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// PlayerModel TMF-MP3
+    /// CGameCtnGhost 0x018 chunk (PlayerModel TMF-MP3)
     /// </summary>
     [Chunk(0x03092018, "PlayerModel TMF-MP3")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
@@ -1308,7 +1327,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// validation TMUF
+    /// CGameCtnGhost 0x019 chunk (validation TMUF)
     /// </summary>
     [Chunk(0x03092019, "validation TMUF")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -1324,7 +1343,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// checkpoint count
+    /// CGameCtnGhost 0x01A skippable chunk (checkpoint count)
     /// </summary>
     [Chunk(0x0309201A, "checkpoint count")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1340,7 +1359,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// race result
+    /// CGameCtnGhost 0x01B skippable chunk (race result)
     /// </summary>
     [Chunk(0x0309201B, "race result")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1357,7 +1376,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// security key
+    /// CGameCtnGhost 0x01C chunk (security key)
     /// </summary>
     [Chunk(0x0309201C, "security key")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1378,7 +1397,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// player input data
+    /// CGameCtnGhost 0x01D skippable chunk (player input data)
     /// </summary>
     [Chunk(0x0309201D, "player input data")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 4)]
@@ -1423,7 +1442,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// OldColorHistory
+    /// CGameCtnGhost 0x01F skippable chunk (OldColorHistory)
     /// </summary>
     [Chunk(0x0309201F, "OldColorHistory")]
     public partial class Chunk0309201F : SkippableChunk<CGameCtnGhost>
@@ -1438,7 +1457,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// OldKeyStrokes
+    /// CGameCtnGhost 0x021 skippable chunk (OldKeyStrokes)
     /// </summary>
     [Chunk(0x03092021, "OldKeyStrokes")]
     public partial class Chunk03092021 : SkippableChunk<CGameCtnGhost>
@@ -1453,7 +1472,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// settings info
+    /// CGameCtnGhost 0x022 skippable chunk (settings info)
     /// </summary>
     [Chunk(0x03092022, "settings info")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1486,7 +1505,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// anticheat system info
+    /// CGameCtnGhost 0x023 skippable chunk (anticheat system info)
     /// </summary>
     [Chunk(0x03092023, "anticheat system info")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1536,7 +1555,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// match replay separators
+    /// CGameCtnGhost 0x024 skippable chunk (match replay separators)
     /// </summary>
     [Chunk(0x03092024, "match replay separators")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1560,7 +1579,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// validation TM2
+    /// CGameCtnGhost 0x025 skippable chunk (validation TM2)
     /// </summary>
     [Chunk(0x03092025, "validation TM2")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 1)]
@@ -1593,7 +1612,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// GhostUid128
+    /// CGameCtnGhost 0x026 skippable chunk (GhostUid128)
     /// </summary>
     [Chunk(0x03092026, "GhostUid128")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1614,7 +1633,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// screen captures
+    /// CGameCtnGhost 0x027 skippable chunk (screen captures)
     /// </summary>
     [Chunk(0x03092027, "screen captures")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1648,7 +1667,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// title id
+    /// CGameCtnGhost 0x028 skippable chunk (title id)
     /// </summary>
     [Chunk(0x03092028, "title id")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -1673,7 +1692,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// record context
+    /// CGameCtnGhost 0x029 skippable chunk (record context)
     /// </summary>
     [Chunk(0x03092029, "record context")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -1717,7 +1736,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// validation game rules and race start time
+    /// CGameCtnGhost 0x02A skippable chunk (validation game rules and race start time)
     /// </summary>
     [Chunk(0x0309202A, "validation game rules and race start time")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -1739,7 +1758,7 @@ public partial class CGameCtnGhost : CGameGhost, IClass
     }
 
     /// <summary>
-    /// race result TM2020
+    /// CGameCtnGhost 0x02B skippable chunk (race result TM2020)
     /// </summary>
     [Chunk(0x0309202B, "race result TM2020")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -1789,6 +1808,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x02C skippable chunk
+    /// </summary>
     [Chunk(0x0309202C)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0309202C : SkippableChunk<CGameCtnGhost>, IVersionable
@@ -1811,6 +1833,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x02D skippable chunk
+    /// </summary>
     [Chunk(0x0309202D)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0309202D : SkippableChunk<CGameCtnGhost>
@@ -1824,6 +1849,9 @@ public partial class CGameCtnGhost : CGameGhost, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnGhost 0x02E skippable chunk
+    /// </summary>
     [Chunk(0x0309202E)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0309202E : SkippableChunk<CGameCtnGhost>

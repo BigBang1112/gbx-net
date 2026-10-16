@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03186000</remarks>
 [Class(0x03186000)]
 public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -65,6 +66,9 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockColorGrading 0x000 chunk
+    /// </summary>
     [Chunk(0x03186000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03186000 : Chunk<CGameCtnMediaBlockColorGrading>
@@ -83,6 +87,9 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockColorGrading 0x001 chunk
+    /// </summary>
     [Chunk(0x03186001)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03186001 : Chunk<CGameCtnMediaBlockColorGrading>

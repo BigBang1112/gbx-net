@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0329F000</remarks>
 [Class(0x0329F000)]
 public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -276,6 +277,9 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockEntity 0x000 chunk
+    /// </summary>
     [Chunk(0x0329F000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 11)]
     public partial class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
@@ -393,7 +397,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
     }
 
     /// <summary>
-    /// SkinOptions
+    /// CGameCtnMediaBlockEntity 0x002 chunk (SkinOptions)
     /// </summary>
     [Chunk(0x0329F002, "SkinOptions")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -413,6 +417,9 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, IClass, CGam
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockEntity 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x0329F003)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0329F003 : SkippableChunk<CGameCtnMediaBlockEntity>

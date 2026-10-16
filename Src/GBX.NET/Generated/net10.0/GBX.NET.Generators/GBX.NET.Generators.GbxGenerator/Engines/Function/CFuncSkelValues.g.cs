@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05007000</remarks>
 [Class(0x05007000)]
 public partial class CFuncSkelValues : CMwNod, IClass
 {
@@ -77,6 +78,9 @@ public partial class CFuncSkelValues : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncSkelValues 0x000 chunk
+    /// </summary>
     [Chunk(0x05007000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk05007000 : Chunk<CFuncSkelValues>

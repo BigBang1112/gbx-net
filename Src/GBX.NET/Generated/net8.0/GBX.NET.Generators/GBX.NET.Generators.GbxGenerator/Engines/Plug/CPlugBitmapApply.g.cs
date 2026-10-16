@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09012000</remarks>
 [Class(0x09012000)]
 public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugBitmapApply 0x003 chunk
+    /// </summary>
     [Chunk(0x09012003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09012003 : Chunk<CPlugBitmapApply>
@@ -68,6 +72,9 @@ public partial class CPlugBitmapApply : CPlugBitmapAddress, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapApply 0x004 chunk
+    /// </summary>
     [Chunk(0x09012004)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk09012004 : Chunk<CPlugBitmapApply>

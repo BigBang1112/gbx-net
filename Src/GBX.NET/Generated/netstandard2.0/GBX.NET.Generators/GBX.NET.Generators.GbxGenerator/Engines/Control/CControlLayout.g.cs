@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x0700C000</remarks>
 [Class(0x0700C000)]
 public partial class CControlLayout : CMwNod, IClass
 {

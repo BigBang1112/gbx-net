@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05019000</remarks>
 [Class(0x05019000)]
 public partial class CFuncLightColor : CFuncLight, IClass
 {
@@ -88,6 +89,9 @@ public partial class CFuncLightColor : CFuncLight, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncLightColor 0x001 chunk
+    /// </summary>
     [Chunk(0x05019001)]
     public partial class Chunk05019001 : Chunk<CFuncLightColor>
     {
@@ -105,6 +109,9 @@ public partial class CFuncLightColor : CFuncLight, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncLightColor 0x002 chunk
+    /// </summary>
     [Chunk(0x05019002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05019002 : Chunk05019001

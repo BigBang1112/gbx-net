@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0325E000</remarks>
 [Class(0x0325E000)]
 public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -98,6 +99,9 @@ public partial class CGameCtnMediaBlockCheatEmptyCars : CGameCtnMediaBlock, ICla
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCheatEmptyCars 0x000 chunk
+    /// </summary>
     [Chunk(0x0325E000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0325E000 : Chunk<CGameCtnMediaBlockCheatEmptyCars>

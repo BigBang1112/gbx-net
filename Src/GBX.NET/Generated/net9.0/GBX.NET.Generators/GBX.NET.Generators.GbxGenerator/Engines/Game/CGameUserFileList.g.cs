@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x031B7000</remarks>
 [Class(0x031B7000)]
 public partial class CGameUserFileList : CMwNod, IClass
 {
@@ -54,6 +55,9 @@ public partial class CGameUserFileList : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameUserFileList 0x000 chunk
+    /// </summary>
     [Chunk(0x031B7000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4, -1, 1)]
     public partial class Chunk031B7000 : Chunk<CGameUserFileList>, IVersionable

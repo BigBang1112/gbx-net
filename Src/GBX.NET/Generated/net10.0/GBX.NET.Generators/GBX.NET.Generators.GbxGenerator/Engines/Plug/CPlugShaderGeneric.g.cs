@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09004000</remarks>
 [Class(0x09004000)]
 public partial class CPlugShaderGeneric : CPlugShader, IClass
 {
@@ -53,6 +54,9 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
         ((CPlugShaderGeneric)clone).material = context.Clone(this.material)!;
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x000 chunk
+    /// </summary>
     [Chunk(0x09004000)]
     public partial class Chunk09004000 : Chunk<CPlugShaderGeneric>
     {
@@ -69,6 +73,9 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x001 chunk
+    /// </summary>
     [Chunk(0x09004001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09004001 : Chunk<CPlugShaderGeneric>
@@ -87,6 +94,9 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x002 chunk
+    /// </summary>
     [Chunk(0x09004002)]
     public partial class Chunk09004002 : Chunk<CPlugShaderGeneric>
     {
@@ -103,6 +113,9 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x003 chunk
+    /// </summary>
     [Chunk(0x09004003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09004003 : Chunk<CPlugShaderGeneric>

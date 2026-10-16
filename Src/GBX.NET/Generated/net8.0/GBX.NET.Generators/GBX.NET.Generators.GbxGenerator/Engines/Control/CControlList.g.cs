@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x0700F000</remarks>
 [Class(0x0700F000)]
 public partial class CControlList : CControlContainer, IClass
 {
@@ -45,6 +46,9 @@ public partial class CControlList : CControlContainer, IClass
     {
     }
 
+    /// <summary>
+    /// CControlList 0x007 chunk
+    /// </summary>
     [Chunk(0x0700F007)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0700F007 : Chunk<CControlList>
@@ -86,6 +90,9 @@ public partial class CControlList : CControlContainer, IClass
         }
     }
 
+    /// <summary>
+    /// CControlList 0x00A chunk
+    /// </summary>
     [Chunk(0x0700F00A)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0700F00A : Chunk<CControlList>

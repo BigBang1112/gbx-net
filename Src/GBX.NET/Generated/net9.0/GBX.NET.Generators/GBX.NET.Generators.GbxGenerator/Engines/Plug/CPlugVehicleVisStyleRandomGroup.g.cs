@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09147000</remarks>
 [Class(0x09147000)]
 public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
 {
@@ -82,7 +83,7 @@ public partial class CPlugVehicleVisStyleRandomGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// weighted vehicle colors
+    /// CPlugVehicleVisStyleRandomGroup 0x000 chunk (weighted vehicle colors)
     /// </summary>
     [Chunk(0x09147000, "weighted vehicle colors")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 4)]

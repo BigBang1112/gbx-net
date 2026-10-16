@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0308C000</remarks>
 [Class(0x0308C000)]
 public partial class CGamePlayerProfile : CMwNod, IClass
 {
@@ -1015,6 +1016,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x000 chunk
+    /// </summary>
     [Chunk(0x0308C000)]
     public partial class HeaderChunk0308C000 : HeaderChunk<CGamePlayerProfile>
     {
@@ -1032,6 +1036,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x000 chunk
+    /// </summary>
     [Chunk(0x0308C000)]
     [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk0308C000 : Chunk<CGamePlayerProfile>
@@ -1046,6 +1053,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x001 chunk
+    /// </summary>
     [Chunk(0x0308C001)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C001 : Chunk<CGamePlayerProfile>
@@ -1066,6 +1076,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x002 chunk
+    /// </summary>
     [Chunk(0x0308C002)]
     public partial class Chunk0308C002 : Chunk<CGamePlayerProfile>
     {
@@ -1093,6 +1106,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x003 chunk
+    /// </summary>
     [Chunk(0x0308C003)]
     public partial class Chunk0308C003 : Chunk<CGamePlayerProfile>
     {
@@ -1114,6 +1130,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x004 chunk
+    /// </summary>
     [Chunk(0x0308C004)]
     public partial class Chunk0308C004 : Chunk<CGamePlayerProfile>
     {
@@ -1144,6 +1163,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x005 chunk
+    /// </summary>
     [Chunk(0x0308C005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.VSK5)]
     public partial class Chunk0308C005 : Chunk<CGamePlayerProfile>
@@ -1164,6 +1186,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x006 chunk
+    /// </summary>
     [Chunk(0x0308C006)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C006 : Chunk<CGamePlayerProfile>
@@ -1182,6 +1207,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x007 chunk
+    /// </summary>
     [Chunk(0x0308C007)]
     public partial class Chunk0308C007 : Chunk<CGamePlayerProfile>
     {
@@ -1206,6 +1234,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x008 chunk
+    /// </summary>
     [Chunk(0x0308C008)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C008 : Chunk<CGamePlayerProfile>
@@ -1226,6 +1257,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x009 chunk
+    /// </summary>
     [Chunk(0x0308C009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C009 : Chunk<CGamePlayerProfile>
@@ -1261,6 +1295,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00A chunk
+    /// </summary>
     [Chunk(0x0308C00A)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C00A : Chunk<CGamePlayerProfile>
@@ -1282,6 +1319,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00B chunk
+    /// </summary>
     [Chunk(0x0308C00B)]
     public partial class Chunk0308C00B : Chunk<CGamePlayerProfile>
     {
@@ -1309,6 +1349,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00C chunk
+    /// </summary>
     [Chunk(0x0308C00C)]
     [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk0308C00C : Chunk<CGamePlayerProfile>
@@ -1341,6 +1384,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00D chunk
+    /// </summary>
     [Chunk(0x0308C00D)]
     public partial class Chunk0308C00D : Chunk<CGamePlayerProfile>
     {
@@ -1374,6 +1420,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00E skippable chunk
+    /// </summary>
     [Chunk(0x0308C00E)]
     public partial class Chunk0308C00E : SkippableChunk<CGamePlayerProfile>
     {
@@ -1413,6 +1462,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00F chunk
+    /// </summary>
     [Chunk(0x0308C00F)]
     [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0308C00F : Chunk<CGamePlayerProfile>
@@ -1433,6 +1485,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x010 chunk
+    /// </summary>
     [Chunk(0x0308C010)]
     public partial class Chunk0308C010 : Chunk<CGamePlayerProfile>
     {
@@ -1457,6 +1512,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x011 chunk
+    /// </summary>
     [Chunk(0x0308C011)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C011 : Chunk<CGamePlayerProfile>
@@ -1477,6 +1535,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x012 skippable chunk
+    /// </summary>
     [Chunk(0x0308C012)]
     public partial class Chunk0308C012 : SkippableChunk<CGamePlayerProfile>
     {
@@ -1495,6 +1556,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x013 skippable chunk
+    /// </summary>
     [Chunk(0x0308C013)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C013 : SkippableChunk<CGamePlayerProfile>
@@ -1544,6 +1608,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x014 chunk
+    /// </summary>
     [Chunk(0x0308C014)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C014 : Chunk<CGamePlayerProfile>
@@ -1562,6 +1629,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x015 skippable chunk
+    /// </summary>
     [Chunk(0x0308C015)]
     public partial class Chunk0308C015 : SkippableChunk<CGamePlayerProfile>
     {
@@ -1590,6 +1660,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x016 skippable chunk
+    /// </summary>
     [Chunk(0x0308C016)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C016 : SkippableChunk<CGamePlayerProfile>
@@ -1610,6 +1683,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x017 skippable chunk
+    /// </summary>
     [Chunk(0x0308C017)]
     public partial class Chunk0308C017 : SkippableChunk<CGamePlayerProfile>
     {
@@ -1641,6 +1717,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x018 skippable chunk
+    /// </summary>
     [Chunk(0x0308C018)]
     public partial class Chunk0308C018 : SkippableChunk<CGamePlayerProfile>
     {
@@ -1660,6 +1739,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x019 skippable chunk
+    /// </summary>
     [Chunk(0x0308C019)]
     [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0308C019 : SkippableChunk<CGamePlayerProfile>
@@ -1684,6 +1766,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01A skippable chunk
+    /// </summary>
     [Chunk(0x0308C01A)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C01A : SkippableChunk<CGamePlayerProfile>
@@ -1704,6 +1789,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01B chunk
+    /// </summary>
     [Chunk(0x0308C01B)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C01B : Chunk<CGamePlayerProfile>
@@ -1730,6 +1818,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01C chunk
+    /// </summary>
     [Chunk(0x0308C01C)]
     [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0308C01C : Chunk<CGamePlayerProfile>
@@ -1753,6 +1844,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01D skippable chunk
+    /// </summary>
     [Chunk(0x0308C01D)]
     [ChunkGameVersion(GameVersion.TMPU)]
     public partial class Chunk0308C01D : SkippableChunk<CGamePlayerProfile>
@@ -1807,6 +1901,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01E chunk
+    /// </summary>
     [Chunk(0x0308C01E)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C01E : Chunk<CGamePlayerProfile>
@@ -1827,6 +1924,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x01F chunk
+    /// </summary>
     [Chunk(0x0308C01F)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C01F : Chunk<CGamePlayerProfile>
@@ -1850,6 +1950,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x020 skippable chunk
+    /// </summary>
     [Chunk(0x0308C020)]
     public partial class Chunk0308C020 : SkippableChunk<CGamePlayerProfile>
     {
@@ -1908,6 +2011,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x021 chunk
+    /// </summary>
     [Chunk(0x0308C021)]
     public partial class Chunk0308C021 : Chunk<CGamePlayerProfile>
     {
@@ -1928,6 +2034,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x022 chunk
+    /// </summary>
     [Chunk(0x0308C022)]
     public partial class Chunk0308C022 : Chunk<CGamePlayerProfile>
     {
@@ -1944,6 +2053,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x023 chunk
+    /// </summary>
     [Chunk(0x0308C023)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C023 : Chunk<CGamePlayerProfile>
@@ -1964,6 +2076,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x024 chunk
+    /// </summary>
     [Chunk(0x0308C024)]
     public partial class Chunk0308C024 : Chunk<CGamePlayerProfile>
     {
@@ -1982,6 +2097,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x025 skippable chunk
+    /// </summary>
     [Chunk(0x0308C025)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C025 : SkippableChunk<CGamePlayerProfile>
@@ -2005,6 +2123,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x026 skippable chunk
+    /// </summary>
     [Chunk(0x0308C026)]
     public partial class Chunk0308C026 : SkippableChunk<CGamePlayerProfile>
     {
@@ -2072,6 +2193,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x027 skippable chunk
+    /// </summary>
     [Chunk(0x0308C027)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C027 : SkippableChunk<CGamePlayerProfile>
@@ -2098,7 +2222,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy server settings
+    /// CGamePlayerProfile 0x028 skippable chunk (Legacy server settings)
     /// </summary>
     [Chunk(0x0308C028, "Legacy server settings")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -2174,6 +2298,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x029 skippable chunk
+    /// </summary>
     [Chunk(0x0308C029)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C029 : SkippableChunk<CGamePlayerProfile>
@@ -2192,6 +2319,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02A skippable chunk
+    /// </summary>
     [Chunk(0x0308C02A)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0308C02A : SkippableChunk<CGamePlayerProfile>
@@ -2210,6 +2340,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02B skippable chunk
+    /// </summary>
     [Chunk(0x0308C02B)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C02B : SkippableChunk<CGamePlayerProfile>
@@ -2230,6 +2363,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02C skippable chunk
+    /// </summary>
     [Chunk(0x0308C02C)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C02C : SkippableChunk<CGamePlayerProfile>
@@ -2251,6 +2387,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02D skippable chunk
+    /// </summary>
     [Chunk(0x0308C02D)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C02D : SkippableChunk<CGamePlayerProfile>
@@ -2272,6 +2411,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02E skippable chunk
+    /// </summary>
     [Chunk(0x0308C02E)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C02E : SkippableChunk<CGamePlayerProfile>
@@ -2292,6 +2434,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x02F skippable chunk
+    /// </summary>
     [Chunk(0x0308C02F)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C02F : SkippableChunk<CGamePlayerProfile>
@@ -2333,6 +2478,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x030 skippable chunk
+    /// </summary>
     [Chunk(0x0308C030)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C030 : SkippableChunk<CGamePlayerProfile>
@@ -2353,6 +2501,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x031 skippable chunk
+    /// </summary>
     [Chunk(0x0308C031)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C031 : SkippableChunk<CGamePlayerProfile>
@@ -2373,6 +2524,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x032 skippable chunk
+    /// </summary>
     [Chunk(0x0308C032)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C032 : SkippableChunk<CGamePlayerProfile>
@@ -2392,6 +2546,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x033 skippable chunk
+    /// </summary>
     [Chunk(0x0308C033)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C033 : SkippableChunk<CGamePlayerProfile>
@@ -2412,6 +2569,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x034 skippable chunk
+    /// </summary>
     [Chunk(0x0308C034)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0308C034 : SkippableChunk<CGamePlayerProfile>
@@ -2432,12 +2592,18 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x035 skippable chunk
+    /// </summary>
     [Chunk(0x0308C035)]
     public partial class Chunk0308C035 : SkippableChunk<CGamePlayerProfile>
     {
         public override uint Id => 0x0308C035;
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x036 chunk
+    /// </summary>
     [Chunk(0x0308C036)]
     public partial class Chunk0308C036 : Chunk<CGamePlayerProfile>
     {
@@ -2465,6 +2631,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x037 chunk
+    /// </summary>
     [Chunk(0x0308C037)]
     public partial class Chunk0308C037 : Chunk<CGamePlayerProfile>
     {
@@ -2491,6 +2660,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x038 chunk
+    /// </summary>
     [Chunk(0x0308C038)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C038 : Chunk<CGamePlayerProfile>
@@ -2516,6 +2688,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x039 chunk
+    /// </summary>
     [Chunk(0x0308C039)]
     public partial class Chunk0308C039 : Chunk<CGamePlayerProfile>
     {
@@ -2563,6 +2738,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03A chunk
+    /// </summary>
     [Chunk(0x0308C03A)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C03A : Chunk<CGamePlayerProfile>
@@ -2581,6 +2759,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03B chunk
+    /// </summary>
     [Chunk(0x0308C03B)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C03B : Chunk<CGamePlayerProfile>
@@ -2646,6 +2827,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03C chunk
+    /// </summary>
     [Chunk(0x0308C03C)]
     public partial class Chunk0308C03C : Chunk<CGamePlayerProfile>
     {
@@ -2673,6 +2857,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03D chunk
+    /// </summary>
     [Chunk(0x0308C03D)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C03D : Chunk<CGamePlayerProfile>
@@ -2699,6 +2886,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03E chunk
+    /// </summary>
     [Chunk(0x0308C03E)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C03E : Chunk<CGamePlayerProfile>
@@ -2736,6 +2926,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x03F chunk
+    /// </summary>
     [Chunk(0x0308C03F)]
     public partial class Chunk0308C03F : Chunk<CGamePlayerProfile>
     {
@@ -2754,6 +2947,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x040 chunk
+    /// </summary>
     [Chunk(0x0308C040)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C040 : Chunk<CGamePlayerProfile>
@@ -2772,6 +2968,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x041 chunk
+    /// </summary>
     [Chunk(0x0308C041)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C041 : Chunk<CGamePlayerProfile>
@@ -2790,6 +2989,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x042 skippable chunk
+    /// </summary>
     [Chunk(0x0308C042)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C042 : SkippableChunk<CGamePlayerProfile>
@@ -2813,6 +3015,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x043 chunk
+    /// </summary>
     [Chunk(0x0308C043)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C043 : Chunk<CGamePlayerProfile>
@@ -2831,6 +3036,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x044 chunk
+    /// </summary>
     [Chunk(0x0308C044)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C044 : Chunk<CGamePlayerProfile>
@@ -2849,6 +3057,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x045 chunk
+    /// </summary>
     [Chunk(0x0308C045)]
     public partial class Chunk0308C045 : Chunk<CGamePlayerProfile>
     {
@@ -2877,6 +3088,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x046 chunk
+    /// </summary>
     [Chunk(0x0308C046)]
     public partial class Chunk0308C046 : Chunk<CGamePlayerProfile>
     {
@@ -2913,6 +3127,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x047 chunk
+    /// </summary>
     [Chunk(0x0308C047)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C047 : Chunk<CGamePlayerProfile>
@@ -2933,6 +3150,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x048 skippable chunk
+    /// </summary>
     [Chunk(0x0308C048)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C048 : SkippableChunk<CGamePlayerProfile>
@@ -2951,6 +3171,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x049 chunk
+    /// </summary>
     [Chunk(0x0308C049)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308C049 : Chunk<CGamePlayerProfile>
@@ -2983,6 +3206,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x04A chunk
+    /// </summary>
     [Chunk(0x0308C04A)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C04A : Chunk<CGamePlayerProfile>
@@ -3004,6 +3230,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x04B chunk
+    /// </summary>
     [Chunk(0x0308C04B)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0308C04B : Chunk<CGamePlayerProfile>
@@ -3023,7 +3252,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// LeagueManager
+    /// CGamePlayerProfile 0x04C chunk (LeagueManager)
     /// </summary>
     [Chunk(0x0308C04C, "LeagueManager")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3053,6 +3282,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x04D chunk
+    /// </summary>
     [Chunk(0x0308C04D)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C04D : Chunk<CGamePlayerProfile>
@@ -3071,6 +3303,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x04E chunk
+    /// </summary>
     [Chunk(0x0308C04E)]
     public partial class Chunk0308C04E : Chunk<CGamePlayerProfile>
     {
@@ -3089,6 +3324,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x04F chunk
+    /// </summary>
     [Chunk(0x0308C04F)]
     public partial class Chunk0308C04F : Chunk<CGamePlayerProfile>
     {
@@ -3119,6 +3357,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x050 chunk
+    /// </summary>
     [Chunk(0x0308C050)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C050 : Chunk<CGamePlayerProfile>
@@ -3140,6 +3381,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x051 chunk
+    /// </summary>
     [Chunk(0x0308C051)]
     public partial class Chunk0308C051 : Chunk<CGamePlayerProfile>
     {
@@ -3169,6 +3413,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x052 skippable chunk
+    /// </summary>
     [Chunk(0x0308C052)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C052 : SkippableChunk<CGamePlayerProfile>
@@ -3188,6 +3435,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x053 chunk
+    /// </summary>
     [Chunk(0x0308C053)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C053 : Chunk<CGamePlayerProfile>
@@ -3206,6 +3456,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x054 chunk
+    /// </summary>
     [Chunk(0x0308C054)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C054 : Chunk<CGamePlayerProfile>
@@ -3226,6 +3479,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x055 chunk
+    /// </summary>
     [Chunk(0x0308C055)]
     public partial class Chunk0308C055 : Chunk<CGamePlayerProfile>
     {
@@ -3255,6 +3511,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x056 chunk
+    /// </summary>
     [Chunk(0x0308C056)]
     [ChunkGameVersion(GameVersion.TMF, 5)]
     public partial class Chunk0308C056 : Chunk<CGamePlayerProfile>, IVersionable
@@ -3298,6 +3557,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x057 chunk
+    /// </summary>
     [Chunk(0x0308C057)]
     public partial class Chunk0308C057 : Chunk<CGamePlayerProfile>
     {
@@ -3326,6 +3588,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x058 chunk
+    /// </summary>
     [Chunk(0x0308C058)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C058 : Chunk<CGamePlayerProfile>
@@ -3344,6 +3609,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x059 chunk
+    /// </summary>
     [Chunk(0x0308C059)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C059 : Chunk<CGamePlayerProfile>
@@ -3362,6 +3630,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05A skippable chunk
+    /// </summary>
     [Chunk(0x0308C05A)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05A : SkippableChunk<CGamePlayerProfile>
@@ -3380,6 +3651,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05B chunk
+    /// </summary>
     [Chunk(0x0308C05B)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05B : Chunk<CGamePlayerProfile>
@@ -3406,6 +3680,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05C chunk
+    /// </summary>
     [Chunk(0x0308C05C)]
     public partial class Chunk0308C05C : Chunk<CGamePlayerProfile>
     {
@@ -3434,6 +3711,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05D chunk
+    /// </summary>
     [Chunk(0x0308C05D)]
     public partial class Chunk0308C05D : Chunk<CGamePlayerProfile>
     {
@@ -3462,6 +3742,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05E chunk
+    /// </summary>
     [Chunk(0x0308C05E)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05E : Chunk<CGamePlayerProfile>
@@ -3480,6 +3763,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x05F chunk
+    /// </summary>
     [Chunk(0x0308C05F)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C05F : Chunk<CGamePlayerProfile>
@@ -3498,6 +3784,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x060 skippable chunk
+    /// </summary>
     [Chunk(0x0308C060)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C060 : SkippableChunk<CGamePlayerProfile>
@@ -3518,6 +3807,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x061 chunk
+    /// </summary>
     [Chunk(0x0308C061)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C061 : Chunk<CGamePlayerProfile>
@@ -3537,7 +3829,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// ArchiveBindingsForCompat
+    /// CGamePlayerProfile 0x062 chunk (ArchiveBindingsForCompat)
     /// </summary>
     [Chunk(0x0308C062, "ArchiveBindingsForCompat")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3558,6 +3850,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x063 skippable chunk
+    /// </summary>
     [Chunk(0x0308C063)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C063 : SkippableChunk<CGamePlayerProfile>
@@ -3588,7 +3883,7 @@ public partial class CGamePlayerProfile : CMwNod, IClass
     }
 
     /// <summary>
-    /// PlayerTagsConfig
+    /// CGamePlayerProfile 0x064 chunk (PlayerTagsConfig)
     /// </summary>
     [Chunk(0x0308C064, "PlayerTagsConfig")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3616,6 +3911,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x065 chunk
+    /// </summary>
     [Chunk(0x0308C065)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C065 : Chunk<CGamePlayerProfile>
@@ -3634,6 +3932,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x066 chunk
+    /// </summary>
     [Chunk(0x0308C066)]
     public partial class Chunk0308C066 : Chunk<CGamePlayerProfile>
     {
@@ -3652,6 +3953,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x067 chunk
+    /// </summary>
     [Chunk(0x0308C067)]
     public partial class Chunk0308C067 : Chunk<CGamePlayerProfile>
     {
@@ -3673,6 +3977,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x068 chunk
+    /// </summary>
     [Chunk(0x0308C068)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C068 : Chunk<CGamePlayerProfile>
@@ -3687,6 +3994,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x069 chunk
+    /// </summary>
     [Chunk(0x0308C069)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C069 : Chunk<CGamePlayerProfile>
@@ -3723,6 +4033,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06A chunk
+    /// </summary>
     [Chunk(0x0308C06A)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06A : Chunk<CGamePlayerProfile>
@@ -3741,6 +4054,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06B chunk
+    /// </summary>
     [Chunk(0x0308C06B)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06B : Chunk<CGamePlayerProfile>
@@ -3759,6 +4075,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06C chunk
+    /// </summary>
     [Chunk(0x0308C06C)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308C06C : Chunk<CGamePlayerProfile>
@@ -3777,6 +4096,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06D chunk
+    /// </summary>
     [Chunk(0x0308C06D)]
     public partial class Chunk0308C06D : Chunk<CGamePlayerProfile>
     {
@@ -3819,6 +4141,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06E chunk
+    /// </summary>
     [Chunk(0x0308C06E)]
     public partial class Chunk0308C06E : Chunk<CGamePlayerProfile>
     {
@@ -3858,6 +4183,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x06F skippable chunk
+    /// </summary>
     [Chunk(0x0308C06F)]
     public partial class Chunk0308C06F : SkippableChunk<CGamePlayerProfile>
     {
@@ -3876,6 +4204,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x070 chunk
+    /// </summary>
     [Chunk(0x0308C070)]
     public partial class Chunk0308C070 : Chunk<CGamePlayerProfile>
     {
@@ -3912,6 +4243,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x071 skippable chunk
+    /// </summary>
     [Chunk(0x0308C071)]
     public partial class Chunk0308C071 : SkippableChunk<CGamePlayerProfile>
     {
@@ -3930,6 +4264,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x072 chunk
+    /// </summary>
     [Chunk(0x0308C072)]
     public partial class Chunk0308C072 : Chunk<CGamePlayerProfile>
     {
@@ -3966,6 +4303,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x073 chunk
+    /// </summary>
     [Chunk(0x0308C073)]
     public partial class Chunk0308C073 : Chunk<CGamePlayerProfile>
     {
@@ -3984,6 +4324,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x074 chunk
+    /// </summary>
     [Chunk(0x0308C074)]
     public partial class Chunk0308C074 : Chunk<CGamePlayerProfile>
     {
@@ -4000,6 +4343,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x075 skippable chunk
+    /// </summary>
     [Chunk(0x0308C075)]
     public partial class Chunk0308C075 : SkippableChunk<CGamePlayerProfile>
     {
@@ -4016,6 +4362,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x076 skippable chunk
+    /// </summary>
     [Chunk(0x0308C076)]
     public partial class Chunk0308C076 : SkippableChunk<CGamePlayerProfile>
     {
@@ -4034,6 +4383,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x077 skippable chunk
+    /// </summary>
     [Chunk(0x0308C077)]
     public partial class Chunk0308C077 : SkippableChunk<CGamePlayerProfile>
     {
@@ -4053,6 +4405,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x078 skippable chunk
+    /// </summary>
     [Chunk(0x0308C078)]
     public partial class Chunk0308C078 : SkippableChunk<CGamePlayerProfile>
     {
@@ -4076,6 +4431,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x079 skippable chunk
+    /// </summary>
     [Chunk(0x0308C079)]
     public partial class Chunk0308C079 : SkippableChunk<CGamePlayerProfile>, IVersionable
     {
@@ -4097,6 +4455,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x07A skippable chunk
+    /// </summary>
     [Chunk(0x0308C07A)]
     public partial class Chunk0308C07A : SkippableChunk<CGamePlayerProfile>
     {
@@ -4113,6 +4474,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x07B skippable chunk
+    /// </summary>
     [Chunk(0x0308C07B)]
     public partial class Chunk0308C07B : SkippableChunk<CGamePlayerProfile>
     {
@@ -4131,6 +4495,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x07C skippable chunk
+    /// </summary>
     [Chunk(0x0308C07C)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0308C07C : SkippableChunk<CGamePlayerProfile>
@@ -4144,6 +4511,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x07D skippable chunk
+    /// </summary>
     [Chunk(0x0308C07D)]
     public partial class Chunk0308C07D : SkippableChunk<CGamePlayerProfile>, IVersionable
     {
@@ -4156,6 +4526,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x07E skippable chunk
+    /// </summary>
     [Chunk(0x0308C07E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk0308C07E : SkippableChunk<CGamePlayerProfile>, IVersionable
@@ -4182,6 +4555,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x003 chunk
+    /// </summary>
     [Chunk(0x240B5003)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240B5003 : Chunk<CGamePlayerProfile>
@@ -4247,6 +4623,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x004 chunk
+    /// </summary>
     [Chunk(0x240B5004)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240B5004 : Chunk<CGamePlayerProfile>
@@ -4285,6 +4664,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x006 chunk
+    /// </summary>
     [Chunk(0x240B5006)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240B5006 : Chunk<CGamePlayerProfile>
@@ -4303,6 +4685,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x007 chunk
+    /// </summary>
     [Chunk(0x240B5007)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk240B5007 : Chunk<CGamePlayerProfile>
@@ -4321,6 +4706,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x009 chunk
+    /// </summary>
     [Chunk(0x240B5009)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5009 : Chunk<CGamePlayerProfile>
@@ -4386,6 +4774,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00B chunk
+    /// </summary>
     [Chunk(0x240B500B)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500B : Chunk<CGamePlayerProfile>
@@ -4404,6 +4795,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00C chunk
+    /// </summary>
     [Chunk(0x240B500C)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500C : Chunk<CGamePlayerProfile>
@@ -4424,6 +4818,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00D chunk
+    /// </summary>
     [Chunk(0x240B500D)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500D : Chunk<CGamePlayerProfile>
@@ -4450,6 +4847,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00E chunk
+    /// </summary>
     [Chunk(0x240B500E)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500E : Chunk<CGamePlayerProfile>
@@ -4473,6 +4873,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x00F chunk
+    /// </summary>
     [Chunk(0x240B500F)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B500F : Chunk<CGamePlayerProfile>
@@ -4493,6 +4896,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x010 chunk
+    /// </summary>
     [Chunk(0x240B5010)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5010 : Chunk<CGamePlayerProfile>
@@ -4511,6 +4917,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x011 chunk
+    /// </summary>
     [Chunk(0x240B5011)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5011 : Chunk<CGamePlayerProfile>
@@ -4531,6 +4940,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x012 chunk
+    /// </summary>
     [Chunk(0x240B5012)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5012 : Chunk<CGamePlayerProfile>
@@ -4551,6 +4963,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x013 chunk
+    /// </summary>
     [Chunk(0x240B5013)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5013 : Chunk<CGamePlayerProfile>
@@ -4583,6 +4998,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x014 chunk
+    /// </summary>
     [Chunk(0x240B5014)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5014 : Chunk<CGamePlayerProfile>
@@ -4603,6 +5021,9 @@ public partial class CGamePlayerProfile : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfile 0x015 chunk
+    /// </summary>
     [Chunk(0x240B5015)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk240B5015 : Chunk<CGamePlayerProfile>

@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Note: The class ID has been replaced with CGameScriptDebugger.
 /// </summary>
+/// <remarks>ID: 0x0308D000</remarks>
 [Class(0x0308D000)]
 public partial class CGamePlayerScore : CMwNod, IClass
 {
@@ -515,6 +516,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x000 chunk
+    /// </summary>
     [Chunk(0x0308D000)]
     public partial class Chunk0308D000 : Chunk<CGamePlayerScore>
     {
@@ -535,6 +539,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x001 chunk
+    /// </summary>
     [Chunk(0x0308D001)]
     public partial class Chunk0308D001 : Chunk<CGamePlayerScore>
     {
@@ -554,6 +561,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x0308D002)]
     public partial class Chunk0308D002 : SkippableChunk<CGamePlayerScore>
     {
@@ -573,6 +583,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x003 chunk
+    /// </summary>
     [Chunk(0x0308D003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0308D003 : Chunk<CGamePlayerScore>
@@ -595,6 +608,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x004 chunk
+    /// </summary>
     [Chunk(0x0308D004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, 18)]
     public partial class Chunk0308D004 : Chunk<CGamePlayerScore>
@@ -617,6 +633,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x005 chunk
+    /// </summary>
     [Chunk(0x0308D005)]
     public partial class Chunk0308D005 : Chunk<CGamePlayerScore>
     {
@@ -633,6 +652,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x006 chunk
+    /// </summary>
     [Chunk(0x0308D006)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF, -1, -1, -1, 2)]
     public partial class Chunk0308D006 : Chunk<CGamePlayerScore>
@@ -652,6 +674,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x007 chunk
+    /// </summary>
     [Chunk(0x0308D007)]
     public partial class Chunk0308D007 : Chunk<CGamePlayerScore>
     {
@@ -670,6 +695,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x008 chunk
+    /// </summary>
     [Chunk(0x0308D008)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0308D008 : Chunk<CGamePlayerScore>
@@ -693,6 +721,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x00B chunk
+    /// </summary>
     [Chunk(0x0308D00B)]
     public partial class Chunk0308D00B : Chunk<CGamePlayerScore>
     {
@@ -709,6 +740,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x00C chunk
+    /// </summary>
     [Chunk(0x0308D00C)]
     public partial class Chunk0308D00C : Chunk<CGamePlayerScore>
     {
@@ -730,6 +764,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x00D chunk
+    /// </summary>
     [Chunk(0x0308D00D)]
     public partial class Chunk0308D00D : Chunk<CGamePlayerScore>
     {
@@ -746,6 +783,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x00E chunk
+    /// </summary>
     [Chunk(0x0308D00E)]
     public partial class Chunk0308D00E : Chunk<CGamePlayerScore>
     {
@@ -770,6 +810,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x00F chunk
+    /// </summary>
     [Chunk(0x0308D00F)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D00F : Chunk<CGamePlayerScore>
@@ -790,6 +833,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x010 chunk
+    /// </summary>
     [Chunk(0x0308D010)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D010 : Chunk<CGamePlayerScore>
@@ -810,7 +856,7 @@ public partial class CGamePlayerScore : CMwNod, IClass
     }
 
     /// <summary>
-    /// Current totals interleaved with the last values submitted to the master server.
+    /// CGamePlayerScore 0x011 chunk (Current totals interleaved with the last values submitted to the master server.)
     /// </summary>
     [Chunk(0x0308D011, "Current totals interleaved with the last values submitted to the master server.")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -863,6 +909,9 @@ public partial class CGamePlayerScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGamePlayerScore 0x012 chunk
+    /// </summary>
     [Chunk(0x0308D012)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0308D012 : Chunk<CGamePlayerScore>

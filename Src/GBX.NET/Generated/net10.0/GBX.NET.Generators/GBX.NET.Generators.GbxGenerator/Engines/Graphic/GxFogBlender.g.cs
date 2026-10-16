@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04008000</remarks>
 [Class(0x04008000)]
 public partial class GxFogBlender : CMwNod, IClass
 {
@@ -75,6 +76,9 @@ public partial class GxFogBlender : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// GxFogBlender 0x000 chunk
+    /// </summary>
     [Chunk(0x04008000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04008000 : Chunk<GxFogBlender>

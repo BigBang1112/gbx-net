@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0905E000</remarks>
 [Class(0x0905E000)]
 public partial class CPlugSoundSurface : CPlugSound, IClass
 {
@@ -98,7 +99,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     /// <summary>
-    /// legacy impact, texture and skid sounds by material
+    /// CPlugSoundSurface 0x000 chunk (legacy impact, texture and skid sounds by material)
     /// </summary>
     [Chunk(0x0905E000, "legacy impact, texture and skid sounds by material")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -121,7 +122,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     /// <summary>
-    /// impact attenuation
+    /// CPlugSoundSurface 0x001 chunk (impact attenuation)
     /// </summary>
     [Chunk(0x0905E001, "impact attenuation")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -143,7 +144,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     /// <summary>
-    /// impact attenuation and mode
+    /// CPlugSoundSurface 0x002 chunk (impact attenuation and mode)
     /// </summary>
     [Chunk(0x0905E002, "impact attenuation and mode")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 2)]
@@ -199,7 +200,7 @@ public partial class CPlugSoundSurface : CPlugSound, IClass
     }
 
     /// <summary>
-    /// texture and skid sounds by material
+    /// CPlugSoundSurface 0x003 chunk (texture and skid sounds by material)
     /// </summary>
     [Chunk(0x0905E003, "texture and skid sounds by material")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1)]

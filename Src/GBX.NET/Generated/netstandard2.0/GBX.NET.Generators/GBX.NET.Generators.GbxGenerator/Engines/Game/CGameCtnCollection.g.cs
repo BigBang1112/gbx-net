@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03033000</remarks>
 [Class(0x03033000)]
 public partial class CGameCtnCollection : CMwNod, IClass
 {
@@ -1498,7 +1499,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// old header
+    /// CGameCtnCollection 0x000 chunk (old header)
     /// </summary>
     [Chunk(0x03033000, "old header")]
     public partial class HeaderChunk03033000 : HeaderChunk<CGameCtnCollection>
@@ -1517,7 +1518,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// desc
+    /// CGameCtnCollection 0x001 chunk (desc)
     /// </summary>
     [Chunk(0x03033001, "desc")]
     public partial class HeaderChunk03033001 : HeaderChunk<CGameCtnCollection>, IVersionable
@@ -1600,7 +1601,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// collector folders
+    /// CGameCtnCollection 0x002 chunk (collector folders)
     /// </summary>
     [Chunk(0x03033002, "collector folders")]
     public partial class HeaderChunk03033002 : HeaderChunk<CGameCtnCollection>, IVersionable
@@ -1657,7 +1658,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderMenusIcons
+    /// CGameCtnCollection 0x003 chunk (FolderMenusIcons)
     /// </summary>
     [Chunk(0x03033003, "FolderMenusIcons")]
     public partial class HeaderChunk03033003 : HeaderChunk<CGameCtnCollection>, IVersionable
@@ -1679,7 +1680,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy zones and collection
+    /// CGameCtnCollection 0x004 chunk (legacy zones and collection)
     /// </summary>
     [Chunk(0x03033004, "legacy zones and collection")]
     public partial class Chunk03033004 : Chunk<CGameCtnCollection>
@@ -1700,7 +1701,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy zones and unlock
+    /// CGameCtnCollection 0x006 chunk (legacy zones and unlock)
     /// </summary>
     [Chunk(0x03033006, "legacy zones and unlock")]
     public partial class Chunk03033006 : Chunk<CGameCtnCollection>
@@ -1722,7 +1723,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy zones and vehicle
+    /// CGameCtnCollection 0x007 chunk (legacy zones and vehicle)
     /// </summary>
     [Chunk(0x03033007, "legacy zones and vehicle")]
     public partial class Chunk03033007 : Chunk<CGameCtnCollection>
@@ -1745,7 +1746,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// DefaultDecoration
+    /// CGameCtnCollection 0x008 chunk (DefaultDecoration)
     /// </summary>
     [Chunk(0x03033008, "DefaultDecoration")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -1765,6 +1766,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x009 chunk
+    /// </summary>
     [Chunk(0x03033009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03033009 : Chunk<CGameCtnCollection>
@@ -1789,6 +1793,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x00B chunk
+    /// </summary>
     [Chunk(0x0303300B)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0303300B : Chunk<CGameCtnCollection>
@@ -1807,6 +1814,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x00C chunk
+    /// </summary>
     [Chunk(0x0303300C)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303300C : Chunk<CGameCtnCollection>
@@ -1827,7 +1837,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// menu icons
+    /// CGameCtnCollection 0x00D chunk (menu icons)
     /// </summary>
     [Chunk(0x0303300D, "menu icons")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1859,6 +1869,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x00E chunk
+    /// </summary>
     [Chunk(0x0303300E)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303300E : Chunk<CGameCtnCollection>
@@ -1877,6 +1890,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x011 chunk
+    /// </summary>
     [Chunk(0x03033011)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03033011 : Chunk<CGameCtnCollection>
@@ -1895,6 +1911,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x013 chunk
+    /// </summary>
     [Chunk(0x03033013)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk03033013 : Chunk<CGameCtnCollection>
@@ -1915,6 +1934,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x016 chunk
+    /// </summary>
     [Chunk(0x03033016)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk03033016 : Chunk<CGameCtnCollection>
@@ -1940,7 +1962,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy map coordinates
+    /// CGameCtnCollection 0x017 chunk (legacy map coordinates)
     /// </summary>
     [Chunk(0x03033017, "legacy map coordinates")]
     public partial class Chunk03033017 : Chunk<CGameCtnCollection>
@@ -1960,6 +1982,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x018 chunk
+    /// </summary>
     [Chunk(0x03033018)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk03033018 : Chunk<CGameCtnCollection>
@@ -1982,7 +2007,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// LoadScreenFid
+    /// CGameCtnCollection 0x019 chunk (LoadScreenFid)
     /// </summary>
     [Chunk(0x03033019, "LoadScreenFid")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2002,6 +2027,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x01A chunk
+    /// </summary>
     [Chunk(0x0303301A)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303301A : Chunk<CGameCtnCollection>
@@ -2025,6 +2053,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x01B chunk
+    /// </summary>
     [Chunk(0x0303301B)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0303301B : Chunk<CGameCtnCollection>
@@ -2050,7 +2081,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy collector folders
+    /// CGameCtnCollection 0x01C chunk (legacy collector folders)
     /// </summary>
     [Chunk(0x0303301C, "legacy collector folders")]
     public partial class Chunk0303301C : Chunk<CGameCtnCollection>
@@ -2070,6 +2101,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x01D chunk
+    /// </summary>
     [Chunk(0x0303301D)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303301D : Chunk<CGameCtnCollection>
@@ -2090,7 +2124,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// camera
+    /// CGameCtnCollection 0x01E chunk (camera)
     /// </summary>
     [Chunk(0x0303301E, "camera")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
@@ -2114,7 +2148,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// ParticleEmitterModelsFids
+    /// CGameCtnCollection 0x01F chunk (ParticleEmitterModelsFids)
     /// </summary>
     [Chunk(0x0303301F, "ParticleEmitterModelsFids")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2135,7 +2169,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// folders
+    /// CGameCtnCollection 0x020 chunk (folders)
     /// </summary>
     [Chunk(0x03033020, "folders")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2159,7 +2193,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// DisplayName
+    /// CGameCtnCollection 0x021 chunk (DisplayName)
     /// </summary>
     [Chunk(0x03033021, "DisplayName")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2180,7 +2214,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// IsWaterMultiHeight
+    /// CGameCtnCollection 0x022 chunk (IsWaterMultiHeight)
     /// </summary>
     [Chunk(0x03033022, "IsWaterMultiHeight")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -2201,7 +2235,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// CarCanBeDirty
+    /// CGameCtnCollection 0x023 chunk (CarCanBeDirty)
     /// </summary>
     [Chunk(0x03033023, "CarCanBeDirty")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -2221,6 +2255,9 @@ public partial class CGameCtnCollection : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollection 0x024 chunk
+    /// </summary>
     [Chunk(0x03033024)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03033024 : Chunk<CGameCtnCollection>
@@ -2246,7 +2283,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy lighting and lightmap mapper
+    /// CGameCtnCollection 0x025 chunk (legacy lighting and lightmap mapper)
     /// </summary>
     [Chunk(0x03033025, "legacy lighting and lightmap mapper")]
     public partial class Chunk03033025 : Chunk<CGameCtnCollection>
@@ -2272,7 +2309,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy item folder
+    /// CGameCtnCollection 0x026 chunk (legacy item folder)
     /// </summary>
     [Chunk(0x03033026, "legacy item folder")]
     public partial class Chunk03033026 : Chunk<CGameCtnCollection>
@@ -2291,7 +2328,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// board square
+    /// CGameCtnCollection 0x027 chunk (board square)
     /// </summary>
     [Chunk(0x03033027, "board square")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2313,7 +2350,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderAdditionalItem1
+    /// CGameCtnCollection 0x028 chunk (FolderAdditionalItem1)
     /// </summary>
     [Chunk(0x03033028, "FolderAdditionalItem1")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2334,7 +2371,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderAdditionalItem2
+    /// CGameCtnCollection 0x029 chunk (FolderAdditionalItem2)
     /// </summary>
     [Chunk(0x03033029, "FolderAdditionalItem2")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2355,7 +2392,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderDecalModels
+    /// CGameCtnCollection 0x02A chunk (FolderDecalModels)
     /// </summary>
     [Chunk(0x0303302A, "FolderDecalModels")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2376,7 +2413,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy decoration
+    /// CGameCtnCollection 0x02B chunk (legacy decoration)
     /// </summary>
     [Chunk(0x0303302B, "legacy decoration")]
     public partial class Chunk0303302B : Chunk<CGameCtnCollection>
@@ -2395,7 +2432,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// CollectionPackMask
+    /// CGameCtnCollection 0x02C chunk (CollectionPackMask)
     /// </summary>
     [Chunk(0x0303302C, "CollectionPackMask")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -2416,7 +2453,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy water and fog
+    /// CGameCtnCollection 0x02D chunk (legacy water and fog)
     /// </summary>
     [Chunk(0x0303302D, "legacy water and fog")]
     public partial class Chunk0303302D : Chunk<CGameCtnCollection>
@@ -2441,7 +2478,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy decal type names
+    /// CGameCtnCollection 0x02E chunk (legacy decal type names)
     /// </summary>
     [Chunk(0x0303302E, "legacy decal type names")]
     public partial class Chunk0303302E : Chunk<CGameCtnCollection>
@@ -2460,7 +2497,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// Tech3TunnelSpecularExpScaleMax
+    /// CGameCtnCollection 0x02F chunk (Tech3TunnelSpecularExpScaleMax)
     /// </summary>
     [Chunk(0x0303302F, "Tech3TunnelSpecularExpScaleMax")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2481,7 +2518,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// MarksModel
+    /// CGameCtnCollection 0x030 chunk (MarksModel)
     /// </summary>
     [Chunk(0x03033030, "MarksModel")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2502,7 +2539,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderMacroDecals
+    /// CGameCtnCollection 0x031 chunk (FolderMacroDecals)
     /// </summary>
     [Chunk(0x03033031, "FolderMacroDecals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2523,7 +2560,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy cloud shader
+    /// CGameCtnCollection 0x032 chunk (legacy cloud shader)
     /// </summary>
     [Chunk(0x03033032, "legacy cloud shader")]
     public partial class Chunk03033032 : Chunk<CGameCtnCollection>
@@ -2542,7 +2579,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// decal types
+    /// CGameCtnCollection 0x033 chunk (decal types)
     /// </summary>
     [Chunk(0x03033033, "decal types")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 1)]
@@ -2592,7 +2629,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// clouds and vehicle environment layer
+    /// CGameCtnCollection 0x034 chunk (clouds and vehicle environment layer)
     /// </summary>
     [Chunk(0x03033034, "clouds and vehicle environment layer")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 1)]
@@ -2644,7 +2681,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// OffZone_FogMatter
+    /// CGameCtnCollection 0x036 chunk (OffZone_FogMatter)
     /// </summary>
     [Chunk(0x03033036, "OffZone_FogMatter")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
@@ -2685,7 +2722,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// TerrainHeightOffset
+    /// CGameCtnCollection 0x037 chunk (TerrainHeightOffset)
     /// </summary>
     [Chunk(0x03033037, "TerrainHeightOffset")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2706,7 +2743,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// water and fog
+    /// CGameCtnCollection 0x038 chunk (water and fog)
     /// </summary>
     [Chunk(0x03033038, "water and fog")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 5, 8)]
@@ -2822,7 +2859,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// vehicle styles and inventories
+    /// CGameCtnCollection 0x039 chunk (vehicle styles and inventories)
     /// </summary>
     [Chunk(0x03033039, "vehicle styles and inventories")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 22)]
@@ -2986,7 +3023,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// lighting
+    /// CGameCtnCollection 0x03A chunk (lighting)
     /// </summary>
     [Chunk(0x0303303A, "lighting")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 2, 3)]
@@ -3053,7 +3090,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// turbo colors
+    /// CGameCtnCollection 0x03B chunk (turbo colors)
     /// </summary>
     [Chunk(0x0303303B, "turbo colors")]
     [ChunkGameVersion(GameVersion.TM2020, 2)]
@@ -3107,7 +3144,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// spectator folders
+    /// CGameCtnCollection 0x03C chunk (spectator folders)
     /// </summary>
     [Chunk(0x0303303C, "spectator folders")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -3153,7 +3190,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// default TV programs
+    /// CGameCtnCollection 0x03D chunk (default TV programs)
     /// </summary>
     [Chunk(0x0303303D, "default TV programs")]
     [ChunkGameVersion(GameVersion.TM2020, 2)]
@@ -3207,7 +3244,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderDefaultActions
+    /// CGameCtnCollection 0x03E chunk (FolderDefaultActions)
     /// </summary>
     [Chunk(0x0303303E, "FolderDefaultActions")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
@@ -3248,7 +3285,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderDefaultActions2
+    /// CGameCtnCollection 0x03F chunk (FolderDefaultActions2)
     /// </summary>
     [Chunk(0x0303303F, "FolderDefaultActions2")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
@@ -3289,7 +3326,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// ColorBlindnessModifier
+    /// CGameCtnCollection 0x040 chunk (ColorBlindnessModifier)
     /// </summary>
     [Chunk(0x03033040, "ColorBlindnessModifier")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
@@ -3330,7 +3367,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderMacroblock
+    /// CGameCtnCollection 0x041 chunk (FolderMacroblock)
     /// </summary>
     [Chunk(0x03033041, "FolderMacroblock")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3351,7 +3388,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderAdditionalItem3
+    /// CGameCtnCollection 0x042 chunk (FolderAdditionalItem3)
     /// </summary>
     [Chunk(0x03033042, "FolderAdditionalItem3")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3372,7 +3409,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// FolderMaterialModifiers
+    /// CGameCtnCollection 0x043 chunk (FolderMaterialModifiers)
     /// </summary>
     [Chunk(0x03033043, "FolderMaterialModifiers")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -3393,7 +3430,7 @@ public partial class CGameCtnCollection : CMwNod, IClass
     }
 
     /// <summary>
-    /// GlobalMaterialModifier
+    /// CGameCtnCollection 0x044 chunk (GlobalMaterialModifier)
     /// </summary>
     [Chunk(0x03033044, "GlobalMaterialModifier")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]

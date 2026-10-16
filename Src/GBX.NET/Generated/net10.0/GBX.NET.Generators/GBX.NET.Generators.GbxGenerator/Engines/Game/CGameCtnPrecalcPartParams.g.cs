@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0311C000</remarks>
 [Class(0x0311C000)]
 public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
 {
@@ -224,7 +225,7 @@ public partial class CGameCtnPrecalcPartParams : CMwNod, IClass
     }
 
     /// <summary>
-    /// precalculated particle physics and decals
+    /// CGameCtnPrecalcPartParams 0x000 chunk (precalculated particle physics and decals)
     /// </summary>
     [Chunk(0x0311C000, "precalculated particle physics and decals")]
     [ChunkGameVersion(GameVersion.TMT, 2)]

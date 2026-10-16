@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0303B000</remarks>
 [Class(0x0303B000)]
 public partial class CGameCtnDecorationSize : CMwNod, IClass
 {
@@ -125,6 +126,9 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnDecorationSize 0x000 chunk
+    /// </summary>
     [Chunk(0x0303B000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303B000 : Chunk<CGameCtnDecorationSize>
@@ -147,6 +151,9 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationSize 0x001 chunk
+    /// </summary>
     [Chunk(0x0303B001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0303B001 : Chunk<CGameCtnDecorationSize>
@@ -167,6 +174,9 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationSize 0x002 chunk
+    /// </summary>
     [Chunk(0x0303B002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303B002 : Chunk<CGameCtnDecorationSize>
@@ -188,6 +198,9 @@ public partial class CGameCtnDecorationSize : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationSize 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x0303B003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303B003 : SkippableChunk<CGameCtnDecorationSize>, IVersionable

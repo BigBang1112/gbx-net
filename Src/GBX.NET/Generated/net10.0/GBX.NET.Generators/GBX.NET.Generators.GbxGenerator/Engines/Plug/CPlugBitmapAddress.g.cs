@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09047000</remarks>
 [Class(0x09047000)]
 public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
 {
@@ -72,6 +73,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x002 chunk
+    /// </summary>
     [Chunk(0x09047002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09047002 : Chunk<CPlugBitmapAddress>
@@ -92,6 +96,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x004 chunk
+    /// </summary>
     [Chunk(0x09047004)]
     public partial class Chunk09047004 : Chunk<CPlugBitmapAddress>
     {
@@ -125,6 +132,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x005 chunk
+    /// </summary>
     [Chunk(0x09047005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09047005 : Chunk09047004
@@ -138,6 +148,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x007 chunk
+    /// </summary>
     [Chunk(0x09047007)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09047007 : Chunk<CPlugBitmapAddress>
@@ -174,6 +187,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x008 chunk
+    /// </summary>
     [Chunk(0x09047008)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09047008 : Chunk<CPlugBitmapAddress>
@@ -197,6 +213,9 @@ public partial class CPlugBitmapAddress : CPlugBitmapSampler, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x009 chunk
+    /// </summary>
     [Chunk(0x09047009)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk09047009 : Chunk<CPlugBitmapAddress>

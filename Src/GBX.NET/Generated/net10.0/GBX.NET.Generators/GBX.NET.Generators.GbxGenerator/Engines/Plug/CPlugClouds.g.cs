@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09180000</remarks>
 [Class(0x09180000)]
 public partial class CPlugClouds : CMwNod, IClass
 {
@@ -162,6 +163,9 @@ public partial class CPlugClouds : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugClouds 0x000 chunk
+    /// </summary>
     [Chunk(0x09180000)]
     public partial class Chunk09180000 : Chunk<CPlugClouds>
     {
@@ -183,6 +187,9 @@ public partial class CPlugClouds : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugClouds 0x002 chunk
+    /// </summary>
     [Chunk(0x09180002)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180002 : Chunk<CPlugClouds>
@@ -201,6 +208,9 @@ public partial class CPlugClouds : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugClouds 0x003 chunk
+    /// </summary>
     [Chunk(0x09180003)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180003 : Chunk<CPlugClouds>
@@ -220,6 +230,9 @@ public partial class CPlugClouds : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugClouds 0x004 chunk
+    /// </summary>
     [Chunk(0x09180004)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk09180004 : Chunk09180000

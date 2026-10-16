@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x0500D000</remarks>
 [Class(0x0500D000)]
 public partial class CFuncTreeTranslate : CFuncTree, IClass
 {
@@ -72,6 +73,9 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncTreeTranslate 0x000 chunk
+    /// </summary>
     [Chunk(0x0500D000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0500D000 : Chunk<CFuncTreeTranslate>
@@ -91,6 +95,9 @@ public partial class CFuncTreeTranslate : CFuncTree, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncTreeTranslate 0x001 chunk
+    /// </summary>
     [Chunk(0x0500D001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0500D001 : Chunk<CFuncTreeTranslate>

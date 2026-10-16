@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05038000</remarks>
 [Class(0x05038000)]
 public partial class CFuncColorGradient : CFunc, IClass
 {
@@ -114,6 +115,9 @@ public partial class CFuncColorGradient : CFunc, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncColorGradient 0x000 chunk
+    /// </summary>
     [Chunk(0x05038000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk05038000 : Chunk<CFuncColorGradient>
@@ -137,6 +141,9 @@ public partial class CFuncColorGradient : CFunc, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncColorGradient 0x001 chunk
+    /// </summary>
     [Chunk(0x05038001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05038001 : Chunk05038000

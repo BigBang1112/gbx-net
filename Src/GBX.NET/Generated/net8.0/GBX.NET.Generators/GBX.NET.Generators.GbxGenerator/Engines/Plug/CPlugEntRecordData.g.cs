@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Plug;
 /// <summary>
 /// Entity data in a timeline.
 /// </summary>
+/// <remarks>ID: 0x0911F000</remarks>
 [Class(0x0911F000)]
 public partial class CPlugEntRecordData : CMwNod, IClass
 {
@@ -56,6 +57,9 @@ public partial class CPlugEntRecordData : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugEntRecordData 0x000 chunk
+    /// </summary>
     [Chunk(0x0911F000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0911F000 : Chunk<CPlugEntRecordData>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x0702B000</remarks>
 [Class(0x0702B000)]
 public partial class CControlIconIndex : CMwNod, IClass
 {
@@ -150,6 +151,9 @@ public partial class CControlIconIndex : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CControlIconIndex 0x000 chunk
+    /// </summary>
     [Chunk(0x0702B000)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0702B000 : Chunk<CControlIconIndex>
@@ -174,6 +178,9 @@ public partial class CControlIconIndex : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlIconIndex 0x001 chunk
+    /// </summary>
     [Chunk(0x0702B001)]
     public partial class Chunk0702B001 : Chunk0702B000
     {
@@ -191,6 +198,9 @@ public partial class CControlIconIndex : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlIconIndex 0x002 chunk
+    /// </summary>
     [Chunk(0x0702B002)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0702B002 : Chunk0702B001

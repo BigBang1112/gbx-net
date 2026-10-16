@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09114000</remarks>
 [Class(0x09114000)]
 public partial class CPlugVehicleVisGeomModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

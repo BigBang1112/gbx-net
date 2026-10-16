@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0305D000</remarks>
 [Class(0x0305D000)]
 public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
 {
@@ -119,6 +120,9 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnZoneFlat 0x001 chunk
+    /// </summary>
     [Chunk(0x0305D001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305D001 : Chunk<CGameCtnZoneFlat>
@@ -140,6 +144,9 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFlat 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x0305D002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305D002 : SkippableChunk<CGameCtnZoneFlat>
@@ -164,6 +171,9 @@ public partial class CGameCtnZoneFlat : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFlat 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x0305D003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305D003 : SkippableChunk<CGameCtnZoneFlat>

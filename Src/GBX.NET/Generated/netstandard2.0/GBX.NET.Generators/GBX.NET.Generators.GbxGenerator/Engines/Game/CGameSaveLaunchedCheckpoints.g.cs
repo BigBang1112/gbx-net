@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03262000</remarks>
 [Class(0x03262000)]
 public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
 {
@@ -72,6 +73,9 @@ public partial class CGameSaveLaunchedCheckpoints : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameSaveLaunchedCheckpoints 0x000 chunk
+    /// </summary>
     [Chunk(0x03262000)]
     [ChunkGameVersion(GameVersion.TM2020, 7)]
     public partial class Chunk03262000 : Chunk<CGameSaveLaunchedCheckpoints>, IVersionable

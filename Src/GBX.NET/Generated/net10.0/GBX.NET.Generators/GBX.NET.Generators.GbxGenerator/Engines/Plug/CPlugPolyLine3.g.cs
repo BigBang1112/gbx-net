@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09118000</remarks>
 [Class(0x09118000)]
 public partial class CPlugPolyLine3 : CMwNod, IClass
 {
@@ -63,6 +64,9 @@ public partial class CPlugPolyLine3 : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugPolyLine3 0x000 chunk
+    /// </summary>
     [Chunk(0x09118000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09118000 : Chunk<CPlugPolyLine3>, IVersionable

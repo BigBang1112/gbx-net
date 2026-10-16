@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09136000</remarks>
 [Class(0x09136000)]
 public partial class CPlugAnimPoseGrid : CMwNod, IClass
 {

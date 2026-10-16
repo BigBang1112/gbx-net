@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090B8000</remarks>
 [Class(0x090B8000)]
 public partial class CPlugBitmapApplyArray : CPlug, IClass
 {
@@ -72,7 +73,7 @@ public partial class CPlugBitmapApplyArray : CPlug, IClass
     }
 
     /// <summary>
-    /// BitmapAddresses
+    /// CPlugBitmapApplyArray 0x000 chunk (BitmapAddresses)
     /// </summary>
     [Chunk(0x090B8000, "BitmapAddresses")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

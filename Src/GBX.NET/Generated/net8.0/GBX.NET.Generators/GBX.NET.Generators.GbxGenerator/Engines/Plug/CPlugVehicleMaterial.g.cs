@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090F1000</remarks>
 [Class(0x090F1000)]
 public partial class CPlugVehicleMaterial : CMwNod, IClass
 {
@@ -178,6 +179,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x001 chunk
+    /// </summary>
     [Chunk(0x090F1001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F1001 : Chunk<CPlugVehicleMaterial>
@@ -200,6 +204,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x004 chunk
+    /// </summary>
     [Chunk(0x090F1004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090F1004 : Chunk<CPlugVehicleMaterial>
@@ -219,6 +226,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x005 chunk
+    /// </summary>
     [Chunk(0x090F1005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090F1005 : Chunk<CPlugVehicleMaterial>
@@ -240,6 +250,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x006 chunk
+    /// </summary>
     [Chunk(0x090F1006)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk090F1006 : Chunk<CPlugVehicleMaterial>
@@ -258,6 +271,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x009 chunk
+    /// </summary>
     [Chunk(0x090F1009)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk090F1009 : Chunk<CPlugVehicleMaterial>
@@ -346,6 +362,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00A chunk
+    /// </summary>
     [Chunk(0x090F100A)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk090F100A : Chunk<CPlugVehicleMaterial>
@@ -386,6 +405,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00B chunk
+    /// </summary>
     [Chunk(0x090F100B)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk090F100B : Chunk<CPlugVehicleMaterial>
@@ -426,6 +448,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00C chunk
+    /// </summary>
     [Chunk(0x090F100C)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk090F100C : Chunk<CPlugVehicleMaterial>
@@ -466,6 +491,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00D chunk
+    /// </summary>
     [Chunk(0x090F100D)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk090F100D : Chunk<CPlugVehicleMaterial>
@@ -506,6 +534,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00E chunk
+    /// </summary>
     [Chunk(0x090F100E)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090F100E : Chunk<CPlugVehicleMaterial>
@@ -526,6 +557,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x00F chunk
+    /// </summary>
     [Chunk(0x090F100F)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F100F : Chunk<CPlugVehicleMaterial>
@@ -549,6 +583,9 @@ public partial class CPlugVehicleMaterial : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleMaterial 0x010 chunk
+    /// </summary>
     [Chunk(0x090F1010)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090F1010 : Chunk<CPlugVehicleMaterial>, IVersionable

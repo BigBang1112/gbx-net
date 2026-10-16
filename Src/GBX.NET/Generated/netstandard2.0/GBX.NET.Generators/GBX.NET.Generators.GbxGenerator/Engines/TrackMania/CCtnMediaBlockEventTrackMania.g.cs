@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x2407F000</remarks>
 [Class(0x2407F000)]
 public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -104,6 +105,9 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
         set => End = value;
     }
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x000 chunk
+    /// </summary>
     [Chunk(0x2407F000)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
@@ -127,6 +131,9 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x001 chunk
+    /// </summary>
     [Chunk(0x2407F001)]
     public partial class Chunk2407F001 : Chunk<CCtnMediaBlockEventTrackMania>
     {
@@ -148,6 +155,9 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x002 chunk
+    /// </summary>
     [Chunk(0x2407F002)]
     public partial class Chunk2407F002 : Chunk<CCtnMediaBlockEventTrackMania>
     {
@@ -169,6 +179,9 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x003 chunk
+    /// </summary>
     [Chunk(0x2407F003)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>
@@ -192,6 +205,9 @@ public partial class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlockEvent, IC
         }
     }
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x004 chunk
+    /// </summary>
     [Chunk(0x2407F004)]
     public partial class Chunk2407F004 : Chunk<CCtnMediaBlockEventTrackMania>
     {

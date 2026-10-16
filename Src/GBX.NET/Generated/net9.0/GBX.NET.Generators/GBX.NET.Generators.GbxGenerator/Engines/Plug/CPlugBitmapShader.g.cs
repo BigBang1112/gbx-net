@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09080000</remarks>
 [Class(0x09080000)]
 public partial class CPlugBitmapShader : CPlug, IClass
 {
@@ -97,6 +98,9 @@ public partial class CPlugBitmapShader : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugBitmapShader 0x000 chunk
+    /// </summary>
     [Chunk(0x09080000)]
     public partial class Chunk09080000 : Chunk<CPlugBitmapShader>
     {
@@ -114,6 +118,9 @@ public partial class CPlugBitmapShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapShader 0x001 chunk
+    /// </summary>
     [Chunk(0x09080001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk09080001 : Chunk09080000
@@ -133,6 +140,9 @@ public partial class CPlugBitmapShader : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapShader 0x002 chunk
+    /// </summary>
     [Chunk(0x09080002)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09080002 : Chunk<CPlugBitmapShader>

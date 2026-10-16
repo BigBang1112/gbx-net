@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Block placed on a map.
 /// </summary>
+/// <remarks>ID: 0x03057000</remarks>
 [Class(0x03057000)]
 public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
 {
@@ -216,6 +217,9 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlock 0x002 chunk
+    /// </summary>
     [Chunk(0x03057002)]
     [ChunkGameVersion(GameVersion.TM10)]
     public partial class Chunk03057002 : Chunk<CGameCtnBlock>

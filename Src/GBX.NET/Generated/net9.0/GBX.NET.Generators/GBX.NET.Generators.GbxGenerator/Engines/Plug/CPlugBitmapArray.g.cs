@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090AB000</remarks>
 [Class(0x090AB000)]
 public partial class CPlugBitmapArray : CPlug, IClass
 {

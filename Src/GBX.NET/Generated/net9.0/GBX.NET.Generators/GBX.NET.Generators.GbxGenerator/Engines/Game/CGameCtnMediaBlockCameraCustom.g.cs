@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// MediaTracker block - Custom camera.
 /// </summary>
+/// <remarks>ID: 0x030A2000</remarks>
 [Class(0x030A2000)]
 public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -65,6 +66,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraCustom 0x000 chunk
+    /// </summary>
     [Chunk(0x030A2000)]
     public partial class Chunk030A2000 : Chunk<CGameCtnMediaBlockCameraCustom>
     {
@@ -81,6 +85,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraCustom 0x001 chunk
+    /// </summary>
     [Chunk(0x030A2001)]
     public partial class Chunk030A2001 : Chunk<CGameCtnMediaBlockCameraCustom>
     {
@@ -97,6 +104,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraCustom 0x002 chunk
+    /// </summary>
     [Chunk(0x030A2002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A2002 : Chunk<CGameCtnMediaBlockCameraCustom>
@@ -115,6 +125,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraCustom 0x003 chunk
+    /// </summary>
     [Chunk(0x030A2003)]
     public partial class Chunk030A2003 : Chunk<CGameCtnMediaBlockCameraCustom>
     {
@@ -134,6 +147,9 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraCustom 0x004 chunk
+    /// </summary>
     [Chunk(0x030A2004)]
     public partial class Chunk030A2004 : Chunk<CGameCtnMediaBlockCameraCustom>
     {
@@ -151,7 +167,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     }
 
     /// <summary>
-    /// TMUF
+    /// CGameCtnMediaBlockCameraCustom 0x005 chunk (TMUF)
     /// </summary>
     [Chunk(0x030A2005, "TMUF")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -172,7 +188,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     }
 
     /// <summary>
-    /// ManiaPlanet
+    /// CGameCtnMediaBlockCameraCustom 0x006 chunk (ManiaPlanet)
     /// </summary>
     [Chunk(0x030A2006, "ManiaPlanet")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 4)]

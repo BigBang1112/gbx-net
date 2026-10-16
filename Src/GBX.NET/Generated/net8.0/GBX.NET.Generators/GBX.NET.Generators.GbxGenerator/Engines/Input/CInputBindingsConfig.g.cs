@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Input;
 
+/// <remarks>ID: 0x13006000</remarks>
 [Class(0x13006000)]
 public partial class CInputBindingsConfig : CMwNod, IClass
 {
@@ -96,6 +97,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x000 chunk
+    /// </summary>
     [Chunk(0x13006000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk13006000 : Chunk<CInputBindingsConfig>
@@ -115,6 +119,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x001 chunk
+    /// </summary>
     [Chunk(0x13006001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk13006001 : Chunk<CInputBindingsConfig>
@@ -133,6 +140,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x13006002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk13006002 : SkippableChunk<CInputBindingsConfig>
@@ -152,6 +162,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x003 chunk
+    /// </summary>
     [Chunk(0x13006003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1, 1)]
     public partial class Chunk13006003 : Chunk<CInputBindingsConfig>, IVersionable
@@ -191,7 +204,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// Native serializer restores the previous ID dictionary count afterward.
+    /// CInputBindingsConfig 0x004 skippable chunk (Native serializer restores the previous ID dictionary count afterward.)
     /// </summary>
     [Chunk(0x13006004, "Native serializer restores the previous ID dictionary count afterward.")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -207,7 +220,7 @@ public partial class CInputBindingsConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// Native serializer restores the previous ID dictionary count afterward.
+    /// CInputBindingsConfig 0x005 skippable chunk (Native serializer restores the previous ID dictionary count afterward.)
     /// </summary>
     [Chunk(0x13006005, "Native serializer restores the previous ID dictionary count afterward.")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -222,6 +235,9 @@ public partial class CInputBindingsConfig : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x006 skippable chunk
+    /// </summary>
     [Chunk(0x13006006)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk13006006 : SkippableChunk<CInputBindingsConfig>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E020000</remarks>
 [Class(0x2E020000)]
 public partial class CGameItemPlacementParam : CMwNod, IClass
 {
@@ -185,6 +186,9 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameItemPlacementParam 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x2E020000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E020000 : SkippableChunk<CGameItemPlacementParam>, IVersionable
@@ -222,7 +226,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// pivot positions
+    /// CGameItemPlacementParam 0x001 skippable chunk (pivot positions)
     /// </summary>
     [Chunk(0x2E020001, "pivot positions")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -244,7 +248,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy PlacementClass
+    /// CGameItemPlacementParam 0x003 skippable chunk (legacy PlacementClass)
     /// </summary>
     [Chunk(0x2E020003, "legacy PlacementClass")]
     public partial class Chunk2E020003 : SkippableChunk<CGameItemPlacementParam>, IVersionable
@@ -260,7 +264,7 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// magnet locations
+    /// CGameItemPlacementParam 0x004 skippable chunk (magnet locations)
     /// </summary>
     [Chunk(0x2E020004, "magnet locations")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -283,6 +287,9 @@ public partial class CGameItemPlacementParam : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemPlacementParam 0x005 skippable chunk
+    /// </summary>
     [Chunk(0x2E020005)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E020005 : SkippableChunk<CGameItemPlacementParam>

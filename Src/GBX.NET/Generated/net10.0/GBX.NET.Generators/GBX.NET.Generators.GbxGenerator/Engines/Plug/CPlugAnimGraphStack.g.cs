@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09138000</remarks>
 [Class(0x09138000)]
 public partial class CPlugAnimGraphStack : CMwNod, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090EB000</remarks>
 [Class(0x090EB000)]
 public partial class CPlugVehiclePhyTuning : CMwNod, IClass
 {
@@ -64,7 +65,7 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     }
 
     /// <summary>
-    /// name
+    /// CPlugVehiclePhyTuning 0x000 chunk (name)
     /// </summary>
     [Chunk(0x090EB000, "name")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -104,7 +105,7 @@ public partial class CPlugVehiclePhyTuning : CMwNod, IClass
     }
 
     /// <summary>
-    /// InTuningCycle
+    /// CPlugVehiclePhyTuning 0x001 chunk (InTuningCycle)
     /// </summary>
     [Chunk(0x090EB001, "InTuningCycle")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04002000</remarks>
 [Class(0x04002000)]
 public partial class GxLightBall : GxLightPoint, IClass
 {
@@ -251,6 +252,9 @@ public partial class GxLightBall : GxLightPoint, IClass
     {
     }
 
+    /// <summary>
+    /// GxLightBall 0x000 chunk
+    /// </summary>
     [Chunk(0x04002000)]
     public partial class Chunk04002000 : Chunk<GxLightBall>
     {
@@ -281,6 +285,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x001 chunk
+    /// </summary>
     [Chunk(0x04002001)]
     public partial class Chunk04002001 : Chunk<GxLightBall>
     {
@@ -312,6 +319,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x002 chunk
+    /// </summary>
     [Chunk(0x04002002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk04002002 : Chunk<GxLightBall>
@@ -350,6 +360,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x003 chunk
+    /// </summary>
     [Chunk(0x04002003)]
     public partial class Chunk04002003 : Chunk<GxLightBall>
     {
@@ -397,6 +410,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x004 chunk
+    /// </summary>
     [Chunk(0x04002004)]
     public partial class Chunk04002004 : Chunk<GxLightBall>
     {
@@ -436,6 +452,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x005 chunk
+    /// </summary>
     [Chunk(0x04002005)]
     public partial class Chunk04002005 : Chunk<GxLightBall>
     {
@@ -476,6 +495,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x006 chunk
+    /// </summary>
     [Chunk(0x04002006)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk04002006 : Chunk<GxLightBall>
@@ -514,6 +536,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x007 chunk
+    /// </summary>
     [Chunk(0x04002007)]
     public partial class Chunk04002007 : Chunk<GxLightBall>
     {
@@ -540,6 +565,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x008 chunk
+    /// </summary>
     [Chunk(0x04002008)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04002008 : Chunk<GxLightBall>
@@ -569,6 +597,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x009 chunk
+    /// </summary>
     [Chunk(0x04002009)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04002009 : Chunk<GxLightBall>
@@ -587,6 +618,9 @@ public partial class GxLightBall : GxLightPoint, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightBall 0x00A chunk
+    /// </summary>
     [Chunk(0x0400200A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0400200A : Chunk<GxLightBall>

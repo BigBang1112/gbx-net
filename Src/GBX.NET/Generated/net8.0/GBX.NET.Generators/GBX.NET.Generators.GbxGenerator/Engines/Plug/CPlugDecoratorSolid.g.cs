@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090A3000</remarks>
 [Class(0x090A3000)]
 public partial class CPlugDecoratorSolid : CMwNod, IClass
 {
@@ -71,6 +72,9 @@ public partial class CPlugDecoratorSolid : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugDecoratorSolid 0x000 chunk
+    /// </summary>
     [Chunk(0x090A3000)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090A3000 : Chunk<CPlugDecoratorSolid>

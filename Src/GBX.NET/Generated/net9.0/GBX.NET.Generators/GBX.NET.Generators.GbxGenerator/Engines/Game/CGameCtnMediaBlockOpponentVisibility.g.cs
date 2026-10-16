@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0338B000</remarks>
 [Class(0x0338B000)]
 public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -84,6 +85,9 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockOpponentVisibility 0x000 chunk
+    /// </summary>
     [Chunk(0x0338B000)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0338B000 : Chunk<CGameCtnMediaBlockOpponentVisibility>
@@ -103,6 +107,9 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockOpponentVisibility 0x001 chunk
+    /// </summary>
     [Chunk(0x0338B001)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0338B001 : Chunk<CGameCtnMediaBlockOpponentVisibility>

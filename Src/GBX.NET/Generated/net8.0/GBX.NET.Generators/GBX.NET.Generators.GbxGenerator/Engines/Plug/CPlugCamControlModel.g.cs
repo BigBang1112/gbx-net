@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0910C000</remarks>
 [Class(0x0910C000)]
 public partial class CPlugCamControlModel : CMwNod, IClass
 {
@@ -68,6 +69,9 @@ public partial class CPlugCamControlModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugCamControlModel 0x000 chunk
+    /// </summary>
     [Chunk(0x0910C000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0910C000 : Chunk<CPlugCamControlModel>, IVersionable

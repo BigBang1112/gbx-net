@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0906A000</remarks>
 [Class(0x0906A000)]
 public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
 {
@@ -46,6 +47,9 @@ public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugVisualIndexed 0x000 chunk
+    /// </summary>
     [Chunk(0x0906A000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0906A000 : Chunk<CPlugVisualIndexed>
@@ -59,6 +63,9 @@ public partial class CPlugVisualIndexed : CPlugVisual3D, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVisualIndexed 0x001 chunk
+    /// </summary>
     [Chunk(0x0906A001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0906A001 : Chunk<CPlugVisualIndexed>

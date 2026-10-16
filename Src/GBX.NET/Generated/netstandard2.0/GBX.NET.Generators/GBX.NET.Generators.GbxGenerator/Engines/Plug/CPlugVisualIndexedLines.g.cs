@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09009000</remarks>
 [Class(0x09009000)]
 public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
 {
@@ -55,7 +56,7 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     }
 
     /// <summary>
-    /// legacy line indices
+    /// CPlugVisualIndexedLines 0x000 chunk (legacy line indices)
     /// </summary>
     [Chunk(0x09009000, "legacy line indices")]
     public partial class Chunk09009000 : Chunk0906A000
@@ -69,7 +70,7 @@ public partial class CPlugVisualIndexedLines : CPlugVisualIndexed, IClass
     }
 
     /// <summary>
-    /// RenderMode
+    /// CPlugVisualIndexedLines 0x001 chunk (RenderMode)
     /// </summary>
     [Chunk(0x09009001, "RenderMode")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

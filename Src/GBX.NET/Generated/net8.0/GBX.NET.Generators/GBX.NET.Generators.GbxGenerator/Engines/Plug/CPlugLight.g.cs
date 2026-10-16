@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0901D000</remarks>
 [Class(0x0901D000)]
 public partial class CPlugLight : CPlug, IClass
 {
@@ -153,6 +154,9 @@ public partial class CPlugLight : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugLight 0x000 chunk
+    /// </summary>
     [Chunk(0x0901D000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0901D000 : Chunk<CPlugLight>
@@ -174,6 +178,9 @@ public partial class CPlugLight : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugLight 0x002 chunk
+    /// </summary>
     [Chunk(0x0901D002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0901D002 : Chunk0901D000
@@ -193,6 +200,9 @@ public partial class CPlugLight : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugLight 0x003 chunk
+    /// </summary>
     [Chunk(0x0901D003)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0901D003 : Chunk<CPlugLight>, IVersionable
@@ -221,6 +231,9 @@ public partial class CPlugLight : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugLight 0x004 chunk
+    /// </summary>
     [Chunk(0x0901D004)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0901D004 : Chunk<CPlugLight>, IVersionable

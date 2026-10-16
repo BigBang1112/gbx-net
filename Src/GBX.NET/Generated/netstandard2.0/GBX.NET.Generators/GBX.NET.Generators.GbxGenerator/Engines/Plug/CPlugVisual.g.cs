@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09006000</remarks>
 [Class(0x09006000)]
 public partial class CPlugVisual : CPlug, IClass
 {
@@ -151,7 +152,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// VisualId
+    /// CPlugVisual 0x001 chunk (VisualId)
     /// </summary>
     [Chunk(0x09006001, "VisualId")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -169,7 +170,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy geometry with raw 2D texture coordinates
+    /// CPlugVisual 0x003 chunk (legacy geometry with raw 2D texture coordinates)
     /// </summary>
     [Chunk(0x09006003, "legacy geometry with raw 2D texture coordinates")]
     public partial class Chunk09006003 : Chunk09006008
@@ -183,7 +184,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// FuncVisual
+    /// CPlugVisual 0x004 chunk (FuncVisual)
     /// </summary>
     [Chunk(0x09006004, "FuncVisual")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -201,7 +202,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// SubVisuals
+    /// CPlugVisual 0x005 chunk (SubVisuals)
     /// </summary>
     [Chunk(0x09006005, "SubVisuals")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -222,7 +223,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// HasVertexNormals
+    /// CPlugVisual 0x006 chunk (HasVertexNormals)
     /// </summary>
     [Chunk(0x09006006, "HasVertexNormals")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -238,7 +239,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy skin inverse flag
+    /// CPlugVisual 0x007 chunk (legacy skin inverse flag)
     /// </summary>
     [Chunk(0x09006007, "legacy skin inverse flag")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
@@ -256,7 +257,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy geometry, texture coordinates, and skin transforms
+    /// CPlugVisual 0x008 chunk (legacy geometry, texture coordinates, and skin transforms)
     /// </summary>
     [Chunk(0x09006008, "legacy geometry, texture coordinates, and skin transforms")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -273,7 +274,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// NPatchTessLevel
+    /// CPlugVisual 0x009 chunk (NPatchTessLevel)
     /// </summary>
     [Chunk(0x09006009, "NPatchTessLevel")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -291,7 +292,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy vertex streams and skin transforms
+    /// CPlugVisual 0x00A chunk (legacy vertex streams and skin transforms)
     /// </summary>
     [Chunk(0x0900600A, "legacy vertex streams and skin transforms")]
     [ChunkGameVersion(GameVersion.TMSX)]
@@ -307,7 +308,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// Splits
+    /// CPlugVisual 0x00B chunk (Splits)
     /// </summary>
     [Chunk(0x0900600B, "Splits")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -328,7 +329,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy geometry, texture coordinates, skin, and bounds
+    /// CPlugVisual 0x00C chunk (legacy geometry, texture coordinates, skin, and bounds)
     /// </summary>
     [Chunk(0x0900600C, "legacy geometry, texture coordinates, skin, and bounds")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
@@ -344,7 +345,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// geometry flags, vertex streams, skin, and bounds
+    /// CPlugVisual 0x00D chunk (geometry flags, vertex streams, skin, and bounds)
     /// </summary>
     [Chunk(0x0900600D, "geometry flags, vertex streams, skin, and bounds")]
     [ChunkGameVersion(GameVersion.VSK5)]
@@ -360,7 +361,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// geometry and bitmap packing transforms
+    /// CPlugVisual 0x00E chunk (geometry and bitmap packing transforms)
     /// </summary>
     [Chunk(0x0900600E, "geometry and bitmap packing transforms")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -382,7 +383,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// geometry, skin, UV groups, and packed data
+    /// CPlugVisual 0x00F chunk (geometry, skin, UV groups, and packed data)
     /// </summary>
     [Chunk(0x0900600F, "geometry, skin, UV groups, and packed data")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 4, 5, 6)]
@@ -422,7 +423,7 @@ public partial class CPlugVisual : CPlug, IClass
     }
 
     /// <summary>
-    /// Morphs
+    /// CPlugVisual 0x010 chunk (Morphs)
     /// </summary>
     [Chunk(0x09006010, "Morphs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]

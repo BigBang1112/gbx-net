@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03179000</remarks>
 [Class(0x03179000)]
 public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlayerProfileChunk, IClass
 {
@@ -81,6 +82,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03179001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03179001 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
@@ -102,6 +106,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x03179002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03179002 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
@@ -125,6 +132,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x03179003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03179003 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
@@ -148,6 +158,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x03179004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03179004 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable
@@ -179,6 +192,9 @@ public partial class CGamePlayerProfileChunk_GlobalInterfaceSettings : CGamePlay
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_GlobalInterfaceSettings 0x005 skippable chunk
+    /// </summary>
     [Chunk(0x03179005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03179005 : SkippableChunk<CGamePlayerProfileChunk_GlobalInterfaceSettings>, IVersionable

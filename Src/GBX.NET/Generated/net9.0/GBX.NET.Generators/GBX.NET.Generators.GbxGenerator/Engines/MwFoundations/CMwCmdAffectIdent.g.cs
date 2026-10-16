@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.MwFoundations;
 
+/// <remarks>ID: 0x01032000</remarks>
 [Class(0x01032000)]
 public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
 {
@@ -68,6 +69,9 @@ public partial class CMwCmdAffectIdent : CMwCmdInst, IClass
     {
     }
 
+    /// <summary>
+    /// CMwCmdAffectIdent 0x000 chunk
+    /// </summary>
     [Chunk(0x01032000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk01032000 : Chunk<CMwCmdAffectIdent>

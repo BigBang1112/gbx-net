@@ -63,6 +63,7 @@ internal static class EngineWriter
         code.BlankLine();
 
         Documentation(code, layout.File.Syntax.Header.TrailingComment?.Text);
+        code.Line($"/// <remarks>ID: 0x{layout.Id:X8}</remarks>");
 
         if (!SyntaxOverlap.HasAttribute(layout.Existing, "Class"))
         {
@@ -687,7 +688,10 @@ internal static class EngineWriter
     {
         RequirePartial(chunk.Scope.Existing);
         code.BlankLine();
-        Documentation(code, chunk.Declaration.TrailingComment?.Text);
+        var summary = $"{layout.Name} 0x{chunk.Id & 0xFFF:X3} {(LayoutModel.Has(chunk.Declaration.Attributes, "skippable") ? "skippable " : "")}chunk";
+        if (!string.IsNullOrWhiteSpace(chunk.Declaration.TrailingComment?.Text))
+            summary += $" ({chunk.Declaration.TrailingComment!.Text})";
+        Documentation(code, summary);
 
         if (!SyntaxOverlap.HasAttribute(chunk.Scope.Existing, "Chunk"))
         {

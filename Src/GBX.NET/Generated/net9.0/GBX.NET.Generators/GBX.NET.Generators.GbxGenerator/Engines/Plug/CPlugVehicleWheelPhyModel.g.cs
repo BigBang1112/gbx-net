@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0912E000</remarks>
 [Class(0x0912E000)]
 public partial class CPlugVehicleWheelPhyModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

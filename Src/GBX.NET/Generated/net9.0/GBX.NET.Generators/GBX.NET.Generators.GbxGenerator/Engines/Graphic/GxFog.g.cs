@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04004000</remarks>
 [Class(0x04004000)]
 public partial class GxFog : CMwNod, IClass
 {
@@ -177,6 +178,9 @@ public partial class GxFog : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// GxFog 0x000 chunk
+    /// </summary>
     [Chunk(0x04004000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04004000 : Chunk<GxFog>
@@ -205,6 +209,9 @@ public partial class GxFog : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// GxFog 0x001 chunk
+    /// </summary>
     [Chunk(0x04004001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 0)]
     public partial class Chunk04004001 : Chunk<GxFog>, IVersionable
@@ -243,6 +250,9 @@ public partial class GxFog : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// GxFog 0x002 chunk
+    /// </summary>
     [Chunk(0x04004002)]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk04004002 : Chunk<GxFog>, IVersionable

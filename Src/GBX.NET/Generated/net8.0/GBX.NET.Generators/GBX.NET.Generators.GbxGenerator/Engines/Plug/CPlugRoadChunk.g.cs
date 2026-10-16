@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09128000</remarks>
 [Class(0x09128000)]
 public partial class CPlugRoadChunk : CMwNod, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugRoadChunk : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugRoadChunk 0x000 chunk
+    /// </summary>
     [Chunk(0x09128000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09128000 : Chunk<CPlugRoadChunk>

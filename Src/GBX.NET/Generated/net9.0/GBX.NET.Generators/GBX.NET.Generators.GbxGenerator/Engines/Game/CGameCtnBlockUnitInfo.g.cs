@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03036000</remarks>
 [Class(0x03036000)]
 public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
 {
@@ -345,6 +346,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x000 chunk
+    /// </summary>
     [Chunk(0x03036000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036000 : Chunk<CGameCtnBlockUnitInfo>
@@ -371,6 +375,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x001 chunk
+    /// </summary>
     [Chunk(0x03036001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036001 : Chunk<CGameCtnBlockUnitInfo>
@@ -392,7 +399,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     /// <summary>
-    /// Underground
+    /// CGameCtnBlockUnitInfo 0x002 skippable chunk (Underground)
     /// </summary>
     [Chunk(0x03036002, "Underground")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -412,6 +419,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x003 chunk
+    /// </summary>
     [Chunk(0x03036003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03036003 : Chunk<CGameCtnBlockUnitInfo>
@@ -436,7 +446,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     /// <summary>
-    /// AcceptPylons
+    /// CGameCtnBlockUnitInfo 0x004 chunk (AcceptPylons)
     /// </summary>
     [Chunk(0x03036004, "AcceptPylons")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -457,7 +467,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     /// <summary>
-    /// TerrainModifierId
+    /// CGameCtnBlockUnitInfo 0x005 chunk (TerrainModifierId)
     /// </summary>
     [Chunk(0x03036005, "TerrainModifierId")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -477,6 +487,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x006 chunk
+    /// </summary>
     [Chunk(0x03036006)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03036006 : Chunk<CGameCtnBlockUnitInfo>
@@ -521,6 +534,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x007 chunk
+    /// </summary>
     [Chunk(0x03036007)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03036007 : Chunk<CGameCtnBlockUnitInfo>
@@ -543,7 +559,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     /// <summary>
-    /// bottom+top clip
+    /// CGameCtnBlockUnitInfo 0x008 chunk (bottom+top clip)
     /// </summary>
     [Chunk(0x03036008, "bottom+top clip")]
     public partial class Chunk03036008 : Chunk<CGameCtnBlockUnitInfo>
@@ -562,6 +578,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x009 chunk
+    /// </summary>
     [Chunk(0x03036009)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
     public partial class Chunk03036009 : Chunk<CGameCtnBlockUnitInfo>, IVersionable
@@ -642,6 +661,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00A chunk
+    /// </summary>
     [Chunk(0x0303600A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 0, 0)]
     public partial class Chunk0303600A : Chunk<CGameCtnBlockUnitInfo>, IVersionable
@@ -709,7 +731,7 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
     }
 
     /// <summary>
-    /// bottom+top clip with dir
+    /// CGameCtnBlockUnitInfo 0x00B chunk (bottom+top clip with dir)
     /// </summary>
     [Chunk(0x0303600B, "bottom+top clip with dir")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 0, 0, 0)]
@@ -752,6 +774,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00C chunk
+    /// </summary>
     [Chunk(0x0303600C)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
@@ -814,6 +839,9 @@ public partial class CGameCtnBlockUnitInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00D chunk
+    /// </summary>
     [Chunk(0x0303600D)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0303600D : Chunk<CGameCtnBlockUnitInfo>, IVersionable

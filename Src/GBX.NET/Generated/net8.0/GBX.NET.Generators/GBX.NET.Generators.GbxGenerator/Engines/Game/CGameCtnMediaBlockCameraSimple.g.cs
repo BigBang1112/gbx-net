@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0309F000</remarks>
 [Class(0x0309F000)]
 public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -71,6 +72,9 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraSimple 0x001 chunk
+    /// </summary>
     [Chunk(0x0309F001)]
     public partial class Chunk0309F001 : Chunk030A1001
     {
@@ -82,6 +86,9 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraSimple 0x002 chunk
+    /// </summary>
     [Chunk(0x0309F002)]
     [ChunkGameVersion(GameVersion.TM2020, 3)]
     public partial class Chunk0309F002 : Chunk030A1002
@@ -95,6 +102,9 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraSimple 0x000 chunk
+    /// </summary>
     [Chunk(0x030A1000)]
     public partial class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraSimple>
     {
@@ -111,6 +121,9 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraSimple 0x001 chunk
+    /// </summary>
     [Chunk(0x030A1001)]
     public partial class Chunk030A1001 : Chunk<CGameCtnMediaBlockCameraSimple>
     {
@@ -129,6 +142,9 @@ public partial class CGameCtnMediaBlockCameraSimple : CGameCtnMediaBlockCamera, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraSimple 0x002 chunk
+    /// </summary>
     [Chunk(0x030A1002)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.TM2020, -1, 3)]
     public partial class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraSimple>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0306E000</remarks>
 [Class(0x0306E000)]
 public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, IClass
 {
@@ -213,6 +214,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     {
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x001 chunk
+    /// </summary>
     [Chunk(0x0306E001)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306E001 : Chunk<CGameControlCameraOrbital3d>
@@ -255,6 +259,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x002 chunk
+    /// </summary>
     [Chunk(0x0306E002)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306E002 : Chunk<CGameControlCameraOrbital3d>
@@ -275,6 +282,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x003 chunk
+    /// </summary>
     [Chunk(0x0306E003)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306E003 : Chunk<CGameControlCameraOrbital3d>
@@ -293,6 +303,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x004 chunk
+    /// </summary>
     [Chunk(0x0306E004)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0306E004 : Chunk<CGameControlCameraOrbital3d>
@@ -311,6 +324,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x005 chunk
+    /// </summary>
     [Chunk(0x0306E005)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0306E005 : Chunk<CGameControlCameraOrbital3d>
@@ -352,6 +368,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x006 chunk
+    /// </summary>
     [Chunk(0x0306E006)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0306E006 : Chunk<CGameControlCameraOrbital3d>
@@ -370,6 +389,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x007 chunk
+    /// </summary>
     [Chunk(0x0306E007)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0306E007 : Chunk<CGameControlCameraOrbital3d>

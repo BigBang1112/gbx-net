@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05036000</remarks>
 [Class(0x05036000)]
 public partial class CFuncEnvelope : CFunc, IClass
 {
@@ -117,6 +118,9 @@ public partial class CFuncEnvelope : CFunc, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncEnvelope 0x000 chunk
+    /// </summary>
     [Chunk(0x05036000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk05036000 : Chunk<CFuncEnvelope>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06006000</remarks>
 [Class(0x06006000)]
 public partial class CHmsPortal : CMwNod, IClass
 {
@@ -203,6 +204,9 @@ public partial class CHmsPortal : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsPortal 0x000 chunk
+    /// </summary>
     [Chunk(0x06006000)]
     public partial class Chunk06006000 : Chunk<CHmsPortal>
     {
@@ -223,6 +227,9 @@ public partial class CHmsPortal : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsPortal 0x001 chunk
+    /// </summary>
     [Chunk(0x06006001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk06006001 : Chunk<CHmsPortal>
@@ -250,6 +257,9 @@ public partial class CHmsPortal : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsPortal 0x002 chunk
+    /// </summary>
     [Chunk(0x06006002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk06006002 : Chunk<CHmsPortal>

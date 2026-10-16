@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090AC000</remarks>
 [Class(0x090AC000)]
 public partial class CPlugSpriteParam : CPlug, IClass
 {
@@ -102,6 +103,9 @@ public partial class CPlugSpriteParam : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugSpriteParam 0x000 chunk
+    /// </summary>
     [Chunk(0x090AC000)]
     public partial class Chunk090AC000 : Chunk<CPlugSpriteParam>
     {
@@ -123,6 +127,9 @@ public partial class CPlugSpriteParam : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSpriteParam 0x001 chunk
+    /// </summary>
     [Chunk(0x090AC001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090AC001 : Chunk090AC000, IVersionable

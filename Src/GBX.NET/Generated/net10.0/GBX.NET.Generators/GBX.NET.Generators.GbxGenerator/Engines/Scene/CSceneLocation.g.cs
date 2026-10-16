@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A007000</remarks>
 [Class(0x0A007000)]
 public partial class CSceneLocation : CSceneObject, IClass
 {

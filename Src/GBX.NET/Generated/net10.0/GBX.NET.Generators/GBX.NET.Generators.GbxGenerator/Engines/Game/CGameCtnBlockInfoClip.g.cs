@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03053000</remarks>
 [Class(0x03053000)]
 public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
 {
@@ -255,7 +256,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// legacy symmetrical clip
+    /// CGameCtnBlockInfoClip 0x000 skippable chunk (legacy symmetrical clip)
     /// </summary>
     [Chunk(0x03053000, "legacy symmetrical clip")]
     public partial class Chunk03053000 : SkippableChunk<CGameCtnBlockInfoClip>
@@ -285,7 +286,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// legacy symmetrical clip
+    /// CGameCtnBlockInfoClip 0x001 chunk (legacy symmetrical clip)
     /// </summary>
     [Chunk(0x03053001, "legacy symmetrical clip")]
     public partial class Chunk03053001 : Chunk<CGameCtnBlockInfoClip>
@@ -315,7 +316,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// SymmetricalClipId
+    /// CGameCtnBlockInfoClip 0x002 chunk (SymmetricalClipId)
     /// </summary>
     [Chunk(0x03053002, "SymmetricalClipId")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -336,7 +337,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// legacy free clip flag
+    /// CGameCtnBlockInfoClip 0x003 chunk (legacy free clip flag)
     /// </summary>
     [Chunk(0x03053003, "legacy free clip flag")]
     public partial class Chunk03053003 : Chunk<CGameCtnBlockInfoClip>
@@ -370,7 +371,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// free clip restrictions
+    /// CGameCtnBlockInfoClip 0x004 chunk (free clip restrictions)
     /// </summary>
     [Chunk(0x03053004, "free clip restrictions")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -392,7 +393,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// ClipType
+    /// CGameCtnBlockInfoClip 0x005 chunk (ClipType)
     /// </summary>
     [Chunk(0x03053005, "ClipType")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -413,7 +414,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// free clip behavior and direction
+    /// CGameCtnBlockInfoClip 0x006 chunk (free clip behavior and direction)
     /// </summary>
     [Chunk(0x03053006, "free clip behavior and direction")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 1, 4)]
@@ -478,7 +479,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// passing point
+    /// CGameCtnBlockInfoClip 0x007 chunk (passing point)
     /// </summary>
     [Chunk(0x03053007, "passing point")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, -1, 0, 0)]
@@ -526,7 +527,7 @@ public partial class CGameCtnBlockInfoClip : CGameCtnBlockInfo, IClass
     }
 
     /// <summary>
-    /// clip groups and symmetrical groups
+    /// CGameCtnBlockInfoClip 0x008 skippable chunk (clip groups and symmetrical groups)
     /// </summary>
     [Chunk(0x03053008, "clip groups and symmetrical groups")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 1)]

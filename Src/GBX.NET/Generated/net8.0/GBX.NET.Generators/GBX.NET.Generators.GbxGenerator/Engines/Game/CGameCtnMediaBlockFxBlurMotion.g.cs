@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03082000</remarks>
 [Class(0x03082000)]
 public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -75,6 +76,9 @@ public partial class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, 
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxBlurMotion 0x000 chunk
+    /// </summary>
     [Chunk(0x03082000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03082000 : Chunk<CGameCtnMediaBlockFxBlurMotion>

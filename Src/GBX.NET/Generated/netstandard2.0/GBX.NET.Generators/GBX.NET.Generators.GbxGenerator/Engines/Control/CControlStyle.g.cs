@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07017000</remarks>
 [Class(0x07017000)]
 public partial class CControlStyle : CMwNod, IClass
 {
@@ -566,6 +567,9 @@ public partial class CControlStyle : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CControlStyle 0x000 chunk
+    /// </summary>
     [Chunk(0x07017000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017000 : Chunk<CControlStyle>
@@ -620,6 +624,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x004 chunk
+    /// </summary>
     [Chunk(0x07017004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017004 : Chunk<CControlStyle>
@@ -638,6 +645,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x009 chunk
+    /// </summary>
     [Chunk(0x07017009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017009 : Chunk<CControlStyle>
@@ -656,6 +666,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x00B chunk
+    /// </summary>
     [Chunk(0x0701700B)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701700B : Chunk<CControlStyle>
@@ -680,6 +693,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x00C chunk
+    /// </summary>
     [Chunk(0x0701700C)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701700C : Chunk<CControlStyle>
@@ -700,6 +716,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x00D chunk
+    /// </summary>
     [Chunk(0x0701700D)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0701700D : Chunk<CControlStyle>
@@ -722,6 +741,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x00E chunk
+    /// </summary>
     [Chunk(0x0701700E)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0701700E : Chunk<CControlStyle>
@@ -743,6 +765,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x010 chunk
+    /// </summary>
     [Chunk(0x07017010)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017010 : Chunk<CControlStyle>
@@ -767,6 +792,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x014 chunk
+    /// </summary>
     [Chunk(0x07017014)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk07017014 : Chunk<CControlStyle>
@@ -791,6 +819,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x015 chunk
+    /// </summary>
     [Chunk(0x07017015)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk07017015 : Chunk<CControlStyle>
@@ -816,6 +847,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x016 chunk
+    /// </summary>
     [Chunk(0x07017016)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017016 : Chunk<CControlStyle>
@@ -834,6 +868,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x017 chunk
+    /// </summary>
     [Chunk(0x07017017)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017017 : Chunk<CControlStyle>
@@ -860,6 +897,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x018 chunk
+    /// </summary>
     [Chunk(0x07017018)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk07017018 : Chunk<CControlStyle>
@@ -879,6 +919,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x01B chunk
+    /// </summary>
     [Chunk(0x0701701B)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701701B : Chunk<CControlStyle>
@@ -912,6 +955,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x01C chunk
+    /// </summary>
     [Chunk(0x0701701C)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701701C : Chunk<CControlStyle>
@@ -936,6 +982,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x01D chunk
+    /// </summary>
     [Chunk(0x0701701D)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0701701D : Chunk<CControlStyle>
@@ -964,6 +1013,9 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlStyle 0x01E chunk
+    /// </summary>
     [Chunk(0x0701701E)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0701701E : Chunk<CControlStyle>

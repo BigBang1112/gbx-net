@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Input;
 
+/// <remarks>ID: 0x1300D000</remarks>
 [Class(0x1300D000)]
 public partial class CInputReplay : CMwNod, IClass
 {
@@ -75,6 +76,9 @@ public partial class CInputReplay : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CInputReplay 0x000 chunk
+    /// </summary>
     [Chunk(0x1300D000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 1, 1)]
     public partial class Chunk1300D000 : Chunk<CInputReplay>, IVersionable

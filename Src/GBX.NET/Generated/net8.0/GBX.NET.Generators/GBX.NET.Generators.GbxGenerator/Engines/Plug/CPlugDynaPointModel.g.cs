@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090D7000</remarks>
 [Class(0x090D7000)]
 public partial class CPlugDynaPointModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

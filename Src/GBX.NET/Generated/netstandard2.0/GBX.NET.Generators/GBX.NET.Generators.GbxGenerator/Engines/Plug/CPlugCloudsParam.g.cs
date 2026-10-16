@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09182000</remarks>
 [Class(0x09182000)]
 public partial class CPlugCloudsParam : CMwNod, IClass
 {
@@ -124,7 +125,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy cloud settings
+    /// CPlugCloudsParam 0x000 chunk (legacy cloud settings)
     /// </summary>
     [Chunk(0x09182000, "legacy cloud settings")]
     public partial class Chunk09182000 : Chunk<CPlugCloudsParam>
@@ -148,7 +149,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// distance and height pairs
+    /// CPlugCloudsParam 0x001 chunk (distance and height pairs)
     /// </summary>
     [Chunk(0x09182001, "distance and height pairs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -169,7 +170,7 @@ public partial class CPlugCloudsParam : CMwNod, IClass
     }
 
     /// <summary>
-    /// cloud settings
+    /// CPlugCloudsParam 0x002 chunk (cloud settings)
     /// </summary>
     [Chunk(0x09182002, "cloud settings")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]

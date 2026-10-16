@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05031000</remarks>
 [Class(0x05031000)]
 public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
 {
@@ -82,6 +83,9 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
     {
     }
 
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x000 chunk
+    /// </summary>
     [Chunk(0x05031000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk05031000 : Chunk<CFuncTreeSubVisualSequence>
@@ -100,6 +104,9 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x001 chunk
+    /// </summary>
     [Chunk(0x05031001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05031001 : Chunk<CFuncTreeSubVisualSequence>
@@ -120,6 +127,9 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x002 chunk
+    /// </summary>
     [Chunk(0x05031002)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05031002 : Chunk<CFuncTreeSubVisualSequence>
@@ -138,6 +148,9 @@ public partial class CFuncTreeSubVisualSequence : CFuncTree, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x003 chunk
+    /// </summary>
     [Chunk(0x05031003)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk05031003 : Chunk<CFuncTreeSubVisualSequence>

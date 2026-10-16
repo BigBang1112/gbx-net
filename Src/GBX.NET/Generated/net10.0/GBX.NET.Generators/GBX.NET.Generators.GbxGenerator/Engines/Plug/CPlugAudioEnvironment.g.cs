@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09039000</remarks>
 [Class(0x09039000)]
 public partial class CPlugAudioEnvironment : CPlugAudio, IClass
 {
@@ -572,7 +573,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     /// <summary>
-    /// Legacy EAX parameters
+    /// CPlugAudioEnvironment 0x000 chunk (Legacy EAX parameters)
     /// </summary>
     [Chunk(0x09039000, "Legacy EAX parameters")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -621,7 +622,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     /// <summary>
-    /// DopplerFactor
+    /// CPlugAudioEnvironment 0x001 chunk (DopplerFactor)
     /// </summary>
     [Chunk(0x09039001, "DopplerFactor")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -642,7 +643,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     /// <summary>
-    /// Reverb parameters
+    /// CPlugAudioEnvironment 0x002 chunk (Reverb parameters)
     /// </summary>
     [Chunk(0x09039002, "Reverb parameters")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -683,7 +684,7 @@ public partial class CPlugAudioEnvironment : CPlugAudio, IClass
     }
 
     /// <summary>
-    /// Room effect and low-pass gains
+    /// CPlugAudioEnvironment 0x004 chunk (Room effect and low-pass gains)
     /// </summary>
     [Chunk(0x09039004, "Room effect and low-pass gains")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 3, 3, 3)]

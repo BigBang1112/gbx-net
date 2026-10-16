@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E6000</remarks>
 [Class(0x090E6000)]
 public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
 {
@@ -340,7 +341,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy single model and translation
+    /// CPlugVehicleVisEmitterModel 0x000 chunk (Legacy single model and translation)
     /// </summary>
     [Chunk(0x090E6000, "Legacy single model and translation")]
     public partial class Chunk090E6000 : Chunk<CPlugVehicleVisEmitterModel>
@@ -383,7 +384,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy single model and transform
+    /// CPlugVehicleVisEmitterModel 0x001 chunk (Legacy single model and transform)
     /// </summary>
     [Chunk(0x090E6001, "Legacy single model and transform")]
     public partial class Chunk090E6001 : Chunk<CPlugVehicleVisEmitterModel>
@@ -426,7 +427,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// OrientWithVelocity
+    /// CPlugVehicleVisEmitterModel 0x002 chunk (OrientWithVelocity)
     /// </summary>
     [Chunk(0x090E6002, "OrientWithVelocity")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -447,7 +448,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Position and rotation
+    /// CPlugVehicleVisEmitterModel 0x003 chunk (Position and rotation)
     /// </summary>
     [Chunk(0x090E6003, "Position and rotation")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -469,7 +470,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Quality models and emission settings
+    /// CPlugVehicleVisEmitterModel 0x004 chunk (Quality models and emission settings)
     /// </summary>
     [Chunk(0x090E6004, "Quality models and emission settings")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -512,7 +513,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// OnlyWhenAllWheelsSliding
+    /// CPlugVehicleVisEmitterModel 0x005 chunk (OnlyWhenAllWheelsSliding)
     /// </summary>
     [Chunk(0x090E6005, "OnlyWhenAllWheelsSliding")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -533,7 +534,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// ParticleEmitterModelShoot
+    /// CPlugVehicleVisEmitterModel 0x006 chunk (ParticleEmitterModelShoot)
     /// </summary>
     [Chunk(0x090E6006, "ParticleEmitterModelShoot")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -554,7 +555,7 @@ public partial class CPlugVehicleVisEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Additional emission flag
+    /// CPlugVehicleVisEmitterModel 0x007 chunk (Additional emission flag)
     /// </summary>
     [Chunk(0x090E6007, "Additional emission flag")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]

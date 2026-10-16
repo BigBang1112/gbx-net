@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0907A000</remarks>
 [Class(0x0907A000)]
 public abstract partial class CPlugMaterialFx : CPlug, IClass
 {

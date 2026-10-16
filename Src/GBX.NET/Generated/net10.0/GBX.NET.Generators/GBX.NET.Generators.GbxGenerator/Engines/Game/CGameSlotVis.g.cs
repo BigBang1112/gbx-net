@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x032E3000</remarks>
 [Class(0x032E3000)]
 public partial class CGameSlotVis : CMwNod, IClass
 {

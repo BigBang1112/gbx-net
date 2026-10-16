@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09103000</remarks>
 [Class(0x09103000)]
 public partial class CPlugCustomBulletModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

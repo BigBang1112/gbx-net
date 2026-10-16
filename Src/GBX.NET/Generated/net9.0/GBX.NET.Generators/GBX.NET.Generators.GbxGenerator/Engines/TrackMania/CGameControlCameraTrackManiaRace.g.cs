@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x24085000</remarks>
 [Class(0x24085000)]
 public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget, IClass
 {
@@ -144,6 +145,9 @@ public partial class CGameControlCameraTrackManiaRace : CGameControlCameraTarget
     {
     }
 
+    /// <summary>
+    /// CGameControlCameraTrackManiaRace 0x000 chunk
+    /// </summary>
     [Chunk(0x24085000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk24085000 : Chunk<CGameControlCameraTrackManiaRace>

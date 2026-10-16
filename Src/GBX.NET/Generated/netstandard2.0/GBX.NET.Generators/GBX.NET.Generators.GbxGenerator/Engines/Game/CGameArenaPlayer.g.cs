@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x032CB000</remarks>
 [Class(0x032CB000)]
 public partial class CGameArenaPlayer : CMwNod, IClass
 {

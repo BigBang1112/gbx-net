@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03055000</remarks>
 [Class(0x03055000)]
 public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
 {
@@ -81,6 +82,9 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnBlockInfoPylon 0x000 chunk
+    /// </summary>
     [Chunk(0x03055000)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk03055000 : Chunk<CGameCtnBlockInfoPylon>
@@ -143,6 +147,9 @@ public partial class CGameCtnBlockInfoPylon : CGameCtnBlockInfo, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnBlockInfoPylon 0x002 chunk
+    /// </summary>
     [Chunk(0x03055002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03055002 : Chunk<CGameCtnBlockInfoPylon>

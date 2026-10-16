@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09041000</remarks>
 [Class(0x09041000)]
 public partial class CPlugFileText : CPlugFile, IClass, IReadableWritable, IReadable, IWritable
 {

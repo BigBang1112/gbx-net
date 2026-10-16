@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0917D000</remarks>
 [Class(0x0917D000)]
 public partial class CPlugMaterialWaterArray : CMwNod, IClass
 {

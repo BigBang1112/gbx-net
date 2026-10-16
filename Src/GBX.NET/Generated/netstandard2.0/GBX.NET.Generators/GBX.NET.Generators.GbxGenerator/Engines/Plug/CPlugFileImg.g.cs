@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09025000</remarks>
 [Class(0x09025000)]
 public abstract partial class CPlugFileImg : CPlugFile, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08034000</remarks>
 [Class(0x08034000)]
 public partial class CMotionPlayer : CMotion, IClass
 {
@@ -139,6 +140,9 @@ public partial class CMotionPlayer : CMotion, IClass
         ((CMotionPlayer)clone).isPhysics = context.Clone(this.isPhysics)!;
     }
 
+    /// <summary>
+    /// CMotionPlayer 0x000 chunk
+    /// </summary>
     [Chunk(0x08034000)]
     public partial class Chunk08034000 : Chunk<CMotionPlayer>
     {
@@ -160,6 +164,9 @@ public partial class CMotionPlayer : CMotion, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionPlayer 0x001 chunk
+    /// </summary>
     [Chunk(0x08034001)]
     public partial class Chunk08034001 : Chunk08034000
     {
@@ -177,6 +184,9 @@ public partial class CMotionPlayer : CMotion, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionPlayer 0x002 chunk
+    /// </summary>
     [Chunk(0x08034002)]
     public partial class Chunk08034002 : Chunk08034003
     {
@@ -194,6 +204,9 @@ public partial class CMotionPlayer : CMotion, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionPlayer 0x003 chunk
+    /// </summary>
     [Chunk(0x08034003)]
     public partial class Chunk08034003 : Chunk<CMotionPlayer>
     {
@@ -226,6 +239,9 @@ public partial class CMotionPlayer : CMotion, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionPlayer 0x004 chunk
+    /// </summary>
     [Chunk(0x08034004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk08034004 : Chunk<CMotionPlayer>

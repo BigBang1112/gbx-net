@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09135000</remarks>
 [Class(0x09135000)]
 public partial class CPlugAnimClip : CMwNod, IClass
 {
@@ -107,7 +108,7 @@ public partial class CPlugAnimClip : CMwNod, IClass
     }
 
     /// <summary>
-    /// animation clip
+    /// CPlugAnimClip 0x000 chunk (animation clip)
     /// </summary>
     [Chunk(0x09135000, "animation clip")]
     [ChunkGameVersion(GameVersion.TM2020, 3)]

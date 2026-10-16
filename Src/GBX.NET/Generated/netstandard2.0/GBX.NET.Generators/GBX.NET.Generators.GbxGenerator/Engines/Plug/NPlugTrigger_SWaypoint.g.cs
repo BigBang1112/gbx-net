@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09178000</remarks>
 [Class(0x09178000)]
 public partial class NPlugTrigger_SWaypoint : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

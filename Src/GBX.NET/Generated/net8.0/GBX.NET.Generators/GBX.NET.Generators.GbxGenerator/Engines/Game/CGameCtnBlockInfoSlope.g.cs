@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03054000</remarks>
 [Class(0x03054000)]
 public partial class CGameCtnBlockInfoSlope : CGameCtnBlockInfo, IClass
 {

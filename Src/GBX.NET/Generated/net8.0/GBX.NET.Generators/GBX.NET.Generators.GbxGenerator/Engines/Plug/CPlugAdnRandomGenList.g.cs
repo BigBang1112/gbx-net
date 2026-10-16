@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09157000</remarks>
 [Class(0x09157000)]
 public partial class CPlugAdnRandomGenList : CMwNod, IClass
 {
@@ -72,7 +73,7 @@ public partial class CPlugAdnRandomGenList : CMwNod, IClass
     }
 
     /// <summary>
-    /// random generators
+    /// CPlugAdnRandomGenList 0x000 chunk (random generators)
     /// </summary>
     [Chunk(0x09157000, "random generators")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]

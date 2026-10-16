@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09106000</remarks>
 [Class(0x09106000)]
 public partial class CPlugProbe : CPlug, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugProbe : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugProbe 0x000 chunk
+    /// </summary>
     [Chunk(0x09106000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09106000 : Chunk<CPlugProbe>

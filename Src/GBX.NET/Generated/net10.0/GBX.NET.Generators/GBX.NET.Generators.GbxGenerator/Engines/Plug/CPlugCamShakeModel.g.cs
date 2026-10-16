@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0910B000</remarks>
 [Class(0x0910B000)]
 public partial class CPlugCamShakeModel : CMwNod, IClass
 {
@@ -55,7 +56,7 @@ public partial class CPlugCamShakeModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// camera shake parameters
+    /// CPlugCamShakeModel 0x000 chunk (camera shake parameters)
     /// </summary>
     [Chunk(0x0910B000, "camera shake parameters")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 3)]

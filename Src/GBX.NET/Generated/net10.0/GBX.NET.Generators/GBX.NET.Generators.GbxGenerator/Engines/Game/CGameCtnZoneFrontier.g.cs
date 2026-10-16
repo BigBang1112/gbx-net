@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0305E000</remarks>
 [Class(0x0305E000)]
 public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
 {
@@ -147,6 +148,9 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnZoneFrontier 0x001 chunk
+    /// </summary>
     [Chunk(0x0305E001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E001 : Chunk<CGameCtnZoneFrontier>
@@ -167,6 +171,9 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFrontier 0x002 chunk
+    /// </summary>
     [Chunk(0x0305E002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E002 : Chunk<CGameCtnZoneFrontier>
@@ -188,6 +195,9 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFrontier 0x003 chunk
+    /// </summary>
     [Chunk(0x0305E003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E003 : Chunk<CGameCtnZoneFrontier>
@@ -207,6 +217,9 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFrontier 0x004 chunk
+    /// </summary>
     [Chunk(0x0305E004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E004 : Chunk0305E003
@@ -227,6 +240,9 @@ public partial class CGameCtnZoneFrontier : CGameCtnZone, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFrontier 0x005 skippable chunk
+    /// </summary>
     [Chunk(0x0305E005)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0305E005 : SkippableChunk<CGameCtnZoneFrontier>

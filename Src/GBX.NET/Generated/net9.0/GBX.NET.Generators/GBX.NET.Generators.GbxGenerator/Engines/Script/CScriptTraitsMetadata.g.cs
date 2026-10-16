@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Script;
 
+/// <remarks>ID: 0x11002000</remarks>
 [Class(0x11002000)]
 public partial class CScriptTraitsMetadata : CMwNod, IClass
 {
@@ -46,6 +47,9 @@ public partial class CScriptTraitsMetadata : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CScriptTraitsMetadata 0x000 chunk
+    /// </summary>
     [Chunk(0x11001000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk11001000 : Chunk11002000
@@ -59,6 +63,9 @@ public partial class CScriptTraitsMetadata : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CScriptTraitsMetadata 0x000 chunk
+    /// </summary>
     [Chunk(0x11002000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk11002000 : Chunk<CScriptTraitsMetadata>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E009000</remarks>
 [Class(0x2E009000)]
 public partial class CGameWaypointSpecialProperty : CMwNod, IClass
 {
@@ -81,6 +82,9 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameWaypointSpecialProperty 0x000 chunk
+    /// </summary>
     [Chunk(0x2E009000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>, IVersionable
@@ -113,6 +117,9 @@ public partial class CGameWaypointSpecialProperty : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameWaypointSpecialProperty 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x2E009001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09162000</remarks>
 [Class(0x09162000)]
 public partial class CPlugRoadChunkCitizen : CPlugRoadChunk, IClass
 {

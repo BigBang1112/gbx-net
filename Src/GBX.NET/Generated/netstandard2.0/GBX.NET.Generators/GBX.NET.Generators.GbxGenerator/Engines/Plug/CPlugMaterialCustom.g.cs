@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0903A000</remarks>
 [Class(0x0903A000)]
 public partial class CPlugMaterialCustom : CPlug, IClass
 {
@@ -82,6 +83,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x004 chunk
+    /// </summary>
     [Chunk(0x0903A004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A004 : Chunk<CPlugMaterialCustom>
@@ -102,6 +106,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x006 chunk
+    /// </summary>
     [Chunk(0x0903A006)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0903A006 : Chunk<CPlugMaterialCustom>
@@ -120,6 +127,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00A chunk
+    /// </summary>
     [Chunk(0x0903A00A)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A00A : Chunk<CPlugMaterialCustom>
@@ -145,6 +155,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00B chunk
+    /// </summary>
     [Chunk(0x0903A00B)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0903A00B : Chunk<CPlugMaterialCustom>
@@ -178,6 +191,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00C chunk
+    /// </summary>
     [Chunk(0x0903A00C)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A00C : Chunk<CPlugMaterialCustom>
@@ -196,6 +212,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00D chunk
+    /// </summary>
     [Chunk(0x0903A00D)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0903A00D : Chunk<CPlugMaterialCustom>
@@ -229,6 +248,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00F skippable chunk
+    /// </summary>
     [Chunk(0x0903A00F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A00F : SkippableChunk<CPlugMaterialCustom>, IVersionable
@@ -269,6 +291,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x010 chunk
+    /// </summary>
     [Chunk(0x0903A010)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0903A010 : Chunk<CPlugMaterialCustom>
@@ -309,6 +334,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x011 skippable chunk
+    /// </summary>
     [Chunk(0x0903A011)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A011 : SkippableChunk<CPlugMaterialCustom>
@@ -329,6 +357,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x012 chunk
+    /// </summary>
     [Chunk(0x0903A012)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A012 : Chunk<CPlugMaterialCustom>
@@ -369,6 +400,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x013 chunk
+    /// </summary>
     [Chunk(0x0903A013)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A013 : Chunk<CPlugMaterialCustom>, IVersionable
@@ -390,6 +424,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x014 chunk
+    /// </summary>
     [Chunk(0x0903A014)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A014 : Chunk<CPlugMaterialCustom>, IVersionable
@@ -413,6 +450,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x015 chunk
+    /// </summary>
     [Chunk(0x0903A015)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0903A015 : Chunk<CPlugMaterialCustom>, IVersionable
@@ -460,6 +500,9 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x016 chunk
+    /// </summary>
     [Chunk(0x0903A016)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk0903A016 : Chunk<CPlugMaterialCustom>, IVersionable

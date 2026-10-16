@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0915F000</remarks>
 [Class(0x0915F000)]
 public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {
@@ -148,7 +149,7 @@ public partial class CPlugDynaWaterModel : CMwNod, IClass, IReadableWritable, IR
     }
 
     /// <summary>
-    /// Water physics model
+    /// CPlugDynaWaterModel 0x000 chunk (Water physics model)
     /// </summary>
     [Chunk(0x0915F000, "Water physics model")]
     [ChunkGameVersion(GameVersion.TM2020, 3)]

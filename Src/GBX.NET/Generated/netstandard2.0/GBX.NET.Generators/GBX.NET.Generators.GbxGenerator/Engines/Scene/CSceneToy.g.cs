@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A012000</remarks>
 [Class(0x0A012000)]
 public partial class CSceneToy : CSceneMobil, IClass
 {

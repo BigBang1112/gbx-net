@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0915E000</remarks>
 [Class(0x0915E000)]
 public partial class CPlugMaterialColorTargetTable : CMwNod, IClass
 {

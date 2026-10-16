@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03161000</remarks>
 [Class(0x03161000)]
 public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -95,6 +96,9 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraEffectScript 0x000 chunk
+    /// </summary>
     [Chunk(0x03161000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03161000 : Chunk<CGameCtnMediaBlockCameraEffectScript>, IVersionable

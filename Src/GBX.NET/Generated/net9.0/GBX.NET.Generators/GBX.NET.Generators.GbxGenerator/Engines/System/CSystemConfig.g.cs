@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.System;
 
+/// <remarks>ID: 0x0B005000</remarks>
 [Class(0x0B005000)]
 public partial class CSystemConfig : CMwNod, IClass
 {
@@ -1871,7 +1872,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display resolution preset and quality
+    /// CSystemConfig 0x000 skippable chunk (legacy display resolution preset and quality)
     /// </summary>
     [Chunk(0x0B005000, "legacy display resolution preset and quality")]
     public partial class Chunk0B005000 : SkippableChunk<CSystemConfig>
@@ -1899,7 +1900,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy master-server credentials and network
+    /// CSystemConfig 0x001 skippable chunk (legacy master-server credentials and network)
     /// </summary>
     [Chunk(0x0B005001, "legacy master-server credentials and network")]
     public partial class Chunk0B005001 : SkippableChunk<CSystemConfig>
@@ -1927,7 +1928,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// MasterServerKey
+    /// CSystemConfig 0x002 skippable chunk (MasterServerKey)
     /// </summary>
     [Chunk(0x0B005002, "MasterServerKey")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -1948,7 +1949,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy audio limits
+    /// CSystemConfig 0x004 skippable chunk (legacy audio limits)
     /// </summary>
     [Chunk(0x0B005004, "legacy audio limits")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -1977,7 +1978,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy sea and boat visibility
+    /// CSystemConfig 0x005 skippable chunk (legacy sea and boat visibility)
     /// </summary>
     [Chunk(0x0B005005, "legacy sea and boat visibility")]
     public partial class Chunk0B005005 : SkippableChunk<CSystemConfig>
@@ -1998,7 +1999,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display resolution and quality
+    /// CSystemConfig 0x006 skippable chunk (legacy display resolution and quality)
     /// </summary>
     [Chunk(0x0B005006, "legacy display resolution and quality")]
     public partial class Chunk0B005006 : SkippableChunk<CSystemConfig>
@@ -2027,7 +2028,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy master server registration
+    /// CSystemConfig 0x007 skippable chunk (legacy master server registration)
     /// </summary>
     [Chunk(0x0B005007, "legacy master server registration")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2054,7 +2055,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// DesiredLanguageId
+    /// CSystemConfig 0x008 skippable chunk (DesiredLanguageId)
     /// </summary>
     [Chunk(0x0B005008, "DesiredLanguageId")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2075,7 +2076,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy strings
+    /// CSystemConfig 0x009 skippable chunk (legacy strings)
     /// </summary>
     [Chunk(0x0B005009, "legacy strings")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2113,7 +2114,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display shadow buffer
+    /// CSystemConfig 0x00A skippable chunk (legacy display shadow buffer)
     /// </summary>
     [Chunk(0x0B00500A, "legacy display shadow buffer")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2135,7 +2136,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy boat quality
+    /// CSystemConfig 0x00B skippable chunk (legacy boat quality)
     /// </summary>
     [Chunk(0x0B00500B, "legacy boat quality")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2157,7 +2158,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// IsIgnorePlayerSkins
+    /// CSystemConfig 0x00C skippable chunk (IsIgnorePlayerSkins)
     /// </summary>
     [Chunk(0x0B00500C, "IsIgnorePlayerSkins")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2178,7 +2179,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy master server credentials and connection
+    /// CSystemConfig 0x00D skippable chunk (legacy master server credentials and connection)
     /// </summary>
     [Chunk(0x0B00500D, "legacy master server credentials and connection")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2209,7 +2210,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponents
+    /// CSystemConfig 0x00E skippable chunk (legacy car quality and opponents)
     /// </summary>
     [Chunk(0x0B00500E, "legacy car quality and opponents")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2232,7 +2233,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy input dead zone and sensitivity
+    /// CSystemConfig 0x00F skippable chunk (legacy input dead zone and sensitivity)
     /// </summary>
     [Chunk(0x0B00500F, "legacy input dead zone and sensitivity")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -2254,7 +2255,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponents
+    /// CSystemConfig 0x010 skippable chunk (legacy car quality and opponents)
     /// </summary>
     [Chunk(0x0B005010, "legacy car quality and opponents")]
     public partial class Chunk0B005010 : SkippableChunk<CSystemConfig>
@@ -2276,7 +2277,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponents
+    /// CSystemConfig 0x011 skippable chunk (legacy car quality and opponents)
     /// </summary>
     [Chunk(0x0B005011, "legacy car quality and opponents")]
     public partial class Chunk0B005011 : SkippableChunk<CSystemConfig>
@@ -2298,7 +2299,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy master server registration
+    /// CSystemConfig 0x012 skippable chunk (legacy master server registration)
     /// </summary>
     [Chunk(0x0B005012, "legacy master server registration")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -2325,7 +2326,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponent shadows
+    /// CSystemConfig 0x013 skippable chunk (legacy car quality and opponent shadows)
     /// </summary>
     [Chunk(0x0B005013, "legacy car quality and opponent shadows")]
     public partial class Chunk0B005013 : SkippableChunk<CSystemConfig>
@@ -2348,7 +2349,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display GPU synchronization
+    /// CSystemConfig 0x014 skippable chunk (legacy display GPU synchronization)
     /// </summary>
     [Chunk(0x0B005014, "legacy display GPU synchronization")]
     public partial class Chunk0B005014 : Chunk0B00500A
@@ -2368,7 +2369,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display cursor emulation
+    /// CSystemConfig 0x015 skippable chunk (legacy display cursor emulation)
     /// </summary>
     [Chunk(0x0B005015, "legacy display cursor emulation")]
     public partial class Chunk0B005015 : Chunk0B005014
@@ -2388,7 +2389,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display settings
+    /// CSystemConfig 0x016 skippable chunk (legacy display settings)
     /// </summary>
     [Chunk(0x0B005016, "legacy display settings")]
     public partial class Chunk0B005016 : Chunk0B005015
@@ -2407,7 +2408,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display window size and quality
+    /// CSystemConfig 0x017 skippable chunk (legacy display window size and quality)
     /// </summary>
     [Chunk(0x0B005017, "legacy display window size and quality")]
     public partial class Chunk0B005017 : SkippableChunk<CSystemConfig>
@@ -2440,7 +2441,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display software vertex processing
+    /// CSystemConfig 0x018 skippable chunk (legacy display software vertex processing)
     /// </summary>
     [Chunk(0x0B005018, "legacy display software vertex processing")]
     public partial class Chunk0B005018 : Chunk0B005017
@@ -2460,7 +2461,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display vertex processing
+    /// CSystemConfig 0x019 skippable chunk (legacy display vertex processing)
     /// </summary>
     [Chunk(0x0B005019, "legacy display vertex processing")]
     public partial class Chunk0B005019 : Chunk0B005017
@@ -2480,7 +2481,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network avatar downloads
+    /// CSystemConfig 0x01A skippable chunk (legacy network avatar downloads)
     /// </summary>
     [Chunk(0x0B00501A, "legacy network avatar downloads")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -2502,7 +2503,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and dynamic geometry
+    /// CSystemConfig 0x01B skippable chunk (legacy car quality and dynamic geometry)
     /// </summary>
     [Chunk(0x0B00501B, "legacy car quality and dynamic geometry")]
     public partial class Chunk0B00501B : SkippableChunk<CSystemConfig>
@@ -2526,7 +2527,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and dynamic geometry
+    /// CSystemConfig 0x01C skippable chunk (legacy car quality and dynamic geometry)
     /// </summary>
     [Chunk(0x0B00501C, "legacy car quality and dynamic geometry")]
     public partial class Chunk0B00501C : SkippableChunk<CSystemConfig>
@@ -2550,7 +2551,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy player skins and rolling demo
+    /// CSystemConfig 0x01D skippable chunk (legacy player skins and rolling demo)
     /// </summary>
     [Chunk(0x0B00501D, "legacy player skins and rolling demo")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -2572,7 +2573,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponent shadows
+    /// CSystemConfig 0x01E skippable chunk (legacy car quality and opponent shadows)
     /// </summary>
     [Chunk(0x0B00501E, "legacy car quality and opponent shadows")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -2597,7 +2598,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display dynamic geometry
+    /// CSystemConfig 0x01F skippable chunk (legacy display dynamic geometry)
     /// </summary>
     [Chunk(0x0B00501F, "legacy display dynamic geometry")]
     public partial class Chunk0B00501F : Chunk0B005019
@@ -2617,7 +2618,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// safe mode and display settings
+    /// CSystemConfig 0x020 skippable chunk (safe mode and display settings)
     /// </summary>
     [Chunk(0x0B005020, "safe mode and display settings")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2639,7 +2640,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy input dead zone and sensitivity
+    /// CSystemConfig 0x021 skippable chunk (legacy input dead zone and sensitivity)
     /// </summary>
     [Chunk(0x0B005021, "legacy input dead zone and sensitivity")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -2662,7 +2663,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy input axes
+    /// CSystemConfig 0x022 skippable chunk (legacy input axes)
     /// </summary>
     [Chunk(0x0B005022, "legacy input axes")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -2686,7 +2687,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and locator URLs
+    /// CSystemConfig 0x023 skippable chunk (legacy file transfers and locator URLs)
     /// </summary>
     [Chunk(0x0B005023, "legacy file transfers and locator URLs")]
     public partial class Chunk0B005023 : SkippableChunk<CSystemConfig>
@@ -2709,7 +2710,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network master server address
+    /// CSystemConfig 0x024 skippable chunk (legacy network master server address)
     /// </summary>
     [Chunk(0x0B005024, "legacy network master server address")]
     public partial class Chunk0B005024 : SkippableChunk<CSystemConfig>
@@ -2736,7 +2737,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// AudioSpeakerConfig
+    /// CSystemConfig 0x025 skippable chunk (AudioSpeakerConfig)
     /// </summary>
     [Chunk(0x0B005025, "AudioSpeakerConfig")]
     public partial class Chunk0B005025 : SkippableChunk<CSystemConfig>
@@ -2755,7 +2756,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy audio quality
+    /// CSystemConfig 0x026 skippable chunk (legacy audio quality)
     /// </summary>
     [Chunk(0x0B005026, "legacy audio quality")]
     public partial class Chunk0B005026 : SkippableChunk<CSystemConfig>
@@ -2780,7 +2781,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network flag
+    /// CSystemConfig 0x027 skippable chunk (legacy network flag)
     /// </summary>
     [Chunk(0x0B005027, "legacy network flag")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
@@ -2803,7 +2804,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy audio quality and speakers
+    /// CSystemConfig 0x028 skippable chunk (legacy audio quality and speakers)
     /// </summary>
     [Chunk(0x0B005028, "legacy audio quality and speakers")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -2832,7 +2833,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and locator updates
+    /// CSystemConfig 0x029 skippable chunk (legacy file transfers and locator updates)
     /// </summary>
     [Chunk(0x0B005029, "legacy file transfers and locator updates")]
     public partial class Chunk0B005029 : SkippableChunk<CSystemConfig>
@@ -2856,7 +2857,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and locators
+    /// CSystemConfig 0x02A skippable chunk (legacy file transfers and locators)
     /// </summary>
     [Chunk(0x0B00502A, "legacy file transfers and locators")]
     public partial class Chunk0B00502A : SkippableChunk<CSystemConfig>
@@ -2881,7 +2882,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// advertising
+    /// CSystemConfig 0x02B skippable chunk (advertising)
     /// </summary>
     [Chunk(0x0B00502B, "advertising")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2904,7 +2905,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponent limit
+    /// CSystemConfig 0x02C skippable chunk (legacy car quality and opponent limit)
     /// </summary>
     [Chunk(0x0B00502C, "legacy car quality and opponent limit")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
@@ -2930,7 +2931,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network connection
+    /// CSystemConfig 0x02D skippable chunk (legacy network connection)
     /// </summary>
     [Chunk(0x0B00502D, "legacy network connection")]
     public partial class Chunk0B00502D : SkippableChunk<CSystemConfig>
@@ -2956,7 +2957,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and crash logs
+    /// CSystemConfig 0x02E skippable chunk (legacy file transfers and crash logs)
     /// </summary>
     [Chunk(0x0B00502E, "legacy file transfers and crash logs")]
     public partial class Chunk0B00502E : SkippableChunk<CSystemConfig>
@@ -2982,7 +2983,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and crash logs
+    /// CSystemConfig 0x02F skippable chunk (legacy file transfers and crash logs)
     /// </summary>
     [Chunk(0x0B00502F, "legacy file transfers and crash logs")]
     public partial class Chunk0B00502F : SkippableChunk<CSystemConfig>
@@ -3011,7 +3012,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy file transfers and crash logs
+    /// CSystemConfig 0x030 skippable chunk (legacy file transfers and crash logs)
     /// </summary>
     [Chunk(0x0B005030, "legacy file transfers and crash logs")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -3056,7 +3057,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network UPnP
+    /// CSystemConfig 0x031 skippable chunk (legacy network UPnP)
     /// </summary>
     [Chunk(0x0B005031, "legacy network UPnP")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX)]
@@ -3085,7 +3086,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network P2P port
+    /// CSystemConfig 0x032 skippable chunk (legacy network P2P port)
     /// </summary>
     [Chunk(0x0B005032, "legacy network P2P port")]
     public partial class Chunk0B005032 : SkippableChunk<CSystemConfig>
@@ -3113,7 +3114,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and opponent limit
+    /// CSystemConfig 0x033 skippable chunk (legacy car quality and opponent limit)
     /// </summary>
     [Chunk(0x0B005033, "legacy car quality and opponent limit")]
     public partial class Chunk0B005033 : SkippableChunk<CSystemConfig>
@@ -3137,7 +3138,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy car quality and background
+    /// CSystemConfig 0x034 skippable chunk (legacy car quality and background)
     /// </summary>
     [Chunk(0x0B005034, "legacy car quality and background")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -3164,7 +3165,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy internet connection test
+    /// CSystemConfig 0x035 skippable chunk (legacy internet connection test)
     /// </summary>
     [Chunk(0x0B005035, "legacy internet connection test")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -3188,7 +3189,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network server broadcast
+    /// CSystemConfig 0x036 skippable chunk (legacy network server broadcast)
     /// </summary>
     [Chunk(0x0B005036, "legacy network server broadcast")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
@@ -3219,7 +3220,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy installation key
+    /// CSystemConfig 0x037 skippable chunk (legacy installation key)
     /// </summary>
     [Chunk(0x0B005037, "legacy installation key")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
@@ -3240,7 +3241,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy profile ID
+    /// CSystemConfig 0x038 skippable chunk (legacy profile ID)
     /// </summary>
     [Chunk(0x0B005038, "legacy profile ID")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
@@ -3262,7 +3263,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network transfer rates
+    /// CSystemConfig 0x039 skippable chunk (legacy network transfer rates)
     /// </summary>
     [Chunk(0x0B005039, "legacy network transfer rates")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -3294,7 +3295,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// launcher settings
+    /// CSystemConfig 0x03A skippable chunk (launcher settings)
     /// </summary>
     [Chunk(0x0B00503A, "launcher settings")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3340,7 +3341,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy versioned audio device
+    /// CSystemConfig 0x03B skippable chunk (legacy versioned audio device)
     /// </summary>
     [Chunk(0x0B00503B, "legacy versioned audio device")]
     public partial class Chunk0B00503B : SkippableChunk<CSystemConfig>, IVersionable
@@ -3377,7 +3378,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// PlayerInfoDisplaySize
+    /// CSystemConfig 0x03C skippable chunk (PlayerInfoDisplaySize)
     /// </summary>
     [Chunk(0x0B00503C, "PlayerInfoDisplaySize")]
     public partial class Chunk0B00503C : SkippableChunk<CSystemConfig>
@@ -3396,7 +3397,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy player display size
+    /// CSystemConfig 0x03D skippable chunk (legacy player display size)
     /// </summary>
     [Chunk(0x0B00503D, "legacy player display size")]
     public partial class Chunk0B00503D : SkippableChunk<CSystemConfig>
@@ -3420,7 +3421,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// parental lock
+    /// CSystemConfig 0x03E skippable chunk (parental lock)
     /// </summary>
     [Chunk(0x0B00503E, "parental lock")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3442,7 +3443,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy encrypted key
+    /// CSystemConfig 0x03F skippable chunk (legacy encrypted key)
     /// </summary>
     [Chunk(0x0B00503F, "legacy encrypted key")]
     public partial class Chunk0B00503F : SkippableChunk<CSystemConfig>
@@ -3461,7 +3462,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy input rumble
+    /// CSystemConfig 0x040 skippable chunk (legacy input rumble)
     /// </summary>
     [Chunk(0x0B005040, "legacy input rumble")]
     public partial class Chunk0B005040 : SkippableChunk<CSystemConfig>
@@ -3482,7 +3483,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// MenuSkin
+    /// CSystemConfig 0x041 skippable chunk (MenuSkin)
     /// </summary>
     [Chunk(0x0B005041, "MenuSkin")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3503,7 +3504,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy master server addresses
+    /// CSystemConfig 0x043 skippable chunk (legacy master server addresses)
     /// </summary>
     [Chunk(0x0B005043, "legacy master server addresses")]
     public partial class Chunk0B005043 : SkippableChunk<CSystemConfig>
@@ -3527,7 +3528,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy firewall checksums
+    /// CSystemConfig 0x044 skippable chunk (legacy firewall checksums)
     /// </summary>
     [Chunk(0x0B005044, "legacy firewall checksums")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3551,7 +3552,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// input axes and rumble
+    /// CSystemConfig 0x045 skippable chunk (input axes and rumble)
     /// </summary>
     [Chunk(0x0B005045, "input axes and rumble")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -3575,7 +3576,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy encrypted key and installation
+    /// CSystemConfig 0x046 skippable chunk (legacy encrypted key and installation)
     /// </summary>
     [Chunk(0x0B005046, "legacy encrypted key and installation")]
     public partial class Chunk0B005046 : SkippableChunk<CSystemConfig>
@@ -3597,7 +3598,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy game flag
+    /// CSystemConfig 0x047 skippable chunk (legacy game flag)
     /// </summary>
     [Chunk(0x0B005047, "legacy game flag")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3620,7 +3621,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// profile settings
+    /// CSystemConfig 0x048 skippable chunk (profile settings)
     /// </summary>
     [Chunk(0x0B005048, "profile settings")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3642,7 +3643,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy game timestamp
+    /// CSystemConfig 0x049 skippable chunk (legacy game timestamp)
     /// </summary>
     [Chunk(0x0B005049, "legacy game timestamp")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3665,7 +3666,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// player skins and display
+    /// CSystemConfig 0x04A skippable chunk (player skins and display)
     /// </summary>
     [Chunk(0x0B00504A, "player skins and display")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3692,7 +3693,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy encrypted key and installation
+    /// CSystemConfig 0x04B skippable chunk (legacy encrypted key and installation)
     /// </summary>
     [Chunk(0x0B00504B, "legacy encrypted key and installation")]
     public partial class Chunk0B00504B : SkippableChunk<CSystemConfig>
@@ -3723,7 +3724,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy installation flags
+    /// CSystemConfig 0x04C skippable chunk (legacy installation flags)
     /// </summary>
     [Chunk(0x0B00504C, "legacy installation flags")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3762,7 +3763,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy encrypted key and installation
+    /// CSystemConfig 0x04D skippable chunk (legacy encrypted key and installation)
     /// </summary>
     [Chunk(0x0B00504D, "legacy encrypted key and installation")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -3792,7 +3793,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy key hashes
+    /// CSystemConfig 0x04E skippable chunk (legacy key hashes)
     /// </summary>
     [Chunk(0x0B00504E, "legacy key hashes")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
@@ -3813,7 +3814,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// audio device and quality
+    /// CSystemConfig 0x04F skippable chunk (audio device and quality)
     /// </summary>
     [Chunk(0x0B00504F, "audio device and quality")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3846,7 +3847,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// EdDontConnect
+    /// CSystemConfig 0x050 skippable chunk (EdDontConnect)
     /// </summary>
     [Chunk(0x0B005050, "EdDontConnect")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3867,7 +3868,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// network string
+    /// CSystemConfig 0x051 skippable chunk (network string)
     /// </summary>
     [Chunk(0x0B005051, "network string")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3890,7 +3891,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// car quality and player visibility
+    /// CSystemConfig 0x052 skippable chunk (car quality and player visibility)
     /// </summary>
     [Chunk(0x0B005052, "car quality and player visibility")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3917,7 +3918,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// AudioSoundHdr
+    /// CSystemConfig 0x053 skippable chunk (AudioSoundHdr)
     /// </summary>
     [Chunk(0x0B005053, "AudioSoundHdr")]
     public partial class Chunk0B005053 : SkippableChunk<CSystemConfig>
@@ -3936,7 +3937,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// file transfers and crash logs
+    /// CSystemConfig 0x054 skippable chunk (file transfers and crash logs)
     /// </summary>
     [Chunk(0x0B005054, "file transfers and crash logs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -3981,7 +3982,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// encrypted key and installation
+    /// CSystemConfig 0x055 skippable chunk (encrypted key and installation)
     /// </summary>
     [Chunk(0x0B005055, "encrypted key and installation")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -4027,7 +4028,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// audio HRTF and HDR
+    /// CSystemConfig 0x056 skippable chunk (audio HRTF and HDR)
     /// </summary>
     [Chunk(0x0B005056, "audio HRTF and HDR")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -4073,7 +4074,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy network speed
+    /// CSystemConfig 0x057 skippable chunk (legacy network speed)
     /// </summary>
     [Chunk(0x0B005057, "legacy network speed")]
     public partial class Chunk0B005057 : SkippableChunk<CSystemConfig>
@@ -4108,7 +4109,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// GamePackQuality
+    /// CSystemConfig 0x058 skippable chunk (GamePackQuality)
     /// </summary>
     [Chunk(0x0B005058, "GamePackQuality")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -4129,7 +4130,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// file transfers by content type
+    /// CSystemConfig 0x059 skippable chunk (file transfers by content type)
     /// </summary>
     [Chunk(0x0B005059, "file transfers by content type")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -4170,7 +4171,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// replay recording and capture settings
+    /// CSystemConfig 0x05A skippable chunk (replay recording and capture settings)
     /// </summary>
     [Chunk(0x0B00505A, "replay recording and capture settings")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -4221,7 +4222,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// anti-cheat and bad-word URLs
+    /// CSystemConfig 0x05B skippable chunk (anti-cheat and bad-word URLs)
     /// </summary>
     [Chunk(0x0B00505B, "anti-cheat and bad-word URLs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 2)]
@@ -4271,7 +4272,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// SmMaxPlayerResimStepPerFrame
+    /// CSystemConfig 0x05C skippable chunk (SmMaxPlayerResimStepPerFrame)
     /// </summary>
     [Chunk(0x0B00505C, "SmMaxPlayerResimStepPerFrame")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
@@ -4312,7 +4313,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// InstallUid
+    /// CSystemConfig 0x05D skippable chunk (InstallUid)
     /// </summary>
     [Chunk(0x0B00505D, "InstallUid")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 0, 0, 0)]
@@ -4353,7 +4354,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// network speed and firewall tests
+    /// CSystemConfig 0x05E skippable chunk (network speed and firewall tests)
     /// </summary>
     [Chunk(0x0B00505E, "network speed and firewall tests")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
@@ -4410,7 +4411,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// proxy URL
+    /// CSystemConfig 0x05F skippable chunk (proxy URL)
     /// </summary>
     [Chunk(0x0B00505F, "proxy URL")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -4432,7 +4433,7 @@ public partial class CSystemConfig : CMwNod, IClass
     }
 
     /// <summary>
-    /// input joysticks
+    /// CSystemConfig 0x060 skippable chunk (input joysticks)
     /// </summary>
     [Chunk(0x0B005060, "input joysticks")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]

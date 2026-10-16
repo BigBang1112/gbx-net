@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A004000</remarks>
 [Class(0x0A004000)]
 public partial class CSceneSector : CMwNod, IClass
 {
@@ -77,6 +78,9 @@ public partial class CSceneSector : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneSector 0x000 chunk
+    /// </summary>
     [Chunk(0x0A004000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A004000 : Chunk<CSceneSector>
@@ -96,6 +100,9 @@ public partial class CSceneSector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneSector 0x001 chunk
+    /// </summary>
     [Chunk(0x0A004001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A004001 : Chunk<CSceneSector>
@@ -116,6 +123,9 @@ public partial class CSceneSector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneSector 0x002 chunk
+    /// </summary>
     [Chunk(0x0A004002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A004002 : Chunk<CSceneSector>
@@ -136,6 +146,9 @@ public partial class CSceneSector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneSector 0x004 chunk
+    /// </summary>
     [Chunk(0x0A004004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A004004 : Chunk<CSceneSector>

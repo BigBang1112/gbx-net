@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03151000</remarks>
 [Class(0x03151000)]
 public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
 {
@@ -72,6 +73,9 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnZoneFusionInfo 0x000 chunk
+    /// </summary>
     [Chunk(0x03151000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03151000 : Chunk<CGameCtnZoneFusionInfo>
@@ -91,6 +95,9 @@ public partial class CGameCtnZoneFusionInfo : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnZoneFusionInfo 0x001 chunk
+    /// </summary>
     [Chunk(0x03151001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03151001 : Chunk<CGameCtnZoneFusionInfo>, IVersionable

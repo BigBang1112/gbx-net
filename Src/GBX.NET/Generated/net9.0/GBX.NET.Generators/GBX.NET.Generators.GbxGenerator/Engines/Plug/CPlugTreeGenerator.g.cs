@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09051000</remarks>
 [Class(0x09051000)]
 public partial class CPlugTreeGenerator : CPlug, IClass
 {
@@ -89,7 +90,7 @@ public partial class CPlugTreeGenerator : CPlug, IClass
     }
 
     /// <summary>
-    /// Flags
+    /// CPlugTreeGenerator 0x000 chunk (Flags)
     /// </summary>
     [Chunk(0x09051000, "Flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

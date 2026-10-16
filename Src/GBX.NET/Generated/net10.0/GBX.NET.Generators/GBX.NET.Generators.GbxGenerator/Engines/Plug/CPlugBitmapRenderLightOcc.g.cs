@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0909F000</remarks>
 [Class(0x0909F000)]
 public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
 {
@@ -88,6 +89,9 @@ public partial class CPlugBitmapRenderLightOcc : CPlugBitmapRender, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugBitmapRenderLightOcc 0x000 chunk
+    /// </summary>
     [Chunk(0x0909F000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0909F000 : Chunk<CPlugBitmapRenderLightOcc>

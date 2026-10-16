@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090D8000</remarks>
 [Class(0x090D8000)]
 public partial class CPlugFxLightning : CPlug, IClass
 {
@@ -68,6 +69,9 @@ public partial class CPlugFxLightning : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugFxLightning 0x000 chunk
+    /// </summary>
     [Chunk(0x090D8000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090D8000 : Chunk<CPlugFxLightning>, IVersionable

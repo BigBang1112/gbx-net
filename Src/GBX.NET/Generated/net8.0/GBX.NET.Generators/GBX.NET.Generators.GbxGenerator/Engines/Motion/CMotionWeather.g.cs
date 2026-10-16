@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08054000</remarks>
 [Class(0x08054000)]
 public partial class CMotionWeather : CMotionManaged, IClass
 {
@@ -68,6 +69,9 @@ public partial class CMotionWeather : CMotionManaged, IClass
     {
     }
 
+    /// <summary>
+    /// CMotionWeather 0x000 chunk
+    /// </summary>
     [Chunk(0x08054000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk08054000 : Chunk<CMotionWeather>

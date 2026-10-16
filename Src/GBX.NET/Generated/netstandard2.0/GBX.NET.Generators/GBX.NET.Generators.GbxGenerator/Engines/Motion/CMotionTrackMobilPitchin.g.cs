@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08041000</remarks>
 [Class(0x08041000)]
 public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
 {
@@ -140,6 +141,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
     {
     }
 
+    /// <summary>
+    /// CMotionTrackMobilPitchin 0x000 chunk
+    /// </summary>
     [Chunk(0x08041000)]
     public partial class Chunk08041000 : Chunk<CMotionTrackMobilPitchin>
     {
@@ -159,6 +163,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionTrackMobilPitchin 0x001 chunk
+    /// </summary>
     [Chunk(0x08041001)]
     public partial class Chunk08041001 : Chunk<CMotionTrackMobilPitchin>
     {
@@ -179,6 +186,9 @@ public partial class CMotionTrackMobilPitchin : CMotionTrack, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionTrackMobilPitchin 0x002 chunk
+    /// </summary>
     [Chunk(0x08041002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk08041002 : Chunk<CMotionTrackMobilPitchin>

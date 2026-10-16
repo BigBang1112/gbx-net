@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09145000</remarks>
 [Class(0x09145000)]
 public partial class CPlugPrefab : CMwNod, IClass
 {

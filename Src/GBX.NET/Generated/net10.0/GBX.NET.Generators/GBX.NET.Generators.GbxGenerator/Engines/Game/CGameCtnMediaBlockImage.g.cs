@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030A5000</remarks>
 [Class(0x030A5000)]
 public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
 {
@@ -77,6 +78,9 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockImage 0x000 chunk
+    /// </summary>
     [Chunk(0x030A5000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk030A5000 : Chunk<CGameCtnMediaBlockImage>
@@ -96,6 +100,9 @@ public partial class CGameCtnMediaBlockImage : CGameCtnMediaBlock, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockImage 0x001 chunk
+    /// </summary>
     [Chunk(0x030A5001)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk030A5001 : Chunk<CGameCtnMediaBlockImage>

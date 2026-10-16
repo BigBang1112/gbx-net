@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090EF000</remarks>
 [Class(0x090EF000)]
 public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
 {
@@ -800,7 +801,7 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// legacy camera smoothing and response curves
+    /// CPlugVehicleCameraRace3Model 0x000 chunk (legacy camera smoothing and response curves)
     /// </summary>
     [Chunk(0x090EF000, "legacy camera smoothing and response curves")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
@@ -891,6 +892,9 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleCameraRace3Model 0x001 chunk
+    /// </summary>
     [Chunk(0x090EF001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF001 : Chunk<CPlugVehicleCameraRace3Model>
@@ -912,7 +916,7 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// look-at factor and field of view
+    /// CPlugVehicleCameraRace3Model 0x002 chunk (look-at factor and field of view)
     /// </summary>
     [Chunk(0x090EF002, "look-at factor and field of view")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -934,7 +938,7 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// wheel-plane tracking and fixed up direction
+    /// CPlugVehicleCameraRace3Model 0x003 chunk (wheel-plane tracking and fixed up direction)
     /// </summary>
     [Chunk(0x090EF003, "wheel-plane tracking and fixed up direction")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -955,6 +959,9 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleCameraRace3Model 0x004 chunk
+    /// </summary>
     [Chunk(0x090EF004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EF004 : Chunk<CPlugVehicleCameraRace3Model>
@@ -976,7 +983,7 @@ public partial class CPlugVehicleCameraRace3Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// camera smoothing and response curves
+    /// CPlugVehicleCameraRace3Model 0x005 chunk (camera smoothing and response curves)
     /// </summary>
     [Chunk(0x090EF005, "camera smoothing and response curves")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 8)]

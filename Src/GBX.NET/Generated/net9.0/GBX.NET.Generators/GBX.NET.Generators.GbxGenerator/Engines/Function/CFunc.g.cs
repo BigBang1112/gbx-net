@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05010000</remarks>
 [Class(0x05010000)]
 public abstract partial class CFunc : CMwNod, IClass
 {

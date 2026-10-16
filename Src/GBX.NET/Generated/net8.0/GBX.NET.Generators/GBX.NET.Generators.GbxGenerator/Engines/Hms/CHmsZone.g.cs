@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06004000</remarks>
 [Class(0x06004000)]
 public partial class CHmsZone : CMwNod, IClass
 {
@@ -204,7 +205,7 @@ public partial class CHmsZone : CMwNod, IClass
     }
 
     /// <summary>
-    /// GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.
+    /// CHmsZone 0x002 chunk (GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.)
     /// </summary>
     [Chunk(0x06004002, "GxFogGlobal::ArchiveFog writes 28 raw bytes and clears nonpersistent flag bits.")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -233,6 +234,9 @@ public partial class CHmsZone : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsZone 0x003 chunk
+    /// </summary>
     [Chunk(0x06004003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004003 : Chunk<CHmsZone>
@@ -257,6 +261,9 @@ public partial class CHmsZone : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsZone 0x005 chunk
+    /// </summary>
     [Chunk(0x06004005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004005 : Chunk<CHmsZone>
@@ -275,6 +282,9 @@ public partial class CHmsZone : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsZone 0x006 chunk
+    /// </summary>
     [Chunk(0x06004006)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk06004006 : Chunk<CHmsZone>
@@ -293,6 +303,9 @@ public partial class CHmsZone : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsZone 0x008 chunk
+    /// </summary>
     [Chunk(0x06004008)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06004008 : Chunk<CHmsZone>

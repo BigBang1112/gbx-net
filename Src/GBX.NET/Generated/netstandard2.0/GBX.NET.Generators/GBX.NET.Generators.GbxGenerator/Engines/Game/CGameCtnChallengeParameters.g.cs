@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Map parameters.
 /// </summary>
+/// <remarks>ID: 0x0305B000</remarks>
 [Class(0x0305B000)]
 public partial class CGameCtnChallengeParameters : CMwNod, IClass
 {
@@ -185,6 +186,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnChallengeParameters 0x000 chunk
+    /// </summary>
     [Chunk(0x0305B000)]
     public partial class Chunk0305B000 : Chunk<CGameCtnChallengeParameters>
     {
@@ -225,7 +229,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// Tip
+    /// CGameCtnChallengeParameters 0x001 chunk (Tip)
     /// </summary>
     [Chunk(0x0305B001, "Tip")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -248,6 +252,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallengeParameters 0x002 chunk
+    /// </summary>
     [Chunk(0x0305B002)]
     public partial class Chunk0305B002 : Chunk<CGameCtnChallengeParameters>
     {
@@ -311,6 +318,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallengeParameters 0x003 chunk
+    /// </summary>
     [Chunk(0x0305B003)]
     public partial class Chunk0305B003 : Chunk<CGameCtnChallengeParameters>
     {
@@ -345,7 +355,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// medals
+    /// CGameCtnChallengeParameters 0x004 chunk (medals)
     /// </summary>
     [Chunk(0x0305B004, "medals")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -371,6 +381,9 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnChallengeParameters 0x005 chunk
+    /// </summary>
     [Chunk(0x0305B005)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0305B005 : Chunk<CGameCtnChallengeParameters>
@@ -398,7 +411,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// items
+    /// CGameCtnChallengeParameters 0x006 chunk (items)
     /// </summary>
     [Chunk(0x0305B006, "items")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -419,7 +432,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// TimeLimit
+    /// CGameCtnChallengeParameters 0x007 chunk (TimeLimit)
     /// </summary>
     [Chunk(0x0305B007, "TimeLimit")]
     public partial class Chunk0305B007 : Chunk<CGameCtnChallengeParameters>
@@ -438,7 +451,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// stunts
+    /// CGameCtnChallengeParameters 0x008 chunk (stunts)
     /// </summary>
     [Chunk(0x0305B008, "stunts")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -460,7 +473,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// tip and medals
+    /// CGameCtnChallengeParameters 0x00A skippable chunk (tip and medals)
     /// </summary>
     [Chunk(0x0305B00A, "tip and medals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -487,7 +500,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy validation ghosts
+    /// CGameCtnChallengeParameters 0x00B chunk (legacy validation ghosts)
     /// </summary>
     [Chunk(0x0305B00B, "legacy validation ghosts")]
     public partial class Chunk0305B00B : Chunk<CGameCtnChallengeParameters>
@@ -506,7 +519,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy map type and style
+    /// CGameCtnChallengeParameters 0x00C chunk (legacy map type and style)
     /// </summary>
     [Chunk(0x0305B00C, "legacy map type and style")]
     public partial class Chunk0305B00C : Chunk<CGameCtnChallengeParameters>, IVersionable
@@ -529,7 +542,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// RaceValidateGhost
+    /// CGameCtnChallengeParameters 0x00D chunk (RaceValidateGhost)
     /// </summary>
     [Chunk(0x0305B00D, "RaceValidateGhost")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -550,7 +563,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// map type
+    /// CGameCtnChallengeParameters 0x00E skippable chunk (map type)
     /// </summary>
     [Chunk(0x0305B00E, "map type")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -573,7 +586,7 @@ public partial class CGameCtnChallengeParameters : CMwNod, IClass
     }
 
     /// <summary>
-    /// encapsulated RaceValidateGhost
+    /// CGameCtnChallengeParameters 0x00F skippable chunk (encapsulated RaceValidateGhost)
     /// </summary>
     [Chunk(0x0305B00F, "encapsulated RaceValidateGhost")]
     [ChunkGameVersion(GameVersion.TM2020)]

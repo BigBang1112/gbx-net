@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09132000</remarks>
 [Class(0x09132000)]
 public partial class CPlugAnimSkelBaked : CMwNod, IClass
 {
@@ -150,7 +151,7 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     /// <summary>
-    /// baked animation
+    /// CPlugAnimSkelBaked 0x000 chunk (baked animation)
     /// </summary>
     [Chunk(0x09132000, "baked animation")]
     public partial class Chunk09132000 : Chunk<CPlugAnimSkelBaked>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09001000</remarks>
 [Class(0x09001000)]
 public abstract partial class CPlugAudio : CPlug, IClass
 {
@@ -63,6 +64,9 @@ public abstract partial class CPlugAudio : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugAudio 0x000 chunk
+    /// </summary>
     [Chunk(0x09001000)]
     public partial class Chunk09001000 : Chunk<CPlugAudio>
     {
@@ -79,6 +83,9 @@ public abstract partial class CPlugAudio : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugAudio 0x001 chunk
+    /// </summary>
     [Chunk(0x09001001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09001001 : Chunk<CPlugAudio>

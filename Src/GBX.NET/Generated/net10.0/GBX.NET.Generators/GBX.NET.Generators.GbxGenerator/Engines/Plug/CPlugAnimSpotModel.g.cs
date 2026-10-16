@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0913C000</remarks>
 [Class(0x0913C000)]
 public partial class CPlugAnimSpotModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

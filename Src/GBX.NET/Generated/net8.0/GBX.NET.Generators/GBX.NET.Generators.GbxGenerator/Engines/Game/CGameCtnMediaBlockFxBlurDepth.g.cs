@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03081000</remarks>
 [Class(0x03081000)]
 public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -86,6 +87,9 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxBlurDepth 0x000 chunk
+    /// </summary>
     [Chunk(0x03081000)]
     public partial class Chunk03081000 : Chunk<CGameCtnMediaBlockFxBlurDepth>
     {
@@ -103,6 +107,9 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, IClas
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxBlurDepth 0x001 chunk
+    /// </summary>
     [Chunk(0x03081001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>

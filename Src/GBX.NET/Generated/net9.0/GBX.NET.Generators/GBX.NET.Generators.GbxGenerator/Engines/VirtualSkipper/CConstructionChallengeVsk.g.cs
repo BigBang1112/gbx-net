@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.VirtualSkipper;
 
+/// <remarks>ID: 0x21080000</remarks>
 [Class(0x21080000)]
 public partial class CConstructionChallengeVsk : CGameCtnChallenge, IClass
 {

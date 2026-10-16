@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x0804D000</remarks>
 [Class(0x0804D000)]
 public partial class CMotionManagerLeaves : CMotionManager, IClass
 {
@@ -64,6 +65,9 @@ public partial class CMotionManagerLeaves : CMotionManager, IClass
         ((CMotionManagerLeaves)clone).mobilLeavesRef = context.Clone(this.mobilLeavesRef)!;
     }
 
+    /// <summary>
+    /// CMotionManagerLeaves 0x000 chunk
+    /// </summary>
     [Chunk(0x0804C000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0804C000 : Chunk<CMotionManagerLeaves>

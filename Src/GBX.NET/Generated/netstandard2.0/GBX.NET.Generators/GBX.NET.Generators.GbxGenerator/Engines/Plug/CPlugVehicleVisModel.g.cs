@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E7000</remarks>
 [Class(0x090E7000)]
 public partial class CPlugVehicleVisModel : CMwNod, IClass
 {
@@ -247,7 +248,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Shared model, sounds and geometry
+    /// CPlugVehicleVisModel 0x000 chunk (Shared model, sounds and geometry)
     /// </summary>
     [Chunk(0x090E7000, "Shared model, sounds and geometry")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 6, 9, 18)]
@@ -337,7 +338,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Sound events
+    /// CPlugVehicleVisModel 0x001 chunk (Sound events)
     /// </summary>
     [Chunk(0x090E7001, "Sound events")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 6, 6, 10)]
@@ -382,7 +383,7 @@ public partial class CPlugVehicleVisModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Impact sounds
+    /// CPlugVehicleVisModel 0x002 chunk (Impact sounds)
     /// </summary>
     [Chunk(0x090E7002, "Impact sounds")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 5, 5)]

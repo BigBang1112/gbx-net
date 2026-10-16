@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09140000</remarks>
 [Class(0x09140000)]
 public partial class CPlugAdnRandomGen : CMwNod, IClass
 {
@@ -50,7 +51,7 @@ public partial class CPlugAdnRandomGen : CMwNod, IClass
     }
 
     /// <summary>
-    /// random seed and tag sets
+    /// CPlugAdnRandomGen 0x000 chunk (random seed and tag sets)
     /// </summary>
     [Chunk(0x09140000, "random seed and tag sets")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 6)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04007000</remarks>
 [Class(0x04007000)]
 public partial class GxLightDirectional : GxLightNotAmbient, IClass
 {
@@ -128,6 +129,9 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
     {
     }
 
+    /// <summary>
+    /// GxLightDirectional 0x001 chunk
+    /// </summary>
     [Chunk(0x04007001)]
     public partial class Chunk04007001 : Chunk<GxLightDirectional>
     {
@@ -145,6 +149,9 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightDirectional 0x002 chunk
+    /// </summary>
     [Chunk(0x04007002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04007002 : Chunk04007001
@@ -165,6 +172,9 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightDirectional 0x003 chunk
+    /// </summary>
     [Chunk(0x04007003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04007003 : Chunk<GxLightDirectional>
@@ -183,6 +193,9 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightDirectional 0x004 chunk
+    /// </summary>
     [Chunk(0x04007004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04007004 : Chunk<GxLightDirectional>
@@ -202,6 +215,9 @@ public partial class GxLightDirectional : GxLightNotAmbient, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightDirectional 0x005 chunk
+    /// </summary>
     [Chunk(0x04007005)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04007005 : Chunk<GxLightDirectional>

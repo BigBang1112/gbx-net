@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0901A000</remarks>
 [Class(0x0901A000)]
 public partial class CPlugSound : CPlugAudio, IClass
 {
@@ -474,6 +475,9 @@ public partial class CPlugSound : CPlugAudio, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugSound 0x000 chunk
+    /// </summary>
     [Chunk(0x0901A000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A000 : Chunk<CPlugSound>
@@ -492,6 +496,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x002 chunk
+    /// </summary>
     [Chunk(0x0901A002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0901A002 : Chunk<CPlugSound>
@@ -512,6 +519,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x009 chunk
+    /// </summary>
     [Chunk(0x0901A009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0901A009 : Chunk<CPlugSound>
@@ -534,6 +544,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x00B chunk
+    /// </summary>
     [Chunk(0x0901A00B)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0901A00B : Chunk<CPlugSound>
@@ -556,6 +569,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x00C chunk
+    /// </summary>
     [Chunk(0x0901A00C)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0901A00C : Chunk<CPlugSound>
@@ -584,6 +600,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x00D chunk
+    /// </summary>
     [Chunk(0x0901A00D)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0901A00D : Chunk<CPlugSound>
@@ -606,6 +625,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x00E chunk
+    /// </summary>
     [Chunk(0x0901A00E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A00E : Chunk<CPlugSound>, IVersionable
@@ -673,6 +695,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x00F chunk
+    /// </summary>
     [Chunk(0x0901A00F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A00F : Chunk<CPlugSound>, IVersionable
@@ -769,6 +794,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x010 chunk
+    /// </summary>
     [Chunk(0x0901A010)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0901A010 : Chunk<CPlugSound>, IVersionable
@@ -790,6 +818,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x011 chunk
+    /// </summary>
     [Chunk(0x0901A011)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A011 : Chunk<CPlugSound>, IVersionable
@@ -814,6 +845,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x012 chunk
+    /// </summary>
     [Chunk(0x0901A012)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A012 : Chunk<CPlugSound>, IVersionable
@@ -835,6 +869,9 @@ public partial class CPlugSound : CPlugAudio, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSound 0x013 chunk
+    /// </summary>
     [Chunk(0x0901A013)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901A013 : Chunk<CPlugSound>, IVersionable

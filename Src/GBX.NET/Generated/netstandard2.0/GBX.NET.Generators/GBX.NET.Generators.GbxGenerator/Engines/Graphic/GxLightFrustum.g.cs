@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x0400A000</remarks>
 [Class(0x0400A000)]
 public partial class GxLightFrustum : GxLightBall, IClass
 {
@@ -97,6 +98,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         AttHTnLR2 = 0;
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x000 chunk
+    /// </summary>
     [Chunk(0x0400A000)]
     public partial class Chunk0400A000 : Chunk<GxLightFrustum>
     {
@@ -135,6 +139,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x001 chunk
+    /// </summary>
     [Chunk(0x0400A001)]
     public partial class Chunk0400A001 : Chunk<GxLightFrustum>
     {
@@ -152,6 +159,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x002 chunk
+    /// </summary>
     [Chunk(0x0400A002)]
     public partial class Chunk0400A002 : Chunk<GxLightFrustum>
     {
@@ -173,6 +183,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x003 chunk
+    /// </summary>
     [Chunk(0x0400A003)]
     public partial class Chunk0400A003 : Chunk0400A002
     {
@@ -217,6 +230,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x004 chunk
+    /// </summary>
     [Chunk(0x0400A004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0400A004 : Chunk0400A002
@@ -235,6 +251,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x005 chunk
+    /// </summary>
     [Chunk(0x0400A005)]
     public partial class Chunk0400A005 : Chunk<GxLightFrustum>
     {
@@ -256,6 +275,9 @@ public partial class GxLightFrustum : GxLightBall, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightFrustum 0x006 chunk
+    /// </summary>
     [Chunk(0x0400A006)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0400A006 : Chunk<GxLightFrustum>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030EA000</remarks>
 [Class(0x030EA000)]
 public partial class CGameCampaignPlayerScores : CMwNod, IClass
 {
@@ -63,6 +64,9 @@ public partial class CGameCampaignPlayerScores : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCampaignPlayerScores 0x001 chunk
+    /// </summary>
     [Chunk(0x030EA001)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk030EA001 : Chunk<CGameCampaignPlayerScores>

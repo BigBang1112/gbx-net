@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E9000</remarks>
 [Class(0x090E9000)]
 public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
 {
@@ -55,7 +56,7 @@ public partial class CPlugVehicleMaterialGroup : CMwNod, IClass
     }
 
     /// <summary>
-    /// MaterialIds
+    /// CPlugVehicleMaterialGroup 0x000 chunk (MaterialIds)
     /// </summary>
     [Chunk(0x090E9000, "MaterialIds")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

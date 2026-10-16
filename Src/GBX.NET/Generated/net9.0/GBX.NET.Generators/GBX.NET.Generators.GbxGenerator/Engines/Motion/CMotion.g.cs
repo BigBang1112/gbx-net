@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08001000</remarks>
 [Class(0x08001000)]
 public abstract partial class CMotion : CMwNod, IClass
 {
@@ -54,6 +55,9 @@ public abstract partial class CMotion : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CMotion 0x000 chunk
+    /// </summary>
     [Chunk(0x08001000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk08001000 : Chunk<CMotion>

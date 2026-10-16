@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03127000</remarks>
 [Class(0x03127000)]
 public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -60,6 +61,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x000 chunk
+    /// </summary>
     [Chunk(0x03127000)]
     public partial class Chunk03127000 : Chunk<CGameCtnMediaBlockToneMapping>
     {
@@ -76,6 +80,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x001 chunk
+    /// </summary>
     [Chunk(0x03127001)]
     public partial class Chunk03127001 : Chunk03127000
     {
@@ -92,6 +99,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x002 chunk
+    /// </summary>
     [Chunk(0x03127002)]
     public partial class Chunk03127002 : Chunk03127000
     {
@@ -108,6 +118,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x003 chunk
+    /// </summary>
     [Chunk(0x03127003)]
     public partial class Chunk03127003 : Chunk03127000
     {
@@ -124,6 +137,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x004 chunk
+    /// </summary>
     [Chunk(0x03127004)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03127004 : Chunk03127000

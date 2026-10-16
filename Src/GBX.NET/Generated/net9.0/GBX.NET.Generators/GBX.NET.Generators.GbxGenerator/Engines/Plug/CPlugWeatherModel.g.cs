@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090BF000</remarks>
 [Class(0x090BF000)]
 public partial class CPlugWeatherModel : CMwNod, IClass
 {
@@ -115,6 +116,9 @@ public partial class CPlugWeatherModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugWeatherModel 0x001 chunk
+    /// </summary>
     [Chunk(0x090BF001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF001 : Chunk<CPlugWeatherModel>
@@ -134,6 +138,9 @@ public partial class CPlugWeatherModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeatherModel 0x002 chunk
+    /// </summary>
     [Chunk(0x090BF002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF002 : Chunk<CPlugWeatherModel>
@@ -152,6 +159,9 @@ public partial class CPlugWeatherModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeatherModel 0x003 chunk
+    /// </summary>
     [Chunk(0x090BF003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF003 : Chunk<CPlugWeatherModel>
@@ -170,6 +180,9 @@ public partial class CPlugWeatherModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugWeatherModel 0x004 chunk
+    /// </summary>
     [Chunk(0x090BF004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BF004 : Chunk<CPlugWeatherModel>

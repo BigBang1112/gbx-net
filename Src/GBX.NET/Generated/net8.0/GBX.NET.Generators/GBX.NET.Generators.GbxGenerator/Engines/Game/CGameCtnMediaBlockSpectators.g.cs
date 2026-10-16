@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030EB000</remarks>
 [Class(0x030EB000)]
 public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -56,6 +57,9 @@ public partial class CGameCtnMediaBlockSpectators : CGameCtnMediaBlock, IClass, 
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockSpectators 0x000 chunk
+    /// </summary>
     [Chunk(0x030EB000)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk030EB000 : Chunk<CGameCtnMediaBlockSpectators>, IVersionable

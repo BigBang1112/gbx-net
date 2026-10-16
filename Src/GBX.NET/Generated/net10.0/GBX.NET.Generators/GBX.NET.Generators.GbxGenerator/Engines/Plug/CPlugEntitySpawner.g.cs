@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09123000</remarks>
 [Class(0x09123000)]
 public partial class CPlugEntitySpawner : CMwNod, IClass
 {

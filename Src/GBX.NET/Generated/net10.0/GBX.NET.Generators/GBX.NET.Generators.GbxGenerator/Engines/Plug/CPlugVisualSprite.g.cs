@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09010000</remarks>
 [Class(0x09010000)]
 public partial class CPlugVisualSprite : CPlugVisual3D, IClass
 {
@@ -160,7 +161,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// legacy render mode
+    /// CPlugVisualSprite 0x000 chunk (legacy render mode)
     /// </summary>
     [Chunk(0x09010000, "legacy render mode")]
     public partial class Chunk09010000 : Chunk<CPlugVisualSprite>
@@ -179,7 +180,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// legacy render mode and sorting
+    /// CPlugVisualSprite 0x001 chunk (legacy render mode and sorting)
     /// </summary>
     [Chunk(0x09010001, "legacy render mode and sorting")]
     public partial class Chunk09010001 : Chunk<CPlugVisualSprite>
@@ -199,7 +200,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// SpriteFlags
+    /// CPlugVisualSprite 0x002 chunk (SpriteFlags)
     /// </summary>
     [Chunk(0x09010002, "SpriteFlags")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -220,7 +221,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// legacy sprite flags, direction, and pivot
+    /// CPlugVisualSprite 0x005 chunk (legacy sprite flags, direction, and pivot)
     /// </summary>
     [Chunk(0x09010005, "legacy sprite flags, direction, and pivot")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -243,7 +244,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// legacy atlas grid dimensions
+    /// CPlugVisualSprite 0x006 chunk (legacy atlas grid dimensions)
     /// </summary>
     [Chunk(0x09010006, "legacy atlas grid dimensions")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -265,7 +266,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// SpriteParam
+    /// CPlugVisualSprite 0x008 chunk (SpriteParam)
     /// </summary>
     [Chunk(0x09010008, "SpriteParam")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -286,7 +287,7 @@ public partial class CPlugVisualSprite : CPlugVisual3D, IClass
     }
 
     /// <summary>
-    /// AtlasTexCoords
+    /// CPlugVisualSprite 0x009 chunk (AtlasTexCoords)
     /// </summary>
     [Chunk(0x09010009, "AtlasTexCoords")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

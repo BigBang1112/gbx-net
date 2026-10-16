@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06017000</remarks>
 [Class(0x06017000)]
 public partial class CHmsFogPlane : CMwNod, IClass
 {

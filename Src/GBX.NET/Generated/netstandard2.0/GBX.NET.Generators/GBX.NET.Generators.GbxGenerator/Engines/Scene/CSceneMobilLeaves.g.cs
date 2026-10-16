@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A05E000</remarks>
 [Class(0x0A05E000)]
 public partial class CSceneMobilLeaves : CSceneMobil, IClass
 {
@@ -253,6 +254,9 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneMobilLeaves 0x000 chunk
+    /// </summary>
     [Chunk(0x0A05E000)]
     public partial class Chunk0A05E000 : Chunk<CSceneMobilLeaves>
     {
@@ -307,6 +311,9 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneMobilLeaves 0x001 chunk
+    /// </summary>
     [Chunk(0x0A05E001)]
     public partial class Chunk0A05E001 : Chunk<CSceneMobilLeaves>
     {
@@ -337,6 +344,9 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneMobilLeaves 0x002 chunk
+    /// </summary>
     [Chunk(0x0A05E002)]
     public partial class Chunk0A05E002 : Chunk<CSceneMobilLeaves>
     {
@@ -366,6 +376,9 @@ public partial class CSceneMobilLeaves : CSceneMobil, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneMobilLeaves 0x003 chunk
+    /// </summary>
     [Chunk(0x0A05E003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A05E003 : Chunk<CSceneMobilLeaves>

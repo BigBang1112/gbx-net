@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Meta;
 
+/// <remarks>ID: 0x2F0D9000</remarks>
 [Class(0x2F0D9000)]
 public partial class NPlugStaticObjectModel_SInstanceParams : SMetaPtr, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

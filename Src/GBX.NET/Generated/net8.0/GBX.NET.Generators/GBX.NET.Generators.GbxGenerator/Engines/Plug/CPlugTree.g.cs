@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0904F000</remarks>
 [Class(0x0904F000)]
 public partial class CPlugTree : CPlug, IClass
 {
@@ -238,7 +239,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// Children
+    /// CPlugTree 0x006 chunk (Children)
     /// </summary>
     [Chunk(0x0904F006, "Children")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -259,7 +260,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// NodParameterIds
+    /// CPlugTree 0x00C chunk (NodParameterIds)
     /// </summary>
     [Chunk(0x0904F00C, "NodParameterIds")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
@@ -280,7 +281,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// plug ID and model
+    /// CPlugTree 0x00D chunk (plug ID and model)
     /// </summary>
     [Chunk(0x0904F00D, "plug ID and model")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -296,7 +297,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy visual, shader and surface
+    /// CPlugTree 0x00E chunk (legacy visual, shader and surface)
     /// </summary>
     [Chunk(0x0904F00E, "legacy visual, shader and surface")]
     public partial class Chunk0904F00E : Chunk<CPlugTree>
@@ -322,7 +323,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy flags and location
+    /// CPlugTree 0x010 chunk (legacy flags and location)
     /// </summary>
     [Chunk(0x0904F010, "legacy flags and location")]
     public partial class Chunk0904F010 : Chunk<CPlugTree>
@@ -355,7 +356,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// FuncTree
+    /// CPlugTree 0x011 chunk (FuncTree)
     /// </summary>
     [Chunk(0x0904F011, "FuncTree")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -376,7 +377,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy visual, shader, surface and generator
+    /// CPlugTree 0x012 chunk (legacy visual, shader, surface and generator)
     /// </summary>
     [Chunk(0x0904F012, "legacy visual, shader, surface and generator")]
     public partial class Chunk0904F012 : Chunk<CPlugTree>
@@ -403,7 +404,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy flags and location, inverted shadow caster
+    /// CPlugTree 0x013 chunk (legacy flags and location, inverted shadow caster)
     /// </summary>
     [Chunk(0x0904F013, "legacy flags and location, inverted shadow caster")]
     public partial class Chunk0904F013 : Chunk<CPlugTree>
@@ -444,7 +445,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy flags and location
+    /// CPlugTree 0x015 chunk (legacy flags and location)
     /// </summary>
     [Chunk(0x0904F015, "legacy flags and location")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -487,7 +488,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// visual, shader or material, surface and generator
+    /// CPlugTree 0x016 chunk (visual, shader or material, surface and generator)
     /// </summary>
     [Chunk(0x0904F016, "visual, shader or material, surface and generator")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -516,7 +517,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// RefBuffer
+    /// CPlugTree 0x017 chunk (RefBuffer)
     /// </summary>
     [Chunk(0x0904F017, "RefBuffer")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -537,7 +538,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy 64-bit flags and location
+    /// CPlugTree 0x018 chunk (legacy 64-bit flags and location)
     /// </summary>
     [Chunk(0x0904F018, "legacy 64-bit flags and location")]
     public partial class Chunk0904F018 : Chunk<CPlugTree>
@@ -578,7 +579,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy flags and location
+    /// CPlugTree 0x019 chunk (legacy flags and location)
     /// </summary>
     [Chunk(0x0904F019, "legacy flags and location")]
     [ChunkGameVersion(GameVersion.TMSX)]
@@ -617,7 +618,7 @@ public partial class CPlugTree : CPlug, IClass
     }
 
     /// <summary>
-    /// flags and location
+    /// CPlugTree 0x01A chunk (flags and location)
     /// </summary>
     [Chunk(0x0904F01A, "flags and location")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

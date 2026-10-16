@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0915C000</remarks>
 [Class(0x0915C000)]
 public partial class CPlugFxSystem : CMwNod, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E002000</remarks>
 [Class(0x2E002000)]
 public partial class CGameItemModel : CGameCtnCollector, IClass
 {
@@ -550,7 +551,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// item type
+    /// CGameItemModel 0x000 chunk (item type)
     /// </summary>
     [Chunk(0x2E002000, "item type")]
     public partial class HeaderChunk2E002000 : HeaderChunk<CGameItemModel>
@@ -569,7 +570,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// file version
+    /// CGameItemModel 0x001 chunk (file version)
     /// </summary>
     [Chunk(0x2E002001, "file version")]
     public partial class HeaderChunk2E002001 : HeaderChunk<CGameItemModel>, IVersionable
@@ -589,6 +590,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E002000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E002000 : Chunk<CGameItemModel>
@@ -607,6 +611,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x001 chunk
+    /// </summary>
     [Chunk(0x2E002001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk2E002001 : Chunk<CGameItemModel>
@@ -626,7 +633,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// old race interface fid
+    /// CGameItemModel 0x002 chunk (old race interface fid)
     /// </summary>
     [Chunk(0x2E002002, "old race interface fid")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
@@ -647,7 +654,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// LowQualitySolid
+    /// CGameItemModel 0x003 chunk (LowQualitySolid)
     /// </summary>
     [Chunk(0x2E002003, "LowQualitySolid")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -667,6 +674,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x004 chunk
+    /// </summary>
     [Chunk(0x2E002004)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk2E002004 : Chunk<CGameItemModel>
@@ -708,7 +718,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// DefaultCamIndex
+    /// CGameItemModel 0x006 chunk (DefaultCamIndex)
     /// </summary>
     [Chunk(0x2E002006, "DefaultCamIndex")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -729,7 +739,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// old materials
+    /// CGameItemModel 0x007 chunk (old materials)
     /// </summary>
     [Chunk(0x2E002007, "old materials")]
     [ChunkGameVersion(GameVersion.TMSX)]
@@ -752,7 +762,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// Nadeo skin fids
+    /// CGameItemModel 0x008 chunk (Nadeo skin fids)
     /// </summary>
     [Chunk(0x2E002008, "Nadeo skin fids")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -773,7 +783,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// Cameras
+    /// CGameItemModel 0x009 chunk (Cameras)
     /// </summary>
     [Chunk(0x2E002009, "Cameras")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -794,7 +804,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// DecoratorSolid
+    /// CGameItemModel 0x00A chunk (DecoratorSolid)
     /// </summary>
     [Chunk(0x2E00200A, "DecoratorSolid")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -815,7 +825,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// stem materials
+    /// CGameItemModel 0x00B chunk (stem materials)
     /// </summary>
     [Chunk(0x2E00200B, "stem materials")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -837,7 +847,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// race interface fid
+    /// CGameItemModel 0x00C chunk (race interface fid)
     /// </summary>
     [Chunk(0x2E00200C, "race interface fid")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -857,6 +867,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x00D chunk
+    /// </summary>
     [Chunk(0x2E00200D)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E00200D : Chunk<CGameItemModel>
@@ -876,7 +889,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// StadiumCar materials
+    /// CGameItemModel 0x00E chunk (StadiumCar materials)
     /// </summary>
     [Chunk(0x2E00200E, "StadiumCar materials")]
     [ChunkGameVersion(GameVersion.TMNESWC)]
@@ -899,6 +912,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x010 chunk
+    /// </summary>
     [Chunk(0x2E002010)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E002010 : Chunk<CGameItemModel>
@@ -918,7 +934,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// materials
+    /// CGameItemModel 0x011 chunk (materials)
     /// </summary>
     [Chunk(0x2E002011, "materials")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
@@ -946,6 +962,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x012 chunk
+    /// </summary>
     [Chunk(0x2E002012)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002012 : Chunk<CGameItemModel>
@@ -968,6 +987,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x013 chunk
+    /// </summary>
     [Chunk(0x2E002013)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk2E002013 : Chunk<CGameItemModel>
@@ -986,6 +1008,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x014 chunk
+    /// </summary>
     [Chunk(0x2E002014)]
     public partial class Chunk2E002014 : Chunk<CGameItemModel>
     {
@@ -1025,7 +1050,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// ItemTypeE
+    /// CGameItemModel 0x015 chunk (ItemTypeE)
     /// </summary>
     [Chunk(0x2E002015, "ItemTypeE")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1046,7 +1071,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// model
+    /// CGameItemModel 0x019 chunk (model)
     /// </summary>
     [Chunk(0x2E002019, "model")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1157,6 +1182,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x01A chunk
+    /// </summary>
     [Chunk(0x2E00201A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00201A : Chunk<CGameItemModel>
@@ -1197,6 +1225,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x01B chunk
+    /// </summary>
     [Chunk(0x2E00201B)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk2E00201B : Chunk<CGameItemModel>
@@ -1238,7 +1269,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     }
 
     /// <summary>
-    /// default placement
+    /// CGameItemModel 0x01C chunk (default placement)
     /// </summary>
     [Chunk(0x2E00201C, "default placement")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1328,6 +1359,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x01D chunk
+    /// </summary>
     [Chunk(0x2E00201D)]
     public partial class Chunk2E00201D : Chunk<CGameItemModel>
     {
@@ -1346,6 +1380,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x01E chunk
+    /// </summary>
     [Chunk(0x2E00201E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00201E : Chunk<CGameItemModel>, IVersionable
@@ -1393,6 +1430,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x01F chunk
+    /// </summary>
     [Chunk(0x2E00201F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00201F : Chunk<CGameItemModel>, IVersionable
@@ -1504,6 +1544,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x020 chunk
+    /// </summary>
     [Chunk(0x2E002020)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E002020 : Chunk<CGameItemModel>, IVersionable
@@ -1567,6 +1610,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x021 chunk
+    /// </summary>
     [Chunk(0x2E002021)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk2E002021 : Chunk<CGameItemModel>, IVersionable
@@ -1588,6 +1634,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x022 skippable chunk
+    /// </summary>
     [Chunk(0x2E002022)]
     [ChunkGameVersion(GameVersion.TMT)]
     public partial class Chunk2E002022 : SkippableChunk<CGameItemModel>, IVersionable
@@ -1620,6 +1669,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x023 chunk
+    /// </summary>
     [Chunk(0x2E002023)]
     [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk2E002023 : Chunk<CGameItemModel>, IVersionable
@@ -1646,6 +1698,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x024 skippable chunk
+    /// </summary>
     [Chunk(0x2E002024)]
     [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk2E002024 : SkippableChunk<CGameItemModel>, IVersionable
@@ -1669,6 +1724,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x025 skippable chunk
+    /// </summary>
     [Chunk(0x2E002025)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002025 : SkippableChunk<CGameItemModel>, IVersionable
@@ -1692,6 +1750,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x026 skippable chunk
+    /// </summary>
     [Chunk(0x2E002026)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002026 : SkippableChunk<CGameItemModel>, IVersionable
@@ -1715,6 +1776,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         }
     }
 
+    /// <summary>
+    /// CGameItemModel 0x027 skippable chunk
+    /// </summary>
     [Chunk(0x2E002027)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E002027 : SkippableChunk<CGameItemModel>, IVersionable

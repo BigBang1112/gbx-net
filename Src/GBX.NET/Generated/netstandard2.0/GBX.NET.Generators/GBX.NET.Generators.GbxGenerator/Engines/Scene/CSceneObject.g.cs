@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A005000</remarks>
 [Class(0x0A005000)]
 public abstract partial class CSceneObject : CMwNod, IClass
 {
@@ -77,6 +78,9 @@ public abstract partial class CSceneObject : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneObject 0x001 chunk
+    /// </summary>
     [Chunk(0x0A005001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A005001 : Chunk<CSceneObject>
@@ -95,6 +99,9 @@ public abstract partial class CSceneObject : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObject 0x002 chunk
+    /// </summary>
     [Chunk(0x0A005002)]
     public partial class Chunk0A005002 : Chunk<CSceneObject>
     {
@@ -113,6 +120,9 @@ public abstract partial class CSceneObject : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObject 0x003 chunk
+    /// </summary>
     [Chunk(0x0A005003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A005003 : Chunk<CSceneObject>
@@ -131,6 +141,9 @@ public abstract partial class CSceneObject : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObject 0x004 chunk
+    /// </summary>
     [Chunk(0x0A005004)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A005004 : Chunk<CSceneObject>

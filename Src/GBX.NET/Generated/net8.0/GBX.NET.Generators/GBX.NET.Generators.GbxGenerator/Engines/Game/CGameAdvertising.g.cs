@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0303D000</remarks>
 [Class(0x0303D000)]
 public partial class CGameAdvertising : CGameNod, IClass
 {
@@ -103,6 +104,9 @@ public partial class CGameAdvertising : CGameNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameAdvertising 0x001 chunk
+    /// </summary>
     [Chunk(0x0303D001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D001 : Chunk<CGameAdvertising>
@@ -121,6 +125,9 @@ public partial class CGameAdvertising : CGameNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameAdvertising 0x002 chunk
+    /// </summary>
     [Chunk(0x0303D002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0303D002 : Chunk<CGameAdvertising>
@@ -139,6 +146,9 @@ public partial class CGameAdvertising : CGameNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameAdvertising 0x003 chunk
+    /// </summary>
     [Chunk(0x0303D003)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D003 : Chunk<CGameAdvertising>
@@ -157,6 +167,9 @@ public partial class CGameAdvertising : CGameNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameAdvertising 0x004 chunk
+    /// </summary>
     [Chunk(0x0303D004)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303D004 : Chunk<CGameAdvertising>

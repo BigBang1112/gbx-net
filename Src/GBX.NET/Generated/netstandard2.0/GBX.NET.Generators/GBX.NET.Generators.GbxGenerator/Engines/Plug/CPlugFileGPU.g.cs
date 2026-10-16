@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09040000</remarks>
 [Class(0x09040000)]
 public abstract partial class CPlugFileGPU : CPlugFileText, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.System;
 
+/// <remarks>ID: 0x0B013000</remarks>
 [Class(0x0B013000)]
 public partial class CSystemConfigDisplay : CMwNod, IClass
 {
@@ -1150,7 +1151,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display, quality and driver settings
+    /// CSystemConfigDisplay 0x000 skippable chunk (legacy display, quality and driver settings)
     /// </summary>
     [Chunk(0x0B013000, "legacy display, quality and driver settings")]
     public partial class Chunk0B013000 : SkippableChunk<CSystemConfigDisplay>
@@ -1185,7 +1186,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display settings
+    /// CSystemConfigDisplay 0x001 skippable chunk (legacy display settings)
     /// </summary>
     [Chunk(0x0B013001, "legacy display settings")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1212,7 +1213,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy quality and lighting preset
+    /// CSystemConfigDisplay 0x002 skippable chunk (legacy quality and lighting preset)
     /// </summary>
     [Chunk(0x0B013002, "legacy quality and lighting preset")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -1237,7 +1238,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy driver settings
+    /// CSystemConfigDisplay 0x003 skippable chunk (legacy driver settings)
     /// </summary>
     [Chunk(0x0B013003, "legacy driver settings")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1263,7 +1264,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// DisableColorWMask
+    /// CSystemConfigDisplay 0x004 skippable chunk (DisableColorWMask)
     /// </summary>
     [Chunk(0x0B013004, "DisableColorWMask")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1284,7 +1285,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableFullscreenGDI
+    /// CSystemConfigDisplay 0x005 skippable chunk (EnableFullscreenGDI)
     /// </summary>
     [Chunk(0x0B013005, "EnableFullscreenGDI")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1305,7 +1306,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// AnisoQuality
+    /// CSystemConfigDisplay 0x006 skippable chunk (AnisoQuality)
     /// </summary>
     [Chunk(0x0B013006, "AnisoQuality")]
     public partial class Chunk0B013006 : SkippableChunk<CSystemConfigDisplay>
@@ -1324,7 +1325,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy quality, filtering and graphics preset
+    /// CSystemConfigDisplay 0x007 skippable chunk (legacy quality, filtering and graphics preset)
     /// </summary>
     [Chunk(0x0B013007, "legacy quality, filtering and graphics preset")]
     public partial class Chunk0B013007 : SkippableChunk<CSystemConfigDisplay>
@@ -1348,7 +1349,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// clipping distance
+    /// CSystemConfigDisplay 0x008 skippable chunk (clipping distance)
     /// </summary>
     [Chunk(0x0B013008, "clipping distance")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1371,7 +1372,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// water, post-processing and legacy background
+    /// CSystemConfigDisplay 0x009 skippable chunk (water, post-processing and legacy background)
     /// </summary>
     [Chunk(0x0B013009, "water, post-processing and legacy background")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1397,7 +1398,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy color and motion-blur effects
+    /// CSystemConfigDisplay 0x00A skippable chunk (legacy color and motion-blur effects)
     /// </summary>
     [Chunk(0x0B01300A, "legacy color and motion-blur effects")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1419,7 +1420,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// depth-buffer range and AGP memory usage
+    /// CSystemConfigDisplay 0x00B skippable chunk (depth-buffer range and AGP memory usage)
     /// </summary>
     [Chunk(0x0B01300B, "depth-buffer range and AGP memory usage")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1441,7 +1442,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy custom quality and filtering
+    /// CSystemConfigDisplay 0x00C skippable chunk (legacy custom quality and filtering)
     /// </summary>
     [Chunk(0x0B01300C, "legacy custom quality and filtering")]
     public partial class Chunk0B01300C : SkippableChunk<CSystemConfigDisplay>
@@ -1466,7 +1467,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy automatic and custom quality
+    /// CSystemConfigDisplay 0x00D skippable chunk (legacy automatic and custom quality)
     /// </summary>
     [Chunk(0x0B01300D, "legacy automatic and custom quality")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -1494,7 +1495,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// WaterComplex
+    /// CSystemConfigDisplay 0x00E skippable chunk (WaterComplex)
     /// </summary>
     [Chunk(0x0B01300E, "WaterComplex")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -1515,7 +1516,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// FastLoad
+    /// CSystemConfigDisplay 0x00F skippable chunk (FastLoad)
     /// </summary>
     [Chunk(0x0B01300F, "FastLoad")]
     [ChunkGameVersion(GameVersion.TMO | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1536,7 +1537,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// GeomLodScaleZ
+    /// CSystemConfigDisplay 0x010 skippable chunk (GeomLodScaleZ)
     /// </summary>
     [Chunk(0x0B013010, "GeomLodScaleZ")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1557,7 +1558,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// ForceFxBloom
+    /// CSystemConfigDisplay 0x011 skippable chunk (ForceFxBloom)
     /// </summary>
     [Chunk(0x0B013011, "ForceFxBloom")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1578,7 +1579,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy quality value
+    /// CSystemConfigDisplay 0x013 skippable chunk (legacy quality value)
     /// </summary>
     [Chunk(0x0B013013, "legacy quality value")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF)]
@@ -1601,7 +1602,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy light-map safe mode
+    /// CSystemConfigDisplay 0x014 skippable chunk (legacy light-map safe mode)
     /// </summary>
     [Chunk(0x0B013014, "legacy light-map safe mode")]
     public partial class Chunk0B013014 : SkippableChunk<CSystemConfigDisplay>
@@ -1620,7 +1621,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// DisableWindowedAntiAlias
+    /// CSystemConfigDisplay 0x015 skippable chunk (DisableWindowedAntiAlias)
     /// </summary>
     [Chunk(0x0B013015, "DisableWindowedAntiAlias")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1641,7 +1642,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableCheckLags
+    /// CSystemConfigDisplay 0x016 skippable chunk (EnableCheckLags)
     /// </summary>
     [Chunk(0x0B013016, "EnableCheckLags")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1662,7 +1663,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableRenderReadBack
+    /// CSystemConfigDisplay 0x017 skippable chunk (EnableRenderReadBack)
     /// </summary>
     [Chunk(0x0B013017, "EnableRenderReadBack")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1683,7 +1684,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy render value
+    /// CSystemConfigDisplay 0x018 skippable chunk (legacy render value)
     /// </summary>
     [Chunk(0x0B013018, "legacy render value")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1706,7 +1707,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// LightMapCompute
+    /// CSystemConfigDisplay 0x019 skippable chunk (LightMapCompute)
     /// </summary>
     [Chunk(0x0B013019, "LightMapCompute")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1727,7 +1728,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableLightMap
+    /// CSystemConfigDisplay 0x01A skippable chunk (EnableLightMap)
     /// </summary>
     [Chunk(0x0B01301A, "EnableLightMap")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
@@ -1748,7 +1749,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// LightFromMap
+    /// CSystemConfigDisplay 0x01B skippable chunk (LightFromMap)
     /// </summary>
     [Chunk(0x0B01301B, "LightFromMap")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1769,7 +1770,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// multithreaded rendering
+    /// CSystemConfigDisplay 0x01C skippable chunk (multithreaded rendering)
     /// </summary>
     [Chunk(0x0B01301C, "multithreaded rendering")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1791,7 +1792,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// LightMapQualityOld
+    /// CSystemConfigDisplay 0x01D skippable chunk (LightMapQualityOld)
     /// </summary>
     [Chunk(0x0B01301D, "LightMapQualityOld")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -1812,7 +1813,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// TreeAlwaysHq
+    /// CSystemConfigDisplay 0x01E skippable chunk (TreeAlwaysHq)
     /// </summary>
     [Chunk(0x0B01301E, "TreeAlwaysHq")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -1833,7 +1834,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// StereoscopyByDefault
+    /// CSystemConfigDisplay 0x01F skippable chunk (StereoscopyByDefault)
     /// </summary>
     [Chunk(0x0B01301F, "StereoscopyByDefault")]
     public partial class Chunk0B01301F : SkippableChunk<CSystemConfigDisplay>
@@ -1852,7 +1853,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// stereoscopy
+    /// CSystemConfigDisplay 0x020 skippable chunk (stereoscopy)
     /// </summary>
     [Chunk(0x0B013020, "stereoscopy")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1874,7 +1875,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// WaterGeomStadium
+    /// CSystemConfigDisplay 0x021 skippable chunk (WaterGeomStadium)
     /// </summary>
     [Chunk(0x0B013021, "WaterGeomStadium")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1895,7 +1896,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy automatic and custom quality
+    /// CSystemConfigDisplay 0x022 skippable chunk (legacy automatic and custom quality)
     /// </summary>
     [Chunk(0x0B013022, "legacy automatic and custom quality")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -1922,7 +1923,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy light-map quality and light index
+    /// CSystemConfigDisplay 0x024 skippable chunk (legacy light-map quality and light index)
     /// </summary>
     [Chunk(0x0B013024, "legacy light-map quality and light index")]
     public partial class Chunk0B013024 : SkippableChunk<CSystemConfigDisplay>
@@ -1943,7 +1944,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// deferred antialiasing and bloom
+    /// CSystemConfigDisplay 0x025 skippable chunk (deferred antialiasing and bloom)
     /// </summary>
     [Chunk(0x0B013025, "deferred antialiasing and bloom")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1965,7 +1966,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// driver settings
+    /// CSystemConfigDisplay 0x026 skippable chunk (driver settings)
     /// </summary>
     [Chunk(0x0B013026, "driver settings")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -1991,7 +1992,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// LightMapQuality
+    /// CSystemConfigDisplay 0x027 skippable chunk (LightMapQuality)
     /// </summary>
     [Chunk(0x0B013027, "LightMapQuality")]
     public partial class Chunk0B013027 : SkippableChunk<CSystemConfigDisplay>
@@ -2010,7 +2011,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy shader quality and modern preset
+    /// CSystemConfigDisplay 0x028 skippable chunk (legacy shader quality and modern preset)
     /// </summary>
     [Chunk(0x0B013028, "legacy shader quality and modern preset")]
     public partial class Chunk0B013028 : SkippableChunk<CSystemConfigDisplay>
@@ -2035,7 +2036,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display synchronization
+    /// CSystemConfigDisplay 0x029 skippable chunk (legacy display synchronization)
     /// </summary>
     [Chunk(0x0B013029, "legacy display synchronization")]
     public partial class Chunk0B013029 : SkippableChunk<CSystemConfigDisplay>
@@ -2060,7 +2061,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// automatic and custom quality
+    /// CSystemConfigDisplay 0x02A skippable chunk (automatic and custom quality)
     /// </summary>
     [Chunk(0x0B01302A, "automatic and custom quality")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2087,7 +2088,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// VehicleReflect
+    /// CSystemConfigDisplay 0x02C skippable chunk (VehicleReflect)
     /// </summary>
     [Chunk(0x0B01302C, "VehicleReflect")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2108,7 +2109,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// FxMotionBlur
+    /// CSystemConfigDisplay 0x02D skippable chunk (FxMotionBlur)
     /// </summary>
     [Chunk(0x0B01302D, "FxMotionBlur")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2129,7 +2130,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableD3D9Ex
+    /// CSystemConfigDisplay 0x02E skippable chunk (EnableD3D9Ex)
     /// </summary>
     [Chunk(0x0B01302E, "EnableD3D9Ex")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -2150,7 +2151,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// MaxFps
+    /// CSystemConfigDisplay 0x02F skippable chunk (MaxFps)
     /// </summary>
     [Chunk(0x0B01302F, "MaxFps")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2171,7 +2172,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// light-map settings
+    /// CSystemConfigDisplay 0x030 skippable chunk (light-map settings)
     /// </summary>
     [Chunk(0x0B013030, "light-map settings")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2195,7 +2196,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// texture decals
+    /// CSystemConfigDisplay 0x031 skippable chunk (texture decals)
     /// </summary>
     [Chunk(0x0B013031, "texture decals")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2217,7 +2218,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// ConfigVersion
+    /// CSystemConfigDisplay 0x032 skippable chunk (ConfigVersion)
     /// </summary>
     [Chunk(0x0B013032, "ConfigVersion")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2238,7 +2239,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// DisableHdrCubeRenderMipMap
+    /// CSystemConfigDisplay 0x033 skippable chunk (DisableHdrCubeRenderMipMap)
     /// </summary>
     [Chunk(0x0B013033, "DisableHdrCubeRenderMipMap")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2259,7 +2260,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy display mode
+    /// CSystemConfigDisplay 0x034 skippable chunk (legacy display mode)
     /// </summary>
     [Chunk(0x0B013034, "legacy display mode")]
     public partial class Chunk0B013034 : SkippableChunk<CSystemConfigDisplay>
@@ -2284,7 +2285,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// FxMotionBlurIntens
+    /// CSystemConfigDisplay 0x035 skippable chunk (FxMotionBlurIntens)
     /// </summary>
     [Chunk(0x0B013035, "FxMotionBlurIntens")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2305,7 +2306,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// display settings and graphics adapter
+    /// CSystemConfigDisplay 0x036 skippable chunk (display settings and graphics adapter)
     /// </summary>
     [Chunk(0x0B013036, "display settings and graphics adapter")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 3, 3)]
@@ -2383,7 +2384,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// synchronization with additional GPUs
+    /// CSystemConfigDisplay 0x037 skippable chunk (synchronization with additional GPUs)
     /// </summary>
     [Chunk(0x0B013037, "synchronization with additional GPUs")]
     public partial class Chunk0B013037 : SkippableChunk<CSystemConfigDisplay>
@@ -2404,7 +2405,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// EnableD3D9_BC4_BC5
+    /// CSystemConfigDisplay 0x038 skippable chunk (EnableD3D9_BC4_BC5)
     /// </summary>
     [Chunk(0x0B013038, "EnableD3D9_BC4_BC5")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
@@ -2425,7 +2426,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// ScreenShotExt
+    /// CSystemConfigDisplay 0x039 skippable chunk (ScreenShotExt)
     /// </summary>
     [Chunk(0x0B013039, "ScreenShotExt")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2446,7 +2447,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// GeometryQuality
+    /// CSystemConfigDisplay 0x03A skippable chunk (GeometryQuality)
     /// </summary>
     [Chunk(0x0B01303A, "GeometryQuality")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2467,7 +2468,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// ParticleMaxGpuLoadMs
+    /// CSystemConfigDisplay 0x03B skippable chunk (ParticleMaxGpuLoadMs)
     /// </summary>
     [Chunk(0x0B01303B, "ParticleMaxGpuLoadMs")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -2488,7 +2489,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// ForceD3D11FeatureLevel10
+    /// CSystemConfigDisplay 0x03C skippable chunk (ForceD3D11FeatureLevel10)
     /// </summary>
     [Chunk(0x0B01303C, "ForceD3D11FeatureLevel10")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -2509,7 +2510,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// AsyncRenderEnabled
+    /// CSystemConfigDisplay 0x03D skippable chunk (AsyncRenderEnabled)
     /// </summary>
     [Chunk(0x0B01303D, "AsyncRenderEnabled")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -2530,7 +2531,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// blur and reflections
+    /// CSystemConfigDisplay 0x03E skippable chunk (blur and reflections)
     /// </summary>
     [Chunk(0x0B01303E, "blur and reflections")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
@@ -2576,7 +2577,7 @@ public partial class CSystemConfigDisplay : CMwNod, IClass
     }
 
     /// <summary>
-    /// automatic quality and minimum frame rate
+    /// CSystemConfigDisplay 0x03F skippable chunk (automatic quality and minimum frame rate)
     /// </summary>
     [Chunk(0x0B01303F, "automatic quality and minimum frame rate")]
     [ChunkGameVersion(GameVersion.TM2020)]

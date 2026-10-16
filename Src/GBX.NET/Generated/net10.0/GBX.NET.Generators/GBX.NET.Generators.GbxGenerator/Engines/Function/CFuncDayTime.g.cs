@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05045000</remarks>
 [Class(0x05045000)]
 public partial class CFuncDayTime : CFunc, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x240D5000</remarks>
 [Class(0x240D5000)]
 public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerProfileChunk, IClass
 {
@@ -45,6 +46,9 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x240D5000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5000 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
@@ -68,6 +72,9 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x240D5001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5001 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
@@ -91,6 +98,9 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x002 skippable chunk
+    /// </summary>
     [Chunk(0x240D5002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5002 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
@@ -114,6 +124,9 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x003 skippable chunk
+    /// </summary>
     [Chunk(0x240D5003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5003 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>
@@ -128,6 +141,9 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x240D5004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk240D5004 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable

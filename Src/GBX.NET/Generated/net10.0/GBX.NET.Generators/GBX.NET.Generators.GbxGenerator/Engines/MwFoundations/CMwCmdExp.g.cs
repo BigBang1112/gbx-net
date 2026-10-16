@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.MwFoundations;
 
+/// <remarks>ID: 0x01038000</remarks>
 [Class(0x01038000)]
 public partial class CMwCmdExp : CMwCmdScript, IClass
 {

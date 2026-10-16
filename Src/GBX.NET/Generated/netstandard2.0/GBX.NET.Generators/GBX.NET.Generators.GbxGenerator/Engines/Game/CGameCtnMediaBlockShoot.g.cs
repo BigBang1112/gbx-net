@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03145000</remarks>
 [Class(0x03145000)]
 public partial class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -75,6 +76,9 @@ public partial class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, IClass, CGame
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockShoot 0x000 chunk
+    /// </summary>
     [Chunk(0x03145000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03145000 : Chunk<CGameCtnMediaBlockShoot>

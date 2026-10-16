@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Meta;
 
+/// <remarks>ID: 0x2F0D8000</remarks>
 [Class(0x2F0D8000)]
 public partial class NPlugItemPlacement_SPlacementGroup : SMetaPtr, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03093000</remarks>
 [Class(0x03093000)]
 public partial class CGameCtnReplayRecord : CMwNod, IClass
 {
@@ -147,7 +148,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// basic
+    /// CGameCtnReplayRecord 0x000 chunk (basic)
     /// </summary>
     [Chunk(0x03093000, "basic")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 4, 4, 6, 7, 8, 8, 8, 8)]
@@ -165,7 +166,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// xml
+    /// CGameCtnReplayRecord 0x001 chunk (xml)
     /// </summary>
     [Chunk(0x03093001, "xml")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -181,7 +182,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// author
+    /// CGameCtnReplayRecord 0x002 chunk (author)
     /// </summary>
     [Chunk(0x03093002, "author")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -198,7 +199,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// track
+    /// CGameCtnReplayRecord 0x002 chunk (track)
     /// </summary>
     [Chunk(0x03093002, "track")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -214,7 +215,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// validation TM1.0
+    /// CGameCtnReplayRecord 0x003 chunk (validation TM1.0)
     /// </summary>
     [Chunk(0x03093003, "validation TM1.0")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -231,7 +232,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// ghosts
+    /// CGameCtnReplayRecord 0x004 chunk (ghosts)
     /// </summary>
     [Chunk(0x03093004, "ghosts")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -248,7 +249,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy cut keys (SOldCutKey)
+    /// CGameCtnReplayRecord 0x005 chunk (legacy cut keys (SOldCutKey))
     /// </summary>
     [Chunk(0x03093005, "legacy cut keys (SOldCutKey)")]
     [ChunkGameVersion(GameVersion.TM10)]
@@ -264,7 +265,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// unused legacy value
+    /// CGameCtnReplayRecord 0x007 skippable chunk (unused legacy value)
     /// </summary>
     [Chunk(0x03093007, "unused legacy value")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
@@ -281,7 +282,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// validation executable version + legacy cut keys (SOldCutKey2)
+    /// CGameCtnReplayRecord 0x008 skippable chunk (validation executable version + legacy cut keys (SOldCutKey2))
     /// </summary>
     [Chunk(0x03093008, "validation executable version + legacy cut keys (SOldCutKey2)")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -296,6 +297,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x009 chunk
+    /// </summary>
     [Chunk(0x03093009)]
     public partial class Chunk03093009 : Chunk<CGameCtnReplayRecord>
     {
@@ -309,7 +313,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy MediaTracker track references
+    /// CGameCtnReplayRecord 0x00A chunk (legacy MediaTracker track references)
     /// </summary>
     [Chunk(0x0309300A, "legacy MediaTracker track references")]
     public partial class Chunk0309300A : Chunk<CGameCtnReplayRecord>
@@ -323,7 +327,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// HumanTimeToGameTimeFunc
+    /// CGameCtnReplayRecord 0x00B chunk (HumanTimeToGameTimeFunc)
     /// </summary>
     [Chunk(0x0309300B, "HumanTimeToGameTimeFunc")]
     public partial class Chunk0309300B : Chunk<CGameCtnReplayRecord>
@@ -337,7 +341,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// clip
+    /// CGameCtnReplayRecord 0x00C chunk (clip)
     /// </summary>
     [Chunk(0x0309300C, "clip")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -353,7 +357,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// validation inputs
+    /// CGameCtnReplayRecord 0x00D chunk (validation inputs)
     /// </summary>
     [Chunk(0x0309300D, "validation inputs")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -369,7 +373,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// events
+    /// CGameCtnReplayRecord 0x00E chunk (events)
     /// </summary>
     [Chunk(0x0309300E, "events")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
@@ -385,7 +389,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// validation metadata
+    /// CGameCtnReplayRecord 0x00F skippable chunk (validation metadata)
     /// </summary>
     [Chunk(0x0309300F, "validation metadata")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -401,7 +405,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// simple events display
+    /// CGameCtnReplayRecord 0x010 chunk (simple events display)
     /// </summary>
     [Chunk(0x03093010, "simple events display")]
     public partial class Chunk03093010 : Chunk<CGameCtnReplayRecord>
@@ -414,6 +418,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x011 chunk
+    /// </summary>
     [Chunk(0x03093011)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.TMU | GameVersion.VSK5)]
     public partial class Chunk03093011 : Chunk<CGameCtnReplayRecord>
@@ -428,7 +435,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// validation security key with ignored padding
+    /// CGameCtnReplayRecord 0x012 chunk (validation security key with ignored padding)
     /// </summary>
     [Chunk(0x03093012, "validation security key with ignored padding")]
     public partial class Chunk03093012 : Chunk<CGameCtnReplayRecord>
@@ -443,7 +450,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy cut keys (SOldCutKey2)
+    /// CGameCtnReplayRecord 0x013 skippable chunk (legacy cut keys (SOldCutKey2))
     /// </summary>
     [Chunk(0x03093013, "legacy cut keys (SOldCutKey2)")]
     [ChunkGameVersion(GameVersion.TMU | GameVersion.VSK5)]
@@ -459,7 +466,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// ghosts
+    /// CGameCtnReplayRecord 0x014 chunk (ghosts)
     /// </summary>
     [Chunk(0x03093014, "ghosts")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -475,7 +482,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// clip
+    /// CGameCtnReplayRecord 0x015 chunk (clip)
     /// </summary>
     [Chunk(0x03093015, "clip")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -491,7 +498,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy bullet, character, and arena visual data tapes
+    /// CGameCtnReplayRecord 0x016 chunk (legacy bullet, character, and arena visual data tapes)
     /// </summary>
     [Chunk(0x03093016, "legacy bullet, character, and arena visual data tapes")]
     public partial class Chunk03093016 : Chunk<CGameCtnReplayRecord>
@@ -505,7 +512,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// encapsulated legacy bullet, character, and arena visual data tapes
+    /// CGameCtnReplayRecord 0x017 skippable chunk (encapsulated legacy bullet, character, and arena visual data tapes)
     /// </summary>
     [Chunk(0x03093017, "encapsulated legacy bullet, character, and arena visual data tapes")]
     public partial class Chunk03093017 : SkippableChunk<CGameCtnReplayRecord>
@@ -519,7 +526,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// author
+    /// CGameCtnReplayRecord 0x018 skippable chunk (author)
     /// </summary>
     [Chunk(0x03093018, "author")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -535,7 +542,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy scenery vortex keys
+    /// CGameCtnReplayRecord 0x019 skippable chunk (legacy scenery vortex keys)
     /// </summary>
     [Chunk(0x03093019, "legacy scenery vortex keys")]
     public partial class Chunk03093019 : SkippableChunk<CGameCtnReplayRecord>
@@ -550,7 +557,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// scenery vortex key
+    /// CGameCtnReplayRecord 0x01A skippable chunk (scenery vortex key)
     /// </summary>
     [Chunk(0x0309301A, "scenery vortex key")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -566,7 +573,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// player of interest
+    /// CGameCtnReplayRecord 0x01B skippable chunk (player of interest)
     /// </summary>
     [Chunk(0x0309301B, "player of interest")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -582,6 +589,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01C skippable chunk
+    /// </summary>
     [Chunk(0x0309301C)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>
@@ -597,7 +607,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// InterfaceScriptInfos
+    /// CGameCtnReplayRecord 0x01D skippable chunk (InterfaceScriptInfos)
     /// </summary>
     [Chunk(0x0309301D, "InterfaceScriptInfos")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -614,7 +624,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// actions
+    /// CGameCtnReplayRecord 0x01E skippable chunk (actions)
     /// </summary>
     [Chunk(0x0309301E, "actions")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -631,7 +641,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// AnchoredObjectInfos
+    /// CGameCtnReplayRecord 0x01F skippable chunk (AnchoredObjectInfos)
     /// </summary>
     [Chunk(0x0309301F, "AnchoredObjectInfos")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -648,7 +658,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// item skins and names
+    /// CGameCtnReplayRecord 0x020 skippable chunk (item skins and names)
     /// </summary>
     [Chunk(0x03093020, "item skins and names")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -665,7 +675,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// enable minimap
+    /// CGameCtnReplayRecord 0x021 skippable chunk (enable minimap)
     /// </summary>
     [Chunk(0x03093021, "enable minimap")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -682,7 +692,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// recorded Monoscreen camera values (STimedCamVal)
+    /// CGameCtnReplayRecord 0x022 skippable chunk (recorded Monoscreen camera values (STimedCamVal))
     /// </summary>
     [Chunk(0x03093022, "recorded Monoscreen camera values (STimedCamVal)")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -699,7 +709,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// empty-car visual tape and bonus bump keys
+    /// CGameCtnReplayRecord 0x023 skippable chunk (empty-car visual tape and bonus bump keys)
     /// </summary>
     [Chunk(0x03093023, "empty-car visual tape and bonus bump keys")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -716,7 +726,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// deprecated scenery-turret tape and record data
+    /// CGameCtnReplayRecord 0x024 chunk (deprecated scenery-turret tape and record data)
     /// </summary>
     [Chunk(0x03093024, "deprecated scenery-turret tape and record data")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
@@ -732,6 +742,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x025 skippable chunk
+    /// </summary>
     [Chunk(0x03093025)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03093025 : SkippableChunk<CGameCtnReplayRecord>
@@ -747,7 +760,7 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
     }
 
     /// <summary>
-    /// EntDataSceneUIdsToGhost
+    /// CGameCtnReplayRecord 0x026 skippable chunk (EntDataSceneUIdsToGhost)
     /// </summary>
     [Chunk(0x03093026, "EntDataSceneUIdsToGhost")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
@@ -763,6 +776,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x027 skippable chunk
+    /// </summary>
     [Chunk(0x03093027)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03093027 : SkippableChunk<CGameCtnReplayRecord>
@@ -777,6 +793,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x028 skippable chunk
+    /// </summary>
     [Chunk(0x03093028)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03093028 : SkippableChunk<CGameCtnReplayRecord>
@@ -790,6 +809,9 @@ public partial class CGameCtnReplayRecord : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x029 skippable chunk
+    /// </summary>
     [Chunk(0x03093029)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03093029 : SkippableChunk<CGameCtnReplayRecord>

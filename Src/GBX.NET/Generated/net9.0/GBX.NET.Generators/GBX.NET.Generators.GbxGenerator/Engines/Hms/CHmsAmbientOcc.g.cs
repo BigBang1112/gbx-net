@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06026000</remarks>
 [Class(0x06026000)]
 public partial class CHmsAmbientOcc : CMwNod, IClass
 {
@@ -97,6 +98,9 @@ public partial class CHmsAmbientOcc : CMwNod, IClass
         blurTexelCount = 15;
     }
 
+    /// <summary>
+    /// CHmsAmbientOcc 0x000 chunk
+    /// </summary>
     [Chunk(0x06026000)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06026000 : Chunk<CHmsAmbientOcc>

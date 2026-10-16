@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09058000</remarks>
 [Class(0x09058000)]
 public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
 {
@@ -118,7 +119,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// legacy specular power
+    /// CPlugBitmapRenderHemisphere 0x000 chunk (legacy specular power)
     /// </summary>
     [Chunk(0x09058000, "legacy specular power")]
     public partial class Chunk09058000 : Chunk<CPlugBitmapRenderHemisphere>
@@ -138,7 +139,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// legacy specular powers
+    /// CPlugBitmapRenderHemisphere 0x001 chunk (legacy specular powers)
     /// </summary>
     [Chunk(0x09058001, "legacy specular powers")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -179,7 +180,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// specular powers and automatic scaling
+    /// CPlugBitmapRenderHemisphere 0x002 chunk (specular powers and automatic scaling)
     /// </summary>
     [Chunk(0x09058002, "specular powers and automatic scaling")]
     public partial class Chunk09058002 : Chunk<CPlugBitmapRenderHemisphere>
@@ -201,7 +202,7 @@ public partial class CPlugBitmapRenderHemisphere : CPlugBitmapRender, IClass
     }
 
     /// <summary>
-    /// light direction
+    /// CPlugBitmapRenderHemisphere 0x003 chunk (light direction)
     /// </summary>
     [Chunk(0x09058003, "light direction")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

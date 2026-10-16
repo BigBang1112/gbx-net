@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090F2000</remarks>
 [Class(0x090F2000)]
 public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
 {
@@ -148,7 +149,7 @@ public partial class CPlugCharPhySpecialProperty : CMwNod, IClass
     }
 
     /// <summary>
-    /// character movement effects
+    /// CPlugCharPhySpecialProperty 0x000 chunk (character movement effects)
     /// </summary>
     [Chunk(0x090F2000, "character movement effects")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, 4, 4, 4)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03122000</remarks>
 [Class(0x03122000)]
 public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
 {
@@ -376,7 +377,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy mobil and frequency
+    /// CGameCtnBlockInfoMobil 0x000 chunk (legacy mobil and frequency)
     /// </summary>
     [Chunk(0x03122000, "legacy mobil and frequency")]
     public partial class Chunk03122000 : Chunk<CGameCtnBlockInfoMobil>
@@ -396,7 +397,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy solid decals
+    /// CGameCtnBlockInfoMobil 0x001 chunk (legacy solid decals)
     /// </summary>
     [Chunk(0x03122001, "legacy solid decals")]
     public partial class Chunk03122001 : Chunk<CGameCtnBlockInfoMobil>
@@ -415,7 +416,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     /// <summary>
-    /// decals and frequency
+    /// CGameCtnBlockInfoMobil 0x002 chunk (decals and frequency)
     /// </summary>
     [Chunk(0x03122002, "decals and frequency")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -437,7 +438,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     /// <summary>
-    /// geometry, paths and effects
+    /// CGameCtnBlockInfoMobil 0x003 chunk (geometry, paths and effects)
     /// </summary>
     [Chunk(0x03122003, "geometry, paths and effects")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 3, 14, 23)]
@@ -711,7 +712,7 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     }
 
     /// <summary>
-    /// DynaLinks
+    /// CGameCtnBlockInfoMobil 0x004 chunk (DynaLinks)
     /// </summary>
     [Chunk(0x03122004, "DynaLinks")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

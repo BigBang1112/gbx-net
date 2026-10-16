@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090F6000</remarks>
 [Class(0x090F6000)]
 public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
 {
@@ -713,7 +714,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// camera smoothing and steering response curves
+    /// CPlugVehicleCameraRace2Model 0x000 chunk (camera smoothing and steering response curves)
     /// </summary>
     [Chunk(0x090F6000, "camera smoothing and steering response curves")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -795,7 +796,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// IsRollFromInput
+    /// CPlugVehicleCameraRace2Model 0x001 chunk (IsRollFromInput)
     /// </summary>
     [Chunk(0x090F6001, "IsRollFromInput")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -816,7 +817,7 @@ public partial class CPlugVehicleCameraRace2Model : CPlugCamControlModel, IClass
     }
 
     /// <summary>
-    /// camera distance, field of view and responses
+    /// CPlugVehicleCameraRace2Model 0x002 chunk (camera distance, field of view and responses)
     /// </summary>
     [Chunk(0x090F6002, "camera distance, field of view and responses")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 4)]

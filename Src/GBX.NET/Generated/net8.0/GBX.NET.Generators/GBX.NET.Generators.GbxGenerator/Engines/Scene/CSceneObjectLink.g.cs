@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A014000</remarks>
 [Class(0x0A014000)]
 public partial class CSceneObjectLink : CMwNod, IClass
 {
@@ -108,6 +109,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x000 chunk
+    /// </summary>
     [Chunk(0x0A00F000)]
     public partial class Chunk0A00F000 : Chunk<CSceneObjectLink>
     {
@@ -128,6 +132,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x001 chunk
+    /// </summary>
     [Chunk(0x0A00F001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A00F001 : Chunk<CSceneObjectLink>
@@ -166,6 +173,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x002 chunk
+    /// </summary>
     [Chunk(0x0A00F002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A00F002 : Chunk<CSceneObjectLink>
@@ -186,6 +196,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x001 chunk
+    /// </summary>
     [Chunk(0x0A014001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A014001 : Chunk<CSceneObjectLink>
@@ -236,6 +249,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x002 chunk
+    /// </summary>
     [Chunk(0x0A014002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A014002 : Chunk<CSceneObjectLink>
@@ -260,6 +276,9 @@ public partial class CSceneObjectLink : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneObjectLink 0x003 chunk
+    /// </summary>
     [Chunk(0x0A014003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0A014003 : Chunk<CSceneObjectLink>

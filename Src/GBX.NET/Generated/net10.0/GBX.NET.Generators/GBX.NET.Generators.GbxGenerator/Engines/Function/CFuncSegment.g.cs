@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.Function;
 /// <summary>
 /// A function with separate incoming and outgoing values and tangents at each key.
 /// </summary>
+/// <remarks>ID: 0x05037000</remarks>
 [Class(0x05037000)]
 public partial class CFuncSegment : CFunc, IClass
 {
@@ -58,7 +59,7 @@ public partial class CFuncSegment : CFunc, IClass
     }
 
     /// <summary>
-    /// Keys
+    /// CFuncSegment 0x000 chunk (Keys)
     /// </summary>
     [Chunk(0x05037000, "Keys")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP4)]

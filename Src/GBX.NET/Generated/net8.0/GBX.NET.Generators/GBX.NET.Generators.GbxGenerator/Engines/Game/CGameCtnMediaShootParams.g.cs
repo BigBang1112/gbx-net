@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03060000</remarks>
 [Class(0x03060000)]
 public partial class CGameCtnMediaShootParams : CMwNod, IClass
 {
@@ -250,6 +251,9 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         ((CGameCtnMediaShootParams)clone).audioEncoding = context.Clone(this.audioEncoding)!;
     }
 
+    /// <summary>
+    /// CGameCtnMediaShootParams 0x000 chunk
+    /// </summary>
     [Chunk(0x03060000)]
     public partial class Chunk03060000 : Chunk<CGameCtnMediaShootParams>
     {
@@ -281,6 +285,9 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaShootParams 0x001 chunk
+    /// </summary>
     [Chunk(0x03060001)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk03060001 : Chunk<CGameCtnMediaShootParams>
@@ -308,6 +315,9 @@ public partial class CGameCtnMediaShootParams : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaShootParams 0x002 chunk
+    /// </summary>
     [Chunk(0x03060002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk03060002 : Chunk<CGameCtnMediaShootParams>, IVersionable

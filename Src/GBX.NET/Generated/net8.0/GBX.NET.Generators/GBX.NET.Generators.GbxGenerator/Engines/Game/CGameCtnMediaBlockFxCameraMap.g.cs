@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03139000</remarks>
 [Class(0x03139000)]
 public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -135,6 +136,9 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxCameraMap 0x000 chunk
+    /// </summary>
     [Chunk(0x03139000)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
@@ -154,6 +158,9 @@ public partial class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, IClass,
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxCameraMap 0x001 chunk
+    /// </summary>
     [Chunk(0x03139001)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03139001 : Chunk<CGameCtnMediaBlockFxCameraMap>

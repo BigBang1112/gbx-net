@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.MetaNotPersistent;
 
+/// <remarks>ID: 0x300E5000</remarks>
 [Class(0x300E5000)]
 public abstract partial class SMetaPtr : CMwNod, IClass
 {

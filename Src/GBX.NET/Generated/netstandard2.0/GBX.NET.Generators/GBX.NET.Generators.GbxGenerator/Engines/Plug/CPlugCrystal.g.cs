@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09003000</remarks>
 [Class(0x09003000)]
 public partial class CPlugCrystal : CPlugTreeGenerator, IClass
 {
@@ -128,7 +129,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// one layer only
+    /// CPlugCrystal 0x000 chunk (one layer only)
     /// </summary>
     [Chunk(0x09003000, "one layer only")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
@@ -145,7 +146,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// legacy tree generation
+    /// CPlugCrystal 0x002 chunk (legacy tree generation)
     /// </summary>
     [Chunk(0x09003002, "legacy tree generation")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -167,7 +168,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// materials
+    /// CPlugCrystal 0x003 chunk (materials)
     /// </summary>
     [Chunk(0x09003003, "materials")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, -1, -1, -1, -1, -1, 2, 2)]
@@ -197,7 +198,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// editor data
+    /// CPlugCrystal 0x004 skippable chunk (editor data)
     /// </summary>
     [Chunk(0x09003004, "editor data")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
@@ -243,7 +244,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// layers
+    /// CPlugCrystal 0x005 chunk (layers)
     /// </summary>
     [Chunk(0x09003005, "layers")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
@@ -273,7 +274,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// lightmap UVs
+    /// CPlugCrystal 0x006 chunk (lightmap UVs)
     /// </summary>
     [Chunk(0x09003006, "lightmap UVs")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 2)]
@@ -293,7 +294,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// smoothing groups
+    /// CPlugCrystal 0x007 chunk (smoothing groups)
     /// </summary>
     [Chunk(0x09003007, "smoothing groups")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 0)]
@@ -335,7 +336,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator, IClass
     }
 
     /// <summary>
-    /// legacy voxel grid
+    /// CPlugCrystal 0x008 chunk (legacy voxel grid)
     /// </summary>
     [Chunk(0x09003008, "legacy voxel grid")]
     public partial class Chunk09003008 : Chunk<CPlugCrystal>, IVersionable

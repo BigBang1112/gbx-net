@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09005000</remarks>
 [Class(0x09005000)]
 public partial class CPlugSolid : CPlug, IClass
 {
@@ -351,7 +352,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// PlugIdCounter
+    /// CPlugSolid 0x000 chunk (PlugIdCounter)
     /// </summary>
     [Chunk(0x09005000, "PlugIdCounter")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -372,7 +373,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy mass and inertia
+    /// CPlugSolid 0x006 chunk (legacy mass and inertia)
     /// </summary>
     [Chunk(0x09005006, "legacy mass and inertia")]
     public partial class Chunk09005006 : Chunk<CPlugSolid>
@@ -398,6 +399,9 @@ public partial class CPlugSolid : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x007 chunk
+    /// </summary>
     [Chunk(0x09005007)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk09005007 : Chunk<CPlugSolid>
@@ -419,7 +423,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy physical flags
+    /// CPlugSolid 0x00B chunk (legacy physical flags)
     /// </summary>
     [Chunk(0x0900500B, "legacy physical flags")]
     public partial class Chunk0900500B : Chunk<CPlugSolid>
@@ -461,7 +465,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy physical flags
+    /// CPlugSolid 0x00C chunk (legacy physical flags)
     /// </summary>
     [Chunk(0x0900500C, "legacy physical flags")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -535,7 +539,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// model and tree
+    /// CPlugSolid 0x00D chunk (model and tree)
     /// </summary>
     [Chunk(0x0900500D, "model and tree")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -567,7 +571,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// mass, inertia, and friction
+    /// CPlugSolid 0x00E chunk (mass, inertia, and friction)
     /// </summary>
     [Chunk(0x0900500E, "mass, inertia, and friction")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -593,7 +597,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy physical parameters
+    /// CPlugSolid 0x00F chunk (legacy physical parameters)
     /// </summary>
     [Chunk(0x0900500F, "legacy physical parameters")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMNESWC)]
@@ -619,7 +623,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy vehicle environment
+    /// CPlugSolid 0x010 chunk (legacy vehicle environment)
     /// </summary>
     [Chunk(0x09005010, "legacy vehicle environment")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -665,7 +669,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// model and tree
+    /// CPlugSolid 0x011 chunk (model and tree)
     /// </summary>
     [Chunk(0x09005011, "model and tree")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -698,7 +702,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// TileCountU
+    /// CPlugSolid 0x012 chunk (TileCountU)
     /// </summary>
     [Chunk(0x09005012, "TileCountU")]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
@@ -719,7 +723,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// SolidPreLightGen
+    /// CPlugSolid 0x017 chunk (SolidPreLightGen)
     /// </summary>
     [Chunk(0x09005017, "SolidPreLightGen")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 3, 3, 3)]
@@ -788,7 +792,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// sounds, particles, and path
+    /// CPlugSolid 0x019 chunk (sounds, particles, and path)
     /// </summary>
     [Chunk(0x09005019, "sounds, particles, and path")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 3, 5)]
@@ -880,7 +884,7 @@ public partial class CPlugSolid : CPlug, IClass
     }
 
     /// <summary>
-    /// LOD normal maps
+    /// CPlugSolid 0x01A skippable chunk (LOD normal maps)
     /// </summary>
     [Chunk(0x0900501A, "LOD normal maps")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 4)]

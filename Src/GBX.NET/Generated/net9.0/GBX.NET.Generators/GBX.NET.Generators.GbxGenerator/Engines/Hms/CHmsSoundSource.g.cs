@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x0600D000</remarks>
 [Class(0x0600D000)]
 public partial class CHmsSoundSource : CHmsPoc, IClass
 {
@@ -128,6 +129,9 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsSoundSource 0x000 chunk
+    /// </summary>
     [Chunk(0x0600D000)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0600D000 : Chunk<CHmsSoundSource>
@@ -146,6 +150,9 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsSoundSource 0x001 chunk
+    /// </summary>
     [Chunk(0x0600D001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk0600D001 : Chunk<CHmsSoundSource>
@@ -165,6 +172,9 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsSoundSource 0x002 chunk
+    /// </summary>
     [Chunk(0x0600D002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk0600D002 : Chunk<CHmsSoundSource>
@@ -186,7 +196,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     /// <summary>
-    /// volume, pitch, speed
+    /// CHmsSoundSource 0x003 chunk (volume, pitch, speed)
     /// </summary>
     [Chunk(0x0600D003, "volume, pitch, speed")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -209,7 +219,7 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
     }
 
     /// <summary>
-    /// VolumicSize
+    /// CHmsSoundSource 0x004 chunk (VolumicSize)
     /// </summary>
     [Chunk(0x0600D004, "VolumicSize")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
@@ -229,6 +239,9 @@ public partial class CHmsSoundSource : CHmsPoc, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsSoundSource 0x005 chunk
+    /// </summary>
     [Chunk(0x0600D005)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk0600D005 : Chunk<CHmsSoundSource>

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03180000</remarks>
 [Class(0x03180000)]
 public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerProfileChunk, IClass
 {
@@ -84,7 +85,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     /// <summary>
-    /// OldStations
+    /// CGamePlayerProfileChunk_ManiaPlanetStations 0x000 skippable chunk (OldStations)
     /// </summary>
     [Chunk(0x03180000, "OldStations")]
     public partial class Chunk03180000 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
@@ -105,6 +106,9 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
         }
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_ManiaPlanetStations 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x03180001)]
     public partial class Chunk03180001 : SkippableChunk<CGamePlayerProfileChunk_ManiaPlanetStations>, IVersionable
     {
@@ -137,7 +141,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     /// <summary>
-    /// Stations
+    /// CGamePlayerProfileChunk_ManiaPlanetStations 0x002 skippable chunk (Stations)
     /// </summary>
     [Chunk(0x03180002, "Stations")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -158,7 +162,7 @@ public partial class CGamePlayerProfileChunk_ManiaPlanetStations : CGamePlayerPr
     }
 
     /// <summary>
-    /// LatestTitleIdLoaded
+    /// CGamePlayerProfileChunk_ManiaPlanetStations 0x003 skippable chunk (LatestTitleIdLoaded)
     /// </summary>
     [Chunk(0x03180003, "LatestTitleIdLoaded")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

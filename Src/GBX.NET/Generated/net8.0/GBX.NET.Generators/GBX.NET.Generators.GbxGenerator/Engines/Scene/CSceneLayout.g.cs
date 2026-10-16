@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A003000</remarks>
 [Class(0x0A003000)]
 public partial class CSceneLayout : CScene, IClass
 {
@@ -358,6 +359,9 @@ public partial class CSceneLayout : CScene, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneLayout 0x00C chunk
+    /// </summary>
     [Chunk(0x0A00300C)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A00300C : Chunk<CSceneLayout>
@@ -378,6 +382,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x010 chunk
+    /// </summary>
     [Chunk(0x0A003010)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A003010 : Chunk<CSceneLayout>
@@ -397,6 +404,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x014 chunk
+    /// </summary>
     [Chunk(0x0A003014)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A003014 : Chunk<CSceneLayout>
@@ -426,6 +436,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x017 chunk
+    /// </summary>
     [Chunk(0x0A003017)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk0A003017 : Chunk<CSceneLayout>
@@ -440,6 +453,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x018 chunk
+    /// </summary>
     [Chunk(0x0A003018)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0A003018 : Chunk<CSceneLayout>, IVersionable
@@ -500,6 +516,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x019 chunk
+    /// </summary>
     [Chunk(0x0A003019)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A003019 : Chunk<CSceneLayout>
@@ -553,6 +572,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x01B chunk
+    /// </summary>
     [Chunk(0x0A00301B)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0A00301B : Chunk<CSceneLayout>, IVersionable
@@ -613,6 +635,9 @@ public partial class CSceneLayout : CScene, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneLayout 0x01C chunk
+    /// </summary>
     [Chunk(0x0A00301C)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0A00301C : Chunk<CSceneLayout>, IVersionable

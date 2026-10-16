@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Meta;
 
+/// <remarks>ID: 0x2F0BC000</remarks>
 [Class(0x2F0BC000)]
 public partial class NPlugItem_SVariantList : CMwNod, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

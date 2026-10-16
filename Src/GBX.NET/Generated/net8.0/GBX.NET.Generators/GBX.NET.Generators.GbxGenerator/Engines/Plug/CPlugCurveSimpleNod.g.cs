@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09185000</remarks>
 [Class(0x09185000)]
 public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
 {
@@ -47,7 +48,7 @@ public partial class CPlugCurveSimpleNod : CFuncKeysReal, IClass
     }
 
     /// <summary>
-    /// Curve
+    /// CPlugCurveSimpleNod 0x000 chunk (Curve)
     /// </summary>
     [Chunk(0x09185000, "Curve")]
     [ChunkGameVersion(GameVersion.TM2020, 0)]

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Meta;
 
+/// <remarks>ID: 0x2F0C8000</remarks>
 [Class(0x2F0C8000)]
 public partial class NPlugDyna_SPrefabConstraintParams : SMetaPtr, IClass, IReadableWritable, IReadable, IWritable, IVersionable
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E026000</remarks>
 [Class(0x2E026000)]
 public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
 {
@@ -408,6 +409,9 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCommonItemEntityModelEdition 0x000 chunk
+    /// </summary>
     [Chunk(0x2E026000)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, -1, 8)]
     public partial class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>, IVersionable
@@ -608,6 +612,9 @@ public partial class CGameCommonItemEntityModelEdition : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCommonItemEntityModelEdition 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x2E026001)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk2E026001 : SkippableChunk<CGameCommonItemEntityModelEdition>, IVersionable

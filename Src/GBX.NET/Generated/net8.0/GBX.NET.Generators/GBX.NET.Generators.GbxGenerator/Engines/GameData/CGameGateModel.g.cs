@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E00B000</remarks>
 [Class(0x2E00B000)]
 public partial class CGameGateModel : CMwNod, IClass
 {
@@ -112,6 +113,9 @@ public partial class CGameGateModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameGateModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E00B000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00B000 : Chunk<CGameGateModel>, IVersionable
@@ -134,6 +138,9 @@ public partial class CGameGateModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameGateModel 0x001 chunk
+    /// </summary>
     [Chunk(0x2E00B001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E00B001 : Chunk<CGameGateModel>, IVersionable

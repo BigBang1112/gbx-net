@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Script;
 
+/// <remarks>ID: 0x11000000</remarks>
 [Class(0x11000000)]
 public partial class CScriptSetting : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

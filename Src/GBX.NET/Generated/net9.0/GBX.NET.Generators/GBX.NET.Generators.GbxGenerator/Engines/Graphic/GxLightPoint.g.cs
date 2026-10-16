@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04003000</remarks>
 [Class(0x04003000)]
 public partial class GxLightPoint : GxLightNotAmbient, IClass
 {
@@ -64,6 +65,9 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
     {
     }
 
+    /// <summary>
+    /// GxLightPoint 0x003 chunk
+    /// </summary>
     [Chunk(0x04003003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk04003003 : Chunk<GxLightPoint>
@@ -82,6 +86,9 @@ public partial class GxLightPoint : GxLightNotAmbient, IClass
         }
     }
 
+    /// <summary>
+    /// GxLightPoint 0x004 chunk
+    /// </summary>
     [Chunk(0x04003004)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk04003004 : Chunk<GxLightPoint>

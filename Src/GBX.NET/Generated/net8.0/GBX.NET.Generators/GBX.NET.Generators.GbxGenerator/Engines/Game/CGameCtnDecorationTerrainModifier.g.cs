@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0303C000</remarks>
 [Class(0x0303C000)]
 public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
 {
@@ -86,6 +87,9 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnDecorationTerrainModifier 0x000 chunk
+    /// </summary>
     [Chunk(0x0303C000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303C000 : Chunk<CGameCtnDecorationTerrainModifier>
@@ -105,6 +109,9 @@ public partial class CGameCtnDecorationTerrainModifier : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationTerrainModifier 0x001 chunk
+    /// </summary>
     [Chunk(0x0303C001)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0303C001 : Chunk<CGameCtnDecorationTerrainModifier>

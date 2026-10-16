@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0303A000</remarks>
 [Class(0x0303A000)]
 public partial class CGameCtnDecorationMood : CMwNod, IClass
 {
@@ -412,6 +413,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x000 chunk
+    /// </summary>
     [Chunk(0x0303A000)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A000 : Chunk<CGameCtnDecorationMood>
@@ -434,6 +438,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x001 chunk
+    /// </summary>
     [Chunk(0x0303A001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0303A001 : Chunk<CGameCtnDecorationMood>
@@ -454,6 +461,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x002 chunk
+    /// </summary>
     [Chunk(0x0303A002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A002 : Chunk<CGameCtnDecorationMood>
@@ -476,6 +486,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x003 chunk
+    /// </summary>
     [Chunk(0x0303A003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0303A003 : Chunk<CGameCtnDecorationMood>
@@ -494,6 +507,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x004 chunk
+    /// </summary>
     [Chunk(0x0303A004)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A004 : Chunk<CGameCtnDecorationMood>
@@ -512,6 +528,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x005 chunk
+    /// </summary>
     [Chunk(0x0303A005)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A005 : Chunk<CGameCtnDecorationMood>
@@ -530,6 +549,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x006 chunk
+    /// </summary>
     [Chunk(0x0303A006)]
     public partial class Chunk0303A006 : Chunk<CGameCtnDecorationMood>
     {
@@ -546,6 +568,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x007 chunk
+    /// </summary>
     [Chunk(0x0303A007)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A007 : Chunk<CGameCtnDecorationMood>
@@ -565,6 +590,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x00C chunk
+    /// </summary>
     [Chunk(0x0303A00C)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A00C : Chunk<CGameCtnDecorationMood>
@@ -588,6 +616,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x00F chunk
+    /// </summary>
     [Chunk(0x0303A00F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A00F : Chunk<CGameCtnDecorationMood>, IVersionable
@@ -628,6 +659,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x012 chunk
+    /// </summary>
     [Chunk(0x0303A012)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A012 : Chunk<CGameCtnDecorationMood>, IVersionable
@@ -661,6 +695,9 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationMood 0x013 chunk
+    /// </summary>
     [Chunk(0x0303A013)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0303A013 : Chunk<CGameCtnDecorationMood>, IVersionable

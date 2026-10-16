@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A103000</remarks>
 [Class(0x0A103000)]
 public partial class CSceneToyVehicleTrackMania : CSceneVehicleCar, IClass
 {

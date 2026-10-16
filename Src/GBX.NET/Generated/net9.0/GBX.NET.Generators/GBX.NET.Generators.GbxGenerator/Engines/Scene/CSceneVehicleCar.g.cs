@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Scene;
 
+/// <remarks>ID: 0x0A02B000</remarks>
 [Class(0x0A02B000)]
 public partial class CSceneVehicleCar : CSceneVehicle, IClass
 {
@@ -54,6 +55,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
     {
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x003 chunk
+    /// </summary>
     [Chunk(0x0A02B003)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B003 : Chunk<CSceneVehicleCar>
@@ -67,6 +71,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x005 chunk
+    /// </summary>
     [Chunk(0x0A02B005)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B005 : Chunk<CSceneVehicleCar>
@@ -110,6 +117,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x007 chunk
+    /// </summary>
     [Chunk(0x0A02B007)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B007 : Chunk<CSceneVehicleCar>
@@ -153,6 +163,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x008 chunk
+    /// </summary>
     [Chunk(0x0A02B008)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B008 : Chunk<CSceneVehicleCar>
@@ -166,6 +179,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x009 chunk
+    /// </summary>
     [Chunk(0x0A02B009)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)]
     public partial class Chunk0A02B009 : Chunk<CSceneVehicleCar>
@@ -184,6 +200,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x00B chunk
+    /// </summary>
     [Chunk(0x0A02B00B)]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A02B00B : Chunk<CSceneVehicleCar>
@@ -235,6 +254,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x00C chunk
+    /// </summary>
     [Chunk(0x0A02B00C)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0A02B00C : Chunk<CSceneVehicleCar>
@@ -261,6 +283,9 @@ public partial class CSceneVehicleCar : CSceneVehicle, IClass
         }
     }
 
+    /// <summary>
+    /// CSceneVehicleCar 0x014 chunk
+    /// </summary>
     [Chunk(0x0A02B014)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0A02B014 : Chunk<CSceneVehicleCar>

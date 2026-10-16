@@ -31,6 +31,7 @@ namespace GBX.NET.Engines.GameData;
 /// <summary>
 /// Collector. Something that can have an icon.
 /// </summary>
+/// <remarks>ID: 0x2E001000</remarks>
 [Class(0x2E001000)]
 public partial class CGameCtnCollector : CMwNod, IClass
 {
@@ -293,7 +294,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// desc
+    /// CGameCtnCollector 0x003 chunk (desc)
     /// </summary>
     [Chunk(0x2E001003, "desc")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 3, 4, 5, 7, 8, 8, 8)]
@@ -429,7 +430,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// icon
+    /// CGameCtnCollector 0x004 chunk (icon)
     /// </summary>
     [Chunk(0x2E001004, "icon")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -440,7 +441,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// lightmap compute time
+    /// CGameCtnCollector 0x006 chunk (lightmap compute time)
     /// </summary>
     [Chunk(0x2E001006, "lightmap compute time")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
@@ -461,7 +462,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// default skin
+    /// CGameCtnCollector 0x008 chunk (default skin)
     /// </summary>
     [Chunk(0x2E001008, "default skin")]
     [ChunkGameVersion(GameVersion.TM2020)]
@@ -485,7 +486,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy icon node
+    /// CGameCtnCollector 0x000 chunk (legacy icon node)
     /// </summary>
     [Chunk(0x2E001000, "legacy icon node")]
     public partial class Chunk2E001000 : Chunk<CGameCtnCollector>
@@ -527,7 +528,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy icon image
+    /// CGameCtnCollector 0x001 chunk (legacy icon image)
     /// </summary>
     [Chunk(0x2E001001, "legacy icon image")]
     public partial class Chunk2E001001 : Chunk<CGameCtnCollector>
@@ -572,7 +573,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// Ident
+    /// CGameCtnCollector 0x002 chunk (Ident)
     /// </summary>
     [Chunk(0x2E001002, "Ident")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -593,7 +594,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy icon fid
+    /// CGameCtnCollector 0x003 chunk (legacy icon fid)
     /// </summary>
     [Chunk(0x2E001003, "legacy icon fid")]
     public partial class Chunk2E001003 : Chunk<CGameCtnCollector>
@@ -618,7 +619,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy page and icon
+    /// CGameCtnCollector 0x004 chunk (legacy page and icon)
     /// </summary>
     [Chunk(0x2E001004, "legacy page and icon")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -649,7 +650,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy catalog availability
+    /// CGameCtnCollector 0x005 chunk (legacy catalog availability)
     /// </summary>
     [Chunk(0x2E001005, "legacy catalog availability")]
     public partial class Chunk2E001005 : Chunk<CGameCtnCollector>
@@ -671,6 +672,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x006 chunk
+    /// </summary>
     [Chunk(0x2E001006)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E001006 : Chunk<CGameCtnCollector>
@@ -689,6 +693,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x007 chunk
+    /// </summary>
     [Chunk(0x2E001007)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E001007 : Chunk<CGameCtnCollector>
@@ -712,6 +719,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x008 chunk
+    /// </summary>
     [Chunk(0x2E001008)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E001008 : Chunk<CGameCtnCollector>
@@ -752,6 +762,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x009 chunk
+    /// </summary>
     [Chunk(0x2E001009)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk2E001009 : Chunk<CGameCtnCollector>
@@ -778,6 +791,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x00A chunk
+    /// </summary>
     [Chunk(0x2E00100A)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk2E00100A : Chunk<CGameCtnCollector>
@@ -799,7 +815,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// ident
+    /// CGameCtnCollector 0x00B chunk (ident)
     /// </summary>
     [Chunk(0x2E00100B, "ident")]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -820,7 +836,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// collector name
+    /// CGameCtnCollector 0x00C chunk (collector name)
     /// </summary>
     [Chunk(0x2E00100C, "collector name")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -841,7 +857,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// description
+    /// CGameCtnCollector 0x00D chunk (description)
     /// </summary>
     [Chunk(0x2E00100D, "description")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -862,7 +878,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// icon render
+    /// CGameCtnCollector 0x00E chunk (icon render)
     /// </summary>
     [Chunk(0x2E00100E, "icon render")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
@@ -884,7 +900,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy skin directory
+    /// CGameCtnCollector 0x00F chunk (legacy skin directory)
     /// </summary>
     [Chunk(0x2E00100F, "legacy skin directory")]
     public partial class Chunk2E00100F : Chunk<CGameCtnCollector>
@@ -902,6 +918,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x010 chunk
+    /// </summary>
     [Chunk(0x2E001010)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 2, 2, 4)]
     public partial class Chunk2E001010 : Chunk<CGameCtnCollector>, IVersionable
@@ -998,6 +1017,9 @@ public partial class CGameCtnCollector : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnCollector 0x011 chunk
+    /// </summary>
     [Chunk(0x2E001011)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 1, 1)]
     public partial class Chunk2E001011 : Chunk<CGameCtnCollector>, IVersionable
@@ -1048,7 +1070,7 @@ public partial class CGameCtnCollector : CMwNod, IClass
     }
 
     /// <summary>
-    /// icon render
+    /// CGameCtnCollector 0x012 chunk (icon render)
     /// </summary>
     [Chunk(0x2E001012, "icon render")]
     [ChunkGameVersion(GameVersion.TM2020)]

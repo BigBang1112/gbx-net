@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090B5000</remarks>
 [Class(0x090B5000)]
 public partial class CPlugParticleSplashModel : CMwNod, IClass
 {
@@ -45,6 +46,9 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugParticleSplashModel 0x000 chunk
+    /// </summary>
     [Chunk(0x090B5000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B5000 : Chunk<CPlugParticleSplashModel>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090BB000</remarks>
 [Class(0x090BB000)]
 public partial class CPlugSolid2Model : CMwNod, IClass
 {
@@ -120,7 +121,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     }
 
     /// <summary>
-    /// file version
+    /// CPlugSolid2Model 0x000 chunk (file version)
     /// </summary>
     [Chunk(0x090BB000, "file version")]
     public partial class HeaderChunk090BB000 : HeaderChunk<CPlugSolid2Model>
@@ -138,6 +139,9 @@ public partial class CPlugSolid2Model : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSolid2Model 0x000 chunk
+    /// </summary>
     [Chunk(0x090BB000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090BB000 : Chunk<CPlugSolid2Model>
@@ -193,7 +197,7 @@ public partial class CPlugSolid2Model : CMwNod, IClass
     }
 
     /// <summary>
-    /// fake occlusion
+    /// CPlugSolid2Model 0x002 skippable chunk (fake occlusion)
     /// </summary>
     [Chunk(0x090BB002, "fake occlusion")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]

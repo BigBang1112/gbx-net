@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08033000</remarks>
 [Class(0x08033000)]
 public partial class CMotionTrack : CMwCmdContainer, IClass
 {

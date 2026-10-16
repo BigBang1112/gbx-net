@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x08029000</remarks>
 [Class(0x08029000)]
 public partial class CMotionCmdBase : CMwCmd, IClass
 {
@@ -166,6 +167,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     {
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x000 chunk
+    /// </summary>
     [Chunk(0x08029000)]
     public partial class Chunk08029000 : Chunk<CMotionCmdBase>
     {
@@ -185,6 +189,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x001 chunk
+    /// </summary>
     [Chunk(0x08029001)]
     public partial class Chunk08029001 : Chunk08029000
     {
@@ -202,6 +209,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x002 chunk
+    /// </summary>
     [Chunk(0x08029002)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk08029002 : Chunk08029001
@@ -222,7 +232,7 @@ public partial class CMotionCmdBase : CMwCmd, IClass
     }
 
     /// <summary>
-    /// Legacy period and speed pair.
+    /// CMotionCmdBase 0x000 chunk (Legacy period and speed pair.)
     /// </summary>
     [Chunk(0x0802A000, "Legacy period and speed pair.")]
     public partial class Chunk0802A000 : Chunk<CMotionCmdBase>
@@ -245,6 +255,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x001 chunk
+    /// </summary>
     [Chunk(0x0802A001)]
     public partial class Chunk0802A001 : Chunk0802A000
     {
@@ -262,6 +275,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x002 chunk
+    /// </summary>
     [Chunk(0x0802A002)]
     public partial class Chunk0802A002 : Chunk0802A001
     {
@@ -279,6 +295,9 @@ public partial class CMotionCmdBase : CMwCmd, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionCmdBase 0x003 chunk
+    /// </summary>
     [Chunk(0x0802A003)]
     public partial class Chunk0802A003 : Chunk0802A002
     {

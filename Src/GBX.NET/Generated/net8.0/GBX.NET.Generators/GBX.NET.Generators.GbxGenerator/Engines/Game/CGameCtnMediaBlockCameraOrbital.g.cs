@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030A0000</remarks>
 [Class(0x030A0000)]
 public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -57,6 +58,9 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraOrbital 0x000 chunk
+    /// </summary>
     [Chunk(0x030A0000)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk030A0000 : Chunk<CGameCtnMediaBlockCameraOrbital>
@@ -75,6 +79,9 @@ public partial class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock, IClas
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockCameraOrbital 0x001 chunk
+    /// </summary>
     [Chunk(0x030A0001)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk030A0001 : Chunk<CGameCtnMediaBlockCameraOrbital>, IVersionable

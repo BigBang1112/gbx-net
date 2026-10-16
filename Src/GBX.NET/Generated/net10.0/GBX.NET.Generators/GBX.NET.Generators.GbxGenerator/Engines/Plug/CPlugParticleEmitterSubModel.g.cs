@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090B2000</remarks>
 [Class(0x090B2000)]
 public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 {
@@ -590,6 +591,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x011 chunk
+    /// </summary>
     [Chunk(0x090B2011)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2011 : Chunk<CPlugParticleEmitterSubModel>
@@ -679,6 +683,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x013 chunk
+    /// </summary>
     [Chunk(0x090B2013)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2013 : Chunk<CPlugParticleEmitterSubModel>
@@ -723,6 +730,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x015 chunk
+    /// </summary>
     [Chunk(0x090B2015)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2015 : Chunk<CPlugParticleEmitterSubModel>
@@ -752,6 +762,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x016 chunk
+    /// </summary>
     [Chunk(0x090B2016)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2016 : Chunk<CPlugParticleEmitterSubModel>
@@ -773,6 +786,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x017 chunk
+    /// </summary>
     [Chunk(0x090B2017)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2017 : Chunk<CPlugParticleEmitterSubModel>
@@ -792,6 +808,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x018 chunk
+    /// </summary>
     [Chunk(0x090B2018)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2018 : Chunk<CPlugParticleEmitterSubModel>
@@ -810,6 +829,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x019 chunk
+    /// </summary>
     [Chunk(0x090B2019)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2019 : Chunk<CPlugParticleEmitterSubModel>
@@ -830,6 +852,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01A chunk
+    /// </summary>
     [Chunk(0x090B201A)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201A : Chunk<CPlugParticleEmitterSubModel>
@@ -870,6 +895,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01B chunk
+    /// </summary>
     [Chunk(0x090B201B)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201B : Chunk<CPlugParticleEmitterSubModel>
@@ -891,6 +919,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01C chunk
+    /// </summary>
     [Chunk(0x090B201C)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201C : Chunk<CPlugParticleEmitterSubModel>
@@ -912,6 +943,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01D chunk
+    /// </summary>
     [Chunk(0x090B201D)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201D : Chunk<CPlugParticleEmitterSubModel>
@@ -935,6 +969,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01E chunk
+    /// </summary>
     [Chunk(0x090B201E)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201E : Chunk<CPlugParticleEmitterSubModel>
@@ -955,6 +992,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x01F chunk
+    /// </summary>
     [Chunk(0x090B201F)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B201F : Chunk<CPlugParticleEmitterSubModel>
@@ -973,6 +1013,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x020 chunk
+    /// </summary>
     [Chunk(0x090B2020)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2020 : Chunk<CPlugParticleEmitterSubModel>
@@ -996,6 +1039,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x021 chunk
+    /// </summary>
     [Chunk(0x090B2021)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2021 : Chunk<CPlugParticleEmitterSubModel>
@@ -1014,6 +1060,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x022 chunk
+    /// </summary>
     [Chunk(0x090B2022)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090B2022 : Chunk<CPlugParticleEmitterSubModel>
@@ -1032,6 +1081,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x023 chunk
+    /// </summary>
     [Chunk(0x090B2023)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk090B2023 : Chunk<CPlugParticleEmitterSubModel>
@@ -1052,6 +1104,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x02D chunk
+    /// </summary>
     [Chunk(0x090B202D)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202D : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1122,6 +1177,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x02E chunk
+    /// </summary>
     [Chunk(0x090B202E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202E : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1169,6 +1227,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x02F chunk
+    /// </summary>
     [Chunk(0x090B202F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B202F : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1236,6 +1297,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x030 chunk
+    /// </summary>
     [Chunk(0x090B2030)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2030 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1265,6 +1329,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x031 chunk
+    /// </summary>
     [Chunk(0x090B2031)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2031 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1432,6 +1499,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x032 chunk
+    /// </summary>
     [Chunk(0x090B2032)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2032 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1476,6 +1546,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x033 chunk
+    /// </summary>
     [Chunk(0x090B2033)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2033 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1646,6 +1719,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x034 chunk
+    /// </summary>
     [Chunk(0x090B2034)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2034 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1725,6 +1801,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x035 chunk
+    /// </summary>
     [Chunk(0x090B2035)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2035 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1774,6 +1853,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x036 chunk
+    /// </summary>
     [Chunk(0x090B2036)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2036 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1803,6 +1885,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x037 chunk
+    /// </summary>
     [Chunk(0x090B2037)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2037 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1913,6 +1998,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x038 chunk
+    /// </summary>
     [Chunk(0x090B2038)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2038 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1939,6 +2027,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x039 chunk
+    /// </summary>
     [Chunk(0x090B2039)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B2039 : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -1992,6 +2083,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x03A chunk
+    /// </summary>
     [Chunk(0x090B203A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B203A : Chunk<CPlugParticleEmitterSubModel>, IVersionable
@@ -2050,6 +2144,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugParticleEmitterSubModel 0x03B chunk
+    /// </summary>
     [Chunk(0x090B203B)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090B203B : Chunk<CPlugParticleEmitterSubModel>, IVersionable

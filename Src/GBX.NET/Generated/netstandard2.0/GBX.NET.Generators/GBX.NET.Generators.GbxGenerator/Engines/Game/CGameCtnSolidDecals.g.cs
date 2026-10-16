@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03121000</remarks>
 [Class(0x03121000)]
 public partial class CGameCtnSolidDecals : CMwNod, IClass
 {
@@ -95,6 +96,9 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameCtnSolidDecals 0x000 chunk
+    /// </summary>
     [Chunk(0x03121000)]
     public partial class Chunk03121000 : Chunk<CGameCtnSolidDecals>
     {
@@ -121,6 +125,9 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnSolidDecals 0x001 chunk
+    /// </summary>
     [Chunk(0x03121001)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk03121001 : Chunk<CGameCtnSolidDecals>, IVersionable
@@ -159,6 +166,9 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnSolidDecals 0x002 chunk
+    /// </summary>
     [Chunk(0x03121002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03121002 : Chunk<CGameCtnSolidDecals>
@@ -177,6 +187,9 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnSolidDecals 0x003 chunk
+    /// </summary>
     [Chunk(0x03121003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03121003 : Chunk<CGameCtnSolidDecals>
@@ -196,6 +209,9 @@ public partial class CGameCtnSolidDecals : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnSolidDecals 0x004 chunk
+    /// </summary>
     [Chunk(0x03121004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03121004 : Chunk<CGameCtnSolidDecals>

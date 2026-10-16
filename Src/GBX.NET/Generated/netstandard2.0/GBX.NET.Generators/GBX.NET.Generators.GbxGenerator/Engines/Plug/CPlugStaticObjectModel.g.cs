@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09159000</remarks>
 [Class(0x09159000)]
 public partial class CPlugStaticObjectModel : CMwNod, IClass, IReadableWritable, IReadable, IWritable
 {

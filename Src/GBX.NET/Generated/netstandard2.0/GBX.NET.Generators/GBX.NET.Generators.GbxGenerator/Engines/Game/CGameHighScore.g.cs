@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03047000</remarks>
 [Class(0x03047000)]
 public partial class CGameHighScore : CMwNod, IClass
 {
@@ -99,6 +100,9 @@ public partial class CGameHighScore : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CGameHighScore 0x002 chunk
+    /// </summary>
     [Chunk(0x03047002)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03047002 : Chunk<CGameHighScore>
@@ -124,6 +128,9 @@ public partial class CGameHighScore : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameHighScore 0x004 skippable chunk
+    /// </summary>
     [Chunk(0x03047004)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk03047004 : SkippableChunk<CGameHighScore>

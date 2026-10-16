@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.MwFoundations;
 
+/// <remarks>ID: 0x01093000</remarks>
 [Class(0x01093000)]
 public partial class CMwCmdContainer : CMwNod, IClass
 {

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090B7000</remarks>
 [Class(0x090B7000)]
 public partial class CPlugParticleMaterialImpactModel : CMwNod, IClass
 {

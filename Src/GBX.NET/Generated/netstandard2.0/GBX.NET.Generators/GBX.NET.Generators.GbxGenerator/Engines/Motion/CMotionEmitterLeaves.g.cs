@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Motion;
 
+/// <remarks>ID: 0x0804C000</remarks>
 [Class(0x0804C000)]
 public partial class CMotionEmitterLeaves : CMotionManaged, IClass
 {
@@ -97,6 +98,9 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
     {
     }
 
+    /// <summary>
+    /// CMotionEmitterLeaves 0x000 chunk
+    /// </summary>
     [Chunk(0x0804C000)]
     public partial class Chunk0804C000 : Chunk<CMotionEmitterLeaves>
     {
@@ -119,6 +123,9 @@ public partial class CMotionEmitterLeaves : CMotionManaged, IClass
         }
     }
 
+    /// <summary>
+    /// CMotionEmitterLeaves 0x001 chunk
+    /// </summary>
     [Chunk(0x0804C001)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0804C001 : Chunk<CMotionEmitterLeaves>

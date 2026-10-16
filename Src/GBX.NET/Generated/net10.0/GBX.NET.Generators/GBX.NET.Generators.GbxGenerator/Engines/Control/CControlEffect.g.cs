@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07005000</remarks>
 [Class(0x07005000)]
 public abstract partial class CControlEffect : CMwNod, IClass
 {

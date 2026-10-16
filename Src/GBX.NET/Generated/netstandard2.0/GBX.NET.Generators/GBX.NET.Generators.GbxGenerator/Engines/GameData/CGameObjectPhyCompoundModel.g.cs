@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E02A000</remarks>
 [Class(0x2E02A000)]
 public partial class CGameObjectPhyCompoundModel : CMwNod, IClass
 {

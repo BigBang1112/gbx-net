@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030A3000</remarks>
 [Class(0x030A3000)]
 public abstract partial class CGameCtnMediaBlockCameraEffect : CGameCtnMediaBlock, IClass
 {

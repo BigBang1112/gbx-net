@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.VirtualSkipper;
 
+/// <remarks>ID: 0x21085000</remarks>
 [Class(0x21085000)]
 public partial class CVskCollection : CGameCtnCollection, IClass
 {
@@ -45,6 +46,9 @@ public partial class CVskCollection : CGameCtnCollection, IClass
     {
     }
 
+    /// <summary>
+    /// CVskCollection 0x000 chunk
+    /// </summary>
     [Chunk(0x21085000)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk21085000 : Chunk<CVskCollection>
@@ -96,6 +100,9 @@ public partial class CVskCollection : CGameCtnCollection, IClass
         }
     }
 
+    /// <summary>
+    /// CVskCollection 0x001 chunk
+    /// </summary>
     [Chunk(0x21085001)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk21085001 : Chunk<CVskCollection>

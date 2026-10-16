@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09011000</remarks>
 [Class(0x09011000)]
 public partial class CPlugBitmap : CPlug, IClass
 {
@@ -717,6 +718,9 @@ public partial class CPlugBitmap : CPlug, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x000 chunk
+    /// </summary>
     [Chunk(0x09011000)]
     public partial class Chunk09011000 : Chunk<CPlugBitmap>
     {
@@ -741,6 +745,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x001 chunk
+    /// </summary>
     [Chunk(0x09011001)]
     public partial class Chunk09011001 : Chunk<CPlugBitmap>
     {
@@ -765,6 +772,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x002 chunk
+    /// </summary>
     [Chunk(0x09011002)]
     public partial class Chunk09011002 : Chunk<CPlugBitmap>
     {
@@ -794,6 +804,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x003 chunk
+    /// </summary>
     [Chunk(0x09011003)]
     public partial class Chunk09011003 : Chunk<CPlugBitmap>
     {
@@ -823,6 +836,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x004 chunk
+    /// </summary>
     [Chunk(0x09011004)]
     public partial class Chunk09011004 : Chunk<CPlugBitmap>
     {
@@ -852,6 +868,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x005 chunk
+    /// </summary>
     [Chunk(0x09011005)]
     public partial class Chunk09011005 : Chunk<CPlugBitmap>
     {
@@ -881,6 +900,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x007 chunk
+    /// </summary>
     [Chunk(0x09011007)]
     public partial class Chunk09011007 : Chunk<CPlugBitmap>
     {
@@ -905,6 +927,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x008 chunk
+    /// </summary>
     [Chunk(0x09011008)]
     public partial class Chunk09011008 : Chunk<CPlugBitmap>
     {
@@ -924,6 +949,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x009 chunk
+    /// </summary>
     [Chunk(0x09011009)]
     public partial class Chunk09011009 : Chunk<CPlugBitmap>
     {
@@ -948,6 +976,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00A chunk
+    /// </summary>
     [Chunk(0x0901100A)]
     public partial class Chunk0901100A : Chunk<CPlugBitmap>
     {
@@ -972,6 +1003,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00B chunk
+    /// </summary>
     [Chunk(0x0901100B)]
     public partial class Chunk0901100B : Chunk<CPlugBitmap>
     {
@@ -1001,6 +1035,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00C chunk
+    /// </summary>
     [Chunk(0x0901100C)]
     public partial class Chunk0901100C : Chunk<CPlugBitmap>
     {
@@ -1030,6 +1067,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00D chunk
+    /// </summary>
     [Chunk(0x0901100D)]
     public partial class Chunk0901100D : Chunk<CPlugBitmap>
     {
@@ -1059,6 +1099,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00E chunk
+    /// </summary>
     [Chunk(0x0901100E)]
     public partial class Chunk0901100E : Chunk<CPlugBitmap>
     {
@@ -1088,6 +1131,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x00F chunk
+    /// </summary>
     [Chunk(0x0901100F)]
     public partial class Chunk0901100F : Chunk<CPlugBitmap>
     {
@@ -1118,6 +1164,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x010 chunk
+    /// </summary>
     [Chunk(0x09011010)]
     public partial class Chunk09011010 : Chunk<CPlugBitmap>
     {
@@ -1158,6 +1207,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x011 chunk
+    /// </summary>
     [Chunk(0x09011011)]
     public partial class Chunk09011011 : Chunk<CPlugBitmap>
     {
@@ -1198,6 +1250,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x012 chunk
+    /// </summary>
     [Chunk(0x09011012)]
     public partial class Chunk09011012 : Chunk<CPlugBitmap>
     {
@@ -1239,6 +1294,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x013 chunk
+    /// </summary>
     [Chunk(0x09011013)]
     public partial class Chunk09011013 : Chunk<CPlugBitmap>
     {
@@ -1280,6 +1338,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x014 chunk
+    /// </summary>
     [Chunk(0x09011014)]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
     public partial class Chunk09011014 : Chunk<CPlugBitmap>
@@ -1323,6 +1384,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x015 chunk
+    /// </summary>
     [Chunk(0x09011015)]
     public partial class Chunk09011015 : Chunk<CPlugBitmap>
     {
@@ -1364,6 +1428,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x016 chunk
+    /// </summary>
     [Chunk(0x09011016)]
     public partial class Chunk09011016 : Chunk<CPlugBitmap>
     {
@@ -1380,6 +1447,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x017 chunk
+    /// </summary>
     [Chunk(0x09011017)]
     public partial class Chunk09011017 : Chunk<CPlugBitmap>
     {
@@ -1397,6 +1467,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x018 chunk
+    /// </summary>
     [Chunk(0x09011018)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk09011018 : Chunk<CPlugBitmap>
@@ -1440,6 +1513,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x019 chunk
+    /// </summary>
     [Chunk(0x09011019)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011019 : Chunk<CPlugBitmap>
@@ -1458,6 +1534,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01A chunk
+    /// </summary>
     [Chunk(0x0901101A)]
     public partial class Chunk0901101A : Chunk<CPlugBitmap>
     {
@@ -1476,6 +1555,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01B chunk
+    /// </summary>
     [Chunk(0x0901101B)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0901101B : Chunk<CPlugBitmap>
@@ -1494,6 +1576,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01C chunk
+    /// </summary>
     [Chunk(0x0901101C)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0901101C : Chunk<CPlugBitmap>
@@ -1514,6 +1599,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01D chunk
+    /// </summary>
     [Chunk(0x0901101D)]
     [ChunkGameVersion(GameVersion.TMSX)]
     public partial class Chunk0901101D : Chunk<CPlugBitmap>
@@ -1533,6 +1621,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01E chunk
+    /// </summary>
     [Chunk(0x0901101E)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk0901101E : Chunk<CPlugBitmap>
@@ -1551,6 +1642,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01F chunk
+    /// </summary>
     [Chunk(0x0901101F)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk0901101F : Chunk<CPlugBitmap>
@@ -1569,6 +1663,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x020 chunk
+    /// </summary>
     [Chunk(0x09011020)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011020 : Chunk<CPlugBitmap>
@@ -1587,6 +1684,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x021 chunk
+    /// </summary>
     [Chunk(0x09011021)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk09011021 : Chunk<CPlugBitmap>
@@ -1605,6 +1705,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x022 chunk
+    /// </summary>
     [Chunk(0x09011022)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk09011022 : Chunk09011018
@@ -1618,6 +1721,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x023 chunk
+    /// </summary>
     [Chunk(0x09011023)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011023 : Chunk<CPlugBitmap>
@@ -1636,6 +1742,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x024 chunk
+    /// </summary>
     [Chunk(0x09011024)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk09011024 : Chunk<CPlugBitmap>
@@ -1654,6 +1763,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x025 chunk
+    /// </summary>
     [Chunk(0x09011025)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011025 : Chunk0901101C
@@ -1673,6 +1785,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x026 chunk
+    /// </summary>
     [Chunk(0x09011026)]
     public partial class Chunk09011026 : Chunk<CPlugBitmap>
     {
@@ -1689,6 +1804,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x027 chunk
+    /// </summary>
     [Chunk(0x09011027)]
     public partial class Chunk09011027 : Chunk<CPlugBitmap>
     {
@@ -1705,6 +1823,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x028 chunk
+    /// </summary>
     [Chunk(0x09011028)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011028 : Chunk<CPlugBitmap>
@@ -1724,6 +1845,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x029 chunk
+    /// </summary>
     [Chunk(0x09011029)]
     public partial class Chunk09011029 : Chunk<CPlugBitmap>
     {
@@ -1740,6 +1864,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02A chunk
+    /// </summary>
     [Chunk(0x0901102A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901102A : Chunk<CPlugBitmap>
@@ -1758,6 +1885,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02B chunk
+    /// </summary>
     [Chunk(0x0901102B)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk0901102B : Chunk<CPlugBitmap>
@@ -1776,6 +1906,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02C chunk
+    /// </summary>
     [Chunk(0x0901102C)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk0901102C : Chunk<CPlugBitmap>
@@ -1794,6 +1927,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02D chunk
+    /// </summary>
     [Chunk(0x0901102D)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, 0, 0)]
     public partial class Chunk0901102D : Chunk<CPlugBitmap>, IVersionable
@@ -1832,6 +1968,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02E chunk
+    /// </summary>
     [Chunk(0x0901102E)]
     [ChunkGameVersion(GameVersion.MP3)]
     public partial class Chunk0901102E : Chunk<CPlugBitmap>
@@ -1850,6 +1989,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x02F chunk
+    /// </summary>
     [Chunk(0x0901102F)]
     public partial class Chunk0901102F : Chunk<CPlugBitmap>
     {
@@ -1866,6 +2008,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x030 chunk
+    /// </summary>
     [Chunk(0x09011030)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 1, 5)]
     public partial class Chunk09011030 : Chunk<CPlugBitmap>, IVersionable
@@ -1944,6 +2089,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x031 chunk
+    /// </summary>
     [Chunk(0x09011031)]
     public partial class Chunk09011031 : Chunk<CPlugBitmap>, IVersionable
     {
@@ -1964,6 +2112,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x032 chunk
+    /// </summary>
     [Chunk(0x09011032)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0)]
     public partial class Chunk09011032 : Chunk<CPlugBitmap>, IVersionable
@@ -2002,6 +2153,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x033 chunk
+    /// </summary>
     [Chunk(0x09011033)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk09011033 : Chunk<CPlugBitmap>
@@ -2020,6 +2174,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x034 chunk
+    /// </summary>
     [Chunk(0x09011034)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 4)]
     public partial class Chunk09011034 : Chunk<CPlugBitmap>, IVersionable
@@ -2083,6 +2240,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x035 chunk
+    /// </summary>
     [Chunk(0x09011035)]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk09011035 : Chunk<CPlugBitmap>, IVersionable
@@ -2121,6 +2281,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x036 chunk
+    /// </summary>
     [Chunk(0x09011036)]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk09011036 : Chunk<CPlugBitmap>, IVersionable
@@ -2172,6 +2335,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x037 chunk
+    /// </summary>
     [Chunk(0x09011037)]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk09011037 : Chunk<CPlugBitmap>, IVersionable
@@ -2210,6 +2376,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x038 chunk
+    /// </summary>
     [Chunk(0x09011038)]
     [ChunkGameVersion(GameVersion.TM2020, 0)]
     public partial class Chunk09011038 : Chunk<CPlugBitmap>, IVersionable
@@ -2254,6 +2423,9 @@ public partial class CPlugBitmap : CPlug, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x03A chunk
+    /// </summary>
     [Chunk(0x0901103A)]
     public partial class Chunk0901103A : Chunk<CPlugBitmap>, IVersionable
     {

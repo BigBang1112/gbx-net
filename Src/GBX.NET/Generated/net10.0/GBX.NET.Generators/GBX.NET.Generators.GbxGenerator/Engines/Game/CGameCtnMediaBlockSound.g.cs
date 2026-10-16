@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x030A7000</remarks>
 [Class(0x030A7000)]
 public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGameCtnMediaBlock.IHasKeys, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -154,6 +155,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         set => End = value;
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x000 chunk
+    /// </summary>
     [Chunk(0x030A7000)]
     public partial class Chunk030A7000 : Chunk<CGameCtnMediaBlockSound>
     {
@@ -175,6 +179,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x001 chunk
+    /// </summary>
     [Chunk(0x030A7001)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
@@ -194,6 +201,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x002 chunk
+    /// </summary>
     [Chunk(0x030A7002)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5)]
     public partial class Chunk030A7002 : Chunk<CGameCtnMediaBlockSound>
@@ -213,6 +223,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x003 chunk
+    /// </summary>
     [Chunk(0x030A7003)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 2)]
     public partial class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>, IVersionable
@@ -264,6 +277,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, IClass, CGame
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x004 chunk
+    /// </summary>
     [Chunk(0x030A7004)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, -1, -1, 1)]
     public partial class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09086000</remarks>
 [Class(0x09086000)]
 public partial class CPlugBitmapRender : CPlug, IClass
 {
@@ -316,7 +317,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear color and render flags
+    /// CPlugBitmapRender 0x000 chunk (legacy clear color and render flags)
     /// </summary>
     [Chunk(0x09086000, "legacy clear color and render flags")]
     public partial class Chunk09086000 : Chunk<CPlugBitmapRender>
@@ -336,7 +337,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap
+    /// CPlugBitmapRender 0x001 chunk (legacy clear bitmap)
     /// </summary>
     [Chunk(0x09086001, "legacy clear bitmap")]
     public partial class Chunk09086001 : Chunk09086000
@@ -357,7 +358,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// shader visibility filter
+    /// CPlugBitmapRender 0x002 chunk (shader visibility filter)
     /// </summary>
     [Chunk(0x09086002, "shader visibility filter")]
     public partial class Chunk09086002 : Chunk<CPlugBitmapRender>
@@ -377,7 +378,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// item and shader visibility filters
+    /// CPlugBitmapRender 0x003 chunk (item and shader visibility filters)
     /// </summary>
     [Chunk(0x09086003, "item and shader visibility filters")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -401,7 +402,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap and render flags
+    /// CPlugBitmapRender 0x004 chunk (legacy clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086004, "legacy clear bitmap and render flags")]
     public partial class Chunk09086004 : Chunk09086001
@@ -415,7 +416,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap and render flags
+    /// CPlugBitmapRender 0x005 chunk (legacy clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086005, "legacy clear bitmap and render flags")]
     public partial class Chunk09086005 : Chunk09086001
@@ -429,7 +430,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap and render flags
+    /// CPlugBitmapRender 0x006 chunk (legacy clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086006, "legacy clear bitmap and render flags")]
     [ChunkGameVersion(GameVersion.TM10)]
@@ -445,7 +446,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap and render flags
+    /// CPlugBitmapRender 0x007 chunk (legacy clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086007, "legacy clear bitmap and render flags")]
     public partial class Chunk09086007 : Chunk09086001
@@ -459,7 +460,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// render path
+    /// CPlugBitmapRender 0x008 skippable chunk (render path)
     /// </summary>
     [Chunk(0x09086008, "render path")]
     [ChunkGameVersion(GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -481,7 +482,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy clear bitmap and render flags
+    /// CPlugBitmapRender 0x009 chunk (legacy clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086009, "legacy clear bitmap and render flags")]
     [ChunkGameVersion(GameVersion.TMPU)]
@@ -497,7 +498,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// FogCustomFarZ
+    /// CPlugBitmapRender 0x00A chunk (FogCustomFarZ)
     /// </summary>
     [Chunk(0x0908600A, "FogCustomFarZ")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -518,7 +519,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// clear bitmap and render flags
+    /// CPlugBitmapRender 0x00B chunk (clear bitmap and render flags)
     /// </summary>
     [Chunk(0x0908600B, "clear bitmap and render flags")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
@@ -542,7 +543,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// RenderSub
+    /// CPlugBitmapRender 0x00C chunk (RenderSub)
     /// </summary>
     [Chunk(0x0908600C, "RenderSub")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -563,7 +564,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// legacy secondary render flags
+    /// CPlugBitmapRender 0x00D chunk (legacy secondary render flags)
     /// </summary>
     [Chunk(0x0908600D, "legacy secondary render flags")]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5)]
@@ -584,7 +585,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// secondary render flags
+    /// CPlugBitmapRender 0x00E chunk (secondary render flags)
     /// </summary>
     [Chunk(0x0908600E, "secondary render flags")]
     [ChunkGameVersion(GameVersion.TMF)]
@@ -600,7 +601,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// secondary render flags
+    /// CPlugBitmapRender 0x00F chunk (secondary render flags)
     /// </summary>
     [Chunk(0x0908600F, "secondary render flags")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -616,7 +617,7 @@ public partial class CPlugBitmapRender : CPlug, IClass
     }
 
     /// <summary>
-    /// clear bitmap and render flags
+    /// CPlugBitmapRender 0x010 chunk (clear bitmap and render flags)
     /// </summary>
     [Chunk(0x09086010, "clear bitmap and render flags")]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]

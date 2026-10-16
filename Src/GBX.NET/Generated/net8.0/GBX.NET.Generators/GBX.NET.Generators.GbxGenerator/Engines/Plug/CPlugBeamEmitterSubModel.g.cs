@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09105000</remarks>
 [Class(0x09105000)]
 public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
 {
@@ -623,7 +624,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// beam geometry
+    /// CPlugBeamEmitterSubModel 0x001 chunk (beam geometry)
     /// </summary>
     [Chunk(0x09105001, "beam geometry")]
     [ChunkGameVersion(GameVersion.MP4, 11)]
@@ -765,7 +766,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// material and radius
+    /// CPlugBeamEmitterSubModel 0x002 chunk (material and radius)
     /// </summary>
     [Chunk(0x09105002, "material and radius")]
     [ChunkGameVersion(GameVersion.MP4, 1)]
@@ -830,7 +831,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// laser appearance
+    /// CPlugBeamEmitterSubModel 0x003 chunk (laser appearance)
     /// </summary>
     [Chunk(0x09105003, "laser appearance")]
     [ChunkGameVersion(GameVersion.MP4, 4)]
@@ -958,7 +959,7 @@ public partial class CPlugBeamEmitterSubModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// sharp and bloom appearance
+    /// CPlugBeamEmitterSubModel 0x004 chunk (sharp and bloom appearance)
     /// </summary>
     [Chunk(0x09105004, "sharp and bloom appearance")]
     [ChunkGameVersion(GameVersion.MP4, 3)]

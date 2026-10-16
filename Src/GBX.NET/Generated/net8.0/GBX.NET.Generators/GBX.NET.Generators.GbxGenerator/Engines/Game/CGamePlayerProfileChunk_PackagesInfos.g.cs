@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03140000</remarks>
 [Class(0x03140000)]
 public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileChunk, IClass
 {
@@ -54,6 +55,9 @@ public partial class CGamePlayerProfileChunk_PackagesInfos : CGamePlayerProfileC
     {
     }
 
+    /// <summary>
+    /// CGamePlayerProfileChunk_PackagesInfos 0x000 skippable chunk
+    /// </summary>
     [Chunk(0x03140000)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03140000 : SkippableChunk<CGamePlayerProfileChunk_PackagesInfos>, IVersionable

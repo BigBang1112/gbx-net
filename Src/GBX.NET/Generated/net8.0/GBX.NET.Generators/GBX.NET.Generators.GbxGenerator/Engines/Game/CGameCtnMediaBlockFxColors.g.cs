@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03080000</remarks>
 [Class(0x03080000)]
 public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, CGameCtnMediaBlock.IHasKeys
 {
@@ -59,6 +60,9 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
 
     IEnumerable<IKey> CGameCtnMediaBlock.IHasKeys.Keys => Keys ?? [];
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxColors 0x000 chunk
+    /// </summary>
     [Chunk(0x03080000)]
     public partial class Chunk03080000 : Chunk<CGameCtnMediaBlockFxColors>
     {
@@ -75,6 +79,9 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxColors 0x001 chunk
+    /// </summary>
     [Chunk(0x03080001)]
     public partial class Chunk03080001 : Chunk03080000
     {
@@ -91,6 +98,9 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxColors 0x002 chunk
+    /// </summary>
     [Chunk(0x03080002)]
     public partial class Chunk03080002 : Chunk03080000
     {
@@ -107,6 +117,9 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, IClass, 
         }
     }
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxColors 0x003 chunk
+    /// </summary>
     [Chunk(0x03080003)]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03080003 : Chunk03080000

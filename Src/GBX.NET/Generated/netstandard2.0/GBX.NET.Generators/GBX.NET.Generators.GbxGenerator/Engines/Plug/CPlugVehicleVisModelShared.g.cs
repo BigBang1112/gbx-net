@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090E8000</remarks>
 [Class(0x090E8000)]
 public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 {
@@ -95,6 +96,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x005 chunk
+    /// </summary>
     [Chunk(0x090E8005)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E8005 : Chunk<CPlugVehicleVisModelShared>
@@ -113,6 +117,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x006 chunk
+    /// </summary>
     [Chunk(0x090E8006)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8006 : Chunk<CPlugVehicleVisModelShared>
@@ -126,6 +133,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x009 chunk
+    /// </summary>
     [Chunk(0x090E8009)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8009 : Chunk<CPlugVehicleVisModelShared>
@@ -139,6 +149,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x00A chunk
+    /// </summary>
     [Chunk(0x090E800A)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E800A : Chunk<CPlugVehicleVisModelShared>
@@ -152,6 +165,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x00C chunk
+    /// </summary>
     [Chunk(0x090E800C)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk090E800C : Chunk<CPlugVehicleVisModelShared>
@@ -166,6 +182,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x00D chunk
+    /// </summary>
     [Chunk(0x090E800D)]
     [ChunkGameVersion(GameVersion.TMNESWC)]
     public partial class Chunk090E800D : Chunk<CPlugVehicleVisModelShared>
@@ -179,6 +198,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x00F chunk
+    /// </summary>
     [Chunk(0x090E800F)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E800F : Chunk<CPlugVehicleVisModelShared>
@@ -192,6 +214,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x010 chunk
+    /// </summary>
     [Chunk(0x090E8010)]
     [ChunkGameVersion(GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8010 : Chunk<CPlugVehicleVisModelShared>
@@ -205,6 +230,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x012 chunk
+    /// </summary>
     [Chunk(0x090E8012)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8012 : Chunk<CPlugVehicleVisModelShared>
@@ -223,6 +251,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x013 chunk
+    /// </summary>
     [Chunk(0x090E8013)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF)]
     public partial class Chunk090E8013 : Chunk<CPlugVehicleVisModelShared>
@@ -285,6 +316,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x014 chunk
+    /// </summary>
     [Chunk(0x090E8014)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3)]
     public partial class Chunk090E8014 : Chunk<CPlugVehicleVisModelShared>
@@ -303,6 +337,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x015 chunk
+    /// </summary>
     [Chunk(0x090E8015)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8015 : Chunk<CPlugVehicleVisModelShared>
@@ -316,6 +353,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x016 chunk
+    /// </summary>
     [Chunk(0x090E8016)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4)]
     public partial class Chunk090E8016 : Chunk<CPlugVehicleVisModelShared>
@@ -359,6 +399,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x018 chunk
+    /// </summary>
     [Chunk(0x090E8018)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8018 : Chunk<CPlugVehicleVisModelShared>
@@ -399,6 +442,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x01E chunk
+    /// </summary>
     [Chunk(0x090E801E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E801E : Chunk<CPlugVehicleVisModelShared>, IVersionable
@@ -642,6 +688,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x01F chunk
+    /// </summary>
     [Chunk(0x090E801F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E801F : Chunk<CPlugVehicleVisModelShared>, IVersionable
@@ -959,6 +1008,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x020 chunk
+    /// </summary>
     [Chunk(0x090E8020)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8020 : Chunk<CPlugVehicleVisModelShared>, IVersionable
@@ -995,6 +1047,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x021 chunk
+    /// </summary>
     [Chunk(0x090E8021)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8021 : Chunk<CPlugVehicleVisModelShared>, IVersionable
@@ -1049,6 +1104,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x022 chunk
+    /// </summary>
     [Chunk(0x090E8022)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8022 : Chunk<CPlugVehicleVisModelShared>, IVersionable
@@ -1395,6 +1453,9 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehicleVisModelShared 0x023 chunk
+    /// </summary>
     [Chunk(0x090E8023)]
     [ChunkGameVersion(GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090E8023 : Chunk<CPlugVehicleVisModelShared>, IVersionable

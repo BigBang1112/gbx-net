@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x0304C000</remarks>
 [Class(0x0304C000)]
 public partial class CGameCtnMediaBlockTriangles3D : CGameCtnMediaBlockTriangles, IClass
 {

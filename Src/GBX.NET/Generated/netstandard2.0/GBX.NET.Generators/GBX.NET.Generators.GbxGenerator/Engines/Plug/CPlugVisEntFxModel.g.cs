@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09115000</remarks>
 [Class(0x09115000)]
 public partial class CPlugVisEntFxModel : CMwNod, IClass
 {
@@ -136,7 +137,7 @@ public partial class CPlugVisEntFxModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// Entity particles, elimination curves and tactical light
+    /// CPlugVisEntFxModel 0x000 chunk (Entity particles, elimination curves and tactical light)
     /// </summary>
     [Chunk(0x09115000, "Entity particles, elimination curves and tactical light")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 0, 1)]

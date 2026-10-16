@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Hms;
 
+/// <remarks>ID: 0x06021000</remarks>
 [Class(0x06021000)]
 public partial class CHmsLightMap : CMwNod, IClass
 {
@@ -379,6 +380,9 @@ public partial class CHmsLightMap : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x000 chunk
+    /// </summary>
     [Chunk(0x06021000)]
     [ChunkGameVersion(GameVersion.VSK5)]
     public partial class Chunk06021000 : Chunk<CHmsLightMap>
@@ -450,6 +454,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x001 chunk
+    /// </summary>
     [Chunk(0x06021001)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021001 : Chunk<CHmsLightMap>
@@ -468,6 +475,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x002 chunk
+    /// </summary>
     [Chunk(0x06021002)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021002 : Chunk<CHmsLightMap>
@@ -508,6 +518,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x003 chunk
+    /// </summary>
     [Chunk(0x06021003)]
     [ChunkGameVersion(GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk06021003 : Chunk<CHmsLightMap>
@@ -526,6 +539,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x004 chunk
+    /// </summary>
     [Chunk(0x06021004)]
     [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk06021004 : Chunk<CHmsLightMap>
@@ -597,6 +613,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x005 chunk
+    /// </summary>
     [Chunk(0x06021005)]
     public partial class Chunk06021005 : Chunk<CHmsLightMap>
     {
@@ -635,6 +654,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x006 chunk
+    /// </summary>
     [Chunk(0x06021006)]
     public partial class Chunk06021006 : Chunk<CHmsLightMap>
     {
@@ -651,6 +673,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x007 chunk
+    /// </summary>
     [Chunk(0x06021007)]
     public partial class Chunk06021007 : Chunk<CHmsLightMap>
     {
@@ -687,6 +712,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x008 chunk
+    /// </summary>
     [Chunk(0x06021008)]
     public partial class Chunk06021008 : Chunk<CHmsLightMap>
     {
@@ -703,6 +731,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x009 chunk
+    /// </summary>
     [Chunk(0x06021009)]
     public partial class Chunk06021009 : Chunk<CHmsLightMap>
     {
@@ -735,7 +766,7 @@ public partial class CHmsLightMap : CMwNod, IClass
     }
 
     /// <summary>
-    /// Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node
+    /// CHmsLightMap 0x00A chunk (Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node)
     /// </summary>
     [Chunk(0x0602100A, "Legacy references: two nodes, seven pairs of FIDs, two FIDs, and one node")]
     public partial class Chunk0602100A : Chunk<CHmsLightMap>
@@ -806,6 +837,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x00B chunk
+    /// </summary>
     [Chunk(0x0602100B)]
     public partial class Chunk0602100B : Chunk<CHmsLightMap>
     {
@@ -842,6 +876,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x00C chunk
+    /// </summary>
     [Chunk(0x0602100C)]
     public partial class Chunk0602100C : Chunk<CHmsLightMap>
     {
@@ -860,6 +897,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x00D chunk
+    /// </summary>
     [Chunk(0x0602100D)]
     public partial class Chunk0602100D : Chunk<CHmsLightMap>
     {
@@ -881,6 +921,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x00E chunk
+    /// </summary>
     [Chunk(0x0602100E)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk0602100E : Chunk<CHmsLightMap>
@@ -900,6 +943,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x00F chunk
+    /// </summary>
     [Chunk(0x0602100F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk0602100F : Chunk<CHmsLightMap>
@@ -926,6 +972,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x010 chunk
+    /// </summary>
     [Chunk(0x06021010)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk06021010 : Chunk<CHmsLightMap>
@@ -997,6 +1046,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x011 chunk
+    /// </summary>
     [Chunk(0x06021011)]
     public partial class Chunk06021011 : Chunk<CHmsLightMap>
     {
@@ -1033,6 +1085,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x012 chunk
+    /// </summary>
     [Chunk(0x06021012)]
     public partial class Chunk06021012 : Chunk<CHmsLightMap>
     {
@@ -1072,6 +1127,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x013 chunk
+    /// </summary>
     [Chunk(0x06021013)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021013 : Chunk<CHmsLightMap>
@@ -1090,6 +1148,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x014 chunk
+    /// </summary>
     [Chunk(0x06021014)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021014 : Chunk<CHmsLightMap>
@@ -1108,6 +1169,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x015 chunk
+    /// </summary>
     [Chunk(0x06021015)]
     public partial class Chunk06021015 : Chunk<CHmsLightMap>
     {
@@ -1144,6 +1208,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x016 chunk
+    /// </summary>
     [Chunk(0x06021016)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk06021016 : Chunk<CHmsLightMap>
@@ -1182,6 +1249,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x017 chunk
+    /// </summary>
     [Chunk(0x06021017)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021017 : Chunk<CHmsLightMap>
@@ -1202,6 +1272,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x018 chunk
+    /// </summary>
     [Chunk(0x06021018)]
     public partial class Chunk06021018 : Chunk<CHmsLightMap>
     {
@@ -1241,6 +1314,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x019 chunk
+    /// </summary>
     [Chunk(0x06021019)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021019 : Chunk<CHmsLightMap>
@@ -1282,6 +1358,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01A chunk
+    /// </summary>
     [Chunk(0x0602101A)]
     public partial class Chunk0602101A : Chunk<CHmsLightMap>
     {
@@ -1318,6 +1397,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01B chunk
+    /// </summary>
     [Chunk(0x0602101B)]
     public partial class Chunk0602101B : Chunk<CHmsLightMap>
     {
@@ -1366,6 +1448,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01C chunk
+    /// </summary>
     [Chunk(0x0602101C)]
     public partial class Chunk0602101C : Chunk<CHmsLightMap>
     {
@@ -1397,6 +1482,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01D chunk
+    /// </summary>
     [Chunk(0x0602101D)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk0602101D : Chunk<CHmsLightMap>
@@ -1415,6 +1503,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01E chunk
+    /// </summary>
     [Chunk(0x0602101E)]
     public partial class Chunk0602101E : Chunk<CHmsLightMap>
     {
@@ -1451,6 +1542,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x01F chunk
+    /// </summary>
     [Chunk(0x0602101F)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0602101F : Chunk<CHmsLightMap>
@@ -1491,6 +1585,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x020 chunk
+    /// </summary>
     [Chunk(0x06021020)]
     public partial class Chunk06021020 : Chunk<CHmsLightMap>
     {
@@ -1528,6 +1625,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x021 chunk
+    /// </summary>
     [Chunk(0x06021021)]
     public partial class Chunk06021021 : Chunk<CHmsLightMap>
     {
@@ -1566,6 +1666,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x022 chunk
+    /// </summary>
     [Chunk(0x06021022)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021022 : Chunk<CHmsLightMap>
@@ -1606,6 +1709,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x023 chunk
+    /// </summary>
     [Chunk(0x06021023)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021023 : Chunk<CHmsLightMap>
@@ -1624,6 +1730,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x024 chunk
+    /// </summary>
     [Chunk(0x06021024)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021024 : Chunk<CHmsLightMap>
@@ -1642,6 +1751,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x025 chunk
+    /// </summary>
     [Chunk(0x06021025)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021025 : Chunk<CHmsLightMap>
@@ -1660,6 +1772,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x026 chunk
+    /// </summary>
     [Chunk(0x06021026)]
     public partial class Chunk06021026 : Chunk<CHmsLightMap>
     {
@@ -1676,6 +1791,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x027 chunk
+    /// </summary>
     [Chunk(0x06021027)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021027 : Chunk<CHmsLightMap>
@@ -1695,6 +1813,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x028 chunk
+    /// </summary>
     [Chunk(0x06021028)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020)]
     public partial class Chunk06021028 : Chunk<CHmsLightMap>
@@ -1736,6 +1857,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x029 chunk
+    /// </summary>
     [Chunk(0x06021029)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 7)]
     public partial class Chunk06021029 : Chunk<CHmsLightMap>, IVersionable
@@ -1884,6 +2008,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x02A chunk
+    /// </summary>
     [Chunk(0x0602102A)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk0602102A : Chunk<CHmsLightMap>, IVersionable
@@ -2001,6 +2128,9 @@ public partial class CHmsLightMap : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CHmsLightMap 0x02B chunk
+    /// </summary>
     [Chunk(0x0602102B)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.TM2020, -1, -1, 1)]
     public partial class Chunk0602102B : Chunk<CHmsLightMap>, IVersionable

@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x03059000</remarks>
 [Class(0x03059000)]
 public partial class CGameCtnBlockSkin : CMwNod, IClass
 {
@@ -92,7 +93,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy skin name
+    /// CGameCtnBlockSkin 0x000 chunk (legacy skin name)
     /// </summary>
     [Chunk(0x03059000, "legacy skin name")]
     [ChunkGameVersion(GameVersion.TM10 | GameVersion.TMPU)]
@@ -114,7 +115,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// skin
+    /// CGameCtnBlockSkin 0x001 chunk (skin)
     /// </summary>
     [Chunk(0x03059001, "skin")]
     public partial class Chunk03059001 : Chunk<CGameCtnBlockSkin>
@@ -134,7 +135,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// skin + parent skin
+    /// CGameCtnBlockSkin 0x002 chunk (skin + parent skin)
     /// </summary>
     [Chunk(0x03059002, "skin + parent skin")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
@@ -157,7 +158,7 @@ public partial class CGameCtnBlockSkin : CMwNod, IClass
     }
 
     /// <summary>
-    /// secondary skin
+    /// CGameCtnBlockSkin 0x003 chunk (secondary skin)
     /// </summary>
     [Chunk(0x03059003, "secondary skin")]
     [ChunkGameVersion(GameVersion.TM2020)]

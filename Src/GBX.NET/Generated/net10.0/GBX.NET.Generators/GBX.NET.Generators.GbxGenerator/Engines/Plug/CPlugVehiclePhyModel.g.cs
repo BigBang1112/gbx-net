@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090EA000</remarks>
 [Class(0x090EA000)]
 public partial class CPlugVehiclePhyModel : CMwNod, IClass
 {
@@ -99,6 +100,9 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     {
     }
 
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x002 chunk
+    /// </summary>
     [Chunk(0x090EA002)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4)]
     public partial class Chunk090EA002 : Chunk<CPlugVehiclePhyModel>
@@ -117,6 +121,9 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x003 chunk
+    /// </summary>
     [Chunk(0x090EA003)]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EA003 : Chunk<CPlugVehiclePhyModel>
@@ -135,6 +142,9 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x008 chunk
+    /// </summary>
     [Chunk(0x090EA008)]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
@@ -185,6 +195,9 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x009 chunk
+    /// </summary>
     [Chunk(0x090EA009)]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090EA009 : Chunk<CPlugVehiclePhyModel>, IVersionable

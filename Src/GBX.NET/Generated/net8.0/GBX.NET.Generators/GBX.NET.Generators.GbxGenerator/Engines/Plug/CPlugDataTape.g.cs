@@ -28,6 +28,7 @@ using global::TmEssentials;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090CE000</remarks>
 [Class(0x090CE000)]
 public partial class CPlugDataTape : CMwNod, IClass
 {
@@ -104,7 +105,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     /// <summary>
-    /// legacy states without notices
+    /// CPlugDataTape 0x000 chunk (legacy states without notices)
     /// </summary>
     [Chunk(0x090CE000, "legacy states without notices")]
     public partial class Chunk090CE000 : Chunk<CPlugDataTape>
@@ -130,7 +131,7 @@ public partial class CPlugDataTape : CMwNod, IClass
     }
 
     /// <summary>
-    /// states and notices
+    /// CPlugDataTape 0x001 chunk (states and notices)
     /// </summary>
     [Chunk(0x090CE001, "states and notices")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, -1, 0, 0, 0)]
