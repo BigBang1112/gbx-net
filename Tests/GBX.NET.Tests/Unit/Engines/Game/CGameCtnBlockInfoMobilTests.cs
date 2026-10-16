@@ -232,12 +232,12 @@ public class CGameCtnBlockInfoMobilTests
         if (version >= 20) await VerifyRoadReferences(restored.PlacementPatches);
     }
 
-    private static async Task VerifyRoadReferences(IEnumerable<CPlugRoadChunk?>? references)
+    private static async Task VerifyRoadReferences<T>(NodeRefList<T>? references) where T : CPlugRoadChunk
     {
-        var roads = references?.ToArray();
-        await Assert.That(roads?.Length).IsEqualTo(3);
-        await Assert.That(ReferenceEquals(roads![0], roads[1])).IsTrue();
-        await Assert.That(roads[2]).IsNull();
+        await Assert.That(references).Count().IsEqualTo(3);
+        var roads = references!;
+        await Assert.That(ReferenceEquals(roads[0], roads[1])).IsTrue();
+        await Assert.That(roads.Get(2).Node).IsNull();
         var data = roads[0].Chunks.Get<CPlugRoadChunk.Chunk09128000>();
         await Assert.That(data?.U01).IsEqualTo(73);
         await Assert.That(data?.U03?[0]).IsEqualTo(new Vec3(1, 2, 3));

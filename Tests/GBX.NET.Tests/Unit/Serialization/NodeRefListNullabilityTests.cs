@@ -17,7 +17,15 @@ public class NodeRefListNullabilityTests
         CMwNod[] array = references!.ToArray();
         var copy = new CMwNod[1];
         references.CopyTo(copy, 0);
+        using IEnumerator<CMwNod> enumerator = references.GetEnumerator();
 
+        await Assert.That(enumerator.MoveNext()).IsTrue();
+        await Assert.That(enumerator.Current.GetType()).IsEqualTo(typeof(CMwNod));
+        await Assert.That(enumerator.MoveNext()).IsFalse();
+        foreach (var value in references)
+        {
+            await Assert.That(value.GetType()).IsEqualTo(typeof(CMwNod));
+        }
         await Assert.That(element).IsSameReferenceAs(node);
         await Assert.That(readOnly[0]).IsSameReferenceAs(node);
         await Assert.That(array[0]).IsSameReferenceAs(node);
@@ -38,7 +46,16 @@ public class NodeRefListNullabilityTests
         CMwNod?[] array = references!.ToArray();
         var copy = new CMwNod?[4];
         references.CopyTo(copy, 0);
+        using IEnumerator<CMwNod?> enumerator = references.GetEnumerator();
 
+        await Assert.That(enumerator.MoveNext()).IsTrue();
+        await Assert.That(enumerator.Current).IsNull();
+        var visited = new List<CMwNod?>();
+        foreach (var value in references)
+        {
+            visited.Add(value);
+        }
+        await Assert.That(visited).IsEquivalentTo(array, CollectionOrdering.Matching);
         await Assert.That(readOnly[0]).IsNull();
         await Assert.That(array).IsEquivalentTo(new CMwNod?[] { null, node, null, null }, CollectionOrdering.Matching);
         await Assert.That(copy).IsEquivalentTo(array, CollectionOrdering.Matching);

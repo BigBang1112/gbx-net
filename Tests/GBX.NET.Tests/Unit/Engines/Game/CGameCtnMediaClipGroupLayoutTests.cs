@@ -24,8 +24,8 @@ public class CGameCtnMediaClipGroupLayoutTests
         {
             Clips =
             [
-                new(null, new() { RefCoord = (1, 2, 3) }),
-                new(null, new() { RefCoord = (4, 5, 6) })
+                CGameCtnMediaClipGroup.ClipTrigger.FromReference(new(), new() { RefCoord = (1, 2, 3) }),
+                CGameCtnMediaClipGroup.ClipTrigger.FromReference(new(), new() { RefCoord = (4, 5, 6) })
             ]
         };
         foreach (var pair in group.Clips) pair.References.Clip!.Descriptor = file;
@@ -52,7 +52,7 @@ public class CGameCtnMediaClipGroupLayoutTests
         await Assert.That(calls).IsEqualTo(0);
         await Assert.That(restored.Clips[0].References.Clip!.File).IsSameReferenceAs(restored.Clips[1].References.Clip!.File);
         await Assert.That(restored.Clips[0].Trigger.RefCoord).IsEqualTo(new Int3(1, 2, 3));
-        await Assert.That(restored.Clips[1].Clip!.Name).IsEqualTo("Resolved");
+        await Assert.That(restored.Clips[1].Clip.Name).IsEqualTo("Resolved");
         await Assert.That(calls).IsEqualTo(1);
         await Assert.That(restored.Clips[1].References.Clip!.State).IsEqualTo(NodeRefState.Resolved);
     }
@@ -109,7 +109,7 @@ public class CGameCtnMediaClipGroupLayoutTests
         await Assert.That(group.Clips.Count).IsEqualTo(hasClips ? 3 : 0);
         if (hasClips)
         {
-            await Assert.That(group.Clips[0].Clip).IsNull();
+            await Assert.That(group.Clips[0].References.Clip!.Node).IsNull();
             await Assert.That(group.Clips[1].Clip.Name).IsEqualTo("Clip");
             await Assert.That(group.Clips[2].Clip).IsSameReferenceAs(group.Clips[1].Clip);
             for (var i = 0; i < 3; i++)
@@ -196,6 +196,8 @@ public class CGameCtnMediaClipGroupLayoutTests
 
         await Assert.That(clone.Clips[0].Clip).IsNotSameReferenceAs(clip);
         await Assert.That(clone.Clips[1].Clip).IsSameReferenceAs(clone.Clips[0].Clip);
+        var (clonedClip, _) = clone.Clips[0];
+        await Assert.That(clonedClip.Name).IsEqualTo("Shared");
         await Assert.That(clone.Clips[0].Trigger).IsNotSameReferenceAs(group.Clips[0].Trigger);
         await Assert.That(clone.Clips[0].Trigger.RefCoord).IsEqualTo(new Int3(4, 5, 6));
         await Assert.That(clone.Clips[0].Trigger.RefDir).IsEqualTo(Direction.West);

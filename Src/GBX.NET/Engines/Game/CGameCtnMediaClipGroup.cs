@@ -3,28 +3,29 @@ namespace GBX.NET.Engines.Game;
 
 public partial class CGameCtnMediaClipGroup
 {
-    public readonly record struct ClipTrigger(CGameCtnMediaClip? Clip, Trigger Trigger) : IDeepCloneable
+    public readonly record struct ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger) : IDeepCloneable
     {
         private readonly NodeRef<CGameCtnMediaClip>? clipRef = CreateRef(Clip);
 
-        public CGameCtnMediaClip? Clip
+        public CGameCtnMediaClip Clip
         {
-            get => clipRef?.Resolve();
+            get => clipRef?.Resolve()!;
             init => clipRef = CreateRef(value);
         }
 
         public NodeRefView References => new(this);
 
-        private ClipTrigger(NodeRef<CGameCtnMediaClip>? reference, Trigger trigger) : this((CGameCtnMediaClip?)null, trigger)
+        private ClipTrigger(NodeRef<CGameCtnMediaClip>? reference, Trigger trigger) : this((CGameCtnMediaClip)null!, trigger)
         {
             clipRef = reference;
         }
 
-        private static NodeRef<CGameCtnMediaClip> CreateRef(CGameCtnMediaClip? clip)
+        private static NodeRef<CGameCtnMediaClip> CreateRef(CGameCtnMediaClip clip)
         {
-            var reference = new NodeRef<CGameCtnMediaClip>();
-            reference.Node = clip;
-            return reference;
+            return new NodeRef<CGameCtnMediaClip>
+            {
+                Node = clip
+            };
         }
 
         public readonly struct NodeRefView

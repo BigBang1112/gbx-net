@@ -35,7 +35,7 @@ public class CMotionLayoutTests
         await Assert.That(node.IsPhysics).IsTrue();
         await Assert.That(node.Name).IsEqualTo("Player");
         await Assert.That(node.Tracks).Count().IsEqualTo(2);
-        await Assert.That(node.Tracks[1]).IsSameReferenceAs(node.Tracks[0]);
+        await Assert.That(node.Tracks![1]).IsSameReferenceAs(node.Tracks[0]);
     }
 
     [Test]

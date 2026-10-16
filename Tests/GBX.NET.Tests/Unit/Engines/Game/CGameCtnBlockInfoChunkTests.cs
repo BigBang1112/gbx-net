@@ -1,6 +1,7 @@
 using GBX.NET.Attributes;
 using GBX.NET.Engines.Game;
 using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.Scene;
 using GBX.NET.Serialization;
 
 namespace GBX.NET.Tests.Unit.Engines.Game;
@@ -65,8 +66,8 @@ public class CGameCtnBlockInfoChunkTests
             Selection = CGameCtnBlockInfo.ESelection.AutoRotate,
             GroundBlockUnitInfos = [],
             AirBlockUnitInfos = [],
-            GroundMobils = [[null], []],
-            AirMobils = [[], [null]]
+            GroundMobils = [new() { new NodeRef<CSceneMobil>() }, []],
+            AirMobils = [[], new() { new NodeRef<CSceneMobil>() }]
         };
         var chunk = new CGameCtnBlockInfo.Chunk0304E005
         {
@@ -104,12 +105,12 @@ public class CGameCtnBlockInfoChunkTests
         await Assert.That(restored.AirBlockUnitInfos).IsEmpty();
         await Assert.That(restored.GroundMobils).Count().IsEqualTo(2);
         await Assert.That(restored.GroundMobils![0]).Count().IsEqualTo(1);
-        await Assert.That(restored.GroundMobils[0][0]).IsNull();
+        await Assert.That(restored.GroundMobils[0].Get(0).Node).IsNull();
         await Assert.That(restored.GroundMobils[1]).IsEmpty();
         await Assert.That(restored.AirMobils).Count().IsEqualTo(2);
         await Assert.That(restored.AirMobils![0]).IsEmpty();
         await Assert.That(restored.AirMobils[1]).Count().IsEqualTo(1);
-        await Assert.That(restored.AirMobils[1][0]).IsNull();
+        await Assert.That(restored.AirMobils[1].Get(0).Node).IsNull();
         await Assert.That(restored.SizeX).IsEqualTo(2);
         await Assert.That(restored.SizeY).IsEqualTo(3);
         await Assert.That(restored.SizeZ).IsEqualTo(4);
