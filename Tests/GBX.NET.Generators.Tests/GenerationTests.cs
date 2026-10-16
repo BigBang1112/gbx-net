@@ -9,6 +9,88 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments(false, 0)]
+    [Arguments(false, 1)]
+    [Arguments(true, 0)]
+    [Arguments(true, 1)]
+    public async Task Generate_NodeReferenceCollections_PreservesElementNullability(bool archive, int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class {{(archive ? "Entry" : "Chunk03043001")}} { }
+            }
+            """, new Text("Engines/Game/Example.chunkl", $$"""
+            Example 0x03043000
+            {{(archive ? "archive Entry" : "0x001")}}
+              CMwNod[] Required
+              CMwNod?[] Optional
+              CMwNod?[] Deprecated (deprec)
+              CMwNod?[] OptionalList (list)
+              CMwNod?[2] Fixed
+              CMwNod?[][] Rows
+              CMwNod[] EmptyRequired = empty
+              CMwNod?[] EmptyOptional = empty
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public NodeRefList<CMwNod>? Required");
+        await Assert.That(generated).Contains("public NodeRefList<CMwNod?>? Optional");
+        await Assert.That(generated).Contains("public NodeRefList<CMwNod?>[]? Rows");
+        await Assert.That(generated).Contains("IReadOnlyList<NodeRef<CMwNod?>>? Optional");
+        await Assert.That(generated).Contains("IReadOnlyList<IReadOnlyList<NodeRef<CMwNod?>>?>? Rows");
+        await Assert.That(generated).Contains("NodeRefList<CMwNod?>? emptyOptional = new();");
+        await Assert.That(generated).Contains(structureKind == 0
+            ? "rw.ListNodeRef<CMwNod?>(" : "r.ReadListNodeRef<CMwNod?>(");
+        await Assert.That(generated).Contains(structureKind == 0
+            ? "rw.ListNodeRef_deprec<CMwNod?>(" : "r.ReadListNodeRef_deprec<CMwNod?>(");
+        await Assert.That(generated).Contains(structureKind == 0
+            ? "rw.JaggedArrayNodeRef<CMwNod?>(" : "r.ReadJaggedListNodeRef<CMwNod?>(");
+        await Assert.That(compilation.GetDiagnostics().Where(x => x.Id is "CS8631" or "CS8620" or "CS8619")).IsEmpty();
+
+        var type = compilation.GetTypeByMetadataName("GBX.NET.Engines.Game.Example" + (archive ? "+Entry" : ""))!;
+        foreach (var (name, nullable) in new[] { ("Required", false), ("Optional", true), ("Deprecated", true), ("Fixed", true) })
+        {
+            var property = (IPropertySymbol)type.GetMembers(name).Single();
+            var element = ((INamedTypeSymbol)property.Type).TypeArguments[0];
+            await Assert.That(element.NullableAnnotation).IsEqualTo(nullable ? NullableAnnotation.Annotated : NullableAnnotation.NotAnnotated);
+        }
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task Generate_SharedNodeReferenceCollections_UsesNullableElementsWhenAnyOccurrenceAllowsThem(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public partial class Example
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Chunk03043001 { }
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Chunk03043002 { }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              CMwNod[] Shared
+            0x002
+              CMwNod?[] Shared
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public NodeRefList<CMwNod?>? Shared");
+        await Assert.That(generated).DoesNotContain("ListNodeRef<CMwNod>(");
+    }
+
+    [Test]
     public async Task Generate_NodesAndArchivesWithoutReferences_SkipsReferenceViews()
     {
         var (result, compilation) = Run("", true, new[]
@@ -3601,23 +3683,23 @@ public class GenerationTests
             public enum GameVersion { Unspecified = 0, TM10 = 1, TM2020 = 2 }
             public interface IClass { }
             public interface IVersionable { int Version { get; set; } }
-            public class External<T> where T : GBX.NET.Engines.Game.CMwNod { }
+            public class External<T> where T : GBX.NET.Engines.Game.CMwNod? { }
             public enum NodeRefKind { None, Embedded, ExternalFile, ExternalResource }
             public abstract class NodeRef
             {
-                internal static NodeRef<T> GetOrCreate<T>(ref NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod => reference ??= new();
-                internal static void SetEmbedded<T>(ref NodeRef<T>? reference, T? value) where T : GBX.NET.Engines.Game.CMwNod
+                internal static NodeRef<T> GetOrCreate<T>(ref NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod? => reference ??= new();
+                internal static void SetEmbedded<T>(ref NodeRef<T>? reference, T? value) where T : GBX.NET.Engines.Game.CMwNod?
                 {
                     if (value is null) reference?.Clear();
                     else GetOrCreate(ref reference).Node = value;
                 }
-                internal static void CopyFrom<T>(ref NodeRef<T>? reference, NodeRef<T>? source) where T : GBX.NET.Engines.Game.CMwNod
+                internal static void CopyFrom<T>(ref NodeRef<T>? reference, NodeRef<T>? source) where T : GBX.NET.Engines.Game.CMwNod?
                 {
                     if (source is null || source.Kind == NodeRefKind.None) reference?.Clear();
                     else GetOrCreate(ref reference).CopyFrom(source);
                 }
             }
-            public class NodeRef<T> : NodeRef where T : GBX.NET.Engines.Game.CMwNod
+            public class NodeRef<T> : NodeRef where T : GBX.NET.Engines.Game.CMwNod?
             {
                 public NodeRefKind Kind { get; private set; }
                 internal T? CachedNode { get; private set; }
@@ -3641,7 +3723,7 @@ public class GenerationTests
                 public void Clear() => Node = null;
                 public void CopyFrom(NodeRef<T> reference) { if (reference.File is { } file) Descriptor = file; else Node = reference.CachedNode; }
             }
-            public class NodeRefList<T> : System.Collections.Generic.List<T?> where T : GBX.NET.Engines.Game.CMwNod
+            public class NodeRefList<T> : System.Collections.Generic.List<T> where T : GBX.NET.Engines.Game.CMwNod?
             {
                 internal System.Collections.Generic.IReadOnlyList<NodeRef<T>> References => [];
                 public NodeRef<T> Get(int index) => new();
@@ -3676,11 +3758,11 @@ public class GenerationTests
         {
             public partial class GbxReader(params int[] values)
             {
-                public void ReadNodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod { }
-                public void ReadNodeRef<T>(ref GBX.NET.NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod { }
-                public GBX.NET.NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod => new();
-                public GBX.NET.NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod => new();
-                public GBX.NET.NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod => [];
+                public void ReadNodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public void ReadNodeRef<T>(ref GBX.NET.NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public GBX.NET.NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod? => new();
+                public GBX.NET.NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : GBX.NET.Engines.Game.CMwNod? => new();
+                public GBX.NET.NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod? => [];
                 private readonly System.Collections.Generic.Queue<int> values = new(values);
                 public int ReadInt32() => values.Dequeue();
                 public byte ReadByte() => (byte)ReadInt32();
@@ -3689,9 +3771,9 @@ public class GenerationTests
             public partial class GbxWriter
             {
                 public void WriteNodeRef(GBX.NET.NodeRef? nodeRef) { }
-                public void WriteListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod { }
-                public void WriteListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod { }
-                public void WriteJaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod { }
+                public void WriteListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public void WriteListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public void WriteJaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod? { }
                 public System.Collections.Generic.List<int> Values { get; } = new();
                 public void Write(int value) => Values.Add(value);
                 public void WriteArray<T>(T[]? value, int length) where T : struct { }
@@ -3713,11 +3795,11 @@ public class GenerationTests
             }
             public partial class GbxReaderWriter : System.IDisposable
             {
-                public void NodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod { }
-                public void NodeRef<T>(ref GBX.NET.NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod { }
-                public GBX.NET.NodeRefList<T>? ListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
-                public GBX.NET.NodeRefList<T>? ListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
-                public GBX.NET.NodeRefList<T>[]? JaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod => reference;
+                public void NodeRef<T>(GBX.NET.NodeRef<T> reference) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public void NodeRef<T>(ref GBX.NET.NodeRef<T>? reference) where T : GBX.NET.Engines.Game.CMwNod? { }
+                public GBX.NET.NodeRefList<T>? ListNodeRef<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod? => reference;
+                public GBX.NET.NodeRefList<T>? ListNodeRef_deprec<T>(GBX.NET.NodeRefList<T>? reference, int? length = null) where T : GBX.NET.Engines.Game.CMwNod? => reference;
+                public GBX.NET.NodeRefList<T>[]? JaggedArrayNodeRef<T>(GBX.NET.NodeRefList<T>[]? reference, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod? => reference;
                 public GbxReaderWriter() { }
                 public GbxReader? Reader { get; }
                 public GbxWriter? Writer { get; }
@@ -3758,7 +3840,7 @@ public class GenerationTests
                 public void JaggedArrayId(ref string[][]? value, int? innerLength = null, int? outerLength = null) { }
                 public void JaggedArrayString(ref string[][]? value, int? innerLength = null, int? outerLength = null) { }
                 public void JaggedArrayNodeRef<T>(ref T?[][]? value, int? innerLength = null, int? outerLength = null) where T : GBX.NET.IClass { }
-                public void JaggedArrayExternalNodeRef<T>(ref GBX.NET.External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod { }
+                public void JaggedArrayExternalNodeRef<T>(ref GBX.NET.External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : GBX.NET.Engines.Game.CMwNod? { }
                 public void Dispose() { }
             }
         }

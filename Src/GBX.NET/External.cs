@@ -3,7 +3,7 @@ using GBX.NET.Components;
 namespace GBX.NET;
 
 [Obsolete("Use NodeRef<T> or NodeRefList<T> to preserve reference metadata.")]
-public sealed record External<T> : IDeepCloneable where T : CMwNod
+public sealed record External<T> : IDeepCloneable where T : CMwNod?
 {
     private NodeRef<T> reference = new();
 

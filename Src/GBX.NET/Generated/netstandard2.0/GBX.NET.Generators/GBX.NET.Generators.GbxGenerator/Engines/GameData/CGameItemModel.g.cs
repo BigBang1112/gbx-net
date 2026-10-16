@@ -115,9 +115,9 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref materialDetailsRef, value);
     }
 
-    private NodeRefList<CMwNod>? nadeoSkinFids;
+    private NodeRefList<CMwNod?>? nadeoSkinFids;
     [AppliedWithChunk<Chunk2E002008>]
-    public NodeRefList<CMwNod>? NadeoSkinFids
+    public NodeRefList<CMwNod?>? NadeoSkinFids
     {
         get => nadeoSkinFids;
         set => nadeoSkinFids = value;
@@ -419,7 +419,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         public NodeRef<CPlugMaterial> MaterialSkin => NodeRef.GetOrCreate(ref owner.materialSkinRef);
         public NodeRef<CPlugMaterial> MaterialGlass => NodeRef.GetOrCreate(ref owner.materialGlassRef);
         public NodeRef<CPlugMaterial> MaterialDetails => NodeRef.GetOrCreate(ref owner.materialDetailsRef);
-        public IReadOnlyList<NodeRef<CMwNod>>? NadeoSkinFids => owner.nadeoSkinFids?.References;
+        public IReadOnlyList<NodeRef<CMwNod?>>? NadeoSkinFids => owner.nadeoSkinFids?.References;
         public IReadOnlyList<NodeRef<CMwNod>>? Cameras => owner.cameras?.References;
         public NodeRef<CPlugDecoratorSolid> DecoratorSolid => NodeRef.GetOrCreate(ref owner.decoratorSolidRef);
         public NodeRef<CPlugMaterial> StemMaterial => NodeRef.GetOrCreate(ref owner.stemMaterialRef);
@@ -768,7 +768,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
         public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
         {
-            n.nadeoSkinFids = rw.ListNodeRef<CMwNod>(n.nadeoSkinFids);
+            n.nadeoSkinFids = rw.ListNodeRef<CMwNod?>(n.nadeoSkinFids);
         }
     }
 

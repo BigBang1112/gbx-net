@@ -9,7 +9,7 @@ public partial class GbxReaderWriter
         int? length = null,
         int version = 0,
         bool deprec = false)
-        where T : CMwNod, IReadable, IWritable, new()
+        where T : CMwNod?, IReadable, IWritable, new()
     {
         if (Reader is not null)
         {
@@ -49,7 +49,7 @@ public partial class GbxReaderWriter
         return references;
     }
 
-    public void NodeRef<T>(NodeRef<T> reference) where T : CMwNod
+    public void NodeRef<T>(NodeRef<T> reference) where T : CMwNod?
     {
         if (reference is null)
         {
@@ -63,13 +63,13 @@ public partial class GbxReaderWriter
     /// <summary>
     /// Serializes a stored reference without allocating a handle for an absent node.
     /// </summary>
-    public void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod
+    public void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod?
     {
         Reader?.ReadNodeRef(ref reference);
         Writer?.WriteNodeRef(reference);
     }
 
-    public NodeRefList<T>? ListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public NodeRefList<T>? ListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod?
     {
         if (Reader is not null)
         {
@@ -80,10 +80,10 @@ public partial class GbxReaderWriter
         return references;
     }
 
-    public void ListNodeRef<T>(ref NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public void ListNodeRef<T>(ref NodeRefList<T>? references, int? length = null) where T : CMwNod?
         => references = ListNodeRef(references, length);
 
-    public NodeRefList<T>? ListNodeRef_deprec<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public NodeRefList<T>? ListNodeRef_deprec<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod?
     {
         if (Reader is not null)
         {
@@ -94,13 +94,13 @@ public partial class GbxReaderWriter
         return references;
     }
 
-    public void ListNodeRef_deprec<T>(ref NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public void ListNodeRef_deprec<T>(ref NodeRefList<T>? references, int? length = null) where T : CMwNod?
         => references = ListNodeRef_deprec(references, length);
 
     public NodeRefList<T>[]? JaggedArrayNodeRef<T>(
         NodeRefList<T>[]? references,
         int? innerLength = null,
-        int? outerLength = null) where T : CMwNod
+        int? outerLength = null) where T : CMwNod?
     {
         if (Reader is not null)
         {
@@ -114,6 +114,6 @@ public partial class GbxReaderWriter
     public void JaggedArrayNodeRef<T>(
         ref NodeRefList<T>[]? references,
         int? innerLength = null,
-        int? outerLength = null) where T : CMwNod
+        int? outerLength = null) where T : CMwNod?
         => references = JaggedArrayNodeRef(references, innerLength, outerLength);
 }

@@ -479,7 +479,7 @@ internal sealed class SerializationWriter
     private void ReferenceField(FieldDeclaration declaration, FieldModel field, bool local, string prefix, string target)
     {
         var scalar = declaration.Type.ArrayDimensions == 0;
-        var name = WireTypes.Map(declaration.Type.Name);
+        var name = scalar ? WireTypes.Map(declaration.Type.Name) : ReferenceModel.Element(field);
         if (scalar)
         {
             var handle = prefix + ReferenceModel.Handle(field, chunk && field.IsUnknown);

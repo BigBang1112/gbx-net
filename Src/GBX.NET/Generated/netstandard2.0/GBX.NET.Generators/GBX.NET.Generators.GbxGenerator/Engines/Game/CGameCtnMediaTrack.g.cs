@@ -284,10 +284,7 @@ public partial class CGameCtnMediaTrack : CMwNod, IClass
         }
     }
 
-    /// <summary>
-    /// Legacy ghost track, converted to a read-only track containing a ghost block.
-    /// </summary>
-    [Chunk(0x0307B000, "Legacy ghost track, converted to a read-only track containing a ghost block.")]
+    [Chunk(0x0307B000)]
     public partial class Chunk0307B000 : Chunk<CGameCtnMediaTrack>
     {
         public override uint Id => 0x0307B000;

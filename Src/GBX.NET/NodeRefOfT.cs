@@ -7,7 +7,7 @@ namespace GBX.NET;
 /// <summary>
 /// Stores an embedded node or an external descriptor independently of resolution.
 /// </summary>
-public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod
+public sealed class NodeRef<T> : NodeRef, IDeepCloneable where T : CMwNod?
 {
 #if NET9_0_OR_GREATER
     private Lock? sync;

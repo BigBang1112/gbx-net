@@ -28,8 +28,8 @@ CGameCtnMediaTrack 0x03078000 // MediaTracker track.
     float? RepeatingSegmentStart (time)
     float? RepeatingSegmentEnd (time)
 
-0x0307B000 (not-remapped) // Legacy ghost track, converted to a read-only track containing a ghost block.
-  CGameCtnGhost LegacyGhostModel
+0x0307B000 (not-remapped)
+  CGameCtnGhost LegacyGhostModel // Legacy ghost track, converted to a read-only track containing a ghost block.
 
 0x24062000 (not-remapped, base: 0x0307B000) [TMSX, TMNESWC, VSK5]
   base

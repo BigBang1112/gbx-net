@@ -7,7 +7,8 @@ namespace GBX.NET;
 /// <summary>
 /// A collection that retains external descriptors and resolves nodes on element access.
 /// </summary>
-public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepCloneable where T : CMwNod
+/// <typeparam name="T">The node type. Use a nullable type argument when elements can be null.</typeparam>
+public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepCloneable where T : CMwNod?
 {
     private readonly List<NodeRef<T>> references;
     private ReadOnlyCollection<NodeRef<T>>? referenceView;
@@ -30,7 +31,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         references = new(capacity);
     }
 
-    public NodeRefList(IEnumerable<T?> nodes) : this(nodes is ICollection<T?> collection ? collection.Count : 0)
+    public NodeRefList(IEnumerable<T> nodes) : this(nodes is ICollection<T> collection ? collection.Count : 0)
     {
         if (nodes is null)
         {
@@ -43,9 +44,9 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         }
     }
 
-    public static implicit operator NodeRefList<T>?(T?[]? nodes) => nodes is null ? null : new(nodes);
+    public static implicit operator NodeRefList<T>?(T[]? nodes) => nodes is null ? null : new(nodes);
 
-    public static implicit operator NodeRefList<T>?(List<T?>? nodes) => nodes is null ? null : new(nodes);
+    public static implicit operator NodeRefList<T>?(List<T>? nodes) => nodes is null ? null : new(nodes);
 
     [Obsolete("Create NodeRefList<T> and use Get(index).Descriptor = file instead.")]
     public static implicit operator NodeRefList<T>?(External<T>[]? nodes)
@@ -61,7 +62,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         {
             if (node is null)
             {
-                result.Add(null);
+                result.Add(default(T)!);
             }
             else
             {
@@ -72,9 +73,9 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         return result;
     }
 
-    public T? this[int index]
+    public T this[int index]
     {
-        get => references[index].Resolve();
+        get => references[index].Resolve()!;
         set => references[index].Node = value;
     }
 
@@ -109,7 +110,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     internal void AddOwned(NodeRef<T> reference) => references.Add(reference);
 
     [OverloadResolutionPriority(1)]
-    public void Add(T? item) => references.Add(new(item));
+    public void Add(T item) => references.Add(new(item));
 
     int IList.Add(object? value)
     {
@@ -123,15 +124,15 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     public void Insert(int index, NodeRef<T> reference) => references.Insert(index, Copy(reference));
 
     [OverloadResolutionPriority(1)]
-    public void Insert(int index, T? item) => references.Insert(index, new(item));
+    public void Insert(int index, T item) => references.Insert(index, new(item));
 
     void IList.Insert(int index, object? value) => Insert(index, ValidateNode(value));
 
-    private static T? ValidateNode(object? value)
+    private static T ValidateNode(object? value)
     {
         if (value is null or T)
         {
-            return (T?)value;
+            return (T)value!;
         }
 
         throw new ArgumentException($"Expected a node of type {typeof(T).Name}.", nameof(value));
@@ -154,7 +155,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
 
     public void RemoveAt(int index) => references.RemoveAt(index);
 
-    public bool Remove(T? item)
+    public bool Remove(T item)
     {
         var index = IndexOf(item);
         if (index < 0)
@@ -170,13 +171,13 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
     {
         if (value is null or T)
         {
-            Remove((T?)value);
+            Remove((T)value!);
         }
     }
 
-    public int IndexOf(T? item)
+    public int IndexOf(T item)
     {
-        var comparer = EqualityComparer<T?>.Default;
+        var comparer = EqualityComparer<T>.Default;
 
         for (var i = 0; i < Count; i++)
         {
@@ -189,20 +190,20 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         return -1;
     }
 
-    int IList.IndexOf(object? value) => value is null or T ? IndexOf((T?)value) : -1;
+    int IList.IndexOf(object? value) => value is null or T ? IndexOf((T)value!) : -1;
 
-    public bool Contains(T? item) => IndexOf(item) >= 0;
+    public bool Contains(T item) => IndexOf(item) >= 0;
 
-    bool IList.Contains(object? value) => (value is null or T) && Contains((T?)value);
+    bool IList.Contains(object? value) => (value is null or T) && Contains((T)value!);
 
-    public int RemoveAll(Predicate<T?> match)
+    public int RemoveAll(Predicate<T> match)
     {
         if (match is null)
         {
             throw new ArgumentNullException(nameof(match));
         }
 
-        return references.RemoveAll(reference => match(reference.Resolve()));
+        return references.RemoveAll(reference => match(reference.Resolve()!));
     }
 
     internal IEnumerable<T?> GetEmbeddedNodes()
@@ -218,7 +219,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         }
     }
 
-    public void CopyTo(T?[] array, int arrayIndex)
+    public void CopyTo(T[] array, int arrayIndex)
     {
         if (array is null)
         {
@@ -237,7 +238,7 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
 
         foreach (var reference in references)
         {
-            array[arrayIndex++] = reference.Resolve();
+            array[arrayIndex++] = reference.Resolve()!;
         }
     }
 
@@ -285,18 +286,18 @@ public sealed class NodeRefList<T> : IList<T?>, IReadOnlyList<T?>, IList, IDeepC
         }
     }
 
-    public T?[] ToArray()
+    public T[] ToArray()
     {
-        var result = new T?[Count];
+        var result = new T[Count];
         CopyTo(result, 0);
         return result;
     }
 
-    public IEnumerator<T?> GetEnumerator()
+    public IEnumerator<T> GetEnumerator()
     {
         foreach (var reference in references)
         {
-            yield return reference.Resolve();
+            yield return reference.Resolve()!;
         }
     }
 

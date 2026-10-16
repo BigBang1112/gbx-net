@@ -86,7 +86,7 @@ public partial class GbxWriter
         value.ReadWrite(rw);
     }
 
-    public void WriteListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public void WriteListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod?
     {
         var count = length ?? references?.Count ?? 0;
 
@@ -106,7 +106,7 @@ public partial class GbxWriter
         }
     }
 
-    public void WriteListNodeRef_deprec<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod
+    public void WriteListNodeRef_deprec<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod?
     {
         WriteDeprecVersion();
         WriteListNodeRef(references, length);
@@ -115,7 +115,7 @@ public partial class GbxWriter
     public void WriteJaggedArrayNodeRef<T>(
         NodeRefList<T>[]? references,
         int? innerLength = null,
-        int? outerLength = null) where T : CMwNod
+        int? outerLength = null) where T : CMwNod?
     {
         var count = outerLength ?? references?.Length ?? 0;
 

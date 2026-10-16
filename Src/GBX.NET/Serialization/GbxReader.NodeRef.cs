@@ -7,7 +7,7 @@ namespace GBX.NET.Serialization;
 
 public partial class GbxReader
 {
-    public NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod
+    public NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod?
     {
         reference ??= new();
         ReadNodeRef(ref reference);
@@ -17,7 +17,7 @@ public partial class GbxReader
     /// <summary>
     /// Reads stored reference data, leaving an absent handle null when the file stores a null reference.
     /// </summary>
-    public void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod
+    public void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod?
     {
         var index = default(int?);
 
@@ -93,7 +93,7 @@ public partial class GbxReader
         NodeRef.GetOrCreate(ref reference).SetNodeCore((CMwNod)ReadNode(node));
     }
 
-    public NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod
+    public NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod?
     {
         var count = length ?? ReadInt32();
         EnsureValidLength(count);
@@ -108,7 +108,7 @@ public partial class GbxReader
         return list;
     }
 
-    public NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod
+    public NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod?
     {
         ReadDeprecVersion();
         return ReadListNodeRef<T>(length);
@@ -116,7 +116,7 @@ public partial class GbxReader
 
     public NodeRefList<T>[] ReadJaggedListNodeRef<T>(
         int? innerLength = null,
-        int? outerLength = null) where T : CMwNod
+        int? outerLength = null) where T : CMwNod?
     {
         var count = outerLength ?? ReadInt32();
         EnsureValidLength(count);

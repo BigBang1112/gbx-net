@@ -19,7 +19,8 @@ internal static class ReferenceModel
         return false;
     }
 
-    public static string Element(FieldModel field) => WireTypes.Map(field.StorageDeclaration.Type.Name);
+    public static string Element(FieldModel field) => WireTypes.Map(field.StorageDeclaration.Type.Name) +
+        (field.StorageDeclaration.Type.ArrayDimensions > 0 && field.Occurrences.Any(static x => x.Type.IsNullable) ? "?" : "");
     public static string Handle(FieldModel field, bool chunk)
     {
         var name = (chunk ? SyntaxOverlap.Escape(field.Name) : SyntaxOverlap.Backing(field.Name)).TrimStart('@');

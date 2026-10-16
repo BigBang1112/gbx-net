@@ -85,8 +85,8 @@ public partial interface IGbxReader : IDisposable
     PackDesc ReadPackDesc();
     T? ReadNodeRef<T>() where T : IClass;
     [IgnoreForCodeGeneration] IClass? ReadNodeRef();
-    [IgnoreForCodeGeneration] NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod;
-    [IgnoreForCodeGeneration] void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod;
+    [IgnoreForCodeGeneration] NodeRef<T> ReadNodeRef<T>(NodeRef<T>? reference) where T : CMwNod?;
+    [IgnoreForCodeGeneration] void ReadNodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod?;
     T? ReadNode<T>() where T : IClass, new();
     T? ReadMetaRef<T>() where T : IClass;
     TimeInt32 ReadTimeInt32();
@@ -133,9 +133,9 @@ public partial interface IGbxReader : IDisposable
     T?[] ReadArrayNodeRef<T>() where T : IClass;
     T?[] ReadArrayNodeRef_deprec<T>() where T : IClass;
     T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass;
-    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod;
-    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod;
-    [IgnoreForCodeGeneration] NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod;
+    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod?;
+    [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod?;
+    [IgnoreForCodeGeneration] NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod?;
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;

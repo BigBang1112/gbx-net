@@ -46,7 +46,7 @@ public partial class CGameCtnBlockInfoMobil
         for (var i = 0; i < chunks.Count; i++)
         {
             var reference = chunks.Get(i);
-            converted.Add(null);
+            converted.Add(new NodeRef<T>());
             if (reference.Descriptor is { } descriptor)
             {
                 converted.Get(i).Descriptor = descriptor;

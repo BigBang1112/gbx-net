@@ -39,6 +39,8 @@ A standalone handwritten type in the layout's engine namespace or the main `GBX.
 
 Scalar node presence checks such as `Model != null` or `Model is not null` test the stored `NodeRef.Kind`, including external file and resource references, without resolving the node. This also applies to property getters and field `write` expressions. A collection or an inline archive uses its ordinary null check.
 
+Node reference collections use the element type's `?` annotation: `CMwNod[] Nodes` generates `NodeRefList<CMwNod>?`, while `CMwNod?[] Nodes` generates `NodeRefList<CMwNod?>?`. The annotation controls element nullability for indexing, enumeration, and mutation. The collection itself remains nullable. This also applies to fixed arrays, jagged arrays, and fields marked `(list)` or `(deprec)`.
+
 `GBX.NET.PlugCurve` handles legacy curve references and inline control points. Its field `version` argument selects the storage format (`-1` or any negative value for a node reference, zero or positive for inline points), while `PlugCurve.Version` selects the inline curve version. Bare `PlugCurve` fields use inline storage by default, so `(version: 1)` is unnecessary. Use `(version: Version - 8)` to switch to inline storage at chunk version 8. Fields that always store a legacy reference should use `CFuncKeysReal` directly. A handwritten `PlugCurve` backing field and its node conversions let legacy and inline declarations share one property.
 
 ## Computed assignments

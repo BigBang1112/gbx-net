@@ -12,7 +12,7 @@ public abstract class NodeRef
     {
     }
 
-    internal static NodeRef<T> GetOrCreate<T>(ref NodeRef<T>? reference) where T : CMwNod
+    internal static NodeRef<T> GetOrCreate<T>(ref NodeRef<T>? reference) where T : CMwNod?
     {
         var existing = Volatile.Read(ref reference);
         if (existing is not null)
@@ -26,7 +26,7 @@ public abstract class NodeRef
 
     internal static void SetEmbedded<T>(
         [NotNullIfNotNull(nameof(value))] ref NodeRef<T>? reference,
-        T? value) where T : CMwNod
+        T? value) where T : CMwNod?
     {
         if (value is null)
         {
@@ -38,7 +38,7 @@ public abstract class NodeRef
         }
     }
 
-    internal static void CopyFrom<T>(ref NodeRef<T>? reference, NodeRef<T>? source) where T : CMwNod
+    internal static void CopyFrom<T>(ref NodeRef<T>? reference, NodeRef<T>? source) where T : CMwNod?
     {
         if (source is null || source.Kind == NodeRefKind.None)
         {
