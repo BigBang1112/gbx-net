@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using System.Collections.Immutable;
 using System.Text;
 
@@ -137,6 +138,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
         foreach (var (readerMethod, writerMethod, isNamed) in symbols)
         {
+            var obsoleteAttribute = ObsoleteAttribute(readerMethod, writerMethod);
+
             // A sentinel reader can return null even when the supplied value is non-null.
             var preservesNonNull = readerMethod.ReturnType.OriginalDefinition.SpecialType != SpecialType.System_Nullable_T;
             var isNonNullableValueType = readerMethod.ReturnType.IsValueType
@@ -151,6 +154,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
                 var isNullableVariant = i == 1;
+
+                if (obsoleteAttribute is not null) sbInterface.AppendLine(obsoleteAttribute);
 
                 if (!writerMethod.Parameters.IsEmpty && preservesNonNull)
                 {
@@ -296,6 +301,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         continue;
                     }
                     
+                    if (obsoleteAttribute is not null) sbInterface.AppendLine(obsoleteAttribute);
                     sbInterface.Append("    void ");
 
                     if (isNamed)
@@ -430,6 +436,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
 
                         for (var k = 0; k < 3; k++)
                         {
+                            if (obsoleteAttribute is not null) sbInterface.AppendLine(obsoleteAttribute);
                             sbInterface.Append("    ");
 
                             if (isRef)
@@ -517,6 +524,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
             for (var i = 0; i < (isNonNullableValueType ? 2 : 1); i++)
             {
                 var isNullableVariant = i == 1;
+
+                if (obsoleteAttribute is not null) sbClass.AppendLine(obsoleteAttribute);
 
                 if (!writerMethod.Parameters.IsEmpty && preservesNonNull)
                 {
@@ -802,6 +811,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         continue;
                     }
 
+                    if (obsoleteAttribute is not null) sbClass.AppendLine(obsoleteAttribute);
                     sbClass.Append("    public void ");
 
                     if (isNamed)
@@ -964,6 +974,8 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         var isLengthVariant = j == 1;
                         var isDeprecVariant = j == 2;
 
+                        if (obsoleteAttribute is not null) sbClass.AppendLine(obsoleteAttribute);
+
                         if (!writerMethod.Parameters.IsEmpty)
                         {
                             sbClass.AppendLine("    [return: NotNullIfNotNull(nameof(value))]");
@@ -1054,6 +1066,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
                         var isLengthVariant = j == 1;
                         var isDeprecVariant = j == 2;
 
+                        if (obsoleteAttribute is not null) sbClass.AppendLine(obsoleteAttribute);
                         sbClass.Append("    public void ");
                         sbClass.Append(isList ? "List" : "Array");
                         sbClass.Append(methodType);
@@ -1109,6 +1122,17 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
         sb.AppendLine();
         sb.Append(sbClass.ToString());
         context.AddSource("GbxReaderWriter", sb.ToString());
+    }
+
+    private static string? ObsoleteAttribute(IMethodSymbol reader, IMethodSymbol writer)
+    {
+        var attribute = reader.GetAttributes().Concat(writer.GetAttributes())
+            .FirstOrDefault(static x => x.AttributeClass?.ToDisplayString() == "System.ObsoleteAttribute");
+        if (attribute is null) return null;
+
+        var arguments = attribute.ConstructorArguments.Select(static x => x.ToCSharpString())
+            .Concat(attribute.NamedArguments.Select(static x => x.Key + " = " + x.Value.ToCSharpString()));
+        return "    [global::System.ObsoleteAttribute(" + string.Join(", ", arguments) + ")]";
     }
 
     private static void AppendConstraints(StringBuilder sb, IMethodSymbol methodSymbol)

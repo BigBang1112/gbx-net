@@ -537,32 +537,46 @@ partial interface IGbxReaderWriter
     T?[][]? JaggedArrayNodeRef<T>(T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
     void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.External<T>[]? ArrayExternalNodeRef_deprec<T>(GBX.NET.External<T>[]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef_deprec<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod;
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value) where T : GBX.NET.Engines.MwFoundations.CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
@@ -2190,6 +2204,7 @@ partial class GbxReaderWriter
 
     public void JaggedArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref T?[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.IClass => value = JaggedArrayNodeRef(value, innerLength, outerLength);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2198,8 +2213,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ArrayExternalNodeRef(value, length);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.External<T>[]? ArrayExternalNodeRef<T>(GBX.NET.External<T>[]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2208,8 +2225,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ArrayExternalNodeRef(value);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.External<T>[]? ArrayExternalNodeRef_deprec<T>(GBX.NET.External<T>[]? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2218,8 +2237,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[]? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ArrayExternalNodeRef_deprec(value);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.External<T>[][]? JaggedArrayExternalNodeRef<T>(GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2228,8 +2249,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void JaggedArrayExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref GBX.NET.External<T>[][]? value, int? innerLength = default, int? outerLength = default) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = JaggedArrayExternalNodeRef(value, innerLength, outerLength);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2238,8 +2261,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value, int length) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ListExternalNodeRef(value, length);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2248,8 +2273,10 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListExternalNodeRef<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ListExternalNodeRef(value);
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     [return: NotNullIfNotNull(nameof(value))]
     public System.Collections.Generic.List<GBX.NET.External<T>>? ListExternalNodeRef_deprec<T>(System.Collections.Generic.List<GBX.NET.External<T>>? value = default) where T : GBX.NET.Engines.MwFoundations.CMwNod
     {
@@ -2258,6 +2285,7 @@ partial class GbxReaderWriter
         return value;
     }
 
+    [global::System.ObsoleteAttribute("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListExternalNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref System.Collections.Generic.List<GBX.NET.External<T>>? value) where T : GBX.NET.Engines.MwFoundations.CMwNod => value = ListExternalNodeRef_deprec(value);
 
     [return: NotNullIfNotNull(nameof(value))]

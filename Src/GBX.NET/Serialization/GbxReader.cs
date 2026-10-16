@@ -136,12 +136,19 @@ public partial interface IGbxReader : IDisposable
     [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef<T>(int? length = null) where T : CMwNod?;
     [IgnoreForCodeGeneration] NodeRefList<T> ReadListNodeRef_deprec<T>(int? length = null) where T : CMwNod?;
     [IgnoreForCodeGeneration] NodeRefList<T>[] ReadJaggedListNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod?;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
@@ -1610,6 +1617,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public T?[][] ReadJaggedArrayNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : IClass
         => ReadJaggedArrayRows(length => ReadArrayNodeRef<T>(length), innerLength, outerLength);
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     private External<T> ReadExternalNodeRef<T>() where T : CMwNod
     {
         var reference = ReadNodeRef<T>(null);
@@ -1618,6 +1626,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return new(reference.CachedNode, reference.File);
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[] ReadArrayExternalNodeRef<T>(int length) where T : CMwNod
     {
         if (length == 0)
@@ -1637,17 +1646,21 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return array;
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[] ReadArrayExternalNodeRef<T>() where T : CMwNod => ReadArrayExternalNodeRef<T>(ReadInt32());
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[] ReadArrayExternalNodeRef_deprec<T>() where T : CMwNod
     {
         ReadDeprecVersion();
         return ReadArrayExternalNodeRef<T>();
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[][] ReadJaggedArrayExternalNodeRef<T>(int? innerLength = null, int? outerLength = null) where T : CMwNod
         => ReadJaggedArrayRows(length => ReadArrayExternalNodeRef<T>(length), innerLength, outerLength);
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>> ReadListExternalNodeRef<T>(int length) where T : CMwNod
     {
         if (length == 0)
@@ -1667,13 +1680,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         return list;
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>> ReadListExternalNodeRef<T>() where T : CMwNod => ReadListExternalNodeRef<T>(ReadInt32());
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod
     {
         ReadDeprecVersion();
         return ReadListExternalNodeRef<T>();
     }
+
 
     public string[] ReadArrayId(int length)
     {

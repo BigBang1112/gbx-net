@@ -14,10 +14,10 @@ archive FileInfo
     case FileType.Map
       id MapUid = empty
       string? MapName
-      byte // MapName terminator
+      byte MapNameTerminator
     case FileType.Ghost
       string? RecordingContext
-      byte // RecordingContext terminator
+      byte RecordingContextTerminator
       id MapUid = empty
       int? RaceTime (time)
     default

@@ -48,6 +48,7 @@ public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepClo
 
     public static implicit operator NodeRefList<T>?(List<T>? nodes) => nodes is null ? null : new(nodes);
 
+#pragma warning disable CS0618 // This obsolete conversion preserves compatibility with External<T> arrays.
     [Obsolete("Create NodeRefList<T> and use Get(index).Descriptor = file instead.")]
     public static implicit operator NodeRefList<T>?(External<T>[]? nodes)
     {
@@ -72,6 +73,8 @@ public sealed class NodeRefList<T> : IList<T>, IReadOnlyList<T>, IList, IDeepClo
 
         return result;
     }
+
+#pragma warning restore CS0618
 
     public T this[int index]
     {

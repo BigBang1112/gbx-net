@@ -302,8 +302,6 @@ public partial class CGameCtnDecorationMood : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref moodBlenderRef, value);
     }
 
-    private bool isNight;
-
     private bool enableStars;
     /// <remarks>Applied with: 0x012 body chunk</remarks>
     [AppliedWithChunk<Chunk0303A012>]

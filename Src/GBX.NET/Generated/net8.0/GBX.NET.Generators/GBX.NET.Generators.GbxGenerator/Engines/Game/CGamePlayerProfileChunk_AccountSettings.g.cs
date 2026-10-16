@@ -164,6 +164,15 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         set => this.onlinePlanets = value;
     }
 
+    private string? encryptedKeyHexa;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0312C000>]
+    public string? EncryptedKeyHexa
+    {
+        get => this.encryptedKeyHexa;
+        set => this.encryptedKeyHexa = value;
+    }
+
     private string? rSAPrivateKey;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk0312C000>]
@@ -297,15 +306,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
     {
         get => this.buddyArchiveVersion;
         set => this.buddyArchiveVersion = value;
-    }
-
-    private string? encryptedKeyHexa;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
-    [AppliedWithChunk<Chunk0312C000>]
-    public string? EncryptedKeyHexa
-    {
-        get => this.encryptedKeyHexa;
-        set => this.encryptedKeyHexa = value;
     }
 
     private int privacyPolicyVersion;
@@ -649,6 +649,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).u01 = context.Clone(this.u01)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).onlineRemainingNickNamesChangesCount = context.Clone(this.onlineRemainingNickNamesChangesCount)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).onlinePlanets = context.Clone(this.onlinePlanets)!;
+        ((CGamePlayerProfileChunk_AccountSettings)clone).encryptedKeyHexa = context.Clone(this.encryptedKeyHexa)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).rSAPrivateKey = context.Clone(this.rSAPrivateKey)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).u02 = context.Clone(this.u02)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).legacyBuddyArchiveVersion = context.Clone(this.legacyBuddyArchiveVersion)!;
@@ -665,7 +666,6 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
         ((CGamePlayerProfileChunk_AccountSettings)clone).u06 = context.Clone(this.u06)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).eulaVersion = context.Clone(this.eulaVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).buddyArchiveVersion = context.Clone(this.buddyArchiveVersion)!;
-        ((CGamePlayerProfileChunk_AccountSettings)clone).encryptedKeyHexa = context.Clone(this.encryptedKeyHexa)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).privacyPolicyVersion = context.Clone(this.privacyPolicyVersion)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).age = context.Clone(this.age)!;
         ((CGamePlayerProfileChunk_AccountSettings)clone).trigram = context.Clone(this.trigram)!;
@@ -745,7 +745,7 @@ public partial class CGamePlayerProfileChunk_AccountSettings : CGamePlayerProfil
 
                 if (v >= 1)
                 {
-                    this.RSAPublicKey = rw.String(this.RSAPublicKey);
+                    rw.String(ref this.encryptedKeyHexa);
                 }
             }
 

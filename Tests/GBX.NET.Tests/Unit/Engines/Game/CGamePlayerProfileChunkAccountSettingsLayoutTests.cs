@@ -8,6 +8,22 @@ namespace GBX.NET.Tests.Unit.Engines.Game;
 public class CGamePlayerProfileChunkAccountSettingsLayoutTests
 {
     [Test]
+    public async Task ReadWrite_LegacyArchive_PreservesEncryptedKeyInCurrentProperty()
+    {
+        var node = new CGamePlayerProfileChunk_AccountSettings
+        {
+            Flags = 3,
+            EncryptedKeyHexa = "00ABCDEF00112233"
+        };
+        var payload = Write(rw => node.ReadWrite(rw, 1));
+        var restored = new CGamePlayerProfileChunk_AccountSettings();
+        Read(payload, rw => restored.ReadWrite(rw, 1));
+
+        await Assert.That(restored.EncryptedKeyHexa).IsEqualTo(node.EncryptedKeyHexa);
+        await Assert.That(Write(rw => restored.ReadWrite(rw, 1)).SequenceEqual(payload)).IsTrue();
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]

@@ -151,11 +151,25 @@ public partial class CGameUserFileList : CMwNod, IClass
             set => this.mapName = value;
         }
 
+        private byte mapNameTerminator;
+        public byte MapNameTerminator
+        {
+            get => this.mapNameTerminator;
+            set => this.mapNameTerminator = value;
+        }
+
         private string? recordingContext;
         public string? RecordingContext
         {
             get => this.recordingContext;
             set => this.recordingContext = value;
+        }
+
+        private byte recordingContextTerminator;
+        public byte RecordingContextTerminator
+        {
+            get => this.recordingContextTerminator;
+            set => this.recordingContextTerminator = value;
         }
 
         private TimeInt32? raceTime;
@@ -182,7 +196,9 @@ public partial class CGameUserFileList : CMwNod, IClass
             ((FileInfo)clone).@type = context.Clone(this.@type)!;
             ((FileInfo)clone).mapUid = context.Clone(this.mapUid)!;
             ((FileInfo)clone).mapName = context.Clone(this.mapName)!;
+            ((FileInfo)clone).mapNameTerminator = context.Clone(this.mapNameTerminator)!;
             ((FileInfo)clone).recordingContext = context.Clone(this.recordingContext)!;
+            ((FileInfo)clone).recordingContextTerminator = context.Clone(this.recordingContextTerminator)!;
             ((FileInfo)clone).raceTime = context.Clone(this.raceTime)!;
         }
 
@@ -199,11 +215,11 @@ public partial class CGameUserFileList : CMwNod, IClass
                 case FileType.Map:
                     rw.Id(ref this.mapUid);
                     rw.String(ref this.mapName);
-                    this.U02 = (ulong)rw.Byte((byte)this.U02);
+                    rw.Byte(ref this.mapNameTerminator);
                     break;
                 case FileType.Ghost:
                     rw.String(ref this.recordingContext);
-                    this.U03 = (ulong)rw.Byte((byte)this.U03);
+                    rw.Byte(ref this.recordingContextTerminator);
                     rw.Id(ref this.mapUid);
                     rw.TimeInt32Nullable(ref this.raceTime);
                     break;

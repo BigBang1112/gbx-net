@@ -138,12 +138,19 @@ public partial interface IGbxWriter : IDisposable
     void WriteListNodeRef<T>(List<T?>? value) where T : IClass;
     void WriteListNodeRef<T>(List<T?>? value, int length) where T : IClass;
     void WriteListNodeRef_deprec<T>(List<T?>? value) where T : IClass;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod;
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
@@ -1837,6 +1844,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteListNodeRef(value);
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef<T>(External<T>[]? value) where T : CMwNod
     {
         if (value is null)
@@ -1853,6 +1861,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef<T>(External<T>[]? value, int length) where T : CMwNod
     {
         EnsureValidLength(length);
@@ -1864,12 +1873,14 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteArrayExternalNodeRef_deprec<T>(External<T>[]? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteArrayExternalNodeRef(value);
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteJaggedArrayExternalNodeRef<T>(External<T>[][]? value, int? innerLength = null, int? outerLength = null) where T : CMwNod
         => WriteJaggedArrayRows(value, innerLength, outerLength, row =>
         {
@@ -1879,6 +1890,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             }
         });
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef<T>(List<External<T>>? value) where T : CMwNod
     {
         if (value is null)
@@ -1895,6 +1907,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod
     {
         EnsureValidLength(length);
@@ -1906,11 +1919,13 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         }
     }
 
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod
     {
         WriteDeprecVersion();
         WriteListExternalNodeRef(value);
     }
+
 
     public void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
     {

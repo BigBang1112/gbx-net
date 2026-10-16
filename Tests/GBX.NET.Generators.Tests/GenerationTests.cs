@@ -1904,6 +1904,83 @@ public class GenerationTests
     }
 
     [Test]
+    [Arguments(false, false)]
+    [Arguments(false, true)]
+    [Arguments(true, false)]
+    [Arguments(true, true)]
+    public async Task Generate_ObsoleteCollectionAdapters_PropagatesDeprecationToCallers(bool list, bool obsoleteReader)
+    {
+        var collection = list ? "System.Collections.Generic.List<Legacy<T>>" : "Legacy<T>[]";
+        const string obsolete = "[System.Obsolete(\"Use current \\\"reference\\\" APIs.\", false, DiagnosticId = \"LEGACY001\")]";
+        var source = $$"""
+            #nullable enable
+            #pragma warning disable CS0618
+            namespace GBX.NET.Serialization
+            {
+                [System.Obsolete("Use the current reference type.")]
+                public class Legacy<T> { }
+                public interface IGbxReader
+                {
+                    {{(obsoleteReader ? obsolete : "")}}
+                    {{collection}} ReadLegacy<T>();
+                    int ReadInt32();
+                }
+                public interface IGbxWriter
+                {
+                    {{(obsoleteReader ? "" : obsolete)}}
+                    void WriteLegacy<T>({{collection}}? value);
+                    void Write(int value);
+                }
+                public partial class GbxReaderWriter
+                {
+                    public IGbxReader? Reader { get; }
+                    public IGbxWriter? Writer { get; }
+                }
+            }
+            """;
+        var options = new CSharpParseOptions(LanguageVersion.Preview);
+        var references = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator)
+            .Select(x => MetadataReference.CreateFromFile(x));
+        var compilation = CSharpCompilation.Create("Fixture", [CSharpSyntaxTree.ParseText(source, options)], references,
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, nullableContextOptions: NullableContextOptions.Enable));
+        GeneratorDriver driver = CSharpGeneratorDriver.Create([new GbxReaderWriterGenerator().AsSourceGenerator()], parseOptions: options);
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var output, out _);
+
+        await Assert.That(driver.GetRunResult().Diagnostics).IsEmpty();
+        await AssertNoErrors(output);
+        var generated = driver.GetRunResult().Results.Single().GeneratedSources.Single().SyntaxTree;
+        await Assert.That(output.GetDiagnostics().Where(x => x.Severity == DiagnosticSeverity.Warning && x.Location.SourceTree == generated)).IsEmpty();
+        await Assert.That(generated.ToString()).DoesNotContain("#pragma warning");
+        var methods = generated.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>().ToArray();
+        foreach (var method in methods.Where(x => x.Identifier.ValueText == "Legacy"))
+            await Assert.That(method.AttributeLists.ToString()).Contains("global::System.ObsoleteAttribute");
+        foreach (var method in methods.Where(x => x.Identifier.ValueText == "Int32"))
+            await Assert.That(method.AttributeLists.ToString()).DoesNotContain("ObsoleteAttribute");
+
+        var caller = CSharpSyntaxTree.ParseText("""
+            internal static class Caller
+            {
+                public static void Use(GBX.NET.Serialization.IGbxReaderWriter contract, GBX.NET.Serialization.GbxReaderWriter implementation)
+                {
+                    contract.Legacy<int>();
+                    implementation.Legacy<int>();
+                    contract.Int32();
+                    implementation.Int32();
+                }
+            }
+            """, options);
+        var callers = output.AddSyntaxTrees(caller);
+        await AssertNoErrors(callers);
+        var warnings = callers.GetDiagnostics().Where(x => x.Severity == DiagnosticSeverity.Warning && x.Location.SourceTree == caller).ToArray();
+        await Assert.That(warnings.Length).IsEqualTo(2);
+        foreach (var warning in warnings)
+        {
+            await Assert.That(warning.Id).IsEqualTo("LEGACY001");
+            await Assert.That(warning.GetMessage()).Contains("Use current \"reference\" APIs.");
+        }
+    }
+
+    [Test]
     public async Task Generate_SentinelReaderWriterMethods_AllowsNullResultsFromNonNullInputs()
     {
         const string source = """

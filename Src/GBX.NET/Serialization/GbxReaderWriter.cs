@@ -37,22 +37,34 @@ public partial interface IGbxReaderWriter : IDisposable
     void NodeRef<T>([NotNullIfNotNull(nameof(reference))] ref NodeRef<T>? reference) where T : CMwNod?;
 
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod;
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
@@ -306,22 +318,34 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
     public void NodeRef([NotNullIfNotNull(nameof(value))] ref CMwNod? value) => value = NodeRef(value);
 
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef<T>(External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(value, length);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value, int length) where T : CMwNod => ArrayExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public External<T>[]? ArrayNodeRef_deprec<T>(External<T>[]? value = default) where T : CMwNod => ArrayExternalNodeRef_deprec(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ArrayNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref External<T>[]? value) where T : CMwNod => ArrayExternalNodeRef_deprec(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef<T>(List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(value, length);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value, int length) where T : CMwNod => ListExternalNodeRef(ref value, length);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef(ref value);
     [return: NotNullIfNotNull(nameof(value))]
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public List<External<T>>? ListNodeRef_deprec<T>(List<External<T>>? value = default) where T : CMwNod => ListExternalNodeRef_deprec(value);
+    [Obsolete("Use NodeRef<T> or NodeRefList<T> serialization overloads to preserve reference metadata.")]
     public void ListNodeRef_deprec<T>([NotNullIfNotNull(nameof(value))] ref List<External<T>>? value) where T : CMwNod => ListExternalNodeRef_deprec(ref value);
 
     [return: NotNullIfNotNull(nameof(value))]

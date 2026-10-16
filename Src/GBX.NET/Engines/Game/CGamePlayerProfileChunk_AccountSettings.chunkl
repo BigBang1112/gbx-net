@@ -23,7 +23,7 @@ archive
       int OnlineRemainingNickNamesChangesCount = -1
       int OnlinePlanets
       v1+
-        string RSAPublicKey
+        string EncryptedKeyHexa
     string RSAPrivateKey
     ulong U02
     int LegacyBuddyArchiveVersion = 5
