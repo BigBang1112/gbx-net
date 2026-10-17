@@ -561,6 +561,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043044>]
     public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
 
+    private string challengeScript = string.Empty;
+    /// <remarks>Applied with: 0x047 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043047>]
+    public string ChallengeScript
+    {
+        get => this.challengeScript;
+        set => this.challengeScript = value;
+    }
+
     /// <summary>
     /// Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
     /// </summary>
@@ -924,6 +933,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).carMarksBuffer = context.Clone(this.carMarksBuffer)!;
         ((CGameCtnChallenge)clone).anchoredObjects = context.Clone(this.anchoredObjects)!;
         ((CGameCtnChallenge)clone).zoneGenealogy = context.Clone(this.zoneGenealogy)!;
+        ((CGameCtnChallenge)clone).challengeScript = context.Clone(this.challengeScript)!;
         ((CGameCtnChallenge)clone).bakedBlocks = context.Clone(this.bakedBlocks)!;
         ((CGameCtnChallenge)clone).clipPodiumRef = context.Clone(this.clipPodiumRef)!;
         ((CGameCtnChallenge)clone).clipAmbianceRef = context.Clone(this.clipAmbianceRef)!;
@@ -2402,22 +2412,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnChallenge 0x047 skippable chunk
+    /// CGameCtnChallenge 0x047 skippable chunk (ChallengeScript)
     /// </summary>
-    [Chunk(0x03043047)]
+    [Chunk(0x03043047, "ChallengeScript")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT)]
     public partial class Chunk03043047 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043047;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
-        public string? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043047)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043047)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -2428,12 +2436,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.String(ref U01);
-
-            if (Version >= 1)
-            {
-                throw new NotSupportedException();
-            }
+            rw.String(ref n.challengeScript);
         }
     }
 

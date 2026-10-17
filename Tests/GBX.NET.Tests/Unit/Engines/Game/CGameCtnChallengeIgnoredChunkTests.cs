@@ -34,6 +34,24 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
+    [Arguments("")]
+    [Arguments("// Challenge script\nmain() { log(\"hello\"); }\n")]
+    public async Task ReadWrite_Chunk03043047_PreservesChallengeScript(string script)
+    {
+        var payload = Payload(w =>
+        {
+            w.Write(0);
+            w.Write(script);
+        });
+        await Assert.That(new CGameCtnChallenge().ChallengeScript).IsEqualTo(string.Empty);
+        var chunk = new CGameCtnChallenge.Chunk03043047();
+        var node = await RoundTrip(payload, chunk);
+        await Assert.That(node.ChallengeScript).IsEqualTo(script);
+        await Assert.That(chunk.Version).IsEqualTo(0);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT);
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]

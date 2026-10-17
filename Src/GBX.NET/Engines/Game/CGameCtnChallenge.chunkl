@@ -261,11 +261,9 @@ CGameCtnChallenge 0x03043000 // A map.
   block (encapsulated)
     CScriptTraitsMetadata ScriptMetadata (direct)
 
-0x047 (skippable) [MP3, TMT]
+0x047 (skippable) [MP3, TMT] // ChallengeScript
   version
-  string
-  v1+
-    throw
+  string ChallengeScript
 
 0x048 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // baked blocks
   version

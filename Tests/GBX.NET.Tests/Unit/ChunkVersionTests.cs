@@ -33,6 +33,7 @@ public class ChunkVersionTests
     [Arguments(0x090ED0AEu, 3)]
     [Arguments(0x0602102Au, 6)]
     [Arguments(0x031CC004u, 2)]
+    [Arguments(0x03043047u, 1)]
     public async Task ReadWrite_VersionAboveNativeMaximum_ThrowsBeforePayload(uint chunkId, int version)
     {
         const int sentinel = 0x12345678;
