@@ -375,8 +375,8 @@ CGameCtnChallenge 0x03043000 // A map.
     else
       WorldDistortXYZ = null
     v3+
-      int // Discarded by TM2020.
-      int // Discarded by TM2020.
+      int // Discarded
+      int // Discarded
 
 0x05A (skippable) [TM2020] // submap sectors
   version
