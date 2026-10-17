@@ -1,7 +1,10 @@
 CMotionShader 0x0802B000
 - inherits: CMotionTrack
 
-0x000
- int
- int
- int
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  CPlugMaterial Material
+  if rw.Writer != null && Material != null
+    CPlugShader UnusedShader (local, write: null)
+  else
+    CPlugShader Shader
+  CFuncShader FuncShader

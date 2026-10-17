@@ -1,2 +1,3 @@
 CMotionManager 0x0804B000
+- inherits: CMwNod
 - abstract

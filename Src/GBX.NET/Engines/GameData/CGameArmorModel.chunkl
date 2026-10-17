@@ -1,6 +1,6 @@
 CGameArmorModel 0x2E00D000
 
-0x000
- version
- int ArmorMax
- int ReplenishDelayAfterDamage
+0x000 [MP3, TMT, MP4, TM2020]
+  version
+  int ArmorMax
+  int ReplenishDelayAfterDamage

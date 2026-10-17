@@ -1,10 +1,10 @@
 CGameCtnMediaBlockTime 0x03085000
 - inherits: CGameCtnMediaBlock
 
-0x000
- list<Key> Keys
+0x000 [TMSX, TMNESWC, VSK5, TMF, MP4, TM2020]
+  Key[] Keys (list)
 
 archive Key (inherits: IKey)
- timefloat Time
- float TimeValue
- float Tangent
+  float Time (time)
+  float TimeValue
+  float Tangent

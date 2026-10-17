@@ -1,17 +1,79 @@
 GxLightFrustum 0x0400A000
 - inherits: GxLightBall
 
-0x004
- int
- int
- int
- float
- float
- float
- float
- int
+constructor
+  AttHTnLR = 0
+  AttHTnLR2 = 0
 
-0x006
- bool
- boxaligned
- uint
+0x000
+  FrustumData Frustum = empty (version: 1)
+  bool DoAttenuationLegacy (local, write: "(n.Flags & 0x40) != 0")
+  bool UseFaceNegZLegacy (local, write: "(n.Flags & 0x20) != 0")
+  Flags = Flags & 0xFFFFC79F
+  if DoAttenuationLegacy
+    Flags = Flags | 0x40
+  if UseFaceNegZLegacy
+    Flags = Flags | 0x20
+
+0x001
+  FrustumData Frustum (version: 1)
+  uint Flags = 0x80010 // Packed face, attenuation, apply-mode, technique and shadow-group bits
+
+0x002
+  FrustumData Frustum
+  uint Flags
+  Flags = Flags & 0xFFFFC7FF
+
+0x003 (base: 0x002)
+  base
+  uint LegacyBlendSource
+  uint LegacyBlendDestination
+  Flags = Flags & 0xFFFC007F
+  if LegacyBlendSource == 6 && LegacyBlendDestination == 0
+    Flags = Flags | 0x80
+  else if LegacyBlendSource == 1 && LegacyBlendDestination == 1
+    Flags = Flags | 0x100
+  else if LegacyBlendSource == 6 && LegacyBlendDestination == 2
+    Flags = Flags | 0x180
+
+0x004 (base: 0x002) [TM10, TMPU]
+  base
+
+0x005
+  FrustumData Frustum
+  uint Flags
+  Flags = Flags & 0xFFFC3FFF
+
+0x006 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  FrustumData Frustum
+  uint Flags
+
+archive FrustumData
+  bool IsOrthographic
+  if v == 1
+    float MinX (local, write: "IsOrthographic ? X - X2 : X")
+    float MinY (local, write: "IsOrthographic ? Y - Y2 : Y")
+    float MinZ (local, write: "IsOrthographic ? Z - Z2 : Z")
+    float MaxX (local, write: "IsOrthographic ? X + X2 : X2")
+    float MaxY (local, write: "IsOrthographic ? Y + Y2 : Y2")
+    float MaxZ (local, write: "IsOrthographic ? Z + Z2 : Z2")
+    X = (MinX + MaxX) * 0.5f
+    Y = (MinY + MaxY) * 0.5f
+    Z = (MinZ + MaxZ) * 0.5f
+    X2 = (MaxX - MinX) * 0.5f
+    Y2 = (MaxY - MinY) * 0.5f
+    Z2 = (MaxZ - MinZ) * 0.5f
+    if !IsOrthographic
+      X = (MinX + MaxX) * 0.5f - (MaxX - MinX) * 0.5f
+      Y = (MinY + MaxY) * 0.5f - (MaxY - MinY) * 0.5f
+      Z = (MinZ + MaxZ) * 0.5f - (MaxZ - MinZ) * 0.5f
+      X2 = (MinX + MaxX) * 0.5f + (MaxX - MinX) * 0.5f
+      Y2 = (MinY + MaxY) * 0.5f + (MaxY - MinY) * 0.5f
+      Z2 = (MinZ + MaxZ) * 0.5f + (MaxZ - MinZ) * 0.5f
+  else
+    float X = -0.2679492f // Perspective: left, bottom, near, right, top, far; orthographic: center XYZ, half-size XYZ
+    float Y = -0.2679492f
+    float Z = 0.5f
+    float X2 = 0.2679492f // 30-degree vertical field of view, aspect ratio 1
+    float Y2 = 0.2679492f
+    float Z2 = 10

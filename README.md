@@ -13,6 +13,25 @@ GBX.NET is not just a library that can read or write Gbx files, but also **a mod
 
 For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via Discord DM: `bigbang1112`
 
+<!-- gbx-comparison:start -->
+### Benchmark
+
+**0.0266 ms** for **A01-Race**, **159 ms** for **Deep Dip 2** on average with GBX.NET.
+
+Repeated in-memory parsing of the original compressed files, including LZO decompression. Values are mean times per parse. Startup and file I/O are not timed. The [detailed results](Benchmarks/README.md#measured-results) include sample standard deviations.
+
+| Map | GBX.NET | gbx-py | gbx-ts | ManiaPlanetSharp |
+| --- | ---: | ---: | ---: | ---: |
+| A01-Race | **0.0266 ms** | 11.9 ms (partial) | 2.14 ms | 14.6 ms (partial) |
+| Canyon A01 | **0.349 ms** | 51 ms (partial) | 26.5 ms (partial) | 24.9 ms (partial) |
+| Deep Dip 2 | **159 ms** | 12.7 s (partial) | 701 ms (partial) | 2.37 s (partial) |
+
+**Parsing coverage differs.** `(partial)` means skipped chunks or an unfinished body, not equivalent full parsing. Passing the runner's checks does not prove exhaustive coverage, so these timings are not a like-for-like speedup.
+
+Measured 2026-10-14 on AMD Ryzen 9 9900X 12-Core Processor (Windows_NT 10.0.26200 x64), with 15 samples per case after warmup. [Methodology, parsing limitations, versions, and reusable runner](Benchmarks/README.md#cross-library-map-comparison).
+
+<!-- gbx-comparison:end -->
+
 ### Navigation
 
 - [Supported games](#supported-games)
@@ -603,6 +622,12 @@ Then you can select the `nuget.gbx.tools` package source and fetch nightly build
 You can also create a `nuget.config` file in your solution directory and put the XML above into it, which makes it easier to build your project in CI or with generally less preparation.
 
 > In the past, nightly builds were pushed to GitHub Packages which required you to provide access tokens to be able to read the packages. Nightly builds are no longer pushed to GitHub Packages.
+
+## Benchmarks
+
+The [benchmark project](Benchmarks/README.md) measures source generator speed and Gbx fixture reads and writes, including compressed and uncompressed bodies.
+
+The [cross-library map comparison](Benchmarks/README.md#cross-library-map-comparison) includes the reusable runner, setup, and parsing limitations for the [results near the top](#benchmark).
 
 ## License
 

@@ -5,11 +5,7 @@ public partial class NPlugItem_SVariant
 {
     public Dictionary<string, string> Tags { get; set; } = [];
 
-    private CMwNod? entityModel;
-    public CMwNod? EntityModel { get => entityModelFile?.GetNode(ref entityModel) ?? entityModel; set => entityModel = value; }
-    private Components.GbxRefTableFile? entityModelFile;
-    public Components.GbxRefTableFile? EntityModelFile { get => entityModelFile; set => entityModelFile = value; }
-    public CMwNod? GetEntityModel(GbxReadSettings settings = default, bool exceptions = false) => entityModelFile?.GetNode(ref entityModel, settings, exceptions);
+    public CMwNod? EntityModel { get => entityModelRef?.Resolve(); set => NodeRef.SetEmbedded(ref entityModelRef, value); }
 
     private bool hiddenInManualCycle;
     public bool HiddenInManualCycle { get => hiddenInManualCycle; set => hiddenInManualCycle = value; }
@@ -40,7 +36,7 @@ public partial class NPlugItem_SVariant
             }
         }
 
-        rw.NodeRef(ref entityModel, ref entityModelFile);
+        rw.NodeRef(ref entityModelRef);
 
         if (v >= 1)
         {

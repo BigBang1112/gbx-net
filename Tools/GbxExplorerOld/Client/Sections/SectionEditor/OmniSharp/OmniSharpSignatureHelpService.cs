@@ -45,7 +45,7 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             _workspace = workspace;
         }
 
-        public async Task<SignatureHelpResponse> Handle(SignatureHelpRequest request, Document document2)
+        public async Task<SignatureHelpResponse?> Handle(SignatureHelpRequest request, Document document2)
         {
             var invocations = new List<InvocationContext>();
             foreach (var document in new [] { document2 })
@@ -77,13 +77,13 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
             // process all signatures, define active signature by types
             var signaturesSet = new HashSet<SignatureHelpItem>();
             var bestScore = int.MinValue;
-            SignatureHelpItem bestScoredItem = null;
+            SignatureHelpItem? bestScoredItem = null;
 
             foreach (var invocation in invocations)
             {
                 var types = invocation.ArgumentTypes;
-                ISymbol throughSymbol = null;
-                ISymbol throughType = null;
+                ISymbol? throughSymbol = null;
+                ITypeSymbol? throughType = null;
                 var methodGroup = invocation.SemanticModel.GetMemberGroup(invocation.Receiver).OfType<IMethodSymbol>();
                 if (invocation.Receiver is MemberAccessExpressionSyntax)
                 {
@@ -117,16 +117,21 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
 
             var signaturesList = signaturesSet.ToList();
             response.Signatures = signaturesList;
-            response.ActiveSignature = signaturesList.IndexOf(bestScoredItem);
+            response.ActiveSignature = bestScoredItem is null ? -1 : signaturesList.IndexOf(bestScoredItem);
 
             return response;
         }
 
-        private async Task<InvocationContext> GetInvocation(Document document, Request request)
+        private async Task<InvocationContext?> GetInvocation(Document document, Request request)
         {
             var sourceText = await document.GetTextAsync();
             var position = sourceText.GetTextPosition(request);
             var tree = await document.GetSyntaxTreeAsync();
+            if (tree is null)
+            {
+                return null;
+            }
+
             var root = await tree.GetRootAsync();
             var node = root.FindToken(position).Parent;
 
@@ -136,19 +141,28 @@ namespace GbxExplorerOld.Client.Sections.SectionEditor.OmniSharp
                 if (node is InvocationExpressionSyntax invocation && invocation.ArgumentList.Span.Contains(position))
                 {
                     var semanticModel = await document.GetSemanticModelAsync();
-                    return new InvocationContext(semanticModel, position, invocation.Expression, invocation.ArgumentList, invocation.IsInStaticContext());
+                    if (semanticModel is not null)
+                    {
+                        return new InvocationContext(semanticModel, position, invocation.Expression, invocation.ArgumentList, invocation.IsInStaticContext());
+                    }
                 }
 
-                if (node is ObjectCreationExpressionSyntax objectCreation && objectCreation.ArgumentList.Span.Contains(position))
+                if (node is ObjectCreationExpressionSyntax { ArgumentList: { } argumentList } objectCreation && argumentList.Span.Contains(position))
                 {
                     var semanticModel = await document.GetSemanticModelAsync();
-                    return new InvocationContext(semanticModel, position, objectCreation, objectCreation.ArgumentList, objectCreation.IsInStaticContext());
+                    if (semanticModel is not null)
+                    {
+                        return new InvocationContext(semanticModel, position, objectCreation, argumentList, objectCreation.IsInStaticContext());
+                    }
                 }
 
-                if (node is AttributeSyntax attributeSyntax && attributeSyntax.ArgumentList.Span.Contains(position))
+                if (node is AttributeSyntax { ArgumentList: { } attributeArguments } attributeSyntax && attributeArguments.Span.Contains(position))
                 {
                     var semanticModel = await document.GetSemanticModelAsync();
-                    return new InvocationContext(semanticModel, position, attributeSyntax, attributeSyntax.ArgumentList, attributeSyntax.IsInStaticContext());
+                    if (semanticModel is not null)
+                    {
+                        return new InvocationContext(semanticModel, position, attributeSyntax, attributeArguments, attributeSyntax.IsInStaticContext());
+                    }
                 }
 
                 node = node.Parent;

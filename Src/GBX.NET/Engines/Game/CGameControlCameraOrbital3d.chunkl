@@ -1,56 +1,56 @@
 CGameControlCameraOrbital3d 0x0306E000
 - inherits: CGameControlCameraTarget
 
-0x001
- vec3 RadiusScale
- vec2 RotateSpeed
- bool OcclusionIsEnable
- bool
- bool
- float MouseBorderMoveSize
- float
- float
- float OcclusionTargetRadius
- float OcclusionDistFromHit
- float Radius
- float Latitude
- float Longitude
- float RadiusMin
- float RadiusMax
- float LatitudeMin
- float LatitudeMax
+0x001 [TMSX]
+  vec3 RadiusScale
+  vec2 RotateSpeed
+  bool OcclusionIsEnable
+  bool
+  bool
+  float MouseBorderMoveSize
+  float
+  float
+  float OcclusionTargetRadius
+  float OcclusionDistFromHit
+  float Radius
+  float Latitude
+  float Longitude
+  float RadiusMin
+  float RadiusMax
+  float LatitudeMin
+  float LatitudeMax
 
-0x002
- float
+0x002 [TMSX]
+  float
 
-0x003
- float WheelSensitivity
+0x003 [TMSX]
+  float WheelSensitivity
 
-0x004
- float FovKeySensitivity
+0x004 [TMSX]
+  float FovKeySensitivity
 
-0x005
- vec3 RadiusScale
- vec2 RotateSpeed
- bool OcclusionIsEnable
- bool
- bool
- float MouseBorderMoveSize
- float OcclusionTargetRadius
- float OcclusionDistFromHit
- float Radius
- float Latitude
- float Longitude
- float RadiusMin
- float RadiusMax
- float LatitudeMin
- float LatitudeMax
- float
- float WheelSensitivity
- float FovKeySensitivity
+0x005 [TMNESWC, VSK5, TMF, MP3]
+  vec3 RadiusScale
+  vec2 RotateSpeed
+  bool OcclusionIsEnable
+  bool
+  bool
+  float MouseBorderMoveSize
+  float OcclusionTargetRadius
+  float OcclusionDistFromHit
+  float Radius
+  float Latitude
+  float Longitude
+  float RadiusMin
+  float RadiusMax
+  float LatitudeMin
+  float LatitudeMax
+  float
+  float WheelSensitivity
+  float FovKeySensitivity
 
-0x006
- float ZoomKeySensitivity
+0x006 [TMNESWC, VSK5, TMF]
+  float ZoomKeySensitivity
 
-0x007
- float DefaultRadius
+0x007 [TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  float DefaultRadius

@@ -1,8 +1,8 @@
 CGameCtnCollectorList 0x0301B000 // A list of puzzle pieces.
 
-0x000
- list<SCollectorStock> CollectorStock
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
+  SCollectorStock[] CollectorStock (list)
 
 archive SCollectorStock
- ident BlockModel
- int Count
+  ident BlockModel
+  int Count

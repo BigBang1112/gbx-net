@@ -1,14 +1,14 @@
 CPlugBitmapRenderLightFromMap 0x09021000
 - inherits: CPlugBitmapRender
 
-0x001
- int ObjectCountPerAxisMin
- int ObjectCountPerAxisMax
- float CameraNearZ_FactorInObject
- float CameraFarZ_ToAdd
- float RemapMin_Night
- float RemapMax_Night
- float RemapMin_DayAmb
- float RemapMax_DayAmb
- float RemapMin_DayDir
- float RemapMax_DayDir
+0x001 [VSK5, TMF, MP3, TMT, MP4, TM2020]
+  int ObjectCountPerAxisMin
+  int ObjectCountPerAxisMax
+  float CameraNearZ_FactorInObject
+  float CameraFarZ_ToAdd
+  float RemapMin_Night
+  float RemapMax_Night
+  float RemapMin_DayAmb
+  float RemapMax_DayAmb
+  float RemapMin_DayDir
+  float RemapMax_DayDir

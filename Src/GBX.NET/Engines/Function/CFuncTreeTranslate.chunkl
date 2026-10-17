@@ -1,14 +1,14 @@
 CFuncTreeTranslate 0x0500D000
 - inherits: CFuncTree
 
-0x000
- vec3 StartPoint
- vec3 EndPoint
+0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  vec3 StartPoint
+  vec3 EndPoint
 
-0x001
- int<EFlags> Flags
+0x001 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4]
+  int<EFlags> Flags
 
 enum EFlags
- None
- PingPong
- Smooth
+  None
+  PingPong
+  Smooth

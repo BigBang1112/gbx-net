@@ -1,12 +1,35 @@
-﻿namespace GBX.NET.Components;
+namespace GBX.NET.Components;
 
 public sealed class GbxRefTableFile : GbxRefTableNode
 {
-    public string FilePath { get; set; }
+    private string filePath;
 
-    public GbxRefTableFile(GbxRefTable refTable, int flags, bool useFile, string filePath) : base(refTable, flags, useFile)
+    /// <summary>
+    /// Path of the external file. Changing it invalidates cached resolution for every reference sharing this descriptor.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">The path is null.</exception>
+    /// <exception cref="InvalidOperationException">The path is changed while the descriptor is resolving.</exception>
+    public string FilePath
     {
-        FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+        get => filePath;
+        set
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            Resolution.Update(ref filePath, value);
+        }
+    }
+
+    public GbxRefTableFile(
+        GbxRefTable refTable,
+        int flags,
+        bool useFile,
+        string filePath) : base(refTable, flags, useFile)
+    {
+        this.filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
     }
 
     public override string ToString()
@@ -14,18 +37,12 @@ public sealed class GbxRefTableFile : GbxRefTableNode
         return $"{FilePath}, Flags: {Flags}, UseFile: {UseFile}";
     }
 
-    public T? GetNode<T>(ref T? cachedNode, GbxReadSettings settings = default, bool exceptions = false) where T : CMwNod
-    {
-        if (cachedNode is not null)
-        {
-            return cachedNode;
-        }
-
-        return cachedNode = RefTable.LoadNode<T>(this, settings, exceptions);
-    }
-
     public string GetFullPath()
     {
         return RefTable.GetFullFilePath(this);
     }
+
+    internal override CMwNod? ResolveNode() => RefTable.ResolveNode(this);
+
+    internal override Task<CMwNod?> ResolveNodeAsync() => RefTable.ResolveNodeAsync(this);
 }

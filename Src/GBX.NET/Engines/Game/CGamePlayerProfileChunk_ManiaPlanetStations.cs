@@ -3,6 +3,7 @@
 public partial class CGamePlayerProfileChunk_ManiaPlanetStations
 {
     private GameStationDesc[]? stations;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk03180002>]
     public GameStationDesc[]? Stations { get => stations; set => stations = value; }
 

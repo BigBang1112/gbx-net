@@ -6,9 +6,7 @@ public partial class CSceneVehicleCar
     {
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            var vehicleTuningsFile = n.VehicleTuningsFile;
-            n.VehicleTunings = rw.NodeRef(n.VehicleTunings, ref vehicleTuningsFile);
-            n.VehicleTuningsFile = vehicleTuningsFile;
+            rw.NodeRef(n.References.VehicleTunings);
         }
     }
 
@@ -16,9 +14,7 @@ public partial class CSceneVehicleCar
     {
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            var vehicleMaterialsFile = n.VehicleMaterialsFile;
-            n.VehicleMaterials = rw.NodeRef(n.VehicleMaterials, ref vehicleMaterialsFile);
-            n.VehicleMaterialsFile = vehicleMaterialsFile;
+            rw.NodeRef(n.References.VehicleMaterials);
         }
     }
 
@@ -26,9 +22,7 @@ public partial class CSceneVehicleCar
     {
         public override void ReadWrite(CSceneVehicleCar n, GbxReaderWriter rw)
         {
-            var vehicleStructFile = n.VehicleStructFile;
-            n.VehicleStruct = rw.NodeRef(n.VehicleStruct, ref vehicleStructFile);
-            n.VehicleStructFile = vehicleStructFile;
+            rw.NodeRef(n.References.VehicleStruct);
         }
     }
 }

@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GBX.NET" Version="2.3.2" />
+        <PackageReference Include="GBX.NET" Version="2.4.5" />
         <PackageReference Include="GBX.NET.LZO" Version="2.1.4" Condition="'$(EnableLzo)' == 'true'" />
         <PackageReference Include="GBX.NET.ZLib" Version="1.1.2" Condition="'$(EnableZlib)' == 'true'" />
     </ItemGroup>

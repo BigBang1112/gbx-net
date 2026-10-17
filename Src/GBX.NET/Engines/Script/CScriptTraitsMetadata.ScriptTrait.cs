@@ -2,14 +2,25 @@
 
 public partial class CScriptTraitsMetadata
 {
-    public abstract class ScriptTrait
+    public abstract class ScriptTrait : IDeepCloneable
     {
-        public IScriptType Type { get; }
+        public IScriptType Type { get; private set; }
 
         public ScriptTrait(IScriptType type)
         {
             Type = type;
         }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ScriptTrait)MemberwiseClone();
+            context.Register(this, clone);
+            clone.Type = context.Clone(Type)!;
+            DeepCloneFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneFields(ScriptTrait clone, DeepCloneContext context) { }
 
         public override int GetHashCode()
         {

@@ -18,7 +18,7 @@ public static partial class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>Icon as <see cref="Image"/>. Null if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>Icon as <see cref="Image"/>. Null if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static async ValueTask<Image?> GetIconImageAsync(this CGameCtnCollector node, CancellationToken cancellationToken = default)
     {
         if (node.Icon is not null)
@@ -47,8 +47,7 @@ public static partial class CGameCtnCollectorExtensions
     /// Gets the collector's icon as <see cref="Image"/>.
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>Icon as <see cref="Image"/>. Null if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>Icon as <see cref="Image"/>. Null if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static Image? GetIconImage(this CGameCtnCollector node)
     {
         if (node.Icon is not null)
@@ -79,7 +78,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="stream">Stream to export to.</param>
     /// <param name="encoder">Image encoder to use.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<bool> ExportIconAsync(this CGameCtnCollector node, Stream stream, IImageEncoder encoder, CancellationToken cancellationToken = default)
     {
@@ -101,7 +100,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<bool> ExportIconAsync(this CGameCtnCollector node, Stream stream, CancellationToken cancellationToken = default)
     {
@@ -114,7 +113,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
     /// <param name="encoder">Image encoder to use.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static bool ExportIcon(this CGameCtnCollector node, string fileName, IImageEncoder encoder)
     {
         if (node.Icon is null && node.IconWebP is null)
@@ -133,7 +132,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="fileName">File to export to.</param>
     /// <param name="encoder">Image encoder to use.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     public static async ValueTask<bool> ExportIconAsync(this CGameCtnCollector node, string fileName, IImageEncoder encoder, CancellationToken cancellationToken = default)
     {
         if (node.Icon is null && node.IconWebP is null)
@@ -151,7 +150,7 @@ public static partial class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> and <see cref="CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> and <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.IconWebP"/> is <see langword="null" />.</returns>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async Task<bool> ExportIconAsync(this CGameCtnCollector node, string fileName, CancellationToken cancellationToken = default)
     {
@@ -163,7 +162,7 @@ public static partial class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>True if successful. False if <see cref="CGameCtnCollector.Icon"/> is <see langword="null" />.</returns>
+    /// <returns>True if successful. False if <see cref="global::GBX.NET.Engines.GameData.CGameCtnCollector.Icon"/> is <see langword="null" />.</returns>
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public static async ValueTask<bool> UpgradeIconToWebPAsync(this CGameCtnCollector node, CancellationToken cancellationToken = default)
     {

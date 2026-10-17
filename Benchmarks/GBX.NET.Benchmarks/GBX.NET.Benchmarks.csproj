@@ -5,22 +5,35 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="..\..\Tests\GBX.NET.Tests\Files\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		<Content Include="..\..\Tests\GBX.NET.Tests\Files\Gbx\**\*.Gbx"
+				 Link="Fixtures\Gbx\%(RecursiveDir)%(Filename)%(Extension)"
+				 CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="..\..\Src\GBX.NET\**\*.cs"
+				 Exclude="..\..\Src\GBX.NET\Generated\**;..\..\Src\GBX.NET\obj\**;..\..\Src\GBX.NET\bin\**"
+				 Link="GeneratorInputs\Source\%(RecursiveDir)%(Filename)%(Extension)"
+				 CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="..\..\Src\GBX.NET\Engines\*\*.chunkl"
+				 Link="GeneratorInputs\Engines\%(RecursiveDir)%(Filename)%(Extension)"
+				 CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="..\..\Resources\ClassId.txt;..\..\Resources\ClassIdManual.txt;..\..\Resources\CollectionId.txt;..\..\Resources\Wrap.txt;..\..\Resources\Unwrap.txt;..\..\Resources\Extensions.txt"
+				 Link="GeneratorInputs\Resources\%(Filename)%(Extension)"
+				 CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
-		<PackageReference Include="BlazorMonaco" Version="3.4.0" />
+		<PackageReference Include="ChunkL" Version="1.2.2" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
+		<ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" />
 	</ItemGroup>
 
 </Project>

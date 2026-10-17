@@ -14,6 +14,7 @@
     @{
     // This should be more flexible, and grouped by declaring type
     var declaringTypeGroups = Properties
+        .Where(x => !x.IsDefined(typeof(ObsoleteAttribute)))
         .OrderBy(x => x.Name)
         .GroupBy(x => x.DeclaringType ?? throw new Exception("Declaring type is null"))
         .ToDictionary(x => x.Key);
@@ -66,11 +67,11 @@
         type = type.BaseType;
     }
 
-    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable enumerable)
+    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable)
     {
         //cachedList ??= ;
 
-        <Virtualize Context="item" Items="enumerable.Cast<object>().Select((x, i) => (x, i)).ToList()" ItemSize="32" OverscanCount="16">
+        <Virtualize Context="item" Items="NodeReferenceMetadata.GetItems(Object).Cast<object>().Select((x, i) => (x, i)).ToList()" ItemSize="32" OverscanCount="16">
             <li>
                 <!-- Sends the item to the tree branch, copying the depth. Counter is assigned as Id atm -->
                 <NodeTreeElement Depth="Depth" Value="item.x" Id="item.i" Tree="this" />
@@ -97,7 +98,7 @@
     public PropertyInfo? ParentProperty { get; set; }
 
     [Parameter]
-    public GbxExplorerOld.Client.Components.NodeTreeElement Parent { get; set; }
+    public GbxExplorerOld.Client.Components.NodeTreeElement? Parent { get; set; }
 
     /// <summary>
     /// Properties to render. Unused on enumerable case.
@@ -109,7 +110,7 @@
     /// ValueRenderer "root" of the tree. Used to check further metadata.
     /// </summary>
     [Parameter]
-    public GbxExplorerOld.Client.Components.ValueRenderers.ValueRenderer ParentValueRenderer { get; set; }
+    public GbxExplorerOld.Client.Components.ValueRenderers.ValueRenderer? ParentValueRenderer { get; set; }
     
     public void Update()
     {

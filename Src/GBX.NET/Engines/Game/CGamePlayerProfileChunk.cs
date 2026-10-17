@@ -7,7 +7,7 @@ public partial class CGamePlayerProfileChunk
     public string ChunkName { get; set; } = string.Empty;
     public string GameName { get; set; } = string.Empty;
     public string Checksum { get; set; } = string.Empty;
-    public DateTimeOffset LastUpdatedAt { get; set; }
+    public DateTimeOffset? LastUpdatedAt { get; set; }
     public int ArchiveVersion { get; set; }
     public int? SkipArchiveVersion { get; set; }
     public DateTimeOffset? CreatedAt { get; set; }
@@ -31,7 +31,7 @@ public partial class CGamePlayerProfileChunk
         }
 
         sb.Append(' ');
-        sb.Append(LastUpdatedAt.ToString("yyyy-MM-dd'T'HH:mm:ss"));
+        sb.Append(LastUpdatedAt?.ToString("yyyy-MM-dd'T'HH:mm:ss"));
 
         if (CreatedAt.HasValue)
         {

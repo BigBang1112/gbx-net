@@ -1,4 +1,7 @@
 CFuncSkel 0x05005000
 
-0x002
- id[] Bones
+property int BonesCount
+  get = Bones.Length
+
+0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF]
+  id[] Bones

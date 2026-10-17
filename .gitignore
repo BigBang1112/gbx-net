@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+sixlabors.lic
 *.rsuser
 *.suo
 *.user
@@ -364,3 +365,10 @@ FodyWeavers.xsd
 
 .idea
 /Tools/GbxExplorerOld/Client/wwwroot/refs/*
+
+Docs/ManiaPlanetFields.md
+Docs/ManiaPlanetReflectionRecovery.md
+
+tmp/*
+
+.codex/*

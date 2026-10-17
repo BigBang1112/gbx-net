@@ -1,0 +1,18 @@
+CPlugAdnRandomGen 0x09140000
+
+0x000 [MP4.v2, TM2020.v6] // random seed and tag sets
+  version
+
+archive SPlugAdnRandomGenSet
+  SPlugAdnTag[] RequiredTags
+  SPlugAdnTag[] ExcludedTags
+  v4+
+    SPlugAdnTag[] AnimRequiredTags
+
+archive SPlugAdnTag
+  v5-
+    int LegacyType
+    int LegacyValue
+  v6+
+    string Type
+    string Value

@@ -615,7 +615,7 @@
     }
 
     [JSInvokable]
-    public async Task<SignatureHelpResponse> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
+    public async Task<SignatureHelpResponse?> GetSignatureHelpAsync(string code, SignatureHelpRequest signatureHelpRequest)
     {
         return await autocompleteService!.GetSignatureHelpAsync(code, signatureHelpRequest);
     }
@@ -835,12 +835,12 @@
     private List<Note> DeserializeImport(string json)
     {
         var toImport = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, Note>>>(json);
-        if (!toImport?.ContainsKey("Notes") ?? true)
+        if (toImport is null || !toImport.TryGetValue("Notes", out var notes))
         {
             return [];
         }
 
-        return toImport["Notes"].Values.ToList();
+        return notes.Values.ToList();
     }
 
     public async Task OnImportAsync(IBrowserFile file)
@@ -894,7 +894,7 @@
         note.Name = sample.Name;
         note.Refs = sample.Refs;
         await noteManager.SelectNoteAsync(note.Id);
-        UpdateSelectedDlls();
+        await UpdateSelectedDlls();
         
         StateHasChanged();
     }

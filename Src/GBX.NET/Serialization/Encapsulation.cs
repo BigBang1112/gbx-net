@@ -4,6 +4,7 @@ internal sealed class Encapsulation : IDisposable
 {
     private readonly GbxReader? reader;
     private readonly GbxWriter? writer;
+    private readonly Encapsulation? parentReaderEncapsulation;
 
     internal int? IdVersion { get; set; }
 
@@ -13,10 +14,15 @@ internal sealed class Encapsulation : IDisposable
     private Dictionary<string, int>? idWriteDict;
     internal Dictionary<string, int> IdWriteDict => idWriteDict ??= [];
 
-    public Encapsulation(GbxReader reader)
+    public Encapsulation(GbxReader reader) : this(reader, allowNested: false)
+    {
+    }
+
+    internal Encapsulation(GbxReader reader, bool allowNested)
     {
         this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
-        EncapsulateReader(reader);
+        parentReaderEncapsulation = allowNested ? reader.Encapsulation : null;
+        EncapsulateReader(reader, allowNested);
     }
 
     public Encapsulation(GbxWriter writer)
@@ -29,20 +35,33 @@ internal sealed class Encapsulation : IDisposable
     {
         _ = rw ?? throw new ArgumentNullException(nameof(rw));
 
-        if (rw.Reader is not null)
+        if (rw.Reader?.Encapsulation is not null)
         {
-            EncapsulateReader(rw.Reader);
+            throw new InvalidOperationException("Reader already has an encapsulation.");
         }
 
-        if (rw.Writer is not null)
+        if (rw.Writer?.Encapsulation is not null)
         {
-            EncapsulateWriter(rw.Writer);
+            throw new InvalidOperationException("Writer already has an encapsulation.");
+        }
+
+        reader = rw.Reader;
+        writer = rw.Writer;
+
+        if (reader is not null)
+        {
+            EncapsulateReader(reader);
+        }
+
+        if (writer is not null)
+        {
+            EncapsulateWriter(writer);
         }
     }
 
-    private void EncapsulateReader(GbxReader r)
+    private void EncapsulateReader(GbxReader r, bool allowNested = false)
     {
-        if (r.Encapsulation is not null)
+        if (r.Encapsulation is not null && !allowNested)
         {
             throw new InvalidOperationException("Reader already has an encapsulation.");
         }
@@ -64,7 +83,7 @@ internal sealed class Encapsulation : IDisposable
     {
         if (reader?.Encapsulation == this)
         {
-            reader.Encapsulation = null;
+            reader.Encapsulation = parentReaderEncapsulation;
         }
 
         if (writer?.Encapsulation == this)

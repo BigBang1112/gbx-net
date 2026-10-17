@@ -35,7 +35,7 @@ else
 @code {
     public override bool ShowPropertyInTree(PropertyInfo prop)
     {
-        // Lmao I hate myself
-        return prop.DeclaringType?.Assembly.FullName?.StartsWith("GBX.NET") == true;
+        return prop.DeclaringType?.Assembly.FullName?.StartsWith("GBX.NET") == true
+            && !typeof(ICollection).IsAssignableFrom(prop.DeclaringType);
     }
 }

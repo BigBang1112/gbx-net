@@ -1,85 +1,155 @@
 CPlugVehicleCameraRace2Model 0x090F6000
 - inherits: CPlugCamControlModel
 
-0x000
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- int
- int
- float
- float
- int
- int
- int
- int
- int
- int
- float
- float
- CFuncKeysReal
- CFuncKeysReal
- CFuncKeysReal
- float
- float
- float
- float
+0x000 [MP3, TMT, MP4] // camera smoothing and steering response curves
+  float InputGasDistDelta = 1.0f
+  int InputGasDistTimeUp = 2000
+  int InputGasDistTimeDown = 1000
+  float InputBrakeDistDelta = -0.7f
+  int InputBrakeDistTimeUp = 750
+  int InputBrakeDistTimeDown = 1000
+  float InputSteerDistDelta = -0.8f
+  int InputSteerDistTimeUp = 2000
+  int InputSteerDistTimeDown = 1500
+  float EventTurboFovDelta = 10.5f
+  int EventTurboFovTimeUp = 1000
+  int EventTurboFovTimeDown = 1400
+  float EventTurboDistDelta = -0.6f
+  int EventTurboDistTimeUp = 1000
+  int EventTurboDistTimeDown = 1400
+  float EventChangeGearDistDelta = -0.35f
+  int EventChangeGearDistTimeUp = 500
+  int EventChangeGearDistTimeDown = 2000
+  float EventBurningLookAtFactorDelta = -0.4f
+  int EventBurningLookAtFactorTimeUp = 2000
+  int EventBurningLookAtFactorTimeDown = 1500
+  float EventBurningDistDelta = 1.0f
+  int EventBurningDistTimeUp = 2000
+  int EventBurningDistTimeDown = 1500
+  float StateFlyingDistDelta = 2.0f
+  int StateFlyingDistTimeUp = 3000
+  int StateFlyingDistTimeDown = 2500
+  float StateFlyingPlaneDistDelta = 4.0f
+  int StateFlyingPlaneDistTimeUp = 3000
+  int StateFlyingPlaneDistTimeDown = 2500
+  float StateFlyingLookAtFactorDelta = -0.2f
+  int StateFlyingLookAtFactorTimeUp = 3000
+  int StateFlyingLookAtFactorTimeDown = 2500
+  float InputLeftSteerRollDelta = 1.0f
+  int InputLeftSteerRollTimeUp = 2000
+  int InputLeftSteerRollTimeDown = 1200
+  float InputRightSteerRollDelta = 1.0f
+  int InputRightSteerRollTimeUp = 2000
+  int InputRightSteerRollTimeDown = 1200
+  float InputLeftSteerYawDelta = 1.0f
+  int InputLeftSteerYawTimeUp = 2500
+  int InputLeftSteerYawTimeDown = 1500
+  float InputRightSteerYawDelta = 1.0f
+  int InputRightSteerYawTimeUp = 2000
+  int InputRightSteerYawTimeDown = 1500
+  float StateFlyingLookAtStep = 0.5f
+  float MinSpeed = 20.0f
+  int StateFlyingDurationBeforeFlyingMode = 200
+  int StateFlyingDurationBeforeCameraMove = 1000
+  int InputSteerDurationBeforeBurnoutShowView = 1000
+  int InputSteerDurationBeforeAnticipatingTurnTriggered = 200
+  int InputSteerDurationBeforeRollTriggered = 300
+  int InputNoSteerDurationBeforeReset = 150
+  float MaxDeltaPlaneDistStep = 2.0f
+  float MaxDeltaFovStep = 19.0f
+  CFuncKeysReal LookAtFactorFromUpSpeedRatio
+  CFuncKeysReal YawFromSpeed
+  CFuncKeysReal RollFromSpeed
+  float DeltaDistDamperKi = 10.0f
+  float DeltaDistDamperKa = 5.0f
+  float DeltaLookAtFactorDamperKi = 1.5f
+  float DeltaLookAtFactorDamperKa = 0.7f
 
-0x001
- bool
+0x001 [MP3, TMT, MP4, TM2020] // IsRollFromInput
+  bool IsRollFromInput = true
 
-0x002
- version
- id
- float
- float
- float
- float
- float
- v2+
-  float
-  int
-  int
-  float
-  int
-  int
+0x002 [MP3.v1, TMT.v1, MP4.v1, TM2020.v4] // camera distance, field of view and responses
+  version
+  id
+  float MinDist = 0.1f
+  float MaxDist = 3.5f
+  float PlaneDist = 4.0f
+  float LookAtFactor = 0.5f
+  float DefaultFov = 75.0f
+  v2+
+    float = -0.1f
+    int = 750
+    int = 1250
+    float = -15f
+    int = 750
+    int = 1250
+  v3+
+    float = 0.5f
+    int = 750
+    int = 1250
+    float = 0.5f
+    int = 750
+    int = 1250
+  v4+
+    float InputGasDistDelta
+    int InputGasDistTimeUp
+    int InputGasDistTimeDown
+    float InputBrakeDistDelta
+    int InputBrakeDistTimeUp
+    int InputBrakeDistTimeDown
+    float InputSteerDistDelta
+    int InputSteerDistTimeUp
+    int InputSteerDistTimeDown
+    float EventTurboFovDelta
+    int EventTurboFovTimeUp
+    int EventTurboFovTimeDown
+    float EventTurboDistDelta
+    int EventTurboDistTimeUp
+    int EventTurboDistTimeDown
+    float EventChangeGearDistDelta
+    int EventChangeGearDistTimeUp
+    int EventChangeGearDistTimeDown
+    float EventBurningLookAtFactorDelta
+    int EventBurningLookAtFactorTimeUp
+    int EventBurningLookAtFactorTimeDown
+    float EventBurningDistDelta
+    int EventBurningDistTimeUp
+    int EventBurningDistTimeDown
+    float StateFlyingDistDelta
+    int StateFlyingDistTimeUp
+    int StateFlyingDistTimeDown
+    float StateFlyingPlaneDistDelta
+    int StateFlyingPlaneDistTimeUp
+    int StateFlyingPlaneDistTimeDown
+    float StateFlyingLookAtFactorDelta
+    int StateFlyingLookAtFactorTimeUp
+    int StateFlyingLookAtFactorTimeDown
+    float InputLeftSteerRollDelta
+    int InputLeftSteerRollTimeUp
+    int InputLeftSteerRollTimeDown
+    float InputRightSteerRollDelta
+    int InputRightSteerRollTimeUp
+    int InputRightSteerRollTimeDown
+    float InputLeftSteerYawDelta
+    int InputLeftSteerYawTimeUp
+    int InputLeftSteerYawTimeDown
+    float InputRightSteerYawDelta
+    int InputRightSteerYawTimeUp
+    int InputRightSteerYawTimeDown
+    float StateFlyingLookAtStep
+    float MinSpeed
+    int StateFlyingDurationBeforeFlyingMode
+    int StateFlyingDurationBeforeCameraMove
+    int InputSteerDurationBeforeBurnoutShowView
+    int InputSteerDurationBeforeAnticipatingTurnTriggered
+    int InputSteerDurationBeforeRollTriggered
+    int InputNoSteerDurationBeforeReset
+    float MaxDeltaPlaneDistStep
+    float MaxDeltaFovStep
+    PlugCurve LookAtFactorFromUpSpeedRatio
+    PlugCurve YawFromSpeed
+    PlugCurve RollFromSpeed
+    float DeltaDistDamperKi
+    float DeltaDistDamperKa
+    float DeltaLookAtFactorDamperKi
+    float DeltaLookAtFactorDamperKa

@@ -1,4 +1,4 @@
-﻿namespace GBX.NET.Engines.Hms;
+namespace GBX.NET.Engines.Hms;
 
 public partial class CHmsLightMapCache
 {
@@ -87,7 +87,7 @@ public partial class CHmsLightMapCache
                             frame.U03 = rw.Single(frame.U03);
                             frame.U04 = rw.Int32(frame.U04);
 
-                            if (frame.Version != 0)
+                            if (frame.Version >= 1)
                             {
                                 frame.U05 = rw.Int32(frame.U05);
                             }
@@ -188,7 +188,6 @@ public partial class CHmsLightMapCache
         }
     }
 
-    [ArchiveGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Frame : IVersionable
     {
         public byte[]? U01 { get; set; }

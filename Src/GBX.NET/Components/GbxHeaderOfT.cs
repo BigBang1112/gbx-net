@@ -22,9 +22,9 @@ public sealed class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader(basic) where 
     [Experimental("GBXNET10001")]
 #endif
 #if NETSTANDARD2_0
-    public override GbxHeader DeepClone() => new GbxHeader<T>(Basic);
+    public override GbxHeader DeepClone() => new GbxHeader<T>(Basic) { NumNodes = NumNodes };
 #else
-    public override GbxHeader<T> DeepClone() => new(Basic);
+    public override GbxHeader<T> DeepClone() => new(Basic) { NumNodes = NumNodes };
 #endif
 
     public override string ToString()

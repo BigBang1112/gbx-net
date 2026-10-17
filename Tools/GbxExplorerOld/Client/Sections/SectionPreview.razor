@@ -38,22 +38,8 @@
                         <div>Body compression</div>
                         <div style="font-family:Source Code Pro">@header.Basic.CompressionOfBody</div>
 
-                        <div>
-                            <span class="tooltip-small-width" data-title="Is intended to be modified and not overwriten (just a theory).">
-                                Is editable?
-                            </span>
-                        </div>
-                        <div style="font-family:Source Code Pro">
-                            @switch (header.Basic.UnknownByte)
-                            {
-                                case GbxUnknownByte.R:
-                                    <span>No</span>
-                                    break;
-                                case GbxUnknownByte.E:
-                                    <span>Yes</span>
-                                    break;
-                            }
-                        </div>
+                        <div>Serialization mode</div>
+                        <div style="font-family:Source Code Pro">@header.Basic.Mode</div>
                         <div>
                             Class ID
                         </div>

@@ -1,57 +1,71 @@
 CPlugShaderApply 0x09026000
 - inherits: CPlugShaderGeneric
 
-0x001
- int
- int
- CPlugBitmapAddress[] BitmapAddresses
- uint
+0x000
+  int BlendSrc = 1
+  int BlendDst
+  CPlugBitmapAddress[] BitmapAddresses = empty
 
-0x09063002 (not-remapped)
- dataint
- int
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
- CPlugBitmapAddress
+0x001 (base: 0x000) [TM10, TMPU, TMSX, TMNESWC]
+  base
+  datauint LegacyAlphaFlags
 
-0x002
- CPlugBitmapAddress[] BitmapAddresses
+0x002 [VSK5, TMF, MP3, TMT, MP4, TM2020] // BitmapAddresses
+  CPlugBitmapAddress[] BitmapAddresses = empty
 
-0x004
- int
+0x003
+  datauint LegacyApplyField
 
-0x006
- int
+0x004 [VSK5, TMF, MP3, TMT, MP4, TM2020] // TexOpConstant
+  datauint TexOpConstant = 0x01010101 // Packed BGRA texture-operation constant.
 
-0x007
- int
+0x005 (base: 0x003)
 
-0x008
- int
- int
+0x006 (base: 0x003)
 
-0x00A
- uint
- uint
- uint
+0x007 [VSK5] // ApplyField
+  datauint ApplyField = 0x06000001 [TM2020 = 0x06200001] // Packed blending and alpha-test state.
 
-0x00C
- CPlugBitmapAddress[]_deprec BitmapAddresses
+0x008 (base: 0x007) [TMF]
+  base
+  datauint ApplyField2 = 0x007F007F [TM2020 = 0x007F807F]
 
-0x00D
- byte // DoData
+0x009 (base: 0x008)
+  base
+  datauint ApplyField3 = 2
 
-0x010
- byte // DoData
+0x00A (base: 0x009) [MP3, TMT, MP4]
 
-0x011
- version
- CMwNod (external)
+0x00C [MP3, TMT, MP4, TM2020]
+  CPlugBitmapAddress[] UnusedBitmapAddresses = empty (deprec)
 
-0x012
- version
- uint
- uint
- uint
+0x010 [MP3, TMT, MP4, TM2020] // ApplyFlags
+  byte ApplyFlags
+
+0x011 [MP3, TMT, MP4, TM2020] // BitmapApplyArray
+  version
+  CPlugBitmapApplyArray BitmapApplyArray
+
+0x012 (base: 0x00A) [TM2020] // apply fields
+  version
+  base
+
+0x09063000 (not-remapped)
+  datauint LegacyMaterialFlags0
+  int EnvMapTexOp = 3
+  CPlugBitmapAddress Diffuse
+  CPlugBitmapAddress LightMap
+  CPlugBitmapAddress BumpMap
+  CPlugBitmapAddress SelfIllum
+  CPlugBitmapAddress EnvMap
+
+0x09063001 (not-remapped)
+  datauint LegacyMaterialFlags = 0x30
+  int EnvMapTexOp = 3
+  CPlugBitmapAddress Diffuse
+  CPlugBitmapAddress LightMap
+  CPlugBitmapAddress BumpMap
+  CPlugBitmapAddress SelfIllum
+  CPlugBitmapAddress EnvMap
+
+0x09063002 (not-remapped, base: 0x09063001) [TM10, TMPU, TMSX, TMNESWC]

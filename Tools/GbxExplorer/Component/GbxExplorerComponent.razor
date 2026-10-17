@@ -28,7 +28,6 @@
             <div class="menu-list">
                 <button @onclick="Kek">Import Gbx/Pak files...</button>
             </div>
-            <p>@testText</p>
         </div>
     </div>
 </nav>
@@ -38,8 +37,6 @@
     CssClass="my-editor-class" />-->
 
 @code {
-    private string? testText;
-
     private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
     {
         return new StandaloneEditorConstructionOptions

@@ -15,8 +15,9 @@
 
 @{
     var value = GetValue(out bool error); // cache throughout render
-    var actualType = value?.GetType() ?? Property?.PropertyType; // type/class of the element
-    var supposedType = Property?.PropertyType ?? value?.GetType();
+    var reference = Value as NodeRef ?? NodeReferenceMetadata.GetReference(Owner, Property);
+    var supposedType = Property?.PropertyType ?? (reference is null ? value?.GetType() : NodeReferenceMetadata.GetNodeType(reference));
+    var actualType = value?.GetType() ?? supposedType; // type/class of the element
 
     var typeInfo = default(TypeInfoModel);
     var isNullable = default(bool?);
@@ -86,7 +87,7 @@
      @onmouseout="() => elementOver = false"
      data-title="@(isNotIncluded ? $"Member '{Property?.Name ?? "[unknown]"}' is not available and won't be applied upon saving. Add corresponding chunks to fix this." : null)">
 
-    @if (Property is not null || value is not null) // If its a property or an enumerable element that is not null
+    @if (Property is not null || value is not null || reference is not null)
     {
         <span class="type @(isNotIncluded ? "not-included-member" : "")">
 
@@ -120,6 +121,8 @@
         props = value.GetType()
             .GetProperties()
             .Where(x => x.GetGetMethod()?.IsStatic == false)
+            .Where(x => x.GetIndexParameters().Length == 0)
+            .Where(x => !x.IsDefined(typeof(ObsoleteAttribute)))
             .Where(ValueRenderer.ShowPropertyInTree);
 
         try
@@ -150,11 +153,16 @@
         }
     }
 
+    @if (reference?.File is { } file)
+    {
+        <span class="value element-box @(isNotIncluded ? "not-included-member" : "")" title="@file.FilePath">@file.FilePath</span>
+    }
+
     @if (error)
     {
         <span class="value element-box" style="background-color:#DD050555;color:#eee">Error</span>
     }
-    else
+    else if (value is not null || reference?.File is null)
     {
         // Render a value based on its implemented value renderers
 
@@ -315,6 +323,21 @@
     /// </summary>
     public object? GetValue(out bool error)
     {
+        if (Value is NodeRef reference)
+        {
+            try
+            {
+                error = false;
+                return reference.Resolve();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Error while trying to read the node reference at index {index}!", Id);
+                error = true;
+                return null;
+            }
+        }
+
         if (Value is not null)
         {
             error = false;

@@ -1,171 +1,249 @@
 CGamePlayerScore 0x0308D000 // Note: The class ID has been replaced with CGameScriptDebugger.
 
-0x003
- string PlayerName
- string NickName
- id
- int ScoresVersion
- Score[] Scores (version: n.ScoresVersion)
+0x000
+  string PlayerName
+  string
+  Score[] Scores (version: 0)
 
-0x004
- string PlayerName
- string NickName
- id
- int ScoresVersion
- Score[] Scores (version: n.ScoresVersion)
+0x001
+  string PlayerName
+  id PlayerId
+  int ScoresVersion = 18
+  Score[] Scores (version: n.ScoresVersion)
 
-0x006
- int SurvivalScoresVersion
- SurvivalScore[] SurvivalScores (version: n.SurvivalScoresVersion)
+0x002 (skippable)
+  string PlayerName
+  id PlayerId
+  int ScoresVersion
+  Score[] Scores (version: n.ScoresVersion)
 
-0x00F
- CGamePlayerOfficialScores PlayerOfficialScores
- TrainingMedalsScore[] TrainingMedalsScores
- CGameCampaignPlayerScores[]_deprec CampaignPlayerScores
+0x003 [TM10, TMPU]
+  string PlayerName
+  string NickName (formatted)
+  id PlayerId
+  int ScoresVersion
+  Score[] Scores (version: n.ScoresVersion)
 
-0x010
- byte
- CampaignRecordsState[] CampaignRecordsStates
+0x004 [TMSX, TMNESWC, VSK5, TMF.v18]
+  string PlayerName
+  string NickName (formatted)
+  id PlayerId
+  int ScoresVersion
+  Score[] Scores (version: n.ScoresVersion)
 
-0x011
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
- int
+0x005
+  SurvivalScore[] SurvivalScores (version: 0)
 
-0x012
- LadderMatchResult[] LadderMatchResults
+0x006 [TMSX, TMNESWC, VSK5, TMF.v2]
+  int SurvivalScoresVersion = 2
+  SurvivalScore[] SurvivalScores (version: n.SurvivalScoresVersion)
+
+0x007
+  DeprecatedPlayerCampaignSkillScore[]
+
+0x008 [VSK5]
+  DeprecatedPlayerCampaignSkillScore[]
+  systemtime
+
+0x00B
+  CampaignRecordsState[] CampaignRecordsStates
+
+0x00C
+  CGamePlayerOfficialScores PlayerOfficialScores
+  TrainingMedalsScore[] TrainingMedalsScores
+  CGameCampaignPlayerScores[] CampaignPlayerScores (deprec)
+  systemtime
+
+0x00D
+  LadderMatchResult[] LadderMatchResults (version: 0)
+
+0x00E
+  CGamePlayerOfficialScores PlayerOfficialScores
+  TrainingMedalsScore[] TrainingMedalsScores
+  CGameCampaignPlayerScores[] CampaignPlayerScores (deprec)
+  systemtime
+  systemtime
+
+0x00F [TMF]
+  CGamePlayerOfficialScores PlayerOfficialScores
+  TrainingMedalsScore[] TrainingMedalsScores
+  CGameCampaignPlayerScores[] CampaignPlayerScores (deprec)
+
+0x010 [TMF]
+  byte CampaignRecordsStateVersion = 1
+  CampaignRecordsState[] CampaignRecordsStates
+
+0x011 [TMF] // Current totals interleaved with the last values submitted to the master server.
+  int SoloRaceTimeSeconds
+  int SubmittedSoloRaceTimeSeconds
+  int SoloPuzzleTimeSeconds
+  int SubmittedSoloPuzzleTimeSeconds
+  int SoloPlatformTimeSeconds
+  int SubmittedSoloPlatformTimeSeconds
+  int SoloStuntsTimeSeconds
+  int SubmittedSoloStuntsTimeSeconds
+  int HotSeatTimeSeconds
+  int SubmittedHotSeatTimeSeconds
+  int NetworkTimeAttackTimeSeconds
+  int SubmittedNetworkTimeAttackTimeSeconds
+  int NetworkRoundsTimeSeconds
+  int SubmittedNetworkRoundsTimeSeconds
+  int NetworkLapsTimeSeconds
+  int SubmittedNetworkLapsTimeSeconds
+  int NetworkStuntsTimeSeconds
+  int SubmittedNetworkStuntsTimeSeconds
+  int NetworkCupTimeSeconds
+  int SubmittedNetworkCupTimeSeconds
+  int MapEditorTimeSeconds
+  int SubmittedMapEditorTimeSeconds
+  int ReplayEditorTimeSeconds
+  int SubmittedReplayEditorTimeSeconds
+  int SkinEditorTimeSeconds
+  int SubmittedSkinEditorTimeSeconds
+  int ManiaLinkTimeSeconds
+  int SubmittedManiaLinkTimeSeconds
+  int MapCount
+  int SubmittedMapCount
+  int ResetCount
+  int SubmittedResetCount
+  int FinishCount
+  int SubmittedFinishCount
+
+0x012 [TMF]
+  LadderMatchResult[] LadderMatchResults (version: 1)
 
 archive Score
- ident MapInfo
- v0=
-  int
- timeint PersonalBest
- v4-
-  v1+
-   int
-   bool
-  v2+
-   int
-   int
-   int
-  v3+
-   int
-  v4=
-   int
- v5+
-  int
-  int
-  int
-  short
-  short
- v6+
-  int
- v7+
-  int
- v8+
-  int
- v9+
-  systemtime
-  systemtime
-  v15-
-   DeprecatedChallengeLeagueScore[] DeprecatedChallengeLeagueScores
- v10+
-  int
- v11+
-  int
- v12+
-  int
- v13+
-  byte
-  string MapName
- v14+
-  int
- v15+
-  int
- v17+
-  int
-  int
-  int
-  int
- v18+
-  int
-  int
-  int
-  short
-  short
+  ident MapInfo = empty
+  v0=
+    int U01
+  int PersonalBest (time)
+  v4-
+    v1+
+      int U02
+      bool U03
+    v2+
+      int U04
+      int U05
+      int U06
+    v3+
+      int U07
+    v4=
+      int U08
+  v5+
+    int EditPlayTimeSeconds
+    int RacePlayTimeSeconds
+    int NetPlayTimeSeconds
+    short ResetCount
+    short FinishCount
+  v6+
+    int PlatformBestResetCount = 999
+  v7+
+    int PlatformMaxCompletedCount
+  v8+
+    int StuntsBestScore
+  v9+
+    systemtime OfficialRecordTime
+    systemtime U18
+    v15-
+      DeprecatedChallengeLeagueScore[] DeprecatedChallengeLeagueScores
+  v10+
+    int U19
+  v11+
+    int U20 = -1
+  v12+
+    int OfficialMedal
+  v13+
+    byte<EChallengePlayModeMS> PlayMode = EChallengePlayModeMS.Unknown
+    string MapName
+  v14+
+    int OfficialBestRecord = -1
+  v15+
+    int U24 = -1
+  v17+
+    int U25 = -1
+    int U26 = -1
+    int U27 = -1
+    int U28 = -1
+  v18+
+    int SubmittedEditPlayTimeSeconds
+    int SubmittedRacePlayTimeSeconds
+    int SubmittedNetPlayTimeSeconds
+    short SubmittedResetCount
+    short SubmittedFinishCount
 
 archive DeprecatedChallengeLeagueScore
- int Version
- if Version >= 5
-  CMwNod
-  CMwNod
- if Version == 4
-  CMwNod
-  CMwNod
-  CGameHighScore[]
- if Version < 4
-  int
-  int
-  string
-  if Version < 2
-   CMwNod[]
-  if Version >= 2
-   CGameHighScore[]
-  if Version >= 3
-   string
+  version = 5
+  v5+ (archive)
+    CMwNod U01
+    CMwNod U02
+  v4= (archive)
+    CMwNod U03
+    CMwNod U04
+    CGameHighScore[] U05 (deprec)
+  v3- (archive)
+    int U06
+    int U07
+    string U08
+    v1- (archive)
+      CMwNod[] U09 (deprec)
+    v2+ (archive)
+      CGameHighScore[] U10 (deprec)
+    v3+ (archive)
+      string U11
+
+archive DeprecatedPlayerCampaignSkillScore
+  version = 4
+  int U01
+  string U02
+  v1= (archive)
+    int U03
+    return
+  v0- (archive)
+    int U04
+  v3+ (archive)
+    int U04
+  int FilteredScoresVersion = 2
+  DeprecatedPlayerCampaignFilteredSkillScore[] FilteredScores (version: FilteredScoresVersion)
+  v4+ (archive)
+    int FilteredMedalsScoresVersion = 2
+    DeprecatedPlayerCampaignFilteredSkillScore[] FilteredMedalsScores (version: FilteredMedalsScoresVersion)
+
+archive DeprecatedPlayerCampaignFilteredSkillScore
+  v1+
+    string U01
+    int U02
+  v2+
+    int U03
 
 archive SurvivalScore
- id MapUid
- int
- int
- int
- int
- v2+
-  int = -1
+  id MapUid
+  int U01
+  int U02
+  int U03
+  int U04
+  v2+
+    int U05 = -1
 
 archive TrainingMedalsScore
- id CampaignId
- int
- CGamePlayerOfficialScores Score
+  id CampaignId
+  int<CGameCtnChallenge.PlayMode> PlayMode
+  CGamePlayerOfficialScores Score
 
 archive CampaignRecordsState
- id CampaignId
- systemtime
+  id CampaignId
+  systemtime LastUpdatedTime
 
 archive LadderMatchResult
- systemtime
- float
- byte
- byte
- byte
+  systemtime U01
+  float U02
+  v1+
+    byte U03
+    byte U04
+    byte U05
+
+enum EChallengePlayModeMS
+  Race
+  Puzzle
+  Platform
+  Stunts
+  Unknown = 255

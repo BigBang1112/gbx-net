@@ -1,0 +1,26 @@
+CPlugAnimSkelBaked 0x09132000
+
+0x000 // baked animation
+  version
+  int FlagsVersion
+  int TimingVersion
+  TimingFixedPeriod Timing (version: n.TimingVersion)
+  CPlugAnimSkelJointGroup JointGroup
+  transquat[] LocalJointsData
+  v1=
+    int LegacyData
+  v3+
+    CPlugAnimClip.ClipFlags Flags (version: n.FlagsVersion)
+  v4+
+    CPlugAnimFile.RootMotionFrame[] RootMotionFrames
+  v5+
+    id[] FloatChannelIds
+    float[] FloatChannelData
+
+archive TimingFixedPeriod
+  int FrameCount // cFrame
+  bool Looping
+  v0=
+    float Duration
+  v1+
+    int FramePeriod

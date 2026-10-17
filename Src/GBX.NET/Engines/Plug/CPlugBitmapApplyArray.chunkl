@@ -1,0 +1,5 @@
+CPlugBitmapApplyArray 0x090B8000
+- inherits: CPlug
+
+0x000 [TMT, MP4, TM2020] // BitmapAddresses
+  CPlugBitmapAddress[] BitmapAddresses = empty (deprec)

@@ -1,36 +1,36 @@
 CSceneVehicleCar 0x0A02B000
 - inherits: CSceneVehicle
 
-0x003
+0x003 [TM10, TMPU, TMSX, TMNESWC]
 
-0x005
- CMwNod
- vec3
+0x005 [TM10, TMPU, TMSX, TMNESWC]
+  CMwNod
+  vec3
 
-0x007
- CMwNod
- vec3
+0x007 [TM10, TMPU, TMSX, TMNESWC]
+  CMwNod
+  vec3
 
-0x008
+0x008 [TM10, TMPU, TMSX, TMNESWC]
 
-0x009
- VisualVehicle[] VisualVehicles
+0x009 [TM10, TMPU, TMSX]
+  VisualVehicle[] VisualVehicles
 
-0x00B
- CMwNod
- CMwNod
+0x00B [TMPU, TMSX, TMNESWC]
+  CMwNod
+  CMwNod
 
-0x00C
- float
- float
- box
+0x00C [TMSX, TMNESWC, VSK5, TMF]
+  float
+  float
+  box
 
-0x014
+0x014 [TMNESWC]
 
 archive VisualVehicle
- id
- int
- id
- id
- bool
- bool
+  id
+  int
+  id
+  id
+  bool
+  bool

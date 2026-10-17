@@ -1,2 +1,75 @@
 CPlugFileGen 0x0902F000
 - inherits: CPlugFileImg
+
+// The high bit distinguishes the versioned archive from the legacy generator-kind prefix.
+archive
+  v0+
+    int GenKind = 51 [TM2020 = 54]
+  int[] IntParams
+  vec4[] ColorParams
+  v0+
+    float[] RealParams
+  v3+
+    string Script
+  v4+
+    CFuncKeysReal[] Functions (direct)
+  v6+
+    CPlugFileImg[] InputImages
+  if GenKind == 9
+    data[PixelDataLength] PixelData
+
+enum EGenKind
+  Checker
+  LightMap
+  Plain
+  Point
+  Shade
+  Render
+  RenderCube
+  CubeNormals
+  Identity
+  Pixels
+  Depth
+  DepthCube
+  RenderF
+  Iradiance
+  Specular
+  TestNormal
+  RandNormal
+  SpecularCube
+  HemiReflec
+  CubeInvHemiReflec
+  SpecularsLA
+  HueGradient
+  SLGradient
+  VolumeRotate
+  SpecularCubeVect
+  TestMipMap
+  SpecCubeVectRgb
+  DdxInMipMap
+  RandVolume
+  Unalloc
+  PotentialField
+  RenderCubeF
+  TestAnaglyph
+  ACosSmoothInRange
+  PerlinPerm
+  PerlinPerm2D
+  PerlinGrad3
+  PerlinGrad3OfPerm
+  Script
+  Cube3x2_2d1RotCube
+  Cube3x2_Ya1
+  ShClampedCos
+  Random
+  HueSaturation
+  SmEnergyHueIntens
+  PerlinGrad3OfPerm2d
+  PerlinGrad4OfPerm2d
+  Simplex4
+  InvalidData
+  Callback
+  Noise
+  TransmittanceAccum
+  Power
+  HueMinMaxFromRGB
