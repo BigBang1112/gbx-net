@@ -561,10 +561,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043044>]
     public partial CScriptTraitsMetadata? ScriptMetadata { get; set; }
 
-    private string challengeScript = string.Empty;
+    private string? challengeScript;
     /// <remarks>Applied with: 0x047 body chunk</remarks>
     [AppliedWithChunk<Chunk03043047>]
-    public string ChallengeScript
+    public string? ChallengeScript
     {
         get => this.challengeScript;
         set => this.challengeScript = value;
@@ -647,6 +647,42 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.objectiveTextBronze = value;
     }
 
+    private NodeRefList<CPlugSpline3D>? trafficPathSplines;
+    /// <remarks>Applied with: 0x04D body chunk</remarks>
+    [AppliedWithChunk<Chunk0304304D>]
+    public NodeRefList<CPlugSpline3D>? TrafficPathSplines
+    {
+        get => trafficPathSplines;
+        set => trafficPathSplines = value;
+    }
+
+    private NodeRefList<CGameCtnChallengeTrafficElemDesc>? trafficElemDescs;
+    /// <remarks>Applied with: 0x04D body chunk</remarks>
+    [AppliedWithChunk<Chunk0304304D>]
+    public NodeRefList<CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs
+    {
+        get => trafficElemDescs;
+        set => trafficElemDescs = value;
+    }
+
+    private NodeRefList<CPlugTrafficPathSquares>? trafficPathSquares;
+    /// <remarks>Applied with: 0x04D v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0304304D>(1)]
+    public NodeRefList<CPlugTrafficPathSquares>? TrafficPathSquares
+    {
+        get => trafficPathSquares;
+        set => trafficPathSquares = value;
+    }
+
+    private NodeRefList<CPlugTrafficZoneSquares>? trafficZoneSquares;
+    /// <remarks>Applied with: 0x04D v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0304304D>(2)]
+    public NodeRefList<CPlugTrafficZoneSquares>? TrafficZoneSquares
+    {
+        get => trafficZoneSquares;
+        set => trafficZoneSquares = value;
+    }
+
     private NodeRef<CPlugAnimFile>? challengeAnimationRef;
     /// <remarks>Applied with: 0x04E body chunk</remarks>
     [AppliedWithChunk<Chunk0304304E>]
@@ -717,9 +753,12 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     [AppliedWithChunk<Chunk03043054>]
     public partial byte[]? EmbeddedZipData { get; set; }
 
+    /// <summary>
+    /// Dependencies of embedded item models stored outside the ZIP. Image, bitmap and ZIP dependencies are packed into EmbeddedZipData.
+    /// </summary>
     /// <remarks>Applied with: 0x054 v1+ body chunk</remarks>
     [AppliedWithChunk<Chunk03043054>(1)]
-    private partial List<string>? Textures { get; set; }
+    public partial List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
 
     private TimeSpan? dayTime;
     /// <remarks>Applied with: 0x056, 0x06B body chunks</remarks>
@@ -763,13 +802,53 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         set => this.recordedBotPaths = value;
     }
 
-    private Vec3 worldDistortion;
+    private SubMapInfo[]? subMapsInfos;
+    /// <remarks>Applied with: 0x058 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043058>]
+    public SubMapInfo[]? SubMapsInfos
+    {
+        get => this.subMapsInfos;
+        set => this.subMapsInfos = value;
+    }
+
+    private Vec3 worldDistortScales;
     /// <remarks>Applied with: 0x059 body chunk</remarks>
     [AppliedWithChunk<Chunk03043059>]
-    public Vec3 WorldDistortion
+    public Vec3 WorldDistortScales
     {
-        get => this.worldDistortion;
-        set => this.worldDistortion = value;
+        get => this.worldDistortScales;
+        set => this.worldDistortScales = value;
+    }
+
+    /// <remarks>Applied with: 0x059 v0-0 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043059>(0, 0)]
+    public partial CPlugBitmap? WorldDistortBitmap { get; set; }
+
+    private WorldDistortBitmapData? worldDistortXYZ;
+    /// <remarks>Applied with: 0x059 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03043059>(1)]
+    public WorldDistortBitmapData? WorldDistortXYZ
+    {
+        get => this.worldDistortXYZ;
+        set => this.worldDistortXYZ = value;
+    }
+
+    private SubMapSectorGridData? subMapSectorGrid;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
+    [AppliedWithChunk<Chunk0304305A>]
+    public SubMapSectorGridData? SubMapSectorGrid
+    {
+        get => this.subMapSectorGrid;
+        set => this.subMapSectorGrid = value;
+    }
+
+    private SubMapSector[]? subMapSectors;
+    /// <remarks>Applied with: 0x05A body chunk</remarks>
+    [AppliedWithChunk<Chunk0304305A>]
+    public SubMapSector[]? SubMapSectors
+    {
+        get => this.subMapSectors;
+        set => this.subMapSectors = value;
     }
 
     private BlockOctreeData? blockOctree;
@@ -788,6 +867,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     {
         get => this.legacyMacroblocks;
         set => this.legacyMacroblocks = value;
+    }
+
+    private SpectatorData? spectators;
+    /// <remarks>Applied with: 0x061 body chunk</remarks>
+    [AppliedWithChunk<Chunk03043061>]
+    public SpectatorData? Spectators
+    {
+        get => this.spectators;
+        set => this.spectators = value;
     }
 
     private NodeRefList<CGameCtnMediaClipGroup>? clipGroups;
@@ -840,12 +928,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public IReadOnlyList<NodeRef<CSceneVehicleCarMarksSamples>>? CarMarksBuffer => owner.carMarksBuffer?.References;
         public IReadOnlyList<NodeRef<CGameCtnAnchoredObject>>? AnchoredObjects => owner.anchoredObjects?.References;
         public IReadOnlyList<NodeRef<CGameCtnZoneGenealogy>>? ZoneGenealogy => owner.zoneGenealogy?.References;
-        public IReadOnlyList<NodeRef<CGameCtnBlock>>? BakedBlocks => owner.bakedBlocks?.References;
         public NodeRef<CGameCtnMediaClip> ClipPodium => NodeRef.GetOrCreate(ref owner.clipPodiumRef);
         public NodeRef<CGameCtnMediaClip> ClipAmbiance => NodeRef.GetOrCreate(ref owner.clipAmbianceRef);
+        public IReadOnlyList<NodeRef<CPlugSpline3D>>? TrafficPathSplines => owner.trafficPathSplines?.References;
+        public IReadOnlyList<NodeRef<CGameCtnChallengeTrafficElemDesc>>? TrafficElemDescs => owner.trafficElemDescs?.References;
+        public IReadOnlyList<NodeRef<CPlugTrafficPathSquares>>? TrafficPathSquares => owner.trafficPathSquares?.References;
+        public IReadOnlyList<NodeRef<CPlugTrafficZoneSquares>>? TrafficZoneSquares => owner.trafficZoneSquares?.References;
         public NodeRef<CPlugAnimFile> ChallengeAnimation => NodeRef.GetOrCreate(ref owner.challengeAnimationRef);
+        public NodeRef<CPlugBitmap> WorldDistortBitmap => NodeRef.GetOrCreate(ref owner.worldDistortBitmapRef);
         public IReadOnlyList<NodeRef<CGameCtnMediaClipGroup>>? ClipGroups => owner.clipGroups?.References;
         public NodeRef<CGameSaveLaunchedCheckpoints> LaunchedCheckpoints => NodeRef.GetOrCreate(ref owner.launchedCheckpointsRef);
+        public IReadOnlyList<NodeRef<CGameCtnBlock>>? BakedBlocks => owner.bakedBlocks?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -873,18 +966,35 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             for (var i = 0; i < zoneGenealogy.Count; i++) yield return new("ZoneGenealogy" + "[" + i + "]", zoneGenealogy.Get(i));
         }
-        if (bakedBlocks is not null)
-        {
-            for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.Get(i));
-        }
         yield return new("ClipPodium", NodeRef.GetOrCreate(ref clipPodiumRef));
         yield return new("ClipAmbiance", NodeRef.GetOrCreate(ref clipAmbianceRef));
+        if (trafficPathSplines is not null)
+        {
+            for (var i = 0; i < trafficPathSplines.Count; i++) yield return new("TrafficPathSplines" + "[" + i + "]", trafficPathSplines.Get(i));
+        }
+        if (trafficElemDescs is not null)
+        {
+            for (var i = 0; i < trafficElemDescs.Count; i++) yield return new("TrafficElemDescs" + "[" + i + "]", trafficElemDescs.Get(i));
+        }
+        if (trafficPathSquares is not null)
+        {
+            for (var i = 0; i < trafficPathSquares.Count; i++) yield return new("TrafficPathSquares" + "[" + i + "]", trafficPathSquares.Get(i));
+        }
+        if (trafficZoneSquares is not null)
+        {
+            for (var i = 0; i < trafficZoneSquares.Count; i++) yield return new("TrafficZoneSquares" + "[" + i + "]", trafficZoneSquares.Get(i));
+        }
         yield return new("ChallengeAnimation", NodeRef.GetOrCreate(ref challengeAnimationRef));
+        yield return new("WorldDistortBitmap", NodeRef.GetOrCreate(ref worldDistortBitmapRef));
         if (clipGroups is not null)
         {
             for (var i = 0; i < clipGroups.Count; i++) yield return new("ClipGroups" + "[" + i + "]", clipGroups.Get(i));
         }
         yield return new("LaunchedCheckpoints", NodeRef.GetOrCreate(ref launchedCheckpointsRef));
+        if (bakedBlocks is not null)
+        {
+            for (var i = 0; i < bakedBlocks.Count; i++) yield return new("BakedBlocks" + "[" + i + "]", bakedBlocks.Get(i));
+        }
         yield break;
     }
 
@@ -934,7 +1044,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).anchoredObjects = context.Clone(this.anchoredObjects)!;
         ((CGameCtnChallenge)clone).zoneGenealogy = context.Clone(this.zoneGenealogy)!;
         ((CGameCtnChallenge)clone).challengeScript = context.Clone(this.challengeScript)!;
-        ((CGameCtnChallenge)clone).bakedBlocks = context.Clone(this.bakedBlocks)!;
         ((CGameCtnChallenge)clone).clipPodiumRef = context.Clone(this.clipPodiumRef)!;
         ((CGameCtnChallenge)clone).clipAmbianceRef = context.Clone(this.clipAmbianceRef)!;
         ((CGameCtnChallenge)clone).clipTriggerSize = context.Clone(this.clipTriggerSize)!;
@@ -942,6 +1051,10 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).objectiveTextGold = context.Clone(this.objectiveTextGold)!;
         ((CGameCtnChallenge)clone).objectiveTextSilver = context.Clone(this.objectiveTextSilver)!;
         ((CGameCtnChallenge)clone).objectiveTextBronze = context.Clone(this.objectiveTextBronze)!;
+        ((CGameCtnChallenge)clone).trafficPathSplines = context.Clone(this.trafficPathSplines)!;
+        ((CGameCtnChallenge)clone).trafficElemDescs = context.Clone(this.trafficElemDescs)!;
+        ((CGameCtnChallenge)clone).trafficPathSquares = context.Clone(this.trafficPathSquares)!;
+        ((CGameCtnChallenge)clone).trafficZoneSquares = context.Clone(this.trafficZoneSquares)!;
         ((CGameCtnChallenge)clone).challengeAnimationRef = context.Clone(this.challengeAnimationRef)!;
         ((CGameCtnChallenge)clone).animationTriggers = context.CloneArray(this.animationTriggers)!;
         ((CGameCtnChallenge)clone).offzoneTriggerSize = context.Clone(this.offzoneTriggerSize)!;
@@ -953,9 +1066,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).dynamicDaylight = context.Clone(this.dynamicDaylight)!;
         ((CGameCtnChallenge)clone).dayDuration = context.Clone(this.dayDuration)!;
         ((CGameCtnChallenge)clone).recordedBotPaths = context.CloneArray(this.recordedBotPaths)!;
-        ((CGameCtnChallenge)clone).worldDistortion = context.Clone(this.worldDistortion)!;
+        ((CGameCtnChallenge)clone).subMapsInfos = context.CloneArray(this.subMapsInfos)!;
+        ((CGameCtnChallenge)clone).worldDistortScales = context.Clone(this.worldDistortScales)!;
+        ((CGameCtnChallenge)clone).worldDistortBitmapRef = context.Clone(this.worldDistortBitmapRef)!;
+        ((CGameCtnChallenge)clone).worldDistortXYZ = context.Clone(this.worldDistortXYZ)!;
+        ((CGameCtnChallenge)clone).subMapSectorGrid = context.Clone(this.subMapSectorGrid)!;
+        ((CGameCtnChallenge)clone).subMapSectors = context.CloneArray(this.subMapSectors)!;
         ((CGameCtnChallenge)clone).blockOctree = context.Clone(this.blockOctree)!;
         ((CGameCtnChallenge)clone).legacyMacroblocks = context.CloneArray(this.legacyMacroblocks)!;
+        ((CGameCtnChallenge)clone).spectators = context.Clone(this.spectators)!;
         ((CGameCtnChallenge)clone).clipGroups = context.Clone(this.clipGroups)!;
         ((CGameCtnChallenge)clone).launchedCheckpointsRef = context.Clone(this.launchedCheckpointsRef)!;
         ((CGameCtnChallenge)clone).palette = context.Clone(this.palette)!;
@@ -978,10 +1097,11 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         ((CGameCtnChallenge)clone).lightmapFrames = context.CloneArray(this.lightmapFrames)!;
         ((CGameCtnChallenge)clone).lightmapCacheSmall = context.Clone(this.lightmapCacheSmall)!;
         ((CGameCtnChallenge)clone).scriptMetadata = context.Clone(this.scriptMetadata)!;
+        ((CGameCtnChallenge)clone).bakedBlocks = context.Clone(this.bakedBlocks)!;
         ((CGameCtnChallenge)clone).bakedClipsAdditionalData = context.CloneList(this.bakedClipsAdditionalData)!;
         ((CGameCtnChallenge)clone).embeddedZipData = context.CloneArray(this.embeddedZipData)!;
         ((CGameCtnChallenge)clone).originalEmbeddedZipData = context.CloneArray(this.originalEmbeddedZipData)!;
-        ((CGameCtnChallenge)clone).textures = context.CloneList(this.textures)!;
+        ((CGameCtnChallenge)clone).embeddedItemModelsExternalDataRefs = context.CloneList(this.embeddedItemModelsExternalDataRefs)!;
         ((CGameCtnChallenge)clone).macroblockInstances = context.CloneList(this.macroblockInstances)!;
         ((CGameCtnChallenge)clone).hasCustomCamThumbnail = context.Clone(this.hasCustomCamThumbnail)!;
         ((CGameCtnChallenge)clone).thumbnailPosition = context.Clone(this.thumbnailPosition)!;
@@ -2538,55 +2658,15 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnChallenge 0x04D skippable chunk
+    /// CGameCtnChallenge 0x04D skippable chunk (traffic paths, elements and zones)
     /// </summary>
-    [Chunk(0x0304304D)]
+    [Chunk(0x0304304D, "traffic paths, elements and zones")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT, 2, 2)]
     public partial class Chunk0304304D : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304304D;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT;
         public int Version { get; set; }
-
-        public NodeRefList<CMwNod>? U01;
-
-        public NodeRefList<CMwNod>? U02;
-
-        public NodeRefList<CMwNod>? U03;
-
-        public NodeRefList<CMwNod>? U04;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0304304D owner;
-            internal NodeRefView(Chunk0304304D owner) => this.owner = owner;
-            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
-            public IReadOnlyList<NodeRef<CMwNod>>? U02 => owner.U02?.References;
-            public IReadOnlyList<NodeRef<CMwNod>>? U03 => owner.U03?.References;
-            public IReadOnlyList<NodeRef<CMwNod>>? U04 => owner.U04?.References;
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            if (U01 is not null)
-            {
-                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
-            }
-            if (U02 is not null)
-            {
-                for (var i = 0; i < U02.Count; i++) yield return new("U02" + "[" + i + "]", U02.Get(i));
-            }
-            if (U03 is not null)
-            {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
-            }
-            if (U04 is not null)
-            {
-                for (var i = 0; i < U04.Count; i++) yield return new("U04" + "[" + i + "]", U04.Get(i));
-            }
-            yield break;
-        }
 
         public Chunk0304304D() : this(GameVersion.Unspecified)
         {
@@ -2604,10 +2684,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0304304D)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0304304D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0304304D)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0304304D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0304304D)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -2620,17 +2696,17 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             rw.Encapsulated(rw =>
             {
-                U01 = rw.ListNodeRef_deprec<CMwNod>(U01);
-                U02 = rw.ListNodeRef_deprec<CMwNod>(U02);
+                n.trafficPathSplines = rw.ListNodeRef_deprec<CPlugSpline3D>(n.trafficPathSplines);
+                n.trafficElemDescs = rw.ListNodeRef_deprec<CGameCtnChallengeTrafficElemDesc>(n.trafficElemDescs);
 
                 if (Version >= 1)
                 {
-                    U03 = rw.ListNodeRef_deprec<CMwNod>(U03);
+                    n.trafficPathSquares = rw.ListNodeRef_deprec<CPlugTrafficPathSquares>(n.trafficPathSquares);
                 }
 
                 if (Version >= 2)
                 {
-                    U04 = rw.ListNodeRef_deprec<CMwNod>(U04);
+                    n.trafficZoneSquares = rw.ListNodeRef_deprec<CPlugTrafficZoneSquares>(n.trafficZoneSquares);
                 }
             });
         }
@@ -2987,7 +3063,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043058;
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
-        public int U01;
 
         public Chunk03043058() : this(GameVersion.Unspecified)
         {
@@ -3005,7 +3080,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043058)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043058)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -3016,11 +3090,23 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
+            var subMapCount = rw.Int32((rw.Writer is null ? default : (n.SubMapsInfos?.Length?? 0)));
 
-            if (U01> 0)
+            if (subMapCount< 0)
             {
-                throw new NotSupportedException();
+                throw new InvalidDataException("Negative submap count");
+            }
+
+            if (Version>= 1 && subMapCount>= 1)
+            {
+                rw.Encapsulated(rw =>
+                {
+                    rw.ArrayReadableWritable<SubMapInfo>(ref n.subMapsInfos!, subMapCount, version: Version);
+                });
+            }
+            else
+            {
+                rw.ArrayReadableWritable<SubMapInfo>(ref n.subMapsInfos!, subMapCount, version: Version);
             }
         }
     }
@@ -3035,30 +3121,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x03043059;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CPlugBitmap>? U01Ref;
-        public CPlugBitmap? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-        public bool U02;
-        public int U03;
-        public int U04;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk03043059 owner;
-            internal NodeRefView(Chunk03043059 owner) => this.owner = owner;
-            public NodeRef<CPlugBitmap> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
+        public int U01;
+        public int U02;
 
         public Chunk03043059() : this(GameVersion.Unspecified)
         {
@@ -3080,10 +3144,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043059)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043059)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03043059)clone).U01 = context.Clone(this.U01)!;
             ((Chunk03043059)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03043059)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk03043059)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -3094,54 +3156,91 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Vec3(ref n.worldDistortion);
+            rw.Vec3(ref n.worldDistortScales);
 
             if (Version == 0)
             {
-                rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref n.worldDistortBitmapRef);
             }
 
             if (Version >= 1)
             {
-                rw.Boolean(ref U02);
+                var hasWorldDistortXYZ = rw.Boolean((rw.Writer is null ? default : (n.WorldDistortXYZ is not null)));
 
-                if (U02)
+                if (hasWorldDistortXYZ)
                 {
-                    throw new NotSupportedException();
+                    if (Version>= 3)
+                    {
+                        throw new NotSupportedException("World distortion bitmaps are unsupported in chunk version 3");
+                    }
+
+                    rw.ReadableWritable<WorldDistortBitmapData>(ref n.worldDistortXYZ, version: Version);
+                }
+                else
+                {
+                    if (rw.Reader is not null)
+                    {
+                        n.WorldDistortXYZ = null;
+                    }
                 }
 
                 if (Version >= 3)
                 {
-                    rw.Int32(ref U03);
-                    rw.Int32(ref U04);
+                    rw.Int32(ref U01);
+                    rw.Int32(ref U02);
                 }
             }
         }
     }
 
     /// <summary>
-    /// CGameCtnChallenge 0x05A skippable chunk
+    /// CGameCtnChallenge 0x05A skippable chunk (submap sectors)
     /// </summary>
-    [Chunk(0x0304305A)]
+    [Chunk(0x0304305A, "submap sectors")]
     [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk0304305A : SkippableChunk<CGameCtnChallenge>
+    public partial class Chunk0304305A : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x0304305A;
         public override GameVersion GameVersion => GameVersion.TM2020;
-        public int U01;
-        public int U02;
+        public int Version { get; set; }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0304305A)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0304305A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0304305A)clone).Version = context.Clone(this.Version)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            var subMapSectorCount = rw.Int32((rw.Writer is null ? default : (n.SubMapSectors?.Length?? 0)));
+
+            if (subMapSectorCount< 0)
+            {
+                throw new InvalidDataException("Negative submap sector count");
+            }
+
+            if (subMapSectorCount>= 1)
+            {
+                rw.Encapsulated(rw =>
+                {
+                    rw.ReadableWritable<SubMapSectorGridData>(ref n.subMapSectorGrid, version: Version);
+                    rw.ArrayReadableWritable<SubMapSector>(ref n.subMapSectors!, subMapSectorCount, version: Version);
+                });
+            }
+            else
+            {
+                rw.ArrayReadableWritable<SubMapSector>(ref n.subMapSectors!, 0, version: Version);
+                if (rw.Reader is not null)
+                {
+                    n.SubMapSectorGrid = null;
+                }
+            }
         }
     }
 
@@ -3174,8 +3273,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         public override uint Id => 0x0304305C;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public uint[]? U01;
-        public uint[]? U02;
+        public int[]? U01;
+        public int[]? U02;
 
         public Chunk0304305C() : this(GameVersion.Unspecified)
         {
@@ -3207,8 +3306,8 @@ public partial class CGameCtnChallenge : CMwNod, IClass
 
             if (Version == 0)
             {
-                rw.Array<uint>(ref U01!);
-                rw.Array<uint>(ref U02!);
+                rw.Array<int>(ref U01!);
+                rw.Array<int>(ref U02!);
             }
         }
     }
@@ -3324,22 +3423,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnChallenge 0x060 skippable chunk
+    /// CGameCtnChallenge 0x060 skippable chunk (CreatedWithGamepadEditor)
     /// </summary>
-    [Chunk(0x03043060)]
+    [Chunk(0x03043060, "CreatedWithGamepadEditor")]
     [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk03043060 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043060;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043060)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043060)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -3350,24 +3447,20 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
+            n.CreatedWithGamepadEditor = rw.Boolean(n.CreatedWithGamepadEditor);
         }
     }
 
     /// <summary>
-    /// CGameCtnChallenge 0x061 skippable chunk (temporary editor data)
+    /// CGameCtnChallenge 0x061 skippable chunk (legacy Spectators)
     /// </summary>
-    [Chunk(0x03043061, "temporary editor data")]
+    [Chunk(0x03043061, "legacy Spectators")]
     [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk03043061 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public override uint Id => 0x03043061;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public uint[]? U02;
-        public byte[]? U03;
-        public int U04;
 
         public Chunk03043061() : this(GameVersion.Unspecified)
         {
@@ -3385,10 +3478,6 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03043061)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03043061)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03043061)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk03043061)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk03043061)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GbxReaderWriter rw)
@@ -3399,14 +3488,7 @@ public partial class CGameCtnChallenge : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-            rw.Array<uint>(ref U02!);
-            rw.Data(ref U03);
-
-            if (Version >= 1)
-            {
-                rw.Int32(ref U04);
-            }
+            rw.ReadableWritable<SpectatorData>(ref n.spectators, version: Version);
         }
     }
 
@@ -3681,6 +3763,462 @@ public partial class CGameCtnChallenge : CMwNod, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+    }
+
+    public partial class WorldDistortBitmapData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private WorldDistortTga? tga;
+        public WorldDistortTga? Tga
+        {
+            get => this.tga;
+            set => this.tga = value;
+        }
+
+        private Int2 size;
+        public Int2 Size
+        {
+            get => this.size;
+            set => this.size = value;
+        }
+
+        private byte[]? pixels;
+        /// <summary>
+        /// RGBA16 pixels, eight bytes per pixel, without a length prefix.
+        /// </summary>
+        public byte[]? Pixels
+        {
+            get => this.pixels;
+            set => this.pixels = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (WorldDistortBitmapData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((WorldDistortBitmapData)clone).tga = context.Clone(this.tga)!;
+            ((WorldDistortBitmapData)clone).size = context.Clone(this.size)!;
+            ((WorldDistortBitmapData)clone).pixels = context.CloneArray(this.pixels)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v == 1)
+            {
+                rw.ReadableWritable<WorldDistortTga>(ref this.tga, version: v);
+            }
+
+            if (v >= 2)
+            {
+                rw.Int2(ref this.size);
+
+                if (Size.X < 0 || Size.Y < 0)
+                {
+                    throw new InvalidDataException("Negative world distortion bitmap size");
+                }
+
+                if (Size.X > 0 && Size.Y > 268435455 / Size.X)
+                {
+                    throw new InvalidDataException("World distortion bitmap is too large");
+                }
+
+                rw.Data(ref this.pixels!, Size.X * Size.Y * 8);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class WorldDistortTga : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte colorMapType;
+        public byte ColorMapType
+        {
+            get => this.colorMapType;
+            set => this.colorMapType = value;
+        }
+
+        private byte imageType;
+        public byte ImageType
+        {
+            get => this.imageType;
+            set => this.imageType = value;
+        }
+
+        private ushort colorMapFirstIndex;
+        public ushort ColorMapFirstIndex
+        {
+            get => this.colorMapFirstIndex;
+            set => this.colorMapFirstIndex = value;
+        }
+
+        private ushort colorMapLength;
+        public ushort ColorMapLength
+        {
+            get => this.colorMapLength;
+            set => this.colorMapLength = value;
+        }
+
+        private byte colorMapEntrySize;
+        public byte ColorMapEntrySize
+        {
+            get => this.colorMapEntrySize;
+            set => this.colorMapEntrySize = value;
+        }
+
+        private ushort xOrigin;
+        public ushort XOrigin
+        {
+            get => this.xOrigin;
+            set => this.xOrigin = value;
+        }
+
+        private ushort yOrigin;
+        public ushort YOrigin
+        {
+            get => this.yOrigin;
+            set => this.yOrigin = value;
+        }
+
+        private ushort width;
+        public ushort Width
+        {
+            get => this.width;
+            set => this.width = value;
+        }
+
+        private ushort height;
+        public ushort Height
+        {
+            get => this.height;
+            set => this.height = value;
+        }
+
+        private byte pixelDepth;
+        public byte PixelDepth
+        {
+            get => this.pixelDepth;
+            set => this.pixelDepth = value;
+        }
+
+        private byte imageDescriptor;
+        public byte ImageDescriptor
+        {
+            get => this.imageDescriptor;
+            set => this.imageDescriptor = value;
+        }
+
+        private byte[]? imageId;
+        public byte[]? ImageId
+        {
+            get => this.imageId;
+            set => this.imageId = value;
+        }
+
+        private byte[]? encodedPixels;
+        /// <summary>
+        /// Self-delimiting pixel packets; custom serialization handles RLE without a length prefix.
+        /// </summary>
+        public byte[]? EncodedPixels
+        {
+            get => this.encodedPixels;
+            set => this.encodedPixels = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (WorldDistortTga)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((WorldDistortTga)clone).colorMapType = context.Clone(this.colorMapType)!;
+            ((WorldDistortTga)clone).imageType = context.Clone(this.imageType)!;
+            ((WorldDistortTga)clone).colorMapFirstIndex = context.Clone(this.colorMapFirstIndex)!;
+            ((WorldDistortTga)clone).colorMapLength = context.Clone(this.colorMapLength)!;
+            ((WorldDistortTga)clone).colorMapEntrySize = context.Clone(this.colorMapEntrySize)!;
+            ((WorldDistortTga)clone).xOrigin = context.Clone(this.xOrigin)!;
+            ((WorldDistortTga)clone).yOrigin = context.Clone(this.yOrigin)!;
+            ((WorldDistortTga)clone).width = context.Clone(this.width)!;
+            ((WorldDistortTga)clone).height = context.Clone(this.height)!;
+            ((WorldDistortTga)clone).pixelDepth = context.Clone(this.pixelDepth)!;
+            ((WorldDistortTga)clone).imageDescriptor = context.Clone(this.imageDescriptor)!;
+            ((WorldDistortTga)clone).imageId = context.CloneArray(this.imageId)!;
+            ((WorldDistortTga)clone).encodedPixels = context.CloneArray(this.encodedPixels)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SubMapSectorGridData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte format;
+        /// <summary>
+        /// Format 1 omits the grid; other formats store raw byte indices.
+        /// </summary>
+        public byte Format
+        {
+            get => this.format;
+            set => this.format = value;
+        }
+
+        private byte[]? indices;
+        /// <summary>
+        /// Sector index at X * Size.Z + Z; 255 means no sector.
+        /// </summary>
+        public byte[]? Indices
+        {
+            get => this.indices;
+            set => this.indices = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubMapSectorGridData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubMapSectorGridData)clone).format = context.Clone(this.format)!;
+            ((SubMapSectorGridData)clone).indices = context.CloneArray(this.indices)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Byte(ref this.format);
+
+            if (Format!= 1)
+            {
+                rw.Data(ref this.indices);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SubMapSector : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string mapFilePath = string.Empty;
+        public string MapFilePath
+        {
+            get => this.mapFilePath;
+            set => this.mapFilePath = value;
+        }
+
+        private NodeRef<CGameCtnChallenge>? mapRef;
+        public CGameCtnChallenge? Map
+        {
+            get => mapRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref mapRef, value);
+        }
+
+        private int groundHeight = -1;
+        /// <summary>
+        /// Height in block coordinates.
+        /// </summary>
+        public int GroundHeight
+        {
+            get => this.groundHeight;
+            set => this.groundHeight = value;
+        }
+
+        private Vec3 position;
+        /// <summary>
+        /// Position in the parent map.
+        /// </summary>
+        public Vec3 Position
+        {
+            get => this.position;
+            set => this.position = value;
+        }
+
+        private Vec3 pivot;
+        /// <summary>
+        /// Point in the submap placed at Position.
+        /// </summary>
+        public Vec3 Pivot
+        {
+            get => this.pivot;
+            set => this.pivot = value;
+        }
+
+        private float yaw;
+        /// <summary>
+        /// Rotation around the Y axis in degrees.
+        /// </summary>
+        public float Yaw
+        {
+            get => this.yaw;
+            set => this.yaw = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly SubMapSector owner;
+            internal NodeRefView(SubMapSector owner) => this.owner = owner;
+            public NodeRef<CGameCtnChallenge> Map => NodeRef.GetOrCreate(ref owner.mapRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Map", NodeRef.GetOrCreate(ref mapRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubMapSector)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubMapSector)clone).mapFilePath = context.Clone(this.mapFilePath)!;
+            ((SubMapSector)clone).mapRef = context.Clone(this.mapRef)!;
+            ((SubMapSector)clone).groundHeight = context.Clone(this.groundHeight)!;
+            ((SubMapSector)clone).position = context.Clone(this.position)!;
+            ((SubMapSector)clone).pivot = context.Clone(this.pivot)!;
+            ((SubMapSector)clone).yaw = context.Clone(this.yaw)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.mapFilePath);
+            rw.NodeRef(ref this.mapRef);
+            rw.Int32(ref this.groundHeight);
+            rw.Vec3(ref this.position);
+            rw.Vec3(ref this.pivot);
+            rw.Single(ref this.yaw);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SpectatorData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        /// <summary>
+        /// Nonzero enables the editor's "has spectators" indicator.
+        /// </summary>
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int[]? u02;
+        public int[]? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private byte[]? u03;
+        public byte[]? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SpectatorData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SpectatorData)clone).u01 = context.Clone(this.u01)!;
+            ((SpectatorData)clone).u02 = context.CloneArray(this.u02)!;
+            ((SpectatorData)clone).u03 = context.CloneArray(this.u03)!;
+            ((SpectatorData)clone).u04 = context.Clone(this.u04)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Array<int>(ref this.u02!);
+            rw.Data(ref this.u03);
+
+            if (v >= 1)
+            {
+                rw.Int32(ref this.u04);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -4047,6 +4585,93 @@ public partial class CGameCtnChallenge : CMwNod, IClass
             if (v >= 4)
             {
                 rw.Ident(ref this.model);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SubMapInfo : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int blockIndex;
+        /// <summary>
+        /// Index in the map's serialized block list.
+        /// </summary>
+        public int BlockIndex
+        {
+            get => this.blockIndex;
+            set => this.blockIndex = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string subMapDataRefForEditor = string.Empty;
+        public string SubMapDataRefForEditor
+        {
+            get => this.subMapDataRefForEditor;
+            set => this.subMapDataRefForEditor = value;
+        }
+
+        private NodeRef<CGameCtnChallenge>? subMapNodRef;
+        public CGameCtnChallenge? SubMapNod
+        {
+            get => subMapNodRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref subMapNodRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly SubMapInfo owner;
+            internal NodeRefView(SubMapInfo owner) => this.owner = owner;
+            public NodeRef<CGameCtnChallenge> SubMapNod => NodeRef.GetOrCreate(ref owner.subMapNodRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("SubMapNod", NodeRef.GetOrCreate(ref subMapNodRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubMapInfo)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubMapInfo)clone).blockIndex = context.Clone(this.blockIndex)!;
+            ((SubMapInfo)clone).u01 = context.Clone(this.u01)!;
+            ((SubMapInfo)clone).subMapDataRefForEditor = context.Clone(this.subMapDataRefForEditor)!;
+            ((SubMapInfo)clone).subMapNodRef = context.Clone(this.subMapNodRef)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.blockIndex);
+            rw.Int32(ref this.u01);
+            rw.String(ref this.subMapDataRefForEditor);
+
+            if (v >= 1)
+            {
+                rw.NodeRef(ref this.subMapNodRef);
             }
         }
 

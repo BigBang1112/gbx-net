@@ -232,8 +232,6 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
   version
-  v1+
-    throw
   CSceneVehicleCarMarksSamples[] CarMarksBuffer (deprec)
 
 0x040 (skippable, demonstration: partial) [MP3.v2, TMT.v4, MP4.v4, TM2020.v8] // items
@@ -268,7 +266,7 @@ CGameCtnChallenge 0x03043000 // A map.
 0x048 (skippable, demonstration: partial) [MP3, TMT, MP4, TM2020] // baked blocks
   version
   int = 6
-  CGameCtnBlock*[] BakedBlocks (list) // Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
+  CGameCtnBlock[] BakedBlocks (list) // Preceded by BlocksVersion; coordinates are offset by (1, 0, 1).
   SBakedClipsAdditionalData[] BakedClipsAdditionalData (list) // Preceded by U01.
 
 0x049 [MP3.v2, TMT.v2, MP4.v2, TM2020.v2] // mediatracker
@@ -288,15 +286,15 @@ CGameCtnChallenge 0x03043000 // A map.
   string ObjectiveTextSilver
   string ObjectiveTextBronze
 
-0x04D (skippable) [MP3.v2, TMT.v2]
+0x04D (skippable) [MP3.v2, TMT.v2] // traffic paths, elements and zones
   version
   block (encapsulated)
-    CMwNod[] (deprec)
-    CMwNod[] (deprec)
+    CPlugSpline3D[] TrafficPathSplines (deprec)
+    CGameCtnChallengeTrafficElemDesc[] TrafficElemDescs (deprec)
     v1+
-      CMwNod[] (deprec)
+      CPlugTrafficPathSquares[] TrafficPathSquares (deprec)
     v2+
-      CMwNod[] (deprec)
+      CPlugTrafficZoneSquares[] TrafficZoneSquares (deprec)
 
 0x04E (skippable) [MP4, TM2020] // animation triggers
   version
@@ -331,7 +329,7 @@ CGameCtnChallenge 0x03043000 // A map.
   block (encapsulated)
     data EmbeddedZipData // Preceded by the expected embedded item model identifiers.
     v1+
-      string[] Textures (list)
+      string[] EmbeddedItemModelsExternalDataRefs (list) // Dependencies of embedded item models stored outside the ZIP.
 
 0x055 (skippable) [MP3, TMT, MP4, TM2020]
 
@@ -354,26 +352,44 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x058 (skippable) [MP4.v1] // SubMapsInfos
   version
-  int U01
-  if U01 > 0
-    throw
+  int SubMapCount (local, write: "n.SubMapsInfos?.Length ?? 0")
+  if SubMapCount < 0
+    throw (type: InvalidDataException, message: Negative submap count)
+  if Version >= 1 && SubMapCount >= 1
+    block (encapsulated)
+      SubMapInfo[SubMapCount] SubMapsInfos (version: Version)
+  else
+    SubMapInfo[SubMapCount] SubMapsInfos (version: Version)
 
 0x059 (skippable) [MP4.v2, TM2020.v3] // world distortion
   version
-  vec3 WorldDistortion
+  vec3 WorldDistortScales
   v0=
-    CPlugBitmap U01
+    CPlugBitmap WorldDistortBitmap
   v1+
-    bool U02
-    if U02
-      throw
+    bool HasWorldDistortXYZ (local, write: "n.WorldDistortXYZ is not null")
+    if HasWorldDistortXYZ
+      if Version >= 3
+        throw (type: NotSupportedException, message: World distortion bitmaps are unsupported in chunk version 3)
+      WorldDistortBitmapData WorldDistortXYZ (version: Version)
+    else
+      WorldDistortXYZ = null
     v3+
-      int
-      int
+      int // Discarded by TM2020.
+      int // Discarded by TM2020.
 
-0x05A (skippable) [TM2020]
-  int
-  int
+0x05A (skippable) [TM2020] // submap sectors
+  version
+  int SubMapSectorCount (local, write: "n.SubMapSectors?.Length ?? 0")
+  if SubMapSectorCount < 0
+    throw (type: InvalidDataException, message: Negative submap sector count)
+  if SubMapSectorCount >= 1
+    block (encapsulated)
+      SubMapSectorGridData SubMapSectorGrid
+      SubMapSector[SubMapSectorCount] SubMapSectors
+  else
+    SubMapSector[0] SubMapSectors
+    SubMapSectorGrid = null
 
 0x05B (skippable, base: 0x03D, demonstration: partial) [TM2020] // lightmaps TM2020
   version
@@ -382,8 +398,8 @@ CGameCtnChallenge 0x03043000 // A map.
 0x05C (skippable) [TM2020.v1]
   version
   v0=
-    uint[]
-    uint[]
+    int[]
+    int[]
 
 0x05D (skippable) [TM2020.v1] // block octree
   version
@@ -399,17 +415,13 @@ CGameCtnChallenge 0x03043000 // A map.
 
 0x05F (skippable) [TM2020] // free blocks
 
-0x060 (skippable) [TM2020]
+0x060 (skippable) [TM2020] // CreatedWithGamepadEditor
   version
-  int
+  bool CreatedWithGamepadEditor
 
-0x061 (skippable) [TM2020.v1] // temporary editor data
+0x061 (skippable) [TM2020.v1] // legacy Spectators
   version
-  int
-  uint[]
-  data
-  v1+
-    int
+  SpectatorData Spectators (version: Version)
 
 0x062 (skippable) [TM2020] // MapElemColor
 
@@ -468,6 +480,53 @@ property int? NbBlocks
 property int? NbBakedBlocks
   get = BakedBlocks.Count
 
+archive WorldDistortBitmapData
+  v1=
+    WorldDistortTga Tga
+  v2+
+    int2 Size
+    if Size.X < 0 || Size.Y < 0
+      throw (type: InvalidDataException, message: Negative world distortion bitmap size)
+    if Size.X > 0 && Size.Y > 268435455 / Size.X
+      throw (type: InvalidDataException, message: World distortion bitmap is too large)
+    data[Size.X * Size.Y * 8] Pixels // RGBA16 pixels, eight bytes per pixel, without a length prefix.
+
+archive WorldDistortTga
+  byte ImageIdLength (local, write: "ImageId?.Length ?? 0")
+  byte ColorMapType
+  byte ImageType
+  ushort ColorMapFirstIndex
+  ushort ColorMapLength
+  byte ColorMapEntrySize
+  ushort XOrigin
+  ushort YOrigin
+  ushort Width
+  ushort Height
+  byte PixelDepth
+  byte ImageDescriptor
+  data[ImageIdLength] ImageId
+  data EncodedPixels // Self-delimiting pixel packets; custom serialization handles RLE without a length prefix.
+
+archive SubMapSectorGridData
+  byte Format // Format 1 omits the grid; other formats store raw byte indices.
+  if Format != 1
+    data Indices // Sector index at X * Size.Z + Z; 255 means no sector.
+
+archive SubMapSector
+  string MapFilePath = empty
+  CGameCtnChallenge Map
+  int GroundHeight = -1 // Height in block coordinates.
+  vec3 Position // Position in the parent map.
+  vec3 Pivot // Point in the submap placed at Position.
+  float Yaw // Rotation around the Y axis in degrees.
+
+archive SpectatorData
+  int U01 // Nonzero enables the editor's "has spectators" indicator.
+  int[] U02
+  data U03
+  v1+
+    int U04
+
 archive BlockOctreeData
   int RootNodeSize
   int3 Size
@@ -506,6 +565,13 @@ archive RecordedBotPath
     quat[] Rotations
   v4+
     ident Model
+
+archive SubMapInfo
+  int BlockIndex // Index in the map's serialized block list.
+  int U01
+  string SubMapDataRefForEditor = empty
+  v1+
+    CGameCtnChallenge SubMapNod
 
 archive BotPath
   int Clan

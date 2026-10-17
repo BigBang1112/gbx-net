@@ -120,4 +120,59 @@ public class EncapsulationTests : IDisposable
         await Assert.That(reader.Encapsulation).IsNull();
         await Assert.That(writer.Encapsulation).IsNull();
     }
+
+    [Test]
+    public async Task ReadEncapsulated_NestedPayload_RestoresParentLookbackStrings()
+    {
+        writer.WriteIdAsString("Root");
+        writer.WriteEncapsulated(outer =>
+        {
+            outer.WriteIdAsString("Outer");
+            outer.WriteEncapsulated(inner =>
+            {
+                inner.WriteIdAsString("Inner");
+                inner.WriteIdAsString("Inner");
+            });
+            outer.WriteIdAsString("Outer");
+        });
+        writer.WriteIdAsString("Root");
+        ms.Position = 0;
+
+        var strings = new List<string> { reader.ReadIdAsString() };
+        reader.ReadEncapsulated(outer =>
+        {
+            strings.Add(outer.ReadIdAsString());
+            outer.ReadEncapsulated(inner =>
+            {
+                strings.Add(inner.ReadIdAsString());
+                strings.Add(inner.ReadIdAsString());
+            });
+            strings.Add(outer.ReadIdAsString());
+        });
+        strings.Add(reader.ReadIdAsString());
+
+        await Assert.That(strings).IsEquivalentTo(new[] { "Root", "Outer", "Inner", "Inner", "Outer", "Root" }, CollectionOrdering.Matching);
+        await Assert.That(reader.Encapsulation).IsNull();
+        await Assert.That(ms.Position).IsEqualTo(ms.Length);
+    }
+
+    [Test]
+    public async Task Dispose_NestedReaderException_RestoresParentScope()
+    {
+        using var parent = new Encapsulation(reader);
+        parent.IdVersion = 3;
+        parent.IdReadDict.Add(0, "Parent");
+
+        Assert.Throws<IOException>(() =>
+        {
+            using var nested = new Encapsulation(reader, allowNested: true);
+            nested.IdVersion = 2;
+            nested.IdReadDict.Add(0, "Child");
+            throw new IOException("Interrupted nested payload");
+        });
+
+        await Assert.That(reader.Encapsulation).IsSameReferenceAs(parent);
+        await Assert.That(parent.IdVersion).IsEqualTo(3);
+        await Assert.That(parent.IdReadDict[0]).IsEqualTo("Parent");
+    }
 }

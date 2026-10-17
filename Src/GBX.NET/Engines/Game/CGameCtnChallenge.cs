@@ -363,8 +363,11 @@ public partial class CGameCtnChallenge :
     [ZipData]
     public partial byte[]? EmbeddedZipData { get => embeddedZipData; set => embeddedZipData = value; }
 
-    private List<string>? textures;
-    private partial List<string>? Textures { get => textures; set => textures = value; }
+    private List<string>? embeddedItemModelsExternalDataRefs;
+    /// <summary>
+    /// Data references to dependencies of embedded item models that are stored outside the embedded ZIP.
+    /// </summary>
+    public partial List<string>? EmbeddedItemModelsExternalDataRefs { get => embeddedItemModelsExternalDataRefs; set => embeddedItemModelsExternalDataRefs = value; }
 
     private List<MacroblockInstance>? macroblockInstances;
     public partial List<MacroblockInstance>? MacroblockInstances { get => macroblockInstances; set => macroblockInstances = value; }
@@ -1805,7 +1808,7 @@ public partial class CGameCtnChallenge :
 
                 if (Version >= 1)
                 {
-                    n.Textures = r.ReadListString();
+                    n.EmbeddedItemModelsExternalDataRefs = r.ReadListString();
                 }
             });
         }
@@ -1904,7 +1907,7 @@ public partial class CGameCtnChallenge :
 
                 if (Version >= 1)
                 {
-                    w.WriteList(n.Textures);
+                    w.WriteList(n.EmbeddedItemModelsExternalDataRefs);
                 }
             });
         }

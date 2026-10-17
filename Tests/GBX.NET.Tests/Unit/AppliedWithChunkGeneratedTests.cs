@@ -60,7 +60,7 @@ public class AppliedWithChunkGeneratedTests
             (nameof(CGameCtnChallenge.BakedClipsAdditionalData), typeof(CGameCtnChallenge.Chunk03043048)),
             (nameof(CGameCtnChallenge.EmbeddedZipData), typeof(CGameCtnChallenge.Chunk03043054)),
             (nameof(CGameCtnChallenge.MacroblockInstances), typeof(CGameCtnChallenge.Chunk03043069)),
-            ("Textures", typeof(CGameCtnChallenge.Chunk03043054))
+            (nameof(CGameCtnChallenge.EmbeddedItemModelsExternalDataRefs), typeof(CGameCtnChallenge.Chunk03043054))
         };
 
         foreach (var (name, chunkType) in properties)
@@ -70,9 +70,9 @@ public class AppliedWithChunkGeneratedTests
                 .Contains(x => x.ChunkType == chunkType);
         }
 
-        var textures = typeof(CGameCtnChallenge).GetProperty("Textures", BindingFlags.NonPublic | BindingFlags.Instance)!
+        var externalDataRefs = typeof(CGameCtnChallenge).GetProperty(nameof(CGameCtnChallenge.EmbeddedItemModelsExternalDataRefs))!
             .GetCustomAttributes<AppliedWithChunkAttribute>().Single();
-        await Assert.That(textures.SinceVersion).IsEqualTo(1);
+        await Assert.That(externalDataRefs.SinceVersion).IsEqualTo(1);
     }
 
     [Test]

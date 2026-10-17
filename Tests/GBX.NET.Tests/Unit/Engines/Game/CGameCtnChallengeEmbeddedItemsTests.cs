@@ -20,6 +20,14 @@ public class CGameCtnChallengeEmbeddedItemsTests
         payload.Read(rw => chunk.Read(node, rw.Reader!));
 
         await Assert.That(node.ExpectedEmbeddedItemModels!).IsEquivalentTo(ExpectedItems(), CollectionOrdering.Matching);
+        if (version >= 1)
+        {
+            await Assert.That(node.EmbeddedItemModelsExternalDataRefs!).IsEquivalentTo(ExternalDataRefs(), CollectionOrdering.Matching);
+        }
+        else
+        {
+            await Assert.That(node.EmbeddedItemModelsExternalDataRefs).IsNull();
+        }
         await payload.AssertRoundTrip(rw => chunk.Write(node, rw.Writer!));
         await payload.AssertRoundTrip(rw => chunk.Write(node, rw.Writer!));
     }
@@ -194,12 +202,20 @@ public class CGameCtnChallengeEmbeddedItemsTests
             writer.WriteData(zipData);
             if (version >= 1)
             {
-                writer.WriteArray(new[] { "Texture.dds" });
+                writer.WriteArray(ExternalDataRefs());
             }
         });
         payload.Finish();
         return payload;
     }
+
+    private static string[] ExternalDataRefs() =>
+    [
+        "Materials\\Example.Material.Gbx",
+        "Models\\Příliš.Solid.Gbx",
+        "Materials\\Example.Material.Gbx",
+        ""
+    ];
 
     private static byte[] CreateZip()
     {

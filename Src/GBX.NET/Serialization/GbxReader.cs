@@ -1789,7 +1789,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         var size = ReadInt32();
         var startPos = BaseStream.Position;
 
-        using var _ = new Encapsulation(this);
+        using var _ = new Encapsulation(this, allowNested: true);
         action(this);
 
         var endPos = BaseStream.Position;

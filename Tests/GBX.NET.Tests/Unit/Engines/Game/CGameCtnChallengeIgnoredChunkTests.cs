@@ -55,22 +55,43 @@ public class CGameCtnChallengeIgnoredChunkTests
     [Arguments(0)]
     [Arguments(1)]
     [Arguments(2)]
-    public async Task ReadWrite_Chunk0304304D_ReadsDeprecatedArrays(int version)
+    public async Task ReadWrite_Chunk0304304D_ReadsTrafficArrays(int version)
     {
         var payload = Payload(w =>
         {
             w.Write(version);
             w.WriteEncapsulated(inner =>
             {
+                uint[] classIds = [0x090CF000, 0x0316E000, 0x090D0000, 0x090D2000];
                 for (var i = 0; i < 2 + Math.Min(version, 2); i++)
                 {
                     inner.Write(10);
                     inner.Write(1);
-                    WriteEmptyNode(inner, 0x01001000);
+                    WriteEmptyNode(inner, classIds[i]);
                 }
             });
         });
-        await RoundTrip(payload, new CGameCtnChallenge.Chunk0304304D());
+        var chunk = new CGameCtnChallenge.Chunk0304304D();
+        var node = await RoundTrip(payload, chunk);
+        await Assert.That(node.TrafficPathSplines![0]).IsTypeOf<CPlugSpline3D>();
+        await Assert.That(node.TrafficElemDescs![0]).IsTypeOf<CGameCtnChallengeTrafficElemDesc>();
+        if (version >= 1)
+        {
+            await Assert.That(node.TrafficPathSquares![0]).IsTypeOf<CPlugTrafficPathSquares>();
+        }
+        else
+        {
+            await Assert.That(node.TrafficPathSquares).IsNull();
+        }
+        if (version >= 2)
+        {
+            await Assert.That(node.TrafficZoneSquares![0]).IsTypeOf<CPlugTrafficZoneSquares>();
+        }
+        else
+        {
+            await Assert.That(node.TrafficZoneSquares).IsNull();
+        }
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.MP3 | GameVersion.TMT);
     }
 
     [Test]
@@ -164,20 +185,37 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
-    [Arguments(0)]
-    [Arguments(1)]
-    public async Task ReadWrite_Chunk0304305C_ReadsLegacyArraysOnlyInVersionZero(int version)
+    [Arguments(0, false)]
+    [Arguments(0, true)]
+    [Arguments(1, false)]
+    public async Task ReadWrite_Chunk0304305C_ReadsLegacyArraysOnlyInVersionZero(int version, bool empty)
     {
+        int[] first = empty ? [] : [0, -1, int.MinValue, int.MaxValue];
+        int[] second = empty ? [] : [123, -456];
         var payload = Payload(w =>
         {
             w.Write(version);
             if (version == 0)
             {
-                WriteTimes(w);
-                WriteTimes(w);
+                w.Write(first.Length);
+                foreach (var value in first) w.Write(value);
+                w.Write(second.Length);
+                foreach (var value in second) w.Write(value);
             }
         });
-        await RoundTrip(payload, new CGameCtnChallenge.Chunk0304305C());
+        var chunk = new CGameCtnChallenge.Chunk0304305C();
+        await RoundTrip(payload, chunk);
+        await Assert.That(chunk.Version).IsEqualTo(version);
+        if (version == 0)
+        {
+            await Assert.That(chunk.U01!).IsEquivalentTo(first, CollectionOrdering.Matching);
+            await Assert.That(chunk.U02!).IsEquivalentTo(second, CollectionOrdering.Matching);
+        }
+        else
+        {
+            await Assert.That(chunk.U01).IsNull();
+            await Assert.That(chunk.U02).IsNull();
+        }
     }
 
     [Test]
@@ -256,19 +294,59 @@ public class CGameCtnChallengeIgnoredChunkTests
     }
 
     [Test]
-    [Arguments(0)]
-    [Arguments(1)]
-    public async Task ReadWrite_Chunk03043061_PreservesTemporaryEditorData(int version)
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task ReadWrite_Chunk03043060_UpdatesGamepadEditorFlag(bool createdWithGamepadEditor)
     {
         var payload = Payload(w =>
         {
+            w.Write(0);
+            w.Write(createdWithGamepadEditor ? 1 : 0);
+        });
+        var node = new CGameCtnChallenge
+        {
+            CreatedWithSimpleEditor = true,
+            HasGhostBlocks = true,
+            CreatedWithGamepadEditor = !createdWithGamepadEditor
+        };
+        var chunk = new CGameCtnChallenge.Chunk03043060();
+        await RoundTrip(payload, chunk, node);
+        await Assert.That(node.CreatedWithGamepadEditor).IsEqualTo(createdWithGamepadEditor);
+        await Assert.That(node.CreatedWithSimpleEditor).IsTrue();
+        await Assert.That(node.HasGhostBlocks).IsTrue();
+        await Assert.That((node.Editor & CGameCtnChallenge.EditorMode.Gamepad) != 0).IsEqualTo(createdWithGamepadEditor);
+        await Assert.That(chunk.Version).IsEqualTo(0);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
+    }
+
+    [Test]
+    [Arguments(0, false)]
+    [Arguments(1, false)]
+    [Arguments(0, true)]
+    [Arguments(1, true)]
+    public async Task ReadWrite_Chunk03043061_PreservesSpectatorData(int version, bool empty)
+    {
+        int[] values = empty ? [] : [123, -1, int.MinValue];
+        byte[] data = empty ? [] : [5, 4, 3];
+        var payload = Payload(w =>
+        {
             w.Write(version);
-            w.Write(9);
-            WriteTimes(w);
-            w.WriteData([5, 4, 3]);
+            w.Write(empty ? 0 : 9);
+            w.Write(values.Length);
+            foreach (var value in values) w.Write(value);
+            w.WriteData(data);
             if (version >= 1) w.Write(17);
         });
-        await RoundTrip(payload, new CGameCtnChallenge.Chunk03043061());
+        var chunk = new CGameCtnChallenge.Chunk03043061(GameVersion.TM2020);
+        await Assert.That(chunk.Version).IsEqualTo(1);
+        var node = await RoundTrip(payload, chunk);
+        await Assert.That(node.Spectators).IsNotNull();
+        await Assert.That(node.Spectators!.U01).IsEqualTo(empty ? 0 : 9);
+        await Assert.That(node.Spectators.U02!.SequenceEqual(values)).IsTrue();
+        await Assert.That(node.Spectators.U03!.SequenceEqual(data)).IsTrue();
+        await Assert.That(node.Spectators.U04).IsEqualTo(version >= 1 ? 17 : 0);
+        await Assert.That(chunk.Version).IsEqualTo(version);
+        await Assert.That(chunk.GameVersion).IsEqualTo(GameVersion.TM2020);
     }
 
     [Test]
@@ -476,7 +554,7 @@ public class CGameCtnChallengeIgnoredChunkTests
         return stream.ToArray();
     }
 
-    private static async Task<CGameCtnChallenge> RoundTrip(byte[] payload, Chunk<CGameCtnChallenge> chunk)
+    private static async Task<CGameCtnChallenge> RoundTrip(byte[] payload, Chunk<CGameCtnChallenge> chunk, CGameCtnChallenge? node = null)
     {
         using var stream = new MemoryStream();
         stream.Write(payload);
@@ -484,7 +562,7 @@ public class CGameCtnChallengeIgnoredChunkTests
         stream.Position = 0;
         using var reader = new GbxReader(stream);
         using var rw = new GbxReaderWriter(reader);
-        var node = new CGameCtnChallenge();
+        node ??= new CGameCtnChallenge();
         chunk.ReadWrite(node, rw);
         await Assert.That(reader.ReadInt32()).IsEqualTo(0x12345678);
         var restoredPayload = Payload(w =>

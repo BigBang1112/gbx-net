@@ -1,0 +1,23 @@
+CPlugTrafficObjectParams 0x090D1000
+
+0x000 [TMT] // legacy traffic movement
+  float DefaultSpeed = 1f
+  int TrafficPathType
+
+0x001 [TMT.v6] // traffic movement
+  version
+  float DefaultSpeed = 1f
+  int TrafficPathType
+  int TrafficModel
+  v1+
+    iso4 BaseOffset = Iso4.Identity
+  v2=
+    int
+  v4+
+    int PointDelay (time)
+  v5+
+    float DefaultAcceleration // Retain the serialized value that native v5 overwrites after reading.
+  v4-
+    DefaultAcceleration = 30f
+  v6+
+    float DefaultDecceleration
