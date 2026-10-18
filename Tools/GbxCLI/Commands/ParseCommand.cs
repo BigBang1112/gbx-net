@@ -16,7 +16,7 @@ internal static class ParseCommand
             return await Cli.RunInteractiveAsync(output);
         }
 
-        await using var file = await ParsedFile.OpenAsync(arguments.InputPath, fullGbx: false);
+        await using var file = await ParsedFile.OpenAsync(arguments.InputPath, fullGbx: true);
         await file.WriteSummaryAsync(new CliConsole(output));
 
         return 0;

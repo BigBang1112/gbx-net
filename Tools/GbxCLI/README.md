@@ -8,6 +8,8 @@ Use `gbx parse "My Map.Map.Gbx"` for a noninteractive summary. The CLI checks fo
 
 `parse` detects the format from the file signature (`GBX` or `NadeoPak`), not the extension. Renamed files and files without an extension work too. Unsupported formats produce an error without trying a parser based on the filename.
 
+For Gbx files, `parse` reads the full node and prints sections for the header, body, external references, and node properties. The summary includes class and chunk IDs, versions, compression sizes, and nested values. Unset properties are counted instead of listed individually. Collections, nesting, long strings, and binary data have preview limits, with `gbx eval` available for further inspection. Stored node references show external paths without resolving them. Computed aliases that might load references are left for `eval`.
+
 ## C# evaluation
 
 Use `eval` to execute C# against a file. It parses the full Gbx, or the PAK metadata and file index, and evaluates against the root `Gbx` or `Pak` object. Expressions and statements are positional arguments after the file path. Supply several quoted arguments to run them in order in one session, including variable declarations. Standard .NET, LINQ, GBX.NET, and the current object's namespace are imported. Async expressions such as `await OpenGbxFileAsync(Files.Values.First())` work too, subject to the archive's encryption and file format support.
@@ -18,7 +20,7 @@ gbx eval "GameData.pak" "Files.Keys.Take(10).ToArray()"
 gbx eval "GameData.pak" "var files = Files.Values.Where(file => file.IsCompressed).ToArray();" "files.Length"
 ```
 
-Unlike `parse`, `eval` prints only evaluation results, without a file summary or expression echo. Result listings show up to 50 members or items, so use a narrower query for larger results. A null result, including a statement without a return value, prints `(null)`. Compilation or runtime errors stop noninteractive evaluation, go to standard error, and return exit code `1`. The old `parse -e` and `parse --eval` options are no longer supported.
+Unlike `parse`, `eval` prints only evaluation results, without a file summary or expression echo. Each response starts with `Result:` and uses the same indented properties, chunk details, and binary previews as `parse`. Previews show up to 10 items per collection (100 chunks), 4 nesting levels, 240 characters per value, and 1000 detail lines per response. Use a narrower query for larger results. A null result, including a statement without a return value, prints `Result: (null)`. Compilation or runtime errors stop noninteractive evaluation, go to standard error, and return exit code `1`. The old `parse -e` and `parse --eval` options are no longer supported.
 
 `--interactive` and `-i` are reserved for a future C# REPL. They currently print the interactive placeholder without evaluating any expressions.
 

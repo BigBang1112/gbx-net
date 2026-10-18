@@ -29,11 +29,15 @@ public class EvalCommandTests
             using var error = new StringWriter();
             var query = isPak ? "Files.Values.Select(file => file.Name).ToArray()" : "Node.Chunks.Count";
 
-            var exitCode = await Cli.RunAsync(["eval", inputPath, "var number = 42;", "number", query], output, error);
+            var exitCode = await Cli.RunAsync(["eval", inputPath, "var number = 42;", "number", query,
+                "new { Detail = new { Name = \"nested [red]\", Value = 42 }, Data = new byte[] { 1, 2, 3 } }"], output, error);
 
             await Assert.That(exitCode).IsEqualTo(0);
-            await Assert.That(output.ToString()).Contains($"(null){Environment.NewLine}42{Environment.NewLine}");
-            await Assert.That(output.ToString()).Contains(isPak ? "[0]: sample [blue].txt" : $"42{Environment.NewLine}0{Environment.NewLine}");
+            await Assert.That(output.ToString()).Contains($"Result: (null){Environment.NewLine}Result: 42{Environment.NewLine}");
+            await Assert.That(output.ToString()).Contains(isPak ? "[0]: sample [blue].txt" : $"Result: 42{Environment.NewLine}Result: 0{Environment.NewLine}");
+            await Assert.That(output.ToString()).Contains("    Name: nested [red]");
+            await Assert.That(output.ToString()).Contains("    Value: 42");
+            await Assert.That(output.ToString()).Contains("  Data: 3 bytes (hex): 010203");
             await Assert.That(output.ToString().Contains("File:")).IsFalse();
             await Assert.That(output.ToString().Contains("> ")).IsFalse();
             await Assert.That(output.ToString().Contains('\u001b')).IsFalse();

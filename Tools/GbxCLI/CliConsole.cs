@@ -4,8 +4,6 @@ namespace GbxCLI;
 
 internal sealed class CliConsole
 {
-    private const int resultEntryLimit = 50;
-
     private readonly IAnsiConsole console;
 
     public CliConsole(TextWriter writer)
@@ -48,26 +46,5 @@ internal sealed class CliConsole
         return Task.CompletedTask;
     }
 
-    public async Task WriteResultAsync(object? value)
-    {
-        await WriteLineAsync(Markup.Escape(value?.ToString() ?? "(null)"));
-
-        if (value is null)
-        {
-            return;
-        }
-
-        var entries = FileInspector.GetEntries(value).Take(resultEntryLimit + 1).ToArray();
-
-        foreach (var entry in entries.Take(resultEntryLimit))
-        {
-            var text = entry.Error is null ? entry.Value?.ToString() ?? "(null)" : $"(error: {entry.Error})";
-            await WriteLineAsync(Markup.Escape($"  {entry.Name}: {text}"));
-        }
-
-        if (entries.Length > resultEntryLimit)
-        {
-            await WriteLineAsync("[grey]  More members available through a narrower query.[/]");
-        }
-    }
+    public Task WriteResultAsync(object? value) => new ConsoleValueWriter(this).WriteResultAsync(value);
 }

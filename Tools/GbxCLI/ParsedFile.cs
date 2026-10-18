@@ -58,10 +58,8 @@ internal sealed class ParsedFile : IAsyncDisposable
 
         if (Value is Gbx gbx)
         {
-            await console.WriteLineAsync($"[grey]Header:[/] {Markup.Escape($"{gbx.Header}")}");
-            await console.WriteLineAsync($"[grey]Version:[/] {gbx.Header.Basic.Version}");
-            await console.WriteLineAsync($"[grey]Format:[/] {gbx.Header.Basic.Format}");
-            await console.WriteLineAsync($"[grey]Body compression:[/] {gbx.Header.Basic.CompressionOfBody}");
+            await console.WriteLineAsync($"[grey]File size:[/] {stream.Length:N0} bytes");
+            await new GbxSummary(console).WriteAsync(gbx);
         }
         else if (Value is Pak pak)
         {

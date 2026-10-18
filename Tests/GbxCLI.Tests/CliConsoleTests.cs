@@ -1,9 +1,37 @@
 using Spectre.Console;
 
+using GBX.NET;
+using GBX.NET.Components;
+using GBX.NET.Engines.MwFoundations;
+
 namespace GbxCLI.Tests;
 
 public class CliConsoleTests
 {
+    [Test]
+    public async Task WriteResult_ShowsStoredReferencesWithoutLoadingExternalNodes()
+    {
+        var table = new GbxRefTable();
+        var calls = 0;
+        table.ExternalNodes["external [red].Gbx"] = () =>
+        {
+            calls++;
+            throw new InvalidOperationException("Must not load");
+        };
+        var references = new NodeRefList<CMwNod>();
+        references.Add(new NodeRef<CMwNod>
+        {
+            Descriptor = table.CreateFile("external [red].Gbx")
+        });
+        using var output = new StringWriter();
+
+        await new CliConsole(output).WriteResultAsync(references);
+
+        await Assert.That(calls).IsEqualTo(0);
+        await Assert.That(output.ToString()).Contains("Result: 1 items");
+        await Assert.That(output.ToString()).Contains("  [0]: ExternalFile, Unresolved: external [red].Gbx");
+    }
+
     [Test]
     [Arguments(false)]
     [Arguments(true)]
@@ -70,9 +98,10 @@ public class CliConsoleTests
 
         await Assert.That(output.ToString()).Contains("(null)");
         await Assert.That(output.ToString()).Contains("literal [red] text");
-        await Assert.That(output.ToString()).Contains("[49]: 49");
-        await Assert.That(output.ToString().Contains("[50]: 50")).IsFalse();
-        await Assert.That(output.ToString()).Contains("More members available");
+        await Assert.That(output.ToString()).Contains("Result: (null)");
+        await Assert.That(output.ToString()).Contains("[9]: 9");
+        await Assert.That(output.ToString().Contains("[10]: 10")).IsFalse();
+        await Assert.That(output.ToString()).Contains("More items (showing first 10)");
         await Assert.That(output.ToString().Contains('\u001b')).IsFalse();
     }
 

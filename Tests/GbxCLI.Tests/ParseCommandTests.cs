@@ -1,4 +1,5 @@
 using GBX.NET;
+using GBX.NET.Engines.Game;
 using GBX.NET.Engines.MwFoundations;
 using System.Text;
 
@@ -6,6 +7,49 @@ namespace GbxCLI.Tests;
 
 public class ParseCommandTests
 {
+    [Test]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task Parse_PrintsFullBodyNodeAndChunkDetails(bool compressed)
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-summary-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "body [red].Gbx");
+            var node = new CGameCtnMediaBlockTime
+            {
+                Keys = [new() { Time = new(1.5f), TimeValue = 42.5f, Tangent = 0.25f }]
+            };
+            node.CreateChunk<CGameCtnMediaBlockTime.Chunk03085000>();
+            Gbx.LZO = new GBX.NET.LZO.Lzo();
+            new Gbx<CGameCtnMediaBlockTime>(node)
+            {
+                BodyCompression = compressed ? GbxCompression.Compressed : GbxCompression.Uncompressed
+            }.Save(path);
+
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+            var exitCode = await Cli.RunAsync(["parse", path], output, error);
+            var text = output.ToString();
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(text).Contains($"File: {path}");
+            await Assert.That(text).Contains("Class ID: 0x03085000");
+            await Assert.That(text).Contains("Parse status: Complete");
+            await Assert.That(text).Contains("Node: CGameCtnMediaBlockTime");
+            await Assert.That(text).Contains("0x03085000 (Chunk03085000)");
+            await Assert.That(text).Contains("TimeValue: 42.5");
+            await Assert.That(text).Contains("Tangent: 0.25");
+            await Assert.That(text.Contains('\u001b')).IsFalse();
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
     [Test]
     [Arguments("archive [green].pak")]
     [Arguments("renamed.Gbx")]
