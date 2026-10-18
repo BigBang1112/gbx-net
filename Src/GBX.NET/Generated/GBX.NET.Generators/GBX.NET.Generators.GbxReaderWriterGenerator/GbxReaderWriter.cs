@@ -119,18 +119,18 @@ partial interface IGbxReaderWriter
     void BigInt([NotNullIfNotNull(nameof(value))] ref System.Numerics.BigInteger? value, int byteLength, System.Numerics.BigInteger defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
-    GBX.NET.Int128 Int128(GBX.NET.Int128 value = default);
+    System.Int128 Int128(System.Int128 value = default);
     [return: NotNullIfNotNull(nameof(value))]
-    GBX.NET.Int128? Int128(GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default);
-    void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128 value);
-    void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default);
+    System.Int128? Int128(System.Int128? value, System.Int128 defaultValue = default);
+    void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128 value);
+    void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128? value, System.Int128 defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
-    GBX.NET.UInt128 UInt128(GBX.NET.UInt128 value = default);
+    System.UInt128 UInt128(System.UInt128 value = default);
     [return: NotNullIfNotNull(nameof(value))]
-    GBX.NET.UInt128? UInt128(GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default);
-    void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128 value);
-    void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default);
+    System.UInt128? UInt128(System.UInt128? value, System.UInt128 defaultValue = default);
+    void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128 value);
+    void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128? value, System.UInt128 defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.UInt256 UInt256(GBX.NET.UInt256 value = default);
@@ -259,6 +259,13 @@ partial interface IGbxReaderWriter
     void Color([NotNullIfNotNull(nameof(value))] ref GBX.NET.Color? value, GBX.NET.Color defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.Iso3 Iso3(GBX.NET.Iso3 value = default);
+    [return: NotNullIfNotNull(nameof(value))]
+    GBX.NET.Iso3? Iso3(GBX.NET.Iso3? value, GBX.NET.Iso3 defaultValue = default);
+    void Iso3([NotNullIfNotNull(nameof(value))] ref GBX.NET.Iso3 value);
+    void Iso3([NotNullIfNotNull(nameof(value))] ref GBX.NET.Iso3? value, GBX.NET.Iso3 defaultValue = default);
+
+    [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.Iso4 Iso4(GBX.NET.Iso4 value = default);
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.Iso4? Iso4(GBX.NET.Iso4? value, GBX.NET.Iso4 defaultValue = default);
@@ -279,7 +286,7 @@ partial interface IGbxReaderWriter
     void Mat4([NotNullIfNotNull(nameof(value))] ref GBX.NET.Mat4 value);
     void Mat4([NotNullIfNotNull(nameof(value))] ref GBX.NET.Mat4? value, GBX.NET.Mat4 defaultValue = default);
 
-    [return: NotNullIfNlue))]
+    [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.Quat Quat(GBX.NET.Quat value = default);
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.Quat? Quat(GBX.NET.Quat? value, GBX.NET.Quat defaultValue = default);
@@ -588,7 +595,7 @@ partial interface IGbxReaderWriter
     void ArrayId([NotNullIfNotNull(nameof(value))] ref string[]? value);
 
     [return: NotNullIfNotNull(nameof(value))]
-    string[]? ArrayId_deprec(string[]? value = default);alue = default);
+    string[]? ArrayId_deprec(string[]? value = default);
     void ArrayId_deprec([NotNullIfNotNull(nameof(value))] ref string[]? value);
 
     [return: NotNullIfNotNull(nameof(value))]
@@ -631,8 +638,8 @@ partial interface IGbxReaderWriter
     long? Int64Nullable(long? value = default);
     void Int64Nullable(ref long? value);
 
-    GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default);
-    void Int128Nullable(ref GBX.NET.Int128? value);
+    System.Int128? Int128Nullable(System.Int128? value = default);
+    void Int128Nullable(ref System.Int128? value);
 
 }
 
@@ -894,7 +901,8 @@ partial class GbxReaderWriter
         return value;
     }
 
-    [return: NotNullIfNotNull   public uint? DataUInt32(uint? value, uint defaultValue = default)
+    [return: NotNullIfNotNull(nameof(value))]
+    public uint? DataUInt32(uint? value, uint defaultValue = default)
     {
         if (Reader is not null) value = Reader.ReadDataUInt32();
         Writer?.WriteDataUInt32(value.GetValueOrDefault(defaultValue));
@@ -1364,6 +1372,26 @@ partial class GbxReaderWriter
     public void Color([NotNullIfNotNull(nameof(value))] ref GBX.NET.Color value) => value = Color(value);
 
     public void Color([NotNullIfNotNull(nameof(value))] ref GBX.NET.Color? value, GBX.NET.Color defaultValue = default) => value = Color(value, defaultValue);
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.Iso3 Iso3(GBX.NET.Iso3 value = default)
+    {
+        if (Reader is not null) value = Reader.ReadIso3();
+        Writer?.Write(value);
+        return value;
+    }
+
+    [return: NotNullIfNotNull(nameof(value))]
+    public GBX.NET.Iso3? Iso3(GBX.NET.Iso3? value, GBX.NET.Iso3 defaultValue = default)
+    {
+        if (Reader is not null) value = Reader.ReadIso3();
+        Writer?.Write(value.GetValueOrDefault(defaultValue));
+        return value;
+    }
+
+    public void Iso3([NotNullIfNotNull(nameof(value))] ref GBX.NET.Iso3 value) => value = Iso3(value);
+
+    public void Iso3([NotNullIfNotNull(nameof(value))] ref GBX.NET.Iso3? value, GBX.NET.Iso3 defaultValue = default) => value = Iso3(value, defaultValue);
 
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.Iso4 Iso4(GBX.NET.Iso4 value = default)
@@ -2084,7 +2112,6 @@ partial class GbxReaderWriter
     public void Array<T>([NotNullIfNotNull(nameof(value))] ref T[]? value, int length, bool lengthInBytes = false) where T : struct => value = Array(value, length, lengthInBytes);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public T[]? A(nameof(value))]
     public T[]? Array<T>(T[]? value, bool lengthInBytes = false) where T : struct
     {
         if (Reader is not null) value = Reader.ReadArray<T>(lengthInBytes);
@@ -2424,13 +2451,13 @@ partial class GbxReaderWriter
 
     public void Int64Nullable(ref long? value) => value = Int64Nullable(value);
 
-    public GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default)
+    public System.Int128? Int128Nullable(System.Int128? value = default)
     {
         if (Reader is not null) value = Reader.ReadInt128Nullable();
         Writer?.WriteInt128Nullable(value);
         return value;
     }
 
-    public void Int128Nullable(ref GBX.NET.Int128? value) => value = Int128Nullable(value);
+    public void Int128Nullable(ref System.Int128? value) => value = Int128Nullable(value);
 
 }

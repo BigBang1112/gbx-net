@@ -9,6 +9,56 @@ namespace GBX.NET.Generators.Tests;
 public class GenerationTests
 {
     [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task Generate_Iso3_UsesValueSerializationForNullableAndRequiredTransforms(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET
+            {
+                public readonly record struct Iso3(float XX, float XY, float YX, float YY, float TX, float TY);
+            }
+            namespace GBX.NET.Serialization
+            {
+                public partial class GbxReader
+                {
+                    public GBX.NET.Iso3 ReadIso3() => default;
+                }
+                public partial class GbxWriter
+                {
+                    public void Write(GBX.NET.Iso3 value) { }
+                }
+                public partial class GbxReaderWriter
+                {
+                    public void Iso3(ref GBX.NET.Iso3 value) { }
+                    public void Iso3(ref GBX.NET.Iso3? value) { }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                    public partial class Chunk03043001 { }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              iso3 Required
+              iso3? Optional
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = Engine(result).ToString();
+        await Assert.That(generated).Contains("public Iso3 Required");
+        await Assert.That(generated).Contains("public Iso3? Optional");
+        await Assert.That(generated).Contains(structureKind == 0 ? "rw.Iso3(ref n.@required)" : "r.ReadIso3()");
+        await Assert.That(generated).DoesNotContain("ReadableWritable<Iso3>");
+    }
+
+    [Test]
     [Arguments(false, 0)]
     [Arguments(false, 1)]
     [Arguments(true, 0)]
@@ -3030,6 +3080,41 @@ public class GenerationTests
         await Assert.That(generated).Contains("n.Name = rw.Int32(n.Name)");
         await Assert.That(generated).DoesNotContain("int Name");
         await Assert.That(generated).DoesNotContain("name = context.Clone");
+    }
+
+    [Test]
+    [Arguments(0)]
+    [Arguments(1)]
+    public async Task Generate_InheritedNodeReference_UsesTheBaseReferenceView(int structureKind)
+    {
+        var (result, compilation) = Run($$"""
+            namespace GBX.NET.Engines.Game;
+            public partial class Derived
+            {
+                [GBX.NET.Attributes.ChunkGenerationOptions(StructureKind = {{structureKind}})]
+                public partial class Chunk03044001 { }
+            }
+            """, true,
+        [
+            new Text("Engines/Game/Base.chunkl", """
+                Base 0x03043000
+                0x001
+                  CMwNod Target
+                """),
+            new Text("Engines/Game/Derived.chunkl", """
+                Derived 0x03044000
+                - inherits: Base
+                0x001
+                  CMwNod Target (inherited)
+                """)
+        ]);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var generated = result.GeneratedSources.Single(x => x.HintName == "Engines/Game/Derived.g.cs").SourceText.ToString();
+        await Assert.That(generated).Contains(structureKind == 0 ? "rw.NodeRef(n.References.Target)" : "r.ReadNodeRef(n.References.Target)");
+        if (structureKind == 1) await Assert.That(generated).Contains("w.WriteNodeRef(n.References.Target)");
+        await Assert.That(generated).DoesNotContain("targetRef");
     }
 
     [Test]

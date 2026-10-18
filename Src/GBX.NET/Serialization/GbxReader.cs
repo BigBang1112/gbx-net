@@ -60,6 +60,7 @@ public partial interface IGbxReader : IDisposable
     BoxAligned ReadBoxAligned();
     BoxInt3 ReadBoxInt3();
     Color ReadColor();
+    Iso3 ReadIso3();
     Iso4 ReadIso4();
     Mat3 ReadMat3();
     Mat4 ReadMat4();
@@ -616,6 +617,16 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public Color ReadColor()
     {
         return new(ReadSingle(), ReadSingle(), ReadSingle(), ReadSingle());
+    }
+
+    public Iso3 ReadIso3()
+    {
+        return new Iso3(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        TX: ReadSingle(),
+                        TY: ReadSingle());
     }
 
     public Iso4 ReadIso4()

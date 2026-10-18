@@ -29,6 +29,7 @@ internal static class WireTypes
         ["byte3"] = "Byte3",
         ["mat3"] = "Mat3",
         ["mat4"] = "Mat4",
+        ["iso3"] = "Iso3",
         ["iso4"] = "Iso4",
         ["boxaligned"] = "BoxAligned",
         ["box"] = "BoxAligned",
