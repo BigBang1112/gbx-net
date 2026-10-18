@@ -1431,7 +1431,6 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
 #else
                 Write(MemoryMarshal.Cast<int, byte>(value).ToArray());
 #endif
-                WriteArray(value);
                 break;
             case >= byte.MaxValue:
 #if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
