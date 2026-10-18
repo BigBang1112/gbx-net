@@ -38,7 +38,8 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Ident itemModel = Ident.Empty;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    [AppliedWithChunk<Chunk03101000>]
     [AppliedWithChunk<Chunk03101002>]
     public Ident ItemModel
     {
@@ -46,17 +47,19 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.itemModel = value;
     }
 
-    private Vec3 yawPitchRoll;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
-    [AppliedWithChunk<Chunk03101002>]
-    public Vec3 YawPitchRoll
+    private Direction dir;
+    /// <remarks>Applied with: 0x000, 0x002 v0-1 body chunks</remarks>
+    [AppliedWithChunk<Chunk03101000>]
+    [AppliedWithChunk<Chunk03101002>(0, 1)]
+    public Direction Dir
     {
-        get => this.yawPitchRoll;
-        set => this.yawPitchRoll = value;
+        get => this.dir;
+        set => this.dir = value;
     }
 
     private Byte3 blockUnitCoord;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    [AppliedWithChunk<Chunk03101000>]
     [AppliedWithChunk<Chunk03101002>]
     public Byte3 BlockUnitCoord
     {
@@ -65,12 +68,31 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     private string? anchorTreeId;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    [AppliedWithChunk<Chunk03101001>]
     [AppliedWithChunk<Chunk03101002>]
     public string? AnchorTreeId
     {
         get => this.anchorTreeId;
         set => this.anchorTreeId = value;
+    }
+
+    private byte additionalDir;
+    /// <remarks>Applied with: 0x002 v1-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk03101002>(1, 1)]
+    public byte AdditionalDir
+    {
+        get => this.additionalDir;
+        set => this.additionalDir = value;
+    }
+
+    private Vec3 yawPitchRoll;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03101002>(2)]
+    public Vec3 YawPitchRoll
+    {
+        get => this.yawPitchRoll;
+        set => this.yawPitchRoll = value;
     }
 
     private Vec3 absolutePositionInMap;
@@ -91,6 +113,15 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref waypointSpecialPropertyRef, value);
     }
 
+    private int pivotIndex = -1;
+    /// <remarks>Applied with: 0x002 v3-4 body chunk</remarks>
+    [AppliedWithChunk<Chunk03101002>(3, 4)]
+    public int PivotIndex
+    {
+        get => this.pivotIndex;
+        set => this.pivotIndex = value;
+    }
+
     private short flags;
     /// <remarks>Applied with: 0x002 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(4)]
@@ -109,7 +140,7 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.pivotPosition = value;
     }
 
-    private float scale;
+    private float scale = 1;
     /// <remarks>Applied with: 0x002 v6+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(6)]
     public float Scale
@@ -118,13 +149,44 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         set => this.scale = value;
     }
 
-    private PackDesc? packDesc;
     /// <remarks>Applied with: 0x002 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk03101002>(7)]
-    public PackDesc? PackDesc
+    public partial PackDesc? PackDesc { get; set; }
+
+    private BoxAligned boundingBox = (0, 0, 0, -1, -1, -1);
+    /// <remarks>Applied with: 0x002 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03101002>(8)]
+    public BoxAligned BoundingBox
     {
-        get => this.packDesc;
-        set => this.packDesc = value;
+        get => this.boundingBox;
+        set => this.boundingBox = value;
+    }
+
+    private int botPathIndex = -1;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk03101004>]
+    public int BotPathIndex
+    {
+        get => this.botPathIndex;
+        set => this.botPathIndex = value;
+    }
+
+    private byte scriptTraitsVersion = 4;
+    /// <remarks>Applied with: 0x005 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03101005>(1)]
+    public byte ScriptTraitsVersion
+    {
+        get => this.scriptTraitsVersion;
+        set => this.scriptTraitsVersion = value;
+    }
+
+    private ScriptParameter[]? scriptParameters;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk03101005>]
+    public ScriptParameter[]? ScriptParameters
+    {
+        get => this.scriptParameters;
+        set => this.scriptParameters = value;
     }
 
     public NodeRefView References => new(this);
@@ -145,15 +207,22 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnAnchoredObject)clone).itemModel = context.Clone(this.itemModel)!;
-        ((CGameCtnAnchoredObject)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
+        ((CGameCtnAnchoredObject)clone).dir = context.Clone(this.dir)!;
         ((CGameCtnAnchoredObject)clone).blockUnitCoord = context.Clone(this.blockUnitCoord)!;
         ((CGameCtnAnchoredObject)clone).anchorTreeId = context.Clone(this.anchorTreeId)!;
+        ((CGameCtnAnchoredObject)clone).additionalDir = context.Clone(this.additionalDir)!;
+        ((CGameCtnAnchoredObject)clone).yawPitchRoll = context.Clone(this.yawPitchRoll)!;
         ((CGameCtnAnchoredObject)clone).absolutePositionInMap = context.Clone(this.absolutePositionInMap)!;
         ((CGameCtnAnchoredObject)clone).waypointSpecialPropertyRef = context.Clone(this.waypointSpecialPropertyRef)!;
+        ((CGameCtnAnchoredObject)clone).pivotIndex = context.Clone(this.pivotIndex)!;
         ((CGameCtnAnchoredObject)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnAnchoredObject)clone).pivotPosition = context.Clone(this.pivotPosition)!;
         ((CGameCtnAnchoredObject)clone).scale = context.Clone(this.scale)!;
-        ((CGameCtnAnchoredObject)clone).packDesc = context.Clone(this.packDesc)!;
+        ((CGameCtnAnchoredObject)clone).boundingBox = context.Clone(this.boundingBox)!;
+        ((CGameCtnAnchoredObject)clone).botPathIndex = context.Clone(this.botPathIndex)!;
+        ((CGameCtnAnchoredObject)clone).scriptTraitsVersion = context.Clone(this.scriptTraitsVersion)!;
+        ((CGameCtnAnchoredObject)clone).scriptParameters = context.CloneArray(this.scriptParameters)!;
+        ((CGameCtnAnchoredObject)clone).packDescValue = context.Clone(this.packDescValue)!;
         ((CGameCtnAnchoredObject)clone).SnappedOnBlock = context.Clone(this.SnappedOnBlock)!;
         ((CGameCtnAnchoredObject)clone).SnappedOnItem = context.Clone(this.SnappedOnItem)!;
         ((CGameCtnAnchoredObject)clone).PlacedOnItem = context.Clone(this.PlacedOnItem)!;
@@ -170,18 +239,93 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnAnchoredObject 0x002 chunk
+    /// CGameCtnAnchoredObject 0x000 chunk (Legacy item placement)
     /// </summary>
-    [Chunk(0x03101002)]
+    [Chunk(0x03101000, "Legacy item placement")]
+    public partial class Chunk03101000 : Chunk<CGameCtnAnchoredObject>
+    {
+        public override uint Id => 0x03101000;
+        public byte U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03101000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
+        {
+            rw.Ident(ref n.itemModel);
+            rw.EnumByte<Direction>(ref n.dir);
+            if (rw.Reader is not null)
+            {
+                n.AdditionalDir = 0;
+            }
+
+            switch (n.Dir)
+            {
+                case Direction.North:
+                    if (rw.Reader is not null)
+                    {
+                        n.YawPitchRoll = (0, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                    }
+                    break;
+                case Direction.East:
+                    if (rw.Reader is not null)
+                    {
+                        n.YawPitchRoll = (-1.5707964f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                    }
+                    break;
+                case Direction.South:
+                    if (rw.Reader is not null)
+                    {
+                        n.YawPitchRoll = (-3.1415927f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                    }
+                    break;
+                case Direction.West:
+                    if (rw.Reader is not null)
+                    {
+                        n.YawPitchRoll = (1.5707964f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                    }
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+
+            rw.Byte3(ref n.blockUnitCoord);
+            rw.Byte(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnAnchoredObject 0x001 chunk (AnchorTreeId)
+    /// </summary>
+    [Chunk(0x03101001, "AnchorTreeId")]
+    public partial class Chunk03101001 : Chunk<CGameCtnAnchoredObject>
+    {
+        public override uint Id => 0x03101001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
+        {
+            rw.Id(ref n.anchorTreeId);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnAnchoredObject 0x002 chunk (Item placement)
+    /// </summary>
+    [Chunk(0x03101002, "Item placement")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 5, 6, 7, 8)]
     public partial class Chunk03101002 : Chunk<CGameCtnAnchoredObject>, IVersionable
     {
         public override uint Id => 0x03101002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01;
-        public Vec3? U02;
-        public Vec3? U03;
 
         public Chunk03101002() : this(GameVersion.Unspecified)
         {
@@ -211,9 +355,6 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03101002)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03101002)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk03101002)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk03101002)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
@@ -225,15 +366,71 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
             }
 
             rw.Ident(ref n.itemModel);
-            rw.Vec3(ref n.yawPitchRoll);
+
+            if (Version <= 1)
+            {
+                rw.EnumByte<Direction>(ref n.dir);
+
+                if (Version == 1)
+                {
+                    rw.Byte(ref n.additionalDir);
+                }
+
+                if (Version == 0)
+                {
+                    if (rw.Reader is not null)
+                    {
+                        n.AdditionalDir = 0;
+                    }
+                }
+
+                switch (n.Dir)
+                {
+                    case Direction.North:
+                        if (rw.Reader is not null)
+                        {
+                            n.YawPitchRoll = (n.AdditionalDir* 0.2617994f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                        }
+                        break;
+                    case Direction.East:
+                        if (rw.Reader is not null)
+                        {
+                            n.YawPitchRoll = (-1.5707964f + n.AdditionalDir* 0.2617994f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                        }
+                        break;
+                    case Direction.South:
+                        if (rw.Reader is not null)
+                        {
+                            n.YawPitchRoll = (-3.1415927f + n.AdditionalDir* 0.2617994f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                        }
+                        break;
+                    case Direction.West:
+                        if (rw.Reader is not null)
+                        {
+                            n.YawPitchRoll = (1.5707964f + n.AdditionalDir* 0.2617994f, n.YawPitchRoll.Y, n.YawPitchRoll.Z);
+                        }
+                        break;
+                    default:
+                        throw new NotSupportedException();
+                }
+            }
+
+            if (Version >= 2)
+            {
+                rw.Vec3(ref n.yawPitchRoll);
+            }
+
             rw.Byte3(ref n.blockUnitCoord);
             rw.Id(ref n.anchorTreeId);
             rw.Vec3(ref n.absolutePositionInMap);
             rw.NodeRef(ref n.waypointSpecialPropertyRef);
 
-            if (Version <= 4)
+            if (Version >= 3)
             {
-                rw.Int32(ref U01);
+                if (Version <= 4)
+                {
+                    rw.Int32(ref n.pivotIndex);
+                }
             }
 
             if (Version >= 4)
@@ -243,47 +440,58 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
                 if (Version >= 5)
                 {
                     rw.Vec3(ref n.pivotPosition);
+                }
 
-                    if (Version >= 6)
+                if (Version >= 6)
+                {
+                    rw.Single(ref n.scale);
+                }
+
+                if (Version >= 7)
+                {
+                    if ((n.Flags& 4) != 0)
                     {
-                        rw.Single(ref n.scale);
-
-                        if (Version >= 7)
-                        {
-                            if ((n.Flags& 4) != 0)
-                            {
-                                rw.PackDesc(ref n.packDesc);
-                            }
-
-                            if (Version >= 8)
-                            {
-                                rw.Vec3(ref U02);
-                                rw.Vec3(ref U03);
-                            }
-                        }
+                        n.PackDesc = rw.PackDesc(n.PackDesc);
                     }
+                }
+
+                if (Version >= 8)
+                {
+                    rw.BoxAligned(ref n.boundingBox);
                 }
             }
         }
     }
 
     /// <summary>
-    /// CGameCtnAnchoredObject 0x004 skippable chunk
+    /// CGameCtnAnchoredObject 0x003 skippable chunk (legacy script metadata)
     /// </summary>
-    [Chunk(0x03101004)]
+    [Chunk(0x03101003, "legacy script metadata")]
+    public partial class Chunk03101003 : SkippableChunk<CGameCtnAnchoredObject>
+    {
+        public override uint Id => 0x03101003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnAnchoredObject 0x004 skippable chunk (BotPathIndex)
+    /// </summary>
+    [Chunk(0x03101004, "BotPathIndex")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>, IVersionable
     {
         public override uint Id => 0x03101004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public int U01 = -1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk03101004)clone).Version = context.Clone(this.Version)!;
-            ((Chunk03101004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
@@ -294,24 +502,89 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
+            rw.Int32(ref n.botPathIndex);
         }
     }
 
     /// <summary>
-    /// CGameCtnAnchoredObject 0x005 skippable chunk
+    /// CGameCtnAnchoredObject 0x005 skippable chunk (ScriptParameters)
     /// </summary>
-    [Chunk(0x03101005)]
-    [ChunkGameVersion(GameVersion.TM2020)]
-    public partial class Chunk03101005 : SkippableChunk<CGameCtnAnchoredObject>
+    [Chunk(0x03101005, "ScriptParameters")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk03101005 : SkippableChunk<CGameCtnAnchoredObject>, IVersionable
     {
         public override uint Id => 0x03101005;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk03101005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk03101005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk03101005)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameCtnAnchoredObject n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version >= 1)
+            {
+                rw.Byte(ref n.scriptTraitsVersion);
+            }
+
+            rw.ArrayReadableWritable<ScriptParameter>(ref n.scriptParameters!, version: Version>= 1 ? n.ScriptTraitsVersion: - 1);
+        }
+    }
+
+    public partial class ScriptParameter : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ScriptParameter)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ScriptParameter)clone).name = context.Clone(this.name)!;
+            ((ScriptParameter)clone).Value = context.Clone(this.Value)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 
@@ -329,7 +602,10 @@ public partial class CGameCtnAnchoredObject : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x03101000 => new Chunk03101000(),
+        0x03101001 => new Chunk03101001(),
         0x03101002 => new Chunk03101002(),
+        0x03101003 => new Chunk03101003(),
         0x03101004 => new Chunk03101004(),
         0x03101005 => new Chunk03101005(),
         _ => base.NewChunk(chunkId),
