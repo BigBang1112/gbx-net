@@ -151,6 +151,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.noPillarBelowIndex = value;
     }
 
+    private ushort flags;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B004>]
+    public ushort Flags
+    {
+        get => this.flags;
+        set => this.flags = value;
+    }
+
     private NodeRefList<CGameCtnBlockInfoMobil>[]? mobils;
     /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B005>]
@@ -158,6 +167,24 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     {
         get => mobils;
         set => mobils = value;
+    }
+
+    private NodeRef<CSceneMobil>? helperMobilRef;
+    /// <remarks>Applied with: 0x005 v0-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B005>(0, 1)]
+    public CSceneMobil? HelperMobil
+    {
+        get => helperMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref helperMobilRef, value);
+    }
+
+    private NodeRef<CSceneMobil>? facultativeHelperMobilRef;
+    /// <remarks>Applied with: 0x005 v0-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B005>(0, 1)]
+    public CSceneMobil? FacultativeHelperMobil
+    {
+        get => facultativeHelperMobilRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref facultativeHelperMobilRef, value);
     }
 
     private NodeRef<CPlugSolid>? helperSolidFidRef;
@@ -178,27 +205,54 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref facultativeHelperSolidFidRef, value);
     }
 
-    private NodeRef<CMwNod>? screenInteractionTriggerSolidRef;
+    private NodeRef<CPlugPrefab>? helperPrefabFidRef;
+    /// <remarks>Applied with: 0x005 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B005>(3)]
+    public CPlugPrefab? HelperPrefabFid
+    {
+        get => helperPrefabFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref helperPrefabFidRef, value);
+    }
+
+    private NodeRef<CPlugSolid>? screenInteractionTriggerSolidRef;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>]
-    public CMwNod? ScreenInteractionTriggerSolid
+    public CPlugSolid? ScreenInteractionTriggerSolid
     {
         get => screenInteractionTriggerSolidRef?.Resolve();
         set => NodeRef.SetEmbedded(ref screenInteractionTriggerSolidRef, value);
     }
 
-    private NodeRef<CMwNod>? waypointTriggerSolidRef;
+    private NodeRef<CPlugSolid>? waypointTriggerSolidRef;
     /// <remarks>Applied with: 0x006 body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>]
-    public CMwNod? WaypointTriggerSolid
+    public CPlugSolid? WaypointTriggerSolid
     {
         get => waypointTriggerSolidRef?.Resolve();
         set => NodeRef.SetEmbedded(ref waypointTriggerSolidRef, value);
     }
 
+    private NodeRef<CPlugSurface>? screenInteractionTriggerShapeRef;
+    /// <remarks>Applied with: 0x006 v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B006>(11)]
+    public CPlugSurface? ScreenInteractionTriggerShape
+    {
+        get => screenInteractionTriggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref screenInteractionTriggerShapeRef, value);
+    }
+
+    private NodeRef<CPlugSurface>? waypointTriggerShapeRef;
+    /// <remarks>Applied with: 0x006 v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B006>(11)]
+    public CPlugSurface? WaypointTriggerShape
+    {
+        get => waypointTriggerShapeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref waypointTriggerShapeRef, value);
+    }
+
     private NodeRef<CGameGateModel>? gateRef;
-    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
-    [AppliedWithChunk<Chunk0315B006>(2)]
+    /// <remarks>Applied with: 0x006 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B006>(4)]
     public CGameGateModel? Gate
     {
         get => gateRef?.Resolve();
@@ -206,12 +260,21 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     private NodeRef<CGameTeleporterModel>? teleporterRef;
-    /// <remarks>Applied with: 0x006 v3+ body chunk</remarks>
-    [AppliedWithChunk<Chunk0315B006>(3)]
+    /// <remarks>Applied with: 0x006 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B006>(4)]
     public CGameTeleporterModel? Teleporter
     {
         get => teleporterRef?.Resolve();
         set => NodeRef.SetEmbedded(ref teleporterRef, value);
+    }
+
+    private NodeRef<CGameCaptureZoneModel>? captureZoneRef;
+    /// <remarks>Applied with: 0x006 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B006>(5)]
+    public CGameCaptureZoneModel? CaptureZone
+    {
+        get => captureZoneRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref captureZoneRef, value);
     }
 
     private NodeRef<CGameTurbineModel>? turbineRef;
@@ -232,13 +295,13 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref flockModelRef, value);
     }
 
-    private FlockEmitterState? flockEmmiter;
+    private FlockEmitterState? flockEmitter;
     /// <remarks>Applied with: 0x006 v7+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B006>(7)]
-    public FlockEmitterState? FlockEmmiter
+    public FlockEmitterState? FlockEmitter
     {
-        get => this.flockEmmiter;
-        set => this.flockEmmiter = value;
+        get => this.flockEmitter;
+        set => this.flockEmitter = value;
     }
 
     private NodeRef<CGameSpawnModel>? spawnModelRef;
@@ -295,6 +358,24 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.spawnPitch = value;
     }
 
+    private PlacedPillarParam[]? placedPillarParams;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B009>]
+    public PlacedPillarParam[]? PlacedPillarParams
+    {
+        get => this.placedPillarParams;
+        set => this.placedPillarParams = value;
+    }
+
+    private ReplacedPillarParam[]? replacedPillarParams;
+    /// <remarks>Applied with: 0x009 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B009>(1)]
+    public ReplacedPillarParam[]? ReplacedPillarParams
+    {
+        get => this.replacedPillarParams;
+        set => this.replacedPillarParams = value;
+    }
+
     private NodeRef<CGameObjectPhyCompoundModel>? compoundModelRef;
     /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
     [AppliedWithChunk<Chunk0315B00A>(2)]
@@ -304,9 +385,9 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref compoundModelRef, value);
     }
 
-    private Iso4 compoundLoc;
-    /// <remarks>Applied with: 0x00A v2-2 body chunk</remarks>
-    [AppliedWithChunk<Chunk0315B00A>(2, 2)]
+    private Iso4 compoundLoc = Iso4.Identity;
+    /// <remarks>Applied with: 0x00A v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B00A>(2)]
     public Iso4 CompoundLoc
     {
         get => this.compoundLoc;
@@ -322,6 +403,24 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         set => this.waterVolumes = value;
     }
 
+    private SubMapSpot[]? subMapSpots;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B00C>]
+    public SubMapSpot[]? SubMapSpots
+    {
+        get => this.subMapSpots;
+        set => this.subMapSpots = value;
+    }
+
+    private string? defaultPlacementItem;
+    /// <remarks>Applied with: 0x00D body chunk</remarks>
+    [AppliedWithChunk<Chunk0315B00D>]
+    public string? DefaultPlacementItem
+    {
+        get => this.defaultPlacementItem;
+        set => this.defaultPlacementItem = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -329,12 +428,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         internal NodeRefView(CGameCtnBlockInfoVariant owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CGameCtnBlockUnitInfo>>? BlockUnitModels => owner.blockUnitModels?.References;
         public IReadOnlyList<IReadOnlyList<NodeRef<CGameCtnBlockInfoMobil>>?>? Mobils => owner.mobils is { } rows ? Array.ConvertAll(rows, static row => row?.References) : null;
+        public NodeRef<CSceneMobil> HelperMobil => NodeRef.GetOrCreate(ref owner.helperMobilRef);
+        public NodeRef<CSceneMobil> FacultativeHelperMobil => NodeRef.GetOrCreate(ref owner.facultativeHelperMobilRef);
         public NodeRef<CPlugSolid> HelperSolidFid => NodeRef.GetOrCreate(ref owner.helperSolidFidRef);
         public NodeRef<CPlugSolid> FacultativeHelperSolidFid => NodeRef.GetOrCreate(ref owner.facultativeHelperSolidFidRef);
-        public NodeRef<CMwNod> ScreenInteractionTriggerSolid => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerSolidRef);
-        public NodeRef<CMwNod> WaypointTriggerSolid => NodeRef.GetOrCreate(ref owner.waypointTriggerSolidRef);
+        public NodeRef<CPlugPrefab> HelperPrefabFid => NodeRef.GetOrCreate(ref owner.helperPrefabFidRef);
+        public NodeRef<CPlugSolid> ScreenInteractionTriggerSolid => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerSolidRef);
+        public NodeRef<CPlugSolid> WaypointTriggerSolid => NodeRef.GetOrCreate(ref owner.waypointTriggerSolidRef);
+        public NodeRef<CPlugSurface> ScreenInteractionTriggerShape => NodeRef.GetOrCreate(ref owner.screenInteractionTriggerShapeRef);
+        public NodeRef<CPlugSurface> WaypointTriggerShape => NodeRef.GetOrCreate(ref owner.waypointTriggerShapeRef);
         public NodeRef<CGameGateModel> Gate => NodeRef.GetOrCreate(ref owner.gateRef);
         public NodeRef<CGameTeleporterModel> Teleporter => NodeRef.GetOrCreate(ref owner.teleporterRef);
+        public NodeRef<CGameCaptureZoneModel> CaptureZone => NodeRef.GetOrCreate(ref owner.captureZoneRef);
         public NodeRef<CGameTurbineModel> Turbine => NodeRef.GetOrCreate(ref owner.turbineRef);
         public NodeRef<CPlugFlockModel> FlockModel => NodeRef.GetOrCreate(ref owner.flockModelRef);
         public NodeRef<CGameSpawnModel> SpawnModel => NodeRef.GetOrCreate(ref owner.spawnModelRef);
@@ -357,12 +462,18 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
                 for (var j = 0; j < mobils[i].Count; j++) yield return new("Mobils" + "[" + i + "][" + j + "]", mobils[i].Get(j));
             }
         }
+        yield return new("HelperMobil", NodeRef.GetOrCreate(ref helperMobilRef));
+        yield return new("FacultativeHelperMobil", NodeRef.GetOrCreate(ref facultativeHelperMobilRef));
         yield return new("HelperSolidFid", NodeRef.GetOrCreate(ref helperSolidFidRef));
         yield return new("FacultativeHelperSolidFid", NodeRef.GetOrCreate(ref facultativeHelperSolidFidRef));
+        yield return new("HelperPrefabFid", NodeRef.GetOrCreate(ref helperPrefabFidRef));
         yield return new("ScreenInteractionTriggerSolid", NodeRef.GetOrCreate(ref screenInteractionTriggerSolidRef));
         yield return new("WaypointTriggerSolid", NodeRef.GetOrCreate(ref waypointTriggerSolidRef));
+        yield return new("ScreenInteractionTriggerShape", NodeRef.GetOrCreate(ref screenInteractionTriggerShapeRef));
+        yield return new("WaypointTriggerShape", NodeRef.GetOrCreate(ref waypointTriggerShapeRef));
         yield return new("Gate", NodeRef.GetOrCreate(ref gateRef));
         yield return new("Teleporter", NodeRef.GetOrCreate(ref teleporterRef));
+        yield return new("CaptureZone", NodeRef.GetOrCreate(ref captureZoneRef));
         yield return new("Turbine", NodeRef.GetOrCreate(ref turbineRef));
         yield return new("FlockModel", NodeRef.GetOrCreate(ref flockModelRef));
         yield return new("SpawnModel", NodeRef.GetOrCreate(ref spawnModelRef));
@@ -390,25 +501,36 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         ((CGameCtnBlockInfoVariant)clone).cardinalDir = context.Clone(this.cardinalDir)!;
         ((CGameCtnBlockInfoVariant)clone).variantBaseType = context.Clone(this.variantBaseType)!;
         ((CGameCtnBlockInfoVariant)clone).noPillarBelowIndex = context.Clone(this.noPillarBelowIndex)!;
+        ((CGameCtnBlockInfoVariant)clone).flags = context.Clone(this.flags)!;
         ((CGameCtnBlockInfoVariant)clone).mobils = context.CloneArray(this.mobils)!;
+        ((CGameCtnBlockInfoVariant)clone).helperMobilRef = context.Clone(this.helperMobilRef)!;
+        ((CGameCtnBlockInfoVariant)clone).facultativeHelperMobilRef = context.Clone(this.facultativeHelperMobilRef)!;
         ((CGameCtnBlockInfoVariant)clone).helperSolidFidRef = context.Clone(this.helperSolidFidRef)!;
         ((CGameCtnBlockInfoVariant)clone).facultativeHelperSolidFidRef = context.Clone(this.facultativeHelperSolidFidRef)!;
+        ((CGameCtnBlockInfoVariant)clone).helperPrefabFidRef = context.Clone(this.helperPrefabFidRef)!;
         ((CGameCtnBlockInfoVariant)clone).screenInteractionTriggerSolidRef = context.Clone(this.screenInteractionTriggerSolidRef)!;
         ((CGameCtnBlockInfoVariant)clone).waypointTriggerSolidRef = context.Clone(this.waypointTriggerSolidRef)!;
+        ((CGameCtnBlockInfoVariant)clone).screenInteractionTriggerShapeRef = context.Clone(this.screenInteractionTriggerShapeRef)!;
+        ((CGameCtnBlockInfoVariant)clone).waypointTriggerShapeRef = context.Clone(this.waypointTriggerShapeRef)!;
         ((CGameCtnBlockInfoVariant)clone).gateRef = context.Clone(this.gateRef)!;
         ((CGameCtnBlockInfoVariant)clone).teleporterRef = context.Clone(this.teleporterRef)!;
+        ((CGameCtnBlockInfoVariant)clone).captureZoneRef = context.Clone(this.captureZoneRef)!;
         ((CGameCtnBlockInfoVariant)clone).turbineRef = context.Clone(this.turbineRef)!;
         ((CGameCtnBlockInfoVariant)clone).flockModelRef = context.Clone(this.flockModelRef)!;
-        ((CGameCtnBlockInfoVariant)clone).flockEmmiter = context.Clone(this.flockEmmiter)!;
+        ((CGameCtnBlockInfoVariant)clone).flockEmitter = context.Clone(this.flockEmitter)!;
         ((CGameCtnBlockInfoVariant)clone).spawnModelRef = context.Clone(this.spawnModelRef)!;
         ((CGameCtnBlockInfoVariant)clone).entitySpawners = context.Clone(this.entitySpawners)!;
         ((CGameCtnBlockInfoVariant)clone).probeRef = context.Clone(this.probeRef)!;
         ((CGameCtnBlockInfoVariant)clone).spawnTrans = context.Clone(this.spawnTrans)!;
         ((CGameCtnBlockInfoVariant)clone).spawnYaw = context.Clone(this.spawnYaw)!;
         ((CGameCtnBlockInfoVariant)clone).spawnPitch = context.Clone(this.spawnPitch)!;
+        ((CGameCtnBlockInfoVariant)clone).placedPillarParams = context.CloneArray(this.placedPillarParams)!;
+        ((CGameCtnBlockInfoVariant)clone).replacedPillarParams = context.CloneArray(this.replacedPillarParams)!;
         ((CGameCtnBlockInfoVariant)clone).compoundModelRef = context.Clone(this.compoundModelRef)!;
         ((CGameCtnBlockInfoVariant)clone).compoundLoc = context.Clone(this.compoundLoc)!;
         ((CGameCtnBlockInfoVariant)clone).waterVolumes = context.CloneArray(this.waterVolumes)!;
+        ((CGameCtnBlockInfoVariant)clone).subMapSpots = context.CloneArray(this.subMapSpots)!;
+        ((CGameCtnBlockInfoVariant)clone).defaultPlacementItem = context.Clone(this.defaultPlacementItem)!;
     }
 
     public CGameCtnBlockInfoVariant()
@@ -532,17 +654,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     {
         public override uint Id => 0x0315B004;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public short U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0315B004)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
         {
-            rw.Int16(ref U01);
+            rw.UInt16(ref n.flags);
         }
     }
 
@@ -556,37 +676,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override uint Id => 0x0315B005;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CSceneMobil>? U01Ref;
-        public CSceneMobil? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CSceneMobil>? U02Ref;
-        public CSceneMobil? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-        public int U03;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk0315B005 owner;
-            internal NodeRefView(Chunk0315B005 owner) => this.owner = owner;
-            public NodeRef<CSceneMobil> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CSceneMobil> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield break;
-        }
 
         public Chunk0315B005() : this(GameVersion.Unspecified)
         {
@@ -612,9 +701,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0315B005)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0315B005)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk0315B005)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk0315B005)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
@@ -629,8 +715,8 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version <= 1)
             {
-                rw.NodeRef(ref U01Ref);
-                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref n.helperMobilRef);
+                rw.NodeRef(ref n.facultativeHelperMobilRef);
             }
 
             if (Version >= 2)
@@ -640,7 +726,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
                 if (Version >= 3)
                 {
-                    rw.Int32(ref U03);
+                    rw.NodeRef(ref n.helperPrefabFidRef);
                 }
             }
         }
@@ -657,39 +743,26 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod>? U01Ref;
-        public CMwNod? U01
+        private NodeRef<CPlugSolid>? U01Ref;
+        public CPlugSolid? U01
         {
             get => U01Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
+        public int U02;
 
-        private NodeRef<CMwNod>? U02Ref;
-        /// <summary>
-        /// WaypointTriggerShape?
-        /// </summary>
-        public CMwNod? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CMwNod>? U03Ref;
-        /// <summary>
-        /// ScreenInteractionTriggerShape?
-        /// </summary>
-        public CMwNod? U03
+        private NodeRef<CPlugSurface>? U03Ref;
+        public CPlugSurface? U03
         {
             get => U03Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
-        public int U04;
 
-        private NodeRef<CGameCaptureZoneModel>? U05Ref;
-        public CGameCaptureZoneModel? U05
+        private NodeRef<CPlugSurface>? U04Ref;
+        public CPlugSurface? U04
         {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -697,18 +770,16 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly Chunk0315B006 owner;
             internal NodeRefView(Chunk0315B006 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CGameCaptureZoneModel> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CPlugSolid> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugSurface> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugSurface> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield break;
         }
 
@@ -741,10 +812,9 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk0315B006)clone).Version = context.Clone(this.Version)!;
             ((Chunk0315B006)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk0315B006)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk0315B006)clone).U02 = context.Clone(this.U02)!;
             ((Chunk0315B006)clone).U03Ref = context.Clone(this.U03Ref)!;
-            ((Chunk0315B006)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk0315B006)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk0315B006)clone).U04Ref = context.Clone(this.U04Ref)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
@@ -765,53 +835,72 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
             if (Version >= 11)
             {
-                rw.NodeRef(ref U02Ref);
-                rw.NodeRef(ref U03Ref);
+                rw.NodeRef(ref n.screenInteractionTriggerShapeRef);
+                rw.NodeRef(ref n.waypointTriggerShapeRef);
             }
 
-            if (Version <= 8)
+            if (Version >= 1)
             {
-                rw.Int32(ref U04);
+                if (Version <= 8)
+                {
+                    rw.Int32(ref U02);
+                }
             }
 
             if (Version >= 2)
             {
-                rw.NodeRef(ref n.gateRef);
+                if (Version <= 3)
+                {
+                    rw.NodeRef(ref U03Ref);
+                }
 
-                if (Version >= 3)
+                if (Version >= 4)
+                {
+                    rw.NodeRef(ref n.gateRef);
+                }
+            }
+
+            if (Version >= 3)
+            {
+                if (Version == 3)
+                {
+                    rw.NodeRef(ref U04Ref);
+                }
+
+                if (Version >= 4)
                 {
                     rw.NodeRef(ref n.teleporterRef);
-
-                    if (Version >= 5)
-                    {
-                        rw.NodeRef(ref U05Ref);
-
-                        if (Version >= 6)
-                        {
-                            rw.NodeRef(ref n.turbineRef);
-
-                            if (Version >= 7)
-                            {
-                                rw.NodeRef(ref n.flockModelRef);
-
-                                if ((n.flockModelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
-                                {
-                                    rw.ReadableWritable<FlockEmitterState>(ref n.flockEmmiter, version: Version);
-                                }
-
-                                if (Version >= 8)
-                                {
-                                    rw.NodeRef(ref n.spawnModelRef);
-
-                                    if (Version >= 10)
-                                    {
-                                        n.entitySpawners = rw.ListNodeRef<CPlugEntitySpawner>(n.entitySpawners);
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
+            }
+
+            if (Version >= 5)
+            {
+                rw.NodeRef(ref n.captureZoneRef);
+            }
+
+            if (Version >= 6)
+            {
+                rw.NodeRef(ref n.turbineRef);
+            }
+
+            if (Version >= 7)
+            {
+                rw.NodeRef(ref n.flockModelRef);
+
+                if ((n.flockModelRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
+                {
+                    rw.ReadableWritable<FlockEmitterState>(ref n.flockEmitter, version: Version);
+                }
+            }
+
+            if (Version >= 8)
+            {
+                rw.NodeRef(ref n.spawnModelRef);
+            }
+
+            if (Version >= 10)
+            {
+                n.entitySpawners = rw.ListNodeRef<CPlugEntitySpawner>(n.entitySpawners);
             }
         }
     }
@@ -927,8 +1016,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override uint Id => 0x0315B009;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public PlacedPillarParam[]? U01;
-        public ReplacedPillarParam[]? U02;
 
         public Chunk0315B009() : this(GameVersion.Unspecified)
         {
@@ -946,8 +1033,6 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0315B009)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0315B009)clone).U01 = context.CloneArray(this.U01)!;
-            ((Chunk0315B009)clone).U02 = context.CloneArray(this.U02)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
@@ -958,11 +1043,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ArrayReadableWritable<PlacedPillarParam>(ref U01!, version: Version);
+            rw.ArrayReadableWritable<PlacedPillarParam>(ref n.placedPillarParams!, version: Version);
 
             if (Version >= 1)
             {
-                rw.ArrayReadableWritable<ReplacedPillarParam>(ref U02!, version: Version);
+                rw.ArrayReadableWritable<ReplacedPillarParam>(ref n.replacedPillarParams!, version: Version);
             }
         }
     }
@@ -978,15 +1063,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CMwNod>? U01Ref;
-        public CMwNod? U01
+        private NodeRef<CGameObjectPhyModel>? U01Ref;
+        public CGameObjectPhyModel? U01
         {
             get => U01Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CMwNod>? U02Ref;
-        public CMwNod? U02
+        private NodeRef<CGameObjectVisModel>? U02Ref;
+        public CGameObjectVisModel? U02
         {
             get => U02Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U02Ref, value);
@@ -998,8 +1083,8 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly Chunk0315B00A owner;
             internal NodeRefView(Chunk0315B00A owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CGameObjectPhyModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CGameObjectVisModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -1057,7 +1142,7 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             {
                 rw.NodeRef(ref n.compoundModelRef);
 
-                if (Version <= 2)
+                if (Version<= 2 || n.References.CompoundModel.Kind != NodeRefKind.None)
                 {
                     rw.Iso4(ref n.compoundLoc);
                 }
@@ -1066,9 +1151,9 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnBlockInfoVariant 0x00B chunk
+    /// CGameCtnBlockInfoVariant 0x00B chunk (WaterVolumes)
     /// </summary>
-    [Chunk(0x0315B00B)]
+    [Chunk(0x0315B00B, "WaterVolumes")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk0315B00B : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
@@ -1107,16 +1192,15 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameCtnBlockInfoVariant 0x00C chunk
+    /// CGameCtnBlockInfoVariant 0x00C chunk (SubMapSpots)
     /// </summary>
-    [Chunk(0x0315B00C)]
+    [Chunk(0x0315B00C, "SubMapSpots")]
     [ChunkGameVersion(GameVersion.MP4, 1)]
     public partial class Chunk0315B00C : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         public override uint Id => 0x0315B00C;
         public override GameVersion GameVersion => GameVersion.MP4;
         public int Version { get; set; }
-        public int U01;
 
         public Chunk0315B00C() : this(GameVersion.Unspecified)
         {
@@ -1128,13 +1212,57 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
             {
                 Version = 1;
             }
+            else
+            {
+                Version = 2;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk0315B00C)clone).Version = context.Clone(this.Version)!;
-            ((Chunk0315B00C)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 2))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.ArrayReadableWritable<SubMapSpot>(ref n.subMapSpots!, version: Version);
+        }
+    }
+
+    /// <summary>
+    /// CGameCtnBlockInfoVariant 0x00D chunk (DefaultPlacementItem)
+    /// </summary>
+    [Chunk(0x0315B00D, "DefaultPlacementItem")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk0315B00D : Chunk<CGameCtnBlockInfoVariant>, IVersionable
+    {
+        public override uint Id => 0x0315B00D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0315B00D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0315B00D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0315B00D)clone).Version = context.Clone(this.Version)!;
         }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
@@ -1145,76 +1273,31 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Int32(ref U01);
-
-            if (U01> 0)
-            {
-                throw new NotSupportedException();
-            }
-        }
-    }
-
-    /// <summary>
-    /// CGameCtnBlockInfoVariant 0x00D chunk
-    /// </summary>
-    [Chunk(0x0315B00D)]
-    [ChunkGameVersion(GameVersion.TM2020, 1)]
-    public partial class Chunk0315B00D : Chunk<CGameCtnBlockInfoVariant>
-    {
-        public override uint Id => 0x0315B00D;
-        public override GameVersion GameVersion => GameVersion.TM2020;
-        public int U01;
-        public int U02;
-
-        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
-        {
-            base.DeepCloneFields(clone, context);
-            ((Chunk0315B00D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0315B00D)clone).U02 = context.Clone(this.U02)!;
-        }
-
-        public override void ReadWrite(CGameCtnBlockInfoVariant n, GbxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.Id(ref n.defaultPlacementItem);
         }
     }
 
     public partial class PlacedPillarParam : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private NodeRef<CMwNod>? u01Ref;
-        public CMwNod? U01
+        private NodeRef<CGameCtnBlockInfo>? blockInfoRef;
+        public CGameCtnBlockInfo? BlockInfo
         {
-            get => u01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u01Ref, value);
+            get => blockInfoRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref blockInfoRef, value);
         }
 
-        private int u02;
-        public int U02
+        private Int3 offset;
+        public Int3 Offset
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.offset;
+            set => this.offset = value;
         }
 
-        private int u03;
-        public int U03
+        private ECardinalDir dir;
+        public ECardinalDir Dir
         {
-            get => this.u03;
-            set => this.u03 = value;
-        }
-
-        private int u04;
-        public int U04
-        {
-            get => this.u04;
-            set => this.u04 = value;
-        }
-
-        private int u05;
-        public int U05
-        {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.dir;
+            set => this.dir = value;
         }
 
         public NodeRefView References => new(this);
@@ -1222,11 +1305,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         {
             private readonly PlacedPillarParam owner;
             internal NodeRefView(PlacedPillarParam owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
+            public NodeRef<CGameCtnBlockInfo> BlockInfo => NodeRef.GetOrCreate(ref owner.blockInfoRef);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
-            yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
+            yield return new("BlockInfo", NodeRef.GetOrCreate(ref blockInfoRef));
             yield break;
         }
 
@@ -1240,20 +1323,16 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((PlacedPillarParam)clone).u01Ref = context.Clone(this.u01Ref)!;
-            ((PlacedPillarParam)clone).u02 = context.Clone(this.u02)!;
-            ((PlacedPillarParam)clone).u03 = context.Clone(this.u03)!;
-            ((PlacedPillarParam)clone).u04 = context.Clone(this.u04)!;
-            ((PlacedPillarParam)clone).u05 = context.Clone(this.u05)!;
+            ((PlacedPillarParam)clone).blockInfoRef = context.Clone(this.blockInfoRef)!;
+            ((PlacedPillarParam)clone).offset = context.Clone(this.offset)!;
+            ((PlacedPillarParam)clone).dir = context.Clone(this.dir)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.NodeRef(ref this.u01Ref);
-            rw.Int32(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Int32(ref this.u04);
-            rw.Int32(ref this.u05);
+            rw.NodeRef(ref this.blockInfoRef);
+            rw.Int3(ref this.offset);
+            rw.EnumInt32<ECardinalDir>(ref this.dir);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1269,34 +1348,80 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         }
     }
 
-    public partial class ReplacedPillarParam : PlacedPillarParam, IReadableWritable, IReadable, IWritable
+    public partial class ReplacedPillarParam : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private byte u06;
-        public byte U06
+        private NodeRef<CGameCtnBlockInfo>? blockInfoRef;
+        public CGameCtnBlockInfo? BlockInfo
         {
-            get => this.u06;
-            set => this.u06 = value;
+            get => blockInfoRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref blockInfoRef, value);
         }
 
-        internal override void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        private Int3 offset2D;
+        public Int3 Offset2D
         {
-            base.DeepCloneArchiveFields(clone, context);
-            ((ReplacedPillarParam)clone).u06 = context.Clone(this.u06)!;
+            get => this.offset2D;
+            set => this.offset2D = value;
         }
 
-        public override void ReadWrite(GbxReaderWriter rw, int v = 0)
+        private EMultiDir multiDir;
+        public EMultiDir MultiDir
         {
-            base.ReadWrite(rw, v);
-            rw.Byte(ref this.u06);
+            get => this.multiDir;
+            set => this.multiDir = value;
         }
 
-        public override void Read(GbxReader r, int v = 0)
+        private bool isOnFlyingBase;
+        public bool IsOnFlyingBase
+        {
+            get => this.isOnFlyingBase;
+            set => this.isOnFlyingBase = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly ReplacedPillarParam owner;
+            internal NodeRefView(ReplacedPillarParam owner) => this.owner = owner;
+            public NodeRef<CGameCtnBlockInfo> BlockInfo => NodeRef.GetOrCreate(ref owner.blockInfoRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("BlockInfo", NodeRef.GetOrCreate(ref blockInfoRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ReplacedPillarParam)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ReplacedPillarParam)clone).blockInfoRef = context.Clone(this.blockInfoRef)!;
+            ((ReplacedPillarParam)clone).offset2D = context.Clone(this.offset2D)!;
+            ((ReplacedPillarParam)clone).multiDir = context.Clone(this.multiDir)!;
+            ((ReplacedPillarParam)clone).isOnFlyingBase = context.Clone(this.isOnFlyingBase)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref this.blockInfoRef);
+            rw.Int3(ref this.offset2D);
+            rw.EnumInt32<EMultiDir>(ref this.multiDir);
+            rw.Boolean(ref this.isOnFlyingBase, asByte: true);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
         {
             using var rw = new GbxReaderWriter(r);
             ReadWrite(rw, v);
         }
 
-        public override void Write(GbxWriter w, int v = 0)
+        public virtual void Write(GbxWriter w, int v = 0)
         {
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
@@ -1305,67 +1430,42 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
     public partial class WaterVolume : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private BoxInt3[]? u01;
-        public BoxInt3[]? U01
+        private BoxInt3[]? boxes;
+        public BoxInt3[]? Boxes
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.boxes;
+            set => this.boxes = value;
         }
 
-        private float u02;
-        public float U02
+        private Vec3 offset;
+        public Vec3 Offset
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.offset;
+            set => this.offset = value;
         }
 
-        private float u03;
-        public float U03
+        private float rotationY;
+        /// <summary>
+        /// Degrees
+        /// </summary>
+        public float RotationY
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.rotationY;
+            set => this.rotationY = value;
         }
 
-        private float u04;
-        public float U04
+        private Vec3 boxSize;
+        public Vec3 BoxSize
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.boxSize;
+            set => this.boxSize = value;
         }
 
-        private float u05;
-        public float U05
+        private string? waterId;
+        public string? WaterId
         {
-            get => this.u05;
-            set => this.u05 = value;
-        }
-
-        private float u06;
-        public float U06
-        {
-            get => this.u06;
-            set => this.u06 = value;
-        }
-
-        private float u07;
-        public float U07
-        {
-            get => this.u07;
-            set => this.u07 = value;
-        }
-
-        private float u08;
-        public float U08
-        {
-            get => this.u08;
-            set => this.u08 = value;
-        }
-
-        private string? u09;
-        public string? U09
-        {
-            get => this.u09;
-            set => this.u09 = value;
+            get => this.waterId;
+            set => this.waterId = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1378,31 +1478,89 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((WaterVolume)clone).u01 = context.CloneArray(this.u01)!;
-            ((WaterVolume)clone).u02 = context.Clone(this.u02)!;
-            ((WaterVolume)clone).u03 = context.Clone(this.u03)!;
-            ((WaterVolume)clone).u04 = context.Clone(this.u04)!;
-            ((WaterVolume)clone).u05 = context.Clone(this.u05)!;
-            ((WaterVolume)clone).u06 = context.Clone(this.u06)!;
-            ((WaterVolume)clone).u07 = context.Clone(this.u07)!;
-            ((WaterVolume)clone).u08 = context.Clone(this.u08)!;
-            ((WaterVolume)clone).u09 = context.Clone(this.u09)!;
+            ((WaterVolume)clone).boxes = context.CloneArray(this.boxes)!;
+            ((WaterVolume)clone).offset = context.Clone(this.offset)!;
+            ((WaterVolume)clone).rotationY = context.Clone(this.rotationY)!;
+            ((WaterVolume)clone).boxSize = context.Clone(this.boxSize)!;
+            ((WaterVolume)clone).waterId = context.Clone(this.waterId)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Array<BoxInt3>(ref this.u01!);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
-            rw.Single(ref this.u04);
-            rw.Single(ref this.u05);
-            rw.Single(ref this.u06);
-            rw.Single(ref this.u07);
-            rw.Single(ref this.u08);
+            rw.Array<BoxInt3>(ref this.boxes!);
+            rw.Vec3(ref this.offset);
+            rw.Single(ref this.rotationY);
+            rw.Vec3(ref this.boxSize);
 
             if (v >= 1)
             {
-                rw.Id(ref this.u09);
+                rw.Id(ref this.waterId);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class SubMapSpot : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Iso4 location;
+        public Iso4 Location
+        {
+            get => this.location;
+            set => this.location = value;
+        }
+
+        private string? environmentId;
+        public string? EnvironmentId
+        {
+            get => this.environmentId;
+            set => this.environmentId = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (SubMapSpot)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((SubMapSpot)clone).location = context.Clone(this.location)!;
+            ((SubMapSpot)clone).environmentId = context.Clone(this.environmentId)!;
+            ((SubMapSpot)clone).u01 = context.Clone(this.u01)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Iso4(ref this.location);
+
+            if (v >= 1)
+            {
+                rw.Id(ref this.environmentId);
+            }
+
+            if (v >= 2)
+            {
+                rw.Id(ref this.u01);
             }
         }
 
@@ -1421,56 +1579,44 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
 
     public partial class FlockEmitterState : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
 
-        private float u01;
-        /// <summary>
-        /// 10 is a clear state
-        /// </summary>
-        public float U01
+        private float radius = 10;
+        public float Radius
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.radius;
+            set => this.radius = value;
         }
 
-        private float u02;
-        /// <summary>
-        /// 0x40000000 is a clear state
-        /// </summary>
-        public float U02
+        private float power = 2;
+        public float Power
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.power;
+            set => this.power = value;
         }
 
-        private int u03;
-        /// <summary>
-        /// 5 is a clear state
-        /// </summary>
-        public int U03
+        private int spawnCount = 5;
+        public int SpawnCount
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.spawnCount;
+            set => this.spawnCount = value;
         }
 
-        private bool u04;
-        public bool U04
+        private bool isRepulsor;
+        public bool IsRepulsor
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.isRepulsor;
+            set => this.isRepulsor = value;
         }
 
-        private bool u05;
-        /// <summary>
-        /// true is a clear state
-        /// </summary>
-        public bool U05
+        private bool isLandingArea = true;
+        public bool IsLandingArea
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.isLandingArea;
+            set => this.isLandingArea = value;
         }
 
-        private Mat3? matrix;
+        private Mat3? matrix = Mat3.Identity;
         public Mat3? Matrix
         {
             get => this.matrix;
@@ -1495,11 +1641,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((FlockEmitterState)clone).Version = context.Clone(this.Version)!;
-            ((FlockEmitterState)clone).u01 = context.Clone(this.u01)!;
-            ((FlockEmitterState)clone).u02 = context.Clone(this.u02)!;
-            ((FlockEmitterState)clone).u03 = context.Clone(this.u03)!;
-            ((FlockEmitterState)clone).u04 = context.Clone(this.u04)!;
-            ((FlockEmitterState)clone).u05 = context.Clone(this.u05)!;
+            ((FlockEmitterState)clone).radius = context.Clone(this.radius)!;
+            ((FlockEmitterState)clone).power = context.Clone(this.power)!;
+            ((FlockEmitterState)clone).spawnCount = context.Clone(this.spawnCount)!;
+            ((FlockEmitterState)clone).isRepulsor = context.Clone(this.isRepulsor)!;
+            ((FlockEmitterState)clone).isLandingArea = context.Clone(this.isLandingArea)!;
             ((FlockEmitterState)clone).matrix = context.Clone(this.matrix)!;
             ((FlockEmitterState)clone).position = context.Clone(this.position)!;
         }
@@ -1507,11 +1653,11 @@ public partial class CGameCtnBlockInfoVariant : CMwNod, IClass
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.VersionInt32(this);
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Int32(ref this.u03);
-            rw.Boolean(ref this.u04);
-            rw.Boolean(ref this.u05);
+            rw.Single(ref this.radius);
+            rw.Single(ref this.power);
+            rw.Int32(ref this.spawnCount);
+            rw.Boolean(ref this.isRepulsor);
+            rw.Boolean(ref this.isLandingArea);
 
             if (Version >= 1)
             {
