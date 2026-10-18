@@ -415,6 +415,13 @@ internal sealed class SerializationWriter
                 code.Line($"{storageType} {target} = {value};");
                 value = target;
             }
+            if (declaration.Type.ArrayDimensions == 0 && WireTypes.Value(declaration.Type.Name) &&
+                storageType.EndsWith("?", StringComparison.Ordinal) &&
+                !LayoutModel.Has(declaration.Attributes, "nullable") && !LayoutModel.Has(declaration.Attributes, "time") &&
+                declaration.Type.Name is not ("filetime" or "systemtime" or "unixtime" or "timeofday"))
+            {
+                value += ".GetValueOrDefault()";
+            }
             var writeMethod = method == "Id" ? "IdAsString" : method;
 
             if (declaration.Type.ArrayDimensions == 1 && declaration.Type.Name is "string" or "ident" or "meta" or "packdesc" or "fileref")
@@ -488,6 +495,18 @@ internal sealed class SerializationWriter
         var name = scalar ? WireTypes.Map(declaration.Type.Name) : ReferenceModel.Element(field);
         if (scalar)
         {
+            if (!local && field.Occurrences.Any(static x => LayoutModel.Has(x.Attributes, "inherited")))
+            {
+                var reference = prefix + "References." + SyntaxOverlap.Escape(field.Name);
+                code.Line(mode switch
+                {
+                    SerializationMode.Read => $"r.ReadNodeRef({reference});",
+                    SerializationMode.Write => $"w.WriteNodeRef({reference});",
+                    _ => $"rw.NodeRef({reference});"
+                });
+                return;
+            }
+
             var handle = prefix + ReferenceModel.Handle(field, chunk && field.IsUnknown);
             if (local)
             {

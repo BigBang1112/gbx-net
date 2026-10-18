@@ -489,6 +489,9 @@ enum EGxUVGenerate
   FlatWaterReflect
   FlatWaterRefract
   FlatWaterFresnel
+  WorldPosXYblendZY
+  DisableVshOutput
+  WorldPos_PyPxz
 
 archive SpecularSubMapCat
   vec3 SpecularRGB

@@ -3258,6 +3258,9 @@ public partial class CPlugBitmap : CPlug, IClass
         FlatWaterReflect,
         FlatWaterRefract,
         FlatWaterFresnel,
+        WorldPosXYblendZY,
+        DisableVshOutput,
+        WorldPos_PyPxz,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
