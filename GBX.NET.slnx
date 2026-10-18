@@ -50,9 +50,6 @@
     <Project Path="Samples/Beginner/Legomania/Legomania.csproj" />
     <Project Path="Samples/Beginner/SolidExtract/SolidExtract.csproj" />
   </Folder>
-  <Folder Name="/Samples/Generators/">
-    <Project Path="Samples/Generators/GBX.NET.Generators.Sample/GBX.NET.Generators.Sample.csproj" />
-  </Folder>
   <Folder Name="/Samples/NativeAOT/" />
   <Folder Name="/Samples/Tool/">
     <Project Path="Samples/Tool/GhostExtract/GhostExtract.csproj" />
