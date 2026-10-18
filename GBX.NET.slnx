@@ -105,9 +105,6 @@
     <Project Path="Tools/GbxDiff/GbxDiff.csproj" />
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
     <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
-    <Project Path="Tools/GbxExplorer/Client/GbxExplorer.Client.csproj" />
-    <Project Path="Tools/GbxExplorer/Server/GbxExplorer.Server.csproj" />
-    <Project Path="Tools/GbxExplorer/Shared/GbxExplorer.Shared.csproj" />
     <Project Path="Tools/GbxToJson/GbxToJson.csproj" />
     <Project Path="Tools/MuxCryptSwitch/MuxCryptSwitch.csproj" />
     <Project Path="Tools/ObjExporter/ObjExporter.csproj" />

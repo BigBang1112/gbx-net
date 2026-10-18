@@ -37,19 +37,246 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
 
     internal override uint GetId() => Id;
 
-    private Group[]? groups;
     /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk09034000>]
-    public Group[]? Groups
+    public partial Group[]? Groups { get; set; }
+
+    private float sceneVolume = 1;
+    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(1)]
+    public float SceneVolume
     {
-        get => this.groups;
-        set => this.groups = value;
+        get => this.sceneVolume;
+        set => this.sceneVolume = value;
+    }
+
+    private float rolloffFactor = 1;
+    /// <remarks>Applied with: 0x000 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(2)]
+    public float RolloffFactor
+    {
+        get => this.rolloffFactor;
+        set => this.rolloffFactor = value;
+    }
+
+    private float refDistanceFactor = 1;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(6)]
+    public float RefDistanceFactor
+    {
+        get => this.refDistanceFactor;
+        set => this.refDistanceFactor = value;
+    }
+
+    private float maxDistFade_Ratio_Focused = 1;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public float MaxDistFade_Ratio_Focused
+    {
+        get => this.maxDistFade_Ratio_Focused;
+        set => this.maxDistFade_Ratio_Focused = value;
+    }
+
+    private float maxDistFade_Rolloff_Focused = 1;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public float MaxDistFade_Rolloff_Focused
+    {
+        get => this.maxDistFade_Rolloff_Focused;
+        set => this.maxDistFade_Rolloff_Focused = value;
+    }
+
+    private float maxDistFade_Ratio_Others = 1;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public float MaxDistFade_Ratio_Others
+    {
+        get => this.maxDistFade_Ratio_Others;
+        set => this.maxDistFade_Ratio_Others = value;
+    }
+
+    private float maxDistFade_Rolloff_Others = 1;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public float MaxDistFade_Rolloff_Others
+    {
+        get => this.maxDistFade_Rolloff_Others;
+        set => this.maxDistFade_Rolloff_Others = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? pitchFromDistance_Player_FocusedRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public CFuncKeysReal? PitchFromDistance_Player_Focused
+    {
+        get => pitchFromDistance_Player_FocusedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pitchFromDistance_Player_FocusedRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? pitchFromDistance_Player_OthersRef;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(7)]
+    public CFuncKeysReal? PitchFromDistance_Player_Others
+    {
+        get => pitchFromDistance_Player_OthersRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pitchFromDistance_Player_OthersRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? pitchFromDistance_BengsGuns_FocusedRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(8)]
+    public CFuncKeysReal? PitchFromDistance_BengsGuns_Focused
+    {
+        get => pitchFromDistance_BengsGuns_FocusedRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pitchFromDistance_BengsGuns_FocusedRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? pitchFromDistance_BengsGuns_OthersRef;
+    /// <remarks>Applied with: 0x000 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(8)]
+    public CFuncKeysReal? PitchFromDistance_BengsGuns_Others
+    {
+        get => pitchFromDistance_BengsGuns_OthersRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref pitchFromDistance_BengsGuns_OthersRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? rolloffFromMusicVolumeRef;
+    /// <remarks>Applied with: 0x000 v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(9)]
+    public CFuncKeysReal? RolloffFromMusicVolume
+    {
+        get => rolloffFromMusicVolumeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref rolloffFromMusicVolumeRef, value);
+    }
+
+    private float sceneLfeSend;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(10)]
+    public float SceneLfeSend
+    {
+        get => this.sceneLfeSend;
+        set => this.sceneLfeSend = value;
+    }
+
+    private float musicLfeSend;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(10)]
+    public float MusicLfeSend
+    {
+        get => this.musicLfeSend;
+        set => this.musicLfeSend = value;
+    }
+
+    private float globalLfeSend;
+    /// <remarks>Applied with: 0x000 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(10)]
+    public float GlobalLfeSend
+    {
+        get => this.globalLfeSend;
+        set => this.globalLfeSend = value;
+    }
+
+    private float autoRadiusFactor = 0.15f;
+    /// <remarks>Applied with: 0x000 v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(11)]
+    public float AutoRadiusFactor
+    {
+        get => this.autoRadiusFactor;
+        set => this.autoRadiusFactor = value;
+    }
+
+    private float uiVolume = 1;
+    /// <remarks>Applied with: 0x000 v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034000>(12)]
+    public float UiVolume
+    {
+        get => this.uiVolume;
+        set => this.uiVolume = value;
+    }
+
+    private float attackDuration = 0.3f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09034001>]
+    public float AttackDuration
+    {
+        get => this.attackDuration;
+        set => this.attackDuration = value;
+    }
+
+    private float minimumDuration = 0.5f;
+    /// <remarks>Applied with: 0x001 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09034001>(1)]
+    public float MinimumDuration
+    {
+        get => this.minimumDuration;
+        set => this.minimumDuration = value;
+    }
+
+    private float releaseDuration = 0.7f;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09034001>]
+    public float ReleaseDuration
+    {
+        get => this.releaseDuration;
+        set => this.releaseDuration = value;
+    }
+
+    private bool isAbsolute;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk09034001>]
+    public bool IsAbsolute
+    {
+        get => this.isAbsolute;
+        set => this.isAbsolute = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugAudioBalance owner;
+        internal NodeRefView(CPlugAudioBalance owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> PitchFromDistance_Player_Focused => NodeRef.GetOrCreate(ref owner.pitchFromDistance_Player_FocusedRef);
+        public NodeRef<CFuncKeysReal> PitchFromDistance_Player_Others => NodeRef.GetOrCreate(ref owner.pitchFromDistance_Player_OthersRef);
+        public NodeRef<CFuncKeysReal> PitchFromDistance_BengsGuns_Focused => NodeRef.GetOrCreate(ref owner.pitchFromDistance_BengsGuns_FocusedRef);
+        public NodeRef<CFuncKeysReal> PitchFromDistance_BengsGuns_Others => NodeRef.GetOrCreate(ref owner.pitchFromDistance_BengsGuns_OthersRef);
+        public NodeRef<CFuncKeysReal> RolloffFromMusicVolume => NodeRef.GetOrCreate(ref owner.rolloffFromMusicVolumeRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PitchFromDistance_Player_Focused", NodeRef.GetOrCreate(ref pitchFromDistance_Player_FocusedRef));
+        yield return new("PitchFromDistance_Player_Others", NodeRef.GetOrCreate(ref pitchFromDistance_Player_OthersRef));
+        yield return new("PitchFromDistance_BengsGuns_Focused", NodeRef.GetOrCreate(ref pitchFromDistance_BengsGuns_FocusedRef));
+        yield return new("PitchFromDistance_BengsGuns_Others", NodeRef.GetOrCreate(ref pitchFromDistance_BengsGuns_OthersRef));
+        yield return new("RolloffFromMusicVolume", NodeRef.GetOrCreate(ref rolloffFromMusicVolumeRef));
+        yield break;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
-        ((CPlugAudioBalance)clone).groups = context.CloneArray(this.groups)!;
+        ((CPlugAudioBalance)clone).sceneVolume = context.Clone(this.sceneVolume)!;
+        ((CPlugAudioBalance)clone).rolloffFactor = context.Clone(this.rolloffFactor)!;
+        ((CPlugAudioBalance)clone).refDistanceFactor = context.Clone(this.refDistanceFactor)!;
+        ((CPlugAudioBalance)clone).maxDistFade_Ratio_Focused = context.Clone(this.maxDistFade_Ratio_Focused)!;
+        ((CPlugAudioBalance)clone).maxDistFade_Rolloff_Focused = context.Clone(this.maxDistFade_Rolloff_Focused)!;
+        ((CPlugAudioBalance)clone).maxDistFade_Ratio_Others = context.Clone(this.maxDistFade_Ratio_Others)!;
+        ((CPlugAudioBalance)clone).maxDistFade_Rolloff_Others = context.Clone(this.maxDistFade_Rolloff_Others)!;
+        ((CPlugAudioBalance)clone).pitchFromDistance_Player_FocusedRef = context.Clone(this.pitchFromDistance_Player_FocusedRef)!;
+        ((CPlugAudioBalance)clone).pitchFromDistance_Player_OthersRef = context.Clone(this.pitchFromDistance_Player_OthersRef)!;
+        ((CPlugAudioBalance)clone).pitchFromDistance_BengsGuns_FocusedRef = context.Clone(this.pitchFromDistance_BengsGuns_FocusedRef)!;
+        ((CPlugAudioBalance)clone).pitchFromDistance_BengsGuns_OthersRef = context.Clone(this.pitchFromDistance_BengsGuns_OthersRef)!;
+        ((CPlugAudioBalance)clone).rolloffFromMusicVolumeRef = context.Clone(this.rolloffFromMusicVolumeRef)!;
+        ((CPlugAudioBalance)clone).sceneLfeSend = context.Clone(this.sceneLfeSend)!;
+        ((CPlugAudioBalance)clone).musicLfeSend = context.Clone(this.musicLfeSend)!;
+        ((CPlugAudioBalance)clone).globalLfeSend = context.Clone(this.globalLfeSend)!;
+        ((CPlugAudioBalance)clone).autoRadiusFactor = context.Clone(this.autoRadiusFactor)!;
+        ((CPlugAudioBalance)clone).uiVolume = context.Clone(this.uiVolume)!;
+        ((CPlugAudioBalance)clone).attackDuration = context.Clone(this.attackDuration)!;
+        ((CPlugAudioBalance)clone).minimumDuration = context.Clone(this.minimumDuration)!;
+        ((CPlugAudioBalance)clone).releaseDuration = context.Clone(this.releaseDuration)!;
+        ((CPlugAudioBalance)clone).isAbsolute = context.Clone(this.isAbsolute)!;
+        ((CPlugAudioBalance)clone).mixerGroups = context.CloneArray(this.mixerGroups)!;
     }
 
     public CPlugAudioBalance()
@@ -57,84 +284,15 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
     }
 
     /// <summary>
-    /// CPlugAudioBalance 0x000 chunk
+    /// CPlugAudioBalance 0x000 chunk (mixer groups and distance attenuation)
     /// </summary>
-    [Chunk(0x09034000)]
+    [Chunk(0x09034000, "mixer groups and distance attenuation")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 9, 12, 12, 12)]
     public partial class Chunk09034000 : Chunk<CPlugAudioBalance>, IVersionable
     {
         public override uint Id => 0x09034000;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-
-        private NodeRef<CFuncKeysReal>? U08Ref;
-        public CFuncKeysReal? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U09Ref;
-        public CFuncKeysReal? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U11Ref;
-        public CFuncKeysReal? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U12Ref;
-        public CFuncKeysReal? U12
-        {
-            get => U12Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U12Ref, value);
-        }
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
-        public float U17;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk09034000 owner;
-            internal NodeRefView(Chunk09034000 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
-            yield break;
-        }
 
         public Chunk09034000() : this(GameVersion.Unspecified)
         {
@@ -156,23 +314,6 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09034000)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09034000)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09034000)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09034000)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09034000)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk09034000)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk09034000)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk09034000)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk09034000)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk09034000)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk09034000)clone).U10Ref = context.Clone(this.U10Ref)!;
-            ((Chunk09034000)clone).U11Ref = context.Clone(this.U11Ref)!;
-            ((Chunk09034000)clone).U12Ref = context.Clone(this.U12Ref)!;
-            ((Chunk09034000)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk09034000)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk09034000)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk09034000)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk09034000)clone).U17 = context.Clone(this.U17)!;
         }
 
         public override void ReadWrite(CPlugAudioBalance n, GbxReaderWriter rw)
@@ -183,77 +324,73 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.ArrayReadableWritable<Group>(ref n.groups!, version: Version);
+            n.Groups = rw.ArrayReadableWritable<Group>(n.Groups, version: Version);
 
             if (Version >= 1)
             {
-                rw.Single(ref U01);
+                rw.Single(ref n.sceneVolume);
+            }
 
-                if (Version >= 2)
-                {
-                    rw.Single(ref U02);
+            if (Version >= 2)
+            {
+                rw.Single(ref n.rolloffFactor);
+            }
 
-                    if (Version >= 6)
-                    {
-                        rw.Single(ref U03);
+            if (Version >= 6)
+            {
+                rw.Single(ref n.refDistanceFactor);
+            }
 
-                        if (Version >= 7)
-                        {
-                            rw.Single(ref U04);
-                            rw.Single(ref U05);
-                            rw.Single(ref U06);
-                            rw.Single(ref U07);
-                            rw.NodeRef(ref U08Ref);
-                            rw.NodeRef(ref U09Ref);
+            if (Version >= 7)
+            {
+                rw.Single(ref n.maxDistFade_Ratio_Focused);
+                rw.Single(ref n.maxDistFade_Rolloff_Focused);
+                rw.Single(ref n.maxDistFade_Ratio_Others);
+                rw.Single(ref n.maxDistFade_Rolloff_Others);
+                rw.NodeRef(ref n.pitchFromDistance_Player_FocusedRef);
+                rw.NodeRef(ref n.pitchFromDistance_Player_OthersRef);
+            }
 
-                            if (Version >= 8)
-                            {
-                                rw.NodeRef(ref U10Ref);
-                                rw.NodeRef(ref U11Ref);
+            if (Version >= 8)
+            {
+                rw.NodeRef(ref n.pitchFromDistance_BengsGuns_FocusedRef);
+                rw.NodeRef(ref n.pitchFromDistance_BengsGuns_OthersRef);
+            }
 
-                                if (Version >= 9)
-                                {
-                                    rw.NodeRef(ref U12Ref);
+            if (Version >= 9)
+            {
+                rw.NodeRef(ref n.rolloffFromMusicVolumeRef);
+            }
 
-                                    if (Version >= 10)
-                                    {
-                                        rw.Single(ref U13);
-                                        rw.Single(ref U14);
-                                        rw.Single(ref U15);
+            if (Version >= 10)
+            {
+                rw.Single(ref n.sceneLfeSend);
+                rw.Single(ref n.musicLfeSend);
+                rw.Single(ref n.globalLfeSend);
+            }
 
-                                        if (Version >= 11)
-                                        {
-                                            rw.Single(ref U16);
+            if (Version >= 11)
+            {
+                rw.Single(ref n.autoRadiusFactor);
+            }
 
-                                            if (Version >= 12)
-                                            {
-                                                rw.Single(ref U17);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (Version >= 12)
+            {
+                rw.Single(ref n.uiVolume);
             }
         }
     }
 
     /// <summary>
-    /// CPlugAudioBalance 0x001 chunk
+    /// CPlugAudioBalance 0x001 chunk (transition durations)
     /// </summary>
-    [Chunk(0x09034001)]
+    [Chunk(0x09034001, "transition durations")]
     [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 0, 1, 1, 1)]
     public partial class Chunk09034001 : Chunk<CPlugAudioBalance>, IVersionable
     {
         public override uint Id => 0x09034001;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-        public bool U04;
 
         public Chunk09034001() : this(GameVersion.Unspecified)
         {
@@ -275,10 +412,6 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09034001)clone).Version = context.Clone(this.Version)!;
-            ((Chunk09034001)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk09034001)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09034001)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk09034001)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugAudioBalance n, GbxReaderWriter rw)
@@ -289,27 +422,41 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Boolean(ref U04);
+            rw.Single(ref n.attackDuration);
+
+            if (Version == 0)
+            {
+                var holdDuration = rw.Single((float)(rw.Writer is null ? default : (n.MinimumDuration - n.AttackDuration)));
+                if (rw.Reader is not null)
+                {
+                    n.MinimumDuration = holdDuration+ n.AttackDuration;
+                }
+            }
+
+            if (Version >= 1)
+            {
+                rw.Single(ref n.minimumDuration);
+            }
+
+            rw.Single(ref n.releaseDuration);
+            rw.Boolean(ref n.isAbsolute);
         }
     }
 
     public partial class Group : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private Line? u01;
-        public Line? U01
+        private Line? others;
+        public Line? Others
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.others;
+            set => this.others = value;
         }
 
-        private Line? u02;
-        public Line? U02
+        private Line? focused;
+        public Line? Focused
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.focused;
+            set => this.focused = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -322,14 +469,14 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Group)clone).u01 = context.Clone(this.u01)!;
-            ((Group)clone).u02 = context.Clone(this.u02)!;
+            ((Group)clone).others = context.Clone(this.others)!;
+            ((Group)clone).focused = context.Clone(this.focused)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.ReadableWritable<Line>(ref this.u01, version: v);
-            rw.ReadableWritable<Line>(ref this.u02, version: v);
+            rw.ReadableWritable<Line>(ref this.others, version: v);
+            rw.ReadableWritable<Line>(ref this.focused, version: v);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -347,39 +494,39 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
 
     public partial class Line : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
-        private float u01;
-        public float U01
+        private float volume = 1;
+        public float Volume
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.volume;
+            set => this.volume = value;
         }
 
-        private float u02;
-        public float U02
+        private float pitch = 1;
+        public float Pitch
         {
-            get => this.u02;
-            set => this.u02 = value;
+            get => this.pitch;
+            set => this.pitch = value;
         }
 
-        private float u03;
-        public float U03
+        private float dopplerFactor = 1;
+        public float DopplerFactor
         {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.dopplerFactor;
+            set => this.dopplerFactor = value;
         }
 
-        private float u04;
-        public float U04
+        private float rolloffFactor = 1;
+        public float RolloffFactor
         {
-            get => this.u04;
-            set => this.u04 = value;
+            get => this.rolloffFactor;
+            set => this.rolloffFactor = value;
         }
 
-        private float u05;
-        public float U05
+        private float distanceFactor = 1;
+        public float DistanceFactor
         {
-            get => this.u05;
-            set => this.u05 = value;
+            get => this.distanceFactor;
+            set => this.distanceFactor = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -392,27 +539,27 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((Line)clone).u01 = context.Clone(this.u01)!;
-            ((Line)clone).u02 = context.Clone(this.u02)!;
-            ((Line)clone).u03 = context.Clone(this.u03)!;
-            ((Line)clone).u04 = context.Clone(this.u04)!;
-            ((Line)clone).u05 = context.Clone(this.u05)!;
+            ((Line)clone).volume = context.Clone(this.volume)!;
+            ((Line)clone).pitch = context.Clone(this.pitch)!;
+            ((Line)clone).dopplerFactor = context.Clone(this.dopplerFactor)!;
+            ((Line)clone).rolloffFactor = context.Clone(this.rolloffFactor)!;
+            ((Line)clone).distanceFactor = context.Clone(this.distanceFactor)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
-            rw.Single(ref this.u01);
-            rw.Single(ref this.u02);
-            rw.Single(ref this.u03);
+            rw.Single(ref this.volume);
+            rw.Single(ref this.pitch);
+            rw.Single(ref this.dopplerFactor);
 
             if (v >= 3)
             {
-                rw.Single(ref this.u04);
+                rw.Single(ref this.rolloffFactor);
+            }
 
-                if (v >= 6)
-                {
-                    rw.Single(ref this.u05);
-                }
+            if (v >= 6)
+            {
+                rw.Single(ref this.distanceFactor);
             }
         }
 
@@ -427,6 +574,25 @@ public partial class CPlugAudioBalance : CPlugAudio, IClass
             using var rw = new GbxReaderWriter(w);
             ReadWrite(rw, v);
         }
+    }
+
+    public enum EAudioBalanceGroup
+    {
+        Auto,
+        Music,
+        Menus,
+        Ambiance,
+        Player,
+        Bengs,
+        Guns,
+        BackingDirect,
+        Trails,
+        GameUI,
+        Custom1,
+        Custom2,
+        OtherPlayers,
+        ImpactWarning,
+        Environment,
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
