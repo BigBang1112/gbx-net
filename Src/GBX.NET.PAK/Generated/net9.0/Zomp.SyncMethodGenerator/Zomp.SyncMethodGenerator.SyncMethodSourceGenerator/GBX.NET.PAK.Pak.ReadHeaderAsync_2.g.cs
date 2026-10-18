@@ -36,7 +36,7 @@ public partial class Pak
 
         if (Version >= 14)
         {
-            r.ReadBytes(16); // unused
+            GbxHeadersChecksum = r.ReadUInt128();
 
             if (Version >= 16)
             {
@@ -46,7 +46,7 @@ public partial class Pak
 
         if (Version >= 3)
         {
-            r.ReadBytes(16); // unused
+            PackMask = r.ReadUInt128();
 
             if (Version == 6)
             {

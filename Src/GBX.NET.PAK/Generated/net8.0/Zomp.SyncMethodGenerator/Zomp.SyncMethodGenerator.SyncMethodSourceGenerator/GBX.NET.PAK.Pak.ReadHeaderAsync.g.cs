@@ -49,6 +49,8 @@ public partial class Pak
             }
         }
 
+        ApplyKeySalt(keyForHeader);
+
         var iv = r.ReadUInt64();
         var blowfishStream = new global::GBX.NET.PAK.BlowfishStream(stream, keyForHeader, iv, version);
 

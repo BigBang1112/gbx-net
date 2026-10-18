@@ -25,7 +25,7 @@ public partial class Pak
         {
             var folderIndex = r.ReadInt32(); // index into folders
             var name = r.ReadString().Replace('\\', global::System.IO.Path.DirectorySeparatorChar); // should this replacement really happen?
-            var u01 = r.ReadInt32();
+            var u01 = r.ReadUInt32();
             var uncompressedSize = r.ReadInt32();
             var compressedSize = r.ReadInt32();
             var offset = r.ReadUInt32();
@@ -38,7 +38,7 @@ public partial class Pak
             var folderPath = string.Join(global::System.IO.Path.DirectorySeparatorChar, global::System.Linq.Enumerable.Select(global::System.Linq.Enumerable.Reverse(global::GBX.NET.PAK.Pak.RecurseFoldersToParent(folderIndex, allFolders)), f => f.Name.TrimEnd('\\')));
             var filePath = global::System.IO.Path.Combine(folderPath, name);
 
-            var file = new global::GBX.NET.PAK.PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags);
+            var file = new global::GBX.NET.PAK.PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags, u01);
             files[filePath] = file;
         }
 

@@ -119,18 +119,18 @@ partial interface IGbxReaderWriter
     void BigInt([NotNullIfNotNull(nameof(value))] ref System.Numerics.BigInteger? value, int byteLength, System.Numerics.BigInteger defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
-    System.Int128 Int128(System.Int128 value = default);
+    GBX.NET.Int128 Int128(GBX.NET.Int128 value = default);
     [return: NotNullIfNotNull(nameof(value))]
-    System.Int128? Int128(System.Int128? value, System.Int128 defaultValue = default);
-    void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128 value);
-    void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128? value, System.Int128 defaultValue = default);
+    GBX.NET.Int128? Int128(GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default);
+    void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128 value);
+    void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
-    System.UInt128 UInt128(System.UInt128 value = default);
+    GBX.NET.UInt128 UInt128(GBX.NET.UInt128 value = default);
     [return: NotNullIfNotNull(nameof(value))]
-    System.UInt128? UInt128(System.UInt128? value, System.UInt128 defaultValue = default);
-    void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128 value);
-    void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128? value, System.UInt128 defaultValue = default);
+    GBX.NET.UInt128? UInt128(GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default);
+    void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128 value);
+    void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default);
 
     [return: NotNullIfNotNull(nameof(value))]
     GBX.NET.UInt256 UInt256(GBX.NET.UInt256 value = default);
@@ -638,8 +638,8 @@ partial interface IGbxReaderWriter
     long? Int64Nullable(long? value = default);
     void Int64Nullable(ref long? value);
 
-    System.Int128? Int128Nullable(System.Int128? value = default);
-    void Int128Nullable(ref System.Int128? value);
+    GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default);
+    void Int128Nullable(ref GBX.NET.Int128? value);
 
 }
 
@@ -974,7 +974,7 @@ partial class GbxReaderWriter
     public void BigInt([NotNullIfNotNull(nameof(value))] ref System.Numerics.BigInteger? value, int byteLength, System.Numerics.BigInteger defaultValue = default) => value = BigInt(value, byteLength, defaultValue);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.Int128 Int128(System.Int128 value = default)
+    public GBX.NET.Int128 Int128(GBX.NET.Int128 value = default)
     {
         if (Reader is not null) value = Reader.ReadInt128();
         Writer?.WriteInt128(value);
@@ -982,19 +982,19 @@ partial class GbxReaderWriter
     }
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.Int128? Int128(System.Int128? value, System.Int128 defaultValue = default)
+    public GBX.NET.Int128? Int128(GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default)
     {
         if (Reader is not null) value = Reader.ReadInt128();
         Writer?.WriteInt128(value.GetValueOrDefault(defaultValue));
         return value;
     }
 
-    public void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128 value) => value = Int128(value);
+    public void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128 value) => value = Int128(value);
 
-    public void Int128([NotNullIfNotNull(nameof(value))] ref System.Int128? value, System.Int128 defaultValue = default) => value = Int128(value, defaultValue);
+    public void Int128([NotNullIfNotNull(nameof(value))] ref GBX.NET.Int128? value, GBX.NET.Int128 defaultValue = default) => value = Int128(value, defaultValue);
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.UInt128 UInt128(System.UInt128 value = default)
+    public GBX.NET.UInt128 UInt128(GBX.NET.UInt128 value = default)
     {
         if (Reader is not null) value = Reader.ReadUInt128();
         Writer?.WriteUInt128(value);
@@ -1002,16 +1002,16 @@ partial class GbxReaderWriter
     }
 
     [return: NotNullIfNotNull(nameof(value))]
-    public System.UInt128? UInt128(System.UInt128? value, System.UInt128 defaultValue = default)
+    public GBX.NET.UInt128? UInt128(GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default)
     {
         if (Reader is not null) value = Reader.ReadUInt128();
         Writer?.WriteUInt128(value.GetValueOrDefault(defaultValue));
         return value;
     }
 
-    public void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128 value) => value = UInt128(value);
+    public void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128 value) => value = UInt128(value);
 
-    public void UInt128([NotNullIfNotNull(nameof(value))] ref System.UInt128? value, System.UInt128 defaultValue = default) => value = UInt128(value, defaultValue);
+    public void UInt128([NotNullIfNotNull(nameof(value))] ref GBX.NET.UInt128? value, GBX.NET.UInt128 defaultValue = default) => value = UInt128(value, defaultValue);
 
     [return: NotNullIfNotNull(nameof(value))]
     public GBX.NET.UInt256 UInt256(GBX.NET.UInt256 value = default)
@@ -2451,13 +2451,13 @@ partial class GbxReaderWriter
 
     public void Int64Nullable(ref long? value) => value = Int64Nullable(value);
 
-    public System.Int128? Int128Nullable(System.Int128? value = default)
+    public GBX.NET.Int128? Int128Nullable(GBX.NET.Int128? value = default)
     {
         if (Reader is not null) value = Reader.ReadInt128Nullable();
         Writer?.WriteInt128Nullable(value);
         return value;
     }
 
-    public void Int128Nullable(ref System.Int128? value) => value = Int128Nullable(value);
+    public void Int128Nullable(ref GBX.NET.Int128? value) => value = Int128Nullable(value);
 
 }

@@ -5,7 +5,6 @@ using GBX.NET.Components;
 using GBX.NET.Extensions;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET;
 public partial class Gbx
@@ -17,7 +16,7 @@ public partial class Gbx
         _ = stream ?? throw new global::System.ArgumentNullException(nameof(stream));
 
         var minimalData = new byte[13];
-        var count = stream.ReadAtLeast(minimalData, minimalData.Length, throwOnEndOfStream: false);
+        var count = global::GBX.NET.Serialization.StreamExtensions.ReadAtLeast(stream, minimalData, minimalData.Length, throwOnEndOfStream: false);
         if (count < minimalData.Length)
         {
             throw new global::GBX.NET.Exceptions.NotAGbxException("Not enough data to read the class ID.");

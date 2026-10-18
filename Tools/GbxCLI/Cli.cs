@@ -51,6 +51,7 @@ internal static class Cli
         {
             "parse" => await ParseCommand.RunAsync(argsEnumerator, output),
             "eval" => await EvalCommand.RunAsync(argsEnumerator, output),
+            "pak" => await PakCommand.RunAsync(argsEnumerator, output),
             "compress" or "decompress" => await CompressionCommand.RunAsync(arg, argsEnumerator, output),
             _ when File.Exists(arg) => await ParseCommand.RunAsync(argsEnumerator, output, inputPath: arg),
             _ => throw new ArgumentException($"Unknown command: {arg}. Use --help for usage.")
@@ -109,6 +110,8 @@ internal static class Cli
             [bold]Commands:[/]
               [cyan]parse[/] <file>                     Detect and inspect a Gbx or PAK file (default).
               [cyan]eval[/] <file> [[code...]]            Evaluate C# against a Gbx or PAK file.
+              [cyan]pak files[/] <file>                 List all file paths in a PAK archive.
+              [cyan]pak verify[/] <file>              Fully parse Gbx entries and list failures.
               [cyan]decompress[/] <file> -o <output>     Decompress a Gbx body.
               [cyan]compress[/] <file> -o <output>       Compress a Gbx body.
 
@@ -122,6 +125,8 @@ internal static class Cli
               gbx parse "My Map.Map.Gbx"
               gbx parse "My Map.Map.Gbx" --interactive
               gbx eval "My Map.Map.Gbx" "Node.Chunks.Count"
+              gbx pak files "GameData.pak"
+              gbx parse "GameData.pak/Media/Texture/WhiteFlare1.Texture.gbx"
             """);
     }
 }

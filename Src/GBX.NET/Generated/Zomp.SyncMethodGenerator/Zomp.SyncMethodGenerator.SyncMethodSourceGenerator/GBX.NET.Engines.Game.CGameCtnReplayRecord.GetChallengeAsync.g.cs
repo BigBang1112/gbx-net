@@ -19,9 +19,9 @@ public partial class CGameCtnReplayRecord
         }
 
 #if NETSTANDARD2_0
-        using var ms = new MemoryStream(ChallengeGbxData.Data);
-#else
         using var ms = new global::System.IO.MemoryStream(ChallengeGbxData.Data);
+#else
+        await using var ms = new MemoryStream(ChallengeGbxData.Data);
 #endif
         return global::GBX.NET.Gbx.Parse<global::GBX.NET.Engines.Game.CGameCtnChallenge>(ms, settings);
     }

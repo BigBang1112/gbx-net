@@ -8,9 +8,20 @@ public sealed class PakFile
     public uint Offset { get; }
     public int UncompressedSize { get; }
     public int CompressedSize { get; }
+
+    /// <summary>
+    /// Stored size including alignment padding. Available from Pak version 17.
+    /// </summary>
     public int? Size { get; }
+
     public UInt128? Checksum { get; }
     public ulong Flags { get; }
+
+    /// <summary>
+    /// Unidentified unsigned field serialized immediately before the file sizes.
+    /// </summary>
+    public uint U01 { get; }
+
     public bool DontUseDummyWrite => (Flags & 0x100000000) != 0;
     public bool PublicFile => (Flags & 0x2000000000000) != 0;
     public bool ForceNoCrypt => (Flags & 0x4000000000000) != 0;
@@ -26,7 +37,21 @@ public sealed class PakFile
         int compressedSize,
         int? size,
         UInt128? checksum,
-        ulong flags)
+        ulong flags) : this(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, flags, 0)
+    {
+    }
+
+    public PakFile(
+        string name,
+        string folderPath,
+        uint classId,
+        uint offset,
+        int uncompressedSize,
+        int compressedSize,
+        int? size,
+        UInt128? checksum,
+        ulong flags,
+        uint u01)
     {
         Name = name;
         FolderPath = folderPath;
@@ -37,6 +62,7 @@ public sealed class PakFile
         Size = size;
         Checksum = checksum;
         Flags = flags;
+        U01 = u01;
     }
 
     public override string ToString()

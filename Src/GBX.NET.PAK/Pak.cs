@@ -35,6 +35,17 @@ public partial class Pak : IDisposable
     public uint GbxHeadersStart { get; private set; }
     public int? GbxHeadersSize { get; private set; }
     public int? GbxHeadersComprSize { get; private set; }
+
+    /// <summary>
+    /// MD5 of the stored Gbx headers section, including alignment padding from version 17. Available from version 14.
+    /// </summary>
+    public UInt128? GbxHeadersChecksum { get; private set; }
+
+    /// <summary>
+    /// Pack membership mask. Available from version 3.
+    /// </summary>
+    public UInt128? PackMask { get; private set; }
+
     public int? HeaderMaxSize { get; protected set; }
     public uint? Size { get; private set; }
     public byte[]? HeaderMD5 { get; private set; }
@@ -42,6 +53,16 @@ public partial class Pak : IDisposable
     public virtual bool IsHeaderPrivate => true;
     public virtual bool UseDefaultHeaderKey => false;
     public virtual bool IsHeaderEncrypted => true;
+    public virtual bool IsDataPrivate => true;
+
+    /// <summary>
+    /// Value XORed into the header and data encryption keys. Available from version 7.
+    /// </summary>
+    public virtual byte[]? KeySalt { get; protected set; }
+
+    protected bool HasKeySalt => KeySalt is { } salt && Array.Exists(salt, x => x != 0);
+
+    private bool IsDataEncrypted => IsDataPrivate || HasKeySalt || (key is not null && Array.Exists(key, x => x != 0));
 
     public AuthorInfo? AuthorInfo { get; protected set; }
 
@@ -191,10 +212,25 @@ public partial class Pak : IDisposable
             }
         }
 
+        ApplyKeySalt(keyForHeader);
+
         var iv = await r.ReadUInt64Async(cancellationToken);
         var blowfishStream = new BlowfishStream(stream, keyForHeader, iv, version);
 
         await ReadHeaderAsync(blowfishStream, cancellationToken);
+    }
+
+    private void ApplyKeySalt(byte[] encryptionKey)
+    {
+        if (KeySalt is not { } salt)
+        {
+            return;
+        }
+
+        for (var i = 0; i < 16; i++)
+        {
+            encryptionKey[i] ^= salt[i];
+        }
     }
 
     /// <summary>
@@ -234,7 +270,7 @@ public partial class Pak : IDisposable
 
         if (Version >= 14)
         {
-            await r.ReadBytesAsync(16, cancellationToken); // unused
+            GbxHeadersChecksum = await r.ReadUInt128Async(cancellationToken);
 
             if (Version >= 16)
             {
@@ -244,7 +280,7 @@ public partial class Pak : IDisposable
 
         if (Version >= 3)
         {
-            await r.ReadBytesAsync(16, cancellationToken); // unused
+            PackMask = await r.ReadUInt128Async(cancellationToken);
 
             if (Version == 6)
             {
@@ -314,7 +350,7 @@ public partial class Pak : IDisposable
         {
             var folderIndex = await r.ReadInt32Async(cancellationToken); // index into folders
             var name = (await r.ReadStringAsync(cancellationToken)).Replace('\\', Path.DirectorySeparatorChar); // should this replacement really happen?
-            var u01 = await r.ReadInt32Async(cancellationToken);
+            var u01 = await r.ReadUInt32Async(cancellationToken);
             var uncompressedSize = await r.ReadInt32Async(cancellationToken);
             var compressedSize = await r.ReadInt32Async(cancellationToken);
             var offset = await r.ReadUInt32Async(cancellationToken);
@@ -329,7 +365,7 @@ public partial class Pak : IDisposable
                 .Select(f => f.Name.TrimEnd('\\')));
             var filePath = Path.Combine(folderPath, name);
 
-            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags);
+            var file = new PakFile(name, folderPath, classId, offset, uncompressedSize, compressedSize, size, checksum, fileFlags, u01);
             files[filePath] = file;
         }
 
@@ -369,18 +405,21 @@ public partial class Pak : IDisposable
 
         var newStream = stream;
 
-        if (file.IsEncrypted)
+        if (file.IsEncrypted && IsDataEncrypted)
         {
             var ivBuffer = new byte[8];
             stream.ReadExactly(ivBuffer);
             var iv = BitConverter.ToUInt64(ivBuffer, 0);
 
-            if (key is null)
+            if (key is null && IsDataPrivate)
             {
                 throw new Exception("Encryption key is missing");
             }
 
-            var blowfish = new BlowfishStream(newStream, key, iv, Version);
+            var keyForData = key is null ? new byte[16] : (byte[])key.Clone();
+            ApplyKeySalt(keyForData);
+
+            var blowfish = new BlowfishStream(newStream, keyForData, iv, Version);
 
             encryptionInitializer = new EncryptionInitializer(blowfish);
 

@@ -5,7 +5,6 @@ using GBX.NET.Components;
 using GBX.NET.Extensions;
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET;
 public partial class Gbx

@@ -102,6 +102,7 @@ public class CliTests
     [Arguments("compress")]
     [Arguments("decompress")]
     [Arguments("eval")]
+    [Arguments("pak")]
     public async Task CommandHandler_AcceptsGlobalOptions(string command)
     {
         using var output = new StringWriter();

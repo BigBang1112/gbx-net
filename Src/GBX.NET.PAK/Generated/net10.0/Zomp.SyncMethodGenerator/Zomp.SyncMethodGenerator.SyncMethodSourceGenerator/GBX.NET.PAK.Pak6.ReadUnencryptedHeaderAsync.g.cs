@@ -19,7 +19,7 @@ public sealed partial class Pak6
             if (version < 9)
             {
                 Comments = r.ReadString();
-                U01 = r.ReadBytes(16); // some blowfish key likely
+                KeySalt = r.ReadBytes(16);
 
                 if (version == 8)
                 {
@@ -47,7 +47,7 @@ public sealed partial class Pak6
 
                 UsageSubDir = r.ReadString();
                 CreationBuildInfo = r.ReadString();
-                U01 = r.ReadBytes(16); // some blowfish key likely
+                KeySalt = r.ReadBytes(16);
 
                 if (version >= 10)
                 {
