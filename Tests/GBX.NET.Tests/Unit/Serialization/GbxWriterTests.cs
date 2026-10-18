@@ -242,6 +242,65 @@ public class GbxWriterTests
         Assert.Equal(expected, actual: data);
     }
 
+        [Fact]
+    public void WriteArrayOptimizedInt_LengthAtOrOverUInt16Max_WritesEachElementOnce()
+    {
+        // Arrange: 65535 entries select the int (4-byte) encoding; before the fix the elements were written twice
+        using var ms = new MemoryStream();
+        using var w = new GbxWriter(ms);
+        var value = Enumerable.Range(0, ushort.MaxValue).ToArray();
+
+        // Act
+        w.WriteArrayOptimizedInt(value);
+
+        // Assert: length prefix + one int per element
+        Assert.Equal(expected: 4 + value.Length * 4, actual: ms.Position);
+
+        var data = ms.ToArray();
+        Assert.Equal(expected: value.Length, actual: BitConverter.ToInt32(data, 0));
+        Assert.Equal(expected: 0, actual: BitConverter.ToInt32(data, 4));
+        Assert.Equal(expected: 1, actual: BitConverter.ToInt32(data, 8));
+        Assert.Equal(expected: value.Length - 1, actual: BitConverter.ToInt32(data, data.Length - 4));
+    }
+
+    [Fact]
+    public void WriteArrayOptimizedInt_LengthAtOrOverUInt16Max_RoundTrips()
+    {
+        // Arrange
+        using var ms = new MemoryStream();
+        using var w = new GbxWriter(ms);
+        var value = Enumerable.Range(0, 70_000).Select(i => i * 3).ToArray();
+
+        // Act
+        w.WriteArrayOptimizedInt(value);
+        ms.Position = 0;
+        using var r = new GbxReader(ms);
+        var read = r.ReadArrayOptimizedInt();
+
+        // Assert: the reader consumes exactly what the writer produced
+        Assert.Equal(expected: value, actual: read);
+        Assert.Equal(expected: ms.Length, actual: ms.Position);
+    }
+
+    [Theory]
+    [InlineData(10)]
+    [InlineData(1000)]
+    public void WriteArrayOptimizedInt_SmallerLengths_WriteEachElementOnce(int length)
+    {
+        // Arrange
+        using var ms = new MemoryStream();
+        using var w = new GbxWriter(ms);
+        var value = Enumerable.Range(0, length).ToArray();
+        var elementSize = length >= byte.MaxValue ? 2 : 1;
+
+        // Act
+        w.WriteArrayOptimizedInt(value);
+
+        // Assert
+        Assert.Equal(expected: 4 + length * elementSize, actual: ms.Position);
+    }
+    
+
     private static string GetRandomString(int length)
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
