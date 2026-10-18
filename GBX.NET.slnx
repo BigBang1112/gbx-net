@@ -92,6 +92,7 @@
     <Project Path="Templates/MyGbxToolApp/MyGbxToolAppCLI/MyGbxToolAppCLI.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/GbxCLI.Tests/GbxCLI.Tests.csproj" />
     <Project Path="Tests/GBX.NET.Crypto.Tests/GBX.NET.Crypto.Tests.csproj" />
     <Project Path="Tests/GBX.NET.Generators.Tests/GBX.NET.Generators.Tests.csproj" />
     <Project Path="Tests/GBX.NET.PAK.Tests/GBX.NET.PAK.Tests.csproj" Id="e0d7028e-a295-4aa8-9b4c-93f37112ea53" />
@@ -99,6 +100,7 @@
   </Folder>
   <Folder Name="/Tools/">
     <File Path="Tools/LICENSE" />
+    <Project Path="Tools/GbxCLI/GbxCLI.csproj" />
     <Project Path="Tools/CryCryptSwitch/CryCryptSwitch.csproj" />
     <Project Path="Tools/ExtractPakFileHashes/ExtractPakFileHashes.csproj" />
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />

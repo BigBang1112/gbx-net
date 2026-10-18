@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>gbx</AssemblyName>
+        <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
+
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>gbx</ToolCommandName>
+        <PackageId>GBX.NET.CLI</PackageId>
+        <Title>GBX.NET.CLI</Title>
+        <Version>0.1.0</Version>
+        <Authors>BigBang1112</Authors>
+        <Description>A command-line interface for inspecting and transforming Gbx files with GBX.NET.</Description>
+        <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+        <InternalsVisibleTo Include="GbxCLI.Tests" />
+        <AssemblyMetadata Include="CliDistribution" Value=".NET tool" Condition="'$(PackAsTool)' == 'true'" />
+        <AssemblyMetadata Include="CliDistribution" Value="standalone executable" Condition="'$(PackAsTool)' != 'true'" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="5.9.0" />
+        <PackageReference Include="Spectre.Console" Version="0.57.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET.PAK\GBX.NET.PAK.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
+        <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
+    </ItemGroup>
+
+</Project>
