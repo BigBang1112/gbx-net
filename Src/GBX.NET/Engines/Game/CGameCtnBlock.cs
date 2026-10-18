@@ -300,6 +300,15 @@ public partial class CGameCtnBlock : IGameCtnBlockTM10, IGameCtnBlockTMSX, IGame
     [ChunkGenerationOptions(StructureKind = StructureKind.SeparateReadAndWrite)]
     public partial class Chunk03057002;
 
-    [ArchiveGenerationOptions( StructureKind = StructureKind.SeparateReadAndWrite )]
-    public partial class SSquareCardEventIds;
+    public partial class SSquareCardEventIds
+    {
+        [Obsolete("Use Version instead.")]
+        public int U01 { get => Version; set => Version = value; }
+
+        [Obsolete("Use BlockUnitIndex instead.")]
+        public int U02 { get => BlockUnitIndex; set => BlockUnitIndex = value; }
+
+        [Obsolete("Use CardEventIds instead.")]
+        public Ident[]? U03 { get => CardEventIds; set => CardEventIds = value; }
+    }
 }

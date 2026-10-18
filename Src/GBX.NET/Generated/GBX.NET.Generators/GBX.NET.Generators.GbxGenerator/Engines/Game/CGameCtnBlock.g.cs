@@ -233,27 +233,22 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
         }
     }
 
-    public partial class SSquareCardEventIds : IReadable, IWritable, IDeepCloneable
+    public partial class SSquareCardEventIds : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
     {
-        private int u01;
-        public int U01
+        public int Version { get; set; }
+
+        private int blockUnitIndex;
+        public int BlockUnitIndex
         {
-            get => this.u01;
-            set => this.u01 = value;
+            get => this.blockUnitIndex;
+            set => this.blockUnitIndex = value;
         }
 
-        private int u02;
-        public int U02
+        private Ident[]? cardEventIds;
+        public Ident[]? CardEventIds
         {
-            get => this.u02;
-            set => this.u02 = value;
-        }
-
-        private Ident[]? u03;
-        public Ident[]? U03
-        {
-            get => this.u03;
-            set => this.u03 = value;
+            get => this.cardEventIds;
+            set => this.cardEventIds = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -266,23 +261,28 @@ public partial class CGameCtnBlock : CMwNod, IClass, IReadable, IWritable
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
-            ((SSquareCardEventIds)clone).u01 = context.Clone(this.u01)!;
-            ((SSquareCardEventIds)clone).u02 = context.Clone(this.u02)!;
-            ((SSquareCardEventIds)clone).u03 = context.CloneArray(this.u03)!;
+            ((SSquareCardEventIds)clone).Version = context.Clone(this.Version)!;
+            ((SSquareCardEventIds)clone).blockUnitIndex = context.Clone(this.blockUnitIndex)!;
+            ((SSquareCardEventIds)clone).cardEventIds = context.CloneArray(this.cardEventIds)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.VersionInt32(this);
+            rw.Int32(ref this.blockUnitIndex);
+            rw.ArrayIdent(ref this.cardEventIds!);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
         {
-            this.u01 = r.ReadInt32();
-            this.u02 = r.ReadInt32();
-            this.u03 = r.ReadArrayIdent();
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
         }
 
         public virtual void Write(GbxWriter w, int v = 0)
         {
-            w.Write(this.u01);
-            w.Write(this.u02);
-            w.WriteArray(this.u03);
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

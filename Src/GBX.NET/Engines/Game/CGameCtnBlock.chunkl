@@ -32,6 +32,6 @@ archive
       int DecalVariant = -1
 
 archive SSquareCardEventIds
-  int
-  int
-  ident[]
+  version
+  int BlockUnitIndex
+  ident[] CardEventIds
