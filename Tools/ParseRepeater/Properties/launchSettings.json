@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "ParseRepeater": {
-      "commandName": "Project",
-      "commandLineArgs": "\"E:\\Games\\TrackMania Nations ESWC\\GameData\\Tracks\\Replays\\Bench.Replay.Gbx\""
-    }
-  }
-}

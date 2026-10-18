@@ -102,10 +102,6 @@
   </Folder>
   <Folder Name="/Tools/">
     <File Path="Tools/LICENSE" />
-    <Project Path="Tools/BulkParseTest/BulkParseTest.csproj" />
-    <Project Path="Tools/ClassIdFormatter/ClassIdFormatter.csproj" />
-    <Project Path="Tools/ClassIdTxtFromGbxClassInfo/ClassIdTxtFromGbxClassInfo.csproj" />
-    <Project Path="Tools/ClassInfoFromId/ClassInfoFromId.csproj" />
     <Project Path="Tools/CryCryptSwitch/CryCryptSwitch.csproj" />
     <Project Path="Tools/ExtractPakFileHashes/ExtractPakFileHashes.csproj" />
     <Project Path="Tools/GbxDecompress/GbxDecompress.csproj" />
@@ -113,18 +109,13 @@
     <Project Path="Tools/GbxDiscordBot/GbxDiscordBot.csproj" />
     <Project Path="Tools/GbxInspector/GbxInspector.csproj" />
     <Project Path="Tools/GbxExplorer/Client/GbxExplorer.Client.csproj" />
-    <Project Path="Tools/GbxExplorer/Component/GbxExplorer.Component.csproj" />
-    <Project Path="Tools/GbxExplorer/Photino/GbxExplorer.Photino.csproj" />
     <Project Path="Tools/GbxExplorer/Server/GbxExplorer.Server.csproj" />
     <Project Path="Tools/GbxExplorer/Shared/GbxExplorer.Shared.csproj" />
-    <Project Path="Tools/GbxLuaInterpreter/GbxLuaInterpreter.csproj" />
-    <Project Path="Tools/GbxLuaProcess/GbxLuaProcess.csproj" />
     <Project Path="Tools/GbxToJson/GbxToJson.csproj" />
     <Project Path="Tools/MuxCryptSwitch/MuxCryptSwitch.csproj" />
     <Project Path="Tools/ObjExporter/ObjExporter.csproj" />
     <Project Path="Tools/PakToFolder/PakToFolder.csproj" />
     <Project Path="Tools/PakToZip/PakToZip.csproj" />
-    <Project Path="Tools/ParseRepeater/ParseRepeater.csproj" />
     <Project Path="Tools/PopulateExtensions/PopulateExtensions.csproj" Id="a4d3d9a7-2e22-4cfa-bf7c-6c61cf1236f9" />
     <Project Path="Tools/SplitFileHashesPerPak/SplitFileHashesPerPak.csproj" Id="3b8de8d8-dfab-4f67-bf8d-871caf36b57d" />
   </Folder>
