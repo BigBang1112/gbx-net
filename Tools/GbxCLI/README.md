@@ -25,7 +25,7 @@ Gbx and PAK formats are detected from their contents. PAK keys are selected auto
 
 Append a stored file path to an archive to use it with `parse` or `eval`. Both slash styles work inside the archive, and entry lookup ignores case.
 
-`pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed.
+`pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed.
 
 In `eval`, expressions use members of the root `Gbx` or `Pak` object. Pass several quoted expressions to run them in order. Output previews are limited, so narrow queries when inspecting large collections. C# runs with the CLI's permissions, so only evaluate trusted code.
 

@@ -24,7 +24,7 @@
         <None Include="README.md" Pack="true" PackagePath="\" />
         <InternalsVisibleTo Include="GbxCLI.Tests" />
         <AssemblyMetadata Include="CliDistribution" Value=".NET tool" Condition="'$(PackAsTool)' == 'true'" />
-        <AssemblyMetadata Include="CliDistribution" Value="standalone executable" Condition="'$(PackAsTool)' != 'true'" />
+        <AssemblyMetadata Include="CliDistribution" Value="standalone" Condition="'$(PackAsTool)' != 'true'" />
     </ItemGroup>
 
     <ItemGroup>

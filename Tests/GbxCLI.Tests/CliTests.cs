@@ -72,7 +72,7 @@ public class CliTests
         var exitCode = await Cli.RunAsync([option], output, error);
 
         await Assert.That(exitCode).IsEqualTo(0);
-        await Assert.That(distribution is ".NET tool" or "standalone executable").IsTrue();
+        await Assert.That(distribution is ".NET tool" or "standalone").IsTrue();
         await Assert.That(output.ToString()).Contains($"({distribution})");
         await Assert.That(error.ToString()).IsEqualTo(string.Empty);
     }

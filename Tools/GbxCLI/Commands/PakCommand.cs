@@ -76,7 +76,13 @@ internal static class PakCommand
                     throw new InvalidDataException("The file is too short to contain a Gbx signature.");
                 }
 
-                await pak.OpenGbxFileAsync(file);
+                var gbx = await pak.OpenGbxFileAsync(file);
+
+                if (gbx.Node is null)
+                {
+                    throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported; its body was not parsed.");
+                }
+
                 parsed++;
             }
             catch (Exception exception)

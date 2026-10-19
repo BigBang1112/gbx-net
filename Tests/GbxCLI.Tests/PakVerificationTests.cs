@@ -104,6 +104,35 @@ public class PakVerificationTests
         }
     }
 
+    [Test]
+    public async Task Verify_UnknownRootClass_ReportsFailureAndContinues()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-verify-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "archive.pak");
+            var unknown = CreateGbx(compressed: false);
+            BinaryPrimitives.WriteUInt32LittleEndian(unknown.AsSpan(9), 0x7FFF0000);
+            await File.WriteAllBytesAsync(path, CreatePak(
+                ("unknown.gbx", unknown),
+                ("valid.gbx", CreateGbx(compressed: false))));
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(1);
+            await Assert.That(output.ToString()).Contains("Root class 0x7FFF0000 is not supported");
+            await Assert.That(output.ToString()).Contains("Parsed 1 Gbx files; 1 failed; 0 non-Gbx files skipped.");
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
     private static byte[] CreateGbx(bool compressed)
     {
         Gbx.LZO = new GBX.NET.LZO.Lzo();
