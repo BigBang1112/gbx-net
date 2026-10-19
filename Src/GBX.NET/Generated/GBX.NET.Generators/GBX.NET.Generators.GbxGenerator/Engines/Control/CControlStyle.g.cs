@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Control;
 
 /// <remarks>ID: 0x07017000</remarks>
 [Class(0x07017000)]
-public partial class CControlStyle : CMwNod, IClass
+public partial class CControlStyle : CPlug, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x07017000;
@@ -142,8 +142,9 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CPlugSound>? actionSoundRef;
-    /// <remarks>Applied with: 0x00E body chunk</remarks>
+    /// <remarks>Applied with: 0x00E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701700E>]
+    [AppliedWithChunk<Chunk0701701F>]
     public CPlugSound? ActionSound
     {
         get => actionSoundRef?.Resolve();
@@ -151,8 +152,9 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float buttonIconWidth;
-    /// <remarks>Applied with: 0x00E body chunk</remarks>
+    /// <remarks>Applied with: 0x00E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701700E>]
+    [AppliedWithChunk<Chunk0701701F>]
     public float ButtonIconWidth
     {
         get => this.buttonIconWidth;
@@ -160,8 +162,9 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private float buttonIconHeight;
-    /// <remarks>Applied with: 0x00E body chunk</remarks>
+    /// <remarks>Applied with: 0x00E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701700E>]
+    [AppliedWithChunk<Chunk0701701F>]
     public float ButtonIconHeight
     {
         get => this.buttonIconHeight;
@@ -169,8 +172,9 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private NodeRef<CFuncEnum>? buttonDefaultIconsRef;
-    /// <remarks>Applied with: 0x00E body chunk</remarks>
+    /// <remarks>Applied with: 0x00E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701700E>]
+    [AppliedWithChunk<Chunk0701701F>]
     public CFuncEnum? ButtonDefaultIcons
     {
         get => buttonDefaultIconsRef?.Resolve();
@@ -498,12 +502,22 @@ public partial class CControlStyle : CMwNod, IClass
     }
 
     private string? buttonDefaultIconId;
-    /// <remarks>Applied with: 0x01E body chunk</remarks>
+    /// <remarks>Applied with: 0x01E, 0x01F body chunks</remarks>
     [AppliedWithChunk<Chunk0701701E>]
+    [AppliedWithChunk<Chunk0701701F>]
     public string? ButtonDefaultIconId
     {
         get => this.buttonDefaultIconId;
         set => this.buttonDefaultIconId = value;
+    }
+
+    private NodeRef<CPlugSound>? actionBackSoundRef;
+    /// <remarks>Applied with: 0x01F body chunk</remarks>
+    [AppliedWithChunk<Chunk0701701F>]
+    public CPlugSound? ActionBackSound
+    {
+        get => actionBackSoundRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref actionBackSoundRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -531,6 +545,7 @@ public partial class CControlStyle : CMwNod, IClass
         public NodeRef<CPlugMaterial> FocusAreaMaterialSelected => NodeRef.GetOrCreate(ref owner.focusAreaMaterialSelectedRef);
         public NodeRef<CPlugMaterial> FocusAreaMaterialFocused => NodeRef.GetOrCreate(ref owner.focusAreaMaterialFocusedRef);
         public NodeRef<CPlugSolid> FocusAreaSolid => NodeRef.GetOrCreate(ref owner.focusAreaSolidRef);
+        public NodeRef<CPlugSound> ActionBackSound => NodeRef.GetOrCreate(ref owner.actionBackSoundRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -555,6 +570,7 @@ public partial class CControlStyle : CMwNod, IClass
         yield return new("FocusAreaMaterialSelected", NodeRef.GetOrCreate(ref focusAreaMaterialSelectedRef));
         yield return new("FocusAreaMaterialFocused", NodeRef.GetOrCreate(ref focusAreaMaterialFocusedRef));
         yield return new("FocusAreaSolid", NodeRef.GetOrCreate(ref focusAreaSolidRef));
+        yield return new("ActionBackSound", NodeRef.GetOrCreate(ref actionBackSoundRef));
         yield break;
     }
 
@@ -611,6 +627,7 @@ public partial class CControlStyle : CMwNod, IClass
         ((CControlStyle)clone).focusAreaSolidRef = context.Clone(this.focusAreaSolidRef)!;
         ((CControlStyle)clone).focusAreaZOffset = context.Clone(this.focusAreaZOffset)!;
         ((CControlStyle)clone).buttonDefaultIconId = context.Clone(this.buttonDefaultIconId)!;
+        ((CControlStyle)clone).actionBackSoundRef = context.Clone(this.actionBackSoundRef)!;
     }
 
     public CControlStyle()
@@ -1084,55 +1101,98 @@ public partial class CControlStyle : CMwNod, IClass
         }
     }
 
-    public partial class STextSettings_ColorAndChars : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    /// <summary>
+    /// CControlStyle 0x01F chunk
+    /// </summary>
+    [Chunk(0x0701701F)]
+    [ChunkGameVersion(GameVersion.MP4)]
+    public partial class Chunk0701701F : Chunk<CControlStyle>, IVersionable
     {
-        private int u01;
+        public override uint Id => 0x0701701F;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701701F)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CControlStyle n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.actionSoundRef);
+            rw.NodeRef(ref n.actionBackSoundRef);
+            rw.Single(ref n.buttonIconWidth);
+            rw.Single(ref n.buttonIconHeight);
+            rw.Id(ref n.buttonDefaultIconId);
+            rw.NodeRef(ref n.buttonDefaultIconsRef);
+        }
+    }
+
+    public partial class STextSettings_ColorAndChars : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; } = 4;
+
+        private int u01 = 8;
         public int U01
         {
             get => this.u01;
             set => this.u01 = value;
         }
 
-        private int u02;
-        public int U02
+        private float u02 = 1;
+        public float U02
         {
             get => this.u02;
             set => this.u02 = value;
         }
 
-        private float u03;
+        private float u03 = 1;
         public float U03
         {
             get => this.u03;
             set => this.u03 = value;
         }
 
-        private float u04;
+        private float u04 = 1;
         public float U04
         {
             get => this.u04;
             set => this.u04 = value;
         }
 
-        private float u05;
+        private float u05 = 1;
         public float U05
         {
             get => this.u05;
             set => this.u05 = value;
         }
 
-        private float u06;
-        public float U06
+        private string? u06;
+        public string? U06
         {
             get => this.u06;
             set => this.u06 = value;
         }
 
-        private string? u07;
-        public string? U07
+        private bool u07;
+        public bool U07
         {
             get => this.u07;
             set => this.u07 = value;
+        }
+
+        private bool u08;
+        public bool U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
         }
 
         object IDeepCloneable.DeepClone(DeepCloneContext context)
@@ -1145,6 +1205,7 @@ public partial class CControlStyle : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((STextSettings_ColorAndChars)clone).Version = context.Clone(this.Version)!;
             ((STextSettings_ColorAndChars)clone).u01 = context.Clone(this.u01)!;
             ((STextSettings_ColorAndChars)clone).u02 = context.Clone(this.u02)!;
             ((STextSettings_ColorAndChars)clone).u03 = context.Clone(this.u03)!;
@@ -1152,17 +1213,28 @@ public partial class CControlStyle : CMwNod, IClass
             ((STextSettings_ColorAndChars)clone).u05 = context.Clone(this.u05)!;
             ((STextSettings_ColorAndChars)clone).u06 = context.Clone(this.u06)!;
             ((STextSettings_ColorAndChars)clone).u07 = context.Clone(this.u07)!;
+            ((STextSettings_ColorAndChars)clone).u08 = context.Clone(this.u08)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
+            rw.VersionInt32(this);
             rw.Int32(ref this.u01);
-            rw.Int32(ref this.u02);
+            rw.Single(ref this.u02);
             rw.Single(ref this.u03);
             rw.Single(ref this.u04);
             rw.Single(ref this.u05);
-            rw.Single(ref this.u06);
-            rw.String(ref this.u07);
+            rw.String(ref this.u06);
+
+            if (Version >= 3)
+            {
+                rw.Boolean(ref this.u07);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Boolean(ref this.u08);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -1197,6 +1269,7 @@ public partial class CControlStyle : CMwNod, IClass
         0x0701701C => new Chunk0701701C(),
         0x0701701D => new Chunk0701701D(),
         0x0701701E => new Chunk0701701E(),
+        0x0701701F => new Chunk0701701F(),
         _ => base.NewChunk(chunkId),
     };
 }

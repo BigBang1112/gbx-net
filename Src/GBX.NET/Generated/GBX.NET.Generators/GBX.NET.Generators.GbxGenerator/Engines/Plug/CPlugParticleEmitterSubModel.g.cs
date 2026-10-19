@@ -543,9 +543,18 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref visualRef, value);
     }
 
+    private string? meshRef;
+    /// <remarks>Applied with: 0x031 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B2031>(6)]
+    public string? MeshRef
+    {
+        get => this.meshRef;
+        set => this.meshRef = value;
+    }
+
     private NodeRef<CPlugSolid2Model>? solid2ModelRef;
-    /// <remarks>Applied with: 0x031 body chunk</remarks>
-    [AppliedWithChunk<Chunk090B2031>]
+    /// <remarks>Applied with: 0x031 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B2031>(2)]
     public CPlugSolid2Model? Solid2Model
     {
         get => solid2ModelRef?.Resolve();
@@ -641,6 +650,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         ((CPlugParticleEmitterSubModel)clone).collisionDamper = context.Clone(this.collisionDamper)!;
         ((CPlugParticleEmitterSubModel)clone).sortSprites = context.Clone(this.sortSprites)!;
         ((CPlugParticleEmitterSubModel)clone).visualRef = context.Clone(this.visualRef)!;
+        ((CPlugParticleEmitterSubModel)clone).meshRef = context.Clone(this.meshRef)!;
         ((CPlugParticleEmitterSubModel)clone).solid2ModelRef = context.Clone(this.solid2ModelRef)!;
     }
 
@@ -1454,18 +1464,24 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int U02;
         public bool U03;
         public float U04;
-        public string? U05;
-        public Iso4 U06;
-        public Vec2 U07;
-        public int U08;
+        public Iso4 U05;
+        public Vec2 U06;
+        public int U07;
+        public float U08;
         public float U09;
         public float U10;
-        public float U11;
+        public bool U11;
         public bool U12;
         public bool U13;
         public bool U14;
-        public bool U15;
-        public int U16;
+        public int U15;
+
+        private NodeRef<CFuncKeysReal>? U16Ref;
+        public CFuncKeysReal? U16
+        {
+            get => U16Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U16Ref, value);
+        }
 
         private NodeRef<CFuncKeysReal>? U17Ref;
         public CFuncKeysReal? U17
@@ -1481,28 +1497,21 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U18Ref, value);
         }
 
-        private NodeRef<CFuncKeysReal>? U19Ref;
-        public CFuncKeysReal? U19
-        {
-            get => U19Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U19Ref, value);
-        }
-
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090B2031 owner;
             internal NodeRefView(Chunk090B2031 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
             public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
             public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CFuncKeysReal> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
             yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
             yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
             yield break;
         }
 
@@ -1529,7 +1538,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
                 Version = 14;
             }
 
-            U13 = true;
+            U12 = true;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1551,10 +1560,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2031)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090B2031)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090B2031)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090B2031)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B2031)clone).U16Ref = context.Clone(this.U16Ref)!;
             ((Chunk090B2031)clone).U17Ref = context.Clone(this.U17Ref)!;
             ((Chunk090B2031)clone).U18Ref = context.Clone(this.U18Ref)!;
-            ((Chunk090B2031)clone).U19Ref = context.Clone(this.U19Ref)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
@@ -1583,53 +1591,59 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.String(ref U05);
+                rw.String(ref n.meshRef);
             }
 
-            rw.NodeRef(ref n.solid2ModelRef);
+            if (Version >= 2)
+            {
+                if (n.MeshRef== null || n.MeshRef== "")
+                {
+                    rw.NodeRef(ref n.solid2ModelRef);
+                }
+            }
 
             if (Version >= 7)
             {
-                rw.Iso4(ref U06);
+                rw.Iso4(ref U05);
             }
 
-            rw.Vec2(ref U07);
-            rw.Int32(ref U08);
+            rw.Vec2(ref U06);
+            rw.Int32(ref U07);
+            rw.Single(ref U08);
             rw.Single(ref U09);
-            rw.Single(ref U10);
 
             if (Version >= 3)
             {
-                rw.Single(ref U11);
+                rw.Single(ref U10);
 
                 if (Version >= 4)
                 {
-                    rw.Boolean(ref U12);
+                    rw.Boolean(ref U11);
 
                     if (Version >= 5)
                     {
-                        rw.Boolean(ref U13);
+                        rw.Boolean(ref U12);
 
                         if (Version >= 9)
                         {
-                            rw.Boolean(ref U14);
+                            rw.Boolean(ref U13);
 
                             if (Version >= 10)
                             {
-                                rw.Boolean(ref U15);
+                                rw.Boolean(ref U14);
 
                                 if (Version >= 11)
                                 {
-                                    rw.Int32(ref U16);
+                                    rw.Int32(ref U15);
 
                                     if (Version >= 12)
                                     {
-                                        rw.NodeRef(ref U17Ref);
+                                        rw.NodeRef(ref U16Ref);
 
                                         if (Version >= 13)
                                         {
+                                            rw.NodeRef(ref U17Ref);
                                             rw.NodeRef(ref U18Ref);
-                                            rw.NodeRef(ref U19Ref);
                                         }
                                     }
                                 }

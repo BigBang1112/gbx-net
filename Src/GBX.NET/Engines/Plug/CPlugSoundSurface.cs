@@ -68,9 +68,14 @@ public partial class CPlugSoundSurface
             // The direct node body has no class ID. TM2020 uses CPlugCurveSimpleNod.
             if (rw.Reader is not null)
             {
-                n.skidVolumeFromIntensity = rw.Reader.PeekUInt32() == 0x09185000
-                    ? rw.Reader.ReadNode<CPlugCurveSimpleNod>()
-                    : rw.Reader.ReadNode<CFuncKeysReal>();
+                // Both curve types use CMwNod as the native parent. Initialize before
+                // reading the first chunk, which can cross an encrypted block boundary.
+                rw.Reader.TryInitializeDecryption(new CFuncKeysReal());
+                var firstChunkId = rw.Reader.ReadHexUInt32();
+                n.skidVolumeFromIntensity = firstChunkId == 0x09185000
+                    ? new CPlugCurveSimpleNod()
+                    : new CFuncKeysReal();
+                n.skidVolumeFromIntensity.Read(rw, firstChunkId);
             }
             if (rw.Writer is not null)
             {

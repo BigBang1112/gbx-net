@@ -37,8 +37,8 @@ CPlugAnimFile 0x090B0000
     v4+
       CPlugAnimPoseGroup[] PoseGroups
       CPlugAnimPoseGrid[] PoseGrids
-      CPlugAnimGraph[] Graphs
-      CPlugAnimGraphStack[] GraphStacks
+      LegacyGraph[] LegacyGraphs (version: n.GraphVersion)
+      LegacyGraphStack[] LegacyGraphStacks (version: n.GraphVersion)
       v5+
         CPlugAnimVariantGroup[] VariantGroups
         v6+
@@ -106,3 +106,82 @@ archive LegacyClip (contextual)
 
 archive LegacyEdition (contextual)
   int SkelIndex
+
+archive LegacyGraph
+  v3+
+    id Name
+  LegacyGraphState[] States (version: v)
+  id DefaultState
+  v1+
+    int DefaultStateIndex
+  v2..12
+    LegacyGraphExtraState[] ExtraStates (version: v)
+  v13+
+    LegacyGraphTransition[] Transitions (version: v)
+
+archive LegacyGraphState
+  id Name
+  v1-
+    bool U01
+  LegacyAnimNode Node (version: v)
+  LegacyAnimNode RootMotionNode (version: v)
+  v12-
+    int TransitionType
+    int TransitionDuration
+    int TransitionFlags
+    LegacyGraphCondition[] Conditions
+    id OnFinishState
+    bool U02
+  v8=
+    int RootYawMode
+  v9+
+    int RootYawMode
+    float RootYawSpeed = 360
+    v10+
+      float RootYawOffset
+
+archive LegacyGraphExtraState
+  id Name
+  LegacyAnimNode Node (version: v)
+  LegacyAnimNode RootMotionNode (version: v)
+  int TransitionType
+  int TransitionDuration
+  int TransitionFlags
+  v3-
+    id SourceState
+  v4+
+    id[] SourceStates
+  id DestinationState
+
+archive LegacyGraphTransition
+  int Type
+  int Duration
+  int Flags
+  id DestinationState
+  LegacyGraphCondition[] Conditions
+  id[] SourceStates
+  int Trigger
+
+archive LegacyGraphCondition
+  int Type
+  id Name
+
+archive LegacyAnimNode
+  int Type = -1
+  if Type == 0
+    id ClipName
+    v11+
+      int Flags
+  else if Type != -1
+    throw (type: NotSupportedException, message: Unsupported legacy animation node type)
+
+archive LegacyGraphStack
+  id Name
+  int[] GraphIndices
+  v12+
+    LegacyInputActionDelay[] InputActionDelays
+
+archive LegacyInputActionDelay
+  int Delay
+  int Type
+  id Name

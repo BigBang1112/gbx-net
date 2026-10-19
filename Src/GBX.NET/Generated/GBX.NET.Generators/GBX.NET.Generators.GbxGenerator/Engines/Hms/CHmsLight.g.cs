@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Hms;
 
 /// <remarks>ID: 0x0600C000</remarks>
 [Class(0x0600C000)]
-public partial class CHmsLight : CHmsPocEmitter, IClass
+public partial class CHmsLight : CHmsPoc, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x0600C000;

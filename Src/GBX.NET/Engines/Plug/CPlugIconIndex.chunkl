@@ -1,0 +1,24 @@
+CPlugIconIndex 0x09093000
+
+0x000
+  id
+  int = -1
+  int = -1
+  int = -1
+  int = -1
+  int = -1
+  int = -1
+
+0x001 (base: 0x000)
+  base
+  int
+
+0x002 (base: 0x001)
+  base
+  int
+  float
+  float
+
+0x003 (base: 0x002) [MP4]
+  base
+  id[6]

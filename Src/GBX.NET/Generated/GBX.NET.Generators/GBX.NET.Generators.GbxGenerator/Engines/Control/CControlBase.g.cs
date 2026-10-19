@@ -37,6 +37,33 @@ public partial class CControlBase : CSceneToy, IClass
 
     internal override uint GetId() => Id;
 
+    private uint controlFlags;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
+    [AppliedWithChunk<Chunk0700100C>]
+    public uint ControlFlags
+    {
+        get => this.controlFlags;
+        set => this.controlFlags = value;
+    }
+
+    private NodeRef<CControlStyle>? legacyStyleRef;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
+    [AppliedWithChunk<Chunk0700100C>]
+    public CControlStyle? LegacyStyle
+    {
+        get => legacyStyleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref legacyStyleRef, value);
+    }
+
+    private NodeRef<CMwNod>? nodRef;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
+    [AppliedWithChunk<Chunk0700100C>]
+    public CMwNod? Nod
+    {
+        get => nodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref nodRef, value);
+    }
+
     private string? stackText;
     /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0700100C>]
@@ -60,6 +87,8 @@ public partial class CControlBase : CSceneToy, IClass
     {
         private readonly CControlBase owner;
         internal NodeRefView(CControlBase owner) => this.owner = owner;
+        public NodeRef<CControlStyle> LegacyStyle => NodeRef.GetOrCreate(ref owner.legacyStyleRef);
+        public NodeRef<CMwNod> Nod => NodeRef.GetOrCreate(ref owner.nodRef);
         public NodeRef<CControlLayout> Layout => NodeRef.GetOrCreate(ref owner.layoutRef);
         public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLink => ((CSceneToy)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneToy)owner).References.MessageHandler;
@@ -68,6 +97,8 @@ public partial class CControlBase : CSceneToy, IClass
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("LegacyStyle", NodeRef.GetOrCreate(ref legacyStyleRef));
+        yield return new("Nod", NodeRef.GetOrCreate(ref nodRef));
         yield return new("Layout", NodeRef.GetOrCreate(ref layoutRef));
         yield break;
     }
@@ -75,6 +106,9 @@ public partial class CControlBase : CSceneToy, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CControlBase)clone).controlFlags = context.Clone(this.controlFlags)!;
+        ((CControlBase)clone).legacyStyleRef = context.Clone(this.legacyStyleRef)!;
+        ((CControlBase)clone).nodRef = context.Clone(this.nodRef)!;
         ((CControlBase)clone).stackText = context.Clone(this.stackText)!;
         ((CControlBase)clone).layoutRef = context.Clone(this.layoutRef)!;
     }
@@ -92,27 +126,45 @@ public partial class CControlBase : CSceneToy, IClass
     {
         public override uint Id => 0x0700100C;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0700100C owner;
+            internal NodeRefView(Chunk0700100C owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk0700100C)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk0700100C)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk0700100C)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk0700100C)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0700100C)clone).U01Ref = context.Clone(this.U01Ref)!;
         }
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.String(ref n.stackText);
+            rw.DataUInt32(ref n.controlFlags);
+            rw.NodeRef(ref n.legacyStyleRef);
+            rw.NodeRef(ref U01Ref);
+
+            if ((n.ControlFlags& 0x20) != 0)
+            {
+                rw.NodeRef(ref n.nodRef);
+                rw.String(ref n.stackText);
+            }
         }
     }
 

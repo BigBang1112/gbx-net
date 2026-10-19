@@ -343,6 +343,38 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         }
     }
 
+    /// <summary>
+    /// CFuncShaderLayerUV 0x017 chunk
+    /// </summary>
+    [Chunk(0x05015017)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
+    public partial class Chunk05015017 : Chunk<CFuncShaderLayerUV>
+    {
+        public override uint Id => 0x05015017;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public Vec2 U01;
+        public Vec2 U02;
+        public Vec2 U03;
+        public float U04;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk05015017)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk05015017)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk05015017)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk05015017)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GbxReaderWriter rw)
+        {
+            rw.Vec2(ref U01);
+            rw.Vec2(ref U02);
+            rw.Vec2(ref U03);
+            rw.Single(ref U04);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x05015005 => new Chunk05015005(),
@@ -355,6 +387,7 @@ public partial class CFuncShaderLayerUV : CFuncShader, IClass
         0x05015014 => new Chunk05015014(),
         0x05015015 => new Chunk05015015(),
         0x05015016 => new Chunk05015016(),
+        0x05015017 => new Chunk05015017(),
         _ => base.NewChunk(chunkId),
     };
 }

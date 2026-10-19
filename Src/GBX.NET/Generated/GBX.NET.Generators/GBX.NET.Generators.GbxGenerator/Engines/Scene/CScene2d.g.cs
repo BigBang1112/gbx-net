@@ -38,8 +38,9 @@ public partial class CScene2d : CScene, IClass
     internal override uint GetId() => Id;
 
     private Rect overlay;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A002000>]
+    [AppliedWithChunk<Chunk0A002003>]
     public Rect Overlay
     {
         get => this.overlay;
@@ -47,12 +48,85 @@ public partial class CScene2d : CScene, IClass
     }
 
     private NodeRef<CSceneSector>? sectorRef;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0A002000>]
+    [AppliedWithChunk<Chunk0A002003>]
     public CSceneSector? Sector
     {
         get => sectorRef?.Resolve();
         set => NodeRef.SetEmbedded(ref sectorRef, value);
+    }
+
+    private CSceneLayout.SceneMobil[]? mobils;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public CSceneLayout.SceneMobil[]? Mobils
+    {
+        get => this.mobils;
+        set => this.mobils = value;
+    }
+
+    private CSceneLayout.SceneLoc[]? mobilLocations;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public CSceneLayout.SceneLoc[]? MobilLocations
+    {
+        get => this.mobilLocations;
+        set => this.mobilLocations = value;
+    }
+
+    private NodeRefList<CSceneObject>? cameras;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public NodeRefList<CSceneObject>? Cameras
+    {
+        get => cameras;
+        set => cameras = value;
+    }
+
+    private CSceneLayout.SceneLoc[]? cameraLocations;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public CSceneLayout.SceneLoc[]? CameraLocations
+    {
+        get => this.cameraLocations;
+        set => this.cameraLocations = value;
+    }
+
+    private NodeRefList<CSceneLight>? lights;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public NodeRefList<CSceneLight>? Lights
+    {
+        get => lights;
+        set => lights = value;
+    }
+
+    private CSceneLayout.SceneLoc[]? lightLocations;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public CSceneLayout.SceneLoc[]? LightLocations
+    {
+        get => this.lightLocations;
+        set => this.lightLocations = value;
+    }
+
+    private NodeRefList<CSceneObject>? sounds;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public NodeRefList<CSceneObject>? Sounds
+    {
+        get => sounds;
+        set => sounds = value;
+    }
+
+    private CSceneLayout.SceneLoc[]? soundLocations;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0A002003>]
+    public CSceneLayout.SceneLoc[]? SoundLocations
+    {
+        get => this.soundLocations;
+        set => this.soundLocations = value;
     }
 
     public new NodeRefView References => new(this);
@@ -61,6 +135,9 @@ public partial class CScene2d : CScene, IClass
         private readonly CScene2d owner;
         internal NodeRefView(CScene2d owner) => this.owner = owner;
         public NodeRef<CSceneSector> Sector => NodeRef.GetOrCreate(ref owner.sectorRef);
+        public IReadOnlyList<NodeRef<CSceneObject>>? Cameras => owner.cameras?.References;
+        public IReadOnlyList<NodeRef<CSceneLight>>? Lights => owner.lights?.References;
+        public IReadOnlyList<NodeRef<CSceneObject>>? Sounds => owner.sounds?.References;
         public NodeRef<CSceneConfig> SceneConfig => ((CScene)owner).References.SceneConfig;
         public IReadOnlyList<NodeRef<CMotionManager>>? MotionManagerModels => ((CScene)owner).References.MotionManagerModels;
     }
@@ -68,6 +145,18 @@ public partial class CScene2d : CScene, IClass
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         yield return new("Sector", NodeRef.GetOrCreate(ref sectorRef));
+        if (cameras is not null)
+        {
+            for (var i = 0; i < cameras.Count; i++) yield return new("Cameras" + "[" + i + "]", cameras.Get(i));
+        }
+        if (lights is not null)
+        {
+            for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.Get(i));
+        }
+        if (sounds is not null)
+        {
+            for (var i = 0; i < sounds.Count; i++) yield return new("Sounds" + "[" + i + "]", sounds.Get(i));
+        }
         yield break;
     }
 
@@ -76,6 +165,14 @@ public partial class CScene2d : CScene, IClass
         base.DeepCloneFields(clone, context);
         ((CScene2d)clone).overlay = context.Clone(this.overlay)!;
         ((CScene2d)clone).sectorRef = context.Clone(this.sectorRef)!;
+        ((CScene2d)clone).mobils = context.CloneArray(this.mobils)!;
+        ((CScene2d)clone).mobilLocations = context.CloneArray(this.mobilLocations)!;
+        ((CScene2d)clone).cameras = context.Clone(this.cameras)!;
+        ((CScene2d)clone).cameraLocations = context.CloneArray(this.cameraLocations)!;
+        ((CScene2d)clone).lights = context.Clone(this.lights)!;
+        ((CScene2d)clone).lightLocations = context.CloneArray(this.lightLocations)!;
+        ((CScene2d)clone).sounds = context.Clone(this.sounds)!;
+        ((CScene2d)clone).soundLocations = context.CloneArray(this.soundLocations)!;
     }
 
     public CScene2d()
@@ -109,15 +206,36 @@ public partial class CScene2d : CScene, IClass
     /// </summary>
     [Chunk(0x0A002003)]
     [ChunkGameVersion(GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk0A002003 : Chunk<CScene2d>
+    public partial class Chunk0A002003 : Chunk<CScene2d>, IVersionable
     {
         public override uint Id => 0x0A002003;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; } = 1;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0A002003)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CScene2d n, GbxReaderWriter rw)
+        {
+            rw.Rect(ref n.overlay);
+            rw.NodeRef(ref n.sectorRef);
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.ArrayReadableWritable<CSceneLayout.SceneMobil>(ref n.mobils!, version: Version);
+            rw.ArrayReadableWritable<CSceneLayout.SceneLoc>(ref n.mobilLocations!, version: Version);
+            n.cameras = rw.ListNodeRef_deprec<CSceneObject>(n.cameras);
+            rw.ArrayReadableWritable<CSceneLayout.SceneLoc>(ref n.cameraLocations!, version: Version);
+            n.lights = rw.ListNodeRef_deprec<CSceneLight>(n.lights);
+            rw.ArrayReadableWritable<CSceneLayout.SceneLoc>(ref n.lightLocations!, version: Version);
+            n.sounds = rw.ListNodeRef_deprec<CSceneObject>(n.sounds);
+            rw.ArrayReadableWritable<CSceneLayout.SceneLoc>(ref n.soundLocations!, version: Version);
         }
     }
 

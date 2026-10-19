@@ -25,16 +25,25 @@ public partial class CMwNod : IClass
 
     internal virtual void Read(GbxReaderWriter rw)
     {
+        Read(rw, firstChunkId: null);
+    }
+
+    internal void Read(GbxReaderWriter rw, uint? firstChunkId)
+    {
         var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
 
-        r.TryInitializeDecryption(this);
+        if (!firstChunkId.HasValue)
+        {
+            r.TryInitializeDecryption(this);
+        }
 
         var prevChunkId = default(uint?);
         var maxSkippableChunkSize = r.Settings.MaxSkippableChunkSize ?? MaxSkippableChunkSize;
 
         while (true)
         {
-            var rawChunkId = r.ReadHexUInt32();
+            var rawChunkId = firstChunkId ?? r.ReadHexUInt32();
+            firstChunkId = null;
 
             if (!OnRawChunkIdRead(rawChunkId))
             {

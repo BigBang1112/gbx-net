@@ -2,6 +2,7 @@ using GBX.NET.Engines.Function;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Engines.Plug;
 using GBX.NET.Serialization;
+using GBX.NET.Tests.Mocks;
 
 namespace GBX.NET.Tests.Unit.Engines.Plug;
 
@@ -111,7 +112,8 @@ public class CPlugSoundSurfaceLayoutTests
         payload.Position = 0;
         var node = new CPlugSoundSurface();
         var chunk = new CPlugSoundSurface.Chunk0905E003();
-        using (var reader = new GbxReader(payload))
+        using (var input = new NonSeekableStream(payload.ToArray()))
+        using (var reader = new GbxReader(input))
         using (var rw = new GbxReaderWriter(reader))
         {
             chunk.ReadWrite(node, rw);

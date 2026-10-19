@@ -37,12 +37,2406 @@ public partial class CPlugBulletModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private int bulletType;
+    /// <remarks>Applied with: 0x001 v30+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(30)]
+    public int BulletType
+    {
+        get => this.bulletType;
+        set => this.bulletType = value;
+    }
+
+    private float speed = 10;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>]
+    public float Speed
+    {
+        get => this.speed;
+        set => this.speed = value;
+    }
+
+    private float mass;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>]
+    public float Mass
+    {
+        get => this.mass;
+        set => this.mass = value;
+    }
+
+    private int explosionDamageValue;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>]
+    public int ExplosionDamageValue
+    {
+        get => this.explosionDamageValue;
+        set => this.explosionDamageValue = value;
+    }
+
+    private float lifeTime = 5;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>]
+    public float LifeTime
+    {
+        get => this.lifeTime;
+        set => this.lifeTime = value;
+    }
+
+    private int firePeriod = 100;
+    /// <remarks>Applied with: 0x001 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(2)]
+    public int FirePeriod
+    {
+        get => this.firePeriod;
+        set => this.firePeriod = value;
+    }
+
+    private float explosionBlowRadius;
+    /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(3)]
+    public float ExplosionBlowRadius
+    {
+        get => this.explosionBlowRadius;
+        set => this.explosionBlowRadius = value;
+    }
+
+    private int fireBulletCount = 1;
+    /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(4)]
+    public int FireBulletCount
+    {
+        get => this.fireBulletCount;
+        set => this.fireBulletCount = value;
+    }
+
+    private float fireBulletDispersionAngleDeg;
+    /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(4)]
+    public float FireBulletDispersionAngleDeg
+    {
+        get => this.fireBulletDispersionAngleDeg;
+        set => this.fireBulletDispersionAngleDeg = value;
+    }
+
+    private float fluidFriction;
+    /// <remarks>Applied with: 0x001 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(5)]
+    public float FluidFriction
+    {
+        get => this.fluidFriction;
+        set => this.fluidFriction = value;
+    }
+
+    private float impactBouncingN;
+    /// <remarks>Applied with: 0x001 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(6)]
+    public float ImpactBouncingN
+    {
+        get => this.impactBouncingN;
+        set => this.impactBouncingN = value;
+    }
+
+    private float impactBouncingT;
+    /// <remarks>Applied with: 0x001 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(8)]
+    public float ImpactBouncingT
+    {
+        get => this.impactBouncingT;
+        set => this.impactBouncingT = value;
+    }
+
+    private float bulletRadius;
+    /// <remarks>Applied with: 0x001 v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(9)]
+    public float BulletRadius
+    {
+        get => this.bulletRadius;
+        set => this.bulletRadius = value;
+    }
+
+    private float restSpeed = 1;
+    /// <remarks>Applied with: 0x001 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(10)]
+    public float RestSpeed
+    {
+        get => this.restSpeed;
+        set => this.restSpeed = value;
+    }
+
+    private float hiddenDist;
+    /// <remarks>Applied with: 0x001 v11+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(11)]
+    public float HiddenDist
+    {
+        get => this.hiddenDist;
+        set => this.hiddenDist = value;
+    }
+
+    private float explosionEnergyWhenOccluded;
+    /// <remarks>Applied with: 0x001 v12+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(12)]
+    public float ExplosionEnergyWhenOccluded
+    {
+        get => this.explosionEnergyWhenOccluded;
+        set => this.explosionEnergyWhenOccluded = value;
+    }
+
+    private float explosionBlowValue = 10;
+    /// <remarks>Applied with: 0x001 v13+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(13)]
+    public float ExplosionBlowValue
+    {
+        get => this.explosionBlowValue;
+        set => this.explosionBlowValue = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? explosionEnergyFromLifeTimeRef;
+    /// <remarks>Applied with: 0x001 v14+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(14)]
+    public CFuncKeysReal? ExplosionEnergyFromLifeTime
+    {
+        get => explosionEnergyFromLifeTimeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref explosionEnergyFromLifeTimeRef, value);
+    }
+
+    private int fireEnergyCost = 1000;
+    /// <remarks>Applied with: 0x001 v15+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(15)]
+    public int FireEnergyCost
+    {
+        get => this.fireEnergyCost;
+        set => this.fireEnergyCost = value;
+    }
+
+    private int fireMaxEnergyStorage = 10000;
+    /// <remarks>Applied with: 0x001 v16+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(16)]
+    public int FireMaxEnergyStorage
+    {
+        get => this.fireMaxEnergyStorage;
+        set => this.fireMaxEnergyStorage = value;
+    }
+
+    private int explosionOccultationTest;
+    /// <remarks>Applied with: 0x001 v18+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(18)]
+    public int ExplosionOccultationTest
+    {
+        get => this.explosionOccultationTest;
+        set => this.explosionOccultationTest = value;
+    }
+
+    private bool holdTriggerToPower;
+    /// <remarks>Applied with: 0x001 v19+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(19)]
+    public bool HoldTriggerToPower
+    {
+        get => this.holdTriggerToPower;
+        set => this.holdTriggerToPower = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? speedFromTriggerDurationRef;
+    /// <remarks>Applied with: 0x001 v19+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(19)]
+    public CFuncKeysReal? SpeedFromTriggerDuration
+    {
+        get => speedFromTriggerDurationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref speedFromTriggerDurationRef, value);
+    }
+
+    private bool showImpactPos;
+    /// <remarks>Applied with: 0x001 v20+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(20)]
+    public bool ShowImpactPos
+    {
+        get => this.showImpactPos;
+        set => this.showImpactPos = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? speedFromHorizonAngleRef;
+    /// <remarks>Applied with: 0x001 v21+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(21)]
+    public CFuncKeysReal? SpeedFromHorizonAngle
+    {
+        get => speedFromHorizonAngleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref speedFromHorizonAngleRef, value);
+    }
+
+    private float homingDist = 10;
+    /// <remarks>Applied with: 0x001 v23+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(23)]
+    public float HomingDist
+    {
+        get => this.homingDist;
+        set => this.homingDist = value;
+    }
+
+    private float homingPeriod = 0.05f;
+    /// <remarks>Applied with: 0x001 v23+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(23)]
+    public float HomingPeriod
+    {
+        get => this.homingPeriod;
+        set => this.homingPeriod = value;
+    }
+
+    private float homingMaxAngularSpeed = 90;
+    /// <remarks>Applied with: 0x001 v24+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(24)]
+    public float HomingMaxAngularSpeed
+    {
+        get => this.homingMaxAngularSpeed;
+        set => this.homingMaxAngularSpeed = value;
+    }
+
+    private float gunSpeedCoef;
+    /// <remarks>Applied with: 0x001 v27+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(27)]
+    public float GunSpeedCoef
+    {
+        get => this.gunSpeedCoef;
+        set => this.gunSpeedCoef = value;
+    }
+
+    private float gunSpeedCoefRatioMin = 0.2f;
+    /// <remarks>Applied with: 0x001 v27+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(27)]
+    public float GunSpeedCoefRatioMin
+    {
+        get => this.gunSpeedCoefRatioMin;
+        set => this.gunSpeedCoefRatioMin = value;
+    }
+
+    private float gunSpeedCoefRatioMax = 2;
+    /// <remarks>Applied with: 0x001 v27+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(27)]
+    public float GunSpeedCoefRatioMax
+    {
+        get => this.gunSpeedCoefRatioMax;
+        set => this.gunSpeedCoefRatioMax = value;
+    }
+
+    private float fireBulletCountSpeedCoef = 1;
+    /// <remarks>Applied with: 0x001 v28+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(28)]
+    public float FireBulletCountSpeedCoef
+    {
+        get => this.fireBulletCountSpeedCoef;
+        set => this.fireBulletCountSpeedCoef = value;
+    }
+
+    private float explosionBlowRadiusAttenuation;
+    /// <remarks>Applied with: 0x001 v29+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(29)]
+    public float ExplosionBlowRadiusAttenuation
+    {
+        get => this.explosionBlowRadiusAttenuation;
+        set => this.explosionBlowRadiusAttenuation = value;
+    }
+
+    private float triLaserRadiusAtOneMeter_Zoom0 = 0.01f;
+    /// <remarks>Applied with: 0x001 v32+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(32)]
+    public float TriLaserRadiusAtOneMeter_Zoom0
+    {
+        get => this.triLaserRadiusAtOneMeter_Zoom0;
+        set => this.triLaserRadiusAtOneMeter_Zoom0 = value;
+    }
+
+    private float triLaserRadiusAtOneMeter_Zoom1 = 0.01f;
+    /// <remarks>Applied with: 0x001 v32+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(32)]
+    public float TriLaserRadiusAtOneMeter_Zoom1
+    {
+        get => this.triLaserRadiusAtOneMeter_Zoom1;
+        set => this.triLaserRadiusAtOneMeter_Zoom1 = value;
+    }
+
+    private int chargeDurationFull = 1000;
+    /// <remarks>Applied with: 0x001 v33+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(33)]
+    public int ChargeDurationFull
+    {
+        get => this.chargeDurationFull;
+        set => this.chargeDurationFull = value;
+    }
+
+    private int chargeDurationStop = 300;
+    /// <remarks>Applied with: 0x001 v33+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(33)]
+    public int ChargeDurationStop
+    {
+        get => this.chargeDurationStop;
+        set => this.chargeDurationStop = value;
+    }
+
+    private float spearLockDist = 1;
+    /// <remarks>Applied with: 0x001 v34+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(34)]
+    public float SpearLockDist
+    {
+        get => this.spearLockDist;
+        set => this.spearLockDist = value;
+    }
+
+    private int energyGainDelay;
+    /// <remarks>Applied with: 0x001 v35+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(35)]
+    public int EnergyGainDelay
+    {
+        get => this.energyGainDelay;
+        set => this.energyGainDelay = value;
+    }
+
+    private Vec3[]? fireBulletSpreads;
+    /// <remarks>Applied with: 0x001 v37+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(37)]
+    public Vec3[]? FireBulletSpreads
+    {
+        get => this.fireBulletSpreads;
+        set => this.fireBulletSpreads = value;
+    }
+
+    private float trajectoryUTurnDistance = -1;
+    /// <remarks>Applied with: 0x001 v38+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(38)]
+    public float TrajectoryUTurnDistance
+    {
+        get => this.trajectoryUTurnDistance;
+        set => this.trajectoryUTurnDistance = value;
+    }
+
+    private int ammoCostDuringTriggerDuration;
+    /// <remarks>Applied with: 0x001 v39+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(39)]
+    public int AmmoCostDuringTriggerDuration
+    {
+        get => this.ammoCostDuringTriggerDuration;
+        set => this.ammoCostDuringTriggerDuration = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? spreadCoefFormChargeDurationRef;
+    /// <remarks>Applied with: 0x001 v39+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(39)]
+    public CFuncKeysReal? SpreadCoefFormChargeDuration
+    {
+        get => spreadCoefFormChargeDurationRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref spreadCoefFormChargeDurationRef, value);
+    }
+
+    private float explosionDetectionRadius_Resting = -1;
+    /// <remarks>Applied with: 0x001 v40+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(40)]
+    public float ExplosionDetectionRadius_Resting
+    {
+        get => this.explosionDetectionRadius_Resting;
+        set => this.explosionDetectionRadius_Resting = value;
+    }
+
+    private float explosionDetectionRadius_Flying = -1;
+    /// <remarks>Applied with: 0x001 v41+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(41)]
+    public float ExplosionDetectionRadius_Flying
+    {
+        get => this.explosionDetectionRadius_Flying;
+        set => this.explosionDetectionRadius_Flying = value;
+    }
+
+    private bool explosionOnEndLife = true;
+    /// <remarks>Applied with: 0x001 v42+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(42)]
+    public bool ExplosionOnEndLife
+    {
+        get => this.explosionOnEndLife;
+        set => this.explosionOnEndLife = value;
+    }
+
+    private int explosionOnImpactCount = 1;
+    /// <remarks>Applied with: 0x001 v49+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(49)]
+    public int ExplosionOnImpactCount
+    {
+        get => this.explosionOnImpactCount;
+        set => this.explosionOnImpactCount = value;
+    }
+
+    private float lifeTimeAfterFirstImpact = 5;
+    /// <remarks>Applied with: 0x001 v43+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(43)]
+    public float LifeTimeAfterFirstImpact
+    {
+        get => this.lifeTimeAfterFirstImpact;
+        set => this.lifeTimeAfterFirstImpact = value;
+    }
+
+    private float explosionDamageRadius;
+    /// <remarks>Applied with: 0x001 v44+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(44)]
+    public float ExplosionDamageRadius
+    {
+        get => this.explosionDamageRadius;
+        set => this.explosionDamageRadius = value;
+    }
+
+    private float explosionDamageRadiusAttenuation;
+    /// <remarks>Applied with: 0x001 v44+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(44)]
+    public float ExplosionDamageRadiusAttenuation
+    {
+        get => this.explosionDamageRadiusAttenuation;
+        set => this.explosionDamageRadiusAttenuation = value;
+    }
+
+    private float bulletVsRadiusMargin = 0.2f;
+    /// <remarks>Applied with: 0x001 v45+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(45)]
+    public float BulletVsRadiusMargin
+    {
+        get => this.bulletVsRadiusMargin;
+        set => this.bulletVsRadiusMargin = value;
+    }
+
+    private int sm_ThisHitOtherBulletBonusDuration = 500;
+    /// <remarks>Applied with: 0x001 v46+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(46)]
+    public int Sm_ThisHitOtherBulletBonusDuration
+    {
+        get => this.sm_ThisHitOtherBulletBonusDuration;
+        set => this.sm_ThisHitOtherBulletBonusDuration = value;
+    }
+
+    private int defuserFirePeriod;
+    /// <remarks>Applied with: 0x001 v47+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(47)]
+    public int DefuserFirePeriod
+    {
+        get => this.defuserFirePeriod;
+        set => this.defuserFirePeriod = value;
+    }
+
+    private int defuserMissAmmoLoss = 500;
+    /// <remarks>Applied with: 0x001 v48+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(48)]
+    public int DefuserMissAmmoLoss
+    {
+        get => this.defuserMissAmmoLoss;
+        set => this.defuserMissAmmoLoss = value;
+    }
+
+    private float triLaserNearMissDist = 1;
+    /// <remarks>Applied with: 0x001 v51+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(51)]
+    public float TriLaserNearMissDist
+    {
+        get => this.triLaserNearMissDist;
+        set => this.triLaserNearMissDist = value;
+    }
+
+    private int bulletVsMinAgeMs = 500;
+    /// <remarks>Applied with: 0x001 v52+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(52)]
+    public int BulletVsMinAgeMs
+    {
+        get => this.bulletVsMinAgeMs;
+        set => this.bulletVsMinAgeMs = value;
+    }
+
+    private int sm_OtherHitThisBulletBonusDuration;
+    /// <remarks>Applied with: 0x001 v53+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(53)]
+    public int Sm_OtherHitThisBulletBonusDuration
+    {
+        get => this.sm_OtherHitThisBulletBonusDuration;
+        set => this.sm_OtherHitThisBulletBonusDuration = value;
+    }
+
+    private float sm_ThisHitOtherBulletBonusAmmoCount = 1;
+    /// <remarks>Applied with: 0x001 v55+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(55)]
+    public float Sm_ThisHitOtherBulletBonusAmmoCount
+    {
+        get => this.sm_ThisHitOtherBulletBonusAmmoCount;
+        set => this.sm_ThisHitOtherBulletBonusAmmoCount = value;
+    }
+
+    private float sm_OtherHitThisBulletBonusAmmoCount;
+    /// <remarks>Applied with: 0x001 v55+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(55)]
+    public float Sm_OtherHitThisBulletBonusAmmoCount
+    {
+        get => this.sm_OtherHitThisBulletBonusAmmoCount;
+        set => this.sm_OtherHitThisBulletBonusAmmoCount = value;
+    }
+
+    private Vec3[]? fireBulletPattern_GrowingOffset_Offsets;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public Vec3[]? FireBulletPattern_GrowingOffset_Offsets
+    {
+        get => this.fireBulletPattern_GrowingOffset_Offsets;
+        set => this.fireBulletPattern_GrowingOffset_Offsets = value;
+    }
+
+    private int fireBulletPattern_Mode;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public int FireBulletPattern_Mode
+    {
+        get => this.fireBulletPattern_Mode;
+        set => this.fireBulletPattern_Mode = value;
+    }
+
+    private float fireBulletPattern_InitialBlendDuration;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public float FireBulletPattern_InitialBlendDuration
+    {
+        get => this.fireBulletPattern_InitialBlendDuration;
+        set => this.fireBulletPattern_InitialBlendDuration = value;
+    }
+
+    private int fireBulletPattern_SpiralHatchetNet_BulletCount = 1;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public int FireBulletPattern_SpiralHatchetNet_BulletCount
+    {
+        get => this.fireBulletPattern_SpiralHatchetNet_BulletCount;
+        set => this.fireBulletPattern_SpiralHatchetNet_BulletCount = value;
+    }
+
+    private float fireBulletPattern_SpiralHatchetNet_Radius = 1;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public float FireBulletPattern_SpiralHatchetNet_Radius
+    {
+        get => this.fireBulletPattern_SpiralHatchetNet_Radius;
+        set => this.fireBulletPattern_SpiralHatchetNet_Radius = value;
+    }
+
+    private float fireBulletPattern_SpiralHatchetNet_SpinPerSecond = 1;
+    /// <remarks>Applied with: 0x001 v56+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(56)]
+    public float FireBulletPattern_SpiralHatchetNet_SpinPerSecond
+    {
+        get => this.fireBulletPattern_SpiralHatchetNet_SpinPerSecond;
+        set => this.fireBulletPattern_SpiralHatchetNet_SpinPerSecond = value;
+    }
+
+    private byte explosionOnSurfaceMaterialId = 255;
+    /// <remarks>Applied with: 0x001 v57+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(57)]
+    public byte ExplosionOnSurfaceMaterialId
+    {
+        get => this.explosionOnSurfaceMaterialId;
+        set => this.explosionOnSurfaceMaterialId = value;
+    }
+
+    private byte explosionOnImpactCountOnlyOnMaterialId = 255;
+    /// <remarks>Applied with: 0x001 v57+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(57)]
+    public byte ExplosionOnImpactCountOnlyOnMaterialId
+    {
+        get => this.explosionOnImpactCountOnlyOnMaterialId;
+        set => this.explosionOnImpactCountOnlyOnMaterialId = value;
+    }
+
+    private bool fireBulletPattern_RotateOddBulletsCounterClockwise;
+    /// <remarks>Applied with: 0x001 v58+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(58)]
+    public bool FireBulletPattern_RotateOddBulletsCounterClockwise
+    {
+        get => this.fireBulletPattern_RotateOddBulletsCounterClockwise;
+        set => this.fireBulletPattern_RotateOddBulletsCounterClockwise = value;
+    }
+
+    private bool fireBulletPattern_ApexRegroup;
+    /// <remarks>Applied with: 0x001 v58+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(58)]
+    public bool FireBulletPattern_ApexRegroup
+    {
+        get => this.fireBulletPattern_ApexRegroup;
+        set => this.fireBulletPattern_ApexRegroup = value;
+    }
+
+    private float fireBulletPattern_ApexRegroup_MinApexTime = 0.5f;
+    /// <remarks>Applied with: 0x001 v58+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(58)]
+    public float FireBulletPattern_ApexRegroup_MinApexTime
+    {
+        get => this.fireBulletPattern_ApexRegroup_MinApexTime;
+        set => this.fireBulletPattern_ApexRegroup_MinApexTime = value;
+    }
+
+    private float projectileNearMissDist;
+    /// <remarks>Applied with: 0x001 v59+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(59)]
+    public float ProjectileNearMissDist
+    {
+        get => this.projectileNearMissDist;
+        set => this.projectileNearMissDist = value;
+    }
+
+    private float projectileNearMissDelay = 1;
+    /// <remarks>Applied with: 0x001 v59+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(59)]
+    public float ProjectileNearMissDelay
+    {
+        get => this.projectileNearMissDelay;
+        set => this.projectileNearMissDelay = value;
+    }
+
+    private byte endLifeWithoutExplosionOnMaterialId = 255;
+    /// <remarks>Applied with: 0x001 v60+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(60)]
+    public byte EndLifeWithoutExplosionOnMaterialId
+    {
+        get => this.endLifeWithoutExplosionOnMaterialId;
+        set => this.endLifeWithoutExplosionOnMaterialId = value;
+    }
+
+    private float explosionBlowVerticalScale = 1;
+    /// <remarks>Applied with: 0x001 v62+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(62)]
+    public float ExplosionBlowVerticalScale
+    {
+        get => this.explosionBlowVerticalScale;
+        set => this.explosionBlowVerticalScale = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? explosionRadiusCoefFromLifeTimeRef;
+    /// <remarks>Applied with: 0x001 v63+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(63)]
+    public CFuncKeysReal? ExplosionRadiusCoefFromLifeTime
+    {
+        get => explosionRadiusCoefFromLifeTimeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref explosionRadiusCoefFromLifeTimeRef, value);
+    }
+
+    private bool explosionOnAllPlayers;
+    /// <remarks>Applied with: 0x001 v65+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(65)]
+    public bool ExplosionOnAllPlayers
+    {
+        get => this.explosionOnAllPlayers;
+        set => this.explosionOnAllPlayers = value;
+    }
+
+    private bool isFlare;
+    /// <remarks>Applied with: 0x001 v66+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(66)]
+    public bool IsFlare
+    {
+        get => this.isFlare;
+        set => this.isFlare = value;
+    }
+
+    private float flareAttractionRadius = 50;
+    /// <remarks>Applied with: 0x001 v66+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(66)]
+    public float FlareAttractionRadius
+    {
+        get => this.flareAttractionRadius;
+        set => this.flareAttractionRadius = value;
+    }
+
+    private float flareExplosionRadius = 2;
+    /// <remarks>Applied with: 0x001 v66+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(66)]
+    public float FlareExplosionRadius
+    {
+        get => this.flareExplosionRadius;
+        set => this.flareExplosionRadius = value;
+    }
+
+    private float explosionElectroPulseValue;
+    /// <remarks>Applied with: 0x001 v67+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(67)]
+    public float ExplosionElectroPulseValue
+    {
+        get => this.explosionElectroPulseValue;
+        set => this.explosionElectroPulseValue = value;
+    }
+
+    private float guidedAngularSpeed = 90;
+    /// <remarks>Applied with: 0x001 v68+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(68)]
+    public float GuidedAngularSpeed
+    {
+        get => this.guidedAngularSpeed;
+        set => this.guidedAngularSpeed = value;
+    }
+
+    private int homingLockDuration = 500;
+    /// <remarks>Applied with: 0x001 v69+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(69)]
+    public int HomingLockDuration
+    {
+        get => this.homingLockDuration;
+        set => this.homingLockDuration = value;
+    }
+
+    private bool isWard;
+    /// <remarks>Applied with: 0x001 v70+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(70)]
+    public bool IsWard
+    {
+        get => this.isWard;
+        set => this.isWard = value;
+    }
+
+    private float wardRadius = 50;
+    /// <remarks>Applied with: 0x001 v70+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(70)]
+    public float WardRadius
+    {
+        get => this.wardRadius;
+        set => this.wardRadius = value;
+    }
+
+    private bool fireBulletPattern_OnlyVisual;
+    /// <remarks>Applied with: 0x001 v71+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(71)]
+    public bool FireBulletPattern_OnlyVisual
+    {
+        get => this.fireBulletPattern_OnlyVisual;
+        set => this.fireBulletPattern_OnlyVisual = value;
+    }
+
+    private int guidedMinLifeTime = 500;
+    /// <remarks>Applied with: 0x001 v72+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(72)]
+    public int GuidedMinLifeTime
+    {
+        get => this.guidedMinLifeTime;
+        set => this.guidedMinLifeTime = value;
+    }
+
+    private bool multiSphereDetection;
+    /// <remarks>Applied with: 0x001 v73+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(73)]
+    public bool MultiSphereDetection
+    {
+        get => this.multiSphereDetection;
+        set => this.multiSphereDetection = value;
+    }
+
+    private float guidedRollAngleMax = 0.7853982f;
+    /// <remarks>Applied with: 0x001 v73+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(73)]
+    public float GuidedRollAngleMax
+    {
+        get => this.guidedRollAngleMax;
+        set => this.guidedRollAngleMax = value;
+    }
+
+    private int directHitDamageValue = -1;
+    /// <remarks>Applied with: 0x001 v75+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(75)]
+    public int DirectHitDamageValue
+    {
+        get => this.directHitDamageValue;
+        set => this.directHitDamageValue = value;
+    }
+
+    private bool explosionBlowOnAllPlayers = true;
+    /// <remarks>Applied with: 0x001 v76+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(76)]
+    public bool ExplosionBlowOnAllPlayers
+    {
+        get => this.explosionBlowOnAllPlayers;
+        set => this.explosionBlowOnAllPlayers = value;
+    }
+
+    private bool damageAttenuationWithDist;
+    /// <remarks>Applied with: 0x001 v77+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(77)]
+    public bool DamageAttenuationWithDist
+    {
+        get => this.damageAttenuationWithDist;
+        set => this.damageAttenuationWithDist = value;
+    }
+
+    private NodeRef<CFuncKeysReal>? damageAttenuationFromDistRef;
+    /// <remarks>Applied with: 0x001 v78+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(78)]
+    public CFuncKeysReal? DamageAttenuationFromDist
+    {
+        get => damageAttenuationFromDistRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref damageAttenuationFromDistRef, value);
+    }
+
+    private bool isIce;
+    /// <remarks>Applied with: 0x001 v79+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD001>(79)]
+    public bool IsIce
+    {
+        get => this.isIce;
+        set => this.isIce = value;
+    }
+
+    private NodeRef<CPlugSound>? soundFireRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>]
+    public CPlugSound? SoundFire
+    {
+        get => soundFireRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundFireRef, value);
+    }
+
+    private NodeRef<CPlugSound>? soundAliveRef;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>]
+    public CPlugSound? SoundAlive
+    {
+        get => soundAliveRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundAliveRef, value);
+    }
+
+    private Vec3 soundFireOffset;
+    /// <remarks>Applied with: 0x003 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(2)]
+    public Vec3 SoundFireOffset
+    {
+        get => this.soundFireOffset;
+        set => this.soundFireOffset = value;
+    }
+
+    private NodeRef<CPlugSound>? soundReloadingRef;
+    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(4)]
+    public CPlugSound? SoundReloading
+    {
+        get => soundReloadingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundReloadingRef, value);
+    }
+
+    private NodeRef<CPlugSound>? soundGaugeRef;
+    /// <remarks>Applied with: 0x003 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(5)]
+    public CPlugSound? SoundGauge
+    {
+        get => soundGaugeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundGaugeRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? soundAliveVolumeFromRemainingLifeTimeRef;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(6)]
+    public CFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime
+    {
+        get => soundAliveVolumeFromRemainingLifeTimeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundAliveVolumeFromRemainingLifeTimeRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? soundAlivePitchFromRemainingLifeTimeRef;
+    /// <remarks>Applied with: 0x003 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(6)]
+    public CFuncKeysReal? SoundAlivePitchFromRemainingLifeTime
+    {
+        get => soundAlivePitchFromRemainingLifeTimeRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundAlivePitchFromRemainingLifeTimeRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? soundFireVolumeFromRemainingAmmoRef;
+    /// <remarks>Applied with: 0x003 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(7)]
+    public CFuncKeysReal? SoundFireVolumeFromRemainingAmmo
+    {
+        get => soundFireVolumeFromRemainingAmmoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundFireVolumeFromRemainingAmmoRef, value);
+    }
+
+    private NodeRef<CFuncKeysReal>? soundFirePitchFromRemainingAmmoRef;
+    /// <remarks>Applied with: 0x003 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD003>(7)]
+    public CFuncKeysReal? SoundFirePitchFromRemainingAmmo
+    {
+        get => soundFirePitchFromRemainingAmmoRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref soundFirePitchFromRemainingAmmoRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? particleModelAliveRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD005>]
+    public CPlugParticleEmitterModel? ParticleModelAlive
+    {
+        get => particleModelAliveRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleModelAliveRef, value);
+    }
+
+    private NodeRef<CPlugParticleEmitterModel>? particleModelFireRef;
+    /// <remarks>Applied with: 0x005 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD005>(1)]
+    public CPlugParticleEmitterModel? ParticleModelFire
+    {
+        get => particleModelFireRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref particleModelFireRef, value);
+    }
+
+    private float beamMaxLength = 50;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD006>]
+    public float BeamMaxLength
+    {
+        get => this.beamMaxLength;
+        set => this.beamMaxLength = value;
+    }
+
+    private NodeRef<CPlugBeamEmitterModel>? beamVisualModelRef;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD006>(1)]
+    public CPlugBeamEmitterModel? BeamVisualModel
+    {
+        get => beamVisualModelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref beamVisualModelRef, value);
+    }
+
+    private Vec3 visualOffsetFirstPerson;
+    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD006>(2)]
+    public Vec3 VisualOffsetFirstPerson
+    {
+        get => this.visualOffsetFirstPerson;
+        set => this.visualOffsetFirstPerson = value;
+    }
+
+    private float visualOffsetDuration;
+    /// <remarks>Applied with: 0x006 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD006>(3)]
+    public float VisualOffsetDuration
+    {
+        get => this.visualOffsetDuration;
+        set => this.visualOffsetDuration = value;
+    }
+
+    private bool sm_AutoAim;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>]
+    public bool Sm_AutoAim
+    {
+        get => this.sm_AutoAim;
+        set => this.sm_AutoAim = value;
+    }
+
+    private float sm_AimIntertia;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>]
+    public float Sm_AimIntertia
+    {
+        get => this.sm_AimIntertia;
+        set => this.sm_AimIntertia = value;
+    }
+
+    private string? sm_SpModelName;
+    /// <remarks>Applied with: 0x007 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(2)]
+    public string? Sm_SpModelName
+    {
+        get => this.sm_SpModelName;
+        set => this.sm_SpModelName = value;
+    }
+
+    private int sm_SpChargeDuration = 5000;
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(3)]
+    public int Sm_SpChargeDuration
+    {
+        get => this.sm_SpChargeDuration;
+        set => this.sm_SpChargeDuration = value;
+    }
+
+    private int sm_SpInactivityDelayBeforeCharge = 1000;
+    /// <remarks>Applied with: 0x007 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(3)]
+    public int Sm_SpInactivityDelayBeforeCharge
+    {
+        get => this.sm_SpInactivityDelayBeforeCharge;
+        set => this.sm_SpInactivityDelayBeforeCharge = value;
+    }
+
+    private bool sm_FirstPersonCam;
+    /// <remarks>Applied with: 0x007 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(4)]
+    public bool Sm_FirstPersonCam
+    {
+        get => this.sm_FirstPersonCam;
+        set => this.sm_FirstPersonCam = value;
+    }
+
+    private Vec3 sm_FirstPersonCamOffset;
+    /// <remarks>Applied with: 0x007 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(5)]
+    public Vec3 Sm_FirstPersonCamOffset
+    {
+        get => this.sm_FirstPersonCamOffset;
+        set => this.sm_FirstPersonCamOffset = value;
+    }
+
+    private float sm_FirstPersonCamFov = -1;
+    /// <remarks>Applied with: 0x007 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(6)]
+    public float Sm_FirstPersonCamFov
+    {
+        get => this.sm_FirstPersonCamFov;
+        set => this.sm_FirstPersonCamFov = value;
+    }
+
+    private int sm_ProtectDuration;
+    /// <remarks>Applied with: 0x007 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(7)]
+    public int Sm_ProtectDuration
+    {
+        get => this.sm_ProtectDuration;
+        set => this.sm_ProtectDuration = value;
+    }
+
+    private float sm_Recoil;
+    /// <remarks>Applied with: 0x007 v8+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD007>(8)]
+    public float Sm_Recoil
+    {
+        get => this.sm_Recoil;
+        set => this.sm_Recoil = value;
+    }
+
+    private NodeRef<CPlugParticleMaterialImpactModel>? impactBounceRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD008>]
+    public CPlugParticleMaterialImpactModel? ImpactBounce
+    {
+        get => impactBounceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref impactBounceRef, value);
+    }
+
+    private NodeRef<CPlugParticleMaterialImpactModel>? explosionBulletRef;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD008>]
+    public CPlugParticleMaterialImpactModel? ExplosionBullet
+    {
+        get => explosionBulletRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref explosionBulletRef, value);
+    }
+
+    private NodeRef<CPlugParticleMaterialImpactModel>? explosionSurfaceRef;
+    /// <remarks>Applied with: 0x008 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD008>(1)]
+    public CPlugParticleMaterialImpactModel? ExplosionSurface
+    {
+        get => explosionSurfaceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref explosionSurfaceRef, value);
+    }
+
+    private NodeRef<CPlugBitmap>? bitmapCrosshairRef;
+    /// <remarks>Applied with: 0x009 body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>]
+    public CPlugBitmap? BitmapCrosshair
+    {
+        get => bitmapCrosshairRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCrosshairRef, value);
+    }
+
+    private NodeRef<CPlugBitmap>? iconRef;
+    /// <remarks>Applied with: 0x009 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(1)]
+    public CPlugBitmap? Icon
+    {
+        get => iconRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconRef, value);
+    }
+
+    private string? name;
+    /// <remarks>Applied with: 0x009 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(1)]
+    public string? Name
+    {
+        get => this.name;
+        set => this.name = value;
+    }
+
+    private float sizeXScreenPercent;
+    /// <remarks>Applied with: 0x009 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(2)]
+    public float SizeXScreenPercent
+    {
+        get => this.sizeXScreenPercent;
+        set => this.sizeXScreenPercent = value;
+    }
+
+    private float sizeYScreenPercent;
+    /// <remarks>Applied with: 0x009 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(2)]
+    public float SizeYScreenPercent
+    {
+        get => this.sizeYScreenPercent;
+        set => this.sizeYScreenPercent = value;
+    }
+
+    private float sizeXScreenPercentMax;
+    /// <remarks>Applied with: 0x009 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(2)]
+    public float SizeXScreenPercentMax
+    {
+        get => this.sizeXScreenPercentMax;
+        set => this.sizeXScreenPercentMax = value;
+    }
+
+    private float sizeYScreenPercentMax;
+    /// <remarks>Applied with: 0x009 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(2)]
+    public float SizeYScreenPercentMax
+    {
+        get => this.sizeYScreenPercentMax;
+        set => this.sizeYScreenPercentMax = value;
+    }
+
+    private NodeRef<CPlugBitmap>? bitmapCrosshairTriLaserRef;
+    /// <remarks>Applied with: 0x009 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(3)]
+    public CPlugBitmap? BitmapCrosshairTriLaser
+    {
+        get => bitmapCrosshairTriLaserRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapCrosshairTriLaserRef, value);
+    }
+
+    private NodeRef<CPlugBitmap>? bitmapLasersightRef;
+    /// <remarks>Applied with: 0x009 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090CD009>(4)]
+    public CPlugBitmap? BitmapLasersight
+    {
+        get => bitmapLasersightRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLasersightRef, value);
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBulletModel owner;
+        internal NodeRefView(CPlugBulletModel owner) => this.owner = owner;
+        public NodeRef<CFuncKeysReal> ExplosionEnergyFromLifeTime => NodeRef.GetOrCreate(ref owner.explosionEnergyFromLifeTimeRef);
+        public NodeRef<CFuncKeysReal> SpeedFromTriggerDuration => NodeRef.GetOrCreate(ref owner.speedFromTriggerDurationRef);
+        public NodeRef<CFuncKeysReal> SpeedFromHorizonAngle => NodeRef.GetOrCreate(ref owner.speedFromHorizonAngleRef);
+        public NodeRef<CFuncKeysReal> SpreadCoefFormChargeDuration => NodeRef.GetOrCreate(ref owner.spreadCoefFormChargeDurationRef);
+        public NodeRef<CFuncKeysReal> ExplosionRadiusCoefFromLifeTime => NodeRef.GetOrCreate(ref owner.explosionRadiusCoefFromLifeTimeRef);
+        public NodeRef<CFuncKeysReal> DamageAttenuationFromDist => NodeRef.GetOrCreate(ref owner.damageAttenuationFromDistRef);
+        public NodeRef<CPlugSound> SoundFire => NodeRef.GetOrCreate(ref owner.soundFireRef);
+        public NodeRef<CPlugSound> SoundAlive => NodeRef.GetOrCreate(ref owner.soundAliveRef);
+        public NodeRef<CPlugSound> SoundReloading => NodeRef.GetOrCreate(ref owner.soundReloadingRef);
+        public NodeRef<CPlugSound> SoundGauge => NodeRef.GetOrCreate(ref owner.soundGaugeRef);
+        public NodeRef<CFuncKeysReal> SoundAliveVolumeFromRemainingLifeTime => NodeRef.GetOrCreate(ref owner.soundAliveVolumeFromRemainingLifeTimeRef);
+        public NodeRef<CFuncKeysReal> SoundAlivePitchFromRemainingLifeTime => NodeRef.GetOrCreate(ref owner.soundAlivePitchFromRemainingLifeTimeRef);
+        public NodeRef<CFuncKeysReal> SoundFireVolumeFromRemainingAmmo => NodeRef.GetOrCreate(ref owner.soundFireVolumeFromRemainingAmmoRef);
+        public NodeRef<CFuncKeysReal> SoundFirePitchFromRemainingAmmo => NodeRef.GetOrCreate(ref owner.soundFirePitchFromRemainingAmmoRef);
+        public NodeRef<CPlugParticleEmitterModel> ParticleModelAlive => NodeRef.GetOrCreate(ref owner.particleModelAliveRef);
+        public NodeRef<CPlugParticleEmitterModel> ParticleModelFire => NodeRef.GetOrCreate(ref owner.particleModelFireRef);
+        public NodeRef<CPlugBeamEmitterModel> BeamVisualModel => NodeRef.GetOrCreate(ref owner.beamVisualModelRef);
+        public NodeRef<CPlugParticleMaterialImpactModel> ImpactBounce => NodeRef.GetOrCreate(ref owner.impactBounceRef);
+        public NodeRef<CPlugParticleMaterialImpactModel> ExplosionBullet => NodeRef.GetOrCreate(ref owner.explosionBulletRef);
+        public NodeRef<CPlugParticleMaterialImpactModel> ExplosionSurface => NodeRef.GetOrCreate(ref owner.explosionSurfaceRef);
+        public NodeRef<CPlugBitmap> BitmapCrosshair => NodeRef.GetOrCreate(ref owner.bitmapCrosshairRef);
+        public NodeRef<CPlugBitmap> Icon => NodeRef.GetOrCreate(ref owner.iconRef);
+        public NodeRef<CPlugBitmap> BitmapCrosshairTriLaser => NodeRef.GetOrCreate(ref owner.bitmapCrosshairTriLaserRef);
+        public NodeRef<CPlugBitmap> BitmapLasersight => NodeRef.GetOrCreate(ref owner.bitmapLasersightRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("ExplosionEnergyFromLifeTime", NodeRef.GetOrCreate(ref explosionEnergyFromLifeTimeRef));
+        yield return new("SpeedFromTriggerDuration", NodeRef.GetOrCreate(ref speedFromTriggerDurationRef));
+        yield return new("SpeedFromHorizonAngle", NodeRef.GetOrCreate(ref speedFromHorizonAngleRef));
+        yield return new("SpreadCoefFormChargeDuration", NodeRef.GetOrCreate(ref spreadCoefFormChargeDurationRef));
+        yield return new("ExplosionRadiusCoefFromLifeTime", NodeRef.GetOrCreate(ref explosionRadiusCoefFromLifeTimeRef));
+        yield return new("DamageAttenuationFromDist", NodeRef.GetOrCreate(ref damageAttenuationFromDistRef));
+        yield return new("SoundFire", NodeRef.GetOrCreate(ref soundFireRef));
+        yield return new("SoundAlive", NodeRef.GetOrCreate(ref soundAliveRef));
+        yield return new("SoundReloading", NodeRef.GetOrCreate(ref soundReloadingRef));
+        yield return new("SoundGauge", NodeRef.GetOrCreate(ref soundGaugeRef));
+        yield return new("SoundAliveVolumeFromRemainingLifeTime", NodeRef.GetOrCreate(ref soundAliveVolumeFromRemainingLifeTimeRef));
+        yield return new("SoundAlivePitchFromRemainingLifeTime", NodeRef.GetOrCreate(ref soundAlivePitchFromRemainingLifeTimeRef));
+        yield return new("SoundFireVolumeFromRemainingAmmo", NodeRef.GetOrCreate(ref soundFireVolumeFromRemainingAmmoRef));
+        yield return new("SoundFirePitchFromRemainingAmmo", NodeRef.GetOrCreate(ref soundFirePitchFromRemainingAmmoRef));
+        yield return new("ParticleModelAlive", NodeRef.GetOrCreate(ref particleModelAliveRef));
+        yield return new("ParticleModelFire", NodeRef.GetOrCreate(ref particleModelFireRef));
+        yield return new("BeamVisualModel", NodeRef.GetOrCreate(ref beamVisualModelRef));
+        yield return new("ImpactBounce", NodeRef.GetOrCreate(ref impactBounceRef));
+        yield return new("ExplosionBullet", NodeRef.GetOrCreate(ref explosionBulletRef));
+        yield return new("ExplosionSurface", NodeRef.GetOrCreate(ref explosionSurfaceRef));
+        yield return new("BitmapCrosshair", NodeRef.GetOrCreate(ref bitmapCrosshairRef));
+        yield return new("Icon", NodeRef.GetOrCreate(ref iconRef));
+        yield return new("BitmapCrosshairTriLaser", NodeRef.GetOrCreate(ref bitmapCrosshairTriLaserRef));
+        yield return new("BitmapLasersight", NodeRef.GetOrCreate(ref bitmapLasersightRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugBulletModel)clone).bulletType = context.Clone(this.bulletType)!;
+        ((CPlugBulletModel)clone).speed = context.Clone(this.speed)!;
+        ((CPlugBulletModel)clone).mass = context.Clone(this.mass)!;
+        ((CPlugBulletModel)clone).explosionDamageValue = context.Clone(this.explosionDamageValue)!;
+        ((CPlugBulletModel)clone).lifeTime = context.Clone(this.lifeTime)!;
+        ((CPlugBulletModel)clone).firePeriod = context.Clone(this.firePeriod)!;
+        ((CPlugBulletModel)clone).explosionBlowRadius = context.Clone(this.explosionBlowRadius)!;
+        ((CPlugBulletModel)clone).fireBulletCount = context.Clone(this.fireBulletCount)!;
+        ((CPlugBulletModel)clone).fireBulletDispersionAngleDeg = context.Clone(this.fireBulletDispersionAngleDeg)!;
+        ((CPlugBulletModel)clone).fluidFriction = context.Clone(this.fluidFriction)!;
+        ((CPlugBulletModel)clone).impactBouncingN = context.Clone(this.impactBouncingN)!;
+        ((CPlugBulletModel)clone).impactBouncingT = context.Clone(this.impactBouncingT)!;
+        ((CPlugBulletModel)clone).bulletRadius = context.Clone(this.bulletRadius)!;
+        ((CPlugBulletModel)clone).restSpeed = context.Clone(this.restSpeed)!;
+        ((CPlugBulletModel)clone).hiddenDist = context.Clone(this.hiddenDist)!;
+        ((CPlugBulletModel)clone).explosionEnergyWhenOccluded = context.Clone(this.explosionEnergyWhenOccluded)!;
+        ((CPlugBulletModel)clone).explosionBlowValue = context.Clone(this.explosionBlowValue)!;
+        ((CPlugBulletModel)clone).explosionEnergyFromLifeTimeRef = context.Clone(this.explosionEnergyFromLifeTimeRef)!;
+        ((CPlugBulletModel)clone).fireEnergyCost = context.Clone(this.fireEnergyCost)!;
+        ((CPlugBulletModel)clone).fireMaxEnergyStorage = context.Clone(this.fireMaxEnergyStorage)!;
+        ((CPlugBulletModel)clone).explosionOccultationTest = context.Clone(this.explosionOccultationTest)!;
+        ((CPlugBulletModel)clone).holdTriggerToPower = context.Clone(this.holdTriggerToPower)!;
+        ((CPlugBulletModel)clone).speedFromTriggerDurationRef = context.Clone(this.speedFromTriggerDurationRef)!;
+        ((CPlugBulletModel)clone).showImpactPos = context.Clone(this.showImpactPos)!;
+        ((CPlugBulletModel)clone).speedFromHorizonAngleRef = context.Clone(this.speedFromHorizonAngleRef)!;
+        ((CPlugBulletModel)clone).homingDist = context.Clone(this.homingDist)!;
+        ((CPlugBulletModel)clone).homingPeriod = context.Clone(this.homingPeriod)!;
+        ((CPlugBulletModel)clone).homingMaxAngularSpeed = context.Clone(this.homingMaxAngularSpeed)!;
+        ((CPlugBulletModel)clone).gunSpeedCoef = context.Clone(this.gunSpeedCoef)!;
+        ((CPlugBulletModel)clone).gunSpeedCoefRatioMin = context.Clone(this.gunSpeedCoefRatioMin)!;
+        ((CPlugBulletModel)clone).gunSpeedCoefRatioMax = context.Clone(this.gunSpeedCoefRatioMax)!;
+        ((CPlugBulletModel)clone).fireBulletCountSpeedCoef = context.Clone(this.fireBulletCountSpeedCoef)!;
+        ((CPlugBulletModel)clone).explosionBlowRadiusAttenuation = context.Clone(this.explosionBlowRadiusAttenuation)!;
+        ((CPlugBulletModel)clone).triLaserRadiusAtOneMeter_Zoom0 = context.Clone(this.triLaserRadiusAtOneMeter_Zoom0)!;
+        ((CPlugBulletModel)clone).triLaserRadiusAtOneMeter_Zoom1 = context.Clone(this.triLaserRadiusAtOneMeter_Zoom1)!;
+        ((CPlugBulletModel)clone).chargeDurationFull = context.Clone(this.chargeDurationFull)!;
+        ((CPlugBulletModel)clone).chargeDurationStop = context.Clone(this.chargeDurationStop)!;
+        ((CPlugBulletModel)clone).spearLockDist = context.Clone(this.spearLockDist)!;
+        ((CPlugBulletModel)clone).energyGainDelay = context.Clone(this.energyGainDelay)!;
+        ((CPlugBulletModel)clone).fireBulletSpreads = context.CloneArray(this.fireBulletSpreads)!;
+        ((CPlugBulletModel)clone).trajectoryUTurnDistance = context.Clone(this.trajectoryUTurnDistance)!;
+        ((CPlugBulletModel)clone).ammoCostDuringTriggerDuration = context.Clone(this.ammoCostDuringTriggerDuration)!;
+        ((CPlugBulletModel)clone).spreadCoefFormChargeDurationRef = context.Clone(this.spreadCoefFormChargeDurationRef)!;
+        ((CPlugBulletModel)clone).explosionDetectionRadius_Resting = context.Clone(this.explosionDetectionRadius_Resting)!;
+        ((CPlugBulletModel)clone).explosionDetectionRadius_Flying = context.Clone(this.explosionDetectionRadius_Flying)!;
+        ((CPlugBulletModel)clone).explosionOnEndLife = context.Clone(this.explosionOnEndLife)!;
+        ((CPlugBulletModel)clone).explosionOnImpactCount = context.Clone(this.explosionOnImpactCount)!;
+        ((CPlugBulletModel)clone).lifeTimeAfterFirstImpact = context.Clone(this.lifeTimeAfterFirstImpact)!;
+        ((CPlugBulletModel)clone).explosionDamageRadius = context.Clone(this.explosionDamageRadius)!;
+        ((CPlugBulletModel)clone).explosionDamageRadiusAttenuation = context.Clone(this.explosionDamageRadiusAttenuation)!;
+        ((CPlugBulletModel)clone).bulletVsRadiusMargin = context.Clone(this.bulletVsRadiusMargin)!;
+        ((CPlugBulletModel)clone).sm_ThisHitOtherBulletBonusDuration = context.Clone(this.sm_ThisHitOtherBulletBonusDuration)!;
+        ((CPlugBulletModel)clone).defuserFirePeriod = context.Clone(this.defuserFirePeriod)!;
+        ((CPlugBulletModel)clone).defuserMissAmmoLoss = context.Clone(this.defuserMissAmmoLoss)!;
+        ((CPlugBulletModel)clone).triLaserNearMissDist = context.Clone(this.triLaserNearMissDist)!;
+        ((CPlugBulletModel)clone).bulletVsMinAgeMs = context.Clone(this.bulletVsMinAgeMs)!;
+        ((CPlugBulletModel)clone).sm_OtherHitThisBulletBonusDuration = context.Clone(this.sm_OtherHitThisBulletBonusDuration)!;
+        ((CPlugBulletModel)clone).sm_ThisHitOtherBulletBonusAmmoCount = context.Clone(this.sm_ThisHitOtherBulletBonusAmmoCount)!;
+        ((CPlugBulletModel)clone).sm_OtherHitThisBulletBonusAmmoCount = context.Clone(this.sm_OtherHitThisBulletBonusAmmoCount)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_GrowingOffset_Offsets = context.CloneArray(this.fireBulletPattern_GrowingOffset_Offsets)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_Mode = context.Clone(this.fireBulletPattern_Mode)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_InitialBlendDuration = context.Clone(this.fireBulletPattern_InitialBlendDuration)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_SpiralHatchetNet_BulletCount = context.Clone(this.fireBulletPattern_SpiralHatchetNet_BulletCount)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_SpiralHatchetNet_Radius = context.Clone(this.fireBulletPattern_SpiralHatchetNet_Radius)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_SpiralHatchetNet_SpinPerSecond = context.Clone(this.fireBulletPattern_SpiralHatchetNet_SpinPerSecond)!;
+        ((CPlugBulletModel)clone).explosionOnSurfaceMaterialId = context.Clone(this.explosionOnSurfaceMaterialId)!;
+        ((CPlugBulletModel)clone).explosionOnImpactCountOnlyOnMaterialId = context.Clone(this.explosionOnImpactCountOnlyOnMaterialId)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_RotateOddBulletsCounterClockwise = context.Clone(this.fireBulletPattern_RotateOddBulletsCounterClockwise)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_ApexRegroup = context.Clone(this.fireBulletPattern_ApexRegroup)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_ApexRegroup_MinApexTime = context.Clone(this.fireBulletPattern_ApexRegroup_MinApexTime)!;
+        ((CPlugBulletModel)clone).projectileNearMissDist = context.Clone(this.projectileNearMissDist)!;
+        ((CPlugBulletModel)clone).projectileNearMissDelay = context.Clone(this.projectileNearMissDelay)!;
+        ((CPlugBulletModel)clone).endLifeWithoutExplosionOnMaterialId = context.Clone(this.endLifeWithoutExplosionOnMaterialId)!;
+        ((CPlugBulletModel)clone).explosionBlowVerticalScale = context.Clone(this.explosionBlowVerticalScale)!;
+        ((CPlugBulletModel)clone).explosionRadiusCoefFromLifeTimeRef = context.Clone(this.explosionRadiusCoefFromLifeTimeRef)!;
+        ((CPlugBulletModel)clone).explosionOnAllPlayers = context.Clone(this.explosionOnAllPlayers)!;
+        ((CPlugBulletModel)clone).isFlare = context.Clone(this.isFlare)!;
+        ((CPlugBulletModel)clone).flareAttractionRadius = context.Clone(this.flareAttractionRadius)!;
+        ((CPlugBulletModel)clone).flareExplosionRadius = context.Clone(this.flareExplosionRadius)!;
+        ((CPlugBulletModel)clone).explosionElectroPulseValue = context.Clone(this.explosionElectroPulseValue)!;
+        ((CPlugBulletModel)clone).guidedAngularSpeed = context.Clone(this.guidedAngularSpeed)!;
+        ((CPlugBulletModel)clone).homingLockDuration = context.Clone(this.homingLockDuration)!;
+        ((CPlugBulletModel)clone).isWard = context.Clone(this.isWard)!;
+        ((CPlugBulletModel)clone).wardRadius = context.Clone(this.wardRadius)!;
+        ((CPlugBulletModel)clone).fireBulletPattern_OnlyVisual = context.Clone(this.fireBulletPattern_OnlyVisual)!;
+        ((CPlugBulletModel)clone).guidedMinLifeTime = context.Clone(this.guidedMinLifeTime)!;
+        ((CPlugBulletModel)clone).multiSphereDetection = context.Clone(this.multiSphereDetection)!;
+        ((CPlugBulletModel)clone).guidedRollAngleMax = context.Clone(this.guidedRollAngleMax)!;
+        ((CPlugBulletModel)clone).directHitDamageValue = context.Clone(this.directHitDamageValue)!;
+        ((CPlugBulletModel)clone).explosionBlowOnAllPlayers = context.Clone(this.explosionBlowOnAllPlayers)!;
+        ((CPlugBulletModel)clone).damageAttenuationWithDist = context.Clone(this.damageAttenuationWithDist)!;
+        ((CPlugBulletModel)clone).damageAttenuationFromDistRef = context.Clone(this.damageAttenuationFromDistRef)!;
+        ((CPlugBulletModel)clone).isIce = context.Clone(this.isIce)!;
+        ((CPlugBulletModel)clone).soundFireRef = context.Clone(this.soundFireRef)!;
+        ((CPlugBulletModel)clone).soundAliveRef = context.Clone(this.soundAliveRef)!;
+        ((CPlugBulletModel)clone).soundFireOffset = context.Clone(this.soundFireOffset)!;
+        ((CPlugBulletModel)clone).soundReloadingRef = context.Clone(this.soundReloadingRef)!;
+        ((CPlugBulletModel)clone).soundGaugeRef = context.Clone(this.soundGaugeRef)!;
+        ((CPlugBulletModel)clone).soundAliveVolumeFromRemainingLifeTimeRef = context.Clone(this.soundAliveVolumeFromRemainingLifeTimeRef)!;
+        ((CPlugBulletModel)clone).soundAlivePitchFromRemainingLifeTimeRef = context.Clone(this.soundAlivePitchFromRemainingLifeTimeRef)!;
+        ((CPlugBulletModel)clone).soundFireVolumeFromRemainingAmmoRef = context.Clone(this.soundFireVolumeFromRemainingAmmoRef)!;
+        ((CPlugBulletModel)clone).soundFirePitchFromRemainingAmmoRef = context.Clone(this.soundFirePitchFromRemainingAmmoRef)!;
+        ((CPlugBulletModel)clone).particleModelAliveRef = context.Clone(this.particleModelAliveRef)!;
+        ((CPlugBulletModel)clone).particleModelFireRef = context.Clone(this.particleModelFireRef)!;
+        ((CPlugBulletModel)clone).beamMaxLength = context.Clone(this.beamMaxLength)!;
+        ((CPlugBulletModel)clone).beamVisualModelRef = context.Clone(this.beamVisualModelRef)!;
+        ((CPlugBulletModel)clone).visualOffsetFirstPerson = context.Clone(this.visualOffsetFirstPerson)!;
+        ((CPlugBulletModel)clone).visualOffsetDuration = context.Clone(this.visualOffsetDuration)!;
+        ((CPlugBulletModel)clone).sm_AutoAim = context.Clone(this.sm_AutoAim)!;
+        ((CPlugBulletModel)clone).sm_AimIntertia = context.Clone(this.sm_AimIntertia)!;
+        ((CPlugBulletModel)clone).sm_SpModelName = context.Clone(this.sm_SpModelName)!;
+        ((CPlugBulletModel)clone).sm_SpChargeDuration = context.Clone(this.sm_SpChargeDuration)!;
+        ((CPlugBulletModel)clone).sm_SpInactivityDelayBeforeCharge = context.Clone(this.sm_SpInactivityDelayBeforeCharge)!;
+        ((CPlugBulletModel)clone).sm_FirstPersonCam = context.Clone(this.sm_FirstPersonCam)!;
+        ((CPlugBulletModel)clone).sm_FirstPersonCamOffset = context.Clone(this.sm_FirstPersonCamOffset)!;
+        ((CPlugBulletModel)clone).sm_FirstPersonCamFov = context.Clone(this.sm_FirstPersonCamFov)!;
+        ((CPlugBulletModel)clone).sm_ProtectDuration = context.Clone(this.sm_ProtectDuration)!;
+        ((CPlugBulletModel)clone).sm_Recoil = context.Clone(this.sm_Recoil)!;
+        ((CPlugBulletModel)clone).impactBounceRef = context.Clone(this.impactBounceRef)!;
+        ((CPlugBulletModel)clone).explosionBulletRef = context.Clone(this.explosionBulletRef)!;
+        ((CPlugBulletModel)clone).explosionSurfaceRef = context.Clone(this.explosionSurfaceRef)!;
+        ((CPlugBulletModel)clone).bitmapCrosshairRef = context.Clone(this.bitmapCrosshairRef)!;
+        ((CPlugBulletModel)clone).iconRef = context.Clone(this.iconRef)!;
+        ((CPlugBulletModel)clone).name = context.Clone(this.name)!;
+        ((CPlugBulletModel)clone).sizeXScreenPercent = context.Clone(this.sizeXScreenPercent)!;
+        ((CPlugBulletModel)clone).sizeYScreenPercent = context.Clone(this.sizeYScreenPercent)!;
+        ((CPlugBulletModel)clone).sizeXScreenPercentMax = context.Clone(this.sizeXScreenPercentMax)!;
+        ((CPlugBulletModel)clone).sizeYScreenPercentMax = context.Clone(this.sizeYScreenPercentMax)!;
+        ((CPlugBulletModel)clone).bitmapCrosshairTriLaserRef = context.Clone(this.bitmapCrosshairTriLaserRef)!;
+        ((CPlugBulletModel)clone).bitmapLasersightRef = context.Clone(this.bitmapLasersightRef)!;
     }
 
     public CPlugBulletModel()
     {
     }
+
+    /// <summary>
+    /// CPlugBulletModel 0x001 chunk
+    /// </summary>
+    [Chunk(0x090CD001)]
+    [ChunkGameVersion(GameVersion.MP4, 79)]
+    public partial class Chunk090CD001 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD001;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+        public string? U01;
+        public float U02;
+        public int U03;
+
+        private NodeRef<CFuncKeysReal>? U04Ref;
+        public CFuncKeysReal? U04
+        {
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
+        }
+        public bool U05;
+        public float U06;
+        public Vec2[]? U07;
+        public bool U08;
+        public float U09;
+        public int U10;
+        public float U11;
+        public bool U12;
+        public bool U13;
+        public int U14;
+        public int U15;
+        public float U16;
+        public int U17;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090CD001 owner;
+            internal NodeRefView(Chunk090CD001 owner) => this.owner = owner;
+            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield break;
+        }
+
+        public Chunk090CD001() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD001(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 79;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD001)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CD001)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090CD001)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090CD001)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090CD001)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090CD001)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090CD001)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090CD001)clone).U07 = context.CloneArray(this.U07)!;
+            ((Chunk090CD001)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090CD001)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090CD001)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090CD001)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090CD001)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090CD001)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090CD001)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090CD001)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090CD001)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090CD001)clone).U17 = context.Clone(this.U17)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 79)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version >= 30)
+            {
+                rw.Int32(ref n.bulletType);
+            }
+
+            if (Version >= 26)
+            {
+                rw.Id(ref U01);
+            }
+
+            rw.Single(ref n.speed);
+            rw.Single(ref n.mass);
+            n.explosionDamageValue = (int)rw.Single((float)n.explosionDamageValue);
+            rw.Single(ref n.lifeTime);
+
+            if (Version >= 1)
+            {
+                rw.Single(ref U02);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Int32(ref n.firePeriod);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref n.explosionBlowRadius);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Int32(ref n.fireBulletCount);
+                rw.Single(ref n.fireBulletDispersionAngleDeg);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref n.fluidFriction);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Single(ref n.impactBouncingN);
+            }
+
+            if (Version >= 7 && Version <= 41)
+            {
+                rw.Int32(ref U03);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Single(ref n.impactBouncingT);
+            }
+
+            if (Version >= 9)
+            {
+                rw.Single(ref n.bulletRadius);
+            }
+
+            if (Version >= 10)
+            {
+                rw.Single(ref n.restSpeed);
+            }
+
+            if (Version >= 11)
+            {
+                rw.Single(ref n.hiddenDist);
+            }
+
+            if (Version >= 12)
+            {
+                rw.Single(ref n.explosionEnergyWhenOccluded);
+            }
+
+            if (Version >= 13)
+            {
+                rw.Single(ref n.explosionBlowValue);
+            }
+
+            if (Version >= 14)
+            {
+                rw.NodeRef(ref n.explosionEnergyFromLifeTimeRef);
+            }
+
+            if (Version >= 15)
+            {
+                rw.Int32(ref n.fireEnergyCost);
+            }
+
+            if (Version >= 16)
+            {
+                rw.Int32(ref n.fireMaxEnergyStorage);
+            }
+
+            if (Version >= 17 && Version <= 21)
+            {
+                rw.NodeRef(ref U04Ref);
+            }
+
+            if (Version >= 18)
+            {
+                rw.Int32(ref n.explosionOccultationTest);
+            }
+
+            if (Version >= 19)
+            {
+                rw.Boolean(ref n.holdTriggerToPower);
+                rw.NodeRef(ref n.speedFromTriggerDurationRef);
+            }
+
+            if (Version >= 20)
+            {
+                rw.Boolean(ref n.showImpactPos);
+            }
+
+            if (Version >= 21)
+            {
+                rw.NodeRef(ref n.speedFromHorizonAngleRef);
+            }
+
+            if (Version >= 22 && Version <= 43)
+            {
+                rw.Boolean(ref U05);
+            }
+
+            if (Version >= 23)
+            {
+                rw.Single(ref n.homingDist);
+                rw.Single(ref n.homingPeriod);
+            }
+
+            if (Version >= 24)
+            {
+                rw.Single(ref n.homingMaxAngularSpeed);
+            }
+
+            if (Version >= 27)
+            {
+                rw.Single(ref n.gunSpeedCoef);
+                rw.Single(ref n.gunSpeedCoefRatioMin);
+                rw.Single(ref n.gunSpeedCoefRatioMax);
+            }
+
+            if (Version >= 28)
+            {
+                rw.Single(ref n.fireBulletCountSpeedCoef);
+            }
+
+            if (Version >= 29)
+            {
+                rw.Single(ref n.explosionBlowRadiusAttenuation);
+            }
+
+            if (Version == 31)
+            {
+                rw.Single(ref U06);
+            }
+
+            if (Version >= 32)
+            {
+                rw.Single(ref n.triLaserRadiusAtOneMeter_Zoom0);
+                rw.Single(ref n.triLaserRadiusAtOneMeter_Zoom1);
+            }
+
+            if (Version >= 33)
+            {
+                rw.Int32(ref n.chargeDurationFull);
+                rw.Int32(ref n.chargeDurationStop);
+            }
+
+            if (Version >= 34)
+            {
+                rw.Single(ref n.spearLockDist);
+            }
+
+            if (Version >= 35)
+            {
+                rw.Int32(ref n.energyGainDelay);
+            }
+
+            if (Version == 36)
+            {
+                rw.Array<Vec2>(ref U07!);
+            }
+
+            if (Version >= 37)
+            {
+                rw.Array<Vec3>(ref n.fireBulletSpreads!);
+            }
+
+            if (Version >= 38)
+            {
+                rw.Single(ref n.trajectoryUTurnDistance);
+            }
+
+            if (Version >= 39)
+            {
+                rw.Int32(ref n.ammoCostDuringTriggerDuration);
+                rw.NodeRef(ref n.spreadCoefFormChargeDurationRef);
+            }
+
+            if (Version >= 40)
+            {
+                rw.Single(ref n.explosionDetectionRadius_Resting);
+            }
+
+            if (Version >= 41)
+            {
+                rw.Single(ref n.explosionDetectionRadius_Flying);
+            }
+
+            if (Version >= 42)
+            {
+                rw.Boolean(ref n.explosionOnEndLife);
+
+                if (Version <= 48)
+                {
+                    rw.Boolean(ref U08);
+                }
+
+                if (Version >= 49)
+                {
+                    rw.Int32(ref n.explosionOnImpactCount);
+                }
+            }
+
+            if (Version >= 43)
+            {
+                rw.Single(ref n.lifeTimeAfterFirstImpact);
+            }
+
+            if (Version >= 44)
+            {
+                rw.Single(ref n.explosionDamageRadius);
+                rw.Single(ref n.explosionDamageRadiusAttenuation);
+            }
+
+            if (Version >= 45)
+            {
+                rw.Single(ref n.bulletVsRadiusMargin);
+            }
+
+            if (Version >= 46)
+            {
+                rw.Int32(ref n.sm_ThisHitOtherBulletBonusDuration);
+
+                if (Version <= 53)
+                {
+                    rw.Single(ref U09);
+                }
+            }
+
+            if (Version >= 47)
+            {
+                rw.Int32(ref n.defuserFirePeriod);
+            }
+
+            if (Version >= 48)
+            {
+                rw.Int32(ref n.defuserMissAmmoLoss);
+            }
+
+            if (Version >= 50 && Version <= 56)
+            {
+                rw.Int32(ref U10);
+            }
+
+            if (Version >= 51)
+            {
+                rw.Single(ref n.triLaserNearMissDist);
+            }
+
+            if (Version >= 52)
+            {
+                rw.Int32(ref n.bulletVsMinAgeMs);
+            }
+
+            if (Version >= 53)
+            {
+                rw.Int32(ref n.sm_OtherHitThisBulletBonusDuration);
+
+                if (Version <= 53)
+                {
+                    rw.Single(ref U11);
+                }
+            }
+
+            if (Version >= 55)
+            {
+                rw.Single(ref n.sm_ThisHitOtherBulletBonusAmmoCount);
+                rw.Single(ref n.sm_OtherHitThisBulletBonusAmmoCount);
+            }
+
+            if (Version >= 56)
+            {
+                rw.Array<Vec3>(ref n.fireBulletPattern_GrowingOffset_Offsets!);
+                rw.Int32(ref n.fireBulletPattern_Mode);
+                rw.Single(ref n.fireBulletPattern_InitialBlendDuration);
+                rw.Int32(ref n.fireBulletPattern_SpiralHatchetNet_BulletCount);
+                rw.Single(ref n.fireBulletPattern_SpiralHatchetNet_Radius);
+                rw.Single(ref n.fireBulletPattern_SpiralHatchetNet_SpinPerSecond);
+            }
+
+            if (Version >= 57)
+            {
+                rw.Byte(ref n.explosionOnSurfaceMaterialId);
+                rw.Byte(ref n.explosionOnImpactCountOnlyOnMaterialId);
+            }
+
+            if (Version >= 58)
+            {
+                rw.Boolean(ref n.fireBulletPattern_RotateOddBulletsCounterClockwise);
+                rw.Boolean(ref n.fireBulletPattern_ApexRegroup);
+                rw.Single(ref n.fireBulletPattern_ApexRegroup_MinApexTime);
+            }
+
+            if (Version >= 59)
+            {
+                rw.Single(ref n.projectileNearMissDist);
+                rw.Single(ref n.projectileNearMissDelay);
+            }
+
+            if (Version >= 60)
+            {
+                rw.Byte(ref n.endLifeWithoutExplosionOnMaterialId);
+            }
+
+            if (Version >= 61)
+            {
+                rw.Boolean(ref U12);
+            }
+
+            if (Version >= 62)
+            {
+                rw.Single(ref n.explosionBlowVerticalScale);
+            }
+
+            if (Version >= 63)
+            {
+                rw.NodeRef(ref n.explosionRadiusCoefFromLifeTimeRef);
+            }
+
+            if (Version >= 64)
+            {
+                rw.Boolean(ref U13);
+            }
+
+            if (Version >= 65)
+            {
+                rw.Boolean(ref n.explosionOnAllPlayers);
+            }
+
+            if (Version >= 66)
+            {
+                rw.Boolean(ref n.isFlare);
+                rw.Single(ref n.flareAttractionRadius);
+                rw.Single(ref n.flareExplosionRadius);
+            }
+
+            if (Version >= 67)
+            {
+                rw.Single(ref n.explosionElectroPulseValue);
+            }
+
+            if (Version >= 68)
+            {
+                rw.Single(ref n.guidedAngularSpeed);
+            }
+
+            if (Version >= 69)
+            {
+                rw.Int32(ref n.homingLockDuration);
+            }
+
+            if (Version >= 70)
+            {
+                rw.Boolean(ref n.isWard);
+                rw.Single(ref n.wardRadius);
+            }
+
+            if (Version >= 71)
+            {
+                rw.Boolean(ref n.fireBulletPattern_OnlyVisual);
+            }
+
+            if (Version >= 72)
+            {
+                rw.Int32(ref n.guidedMinLifeTime);
+            }
+
+            if (Version >= 73)
+            {
+                rw.Boolean(ref n.multiSphereDetection);
+                rw.Single(ref n.guidedRollAngleMax);
+            }
+
+            if (Version >= 74)
+            {
+                rw.Int32(ref U14);
+                rw.Int32(ref U15);
+            }
+
+            if (Version >= 75)
+            {
+                rw.Int32(ref n.directHitDamageValue);
+            }
+
+            if (Version >= 76)
+            {
+                rw.Boolean(ref n.explosionBlowOnAllPlayers);
+            }
+
+            if (Version >= 77)
+            {
+                rw.Boolean(ref n.damageAttenuationWithDist);
+                rw.Single(ref U16);
+                rw.Int32(ref U17);
+            }
+
+            if (Version >= 78)
+            {
+                rw.NodeRef(ref n.damageAttenuationFromDistRef);
+            }
+
+            if (Version >= 79)
+            {
+                rw.Boolean(ref n.isIce);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x003 chunk
+    /// </summary>
+    [Chunk(0x090CD003)]
+    [ChunkGameVersion(GameVersion.MP4, 7)]
+    public partial class Chunk090CD003 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD003;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        private NodeRef<CPlugSound>? U01Ref;
+        public CPlugSound? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CPlugSound>? U02Ref;
+        public CPlugSound? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090CD003 owner;
+            internal NodeRefView(Chunk090CD003 owner) => this.owner = owner;
+            public NodeRef<CPlugSound> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugSound> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        public Chunk090CD003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 7;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CD003)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090CD003)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 7)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.soundFireRef);
+
+            if (Version <= 2)
+            {
+                rw.NodeRef(ref U01Ref);
+            }
+
+            rw.NodeRef(ref n.soundAliveRef);
+
+            if (Version >= 1 && Version <= 2)
+            {
+                rw.NodeRef(ref U02Ref);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Vec3(ref n.soundFireOffset);
+            }
+
+            if (Version >= 4)
+            {
+                rw.NodeRef(ref n.soundReloadingRef);
+            }
+
+            if (Version >= 5)
+            {
+                rw.NodeRef(ref n.soundGaugeRef);
+            }
+
+            if (Version >= 6)
+            {
+                rw.NodeRef(ref n.soundAliveVolumeFromRemainingLifeTimeRef);
+                rw.NodeRef(ref n.soundAlivePitchFromRemainingLifeTimeRef);
+            }
+
+            if (Version >= 7)
+            {
+                rw.NodeRef(ref n.soundFireVolumeFromRemainingAmmoRef);
+                rw.NodeRef(ref n.soundFirePitchFromRemainingAmmoRef);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x005 chunk
+    /// </summary>
+    [Chunk(0x090CD005)]
+    [ChunkGameVersion(GameVersion.MP4, 2)]
+    public partial class Chunk090CD005 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD005;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        private NodeRef<CPlugParticleEmitterModel>? U01Ref;
+        public CPlugParticleEmitterModel? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CPlugParticleEmitterModel>? U02Ref;
+        public CPlugParticleEmitterModel? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090CD005 owner;
+            internal NodeRefView(Chunk090CD005 owner) => this.owner = owner;
+            public NodeRef<CPlugParticleEmitterModel> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugParticleEmitterModel> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        public Chunk090CD005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 2;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD005)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CD005)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090CD005)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.particleModelAliveRef);
+
+            if (Version <= 1)
+            {
+                rw.NodeRef(ref U01Ref);
+            }
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.particleModelFireRef);
+
+                if (Version <= 1)
+                {
+                    rw.NodeRef(ref U02Ref);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x006 chunk
+    /// </summary>
+    [Chunk(0x090CD006)]
+    [ChunkGameVersion(GameVersion.MP4, 6)]
+    public partial class Chunk090CD006 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD006;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+        public bool U01;
+        public float U02;
+
+        private NodeRef<CPlugMaterial>? U03Ref;
+        public CPlugMaterial? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+
+        private NodeRef<CPlugBeamEmitterModel>? U04Ref;
+        public CPlugBeamEmitterModel? U04
+        {
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk090CD006 owner;
+            internal NodeRefView(Chunk090CD006 owner) => this.owner = owner;
+            public NodeRef<CPlugMaterial> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugBeamEmitterModel> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield break;
+        }
+
+        public Chunk090CD006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 6;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD006)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090CD006)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090CD006)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090CD006)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090CD006)clone).U04Ref = context.Clone(this.U04Ref)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 6)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version <= 3)
+            {
+                rw.Boolean(ref U01);
+            }
+
+            rw.Single(ref n.beamMaxLength);
+
+            if (Version == 0)
+            {
+                rw.Single(ref U02);
+                rw.NodeRef(ref U03Ref);
+            }
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.beamVisualModelRef);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Vec3(ref n.visualOffsetFirstPerson);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref n.visualOffsetDuration);
+            }
+
+            if (Version == 5)
+            {
+                rw.NodeRef(ref U04Ref);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x007 chunk
+    /// </summary>
+    [Chunk(0x090CD007)]
+    [ChunkGameVersion(GameVersion.MP4, 8)]
+    public partial class Chunk090CD007 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD007;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk090CD007() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD007(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 8;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD007)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Boolean(ref n.sm_AutoAim);
+            rw.Single(ref n.sm_AimIntertia);
+
+            if (Version >= 2)
+            {
+                rw.Id(ref n.sm_SpModelName);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Int32(ref n.sm_SpChargeDuration);
+                rw.Int32(ref n.sm_SpInactivityDelayBeforeCharge);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Boolean(ref n.sm_FirstPersonCam);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Vec3(ref n.sm_FirstPersonCamOffset);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Single(ref n.sm_FirstPersonCamFov);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Int32(ref n.sm_ProtectDuration);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Single(ref n.sm_Recoil);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x008 chunk
+    /// </summary>
+    [Chunk(0x090CD008)]
+    [ChunkGameVersion(GameVersion.MP4, 1)]
+    public partial class Chunk090CD008 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD008;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk090CD008() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD008(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD008)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.impactBounceRef);
+            rw.NodeRef(ref n.explosionBulletRef);
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.explosionSurfaceRef);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugBulletModel 0x009 chunk
+    /// </summary>
+    [Chunk(0x090CD009)]
+    [ChunkGameVersion(GameVersion.MP4, 4)]
+    public partial class Chunk090CD009 : Chunk<CPlugBulletModel>, IVersionable
+    {
+        public override uint Id => 0x090CD009;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+
+        public Chunk090CD009() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090CD009(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 4;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090CD009)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugBulletModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 4)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.bitmapCrosshairRef);
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.iconRef);
+                rw.String(ref n.name);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Single(ref n.sizeXScreenPercent);
+                rw.Single(ref n.sizeYScreenPercent);
+                rw.Single(ref n.sizeXScreenPercentMax);
+                rw.Single(ref n.sizeYScreenPercentMax);
+            }
+
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref n.bitmapCrosshairTriLaserRef);
+            }
+
+            if (Version >= 4)
+            {
+                rw.NodeRef(ref n.bitmapLasersightRef);
+            }
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x090CD001 => new Chunk090CD001(),
+        0x090CD003 => new Chunk090CD003(),
+        0x090CD005 => new Chunk090CD005(),
+        0x090CD006 => new Chunk090CD006(),
+        0x090CD007 => new Chunk090CD007(),
+        0x090CD008 => new Chunk090CD008(),
+        0x090CD009 => new Chunk090CD009(),
+        _ => base.NewChunk(chunkId),
+    };
 }

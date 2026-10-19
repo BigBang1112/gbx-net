@@ -263,22 +263,22 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => poseGrids = value;
     }
 
-    private NodeRefList<CPlugAnimGraph>? graphs;
+    private LegacyGraph[]? legacyGraphs;
     /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
-    public NodeRefList<CPlugAnimGraph>? Graphs
+    public LegacyGraph[]? LegacyGraphs
     {
-        get => graphs;
-        set => graphs = value;
+        get => this.legacyGraphs;
+        set => this.legacyGraphs = value;
     }
 
-    private NodeRefList<CPlugAnimGraphStack>? graphStacks;
-    /// <remarks>Applied with: 0x003 v4+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090B0003>(4)]
-    public NodeRefList<CPlugAnimGraphStack>? GraphStacks
+    private LegacyGraphStack[]? legacyGraphStacks;
+    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(4, 9)]
+    public LegacyGraphStack[]? LegacyGraphStacks
     {
-        get => graphStacks;
-        set => graphStacks = value;
+        get => this.legacyGraphStacks;
+        set => this.legacyGraphStacks = value;
     }
 
     private NodeRefList<CPlugAnimVariantGroup>? variantGroups;
@@ -344,6 +344,15 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => clips = value;
     }
 
+    private NodeRefList<CPlugAnimGraphStack>? graphStacks;
+    /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(10)]
+    public NodeRefList<CPlugAnimGraphStack>? GraphStacks
+    {
+        get => graphStacks;
+        set => graphStacks = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -351,11 +360,10 @@ public partial class CPlugAnimFile : CMwNod, IClass
         internal NodeRefView(CPlugAnimFile owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CPlugAnimPoseGroup>>? PoseGroups => owner.poseGroups?.References;
         public IReadOnlyList<NodeRef<CPlugAnimPoseGrid>>? PoseGrids => owner.poseGrids?.References;
-        public IReadOnlyList<NodeRef<CPlugAnimGraph>>? Graphs => owner.graphs?.References;
-        public IReadOnlyList<NodeRef<CPlugAnimGraphStack>>? GraphStacks => owner.graphStacks?.References;
         public IReadOnlyList<NodeRef<CPlugAnimVariantGroup>>? VariantGroups => owner.variantGroups?.References;
         public IReadOnlyList<NodeRef<CPlugAnimSkelEditionPose>>? EditionPoses => owner.editionPoses?.References;
         public IReadOnlyList<NodeRef<CPlugAnimClip>>? Clips => owner.clips?.References;
+        public IReadOnlyList<NodeRef<CPlugAnimGraphStack>>? GraphStacks => owner.graphStacks?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -368,14 +376,6 @@ public partial class CPlugAnimFile : CMwNod, IClass
         {
             for (var i = 0; i < poseGrids.Count; i++) yield return new("PoseGrids" + "[" + i + "]", poseGrids.Get(i));
         }
-        if (graphs is not null)
-        {
-            for (var i = 0; i < graphs.Count; i++) yield return new("Graphs" + "[" + i + "]", graphs.Get(i));
-        }
-        if (graphStacks is not null)
-        {
-            for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.Get(i));
-        }
         if (variantGroups is not null)
         {
             for (var i = 0; i < variantGroups.Count; i++) yield return new("VariantGroups" + "[" + i + "]", variantGroups.Get(i));
@@ -387,6 +387,10 @@ public partial class CPlugAnimFile : CMwNod, IClass
         if (clips is not null)
         {
             for (var i = 0; i < clips.Count; i++) yield return new("Clips" + "[" + i + "]", clips.Get(i));
+        }
+        if (graphStacks is not null)
+        {
+            for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.Get(i));
         }
         yield break;
     }
@@ -419,8 +423,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).legacyClips = context.CloneArray(this.legacyClips)!;
         ((CPlugAnimFile)clone).poseGroups = context.Clone(this.poseGroups)!;
         ((CPlugAnimFile)clone).poseGrids = context.Clone(this.poseGrids)!;
-        ((CPlugAnimFile)clone).graphs = context.Clone(this.graphs)!;
-        ((CPlugAnimFile)clone).graphStacks = context.Clone(this.graphStacks)!;
+        ((CPlugAnimFile)clone).legacyGraphs = context.CloneArray(this.legacyGraphs)!;
+        ((CPlugAnimFile)clone).legacyGraphStacks = context.CloneArray(this.legacyGraphStacks)!;
         ((CPlugAnimFile)clone).variantGroups = context.Clone(this.variantGroups)!;
         ((CPlugAnimFile)clone).spots = context.CloneArray(this.spots)!;
         ((CPlugAnimFile)clone).editionPoses = context.Clone(this.editionPoses)!;
@@ -428,6 +432,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).importString = context.Clone(this.importString)!;
         ((CPlugAnimFile)clone).updateString = context.Clone(this.updateString)!;
         ((CPlugAnimFile)clone).clips = context.Clone(this.clips)!;
+        ((CPlugAnimFile)clone).graphStacks = context.Clone(this.graphStacks)!;
     }
 
     public CPlugAnimFile()
@@ -544,8 +549,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
                 {
                     n.poseGroups = rw.ListNodeRef<CPlugAnimPoseGroup>(n.poseGroups);
                     n.poseGrids = rw.ListNodeRef<CPlugAnimPoseGrid>(n.poseGrids);
-                    n.graphs = rw.ListNodeRef<CPlugAnimGraph>(n.graphs);
-                    n.graphStacks = rw.ListNodeRef<CPlugAnimGraphStack>(n.graphStacks);
+                    rw.ArrayReadableWritable<LegacyGraph>(ref n.legacyGraphs!, version: n. GraphVersion);
+                    rw.ArrayReadableWritable<LegacyGraphStack>(ref n.legacyGraphStacks!, version: n. GraphVersion);
 
                     if (Version >= 5)
                     {
@@ -1030,6 +1035,731 @@ public partial class CPlugAnimFile : CMwNod, IClass
         {
             ((LegacyEdition)clone).skelIndex = context.Clone(this.skelIndex)!;
             ((LegacyEdition)clone).edition = context.Clone(this.edition)!;
+        }
+    }
+
+    public partial class LegacyGraph : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private LegacyGraphState[]? states;
+        public LegacyGraphState[]? States
+        {
+            get => this.states;
+            set => this.states = value;
+        }
+
+        private string? defaultState;
+        public string? DefaultState
+        {
+            get => this.defaultState;
+            set => this.defaultState = value;
+        }
+
+        private int defaultStateIndex;
+        public int DefaultStateIndex
+        {
+            get => this.defaultStateIndex;
+            set => this.defaultStateIndex = value;
+        }
+
+        private LegacyGraphExtraState[]? extraStates;
+        public LegacyGraphExtraState[]? ExtraStates
+        {
+            get => this.extraStates;
+            set => this.extraStates = value;
+        }
+
+        private LegacyGraphTransition[]? transitions;
+        public LegacyGraphTransition[]? Transitions
+        {
+            get => this.transitions;
+            set => this.transitions = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraph)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraph)clone).name = context.Clone(this.name)!;
+            ((LegacyGraph)clone).states = context.CloneArray(this.states)!;
+            ((LegacyGraph)clone).defaultState = context.Clone(this.defaultState)!;
+            ((LegacyGraph)clone).defaultStateIndex = context.Clone(this.defaultStateIndex)!;
+            ((LegacyGraph)clone).extraStates = context.CloneArray(this.extraStates)!;
+            ((LegacyGraph)clone).transitions = context.CloneArray(this.transitions)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v >= 3)
+            {
+                rw.Id(ref this.name);
+            }
+
+            rw.ArrayReadableWritable<LegacyGraphState>(ref this.states!, version: v);
+            rw.Id(ref this.defaultState);
+
+            if (v >= 1)
+            {
+                rw.Int32(ref this.defaultStateIndex);
+            }
+
+            if (v >= 2 && v <= 12)
+            {
+                rw.ArrayReadableWritable<LegacyGraphExtraState>(ref this.extraStates!, version: v);
+            }
+
+            if (v >= 13)
+            {
+                rw.ArrayReadableWritable<LegacyGraphTransition>(ref this.transitions!, version: v);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyGraphState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private bool u01;
+        public bool U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private LegacyAnimNode? node;
+        public LegacyAnimNode? Node
+        {
+            get => this.node;
+            set => this.node = value;
+        }
+
+        private LegacyAnimNode? rootMotionNode;
+        public LegacyAnimNode? RootMotionNode
+        {
+            get => this.rootMotionNode;
+            set => this.rootMotionNode = value;
+        }
+
+        private int transitionType;
+        public int TransitionType
+        {
+            get => this.transitionType;
+            set => this.transitionType = value;
+        }
+
+        private int transitionDuration;
+        public int TransitionDuration
+        {
+            get => this.transitionDuration;
+            set => this.transitionDuration = value;
+        }
+
+        private int transitionFlags;
+        public int TransitionFlags
+        {
+            get => this.transitionFlags;
+            set => this.transitionFlags = value;
+        }
+
+        private LegacyGraphCondition[]? conditions;
+        public LegacyGraphCondition[]? Conditions
+        {
+            get => this.conditions;
+            set => this.conditions = value;
+        }
+
+        private string? onFinishState;
+        public string? OnFinishState
+        {
+            get => this.onFinishState;
+            set => this.onFinishState = value;
+        }
+
+        private bool u02;
+        public bool U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int rootYawMode;
+        public int RootYawMode
+        {
+            get => this.rootYawMode;
+            set => this.rootYawMode = value;
+        }
+
+        private float rootYawSpeed = 360;
+        public float RootYawSpeed
+        {
+            get => this.rootYawSpeed;
+            set => this.rootYawSpeed = value;
+        }
+
+        private float rootYawOffset;
+        public float RootYawOffset
+        {
+            get => this.rootYawOffset;
+            set => this.rootYawOffset = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraphState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraphState)clone).name = context.Clone(this.name)!;
+            ((LegacyGraphState)clone).u01 = context.Clone(this.u01)!;
+            ((LegacyGraphState)clone).node = context.Clone(this.node)!;
+            ((LegacyGraphState)clone).rootMotionNode = context.Clone(this.rootMotionNode)!;
+            ((LegacyGraphState)clone).transitionType = context.Clone(this.transitionType)!;
+            ((LegacyGraphState)clone).transitionDuration = context.Clone(this.transitionDuration)!;
+            ((LegacyGraphState)clone).transitionFlags = context.Clone(this.transitionFlags)!;
+            ((LegacyGraphState)clone).conditions = context.CloneArray(this.conditions)!;
+            ((LegacyGraphState)clone).onFinishState = context.Clone(this.onFinishState)!;
+            ((LegacyGraphState)clone).u02 = context.Clone(this.u02)!;
+            ((LegacyGraphState)clone).rootYawMode = context.Clone(this.rootYawMode)!;
+            ((LegacyGraphState)clone).rootYawSpeed = context.Clone(this.rootYawSpeed)!;
+            ((LegacyGraphState)clone).rootYawOffset = context.Clone(this.rootYawOffset)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+
+            if (v <= 1)
+            {
+                rw.Boolean(ref this.u01);
+            }
+
+            rw.ReadableWritable<LegacyAnimNode>(ref this.node, version: v);
+            rw.ReadableWritable<LegacyAnimNode>(ref this.rootMotionNode, version: v);
+
+            if (v <= 12)
+            {
+                rw.Int32(ref this.transitionType);
+                rw.Int32(ref this.transitionDuration);
+                rw.Int32(ref this.transitionFlags);
+                rw.ArrayReadableWritable<LegacyGraphCondition>(ref this.conditions!, version: v);
+                rw.Id(ref this.onFinishState);
+                rw.Boolean(ref this.u02);
+            }
+
+            if (v == 8)
+            {
+                rw.Int32(ref this.rootYawMode);
+            }
+
+            if (v >= 9)
+            {
+                rw.Int32(ref this.rootYawMode);
+                rw.Single(ref this.rootYawSpeed);
+
+                if (v >= 10)
+                {
+                    rw.Single(ref this.rootYawOffset);
+                }
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyGraphExtraState : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private LegacyAnimNode? node;
+        public LegacyAnimNode? Node
+        {
+            get => this.node;
+            set => this.node = value;
+        }
+
+        private LegacyAnimNode? rootMotionNode;
+        public LegacyAnimNode? RootMotionNode
+        {
+            get => this.rootMotionNode;
+            set => this.rootMotionNode = value;
+        }
+
+        private int transitionType;
+        public int TransitionType
+        {
+            get => this.transitionType;
+            set => this.transitionType = value;
+        }
+
+        private int transitionDuration;
+        public int TransitionDuration
+        {
+            get => this.transitionDuration;
+            set => this.transitionDuration = value;
+        }
+
+        private int transitionFlags;
+        public int TransitionFlags
+        {
+            get => this.transitionFlags;
+            set => this.transitionFlags = value;
+        }
+
+        private string? sourceState;
+        public string? SourceState
+        {
+            get => this.sourceState;
+            set => this.sourceState = value;
+        }
+
+        private string[]? sourceStates;
+        public string[]? SourceStates
+        {
+            get => this.sourceStates;
+            set => this.sourceStates = value;
+        }
+
+        private string? destinationState;
+        public string? DestinationState
+        {
+            get => this.destinationState;
+            set => this.destinationState = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraphExtraState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraphExtraState)clone).name = context.Clone(this.name)!;
+            ((LegacyGraphExtraState)clone).node = context.Clone(this.node)!;
+            ((LegacyGraphExtraState)clone).rootMotionNode = context.Clone(this.rootMotionNode)!;
+            ((LegacyGraphExtraState)clone).transitionType = context.Clone(this.transitionType)!;
+            ((LegacyGraphExtraState)clone).transitionDuration = context.Clone(this.transitionDuration)!;
+            ((LegacyGraphExtraState)clone).transitionFlags = context.Clone(this.transitionFlags)!;
+            ((LegacyGraphExtraState)clone).sourceState = context.Clone(this.sourceState)!;
+            ((LegacyGraphExtraState)clone).sourceStates = context.CloneArray(this.sourceStates)!;
+            ((LegacyGraphExtraState)clone).destinationState = context.Clone(this.destinationState)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.ReadableWritable<LegacyAnimNode>(ref this.node, version: v);
+            rw.ReadableWritable<LegacyAnimNode>(ref this.rootMotionNode, version: v);
+            rw.Int32(ref this.transitionType);
+            rw.Int32(ref this.transitionDuration);
+            rw.Int32(ref this.transitionFlags);
+
+            if (v <= 3)
+            {
+                rw.Id(ref this.sourceState);
+            }
+
+            if (v >= 4)
+            {
+                rw.ArrayId(ref this.sourceStates!);
+            }
+
+            rw.Id(ref this.destinationState);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyGraphTransition : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int @type;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private int duration;
+        public int Duration
+        {
+            get => this.duration;
+            set => this.duration = value;
+        }
+
+        private int flags;
+        public int Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        private string? destinationState;
+        public string? DestinationState
+        {
+            get => this.destinationState;
+            set => this.destinationState = value;
+        }
+
+        private LegacyGraphCondition[]? conditions;
+        public LegacyGraphCondition[]? Conditions
+        {
+            get => this.conditions;
+            set => this.conditions = value;
+        }
+
+        private string[]? sourceStates;
+        public string[]? SourceStates
+        {
+            get => this.sourceStates;
+            set => this.sourceStates = value;
+        }
+
+        private int trigger;
+        public int Trigger
+        {
+            get => this.trigger;
+            set => this.trigger = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraphTransition)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraphTransition)clone).@type = context.Clone(this.@type)!;
+            ((LegacyGraphTransition)clone).duration = context.Clone(this.duration)!;
+            ((LegacyGraphTransition)clone).flags = context.Clone(this.flags)!;
+            ((LegacyGraphTransition)clone).destinationState = context.Clone(this.destinationState)!;
+            ((LegacyGraphTransition)clone).conditions = context.CloneArray(this.conditions)!;
+            ((LegacyGraphTransition)clone).sourceStates = context.CloneArray(this.sourceStates)!;
+            ((LegacyGraphTransition)clone).trigger = context.Clone(this.trigger)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.@type);
+            rw.Int32(ref this.duration);
+            rw.Int32(ref this.flags);
+            rw.Id(ref this.destinationState);
+            rw.ArrayReadableWritable<LegacyGraphCondition>(ref this.conditions!, version: v);
+            rw.ArrayId(ref this.sourceStates!);
+            rw.Int32(ref this.trigger);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyGraphCondition : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int @type;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraphCondition)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraphCondition)clone).@type = context.Clone(this.@type)!;
+            ((LegacyGraphCondition)clone).name = context.Clone(this.name)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.@type);
+            rw.Id(ref this.name);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyAnimNode : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int @type = -1;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private string? clipName;
+        public string? ClipName
+        {
+            get => this.clipName;
+            set => this.clipName = value;
+        }
+
+        private int flags;
+        public int Flags
+        {
+            get => this.flags;
+            set => this.flags = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyAnimNode)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyAnimNode)clone).@type = context.Clone(this.@type)!;
+            ((LegacyAnimNode)clone).clipName = context.Clone(this.clipName)!;
+            ((LegacyAnimNode)clone).flags = context.Clone(this.flags)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.@type);
+
+            if (Type== 0)
+            {
+                rw.Id(ref this.clipName);
+
+                if (v >= 11)
+                {
+                    rw.Int32(ref this.flags);
+                }
+            }
+            else if (Type!= -1)
+            {
+                throw new NotSupportedException("Unsupported legacy animation node type");
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyGraphStack : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int[]? graphIndices;
+        public int[]? GraphIndices
+        {
+            get => this.graphIndices;
+            set => this.graphIndices = value;
+        }
+
+        private LegacyInputActionDelay[]? inputActionDelays;
+        public LegacyInputActionDelay[]? InputActionDelays
+        {
+            get => this.inputActionDelays;
+            set => this.inputActionDelays = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyGraphStack)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyGraphStack)clone).name = context.Clone(this.name)!;
+            ((LegacyGraphStack)clone).graphIndices = context.CloneArray(this.graphIndices)!;
+            ((LegacyGraphStack)clone).inputActionDelays = context.CloneArray(this.inputActionDelays)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Array<int>(ref this.graphIndices!);
+
+            if (v >= 12)
+            {
+                rw.ArrayReadableWritable<LegacyInputActionDelay>(ref this.inputActionDelays!, version: v);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyInputActionDelay : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int delay;
+        public int Delay
+        {
+            get => this.delay;
+            set => this.delay = value;
+        }
+
+        private int @type;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyInputActionDelay)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyInputActionDelay)clone).delay = context.Clone(this.delay)!;
+            ((LegacyInputActionDelay)clone).@type = context.Clone(this.@type)!;
+            ((LegacyInputActionDelay)clone).name = context.Clone(this.name)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.delay);
+            rw.Int32(ref this.@type);
+            rw.Id(ref this.name);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

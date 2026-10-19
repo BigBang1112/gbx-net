@@ -173,8 +173,10 @@ CPlugParticleEmitterSubModel 0x090B2000
   v4-
     CPlugVisual Visual
   v6+
-    string
-  CPlugSolid2Model Solid2Model
+    string MeshRef
+  v2+
+    if MeshRef == null || MeshRef == ""
+      CPlugSolid2Model Solid2Model
   v7+
     iso4
   vec2

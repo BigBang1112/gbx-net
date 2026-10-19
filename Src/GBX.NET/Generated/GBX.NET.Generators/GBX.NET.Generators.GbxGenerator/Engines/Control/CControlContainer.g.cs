@@ -55,11 +55,61 @@ public partial class CControlContainer : CControlBase, IClass
         set => this.useScript = value;
     }
 
+    private NodeRef<CMwCmdBlockMain>? createScriptRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk07002005>]
+    public CMwCmdBlockMain? CreateScript
+    {
+        get => createScriptRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref createScriptRef, value);
+    }
+
+    private Child[] childs = [];
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk07002005>]
+    public Child[] Childs
+    {
+        get => this.childs;
+        set => this.childs = value;
+    }
+
+    private bool isClippingContainer;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
+    [AppliedWithChunk<Chunk07002006>]
+    public bool IsClippingContainer
+    {
+        get => this.isClippingContainer;
+        set => this.isClippingContainer = value;
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CControlContainer owner;
+        internal NodeRefView(CControlContainer owner) => this.owner = owner;
+        public NodeRef<CMwCmdBlockMain> CreateScript => NodeRef.GetOrCreate(ref owner.createScriptRef);
+        public NodeRef<CControlStyle> LegacyStyle => ((CControlBase)owner).References.LegacyStyle;
+        public NodeRef<CMwNod> Nod => ((CControlBase)owner).References.Nod;
+        public NodeRef<CControlLayout> Layout => ((CControlBase)owner).References.Layout;
+        public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLink => ((CControlBase)owner).References.ObjectLink;
+        public NodeRef<CSceneMessageHandler> MessageHandler => ((CControlBase)owner).References.MessageHandler;
+        public NodeRef<CMotion> Motion => ((CControlBase)owner).References.Motion;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("CreateScript", NodeRef.GetOrCreate(ref createScriptRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
         ((CControlContainer)clone).acceptOwnControls = context.Clone(this.acceptOwnControls)!;
         ((CControlContainer)clone).useScript = context.Clone(this.useScript)!;
+        ((CControlContainer)clone).createScriptRef = context.Clone(this.createScriptRef)!;
+        ((CControlContainer)clone).childs = context.CloneArray(this.childs)!;
+        ((CControlContainer)clone).isClippingContainer = context.Clone(this.isClippingContainer)!;
     }
 
     public CControlContainer()
@@ -76,30 +126,186 @@ public partial class CControlContainer : CControlBase, IClass
         public override uint Id => 0x07002005;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int U01;
-        public int U02;
-        public int U03;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk07002005)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk07002005)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk07002005)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CControlContainer n, GbxReaderWriter rw)
         {
             rw.Boolean(ref n.acceptOwnControls);
             rw.Boolean(ref n.useScript);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.NodeRef(ref n.createScriptRef);
+
+            if (!n.AcceptOwnControls)
+            {
+                rw.Int32(ref U01);
+                rw.ArrayReadableWritable<Child, CControlContainer>(ref n.childs!, n);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CControlContainer 0x006 chunk
+    /// </summary>
+    [Chunk(0x07002006)]
+    public partial class Chunk07002006 : Chunk<CControlContainer>, IVersionable
+    {
+        public override uint Id => 0x07002006;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07002006)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CControlContainer n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.Boolean(ref n.isClippingContainer);
+        }
+    }
+
+    public partial class Child : IReadable<CControlContainer>, IWritable<CControlContainer>, IVersionable, IDeepCloneable
+    {
+        private int frameVersion = 1;
+        public int FrameVersion
+        {
+            get => this.frameVersion;
+            set => this.frameVersion = value;
+        }
+
+        public int Version { get; set; } = 3;
+
+        private NodeRef<CControlBase>? controlRef;
+        public CControlBase? Control
+        {
+            get => controlRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref controlRef, value);
+        }
+
+        private int index = -2;
+        public int Index
+        {
+            get => this.index;
+            set => this.index = value;
+        }
+
+        private Iso4 relativeLocation;
+        public Iso4 RelativeLocation
+        {
+            get => this.relativeLocation;
+            set => this.relativeLocation = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Child owner;
+            internal NodeRefView(Child owner) => this.owner = owner;
+            public NodeRef<CControlBase> Control => NodeRef.GetOrCreate(ref owner.controlRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Control", NodeRef.GetOrCreate(ref controlRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Child)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Child)clone).frameVersion = context.Clone(this.frameVersion)!;
+            ((Child)clone).Version = context.Clone(this.Version)!;
+            ((Child)clone).controlRef = context.Clone(this.controlRef)!;
+            ((Child)clone).index = context.Clone(this.index)!;
+            ((Child)clone).relativeLocation = context.Clone(this.relativeLocation)!;
+        }
+
+        public virtual void Read(GbxReader r, CControlContainer n, int v = 0)
+        {
+            if (n.HasFrameChildLocations)
+            {
+                this.frameVersion = r.ReadInt32();
+            }
+
+            Version = r.ReadInt32();
+
+            if (Version == 1)
+            {
+                r.ReadNodeRef(ref this.controlRef);
+            }
+
+            if (Version == 2)
+            {
+                throw new NotSupportedException("Unsupported legacy control model");
+            }
+
+            if (Version >= 3)
+            {
+                this.index = r.ReadInt32();
+
+                if (Index== -2)
+                {
+                    r.ReadNodeRef(ref this.controlRef);
+                }
+            }
+
+            if (n.HasFrameChildLocations)
+            {
+                this.relativeLocation = r.ReadIso4();
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CControlContainer n, int v = 0)
+        {
+            if (n.HasFrameChildLocations)
+            {
+                w.Write(this.frameVersion);
+            }
+
+            w.Write(Version);
+
+            if (Version == 1)
+            {
+                w.WriteNodeRef(this.controlRef);
+            }
+
+            if (Version == 2)
+            {
+                throw new NotSupportedException("Unsupported legacy control model");
+            }
+
+            if (Version >= 3)
+            {
+                w.Write(this.index);
+
+                if (Index== -2)
+                {
+                    w.WriteNodeRef(this.controlRef);
+                }
+            }
+
+            if (n.HasFrameChildLocations)
+            {
+                w.Write(this.relativeLocation);
+            }
         }
     }
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x07002005 => new Chunk07002005(),
+        0x07002006 => new Chunk07002006(),
         _ => base.NewChunk(chunkId),
     };
 }
