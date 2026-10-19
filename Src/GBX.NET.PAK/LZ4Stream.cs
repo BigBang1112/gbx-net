@@ -158,7 +158,9 @@ internal partial class LZ4Stream : Stream
             position += numBytesFromBuffer;
             count -= numBytesFromBuffer;
 
-            if (position == UncompressedSize)
+            // Dummy writes can change the cipher state between reads. Do not decrypt
+            // the next compressed block until the caller requests its bytes.
+            if (position == UncompressedSize || count == 0)
                 break;
 
             if (_bufferIndex == _buffer.Length)

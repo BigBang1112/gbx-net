@@ -61,4 +61,8 @@
         <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="GBX.NET.PAK.Tests" />
+    </ItemGroup>
+
 </Project>
