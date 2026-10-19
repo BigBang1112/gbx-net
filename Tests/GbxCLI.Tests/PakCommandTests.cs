@@ -64,6 +64,8 @@ public class PakCommandTests
     [Arguments(false, "files")]
     [Arguments(true, "verify")]
     [Arguments(false, "verify")]
+    [Arguments(true, "extract")]
+    [Arguments(false, "extract")]
     public async Task Subcommand_UnavailableIndexOrGbx_ReportsError(bool privatePak, string command)
     {
         var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-files-");
@@ -100,6 +102,7 @@ public class PakCommandTests
     [Arguments("", "Missing PAK subcommand")]
     [Arguments("files", "Missing input file for pak files")]
     [Arguments("verify", "Missing input file for pak verify")]
+    [Arguments("extract", "Missing input file for pak extract")]
     [Arguments("unknown", "Unknown PAK subcommand")]
     public async Task Pak_MissingOrUnknownArguments_ReportsError(string subcommand, string expectedError)
     {
@@ -119,6 +122,8 @@ public class PakCommandTests
     [Arguments("--version", "files")]
     [Arguments("--help", "verify")]
     [Arguments("--version", "verify")]
+    [Arguments("--help", "extract")]
+    [Arguments("--version", "extract")]
     public async Task Subcommand_GlobalOptions_DoNotRequireAnArchive(string option, string command)
     {
         using var output = new StringWriter();

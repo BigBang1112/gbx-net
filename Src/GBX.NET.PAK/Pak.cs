@@ -434,7 +434,7 @@ public partial class Pak : IDisposable
         {
             newStream = Version >= 18 ? 
                 new LZ4Stream(newStream, file.UncompressedSize) : 
-                new NativeZlibStream(newStream, CompressionMode.Decompress);
+                new NativeZlibStream(newStream, CompressionMode.Decompress, leaveOpen: true);
         }
 
         // Only wrap in NonDisposingStream when newStream IS the underlying pak stream (no wrappers

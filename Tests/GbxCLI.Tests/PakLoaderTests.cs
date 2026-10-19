@@ -14,6 +14,7 @@ public class PakLoaderTests
     [Arguments("TMNext.pak", TMNextKey, false, 6)]
     [Arguments("tmNEXT.PAK", TMNextKey, false, 6)]
     [Arguments("TMNext.pak", TMNextKey, true, 6)]
+    [Arguments("TMNext_2014-04-30.pak", TMNextKey, false, 6)]
     [Arguments("Resource.pak", "087480148E51B70DD83AF2D86F974FEF", false, 6)]
     [Arguments("Resource.pak", "BE3BFB3192A3D3143E0CA1F1DA916C8A", false, 6)]
     [Arguments("Stadium.pak", "21DA8E75B00B33FD68EFA7182FD2163F", false, 6)]
@@ -86,6 +87,7 @@ public class PakLoaderTests
 
     [Test]
     [Arguments("Unknown.pak")]
+    [Arguments("TMNext_2014-02-30.pak")]
     [Arguments("Resource.pak")]
     public async Task Command_NoMatchingPrivateHeaderKey_KeepsPublicMetadata(string name)
     {

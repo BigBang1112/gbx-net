@@ -7,7 +7,8 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
         string command,
         TextWriter output,
         bool requiresOutput,
-        string? inputPath = null)
+        string? inputPath = null,
+        bool allowsOutput = false)
     {
         string? outputPath = null;
         var interactive = command == "parse" && inputPath is not null;
@@ -66,7 +67,7 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
             throw new ArgumentException($"Missing --output file for {command}.");
         }
 
-        if (!requiresOutput && outputPath is not null)
+        if (!requiresOutput && !allowsOutput && outputPath is not null)
         {
             throw new ArgumentException($"The {command} command does not accept --output.");
         }

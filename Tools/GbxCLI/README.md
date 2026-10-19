@@ -10,6 +10,7 @@ A command-line interface for inspecting Gbx and PAK files with GBX.NET. Availabl
 | `gbx eval <file> <code...>` | Evaluate C# against a Gbx or PAK object. |
 | `gbx pak files <file>` | List every file path in a PAK, one per line. |
 | `gbx pak verify <file>` | Fully parse Gbx entries and list files with exceptions. |
+| `gbx pak extract <file> [-o <directory>]` | Extract every file or matching paths from a PAK. |
 | `gbx decompress <file> -o <output>` | Write a Gbx with an uncompressed body. |
 | `gbx compress <file> -o <output>` | Write a Gbx with a compressed body. |
 
@@ -18,6 +19,9 @@ gbx parse "My Map.Map.Gbx"
 gbx eval "My Map.Map.Gbx" "Node.Chunks.Count"
 gbx pak files "Resource.pak"
 gbx pak verify "Resource.pak"
+gbx pak extract "Resource.pak" -o "Extracted"
+gbx pak extract "Resource.pak/Media/Texture/WhiteFlare1.Texture.gbx" -o "Extracted"
+gbx pak extract "Resource.pak/Media/Texture/*.gbx" -o "Textures"
 gbx parse "Resource.pak/Media/Texture/WhiteFlare1.Texture.gbx"
 ```
 
@@ -26,6 +30,8 @@ Gbx and PAK formats are detected from their contents. PAK keys are selected auto
 Append a stored file path to an archive to use it with `parse` or `eval`. Both slash styles work inside the archive, and entry lookup ignores case.
 
 `pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed.
+
+`pak extract` preserves stored folder paths and extracts file bytes without parsing Gbx contents. Without `-o`, it writes beside the archive to `<archive>.extracted`, for example `Resource.pak.extracted`. Append an exact entry path or a quoted wildcard pattern to select files. Matching ignores case, accepts both slash styles, and supports `*` (any number of characters, including folder separators) and `?` (one character). No matches or existing destination files produce an error. Existing files are never overwritten.
 
 In `eval`, expressions use members of the root `Gbx` or `Pak` object. Pass several quoted expressions to run them in order. Output previews are limited, so narrow queries when inspecting large collections. C# runs with the CLI's permissions, so only evaluate trusted code.
 

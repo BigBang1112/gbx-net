@@ -90,7 +90,7 @@ internal sealed class ParsedFile : IAsyncDisposable
         }
     }
 
-    private static (string FilePath, string? EntryPath) ResolveInputPath(string path)
+    internal static (string FilePath, string? EntryPath) ResolveInputPath(string path)
     {
         if (File.Exists(path))
         {

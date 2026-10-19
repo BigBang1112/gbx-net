@@ -1,5 +1,6 @@
 using GBX.NET.PAK;
 using System.Buffers.Binary;
+using System.Globalization;
 
 namespace GbxCLI;
 
@@ -117,7 +118,21 @@ internal static class PakLoader
 
     internal static IReadOnlyList<string> GetKeys(string path)
     {
-        return keys.TryGetValue(Path.GetFileNameWithoutExtension(path), out var candidates) ? candidates : [];
+        var name = Path.GetFileNameWithoutExtension(path);
+        if (keys.TryGetValue(name, out var candidates))
+        {
+            return candidates;
+        }
+
+        var separator = name.LastIndexOf('_');
+        if (separator > 0
+            && DateOnly.TryParseExact(name.AsSpan(separator + 1), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _)
+            && keys.TryGetValue(name[..separator], out candidates))
+        {
+            return candidates;
+        }
+
+        return [];
     }
 
     internal static async Task<(Pak Pak, bool HasKey)> ParseAsync(Stream stream, string path)
