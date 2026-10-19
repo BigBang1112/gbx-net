@@ -2013,7 +2013,8 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
         var baseType = node.GetType().BaseType ?? throw new ThisShouldNotHappenException();
 
-        var parentClassId = ClassManager.ClassIds[baseType];
+        // Native dummy writes use the deprecated ID of the parent class.
+        var parentClassId = ClassManager.Unwrap(ClassManager.ClassIds[baseType]);
 
         if (parentClassId == 0x07031000)
         {
