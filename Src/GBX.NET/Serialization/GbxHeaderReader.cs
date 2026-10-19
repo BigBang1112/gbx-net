@@ -22,7 +22,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
 
         var classId = ReadClassId(reader);
 
-        node = ClassManager.New(classId);
+        node = ClassManager.New(classId, Settings.GameVersion);
 
         GbxHeader header;
 
@@ -33,7 +33,7 @@ internal sealed class GbxHeaderReader(GbxReader reader)
         }
         else
         {
-            header = ClassManager.NewHeader(basic, classId) ?? new GbxHeaderUnknown(basic, classId);
+            header = ClassManager.NewHeader(basic, classId, Settings.GameVersion) ?? new GbxHeaderUnknown(basic, classId);
             logger?.LogInformation("Known class!");
         }
 

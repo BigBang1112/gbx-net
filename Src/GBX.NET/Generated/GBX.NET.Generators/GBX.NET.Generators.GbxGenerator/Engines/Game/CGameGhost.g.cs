@@ -162,12 +162,18 @@ public partial class CGameGhost : CMwNod, IClass
     public partial class Chunk0303F007 : SkippableChunk<CGameGhost>
     {
         public override uint Id => 0x0303F007;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public byte[]? U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0303F007)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameGhost n, GbxReaderWriter rw)
+        {
+            rw.Data(ref U01);
         }
     }
 

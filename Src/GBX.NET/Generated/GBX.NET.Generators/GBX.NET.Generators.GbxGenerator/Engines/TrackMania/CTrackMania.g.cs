@@ -101,6 +101,20 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     }
 
     /// <summary>
+    /// CTrackMania 0x002 chunk
+    /// </summary>
+    [Chunk(0x24001002)]
+    public partial class Chunk24001002 : Chunk<CTrackMania>
+    {
+        public override uint Id => 0x24001002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
     /// CTrackMania 0x003 chunk (legacy Resources)
     /// </summary>
     [Chunk(0x24001003, "legacy Resources")]
@@ -390,6 +404,7 @@ public partial class CTrackMania : CGameManiaPlanet, IClass
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x24001001 => new Chunk24001001(),
+        0x24001002 => new Chunk24001002(),
         0x24001003 => new Chunk24001003(),
         0x24001005 => new Chunk24001005(),
         0x24001006 => new Chunk24001006(),

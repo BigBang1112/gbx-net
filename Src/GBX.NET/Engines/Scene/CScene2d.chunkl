@@ -5,6 +5,26 @@ CScene2d 0x0A002000
   rect Overlay
   CSceneSector Sector
 
+0x001
+  rect Overlay
+  CSceneSector Sector
+  CSceneObject[] (deprec)
+  CSceneLayout.SceneLoc[]
+  CSceneObject[] Cameras (deprec)
+  CSceneLayout.SceneLoc[] CameraLocations
+
+0x002
+  rect Overlay
+  CSceneSector Sector
+  CSceneObject[] (deprec)
+  CSceneLayout.SceneLoc[]
+  CSceneObject[] Cameras (deprec)
+  CSceneLayout.SceneLoc[] CameraLocations
+  CSceneLight[] Lights (deprec)
+  CSceneLayout.SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  CSceneLayout.SceneLoc[] SoundLocations
+
 0x003 [TMF, MP3, TMT, MP4, TM2020]
   rect Overlay
   CSceneSector Sector

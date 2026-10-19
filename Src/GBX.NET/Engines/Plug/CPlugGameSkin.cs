@@ -103,6 +103,10 @@ public partial class CPlugGameSkin
                 {
                     rw.NodeRef(ref nodeRef);
                 }
+                else
+                {
+                    rw.String(ref directory!);
+                }
             }
             else
             {

@@ -17,8 +17,9 @@ public class GbxDecryptionTests
         reader.TryInitializeDecryption(new CGameItemModel());
         reader.TryInitializeDecryption(new CHmsLight());
         reader.TryInitializeDecryption(new CHmsItem());
+        reader.TryInitializeDecryption(new CHmsZoneDynamic());
 
-        await Assert.That(initializer.ClassIds).IsEquivalentTo(new uint[] { 0x2400A000, 0x06007000, 0x01001000 }, CollectionOrdering.Matching);
+        await Assert.That(initializer.ClassIds).IsEquivalentTo(new uint[] { 0x2400A000, 0x06007000, 0x01001000, 0x06004000 }, CollectionOrdering.Matching);
     }
 
     [Test]

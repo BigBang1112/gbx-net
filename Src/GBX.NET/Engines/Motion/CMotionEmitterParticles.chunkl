@@ -1,0 +1,22 @@
+CMotionEmitterParticles 0x08058000
+- inherits: CMotionManaged
+
+0x001 // particle emission parameters
+  CMwNod EmitterModel
+  bool IsActive
+  bool UseOwnerLoc = true
+  EmitParams Params
+
+0x002 (base: 0x001) [TMF] // IsEventMode
+  base
+  bool IsEventMode
+
+archive EmitParams
+  version = 1
+  v1= (archive)
+    mat3 U01 = Mat3.Identity
+    vec3 U02
+    vec3 U03 = (1, 1, 1)
+    vec3 U04
+    vec3 U05 = (1, 1, 1)
+    float U06 = 1f

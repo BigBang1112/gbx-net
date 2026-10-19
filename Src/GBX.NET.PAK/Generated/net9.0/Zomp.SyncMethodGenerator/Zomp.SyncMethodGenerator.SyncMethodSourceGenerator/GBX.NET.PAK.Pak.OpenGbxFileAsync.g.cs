@@ -26,6 +26,12 @@ public partial class Pak
     /// <returns></returns>
     public global::GBX.NET.Gbx OpenGbxFile(global::GBX.NET.PAK.PakFile file, global::GBX.NET.GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, global::System.Collections.Generic.IDictionary<string, string>? fileHashes = default)
     {
+        if (Version == 3 && file.ClassId == 0x030C0000 && settings.GameVersion == global::GBX.NET.GameVersion.Unspecified)
+        {
+            // This legacy card ID was later reused for a lightmap media block.
+            settings = settings with { GameVersion = global::GBX.NET.GameVersion.TMF };
+        }
+
         using var stream = OpenFile(file, out var encryptionInitializer);
 
         if (!file.DontUseDummyWrite)

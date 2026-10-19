@@ -515,8 +515,7 @@ public partial class CMwNod : IClass
 
     public Gbx ToGbx(GbxHeaderBasic headerBasic)
     {
-        var classId = GetId();
-        var header = ClassManager.NewHeader(headerBasic, classId) ?? throw new Exception("Header cannot be created.");
+        var header = ClassManager.NewHeader(headerBasic, this) ?? throw new Exception("Header cannot be created.");
         return ClassManager.NewGbx(header, new GbxBody(), this) ?? throw new Exception("Gbx cannot be created.");
     }
 

@@ -17,6 +17,8 @@ public class PakLoaderTests
     [Arguments("TMNext_2014-04-30.pak", TMNextKey, false, 6)]
     [Arguments("Resource.pak", "087480148E51B70DD83AF2D86F974FEF", false, 6)]
     [Arguments("Resource.pak", "BE3BFB3192A3D3143E0CA1F1DA916C8A", false, 6)]
+    [Arguments("Game.pak", "9A9A3A018B35FC65304247396A894B05", false, 6)]
+    [Arguments("Game.pak", "EB2EA8E276999116DEE4CAC13E97354D", false, 6)]
     [Arguments("Stadium.pak", "21DA8E75B00B33FD68EFA7182FD2163F", false, 6)]
     [Arguments("Stadium.pak", "5B985F4CC43013C458A4C99A4B285E1E", false, 6)]
     [Arguments("TMTurbo.Title.Pack.Gbx", "5038519A8AD9270786D2097400055A5D", false, 6)]

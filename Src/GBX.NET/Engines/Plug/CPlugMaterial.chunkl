@@ -33,11 +33,14 @@ CPlugMaterial 0x09079000
 0x011 [MP3, TMT, MP4, TM2020]
   id[]
 
-0x012 (skippable, ignore) [MP4, TM2020]
+0x012 (skippable) [MP4, TM2020] // shading description
+  ShadingDesc Shading
 
-0x013 (skippable, ignore) [MP4, TM2020]
+0x013 (skippable) [MP4, TM2020]
+  string[]
 
-0x014 (skippable, ignore) [MP4, TM2020]
+0x014 (skippable) [MP4, TM2020]
+  CMwNod
 
 0x015 [TM2020.v7]
   version
@@ -66,7 +69,11 @@ CPlugMaterial 0x09079000
     short
     string
 
-0x019 (skippable, ignore) [TM2020]
+0x019 (skippable) [TM2020]
+  version
+  int
+  if U01 == 1
+    uint
 
 archive DeviceMat
   short
@@ -77,3 +84,19 @@ archive DeviceMat
   v9+
     CPlugShader Shader2
     CPlugShader Shader3
+
+archive ShadingDesc
+  int Version
+  if Version != 0
+    string
+    ulong
+    int
+    uint
+    uint
+    uint
+    uint
+    int
+    float
+    int
+    if Version >= 2
+      uint

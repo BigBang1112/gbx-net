@@ -17,6 +17,7 @@ internal sealed class LayoutModel
     public uint Id { get; }
     public string? BaseName { get; }
     public bool IsAbstract { get; }
+    public string? Game => File.Syntax.ClassAttributes.FirstOrDefault(static x => x.Name == "game")?.Value;
     public ArchiveDeclaration? SelfArchive { get; }
     public List<ChunkModel> Chunks { get; } = [];
     public ScopeModel Scope { get; }

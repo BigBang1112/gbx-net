@@ -13,7 +13,31 @@ CGamePlayerProfileChunk_TrackManiaSettings 0x240D5000
   version
   byte[]
 
-0x003 (skippable, ignore) [MP3, TMT, MP4, TM2020]
+0x003 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1] // server parameters
+  version
+  int ServerParametersVersion = 6
+  if ServerParametersVersion == 1
+    data[42]
+  if ServerParametersVersion != 1 && ServerParametersVersion < 5
+    data[44]
+  if ServerParametersVersion >= 5
+    uint
+    ushort
+    ushort
+    ushort
+    ushort
+    ushort
+    ushort
+    int
+    int
+    ushort
+    int
+    ushort
+    ushort
+    ushort
+    int
+    int
+    string
 
 0x004 (skippable) [MP3.v1, TMT.v1, MP4.v1, TM2020.v1]
   version

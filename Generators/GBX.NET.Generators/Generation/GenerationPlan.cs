@@ -27,7 +27,7 @@ internal sealed class GenerationPlan
     {
         var layouts = ImmutableDictionary.CreateBuilder<string, LayoutModel>(StringComparer.Ordinal);
         var diagnostics = ImmutableArray.CreateBuilder<Diagnostic>();
-        var ids = new HashSet<uint>();
+        var ids = new HashSet<(uint Id, string? Game)>();
 
         foreach (var file in inputs.Files.OrderBy(static x => x.TypeKey, StringComparer.Ordinal))
         {
@@ -54,7 +54,7 @@ internal sealed class GenerationPlan
                     throw new InvalidOperationException("Ambiguous class name: " + layout.Name);
                 }
 
-                if (!ids.Add(layout.Id))
+                if (!ids.Add((layout.Id, layout.Game)))
                 {
                     throw new InvalidOperationException($"Duplicate class ID: 0x{layout.Id:X8}");
                 }

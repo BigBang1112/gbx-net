@@ -59,13 +59,166 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     private NodeRefList<CSceneSector>? sectors;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
     [AppliedWithChunk<Chunk0A003018>]
     [AppliedWithChunk<Chunk0A00301B>]
     public NodeRefList<CSceneSector>? Sectors
     {
         get => sectors;
         set => sectors = value;
+    }
+
+    private NodeRefList<CSceneGate>? gates;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CSceneGate>? Gates
+    {
+        get => gates;
+        set => gates = value;
+    }
+
+    private NodeRefList<CSceneLight>? lights;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public NodeRefList<CSceneLight>? Lights
+    {
+        get => lights;
+        set => lights = value;
+    }
+
+    private SceneLoc[]? lightLocations;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public SceneLoc[]? LightLocations
+    {
+        get => this.lightLocations;
+        set => this.lightLocations = value;
+    }
+
+    private NodeRefList<CSceneObject>? sounds;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public NodeRefList<CSceneObject>? Sounds
+    {
+        get => sounds;
+        set => sounds = value;
+    }
+
+    private SceneLoc[]? soundLocations;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public SceneLoc[]? SoundLocations
+    {
+        get => this.soundLocations;
+        set => this.soundLocations = value;
+    }
+
+    private NodeRefList<CSceneObject>? locations;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public NodeRefList<CSceneObject>? Locations
+    {
+        get => locations;
+        set => locations = value;
+    }
+
+    private SceneLoc[]? locationLocations;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    public SceneLoc[]? LocationLocations
+    {
+        get => this.locationLocations;
+        set => this.locationLocations = value;
+    }
+
+    private NodeRefList<CSceneObject>? fields;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CSceneObject>? Fields
+    {
+        get => fields;
+        set => fields = value;
+    }
+
+    private SceneLoc[]? fieldLocations;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public SceneLoc[]? FieldLocations
+    {
+        get => this.fieldLocations;
+        set => this.fieldLocations = value;
+    }
+
+    private NodeRefList<CScenePath>? paths;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CScenePath>? Paths
+    {
+        get => paths;
+        set => paths = value;
+    }
+
+    private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public CSceneTrafficGraph? TrafficGraph
+    {
+        get => trafficGraphRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref trafficGraphRef, value);
+    }
+
+    private NodeRefList<CSceneTrafficPath>? trafficPaths;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    public NodeRefList<CSceneTrafficPath>? TrafficPaths
+    {
+        get => trafficPaths;
+        set => trafficPaths = value;
+    }
+
+    private NodeRef<CSceneFxNod>? sceneFxNodRef;
+    /// <remarks>Applied with: 0x016, 0x017, 0x018, 0x01B, 0x01C body chunks</remarks>
+    [AppliedWithChunk<Chunk0A003016>]
+    [AppliedWithChunk<Chunk0A003017>]
+    [AppliedWithChunk<Chunk0A003018>]
+    [AppliedWithChunk<Chunk0A00301B>]
+    [AppliedWithChunk<Chunk0A00301C>]
+    public CSceneFxNod? SceneFxNod
+    {
+        get => sceneFxNodRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref sceneFxNodRef, value);
     }
 
     private SceneMobil[]? scene;
@@ -86,131 +239,6 @@ public partial class CSceneLayout : CScene, IClass
     {
         get => this.sceneLocations;
         set => this.sceneLocations = value;
-    }
-
-    private NodeRefList<CSceneLight>? lights;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public NodeRefList<CSceneLight>? Lights
-    {
-        get => lights;
-        set => lights = value;
-    }
-
-    private SceneLoc[]? lightLocations;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public SceneLoc[]? LightLocations
-    {
-        get => this.lightLocations;
-        set => this.lightLocations = value;
-    }
-
-    private NodeRefList<CSceneObject>? sounds;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public NodeRefList<CSceneObject>? Sounds
-    {
-        get => sounds;
-        set => sounds = value;
-    }
-
-    private SceneLoc[]? soundLocations;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public SceneLoc[]? SoundLocations
-    {
-        get => this.soundLocations;
-        set => this.soundLocations = value;
-    }
-
-    private NodeRefList<CSceneObject>? locations;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public NodeRefList<CSceneObject>? Locations
-    {
-        get => locations;
-        set => locations = value;
-    }
-
-    private SceneLoc[]? locationLocations;
-    /// <remarks>Applied with: 0x018, 0x01B body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    public SceneLoc[]? LocationLocations
-    {
-        get => this.locationLocations;
-        set => this.locationLocations = value;
-    }
-
-    private NodeRefList<CSceneObject>? fields;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CSceneObject>? Fields
-    {
-        get => fields;
-        set => fields = value;
-    }
-
-    private SceneLoc[]? fieldLocations;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public SceneLoc[]? FieldLocations
-    {
-        get => this.fieldLocations;
-        set => this.fieldLocations = value;
-    }
-
-    private NodeRefList<CSceneGate>? gates;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CSceneGate>? Gates
-    {
-        get => gates;
-        set => gates = value;
-    }
-
-    private NodeRefList<CScenePath>? paths;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CScenePath>? Paths
-    {
-        get => paths;
-        set => paths = value;
-    }
-
-    private NodeRef<CSceneTrafficGraph>? trafficGraphRef;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public CSceneTrafficGraph? TrafficGraph
-    {
-        get => trafficGraphRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref trafficGraphRef, value);
-    }
-
-    private NodeRefList<CSceneTrafficPath>? trafficPaths;
-    /// <remarks>Applied with: 0x018 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    public NodeRefList<CSceneTrafficPath>? TrafficPaths
-    {
-        get => trafficPaths;
-        set => trafficPaths = value;
-    }
-
-    private NodeRef<CSceneFxNod>? sceneFxNodRef;
-    /// <remarks>Applied with: 0x018, 0x01B, 0x01C body chunks</remarks>
-    [AppliedWithChunk<Chunk0A003018>]
-    [AppliedWithChunk<Chunk0A00301B>]
-    [AppliedWithChunk<Chunk0A00301C>]
-    public CSceneFxNod? SceneFxNod
-    {
-        get => sceneFxNodRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref sceneFxNodRef, value);
     }
 
     private NodeRefList<CSceneObject>? objects;
@@ -282,11 +310,11 @@ public partial class CSceneLayout : CScene, IClass
         private readonly CSceneLayout owner;
         internal NodeRefView(CSceneLayout owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CSceneSector>>? Sectors => owner.sectors?.References;
+        public IReadOnlyList<NodeRef<CSceneGate>>? Gates => owner.gates?.References;
         public IReadOnlyList<NodeRef<CSceneLight>>? Lights => owner.lights?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Sounds => owner.sounds?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Locations => owner.locations?.References;
         public IReadOnlyList<NodeRef<CSceneObject>>? Fields => owner.fields?.References;
-        public IReadOnlyList<NodeRef<CSceneGate>>? Gates => owner.gates?.References;
         public IReadOnlyList<NodeRef<CScenePath>>? Paths => owner.paths?.References;
         public NodeRef<CSceneTrafficGraph> TrafficGraph => NodeRef.GetOrCreate(ref owner.trafficGraphRef);
         public IReadOnlyList<NodeRef<CSceneTrafficPath>>? TrafficPaths => owner.trafficPaths?.References;
@@ -307,6 +335,10 @@ public partial class CSceneLayout : CScene, IClass
         {
             for (var i = 0; i < sectors.Count; i++) yield return new("Sectors" + "[" + i + "]", sectors.Get(i));
         }
+        if (gates is not null)
+        {
+            for (var i = 0; i < gates.Count; i++) yield return new("Gates" + "[" + i + "]", gates.Get(i));
+        }
         if (lights is not null)
         {
             for (var i = 0; i < lights.Count; i++) yield return new("Lights" + "[" + i + "]", lights.Get(i));
@@ -322,10 +354,6 @@ public partial class CSceneLayout : CScene, IClass
         if (fields is not null)
         {
             for (var i = 0; i < fields.Count; i++) yield return new("Fields" + "[" + i + "]", fields.Get(i));
-        }
-        if (gates is not null)
-        {
-            for (var i = 0; i < gates.Count; i++) yield return new("Gates" + "[" + i + "]", gates.Get(i));
         }
         if (paths is not null)
         {
@@ -358,8 +386,7 @@ public partial class CSceneLayout : CScene, IClass
         ((CSceneLayout)clone).cameraFarZ = context.Clone(this.cameraFarZ)!;
         ((CSceneLayout)clone).cameraClearColor = context.Clone(this.cameraClearColor)!;
         ((CSceneLayout)clone).sectors = context.Clone(this.sectors)!;
-        ((CSceneLayout)clone).scene = context.CloneArray(this.scene)!;
-        ((CSceneLayout)clone).sceneLocations = context.CloneArray(this.sceneLocations)!;
+        ((CSceneLayout)clone).gates = context.Clone(this.gates)!;
         ((CSceneLayout)clone).lights = context.Clone(this.lights)!;
         ((CSceneLayout)clone).lightLocations = context.CloneArray(this.lightLocations)!;
         ((CSceneLayout)clone).sounds = context.Clone(this.sounds)!;
@@ -368,11 +395,12 @@ public partial class CSceneLayout : CScene, IClass
         ((CSceneLayout)clone).locationLocations = context.CloneArray(this.locationLocations)!;
         ((CSceneLayout)clone).fields = context.Clone(this.fields)!;
         ((CSceneLayout)clone).fieldLocations = context.CloneArray(this.fieldLocations)!;
-        ((CSceneLayout)clone).gates = context.Clone(this.gates)!;
         ((CSceneLayout)clone).paths = context.Clone(this.paths)!;
         ((CSceneLayout)clone).trafficGraphRef = context.Clone(this.trafficGraphRef)!;
         ((CSceneLayout)clone).trafficPaths = context.Clone(this.trafficPaths)!;
         ((CSceneLayout)clone).sceneFxNodRef = context.Clone(this.sceneFxNodRef)!;
+        ((CSceneLayout)clone).scene = context.CloneArray(this.scene)!;
+        ((CSceneLayout)clone).sceneLocations = context.CloneArray(this.sceneLocations)!;
         ((CSceneLayout)clone).objects = context.Clone(this.objects)!;
         ((CSceneLayout)clone).objectLocations = context.CloneArray(this.objectLocations)!;
         ((CSceneLayout)clone).weatherModels = context.Clone(this.weatherModels)!;
@@ -464,6 +492,74 @@ public partial class CSceneLayout : CScene, IClass
     }
 
     /// <summary>
+    /// CSceneLayout 0x016 chunk
+    /// </summary>
+    [Chunk(0x0A003016)]
+    public partial class Chunk0A003016 : Chunk<CSceneLayout>
+    {
+        public override uint Id => 0x0A003016;
+
+        public NodeRefList<CSceneObject>? U01;
+        public SceneLoc[]? U02;
+
+        public NodeRefList<CSceneObject>? U03;
+        public SceneLoc[]? U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A003016 owner;
+            internal NodeRefView(Chunk0A003016 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U03 => owner.U03?.References;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
+            }
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0A003016)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A003016)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0A003016)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A003016)clone).U04 = context.CloneArray(this.U04)!;
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
+            n.gates = rw.ListNodeRef_deprec<CSceneGate>(n.gates);
+            U01 = rw.ListNodeRef_deprec<CSceneObject>(U01);
+            rw.ArrayReadableWritable<SceneLoc>(ref U02!);
+            U03 = rw.ListNodeRef_deprec<CSceneObject>(U03);
+            rw.ArrayReadableWritable<SceneLoc>(ref U04!);
+            n.lights = rw.ListNodeRef_deprec<CSceneLight>(n.lights);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.lightLocations!);
+            n.sounds = rw.ListNodeRef_deprec<CSceneObject>(n.sounds);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.soundLocations!);
+            n.locations = rw.ListNodeRef_deprec<CSceneObject>(n.locations);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.locationLocations!);
+            n.fields = rw.ListNodeRef_deprec<CSceneObject>(n.fields);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.fieldLocations!);
+            n.paths = rw.ListNodeRef_deprec<CScenePath>(n.paths);
+            rw.NodeRef(ref n.trafficGraphRef);
+            n.trafficPaths = rw.ListNodeRef_deprec<CSceneTrafficPath>(n.trafficPaths);
+            rw.NodeRef(ref n.sceneFxNodRef);
+        }
+    }
+
+    /// <summary>
     /// CSceneLayout 0x017 chunk
     /// </summary>
     [Chunk(0x0A003017)]
@@ -471,12 +567,65 @@ public partial class CSceneLayout : CScene, IClass
     public partial class Chunk0A003017 : Chunk<CSceneLayout>
     {
         public override uint Id => 0x0A003017;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.VSK5;
+
+        public NodeRefList<CSceneObject>? U01;
+        public SceneLoc[]? U02;
+
+        public NodeRefList<CSceneObject>? U03;
+        public SceneLoc[]? U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0A003017 owner;
+            internal NodeRefView(Chunk0A003017 owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U01 => owner.U01?.References;
+            public IReadOnlyList<NodeRef<CSceneObject>>? U03 => owner.U03?.References;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
+            }
+            yield break;
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk0A003017)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0A003017)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk0A003017)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0A003017)clone).U04 = context.CloneArray(this.U04)!;
+        }
+
+        public override void ReadWrite(CSceneLayout n, GbxReaderWriter rw)
+        {
+            n.sectors = rw.ListNodeRef_deprec<CSceneSector>(n.sectors);
+            U01 = rw.ListNodeRef_deprec<CSceneObject>(U01);
+            rw.ArrayReadableWritable<SceneLoc>(ref U02!);
+            U03 = rw.ListNodeRef_deprec<CSceneObject>(U03);
+            rw.ArrayReadableWritable<SceneLoc>(ref U04!);
+            n.lights = rw.ListNodeRef_deprec<CSceneLight>(n.lights);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.lightLocations!);
+            n.sounds = rw.ListNodeRef_deprec<CSceneObject>(n.sounds);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.soundLocations!);
+            n.locations = rw.ListNodeRef_deprec<CSceneObject>(n.locations);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.locationLocations!);
+            n.fields = rw.ListNodeRef_deprec<CSceneObject>(n.fields);
+            rw.ArrayReadableWritable<SceneLoc>(ref n.fieldLocations!);
+            n.gates = rw.ListNodeRef_deprec<CSceneGate>(n.gates);
+            n.paths = rw.ListNodeRef_deprec<CScenePath>(n.paths);
+            rw.NodeRef(ref n.trafficGraphRef);
+            n.trafficPaths = rw.ListNodeRef_deprec<CSceneTrafficPath>(n.trafficPaths);
+            rw.NodeRef(ref n.sceneFxNodRef);
         }
     }
 
@@ -1346,6 +1495,7 @@ public partial class CSceneLayout : CScene, IClass
         0x0A00300C => new Chunk0A00300C(),
         0x0A003010 => new Chunk0A003010(),
         0x0A003014 => new Chunk0A003014(),
+        0x0A003016 => new Chunk0A003016(),
         0x0A003017 => new Chunk0A003017(),
         0x0A003018 => new Chunk0A003018(),
         0x0A003019 => new Chunk0A003019(),

@@ -1,0 +1,2 @@
+CMwCmdAffectIdentVec2 0x01076000
+- inherits: CMwCmdAffectIdent

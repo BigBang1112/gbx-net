@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Control;
 
 /// <remarks>ID: 0x0700F000</remarks>
 [Class(0x0700F000)]
-public partial class CControlList : CControlContainer, IClass
+public partial class CControlList : CControlFrame, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x0700F000;

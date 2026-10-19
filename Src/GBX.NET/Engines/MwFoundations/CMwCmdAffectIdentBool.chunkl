@@ -1,0 +1,2 @@
+CMwCmdAffectIdentBool 0x01071000
+- inherits: CMwCmdAffectIdent

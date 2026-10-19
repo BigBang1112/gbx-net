@@ -39,6 +39,51 @@ public partial class CVisionResourceFile : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private NodeRef<CMwNod>? phlslBlurHV_DepthTestRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk0C012002>]
+    public CMwNod? PhlslBlurHV_DepthTest
+    {
+        get => phlslBlurHV_DepthTestRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref phlslBlurHV_DepthTestRef, value);
+    }
+
+    private NodeRef<CMwNod>? shaderDeferredOccZCmpRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk0C012002>]
+    public CMwNod? ShaderDeferredOccZCmp
+    {
+        get => shaderDeferredOccZCmpRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderDeferredOccZCmpRef, value);
+    }
+
+    private NodeRef<CMwNod>? shaderDeferredShadowPssmRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk0C012002>]
+    public CMwNod? ShaderDeferredShadowPssm
+    {
+        get => shaderDeferredShadowPssmRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref shaderDeferredShadowPssmRef, value);
+    }
+
+    private NodeRef<CMwNod>? bitmapDeferredZRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk0C012002>]
+    public CMwNod? BitmapDeferredZ
+    {
+        get => bitmapDeferredZRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDeferredZRef, value);
+    }
+
+    private NodeRef<CMwNod>? bitmapDeferredFaceNormalInCRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk0C012002>]
+    public CMwNod? BitmapDeferredFaceNormalInC
+    {
+        get => bitmapDeferredFaceNormalInCRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapDeferredFaceNormalInCRef, value);
+    }
+
     private string? folderShaderBench;
     /// <remarks>Applied with: 0x00C body chunk</remarks>
     [AppliedWithChunk<Chunk0C01200C>]
@@ -57,15 +102,67 @@ public partial class CVisionResourceFile : CMwNod, IClass
         set => this.resources = value;
     }
 
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CVisionResourceFile owner;
+        internal NodeRefView(CVisionResourceFile owner) => this.owner = owner;
+        public NodeRef<CMwNod> PhlslBlurHV_DepthTest => NodeRef.GetOrCreate(ref owner.phlslBlurHV_DepthTestRef);
+        public NodeRef<CMwNod> ShaderDeferredOccZCmp => NodeRef.GetOrCreate(ref owner.shaderDeferredOccZCmpRef);
+        public NodeRef<CMwNod> ShaderDeferredShadowPssm => NodeRef.GetOrCreate(ref owner.shaderDeferredShadowPssmRef);
+        public NodeRef<CMwNod> BitmapDeferredZ => NodeRef.GetOrCreate(ref owner.bitmapDeferredZRef);
+        public NodeRef<CMwNod> BitmapDeferredFaceNormalInC => NodeRef.GetOrCreate(ref owner.bitmapDeferredFaceNormalInCRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("PhlslBlurHV_DepthTest", NodeRef.GetOrCreate(ref phlslBlurHV_DepthTestRef));
+        yield return new("ShaderDeferredOccZCmp", NodeRef.GetOrCreate(ref shaderDeferredOccZCmpRef));
+        yield return new("ShaderDeferredShadowPssm", NodeRef.GetOrCreate(ref shaderDeferredShadowPssmRef));
+        yield return new("BitmapDeferredZ", NodeRef.GetOrCreate(ref bitmapDeferredZRef));
+        yield return new("BitmapDeferredFaceNormalInC", NodeRef.GetOrCreate(ref bitmapDeferredFaceNormalInCRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CVisionResourceFile)clone).phlslBlurHV_DepthTestRef = context.Clone(this.phlslBlurHV_DepthTestRef)!;
+        ((CVisionResourceFile)clone).shaderDeferredOccZCmpRef = context.Clone(this.shaderDeferredOccZCmpRef)!;
+        ((CVisionResourceFile)clone).shaderDeferredShadowPssmRef = context.Clone(this.shaderDeferredShadowPssmRef)!;
+        ((CVisionResourceFile)clone).bitmapDeferredZRef = context.Clone(this.bitmapDeferredZRef)!;
+        ((CVisionResourceFile)clone).bitmapDeferredFaceNormalInCRef = context.Clone(this.bitmapDeferredFaceNormalInCRef)!;
         ((CVisionResourceFile)clone).folderShaderBench = context.Clone(this.folderShaderBench)!;
         ((CVisionResourceFile)clone).resources = context.CloneArray(this.resources)!;
     }
 
     public CVisionResourceFile()
     {
+    }
+
+    /// <summary>
+    /// CVisionResourceFile 0x002 chunk (depth and deferred rendering resources)
+    /// </summary>
+    [Chunk(0x0C012002, "depth and deferred rendering resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0C012002 : Chunk<CVisionResourceFile>
+    {
+        public override uint Id => 0x0C012002;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CVisionResourceFile n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.phlslBlurHV_DepthTestRef);
+            rw.NodeRef(ref n.shaderDeferredOccZCmpRef);
+            rw.NodeRef(ref n.shaderDeferredShadowPssmRef);
+            rw.NodeRef(ref n.bitmapDeferredZRef);
+            rw.NodeRef(ref n.bitmapDeferredFaceNormalInCRef);
+        }
     }
 
     /// <summary>
@@ -112,6 +209,7 @@ public partial class CVisionResourceFile : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0C012002 => new Chunk0C012002(),
         0x0C01200C => new Chunk0C01200C(),
         0x0C01201D => new Chunk0C01201D(),
         _ => base.NewChunk(chunkId),

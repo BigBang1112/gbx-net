@@ -456,6 +456,13 @@ public partial class Pak : IDisposable
     [Zomp.SyncMethodGenerator.CreateSyncVersion]
     public async Task<Gbx> OpenGbxFileAsync(PakFile file, GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, IDictionary<string, string>? fileHashes = default, CancellationToken cancellationToken = default)
     {
+        if (Version == 3 && file.ClassId is 0x030C0000 or 0x240B6000 && settings.GameVersion == GameVersion.Unspecified)
+        {
+            // This legacy card ID was later reused for a lightmap media block.
+            // TMU stores the same card under its older 0x240B6000 ID.
+            settings = settings with { GameVersion = GameVersion.TMF };
+        }
+
         using var stream = OpenFile(file, out var encryptionInitializer);
 
         if (!file.DontUseDummyWrite)

@@ -237,6 +237,36 @@ public partial class CGameResources : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref emptyChallengeCustomMusicFidRef, value);
     }
 
+    private NodeRef<CMwNod>? defaultMTColorGradingImageFidRef;
+    /// <remarks>Applied with: 0x015, 0x03E body chunks</remarks>
+    [AppliedWithChunk<Chunk0302D015>]
+    [AppliedWithChunk<Chunk0302D03E>]
+    public CMwNod? DefaultMTColorGradingImageFid
+    {
+        get => defaultMTColorGradingImageFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultMTColorGradingImageFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? defaultMTBlockBitmapFidRef;
+    /// <remarks>Applied with: 0x015, 0x03E body chunks</remarks>
+    [AppliedWithChunk<Chunk0302D015>]
+    [AppliedWithChunk<Chunk0302D03E>]
+    public CMwNod? DefaultMTBlockBitmapFid
+    {
+        get => defaultMTBlockBitmapFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultMTBlockBitmapFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? defaultMTBlockSoundFidRef;
+    /// <remarks>Applied with: 0x015, 0x03E body chunks</remarks>
+    [AppliedWithChunk<Chunk0302D015>]
+    [AppliedWithChunk<Chunk0302D03E>]
+    public CMwNod? DefaultMTBlockSoundFid
+    {
+        get => defaultMTBlockSoundFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultMTBlockSoundFidRef, value);
+    }
+
     private NodeRef<CGameCtnPainterSetting>? painterSettingRef;
     /// <remarks>Applied with: 0x016 body chunk</remarks>
     [AppliedWithChunk<Chunk0302D016>]
@@ -244,6 +274,15 @@ public partial class CGameResources : CMwNod, IClass
     {
         get => painterSettingRef?.Resolve();
         set => NodeRef.SetEmbedded(ref painterSettingRef, value);
+    }
+
+    private NodeRef<CMwNod>? unknownFlagBitmapRef;
+    /// <remarks>Applied with: 0x018 body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D018>]
+    public CMwNod? UnknownFlagBitmap
+    {
+        get => unknownFlagBitmapRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref unknownFlagBitmapRef, value);
     }
 
     private NodeRef<CMwNod>? defaultLeagueLogoBitmapFidRef;
@@ -325,6 +364,15 @@ public partial class CGameResources : CMwNod, IClass
     {
         get => defaultSkillScoreComputerFidRef?.Resolve();
         set => NodeRef.SetEmbedded(ref defaultSkillScoreComputerFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? menusRemappingRef;
+    /// <remarks>Applied with: 0x02A body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D02A>]
+    public CMwNod? MenusRemapping
+    {
+        get => menusRemappingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref menusRemappingRef, value);
     }
 
     private NodeRef<CMwNod>? imageTurboRouletteRef;
@@ -804,15 +852,6 @@ public partial class CGameResources : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref editorManialinkInterfaceFidRef, value);
     }
 
-    private NodeRef<CMwNod>? defaultMTColorGradingImageFidRef;
-    /// <remarks>Applied with: 0x03E body chunk</remarks>
-    [AppliedWithChunk<Chunk0302D03E>]
-    public CMwNod? DefaultMTColorGradingImageFid
-    {
-        get => defaultMTColorGradingImageFidRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref defaultMTColorGradingImageFidRef, value);
-    }
-
     private NodeRef<CMwNod>? defaultMTDecal2dBitmapFidRef;
     /// <remarks>Applied with: 0x03E body chunk</remarks>
     [AppliedWithChunk<Chunk0302D03E>]
@@ -820,24 +859,6 @@ public partial class CGameResources : CMwNod, IClass
     {
         get => defaultMTDecal2dBitmapFidRef?.Resolve();
         set => NodeRef.SetEmbedded(ref defaultMTDecal2dBitmapFidRef, value);
-    }
-
-    private NodeRef<CMwNod>? defaultMTBlockBitmapFidRef;
-    /// <remarks>Applied with: 0x03E body chunk</remarks>
-    [AppliedWithChunk<Chunk0302D03E>]
-    public CMwNod? DefaultMTBlockBitmapFid
-    {
-        get => defaultMTBlockBitmapFidRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref defaultMTBlockBitmapFidRef, value);
-    }
-
-    private NodeRef<CMwNod>? defaultMTBlockSoundFidRef;
-    /// <remarks>Applied with: 0x03E body chunk</remarks>
-    [AppliedWithChunk<Chunk0302D03E>]
-    public CMwNod? DefaultMTBlockSoundFid
-    {
-        get => defaultMTBlockSoundFidRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref defaultMTBlockSoundFidRef, value);
     }
 
     private NodeRef<CMwNod>? editorModuleInterfaceFidRef;
@@ -1065,13 +1086,18 @@ public partial class CGameResources : CMwNod, IClass
         public NodeRef<CMwNod> MediaTrackerInterfaceFid => NodeRef.GetOrCreate(ref owner.mediaTrackerInterfaceFidRef);
         public NodeRef<CMwNod> StyleSheetFid => NodeRef.GetOrCreate(ref owner.styleSheetFidRef);
         public NodeRef<CMwNod> EmptyChallengeCustomMusicFid => NodeRef.GetOrCreate(ref owner.emptyChallengeCustomMusicFidRef);
+        public NodeRef<CMwNod> DefaultMTColorGradingImageFid => NodeRef.GetOrCreate(ref owner.defaultMTColorGradingImageFidRef);
+        public NodeRef<CMwNod> DefaultMTBlockBitmapFid => NodeRef.GetOrCreate(ref owner.defaultMTBlockBitmapFidRef);
+        public NodeRef<CMwNod> DefaultMTBlockSoundFid => NodeRef.GetOrCreate(ref owner.defaultMTBlockSoundFidRef);
         public NodeRef<CGameCtnPainterSetting> PainterSetting => NodeRef.GetOrCreate(ref owner.painterSettingRef);
+        public NodeRef<CMwNod> UnknownFlagBitmap => NodeRef.GetOrCreate(ref owner.unknownFlagBitmapRef);
         public NodeRef<CMwNod> DefaultLeagueLogoBitmapFid => NodeRef.GetOrCreate(ref owner.defaultLeagueLogoBitmapFidRef);
         public NodeRef<CMwNod> DefaultOnlineNewsIconBitmapFid => NodeRef.GetOrCreate(ref owner.defaultOnlineNewsIconBitmapFidRef);
         public NodeRef<CMwNod> PodiumScene => NodeRef.GetOrCreate(ref owner.podiumSceneRef);
         public NodeRef<CMwNod> DefaultTagBitmapFid => NodeRef.GetOrCreate(ref owner.defaultTagBitmapFidRef);
         public NodeRef<CMwNod> DefaultMusicFid => NodeRef.GetOrCreate(ref owner.defaultMusicFidRef);
         public NodeRef<CMwNod> DefaultSkillScoreComputerFid => NodeRef.GetOrCreate(ref owner.defaultSkillScoreComputerFidRef);
+        public NodeRef<CMwNod> MenusRemapping => NodeRef.GetOrCreate(ref owner.menusRemappingRef);
         public NodeRef<CMwNod> ImageTurboRoulette => NodeRef.GetOrCreate(ref owner.imageTurboRouletteRef);
         public NodeRef<CMwNod> SceneFxNodRoot => NodeRef.GetOrCreate(ref owner.sceneFxNodRootRef);
         public NodeRef<CMwNod> EditorModelSpritesBitmapFid => NodeRef.GetOrCreate(ref owner.editorModelSpritesBitmapFidRef);
@@ -1123,10 +1149,7 @@ public partial class CGameResources : CMwNod, IClass
         public NodeRef<CMwNod> InGameDialogsFid => NodeRef.GetOrCreate(ref owner.inGameDialogsFidRef);
         public NodeRef<CMwNod> InterfaceEditorInventoryModelFid => NodeRef.GetOrCreate(ref owner.interfaceEditorInventoryModelFidRef);
         public NodeRef<CMwNod> EditorManialinkInterfaceFid => NodeRef.GetOrCreate(ref owner.editorManialinkInterfaceFidRef);
-        public NodeRef<CMwNod> DefaultMTColorGradingImageFid => NodeRef.GetOrCreate(ref owner.defaultMTColorGradingImageFidRef);
         public NodeRef<CMwNod> DefaultMTDecal2dBitmapFid => NodeRef.GetOrCreate(ref owner.defaultMTDecal2dBitmapFidRef);
-        public NodeRef<CMwNod> DefaultMTBlockBitmapFid => NodeRef.GetOrCreate(ref owner.defaultMTBlockBitmapFidRef);
-        public NodeRef<CMwNod> DefaultMTBlockSoundFid => NodeRef.GetOrCreate(ref owner.defaultMTBlockSoundFidRef);
         public NodeRef<CMwNod> EditorModuleInterfaceFid => NodeRef.GetOrCreate(ref owner.editorModuleInterfaceFidRef);
         public NodeRef<CMwNod> DefaultEditorModuleFid => NodeRef.GetOrCreate(ref owner.defaultEditorModuleFidRef);
         public NodeRef<CMwNod> EditorAnimSetInterfaceFid => NodeRef.GetOrCreate(ref owner.editorAnimSetInterfaceFidRef);
@@ -1167,13 +1190,18 @@ public partial class CGameResources : CMwNod, IClass
         yield return new("MediaTrackerInterfaceFid", NodeRef.GetOrCreate(ref mediaTrackerInterfaceFidRef));
         yield return new("StyleSheetFid", NodeRef.GetOrCreate(ref styleSheetFidRef));
         yield return new("EmptyChallengeCustomMusicFid", NodeRef.GetOrCreate(ref emptyChallengeCustomMusicFidRef));
+        yield return new("DefaultMTColorGradingImageFid", NodeRef.GetOrCreate(ref defaultMTColorGradingImageFidRef));
+        yield return new("DefaultMTBlockBitmapFid", NodeRef.GetOrCreate(ref defaultMTBlockBitmapFidRef));
+        yield return new("DefaultMTBlockSoundFid", NodeRef.GetOrCreate(ref defaultMTBlockSoundFidRef));
         yield return new("PainterSetting", NodeRef.GetOrCreate(ref painterSettingRef));
+        yield return new("UnknownFlagBitmap", NodeRef.GetOrCreate(ref unknownFlagBitmapRef));
         yield return new("DefaultLeagueLogoBitmapFid", NodeRef.GetOrCreate(ref defaultLeagueLogoBitmapFidRef));
         yield return new("DefaultOnlineNewsIconBitmapFid", NodeRef.GetOrCreate(ref defaultOnlineNewsIconBitmapFidRef));
         yield return new("PodiumScene", NodeRef.GetOrCreate(ref podiumSceneRef));
         yield return new("DefaultTagBitmapFid", NodeRef.GetOrCreate(ref defaultTagBitmapFidRef));
         yield return new("DefaultMusicFid", NodeRef.GetOrCreate(ref defaultMusicFidRef));
         yield return new("DefaultSkillScoreComputerFid", NodeRef.GetOrCreate(ref defaultSkillScoreComputerFidRef));
+        yield return new("MenusRemapping", NodeRef.GetOrCreate(ref menusRemappingRef));
         yield return new("ImageTurboRoulette", NodeRef.GetOrCreate(ref imageTurboRouletteRef));
         yield return new("SceneFxNodRoot", NodeRef.GetOrCreate(ref sceneFxNodRootRef));
         yield return new("EditorModelSpritesBitmapFid", NodeRef.GetOrCreate(ref editorModelSpritesBitmapFidRef));
@@ -1225,10 +1253,7 @@ public partial class CGameResources : CMwNod, IClass
         yield return new("InGameDialogsFid", NodeRef.GetOrCreate(ref inGameDialogsFidRef));
         yield return new("InterfaceEditorInventoryModelFid", NodeRef.GetOrCreate(ref interfaceEditorInventoryModelFidRef));
         yield return new("EditorManialinkInterfaceFid", NodeRef.GetOrCreate(ref editorManialinkInterfaceFidRef));
-        yield return new("DefaultMTColorGradingImageFid", NodeRef.GetOrCreate(ref defaultMTColorGradingImageFidRef));
         yield return new("DefaultMTDecal2dBitmapFid", NodeRef.GetOrCreate(ref defaultMTDecal2dBitmapFidRef));
-        yield return new("DefaultMTBlockBitmapFid", NodeRef.GetOrCreate(ref defaultMTBlockBitmapFidRef));
-        yield return new("DefaultMTBlockSoundFid", NodeRef.GetOrCreate(ref defaultMTBlockSoundFidRef));
         yield return new("EditorModuleInterfaceFid", NodeRef.GetOrCreate(ref editorModuleInterfaceFidRef));
         yield return new("DefaultEditorModuleFid", NodeRef.GetOrCreate(ref defaultEditorModuleFidRef));
         yield return new("EditorAnimSetInterfaceFid", NodeRef.GetOrCreate(ref editorAnimSetInterfaceFidRef));
@@ -1280,7 +1305,11 @@ public partial class CGameResources : CMwNod, IClass
         ((CGameResources)clone).mediaTrackerInterfaceFidRef = context.Clone(this.mediaTrackerInterfaceFidRef)!;
         ((CGameResources)clone).styleSheetFidRef = context.Clone(this.styleSheetFidRef)!;
         ((CGameResources)clone).emptyChallengeCustomMusicFidRef = context.Clone(this.emptyChallengeCustomMusicFidRef)!;
+        ((CGameResources)clone).defaultMTColorGradingImageFidRef = context.Clone(this.defaultMTColorGradingImageFidRef)!;
+        ((CGameResources)clone).defaultMTBlockBitmapFidRef = context.Clone(this.defaultMTBlockBitmapFidRef)!;
+        ((CGameResources)clone).defaultMTBlockSoundFidRef = context.Clone(this.defaultMTBlockSoundFidRef)!;
         ((CGameResources)clone).painterSettingRef = context.Clone(this.painterSettingRef)!;
+        ((CGameResources)clone).unknownFlagBitmapRef = context.Clone(this.unknownFlagBitmapRef)!;
         ((CGameResources)clone).defaultLeagueLogoBitmapFidRef = context.Clone(this.defaultLeagueLogoBitmapFidRef)!;
         ((CGameResources)clone).hymnsFolder = context.Clone(this.hymnsFolder)!;
         ((CGameResources)clone).defaultOnlineNewsIconBitmapFidRef = context.Clone(this.defaultOnlineNewsIconBitmapFidRef)!;
@@ -1290,6 +1319,7 @@ public partial class CGameResources : CMwNod, IClass
         ((CGameResources)clone).defaultTagBitmapFidRef = context.Clone(this.defaultTagBitmapFidRef)!;
         ((CGameResources)clone).defaultMusicFidRef = context.Clone(this.defaultMusicFidRef)!;
         ((CGameResources)clone).defaultSkillScoreComputerFidRef = context.Clone(this.defaultSkillScoreComputerFidRef)!;
+        ((CGameResources)clone).menusRemappingRef = context.Clone(this.menusRemappingRef)!;
         ((CGameResources)clone).imageTurboRouletteRef = context.Clone(this.imageTurboRouletteRef)!;
         ((CGameResources)clone).sceneFxNodRootRef = context.Clone(this.sceneFxNodRootRef)!;
         ((CGameResources)clone).editorModelSpritesBitmapFidRef = context.Clone(this.editorModelSpritesBitmapFidRef)!;
@@ -1343,10 +1373,7 @@ public partial class CGameResources : CMwNod, IClass
         ((CGameResources)clone).inGameDialogsFidRef = context.Clone(this.inGameDialogsFidRef)!;
         ((CGameResources)clone).interfaceEditorInventoryModelFidRef = context.Clone(this.interfaceEditorInventoryModelFidRef)!;
         ((CGameResources)clone).editorManialinkInterfaceFidRef = context.Clone(this.editorManialinkInterfaceFidRef)!;
-        ((CGameResources)clone).defaultMTColorGradingImageFidRef = context.Clone(this.defaultMTColorGradingImageFidRef)!;
         ((CGameResources)clone).defaultMTDecal2dBitmapFidRef = context.Clone(this.defaultMTDecal2dBitmapFidRef)!;
-        ((CGameResources)clone).defaultMTBlockBitmapFidRef = context.Clone(this.defaultMTBlockBitmapFidRef)!;
-        ((CGameResources)clone).defaultMTBlockSoundFidRef = context.Clone(this.defaultMTBlockSoundFidRef)!;
         ((CGameResources)clone).editorModuleInterfaceFidRef = context.Clone(this.editorModuleInterfaceFidRef)!;
         ((CGameResources)clone).defaultEditorModuleFidRef = context.Clone(this.defaultEditorModuleFidRef)!;
         ((CGameResources)clone).editorAnimSetInterfaceFidRef = context.Clone(this.editorAnimSetInterfaceFidRef)!;
@@ -1751,6 +1778,52 @@ public partial class CGameResources : CMwNod, IClass
     }
 
     /// <summary>
+    /// CGameResources 0x015 chunk (legacy MediaTracker resources)
+    /// </summary>
+    [Chunk(0x0302D015, "legacy MediaTracker resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D015 : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D015;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D015 owner;
+            internal NodeRefView(Chunk0302D015 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D015)clone).U01Ref = context.Clone(this.U01Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref n.defaultMTColorGradingImageFidRef);
+            rw.NodeRef(ref n.defaultMTBlockBitmapFidRef);
+            rw.NodeRef(ref n.defaultMTBlockSoundFidRef);
+        }
+    }
+
+    /// <summary>
     /// CGameResources 0x016 chunk (PainterSetting)
     /// </summary>
     [Chunk(0x0302D016, "PainterSetting")]
@@ -1768,6 +1841,27 @@ public partial class CGameResources : CMwNod, IClass
         public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
         {
             rw.NodeRef(ref n.painterSettingRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x018 chunk (UnknownFlagBitmap)
+    /// </summary>
+    [Chunk(0x0302D018, "UnknownFlagBitmap")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D018 : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D018;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.unknownFlagBitmapRef);
         }
     }
 
@@ -1880,6 +1974,114 @@ public partial class CGameResources : CMwNod, IClass
     }
 
     /// <summary>
+    /// CGameResources 0x01C chunk (legacy interface resources)
+    /// </summary>
+    [Chunk(0x0302D01C, "legacy interface resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D01C : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D01C;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D01C owner;
+            internal NodeRefView(Chunk0302D01C owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D01C)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D01C)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x01D chunk (legacy interface resources)
+    /// </summary>
+    [Chunk(0x0302D01D, "legacy interface resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D01D : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D01D;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D01D owner;
+            internal NodeRefView(Chunk0302D01D owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D01D)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D01D)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+        }
+    }
+
+    /// <summary>
     /// CGameResources 0x01E chunk (DefaultOnlineNewsIconBitmapFid)
     /// </summary>
     [Chunk(0x0302D01E, "DefaultOnlineNewsIconBitmapFid")]
@@ -1920,6 +2122,60 @@ public partial class CGameResources : CMwNod, IClass
         {
             rw.NodeRef(ref n.defaultOnlineNewsIconBitmapFidRef);
             rw.NodeRef(ref U01Ref);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x01F chunk (legacy interface resources)
+    /// </summary>
+    [Chunk(0x0302D01F, "legacy interface resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D01F : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D01F;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D01F owner;
+            internal NodeRefView(Chunk0302D01F owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D01F)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D01F)clone).U02Ref = context.Clone(this.U02Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
         }
     }
 
@@ -2127,6 +2383,142 @@ public partial class CGameResources : CMwNod, IClass
             {
                 rw.NodeRef(ref n.raceNetInterfaceFidRef);
             }
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x029 chunk (legacy menu resources)
+    /// </summary>
+    [Chunk(0x0302D029, "legacy menu resources")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D029 : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D029;
+        public override GameVersion GameVersion => GameVersion.TMF;
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U03Ref;
+        public CMwNod? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U04Ref;
+        public CMwNod? U04
+        {
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U05Ref;
+        public CMwNod? U05
+        {
+            get => U05Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U05Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U06Ref;
+        public CMwNod? U06
+        {
+            get => U06Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U06Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U07Ref;
+        public CMwNod? U07
+        {
+            get => U07Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U07Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D029 owner;
+            internal NodeRefView(Chunk0302D029 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CMwNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CMwNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
+            public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
+            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D029)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D029)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk0302D029)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk0302D029)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk0302D029)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk0302D029)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk0302D029)clone).U07Ref = context.Clone(this.U07Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref U04Ref);
+            rw.NodeRef(ref U05Ref);
+            rw.NodeRef(ref U06Ref);
+            rw.NodeRef(ref U07Ref);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x02A chunk (menu remapping and resource folders)
+    /// </summary>
+    [Chunk(0x0302D02A, "menu remapping and resource folders")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0302D02A : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D02A;
+        public override GameVersion GameVersion => GameVersion.TMF;
+        public string? U01;
+        public string? U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D02A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0302D02A)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.menusRemappingRef);
+            rw.String(ref U01);
+            rw.String(ref U02);
         }
     }
 
@@ -3378,11 +3770,16 @@ public partial class CGameResources : CMwNod, IClass
         0x0302D00F => new Chunk0302D00F(),
         0x0302D010 => new Chunk0302D010(),
         0x0302D012 => new Chunk0302D012(),
+        0x0302D015 => new Chunk0302D015(),
         0x0302D016 => new Chunk0302D016(),
+        0x0302D018 => new Chunk0302D018(),
         0x0302D019 => new Chunk0302D019(),
         0x0302D01A => new Chunk0302D01A(),
         0x0302D01B => new Chunk0302D01B(),
+        0x0302D01C => new Chunk0302D01C(),
+        0x0302D01D => new Chunk0302D01D(),
         0x0302D01E => new Chunk0302D01E(),
+        0x0302D01F => new Chunk0302D01F(),
         0x0302D020 => new Chunk0302D020(),
         0x0302D021 => new Chunk0302D021(),
         0x0302D022 => new Chunk0302D022(),
@@ -3392,6 +3789,8 @@ public partial class CGameResources : CMwNod, IClass
         0x0302D026 => new Chunk0302D026(),
         0x0302D027 => new Chunk0302D027(),
         0x0302D028 => new Chunk0302D028(),
+        0x0302D029 => new Chunk0302D029(),
+        0x0302D02A => new Chunk0302D02A(),
         0x0302D02B => new Chunk0302D02B(),
         0x0302D02C => new Chunk0302D02C(),
         0x0302D02D => new Chunk0302D02D(),

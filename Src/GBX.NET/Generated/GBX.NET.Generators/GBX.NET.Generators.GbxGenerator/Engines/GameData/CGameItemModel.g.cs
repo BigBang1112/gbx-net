@@ -191,6 +191,46 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         set => NodeRef.SetEmbedded(ref materialPilotRef, value);
     }
 
+    private Vec3 groundPoint;
+    /// <remarks>Applied with: 0x00F, 0x012 body chunks</remarks>
+    [AppliedWithChunk<Chunk2E00200F>]
+    [AppliedWithChunk<Chunk2E002012>]
+    public Vec3 GroundPoint
+    {
+        get => this.groundPoint;
+        set => this.groundPoint = value;
+    }
+
+    private float painterGroundMargin;
+    /// <remarks>Applied with: 0x00F, 0x012 body chunks</remarks>
+    [AppliedWithChunk<Chunk2E00200F>]
+    [AppliedWithChunk<Chunk2E002012>]
+    public float PainterGroundMargin
+    {
+        get => this.painterGroundMargin;
+        set => this.painterGroundMargin = value;
+    }
+
+    private float orbitalCenterHeightFromGround;
+    /// <remarks>Applied with: 0x00F, 0x012 body chunks</remarks>
+    [AppliedWithChunk<Chunk2E00200F>]
+    [AppliedWithChunk<Chunk2E002012>]
+    public float OrbitalCenterHeightFromGround
+    {
+        get => this.orbitalCenterHeightFromGround;
+        set => this.orbitalCenterHeightFromGround = value;
+    }
+
+    private float orbitalRadiusBase;
+    /// <remarks>Applied with: 0x00F, 0x012 body chunks</remarks>
+    [AppliedWithChunk<Chunk2E00200F>]
+    [AppliedWithChunk<Chunk2E002012>]
+    public float OrbitalRadiusBase
+    {
+        get => this.orbitalRadiusBase;
+        set => this.orbitalRadiusBase = value;
+    }
+
     private NodeRef<CPlugBitmap>? bannerProfileFidRef;
     /// <remarks>Applied with: 0x010 body chunk</remarks>
     [AppliedWithChunk<Chunk2E002010>]
@@ -243,42 +283,6 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
     {
         get => projFrontRef?.Resolve();
         set => NodeRef.SetEmbedded(ref projFrontRef, value);
-    }
-
-    private Vec3 groundPoint;
-    /// <remarks>Applied with: 0x012 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E002012>]
-    public Vec3 GroundPoint
-    {
-        get => this.groundPoint;
-        set => this.groundPoint = value;
-    }
-
-    private float painterGroundMargin;
-    /// <remarks>Applied with: 0x012 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E002012>]
-    public float PainterGroundMargin
-    {
-        get => this.painterGroundMargin;
-        set => this.painterGroundMargin = value;
-    }
-
-    private float orbitalCenterHeightFromGround;
-    /// <remarks>Applied with: 0x012 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E002012>]
-    public float OrbitalCenterHeightFromGround
-    {
-        get => this.orbitalCenterHeightFromGround;
-        set => this.orbitalCenterHeightFromGround = value;
-    }
-
-    private float orbitalRadiusBase;
-    /// <remarks>Applied with: 0x012 body chunk</remarks>
-    [AppliedWithChunk<Chunk2E002012>]
-    public float OrbitalRadiusBase
-    {
-        get => this.orbitalRadiusBase;
-        set => this.orbitalRadiusBase = value;
     }
 
     private float orbitalPreviewAngle;
@@ -562,16 +566,16 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         ((CGameItemModel)clone).stemBumpMaterialRef = context.Clone(this.stemBumpMaterialRef)!;
         ((CGameItemModel)clone).forcedSkinsFids = context.Clone(this.forcedSkinsFids)!;
         ((CGameItemModel)clone).materialPilotRef = context.Clone(this.materialPilotRef)!;
+        ((CGameItemModel)clone).groundPoint = context.Clone(this.groundPoint)!;
+        ((CGameItemModel)clone).painterGroundMargin = context.Clone(this.painterGroundMargin)!;
+        ((CGameItemModel)clone).orbitalCenterHeightFromGround = context.Clone(this.orbitalCenterHeightFromGround)!;
+        ((CGameItemModel)clone).orbitalRadiusBase = context.Clone(this.orbitalRadiusBase)!;
         ((CGameItemModel)clone).bannerProfileFidRef = context.Clone(this.bannerProfileFidRef)!;
         ((CGameItemModel)clone).frontLightRef = context.Clone(this.frontLightRef)!;
         ((CGameItemModel)clone).frontLightSmallRef = context.Clone(this.frontLightSmallRef)!;
         ((CGameItemModel)clone).rearLightRef = context.Clone(this.rearLightRef)!;
         ((CGameItemModel)clone).projShadowRef = context.Clone(this.projShadowRef)!;
         ((CGameItemModel)clone).projFrontRef = context.Clone(this.projFrontRef)!;
-        ((CGameItemModel)clone).groundPoint = context.Clone(this.groundPoint)!;
-        ((CGameItemModel)clone).painterGroundMargin = context.Clone(this.painterGroundMargin)!;
-        ((CGameItemModel)clone).orbitalCenterHeightFromGround = context.Clone(this.orbitalCenterHeightFromGround)!;
-        ((CGameItemModel)clone).orbitalRadiusBase = context.Clone(this.orbitalRadiusBase)!;
         ((CGameItemModel)clone).orbitalPreviewAngle = context.Clone(this.orbitalPreviewAngle)!;
         ((CGameItemModel)clone).audioEnvironmentInCarRef = context.Clone(this.audioEnvironmentInCarRef)!;
         ((CGameItemModel)clone).itemTypeE = context.Clone(this.itemTypeE)!;
@@ -956,6 +960,28 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             rw.NodeRef(ref n.materialGlassRef);
             rw.NodeRef(ref n.materialDetailsRef);
             rw.NodeRef(ref n.materialPilotRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameItemModel 0x00F chunk
+    /// </summary>
+    [Chunk(0x2E00200F)]
+    public partial class Chunk2E00200F : Chunk<CGameItemModel>
+    {
+        public override uint Id => 0x2E00200F;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameItemModel n, GbxReaderWriter rw)
+        {
+            rw.Vec3(ref n.groundPoint);
+            rw.Single(ref n.painterGroundMargin);
+            rw.Single(ref n.orbitalCenterHeightFromGround);
+            rw.Single(ref n.orbitalRadiusBase);
         }
     }
 
@@ -2153,6 +2179,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
         0x2E00200C => new Chunk2E00200C(),
         0x2E00200D => new Chunk2E00200D(),
         0x2E00200E => new Chunk2E00200E(),
+        0x2E00200F => new Chunk2E00200F(),
         0x2E002010 => new Chunk2E002010(),
         0x2E002011 => new Chunk2E002011(),
         0x2E002012 => new Chunk2E002012(),

@@ -1,5 +1,5 @@
 CControlList 0x0700F000
-- inherits: CControlContainer
+- inherits: CControlFrame
 
 0x007 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT]
   int

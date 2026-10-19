@@ -39,9 +39,19 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
 
     internal override uint GetId() => Id;
 
+    private int serverParametersVersion = 6;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk240D5003>]
+    public int ServerParametersVersion
+    {
+        get => this.serverParametersVersion;
+        set => this.serverParametersVersion = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CGamePlayerProfileChunk_TrackManiaSettings)clone).serverParametersVersion = context.Clone(this.serverParametersVersion)!;
     }
 
     public CGamePlayerProfileChunk_TrackManiaSettings()
@@ -178,19 +188,112 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettings : CGamePlayerPro
     }
 
     /// <summary>
-    /// CGamePlayerProfileChunk_TrackManiaSettings 0x003 skippable chunk
+    /// CGamePlayerProfileChunk_TrackManiaSettings 0x003 skippable chunk (server parameters)
     /// </summary>
-    [Chunk(0x240D5003)]
-    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020)]
-    public partial class Chunk240D5003 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>
+    [Chunk(0x240D5003, "server parameters")]
+    [ChunkGameVersion(GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 1, 1, 1, 1)]
+    public partial class Chunk240D5003 : SkippableChunk<CGamePlayerProfileChunk_TrackManiaSettings>, IVersionable
     {
         public override uint Id => 0x240D5003;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
+        public byte[]? U01;
+        public byte[]? U02;
+        public uint U03;
+        public ushort U04;
+        public ushort U05;
+        public ushort U06;
+        public ushort U07;
+        public ushort U08;
+        public ushort U09;
+        public int U10;
+        public int U11;
+        public ushort U12;
+        public int U13;
+        public ushort U14;
+        public ushort U15;
+        public ushort U16;
+        public int U17;
+        public int U18;
+        public string? U19;
+
+        public Chunk240D5003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk240D5003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3 || gameVersion == GameVersion.TMT || gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+            ((Chunk240D5003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk240D5003)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk240D5003)clone).U02 = context.CloneArray(this.U02)!;
+            ((Chunk240D5003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk240D5003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk240D5003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk240D5003)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk240D5003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk240D5003)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk240D5003)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk240D5003)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk240D5003)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk240D5003)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk240D5003)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk240D5003)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk240D5003)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk240D5003)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk240D5003)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk240D5003)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk240D5003)clone).U19 = context.Clone(this.U19)!;
+        }
+
+        public override void ReadWrite(CGamePlayerProfileChunk_TrackManiaSettings n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Int32(ref n.serverParametersVersion);
+
+            if (n.ServerParametersVersion== 1)
+            {
+                rw.Data(ref U01!, 42);
+            }
+
+            if (n.ServerParametersVersion!= 1 && n.ServerParametersVersion< 5)
+            {
+                rw.Data(ref U02!, 44);
+            }
+
+            if (n.ServerParametersVersion>= 5)
+            {
+                rw.UInt32(ref U03);
+                rw.UInt16(ref U04);
+                rw.UInt16(ref U05);
+                rw.UInt16(ref U06);
+                rw.UInt16(ref U07);
+                rw.UInt16(ref U08);
+                rw.UInt16(ref U09);
+                rw.Int32(ref U10);
+                rw.Int32(ref U11);
+                rw.UInt16(ref U12);
+                rw.Int32(ref U13);
+                rw.UInt16(ref U14);
+                rw.UInt16(ref U15);
+                rw.UInt16(ref U16);
+                rw.Int32(ref U17);
+                rw.Int32(ref U18);
+                rw.String(ref U19);
+            }
         }
     }
 

@@ -14,7 +14,45 @@ CSceneLayout 0x0A003000
   box
   iso4
 
-0x017 (ignore) [VSK5]
+0x016
+  CSceneSector[] Sectors (deprec)
+  CSceneGate[] Gates (deprec)
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod
+
+0x017 [VSK5]
+  CSceneSector[] Sectors (deprec)
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneObject[] (deprec)
+  SceneLoc[]
+  CSceneLight[] Lights (deprec)
+  SceneLoc[] LightLocations
+  CSceneObject[] Sounds (deprec)
+  SceneLoc[] SoundLocations
+  CSceneObject[] Locations (deprec)
+  SceneLoc[] LocationLocations
+  CSceneObject[] Fields (deprec)
+  SceneLoc[] FieldLocations
+  CSceneGate[] Gates (deprec)
+  CScenePath[] Paths (deprec)
+  CSceneTrafficGraph TrafficGraph
+  CSceneTrafficPath[] TrafficPaths (deprec)
+  CSceneFxNod SceneFxNod
 
 0x018 [TMF.v1]
   CSceneSector[] Sectors (deprec)

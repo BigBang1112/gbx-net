@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.MwFoundations;
 
 /// <remarks>ID: 0x01030000</remarks>
 [Class(0x01030000)]
-public partial class CMwCmdBlock : CMwNod, IClass
+public partial class CMwCmdBlock : CMwCmdScript, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x01030000;
@@ -46,6 +46,24 @@ public partial class CMwCmdBlock : CMwNod, IClass
     {
         get => cmds;
         set => cmds = value;
+    }
+
+    private BlockVariable[]? variables;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk01030004>]
+    public BlockVariable[]? Variables
+    {
+        get => this.variables;
+        set => this.variables = value;
+    }
+
+    private BlockVariable[]? contextVariables;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk01030004>]
+    public BlockVariable[]? ContextVariables
+    {
+        get => this.contextVariables;
+        set => this.contextVariables = value;
     }
 
     public NodeRefView References => new(this);
@@ -69,6 +87,8 @@ public partial class CMwCmdBlock : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CMwCmdBlock)clone).cmds = context.Clone(this.cmds)!;
+        ((CMwCmdBlock)clone).variables = context.CloneArray(this.variables)!;
+        ((CMwCmdBlock)clone).contextVariables = context.CloneArray(this.contextVariables)!;
     }
 
     public CMwCmdBlock()
@@ -93,6 +113,79 @@ public partial class CMwCmdBlock : CMwNod, IClass
         public override void ReadWrite(CMwCmdBlock n, GbxReaderWriter rw)
         {
             n.cmds = rw.ListNodeRef<CMwCmdScript>(n.cmds);
+            rw.ArrayReadableWritable<BlockVariable>(ref n.variables!);
+            rw.ArrayReadableWritable<BlockVariable>(ref n.contextVariables!);
+        }
+    }
+
+    public partial class BlockVariable : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private bool u01;
+        public bool U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int @type = 9;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private uint classId;
+        public uint ClassId
+        {
+            get => this.classId;
+            set => this.classId = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (BlockVariable)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((BlockVariable)clone).name = context.Clone(this.name)!;
+            ((BlockVariable)clone).u01 = context.Clone(this.u01)!;
+            ((BlockVariable)clone).@type = context.Clone(this.@type)!;
+            ((BlockVariable)clone).classId = context.Clone(this.classId)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.name);
+            rw.Boolean(ref this.u01);
+            rw.Int32(ref this.@type);
+
+            if (Type== 4 || Type== 5)
+            {
+                rw.UInt32(ref this.classId);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

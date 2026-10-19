@@ -5,6 +5,8 @@ CTrackMania 0x24001000
   CMwNod
   CMwNod
 
+0x002
+
 0x003 // legacy Resources
   CGameResources
 

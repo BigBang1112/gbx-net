@@ -66,8 +66,17 @@ CGameResources 0x0302D000
 0x012 [MP4] // EmptyChallengeCustomMusicFid
   CMwNod EmptyChallengeCustomMusicFid
 
+0x015 [TMF] // legacy MediaTracker resources
+  CMwNod
+  CMwNod DefaultMTColorGradingImageFid
+  CMwNod DefaultMTBlockBitmapFid
+  CMwNod DefaultMTBlockSoundFid
+
 0x016 [MP4] // PainterSetting
   CGameCtnPainterSetting PainterSetting
+
+0x018 [TMF] // UnknownFlagBitmap
+  CMwNod UnknownFlagBitmap
 
 0x019 [MP4] // DefaultLeagueLogoBitmapFid
   CMwNod DefaultLeagueLogoBitmapFid
@@ -79,8 +88,20 @@ CGameResources 0x0302D000
 0x01B [MP4] // HymnsFolder
   string HymnsFolder
 
+0x01C [TMF] // legacy interface resources
+  CMwNod
+  CMwNod
+
+0x01D [TMF] // legacy interface resources
+  CMwNod
+  CMwNod
+
 0x01E [MP4] // DefaultOnlineNewsIconBitmapFid
   CMwNod DefaultOnlineNewsIconBitmapFid
+  CMwNod
+
+0x01F [TMF] // legacy interface resources
+  CMwNod
   CMwNod
 
 0x020 [MP4] // FolderGlobalEnvBanners
@@ -105,6 +126,20 @@ CGameResources 0x0302D000
 
 0x027 [MP4] // DefaultSkillScoreComputerFid
   CMwNod DefaultSkillScoreComputerFid
+
+0x029 [TMF] // legacy menu resources
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+  CMwNod
+
+0x02A [TMF] // menu remapping and resource folders
+  CMwNod MenusRemapping
+  string
+  string
 
 0x02B [MP4] // ImageTurboRoulette
   CMwNod ImageTurboRoulette

@@ -49,6 +49,46 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
         set => NodeRef.SetEmbedded(ref t2_Fid_PHlsl_MotionLenCmpRef, value);
     }
 
+    private int technique;
+    /// <remarks>Applied with: 0x005, 0x008 body chunks</remarks>
+    [AppliedWithChunk<Chunk0C031005>]
+    [AppliedWithChunk<Chunk0C031008>]
+    public int Technique
+    {
+        get => this.technique;
+        set => this.technique = value;
+    }
+
+    private float t2_MotionScale = 1f;
+    /// <remarks>Applied with: 0x005, 0x009 body chunks</remarks>
+    [AppliedWithChunk<Chunk0C031005>]
+    [AppliedWithChunk<Chunk0C031009>]
+    public float T2_MotionScale
+    {
+        get => this.t2_MotionScale;
+        set => this.t2_MotionScale = value;
+    }
+
+    private float t2_MotionMaxLen = 0.1f;
+    /// <remarks>Applied with: 0x005, 0x009 body chunks</remarks>
+    [AppliedWithChunk<Chunk0C031005>]
+    [AppliedWithChunk<Chunk0C031009>]
+    public float T2_MotionMaxLen
+    {
+        get => this.t2_MotionMaxLen;
+        set => this.t2_MotionMaxLen = value;
+    }
+
+    private bool t2_DelayShadows = true;
+    /// <remarks>Applied with: 0x005, 0x009 body chunks</remarks>
+    [AppliedWithChunk<Chunk0C031005>]
+    [AppliedWithChunk<Chunk0C031009>]
+    public bool T2_DelayShadows
+    {
+        get => this.t2_DelayShadows;
+        set => this.t2_DelayShadows = value;
+    }
+
     private NodeRef<CMwNod>? t3_BitmapDepthRef;
     /// <remarks>Applied with: 0x007, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0C031007>]
@@ -67,42 +107,6 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     {
         get => t3_PHlsl_MotionBlurRef?.Resolve();
         set => NodeRef.SetEmbedded(ref t3_PHlsl_MotionBlurRef, value);
-    }
-
-    private int technique;
-    /// <remarks>Applied with: 0x008 body chunk</remarks>
-    [AppliedWithChunk<Chunk0C031008>]
-    public int Technique
-    {
-        get => this.technique;
-        set => this.technique = value;
-    }
-
-    private float t2_MotionScale;
-    /// <remarks>Applied with: 0x009 body chunk</remarks>
-    [AppliedWithChunk<Chunk0C031009>]
-    public float T2_MotionScale
-    {
-        get => this.t2_MotionScale;
-        set => this.t2_MotionScale = value;
-    }
-
-    private float t2_MotionMaxLen;
-    /// <remarks>Applied with: 0x009 body chunk</remarks>
-    [AppliedWithChunk<Chunk0C031009>]
-    public float T2_MotionMaxLen
-    {
-        get => this.t2_MotionMaxLen;
-        set => this.t2_MotionMaxLen = value;
-    }
-
-    private bool t2_DelayShadows;
-    /// <remarks>Applied with: 0x009 body chunk</remarks>
-    [AppliedWithChunk<Chunk0C031009>]
-    public bool T2_DelayShadows
-    {
-        get => this.t2_DelayShadows;
-        set => this.t2_DelayShadows = value;
     }
 
     private NodeRef<CMwNod>? t3_BitmapMotionRef;
@@ -138,12 +142,12 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CVisPostFx_MotionBlur)clone).t2_Fid_PHlsl_MotionLenCmpRef = context.Clone(this.t2_Fid_PHlsl_MotionLenCmpRef)!;
-        ((CVisPostFx_MotionBlur)clone).t3_BitmapDepthRef = context.Clone(this.t3_BitmapDepthRef)!;
-        ((CVisPostFx_MotionBlur)clone).t3_PHlsl_MotionBlurRef = context.Clone(this.t3_PHlsl_MotionBlurRef)!;
         ((CVisPostFx_MotionBlur)clone).technique = context.Clone(this.technique)!;
         ((CVisPostFx_MotionBlur)clone).t2_MotionScale = context.Clone(this.t2_MotionScale)!;
         ((CVisPostFx_MotionBlur)clone).t2_MotionMaxLen = context.Clone(this.t2_MotionMaxLen)!;
         ((CVisPostFx_MotionBlur)clone).t2_DelayShadows = context.Clone(this.t2_DelayShadows)!;
+        ((CVisPostFx_MotionBlur)clone).t3_BitmapDepthRef = context.Clone(this.t3_BitmapDepthRef)!;
+        ((CVisPostFx_MotionBlur)clone).t3_PHlsl_MotionBlurRef = context.Clone(this.t3_PHlsl_MotionBlurRef)!;
         ((CVisPostFx_MotionBlur)clone).t3_BitmapMotionRef = context.Clone(this.t3_BitmapMotionRef)!;
     }
 
@@ -194,12 +198,47 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     }
 
     /// <summary>
+    /// CVisPostFx_MotionBlur 0x005 chunk (legacy motion settings)
+    /// </summary>
+    [Chunk(0x0C031005, "legacy motion settings")]
+    [ChunkGameVersion(GameVersion.TMF)]
+    public partial class Chunk0C031005 : Chunk<CVisPostFx_MotionBlur>
+    {
+        public override uint Id => 0x0C031005;
+        public override GameVersion GameVersion => GameVersion.TMF;
+        public int U01 = 8;
+        public int U02 = 1000;
+        public float U03 = 0.9f;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0C031005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0C031005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0C031005)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CVisPostFx_MotionBlur n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.technique);
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref n.t2_MotionScale);
+            rw.Single(ref n.t2_MotionMaxLen);
+            rw.Boolean(ref n.t2_DelayShadows);
+        }
+    }
+
+    /// <summary>
     /// CVisPostFx_MotionBlur 0x006 chunk (T2_Fid_PHlsl_MotionLenCmp)
     /// </summary>
     [Chunk(0x0C031006, "T2_Fid_PHlsl_MotionLenCmp")]
+    [ChunkGameVersion(GameVersion.TMF)]
     public partial class Chunk0C031006 : Chunk<CVisPostFx_MotionBlur>
     {
         public override uint Id => 0x0C031006;
+        public override GameVersion GameVersion => GameVersion.TMF;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -299,6 +338,7 @@ public partial class CVisPostFx_MotionBlur : CSceneFxCompo, IClass
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0C031004 => new Chunk0C031004(),
+        0x0C031005 => new Chunk0C031005(),
         0x0C031006 => new Chunk0C031006(),
         0x0C031007 => new Chunk0C031007(),
         0x0C031008 => new Chunk0C031008(),

@@ -8,6 +8,6 @@ public partial class CControlBase
     // rather than one of the flags restored from the serialized mask.
     internal bool HasControlStack => this is Engines.Game.CGameControlCard
         or Engines.Game.CGamePlaygroundControlScores or Engines.Game.CGamePlaygroundControlMessages
-        or CControlPager or Engines.TrackMania.CTrackManiaControlCheckPointList
+        or CControlPager or CControlList or Engines.TrackMania.CTrackManiaControlCheckPointList
         || this is not (CControlContainer or CControlLabel or CControlQuad);
 }

@@ -39,9 +39,43 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private NodeRef<CPlugGameSkin>? remappingRef;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0915D000>]
+    public CPlugGameSkin? Remapping
+    {
+        get => remappingRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref remappingRef, value);
+    }
+
+    private string? remapFolder;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk0915D000>]
+    public string? RemapFolder
+    {
+        get => this.remapFolder;
+        set => this.remapFolder = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugGameSkinAndFolder owner;
+        internal NodeRefView(CPlugGameSkinAndFolder owner) => this.owner = owner;
+        public NodeRef<CPlugGameSkin> Remapping => NodeRef.GetOrCreate(ref owner.remappingRef);
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("Remapping", NodeRef.GetOrCreate(ref remappingRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugGameSkinAndFolder)clone).remappingRef = context.Clone(this.remappingRef)!;
+        ((CPlugGameSkinAndFolder)clone).remapFolder = context.Clone(this.remapFolder)!;
     }
 
     public CPlugGameSkinAndFolder()
@@ -56,12 +90,17 @@ public partial class CPlugGameSkinAndFolder : CMwNod, IClass
     public partial class Chunk0915D000 : Chunk<CPlugGameSkinAndFolder>
     {
         public override uint Id => 0x0915D000;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugGameSkinAndFolder n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.remappingRef);
+            rw.String(ref n.remapFolder);
         }
     }
 

@@ -3738,6 +3738,70 @@ public class GenerationTests
     }
 
     [Test]
+    public async Task Generate_ReusedClassId_SelectsGameSpecificNodeHeaderAndGbx()
+    {
+        var (result, output) = Run("",
+            new Text("Engines/Game/Modern.chunkl", "Modern 0x030C0000"),
+            new Text("Engines/Game/Legacy.chunkl", "Legacy 0x030C0000\n- game: TM10"),
+            new Text("Resources/CollectionId.txt", "1 Stadium"));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        var generated = result.GeneratedSources.Single(x => x.HintName == "Managers/ClassManager.g.cs");
+        var manager = generated.SourceText.ToString();
+        await Assert.That(manager).Contains("(0x030C0000, GameVersion.TM10)");
+        await Assert.That(manager).Contains("0x030C0000 when node is global::GBX.NET.Engines.Game.Legacy");
+
+        var support = CSharpSyntaxTree.ParseText("""
+            namespace GBX.NET
+            {
+                public enum GameVersion { Unspecified, TM10 }
+                public interface IClass { }
+                public class Gbx { }
+                public class Gbx<T>(Components.GbxHeader<T> header, Components.GbxBody body, T node) : Gbx { }
+            }
+            namespace GBX.NET.Components
+            {
+                public class GbxHeaderBasic { }
+                public class GbxBody { }
+                public class GbxHeader { public uint ClassId => 0x030C0000; }
+                public class GbxHeader<T>(GbxHeaderBasic basic) : GbxHeader { }
+            }
+            namespace GBX.NET.Serialization.Chunking
+            {
+                public interface IChunk { }
+                public interface IHeaderChunk { }
+            }
+            namespace GBX.NET.Engines.MwFoundations { }
+            namespace GBX.NET.Engines.Game
+            {
+                public class Legacy : GBX.NET.IClass { }
+                public class Modern : GBX.NET.IClass { }
+            }
+            """, (CSharpParseOptions)generated.SyntaxTree.Options);
+        var compilation = CSharpCompilation.Create("ReusedClassFixture",
+            [CSharpSyntaxTree.ParseText(manager.Replace("partial ", ""), (CSharpParseOptions)generated.SyntaxTree.Options), support],
+            output.References, new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        await AssertNoErrors(compilation);
+        using var stream = new MemoryStream();
+        await Assert.That(compilation.Emit(stream).Success).IsTrue();
+        var assembly = System.Reflection.Assembly.Load(stream.ToArray());
+        var type = assembly.GetType("GBX.NET.Managers.ClassManager")!;
+        var flags = System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic;
+        var create = type.GetMethods(flags).Single(x => x.Name == "New" && x.GetParameters().Length == 2);
+        var createHeader = type.GetMethods(flags).Single(x => x.Name == "NewHeader" && x.GetParameters().Length == 3);
+        var basic = Activator.CreateInstance(assembly.GetType("GBX.NET.Components.GbxHeaderBasic")!);
+        var body = Activator.CreateInstance(assembly.GetType("GBX.NET.Components.GbxBody")!);
+        foreach (var (game, name) in new[] { (0, "Modern"), (1, "Legacy") })
+        {
+            var context = Enum.ToObject(assembly.GetType("GBX.NET.GameVersion")!, game);
+            var node = create.Invoke(null, [0x030C0000U, context]);
+            var header = createHeader.Invoke(null, [basic, 0x030C0000U, context]);
+            var gbx = type.GetMethod("NewGbx", flags)!.Invoke(null, [header, body, node]);
+            await Assert.That(node!.GetType().Name).IsEqualTo(name);
+            await Assert.That(gbx!.GetType().GenericTypeArguments.Single().Name).IsEqualTo(name);
+        }
+    }
+
+    [Test]
     public async Task Generate_Collections_ExposesBuiltInAndFallsBackToCustomNames()
     {
         var (result, output) = Run("", new Text("Resources/CollectionId.txt", "0 Speed\n6 Stadium\n"));

@@ -55,6 +55,12 @@ CGameItemModel 0x2E002000
   CPlugMaterial MaterialDetails
   CPlugMaterial MaterialPilot
 
+0x00F
+  vec3 GroundPoint
+  float PainterGroundMargin
+  float OrbitalCenterHeightFromGround
+  float OrbitalRadiusBase
+
 0x010 (BannerProfileFid) [VSK5, TMF]
   CPlugBitmap BannerProfileFid
 

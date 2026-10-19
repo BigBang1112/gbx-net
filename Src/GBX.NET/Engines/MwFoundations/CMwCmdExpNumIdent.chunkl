@@ -1,0 +1,11 @@
+CMwCmdExpNumIdent 0x01047000
+- inherits: CMwCmdExpNum
+
+0x01046000 [TMF] // Type
+
+0x000 // Ident
+  string Ident
+
+0x001 [TMF]
+  string Ident
+  int
