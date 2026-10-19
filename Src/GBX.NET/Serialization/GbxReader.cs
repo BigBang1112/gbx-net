@@ -2041,9 +2041,15 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
             parentClassId = 0x2401C000;
         }
 
-        var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
-
-        Settings.EncryptionInitializer.Initialize(parentClassIDBytes, 0, 4);
+        if (Settings.EncryptionInitializer is IClassEncryptionInitializer classInitializer)
+        {
+            classInitializer.InitializeClass(ClassManager.ClassIds[node.GetType()], parentClassId);
+        }
+        else
+        {
+            var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+            Settings.EncryptionInitializer.Initialize(parentClassIDBytes, 0, 4);
+        }
 
         return true;
     }

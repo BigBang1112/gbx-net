@@ -39,6 +39,125 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private CPlugVehicleWheelPhyModel[]? wheels;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA000>]
+    public CPlugVehicleWheelPhyModel[]? Wheels
+    {
+        get => this.wheels;
+        set => this.wheels = value;
+    }
+
+    private BoxAligned simplifiedCarShapeBox;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public BoxAligned SimplifiedCarShapeBox
+    {
+        get => this.simplifiedCarShapeBox;
+        set => this.simplifiedCarShapeBox = value;
+    }
+
+    private bool useSimplifiedCarModel;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public bool UseSimplifiedCarModel
+    {
+        get => this.useSimplifiedCarModel;
+        set => this.useSimplifiedCarModel = value;
+    }
+
+    private float groundY;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float GroundY
+    {
+        get => this.groundY;
+        set => this.groundY = value;
+    }
+
+    private float frontWheelZ;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float FrontWheelZ
+    {
+        get => this.frontWheelZ;
+        set => this.frontWheelZ = value;
+    }
+
+    private float backWheelZ;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float BackWheelZ
+    {
+        get => this.backWheelZ;
+        set => this.backWheelZ = value;
+    }
+
+    private float frontWheelX;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float FrontWheelX
+    {
+        get => this.frontWheelX;
+        set => this.frontWheelX = value;
+    }
+
+    private float backWheelX;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float BackWheelX
+    {
+        get => this.backWheelX;
+        set => this.backWheelX = value;
+    }
+
+    private float frontWheelRadius;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float FrontWheelRadius
+    {
+        get => this.frontWheelRadius;
+        set => this.frontWheelRadius = value;
+    }
+
+    private float backWheelRadius;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float BackWheelRadius
+    {
+        get => this.backWheelRadius;
+        set => this.backWheelRadius = value;
+    }
+
+    private float frontWheelHalfWidth;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float FrontWheelHalfWidth
+    {
+        get => this.frontWheelHalfWidth;
+        set => this.frontWheelHalfWidth = value;
+    }
+
+    private float backWheelHalfWidth;
+    /// <remarks>Applied with: 0x001, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk090EA001>]
+    [AppliedWithChunk<Chunk090EA007>]
+    public float BackWheelHalfWidth
+    {
+        get => this.backWheelHalfWidth;
+        set => this.backWheelHalfWidth = value;
+    }
+
     private NodeRef<CMwRefBuffer>? refBufferRef;
     /// <remarks>Applied with: 0x002 body chunk</remarks>
     [AppliedWithChunk<Chunk090EA002>]
@@ -55,6 +174,141 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     {
         get => tuningsRef?.Resolve();
         set => NodeRef.SetEmbedded(ref tuningsRef, value);
+    }
+
+    private float offsetX;
+    /// <remarks>Applied with: 0x004 body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA004>]
+    public float OffsetX
+    {
+        get => this.offsetX;
+        set => this.offsetX = value;
+    }
+
+    private NodeRef<CPlugSolid>? surfSolidRef;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA005>]
+    public CPlugSolid? SurfSolid
+    {
+        get => surfSolidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref surfSolidRef, value);
+    }
+
+    private BoxAligned carVsCarShapeBox;
+    /// <remarks>Applied with: 0x006 body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>]
+    public BoxAligned CarVsCarShapeBox
+    {
+        get => this.carVsCarShapeBox;
+        set => this.carVsCarShapeBox = value;
+    }
+
+    private bool doCreateForcesInCollisionResponse;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public bool DoCreateForcesInCollisionResponse
+    {
+        get => this.doCreateForcesInCollisionResponse;
+        set => this.doCreateForcesInCollisionResponse = value;
+    }
+
+    private bool usePenetration_InSpringCompute;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public bool UsePenetration_InSpringCompute
+    {
+        get => this.usePenetration_InSpringCompute;
+        set => this.usePenetration_InSpringCompute = value;
+    }
+
+    private float smallCollisionSpringStiffness;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public float SmallCollisionSpringStiffness
+    {
+        get => this.smallCollisionSpringStiffness;
+        set => this.smallCollisionSpringStiffness = value;
+    }
+
+    private float bigCollisionSpringStiffness;
+    /// <remarks>Applied with: 0x006 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(3)]
+    public float BigCollisionSpringStiffness
+    {
+        get => this.bigCollisionSpringStiffness;
+        set => this.bigCollisionSpringStiffness = value;
+    }
+
+    private bool useRelVel_InSpringCompute;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public bool UseRelVel_InSpringCompute
+    {
+        get => this.useRelVel_InSpringCompute;
+        set => this.useRelVel_InSpringCompute = value;
+    }
+
+    private float impactRelVelDtCoeff;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public float ImpactRelVelDtCoeff
+    {
+        get => this.impactRelVelDtCoeff;
+        set => this.impactRelVelDtCoeff = value;
+    }
+
+    private bool doLimitPenetration;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public bool DoLimitPenetration
+    {
+        get => this.doLimitPenetration;
+        set => this.doLimitPenetration = value;
+    }
+
+    private float penetrationDepthMax;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public float PenetrationDepthMax
+    {
+        get => this.penetrationDepthMax;
+        set => this.penetrationDepthMax = value;
+    }
+
+    private bool doApplyFriction;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public bool DoApplyFriction
+    {
+        get => this.doApplyFriction;
+        set => this.doApplyFriction = value;
+    }
+
+    private float frictionCoeff;
+    /// <remarks>Applied with: 0x006 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(1)]
+    public float FrictionCoeff
+    {
+        get => this.frictionCoeff;
+        set => this.frictionCoeff = value;
+    }
+
+    private float playerAgstTrafficMinRelVelToPhysicallize;
+    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(2)]
+    public float PlayerAgstTrafficMinRelVelToPhysicallize
+    {
+        get => this.playerAgstTrafficMinRelVelToPhysicallize;
+        set => this.playerAgstTrafficMinRelVelToPhysicallize = value;
+    }
+
+    private float trafficAgstTrafficMinRelVelToPhysicallize;
+    /// <remarks>Applied with: 0x006 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090EA006>(2)]
+    public float TrafficAgstTrafficMinRelVelToPhysicallize
+    {
+        get => this.trafficAgstTrafficMinRelVelToPhysicallize;
+        set => this.trafficAgstTrafficMinRelVelToPhysicallize = value;
     }
 
     private NodeRef<CPlugVehicleCarPhyShape>? phyShapeRef;
@@ -82,6 +336,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         internal NodeRefView(CPlugVehiclePhyModel owner) => this.owner = owner;
         public NodeRef<CMwRefBuffer> RefBuffer => NodeRef.GetOrCreate(ref owner.refBufferRef);
         public NodeRef<CPlugVehiclePhyTunings> Tunings => NodeRef.GetOrCreate(ref owner.tuningsRef);
+        public NodeRef<CPlugSolid> SurfSolid => NodeRef.GetOrCreate(ref owner.surfSolidRef);
         public NodeRef<CPlugVehicleCarPhyShape> PhyShape => NodeRef.GetOrCreate(ref owner.phyShapeRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
@@ -89,6 +344,7 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         yield return new("RefBuffer", NodeRef.GetOrCreate(ref refBufferRef));
         yield return new("Tunings", NodeRef.GetOrCreate(ref tuningsRef));
+        yield return new("SurfSolid", NodeRef.GetOrCreate(ref surfSolidRef));
         yield return new("PhyShape", NodeRef.GetOrCreate(ref phyShapeRef));
         yield break;
     }
@@ -96,14 +352,91 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugVehiclePhyModel)clone).wheels = context.CloneArray(this.wheels)!;
+        ((CPlugVehiclePhyModel)clone).simplifiedCarShapeBox = context.Clone(this.simplifiedCarShapeBox)!;
+        ((CPlugVehiclePhyModel)clone).useSimplifiedCarModel = context.Clone(this.useSimplifiedCarModel)!;
+        ((CPlugVehiclePhyModel)clone).groundY = context.Clone(this.groundY)!;
+        ((CPlugVehiclePhyModel)clone).frontWheelZ = context.Clone(this.frontWheelZ)!;
+        ((CPlugVehiclePhyModel)clone).backWheelZ = context.Clone(this.backWheelZ)!;
+        ((CPlugVehiclePhyModel)clone).frontWheelX = context.Clone(this.frontWheelX)!;
+        ((CPlugVehiclePhyModel)clone).backWheelX = context.Clone(this.backWheelX)!;
+        ((CPlugVehiclePhyModel)clone).frontWheelRadius = context.Clone(this.frontWheelRadius)!;
+        ((CPlugVehiclePhyModel)clone).backWheelRadius = context.Clone(this.backWheelRadius)!;
+        ((CPlugVehiclePhyModel)clone).frontWheelHalfWidth = context.Clone(this.frontWheelHalfWidth)!;
+        ((CPlugVehiclePhyModel)clone).backWheelHalfWidth = context.Clone(this.backWheelHalfWidth)!;
         ((CPlugVehiclePhyModel)clone).refBufferRef = context.Clone(this.refBufferRef)!;
         ((CPlugVehiclePhyModel)clone).tuningsRef = context.Clone(this.tuningsRef)!;
+        ((CPlugVehiclePhyModel)clone).offsetX = context.Clone(this.offsetX)!;
+        ((CPlugVehiclePhyModel)clone).surfSolidRef = context.Clone(this.surfSolidRef)!;
+        ((CPlugVehiclePhyModel)clone).carVsCarShapeBox = context.Clone(this.carVsCarShapeBox)!;
+        ((CPlugVehiclePhyModel)clone).doCreateForcesInCollisionResponse = context.Clone(this.doCreateForcesInCollisionResponse)!;
+        ((CPlugVehiclePhyModel)clone).usePenetration_InSpringCompute = context.Clone(this.usePenetration_InSpringCompute)!;
+        ((CPlugVehiclePhyModel)clone).smallCollisionSpringStiffness = context.Clone(this.smallCollisionSpringStiffness)!;
+        ((CPlugVehiclePhyModel)clone).bigCollisionSpringStiffness = context.Clone(this.bigCollisionSpringStiffness)!;
+        ((CPlugVehiclePhyModel)clone).useRelVel_InSpringCompute = context.Clone(this.useRelVel_InSpringCompute)!;
+        ((CPlugVehiclePhyModel)clone).impactRelVelDtCoeff = context.Clone(this.impactRelVelDtCoeff)!;
+        ((CPlugVehiclePhyModel)clone).doLimitPenetration = context.Clone(this.doLimitPenetration)!;
+        ((CPlugVehiclePhyModel)clone).penetrationDepthMax = context.Clone(this.penetrationDepthMax)!;
+        ((CPlugVehiclePhyModel)clone).doApplyFriction = context.Clone(this.doApplyFriction)!;
+        ((CPlugVehiclePhyModel)clone).frictionCoeff = context.Clone(this.frictionCoeff)!;
+        ((CPlugVehiclePhyModel)clone).playerAgstTrafficMinRelVelToPhysicallize = context.Clone(this.playerAgstTrafficMinRelVelToPhysicallize)!;
+        ((CPlugVehiclePhyModel)clone).trafficAgstTrafficMinRelVelToPhysicallize = context.Clone(this.trafficAgstTrafficMinRelVelToPhysicallize)!;
         ((CPlugVehiclePhyModel)clone).phyShapeRef = context.Clone(this.phyShapeRef)!;
         ((CPlugVehiclePhyModel)clone).occupantSlots = context.CloneArray(this.occupantSlots)!;
     }
 
     public CPlugVehiclePhyModel()
     {
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x000 chunk (wheel roles)
+    /// </summary>
+    [Chunk(0x090EA000, "wheel roles")]
+    [ChunkGameVersion(GameVersion.MP3)]
+    public partial class Chunk090EA000 : Chunk<CPlugVehiclePhyModel>
+    {
+        public override uint Id => 0x090EA000;
+        public override GameVersion GameVersion => GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<CPlugVehicleWheelPhyModel>(ref n.wheels!);
+        }
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x001 chunk (legacy simplified car shape)
+    /// </summary>
+    [Chunk(0x090EA001, "legacy simplified car shape")]
+    public partial class Chunk090EA001 : Chunk<CPlugVehiclePhyModel>
+    {
+        public override uint Id => 0x090EA001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.BoxAligned(ref n.simplifiedCarShapeBox);
+            rw.Boolean(ref n.useSimplifiedCarModel);
+            rw.Single(ref n.groundY);
+            rw.Single(ref n.frontWheelZ);
+            rw.Single(ref n.backWheelZ);
+            rw.Single(ref n.frontWheelX);
+            rw.Single(ref n.backWheelX);
+            rw.Single(ref n.frontWheelRadius);
+            rw.Single(ref n.backWheelRadius);
+            rw.Single(ref n.frontWheelHalfWidth);
+            rw.Single(ref n.backWheelHalfWidth);
+        }
     }
 
     /// <summary>
@@ -145,6 +478,160 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
         {
             rw.NodeRef(ref n.tuningsRef);
+        }
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x004 chunk (OffsetX)
+    /// </summary>
+    [Chunk(0x090EA004, "OffsetX")]
+    [ChunkGameVersion(GameVersion.MP3)]
+    public partial class Chunk090EA004 : Chunk<CPlugVehiclePhyModel>
+    {
+        public override uint Id => 0x090EA004;
+        public override GameVersion GameVersion => GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.offsetX);
+        }
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x005 chunk (SurfSolid)
+    /// </summary>
+    [Chunk(0x090EA005, "SurfSolid")]
+    [ChunkGameVersion(GameVersion.MP3)]
+    public partial class Chunk090EA005 : Chunk<CPlugVehiclePhyModel>
+    {
+        public override uint Id => 0x090EA005;
+        public override GameVersion GameVersion => GameVersion.MP3;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.surfSolidRef);
+        }
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x006 chunk (car collision response)
+    /// </summary>
+    [Chunk(0x090EA006, "car collision response")]
+    [ChunkGameVersion(GameVersion.MP3, 3)]
+    public partial class Chunk090EA006 : Chunk<CPlugVehiclePhyModel>, IVersionable
+    {
+        public override uint Id => 0x090EA006;
+        public override GameVersion GameVersion => GameVersion.MP3;
+        public int Version { get; set; }
+
+        public Chunk090EA006() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090EA006(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP3)
+            {
+                Version = 3;
+            }
+            else
+            {
+                Version = 3;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EA006)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(3, 3))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.BoxAligned(ref n.carVsCarShapeBox);
+
+            if (Version >= 1)
+            {
+                rw.Boolean(ref n.doCreateForcesInCollisionResponse);
+                rw.Boolean(ref n.usePenetration_InSpringCompute);
+                rw.Single(ref n.smallCollisionSpringStiffness);
+
+                if (Version >= 3)
+                {
+                    rw.Single(ref n.bigCollisionSpringStiffness);
+                }
+
+                rw.Boolean(ref n.useRelVel_InSpringCompute);
+                rw.Single(ref n.impactRelVelDtCoeff);
+                rw.Boolean(ref n.doLimitPenetration);
+                rw.Single(ref n.penetrationDepthMax);
+                rw.Boolean(ref n.doApplyFriction);
+                rw.Single(ref n.frictionCoeff);
+
+                if (Version >= 2)
+                {
+                    rw.Single(ref n.playerAgstTrafficMinRelVelToPhysicallize);
+                    rw.Single(ref n.trafficAgstTrafficMinRelVelToPhysicallize);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugVehiclePhyModel 0x007 chunk (simplified car shape)
+    /// </summary>
+    [Chunk(0x090EA007, "simplified car shape")]
+    [ChunkGameVersion(GameVersion.MP3)]
+    public partial class Chunk090EA007 : Chunk<CPlugVehiclePhyModel>, IVersionable
+    {
+        public override uint Id => 0x090EA007;
+        public override GameVersion GameVersion => GameVersion.MP3;
+        public int Version { get; set; }
+        public Vec4[]? U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090EA007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090EA007)clone).U01 = context.CloneArray(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugVehiclePhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.BoxAligned(ref n.simplifiedCarShapeBox);
+            rw.Boolean(ref n.useSimplifiedCarModel);
+            rw.Single(ref n.groundY);
+            rw.Single(ref n.frontWheelZ);
+            rw.Single(ref n.backWheelZ);
+            rw.Single(ref n.frontWheelX);
+            rw.Single(ref n.backWheelX);
+            rw.Single(ref n.frontWheelRadius);
+            rw.Single(ref n.backWheelRadius);
+            rw.Single(ref n.frontWheelHalfWidth);
+            rw.Single(ref n.backWheelHalfWidth);
+            rw.Array<Vec4>(ref U01!);
         }
     }
 
@@ -468,8 +955,14 @@ public partial class CPlugVehiclePhyModel : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x090EA000 => new Chunk090EA000(),
+        0x090EA001 => new Chunk090EA001(),
         0x090EA002 => new Chunk090EA002(),
         0x090EA003 => new Chunk090EA003(),
+        0x090EA004 => new Chunk090EA004(),
+        0x090EA005 => new Chunk090EA005(),
+        0x090EA006 => new Chunk090EA006(),
+        0x090EA007 => new Chunk090EA007(),
         0x090EA008 => new Chunk090EA008(),
         0x090EA009 => new Chunk090EA009(),
         _ => base.NewChunk(chunkId),

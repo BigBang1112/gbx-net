@@ -40,12 +40,13 @@ public partial class CPlugSurface
 
             if (rw.Reader is not null)
             {
-                n.Surf = ReadSurf(rw.Reader, Version == 1 ? 1 : n.surfVersion);
+                // C003 includes primitive material indices even before storing a surf version.
+                n.Surf = ReadSurf(rw.Reader, Version < 2 ? 1 : Math.Max(1, n.surfVersion));
             }
 
             if (rw.Writer is not null)
             {
-                WriteSurf(n.Surf, rw.Writer, Version == 1 ? 1 : n.surfVersion);
+                WriteSurf(n.Surf, rw.Writer, Version < 2 ? 1 : Math.Max(1, n.surfVersion));
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials

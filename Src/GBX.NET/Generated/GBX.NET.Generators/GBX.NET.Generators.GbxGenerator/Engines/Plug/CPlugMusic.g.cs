@@ -295,7 +295,7 @@ public partial class CPlugMusic : CPlugMusicType, IClass
 
         public override void ReadWrite(CPlugMusic n, GbxReaderWriter rw)
         {
-            U01 = rw.ListNodeRef<CPlugFileSnd>(U01);
+            U01 = rw.ListNodeRef_deprec<CPlugFileSnd>(U01);
         }
     }
 

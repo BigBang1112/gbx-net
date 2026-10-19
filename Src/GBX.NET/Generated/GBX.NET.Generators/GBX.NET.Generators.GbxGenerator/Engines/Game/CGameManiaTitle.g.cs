@@ -311,8 +311,8 @@ public partial class CGameManiaTitle : CGameNod, IClass
     }
 
     private NodeRef<CMwNod>? soloDataPackRef;
-    /// <remarks>Applied with: 0x00B v2+ body chunk</remarks>
-    [AppliedWithChunk<Chunk0300100B>(2)]
+    /// <remarks>Applied with: 0x00B v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0300100B>(1)]
     public CMwNod? SoloDataPack
     {
         get => soloDataPackRef?.Resolve();
@@ -1245,7 +1245,15 @@ public partial class CGameManiaTitle : CGameNod, IClass
             get => U01Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
-        public int U02;
+
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+        public int U03;
+        public int U04;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1253,11 +1261,13 @@ public partial class CGameManiaTitle : CGameNod, IClass
             private readonly Chunk0300100B owner;
             internal NodeRefView(Chunk0300100B owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -1272,7 +1282,7 @@ public partial class CGameManiaTitle : CGameNod, IClass
                 Version = 6;
             }
 
-            U02 = -1;
+            U04 = -1;
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1280,7 +1290,9 @@ public partial class CGameManiaTitle : CGameNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk0300100B)clone).Version = context.Clone(this.Version)!;
             ((Chunk0300100B)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk0300100B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0300100B)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk0300100B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0300100B)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CGameManiaTitle n, GbxReaderWriter rw)
@@ -1294,7 +1306,14 @@ public partial class CGameManiaTitle : CGameNod, IClass
             if (Version <= 1)
             {
                 rw.NodeRef(ref U01Ref);
+                rw.NodeRef(ref U02Ref);
                 rw.NodeRef(ref n.soloModeRef);
+                rw.Int32(ref U03);
+
+                if (Version >= 1)
+                {
+                    rw.NodeRef(ref n.soloDataPackRef);
+                }
             }
 
             if (Version >= 2)
@@ -1304,7 +1323,7 @@ public partial class CGameManiaTitle : CGameNod, IClass
 
                 if (Version >= 4)
                 {
-                    rw.Int32(ref U02);
+                    rw.Int32(ref U04);
                 }
 
                 if (Version <= 5)

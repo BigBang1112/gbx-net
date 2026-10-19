@@ -598,7 +598,7 @@ CPlugVehicleCarPhyTuning 0x090ED000
       v9+
         PlugCurve AntiWallHitDurationInc_FromLateralContactRelSpeed (version: Version - 37)
         v13+
-          v22-
+          v21-
             float
           v22+
             PlugCurve AntiWallHitAccelCoefFromSpeed (version: Version - 37)

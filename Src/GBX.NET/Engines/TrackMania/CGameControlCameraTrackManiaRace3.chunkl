@@ -73,3 +73,6 @@ CGameControlCameraTrackManiaRace3 0x24087000
 
 0x001 [TMF, TM2020]
   float
+
+0x002 // Model
+  CPlugVehicleCameraRace3Model Model

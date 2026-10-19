@@ -421,7 +421,7 @@ public partial class Pak : IDisposable
 
             var blowfish = new BlowfishStream(newStream, keyForData, iv, Version);
 
-            encryptionInitializer = new EncryptionInitializer(blowfish);
+            encryptionInitializer = new EncryptionInitializer(blowfish, Version);
 
             newStream = blowfish;
         }

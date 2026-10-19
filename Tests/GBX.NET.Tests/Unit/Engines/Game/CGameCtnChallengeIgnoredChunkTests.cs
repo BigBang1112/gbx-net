@@ -43,7 +43,7 @@ public class CGameCtnChallengeIgnoredChunkTests
             w.Write(0);
             w.Write(script);
         });
-        await Assert.That(new CGameCtnChallenge().ChallengeScript).IsEqualTo(string.Empty);
+        await Assert.That(new CGameCtnChallenge().ChallengeScript).IsNull();
         var chunk = new CGameCtnChallenge.Chunk03043047();
         var node = await RoundTrip(payload, chunk);
         await Assert.That(node.ChallengeScript).IsEqualTo(script);

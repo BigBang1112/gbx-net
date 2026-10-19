@@ -642,6 +642,15 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         set => NodeRef.SetEmbedded(ref flyingLookDownFactorFromSpeedRatioRef, value);
     }
 
+    private NodeRef<CPlugVehicleCameraRace3Model>? modelRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk24087002>]
+    public CPlugVehicleCameraRace3Model? Model
+    {
+        get => modelRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref modelRef, value);
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -650,6 +659,7 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         public NodeRef<CFuncKeysReal> SlerpSpeedModulationFromSpeed => NodeRef.GetOrCreate(ref owner.slerpSpeedModulationFromSpeedRef);
         public NodeRef<CFuncKeysReal> LookAtFactorFromUpSpeedRatio => NodeRef.GetOrCreate(ref owner.lookAtFactorFromUpSpeedRatioRef);
         public NodeRef<CFuncKeysReal> FlyingLookDownFactorFromSpeedRatio => NodeRef.GetOrCreate(ref owner.flyingLookDownFactorFromSpeedRatioRef);
+        public NodeRef<CPlugVehicleCameraRace3Model> Model => NodeRef.GetOrCreate(ref owner.modelRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -657,6 +667,7 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         yield return new("SlerpSpeedModulationFromSpeed", NodeRef.GetOrCreate(ref slerpSpeedModulationFromSpeedRef));
         yield return new("LookAtFactorFromUpSpeedRatio", NodeRef.GetOrCreate(ref lookAtFactorFromUpSpeedRatioRef));
         yield return new("FlyingLookDownFactorFromSpeedRatio", NodeRef.GetOrCreate(ref flyingLookDownFactorFromSpeedRatioRef));
+        yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
         yield break;
     }
 
@@ -730,6 +741,7 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         ((CGameControlCameraTrackManiaRace3)clone).slerpSpeedModulationFromSpeedRef = context.Clone(this.slerpSpeedModulationFromSpeedRef)!;
         ((CGameControlCameraTrackManiaRace3)clone).lookAtFactorFromUpSpeedRatioRef = context.Clone(this.lookAtFactorFromUpSpeedRatioRef)!;
         ((CGameControlCameraTrackManiaRace3)clone).flyingLookDownFactorFromSpeedRatioRef = context.Clone(this.flyingLookDownFactorFromSpeedRatioRef)!;
+        ((CGameControlCameraTrackManiaRace3)clone).modelRef = context.Clone(this.modelRef)!;
     }
 
     public CGameControlCameraTrackManiaRace3()
@@ -849,10 +861,30 @@ public partial class CGameControlCameraTrackManiaRace3 : CGameControlCameraTarge
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraTrackManiaRace3 0x002 chunk (Model)
+    /// </summary>
+    [Chunk(0x24087002, "Model")]
+    public partial class Chunk24087002 : Chunk<CGameControlCameraTrackManiaRace3>
+    {
+        public override uint Id => 0x24087002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameControlCameraTrackManiaRace3 n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.modelRef);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x24087000 => new Chunk24087000(),
         0x24087001 => new Chunk24087001(),
+        0x24087002 => new Chunk24087002(),
         _ => base.NewChunk(chunkId),
     };
 }

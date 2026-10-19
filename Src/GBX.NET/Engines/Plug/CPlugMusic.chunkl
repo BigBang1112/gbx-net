@@ -19,7 +19,7 @@ CPlugMusic 0x0901C000
   CMwRefBuffer
 
 0x005 // legacy sound files
-  CPlugFileSnd[]
+  CPlugFileSnd[] (deprec)
 
 0x006 // RootFolder
   version

@@ -472,7 +472,12 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        public NodeRefList<CPlugMaterial>? U03;
+        private NodeRef<CPlugMaterial>? U03Ref;
+        public CPlugMaterial? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
 
         private NodeRef<CPlugMaterial>? U04Ref;
         public CPlugMaterial? U04
@@ -509,12 +514,7 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U08Ref, value);
         }
 
-        private NodeRef<CPlugMaterial>? U09Ref;
-        public CPlugMaterial? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
+        public NodeRefList<CPlugMaterial>? U09;
 
         private NodeRef<CPlugMaterial>? U10Ref;
         public CPlugMaterial? U10
@@ -523,55 +523,97 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U10Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U11Ref;
-        public CPlugLight? U11
+        private NodeRef<CPlugMaterial>? U11Ref;
+        public CPlugMaterial? U11
         {
             get => U11Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U11Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U12Ref;
-        public CPlugLight? U12
+        private NodeRef<CPlugMaterial>? U12Ref;
+        public CPlugMaterial? U12
         {
             get => U12Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U12Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U13Ref;
-        public CPlugLight? U13
+        private NodeRef<CPlugMaterial>? U13Ref;
+        public CPlugMaterial? U13
         {
             get => U13Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U13Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U14Ref;
-        public CPlugLight? U14
+        private NodeRef<CPlugMaterial>? U14Ref;
+        public CPlugMaterial? U14
         {
             get => U14Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U14Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U15Ref;
-        public CPlugLight? U15
+        private NodeRef<CPlugMaterial>? U15Ref;
+        public CPlugMaterial? U15
         {
             get => U15Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U15Ref, value);
         }
 
-        private NodeRef<CPlugLight>? U16Ref;
-        public CPlugLight? U16
+        private NodeRef<CPlugMaterial>? U16Ref;
+        public CPlugMaterial? U16
         {
             get => U16Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U16Ref, value);
         }
-        public float U17;
-        public float U18;
 
-        private NodeRef<CPlugSolid2Model>? U19Ref;
-        public CPlugSolid2Model? U19
+        private NodeRef<CPlugLight>? U17Ref;
+        public CPlugLight? U17
+        {
+            get => U17Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U17Ref, value);
+        }
+
+        private NodeRef<CPlugLight>? U18Ref;
+        public CPlugLight? U18
+        {
+            get => U18Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U18Ref, value);
+        }
+
+        private NodeRef<CPlugLight>? U19Ref;
+        public CPlugLight? U19
         {
             get => U19Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U19Ref, value);
+        }
+
+        private NodeRef<CPlugLight>? U20Ref;
+        public CPlugLight? U20
+        {
+            get => U20Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U20Ref, value);
+        }
+
+        private NodeRef<CPlugLight>? U21Ref;
+        public CPlugLight? U21
+        {
+            get => U21Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U21Ref, value);
+        }
+
+        private NodeRef<CPlugLight>? U22Ref;
+        public CPlugLight? U22
+        {
+            get => U22Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U22Ref, value);
+        }
+        public float U23;
+        public float U24;
+
+        private NodeRef<CPlugSolid2Model>? U25Ref;
+        public CPlugSolid2Model? U25
+        {
+            get => U25Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U25Ref, value);
         }
 
         public NodeRefView References => new(this);
@@ -581,37 +623,43 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             internal NodeRefView(Chunk090E801E owner) => this.owner = owner;
             public NodeRef<CPlugMaterial> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CPlugMaterial> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public IReadOnlyList<NodeRef<CPlugMaterial>>? U03 => owner.U03?.References;
+            public NodeRef<CPlugMaterial> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CPlugMaterial> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public NodeRef<CPlugMaterial> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CPlugMaterial> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
             public NodeRef<CPlugMaterial> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
             public NodeRef<CPlugMaterial> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public NodeRef<CPlugMaterial> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
+            public IReadOnlyList<NodeRef<CPlugMaterial>>? U09 => owner.U09?.References;
             public NodeRef<CPlugMaterial> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-            public NodeRef<CPlugLight> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CPlugLight> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
-            public NodeRef<CPlugLight> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CPlugLight> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CPlugLight> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CPlugLight> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CPlugSolid2Model> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
+            public NodeRef<CPlugMaterial> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
+            public NodeRef<CPlugMaterial> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
+            public NodeRef<CPlugMaterial> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
+            public NodeRef<CPlugMaterial> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
+            public NodeRef<CPlugMaterial> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
+            public NodeRef<CPlugMaterial> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
+            public NodeRef<CPlugLight> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
+            public NodeRef<CPlugLight> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
+            public NodeRef<CPlugLight> U19 => NodeRef.GetOrCreate(ref owner.U19Ref);
+            public NodeRef<CPlugLight> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
+            public NodeRef<CPlugLight> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
+            public NodeRef<CPlugLight> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
+            public NodeRef<CPlugSolid2Model> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            if (U03 is not null)
-            {
-                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
-            }
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
             yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
+            if (U09 is not null)
+            {
+                for (var i = 0; i < U09.Count; i++) yield return new("U09" + "[" + i + "]", U09.Get(i));
+            }
             yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
             yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
@@ -619,7 +667,13 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
             yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
             yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
+            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
+            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
             yield return new("U19", NodeRef.GetOrCreate(ref U19Ref));
+            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
+            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
+            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
+            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
             yield break;
         }
 
@@ -645,13 +699,13 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E801E)clone).Version = context.Clone(this.Version)!;
             ((Chunk090E801E)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090E801E)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090E801E)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E801E)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090E801E)clone).U04Ref = context.Clone(this.U04Ref)!;
             ((Chunk090E801E)clone).U05Ref = context.Clone(this.U05Ref)!;
             ((Chunk090E801E)clone).U06Ref = context.Clone(this.U06Ref)!;
             ((Chunk090E801E)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk090E801E)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk090E801E)clone).U09Ref = context.Clone(this.U09Ref)!;
+            ((Chunk090E801E)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090E801E)clone).U10Ref = context.Clone(this.U10Ref)!;
             ((Chunk090E801E)clone).U11Ref = context.Clone(this.U11Ref)!;
             ((Chunk090E801E)clone).U12Ref = context.Clone(this.U12Ref)!;
@@ -659,9 +713,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E801E)clone).U14Ref = context.Clone(this.U14Ref)!;
             ((Chunk090E801E)clone).U15Ref = context.Clone(this.U15Ref)!;
             ((Chunk090E801E)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090E801E)clone).U17 = context.Clone(this.U17)!;
-            ((Chunk090E801E)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090E801E)clone).U17Ref = context.Clone(this.U17Ref)!;
+            ((Chunk090E801E)clone).U18Ref = context.Clone(this.U18Ref)!;
             ((Chunk090E801E)clone).U19Ref = context.Clone(this.U19Ref)!;
+            ((Chunk090E801E)clone).U20Ref = context.Clone(this.U20Ref)!;
+            ((Chunk090E801E)clone).U21Ref = context.Clone(this.U21Ref)!;
+            ((Chunk090E801E)clone).U22Ref = context.Clone(this.U22Ref)!;
+            ((Chunk090E801E)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090E801E)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090E801E)clone).U25Ref = context.Clone(this.U25Ref)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -679,36 +739,42 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
                 if (Version <= 2)
                 {
                     rw.NodeRef(ref U02Ref);
-                }
-
-                if (Version >= 3)
-                {
-                    U03 = rw.ListNodeRef<CPlugMaterial>(U03);
-                }
-
-                if (Version <= 1)
-                {
+                    rw.NodeRef(ref U03Ref);
                     rw.NodeRef(ref U04Ref);
                     rw.NodeRef(ref U05Ref);
                     rw.NodeRef(ref U06Ref);
                     rw.NodeRef(ref U07Ref);
                     rw.NodeRef(ref U08Ref);
-                    rw.NodeRef(ref U09Ref);
-                    rw.NodeRef(ref U10Ref);
                 }
 
-                rw.NodeRef(ref U11Ref);
-                rw.NodeRef(ref U12Ref);
-                rw.NodeRef(ref U13Ref);
-                rw.NodeRef(ref U14Ref);
-                rw.NodeRef(ref U15Ref);
-                rw.NodeRef(ref U16Ref);
-                rw.Single(ref U17);
-                rw.Single(ref U18);
+                if (Version >= 3)
+                {
+                    U09 = rw.ListNodeRef<CPlugMaterial>(U09, 7);
+                }
+
+                if (Version <= 1)
+                {
+                    rw.NodeRef(ref U10Ref);
+                    rw.NodeRef(ref U11Ref);
+                    rw.NodeRef(ref U12Ref);
+                    rw.NodeRef(ref U13Ref);
+                    rw.NodeRef(ref U14Ref);
+                    rw.NodeRef(ref U15Ref);
+                    rw.NodeRef(ref U16Ref);
+                }
+
+                rw.NodeRef(ref U17Ref);
+                rw.NodeRef(ref U18Ref);
+                rw.NodeRef(ref U19Ref);
+                rw.NodeRef(ref U20Ref);
+                rw.NodeRef(ref U21Ref);
+                rw.NodeRef(ref U22Ref);
+                rw.Single(ref U23);
+                rw.Single(ref U24);
 
                 if (Version >= 4)
                 {
-                    rw.NodeRef(ref U19Ref);
+                    rw.NodeRef(ref U25Ref);
                 }
             }
         }
@@ -1147,6 +1213,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             get => U02Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+        public float U08;
+        public float U09;
+        public int U10;
+        public int U11;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1194,6 +1269,15 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
             ((Chunk090E8021)clone).Version = context.Clone(this.Version)!;
             ((Chunk090E8021)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090E8021)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090E8021)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090E8021)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090E8021)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090E8021)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090E8021)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090E8021)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090E8021)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090E8021)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090E8021)clone).U11 = context.Clone(this.U11)!;
         }
 
         public override void ReadWrite(CPlugVehicleVisModelShared n, GbxReaderWriter rw)
@@ -1206,6 +1290,26 @@ public partial class CPlugVehicleVisModelShared : CMwNod, IClass
 
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
+
+            if (Version >= 1)
+            {
+                if (Version <= 2)
+                {
+                    rw.Single(ref U03);
+                    rw.Single(ref U04);
+                    rw.Single(ref U05);
+                    rw.Single(ref U06);
+
+                    if (Version >= 2)
+                    {
+                        rw.Single(ref U07);
+                        rw.Single(ref U08);
+                        rw.Single(ref U09);
+                        rw.Int32(ref U10);
+                        rw.Int32(ref U11);
+                    }
+                }
+            }
         }
     }
 

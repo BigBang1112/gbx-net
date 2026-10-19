@@ -6805,7 +6805,7 @@ public partial class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning, IClass
 
                         if (Version >= 13)
                         {
-                            if (Version <= 22)
+                            if (Version <= 21)
                             {
                                 rw.Single(ref U12);
                             }

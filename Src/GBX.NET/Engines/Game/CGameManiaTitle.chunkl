@@ -120,7 +120,11 @@ CGameManiaTitle 0x03001000
   version
   v1-
     CMwNod
+    CMwNod
     CMwNod SoloMode
+    int
+    v1+
+      CMwNod SoloDataPack
   v2+
     CMwNod SoloDataPack
     CMwNod SoloMode

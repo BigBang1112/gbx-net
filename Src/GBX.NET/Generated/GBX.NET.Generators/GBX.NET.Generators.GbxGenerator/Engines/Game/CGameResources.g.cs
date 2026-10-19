@@ -2049,6 +2049,20 @@ public partial class CGameResources : CMwNod, IClass
     }
 
     /// <summary>
+    /// CGameResources 0x025 chunk
+    /// </summary>
+    [Chunk(0x0302D025)]
+    public partial class Chunk0302D025 : Chunk<CGameResources>
+    {
+        public override uint Id => 0x0302D025;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+    }
+
+    /// <summary>
     /// CGameResources 0x026 chunk (DefaultMusicFid)
     /// </summary>
     [Chunk(0x0302D026, "DefaultMusicFid")]
@@ -3374,6 +3388,7 @@ public partial class CGameResources : CMwNod, IClass
         0x0302D022 => new Chunk0302D022(),
         0x0302D023 => new Chunk0302D023(),
         0x0302D024 => new Chunk0302D024(),
+        0x0302D025 => new Chunk0302D025(),
         0x0302D026 => new Chunk0302D026(),
         0x0302D027 => new Chunk0302D027(),
         0x0302D028 => new Chunk0302D028(),

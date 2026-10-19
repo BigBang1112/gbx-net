@@ -43,8 +43,14 @@ CPlugVehicleVisModelShared 0x090E8000
   v1+
     v2-
       CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
+      CPlugMaterial
     v3+
-      CPlugMaterial[]
+      CPlugMaterial[7]
     v1-
       CPlugMaterial
       CPlugMaterial
@@ -114,6 +120,18 @@ CPlugVehicleVisModelShared 0x090E8000
   version
   CFuncKeysReal
   CFuncKeysReal
+  v1+
+    v2-
+      float
+      float
+      float
+      float
+      v2+
+        float
+        float
+        float
+        int
+        int
 
 0x022 [TMT.v6, MP4.v7, TM2020.v12]
   version
