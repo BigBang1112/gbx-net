@@ -2,11 +2,12 @@ CControlBase 0x07001000
 - inherits: CSceneToy
 
 0x00C [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  int
-  int
-  int
-  int
-  string StackText
+  datauint ControlFlags
+  CControlStyle LegacyStyle
+  CMwNod
+  if (ControlFlags & 0x20) != 0
+    CMwNod Nod
+    string StackText
 
 0x00E [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   boxaligned

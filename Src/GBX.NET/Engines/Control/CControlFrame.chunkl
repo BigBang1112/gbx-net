@@ -1,0 +1,5 @@
+CControlFrame 0x07016000
+- inherits: CControlContainer
+
+0x000
+  iso4[n.Childs.Length] ChildsRelativeLocations

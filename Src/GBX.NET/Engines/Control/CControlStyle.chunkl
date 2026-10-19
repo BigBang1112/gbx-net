@@ -1,4 +1,5 @@
 CControlStyle 0x07017000
+- inherits: CPlug
 
 0x000 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   CMwCmdBlockMain FocusGainedScript
@@ -113,11 +114,24 @@ CControlStyle 0x07017000
 0x01E [TMF]
   id ButtonDefaultIconId
 
+0x01F [MP4]
+  version
+  CPlugSound ActionSound
+  CPlugSound ActionBackSound
+  float ButtonIconWidth
+  float ButtonIconHeight
+  id ButtonDefaultIconId
+  CFuncEnum ButtonDefaultIcons
+
 archive STextSettings_ColorAndChars
-  int
-  int
-  float
-  float
-  float
-  float
+  version = 4
+  int = 8
+  float = 1
+  float = 1
+  float = 1
+  float = 1
   string
+  v3+ (archive)
+    bool
+  v4+ (archive)
+    bool

@@ -4,6 +4,26 @@ CControlContainer 0x07002000
 0x005 [TM10, TMPU, TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
   bool AcceptOwnControls
   bool UseScript
-  int
-  int
-  int
+  CMwCmdBlockMain CreateScript
+  if !AcceptOwnControls
+    int
+    Child[] Childs = empty
+
+0x006
+  version
+  bool IsClippingContainer
+
+archive Child (contextual)
+  if n.HasFrameChildLocations
+    int FrameVersion = 1
+  version = 3
+  v1= (archive)
+    CControlBase Control
+  v2= (archive)
+    throw (type: NotSupportedException, message: Unsupported legacy control model)
+  v3+ (archive)
+    int Index = -2
+    if Index == -2
+      CControlBase Control
+  if n.HasFrameChildLocations
+    iso4 RelativeLocation
