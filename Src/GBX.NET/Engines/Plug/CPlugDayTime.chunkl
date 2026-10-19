@@ -1,0 +1,84 @@
+CPlugDayTime 0x09181000
+- inherits: CFunc
+
+0x000
+  float
+  float
+  float
+  float
+  float
+
+0x001
+  bool = true
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x002
+  float
+
+0x003
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x004
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x005
+  version
+  float
+
+0x006 // fog matters
+  FogMatterId[] FogMatters
+
+0x007
+  version = 3
+  float
+  float
+  float
+  float
+  float
+  float
+  v1+
+    float
+    float
+    float
+    float
+    float
+    float
+  v2+
+    float
+  v3+
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+
+0x008
+  version
+  float
+
+archive FogMatterId
+  id Id
+  float U01
+  float U02
+  float U03
+  float U04

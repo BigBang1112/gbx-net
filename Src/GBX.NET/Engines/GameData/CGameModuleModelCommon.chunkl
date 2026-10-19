@@ -1,0 +1,8 @@
+CGameModuleModelCommon 0x2E015000
+- abstract
+
+0x000 (skippable)
+  version = 2
+  v2+
+    string
+  id

@@ -1,0 +1,66 @@
+CPlugSoundGauge 0x09052000
+- inherits: CPlugSound
+
+0x000 [MP4.v2, TM2020.v2]
+  version
+  CPlugFileSnd FileSndFilling
+  CPlugFileSnd FileSndEmptying
+  CPlugFileSnd FileSndOnStopFilling
+  CPlugFileSnd FileSndOnStopEmptying
+  CPlugFileSnd FileSndOnFull
+  CPlugFileSnd FileSndOnEmpty
+  CPlugFileSnd FileSndOnGradFull
+  CPlugFileSnd FileSndOnGradEmpty
+  v1+
+    CPlugFileSnd FileSndFillingFast
+    CPlugFileSnd FileSndEmptyingFast
+  v2+
+    CPlugFileSnd FileSndOnStartFilling
+    CPlugFileSnd FileSndOnStartEmptying
+
+0x001 [MP4.v5, TM2020.v5]
+  version
+  float FastRate = 0.5f
+  v2+
+    float FadeOutDuration = 0.25f
+    float FadeInDuration
+  v5+
+    bool RestartLoopOnChange = true
+  CFuncKeysReal PitchFromRateFilling
+  CFuncKeysReal PitchFromRateOnStopFilling
+  CFuncKeysReal PitchFromRateOnFullOrEmpty
+  CFuncKeysReal PitchFromRateOnGradFull
+  CFuncKeysReal PitchFromRatioFilling
+  CFuncKeysReal PitchFromRatioOnStopFilling
+  CFuncKeysReal PitchFromRatioOnFullOrEmpty
+  CFuncKeysReal PitchFromRatioOnGradFull
+  CFuncKeysReal VolumeFromRateFilling
+  CFuncKeysReal VolumeFromRateOnStopFilling
+  CFuncKeysReal VolumeFromRateOnFullOrEmpty
+  CFuncKeysReal VolumeFromRateOnGradFull
+  CFuncKeysReal VolumeFromRatioFilling
+  CFuncKeysReal VolumeFromRatioOnStopFilling
+  CFuncKeysReal VolumeFromRatioOnFullOrEmpty
+  CFuncKeysReal VolumeFromRatioOnGradFull
+  v3+
+    CFuncKeysReal PitchFromRateOnStartFilling
+    CFuncKeysReal PitchFromRatioOnStartFilling
+    CFuncKeysReal VolumeFromRateOnStartFilling
+    CFuncKeysReal VolumeFromRatioOnStartFilling
+  v4+
+    CFuncKeysReal PitchFromRateEmptying
+    CFuncKeysReal PitchFromRateOnStopEmptying
+    CFuncKeysReal PitchFromRateOnGradEmpty
+    CFuncKeysReal PitchFromRatioEmptying
+    CFuncKeysReal PitchFromRatioOnStopEmptying
+    CFuncKeysReal PitchFromRatioOnGradEmpty
+    CFuncKeysReal VolumeFromRateEmptying
+    CFuncKeysReal VolumeFromRateOnStopEmptying
+    CFuncKeysReal VolumeFromRateOnGradEmpty
+    CFuncKeysReal VolumeFromRatioEmptying
+    CFuncKeysReal VolumeFromRatioOnStopEmptying
+    CFuncKeysReal VolumeFromRatioOnGradEmpty
+    CFuncKeysReal PitchFromRateOnStartEmptying
+    CFuncKeysReal PitchFromRatioOnStartEmptying
+    CFuncKeysReal VolumeFromRateOnStartEmptying
+    CFuncKeysReal VolumeFromRatioOnStartEmptying

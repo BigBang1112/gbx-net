@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -91,6 +93,7 @@ public partial class CControlContainer : CControlBase, IClass
         public NodeRef<CControlStyle> LegacyStyle => ((CControlBase)owner).References.LegacyStyle;
         public NodeRef<CMwNod> Nod => ((CControlBase)owner).References.Nod;
         public NodeRef<CControlLayout> Layout => ((CControlBase)owner).References.Layout;
+        public NodeRef<CControlStyle> Style => ((CControlBase)owner).References.Style;
         public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLink => ((CControlBase)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CControlBase)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CControlBase)owner).References.Motion;
@@ -171,11 +174,32 @@ public partial class CControlContainer : CControlBase, IClass
 
     public partial class Child : IReadable<CControlContainer>, IWritable<CControlContainer>, IVersionable, IDeepCloneable
     {
+        private ModelInstance? instance;
+        public ModelInstance? Instance
+        {
+            get => this.instance;
+            set => this.instance = value;
+        }
+
+        private int menuFrameVersion;
+        public int MenuFrameVersion
+        {
+            get => this.menuFrameVersion;
+            set => this.menuFrameVersion = value;
+        }
+
         private int frameVersion = 1;
         public int FrameVersion
         {
             get => this.frameVersion;
             set => this.frameVersion = value;
+        }
+
+        private int gridVersion = 1;
+        public int GridVersion
+        {
+            get => this.gridVersion;
+            set => this.gridVersion = value;
         }
 
         public int Version { get; set; } = 3;
@@ -201,6 +225,20 @@ public partial class CControlContainer : CControlBase, IClass
             set => this.relativeLocation = value;
         }
 
+        private Vec2 square;
+        public Vec2 Square
+        {
+            get => this.square;
+            set => this.square = value;
+        }
+
+        private float squareZ;
+        public float SquareZ
+        {
+            get => this.squareZ;
+            set => this.squareZ = value;
+        }
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
@@ -224,81 +262,335 @@ public partial class CControlContainer : CControlBase, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((Child)clone).instance = context.Clone(this.instance)!;
+            ((Child)clone).menuFrameVersion = context.Clone(this.menuFrameVersion)!;
             ((Child)clone).frameVersion = context.Clone(this.frameVersion)!;
+            ((Child)clone).gridVersion = context.Clone(this.gridVersion)!;
             ((Child)clone).Version = context.Clone(this.Version)!;
             ((Child)clone).controlRef = context.Clone(this.controlRef)!;
             ((Child)clone).index = context.Clone(this.index)!;
             ((Child)clone).relativeLocation = context.Clone(this.relativeLocation)!;
+            ((Child)clone).square = context.Clone(this.square)!;
+            ((Child)clone).squareZ = context.Clone(this.squareZ)!;
+        }
+    }
+
+    public partial class ModelInstance : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private NodeRef<CControlBase>? modelRef;
+        public CControlBase? Model
+        {
+            get => modelRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref modelRef, value);
         }
 
-        public virtual void Read(GbxReader r, CControlContainer n, int v = 0)
+        private InstanceData? data;
+        public InstanceData? Data
         {
-            if (n.HasFrameChildLocations)
-            {
-                this.frameVersion = r.ReadInt32();
-            }
-
-            Version = r.ReadInt32();
-
-            if (Version == 1)
-            {
-                r.ReadNodeRef(ref this.controlRef);
-            }
-
-            if (Version == 2)
-            {
-                throw new NotSupportedException("Unsupported legacy control model");
-            }
-
-            if (Version >= 3)
-            {
-                this.index = r.ReadInt32();
-
-                if (Index== -2)
-                {
-                    r.ReadNodeRef(ref this.controlRef);
-                }
-            }
-
-            if (n.HasFrameChildLocations)
-            {
-                this.relativeLocation = r.ReadIso4();
-            }
+            get => this.data;
+            set => this.data = value;
         }
 
-        public virtual void Write(GbxWriter w, CControlContainer n, int v = 0)
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
         {
-            if (n.HasFrameChildLocations)
+            private readonly ModelInstance owner;
+            internal NodeRefView(ModelInstance owner) => this.owner = owner;
+            public NodeRef<CControlBase> Model => NodeRef.GetOrCreate(ref owner.modelRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Model", NodeRef.GetOrCreate(ref modelRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ModelInstance)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ModelInstance)clone).modelRef = context.Clone(this.modelRef)!;
+            ((ModelInstance)clone).data = context.Clone(this.data)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.NodeRef(ref this.modelRef);
+            rw.ReadableWritable<InstanceData>(ref this.data, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class InstanceData : IReadableWritable, IReadable, IWritable, IVersionable, IDeepCloneable
+    {
+        public int Version { get; set; } = 2;
+
+        private OwnDataRecord[]? ownDataRecords;
+        public OwnDataRecord[]? OwnDataRecords
+        {
+            get => this.ownDataRecords;
+            set => this.ownDataRecords = value;
+        }
+
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private NodeRefList<CMwNod>? links;
+        public NodeRefList<CMwNod>? Links
+        {
+            get => links;
+            set => links = value;
+        }
+
+        private int containerVersion = 3;
+        public int ContainerVersion
+        {
+            get => this.containerVersion;
+            set => this.containerVersion = value;
+        }
+
+        private Anchor[]? anchors;
+        public Anchor[]? Anchors
+        {
+            get => this.anchors;
+            set => this.anchors = value;
+        }
+
+        private TerminalDataRecord[]? terminalData;
+        public TerminalDataRecord[]? TerminalData
+        {
+            get => this.terminalData;
+            set => this.terminalData = value;
+        }
+
+        private CGameMenuFrame.MenuFrameInstanceData? menuFrameData;
+        public CGameMenuFrame.MenuFrameInstanceData? MenuFrameData
+        {
+            get => this.menuFrameData;
+            set => this.menuFrameData = value;
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly InstanceData owner;
+            internal NodeRefView(InstanceData owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? Links => owner.links?.References;
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            if (links is not null)
             {
-                w.Write(this.frameVersion);
+                for (var i = 0; i < links.Count; i++) yield return new("Links" + "[" + i + "]", links.Get(i));
             }
+            yield break;
+        }
 
-            w.Write(Version);
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (InstanceData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
 
-            if (Version == 1)
-            {
-                w.WriteNodeRef(this.controlRef);
-            }
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((InstanceData)clone).Version = context.Clone(this.Version)!;
+            ((InstanceData)clone).ownDataRecords = context.CloneArray(this.ownDataRecords)!;
+            ((InstanceData)clone).name = context.Clone(this.name)!;
+            ((InstanceData)clone).links = context.Clone(this.links)!;
+            ((InstanceData)clone).containerVersion = context.Clone(this.containerVersion)!;
+            ((InstanceData)clone).anchors = context.CloneArray(this.anchors)!;
+            ((InstanceData)clone).terminalData = context.CloneArray(this.terminalData)!;
+            ((InstanceData)clone).menuFrameData = context.Clone(this.menuFrameData)!;
+        }
+    }
 
-            if (Version == 2)
-            {
-                throw new NotSupportedException("Unsupported legacy control model");
-            }
+    public partial class OwnDataRecord : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private uint classId;
+        public uint ClassId
+        {
+            get => this.classId;
+            set => this.classId = value;
+        }
 
-            if (Version >= 3)
-            {
-                w.Write(this.index);
+        private int version;
+        public int Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
 
-                if (Index== -2)
-                {
-                    w.WriteNodeRef(this.controlRef);
-                }
-            }
+        private CGameControlCardGeneric.LocalData? data;
+        public CGameControlCardGeneric.LocalData? Data
+        {
+            get => this.data;
+            set => this.data = value;
+        }
 
-            if (n.HasFrameChildLocations)
-            {
-                w.Write(this.relativeLocation);
-            }
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (OwnDataRecord)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((OwnDataRecord)clone).classId = context.Clone(this.classId)!;
+            ((OwnDataRecord)clone).version = context.Clone(this.version)!;
+            ((OwnDataRecord)clone).data = context.Clone(this.data)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.DataUInt32(ref this.classId);
+            rw.Int32(ref this.version);
+            rw.ReadableWritable<CGameControlCardGeneric.LocalData>(ref this.data, version: v);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class Anchor : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int version;
+        public int Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private Child[]? childs;
+        public Child[]? Childs
+        {
+            get => this.childs;
+            set => this.childs = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Anchor)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Anchor)clone).name = context.Clone(this.name)!;
+            ((Anchor)clone).version = context.Clone(this.version)!;
+            ((Anchor)clone).childs = context.CloneArray(this.childs)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class TerminalDataRecord : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private byte version;
+        public byte Version
+        {
+            get => this.version;
+            set => this.version = value;
+        }
+
+        private byte[]? data;
+        public byte[]? Data
+        {
+            get => this.data;
+            set => this.data = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (TerminalDataRecord)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((TerminalDataRecord)clone).name = context.Clone(this.name)!;
+            ((TerminalDataRecord)clone).version = context.Clone(this.version)!;
+            ((TerminalDataRecord)clone).data = context.CloneArray(this.data)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Byte(ref this.version);
+            rw.Data(ref this.data);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

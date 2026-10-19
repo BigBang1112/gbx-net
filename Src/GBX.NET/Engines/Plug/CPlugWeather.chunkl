@@ -1,4 +1,5 @@
 CPlugWeather 0x0917E000
+- inherits: CFunc
 
 property bool FogByVertex
   get = (FogFlags & 1) != 0

@@ -1,4 +1,5 @@
 CPlugCloudsParam 0x09182000
+- inherits: CFunc
 
 0x000 // legacy cloud settings
   int<EHeightCenter> HeightCenter

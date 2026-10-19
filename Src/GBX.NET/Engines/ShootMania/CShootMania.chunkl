@@ -1,0 +1,20 @@
+CShootMania 0x2D000000
+- inherits: CGameManiaTitleCore
+
+0x000 [MP4.v3, TM2020.v3]
+  version
+  CScene2d ArenaInterfaceUI
+  v1-
+    CMwRefBuffer
+  v2=
+    CSmArenaResource LegacyArenaResources
+  v3+
+    CSmArenaResource ArenaResources
+
+0x001
+  version
+  float
+
+0x002
+  version
+  CMwNod

@@ -1,2 +1,5 @@
 CPlugBitmapArray 0x090AB000
 - inherits: CPlug
+
+0x000 // Bitmaps
+  CPlugBitmap[] Bitmaps

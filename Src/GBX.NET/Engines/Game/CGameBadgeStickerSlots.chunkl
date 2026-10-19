@@ -1,0 +1,24 @@
+CGameBadgeStickerSlots 0x031D6000
+
+0x000
+  version
+  StickerSlot[] StickerSlots
+  StickerMeshSlotLocation[] StickerMeshSlotLocations
+  StickerMeshSlot[] StickerMeshSlots
+  StickerMesh[] StickerMeshes
+
+archive StickerSlot
+  float U01
+  id U02
+
+archive StickerMeshSlotLocation
+  iso4 Location
+  vec3 HalfSize
+
+archive StickerMeshSlot
+  int U01
+  int U02
+
+archive StickerMesh
+  id U01
+  int U02

@@ -1,0 +1,14 @@
+CPlugBitmapRenderCamera 0x09089000
+- inherits: CPlugBitmapRender
+
+0x000 // legacy render path
+  int
+
+0x001 (skippable)
+  datauint
+
+0x002 (skippable)
+  datauint
+
+0x003 (skippable) // PlaneY_Offset
+  float PlaneY_Offset

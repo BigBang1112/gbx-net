@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -38,7 +40,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     internal override uint GetId() => Id;
 
     private int objectCountPerAxisMin;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public int ObjectCountPerAxisMin
     {
@@ -47,7 +50,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private int objectCountPerAxisMax;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public int ObjectCountPerAxisMax
     {
@@ -56,7 +60,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float cameraNearZ_FactorInObject;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public float CameraNearZ_FactorInObject
     {
@@ -65,7 +70,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float cameraFarZ_ToAdd;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public float CameraFarZ_ToAdd
     {
@@ -74,7 +80,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMin_Night;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMin_Night
     {
@@ -83,7 +90,8 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
     }
 
     private float remapMax_Night;
-    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x001 body chunks</remarks>
+    [AppliedWithChunk<Chunk09021000>]
     [AppliedWithChunk<Chunk09021001>]
     public float RemapMax_Night
     {
@@ -127,6 +135,31 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
         set => this.remapMax_DayDir = value;
     }
 
+    private NodeRef<CPlugBitmap>? bitmapLightHistoryRef;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk09021002>]
+    public CPlugBitmap? BitmapLightHistory
+    {
+        get => bitmapLightHistoryRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapLightHistoryRef, value);
+    }
+
+    public new NodeRefView References => new(this);
+    public new readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapRenderLightFromMap owner;
+        internal NodeRefView(CPlugBitmapRenderLightFromMap owner) => this.owner = owner;
+        public NodeRef<CPlugBitmap> BitmapLightHistory => NodeRef.GetOrCreate(ref owner.bitmapLightHistoryRef);
+        public NodeRef<CPlugBitmap> BitmapClear => ((CPlugBitmapRender)owner).References.BitmapClear;
+        public NodeRef<CPlugBitmapRenderSub> RenderSub => ((CPlugBitmapRender)owner).References.RenderSub;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        yield return new("BitmapLightHistory", NodeRef.GetOrCreate(ref bitmapLightHistoryRef));
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -140,10 +173,35 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
         ((CPlugBitmapRenderLightFromMap)clone).remapMax_DayAmb = context.Clone(this.remapMax_DayAmb)!;
         ((CPlugBitmapRenderLightFromMap)clone).remapMin_DayDir = context.Clone(this.remapMin_DayDir)!;
         ((CPlugBitmapRenderLightFromMap)clone).remapMax_DayDir = context.Clone(this.remapMax_DayDir)!;
+        ((CPlugBitmapRenderLightFromMap)clone).bitmapLightHistoryRef = context.Clone(this.bitmapLightHistoryRef)!;
     }
 
     public CPlugBitmapRenderLightFromMap()
     {
+    }
+
+    /// <summary>
+    /// CPlugBitmapRenderLightFromMap 0x000 chunk (legacy object counts, camera and night remap)
+    /// </summary>
+    [Chunk(0x09021000, "legacy object counts, camera and night remap")]
+    public partial class Chunk09021000 : Chunk<CPlugBitmapRenderLightFromMap>
+    {
+        public override uint Id => 0x09021000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderLightFromMap n, GbxReaderWriter rw)
+        {
+            rw.Int32(ref n.objectCountPerAxisMin);
+            rw.Int32(ref n.objectCountPerAxisMax);
+            rw.Single(ref n.cameraNearZ_FactorInObject);
+            rw.Single(ref n.cameraFarZ_ToAdd);
+            rw.Single(ref n.remapMin_Night);
+            rw.Single(ref n.remapMax_Night);
+        }
     }
 
     /// <summary>
@@ -176,9 +234,33 @@ public partial class CPlugBitmapRenderLightFromMap : CPlugBitmapRender, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapRenderLightFromMap 0x002 chunk (BitmapLightHistory)
+    /// </summary>
+    [Chunk(0x09021002, "BitmapLightHistory")]
+    public partial class Chunk09021002 : Chunk<CPlugBitmapRenderLightFromMap>, IVersionable
+    {
+        public override uint Id => 0x09021002;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk09021002)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CPlugBitmapRenderLightFromMap n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.NodeRef(ref n.bitmapLightHistoryRef);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x09021000 => new Chunk09021000(),
         0x09021001 => new Chunk09021001(),
+        0x09021002 => new Chunk09021002(),
         _ => base.NewChunk(chunkId),
     };
 }

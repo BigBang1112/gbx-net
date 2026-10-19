@@ -1,0 +1,2 @@
+CGameControlCardProfile 0x030C7000
+- inherits: CGameControlCard

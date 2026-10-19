@@ -1,0 +1,5 @@
+CPlugCharPhyMaterials 0x090FB000
+
+0x000
+  int[] MaterialIndices
+  CPlugCharPhyMaterial[] Materials (deprec)

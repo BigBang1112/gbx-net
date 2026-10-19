@@ -5,7 +5,7 @@ CControlBase 0x07001000
   datauint ControlFlags
   CControlStyle LegacyStyle
   CMwNod
-  if (ControlFlags & 0x20) != 0
+  if n.HasControlStack
     CMwNod Nod
     string StackText
 
@@ -19,6 +19,6 @@ CControlBase 0x07001000
   string
 
 0x010 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  CMwNod U01
-  if U01 == null
-    int?
+  id StyleId
+  if StyleId == ""
+    CControlStyle Style

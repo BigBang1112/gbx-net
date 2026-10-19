@@ -1,4 +1,5 @@
 using GBX.NET.Engines.Control;
+using GBX.NET.Engines.Game;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Serialization;
 
@@ -8,14 +9,18 @@ namespace GBX.NET.Tests.Unit.Engines.Control;
 public class CControlBaseLayoutTests
 {
     [Test]
-    [Arguments(false)]
-    [Arguments(true)]
-    public async Task ReadWrite_LegacyControl_ReadsStackOnlyWhenFlagIsSet(bool hasStack)
+    [Arguments(typeof(CControlButton), true)]
+    [Arguments(typeof(CControlQuad), false)]
+    [Arguments(typeof(CControlFrame), false)]
+    [Arguments(typeof(CGameControlCardGeneric), true)]
+    [Arguments(typeof(CGamePlaygroundControlScores), true)]
+    [Arguments(typeof(CGamePlaygroundControlMessages), true)]
+    public async Task ReadWrite_LegacyControl_UsesStackCapabilityOfRuntimeClass(Type controlType, bool hasStack)
     {
         using var payload = new MemoryStream();
         using (var writer = new GbxWriter(payload))
         {
-            writer.Write(hasStack ? 0x20U : 0U);
+            writer.Write(0U);
             writer.WriteNodeRef<CControlStyle>(null);
             writer.WriteNodeRef<CMwNod>(null);
             if (hasStack)
@@ -27,7 +32,7 @@ public class CControlBaseLayoutTests
         }
         var expected = payload.ToArray()[..^4];
         payload.Position = 0;
-        var node = new CControlBase();
+        var node = (CControlBase)Activator.CreateInstance(controlType)!;
         var chunk = new CControlBase.Chunk0700100C();
         using (var reader = new GbxReader(payload))
         using (var rw = new GbxReaderWriter(reader))

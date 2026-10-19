@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -173,11 +175,6 @@ public partial class CSceneMobil : CSceneObject, IClass
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-        }
-
-        public override void ReadWrite(CSceneMobil n, GbxReaderWriter rw)
-        {
-            rw.Node<CHmsItem>(ref n.item);
         }
     }
 

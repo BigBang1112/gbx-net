@@ -2016,7 +2016,11 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         // Native dummy writes use the deprecated ID of the parent class.
         var parentClassId = ClassManager.Unwrap(ClassManager.ClassIds[baseType]);
 
-        if (parentClassId == 0x07031000)
+        if (node is CPlugWeatherModel) // deprecated CMotionManagerWeathers inherited CMotionManager
+        {
+            parentClassId = 0x0804B000;
+        }
+        else if (parentClassId == 0x07031000)
         {
             parentClassId = 0x07001000;
         }

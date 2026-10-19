@@ -1,0 +1,45 @@
+CPlugCharPhyMaterial 0x090CA000
+
+0x000
+  byte
+  CFuncKeysReal
+  CFuncKeysReal
+  float
+  bool
+  bool
+  bool
+  bool
+  bool
+
+0x001
+  version = 11
+  byte
+  v2-
+    CFuncKeysReal
+    CFuncKeysReal
+  float
+  bool
+  bool
+  bool
+  bool
+  v1+
+    float
+  v3+
+    float
+  v4+
+    float
+  v5+
+    bool
+  v6+
+    float
+  v7+
+    float
+    float
+  v8+
+    bool
+  v9+
+    float
+  v10+
+    float
+  v11+
+    float

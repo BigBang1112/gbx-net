@@ -1,0 +1,7 @@
+CPlugCharPhyRecoilModel 0x090E0000
+
+0x000
+  id
+  int
+  float
+  float

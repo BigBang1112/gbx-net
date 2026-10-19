@@ -1,0 +1,7 @@
+CVisionResourceFile 0x0C012000
+
+0x00C [MP4] // FolderShaderBench
+  string FolderShaderBench
+
+0x01D [MP4] // named shaders and resources
+  CPlugModelShading.FidId[] Resources

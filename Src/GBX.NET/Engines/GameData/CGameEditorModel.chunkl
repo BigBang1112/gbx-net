@@ -1,0 +1,54 @@
+CGameEditorModel 0x2E01B000
+
+0x000 (skippable) // editor type, help and legacy main plugin
+  version = 4
+  int EditorType
+  v2-
+    CPlugFileText
+  v1+
+    bool AutoGenerateHelp
+  v2+
+    string
+  v4+
+    bool AutoCreateTooltipsFromBindings
+
+0x001 (skippable)
+  version
+  int128
+  int
+
+0x002 (skippable) // legacy sub plugins
+  version
+  int SubPluginCount (local, write: "U01?.Length ?? 0")
+  int SubPluginNameCount (local, write: "U01?.Length ?? 0")
+  LegacySubPlugin[SubPluginNameCount]
+
+0x003 (skippable) // binding contexts
+  version = 1
+  BindingContext[] BindingContexts
+
+0x004 // main and sub plugin text sets
+  version
+  CGameManiaAppTextSet MainPluginTextSet
+  SubPlugin[] SubPlugins
+
+archive LegacySubPlugin
+  bool HasScript
+  if HasScript
+    CPlugFileText Script
+  string Name
+
+archive SubPlugin
+  string Name
+  CGameManiaAppTextSet TextSet
+
+archive BindingContext
+  string Name
+  Binding[] Bindings
+
+archive Binding
+  string U01
+  string U02
+  bool U03
+  v1+
+    string U04

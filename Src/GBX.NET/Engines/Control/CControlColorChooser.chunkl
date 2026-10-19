@@ -1,0 +1,14 @@
+CControlColorChooser 0x0701E000
+- inherits: CControlFrame
+
+0x000 // legacy square size
+  float
+
+0x001 [MP4] // ColorChooserShader
+  CPlugShader ColorChooserShader
+
+0x002 [MP4] // ColorChooserSize
+  vec2 ColorChooserSize
+
+0x003 [MP4] // StyleType
+  int StyleType

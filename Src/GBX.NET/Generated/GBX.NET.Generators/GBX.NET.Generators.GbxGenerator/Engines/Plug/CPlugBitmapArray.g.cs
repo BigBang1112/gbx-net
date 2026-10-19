@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -37,12 +39,64 @@ public partial class CPlugBitmapArray : CPlug, IClass
 
     internal override uint GetId() => Id;
 
+    private NodeRefList<CPlugBitmap>? bitmaps;
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    [AppliedWithChunk<Chunk090AB000>]
+    public NodeRefList<CPlugBitmap>? Bitmaps
+    {
+        get => bitmaps;
+        set => bitmaps = value;
+    }
+
+    public NodeRefView References => new(this);
+    public readonly struct NodeRefView
+    {
+        private readonly CPlugBitmapArray owner;
+        internal NodeRefView(CPlugBitmapArray owner) => this.owner = owner;
+        public IReadOnlyList<NodeRef<CPlugBitmap>>? Bitmaps => owner.bitmaps?.References;
+    }
+    public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+    {
+        foreach (var reference in base.EnumerateReferences()) yield return reference;
+        if (bitmaps is not null)
+        {
+            for (var i = 0; i < bitmaps.Count; i++) yield return new("Bitmaps" + "[" + i + "]", bitmaps.Get(i));
+        }
+        yield break;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CPlugBitmapArray)clone).bitmaps = context.Clone(this.bitmaps)!;
     }
 
     public CPlugBitmapArray()
     {
     }
+
+    /// <summary>
+    /// CPlugBitmapArray 0x000 chunk (Bitmaps)
+    /// </summary>
+    [Chunk(0x090AB000, "Bitmaps")]
+    public partial class Chunk090AB000 : Chunk<CPlugBitmapArray>
+    {
+        public override uint Id => 0x090AB000;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugBitmapArray n, GbxReaderWriter rw)
+        {
+            n.bitmaps = rw.ListNodeRef<CPlugBitmap>(n.bitmaps);
+        }
+    }
+
+    internal override IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x090AB000 => new Chunk090AB000(),
+        _ => base.NewChunk(chunkId),
+    };
 }

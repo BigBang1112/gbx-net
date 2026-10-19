@@ -1,0 +1,19 @@
+CSceneFxStereoscopy 0x0A043000
+- inherits: CSceneFxCompo
+
+0x000 // legacy anaglyph shaders
+  CMwNod PHlsl_AnaglyphFullColor
+  CMwNod PHlsl_AnaglyphHalfColor
+
+0x001 // legacy anaglyph shaders
+  CMwNod PHlsl_AnaglyphFullColor
+  CMwNod PHlsl_AnaglyphHalfColor
+  CMwNod PHlsl_AnaglyphLinear
+
+0x002 // anaglyph, interlaced and debug shaders
+  version
+  CMwNod PHlsl_AnaglyphFullColor
+  CMwNod PHlsl_AnaglyphHalfColor
+  CMwNod PHlsl_AnaglyphLinear
+  CMwNod Shader_Interlaced
+  CMwNod Shader_DebugBlend

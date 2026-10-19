@@ -1,0 +1,15 @@
+CSceneFxDepthOfField 0x0A077000
+- inherits: CSceneFxCompo
+
+0x004
+  CMwNod
+
+0x005
+  float
+  float
+  float
+  int
+
+0x006
+  CMwNod
+  CMwNod

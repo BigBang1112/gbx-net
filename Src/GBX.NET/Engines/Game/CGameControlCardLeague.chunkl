@@ -1,0 +1,2 @@
+CGameControlCardLeague 0x030BE000
+- inherits: CGameControlCard

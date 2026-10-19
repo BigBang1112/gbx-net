@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -30,7 +32,7 @@ namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x09180000</remarks>
 [Class(0x09180000)]
-public partial class CPlugClouds : CMwNod, IClass
+public partial class CPlugClouds : CFunc, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x09180000;
@@ -38,9 +40,11 @@ public partial class CPlugClouds : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private NodeRefList<CPlugSolid>? solidFids;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
+    [AppliedWithChunk<Chunk09180006>]
     public NodeRefList<CPlugSolid>? SolidFids
     {
         get => solidFids;
@@ -48,8 +52,9 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private float bottomNearZ;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
     public float BottomNearZ
     {
@@ -58,8 +63,9 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private float bottomFarZ;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
     public float BottomFarZ
     {
@@ -68,9 +74,12 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageColorMinRef;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
+    [AppliedWithChunk<Chunk09180006>]
+    [AppliedWithChunk<Chunk09180007>]
     public CPlugFileImg? ImageColorMin
     {
         get => imageColorMinRef?.Resolve();
@@ -78,9 +87,12 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? imageColorMaxRef;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004, 0x006, 0x007 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
+    [AppliedWithChunk<Chunk09180006>]
+    [AppliedWithChunk<Chunk09180007>]
     public CPlugFileImg? ImageColorMax
     {
         get => imageColorMaxRef?.Resolve();
@@ -88,13 +100,24 @@ public partial class CPlugClouds : CMwNod, IClass
     }
 
     private int lighting;
-    /// <remarks>Applied with: 0x000, 0x004 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk09180000>]
+    [AppliedWithChunk<Chunk09180001>]
     [AppliedWithChunk<Chunk09180004>]
     public int Lighting
     {
         get => this.lighting;
         set => this.lighting = value;
+    }
+
+    private float speedScale;
+    /// <remarks>Applied with: 0x001, 0x004 body chunks</remarks>
+    [AppliedWithChunk<Chunk09180001>]
+    [AppliedWithChunk<Chunk09180004>]
+    public float SpeedScale
+    {
+        get => this.speedScale;
+        set => this.speedScale = value;
     }
 
     private Vec2[]? pointHeights;
@@ -124,13 +147,34 @@ public partial class CPlugClouds : CMwNod, IClass
         set => this.heightCenterXZ = value;
     }
 
-    private float speedScale;
-    /// <remarks>Applied with: 0x004 body chunk</remarks>
-    [AppliedWithChunk<Chunk09180004>]
-    public float SpeedScale
+    private NodeRef<CPlugMaterial>? materialModelToForceRef;
+    /// <remarks>Applied with: 0x005, 0x006, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk09180005>]
+    [AppliedWithChunk<Chunk09180006>]
+    [AppliedWithChunk<Chunk09180007>]
+    public CPlugMaterial? MaterialModelToForce
     {
-        get => this.speedScale;
-        set => this.speedScale = value;
+        get => materialModelToForceRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialModelToForceRef, value);
+    }
+
+    private NodeRef<CPlugCloudsParam>? cloudsParamRef;
+    /// <remarks>Applied with: 0x006, 0x007 body chunks</remarks>
+    [AppliedWithChunk<Chunk09180006>]
+    [AppliedWithChunk<Chunk09180007>]
+    public CPlugCloudsParam? CloudsParam
+    {
+        get => cloudsParamRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref cloudsParamRef, value);
+    }
+
+    private NodeRef<CPlugCloudsSolids>? solidsRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk09180007>]
+    public CPlugCloudsSolids? Solids
+    {
+        get => solidsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref solidsRef, value);
     }
 
     public NodeRefView References => new(this);
@@ -141,6 +185,9 @@ public partial class CPlugClouds : CMwNod, IClass
         public IReadOnlyList<NodeRef<CPlugSolid>>? SolidFids => owner.solidFids?.References;
         public NodeRef<CPlugFileImg> ImageColorMin => NodeRef.GetOrCreate(ref owner.imageColorMinRef);
         public NodeRef<CPlugFileImg> ImageColorMax => NodeRef.GetOrCreate(ref owner.imageColorMaxRef);
+        public NodeRef<CPlugMaterial> MaterialModelToForce => NodeRef.GetOrCreate(ref owner.materialModelToForceRef);
+        public NodeRef<CPlugCloudsParam> CloudsParam => NodeRef.GetOrCreate(ref owner.cloudsParamRef);
+        public NodeRef<CPlugCloudsSolids> Solids => NodeRef.GetOrCreate(ref owner.solidsRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -151,6 +198,9 @@ public partial class CPlugClouds : CMwNod, IClass
         }
         yield return new("ImageColorMin", NodeRef.GetOrCreate(ref imageColorMinRef));
         yield return new("ImageColorMax", NodeRef.GetOrCreate(ref imageColorMaxRef));
+        yield return new("MaterialModelToForce", NodeRef.GetOrCreate(ref materialModelToForceRef));
+        yield return new("CloudsParam", NodeRef.GetOrCreate(ref cloudsParamRef));
+        yield return new("Solids", NodeRef.GetOrCreate(ref solidsRef));
         yield break;
     }
 
@@ -163,10 +213,13 @@ public partial class CPlugClouds : CMwNod, IClass
         ((CPlugClouds)clone).imageColorMinRef = context.Clone(this.imageColorMinRef)!;
         ((CPlugClouds)clone).imageColorMaxRef = context.Clone(this.imageColorMaxRef)!;
         ((CPlugClouds)clone).lighting = context.Clone(this.lighting)!;
+        ((CPlugClouds)clone).speedScale = context.Clone(this.speedScale)!;
         ((CPlugClouds)clone).pointHeights = context.CloneArray(this.pointHeights)!;
         ((CPlugClouds)clone).heightCenter = context.Clone(this.heightCenter)!;
         ((CPlugClouds)clone).heightCenterXZ = context.Clone(this.heightCenterXZ)!;
-        ((CPlugClouds)clone).speedScale = context.Clone(this.speedScale)!;
+        ((CPlugClouds)clone).materialModelToForceRef = context.Clone(this.materialModelToForceRef)!;
+        ((CPlugClouds)clone).cloudsParamRef = context.Clone(this.cloudsParamRef)!;
+        ((CPlugClouds)clone).solidsRef = context.Clone(this.solidsRef)!;
     }
 
     public CPlugClouds()
@@ -194,6 +247,26 @@ public partial class CPlugClouds : CMwNod, IClass
             rw.NodeRef(ref n.imageColorMinRef);
             rw.NodeRef(ref n.imageColorMaxRef);
             rw.Int32(ref n.lighting);
+        }
+    }
+
+    /// <summary>
+    /// CPlugClouds 0x001 chunk (legacy speed scale)
+    /// </summary>
+    [Chunk(0x09180001, "legacy speed scale")]
+    public partial class Chunk09180001 : Chunk09180000
+    {
+        public override uint Id => 0x09180001;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Single(ref n.speedScale);
         }
     }
 
@@ -262,12 +335,81 @@ public partial class CPlugClouds : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugClouds 0x005 chunk (MaterialModelToForce)
+    /// </summary>
+    [Chunk(0x09180005, "MaterialModelToForce")]
+    public partial class Chunk09180005 : Chunk<CPlugClouds>
+    {
+        public override uint Id => 0x09180005;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.materialModelToForceRef);
+        }
+    }
+
+    /// <summary>
+    /// CPlugClouds 0x006 chunk (legacy images, material, solids and parameters)
+    /// </summary>
+    [Chunk(0x09180006, "legacy images, material, solids and parameters")]
+    public partial class Chunk09180006 : Chunk<CPlugClouds>
+    {
+        public override uint Id => 0x09180006;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.imageColorMinRef);
+            rw.NodeRef(ref n.imageColorMaxRef);
+            rw.NodeRef(ref n.materialModelToForceRef);
+            n.solidFids = rw.ListNodeRef<CPlugSolid>(n.solidFids);
+            rw.NodeRef(ref n.cloudsParamRef);
+        }
+    }
+
+    /// <summary>
+    /// CPlugClouds 0x007 chunk (images, material, solids and parameters)
+    /// </summary>
+    [Chunk(0x09180007, "images, material, solids and parameters")]
+    public partial class Chunk09180007 : Chunk<CPlugClouds>
+    {
+        public override uint Id => 0x09180007;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CPlugClouds n, GbxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.imageColorMinRef);
+            rw.NodeRef(ref n.imageColorMaxRef);
+            rw.NodeRef(ref n.materialModelToForceRef);
+            rw.NodeRef(ref n.solidsRef);
+            rw.NodeRef(ref n.cloudsParamRef);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x09180000 => new Chunk09180000(),
+        0x09180001 => new Chunk09180001(),
         0x09180002 => new Chunk09180002(),
         0x09180003 => new Chunk09180003(),
         0x09180004 => new Chunk09180004(),
+        0x09180005 => new Chunk09180005(),
+        0x09180006 => new Chunk09180006(),
+        0x09180007 => new Chunk09180007(),
         _ => base.NewChunk(chunkId),
     };
 }

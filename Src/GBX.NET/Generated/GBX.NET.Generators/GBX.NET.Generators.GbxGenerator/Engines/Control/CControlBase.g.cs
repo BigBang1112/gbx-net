@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -82,6 +84,24 @@ public partial class CControlBase : CSceneToy, IClass
         set => NodeRef.SetEmbedded(ref layoutRef, value);
     }
 
+    private string? styleId;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
+    [AppliedWithChunk<Chunk07001010>]
+    public string? StyleId
+    {
+        get => this.styleId;
+        set => this.styleId = value;
+    }
+
+    private NodeRef<CControlStyle>? styleRef;
+    /// <remarks>Applied with: 0x010 body chunk</remarks>
+    [AppliedWithChunk<Chunk07001010>]
+    public CControlStyle? Style
+    {
+        get => styleRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref styleRef, value);
+    }
+
     public new NodeRefView References => new(this);
     public new readonly struct NodeRefView
     {
@@ -90,6 +110,7 @@ public partial class CControlBase : CSceneToy, IClass
         public NodeRef<CControlStyle> LegacyStyle => NodeRef.GetOrCreate(ref owner.legacyStyleRef);
         public NodeRef<CMwNod> Nod => NodeRef.GetOrCreate(ref owner.nodRef);
         public NodeRef<CControlLayout> Layout => NodeRef.GetOrCreate(ref owner.layoutRef);
+        public NodeRef<CControlStyle> Style => NodeRef.GetOrCreate(ref owner.styleRef);
         public IReadOnlyList<NodeRef<CSceneObjectLink>>? ObjectLink => ((CSceneToy)owner).References.ObjectLink;
         public NodeRef<CSceneMessageHandler> MessageHandler => ((CSceneToy)owner).References.MessageHandler;
         public NodeRef<CMotion> Motion => ((CSceneToy)owner).References.Motion;
@@ -100,6 +121,7 @@ public partial class CControlBase : CSceneToy, IClass
         yield return new("LegacyStyle", NodeRef.GetOrCreate(ref legacyStyleRef));
         yield return new("Nod", NodeRef.GetOrCreate(ref nodRef));
         yield return new("Layout", NodeRef.GetOrCreate(ref layoutRef));
+        yield return new("Style", NodeRef.GetOrCreate(ref styleRef));
         yield break;
     }
 
@@ -111,6 +133,9 @@ public partial class CControlBase : CSceneToy, IClass
         ((CControlBase)clone).nodRef = context.Clone(this.nodRef)!;
         ((CControlBase)clone).stackText = context.Clone(this.stackText)!;
         ((CControlBase)clone).layoutRef = context.Clone(this.layoutRef)!;
+        ((CControlBase)clone).styleId = context.Clone(this.styleId)!;
+        ((CControlBase)clone).styleRef = context.Clone(this.styleRef)!;
+        ((CControlBase)clone).HasHmsItem = context.Clone(this.HasHmsItem)!;
     }
 
     public CControlBase()
@@ -160,7 +185,7 @@ public partial class CControlBase : CSceneToy, IClass
             rw.NodeRef(ref n.legacyStyleRef);
             rw.NodeRef(ref U01Ref);
 
-            if ((n.ControlFlags& 0x20) != 0)
+            if (n.HasControlStack)
             {
                 rw.NodeRef(ref n.nodRef);
                 rw.String(ref n.stackText);
@@ -231,42 +256,18 @@ public partial class CControlBase : CSceneToy, IClass
         public override uint Id => 0x07001010;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5 | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
 
-        private NodeRef<CMwNod>? U01Ref;
-        public CMwNod? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-        public int? U02;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk07001010 owner;
-            internal NodeRefView(Chunk07001010 owner) => this.owner = owner;
-            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield break;
-        }
-
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk07001010)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk07001010)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CControlBase n, GbxReaderWriter rw)
         {
-            rw.NodeRef(ref U01Ref);
+            rw.Id(ref n.styleId);
 
-            if ((U01Ref?.Kind ?? NodeRefKind.None) == NodeRefKind.None)
+            if (n.StyleId== "")
             {
-                rw.Int32(ref U02);
+                rw.NodeRef(ref n.styleRef);
             }
         }
     }

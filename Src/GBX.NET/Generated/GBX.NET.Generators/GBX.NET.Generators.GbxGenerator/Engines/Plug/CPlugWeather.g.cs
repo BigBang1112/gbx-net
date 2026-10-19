@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -30,7 +32,7 @@ namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0917E000</remarks>
 [Class(0x0917E000)]
-public partial class CPlugWeather : CMwNod, IClass
+public partial class CPlugWeather : CFunc, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x0917E000;

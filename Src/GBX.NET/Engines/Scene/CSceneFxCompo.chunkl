@@ -1,0 +1,3 @@
+CSceneFxCompo 0x0A076000
+- inherits: CSceneFx
+- abstract

@@ -14,8 +14,13 @@ CControlContainer 0x07002000
   bool IsClippingContainer
 
 archive Child (contextual)
+  ModelInstance Instance
+  if n.HasMenuFrameChildVersion
+    int MenuFrameVersion
   if n.HasFrameChildLocations
     int FrameVersion = 1
+  if n.HasGridChildLocations
+    int GridVersion = 1
   version = 3
   v1= (archive)
     CControlBase Control
@@ -27,3 +32,36 @@ archive Child (contextual)
       CControlBase Control
   if n.HasFrameChildLocations
     iso4 RelativeLocation
+  if n.HasGridChildLocations
+    vec2 Square
+    if GridVersion >= 1
+      float SquareZ
+
+archive ModelInstance
+  CControlBase Model
+  InstanceData Data
+
+archive InstanceData
+  version = 2
+  OwnDataRecord[] OwnDataRecords
+  id Name
+  CMwNod[] Links
+  int ContainerVersion = 3
+  Anchor[] Anchors
+  TerminalDataRecord[] TerminalData
+  CGameMenuFrame.MenuFrameInstanceData MenuFrameData
+
+archive OwnDataRecord
+  datauint ClassId
+  int Version
+  CGameControlCardGeneric.LocalData Data
+
+archive Anchor
+  id Name
+  int Version
+  Child[] Childs (version: 0)
+
+archive TerminalDataRecord
+  id Name
+  byte Version
+  data Data

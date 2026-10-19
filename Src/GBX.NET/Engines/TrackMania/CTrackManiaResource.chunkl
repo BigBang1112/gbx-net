@@ -1,0 +1,4 @@
+CTrackManiaResource 0x240D6000
+
+0x000
+  CSmArenaResource.Resource[] Resources

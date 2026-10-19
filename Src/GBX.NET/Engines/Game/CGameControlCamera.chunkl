@@ -80,3 +80,6 @@ CGameControlCamera 0x0306B000
   float MinFarZ
   float MaxFarZ
   bool
+
+0x00C (base: 0x00B) [MP4]
+  base

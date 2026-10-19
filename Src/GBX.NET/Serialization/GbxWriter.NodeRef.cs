@@ -50,14 +50,7 @@ public partial class GbxWriter
 
             var key = descriptor ?? (object?)value ?? throw new InvalidOperationException("Descriptor or value is null.");
 
-            if (nextNodeIndex == 1 && NodeDict.Count > 0)
-            {
-                nextNodeIndex = NodeDict.Values.Max() + 1;
-            }
-
-            index = nextNodeIndex++;
-
-            NodeDict[key] = index;
+            index = RegisterNodeReference(key);
 
             Write(index);
 
@@ -84,6 +77,18 @@ public partial class GbxWriter
         rw ??= new GbxReaderWriter(this);
 
         value.ReadWrite(rw);
+    }
+
+    internal int RegisterNodeReference(object value)
+    {
+        if (nextNodeIndex == 1 && NodeDict.Count > 0)
+        {
+            nextNodeIndex = NodeDict.Values.Max() + 1;
+        }
+
+        var index = nextNodeIndex++;
+        NodeDict.Add(value, index);
+        return index;
     }
 
     public void WriteListNodeRef<T>(NodeRefList<T>? references, int? length = null) where T : CMwNod?

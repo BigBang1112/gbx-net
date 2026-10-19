@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -38,9 +40,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     internal override uint GetId() => Id;
 
     private Vec3 radiusScale;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public Vec3 RadiusScale
     {
         get => this.radiusScale;
@@ -48,9 +51,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private Vec2 rotateSpeed;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public Vec2 RotateSpeed
     {
         get => this.rotateSpeed;
@@ -58,9 +62,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private bool occlusionIsEnable;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public bool OcclusionIsEnable
     {
         get => this.occlusionIsEnable;
@@ -68,9 +73,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float mouseBorderMoveSize;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float MouseBorderMoveSize
     {
         get => this.mouseBorderMoveSize;
@@ -78,9 +84,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float occlusionTargetRadius;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float OcclusionTargetRadius
     {
         get => this.occlusionTargetRadius;
@@ -88,9 +95,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float occlusionDistFromHit;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float OcclusionDistFromHit
     {
         get => this.occlusionDistFromHit;
@@ -98,9 +106,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radius;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float Radius
     {
         get => this.radius;
@@ -108,9 +117,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitude;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float Latitude
     {
         get => this.latitude;
@@ -118,9 +128,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float longitude;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float Longitude
     {
         get => this.longitude;
@@ -128,9 +139,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radiusMin;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float RadiusMin
     {
         get => this.radiusMin;
@@ -138,9 +150,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float radiusMax;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float RadiusMax
     {
         get => this.radiusMax;
@@ -148,9 +161,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitudeMin;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float LatitudeMin
     {
         get => this.latitudeMin;
@@ -158,9 +172,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float latitudeMax;
-    /// <remarks>Applied with: 0x001, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E001>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float LatitudeMax
     {
         get => this.latitudeMax;
@@ -168,9 +183,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float wheelSensitivity;
-    /// <remarks>Applied with: 0x003, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x003, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E003>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float WheelSensitivity
     {
         get => this.wheelSensitivity;
@@ -178,9 +194,10 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float fovKeySensitivity;
-    /// <remarks>Applied with: 0x004, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x004, 0x005, 0x00A body chunks</remarks>
     [AppliedWithChunk<Chunk0306E004>]
     [AppliedWithChunk<Chunk0306E005>]
+    [AppliedWithChunk<Chunk0306E00A>]
     public float FovKeySensitivity
     {
         get => this.fovKeySensitivity;
@@ -188,8 +205,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     }
 
     private float zoomKeySensitivity;
-    /// <remarks>Applied with: 0x006 body chunk</remarks>
+    /// <remarks>Applied with: 0x006, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk0306E006>]
+    [AppliedWithChunk<Chunk0306E009>]
     public float ZoomKeySensitivity
     {
         get => this.zoomKeySensitivity;
@@ -203,6 +221,24 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
     {
         get => this.defaultRadius;
         set => this.defaultRadius = value;
+    }
+
+    private bool useAutoRadiusFromTargets;
+    /// <remarks>Applied with: 0x008 body chunk</remarks>
+    [AppliedWithChunk<Chunk0306E008>]
+    public bool UseAutoRadiusFromTargets
+    {
+        get => this.useAutoRadiusFromTargets;
+        set => this.useAutoRadiusFromTargets = value;
+    }
+
+    private Iso4 relativeTargetLocation;
+    /// <remarks>Applied with: 0x00A body chunk</remarks>
+    [AppliedWithChunk<Chunk0306E00A>]
+    public Iso4 RelativeTargetLocation
+    {
+        get => this.relativeTargetLocation;
+        set => this.relativeTargetLocation = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -225,6 +261,8 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         ((CGameControlCameraOrbital3d)clone).fovKeySensitivity = context.Clone(this.fovKeySensitivity)!;
         ((CGameControlCameraOrbital3d)clone).zoomKeySensitivity = context.Clone(this.zoomKeySensitivity)!;
         ((CGameControlCameraOrbital3d)clone).defaultRadius = context.Clone(this.defaultRadius)!;
+        ((CGameControlCameraOrbital3d)clone).useAutoRadiusFromTargets = context.Clone(this.useAutoRadiusFromTargets)!;
+        ((CGameControlCameraOrbital3d)clone).relativeTargetLocation = context.Clone(this.relativeTargetLocation)!;
     }
 
     public CGameControlCameraOrbital3d()
@@ -427,6 +465,101 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         }
     }
 
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x008 chunk (UseAutoRadiusFromTargets)
+    /// </summary>
+    [Chunk(0x0306E008, "UseAutoRadiusFromTargets")]
+    [ChunkGameVersion(GameVersion.MP4)]
+    public partial class Chunk0306E008 : Chunk<CGameControlCameraOrbital3d>
+    {
+        public override uint Id => 0x0306E008;
+        public override GameVersion GameVersion => GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
+        {
+            rw.Boolean(ref n.useAutoRadiusFromTargets);
+        }
+    }
+
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x009 chunk (ZoomKeySensitivity)
+    /// </summary>
+    [Chunk(0x0306E009, "ZoomKeySensitivity")]
+    [ChunkGameVersion(GameVersion.MP4)]
+    public partial class Chunk0306E009 : Chunk<CGameControlCameraOrbital3d>
+    {
+        public override uint Id => 0x0306E009;
+        public override GameVersion GameVersion => GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.zoomKeySensitivity);
+        }
+    }
+
+    /// <summary>
+    /// CGameControlCameraOrbital3d 0x00A chunk (target location, orbit, occlusion and sensitivities)
+    /// </summary>
+    [Chunk(0x0306E00A, "target location, orbit, occlusion and sensitivities")]
+    [ChunkGameVersion(GameVersion.MP4)]
+    public partial class Chunk0306E00A : Chunk<CGameControlCameraOrbital3d>, IVersionable
+    {
+        public override uint Id => 0x0306E00A;
+        public override GameVersion GameVersion => GameVersion.MP4;
+        public int Version { get; set; }
+        public bool U01;
+        public bool U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0306E00A)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0306E00A)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0306E00A)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0306E00A)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CGameControlCameraOrbital3d n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Iso4(ref n.relativeTargetLocation);
+            rw.Vec3(ref n.radiusScale);
+            rw.Vec2(ref n.rotateSpeed);
+            rw.Boolean(ref n.occlusionIsEnable);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            rw.Single(ref n.mouseBorderMoveSize);
+            rw.Single(ref n.occlusionTargetRadius);
+            rw.Single(ref n.occlusionDistFromHit);
+            rw.Single(ref n.radius);
+            rw.Single(ref n.latitude);
+            rw.Single(ref n.longitude);
+            rw.Single(ref n.radiusMin);
+            rw.Single(ref n.radiusMax);
+            rw.Single(ref n.latitudeMin);
+            rw.Single(ref n.latitudeMax);
+            rw.Single(ref U03);
+            rw.Single(ref n.wheelSensitivity);
+            rw.Single(ref n.fovKeySensitivity);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0306E001 => new Chunk0306E001(),
@@ -436,6 +569,9 @@ public partial class CGameControlCameraOrbital3d : CGameControlCameraTarget, ICl
         0x0306E005 => new Chunk0306E005(),
         0x0306E006 => new Chunk0306E006(),
         0x0306E007 => new Chunk0306E007(),
+        0x0306E008 => new Chunk0306E008(),
+        0x0306E009 => new Chunk0306E009(),
+        0x0306E00A => new Chunk0306E00A(),
         _ => base.NewChunk(chunkId),
     };
 }

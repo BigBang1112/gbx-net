@@ -16,9 +16,11 @@ using global::GBX.NET.Engines.MwFoundations;
 using global::GBX.NET.Engines.Plug;
 using global::GBX.NET.Engines.Scene;
 using global::GBX.NET.Engines.Script;
+using global::GBX.NET.Engines.ShootMania;
 using global::GBX.NET.Engines.System;
 using global::GBX.NET.Engines.TrackMania;
 using global::GBX.NET.Engines.VirtualSkipper;
+using global::GBX.NET.Engines.Vision;
 using global::GBX.NET.Serialization;
 using global::GBX.NET.Serialization.Chunking;
 using global::System;
@@ -47,10 +49,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool isFirstPerson;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool IsFirstPerson
     {
         get => this.isFirstPerson;
@@ -58,10 +61,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool canCameraMove;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool CanCameraMove
     {
         get => this.canCameraMove;
@@ -69,10 +73,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool isFollowing;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool IsFollowing
     {
         get => this.isFollowing;
@@ -80,10 +85,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxSpeed;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MaxSpeed
     {
         get => this.maxSpeed;
@@ -91,10 +97,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float planeDist;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float PlaneDist
     {
         get => this.planeDist;
@@ -102,10 +109,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minDist;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MinDist
     {
         get => this.minDist;
@@ -113,10 +121,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxDist;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MaxDist
     {
         get => this.maxDist;
@@ -124,10 +133,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float fov;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float Fov
     {
         get => this.fov;
@@ -135,10 +145,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultFov;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float DefaultFov
     {
         get => this.defaultFov;
@@ -146,10 +157,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useForcedLocation;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool UseForcedLocation
     {
         get => this.useForcedLocation;
@@ -157,10 +169,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Iso4 forcedLocation;
-    /// <remarks>Applied with: 0x001, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B001>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public Iso4 ForcedLocation
     {
         get => this.forcedLocation;
@@ -168,10 +181,11 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useOnlyFollowedMobilPosition;
-    /// <remarks>Applied with: 0x002, 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x002, 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B002>]
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool UseOnlyFollowedMobilPosition
     {
         get => this.useOnlyFollowedMobilPosition;
@@ -191,9 +205,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Vec3 relativeFollowedPos;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public Vec3 RelativeFollowedPos
     {
         get => this.relativeFollowedPos;
@@ -201,9 +216,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minFov;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MinFov
     {
         get => this.minFov;
@@ -211,9 +227,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxFov;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MaxFov
     {
         get => this.maxFov;
@@ -221,9 +238,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private bool useForcedUp;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public bool UseForcedUp
     {
         get => this.useForcedUp;
@@ -231,9 +249,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private Vec3 forcedUp;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public Vec3 ForcedUp
     {
         get => this.forcedUp;
@@ -241,9 +260,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultNearZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float DefaultNearZ
     {
         get => this.defaultNearZ;
@@ -251,9 +271,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minNearZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MinNearZ
     {
         get => this.minNearZ;
@@ -261,9 +282,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxNearZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MaxNearZ
     {
         get => this.maxNearZ;
@@ -271,9 +293,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float defaultFarZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float DefaultFarZ
     {
         get => this.defaultFarZ;
@@ -281,9 +304,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float minFarZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MinFarZ
     {
         get => this.minFarZ;
@@ -291,9 +315,10 @@ public partial class CGameControlCamera : CSceneController, IClass
     }
 
     private float maxFarZ;
-    /// <remarks>Applied with: 0x009, 0x00B body chunks</remarks>
+    /// <remarks>Applied with: 0x009, 0x00B, 0x00C body chunks</remarks>
     [AppliedWithChunk<Chunk0306B009>]
     [AppliedWithChunk<Chunk0306B00B>]
+    [AppliedWithChunk<Chunk0306B00C>]
     public float MaxFarZ
     {
         get => this.maxFarZ;
@@ -544,6 +569,27 @@ public partial class CGameControlCamera : CSceneController, IClass
         }
     }
 
+    /// <summary>
+    /// CGameControlCamera 0x00C chunk
+    /// </summary>
+    [Chunk(0x0306B00C)]
+    [ChunkGameVersion(GameVersion.MP4)]
+    public partial class Chunk0306B00C : Chunk0306B00B
+    {
+        public override uint Id => 0x0306B00C;
+        public override GameVersion GameVersion => GameVersion.MP4;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CGameControlCamera n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0306B001 => new Chunk0306B001(),
@@ -553,6 +599,7 @@ public partial class CGameControlCamera : CSceneController, IClass
         0x0306B009 => new Chunk0306B009(),
         0x0306B00A => new Chunk0306B00A(),
         0x0306B00B => new Chunk0306B00B(),
+        0x0306B00C => new Chunk0306B00C(),
         _ => base.NewChunk(chunkId),
     };
 }

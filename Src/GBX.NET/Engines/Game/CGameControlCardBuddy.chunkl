@@ -1,0 +1,2 @@
+CGameControlCardBuddy 0x03152000
+- inherits: CGameControlCard

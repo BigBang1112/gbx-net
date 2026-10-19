@@ -1,4 +1,5 @@
 CPlugClouds 0x09180000
+- inherits: CFunc
 
 0x000
   CPlugSolid[] SolidFids
@@ -7,6 +8,10 @@ CPlugClouds 0x09180000
   CPlugFileImg ImageColorMin
   CPlugFileImg ImageColorMax
   int Lighting
+
+0x001 (base: 0x000) // legacy speed scale
+  base
+  float SpeedScale
 
 0x002 [TMNESWC, VSK5, TMF]
   vec2[] PointHeights
@@ -18,3 +23,20 @@ CPlugClouds 0x09180000
 0x004 (base: 0x000) [VSK5, TMF]
   base
   float SpeedScale
+
+0x005 // MaterialModelToForce
+  CPlugMaterial MaterialModelToForce
+
+0x006 // legacy images, material, solids and parameters
+  CPlugFileImg ImageColorMin
+  CPlugFileImg ImageColorMax
+  CPlugMaterial MaterialModelToForce
+  CPlugSolid[] SolidFids
+  CPlugCloudsParam CloudsParam
+
+0x007 // images, material, solids and parameters
+  CPlugFileImg ImageColorMin
+  CPlugFileImg ImageColorMax
+  CPlugMaterial MaterialModelToForce
+  CPlugCloudsSolids Solids
+  CPlugCloudsParam CloudsParam
