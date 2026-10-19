@@ -1,5 +1,5 @@
 CHmsLight 0x0600C000
-- inherits: CHmsPocEmitter
+- inherits: CHmsPoc
 
 0x000
   int
