@@ -45,3 +45,9 @@ CFuncShaderLayerUV 0x05015000
 
 0x016 [TMF, MP3, TMT]
   uint
+
+0x017 [MP4, TM2020]
+  vec2
+  vec2
+  vec2
+  float
