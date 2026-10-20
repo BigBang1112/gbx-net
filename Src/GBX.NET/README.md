@@ -179,7 +179,7 @@ Some of the common types to start with (a lot more are supported):
 | Macroblock.Gbx | CGameCtnMacroBlockInfo | Yes | Yes
 | Profile.Gbx | CGamePlayerProfile / CGameUserProfile | Yes | Yes
 | SystemConfig.Gbx | CSystemConfig | Yes | Yes
-| ScriptCache.Gbx | CScriptTraitsMetadata | Yes | Yes
+| ScriptCache.Gbx | CScriptTraitsPersistent | Yes | Yes
 | Scores.Gbx | CGamePlayerScore | Yes | Yes
 
 ## Supported games

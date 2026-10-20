@@ -106,7 +106,7 @@ Here are some of the known file types to start with:
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.chunkl) | Yes | Yes
 | Profile.Gbx | [CGamePlayerProfile](Src/GBX.NET/Engines/Game/CGamePlayerProfile.chunkl) / [CGameUserProfile](Src/GBX.NET/Engines/Game/CGameUserProfile.chunkl) | Yes | Yes
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.chunkl) | Yes | Yes
-| ScriptCache.Gbx | [CScriptTraitsMetadata](Src/GBX.NET/Engines/Script/CScriptTraitsMetadata.chunkl) | Yes | Yes
+| ScriptCache.Gbx | [CScriptTraitsPersistent](Src/GBX.NET/Engines/Script/CScriptTraitsPersistent.chunkl) | Yes | Yes
 | Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.chunkl) | Yes | Yes
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
