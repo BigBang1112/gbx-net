@@ -40,12 +40,13 @@ public partial class CControlLabel : CControlText, IClass
     internal override uint GetId() => Id;
 
     private string? label;
-    /// <remarks>Applied with: 0x001, 0x002, 0x005, 0x006, 0x007 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x005, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk07006001>]
     [AppliedWithChunk<Chunk07006002>]
     [AppliedWithChunk<Chunk07006005>]
     [AppliedWithChunk<Chunk07006006>]
     [AppliedWithChunk<Chunk07006007>]
+    [AppliedWithChunk<Chunk07006009>]
     public string? Label
     {
         get => this.label;
@@ -53,11 +54,12 @@ public partial class CControlLabel : CControlText, IClass
     }
 
     private bool dontDrawText;
-    /// <remarks>Applied with: 0x002, 0x005, 0x006, 0x007 body chunks</remarks>
+    /// <remarks>Applied with: 0x002, 0x005, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk07006002>]
     [AppliedWithChunk<Chunk07006005>]
     [AppliedWithChunk<Chunk07006006>]
     [AppliedWithChunk<Chunk07006007>]
+    [AppliedWithChunk<Chunk07006009>]
     public bool DontDrawText
     {
         get => this.dontDrawText;
@@ -88,10 +90,11 @@ public partial class CControlLabel : CControlText, IClass
     }
 
     private NodeRef<CPlugBitmap>? bitmapRef;
-    /// <remarks>Applied with: 0x005, 0x006, 0x007 body chunks</remarks>
+    /// <remarks>Applied with: 0x005, 0x006, 0x007, 0x009 body chunks</remarks>
     [AppliedWithChunk<Chunk07006005>]
     [AppliedWithChunk<Chunk07006006>]
     [AppliedWithChunk<Chunk07006007>]
+    [AppliedWithChunk<Chunk07006009>]
     public CPlugBitmap? Bitmap
     {
         get => bitmapRef?.Resolve();
@@ -379,6 +382,59 @@ public partial class CControlLabel : CControlText, IClass
         }
     }
 
+    /// <summary>
+    /// CControlLabel 0x009 chunk
+    /// </summary>
+    [Chunk(0x07006009)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk07006009 : Chunk<CControlLabel>, IVersionable
+    {
+        public override uint Id => 0x07006009;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk07006009() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk07006009(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk07006009)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CControlLabel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Boolean(ref n.dontDrawText);
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.bitmapRef);
+            }
+
+            rw.String(ref n.label);
+
+            if (Version == 0)
+            {
+                rw.NodeRef(ref n.bitmapRef);
+            }
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x07006000 => new Chunk07006000(),
@@ -390,6 +446,7 @@ public partial class CControlLabel : CControlText, IClass
         0x07006006 => new Chunk07006006(),
         0x07006007 => new Chunk07006007(),
         0x07006008 => new Chunk07006008(),
+        0x07006009 => new Chunk07006009(),
         _ => base.NewChunk(chunkId),
     };
 }

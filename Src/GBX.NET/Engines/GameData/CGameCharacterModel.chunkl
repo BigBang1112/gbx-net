@@ -1,0 +1,20 @@
+CGameCharacterModel 0x2E028000
+
+0x000 [TM2020.v5]
+  version
+  CMwRefBufferSelect VisualModel
+  CPlugCharPhyModel PhysicsModel
+  CMwNod U01
+  v1+
+    CMwNod U02
+  v2+
+    CMwNod U03
+    CMwNod U04
+    CMwNod U05
+    CMwNod U06
+  v3+
+    int U07
+  v4+
+    CMwNod U08
+  v5+
+    CGameObjectModel[] Objects

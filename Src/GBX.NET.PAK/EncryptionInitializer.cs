@@ -13,6 +13,12 @@ public sealed class EncryptionInitializer : IClassEncryptionInitializer
 
     public void InitializeClass(uint classId, uint parentClassId)
     {
+        // TM2020 archives retain the legacy CFuncKeys dummy-write parent for the replacement curve node.
+        if (pakVersion >= 18 && classId == 0x09185000)
+        {
+            parentClassId = 0x05002000;
+        }
+
         // Legacy Hms emitters still had the CHmsPocEmitter base class.
         if (pakVersion < 12 && classId is 0x0600C000 or 0x0600D000)
         {

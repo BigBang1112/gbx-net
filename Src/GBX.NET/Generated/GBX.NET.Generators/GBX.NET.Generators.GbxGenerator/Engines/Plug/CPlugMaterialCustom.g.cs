@@ -854,6 +854,20 @@ public partial class CPlugMaterialCustom : CPlug, IClass
             set => this.u01 = value;
         }
 
+        private int dataSize;
+        public int DataSize
+        {
+            get => this.dataSize;
+            set => this.dataSize = value;
+        }
+
+        private bool isDataAbsent;
+        public bool IsDataAbsent
+        {
+            get => this.isDataAbsent;
+            set => this.isDataAbsent = value;
+        }
+
         private byte[]? u02;
         public byte[]? U02
         {
@@ -872,13 +886,25 @@ public partial class CPlugMaterialCustom : CPlug, IClass
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
             ((CBuffer)clone).u01 = context.Clone(this.u01)!;
+            ((CBuffer)clone).dataSize = context.Clone(this.dataSize)!;
+            ((CBuffer)clone).isDataAbsent = context.Clone(this.isDataAbsent)!;
             ((CBuffer)clone).u02 = context.CloneArray(this.u02)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
             rw.Int32(ref this.u01);
-            rw.Data(ref this.u02);
+            this.dataSize = rw.Int32((rw.Writer is null ? default : (v>= 1 && IsDataAbsent? DataSize: U02?.Length?? 0)));
+
+            if (v >= 1)
+            {
+                rw.Boolean(ref this.isDataAbsent);
+            }
+
+            if (v== 0 || !IsDataAbsent)
+            {
+                rw.Array<byte>(ref this.u02!, DataSize);
+            }
         }
 
         public virtual void Read(GbxReader r, int v = 0)

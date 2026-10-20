@@ -1595,7 +1595,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
         public byte? U08;
-        public int? U09;
+
+        private NodeRef<CPlugMediaClipList>? U09Ref;
+        public CPlugMediaClipList? U09
+        {
+            get => U09Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U09Ref, value);
+        }
         public int? U10;
 
         public NodeRefView References => new(this);
@@ -1604,11 +1610,13 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             private readonly Chunk2E00201F owner;
             internal NodeRefView(Chunk2E00201F owner) => this.owner = owner;
             public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+            public NodeRef<CPlugMediaClipList> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
+            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
             yield break;
         }
 
@@ -1648,7 +1656,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
             ((Chunk2E00201F)clone).U06 = context.Clone(this.U06)!;
             ((Chunk2E00201F)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk2E00201F)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk2E00201F)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk2E00201F)clone).U09Ref = context.Clone(this.U09Ref)!;
             ((Chunk2E00201F)clone).U10 = context.Clone(this.U10)!;
         }
 
@@ -1704,7 +1712,7 @@ public partial class CGameItemModel : CGameCtnCollector, IClass
 
                         if (Version >= 12)
                         {
-                            rw.Int32(ref U09);
+                            rw.NodeRef(ref U09Ref);
                             rw.Int32(ref U10);
                         }
                     }

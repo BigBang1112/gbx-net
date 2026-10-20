@@ -14,7 +14,7 @@ CPlugCharVisModel 0x090C7000
   version
   CPlugSound[] (deprec)
 
-0x003 [MP4.v31]
+0x003 [MP4.v31, TM2020.v33]
   version
   v9-
     int
@@ -61,58 +61,58 @@ CPlugCharVisModel 0x090C7000
   v8+
     vec3 AttractorRelPos
   v9+
-    CFuncKeysReal WalkViewBobAmountFromVel
-    CFuncKeysReal RunViewBobAmountFromVel
-    CFuncKeysReal WalkStepDistFromVel
-    CFuncKeysReal RunStepDistFromVel
+    PlugCurve WalkViewBobAmountFromVel (version: Version - 33)
+    PlugCurve RunViewBobAmountFromVel (version: Version - 33)
+    PlugCurve WalkStepDistFromVel (version: Version - 33)
+    PlugCurve RunStepDistFromVel (version: Version - 33)
   v10+
     float WalkViewBobOffsetPitch
     float RunViewBobOffsetPitch
     float ViewBobRollWalkCyclePhase
     float ViewBobPitchStepPhase
   v11+
-    CFuncKeysReal WalkStepDistFromVel_Snow
-    CFuncKeysReal RunStepDistFromVel_Snow
+    PlugCurve WalkStepDistFromVel_Snow (version: Version - 33)
+    PlugCurve RunStepDistFromVel_Snow (version: Version - 33)
   v12+
     float StrafeSmoothingPeriod
     float StrafeMaxRollAngle
   v14=
     bool
   v16+
-    CFuncKeysReal WalkStepBodyVolumeFromVel
-    CFuncKeysReal RunStepBodyVolumeFromVel
+    PlugCurve WalkStepBodyVolumeFromVel (version: Version - 33)
+    PlugCurve RunStepBodyVolumeFromVel (version: Version - 33)
   v17+
-    CFuncKeysReal LandVolumeFromVel
+    PlugCurve LandVolumeFromVel (version: Version - 33)
   v19+
     vec3 WalkStepSoundOffset
   v20+
-    CFuncKeysReal SwimStepDistFromVel
-    CFuncKeysReal SwimStepBodyVolumeFromVel
-    CFuncKeysReal SwimStepBodyPitchFromVel
-    CFuncKeysReal WalkStepBodyPitchFromVel
-    CFuncKeysReal RunStepBodyPitchFromVel
-    CFuncKeysReal SwimmingVolumeFromVel
-    CFuncKeysReal SwimmingPitchFromVel
+    PlugCurve SwimStepDistFromVel (version: Version - 33)
+    PlugCurve SwimStepBodyVolumeFromVel (version: Version - 33)
+    PlugCurve SwimStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve WalkStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve RunStepBodyPitchFromVel (version: Version - 33)
+    PlugCurve SwimmingVolumeFromVel (version: Version - 33)
+    PlugCurve SwimmingPitchFromVel (version: Version - 33)
   v22+
-    CFuncKeysReal SlideSurfgVolumeFromVel
-    CFuncKeysReal SlideSurfPitchFromVel
+    PlugCurve SlideSurfgVolumeFromVel (version: Version - 33)
+    PlugCurve SlideSurfPitchFromVel (version: Version - 33)
   v23+
-    CFuncKeysReal JumpVolumeFromVel
-    CFuncKeysReal JumpPitchFromVel
+    PlugCurve JumpVolumeFromVel (version: Version - 33)
+    PlugCurve JumpPitchFromVel (version: Version - 33)
   v24+
-    CFuncKeysReal WallJumpVolumeFromVel
-    CFuncKeysReal WallJumpPitchFromVel
+    PlugCurve WallJumpVolumeFromVel (version: Version - 33)
+    PlugCurve WallJumpPitchFromVel (version: Version - 33)
   v25+
-    CFuncKeysReal SwimStepImpactVolumeFromVel
-    CFuncKeysReal SwimStepImpactPitchFromVel
-    CFuncKeysReal WalkStepImpactVolumeFromVel
-    CFuncKeysReal WalkStepImpactPitchFromVel
-    CFuncKeysReal RunStepImpactVolumeFromVel
-    CFuncKeysReal RunStepImpactPitchFromVel
+    PlugCurve SwimStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve SwimStepImpactPitchFromVel (version: Version - 33)
+    PlugCurve WalkStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve WalkStepImpactPitchFromVel (version: Version - 33)
+    PlugCurve RunStepImpactVolumeFromVel (version: Version - 33)
+    PlugCurve RunStepImpactPitchFromVel (version: Version - 33)
   v26+
     CMwNod AudioEnvironmentForFirstPerson
   v27+
-    CFuncKeysReal WalkViewBobAmountFromVel_Rushing
+    PlugCurve WalkViewBobAmountFromVel_Rushing (version: Version - 33)
   v28+
     CPlugBeamEmitterModel GrapnelModel
   v29+
@@ -121,6 +121,10 @@ CPlugCharVisModel 0x090C7000
     float GrapnelReturnSpeed
   v31+
     CPlugSolid2Model NullMesh
+  v32+
+    CMwNod
+  v33+
+    CMwNod
 
 0x004
   version = 4

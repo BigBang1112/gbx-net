@@ -19,7 +19,7 @@ CGameManiaTitle 0x03001000
   v6+
     string DownloadUrl
 
-0x001 [MP4.v16]
+0x001 [MP4.v16, TM2020.v17]
   version
   CMwNod MenuBg
   v2=
@@ -58,6 +58,8 @@ CGameManiaTitle 0x03001000
     bool
   v16+
     CPlugFont Hud3dFont
+  v17+
+    CMwNod
 
 0x002 [MP4.v3]
   version
@@ -93,7 +95,7 @@ CGameManiaTitle 0x03001000
   version
   string MenuMainManialinkUrl
 
-0x008 [MP4.v2]
+0x008 [MP4.v2, TM2020.v3]
   version
   v1-
     CGameCtnChallenge
@@ -102,6 +104,8 @@ CGameManiaTitle 0x03001000
   CGameCtnChallenge AnimEditor_DefaultChallenge
   v1+
     CMwNod EditorMapType
+  v3+
+    CMwNod
 
 0x009
   version = 2
@@ -175,3 +179,7 @@ archive LegacyCampaign
     v5+
       bool U08
     bool U09
+
+0x00D [TM2020]
+  version
+  CMwNod[]

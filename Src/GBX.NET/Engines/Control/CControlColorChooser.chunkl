@@ -12,3 +12,15 @@ CControlColorChooser 0x0701E000
 
 0x003 [MP4] // StyleType
   int StyleType
+
+0x004 [TM2020]
+  version
+  int StyleType
+  vec2 ColorChooserSize
+  float
+  float
+  vec4
+  vec4
+  float
+  float
+  float

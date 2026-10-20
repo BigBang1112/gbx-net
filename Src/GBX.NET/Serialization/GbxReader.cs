@@ -153,6 +153,8 @@ public partial interface IGbxReader : IDisposable
     List<External<T>> ReadListExternalNodeRef_deprec<T>() where T : CMwNod;
     T[] ReadArrayReadable<T>(int length, int version = 0) where T : IReadable, new();
     T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
+    T[] ReadArrayReadable<T, TNode>(TNode node, int length, int version = 0) where T : IReadable<TNode>, new() where TNode : IClass;
+    T[] ReadArrayReadable<T, TNode>(TNode node, bool byteLengthPrefix = false, int version = 0) where T : IReadable<TNode>, new() where TNode : IClass;
     T[] ReadArrayReadable_deprec<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new();
     /// <summary>Reads an array of rows. A null length reads an Int32 length prefix for that dimension.</summary>
     T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new();
@@ -1438,6 +1440,22 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
     public T[] ReadArrayReadable<T>(bool byteLengthPrefix = false, int version = 0) where T : IReadable, new()
         => ReadArrayReadable<T>(byteLengthPrefix ? ReadByte() : ReadInt32(), version);
 
+    public T[] ReadArrayReadable<T, TNode>(TNode node, int length, int version = 0)
+        where T : IReadable<TNode>, new() where TNode : IClass
+    {
+        EnsureValidLength(length);
+        var array = new T[length];
+        for (var i = 0; i < length; i++)
+        {
+            array[i] = ReadReadable<T, TNode>(node, version);
+        }
+        return array;
+    }
+
+    public T[] ReadArrayReadable<T, TNode>(TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IReadable<TNode>, new() where TNode : IClass
+        => ReadArrayReadable<T, TNode>(node, byteLengthPrefix ? ReadByte() : ReadInt32(), version);
+
     public T[][] ReadJaggedArrayReadable<T>(int? innerLength = null, int? outerLength = null, int version = 0) where T : IReadable, new()
         => ReadJaggedArrayRows(length => ReadArrayReadable<T>(length, version), innerLength, outerLength);
 
@@ -2031,10 +2049,6 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
         else if (baseType == typeof(CPlugVehiclePhyTuning))
         {
             parentClassId = 0x0A02E000;
-        }
-        else if (baseType == typeof(CFuncKeysReal)) // weird case of CPlugCurveSimpleNod
-        {
-            parentClassId = 0x01001000;
         }
         else if (baseType == typeof(CGameCtnZone))
         {

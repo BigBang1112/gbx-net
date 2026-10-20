@@ -1,0 +1,11 @@
+CSystemDependenciesList 0x0B010000
+
+0x000 [TM2020.v1] // dependency folders and files
+  version
+  Folder[] Folders
+  CMwNod[] Files
+
+archive Folder
+  v1+
+    uint ClassId = 0x01001000
+  string Path

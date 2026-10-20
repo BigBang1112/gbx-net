@@ -90,9 +90,10 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
             get => U26Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U26Ref, value);
         }
-        public float U27;
+        public PlugCurve? U27;
         public float U28;
         public float U29;
+        public float U30;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -157,6 +158,7 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
             ((Chunk090B5000)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090B5000)clone).U28 = context.Clone(this.U28)!;
             ((Chunk090B5000)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090B5000)clone).U30 = context.Clone(this.U30)!;
         }
 
         public override void ReadWrite(CPlugParticleSplashModel n, GbxReaderWriter rw)
@@ -200,18 +202,23 @@ public partial class CPlugParticleSplashModel : CMwNod, IClass
             {
                 rw.Single(ref U24);
                 rw.Single(ref U25);
+            }
 
-                if (Version >= 3)
-                {
-                    rw.NodeRef(ref U26Ref);
+            if (Version >= 3 && Version <= 4)
+            {
+                rw.NodeRef(ref U26Ref);
+            }
 
-                    if (Version >= 4)
-                    {
-                        rw.Single(ref U27);
-                        rw.Single(ref U28);
-                        rw.Single(ref U29);
-                    }
-                }
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U27, version: Version);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Single(ref U28);
+                rw.Single(ref U29);
+                rw.Single(ref U30);
             }
         }
     }

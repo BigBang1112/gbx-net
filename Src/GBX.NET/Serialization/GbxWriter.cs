@@ -155,6 +155,8 @@ public partial interface IGbxWriter : IDisposable
     void WriteListExternalNodeRef_deprec<T>(List<External<T>>? value) where T : CMwNod;
 
     void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
+    void WriteArrayWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0) where T : IWritable<TNode>, new() where TNode : IClass;
+    void WriteArrayWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0) where T : IWritable<TNode>, new() where TNode : IClass;
     void WriteArrayWritable_deprec<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new();
     /// <summary>Writes an array of rows. A null length writes an Int32 length prefix for that dimension.</summary>
     void WriteJaggedArrayWritable<T>(T[][]? value, int? innerLength = null, int? outerLength = null, int version = 0) where T : IWritable, new();
@@ -1937,6 +1939,32 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
         WriteListExternalNodeRef(value);
     }
 
+
+    public void WriteArrayWritable<T, TNode>(T[]? value, TNode node, int length, int version = 0)
+        where T : IWritable<TNode>, new() where TNode : IClass
+    {
+        EnsureValidLength(length);
+        for (var i = 0; i < length; i++)
+        {
+            WriteWritable<T, TNode>(value is not null && i < value.Length ? value[i] : new T(), node, version);
+        }
+    }
+
+    public void WriteArrayWritable<T, TNode>(T[]? value, TNode node, bool byteLengthPrefix = false, int version = 0)
+        where T : IWritable<TNode>, new() where TNode : IClass
+    {
+        var length = value?.Length ?? 0;
+        if (byteLengthPrefix)
+        {
+            if (length > byte.MaxValue) throw new ArgumentOutOfRangeException(nameof(value));
+            Write((byte)length);
+        }
+        else
+        {
+            Write(length);
+        }
+        WriteArrayWritable(value, node, length, version);
+    }
 
     public void WriteArrayWritable<T>(T[]? value, bool byteLengthPrefix = false, int version = 0) where T : IWritable, new()
     {

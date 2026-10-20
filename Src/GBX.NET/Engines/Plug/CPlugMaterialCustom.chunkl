@@ -94,5 +94,9 @@ archive DefineNat
   int
 
 archive CBuffer
-  int
-  data
+  int U01
+  int DataSize (write: "v >= 1 && IsDataAbsent ? DataSize : U02?.Length ?? 0")
+  v1+
+    bool IsDataAbsent
+  if v == 0 || !IsDataAbsent
+    byte[DataSize] U02

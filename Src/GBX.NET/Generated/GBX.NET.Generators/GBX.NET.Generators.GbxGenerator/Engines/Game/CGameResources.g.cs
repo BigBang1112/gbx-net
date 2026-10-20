@@ -1068,6 +1068,87 @@ public partial class CGameResources : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref modulePlaygroundFullPlayerStateFidRef, value);
     }
 
+    private string? trafficFolder;
+    /// <remarks>Applied with: 0x048 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D048>(1)]
+    public string? TrafficFolder
+    {
+        get => this.trafficFolder;
+        set => this.trafficFolder = value;
+    }
+
+    private string? adnFolder;
+    /// <remarks>Applied with: 0x048 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D048>(1)]
+    public string? AdnFolder
+    {
+        get => this.adnFolder;
+        set => this.adnFolder = value;
+    }
+
+    private NodeRef<CMwNod>? iconShooterMoodFidRef;
+    /// <remarks>Applied with: 0x048 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D048>(3)]
+    public CMwNod? IconShooterMoodFid
+    {
+        get => iconShooterMoodFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconShooterMoodFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? iconShooterSceneLayoutFidRef;
+    /// <remarks>Applied with: 0x048 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D048>(3)]
+    public CMwNod? IconShooterSceneLayoutFid
+    {
+        get => iconShooterSceneLayoutFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconShooterSceneLayoutFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? iconShooterDefaultSettingsFidRef;
+    /// <remarks>Applied with: 0x048 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D048>(7)]
+    public CMwNod? IconShooterDefaultSettingsFid
+    {
+        get => iconShooterDefaultSettingsFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref iconShooterDefaultSettingsFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? defaultEditorMediaTrackerFidRef;
+    /// <remarks>Applied with: 0x049 body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D049>]
+    public CMwNod? DefaultEditorMediaTrackerFid
+    {
+        get => defaultEditorMediaTrackerFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultEditorMediaTrackerFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? defaultEditorSkinFidRef;
+    /// <remarks>Applied with: 0x04A body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D04A>]
+    public CMwNod? DefaultEditorSkinFid
+    {
+        get => defaultEditorSkinFidRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultEditorSkinFidRef, value);
+    }
+
+    private NodeRef<CMwNod>? badWordDictRef;
+    /// <remarks>Applied with: 0x04D body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D04D>]
+    public CMwNod? BadWordDict
+    {
+        get => badWordDictRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref badWordDictRef, value);
+    }
+
+    private byte[]? compiledWordDictionary;
+    /// <remarks>Applied with: 0x04E body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D04E>]
+    public byte[]? CompiledWordDictionary
+    {
+        get => this.compiledWordDictionary;
+        set => this.compiledWordDictionary = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -1173,6 +1254,12 @@ public partial class CGameResources : CMwNod, IClass
         public NodeRef<CMwNod> ModulePlaygroundDefaultPlayerStateFid => NodeRef.GetOrCreate(ref owner.modulePlaygroundDefaultPlayerStateFidRef);
         public NodeRef<CMwNod> ModulePlaygroundDefaultTeamStateFid => NodeRef.GetOrCreate(ref owner.modulePlaygroundDefaultTeamStateFidRef);
         public NodeRef<CMwNod> ModulePlaygroundFullPlayerStateFid => NodeRef.GetOrCreate(ref owner.modulePlaygroundFullPlayerStateFidRef);
+        public NodeRef<CMwNod> IconShooterMoodFid => NodeRef.GetOrCreate(ref owner.iconShooterMoodFidRef);
+        public NodeRef<CMwNod> IconShooterSceneLayoutFid => NodeRef.GetOrCreate(ref owner.iconShooterSceneLayoutFidRef);
+        public NodeRef<CMwNod> IconShooterDefaultSettingsFid => NodeRef.GetOrCreate(ref owner.iconShooterDefaultSettingsFidRef);
+        public NodeRef<CMwNod> DefaultEditorMediaTrackerFid => NodeRef.GetOrCreate(ref owner.defaultEditorMediaTrackerFidRef);
+        public NodeRef<CMwNod> DefaultEditorSkinFid => NodeRef.GetOrCreate(ref owner.defaultEditorSkinFidRef);
+        public NodeRef<CMwNod> BadWordDict => NodeRef.GetOrCreate(ref owner.badWordDictRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -1277,6 +1364,12 @@ public partial class CGameResources : CMwNod, IClass
         yield return new("ModulePlaygroundDefaultPlayerStateFid", NodeRef.GetOrCreate(ref modulePlaygroundDefaultPlayerStateFidRef));
         yield return new("ModulePlaygroundDefaultTeamStateFid", NodeRef.GetOrCreate(ref modulePlaygroundDefaultTeamStateFidRef));
         yield return new("ModulePlaygroundFullPlayerStateFid", NodeRef.GetOrCreate(ref modulePlaygroundFullPlayerStateFidRef));
+        yield return new("IconShooterMoodFid", NodeRef.GetOrCreate(ref iconShooterMoodFidRef));
+        yield return new("IconShooterSceneLayoutFid", NodeRef.GetOrCreate(ref iconShooterSceneLayoutFidRef));
+        yield return new("IconShooterDefaultSettingsFid", NodeRef.GetOrCreate(ref iconShooterDefaultSettingsFidRef));
+        yield return new("DefaultEditorMediaTrackerFid", NodeRef.GetOrCreate(ref defaultEditorMediaTrackerFidRef));
+        yield return new("DefaultEditorSkinFid", NodeRef.GetOrCreate(ref defaultEditorSkinFidRef));
+        yield return new("BadWordDict", NodeRef.GetOrCreate(ref badWordDictRef));
         yield break;
     }
 
@@ -1397,6 +1490,15 @@ public partial class CGameResources : CMwNod, IClass
         ((CGameResources)clone).modulePlaygroundDefaultPlayerStateFidRef = context.Clone(this.modulePlaygroundDefaultPlayerStateFidRef)!;
         ((CGameResources)clone).modulePlaygroundDefaultTeamStateFidRef = context.Clone(this.modulePlaygroundDefaultTeamStateFidRef)!;
         ((CGameResources)clone).modulePlaygroundFullPlayerStateFidRef = context.Clone(this.modulePlaygroundFullPlayerStateFidRef)!;
+        ((CGameResources)clone).trafficFolder = context.Clone(this.trafficFolder)!;
+        ((CGameResources)clone).adnFolder = context.Clone(this.adnFolder)!;
+        ((CGameResources)clone).iconShooterMoodFidRef = context.Clone(this.iconShooterMoodFidRef)!;
+        ((CGameResources)clone).iconShooterSceneLayoutFidRef = context.Clone(this.iconShooterSceneLayoutFidRef)!;
+        ((CGameResources)clone).iconShooterDefaultSettingsFidRef = context.Clone(this.iconShooterDefaultSettingsFidRef)!;
+        ((CGameResources)clone).defaultEditorMediaTrackerFidRef = context.Clone(this.defaultEditorMediaTrackerFidRef)!;
+        ((CGameResources)clone).defaultEditorSkinFidRef = context.Clone(this.defaultEditorSkinFidRef)!;
+        ((CGameResources)clone).badWordDictRef = context.Clone(this.badWordDictRef)!;
+        ((CGameResources)clone).compiledWordDictionary = context.CloneArray(this.compiledWordDictionary)!;
     }
 
     public CGameResources()
@@ -3544,12 +3646,12 @@ public partial class CGameResources : CMwNod, IClass
     /// CGameResources 0x045 chunk (mesh editor)
     /// </summary>
     [Chunk(0x0302D045, "mesh editor")]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 3)]
     public partial class Chunk0302D045 : Chunk<CGameResources>, IVersionable
     {
         public override uint Id => 0x0302D045;
-        public override GameVersion GameVersion => GameVersion.MP4;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
+        public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -3558,18 +3660,48 @@ public partial class CGameResources : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+        public string? U03;
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk0302D045 owner;
             internal NodeRefView(Chunk0302D045 owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
+        }
+
+        public Chunk0302D045() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0302D045(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.MP4)
+            {
+                Version = 1;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
+            else
+            {
+                Version = 1;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -3577,12 +3709,14 @@ public partial class CGameResources : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk0302D045)clone).Version = context.Clone(this.Version)!;
             ((Chunk0302D045)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D045)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk0302D045)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > global::System.Math.Max(3, 1))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -3592,6 +3726,12 @@ public partial class CGameResources : CMwNod, IClass
             if (Version == 1)
             {
                 rw.NodeRef(ref U01Ref);
+            }
+
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref U02Ref);
+                rw.String(ref U03);
             }
         }
     }
@@ -3693,6 +3833,372 @@ public partial class CGameResources : CMwNod, IClass
             rw.NodeRef(ref U01Ref);
             rw.NodeRef(ref U02Ref);
             rw.NodeRef(ref n.modulePlaygroundFullPlayerStateFidRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x048 chunk (traffic, animation and icon shooter resources)
+    /// </summary>
+    [Chunk(0x0302D048, "traffic, animation and icon shooter resources")]
+    [ChunkGameVersion(GameVersion.TM2020, 7)]
+    public partial class Chunk0302D048 : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D048;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+        public string? U02;
+
+        private NodeRef<CMwNod>? U03Ref;
+        public CMwNod? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+        public string? U04;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D048 owner;
+            internal NodeRefView(Chunk0302D048 owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield break;
+        }
+
+        public Chunk0302D048() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0302D048(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
+            else
+            {
+                Version = 7;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D048)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0302D048)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk0302D048)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0302D048)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk0302D048)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(7, 7))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version == 0)
+            {
+                rw.NodeRef(ref U01Ref);
+            }
+
+            if (Version >= 1)
+            {
+                rw.String(ref n.trafficFolder);
+                rw.String(ref n.adnFolder);
+            }
+
+            if (Version >= 2 && Version <= 3)
+            {
+                rw.String(ref U02);
+            }
+
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref n.iconShooterMoodFidRef);
+                rw.NodeRef(ref n.iconShooterSceneLayoutFidRef);
+
+                if (Version >= 7)
+                {
+                    rw.NodeRef(ref n.iconShooterDefaultSettingsFidRef);
+                }
+            }
+
+            if (Version >= 4)
+            {
+                rw.NodeRef(ref U03Ref);
+            }
+
+            if (Version == 5)
+            {
+                rw.String(ref U04);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x049 chunk (DefaultEditorMediaTrackerFid)
+    /// </summary>
+    [Chunk(0x0302D049, "DefaultEditorMediaTrackerFid")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0302D049 : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D049;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D049)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.defaultEditorMediaTrackerFidRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x04A chunk (DefaultEditorSkinFid)
+    /// </summary>
+    [Chunk(0x0302D04A, "DefaultEditorSkinFid")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0302D04A : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04A;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04A)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.defaultEditorSkinFidRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x04C chunk
+    /// </summary>
+    [Chunk(0x0302D04C)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0302D04C : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04C;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D04C owner;
+            internal NodeRefView(Chunk0302D04C owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0302D04C)clone).U01Ref = context.Clone(this.U01Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref U01Ref);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x04D chunk (word dictionary source)
+    /// </summary>
+    [Chunk(0x0302D04D, "word dictionary source")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk0302D04D : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0302D04D() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0302D04D(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04D)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.badWordDictRef);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x04E chunk (compiled word dictionary)
+    /// </summary>
+    [Chunk(0x0302D04E, "compiled word dictionary")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk0302D04E : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04E;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk0302D04E() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0302D04E(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+            else
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04E)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(1, 1))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Data(ref n.compiledWordDictionary);
+        }
+    }
+
+    /// <summary>
+    /// CGameResources 0x04F chunk
+    /// </summary>
+    [Chunk(0x0302D04F)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0302D04F : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04F;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        private NodeRef<CMwNod>? U01Ref;
+        public CMwNod? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0302D04F owner;
+            internal NodeRefView(Chunk0302D04F owner) => this.owner = owner;
+            public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04F)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0302D04F)clone).U01Ref = context.Clone(this.U01Ref)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref U01Ref);
         }
     }
 
@@ -3819,6 +4325,13 @@ public partial class CGameResources : CMwNod, IClass
         0x0302D045 => new Chunk0302D045(),
         0x0302D046 => new Chunk0302D046(),
         0x0302D047 => new Chunk0302D047(),
+        0x0302D048 => new Chunk0302D048(),
+        0x0302D049 => new Chunk0302D049(),
+        0x0302D04A => new Chunk0302D04A(),
+        0x0302D04C => new Chunk0302D04C(),
+        0x0302D04D => new Chunk0302D04D(),
+        0x0302D04E => new Chunk0302D04E(),
+        0x0302D04F => new Chunk0302D04F(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -1,6 +1,6 @@
 CPlugGameSkin 0x090F4000
 
-0x000 (header, struct: SHeader) [TMSX.v2, TMF.v4, MP3.v5, TMT.v5, MP4.v5]
+0x000 (header, struct: SHeader) [TMSX.v2, TMF.v4, MP3.v5, TMT.v5, MP4.v5, TM2020.v8]
   versionb
   string DirName
   v1+
@@ -41,6 +41,24 @@ CPlugGameSkin 0x090F4000
         string
         v7+
           int
+
+0x005 (skippable) [TM2020.v8] // customizable file paths
+  versionb = 8
+  string DirName
+  v1+
+    string PainterTextureName
+    string PainterSceneId
+  HeaderFid[] CustomizableFilePaths (prefix: byte)
+  v4+
+    string DirNameAlt
+  v5+
+    bool
+  v6+
+    string
+  v7+
+    int
+  v8+
+    byte
 
 archive HeaderFid
   uint ClassId

@@ -61,3 +61,16 @@ CGameApp 0x03005000
   string
   bool
   bool
+
+0x00B (skippable) [TM2020] // legacy application metadata
+  string
+  string
+  string
+  string
+  string
+  string
+  int
+  string
+  string
+  int
+  int

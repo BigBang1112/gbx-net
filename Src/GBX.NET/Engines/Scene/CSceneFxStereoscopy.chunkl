@@ -10,10 +10,11 @@ CSceneFxStereoscopy 0x0A043000
   CMwNod PHlsl_AnaglyphHalfColor
   CMwNod PHlsl_AnaglyphLinear
 
-0x002 // anaglyph, interlaced and debug shaders
+0x002 [TM2020.v1] // anaglyph, interlaced and debug shaders
   version
-  CMwNod PHlsl_AnaglyphFullColor
-  CMwNod PHlsl_AnaglyphHalfColor
-  CMwNod PHlsl_AnaglyphLinear
+  v0=
+    CMwNod PHlsl_AnaglyphFullColor
+    CMwNod PHlsl_AnaglyphHalfColor
+    CMwNod PHlsl_AnaglyphLinear
   CMwNod Shader_Interlaced
   CMwNod Shader_DebugBlend

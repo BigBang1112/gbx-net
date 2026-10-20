@@ -129,9 +129,10 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.poseGridVersion = value;
     }
 
-    private int graphVersion;
-    /// <remarks>Applied with: 0x003 v4-9 body chunk</remarks>
+    private int graphVersion = 63;
+    /// <remarks>Applied with: 0x003 v4-9, 0x003 v13+ body chunks</remarks>
     [AppliedWithChunk<Chunk090B0003>(4, 9)]
+    [AppliedWithChunk<Chunk090B0003>(13)]
     public int GraphVersion
     {
         get => this.graphVersion;
@@ -193,9 +194,9 @@ public partial class CPlugAnimFile : CMwNod, IClass
     }
 
     private CPlugSkel[]? skels;
-    /// <remarks>Applied with: 0x003 v0-9, 0x003 v11+ body chunks</remarks>
+    /// <remarks>Applied with: 0x003 v0-9, 0x003 v11-20 body chunks</remarks>
     [AppliedWithChunk<Chunk090B0003>(0, 9)]
-    [AppliedWithChunk<Chunk090B0003>(11)]
+    [AppliedWithChunk<Chunk090B0003>(11, 20)]
     public CPlugSkel[]? Skels
     {
         get => this.skels;
@@ -337,13 +338,49 @@ public partial class CPlugAnimFile : CMwNod, IClass
         set => this.updateString = value;
     }
 
+    private int variableVersion = 55;
+    /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(20)]
+    public int VariableVersion
+    {
+        get => this.variableVersion;
+        set => this.variableVersion = value;
+    }
+
     private NodeRefList<CPlugAnimClip>? clips;
-    /// <remarks>Applied with: 0x003 v10+ body chunk</remarks>
-    [AppliedWithChunk<Chunk090B0003>(10)]
+    /// <remarks>Applied with: 0x003 v10-20 body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(10, 20)]
     public NodeRefList<CPlugAnimClip>? Clips
     {
         get => clips;
         set => clips = value;
+    }
+
+    private string[]? resourceNames;
+    /// <remarks>Applied with: 0x003 v21+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(21)]
+    public string[]? ResourceNames
+    {
+        get => this.resourceNames;
+        set => this.resourceNames = value;
+    }
+
+    private Resource[]? skelResources;
+    /// <remarks>Applied with: 0x003 v21+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(21)]
+    public Resource[]? SkelResources
+    {
+        get => this.skelResources;
+        set => this.skelResources = value;
+    }
+
+    private Resource[]? clipResources;
+    /// <remarks>Applied with: 0x003 v21+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(21)]
+    public Resource[]? ClipResources
+    {
+        get => this.clipResources;
+        set => this.clipResources = value;
     }
 
     private NodeRefList<CPlugAnimGraphStack>? graphStacks;
@@ -353,6 +390,69 @@ public partial class CPlugAnimFile : CMwNod, IClass
     {
         get => graphStacks;
         set => graphStacks = value;
+    }
+
+    private NodeRefList<CMwNod>? jointGroupNodes;
+    /// <remarks>Applied with: 0x003 v17-20 body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(17, 20)]
+    public NodeRefList<CMwNod>? JointGroupNodes
+    {
+        get => jointGroupNodes;
+        set => jointGroupNodes = value;
+    }
+
+    private Resource[]? jointGroupResources;
+    /// <remarks>Applied with: 0x003 v21+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(21)]
+    public Resource[]? JointGroupResources
+    {
+        get => this.jointGroupResources;
+        set => this.jointGroupResources = value;
+    }
+
+    private Resource[]? bakedResources;
+    /// <remarks>Applied with: 0x003 v22+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(22)]
+    public Resource[]? BakedResources
+    {
+        get => this.bakedResources;
+        set => this.bakedResources = value;
+    }
+
+    private Resource[]? legacyResources1;
+    /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(23)]
+    public Resource[]? LegacyResources1
+    {
+        get => this.legacyResources1;
+        set => this.legacyResources1 = value;
+    }
+
+    private Resource[]? legacyResources2;
+    /// <remarks>Applied with: 0x003 v24+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(24)]
+    public Resource[]? LegacyResources2
+    {
+        get => this.legacyResources2;
+        set => this.legacyResources2 = value;
+    }
+
+    private GraphRoot[]? graphs;
+    /// <remarks>Applied with: 0x003 v13+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(13)]
+    public GraphRoot[]? Graphs
+    {
+        get => this.graphs;
+        set => this.graphs = value;
+    }
+
+    private uint[]? classIds;
+    /// <remarks>Applied with: 0x003 v15+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B0003>(15)]
+    public uint[]? ClassIds
+    {
+        get => this.classIds;
+        set => this.classIds = value;
     }
 
     public NodeRefView References => new(this);
@@ -366,6 +466,7 @@ public partial class CPlugAnimFile : CMwNod, IClass
         public IReadOnlyList<NodeRef<CPlugAnimSkelEditionPose>>? EditionPoses => owner.editionPoses?.References;
         public IReadOnlyList<NodeRef<CPlugAnimClip>>? Clips => owner.clips?.References;
         public IReadOnlyList<NodeRef<CPlugAnimGraphStack>>? GraphStacks => owner.graphStacks?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? JointGroupNodes => owner.jointGroupNodes?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -393,6 +494,10 @@ public partial class CPlugAnimFile : CMwNod, IClass
         if (graphStacks is not null)
         {
             for (var i = 0; i < graphStacks.Count; i++) yield return new("GraphStacks" + "[" + i + "]", graphStacks.Get(i));
+        }
+        if (jointGroupNodes is not null)
+        {
+            for (var i = 0; i < jointGroupNodes.Count; i++) yield return new("JointGroupNodes" + "[" + i + "]", jointGroupNodes.Get(i));
         }
         yield break;
     }
@@ -433,8 +538,19 @@ public partial class CPlugAnimFile : CMwNod, IClass
         ((CPlugAnimFile)clone).legacyData = context.Clone(this.legacyData)!;
         ((CPlugAnimFile)clone).importString = context.Clone(this.importString)!;
         ((CPlugAnimFile)clone).updateString = context.Clone(this.updateString)!;
+        ((CPlugAnimFile)clone).variableVersion = context.Clone(this.variableVersion)!;
         ((CPlugAnimFile)clone).clips = context.Clone(this.clips)!;
+        ((CPlugAnimFile)clone).resourceNames = context.CloneArray(this.resourceNames)!;
+        ((CPlugAnimFile)clone).skelResources = context.CloneArray(this.skelResources)!;
+        ((CPlugAnimFile)clone).clipResources = context.CloneArray(this.clipResources)!;
         ((CPlugAnimFile)clone).graphStacks = context.Clone(this.graphStacks)!;
+        ((CPlugAnimFile)clone).jointGroupNodes = context.Clone(this.jointGroupNodes)!;
+        ((CPlugAnimFile)clone).jointGroupResources = context.CloneArray(this.jointGroupResources)!;
+        ((CPlugAnimFile)clone).bakedResources = context.CloneArray(this.bakedResources)!;
+        ((CPlugAnimFile)clone).legacyResources1 = context.CloneArray(this.legacyResources1)!;
+        ((CPlugAnimFile)clone).legacyResources2 = context.CloneArray(this.legacyResources2)!;
+        ((CPlugAnimFile)clone).graphs = context.CloneArray(this.graphs)!;
+        ((CPlugAnimFile)clone).classIds = context.CloneArray(this.classIds)!;
     }
 
     public CPlugAnimFile()
@@ -451,6 +567,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
         public override uint Id => 0x090B0003;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public string? U01;
+        public uint U02;
 
         public Chunk090B0003() : this(GameVersion.Unspecified)
         {
@@ -476,6 +594,8 @@ public partial class CPlugAnimFile : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090B0003)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B0003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B0003)clone).U02 = context.Clone(this.U02)!;
         }
 
         public override void ReadWrite(CPlugAnimFile n, GbxReaderWriter rw)
@@ -584,21 +704,2990 @@ public partial class CPlugAnimFile : CMwNod, IClass
 
             if (Version >= 10)
             {
-                if (Version >= 11)
+                if (Version >= 13)
                 {
-                    rw.ArrayNodeRef<CPlugSkel>(ref n.skels!);
+                    rw.Int32(ref n.graphVersion);
                 }
 
-                n.clips = rw.ListNodeRef<CPlugAnimClip>(n.clips);
+                if (Version <= 19)
+                {
+                    if (rw.Reader is not null)
+                    {
+                        n.VariableVersion = n.GraphVersion;
+                    }
+                }
+
+                if (Version >= 20)
+                {
+                    rw.Int32(ref n.variableVersion);
+                }
+
+                if (Version <= 20)
+                {
+                    if (Version >= 11)
+                    {
+                        rw.ArrayNodeRef<CPlugSkel>(ref n.skels!);
+                    }
+
+                    n.clips = rw.ListNodeRef<CPlugAnimClip>(n.clips);
+                }
+
+                if (Version >= 21)
+                {
+                    rw.ArrayString(ref n.resourceNames!);
+                    rw.ArrayReadableWritable<Resource>(ref n.skelResources!, version: Version);
+                    rw.ArrayReadableWritable<Resource>(ref n.clipResources!, version: Version);
+                }
+
                 n.variantGroups = rw.ListNodeRef<CPlugAnimVariantGroup>(n.variantGroups);
                 n.poseGroups = rw.ListNodeRef<CPlugAnimPoseGroup>(n.poseGroups);
                 n.poseGrids = rw.ListNodeRef<CPlugAnimPoseGrid>(n.poseGrids);
                 n.graphStacks = rw.ListNodeRef<CPlugAnimGraphStack>(n.graphStacks);
+
+                if (Version >= 17)
+                {
+                    if (Version <= 20)
+                    {
+                        n.jointGroupNodes = rw.ListNodeRef<CMwNod>(n.jointGroupNodes);
+                    }
+
+                    if (Version >= 21)
+                    {
+                        rw.ArrayReadableWritable<Resource>(ref n.jointGroupResources!, version: Version);
+                    }
+                }
+
+                if (Version >= 22)
+                {
+                    rw.ArrayReadableWritable<Resource>(ref n.bakedResources!, version: Version);
+                }
+
+                if (Version >= 23)
+                {
+                    rw.ArrayReadableWritable<Resource>(ref n.legacyResources1!, version: Version);
+                }
+
+                if (Version >= 24)
+                {
+                    rw.ArrayReadableWritable<Resource>(ref n.legacyResources2!, version: Version);
+                }
+
                 rw.Int32(ref n.spotVersion);
                 rw.ArrayReadableWritable<CPlugAnimSpotModel>(ref n.spots!, version: n. SpotVersion);
                 rw.String(ref n.importString);
                 rw.String(ref n.updateString);
+
+                if (Version >= 19)
+                {
+                    rw.String(ref U01);
+                }
+
+                if (Version >= 13)
+                {
+                    rw.ArrayReadableWritable<GraphRoot, CPlugAnimFile>(ref n.graphs!, n, version: n. GraphVersion);
+                }
+
+                if (Version == 14)
+                {
+                    rw.UInt32(ref U02);
+                }
+
+                if (Version >= 15)
+                {
+                    rw.Array<uint>(ref n.classIds!);
+                }
             }
+        }
+    }
+
+    public partial class Resource : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private bool useFile;
+        public bool UseFile
+        {
+            get => this.useFile;
+            set => this.useFile = value;
+        }
+
+        private NodeRef<CMwNod>? valueRef;
+        public CMwNod? Value
+        {
+            get => valueRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref valueRef, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Resource owner;
+            internal NodeRefView(Resource owner) => this.owner = owner;
+            public NodeRef<CMwNod> Value => NodeRef.GetOrCreate(ref owner.valueRef);
+        }
+        public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            yield return new("Value", NodeRef.GetOrCreate(ref valueRef));
+            yield break;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (Resource)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((Resource)clone).name = context.Clone(this.name)!;
+            ((Resource)clone).useFile = context.Clone(this.useFile)!;
+            ((Resource)clone).valueRef = context.Clone(this.valueRef)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Boolean(ref this.useFile);
+            rw.NodeRef(ref this.valueRef);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphRoot : IReadable<CPlugAnimFile>, IWritable<CPlugAnimFile>, IDeepCloneable
+    {
+        private GraphNodeBase? @base;
+        public GraphNodeBase? Base
+        {
+            get => this.@base;
+            set => this.@base = value;
+        }
+
+        private GraphNode[]? children;
+        public GraphNode[]? Children
+        {
+            get => this.children;
+            set => this.children = value;
+        }
+
+        private CPlugVFXFile.Mapping[]? mappings;
+        public CPlugVFXFile.Mapping[]? Mappings
+        {
+            get => this.mappings;
+            set => this.mappings = value;
+        }
+
+        private CPlugFxSystem.Variable[]? variables;
+        public CPlugFxSystem.Variable[]? Variables
+        {
+            get => this.variables;
+            set => this.variables = value;
+        }
+
+        private GraphIdValue[]? idValues;
+        public GraphIdValue[]? IdValues
+        {
+            get => this.idValues;
+            set => this.idValues = value;
+        }
+
+        private string[]? strings;
+        public string[]? Strings
+        {
+            get => this.strings;
+            set => this.strings = value;
+        }
+
+        private byte u01;
+        public byte U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphRoot)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphRoot)clone).@base = context.Clone(this.@base)!;
+            ((GraphRoot)clone).children = context.CloneArray(this.children)!;
+            ((GraphRoot)clone).mappings = context.CloneArray(this.mappings)!;
+            ((GraphRoot)clone).variables = context.CloneArray(this.variables)!;
+            ((GraphRoot)clone).idValues = context.CloneArray(this.idValues)!;
+            ((GraphRoot)clone).strings = context.CloneArray(this.strings)!;
+            ((GraphRoot)clone).u01 = context.Clone(this.u01)!;
+            ((GraphRoot)clone).u02 = context.Clone(this.u02)!;
+            ((GraphRoot)clone).u03 = context.Clone(this.u03)!;
+            ((GraphRoot)clone).u04 = context.Clone(this.u04)!;
+        }
+
+        public virtual void Read(GbxReader r, CPlugAnimFile n, int v = 0)
+        {
+            if (v< 17)
+            {
+                throw new NotSupportedException("Unsupported early animation graph root");
+            }
+
+            this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+            this.children = r.ReadArrayReadable<GraphNode, CPlugAnimFile>(n, version: v);
+            this.mappings = r.ReadArrayReadable<CPlugVFXFile.Mapping>(version: v);
+            this.variables = r.ReadArrayReadable<CPlugFxSystem.Variable>(version: n. VariableVersion);
+
+            if (v >= 33)
+            {
+                this.idValues = r.ReadArrayReadable<GraphIdValue>(version: v);
+            }
+
+            if (v >= 35)
+            {
+                this.strings = r.ReadArrayString();
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                this.u01 = r.ReadByte();
+                this.u02 = r.ReadString();
+            }
+
+            if (v >= 49)
+            {
+                this.u03 = r.ReadString();
+            }
+
+            if (v >= 51)
+            {
+                this.u04 = r.ReadByte();
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CPlugAnimFile n, int v = 0)
+        {
+            if (v< 17)
+            {
+                throw new NotSupportedException("Unsupported early animation graph root");
+            }
+
+            w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+            w.WriteArrayWritable<GraphNode, CPlugAnimFile>(this.children, n, version: v);
+            w.WriteArrayWritable<CPlugVFXFile.Mapping>(this.mappings, version: v);
+            w.WriteArrayWritable<CPlugFxSystem.Variable>(this.variables, version: n. VariableVersion);
+
+            if (v >= 33)
+            {
+                w.WriteArrayWritable<GraphIdValue>(this.idValues, version: v);
+            }
+
+            if (v >= 35)
+            {
+                w.WriteArray(this.strings);
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                w.Write(this.u01);
+                w.Write(this.u02);
+            }
+
+            if (v >= 49)
+            {
+                w.Write(this.u03);
+            }
+
+            if (v >= 51)
+            {
+                w.Write(this.u04);
+            }
+        }
+    }
+
+    public partial class GraphNode : IReadable<CPlugAnimFile>, IWritable<CPlugAnimFile>, IDeepCloneable
+    {
+        private int @type = -1;
+        public int Type
+        {
+            get => this.@type;
+            set => this.@type = value;
+        }
+
+        private GraphRoot? @group;
+        public GraphRoot? Group
+        {
+            get => this.@group;
+            set => this.@group = value;
+        }
+
+        private GraphNodeBase? @base;
+        public GraphNodeBase? Base
+        {
+            get => this.@base;
+            set => this.@base = value;
+        }
+
+        private GraphReference? reference;
+        public GraphReference? Reference
+        {
+            get => this.reference;
+            set => this.reference = value;
+        }
+
+        private GraphAnimation? animation;
+        public GraphAnimation? Animation
+        {
+            get => this.animation;
+            set => this.animation = value;
+        }
+
+        private GraphEvent? @event;
+        public GraphEvent? Event
+        {
+            get => this.@event;
+            set => this.@event = value;
+        }
+
+        private GraphAnimation3? animation3;
+        public GraphAnimation3? Animation3
+        {
+            get => this.animation3;
+            set => this.animation3 = value;
+        }
+
+        private GraphWeights? weights;
+        public GraphWeights? Weights
+        {
+            get => this.weights;
+            set => this.weights = value;
+        }
+
+        private GraphExpression? expression;
+        public GraphExpression? Expression
+        {
+            get => this.expression;
+            set => this.expression = value;
+        }
+
+        private GraphInput? input;
+        public GraphInput? Input
+        {
+            get => this.input;
+            set => this.input = value;
+        }
+
+        private GraphBlend? blend;
+        public GraphBlend? Blend
+        {
+            get => this.blend;
+            set => this.blend = value;
+        }
+
+        private GraphValue? value;
+        public GraphValue? Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private GraphVariable? variable;
+        public GraphVariable? Variable
+        {
+            get => this.variable;
+            set => this.variable = value;
+        }
+
+        private GraphIds? ids;
+        public GraphIds? Ids
+        {
+            get => this.ids;
+            set => this.ids = value;
+        }
+
+        private GraphCondition? condition;
+        public GraphCondition? Condition
+        {
+            get => this.condition;
+            set => this.condition = value;
+        }
+
+        private GraphStrings? text;
+        public GraphStrings? Text
+        {
+            get => this.text;
+            set => this.text = value;
+        }
+
+        private GraphAction? action;
+        public GraphAction? Action
+        {
+            get => this.action;
+            set => this.action = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private GraphStateMachine? stateMachine;
+        public GraphStateMachine? StateMachine
+        {
+            get => this.stateMachine;
+            set => this.stateMachine = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphNode)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphNode)clone).@type = context.Clone(this.@type)!;
+            ((GraphNode)clone).@group = context.Clone(this.@group)!;
+            ((GraphNode)clone).@base = context.Clone(this.@base)!;
+            ((GraphNode)clone).reference = context.Clone(this.reference)!;
+            ((GraphNode)clone).animation = context.Clone(this.animation)!;
+            ((GraphNode)clone).@event = context.Clone(this.@event)!;
+            ((GraphNode)clone).animation3 = context.Clone(this.animation3)!;
+            ((GraphNode)clone).weights = context.Clone(this.weights)!;
+            ((GraphNode)clone).expression = context.Clone(this.expression)!;
+            ((GraphNode)clone).input = context.Clone(this.input)!;
+            ((GraphNode)clone).blend = context.Clone(this.blend)!;
+            ((GraphNode)clone).value = context.Clone(this.value)!;
+            ((GraphNode)clone).u01 = context.Clone(this.u01)!;
+            ((GraphNode)clone).u02 = context.Clone(this.u02)!;
+            ((GraphNode)clone).u03 = context.Clone(this.u03)!;
+            ((GraphNode)clone).variable = context.Clone(this.variable)!;
+            ((GraphNode)clone).ids = context.Clone(this.ids)!;
+            ((GraphNode)clone).condition = context.Clone(this.condition)!;
+            ((GraphNode)clone).text = context.Clone(this.text)!;
+            ((GraphNode)clone).action = context.Clone(this.action)!;
+            ((GraphNode)clone).u04 = context.Clone(this.u04)!;
+            ((GraphNode)clone).stateMachine = context.Clone(this.stateMachine)!;
+        }
+
+        public virtual void Read(GbxReader r, CPlugAnimFile n, int v = 0)
+        {
+            this.@type = r.ReadInt32();
+
+            if (Type== 13)
+            {
+                this.@group = r.ReadReadable<GraphRoot, CPlugAnimFile>(n, version: v);
+            }
+            else if (Type== 7 || Type== 10 || Type== 11 || Type== 14 || Type== 16 || Type== 17 || Type== 19 || Type== 24 || Type== 26)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+            }
+            else if (Type== 2)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.reference = r.ReadReadable<GraphReference>(version: v);
+            }
+            else if (Type== 1)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.animation = r.ReadReadable<GraphAnimation>(version: v);
+            }
+            else if (Type== 8)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.@event = r.ReadReadable<GraphEvent>(version: v);
+            }
+            else if (Type== 3)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.animation3 = r.ReadReadable<GraphAnimation3>(version: v);
+            }
+            else if (Type== 9)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.weights = r.ReadReadable<GraphWeights>(version: v);
+            }
+            else if (Type== 20)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.expression = r.ReadReadable<GraphExpression>(version: v);
+            }
+            else if (Type== 0)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.input = r.ReadReadable<GraphInput>(version: v);
+            }
+            else if (Type== 4)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.blend = r.ReadReadable<GraphBlend>(version: v);
+            }
+            else if (Type== 5)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.value = r.ReadReadable<GraphValue>(version: v);
+            }
+            else if (Type== 6 || Type== 22 || Type== 34)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.u01 = r.ReadId();
+
+                if (Type== 6)
+                {
+                    this.u02 = r.ReadId();
+                    this.u03 = r.ReadId();
+                }
+            }
+            else if (Type== 18)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.variable = r.ReadReadable<GraphVariable>(version: v);
+            }
+            else if (Type== 21)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.ids = r.ReadReadable<GraphIds>(version: v);
+            }
+            else if (Type== 23)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.condition = r.ReadReadable<GraphCondition>(version: v);
+            }
+            else if (Type== 25)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.text = r.ReadReadable<GraphStrings>(version: v);
+            }
+            else if (Type== 15)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.action = r.ReadReadable<GraphAction>(version: v);
+            }
+            else if (Type== 28)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.u01 = r.ReadId();
+
+                if (v >= 52)
+                {
+                    this.u04 = r.ReadString();
+                }
+            }
+            else if (Type== 12)
+            {
+                this.@base = r.ReadReadable<GraphNodeBase>(version: n. VariableVersion);
+                this.stateMachine = r.ReadReadable<GraphStateMachine, CPlugAnimFile>(n, version: v);
+            }
+            else if (Type!= -1)
+            {
+                throw new NotSupportedException("Unsupported animation graph node type");
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CPlugAnimFile n, int v = 0)
+        {
+            w.Write(this.@type);
+
+            if (Type== 13)
+            {
+                w.WriteWritable<GraphRoot, CPlugAnimFile>(this.@group, n, version: v);
+            }
+            else if (Type== 7 || Type== 10 || Type== 11 || Type== 14 || Type== 16 || Type== 17 || Type== 19 || Type== 24 || Type== 26)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+            }
+            else if (Type== 2)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphReference>(this.reference, version: v);
+            }
+            else if (Type== 1)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphAnimation>(this.animation, version: v);
+            }
+            else if (Type== 8)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphEvent>(this.@event, version: v);
+            }
+            else if (Type== 3)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphAnimation3>(this.animation3, version: v);
+            }
+            else if (Type== 9)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphWeights>(this.weights, version: v);
+            }
+            else if (Type== 20)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphExpression>(this.expression, version: v);
+            }
+            else if (Type== 0)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphInput>(this.input, version: v);
+            }
+            else if (Type== 4)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphBlend>(this.blend, version: v);
+            }
+            else if (Type== 5)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphValue>(this.value, version: v);
+            }
+            else if (Type== 6 || Type== 22 || Type== 34)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteIdAsString(this.u01);
+
+                if (Type== 6)
+                {
+                    w.WriteIdAsString(this.u02);
+                    w.WriteIdAsString(this.u03);
+                }
+            }
+            else if (Type== 18)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphVariable>(this.variable, version: v);
+            }
+            else if (Type== 21)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphIds>(this.ids, version: v);
+            }
+            else if (Type== 23)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphCondition>(this.condition, version: v);
+            }
+            else if (Type== 25)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphStrings>(this.text, version: v);
+            }
+            else if (Type== 15)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphAction>(this.action, version: v);
+            }
+            else if (Type== 28)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteIdAsString(this.u01);
+
+                if (v >= 52)
+                {
+                    w.Write(this.u04);
+                }
+            }
+            else if (Type== 12)
+            {
+                w.WriteWritable<GraphNodeBase>(this.@base, version: n. VariableVersion);
+                w.WriteWritable<GraphStateMachine, CPlugAnimFile>(this.stateMachine, n, version: v);
+            }
+            else if (Type!= -1)
+            {
+                throw new NotSupportedException("Unsupported animation graph node type");
+            }
+        }
+    }
+
+    public partial class GraphNodeBase : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private Vec2 position;
+        public Vec2 Position
+        {
+            get => this.position;
+            set => this.position = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private byte u05;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphNodeBase)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphNodeBase)clone).name = context.Clone(this.name)!;
+            ((GraphNodeBase)clone).u01 = context.Clone(this.u01)!;
+            ((GraphNodeBase)clone).u02 = context.Clone(this.u02)!;
+            ((GraphNodeBase)clone).position = context.Clone(this.position)!;
+            ((GraphNodeBase)clone).u03 = context.Clone(this.u03)!;
+            ((GraphNodeBase)clone).u04 = context.Clone(this.u04)!;
+            ((GraphNodeBase)clone).u05 = context.Clone(this.u05)!;
+            ((GraphNodeBase)clone).u06 = context.Clone(this.u06)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+
+            if (v <= 9)
+            {
+                rw.Int32(ref this.u01);
+            }
+
+            if (v >= 3 && v <= 39)
+            {
+                rw.Int32(ref this.u02);
+            }
+
+            if (v >= 8)
+            {
+                rw.Vec2(ref this.position);
+            }
+
+            if (v >= 9)
+            {
+                rw.Int32(ref this.u03);
+            }
+
+            if (v >= 55)
+            {
+                rw.Byte(ref this.u04);
+                rw.Byte(ref this.u05);
+                rw.Int32(ref this.u06);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphIdValue : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int value;
+        public int Value
+        {
+            get => this.value;
+            set => this.value = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphIdValue)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphIdValue)clone).name = context.Clone(this.name)!;
+            ((GraphIdValue)clone).value = context.Clone(this.value)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Int32(ref this.value);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphReference : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private byte u05;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private string? u06;
+        public string? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphReference)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphReference)clone).u01 = context.Clone(this.u01)!;
+            ((GraphReference)clone).u02 = context.Clone(this.u02)!;
+            ((GraphReference)clone).u03 = context.Clone(this.u03)!;
+            ((GraphReference)clone).u04 = context.Clone(this.u04)!;
+            ((GraphReference)clone).u05 = context.Clone(this.u05)!;
+            ((GraphReference)clone).u06 = context.Clone(this.u06)!;
+            ((GraphReference)clone).u07 = context.Clone(this.u07)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.u01);
+            rw.Id(ref this.u02);
+
+            if (v >= 2)
+            {
+                rw.Int32(ref this.u03);
+            }
+
+            if (v >= 5)
+            {
+                rw.String(ref this.u04);
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u05);
+                rw.String(ref this.u06);
+            }
+
+            if (v >= 50)
+            {
+                rw.Int32(ref this.u07);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphAnimation : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float u03;
+        public float U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private float u04;
+        public float U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private byte u06;
+        public byte U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private byte u07;
+        public byte U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private byte u08;
+        public byte U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private byte u09;
+        public byte U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private string? u10;
+        public string? U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private float u11;
+        public float U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private float u12;
+        public float U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private float u13;
+        public float U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private float u14 = 1f;
+        public float U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphAnimation)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphAnimation)clone).name = context.Clone(this.name)!;
+            ((GraphAnimation)clone).u01 = context.Clone(this.u01)!;
+            ((GraphAnimation)clone).u02 = context.Clone(this.u02)!;
+            ((GraphAnimation)clone).u03 = context.Clone(this.u03)!;
+            ((GraphAnimation)clone).u04 = context.Clone(this.u04)!;
+            ((GraphAnimation)clone).u05 = context.Clone(this.u05)!;
+            ((GraphAnimation)clone).u06 = context.Clone(this.u06)!;
+            ((GraphAnimation)clone).u07 = context.Clone(this.u07)!;
+            ((GraphAnimation)clone).u08 = context.Clone(this.u08)!;
+            ((GraphAnimation)clone).u09 = context.Clone(this.u09)!;
+            ((GraphAnimation)clone).u10 = context.Clone(this.u10)!;
+            ((GraphAnimation)clone).u11 = context.Clone(this.u11)!;
+            ((GraphAnimation)clone).u12 = context.Clone(this.u12)!;
+            ((GraphAnimation)clone).u13 = context.Clone(this.u13)!;
+            ((GraphAnimation)clone).u14 = context.Clone(this.u14)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.String(ref this.u01);
+
+            if (v >= 1)
+            {
+                rw.Single(ref this.u02);
+                rw.Single(ref this.u03);
+                rw.Single(ref this.u04);
+            }
+
+            if (v >= 6)
+            {
+                rw.Int32(ref this.u05);
+            }
+
+            if (v >= 38)
+            {
+                rw.Byte(ref this.u06);
+                rw.Byte(ref this.u07);
+            }
+
+            if (v >= 39)
+            {
+                rw.Byte(ref this.u08);
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u09);
+                rw.String(ref this.u10);
+            }
+
+            if (v >= 43)
+            {
+                rw.Single(ref this.u11);
+                rw.Single(ref this.u12);
+                rw.Single(ref this.u13);
+            }
+
+            if (v >= 62)
+            {
+                rw.Single(ref this.u14);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphEvent : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private byte u06;
+        public byte U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private string? u08;
+        public string? U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private int u09;
+        public int U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphEvent)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphEvent)clone).u01 = context.Clone(this.u01)!;
+            ((GraphEvent)clone).u02 = context.Clone(this.u02)!;
+            ((GraphEvent)clone).u03 = context.Clone(this.u03)!;
+            ((GraphEvent)clone).u04 = context.Clone(this.u04)!;
+            ((GraphEvent)clone).u05 = context.Clone(this.u05)!;
+            ((GraphEvent)clone).u06 = context.Clone(this.u06)!;
+            ((GraphEvent)clone).u07 = context.Clone(this.u07)!;
+            ((GraphEvent)clone).u08 = context.Clone(this.u08)!;
+            ((GraphEvent)clone).u09 = context.Clone(this.u09)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.u01);
+
+            if (v >= 15)
+            {
+                rw.Id(ref this.u02);
+            }
+
+            if (v >= 20)
+            {
+                rw.String(ref this.u03);
+                rw.String(ref this.u04);
+            }
+
+            if (v >= 22)
+            {
+                rw.Int32(ref this.u05);
+            }
+
+            if (v >= 29)
+            {
+                rw.Byte(ref this.u06);
+            }
+
+            if (v >= 41)
+            {
+                rw.Int32(ref this.u07);
+            }
+
+            if (v >= 44)
+            {
+                rw.String(ref this.u08);
+                rw.Int32(ref this.u09);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphAnimation3 : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private float u02;
+        public float U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private float u03;
+        public float U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private float u04;
+        public float U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private int u06;
+        public int U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private byte u07;
+        public byte U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private byte u08;
+        public byte U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private byte u09;
+        public byte U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private string? u10;
+        public string? U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private float u11;
+        public float U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private float u12;
+        public float U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private float u13;
+        public float U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphAnimation3)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphAnimation3)clone).name = context.Clone(this.name)!;
+            ((GraphAnimation3)clone).u01 = context.Clone(this.u01)!;
+            ((GraphAnimation3)clone).u02 = context.Clone(this.u02)!;
+            ((GraphAnimation3)clone).u03 = context.Clone(this.u03)!;
+            ((GraphAnimation3)clone).u04 = context.Clone(this.u04)!;
+            ((GraphAnimation3)clone).u05 = context.Clone(this.u05)!;
+            ((GraphAnimation3)clone).u06 = context.Clone(this.u06)!;
+            ((GraphAnimation3)clone).u07 = context.Clone(this.u07)!;
+            ((GraphAnimation3)clone).u08 = context.Clone(this.u08)!;
+            ((GraphAnimation3)clone).u09 = context.Clone(this.u09)!;
+            ((GraphAnimation3)clone).u10 = context.Clone(this.u10)!;
+            ((GraphAnimation3)clone).u11 = context.Clone(this.u11)!;
+            ((GraphAnimation3)clone).u12 = context.Clone(this.u12)!;
+            ((GraphAnimation3)clone).u13 = context.Clone(this.u13)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.String(ref this.u01);
+
+            if (v >= 1)
+            {
+                rw.Single(ref this.u02);
+                rw.Single(ref this.u03);
+                rw.Single(ref this.u04);
+            }
+
+            if (v >= 6)
+            {
+                rw.Int32(ref this.u05);
+            }
+
+            if (v >= 25 && v <= 38)
+            {
+                rw.Int32(ref this.u06);
+            }
+
+            if (v >= 38)
+            {
+                rw.Byte(ref this.u07);
+            }
+
+            if (v >= 39)
+            {
+                rw.Byte(ref this.u08);
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u09);
+                rw.String(ref this.u10);
+            }
+
+            if (v >= 43)
+            {
+                rw.Single(ref this.u11);
+                rw.Single(ref this.u12);
+                rw.Single(ref this.u13);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphWeights : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int count = 2;
+        public int Count
+        {
+            get => this.count;
+            set => this.count = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03 = 1;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private float[]? values;
+        public float[]? Values
+        {
+            get => this.values;
+            set => this.values = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphWeights)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphWeights)clone).u01 = context.Clone(this.u01)!;
+            ((GraphWeights)clone).count = context.Clone(this.count)!;
+            ((GraphWeights)clone).u02 = context.Clone(this.u02)!;
+            ((GraphWeights)clone).u03 = context.Clone(this.u03)!;
+            ((GraphWeights)clone).values = context.CloneArray(this.values)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v >= 11)
+            {
+                rw.String(ref this.u01);
+            }
+
+            if (v >= 13)
+            {
+                this.count = rw.Int32((rw.Writer is null ? default : (v>= 37 ? Values?.Length?? 0 : Count)));
+            }
+
+            if (v >= 34)
+            {
+                rw.Int32(ref this.u02);
+            }
+
+            if (v >= 37)
+            {
+                rw.Int32(ref this.u03);
+                rw.Array<float>(ref this.values!, Count);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphExpression : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private byte u06;
+        public byte U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private string? u07;
+        public string? U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphExpression)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphExpression)clone).name = context.Clone(this.name)!;
+            ((GraphExpression)clone).u01 = context.Clone(this.u01)!;
+            ((GraphExpression)clone).u02 = context.Clone(this.u02)!;
+            ((GraphExpression)clone).u03 = context.Clone(this.u03)!;
+            ((GraphExpression)clone).u04 = context.Clone(this.u04)!;
+            ((GraphExpression)clone).u05 = context.Clone(this.u05)!;
+            ((GraphExpression)clone).u06 = context.Clone(this.u06)!;
+            ((GraphExpression)clone).u07 = context.Clone(this.u07)!;
+            ((GraphExpression)clone).u08 = context.Clone(this.u08)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.String(ref this.u01);
+
+            if (v == 18)
+            {
+                rw.String(ref this.u02);
+            }
+
+            if (v >= 23)
+            {
+                rw.String(ref this.u03);
+            }
+
+            if (v >= 26)
+            {
+                rw.Int32(ref this.u04);
+            }
+
+            if (v >= 36)
+            {
+                rw.Int32(ref this.u05);
+            }
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u06);
+                rw.String(ref this.u07);
+            }
+
+            if (v >= 42)
+            {
+                rw.Int32(ref this.u08);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphInput : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private byte u06;
+        public byte U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private string? u07;
+        public string? U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphInput)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphInput)clone).u01 = context.Clone(this.u01)!;
+            ((GraphInput)clone).u02 = context.Clone(this.u02)!;
+            ((GraphInput)clone).u03 = context.Clone(this.u03)!;
+            ((GraphInput)clone).u04 = context.Clone(this.u04)!;
+            ((GraphInput)clone).u05 = context.Clone(this.u05)!;
+            ((GraphInput)clone).u06 = context.Clone(this.u06)!;
+            ((GraphInput)clone).u07 = context.Clone(this.u07)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.u01);
+            rw.Id(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Int32(ref this.u04);
+            rw.Int32(ref this.u05);
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u06);
+                rw.String(ref this.u07);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphBlend : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04 = 1;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private byte u05;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private string? u06;
+        public string? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private string? u07;
+        public string? U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private string? u08;
+        public string? U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private string? u09;
+        public string? U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private string? u11;
+        public string? U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private string? u12;
+        public string? U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private byte u13;
+        public byte U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphBlend)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphBlend)clone).u01 = context.Clone(this.u01)!;
+            ((GraphBlend)clone).u02 = context.Clone(this.u02)!;
+            ((GraphBlend)clone).u03 = context.Clone(this.u03)!;
+            ((GraphBlend)clone).u04 = context.Clone(this.u04)!;
+            ((GraphBlend)clone).u05 = context.Clone(this.u05)!;
+            ((GraphBlend)clone).u06 = context.Clone(this.u06)!;
+            ((GraphBlend)clone).u07 = context.Clone(this.u07)!;
+            ((GraphBlend)clone).u08 = context.Clone(this.u08)!;
+            ((GraphBlend)clone).u09 = context.Clone(this.u09)!;
+            ((GraphBlend)clone).u10 = context.Clone(this.u10)!;
+            ((GraphBlend)clone).u11 = context.Clone(this.u11)!;
+            ((GraphBlend)clone).u12 = context.Clone(this.u12)!;
+            ((GraphBlend)clone).u13 = context.Clone(this.u13)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.u01);
+            rw.Id(ref this.u02);
+            rw.Id(ref this.u03);
+
+            if (v >= 25)
+            {
+                rw.Int32(ref this.u04);
+            }
+
+            if (v >= 55)
+            {
+                rw.Byte(ref this.u05);
+                rw.String(ref this.u06);
+                rw.String(ref this.u07);
+
+                if (v <= 58)
+                {
+                    rw.String(ref this.u08);
+                }
+
+                rw.String(ref this.u09);
+            }
+
+            if (v >= 57)
+            {
+                rw.Int32(ref this.u10);
+                rw.String(ref this.u11);
+            }
+
+            if (v == 57)
+            {
+                rw.String(ref this.u12);
+                rw.Byte(ref this.u13);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphValue : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphValue)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphValue)clone).name = context.Clone(this.name)!;
+            ((GraphValue)clone).u01 = context.Clone(this.u01)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+
+            if (v >= 47)
+            {
+                rw.Int32(ref this.u01);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphVariable : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte u01;
+        public byte U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private string? u04;
+        public string? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private string? u05;
+        public string? U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private string? u06;
+        public string? U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private string? u07;
+        public string? U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        private string? u09;
+        public string? U09
+        {
+            get => this.u09;
+            set => this.u09 = value;
+        }
+
+        private int u10;
+        public int U10
+        {
+            get => this.u10;
+            set => this.u10 = value;
+        }
+
+        private byte u11;
+        public byte U11
+        {
+            get => this.u11;
+            set => this.u11 = value;
+        }
+
+        private string? u12;
+        public string? U12
+        {
+            get => this.u12;
+            set => this.u12 = value;
+        }
+
+        private int u13;
+        public int U13
+        {
+            get => this.u13;
+            set => this.u13 = value;
+        }
+
+        private string? u14;
+        public string? U14
+        {
+            get => this.u14;
+            set => this.u14 = value;
+        }
+
+        private int u15;
+        public int U15
+        {
+            get => this.u15;
+            set => this.u15 = value;
+        }
+
+        private float u16 = 1f;
+        public float U16
+        {
+            get => this.u16;
+            set => this.u16 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphVariable)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphVariable)clone).u01 = context.Clone(this.u01)!;
+            ((GraphVariable)clone).u02 = context.Clone(this.u02)!;
+            ((GraphVariable)clone).u03 = context.Clone(this.u03)!;
+            ((GraphVariable)clone).u04 = context.Clone(this.u04)!;
+            ((GraphVariable)clone).name = context.Clone(this.name)!;
+            ((GraphVariable)clone).u05 = context.Clone(this.u05)!;
+            ((GraphVariable)clone).u06 = context.Clone(this.u06)!;
+            ((GraphVariable)clone).u07 = context.Clone(this.u07)!;
+            ((GraphVariable)clone).u08 = context.Clone(this.u08)!;
+            ((GraphVariable)clone).u09 = context.Clone(this.u09)!;
+            ((GraphVariable)clone).u10 = context.Clone(this.u10)!;
+            ((GraphVariable)clone).u11 = context.Clone(this.u11)!;
+            ((GraphVariable)clone).u12 = context.Clone(this.u12)!;
+            ((GraphVariable)clone).u13 = context.Clone(this.u13)!;
+            ((GraphVariable)clone).u14 = context.Clone(this.u14)!;
+            ((GraphVariable)clone).u15 = context.Clone(this.u15)!;
+            ((GraphVariable)clone).u16 = context.Clone(this.u16)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v <= 30)
+            {
+                rw.Byte(ref this.u01);
+                rw.Int32(ref this.u02);
+                rw.Int32(ref this.u03);
+                rw.String(ref this.u04);
+            }
+
+            if (v >= 31)
+            {
+                rw.Id(ref this.name);
+
+                if (v <= 53)
+                {
+                    rw.Id(ref this.u05);
+                }
+
+                if (v >= 32)
+                {
+                    if (v <= 53)
+                    {
+                        rw.Id(ref this.u06);
+                        rw.Id(ref this.u07);
+                    }
+
+                    rw.Int32(ref this.u08);
+                    rw.Id(ref this.u09);
+                    rw.Int32(ref this.u10);
+                    rw.Byte(ref this.u11);
+
+                    if (v >= 53)
+                    {
+                        rw.Id(ref this.u12);
+                        rw.Int32(ref this.u13);
+                    }
+
+                    if (v >= 54)
+                    {
+                        rw.Id(ref this.u14);
+                    }
+
+                    if (v >= 61)
+                    {
+                        rw.Int32(ref this.u15);
+                    }
+
+                    if (v >= 62)
+                    {
+                        rw.Single(ref this.u16);
+                    }
+                }
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphIds : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string[]? names;
+        public string[]? Names
+        {
+            get => this.names;
+            set => this.names = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphIds)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphIds)clone).names = context.CloneArray(this.names)!;
+            ((GraphIds)clone).u01 = context.Clone(this.u01)!;
+            ((GraphIds)clone).u02 = context.Clone(this.u02)!;
+            ((GraphIds)clone).u03 = context.Clone(this.u03)!;
+            ((GraphIds)clone).u04 = context.Clone(this.u04)!;
+            ((GraphIds)clone).u05 = context.Clone(this.u05)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.ArrayId(ref this.names!);
+
+            if (v <= 20)
+            {
+                rw.Id(ref this.u01);
+                rw.String(ref this.u02);
+            }
+
+            rw.String(ref this.u03);
+
+            if (v >= 22)
+            {
+                rw.Int32(ref this.u04);
+                rw.Int32(ref this.u05);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphCondition : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private byte u03;
+        public byte U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private byte u05 = 1;
+        public byte U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphCondition)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphCondition)clone).u01 = context.Clone(this.u01)!;
+            ((GraphCondition)clone).u02 = context.Clone(this.u02)!;
+            ((GraphCondition)clone).u03 = context.Clone(this.u03)!;
+            ((GraphCondition)clone).u04 = context.Clone(this.u04)!;
+            ((GraphCondition)clone).u05 = context.Clone(this.u05)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.u01);
+
+            if (v >= 27)
+            {
+                rw.Id(ref this.u02);
+            }
+
+            if (v >= 28)
+            {
+                rw.Byte(ref this.u03);
+            }
+
+            if (v >= 56)
+            {
+                rw.Byte(ref this.u04);
+                rw.Byte(ref this.u05);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphStrings : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private string? u02;
+        public string? U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte u04;
+        public byte U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private string? u05;
+        public string? U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphStrings)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphStrings)clone).name = context.Clone(this.name)!;
+            ((GraphStrings)clone).u01 = context.Clone(this.u01)!;
+            ((GraphStrings)clone).u02 = context.Clone(this.u02)!;
+            ((GraphStrings)clone).u03 = context.Clone(this.u03)!;
+            ((GraphStrings)clone).u04 = context.Clone(this.u04)!;
+            ((GraphStrings)clone).u05 = context.Clone(this.u05)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+
+            if (v >= 30)
+            {
+                rw.String(ref this.u01);
+            }
+
+            rw.String(ref this.u02);
+            rw.String(ref this.u03);
+
+            if (v >= 40 && v <= 47)
+            {
+                rw.Byte(ref this.u04);
+                rw.String(ref this.u05);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphAction : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? u01;
+        public string? U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphAction)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphAction)clone).u01 = context.Clone(this.u01)!;
+            ((GraphAction)clone).u02 = context.Clone(this.u02)!;
+            ((GraphAction)clone).u03 = context.Clone(this.u03)!;
+            ((GraphAction)clone).u04 = context.Clone(this.u04)!;
+            ((GraphAction)clone).u05 = context.Clone(this.u05)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.String(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Int32(ref this.u03);
+            rw.Int32(ref this.u04);
+            rw.Int32(ref this.u05);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class GraphStateMachine : IReadable<CPlugAnimFile>, IWritable<CPlugAnimFile>, IDeepCloneable
+    {
+        private GraphState[]? states;
+        public GraphState[]? States
+        {
+            get => this.states;
+            set => this.states = value;
+        }
+
+        private GraphTransition[]? transitions;
+        public GraphTransition[]? Transitions
+        {
+            get => this.transitions;
+            set => this.transitions = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphStateMachine)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphStateMachine)clone).states = context.CloneArray(this.states)!;
+            ((GraphStateMachine)clone).transitions = context.CloneArray(this.transitions)!;
+            ((GraphStateMachine)clone).u01 = context.Clone(this.u01)!;
+            ((GraphStateMachine)clone).u02 = context.Clone(this.u02)!;
+        }
+
+        public virtual void Read(GbxReader r, CPlugAnimFile n, int v = 0)
+        {
+            this.states = r.ReadArrayReadable<GraphState, CPlugAnimFile>(n, version: v);
+            this.transitions = r.ReadArrayReadable<GraphTransition>(version: v);
+            this.u01 = r.ReadInt32();
+
+            if (v >= 14)
+            {
+                this.u02 = r.ReadInt32();
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CPlugAnimFile n, int v = 0)
+        {
+            w.WriteArrayWritable<GraphState, CPlugAnimFile>(this.states, n, version: v);
+            w.WriteArrayWritable<GraphTransition>(this.transitions, version: v);
+            w.Write(this.u01);
+
+            if (v >= 14)
+            {
+                w.Write(this.u02);
+            }
+        }
+    }
+
+    public partial class GraphState : IReadable<CPlugAnimFile>, IWritable<CPlugAnimFile>, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private GraphRoot? root;
+        public GraphRoot? Root
+        {
+            get => this.root;
+            set => this.root = value;
+        }
+
+        private int u03;
+        public int U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private bool hasCondition;
+        public bool HasCondition
+        {
+            get => this.hasCondition;
+            set => this.hasCondition = value;
+        }
+
+        private string? condition;
+        public string? Condition
+        {
+            get => this.condition;
+            set => this.condition = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private uint u05;
+        public uint U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private uint u06;
+        public uint U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphState)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphState)clone).name = context.Clone(this.name)!;
+            ((GraphState)clone).u01 = context.Clone(this.u01)!;
+            ((GraphState)clone).u02 = context.Clone(this.u02)!;
+            ((GraphState)clone).root = context.Clone(this.root)!;
+            ((GraphState)clone).u03 = context.Clone(this.u03)!;
+            ((GraphState)clone).hasCondition = context.Clone(this.hasCondition)!;
+            ((GraphState)clone).condition = context.Clone(this.condition)!;
+            ((GraphState)clone).u04 = context.Clone(this.u04)!;
+            ((GraphState)clone).u05 = context.Clone(this.u05)!;
+            ((GraphState)clone).u06 = context.Clone(this.u06)!;
+        }
+
+        public virtual void Read(GbxReader r, CPlugAnimFile n, int v = 0)
+        {
+            this.name = r.ReadId();
+            this.u01 = r.ReadInt32();
+            this.u02 = r.ReadInt32();
+            this.root = r.ReadReadable<GraphRoot, CPlugAnimFile>(n, version: v);
+            this.u03 = r.ReadInt32();
+
+            if (v >= 12)
+            {
+                this.hasCondition = r.ReadBoolean();
+
+                if (HasCondition)
+                {
+                    this.condition = r.ReadString();
+                    this.u04 = r.ReadInt32();
+                    this.u05 = r.ReadUInt32();
+                    this.u06 = r.ReadUInt32();
+                }
+            }
+        }
+
+        public virtual void Write(GbxWriter w, CPlugAnimFile n, int v = 0)
+        {
+            w.WriteIdAsString(this.name);
+            w.Write(this.u01);
+            w.Write(this.u02);
+            w.WriteWritable<GraphRoot, CPlugAnimFile>(this.root, n, version: v);
+            w.Write(this.u03);
+
+            if (v >= 12)
+            {
+                w.Write(this.hasCondition);
+
+                if (HasCondition)
+                {
+                    w.Write(this.condition);
+                    w.Write(this.u04);
+                    w.Write(this.u05);
+                    w.Write(this.u06);
+                }
+            }
+        }
+    }
+
+    public partial class GraphTransition : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private string? u03;
+        public string? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private int u04;
+        public int U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        private uint u05;
+        public uint U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
+        private uint u06;
+        public uint U06
+        {
+            get => this.u06;
+            set => this.u06 = value;
+        }
+
+        private int u07;
+        public int U07
+        {
+            get => this.u07;
+            set => this.u07 = value;
+        }
+
+        private int u08;
+        public int U08
+        {
+            get => this.u08;
+            set => this.u08 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (GraphTransition)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((GraphTransition)clone).u01 = context.Clone(this.u01)!;
+            ((GraphTransition)clone).u02 = context.Clone(this.u02)!;
+            ((GraphTransition)clone).u03 = context.Clone(this.u03)!;
+            ((GraphTransition)clone).u04 = context.Clone(this.u04)!;
+            ((GraphTransition)clone).u05 = context.Clone(this.u05)!;
+            ((GraphTransition)clone).u06 = context.Clone(this.u06)!;
+            ((GraphTransition)clone).u07 = context.Clone(this.u07)!;
+            ((GraphTransition)clone).u08 = context.Clone(this.u08)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int32(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.String(ref this.u03);
+            rw.Int32(ref this.u04);
+            rw.UInt32(ref this.u05);
+            rw.UInt32(ref this.u06);
+            rw.Int32(ref this.u07);
+            rw.Int32(ref this.u08);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

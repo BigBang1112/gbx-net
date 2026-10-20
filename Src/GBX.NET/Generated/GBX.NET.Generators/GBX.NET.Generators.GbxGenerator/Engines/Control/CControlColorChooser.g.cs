@@ -49,8 +49,9 @@ public partial class CControlColorChooser : CControlFrame, IClass
     }
 
     private Vec2 colorChooserSize;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x002, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0701E002>]
+    [AppliedWithChunk<Chunk0701E004>]
     public Vec2 ColorChooserSize
     {
         get => this.colorChooserSize;
@@ -58,8 +59,9 @@ public partial class CControlColorChooser : CControlFrame, IClass
     }
 
     private int styleType;
-    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    /// <remarks>Applied with: 0x003, 0x004 body chunks</remarks>
     [AppliedWithChunk<Chunk0701E003>]
+    [AppliedWithChunk<Chunk0701E004>]
     public int StyleType
     {
         get => this.styleType;
@@ -184,12 +186,64 @@ public partial class CControlColorChooser : CControlFrame, IClass
         }
     }
 
+    /// <summary>
+    /// CControlColorChooser 0x004 chunk
+    /// </summary>
+    [Chunk(0x0701E004)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0701E004 : Chunk<CControlColorChooser>, IVersionable
+    {
+        public override uint Id => 0x0701E004;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public Vec4 U03;
+        public Vec4 U04;
+        public float U05;
+        public float U06;
+        public float U07;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0701E004)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0701E004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0701E004)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0701E004)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0701E004)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0701E004)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0701E004)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0701E004)clone).U07 = context.Clone(this.U07)!;
+        }
+
+        public override void ReadWrite(CControlColorChooser n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Int32(ref n.styleType);
+            rw.Vec2(ref n.colorChooserSize);
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Vec4(ref U03);
+            rw.Vec4(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0701E000 => new Chunk0701E000(),
         0x0701E001 => new Chunk0701E001(),
         0x0701E002 => new Chunk0701E002(),
         0x0701E003 => new Chunk0701E003(),
+        0x0701E004 => new Chunk0701E004(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -1,1 +1,17 @@
 CPlugMaterialColorTargetTable 0x0915E000
+
+archive
+  version = 3
+  v2- (archive)
+    int[] LegacyColors1
+    v1+ (archive)
+      int[] LegacyColors2
+    v2+ (archive)
+      int[] LegacyColors3
+      int[] LegacyColors4
+  v3+ (archive)
+    ColorPair[] Colors
+
+archive ColorPair
+  int[] Colors1
+  int[] Colors2

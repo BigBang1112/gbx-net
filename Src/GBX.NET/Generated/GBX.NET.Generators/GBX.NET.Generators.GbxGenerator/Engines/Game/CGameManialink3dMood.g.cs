@@ -40,7 +40,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private Vec3 lAmbient_LinearRgb;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 LAmbient_LinearRgb
     {
@@ -49,7 +50,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 lDir0_LinearRgb;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 LDir0_LinearRgb
     {
@@ -58,7 +60,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir0_Intens;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir0_Intens
     {
@@ -67,7 +70,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir0_DirTheta;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir0_DirTheta
     {
@@ -76,7 +80,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir0_DirPhi;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir0_DirPhi
     {
@@ -85,7 +90,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 lDir1_LinearRgb;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 LDir1_LinearRgb
     {
@@ -94,7 +100,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir1_Intens;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir1_Intens
     {
@@ -103,7 +110,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir1_DirTheta;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir1_DirTheta
     {
@@ -112,7 +120,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lDir1_DirPhi;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LDir1_DirPhi
     {
@@ -121,7 +130,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 lBall_LinearRgb;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 LBall_LinearRgb
     {
@@ -130,7 +140,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lBall_Intens;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LBall_Intens
     {
@@ -139,7 +150,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private float lBall_Radius;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public float LBall_Radius
     {
@@ -148,7 +160,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 cloudsRgbMinLinear;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 CloudsRgbMinLinear
     {
@@ -157,7 +170,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 cloudsRgbMaxLinear;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 CloudsRgbMaxLinear
     {
@@ -166,7 +180,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private Vec3 fogColorSrgb;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public Vec3 FogColorSrgb
     {
@@ -175,7 +190,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? fidImageSkyGradientVRef;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
+    /// <remarks>Applied with: 0x000, 0x000 body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>]
     [AppliedWithChunk<Chunk0316F000>]
     public CPlugFileImg? FidImageSkyGradientV
     {
@@ -184,7 +200,8 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     private NodeRef<CPlugFileImg>? fidImageCloudsMinMaxDayTimeRef;
-    /// <remarks>Applied with: 0x000 v1+ body chunk</remarks>
+    /// <remarks>Applied with: 0x000 v1+, 0x000 v1+ body chunks</remarks>
+    [AppliedWithChunk<Chunk0317E000>(1)]
     [AppliedWithChunk<Chunk0316F000>(1)]
     public CPlugFileImg? FidImageCloudsMinMaxDayTime
     {
@@ -235,9 +252,9 @@ public partial class CGameManialink3dMood : CMwNod, IClass
     }
 
     /// <summary>
-    /// CGameManialink3dMood 0x000 chunk (lighting, clouds, fog and sky images)
+    /// CGameManialink3dMood 0x000 chunk (lighting, clouds, fog and sky images (legacy ID))
     /// </summary>
-    [Chunk(0x0316F000, "lighting, clouds, fog and sky images")]
+    [Chunk(0x0316F000, "lighting, clouds, fog and sky images (legacy ID)")]
     [ChunkGameVersion(GameVersion.MP4)]
     public partial class Chunk0316F000 : Chunk<CGameManialink3dMood>, IVersionable
     {
@@ -286,9 +303,62 @@ public partial class CGameManialink3dMood : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameManialink3dMood 0x000 chunk (lighting, clouds, fog and sky images)
+    /// </summary>
+    [Chunk(0x0317E000, "lighting, clouds, fog and sky images")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0317E000 : Chunk<CGameManialink3dMood>, IVersionable
+    {
+        public override uint Id => 0x0317E000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; } = 1;
+        public bool U01;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0317E000)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0317E000)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameManialink3dMood n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Vec3(ref n.lAmbient_LinearRgb);
+            rw.Vec3(ref n.lDir0_LinearRgb);
+            rw.Single(ref n.lDir0_Intens);
+            rw.Single(ref n.lDir0_DirTheta);
+            rw.Single(ref n.lDir0_DirPhi);
+            rw.Vec3(ref n.lDir1_LinearRgb);
+            rw.Single(ref n.lDir1_Intens);
+            rw.Single(ref n.lDir1_DirTheta);
+            rw.Single(ref n.lDir1_DirPhi);
+            rw.Vec3(ref n.lBall_LinearRgb);
+            rw.Single(ref n.lBall_Intens);
+            rw.Single(ref n.lBall_Radius);
+            rw.Vec3(ref n.cloudsRgbMinLinear);
+            rw.Vec3(ref n.cloudsRgbMaxLinear);
+            rw.Vec3(ref n.fogColorSrgb);
+            rw.NodeRef(ref n.fidImageSkyGradientVRef);
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.fidImageCloudsMinMaxDayTimeRef);
+                rw.Boolean(ref U01);
+            }
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0316F000 => new Chunk0316F000(),
+        0x0317E000 => new Chunk0317E000(),
         _ => base.NewChunk(chunkId),
     };
 }

@@ -274,8 +274,8 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
     private NodeRefList<CPlugRoadChunk>? legacyPlacementPatches;
 
     private NodeRefList<CPlugPlacementPatch>? placementPatches;
-    /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
-    [AppliedWithChunk<Chunk03122003>(20)]
+    /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03122003>(23)]
     public NodeRefList<CPlugPlacementPatch>? PlacementPatches
     {
         get => placementPatches;
@@ -721,16 +721,14 @@ public partial class CGameCtnBlockInfoMobil : CMwNod, IClass
                 rw.Single(ref n.vFXAngle);
             }
 
-            if (Version >= 20)
+            if (Version >= 20 && Version <= 22)
             {
-                if (Version< 23 || (Version== 23 && rw.Reader != null))
-                {
-                    n.LegacyPlacementPatches = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyPlacementPatches);
-                }
-                else
-                {
-                    n.placementPatches = rw.ListNodeRef<CPlugPlacementPatch>(n.placementPatches);
-                }
+                n.LegacyPlacementPatches = rw.ListNodeRef_deprec<CPlugRoadChunk>(n.LegacyPlacementPatches);
+            }
+
+            if (Version >= 23)
+            {
+                n.placementPatches = rw.ListNodeRef<CPlugPlacementPatch>(n.placementPatches);
             }
 
             if (Version >= 21)

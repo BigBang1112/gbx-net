@@ -40,10 +40,10 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     internal override uint GetId() => Id;
 
     private NodeRef<CMwNod>? pHlsl_AnaglyphFullColorRef;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk0A043000>]
     [AppliedWithChunk<Chunk0A043001>]
-    [AppliedWithChunk<Chunk0A043002>]
+    [AppliedWithChunk<Chunk0A043002>(0, 0)]
     public CMwNod? PHlsl_AnaglyphFullColor
     {
         get => pHlsl_AnaglyphFullColorRef?.Resolve();
@@ -51,10 +51,10 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     }
 
     private NodeRef<CMwNod>? pHlsl_AnaglyphHalfColorRef;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002 v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk0A043000>]
     [AppliedWithChunk<Chunk0A043001>]
-    [AppliedWithChunk<Chunk0A043002>]
+    [AppliedWithChunk<Chunk0A043002>(0, 0)]
     public CMwNod? PHlsl_AnaglyphHalfColor
     {
         get => pHlsl_AnaglyphHalfColorRef?.Resolve();
@@ -62,9 +62,9 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     }
 
     private NodeRef<CMwNod>? pHlsl_AnaglyphLinearRef;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002 v0-0 body chunks</remarks>
     [AppliedWithChunk<Chunk0A043001>]
-    [AppliedWithChunk<Chunk0A043002>]
+    [AppliedWithChunk<Chunk0A043002>(0, 0)]
     public CMwNod? PHlsl_AnaglyphLinear
     {
         get => pHlsl_AnaglyphLinearRef?.Resolve();
@@ -170,10 +170,24 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
     /// CSceneFxStereoscopy 0x002 chunk (anaglyph, interlaced and debug shaders)
     /// </summary>
     [Chunk(0x0A043002, "anaglyph, interlaced and debug shaders")]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
     public partial class Chunk0A043002 : Chunk<CSceneFxStereoscopy>, IVersionable
     {
         public override uint Id => 0x0A043002;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk0A043002() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk0A043002(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -184,9 +198,18 @@ public partial class CSceneFxStereoscopy : CSceneFxCompo, IClass
         public override void ReadWrite(CSceneFxStereoscopy n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef(ref n.pHlsl_AnaglyphFullColorRef);
-            rw.NodeRef(ref n.pHlsl_AnaglyphHalfColorRef);
-            rw.NodeRef(ref n.pHlsl_AnaglyphLinearRef);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            if (Version == 0)
+            {
+                rw.NodeRef(ref n.pHlsl_AnaglyphFullColorRef);
+                rw.NodeRef(ref n.pHlsl_AnaglyphHalfColorRef);
+                rw.NodeRef(ref n.pHlsl_AnaglyphLinearRef);
+            }
+
             rw.NodeRef(ref n.shader_InterlacedRef);
             rw.NodeRef(ref n.shader_DebugBlendRef);
         }

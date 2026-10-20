@@ -1342,6 +1342,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             get => U05Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
+        public PlugCurve? U06;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1386,6 +1387,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B202F)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090B202F)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090B202F)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk090B202F)clone).U06 = context.Clone(this.U06)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
@@ -1396,21 +1398,23 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version <= 2)
+            rw.Int32(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+
+            if (Version >= 1)
             {
-                rw.Int32(ref U01);
-                rw.Single(ref U02);
-                rw.Single(ref U03);
+                rw.Iso4(ref U04);
+            }
 
-                if (Version >= 1)
-                {
-                    rw.Iso4(ref U04);
-                }
+            if (Version == 2)
+            {
+                rw.NodeRef(ref U05Ref);
+            }
 
-                if (Version >= 2)
-                {
-                    rw.NodeRef(ref U05Ref);
-                }
+            if (Version >= 3)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version);
             }
         }
     }
@@ -1477,45 +1481,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public bool U13;
         public bool U14;
         public int U15;
-
-        private NodeRef<CFuncKeysReal>? U16Ref;
-        public CFuncKeysReal? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U17Ref;
-        public CFuncKeysReal? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U18Ref;
-        public CFuncKeysReal? U18
-        {
-            get => U18Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U18Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090B2031 owner;
-            internal NodeRefView(Chunk090B2031 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield break;
-        }
+        public PlugCurve? U16;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
 
         public Chunk090B2031() : this(GameVersion.Unspecified)
         {
@@ -1562,9 +1530,9 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2031)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090B2031)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090B2031)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090B2031)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090B2031)clone).U17Ref = context.Clone(this.U17Ref)!;
-            ((Chunk090B2031)clone).U18Ref = context.Clone(this.U18Ref)!;
+            ((Chunk090B2031)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090B2031)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090B2031)clone).U18 = context.Clone(this.U18)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
@@ -1640,12 +1608,12 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
 
                                     if (Version >= 12)
                                     {
-                                        rw.NodeRef(ref U16Ref);
+                                        rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 14);
 
                                         if (Version >= 13)
                                         {
-                                            rw.NodeRef(ref U17Ref);
-                                            rw.NodeRef(ref U18Ref);
+                                            rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 14);
+                                            rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 14);
                                         }
                                     }
                                 }
@@ -1732,49 +1700,47 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             get => U07Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
-        public bool U08;
+        public PlugCurve? U08;
+        public bool U09;
 
-        private NodeRef<CFuncEnvelope>? U09Ref;
-        public CFuncEnvelope? U09
+        private NodeRef<CFuncEnvelope>? U10Ref;
+        public CFuncEnvelope? U10
         {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
+            get => U10Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U10Ref, value);
         }
-        public float U10;
-        public float U11;
-        public bool U12;
+        public PlugCurve? U11;
+        public float U12;
+        public float U13;
+        public bool U14;
 
-        private NodeRef<CFuncColorGradient>? U13Ref;
-        public CFuncColorGradient? U13
+        private NodeRef<CFuncColorGradient>? U15Ref;
+        public CFuncColorGradient? U15
         {
-            get => U13Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U13Ref, value);
+            get => U15Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U15Ref, value);
         }
-        public int U14;
-        public bool U15;
-        public bool U16;
-        public bool U17;
-        public int U18;
-        public float U19;
-        public float U20;
-        public bool U21;
-
-        private NodeRef<CFuncEnvelope>? U22Ref;
-        public CFuncEnvelope? U22
-        {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
+        public InlineColorGradient? U16;
+        public int U17;
+        public bool U18;
+        public bool U19;
+        public bool U20;
+        public int U21;
+        public float U22;
         public float U23;
-        public float U24;
-        public float U25;
+        public bool U24;
 
-        private NodeRef<CFuncKeysReal>? U26Ref;
-        public CFuncKeysReal? U26
+        private NodeRef<CFuncEnvelope>? U25Ref;
+        public CFuncEnvelope? U25
         {
-            get => U26Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U26Ref, value);
+            get => U25Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U25Ref, value);
         }
+        public PlugCurve? U26;
+        public float U27;
+        public float U28;
+        public float U29;
+        public PlugCurve? U30;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1782,19 +1748,17 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             private readonly Chunk090B2033 owner;
             internal NodeRefView(Chunk090B2033 owner) => this.owner = owner;
             public NodeRef<CFuncEnvelope> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CFuncEnvelope> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CFuncColorGradient> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CFuncEnvelope> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
-            public NodeRef<CFuncKeysReal> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
+            public NodeRef<CFuncEnvelope> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CFuncColorGradient> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
+            public NodeRef<CFuncEnvelope> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
-            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
+            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
+            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
             yield break;
         }
 
@@ -1830,24 +1794,28 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2033)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090B2033)clone).U07Ref = context.Clone(this.U07Ref)!;
             ((Chunk090B2033)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090B2033)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk090B2033)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090B2033)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090B2033)clone).U10Ref = context.Clone(this.U10Ref)!;
             ((Chunk090B2033)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090B2033)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090B2033)clone).U13Ref = context.Clone(this.U13Ref)!;
+            ((Chunk090B2033)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090B2033)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090B2033)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090B2033)clone).U15Ref = context.Clone(this.U15Ref)!;
             ((Chunk090B2033)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090B2033)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090B2033)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090B2033)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090B2033)clone).U20 = context.Clone(this.U20)!;
             ((Chunk090B2033)clone).U21 = context.Clone(this.U21)!;
-            ((Chunk090B2033)clone).U22Ref = context.Clone(this.U22Ref)!;
+            ((Chunk090B2033)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090B2033)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090B2033)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090B2033)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090B2033)clone).U26Ref = context.Clone(this.U26Ref)!;
+            ((Chunk090B2033)clone).U25Ref = context.Clone(this.U25Ref)!;
+            ((Chunk090B2033)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090B2033)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090B2033)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090B2033)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090B2033)clone).U30 = context.Clone(this.U30)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
@@ -1864,45 +1832,85 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U04);
             rw.Single(ref U05);
             rw.Boolean(ref U06);
-            rw.NodeRef(ref U07Ref);
-            rw.Boolean(ref U08);
-            rw.NodeRef(ref U09Ref);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Boolean(ref U12);
-            rw.NodeRef(ref U13Ref);
-            rw.Int32(ref U14);
-            rw.Boolean(ref U15);
+
+            if (Version <= 4)
+            {
+                rw.NodeRef(ref U07Ref);
+            }
+
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version);
+            }
+
+            rw.Boolean(ref U09);
+
+            if (Version <= 4)
+            {
+                rw.NodeRef(ref U10Ref);
+            }
+
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version);
+            }
+
+            rw.Single(ref U12);
+            rw.Single(ref U13);
+            rw.Boolean(ref U14);
+
+            if (Version <= 4)
+            {
+                rw.NodeRef(ref U15Ref);
+            }
+
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<InlineColorGradient>(ref U16, version: Version);
+            }
+
+            rw.Int32(ref U17);
+            rw.Boolean(ref U18);
 
             if (Version <= 2)
             {
                 if (Version >= 1)
                 {
-                    rw.Boolean(ref U16);
+                    rw.Boolean(ref U19);
 
                     if (Version >= 2)
                     {
-                        rw.Boolean(ref U17);
+                        rw.Boolean(ref U20);
                     }
                 }
             }
 
             if (Version >= 3)
             {
-                rw.Int32(ref U18);
+                rw.Int32(ref U21);
             }
 
-            rw.Single(ref U19);
-            rw.Single(ref U20);
-            rw.Boolean(ref U21);
-            rw.NodeRef(ref U22Ref);
+            rw.Single(ref U22);
             rw.Single(ref U23);
-            rw.Single(ref U24);
+            rw.Boolean(ref U24);
+
+            if (Version <= 4)
+            {
+                rw.NodeRef(ref U25Ref);
+            }
+
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version);
+            }
+
+            rw.Single(ref U27);
+            rw.Single(ref U28);
 
             if (Version >= 4)
             {
-                rw.Single(ref U25);
-                rw.NodeRef(ref U26Ref);
+                rw.Single(ref U29);
+                rw.ReadableWritable<PlugCurve>(ref U30, version: Version- 5);
             }
         }
     }
@@ -1938,8 +1946,10 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             get => U03Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
-        public bool U04;
-        public bool U05;
+        public PlugCurve? U04;
+        public InlineColorGradient? U05;
+        public bool U06;
+        public bool U07;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1988,6 +1998,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2034)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090B2034)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090B2034)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090B2034)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090B2034)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterSubModel n, GbxReaderWriter rw)
@@ -1999,16 +2011,26 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             }
 
             rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
+
+            if (Version <= 2)
+            {
+                rw.NodeRef(ref U02Ref);
+                rw.NodeRef(ref U03Ref);
+            }
+
+            if (Version >= 3)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version);
+                rw.ReadableWritable<InlineColorGradient>(ref U05, version: Version);
+            }
 
             if (Version >= 1)
             {
-                rw.Boolean(ref U04);
+                rw.Boolean(ref U06);
 
                 if (Version >= 2)
                 {
-                    rw.Boolean(ref U05);
+                    rw.Boolean(ref U07);
                 }
             }
         }
@@ -2132,20 +2154,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public int U01;
         public float U02;
         public float U03;
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U05Ref;
-        public CFuncKeysReal? U05
-        {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
-        }
+        public PlugCurve? U04;
+        public PlugCurve? U05;
         public float U06;
         public float U07;
         public float U08;
@@ -2155,34 +2165,10 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
         public float U12;
         public float U13;
         public int U14;
-
-        private NodeRef<CFuncKeysReal>? U15Ref;
-        public CFuncKeysReal? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
+        public PlugCurve? U15;
         public float U16;
         public float U17;
         public float U18;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090B2037 owner;
-            internal NodeRefView(Chunk090B2037 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield break;
-        }
 
         public Chunk090B2037() : this(GameVersion.Unspecified)
         {
@@ -2207,8 +2193,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2037)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090B2037)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090B2037)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090B2037)clone).U04Ref = context.Clone(this.U04Ref)!;
-            ((Chunk090B2037)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk090B2037)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090B2037)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090B2037)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090B2037)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090B2037)clone).U08 = context.Clone(this.U08)!;
@@ -2218,7 +2204,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             ((Chunk090B2037)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090B2037)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090B2037)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090B2037)clone).U15Ref = context.Clone(this.U15Ref)!;
+            ((Chunk090B2037)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090B2037)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090B2037)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090B2037)clone).U18 = context.Clone(this.U18)!;
@@ -2235,8 +2221,8 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Int32(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
-            rw.NodeRef(ref U04Ref);
-            rw.NodeRef(ref U05Ref);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 1);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 1);
             rw.Single(ref U06);
             rw.Single(ref U07);
             rw.Single(ref U08);
@@ -2246,7 +2232,7 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             rw.Single(ref U12);
             rw.Single(ref U13);
             rw.Int32(ref U14);
-            rw.NodeRef(ref U15Ref);
+            rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 1);
             rw.Single(ref U16);
             rw.Single(ref U17);
             rw.Single(ref U18);
@@ -2499,6 +2485,73 @@ public partial class CPlugParticleEmitterSubModel : CMwNod, IClass
             {
                 rw.Single(ref U11);
             }
+        }
+    }
+
+    public partial class InlineColorGradient : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private byte u01;
+        public byte U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        private int u02;
+        public int U02
+        {
+            get => this.u02;
+            set => this.u02 = value;
+        }
+
+        private byte[]? u03;
+        public byte[]? U03
+        {
+            get => this.u03;
+            set => this.u03 = value;
+        }
+
+        private byte[]? u04;
+        public byte[]? U04
+        {
+            get => this.u04;
+            set => this.u04 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (InlineColorGradient)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((InlineColorGradient)clone).u01 = context.Clone(this.u01)!;
+            ((InlineColorGradient)clone).u02 = context.Clone(this.u02)!;
+            ((InlineColorGradient)clone).u03 = context.CloneArray(this.u03)!;
+            ((InlineColorGradient)clone).u04 = context.CloneArray(this.u04)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Byte(ref this.u01);
+            rw.Int32(ref this.u02);
+            rw.Data(ref this.u03!, 16);
+            rw.Data(ref this.u04!, 48);
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
         }
     }
 

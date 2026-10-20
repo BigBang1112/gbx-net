@@ -66,6 +66,96 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         set => this.shadowMapTexelSize = value;
     }
 
+    private bool enableVortexEmitter;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(1)]
+    public bool EnableVortexEmitter
+    {
+        get => this.enableVortexEmitter;
+        set => this.enableVortexEmitter = value;
+    }
+
+    private float radius;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public float Radius
+    {
+        get => this.radius;
+        set => this.radius = value;
+    }
+
+    private int vortexCountPerCircle;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public int VortexCountPerCircle
+    {
+        get => this.vortexCountPerCircle;
+        set => this.vortexCountPerCircle = value;
+    }
+
+    private float strength;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public float Strength
+    {
+        get => this.strength;
+        set => this.strength = value;
+    }
+
+    private int lifeTime;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public int LifeTime
+    {
+        get => this.lifeTime;
+        set => this.lifeTime = value;
+    }
+
+    private float coef;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public float Coef
+    {
+        get => this.coef;
+        set => this.coef = value;
+    }
+
+    private float randomness;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public float Randomness
+    {
+        get => this.randomness;
+        set => this.randomness = value;
+    }
+
+    private int emitPeriod;
+    /// <remarks>Applied with: 0x004 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(2)]
+    public int EmitPeriod
+    {
+        get => this.emitPeriod;
+        set => this.emitPeriod = value;
+    }
+
+    private Vec3 circleNormal;
+    /// <remarks>Applied with: 0x004 v4+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(4)]
+    public Vec3 CircleNormal
+    {
+        get => this.circleNormal;
+        set => this.circleNormal = value;
+    }
+
+    private float lod_cPixelMin;
+    /// <remarks>Applied with: 0x004 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk090B3004>(6)]
+    public float Lod_cPixelMin
+    {
+        get => this.lod_cPixelMin;
+        set => this.lod_cPixelMin = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -89,6 +179,16 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         ((CPlugParticleEmitterModel)clone).particleEmitterSubModels = context.Clone(this.particleEmitterSubModels)!;
         ((CPlugParticleEmitterModel)clone).isSplashMode = context.Clone(this.isSplashMode)!;
         ((CPlugParticleEmitterModel)clone).shadowMapTexelSize = context.Clone(this.shadowMapTexelSize)!;
+        ((CPlugParticleEmitterModel)clone).enableVortexEmitter = context.Clone(this.enableVortexEmitter)!;
+        ((CPlugParticleEmitterModel)clone).radius = context.Clone(this.radius)!;
+        ((CPlugParticleEmitterModel)clone).vortexCountPerCircle = context.Clone(this.vortexCountPerCircle)!;
+        ((CPlugParticleEmitterModel)clone).strength = context.Clone(this.strength)!;
+        ((CPlugParticleEmitterModel)clone).lifeTime = context.Clone(this.lifeTime)!;
+        ((CPlugParticleEmitterModel)clone).coef = context.Clone(this.coef)!;
+        ((CPlugParticleEmitterModel)clone).randomness = context.Clone(this.randomness)!;
+        ((CPlugParticleEmitterModel)clone).emitPeriod = context.Clone(this.emitPeriod)!;
+        ((CPlugParticleEmitterModel)clone).circleNormal = context.Clone(this.circleNormal)!;
+        ((CPlugParticleEmitterModel)clone).lod_cPixelMin = context.Clone(this.lod_cPixelMin)!;
     }
 
     public CPlugParticleEmitterModel()
@@ -149,6 +249,8 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         public override uint Id => 0x090B3002;
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
+        public byte[]? U01;
+        public byte[]? U02;
 
         public Chunk090B3002() : this(GameVersion.Unspecified)
         {
@@ -170,6 +272,8 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090B3002)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090B3002)clone).U01 = context.CloneArray(this.U01)!;
+            ((Chunk090B3002)clone).U02 = context.CloneArray(this.U02)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
@@ -181,6 +285,16 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
             }
 
             rw.Boolean(ref n.isSplashMode);
+
+            if (Version == 1)
+            {
+                rw.Data(ref U01!, 4);
+            }
+
+            if (Version == 3)
+            {
+                rw.Data(ref U02!, 24);
+            }
 
             if (Version >= 3)
             {
@@ -221,27 +335,18 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
     }
 
     /// <summary>
-    /// CPlugParticleEmitterModel 0x004 chunk
+    /// CPlugParticleEmitterModel 0x004 chunk (vortex emitter)
     /// </summary>
-    [Chunk(0x090B3004)]
+    [Chunk(0x090B3004, "vortex emitter")]
     [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 6)]
     public partial class Chunk090B3004 : Chunk<CPlugParticleEmitterModel>, IVersionable
     {
         public override uint Id => 0x090B3004;
         public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-        public bool U01;
+        public byte[]? U01;
         public byte[]? U02;
-        public byte[]? U03;
-        public float U04;
-        public int U05;
-        public float U06;
-        public int U07;
-        public float U08;
-        public float U09;
-        public bool U10;
-        public int U11;
-        public bool U12;
+        public bool U03;
 
         public Chunk090B3004() : this(GameVersion.Unspecified)
         {
@@ -263,18 +368,9 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090B3004)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090B3004)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090B3004)clone).U01 = context.CloneArray(this.U01)!;
             ((Chunk090B3004)clone).U02 = context.CloneArray(this.U02)!;
-            ((Chunk090B3004)clone).U03 = context.CloneArray(this.U03)!;
-            ((Chunk090B3004)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090B3004)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090B3004)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090B3004)clone).U07 = context.Clone(this.U07)!;
-            ((Chunk090B3004)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090B3004)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090B3004)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090B3004)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090B3004)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090B3004)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugParticleEmitterModel n, GbxReaderWriter rw)
@@ -285,16 +381,16 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
+            if (Version == 1)
+            {
+                rw.Boolean(ref n.enableVortexEmitter);
+            }
+
             if (Version <= 1)
             {
-                if (Version == 1)
+                if (Version== 0 || n.EnableVortexEmitter)
                 {
-                    rw.Boolean(ref U01);
-
-                    if (U01)
-                    {
-                        rw.Data(ref U02!, 40);
-                    }
+                    rw.Data(ref U01!, 40);
                 }
             }
 
@@ -302,18 +398,33 @@ public partial class CPlugParticleEmitterModel : CMwNod, IClass
             {
                 if (Version == 2)
                 {
-                    rw.Data(ref U03!, 12);
+                    rw.Data(ref U02!, 12);
                 }
 
-                rw.Single(ref U04);
-                rw.Int32(ref U05);
-                rw.Single(ref U06);
-                rw.Int32(ref U07);
-                rw.Single(ref U08);
-                rw.Single(ref U09);
-                rw.Boolean(ref U10);
-                rw.Int32(ref U11);
-                rw.Boolean(ref U12);
+                rw.Single(ref n.radius);
+                rw.Int32(ref n.vortexCountPerCircle);
+                rw.Single(ref n.strength);
+                rw.Int32(ref n.lifeTime);
+                rw.Single(ref n.coef);
+                rw.Single(ref n.randomness);
+
+                if (Version <= 4)
+                {
+                    rw.Boolean(ref U03);
+                }
+
+                rw.Int32(ref n.emitPeriod);
+                rw.Boolean(ref n.enableVortexEmitter);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Vec3(ref n.circleNormal);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Single(ref n.lod_cPixelMin);
             }
         }
     }

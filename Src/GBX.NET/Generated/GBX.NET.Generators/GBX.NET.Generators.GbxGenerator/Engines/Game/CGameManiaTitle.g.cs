@@ -615,11 +615,11 @@ public partial class CGameManiaTitle : CGameNod, IClass
     /// CGameManiaTitle 0x001 chunk
     /// </summary>
     [Chunk(0x03001001)]
-    [ChunkGameVersion(GameVersion.MP4, 16)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 16, 17)]
     public partial class Chunk03001001 : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x03001001;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -654,6 +654,13 @@ public partial class CGameManiaTitle : CGameNod, IClass
         public Vec4 U07;
         public bool U08;
 
+        private NodeRef<CMwNod>? U09Ref;
+        public CMwNod? U09
+        {
+            get => U09Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U09Ref, value);
+        }
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
@@ -663,6 +670,7 @@ public partial class CGameManiaTitle : CGameNod, IClass
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CMwNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CMwNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CMwNod> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -671,6 +679,7 @@ public partial class CGameManiaTitle : CGameNod, IClass
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
+            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
             yield break;
         }
 
@@ -683,6 +692,10 @@ public partial class CGameManiaTitle : CGameNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 16;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 17;
             }
         }
 
@@ -698,12 +711,13 @@ public partial class CGameManiaTitle : CGameNod, IClass
             ((Chunk03001001)clone).U06 = context.Clone(this.U06)!;
             ((Chunk03001001)clone).U07 = context.Clone(this.U07)!;
             ((Chunk03001001)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk03001001)clone).U09Ref = context.Clone(this.U09Ref)!;
         }
 
         public override void ReadWrite(CGameManiaTitle n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 16)
+            if (Version > 17)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -795,6 +809,11 @@ public partial class CGameManiaTitle : CGameNod, IClass
             if (Version >= 16)
             {
                 rw.NodeRef(ref n.hud3dFontRef);
+            }
+
+            if (Version >= 17)
+            {
+                rw.NodeRef(ref U09Ref);
             }
         }
     }
@@ -1085,11 +1104,11 @@ public partial class CGameManiaTitle : CGameNod, IClass
     /// CGameManiaTitle 0x008 chunk
     /// </summary>
     [Chunk(0x03001008)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk03001008 : Chunk<CGameManiaTitle>, IVersionable
     {
         public override uint Id => 0x03001008;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CGameCtnChallenge>? U01Ref;
@@ -1099,17 +1118,26 @@ public partial class CGameManiaTitle : CGameNod, IClass
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
+        private NodeRef<CMwNod>? U02Ref;
+        public CMwNod? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk03001008 owner;
             internal NodeRefView(Chunk03001008 owner) => this.owner = owner;
             public NodeRef<CGameCtnChallenge> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield break;
         }
 
@@ -1123,6 +1151,10 @@ public partial class CGameManiaTitle : CGameNod, IClass
             {
                 Version = 2;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1130,12 +1162,13 @@ public partial class CGameManiaTitle : CGameNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk03001008)clone).Version = context.Clone(this.Version)!;
             ((Chunk03001008)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03001008)clone).U02Ref = context.Clone(this.U02Ref)!;
         }
 
         public override void ReadWrite(CGameManiaTitle n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1155,6 +1188,11 @@ public partial class CGameManiaTitle : CGameNod, IClass
             if (Version >= 1)
             {
                 rw.NodeRef(ref n.editorMapTypeRef);
+            }
+
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref U02Ref);
             }
         }
     }
@@ -1386,6 +1424,55 @@ public partial class CGameManiaTitle : CGameNod, IClass
             {
                 rw.NodeRef(ref n.hudDefaultModuleRef);
             }
+        }
+    }
+
+    /// <summary>
+    /// CGameManiaTitle 0x00D chunk
+    /// </summary>
+    [Chunk(0x0300100D)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0300100D : Chunk<CGameManiaTitle>, IVersionable
+    {
+        public override uint Id => 0x0300100D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public NodeRefList<CMwNod>? U01;
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk0300100D owner;
+            internal NodeRefView(Chunk0300100D owner) => this.owner = owner;
+            public IReadOnlyList<NodeRef<CMwNod>>? U01 => owner.U01?.References;
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            if (U01 is not null)
+            {
+                for (var i = 0; i < U01.Count; i++) yield return new("U01" + "[" + i + "]", U01.Get(i));
+            }
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0300100D)clone).Version = context.Clone(this.Version)!;
+            ((Chunk0300100D)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CGameManiaTitle n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            U01 = rw.ListNodeRef<CMwNod>(U01);
         }
     }
 
@@ -1734,6 +1821,7 @@ public partial class CGameManiaTitle : CGameNod, IClass
         0x0300100A => new Chunk0300100A(),
         0x0300100B => new Chunk0300100B(),
         0x0300100C => new Chunk0300100C(),
+        0x0300100D => new Chunk0300100D(),
         _ => base.NewChunk(chunkId),
     };
 }

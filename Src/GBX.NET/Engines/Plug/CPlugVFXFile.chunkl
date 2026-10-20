@@ -1,1 +1,78 @@
 CPlugVFXFile 0x09153000
+
+0x000 [TM2020.v3] // effect parameters and mappings
+  version
+  int ParameterCount (local, write: "Parameters?.Length ?? 0")
+  int ParameterVersion = 6
+  Parameter[ParameterCount] Parameters (version: ParameterVersion)
+  v2-
+    CPlugParticleEmitterModel[]
+  v1+
+    uint ClassId
+  v2+
+    Mapping[] Mappings
+
+archive Parameter
+  int Type = -1
+  if Type >= 0
+    id Name
+    int U01
+    int U02
+    int U03
+    if Type == 0
+      float U04
+      float U05
+      float U06
+      string U07
+      string U08
+      id U09
+      v1=
+        ushort U10
+    if Type == 1
+      CPlugParticleEmitterModel Emitter
+      v0=
+        bool HasLegacyData
+        if HasLegacyData
+          byte[28] U11
+          int U12
+          int U13
+          int U14
+          int U15
+      v6+
+        int U16
+        float U17
+        float U18
+        float U19
+    if Type == 2
+      Parameter[] Children
+      Mapping[] Mappings
+    if Type == 3
+      CPlugParticleEmitterModel EmitterModel (direct)
+      CPlugParticleEmitterSubModel EmitterSubModel (direct)
+    if Type == 4
+      v3-
+        int[10] U20
+      v4+
+        string U21
+        string U22
+        string U23
+        string U24
+        string U25
+        int U26
+        float U27
+        int U28
+        v5+
+          int U29
+    if Type == 5
+      float U30
+      float U31
+      float U32
+      float U33
+      v3+
+        float U34
+
+archive Mapping
+  int U01
+  int U02
+  int U03
+  int U04

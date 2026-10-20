@@ -93,6 +93,15 @@ public partial class CGameEditorModel : CMwNod, IClass
         set => this.subPlugins = value;
     }
 
+    private string? mediaFolder;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk2E01B005>]
+    public string? MediaFolder
+    {
+        get => this.mediaFolder;
+        set => this.mediaFolder = value;
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -116,6 +125,7 @@ public partial class CGameEditorModel : CMwNod, IClass
         ((CGameEditorModel)clone).bindingContexts = context.CloneArray(this.bindingContexts)!;
         ((CGameEditorModel)clone).mainPluginTextSetRef = context.Clone(this.mainPluginTextSetRef)!;
         ((CGameEditorModel)clone).subPlugins = context.CloneArray(this.subPlugins)!;
+        ((CGameEditorModel)clone).mediaFolder = context.Clone(this.mediaFolder)!;
     }
 
     public CGameEditorModel()
@@ -126,12 +136,30 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x000 skippable chunk (editor type, help and legacy main plugin)
     /// </summary>
     [Chunk(0x2E01B000, "editor type, help and legacy main plugin")]
+    [ChunkGameVersion(GameVersion.TM2020, 4)]
     public partial class Chunk2E01B000 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B000;
-        public int Version { get; set; } = 4;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
         public CPlugFileText? U01;
         public string? U02;
+
+        public Chunk2E01B000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01B000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
+            else
+            {
+                Version = 4;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -144,6 +172,11 @@ public partial class CGameEditorModel : CMwNod, IClass
         public override void ReadWrite(CGameEditorModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > global::System.Math.Max(4, 4))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.editorType);
 
             if (Version <= 2)
@@ -225,10 +258,24 @@ public partial class CGameEditorModel : CMwNod, IClass
     /// CGameEditorModel 0x003 skippable chunk (binding contexts)
     /// </summary>
     [Chunk(0x2E01B003, "binding contexts")]
+    [ChunkGameVersion(GameVersion.TM2020, 2)]
     public partial class Chunk2E01B003 : SkippableChunk<CGameEditorModel>, IVersionable
     {
         public override uint Id => 0x2E01B003;
-        public int Version { get; set; } = 1;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        public Chunk2E01B003() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk2E01B003(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -239,6 +286,11 @@ public partial class CGameEditorModel : CMwNod, IClass
         public override void ReadWrite(CGameEditorModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 2)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.ArrayReadableWritable<BindingContext>(ref n.bindingContexts!, version: Version);
         }
     }
@@ -263,6 +315,35 @@ public partial class CGameEditorModel : CMwNod, IClass
             rw.VersionInt32(this);
             rw.NodeRef(ref n.mainPluginTextSetRef);
             rw.ArrayReadableWritable<SubPlugin>(ref n.subPlugins!, version: Version);
+        }
+    }
+
+    /// <summary>
+    /// CGameEditorModel 0x005 skippable chunk (media folder)
+    /// </summary>
+    [Chunk(0x2E01B005, "media folder")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk2E01B005 : SkippableChunk<CGameEditorModel>, IVersionable
+    {
+        public override uint Id => 0x2E01B005;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk2E01B005)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameEditorModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.String(ref n.mediaFolder);
         }
     }
 
@@ -470,6 +551,13 @@ public partial class CGameEditorModel : CMwNod, IClass
             set => this.u04 = value;
         }
 
+        private int u05;
+        public int U05
+        {
+            get => this.u05;
+            set => this.u05 = value;
+        }
+
         object IDeepCloneable.DeepClone(DeepCloneContext context)
         {
             var clone = (Binding)MemberwiseClone();
@@ -484,6 +572,7 @@ public partial class CGameEditorModel : CMwNod, IClass
             ((Binding)clone).u02 = context.Clone(this.u02)!;
             ((Binding)clone).u03 = context.Clone(this.u03)!;
             ((Binding)clone).u04 = context.Clone(this.u04)!;
+            ((Binding)clone).u05 = context.Clone(this.u05)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
@@ -495,6 +584,11 @@ public partial class CGameEditorModel : CMwNod, IClass
             if (v >= 1)
             {
                 rw.String(ref this.u04);
+            }
+
+            if (v >= 2)
+            {
+                rw.Int32(ref this.u05);
             }
         }
 
@@ -518,6 +612,7 @@ public partial class CGameEditorModel : CMwNod, IClass
         0x2E01B002 => new Chunk2E01B002(),
         0x2E01B003 => new Chunk2E01B003(),
         0x2E01B004 => new Chunk2E01B004(),
+        0x2E01B005 => new Chunk2E01B005(),
         _ => base.NewChunk(chunkId),
     };
 }

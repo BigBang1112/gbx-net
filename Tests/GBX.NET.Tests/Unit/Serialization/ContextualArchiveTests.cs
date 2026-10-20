@@ -58,7 +58,7 @@ public class ContextualArchiveTests
     public async Task ParticleBlock_Version9_StoresEmitterChunksDirectly()
     {
         var emitter = new CPlugParticleEmitterModel { IsSplashMode = true, ShadowMapTexelSize = 2.5f };
-        emitter.CreateChunk<CPlugParticleEmitterModel.Chunk090B3002>().Version = 3;
+        emitter.CreateChunk<CPlugParticleEmitterModel.Chunk090B3002>().Version = 4;
         var block = new CGameActionModel.ParticleBlock { Keys = [], U01 = [], U07 = 1, ParticleEmitter = emitter };
         using var stream = new MemoryStream();
         using (var rw = new GbxReaderWriter(new GbxWriter(stream)))

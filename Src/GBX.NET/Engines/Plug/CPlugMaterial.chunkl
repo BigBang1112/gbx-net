@@ -51,7 +51,7 @@ CPlugMaterial 0x09079000
     v3+
       int
   if Shader != null
-    CPlugMaterialColorTargetTable[]
+    CPlugMaterialColorTargetTable*[]
     v7+
       CMwNod
 

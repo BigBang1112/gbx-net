@@ -401,8 +401,8 @@ public partial class CPlugSolid2Model : CMwNod, IClass
             set => this.u12 = value;
         }
 
-        private Int4[]? uvGroups;
-        public Int4[]? UvGroups
+        private UvGroup[]? uvGroups;
+        public UvGroup[]? UvGroups
         {
             get => this.uvGroups;
             set => this.uvGroups = value;
@@ -454,8 +454,57 @@ public partial class CPlugSolid2Model : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.Array<Int4>(ref this.uvGroups!);
+                rw.ArrayReadableWritable<UvGroup>(ref this.uvGroups!, version: Version);
             }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class UvGroup : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private Int4 @group;
+        public Int4 Group
+        {
+            get => this.@group;
+            set => this.@group = value;
+        }
+
+        private int u01;
+        public int U01
+        {
+            get => this.u01;
+            set => this.u01 = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (UvGroup)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((UvGroup)clone).@group = context.Clone(this.@group)!;
+            ((UvGroup)clone).u01 = context.Clone(this.u01)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Int4(ref this.@group);
+            rw.Int32(ref this.u01);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

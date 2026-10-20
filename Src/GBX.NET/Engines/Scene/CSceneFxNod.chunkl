@@ -9,5 +9,8 @@ CSceneFxNod 0x0A03A000
 
 0x002 [MP3.v0, TMT.v0, MP4.v0, TM2020.v1]
   version
-  CMwNod
-  CMwNod
+  v1+
+    int FxIndex = -1
+  if Version == 0 || FxIndex < 0 || FxIndex >= 3
+    CSceneFx Fx
+  CSceneFxNod NodInput

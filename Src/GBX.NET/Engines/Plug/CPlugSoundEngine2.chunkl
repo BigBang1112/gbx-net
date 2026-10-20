@@ -5,28 +5,42 @@ CPlugSoundEngine2 0x09029000
   version
   string Loops_Folder
 
-0x001 [MP4.v3, TM2020.v3]
+0x001 [MP4.v3, TM2020.v5]
   version
   float RpmMaxFromEngine = 10000f
-  CFuncKeysReal Volume_Speed (direct)
-  CFuncKeysReal Volume_Distance (direct)
-  CFuncKeysReal Volume_Rpm (direct)
-  CFuncKeysReal Volume_Throttle (direct)
+  v4-
+    CFuncKeysReal Volume_Speed (direct)
+    CFuncKeysReal Volume_Distance (direct)
+    CFuncKeysReal Volume_Rpm (direct)
+    CFuncKeysReal Volume_Throttle (direct)
+  v5+ // curves stored inline
+    PlugCurve
+    PlugCurve
+    PlugCurve
+    PlugCurve
   v1+
-    PerspectiveVolume[3] PerspectiveVolumes
+    PerspectiveVolume[3] PerspectiveVolumes (version: Version)
     bool Loops_RpmClamp = true
     bool Loops_UseVolumeCorrection
   v2+
     float RpmGamma = 1f
-  v3+
+  v3..4
     CFuncKeysReal Volume_Gear (direct)
     CFuncKeysReal RpmFactor_Gear (direct)
+  v5+
+    PlugCurve
+    PlugCurve
+    vec2[3]
 
-0x002 [MP4.v4, TM2020.v4]
+0x002 [MP4.v4, TM2020.v6]
   version
   AudioMotor[3] AudioMotors (version: Version)
-  CFuncKeysReal AudioMotors_PitchRandomize_Rpm (direct)
-  CFuncKeysReal AudioMotors_PitchRandomize_Throttle (direct)
+  v5-
+    CFuncKeysReal AudioMotors_PitchRandomize_Rpm (direct)
+    CFuncKeysReal AudioMotors_PitchRandomize_Throttle (direct)
+  v6+ // curves stored inline
+    PlugCurve
+    PlugCurve
   v0=
     CFuncKeysReal (direct)
 
@@ -42,8 +56,12 @@ CPlugSoundEngine2 0x09029000
       float MixBack = 0.35f
 
 archive PerspectiveVolume
-  CFuncKeysReal Release (direct)
-  CFuncKeysReal Throttle (direct)
+  v4-
+    CFuncKeysReal Release (direct)
+    CFuncKeysReal Throttle (direct)
+  v5+ // curves stored inline
+    PlugCurve
+    PlugCurve
 
 archive AudioMotor
   CMwNod Throttle
@@ -51,7 +69,7 @@ archive AudioMotor
   v2+
     CPlugFileSnd IdleLoop
     CPlugFileSnd LimiterLoop
-    v4+
+    v4..5
       float LowPassCutoffRatio = 1f
     v3+
       float U01 = 1f

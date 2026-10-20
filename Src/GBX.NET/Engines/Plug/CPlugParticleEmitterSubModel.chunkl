@@ -146,14 +146,15 @@ CPlugParticleEmitterSubModel 0x090B2000
 
 0x02F [MP3.v0, TMT.v2, MP4.v2, TM2020.v3]
   version
-  v2-
-    int
-    float
-    float
-    v1+
-      iso4
-    v2+
-      CFuncEnvelope
+  int
+  float
+  float
+  v1+
+    iso4
+  v2=
+    CFuncEnvelope
+  v3+
+    PlugCurve
 
 0x030 [MP3, TMT, MP4, TM2020]
   version
@@ -196,10 +197,10 @@ CPlugParticleEmitterSubModel 0x090B2000
             v11+
               int
               v12+
-                CFuncKeysReal
+                PlugCurve (version: Version - 14)
                 v13+
-                  CFuncKeysReal
-                  CFuncKeysReal
+                  PlugCurve (version: Version - 14)
+                  PlugCurve (version: Version - 14)
 
 0x032 [MP3, TMT, MP4, TM2020]
   version
@@ -220,13 +221,22 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
   bool
-  CFuncEnvelope
+  v4-
+    CFuncEnvelope
+  v5+
+    PlugCurve
   bool
-  CFuncEnvelope
+  v4-
+    CFuncEnvelope
+  v5+
+    PlugCurve
   float
   float
   bool
-  CFuncColorGradient
+  v4-
+    CFuncColorGradient
+  v5+
+    InlineColorGradient
   int
   bool
   v2-
@@ -239,18 +249,25 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
   bool
-  CFuncEnvelope
+  v4-
+    CFuncEnvelope
+  v5+
+    PlugCurve
   float
   float
   v4+
     float
-    CFuncKeysReal
+    PlugCurve (version: Version - 5)
 
 0x034 [MP3.v1, TMT.v2, MP4.v2, TM2020.v3]
   version
   GxLightBall
-  CFuncEnvelope
-  CFuncColorGradient
+  v2-
+    CFuncEnvelope
+    CFuncColorGradient
+  v3+
+    PlugCurve
+    InlineColorGradient
   v1+
     bool
     v2+
@@ -273,8 +290,8 @@ CPlugParticleEmitterSubModel 0x090B2000
   int
   float
   float
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 1)
+  PlugCurve (version: Version - 1)
   float
   float
   float
@@ -284,7 +301,7 @@ CPlugParticleEmitterSubModel 0x090B2000
   float
   float
   int
-  CFuncKeysReal
+  PlugCurve (version: Version - 1)
   float
   float
   float
@@ -339,3 +356,9 @@ enum EPlugParticleEmitterSubModel
   Chain
   Gpu
   Energy
+
+archive InlineColorGradient
+  byte
+  int
+  data[16]
+  data[48]

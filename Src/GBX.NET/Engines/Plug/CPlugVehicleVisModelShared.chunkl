@@ -107,6 +107,16 @@ CPlugVehicleVisModelShared 0x090E8000
                           CPlugParticleEmitterModel
                           v14+
                             CPlugParticleEmitterModel
+  v15+
+    CPlugVehicleVisEmitterModel[]
+  v16+
+    CPlugParticleEmitterModel
+  v17+
+    CPlugVehicleVisEmitterModel[]
+  v18+
+    CPlugVehicleVisEmitterModel[]
+  v19+
+    CPlugVehicleVisEmitterModel[]
 
 0x020 [MP3.v1, TMT.v1, MP4.v1, TM2020.v2]
   version
@@ -115,11 +125,17 @@ CPlugVehicleVisModelShared 0x090E8000
   v1+
     float
     float
+  v2+
+    float
 
 0x021 [MP3.v1, TMT.v2, MP4.v3, TM2020.v5]
   version
-  CFuncKeysReal
-  CFuncKeysReal
+  v4-
+    CFuncKeysReal
+    CFuncKeysReal
+  v5+
+    PlugCurve
+    PlugCurve
   v1+
     v2-
       float
@@ -132,6 +148,13 @@ CPlugVehicleVisModelShared 0x090E8000
         float
         int
         int
+  v4+
+    v4=
+      CFuncKeysReal
+    v5+
+      PlugCurve
+      PlugCurve
+      float
 
 0x022 [TMT.v6, MP4.v7, TM2020.v12]
   version
@@ -168,6 +191,32 @@ CPlugVehicleVisModelShared 0x090E8000
             CPlugLocatedSound
             v7+
               CPlugLocatedSound
+  v8+
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+  v9+
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+  v10+
+    int
+    int
+    int
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+  v11+
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+    CPlugLocatedSound
+    int
+    int
+  v12+
+    CPlugLocatedSound
 
 0x023 [TMT.v1, MP4.v1, TM2020.v1]
   version
@@ -178,6 +227,34 @@ CPlugVehicleVisModelShared 0x090E8000
     int
     int
     int
+
+0x024 [TM2020.v2]
+  version
+  WheelSetting[4] WheelSettings
+
+0x025 (demonstration: partial) [TM2020]
+  id[] WheelNames
+
+archive WheelSetting
+  string Name
+  v1+
+    int U01 = 1
+  float U02
+  float U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12
+  float U13
+  float U14
+  float U15
+  float U16
+  float U17
 
 archive SimulationWheel
   bool

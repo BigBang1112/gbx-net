@@ -436,6 +436,59 @@ public partial class CGameApp : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameApp 0x00B skippable chunk (legacy application metadata)
+    /// </summary>
+    [Chunk(0x0300500B, "legacy application metadata")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0300500B : SkippableChunk<CGameApp>
+    {
+        public override uint Id => 0x0300500B;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public string? U01;
+        public string? U02;
+        public string? U03;
+        public string? U04;
+        public string? U05;
+        public string? U06;
+        public int U07;
+        public string? U08;
+        public string? U09;
+        public int U10;
+        public int U11;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0300500B)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0300500B)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0300500B)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0300500B)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0300500B)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0300500B)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0300500B)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0300500B)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk0300500B)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk0300500B)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk0300500B)clone).U11 = context.Clone(this.U11)!;
+        }
+
+        public override void ReadWrite(CGameApp n, GbxReaderWriter rw)
+        {
+            rw.String(ref U01);
+            rw.String(ref U02);
+            rw.String(ref U03);
+            rw.String(ref U04);
+            rw.String(ref U05);
+            rw.String(ref U06);
+            rw.Int32(ref U07);
+            rw.String(ref U08);
+            rw.String(ref U09);
+            rw.Int32(ref U10);
+            rw.Int32(ref U11);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x03005000 => new Chunk03005000(),
@@ -448,6 +501,7 @@ public partial class CGameApp : CMwNod, IClass
         0x03005007 => new Chunk03005007(),
         0x03005008 => new Chunk03005008(),
         0x03005009 => new Chunk03005009(),
+        0x0300500B => new Chunk0300500B(),
         _ => base.NewChunk(chunkId),
     };
 }

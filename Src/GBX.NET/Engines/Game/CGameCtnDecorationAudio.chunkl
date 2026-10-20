@@ -12,7 +12,7 @@ CGameCtnDecorationAudio 0x03039000
 0x003 [MP3.v6, TMT.v7, MP4.v7, TM2020.v9]
   version
   v1+
-    v3-
+    v4-
       CPlugAudioBalance AudioBalance_PlaygroundLoud
       CPlugAudioBalance AudioBalance_PlaygroundLoud
   CPlugAudioBalance AudioBalance_PlaygroundLoud
@@ -40,16 +40,18 @@ CGameCtnDecorationAudio 0x03039000
         CPlugAudioBalance AudioBalance_SM_EvtHitEliminated
         v5+
           v5=
-            CPlugAudioBalance
-            CPlugAudioBalance
-            CPlugAudioBalance
-            CPlugAudioBalance
-            CPlugAudioBalance
-            CPlugAudioBalance
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
+            CPlugCurveSimpleNod
           v6+
-            CPlugAudioBalance
-            v8+
-              CPlugAudioBalance AudioBalance_SM_EvtBulletTime
+            CPlugCurveSimpleNod
+  v8+
+    CPlugAudioBalance AudioBalance_SM_EvtBulletTime
+  v9+
+    CPlugAudioBalance AudioBalance_SM_EvtBoost
 
 0x004 [MP3.v0, TMT.v0, MP4.v0, TM2020.v1]
   version
@@ -57,6 +59,8 @@ CGameCtnDecorationAudio 0x03039000
   CPlugAudioEnvironment AudioEnvOutsideEnclosed
   CPlugAudioEnvironment AudioEnvUndergroundOpen
   CPlugAudioEnvironment AudioEnvUndergroundEnclosed
+  v1+
+    CPlugAudioEnvironment AudioEnvUnderwater
 
 0x005 [MP3, TMT, MP4, TM2020]
   version
@@ -69,3 +73,11 @@ CGameCtnDecorationAudio 0x03039000
 0x006 [MP3, TMT, MP4, TM2020]
   version
   CPlugFileText* ModifierXmlFile
+
+0x007 [TM2020]
+  version
+  CPlugFileText* DefaultWooshDecoItems
+  CPlugFileText*
+  CPlugFileText*
+  CPlugFileText*
+  CPlugFileText*

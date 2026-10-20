@@ -1,0 +1,43 @@
+CPlugVehicleCameraHelicoModel 0x0914D000
+- inherits: CPlugCamControlModel
+
+0x000 [TM2020.v9] // helicopter camera settings and curves
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  int
+  float
+  float
+  float
+  float
+  float
+  float
+  int
+  int
+  int
+  PlugCurve (version: Version - 9)
+  float
+  float
+  v2+
+    PlugCurve (version: Version - 9)
+  v3+
+    PlugCurve (version: Version - 9)
+  v4+
+    PlugCurve (version: Version - 9)
+  v5+
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+  v6+
+    PlugCurve (version: Version - 9)
+    CPlugCurveSimpleNod (direct)
+    CPlugCurveSimpleNod (direct)
+  v7+
+    float
+  v8+
+    float

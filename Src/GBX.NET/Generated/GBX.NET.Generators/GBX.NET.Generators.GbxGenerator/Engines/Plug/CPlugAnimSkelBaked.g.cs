@@ -76,12 +76,21 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private TransQuat[]? localJointsData;
-    /// <remarks>Applied with: 0x000 body chunk</remarks>
-    [AppliedWithChunk<Chunk09132000>]
+    /// <remarks>Applied with: 0x000 v0-6 body chunk</remarks>
+    [AppliedWithChunk<Chunk09132000>(0, 6)]
     public TransQuat[]? LocalJointsData
     {
         get => this.localJointsData;
         set => this.localJointsData = value;
+    }
+
+    private byte[]? packedLocalJointsData;
+    /// <remarks>Applied with: 0x000 v7+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09132000>(7)]
+    public byte[]? PackedLocalJointsData
+    {
+        get => this.packedLocalJointsData;
+        set => this.packedLocalJointsData = value;
     }
 
     private int legacyData;
@@ -112,8 +121,8 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private string[]? floatChannelIds;
-    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
-    [AppliedWithChunk<Chunk09132000>(5)]
+    /// <remarks>Applied with: 0x000 v5-7 body chunk</remarks>
+    [AppliedWithChunk<Chunk09132000>(5, 7)]
     public string[]? FloatChannelIds
     {
         get => this.floatChannelIds;
@@ -121,12 +130,21 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     }
 
     private float[]? floatChannelData;
-    /// <remarks>Applied with: 0x000 v5+ body chunk</remarks>
-    [AppliedWithChunk<Chunk09132000>(5)]
+    /// <remarks>Applied with: 0x000 v5-7 body chunk</remarks>
+    [AppliedWithChunk<Chunk09132000>(5, 7)]
     public float[]? FloatChannelData
     {
         get => this.floatChannelData;
         set => this.floatChannelData = value;
+    }
+
+    private ulong hash;
+    /// <remarks>Applied with: 0x000 v6+ body chunk</remarks>
+    [AppliedWithChunk<Chunk09132000>(6)]
+    public ulong Hash
+    {
+        get => this.hash;
+        set => this.hash = value;
     }
 
     public NodeRefView References => new(this);
@@ -151,11 +169,13 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
         ((CPlugAnimSkelBaked)clone).timing = context.Clone(this.timing)!;
         ((CPlugAnimSkelBaked)clone).jointGroupRef = context.Clone(this.jointGroupRef)!;
         ((CPlugAnimSkelBaked)clone).localJointsData = context.CloneArray(this.localJointsData)!;
+        ((CPlugAnimSkelBaked)clone).packedLocalJointsData = context.CloneArray(this.packedLocalJointsData)!;
         ((CPlugAnimSkelBaked)clone).legacyData = context.Clone(this.legacyData)!;
         ((CPlugAnimSkelBaked)clone).flags = context.Clone(this.flags)!;
         ((CPlugAnimSkelBaked)clone).rootMotionFrames = context.CloneArray(this.rootMotionFrames)!;
         ((CPlugAnimSkelBaked)clone).floatChannelIds = context.CloneArray(this.floatChannelIds)!;
         ((CPlugAnimSkelBaked)clone).floatChannelData = context.CloneArray(this.floatChannelData)!;
+        ((CPlugAnimSkelBaked)clone).hash = context.Clone(this.hash)!;
     }
 
     public CPlugAnimSkelBaked()
@@ -166,10 +186,24 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
     /// CPlugAnimSkelBaked 0x000 chunk (baked animation)
     /// </summary>
     [Chunk(0x09132000, "baked animation")]
+    [ChunkGameVersion(GameVersion.TM2020, 8)]
     public partial class Chunk09132000 : Chunk<CPlugAnimSkelBaked>, IVersionable
     {
         public override uint Id => 0x09132000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+
+        public Chunk09132000() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk09132000(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+        }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -180,11 +214,25 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
         public override void ReadWrite(CPlugAnimSkelBaked n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
+            if (Version > 8)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
             rw.Int32(ref n.flagsVersion);
             rw.Int32(ref n.timingVersion);
             rw.ReadableWritable<TimingFixedPeriod>(ref n.timing, version: n. TimingVersion);
             rw.NodeRef(ref n.jointGroupRef);
-            rw.Array<TransQuat>(ref n.localJointsData!);
+
+            if (Version <= 6)
+            {
+                rw.Array<TransQuat>(ref n.localJointsData!);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Data(ref n.packedLocalJointsData);
+            }
 
             if (Version == 1)
             {
@@ -203,8 +251,16 @@ public partial class CPlugAnimSkelBaked : CMwNod, IClass
 
             if (Version >= 5)
             {
-                rw.ArrayId(ref n.floatChannelIds!);
-                rw.Array<float>(ref n.floatChannelData!);
+                if (Version <= 7)
+                {
+                    rw.ArrayId(ref n.floatChannelIds!);
+                    rw.Array<float>(ref n.floatChannelData!);
+                }
+            }
+
+            if (Version >= 6)
+            {
+                rw.UInt64(ref n.hash);
             }
         }
     }

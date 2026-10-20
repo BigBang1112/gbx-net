@@ -1,4 +1,5 @@
 CPlugFxHdrScales_Tech3 0x090F5000
+- inherits: CPlug
 
 0x000 [MP3.v0, TMT.v1, MP4.v1, TM2020.v1]
   version

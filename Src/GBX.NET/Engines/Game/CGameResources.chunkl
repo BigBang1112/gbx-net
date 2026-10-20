@@ -316,11 +316,14 @@ CGameResources 0x0302D000
   version
   CMwNod MaterialsLibrariesFid
 
-0x045 [MP4] // mesh editor
+0x045 [MP4.v1, TM2020.v3] // mesh editor
   version = 1
   CMwNod DefaultEditorMeshFid
   v1=
     CMwNod
+  v3+
+    CMwNod
+    string
 
 0x046 [MP4] // DefaultEditorEditorFid
   version
@@ -339,6 +342,49 @@ CGameResources 0x0302D000
   CMwNod
   CMwNod
   CMwNod ModulePlaygroundFullPlayerStateFid
+
+0x048 [TM2020.v7] // traffic, animation and icon shooter resources
+  version = 7
+  v0=
+    CMwNod
+  v1+
+    string TrafficFolder
+    string AdnFolder
+  v2..3
+    string
+  v3+
+    CMwNod IconShooterMoodFid
+    CMwNod IconShooterSceneLayoutFid
+    v7+
+      CMwNod IconShooterDefaultSettingsFid
+  v4+
+    CMwNod
+  v5=
+    string
+
+0x049 [TM2020] // DefaultEditorMediaTrackerFid
+  version
+  CMwNod DefaultEditorMediaTrackerFid
+
+0x04A [TM2020] // DefaultEditorSkinFid
+  version
+  CMwNod DefaultEditorSkinFid
+
+0x04C [TM2020]
+  version
+  CMwNod
+
+0x04D [TM2020.v1] // word dictionary source
+  version = 1
+  CMwNod BadWordDict
+
+0x04E [TM2020.v1] // compiled word dictionary
+  version = 1
+  data CompiledWordDictionary
+
+0x04F [TM2020]
+  version
+  CMwNod
 
 archive NamedNod
   id Name

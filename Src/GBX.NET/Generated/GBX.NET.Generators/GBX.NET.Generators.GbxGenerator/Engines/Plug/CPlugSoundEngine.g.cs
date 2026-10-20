@@ -49,9 +49,10 @@ public partial class CPlugSoundEngine : CPlugSound, IClass
     }
 
     private float maxRpm = 11000f;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0908E001>]
     [AppliedWithChunk<Chunk0908E002>]
+    [AppliedWithChunk<Chunk0908E003>]
     public float MaxRpm
     {
         get => this.maxRpm;
@@ -242,11 +243,57 @@ public partial class CPlugSoundEngine : CPlugSound, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugSoundEngine 0x003 chunk (curves stored inline)
+    /// </summary>
+    [Chunk(0x0908E003, "curves stored inline")]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0908E003 : Chunk<CPlugSoundEngine>
+    {
+        public override uint Id => 0x0908E003;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public PlugCurve? U01;
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
+        public PlugCurve? U08;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0908E003)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk0908E003)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk0908E003)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk0908E003)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk0908E003)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk0908E003)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk0908E003)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk0908E003)clone).U08 = context.Clone(this.U08)!;
+        }
+
+        public override void ReadWrite(CPlugSoundEngine n, GbxReaderWriter rw)
+        {
+            rw.Single(ref n.maxRpm);
+            rw.ReadableWritable<PlugCurve>(ref U01);
+            rw.ReadableWritable<PlugCurve>(ref U02);
+            rw.ReadableWritable<PlugCurve>(ref U03);
+            rw.ReadableWritable<PlugCurve>(ref U04);
+            rw.ReadableWritable<PlugCurve>(ref U05);
+            rw.ReadableWritable<PlugCurve>(ref U06);
+            rw.ReadableWritable<PlugCurve>(ref U07);
+            rw.ReadableWritable<PlugCurve>(ref U08);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0908E000 => new Chunk0908E000(),
         0x0908E001 => new Chunk0908E001(),
         0x0908E002 => new Chunk0908E002(),
+        0x0908E003 => new Chunk0908E003(),
         _ => base.NewChunk(chunkId),
     };
 }

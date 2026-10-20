@@ -55,3 +55,8 @@ CControlButton 0x07007000
 
 0x00C
   id
+
+0x00D [TM2020]
+  version
+  int DisplayType
+  string Label

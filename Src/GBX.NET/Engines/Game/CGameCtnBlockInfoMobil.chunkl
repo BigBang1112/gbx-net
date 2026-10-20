@@ -77,11 +77,10 @@ CGameCtnBlockInfoMobil 0x03122000
       vec3 VFXPosition
       vec3 VFXDirection = (0, 0, 1)
     float VFXAngle
-  v20+
-    if Version < 23 || (Version == 23 && rw.Reader != null)
-      CPlugRoadChunk[] LegacyPlacementPatches (deprec) // Version 23 retains the legacy prefix only when reading
-    else
-      CPlugPlacementPatch[] PlacementPatches
+  v20..22
+    CPlugRoadChunk[] LegacyPlacementPatches (deprec)
+  v23+
+    CPlugPlacementPatch[] PlacementPatches
   v21+
     CMwNod // Additional external mobil asset
 

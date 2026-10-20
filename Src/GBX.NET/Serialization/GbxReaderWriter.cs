@@ -70,6 +70,8 @@ public partial interface IGbxReaderWriter : IDisposable
     [return: NotNullIfNotNull(nameof(value))]
     T? ReadableWritable<T>(T? value, int version = 0) where T : IReadableWritable, new();
     void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0) where T : IReadableWritable, new();
+    T? ReadableWritable<T, TNode>(T? value, TNode node, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
+    void ReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T? value, TNode node, int version = 0) where T : IReadable<TNode>, IWritable<TNode>, new() where TNode : CMwNod;
 
     [return: NotNullIfNotNull(nameof(value))]
     T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new();
@@ -363,6 +365,24 @@ public sealed partial class GbxReaderWriter : IGbxReaderWriter
 
     public void ReadableWritable<T>([NotNullIfNotNull(nameof(value))] ref T? value, int version = 0)
         where T : IReadableWritable, new() => value = ReadableWritable(value, version);
+
+    public T? ReadableWritable<T, TNode>(T? value, TNode node, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod
+    {
+        if (Reader is not null)
+        {
+            value = Reader.ReadReadable<T, TNode>(node, version);
+        }
+
+        Writer?.WriteWritable(value ?? new T(), node, version);
+
+        return value;
+    }
+
+    public void ReadableWritable<T, TNode>([NotNullIfNotNull(nameof(value))] ref T? value, TNode node, int version = 0)
+        where T : IReadable<TNode>, IWritable<TNode>, new()
+        where TNode : CMwNod => value = ReadableWritable(value, node, version);
 
     [return: NotNullIfNotNull(nameof(value))]
     public T[]? ArrayReadableWritable<T>(T[]? value, int length, int version = 0) where T : IReadableWritable, new()

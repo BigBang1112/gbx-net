@@ -40,7 +40,11 @@ archive PreLightGen
   int2 SpriteCount
   boxaligned[]
   v1+ (archive)
-    int4[] UvGroups
+    UvGroup[] UvGroups
+
+archive UvGroup
+  int4 Group
+  int U01
 
 archive Light
   id U01

@@ -14,6 +14,11 @@ public partial class BlowfishStream
             throw new global::System.NotSupportedException("Stream is not readable.");
         }
 
+        if (counterMode)
+        {
+            return ReadCounterMode(buffer);
+        }
+
         if (totalIndex == 0)
         {
             iv ^= ivXor;

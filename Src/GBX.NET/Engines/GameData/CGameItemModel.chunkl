@@ -200,7 +200,7 @@ CGameItemModel 0x2E002000
       v11+
         byte?
         v12+
-          int?
+          CPlugMediaClipList
           int?
 
 0x020 [MP3.v1, TMT.v1, MP4.v3, TM2020.v3]

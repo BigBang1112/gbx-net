@@ -255,7 +255,20 @@ public partial class CPlugSolid2Model
                                                                                                         rw.Int32(0);
                                                                                                     }
 
-                                                                                                    rw.Array<(int, int, int, int, int)>(ref U19);
+                                                                                                    // ValueTuple<int, int, int, int, int> has padding; the wire record is five Int32s.
+                                                                                                    var count = rw.Int32(U19?.Length ?? 0);
+                                                                                                    if (rw.Reader is not null)
+                                                                                                    {
+                                                                                                        U19 = new (int, int, int, int, int)[count];
+                                                                                                    }
+                                                                                                    for (var i = 0; i < count; i++)
+                                                                                                    {
+                                                                                                        rw.Int32(ref U19![i].Item1);
+                                                                                                        rw.Int32(ref U19[i].Item2);
+                                                                                                        rw.Int32(ref U19[i].Item3);
+                                                                                                        rw.Int32(ref U19[i].Item4);
+                                                                                                        rw.Int32(ref U19[i].Item5);
+                                                                                                    }
                                                                                                 }
                                                                                             }
                                                                                         }

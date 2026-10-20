@@ -51,9 +51,10 @@ public partial class CControlButton : CControlText, IClass
     }
 
     private string? label;
-    /// <remarks>Applied with: 0x002, 0x005 body chunks</remarks>
+    /// <remarks>Applied with: 0x002, 0x005, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk07007002>]
     [AppliedWithChunk<Chunk07007005>]
+    [AppliedWithChunk<Chunk0700700D>]
     public string? Label
     {
         get => this.label;
@@ -73,8 +74,9 @@ public partial class CControlButton : CControlText, IClass
     }
 
     private int displayType;
-    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    /// <remarks>Applied with: 0x005, 0x00D body chunks</remarks>
     [AppliedWithChunk<Chunk07007005>]
+    [AppliedWithChunk<Chunk0700700D>]
     public int DisplayType
     {
         get => this.displayType;
@@ -517,6 +519,36 @@ public partial class CControlButton : CControlText, IClass
         }
     }
 
+    /// <summary>
+    /// CControlButton 0x00D chunk
+    /// </summary>
+    [Chunk(0x0700700D)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk0700700D : Chunk<CControlButton>, IVersionable
+    {
+        public override uint Id => 0x0700700D;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0700700D)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CControlButton n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Int32(ref n.displayType);
+            rw.String(ref n.label);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x07007000 => new Chunk07007000(),
@@ -532,6 +564,7 @@ public partial class CControlButton : CControlText, IClass
         0x0700700A => new Chunk0700700A(),
         0x0700700B => new Chunk0700700B(),
         0x0700700C => new Chunk0700700C(),
+        0x0700700D => new Chunk0700700D(),
         _ => base.NewChunk(chunkId),
     };
 }

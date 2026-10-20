@@ -230,40 +230,40 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         set => this.attractorRelPos = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkViewBobAmountFromVelRef;
+    private PlugCurve? walkViewBobAmountFromVel;
     /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(9)]
-    public CFuncKeysReal? WalkViewBobAmountFromVel
+    public PlugCurve? WalkViewBobAmountFromVel
     {
-        get => walkViewBobAmountFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkViewBobAmountFromVelRef, value);
+        get => this.walkViewBobAmountFromVel;
+        set => this.walkViewBobAmountFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runViewBobAmountFromVelRef;
+    private PlugCurve? runViewBobAmountFromVel;
     /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(9)]
-    public CFuncKeysReal? RunViewBobAmountFromVel
+    public PlugCurve? RunViewBobAmountFromVel
     {
-        get => runViewBobAmountFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runViewBobAmountFromVelRef, value);
+        get => this.runViewBobAmountFromVel;
+        set => this.runViewBobAmountFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepDistFromVelRef;
+    private PlugCurve? walkStepDistFromVel;
     /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(9)]
-    public CFuncKeysReal? WalkStepDistFromVel
+    public PlugCurve? WalkStepDistFromVel
     {
-        get => walkStepDistFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepDistFromVelRef, value);
+        get => this.walkStepDistFromVel;
+        set => this.walkStepDistFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepDistFromVelRef;
+    private PlugCurve? runStepDistFromVel;
     /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(9)]
-    public CFuncKeysReal? RunStepDistFromVel
+    public PlugCurve? RunStepDistFromVel
     {
-        get => runStepDistFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepDistFromVelRef, value);
+        get => this.runStepDistFromVel;
+        set => this.runStepDistFromVel = value;
     }
 
     private float walkViewBobOffsetPitch;
@@ -302,22 +302,22 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         set => this.viewBobPitchStepPhase = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepDistFromVel_SnowRef;
+    private PlugCurve? walkStepDistFromVel_Snow;
     /// <remarks>Applied with: 0x003 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(11)]
-    public CFuncKeysReal? WalkStepDistFromVel_Snow
+    public PlugCurve? WalkStepDistFromVel_Snow
     {
-        get => walkStepDistFromVel_SnowRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepDistFromVel_SnowRef, value);
+        get => this.walkStepDistFromVel_Snow;
+        set => this.walkStepDistFromVel_Snow = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepDistFromVel_SnowRef;
+    private PlugCurve? runStepDistFromVel_Snow;
     /// <remarks>Applied with: 0x003 v11+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(11)]
-    public CFuncKeysReal? RunStepDistFromVel_Snow
+    public PlugCurve? RunStepDistFromVel_Snow
     {
-        get => runStepDistFromVel_SnowRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepDistFromVel_SnowRef, value);
+        get => this.runStepDistFromVel_Snow;
+        set => this.runStepDistFromVel_Snow = value;
     }
 
     private float strafeSmoothingPeriod;
@@ -338,31 +338,31 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         set => this.strafeMaxRollAngle = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepBodyVolumeFromVelRef;
+    private PlugCurve? walkStepBodyVolumeFromVel;
     /// <remarks>Applied with: 0x003 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(16)]
-    public CFuncKeysReal? WalkStepBodyVolumeFromVel
+    public PlugCurve? WalkStepBodyVolumeFromVel
     {
-        get => walkStepBodyVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepBodyVolumeFromVelRef, value);
+        get => this.walkStepBodyVolumeFromVel;
+        set => this.walkStepBodyVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepBodyVolumeFromVelRef;
+    private PlugCurve? runStepBodyVolumeFromVel;
     /// <remarks>Applied with: 0x003 v16+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(16)]
-    public CFuncKeysReal? RunStepBodyVolumeFromVel
+    public PlugCurve? RunStepBodyVolumeFromVel
     {
-        get => runStepBodyVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepBodyVolumeFromVelRef, value);
+        get => this.runStepBodyVolumeFromVel;
+        set => this.runStepBodyVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? landVolumeFromVelRef;
+    private PlugCurve? landVolumeFromVel;
     /// <remarks>Applied with: 0x003 v17+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(17)]
-    public CFuncKeysReal? LandVolumeFromVel
+    public PlugCurve? LandVolumeFromVel
     {
-        get => landVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref landVolumeFromVelRef, value);
+        get => this.landVolumeFromVel;
+        set => this.landVolumeFromVel = value;
     }
 
     private Vec3 walkStepSoundOffset;
@@ -374,175 +374,175 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         set => this.walkStepSoundOffset = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimStepDistFromVelRef;
+    private PlugCurve? swimStepDistFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? SwimStepDistFromVel
+    public PlugCurve? SwimStepDistFromVel
     {
-        get => swimStepDistFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimStepDistFromVelRef, value);
+        get => this.swimStepDistFromVel;
+        set => this.swimStepDistFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimStepBodyVolumeFromVelRef;
+    private PlugCurve? swimStepBodyVolumeFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? SwimStepBodyVolumeFromVel
+    public PlugCurve? SwimStepBodyVolumeFromVel
     {
-        get => swimStepBodyVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimStepBodyVolumeFromVelRef, value);
+        get => this.swimStepBodyVolumeFromVel;
+        set => this.swimStepBodyVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimStepBodyPitchFromVelRef;
+    private PlugCurve? swimStepBodyPitchFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? SwimStepBodyPitchFromVel
+    public PlugCurve? SwimStepBodyPitchFromVel
     {
-        get => swimStepBodyPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimStepBodyPitchFromVelRef, value);
+        get => this.swimStepBodyPitchFromVel;
+        set => this.swimStepBodyPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepBodyPitchFromVelRef;
+    private PlugCurve? walkStepBodyPitchFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? WalkStepBodyPitchFromVel
+    public PlugCurve? WalkStepBodyPitchFromVel
     {
-        get => walkStepBodyPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepBodyPitchFromVelRef, value);
+        get => this.walkStepBodyPitchFromVel;
+        set => this.walkStepBodyPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepBodyPitchFromVelRef;
+    private PlugCurve? runStepBodyPitchFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? RunStepBodyPitchFromVel
+    public PlugCurve? RunStepBodyPitchFromVel
     {
-        get => runStepBodyPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepBodyPitchFromVelRef, value);
+        get => this.runStepBodyPitchFromVel;
+        set => this.runStepBodyPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimmingVolumeFromVelRef;
+    private PlugCurve? swimmingVolumeFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? SwimmingVolumeFromVel
+    public PlugCurve? SwimmingVolumeFromVel
     {
-        get => swimmingVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimmingVolumeFromVelRef, value);
+        get => this.swimmingVolumeFromVel;
+        set => this.swimmingVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimmingPitchFromVelRef;
+    private PlugCurve? swimmingPitchFromVel;
     /// <remarks>Applied with: 0x003 v20+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(20)]
-    public CFuncKeysReal? SwimmingPitchFromVel
+    public PlugCurve? SwimmingPitchFromVel
     {
-        get => swimmingPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimmingPitchFromVelRef, value);
+        get => this.swimmingPitchFromVel;
+        set => this.swimmingPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? slideSurfgVolumeFromVelRef;
+    private PlugCurve? slideSurfgVolumeFromVel;
     /// <remarks>Applied with: 0x003 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(22)]
-    public CFuncKeysReal? SlideSurfgVolumeFromVel
+    public PlugCurve? SlideSurfgVolumeFromVel
     {
-        get => slideSurfgVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref slideSurfgVolumeFromVelRef, value);
+        get => this.slideSurfgVolumeFromVel;
+        set => this.slideSurfgVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? slideSurfPitchFromVelRef;
+    private PlugCurve? slideSurfPitchFromVel;
     /// <remarks>Applied with: 0x003 v22+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(22)]
-    public CFuncKeysReal? SlideSurfPitchFromVel
+    public PlugCurve? SlideSurfPitchFromVel
     {
-        get => slideSurfPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref slideSurfPitchFromVelRef, value);
+        get => this.slideSurfPitchFromVel;
+        set => this.slideSurfPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? jumpVolumeFromVelRef;
+    private PlugCurve? jumpVolumeFromVel;
     /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(23)]
-    public CFuncKeysReal? JumpVolumeFromVel
+    public PlugCurve? JumpVolumeFromVel
     {
-        get => jumpVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref jumpVolumeFromVelRef, value);
+        get => this.jumpVolumeFromVel;
+        set => this.jumpVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? jumpPitchFromVelRef;
+    private PlugCurve? jumpPitchFromVel;
     /// <remarks>Applied with: 0x003 v23+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(23)]
-    public CFuncKeysReal? JumpPitchFromVel
+    public PlugCurve? JumpPitchFromVel
     {
-        get => jumpPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref jumpPitchFromVelRef, value);
+        get => this.jumpPitchFromVel;
+        set => this.jumpPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? wallJumpVolumeFromVelRef;
+    private PlugCurve? wallJumpVolumeFromVel;
     /// <remarks>Applied with: 0x003 v24+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(24)]
-    public CFuncKeysReal? WallJumpVolumeFromVel
+    public PlugCurve? WallJumpVolumeFromVel
     {
-        get => wallJumpVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref wallJumpVolumeFromVelRef, value);
+        get => this.wallJumpVolumeFromVel;
+        set => this.wallJumpVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? wallJumpPitchFromVelRef;
+    private PlugCurve? wallJumpPitchFromVel;
     /// <remarks>Applied with: 0x003 v24+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(24)]
-    public CFuncKeysReal? WallJumpPitchFromVel
+    public PlugCurve? WallJumpPitchFromVel
     {
-        get => wallJumpPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref wallJumpPitchFromVelRef, value);
+        get => this.wallJumpPitchFromVel;
+        set => this.wallJumpPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimStepImpactVolumeFromVelRef;
+    private PlugCurve? swimStepImpactVolumeFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? SwimStepImpactVolumeFromVel
+    public PlugCurve? SwimStepImpactVolumeFromVel
     {
-        get => swimStepImpactVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimStepImpactVolumeFromVelRef, value);
+        get => this.swimStepImpactVolumeFromVel;
+        set => this.swimStepImpactVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? swimStepImpactPitchFromVelRef;
+    private PlugCurve? swimStepImpactPitchFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? SwimStepImpactPitchFromVel
+    public PlugCurve? SwimStepImpactPitchFromVel
     {
-        get => swimStepImpactPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref swimStepImpactPitchFromVelRef, value);
+        get => this.swimStepImpactPitchFromVel;
+        set => this.swimStepImpactPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepImpactVolumeFromVelRef;
+    private PlugCurve? walkStepImpactVolumeFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? WalkStepImpactVolumeFromVel
+    public PlugCurve? WalkStepImpactVolumeFromVel
     {
-        get => walkStepImpactVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepImpactVolumeFromVelRef, value);
+        get => this.walkStepImpactVolumeFromVel;
+        set => this.walkStepImpactVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? walkStepImpactPitchFromVelRef;
+    private PlugCurve? walkStepImpactPitchFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? WalkStepImpactPitchFromVel
+    public PlugCurve? WalkStepImpactPitchFromVel
     {
-        get => walkStepImpactPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkStepImpactPitchFromVelRef, value);
+        get => this.walkStepImpactPitchFromVel;
+        set => this.walkStepImpactPitchFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepImpactVolumeFromVelRef;
+    private PlugCurve? runStepImpactVolumeFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? RunStepImpactVolumeFromVel
+    public PlugCurve? RunStepImpactVolumeFromVel
     {
-        get => runStepImpactVolumeFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepImpactVolumeFromVelRef, value);
+        get => this.runStepImpactVolumeFromVel;
+        set => this.runStepImpactVolumeFromVel = value;
     }
 
-    private NodeRef<CFuncKeysReal>? runStepImpactPitchFromVelRef;
+    private PlugCurve? runStepImpactPitchFromVel;
     /// <remarks>Applied with: 0x003 v25+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(25)]
-    public CFuncKeysReal? RunStepImpactPitchFromVel
+    public PlugCurve? RunStepImpactPitchFromVel
     {
-        get => runStepImpactPitchFromVelRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref runStepImpactPitchFromVelRef, value);
+        get => this.runStepImpactPitchFromVel;
+        set => this.runStepImpactPitchFromVel = value;
     }
 
     private NodeRef<CMwNod>? audioEnvironmentForFirstPersonRef;
@@ -554,13 +554,13 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref audioEnvironmentForFirstPersonRef, value);
     }
 
-    private NodeRef<CFuncKeysReal>? walkViewBobAmountFromVel_RushingRef;
+    private PlugCurve? walkViewBobAmountFromVel_Rushing;
     /// <remarks>Applied with: 0x003 v27+ body chunk</remarks>
     [AppliedWithChunk<Chunk090C7003>(27)]
-    public CFuncKeysReal? WalkViewBobAmountFromVel_Rushing
+    public PlugCurve? WalkViewBobAmountFromVel_Rushing
     {
-        get => walkViewBobAmountFromVel_RushingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref walkViewBobAmountFromVel_RushingRef, value);
+        get => this.walkViewBobAmountFromVel_Rushing;
+        set => this.walkViewBobAmountFromVel_Rushing = value;
     }
 
     private NodeRef<CPlugBeamEmitterModel>? grapnelModelRef;
@@ -1129,36 +1129,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         public NodeRef<CPlugParticleEmitterModel> Particle_JumpPad => NodeRef.GetOrCreate(ref owner.particle_JumpPadRef);
         public NodeRef<CPlugParticleEmitterModel> Particle_Deprecated_InjuredLight => NodeRef.GetOrCreate(ref owner.particle_Deprecated_InjuredLightRef);
         public NodeRef<CPlugBeamEmitterModel> AttractorModel => NodeRef.GetOrCreate(ref owner.attractorModelRef);
-        public NodeRef<CFuncKeysReal> WalkViewBobAmountFromVel => NodeRef.GetOrCreate(ref owner.walkViewBobAmountFromVelRef);
-        public NodeRef<CFuncKeysReal> RunViewBobAmountFromVel => NodeRef.GetOrCreate(ref owner.runViewBobAmountFromVelRef);
-        public NodeRef<CFuncKeysReal> WalkStepDistFromVel => NodeRef.GetOrCreate(ref owner.walkStepDistFromVelRef);
-        public NodeRef<CFuncKeysReal> RunStepDistFromVel => NodeRef.GetOrCreate(ref owner.runStepDistFromVelRef);
-        public NodeRef<CFuncKeysReal> WalkStepDistFromVel_Snow => NodeRef.GetOrCreate(ref owner.walkStepDistFromVel_SnowRef);
-        public NodeRef<CFuncKeysReal> RunStepDistFromVel_Snow => NodeRef.GetOrCreate(ref owner.runStepDistFromVel_SnowRef);
-        public NodeRef<CFuncKeysReal> WalkStepBodyVolumeFromVel => NodeRef.GetOrCreate(ref owner.walkStepBodyVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> RunStepBodyVolumeFromVel => NodeRef.GetOrCreate(ref owner.runStepBodyVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> LandVolumeFromVel => NodeRef.GetOrCreate(ref owner.landVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimStepDistFromVel => NodeRef.GetOrCreate(ref owner.swimStepDistFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimStepBodyVolumeFromVel => NodeRef.GetOrCreate(ref owner.swimStepBodyVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimStepBodyPitchFromVel => NodeRef.GetOrCreate(ref owner.swimStepBodyPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> WalkStepBodyPitchFromVel => NodeRef.GetOrCreate(ref owner.walkStepBodyPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> RunStepBodyPitchFromVel => NodeRef.GetOrCreate(ref owner.runStepBodyPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimmingVolumeFromVel => NodeRef.GetOrCreate(ref owner.swimmingVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimmingPitchFromVel => NodeRef.GetOrCreate(ref owner.swimmingPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> SlideSurfgVolumeFromVel => NodeRef.GetOrCreate(ref owner.slideSurfgVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> SlideSurfPitchFromVel => NodeRef.GetOrCreate(ref owner.slideSurfPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> JumpVolumeFromVel => NodeRef.GetOrCreate(ref owner.jumpVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> JumpPitchFromVel => NodeRef.GetOrCreate(ref owner.jumpPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> WallJumpVolumeFromVel => NodeRef.GetOrCreate(ref owner.wallJumpVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> WallJumpPitchFromVel => NodeRef.GetOrCreate(ref owner.wallJumpPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimStepImpactVolumeFromVel => NodeRef.GetOrCreate(ref owner.swimStepImpactVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> SwimStepImpactPitchFromVel => NodeRef.GetOrCreate(ref owner.swimStepImpactPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> WalkStepImpactVolumeFromVel => NodeRef.GetOrCreate(ref owner.walkStepImpactVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> WalkStepImpactPitchFromVel => NodeRef.GetOrCreate(ref owner.walkStepImpactPitchFromVelRef);
-        public NodeRef<CFuncKeysReal> RunStepImpactVolumeFromVel => NodeRef.GetOrCreate(ref owner.runStepImpactVolumeFromVelRef);
-        public NodeRef<CFuncKeysReal> RunStepImpactPitchFromVel => NodeRef.GetOrCreate(ref owner.runStepImpactPitchFromVelRef);
         public NodeRef<CMwNod> AudioEnvironmentForFirstPerson => NodeRef.GetOrCreate(ref owner.audioEnvironmentForFirstPersonRef);
-        public NodeRef<CFuncKeysReal> WalkViewBobAmountFromVel_Rushing => NodeRef.GetOrCreate(ref owner.walkViewBobAmountFromVel_RushingRef);
         public NodeRef<CPlugBeamEmitterModel> GrapnelModel => NodeRef.GetOrCreate(ref owner.grapnelModelRef);
         public NodeRef<CPlugSolid2Model> NullMesh => NodeRef.GetOrCreate(ref owner.nullMeshRef);
         public NodeRef<CMwNod> DummySkinnable => NodeRef.GetOrCreate(ref owner.dummySkinnableRef);
@@ -1226,36 +1197,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         yield return new("Particle_JumpPad", NodeRef.GetOrCreate(ref particle_JumpPadRef));
         yield return new("Particle_Deprecated_InjuredLight", NodeRef.GetOrCreate(ref particle_Deprecated_InjuredLightRef));
         yield return new("AttractorModel", NodeRef.GetOrCreate(ref attractorModelRef));
-        yield return new("WalkViewBobAmountFromVel", NodeRef.GetOrCreate(ref walkViewBobAmountFromVelRef));
-        yield return new("RunViewBobAmountFromVel", NodeRef.GetOrCreate(ref runViewBobAmountFromVelRef));
-        yield return new("WalkStepDistFromVel", NodeRef.GetOrCreate(ref walkStepDistFromVelRef));
-        yield return new("RunStepDistFromVel", NodeRef.GetOrCreate(ref runStepDistFromVelRef));
-        yield return new("WalkStepDistFromVel_Snow", NodeRef.GetOrCreate(ref walkStepDistFromVel_SnowRef));
-        yield return new("RunStepDistFromVel_Snow", NodeRef.GetOrCreate(ref runStepDistFromVel_SnowRef));
-        yield return new("WalkStepBodyVolumeFromVel", NodeRef.GetOrCreate(ref walkStepBodyVolumeFromVelRef));
-        yield return new("RunStepBodyVolumeFromVel", NodeRef.GetOrCreate(ref runStepBodyVolumeFromVelRef));
-        yield return new("LandVolumeFromVel", NodeRef.GetOrCreate(ref landVolumeFromVelRef));
-        yield return new("SwimStepDistFromVel", NodeRef.GetOrCreate(ref swimStepDistFromVelRef));
-        yield return new("SwimStepBodyVolumeFromVel", NodeRef.GetOrCreate(ref swimStepBodyVolumeFromVelRef));
-        yield return new("SwimStepBodyPitchFromVel", NodeRef.GetOrCreate(ref swimStepBodyPitchFromVelRef));
-        yield return new("WalkStepBodyPitchFromVel", NodeRef.GetOrCreate(ref walkStepBodyPitchFromVelRef));
-        yield return new("RunStepBodyPitchFromVel", NodeRef.GetOrCreate(ref runStepBodyPitchFromVelRef));
-        yield return new("SwimmingVolumeFromVel", NodeRef.GetOrCreate(ref swimmingVolumeFromVelRef));
-        yield return new("SwimmingPitchFromVel", NodeRef.GetOrCreate(ref swimmingPitchFromVelRef));
-        yield return new("SlideSurfgVolumeFromVel", NodeRef.GetOrCreate(ref slideSurfgVolumeFromVelRef));
-        yield return new("SlideSurfPitchFromVel", NodeRef.GetOrCreate(ref slideSurfPitchFromVelRef));
-        yield return new("JumpVolumeFromVel", NodeRef.GetOrCreate(ref jumpVolumeFromVelRef));
-        yield return new("JumpPitchFromVel", NodeRef.GetOrCreate(ref jumpPitchFromVelRef));
-        yield return new("WallJumpVolumeFromVel", NodeRef.GetOrCreate(ref wallJumpVolumeFromVelRef));
-        yield return new("WallJumpPitchFromVel", NodeRef.GetOrCreate(ref wallJumpPitchFromVelRef));
-        yield return new("SwimStepImpactVolumeFromVel", NodeRef.GetOrCreate(ref swimStepImpactVolumeFromVelRef));
-        yield return new("SwimStepImpactPitchFromVel", NodeRef.GetOrCreate(ref swimStepImpactPitchFromVelRef));
-        yield return new("WalkStepImpactVolumeFromVel", NodeRef.GetOrCreate(ref walkStepImpactVolumeFromVelRef));
-        yield return new("WalkStepImpactPitchFromVel", NodeRef.GetOrCreate(ref walkStepImpactPitchFromVelRef));
-        yield return new("RunStepImpactVolumeFromVel", NodeRef.GetOrCreate(ref runStepImpactVolumeFromVelRef));
-        yield return new("RunStepImpactPitchFromVel", NodeRef.GetOrCreate(ref runStepImpactPitchFromVelRef));
         yield return new("AudioEnvironmentForFirstPerson", NodeRef.GetOrCreate(ref audioEnvironmentForFirstPersonRef));
-        yield return new("WalkViewBobAmountFromVel_Rushing", NodeRef.GetOrCreate(ref walkViewBobAmountFromVel_RushingRef));
         yield return new("GrapnelModel", NodeRef.GetOrCreate(ref grapnelModelRef));
         yield return new("NullMesh", NodeRef.GetOrCreate(ref nullMeshRef));
         yield return new("DummySkinnable", NodeRef.GetOrCreate(ref dummySkinnableRef));
@@ -1343,43 +1285,43 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         ((CPlugCharVisModel)clone).hurtFlashColor = context.Clone(this.hurtFlashColor)!;
         ((CPlugCharVisModel)clone).attractorModelRef = context.Clone(this.attractorModelRef)!;
         ((CPlugCharVisModel)clone).attractorRelPos = context.Clone(this.attractorRelPos)!;
-        ((CPlugCharVisModel)clone).walkViewBobAmountFromVelRef = context.Clone(this.walkViewBobAmountFromVelRef)!;
-        ((CPlugCharVisModel)clone).runViewBobAmountFromVelRef = context.Clone(this.runViewBobAmountFromVelRef)!;
-        ((CPlugCharVisModel)clone).walkStepDistFromVelRef = context.Clone(this.walkStepDistFromVelRef)!;
-        ((CPlugCharVisModel)clone).runStepDistFromVelRef = context.Clone(this.runStepDistFromVelRef)!;
+        ((CPlugCharVisModel)clone).walkViewBobAmountFromVel = context.Clone(this.walkViewBobAmountFromVel)!;
+        ((CPlugCharVisModel)clone).runViewBobAmountFromVel = context.Clone(this.runViewBobAmountFromVel)!;
+        ((CPlugCharVisModel)clone).walkStepDistFromVel = context.Clone(this.walkStepDistFromVel)!;
+        ((CPlugCharVisModel)clone).runStepDistFromVel = context.Clone(this.runStepDistFromVel)!;
         ((CPlugCharVisModel)clone).walkViewBobOffsetPitch = context.Clone(this.walkViewBobOffsetPitch)!;
         ((CPlugCharVisModel)clone).runViewBobOffsetPitch = context.Clone(this.runViewBobOffsetPitch)!;
         ((CPlugCharVisModel)clone).viewBobRollWalkCyclePhase = context.Clone(this.viewBobRollWalkCyclePhase)!;
         ((CPlugCharVisModel)clone).viewBobPitchStepPhase = context.Clone(this.viewBobPitchStepPhase)!;
-        ((CPlugCharVisModel)clone).walkStepDistFromVel_SnowRef = context.Clone(this.walkStepDistFromVel_SnowRef)!;
-        ((CPlugCharVisModel)clone).runStepDistFromVel_SnowRef = context.Clone(this.runStepDistFromVel_SnowRef)!;
+        ((CPlugCharVisModel)clone).walkStepDistFromVel_Snow = context.Clone(this.walkStepDistFromVel_Snow)!;
+        ((CPlugCharVisModel)clone).runStepDistFromVel_Snow = context.Clone(this.runStepDistFromVel_Snow)!;
         ((CPlugCharVisModel)clone).strafeSmoothingPeriod = context.Clone(this.strafeSmoothingPeriod)!;
         ((CPlugCharVisModel)clone).strafeMaxRollAngle = context.Clone(this.strafeMaxRollAngle)!;
-        ((CPlugCharVisModel)clone).walkStepBodyVolumeFromVelRef = context.Clone(this.walkStepBodyVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).runStepBodyVolumeFromVelRef = context.Clone(this.runStepBodyVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).landVolumeFromVelRef = context.Clone(this.landVolumeFromVelRef)!;
+        ((CPlugCharVisModel)clone).walkStepBodyVolumeFromVel = context.Clone(this.walkStepBodyVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).runStepBodyVolumeFromVel = context.Clone(this.runStepBodyVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).landVolumeFromVel = context.Clone(this.landVolumeFromVel)!;
         ((CPlugCharVisModel)clone).walkStepSoundOffset = context.Clone(this.walkStepSoundOffset)!;
-        ((CPlugCharVisModel)clone).swimStepDistFromVelRef = context.Clone(this.swimStepDistFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimStepBodyVolumeFromVelRef = context.Clone(this.swimStepBodyVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimStepBodyPitchFromVelRef = context.Clone(this.swimStepBodyPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).walkStepBodyPitchFromVelRef = context.Clone(this.walkStepBodyPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).runStepBodyPitchFromVelRef = context.Clone(this.runStepBodyPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimmingVolumeFromVelRef = context.Clone(this.swimmingVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimmingPitchFromVelRef = context.Clone(this.swimmingPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).slideSurfgVolumeFromVelRef = context.Clone(this.slideSurfgVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).slideSurfPitchFromVelRef = context.Clone(this.slideSurfPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).jumpVolumeFromVelRef = context.Clone(this.jumpVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).jumpPitchFromVelRef = context.Clone(this.jumpPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).wallJumpVolumeFromVelRef = context.Clone(this.wallJumpVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).wallJumpPitchFromVelRef = context.Clone(this.wallJumpPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimStepImpactVolumeFromVelRef = context.Clone(this.swimStepImpactVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).swimStepImpactPitchFromVelRef = context.Clone(this.swimStepImpactPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).walkStepImpactVolumeFromVelRef = context.Clone(this.walkStepImpactVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).walkStepImpactPitchFromVelRef = context.Clone(this.walkStepImpactPitchFromVelRef)!;
-        ((CPlugCharVisModel)clone).runStepImpactVolumeFromVelRef = context.Clone(this.runStepImpactVolumeFromVelRef)!;
-        ((CPlugCharVisModel)clone).runStepImpactPitchFromVelRef = context.Clone(this.runStepImpactPitchFromVelRef)!;
+        ((CPlugCharVisModel)clone).swimStepDistFromVel = context.Clone(this.swimStepDistFromVel)!;
+        ((CPlugCharVisModel)clone).swimStepBodyVolumeFromVel = context.Clone(this.swimStepBodyVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).swimStepBodyPitchFromVel = context.Clone(this.swimStepBodyPitchFromVel)!;
+        ((CPlugCharVisModel)clone).walkStepBodyPitchFromVel = context.Clone(this.walkStepBodyPitchFromVel)!;
+        ((CPlugCharVisModel)clone).runStepBodyPitchFromVel = context.Clone(this.runStepBodyPitchFromVel)!;
+        ((CPlugCharVisModel)clone).swimmingVolumeFromVel = context.Clone(this.swimmingVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).swimmingPitchFromVel = context.Clone(this.swimmingPitchFromVel)!;
+        ((CPlugCharVisModel)clone).slideSurfgVolumeFromVel = context.Clone(this.slideSurfgVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).slideSurfPitchFromVel = context.Clone(this.slideSurfPitchFromVel)!;
+        ((CPlugCharVisModel)clone).jumpVolumeFromVel = context.Clone(this.jumpVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).jumpPitchFromVel = context.Clone(this.jumpPitchFromVel)!;
+        ((CPlugCharVisModel)clone).wallJumpVolumeFromVel = context.Clone(this.wallJumpVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).wallJumpPitchFromVel = context.Clone(this.wallJumpPitchFromVel)!;
+        ((CPlugCharVisModel)clone).swimStepImpactVolumeFromVel = context.Clone(this.swimStepImpactVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).swimStepImpactPitchFromVel = context.Clone(this.swimStepImpactPitchFromVel)!;
+        ((CPlugCharVisModel)clone).walkStepImpactVolumeFromVel = context.Clone(this.walkStepImpactVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).walkStepImpactPitchFromVel = context.Clone(this.walkStepImpactPitchFromVel)!;
+        ((CPlugCharVisModel)clone).runStepImpactVolumeFromVel = context.Clone(this.runStepImpactVolumeFromVel)!;
+        ((CPlugCharVisModel)clone).runStepImpactPitchFromVel = context.Clone(this.runStepImpactPitchFromVel)!;
         ((CPlugCharVisModel)clone).audioEnvironmentForFirstPersonRef = context.Clone(this.audioEnvironmentForFirstPersonRef)!;
-        ((CPlugCharVisModel)clone).walkViewBobAmountFromVel_RushingRef = context.Clone(this.walkViewBobAmountFromVel_RushingRef)!;
+        ((CPlugCharVisModel)clone).walkViewBobAmountFromVel_Rushing = context.Clone(this.walkViewBobAmountFromVel_Rushing)!;
         ((CPlugCharVisModel)clone).grapnelModelRef = context.Clone(this.grapnelModelRef)!;
         ((CPlugCharVisModel)clone).grapnelReturnSpeed = context.Clone(this.grapnelReturnSpeed)!;
         ((CPlugCharVisModel)clone).nullMeshRef = context.Clone(this.nullMeshRef)!;
@@ -1565,11 +1507,11 @@ public partial class CPlugCharVisModel : CMwNod, IClass
     /// CPlugCharVisModel 0x003 chunk
     /// </summary>
     [Chunk(0x090C7003)]
-    [ChunkGameVersion(GameVersion.MP4, 31)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 31, 33)]
     public partial class Chunk090C7003 : Chunk<CPlugCharVisModel>, IVersionable
     {
         public override uint Id => 0x090C7003;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -1591,17 +1533,35 @@ public partial class CPlugCharVisModel : CMwNod, IClass
         public bool U12;
         public int U13;
 
+        private NodeRef<CMwNod>? U14Ref;
+        public CMwNod? U14
+        {
+            get => U14Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U14Ref, value);
+        }
+
+        private NodeRef<CMwNod>? U15Ref;
+        public CMwNod? U15
+        {
+            get => U15Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U15Ref, value);
+        }
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090C7003 owner;
             internal NodeRefView(Chunk090C7003 owner) => this.owner = owner;
             public NodeRef<CPlugMaterial> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
+            public NodeRef<CMwNod> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
+            public NodeRef<CMwNod> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
+            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
+            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
             yield break;
         }
 
@@ -1614,6 +1574,10 @@ public partial class CPlugCharVisModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 31;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 33;
             }
         }
 
@@ -1634,12 +1598,14 @@ public partial class CPlugCharVisModel : CMwNod, IClass
             ((Chunk090C7003)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C7003)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C7003)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090C7003)clone).U14Ref = context.Clone(this.U14Ref)!;
+            ((Chunk090C7003)clone).U15Ref = context.Clone(this.U15Ref)!;
         }
 
         public override void ReadWrite(CPlugCharVisModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 31)
+            if (Version > 33)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1734,10 +1700,10 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
             if (Version >= 9)
             {
-                rw.NodeRef(ref n.walkViewBobAmountFromVelRef);
-                rw.NodeRef(ref n.runViewBobAmountFromVelRef);
-                rw.NodeRef(ref n.walkStepDistFromVelRef);
-                rw.NodeRef(ref n.runStepDistFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.walkViewBobAmountFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runViewBobAmountFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepDistFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepDistFromVel, version: Version- 33);
             }
 
             if (Version >= 10)
@@ -1750,8 +1716,8 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
             if (Version >= 11)
             {
-                rw.NodeRef(ref n.walkStepDistFromVel_SnowRef);
-                rw.NodeRef(ref n.runStepDistFromVel_SnowRef);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepDistFromVel_Snow, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepDistFromVel_Snow, version: Version- 33);
             }
 
             if (Version >= 12)
@@ -1767,13 +1733,13 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
             if (Version >= 16)
             {
-                rw.NodeRef(ref n.walkStepBodyVolumeFromVelRef);
-                rw.NodeRef(ref n.runStepBodyVolumeFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepBodyVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepBodyVolumeFromVel, version: Version- 33);
             }
 
             if (Version >= 17)
             {
-                rw.NodeRef(ref n.landVolumeFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.landVolumeFromVel, version: Version- 33);
             }
 
             if (Version >= 19)
@@ -1783,41 +1749,41 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
             if (Version >= 20)
             {
-                rw.NodeRef(ref n.swimStepDistFromVelRef);
-                rw.NodeRef(ref n.swimStepBodyVolumeFromVelRef);
-                rw.NodeRef(ref n.swimStepBodyPitchFromVelRef);
-                rw.NodeRef(ref n.walkStepBodyPitchFromVelRef);
-                rw.NodeRef(ref n.runStepBodyPitchFromVelRef);
-                rw.NodeRef(ref n.swimmingVolumeFromVelRef);
-                rw.NodeRef(ref n.swimmingPitchFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.swimStepDistFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.swimStepBodyVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.swimStepBodyPitchFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepBodyPitchFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepBodyPitchFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.swimmingVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.swimmingPitchFromVel, version: Version- 33);
             }
 
             if (Version >= 22)
             {
-                rw.NodeRef(ref n.slideSurfgVolumeFromVelRef);
-                rw.NodeRef(ref n.slideSurfPitchFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.slideSurfgVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.slideSurfPitchFromVel, version: Version- 33);
             }
 
             if (Version >= 23)
             {
-                rw.NodeRef(ref n.jumpVolumeFromVelRef);
-                rw.NodeRef(ref n.jumpPitchFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.jumpVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.jumpPitchFromVel, version: Version- 33);
             }
 
             if (Version >= 24)
             {
-                rw.NodeRef(ref n.wallJumpVolumeFromVelRef);
-                rw.NodeRef(ref n.wallJumpPitchFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.wallJumpVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.wallJumpPitchFromVel, version: Version- 33);
             }
 
             if (Version >= 25)
             {
-                rw.NodeRef(ref n.swimStepImpactVolumeFromVelRef);
-                rw.NodeRef(ref n.swimStepImpactPitchFromVelRef);
-                rw.NodeRef(ref n.walkStepImpactVolumeFromVelRef);
-                rw.NodeRef(ref n.walkStepImpactPitchFromVelRef);
-                rw.NodeRef(ref n.runStepImpactVolumeFromVelRef);
-                rw.NodeRef(ref n.runStepImpactPitchFromVelRef);
+                rw.ReadableWritable<PlugCurve>(ref n.swimStepImpactVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.swimStepImpactPitchFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepImpactVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.walkStepImpactPitchFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepImpactVolumeFromVel, version: Version- 33);
+                rw.ReadableWritable<PlugCurve>(ref n.runStepImpactPitchFromVel, version: Version- 33);
             }
 
             if (Version >= 26)
@@ -1827,7 +1793,7 @@ public partial class CPlugCharVisModel : CMwNod, IClass
 
             if (Version >= 27)
             {
-                rw.NodeRef(ref n.walkViewBobAmountFromVel_RushingRef);
+                rw.ReadableWritable<PlugCurve>(ref n.walkViewBobAmountFromVel_Rushing, version: Version- 33);
             }
 
             if (Version >= 28)
@@ -1848,6 +1814,16 @@ public partial class CPlugCharVisModel : CMwNod, IClass
             if (Version >= 31)
             {
                 rw.NodeRef(ref n.nullMeshRef);
+            }
+
+            if (Version >= 32)
+            {
+                rw.NodeRef(ref U14Ref);
+            }
+
+            if (Version >= 33)
+            {
+                rw.NodeRef(ref U15Ref);
             }
         }
     }

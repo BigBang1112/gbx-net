@@ -29,9 +29,11 @@ CPlugParticleSplashModel 0x090B5000
   v2+
     float
     float
-    v3+
-      CFuncEnvelope
-      v4+
-        float
-        float
-        float
+  v3..4
+    CFuncEnvelope
+  v5+
+    PlugCurve
+  v4+
+    float
+    float
+    float

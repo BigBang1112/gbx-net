@@ -9,10 +9,14 @@ CPlugModelShading 0x0900E000
   FidId[] MaterialsDyna0
 
 0x002 // static materials and remap
-  version
+  version = 3
   FidId[] MaterialsStatic
   v1+
     CMwNod MaterialRemapFid
+  v2+
+    CMwNod MaterialFid_StaticScreen_Parallax
+  v3+
+    CMwNod MaterialFid_StaticScreen
 
 0x003 // character materials
   version = 2
@@ -26,7 +30,7 @@ CPlugModelShading 0x0900E000
     CMwNod MaterialFid_Char_ShowEnergy
 
 0x004 // vehicle materials
-  version = 4
+  version = 5
   FidId[] MaterialsVehicle
   v1=
     CMwNod
@@ -34,6 +38,9 @@ CPlugModelShading 0x0900E000
     CMwNod MaterialFid_Vehicle_Teleport
   v4+
     CMwNod MaterialFid_Vehicle_Shield
+  v5+
+    CMwNod BitmapFid_CarDecalStadium_BaseColorOp
+    CMwNod BitmapFid_CarDecalStadium_RoughMetal
 
 0x005 // menu box materials
   version

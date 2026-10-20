@@ -75,6 +75,24 @@ public partial class CPlugModelShading : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref materialRemapFidRef, value);
     }
 
+    private NodeRef<CMwNod>? materialFid_StaticScreen_ParallaxRef;
+    /// <remarks>Applied with: 0x002 v2+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0900E002>(2)]
+    public CMwNod? MaterialFid_StaticScreen_Parallax
+    {
+        get => materialFid_StaticScreen_ParallaxRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialFid_StaticScreen_ParallaxRef, value);
+    }
+
+    private NodeRef<CMwNod>? materialFid_StaticScreenRef;
+    /// <remarks>Applied with: 0x002 v3+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0900E002>(3)]
+    public CMwNod? MaterialFid_StaticScreen
+    {
+        get => materialFid_StaticScreenRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref materialFid_StaticScreenRef, value);
+    }
+
     private FidId[]? materialsChar;
     /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0900E003>]
@@ -156,6 +174,24 @@ public partial class CPlugModelShading : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref materialFid_Vehicle_ShieldRef, value);
     }
 
+    private NodeRef<CMwNod>? bitmapFid_CarDecalStadium_BaseColorOpRef;
+    /// <remarks>Applied with: 0x004 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0900E004>(5)]
+    public CMwNod? BitmapFid_CarDecalStadium_BaseColorOp
+    {
+        get => bitmapFid_CarDecalStadium_BaseColorOpRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFid_CarDecalStadium_BaseColorOpRef, value);
+    }
+
+    private NodeRef<CMwNod>? bitmapFid_CarDecalStadium_RoughMetalRef;
+    /// <remarks>Applied with: 0x004 v5+ body chunk</remarks>
+    [AppliedWithChunk<Chunk0900E004>(5)]
+    public CMwNod? BitmapFid_CarDecalStadium_RoughMetal
+    {
+        get => bitmapFid_CarDecalStadium_RoughMetalRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref bitmapFid_CarDecalStadium_RoughMetalRef, value);
+    }
+
     private FidId[]? materialsMenuBox3d;
     /// <remarks>Applied with: 0x005 body chunk</remarks>
     [AppliedWithChunk<Chunk0900E005>]
@@ -171,6 +207,8 @@ public partial class CPlugModelShading : CMwNod, IClass
         private readonly CPlugModelShading owner;
         internal NodeRefView(CPlugModelShading owner) => this.owner = owner;
         public NodeRef<CMwNod> MaterialRemapFid => NodeRef.GetOrCreate(ref owner.materialRemapFidRef);
+        public NodeRef<CMwNod> MaterialFid_StaticScreen_Parallax => NodeRef.GetOrCreate(ref owner.materialFid_StaticScreen_ParallaxRef);
+        public NodeRef<CMwNod> MaterialFid_StaticScreen => NodeRef.GetOrCreate(ref owner.materialFid_StaticScreenRef);
         public NodeRef<CMwNod> MaterialFid_Char_Shield => NodeRef.GetOrCreate(ref owner.materialFid_Char_ShieldRef);
         public NodeRef<CMwNod> MaterialFid_Char_Teleport => NodeRef.GetOrCreate(ref owner.materialFid_Char_TeleportRef);
         public NodeRef<CMwNod> LightFid_Char_FakeShadowProj => NodeRef.GetOrCreate(ref owner.lightFid_Char_FakeShadowProjRef);
@@ -178,11 +216,15 @@ public partial class CPlugModelShading : CMwNod, IClass
         public NodeRef<CMwNod> MaterialFid_Char_ShowEnergy => NodeRef.GetOrCreate(ref owner.materialFid_Char_ShowEnergyRef);
         public NodeRef<CMwNod> MaterialFid_Vehicle_Teleport => NodeRef.GetOrCreate(ref owner.materialFid_Vehicle_TeleportRef);
         public NodeRef<CMwNod> MaterialFid_Vehicle_Shield => NodeRef.GetOrCreate(ref owner.materialFid_Vehicle_ShieldRef);
+        public NodeRef<CMwNod> BitmapFid_CarDecalStadium_BaseColorOp => NodeRef.GetOrCreate(ref owner.bitmapFid_CarDecalStadium_BaseColorOpRef);
+        public NodeRef<CMwNod> BitmapFid_CarDecalStadium_RoughMetal => NodeRef.GetOrCreate(ref owner.bitmapFid_CarDecalStadium_RoughMetalRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
         foreach (var reference in base.EnumerateReferences()) yield return reference;
         yield return new("MaterialRemapFid", NodeRef.GetOrCreate(ref materialRemapFidRef));
+        yield return new("MaterialFid_StaticScreen_Parallax", NodeRef.GetOrCreate(ref materialFid_StaticScreen_ParallaxRef));
+        yield return new("MaterialFid_StaticScreen", NodeRef.GetOrCreate(ref materialFid_StaticScreenRef));
         yield return new("MaterialFid_Char_Shield", NodeRef.GetOrCreate(ref materialFid_Char_ShieldRef));
         yield return new("MaterialFid_Char_Teleport", NodeRef.GetOrCreate(ref materialFid_Char_TeleportRef));
         yield return new("LightFid_Char_FakeShadowProj", NodeRef.GetOrCreate(ref lightFid_Char_FakeShadowProjRef));
@@ -190,6 +232,8 @@ public partial class CPlugModelShading : CMwNod, IClass
         yield return new("MaterialFid_Char_ShowEnergy", NodeRef.GetOrCreate(ref materialFid_Char_ShowEnergyRef));
         yield return new("MaterialFid_Vehicle_Teleport", NodeRef.GetOrCreate(ref materialFid_Vehicle_TeleportRef));
         yield return new("MaterialFid_Vehicle_Shield", NodeRef.GetOrCreate(ref materialFid_Vehicle_ShieldRef));
+        yield return new("BitmapFid_CarDecalStadium_BaseColorOp", NodeRef.GetOrCreate(ref bitmapFid_CarDecalStadium_BaseColorOpRef));
+        yield return new("BitmapFid_CarDecalStadium_RoughMetal", NodeRef.GetOrCreate(ref bitmapFid_CarDecalStadium_RoughMetalRef));
         yield break;
     }
 
@@ -200,6 +244,8 @@ public partial class CPlugModelShading : CMwNod, IClass
         ((CPlugModelShading)clone).materialsDyna0 = context.CloneArray(this.materialsDyna0)!;
         ((CPlugModelShading)clone).materialsStatic = context.CloneArray(this.materialsStatic)!;
         ((CPlugModelShading)clone).materialRemapFidRef = context.Clone(this.materialRemapFidRef)!;
+        ((CPlugModelShading)clone).materialFid_StaticScreen_ParallaxRef = context.Clone(this.materialFid_StaticScreen_ParallaxRef)!;
+        ((CPlugModelShading)clone).materialFid_StaticScreenRef = context.Clone(this.materialFid_StaticScreenRef)!;
         ((CPlugModelShading)clone).materialsChar = context.CloneArray(this.materialsChar)!;
         ((CPlugModelShading)clone).materialFid_Char_ShieldRef = context.Clone(this.materialFid_Char_ShieldRef)!;
         ((CPlugModelShading)clone).materialFid_Char_TeleportRef = context.Clone(this.materialFid_Char_TeleportRef)!;
@@ -209,6 +255,8 @@ public partial class CPlugModelShading : CMwNod, IClass
         ((CPlugModelShading)clone).materialsVehicle = context.CloneArray(this.materialsVehicle)!;
         ((CPlugModelShading)clone).materialFid_Vehicle_TeleportRef = context.Clone(this.materialFid_Vehicle_TeleportRef)!;
         ((CPlugModelShading)clone).materialFid_Vehicle_ShieldRef = context.Clone(this.materialFid_Vehicle_ShieldRef)!;
+        ((CPlugModelShading)clone).bitmapFid_CarDecalStadium_BaseColorOpRef = context.Clone(this.bitmapFid_CarDecalStadium_BaseColorOpRef)!;
+        ((CPlugModelShading)clone).bitmapFid_CarDecalStadium_RoughMetalRef = context.Clone(this.bitmapFid_CarDecalStadium_RoughMetalRef)!;
         ((CPlugModelShading)clone).materialsMenuBox3d = context.CloneArray(this.materialsMenuBox3d)!;
     }
 
@@ -267,7 +315,7 @@ public partial class CPlugModelShading : CMwNod, IClass
     public partial class Chunk0900E002 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E002;
-        public int Version { get; set; }
+        public int Version { get; set; } = 3;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -283,6 +331,16 @@ public partial class CPlugModelShading : CMwNod, IClass
             if (Version >= 1)
             {
                 rw.NodeRef(ref n.materialRemapFidRef);
+            }
+
+            if (Version >= 2)
+            {
+                rw.NodeRef(ref n.materialFid_StaticScreen_ParallaxRef);
+            }
+
+            if (Version >= 3)
+            {
+                rw.NodeRef(ref n.materialFid_StaticScreenRef);
             }
         }
     }
@@ -329,7 +387,7 @@ public partial class CPlugModelShading : CMwNod, IClass
     public partial class Chunk0900E004 : Chunk<CPlugModelShading>, IVersionable
     {
         public override uint Id => 0x0900E004;
-        public int Version { get; set; } = 4;
+        public int Version { get; set; } = 5;
 
         private NodeRef<CMwNod>? U01Ref;
         public CMwNod? U01
@@ -377,6 +435,12 @@ public partial class CPlugModelShading : CMwNod, IClass
             if (Version >= 4)
             {
                 rw.NodeRef(ref n.materialFid_Vehicle_ShieldRef);
+            }
+
+            if (Version >= 5)
+            {
+                rw.NodeRef(ref n.bitmapFid_CarDecalStadium_BaseColorOpRef);
+                rw.NodeRef(ref n.bitmapFid_CarDecalStadium_RoughMetalRef);
             }
         }
     }

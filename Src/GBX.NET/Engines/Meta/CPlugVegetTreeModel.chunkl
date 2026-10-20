@@ -1,0 +1,106 @@
+CPlugVegetTreeModel 0x2F086000
+
+archive
+  version = 21
+  v14+ (archive)
+    int U01
+  int GeometryGroupCount (local, write: "GeometryGroups?.Length ?? 0")
+  int DistanceCount (local, write: "Distances?.Length ?? 0")
+  TextureSet[] Textures
+  v2+ (archive)
+    id[] TextureNames
+  GeometryGroup[GeometryGroupCount] GeometryGroups
+  float[DistanceCount] Distances
+  byte U02
+  float U03
+  byte U04
+  byte U05
+  v7+ (archive)
+    ulong U06 = 2
+  v9+ (archive)
+    float U07
+    float U08
+  v10+ (archive)
+    float U09
+  v11+ (archive)
+    CollisionSurface Collision
+  v12+ (archive)
+    int U10
+  v16+ (archive)
+    CPlugBitmap U11
+    CPlugBitmap U12
+    float U13
+    float U14
+    float U15
+    float U16
+    v19+ (archive)
+      float U17
+    float U18
+    float U19
+    float U20
+    vec3[] U21
+  v17+ (archive)
+    bool HasAdditionalData (local, write: "AdditionalData != null")
+    if HasAdditionalData
+      Additional AdditionalData
+  v20+ (archive)
+    int U22
+  v21+ (archive)
+    float U23 = 1f
+
+archive TextureSet
+  v18+
+    CPlugBitmap U01
+    CPlugBitmap U02
+    CPlugBitmap U03
+  CPlugFileImg U04
+  CPlugFileImg U05
+  CPlugFileImg U06
+  v2+
+    CMwNod U07
+  v3+
+    CMwNod U08
+  v4+
+    CPlugMaterial Material
+  v5+
+    byte U09
+
+archive GeometryGroup
+  Geometry[] Geometries
+
+archive Geometry
+  v15-
+    int<ushort> U01
+  v15+
+    ushort U01
+  CPlugVisual Visual
+  v15+
+    byte U02
+
+archive CollisionSurface
+
+archive Additional
+  version = 1
+  int U01
+  float U02
+  bool U03
+  float U04
+  float U05
+  float U06
+  float U07
+  float U08
+  float U09
+  float U10
+  float U11
+  float U12
+  float U13
+  boxaligned[] U15
+  v1+ (archive)
+    AdditionalElement[] U16
+
+archive AdditionalElement
+  float U01
+  float U02
+  float U03
+  float U04
+  float U05

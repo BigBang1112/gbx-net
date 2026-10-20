@@ -391,7 +391,7 @@ CGameCtnCollection 0x03033000
     uint TurboColor_Turbo = 0xFFFF00FF
     uint TurboColor_Turbo2 = 0xFF0000FF
     v2+
-      CPlugMaterialColorTargetTable FidColorTargetTable
+      CPlugMaterialColorTargetTable* FidColorTargetTable
 
 0x03C [TM2020.v1] // spectator folders
   version

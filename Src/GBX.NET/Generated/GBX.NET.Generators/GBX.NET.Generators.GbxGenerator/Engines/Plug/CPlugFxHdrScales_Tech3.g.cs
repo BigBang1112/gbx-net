@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x090F5000</remarks>
 [Class(0x090F5000)]
-public partial class CPlugFxHdrScales_Tech3 : CMwNod, IClass
+public partial class CPlugFxHdrScales_Tech3 : CPlug, IClass
 {
     [Hexadecimal]
     public static new uint Id => 0x090F5000;

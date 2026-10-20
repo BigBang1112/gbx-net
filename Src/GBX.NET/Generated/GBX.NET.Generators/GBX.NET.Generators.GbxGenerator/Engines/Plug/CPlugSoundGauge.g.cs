@@ -183,328 +183,328 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         set => this.restartLoopOnChange = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateFillingRef;
+    private PlugCurve? pitchFromRateFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRateFilling
+    public PlugCurve? PitchFromRateFilling
     {
-        get => pitchFromRateFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateFillingRef, value);
+        get => this.pitchFromRateFilling;
+        set => this.pitchFromRateFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnStopFillingRef;
+    private PlugCurve? pitchFromRateOnStopFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRateOnStopFilling
+    public PlugCurve? PitchFromRateOnStopFilling
     {
-        get => pitchFromRateOnStopFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnStopFillingRef, value);
+        get => this.pitchFromRateOnStopFilling;
+        set => this.pitchFromRateOnStopFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnFullOrEmptyRef;
+    private PlugCurve? pitchFromRateOnFullOrEmpty;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRateOnFullOrEmpty
+    public PlugCurve? PitchFromRateOnFullOrEmpty
     {
-        get => pitchFromRateOnFullOrEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnFullOrEmptyRef, value);
+        get => this.pitchFromRateOnFullOrEmpty;
+        set => this.pitchFromRateOnFullOrEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnGradFullRef;
+    private PlugCurve? pitchFromRateOnGradFull;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRateOnGradFull
+    public PlugCurve? PitchFromRateOnGradFull
     {
-        get => pitchFromRateOnGradFullRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnGradFullRef, value);
+        get => this.pitchFromRateOnGradFull;
+        set => this.pitchFromRateOnGradFull = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioFillingRef;
+    private PlugCurve? pitchFromRatioFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRatioFilling
+    public PlugCurve? PitchFromRatioFilling
     {
-        get => pitchFromRatioFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioFillingRef, value);
+        get => this.pitchFromRatioFilling;
+        set => this.pitchFromRatioFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnStopFillingRef;
+    private PlugCurve? pitchFromRatioOnStopFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRatioOnStopFilling
+    public PlugCurve? PitchFromRatioOnStopFilling
     {
-        get => pitchFromRatioOnStopFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnStopFillingRef, value);
+        get => this.pitchFromRatioOnStopFilling;
+        set => this.pitchFromRatioOnStopFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnFullOrEmptyRef;
+    private PlugCurve? pitchFromRatioOnFullOrEmpty;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRatioOnFullOrEmpty
+    public PlugCurve? PitchFromRatioOnFullOrEmpty
     {
-        get => pitchFromRatioOnFullOrEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnFullOrEmptyRef, value);
+        get => this.pitchFromRatioOnFullOrEmpty;
+        set => this.pitchFromRatioOnFullOrEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnGradFullRef;
+    private PlugCurve? pitchFromRatioOnGradFull;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? PitchFromRatioOnGradFull
+    public PlugCurve? PitchFromRatioOnGradFull
     {
-        get => pitchFromRatioOnGradFullRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnGradFullRef, value);
+        get => this.pitchFromRatioOnGradFull;
+        set => this.pitchFromRatioOnGradFull = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateFillingRef;
+    private PlugCurve? volumeFromRateFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRateFilling
+    public PlugCurve? VolumeFromRateFilling
     {
-        get => volumeFromRateFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateFillingRef, value);
+        get => this.volumeFromRateFilling;
+        set => this.volumeFromRateFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnStopFillingRef;
+    private PlugCurve? volumeFromRateOnStopFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRateOnStopFilling
+    public PlugCurve? VolumeFromRateOnStopFilling
     {
-        get => volumeFromRateOnStopFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnStopFillingRef, value);
+        get => this.volumeFromRateOnStopFilling;
+        set => this.volumeFromRateOnStopFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnFullOrEmptyRef;
+    private PlugCurve? volumeFromRateOnFullOrEmpty;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRateOnFullOrEmpty
+    public PlugCurve? VolumeFromRateOnFullOrEmpty
     {
-        get => volumeFromRateOnFullOrEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnFullOrEmptyRef, value);
+        get => this.volumeFromRateOnFullOrEmpty;
+        set => this.volumeFromRateOnFullOrEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnGradFullRef;
+    private PlugCurve? volumeFromRateOnGradFull;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRateOnGradFull
+    public PlugCurve? VolumeFromRateOnGradFull
     {
-        get => volumeFromRateOnGradFullRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnGradFullRef, value);
+        get => this.volumeFromRateOnGradFull;
+        set => this.volumeFromRateOnGradFull = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioFillingRef;
+    private PlugCurve? volumeFromRatioFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRatioFilling
+    public PlugCurve? VolumeFromRatioFilling
     {
-        get => volumeFromRatioFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioFillingRef, value);
+        get => this.volumeFromRatioFilling;
+        set => this.volumeFromRatioFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnStopFillingRef;
+    private PlugCurve? volumeFromRatioOnStopFilling;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRatioOnStopFilling
+    public PlugCurve? VolumeFromRatioOnStopFilling
     {
-        get => volumeFromRatioOnStopFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnStopFillingRef, value);
+        get => this.volumeFromRatioOnStopFilling;
+        set => this.volumeFromRatioOnStopFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnFullOrEmptyRef;
+    private PlugCurve? volumeFromRatioOnFullOrEmpty;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRatioOnFullOrEmpty
+    public PlugCurve? VolumeFromRatioOnFullOrEmpty
     {
-        get => volumeFromRatioOnFullOrEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnFullOrEmptyRef, value);
+        get => this.volumeFromRatioOnFullOrEmpty;
+        set => this.volumeFromRatioOnFullOrEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnGradFullRef;
+    private PlugCurve? volumeFromRatioOnGradFull;
     /// <remarks>Applied with: 0x001 body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>]
-    public CFuncKeysReal? VolumeFromRatioOnGradFull
+    public PlugCurve? VolumeFromRatioOnGradFull
     {
-        get => volumeFromRatioOnGradFullRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnGradFullRef, value);
+        get => this.volumeFromRatioOnGradFull;
+        set => this.volumeFromRatioOnGradFull = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnStartFillingRef;
+    private PlugCurve? pitchFromRateOnStartFilling;
     /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(3)]
-    public CFuncKeysReal? PitchFromRateOnStartFilling
+    public PlugCurve? PitchFromRateOnStartFilling
     {
-        get => pitchFromRateOnStartFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnStartFillingRef, value);
+        get => this.pitchFromRateOnStartFilling;
+        set => this.pitchFromRateOnStartFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnStartFillingRef;
+    private PlugCurve? pitchFromRatioOnStartFilling;
     /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(3)]
-    public CFuncKeysReal? PitchFromRatioOnStartFilling
+    public PlugCurve? PitchFromRatioOnStartFilling
     {
-        get => pitchFromRatioOnStartFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnStartFillingRef, value);
+        get => this.pitchFromRatioOnStartFilling;
+        set => this.pitchFromRatioOnStartFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnStartFillingRef;
+    private PlugCurve? volumeFromRateOnStartFilling;
     /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(3)]
-    public CFuncKeysReal? VolumeFromRateOnStartFilling
+    public PlugCurve? VolumeFromRateOnStartFilling
     {
-        get => volumeFromRateOnStartFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnStartFillingRef, value);
+        get => this.volumeFromRateOnStartFilling;
+        set => this.volumeFromRateOnStartFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnStartFillingRef;
+    private PlugCurve? volumeFromRatioOnStartFilling;
     /// <remarks>Applied with: 0x001 v3+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(3)]
-    public CFuncKeysReal? VolumeFromRatioOnStartFilling
+    public PlugCurve? VolumeFromRatioOnStartFilling
     {
-        get => volumeFromRatioOnStartFillingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnStartFillingRef, value);
+        get => this.volumeFromRatioOnStartFilling;
+        set => this.volumeFromRatioOnStartFilling = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateEmptyingRef;
+    private PlugCurve? pitchFromRateEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRateEmptying
+    public PlugCurve? PitchFromRateEmptying
     {
-        get => pitchFromRateEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateEmptyingRef, value);
+        get => this.pitchFromRateEmptying;
+        set => this.pitchFromRateEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnStopEmptyingRef;
+    private PlugCurve? pitchFromRateOnStopEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRateOnStopEmptying
+    public PlugCurve? PitchFromRateOnStopEmptying
     {
-        get => pitchFromRateOnStopEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnStopEmptyingRef, value);
+        get => this.pitchFromRateOnStopEmptying;
+        set => this.pitchFromRateOnStopEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnGradEmptyRef;
+    private PlugCurve? pitchFromRateOnGradEmpty;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRateOnGradEmpty
+    public PlugCurve? PitchFromRateOnGradEmpty
     {
-        get => pitchFromRateOnGradEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnGradEmptyRef, value);
+        get => this.pitchFromRateOnGradEmpty;
+        set => this.pitchFromRateOnGradEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioEmptyingRef;
+    private PlugCurve? pitchFromRatioEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRatioEmptying
+    public PlugCurve? PitchFromRatioEmptying
     {
-        get => pitchFromRatioEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioEmptyingRef, value);
+        get => this.pitchFromRatioEmptying;
+        set => this.pitchFromRatioEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnStopEmptyingRef;
+    private PlugCurve? pitchFromRatioOnStopEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRatioOnStopEmptying
+    public PlugCurve? PitchFromRatioOnStopEmptying
     {
-        get => pitchFromRatioOnStopEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnStopEmptyingRef, value);
+        get => this.pitchFromRatioOnStopEmptying;
+        set => this.pitchFromRatioOnStopEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnGradEmptyRef;
+    private PlugCurve? pitchFromRatioOnGradEmpty;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRatioOnGradEmpty
+    public PlugCurve? PitchFromRatioOnGradEmpty
     {
-        get => pitchFromRatioOnGradEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnGradEmptyRef, value);
+        get => this.pitchFromRatioOnGradEmpty;
+        set => this.pitchFromRatioOnGradEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateEmptyingRef;
+    private PlugCurve? volumeFromRateEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRateEmptying
+    public PlugCurve? VolumeFromRateEmptying
     {
-        get => volumeFromRateEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateEmptyingRef, value);
+        get => this.volumeFromRateEmptying;
+        set => this.volumeFromRateEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnStopEmptyingRef;
+    private PlugCurve? volumeFromRateOnStopEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRateOnStopEmptying
+    public PlugCurve? VolumeFromRateOnStopEmptying
     {
-        get => volumeFromRateOnStopEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnStopEmptyingRef, value);
+        get => this.volumeFromRateOnStopEmptying;
+        set => this.volumeFromRateOnStopEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnGradEmptyRef;
+    private PlugCurve? volumeFromRateOnGradEmpty;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRateOnGradEmpty
+    public PlugCurve? VolumeFromRateOnGradEmpty
     {
-        get => volumeFromRateOnGradEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnGradEmptyRef, value);
+        get => this.volumeFromRateOnGradEmpty;
+        set => this.volumeFromRateOnGradEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioEmptyingRef;
+    private PlugCurve? volumeFromRatioEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRatioEmptying
+    public PlugCurve? VolumeFromRatioEmptying
     {
-        get => volumeFromRatioEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioEmptyingRef, value);
+        get => this.volumeFromRatioEmptying;
+        set => this.volumeFromRatioEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnStopEmptyingRef;
+    private PlugCurve? volumeFromRatioOnStopEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRatioOnStopEmptying
+    public PlugCurve? VolumeFromRatioOnStopEmptying
     {
-        get => volumeFromRatioOnStopEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnStopEmptyingRef, value);
+        get => this.volumeFromRatioOnStopEmptying;
+        set => this.volumeFromRatioOnStopEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnGradEmptyRef;
+    private PlugCurve? volumeFromRatioOnGradEmpty;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRatioOnGradEmpty
+    public PlugCurve? VolumeFromRatioOnGradEmpty
     {
-        get => volumeFromRatioOnGradEmptyRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnGradEmptyRef, value);
+        get => this.volumeFromRatioOnGradEmpty;
+        set => this.volumeFromRatioOnGradEmpty = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRateOnStartEmptyingRef;
+    private PlugCurve? pitchFromRateOnStartEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRateOnStartEmptying
+    public PlugCurve? PitchFromRateOnStartEmptying
     {
-        get => pitchFromRateOnStartEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRateOnStartEmptyingRef, value);
+        get => this.pitchFromRateOnStartEmptying;
+        set => this.pitchFromRateOnStartEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? pitchFromRatioOnStartEmptyingRef;
+    private PlugCurve? pitchFromRatioOnStartEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? PitchFromRatioOnStartEmptying
+    public PlugCurve? PitchFromRatioOnStartEmptying
     {
-        get => pitchFromRatioOnStartEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref pitchFromRatioOnStartEmptyingRef, value);
+        get => this.pitchFromRatioOnStartEmptying;
+        set => this.pitchFromRatioOnStartEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRateOnStartEmptyingRef;
+    private PlugCurve? volumeFromRateOnStartEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRateOnStartEmptying
+    public PlugCurve? VolumeFromRateOnStartEmptying
     {
-        get => volumeFromRateOnStartEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRateOnStartEmptyingRef, value);
+        get => this.volumeFromRateOnStartEmptying;
+        set => this.volumeFromRateOnStartEmptying = value;
     }
 
-    private NodeRef<CFuncKeysReal>? volumeFromRatioOnStartEmptyingRef;
+    private PlugCurve? volumeFromRatioOnStartEmptying;
     /// <remarks>Applied with: 0x001 v4+ body chunk</remarks>
     [AppliedWithChunk<Chunk09052001>(4)]
-    public CFuncKeysReal? VolumeFromRatioOnStartEmptying
+    public PlugCurve? VolumeFromRatioOnStartEmptying
     {
-        get => volumeFromRatioOnStartEmptyingRef?.Resolve();
-        set => NodeRef.SetEmbedded(ref volumeFromRatioOnStartEmptyingRef, value);
+        get => this.volumeFromRatioOnStartEmptying;
+        set => this.volumeFromRatioOnStartEmptying = value;
     }
 
     public new NodeRefView References => new(this);
@@ -524,42 +524,6 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         public NodeRef<CPlugFileSnd> FileSndEmptyingFast => NodeRef.GetOrCreate(ref owner.fileSndEmptyingFastRef);
         public NodeRef<CPlugFileSnd> FileSndOnStartFilling => NodeRef.GetOrCreate(ref owner.fileSndOnStartFillingRef);
         public NodeRef<CPlugFileSnd> FileSndOnStartEmptying => NodeRef.GetOrCreate(ref owner.fileSndOnStartEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateFilling => NodeRef.GetOrCreate(ref owner.pitchFromRateFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnStopFilling => NodeRef.GetOrCreate(ref owner.pitchFromRateOnStopFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnFullOrEmpty => NodeRef.GetOrCreate(ref owner.pitchFromRateOnFullOrEmptyRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnGradFull => NodeRef.GetOrCreate(ref owner.pitchFromRateOnGradFullRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioFilling => NodeRef.GetOrCreate(ref owner.pitchFromRatioFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnStopFilling => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnStopFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnFullOrEmpty => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnFullOrEmptyRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnGradFull => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnGradFullRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateFilling => NodeRef.GetOrCreate(ref owner.volumeFromRateFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnStopFilling => NodeRef.GetOrCreate(ref owner.volumeFromRateOnStopFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnFullOrEmpty => NodeRef.GetOrCreate(ref owner.volumeFromRateOnFullOrEmptyRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnGradFull => NodeRef.GetOrCreate(ref owner.volumeFromRateOnGradFullRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioFilling => NodeRef.GetOrCreate(ref owner.volumeFromRatioFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnStopFilling => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnStopFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnFullOrEmpty => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnFullOrEmptyRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnGradFull => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnGradFullRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnStartFilling => NodeRef.GetOrCreate(ref owner.pitchFromRateOnStartFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnStartFilling => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnStartFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnStartFilling => NodeRef.GetOrCreate(ref owner.volumeFromRateOnStartFillingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnStartFilling => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnStartFillingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRateEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnStopEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRateOnStopEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnGradEmpty => NodeRef.GetOrCreate(ref owner.pitchFromRateOnGradEmptyRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRatioEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnStopEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnStopEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnGradEmpty => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnGradEmptyRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRateEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnStopEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRateOnStopEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnGradEmpty => NodeRef.GetOrCreate(ref owner.volumeFromRateOnGradEmptyRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRatioEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnStopEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnStopEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnGradEmpty => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnGradEmptyRef);
-        public NodeRef<CFuncKeysReal> PitchFromRateOnStartEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRateOnStartEmptyingRef);
-        public NodeRef<CFuncKeysReal> PitchFromRatioOnStartEmptying => NodeRef.GetOrCreate(ref owner.pitchFromRatioOnStartEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRateOnStartEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRateOnStartEmptyingRef);
-        public NodeRef<CFuncKeysReal> VolumeFromRatioOnStartEmptying => NodeRef.GetOrCreate(ref owner.volumeFromRatioOnStartEmptyingRef);
         public NodeRef<CMwNod> PlugFile => ((CPlugSound)owner).References.PlugFile;
         public NodeRef<CFuncKeysReal> VolumeFromDistance => ((CPlugSound)owner).References.VolumeFromDistance;
         public NodeRef<CFuncKeysReal> PitchFromDistance => ((CPlugSound)owner).References.PitchFromDistance;
@@ -583,42 +547,6 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         yield return new("FileSndEmptyingFast", NodeRef.GetOrCreate(ref fileSndEmptyingFastRef));
         yield return new("FileSndOnStartFilling", NodeRef.GetOrCreate(ref fileSndOnStartFillingRef));
         yield return new("FileSndOnStartEmptying", NodeRef.GetOrCreate(ref fileSndOnStartEmptyingRef));
-        yield return new("PitchFromRateFilling", NodeRef.GetOrCreate(ref pitchFromRateFillingRef));
-        yield return new("PitchFromRateOnStopFilling", NodeRef.GetOrCreate(ref pitchFromRateOnStopFillingRef));
-        yield return new("PitchFromRateOnFullOrEmpty", NodeRef.GetOrCreate(ref pitchFromRateOnFullOrEmptyRef));
-        yield return new("PitchFromRateOnGradFull", NodeRef.GetOrCreate(ref pitchFromRateOnGradFullRef));
-        yield return new("PitchFromRatioFilling", NodeRef.GetOrCreate(ref pitchFromRatioFillingRef));
-        yield return new("PitchFromRatioOnStopFilling", NodeRef.GetOrCreate(ref pitchFromRatioOnStopFillingRef));
-        yield return new("PitchFromRatioOnFullOrEmpty", NodeRef.GetOrCreate(ref pitchFromRatioOnFullOrEmptyRef));
-        yield return new("PitchFromRatioOnGradFull", NodeRef.GetOrCreate(ref pitchFromRatioOnGradFullRef));
-        yield return new("VolumeFromRateFilling", NodeRef.GetOrCreate(ref volumeFromRateFillingRef));
-        yield return new("VolumeFromRateOnStopFilling", NodeRef.GetOrCreate(ref volumeFromRateOnStopFillingRef));
-        yield return new("VolumeFromRateOnFullOrEmpty", NodeRef.GetOrCreate(ref volumeFromRateOnFullOrEmptyRef));
-        yield return new("VolumeFromRateOnGradFull", NodeRef.GetOrCreate(ref volumeFromRateOnGradFullRef));
-        yield return new("VolumeFromRatioFilling", NodeRef.GetOrCreate(ref volumeFromRatioFillingRef));
-        yield return new("VolumeFromRatioOnStopFilling", NodeRef.GetOrCreate(ref volumeFromRatioOnStopFillingRef));
-        yield return new("VolumeFromRatioOnFullOrEmpty", NodeRef.GetOrCreate(ref volumeFromRatioOnFullOrEmptyRef));
-        yield return new("VolumeFromRatioOnGradFull", NodeRef.GetOrCreate(ref volumeFromRatioOnGradFullRef));
-        yield return new("PitchFromRateOnStartFilling", NodeRef.GetOrCreate(ref pitchFromRateOnStartFillingRef));
-        yield return new("PitchFromRatioOnStartFilling", NodeRef.GetOrCreate(ref pitchFromRatioOnStartFillingRef));
-        yield return new("VolumeFromRateOnStartFilling", NodeRef.GetOrCreate(ref volumeFromRateOnStartFillingRef));
-        yield return new("VolumeFromRatioOnStartFilling", NodeRef.GetOrCreate(ref volumeFromRatioOnStartFillingRef));
-        yield return new("PitchFromRateEmptying", NodeRef.GetOrCreate(ref pitchFromRateEmptyingRef));
-        yield return new("PitchFromRateOnStopEmptying", NodeRef.GetOrCreate(ref pitchFromRateOnStopEmptyingRef));
-        yield return new("PitchFromRateOnGradEmpty", NodeRef.GetOrCreate(ref pitchFromRateOnGradEmptyRef));
-        yield return new("PitchFromRatioEmptying", NodeRef.GetOrCreate(ref pitchFromRatioEmptyingRef));
-        yield return new("PitchFromRatioOnStopEmptying", NodeRef.GetOrCreate(ref pitchFromRatioOnStopEmptyingRef));
-        yield return new("PitchFromRatioOnGradEmpty", NodeRef.GetOrCreate(ref pitchFromRatioOnGradEmptyRef));
-        yield return new("VolumeFromRateEmptying", NodeRef.GetOrCreate(ref volumeFromRateEmptyingRef));
-        yield return new("VolumeFromRateOnStopEmptying", NodeRef.GetOrCreate(ref volumeFromRateOnStopEmptyingRef));
-        yield return new("VolumeFromRateOnGradEmpty", NodeRef.GetOrCreate(ref volumeFromRateOnGradEmptyRef));
-        yield return new("VolumeFromRatioEmptying", NodeRef.GetOrCreate(ref volumeFromRatioEmptyingRef));
-        yield return new("VolumeFromRatioOnStopEmptying", NodeRef.GetOrCreate(ref volumeFromRatioOnStopEmptyingRef));
-        yield return new("VolumeFromRatioOnGradEmpty", NodeRef.GetOrCreate(ref volumeFromRatioOnGradEmptyRef));
-        yield return new("PitchFromRateOnStartEmptying", NodeRef.GetOrCreate(ref pitchFromRateOnStartEmptyingRef));
-        yield return new("PitchFromRatioOnStartEmptying", NodeRef.GetOrCreate(ref pitchFromRatioOnStartEmptyingRef));
-        yield return new("VolumeFromRateOnStartEmptying", NodeRef.GetOrCreate(ref volumeFromRateOnStartEmptyingRef));
-        yield return new("VolumeFromRatioOnStartEmptying", NodeRef.GetOrCreate(ref volumeFromRatioOnStartEmptyingRef));
         yield break;
     }
 
@@ -641,42 +569,42 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         ((CPlugSoundGauge)clone).fadeOutDuration = context.Clone(this.fadeOutDuration)!;
         ((CPlugSoundGauge)clone).fadeInDuration = context.Clone(this.fadeInDuration)!;
         ((CPlugSoundGauge)clone).restartLoopOnChange = context.Clone(this.restartLoopOnChange)!;
-        ((CPlugSoundGauge)clone).pitchFromRateFillingRef = context.Clone(this.pitchFromRateFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnStopFillingRef = context.Clone(this.pitchFromRateOnStopFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnFullOrEmptyRef = context.Clone(this.pitchFromRateOnFullOrEmptyRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnGradFullRef = context.Clone(this.pitchFromRateOnGradFullRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioFillingRef = context.Clone(this.pitchFromRatioFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnStopFillingRef = context.Clone(this.pitchFromRatioOnStopFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnFullOrEmptyRef = context.Clone(this.pitchFromRatioOnFullOrEmptyRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnGradFullRef = context.Clone(this.pitchFromRatioOnGradFullRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateFillingRef = context.Clone(this.volumeFromRateFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnStopFillingRef = context.Clone(this.volumeFromRateOnStopFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnFullOrEmptyRef = context.Clone(this.volumeFromRateOnFullOrEmptyRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnGradFullRef = context.Clone(this.volumeFromRateOnGradFullRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioFillingRef = context.Clone(this.volumeFromRatioFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnStopFillingRef = context.Clone(this.volumeFromRatioOnStopFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnFullOrEmptyRef = context.Clone(this.volumeFromRatioOnFullOrEmptyRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnGradFullRef = context.Clone(this.volumeFromRatioOnGradFullRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnStartFillingRef = context.Clone(this.pitchFromRateOnStartFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnStartFillingRef = context.Clone(this.pitchFromRatioOnStartFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnStartFillingRef = context.Clone(this.volumeFromRateOnStartFillingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnStartFillingRef = context.Clone(this.volumeFromRatioOnStartFillingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateEmptyingRef = context.Clone(this.pitchFromRateEmptyingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnStopEmptyingRef = context.Clone(this.pitchFromRateOnStopEmptyingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnGradEmptyRef = context.Clone(this.pitchFromRateOnGradEmptyRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioEmptyingRef = context.Clone(this.pitchFromRatioEmptyingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnStopEmptyingRef = context.Clone(this.pitchFromRatioOnStopEmptyingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnGradEmptyRef = context.Clone(this.pitchFromRatioOnGradEmptyRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateEmptyingRef = context.Clone(this.volumeFromRateEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnStopEmptyingRef = context.Clone(this.volumeFromRateOnStopEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnGradEmptyRef = context.Clone(this.volumeFromRateOnGradEmptyRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioEmptyingRef = context.Clone(this.volumeFromRatioEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnStopEmptyingRef = context.Clone(this.volumeFromRatioOnStopEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnGradEmptyRef = context.Clone(this.volumeFromRatioOnGradEmptyRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRateOnStartEmptyingRef = context.Clone(this.pitchFromRateOnStartEmptyingRef)!;
-        ((CPlugSoundGauge)clone).pitchFromRatioOnStartEmptyingRef = context.Clone(this.pitchFromRatioOnStartEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRateOnStartEmptyingRef = context.Clone(this.volumeFromRateOnStartEmptyingRef)!;
-        ((CPlugSoundGauge)clone).volumeFromRatioOnStartEmptyingRef = context.Clone(this.volumeFromRatioOnStartEmptyingRef)!;
+        ((CPlugSoundGauge)clone).pitchFromRateFilling = context.Clone(this.pitchFromRateFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnStopFilling = context.Clone(this.pitchFromRateOnStopFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnFullOrEmpty = context.Clone(this.pitchFromRateOnFullOrEmpty)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnGradFull = context.Clone(this.pitchFromRateOnGradFull)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioFilling = context.Clone(this.pitchFromRatioFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnStopFilling = context.Clone(this.pitchFromRatioOnStopFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnFullOrEmpty = context.Clone(this.pitchFromRatioOnFullOrEmpty)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnGradFull = context.Clone(this.pitchFromRatioOnGradFull)!;
+        ((CPlugSoundGauge)clone).volumeFromRateFilling = context.Clone(this.volumeFromRateFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnStopFilling = context.Clone(this.volumeFromRateOnStopFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnFullOrEmpty = context.Clone(this.volumeFromRateOnFullOrEmpty)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnGradFull = context.Clone(this.volumeFromRateOnGradFull)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioFilling = context.Clone(this.volumeFromRatioFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnStopFilling = context.Clone(this.volumeFromRatioOnStopFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnFullOrEmpty = context.Clone(this.volumeFromRatioOnFullOrEmpty)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnGradFull = context.Clone(this.volumeFromRatioOnGradFull)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnStartFilling = context.Clone(this.pitchFromRateOnStartFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnStartFilling = context.Clone(this.pitchFromRatioOnStartFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnStartFilling = context.Clone(this.volumeFromRateOnStartFilling)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnStartFilling = context.Clone(this.volumeFromRatioOnStartFilling)!;
+        ((CPlugSoundGauge)clone).pitchFromRateEmptying = context.Clone(this.pitchFromRateEmptying)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnStopEmptying = context.Clone(this.pitchFromRateOnStopEmptying)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnGradEmpty = context.Clone(this.pitchFromRateOnGradEmpty)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioEmptying = context.Clone(this.pitchFromRatioEmptying)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnStopEmptying = context.Clone(this.pitchFromRatioOnStopEmptying)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnGradEmpty = context.Clone(this.pitchFromRatioOnGradEmpty)!;
+        ((CPlugSoundGauge)clone).volumeFromRateEmptying = context.Clone(this.volumeFromRateEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnStopEmptying = context.Clone(this.volumeFromRateOnStopEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnGradEmpty = context.Clone(this.volumeFromRateOnGradEmpty)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioEmptying = context.Clone(this.volumeFromRatioEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnStopEmptying = context.Clone(this.volumeFromRatioOnStopEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnGradEmpty = context.Clone(this.volumeFromRatioOnGradEmpty)!;
+        ((CPlugSoundGauge)clone).pitchFromRateOnStartEmptying = context.Clone(this.pitchFromRateOnStartEmptying)!;
+        ((CPlugSoundGauge)clone).pitchFromRatioOnStartEmptying = context.Clone(this.pitchFromRatioOnStartEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRateOnStartEmptying = context.Clone(this.volumeFromRateOnStartEmptying)!;
+        ((CPlugSoundGauge)clone).volumeFromRatioOnStartEmptying = context.Clone(this.volumeFromRatioOnStartEmptying)!;
     }
 
     public CPlugSoundGauge()
@@ -687,7 +615,7 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
     /// CPlugSoundGauge 0x000 chunk
     /// </summary>
     [Chunk(0x09052000)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk09052000 : Chunk<CPlugSoundGauge>, IVersionable
     {
         public override uint Id => 0x09052000;
@@ -700,9 +628,13 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
 
         public Chunk09052000(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
             {
                 Version = 2;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
             }
         }
 
@@ -715,7 +647,7 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         public override void ReadWrite(CPlugSoundGauge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -747,7 +679,7 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
     /// CPlugSoundGauge 0x001 chunk
     /// </summary>
     [Chunk(0x09052001)]
-    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 5)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 6)]
     public partial class Chunk09052001 : Chunk<CPlugSoundGauge>, IVersionable
     {
         public override uint Id => 0x09052001;
@@ -760,9 +692,13 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
 
         public Chunk09052001(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
+            if (gameVersion == GameVersion.MP4)
             {
                 Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
             }
         }
 
@@ -775,7 +711,7 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
         public override void ReadWrite(CPlugSoundGauge n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 5)
+            if (Version > 6)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -793,49 +729,49 @@ public partial class CPlugSoundGauge : CPlugSound, IClass
                 rw.Boolean(ref n.restartLoopOnChange);
             }
 
-            rw.NodeRef(ref n.pitchFromRateFillingRef);
-            rw.NodeRef(ref n.pitchFromRateOnStopFillingRef);
-            rw.NodeRef(ref n.pitchFromRateOnFullOrEmptyRef);
-            rw.NodeRef(ref n.pitchFromRateOnGradFullRef);
-            rw.NodeRef(ref n.pitchFromRatioFillingRef);
-            rw.NodeRef(ref n.pitchFromRatioOnStopFillingRef);
-            rw.NodeRef(ref n.pitchFromRatioOnFullOrEmptyRef);
-            rw.NodeRef(ref n.pitchFromRatioOnGradFullRef);
-            rw.NodeRef(ref n.volumeFromRateFillingRef);
-            rw.NodeRef(ref n.volumeFromRateOnStopFillingRef);
-            rw.NodeRef(ref n.volumeFromRateOnFullOrEmptyRef);
-            rw.NodeRef(ref n.volumeFromRateOnGradFullRef);
-            rw.NodeRef(ref n.volumeFromRatioFillingRef);
-            rw.NodeRef(ref n.volumeFromRatioOnStopFillingRef);
-            rw.NodeRef(ref n.volumeFromRatioOnFullOrEmptyRef);
-            rw.NodeRef(ref n.volumeFromRatioOnGradFullRef);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnStopFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnFullOrEmpty, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnGradFull, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnStopFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnFullOrEmpty, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnGradFull, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnStopFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnFullOrEmpty, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnGradFull, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnStopFilling, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnFullOrEmpty, version: Version- 6);
+            rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnGradFull, version: Version- 6);
 
             if (Version >= 3)
             {
-                rw.NodeRef(ref n.pitchFromRateOnStartFillingRef);
-                rw.NodeRef(ref n.pitchFromRatioOnStartFillingRef);
-                rw.NodeRef(ref n.volumeFromRateOnStartFillingRef);
-                rw.NodeRef(ref n.volumeFromRatioOnStartFillingRef);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnStartFilling, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnStartFilling, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnStartFilling, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnStartFilling, version: Version- 6);
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef(ref n.pitchFromRateEmptyingRef);
-                rw.NodeRef(ref n.pitchFromRateOnStopEmptyingRef);
-                rw.NodeRef(ref n.pitchFromRateOnGradEmptyRef);
-                rw.NodeRef(ref n.pitchFromRatioEmptyingRef);
-                rw.NodeRef(ref n.pitchFromRatioOnStopEmptyingRef);
-                rw.NodeRef(ref n.pitchFromRatioOnGradEmptyRef);
-                rw.NodeRef(ref n.volumeFromRateEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRateOnStopEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRateOnGradEmptyRef);
-                rw.NodeRef(ref n.volumeFromRatioEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRatioOnStopEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRatioOnGradEmptyRef);
-                rw.NodeRef(ref n.pitchFromRateOnStartEmptyingRef);
-                rw.NodeRef(ref n.pitchFromRatioOnStartEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRateOnStartEmptyingRef);
-                rw.NodeRef(ref n.volumeFromRatioOnStartEmptyingRef);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnStopEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnGradEmpty, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnStopEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnGradEmpty, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnStopEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnGradEmpty, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnStopEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnGradEmpty, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRateOnStartEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.pitchFromRatioOnStartEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRateOnStartEmptying, version: Version- 6);
+                rw.ReadableWritable<PlugCurve>(ref n.volumeFromRatioOnStartEmptying, version: Version- 6);
             }
         }
     }

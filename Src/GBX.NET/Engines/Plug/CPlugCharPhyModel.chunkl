@@ -1,9 +1,9 @@
 CPlugCharPhyModel 0x090C9000
 
-0x000
+0x000 [TM2020]
   id Name
 
-0x00D [MP4.v2]
+0x00D [MP4.v2, TM2020.v2]
   version
   float
   float
@@ -11,10 +11,10 @@ CPlugCharPhyModel 0x090C9000
   float
   float
   float
-  v2=
+  v2+
     bool
 
-0x00E [MP4]
+0x00E [MP4, TM2020]
   version
   bool
   bool
@@ -22,10 +22,10 @@ CPlugCharPhyModel 0x090C9000
   float
   float
 
-0x00F [MP4.v4]
+0x00F [MP4.v4, TM2020.v5]
   version
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
   v2-
     CFuncKeysReal
     float
@@ -33,23 +33,28 @@ CPlugCharPhyModel 0x090C9000
     float
     float
   v2+
-    CFuncKeysReal
-    CFuncKeysReal
-    CFuncKeysReal
-    CFuncKeysReal
-  v4=
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+  v4+
     bool
 
-0x010 [MP4.v1]
+0x010 [MP4.v1, TM2020.v3]
   version
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 3)
+  PlugCurve (version: Version - 3)
   v0=
     float
+  v2+
+    int
+    PlugCurve (version: Version - 3)
+    PlugCurve (version: Version - 3)
+    PlugCurve (version: Version - 3)
 
-0x011 [MP4.v12]
+0x011 [MP4.v12, TM2020.v16]
   version
-  CFuncKeysReal
+  PlugCurve (version: Version - 15)
   v1+
     float
   v2=
@@ -67,18 +72,24 @@ CPlugCharPhyModel 0x090C9000
     float
     bool
   v9+
-    CFuncKeysReal
+    PlugCurve (version: Version - 15)
   v10+
     bool
   v11+
     bool
-  v12=
+  v12+
     bool
+  v13+
+    float
+  v14+
+    int
+  v16+
+    string[]
 
-0x012 [MP4.v26]
+0x012 [MP4.v26, TM2020.v28]
   version
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 28)
+  PlugCurve (version: Version - 28)
   v10-
     CFuncKeysReal
   v16-
@@ -92,42 +103,42 @@ CPlugCharPhyModel 0x090C9000
     int
   v5+
     int
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   if Version >= 6 && Version <= 8
     float
     float
     CFuncKeysReal
     CFuncKeysReal
   v6+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v7+
-    CFuncKeysReal
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
+    PlugCurve (version: Version - 28)
   v8+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v9+
     int
-    CMwNod
-    CMwNod
+    PlugCurve (version: Version - 28)
+    PlugCurve (version: Version - 28)
   v10+
-    CMwNod
+    PlugCurve (version: Version - 28)
   v12=
     CMwNod
     CMwNod
   v13+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v14+
     bool
   v15+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   if Version >= 15 && Version <= 18
     float
   v19+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v16+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v18+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
     float
   v20+
     float
@@ -141,20 +152,23 @@ CPlugCharPhyModel 0x090C9000
     float
     float
   v24+
-    CFuncKeysReal
+    PlugCurve (version: Version - 28)
   v25+
-    CFuncKeysReal
-  v26=
+    PlugCurve (version: Version - 28)
+  v26+
     bool
+  v27+
+    int
+    PlugCurve (version: Version - 28)
 
-0x013 [MP4.v6]
+0x013 [MP4.v6, TM2020.v7]
   version
   v2-
     CMwNod
   v0=
     float
   v1+
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
   float
   v2+
     float
@@ -164,7 +178,7 @@ CPlugCharPhyModel 0x090C9000
   v5=
     float
 
-0x014 [MP4.v9]
+0x014 [MP4.v9, TM2020.v10]
   version
   CMwNod
   CMwNod
@@ -185,11 +199,11 @@ CPlugCharPhyModel 0x090C9000
     bool
     bool
     float
-  if Version == 0 || Version == 4 || Version == 5 || Version == 6 || Version == 7 || Version == 8 || Version == 9
+  if Version == 0 || Version >= 4
     bool
   if Version == 0 || Version == 4 || Version == 5 || Version == 6
     bool
-  if Version == 0 || Version == 4 || Version == 5 || Version == 6 || Version == 7 || Version == 8 || Version == 9
+  if Version == 0 || Version >= 4
     float
     float
     float
@@ -203,43 +217,43 @@ CPlugCharPhyModel 0x090C9000
     float
   v6+
     float
-    CFuncKeysReal
+    PlugCurve (version: Version - 10)
   v7+
     bool
   v8+
     bool
-  v9=
-    CFuncKeysReal
+  v9+
+    PlugCurve (version: Version - 10)
 
-0x015 [MP4.v1]
+0x015 [MP4.v1, TM2020.v2]
   version
-  CFuncKeysReal
-  v0=
-    float
-  v1=
-    CFuncKeysReal
-
-0x016 [MP4.v2]
-  version
-  v2=
-    bool
-  CFuncKeysReal
+  PlugCurve (version: Version - 2)
   v0=
     float
   v1+
-    CFuncKeysReal
+    PlugCurve (version: Version - 2)
+
+0x016 [MP4.v2, TM2020.v3]
+  version
+  v2+
+    bool
+  PlugCurve (version: Version - 3)
+  v0=
+    float
+  v1+
+    PlugCurve (version: Version - 3)
   float
   bool
 
-0x017 [MP4.v6]
+0x017 [MP4.v6, TM2020.v7]
   version
-  v6=
+  v6+
     bool
-  CFuncKeysReal
+  PlugCurve (version: Version - 7)
   v0=
     float
   v1+
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
   v4-
     float
   v1-
@@ -248,27 +262,27 @@ CPlugCharPhyModel 0x090C9000
   v2+
     float
     float
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
   v5+
     float
     float
     float
     float
 
-0x018 [MP4.v3]
+0x018 [MP4.v3, TM2020.v4]
   version
-  CFuncKeysReal
+  PlugCurve (version: Version - 4)
   v0=
     float
   v1+
-    CFuncKeysReal
+    PlugCurve (version: Version - 4)
   float
   v2=
     float
-  v3=
+  v3+
     CPlugSurface
 
-0x019 [MP4.v10]
+0x019 [MP4.v10, TM2020.v11]
   version
   bool
   bool
@@ -283,38 +297,38 @@ CPlugCharPhyModel 0x090C9000
   v3+
     float
     int
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
   v4+
     int
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
   v5=
     int
   v6+
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
   v7+
     float
   v8+
     bool
   v9+
     float
-  v10=
+  v10+
     bool
     int
 
-0x01A [MP4]
+0x01A [MP4, TM2020]
   version
   bool
   float
   float
   float
 
-0x01B [MP4.v19]
+0x01B [MP4.v19, TM2020.v20]
   version
-  CFuncKeysReal
+  PlugCurve (version: Version - 20)
   v5-
     float
   v6+
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v1+
     float
   v2+
@@ -323,11 +337,11 @@ CPlugCharPhyModel 0x090C9000
   v4+
     float
     float
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v5+
     float
   v7+
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v8=
     CMwNod
   if Version >= 8 && Version <= 10
@@ -339,15 +353,15 @@ CPlugCharPhyModel 0x090C9000
   v12=
     float
   v13+
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v12+
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v14+
     bool
   if Version >= 14 && Version <= 15
     CMwNod
   v15+
-    CFuncKeysReal
+    PlugCurve (version: Version - 20)
   v16+
     int
     int
@@ -357,11 +371,11 @@ CPlugCharPhyModel 0x090C9000
   v18+
     int
     int
-  v19=
+  v19+
     int
     int
 
-0x01C [MP4.v21]
+0x01C [MP4.v21, TM2020.v22]
   version
   ushort
   v1-
@@ -369,13 +383,13 @@ CPlugCharPhyModel 0x090C9000
   v12-
     float
   float
-  CFuncKeysReal
+  PlugCurve (version: Version - 22)
   if Version >= 1 && Version <= 11
     float
   if Version >= 2 && Version <= 13
     CMwNod
   if Version >= 3 && Version <= 11
-    CFuncKeysReal
+    PlugCurve (version: Version - 22)
   if Version >= 4 && Version <= 13
     float
   v5+
@@ -412,16 +426,16 @@ CPlugCharPhyModel 0x090C9000
   v15+
     float
   v16+
-    CFuncKeysReal
+    PlugCurve (version: Version - 22)
   v17=
     float
   v18+
-    CFuncKeysReal
+    PlugCurve (version: Version - 22)
   v19+
     int
   v20+
     bool
-  v21=
+  v21+
     float
     float
     float
@@ -429,46 +443,46 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x01D [MP4.v4]
+0x01D [MP4.v4, TM2020.v5]
   version
-  v4=
+  v4+
     bool
-  CFuncKeysReal
-  CFuncKeysReal
-  CFuncKeysReal
-  v2-
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  v1..2
     float
     float
   v2+
     int
   v3+
     float
-    CFuncKeysReal
-    CFuncKeysReal
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
 
-0x01F [MP4.v6]
+0x01F [MP4.v6, TM2020.v7]
   version
   v4+
     bool
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 7)
+  PlugCurve (version: Version - 7)
   v1=
     float
   v2+
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
   v3+
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
   v5+
     int
     int
 
-0x020 [MP4.v2]
+0x020 [MP4.v2, TM2020.v2]
   version
   float
   v2+
     bool
 
-0x022 [MP4.v6]
+0x022 [MP4.v6, TM2020.v7]
   version
   float
   v4-
@@ -484,7 +498,7 @@ CPlugCharPhyModel 0x090C9000
     float
   v2+
     float
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
     int
     float
     float
@@ -495,12 +509,12 @@ CPlugCharPhyModel 0x090C9000
   v6+
     bool
 
-0x023 [MP4.v6]
+0x023 [MP4.v6, TM2020.v8]
   version
   float
-  CFuncKeysReal
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
+  PlugCurve (version: Version - 8)
   v1+
     CPlugCharPhyRecoilModel[]
   v2+
@@ -519,17 +533,21 @@ CPlugCharPhyModel 0x090C9000
     float
     float
     float
-  v6=
+  v6+
+    float
+  v7+
     float
 
-0x024 [MP4.v1]
+0x024 [MP4.v1, TM2020.v2]
   version
   v0=
     CMwRefBuffer
-  v1=
+  v1+
     CMwNod
+  v2+
+    CPlugCharPhyMaterial[]
 
-0x025 [MP4.v1]
+0x025 [MP4.v1, TM2020.v1]
   version
   int
   float
@@ -538,23 +556,23 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x026 [MP4.v2]
+0x026 [MP4.v2, TM2020.v3]
   version
   bool
-  CFuncKeysReal
+  PlugCurve (version: Version - 3)
   v1+
     float
 
-0x027 [MP4.v10]
+0x027 [MP4.v10, TM2020.v11]
   version
   bool
-  CFuncKeysReal
-  CFuncKeysReal
-  CFuncKeysReal
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
+  PlugCurve (version: Version - 11)
   v4-
     float
   v1+
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
   if Version >= 2 && Version <= 4
     int
   v2+
@@ -562,19 +580,19 @@ CPlugCharPhyModel 0x090C9000
   v3+
     float
   v4+
-    CFuncKeysReal
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
+    PlugCurve (version: Version - 11)
   v6+
-    CFuncKeysReal
+    PlugCurve (version: Version - 11)
     bool
   v7=
     CMwNod
   v9+
     bool
-  v10=
-    CFuncKeysReal
+  v10+
+    PlugCurve (version: Version - 11)
 
-0x028 [MP4.v5]
+0x028 [MP4.v5, TM2020.v6]
   version
   float
   float
@@ -587,24 +605,24 @@ CPlugCharPhyModel 0x090C9000
   float
   bool
   float
-  CFuncKeysReal
+  PlugCurve (version: Version - 6)
   bool
   bool
-  CFuncKeysReal
+  PlugCurve (version: Version - 6)
   float
   v2=
-    CFuncKeysReal
+    PlugCurve (version: Version - 6)
     int
   v3+
     int
     int
-    CFuncKeysReal
+    PlugCurve (version: Version - 6)
   v4+
-    CFuncKeysReal
+    PlugCurve (version: Version - 6)
   v5+
     bool
 
-0x029 [MP4.v1]
+0x029 [MP4.v1, TM2020.v1]
   version
   CPlugSurface
   int
@@ -614,14 +632,14 @@ CPlugCharPhyModel 0x090C9000
     float
     float
 
-0x02A [MP4.v1]
+0x02A [MP4.v1, TM2020.v1]
   version
   bool
   float
   float
   float
 
-0x02B [MP4.v6]
+0x02B [MP4.v6, TM2020.v7]
   version
   bool
   float
@@ -638,9 +656,9 @@ CPlugCharPhyModel 0x090C9000
     bool
   v3+
     bool
-    CFuncKeysReal
-    CFuncKeysReal
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
+    PlugCurve (version: Version - 7)
+    PlugCurve (version: Version - 7)
   v4+
     bool
     float
@@ -651,19 +669,69 @@ CPlugCharPhyModel 0x090C9000
     bool
     bool
     int
-    CFuncKeysReal
+    PlugCurve (version: Version - 7)
     float
-  v6=
+  v6+
     bool
     bool
     float
 
-0x02D [MP4.v7]
+0x02C [TM2020.v13]
+  version
+  int
+  v2+
+    float
+    int
+    int
+  v3+
+    int
+    int
+    int
+    int
+  v4+
+    int
+  v5+
+    int
+  v6+
+    int
+    int
+  v7+
+    int
+  v8+
+    int
+    int
+    int
+    int
+    int
+    float
+    float
+    int
+  v9+
+    float
+    float
+  v10+
+    int
+    int
+    int
+    int
+    int
+    float
+    float
+    int
+    float
+  v11+
+    int
+  v12+
+    float
+  v13+
+    float
+
+0x02D [MP4.v7, TM2020.v8]
   version
   bool
   int
   int
-  CFuncKeysReal
+  PlugCurve (version: Version - 8)
   v2+
     bool
   v3+
@@ -679,7 +747,7 @@ CPlugCharPhyModel 0x090C9000
   v7+
     bool
 
-0x02E [MP4.v4]
+0x02E [MP4.v4, TM2020.v9]
   version
   bool
   v2+
@@ -688,8 +756,8 @@ CPlugCharPhyModel 0x090C9000
   v3+
     float
     float
-    CFuncKeysReal
-  v4=
+    PlugCurve (version: Version - 9)
+  v4+
     bool
     bool
     bool
@@ -698,6 +766,45 @@ CPlugCharPhyModel 0x090C9000
     float
     float
     float
+  v5+
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    float
+    float
+    float
+    float
+    float
+    float
+    float
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+    float
+    PlugCurve (version: Version - 9)
+    PlugCurve (version: Version - 9)
+  v6+
+    PlugCurve (version: Version - 9)
+    float
+  v7+
+    PlugCurve (version: Version - 9)
+    float
+    float
+  v8+
+    float
+    ushort
+    ushort
+    ushort
 
 0x02F [MP4.v1]
   version
@@ -705,6 +812,117 @@ CPlugCharPhyModel 0x090C9000
   int
   int
   ushort
+
+0x031 [TM2020.v5]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  PlugCurve (version: Version - 5)
+  v2+
+    PlugCurve (version: Version - 5)
+  v3+
+    float
+    float
+    float
+  v4+
+    PlugCurve (version: Version - 5)
+    PlugCurve (version: Version - 5)
+
+0x032 [TM2020.v1]
+  version
+  float
+
+0x033 [TM2020.v1]
+  version
+  float
+  float
+  float
+
+0x034 [TM2020.v1]
+  version
+  float
+  float
+  float
+  float
+  float
+  float
+  float
+
+0x035 [TM2020.v10]
+  version
+  float
+  float
+  float
+  float
+  PlugCurve (version: Version - 10)
+  float
+  float
+  float
+  PlugCurve (version: Version - 10)
+  float
+  float
+  float
+  float
+  float
+  v1+
+    float
+    float
+    float
+  v2+
+    float
+    float
+  v3+
+    float
+  v4+
+    float
+  v5+
+    float
+    float
+    float
+    float
+  v6+
+    float
+  v7+
+    float
+    float
+    float
+  v8+
+    float
+    float
+  v9+
+    float
+
+0x036 [TM2020]
+  version
+  float
+  float
+  float
+
+0x037 [TM2020.v1]
+  version
+  float
+  float
+  float
+  float
+  v1+
+    float
+    float
+
+0x038 [TM2020]
+  version
+  float
+  float
 
 archive SmoothRealModel
   float U01

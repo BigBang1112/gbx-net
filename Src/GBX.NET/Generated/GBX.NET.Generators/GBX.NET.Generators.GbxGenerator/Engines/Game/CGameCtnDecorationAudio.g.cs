@@ -239,6 +239,15 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtBulletTimeRef, value);
     }
 
+    private NodeRef<CPlugAudioBalance>? audioBalance_SM_EvtBoostRef;
+    /// <remarks>Applied with: 0x003 v9+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03039003>(9)]
+    public CPlugAudioBalance? AudioBalance_SM_EvtBoost
+    {
+        get => audioBalance_SM_EvtBoostRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioBalance_SM_EvtBoostRef, value);
+    }
+
     private NodeRef<CPlugAudioEnvironment>? audioEnvUndergroundOpenRef;
     /// <remarks>Applied with: 0x004 body chunk</remarks>
     [AppliedWithChunk<Chunk03039004>]
@@ -255,6 +264,15 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
     {
         get => audioEnvUndergroundEnclosedRef?.Resolve();
         set => NodeRef.SetEmbedded(ref audioEnvUndergroundEnclosedRef, value);
+    }
+
+    private NodeRef<CPlugAudioEnvironment>? audioEnvUnderwaterRef;
+    /// <remarks>Applied with: 0x004 v1+ body chunk</remarks>
+    [AppliedWithChunk<Chunk03039004>(1)]
+    public CPlugAudioEnvironment? AudioEnvUnderwater
+    {
+        get => audioEnvUnderwaterRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref audioEnvUnderwaterRef, value);
     }
 
     private float cameraWooshMinSpeedKmh;
@@ -302,6 +320,15 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref modifierXmlFileRef, value);
     }
 
+    private NodeRef<CPlugFileText>? defaultWooshDecoItemsRef;
+    /// <remarks>Applied with: 0x007 body chunk</remarks>
+    [AppliedWithChunk<Chunk03039007>]
+    public CPlugFileText? DefaultWooshDecoItems
+    {
+        get => defaultWooshDecoItemsRef?.Resolve();
+        set => NodeRef.SetEmbedded(ref defaultWooshDecoItemsRef, value);
+    }
+
     public NodeRefView References => new(this);
     public readonly struct NodeRefView
     {
@@ -328,9 +355,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtFire => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtFireRef);
         public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtHitEliminated => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtHitEliminatedRef);
         public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtBulletTime => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtBulletTimeRef);
+        public NodeRef<CPlugAudioBalance> AudioBalance_SM_EvtBoost => NodeRef.GetOrCreate(ref owner.audioBalance_SM_EvtBoostRef);
         public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundOpen => NodeRef.GetOrCreate(ref owner.audioEnvUndergroundOpenRef);
         public NodeRef<CPlugAudioEnvironment> AudioEnvUndergroundEnclosed => NodeRef.GetOrCreate(ref owner.audioEnvUndergroundEnclosedRef);
+        public NodeRef<CPlugAudioEnvironment> AudioEnvUnderwater => NodeRef.GetOrCreate(ref owner.audioEnvUnderwaterRef);
         public NodeRef<CPlugFileText> ModifierXmlFile => NodeRef.GetOrCreate(ref owner.modifierXmlFileRef);
+        public NodeRef<CPlugFileText> DefaultWooshDecoItems => NodeRef.GetOrCreate(ref owner.defaultWooshDecoItemsRef);
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -356,9 +386,12 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         yield return new("AudioBalance_SM_EvtFire", NodeRef.GetOrCreate(ref audioBalance_SM_EvtFireRef));
         yield return new("AudioBalance_SM_EvtHitEliminated", NodeRef.GetOrCreate(ref audioBalance_SM_EvtHitEliminatedRef));
         yield return new("AudioBalance_SM_EvtBulletTime", NodeRef.GetOrCreate(ref audioBalance_SM_EvtBulletTimeRef));
+        yield return new("AudioBalance_SM_EvtBoost", NodeRef.GetOrCreate(ref audioBalance_SM_EvtBoostRef));
         yield return new("AudioEnvUndergroundOpen", NodeRef.GetOrCreate(ref audioEnvUndergroundOpenRef));
         yield return new("AudioEnvUndergroundEnclosed", NodeRef.GetOrCreate(ref audioEnvUndergroundEnclosedRef));
+        yield return new("AudioEnvUnderwater", NodeRef.GetOrCreate(ref audioEnvUnderwaterRef));
         yield return new("ModifierXmlFile", NodeRef.GetOrCreate(ref modifierXmlFileRef));
+        yield return new("DefaultWooshDecoItems", NodeRef.GetOrCreate(ref defaultWooshDecoItemsRef));
         yield break;
     }
 
@@ -387,13 +420,16 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtFireRef = context.Clone(this.audioBalance_SM_EvtFireRef)!;
         ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtHitEliminatedRef = context.Clone(this.audioBalance_SM_EvtHitEliminatedRef)!;
         ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtBulletTimeRef = context.Clone(this.audioBalance_SM_EvtBulletTimeRef)!;
+        ((CGameCtnDecorationAudio)clone).audioBalance_SM_EvtBoostRef = context.Clone(this.audioBalance_SM_EvtBoostRef)!;
         ((CGameCtnDecorationAudio)clone).audioEnvUndergroundOpenRef = context.Clone(this.audioEnvUndergroundOpenRef)!;
         ((CGameCtnDecorationAudio)clone).audioEnvUndergroundEnclosedRef = context.Clone(this.audioEnvUndergroundEnclosedRef)!;
+        ((CGameCtnDecorationAudio)clone).audioEnvUnderwaterRef = context.Clone(this.audioEnvUnderwaterRef)!;
         ((CGameCtnDecorationAudio)clone).cameraWooshMinSpeedKmh = context.Clone(this.cameraWooshMinSpeedKmh)!;
         ((CGameCtnDecorationAudio)clone).reverbMinBlockDist = context.Clone(this.reverbMinBlockDist)!;
         ((CGameCtnDecorationAudio)clone).reverbMaxBlockDist = context.Clone(this.reverbMaxBlockDist)!;
         ((CGameCtnDecorationAudio)clone).reverbMaterialGains = context.CloneArray(this.reverbMaterialGains)!;
         ((CGameCtnDecorationAudio)clone).modifierXmlFileRef = context.Clone(this.modifierXmlFileRef)!;
+        ((CGameCtnDecorationAudio)clone).defaultWooshDecoItemsRef = context.Clone(this.defaultWooshDecoItemsRef)!;
         ((CGameCtnDecorationAudio)clone).Sounds = context.CloneDictionary(this.Sounds)!;
         ((CGameCtnDecorationAudio)clone).Musics = context.CloneDictionary(this.Musics)!;
     }
@@ -472,50 +508,50 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         public override GameVersion GameVersion => GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
-        private NodeRef<CPlugAudioBalance>? U01Ref;
-        public CPlugAudioBalance? U01
+        private NodeRef<CPlugCurveSimpleNod>? U01Ref;
+        public CPlugCurveSimpleNod? U01
         {
             get => U01Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U02Ref;
-        public CPlugAudioBalance? U02
+        private NodeRef<CPlugCurveSimpleNod>? U02Ref;
+        public CPlugCurveSimpleNod? U02
         {
             get => U02Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U03Ref;
-        public CPlugAudioBalance? U03
+        private NodeRef<CPlugCurveSimpleNod>? U03Ref;
+        public CPlugCurveSimpleNod? U03
         {
             get => U03Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U03Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U04Ref;
-        public CPlugAudioBalance? U04
+        private NodeRef<CPlugCurveSimpleNod>? U04Ref;
+        public CPlugCurveSimpleNod? U04
         {
             get => U04Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U04Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U05Ref;
-        public CPlugAudioBalance? U05
+        private NodeRef<CPlugCurveSimpleNod>? U05Ref;
+        public CPlugCurveSimpleNod? U05
         {
             get => U05Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U05Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U06Ref;
-        public CPlugAudioBalance? U06
+        private NodeRef<CPlugCurveSimpleNod>? U06Ref;
+        public CPlugCurveSimpleNod? U06
         {
             get => U06Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U06Ref, value);
         }
 
-        private NodeRef<CPlugAudioBalance>? U07Ref;
-        public CPlugAudioBalance? U07
+        private NodeRef<CPlugCurveSimpleNod>? U07Ref;
+        public CPlugCurveSimpleNod? U07
         {
             get => U07Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U07Ref, value);
@@ -526,13 +562,13 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         {
             private readonly Chunk03039003 owner;
             internal NodeRefView(Chunk03039003 owner) => this.owner = owner;
-            public NodeRef<CPlugAudioBalance> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CPlugAudioBalance> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CPlugAudioBalance> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CPlugAudioBalance> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CPlugAudioBalance> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public NodeRef<CPlugAudioBalance> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
-            public NodeRef<CPlugAudioBalance> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
+            public NodeRef<CPlugCurveSimpleNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugCurveSimpleNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugCurveSimpleNod> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugCurveSimpleNod> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+            public NodeRef<CPlugCurveSimpleNod> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
+            public NodeRef<CPlugCurveSimpleNod> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
+            public NodeRef<CPlugCurveSimpleNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -590,7 +626,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
 
             if (Version >= 1)
             {
-                if (Version <= 3)
+                if (Version <= 4)
                 {
                     rw.NodeRef(ref n.audioBalance_PlaygroundLoudRef);
                     rw.NodeRef(ref n.audioBalance_PlaygroundLoudRef);
@@ -650,15 +686,20 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
                             if (Version >= 6)
                             {
                                 rw.NodeRef(ref U07Ref);
-
-                                if (Version >= 8)
-                                {
-                                    rw.NodeRef(ref n.audioBalance_SM_EvtBulletTimeRef);
-                                }
                             }
                         }
                     }
                 }
+            }
+
+            if (Version >= 8)
+            {
+                rw.NodeRef(ref n.audioBalance_SM_EvtBulletTimeRef);
+            }
+
+            if (Version >= 9)
+            {
+                rw.NodeRef(ref n.audioBalance_SM_EvtBoostRef);
             }
         }
     }
@@ -708,6 +749,11 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
             rw.NodeRef(ref n.audioEnvOutsideEnclosedRef);
             rw.NodeRef(ref n.audioEnvUndergroundOpenRef);
             rw.NodeRef(ref n.audioEnvUndergroundEnclosedRef);
+
+            if (Version >= 1)
+            {
+                rw.NodeRef(ref n.audioEnvUnderwaterRef);
+            }
         }
     }
 
@@ -775,6 +821,91 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CGameCtnDecorationAudio 0x007 chunk
+    /// </summary>
+    [Chunk(0x03039007)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk03039007 : Chunk<CGameCtnDecorationAudio>, IVersionable
+    {
+        public override uint Id => 0x03039007;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+
+        private NodeRef<CPlugFileText>? U01Ref;
+        public CPlugFileText? U01
+        {
+            get => U01Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U01Ref, value);
+        }
+
+        private NodeRef<CPlugFileText>? U02Ref;
+        public CPlugFileText? U02
+        {
+            get => U02Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U02Ref, value);
+        }
+
+        private NodeRef<CPlugFileText>? U03Ref;
+        public CPlugFileText? U03
+        {
+            get => U03Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U03Ref, value);
+        }
+
+        private NodeRef<CPlugFileText>? U04Ref;
+        public CPlugFileText? U04
+        {
+            get => U04Ref?.Resolve();
+            set => NodeRef.SetEmbedded(ref U04Ref, value);
+        }
+
+        public NodeRefView References => new(this);
+        public readonly struct NodeRefView
+        {
+            private readonly Chunk03039007 owner;
+            internal NodeRefView(Chunk03039007 owner) => this.owner = owner;
+            public NodeRef<CPlugFileText> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
+            public NodeRef<CPlugFileText> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public NodeRef<CPlugFileText> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
+            public NodeRef<CPlugFileText> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
+        }
+        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
+        {
+            foreach (var reference in base.EnumerateReferences()) yield return reference;
+            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
+            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
+            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
+            yield break;
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk03039007)clone).Version = context.Clone(this.Version)!;
+            ((Chunk03039007)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk03039007)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk03039007)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk03039007)clone).U04Ref = context.Clone(this.U04Ref)!;
+        }
+
+        public override void ReadWrite(CGameCtnDecorationAudio n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.NodeRef(ref n.defaultWooshDecoItemsRef);
+            rw.NodeRef(ref U01Ref);
+            rw.NodeRef(ref U02Ref);
+            rw.NodeRef(ref U03Ref);
+            rw.NodeRef(ref U04Ref);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x03039000 => new Chunk03039000(),
@@ -784,6 +915,7 @@ public partial class CGameCtnDecorationAudio : CMwNod, IClass
         0x03039004 => new Chunk03039004(),
         0x03039005 => new Chunk03039005(),
         0x03039006 => new Chunk03039006(),
+        0x03039007 => new Chunk03039007(),
         _ => base.NewChunk(chunkId),
     };
 }

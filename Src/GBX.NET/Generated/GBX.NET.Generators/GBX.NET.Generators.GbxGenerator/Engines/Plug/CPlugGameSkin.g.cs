@@ -40,9 +40,10 @@ public partial class CPlugGameSkin : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? dirName;
-    /// <remarks>Applied with: 0x000 header chunk, 0x004 body chunk</remarks>
+    /// <remarks>Applied with: 0x000 header chunk, 0x004, 0x005 body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>]
     [AppliedWithChunk<Chunk090F4004>]
+    [AppliedWithChunk<Chunk090F4005>]
     public string? DirName
     {
         get => this.dirName;
@@ -50,10 +51,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterTextureName;
-    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+ body chunks</remarks>
+    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+, 0x005 v1+ body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
     [AppliedWithChunk<Chunk090F4004>(1)]
+    [AppliedWithChunk<Chunk090F4005>(1)]
     public string? PainterTextureName
     {
         get => this.painterTextureName;
@@ -61,10 +63,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? painterSceneId;
-    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+ body chunks</remarks>
+    /// <remarks>Applied with: 0x000 v1+ header chunk, 0x003, 0x004 v1+, 0x005 v1+ body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(1)]
     [AppliedWithChunk<Chunk090F4003>]
     [AppliedWithChunk<Chunk090F4004>(1)]
+    [AppliedWithChunk<Chunk090F4005>(1)]
     public string? PainterSceneId
     {
         get => this.painterSceneId;
@@ -81,9 +84,10 @@ public partial class CPlugGameSkin : CMwNod, IClass
     }
 
     private string? dirNameAlt;
-    /// <remarks>Applied with: 0x000 v4+ header chunk, 0x004 v4+ body chunk</remarks>
+    /// <remarks>Applied with: 0x000 v4+ header chunk, 0x004 v4+, 0x005 v4+ body chunks</remarks>
     [AppliedWithChunk<HeaderChunk090F4000>(4)]
     [AppliedWithChunk<Chunk090F4004>(4)]
+    [AppliedWithChunk<Chunk090F4005>(4)]
     public string? DirNameAlt
     {
         get => this.dirNameAlt;
@@ -99,6 +103,15 @@ public partial class CPlugGameSkin : CMwNod, IClass
         set => this.customizableFids = value;
     }
 
+    private HeaderFid[]? customizableFilePaths;
+    /// <remarks>Applied with: 0x005 body chunk</remarks>
+    [AppliedWithChunk<Chunk090F4005>]
+    public HeaderFid[]? CustomizableFilePaths
+    {
+        get => this.customizableFilePaths;
+        set => this.customizableFilePaths = value;
+    }
+
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
@@ -108,6 +121,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         ((CPlugGameSkin)clone).headerFids = context.CloneArray(this.headerFids)!;
         ((CPlugGameSkin)clone).dirNameAlt = context.Clone(this.dirNameAlt)!;
         ((CPlugGameSkin)clone).customizableFids = context.CloneArray(this.customizableFids)!;
+        ((CPlugGameSkin)clone).customizableFilePaths = context.CloneArray(this.customizableFilePaths)!;
         ((CPlugGameSkin)clone).CustomizableFids2 = context.CloneArray(this.CustomizableFids2)!;
     }
 
@@ -119,11 +133,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
     /// CPlugGameSkin 0x000 chunk
     /// </summary>
     [Chunk(0x090F4000)]
-    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4, 2, 4, 5, 5, 5)]
+    [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020, 2, 4, 5, 5, 5, 8)]
     public partial class HeaderChunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
     {
         public override uint Id => 0x090F4000;
-        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMF | GameVersion.MP3 | GameVersion.TMT | GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public string? U02;
@@ -148,6 +162,10 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 5;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -163,7 +181,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
-            if (Version > 5)
+            if (Version > 8)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -342,6 +360,92 @@ public partial class CPlugGameSkin : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x005 skippable chunk (customizable file paths)
+    /// </summary>
+    [Chunk(0x090F4005, "customizable file paths")]
+    [ChunkGameVersion(GameVersion.TM2020, 8)]
+    public partial class Chunk090F4005 : SkippableChunk<CPlugGameSkin>, IVersionable
+    {
+        public override uint Id => 0x090F4005;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public bool U01;
+        public string? U02;
+        public int U03;
+        public byte U04;
+
+        public Chunk090F4005() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090F4005(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
+            else
+            {
+                Version = 8;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090F4005)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090F4005)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090F4005)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090F4005)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F4005)clone).U04 = context.Clone(this.U04)!;
+        }
+
+        public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
+        {
+            rw.VersionByte(this);
+            if (Version > global::System.Math.Max(8, 8))
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.String(ref n.dirName);
+
+            if (Version >= 1)
+            {
+                rw.String(ref n.painterTextureName);
+                rw.String(ref n.painterSceneId);
+            }
+
+            rw.ArrayReadableWritable<HeaderFid>(ref n.customizableFilePaths!, version: Version, byteLengthPrefix: true);
+
+            if (Version >= 4)
+            {
+                rw.String(ref n.dirNameAlt);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Boolean(ref U01);
+            }
+
+            if (Version >= 6)
+            {
+                rw.String(ref U02);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Int32(ref U03);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Byte(ref U04);
+            }
+        }
+    }
+
     public partial class HeaderFid : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
         private uint classId;
@@ -466,6 +570,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         0x090F4001 => new Chunk090F4001(),
         0x090F4003 => new Chunk090F4003(),
         0x090F4004 => new Chunk090F4004(),
+        0x090F4005 => new Chunk090F4005(),
         _ => base.NewChunk(chunkId),
     };
 }

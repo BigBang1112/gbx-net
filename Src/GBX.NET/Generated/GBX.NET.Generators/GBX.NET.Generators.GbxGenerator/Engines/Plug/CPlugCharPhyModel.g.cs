@@ -82,9 +82,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x000 chunk
     /// </summary>
     [Chunk(0x090C9000)]
+    [ChunkGameVersion(GameVersion.TM2020)]
     public partial class Chunk090C9000 : Chunk<CPlugCharPhyModel>
     {
         public override uint Id => 0x090C9000;
+        public override GameVersion GameVersion => GameVersion.TM2020;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
@@ -96,11 +98,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x00D chunk
     /// </summary>
     [Chunk(0x090C900D)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 2)]
     public partial class Chunk090C900D : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C900D;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -116,7 +118,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C900D(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -150,7 +152,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             rw.Single(ref U05);
             rw.Single(ref U06);
 
-            if (Version == 2)
+            if (Version >= 2)
             {
                 rw.Boolean(ref U07);
             }
@@ -161,11 +163,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x00E chunk
     /// </summary>
     [Chunk(0x090C900E)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C900E : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C900E;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public bool U02;
@@ -204,26 +206,14 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x00F chunk
     /// </summary>
     [Chunk(0x090C900F)]
-    [ChunkGameVersion(GameVersion.MP4, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090C900F : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C900F;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U01;
+        public PlugCurve? U02;
 
         private NodeRef<CFuncKeysReal>? U03Ref;
         public CFuncKeysReal? U03
@@ -234,34 +224,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U04;
         public float U05;
         public float U06;
-
-        private NodeRef<CFuncKeysReal>? U07Ref;
-        public CFuncKeysReal? U07
-        {
-            get => U07Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U07Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U08Ref;
-        public CFuncKeysReal? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U09Ref;
-        public CFuncKeysReal? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
+        public PlugCurve? U07;
+        public PlugCurve? U08;
+        public PlugCurve? U09;
+        public PlugCurve? U10;
         public bool U11;
 
         public NodeRefView References => new(this);
@@ -269,24 +235,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             private readonly Chunk090C900F owner;
             internal NodeRefView(Chunk090C900F owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
-            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield break;
         }
 
@@ -300,35 +254,39 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 4;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C900F)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C900F)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090C900F)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C900F)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C900F)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C900F)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090C900F)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C900F)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C900F)clone).U06 = context.Clone(this.U06)!;
-            ((Chunk090C900F)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk090C900F)clone).U08Ref = context.Clone(this.U08Ref)!;
-            ((Chunk090C900F)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk090C900F)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090C900F)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C900F)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C900F)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C900F)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C900F)clone).U11 = context.Clone(this.U11)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > 5)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 5);
 
             if (Version <= 2)
             {
@@ -344,13 +302,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(ref U07Ref);
-                rw.NodeRef(ref U08Ref);
-                rw.NodeRef(ref U09Ref);
-                rw.NodeRef(ref U10Ref);
+                rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 5);
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 5);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 5);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 5);
             }
 
-            if (Version == 4)
+            if (Version >= 4)
             {
                 rw.Boolean(ref U11);
             }
@@ -361,43 +319,19 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x010 chunk
     /// </summary>
     [Chunk(0x090C9010)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 3)]
     public partial class Chunk090C9010 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9010;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U01;
+        public PlugCurve? U02;
         public float U03;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9010 owner;
-            internal NodeRefView(Chunk090C9010 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield break;
-        }
+        public int U04;
+        public PlugCurve? U05;
+        public PlugCurve? U06;
+        public PlugCurve? U07;
 
         public Chunk090C9010() : this(GameVersion.Unspecified)
         {
@@ -409,31 +343,47 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 1;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C9010)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C9010)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090C9010)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9010)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9010)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9010)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9010)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C9010)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C9010)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C9010)clone).U07 = context.Clone(this.U07)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 3);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 3);
 
             if (Version == 0)
             {
                 rw.Single(ref U03);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Int32(ref U04);
+                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 3);
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 3);
+                rw.ReadableWritable<PlugCurve>(ref U07, version: Version- 3);
             }
         }
     }
@@ -442,19 +392,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x011 chunk
     /// </summary>
     [Chunk(0x090C9011)]
-    [ChunkGameVersion(GameVersion.MP4, 12)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 12, 16)]
     public partial class Chunk090C9011 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9011;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
+        public PlugCurve? U01;
         public float U02;
         public bool U03;
         public int U04;
@@ -464,32 +408,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U08;
         public float U09;
         public bool U10;
-
-        private NodeRef<CFuncKeysReal>? U11Ref;
-        public CFuncKeysReal? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
+        public PlugCurve? U11;
         public bool U12;
         public bool U13;
         public bool U14;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9011 owner;
-            internal NodeRefView(Chunk090C9011 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield break;
-        }
+        public float U15;
+        public int U16;
+        public string[]? U17;
 
         public Chunk090C9011() : this(GameVersion.Unspecified)
         {
@@ -501,13 +426,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 12;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 16;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C9011)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C9011)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090C9011)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090C9011)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9011)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C9011)clone).U04 = context.Clone(this.U04)!;
@@ -517,21 +446,24 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9011)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9011)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090C9011)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090C9011)clone).U11Ref = context.Clone(this.U11Ref)!;
+            ((Chunk090C9011)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C9011)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9011)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090C9011)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C9011)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C9011)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C9011)clone).U17 = context.CloneArray(this.U17)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 12)
+            if (Version > 16)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 15);
 
             if (Version >= 1)
             {
@@ -572,7 +504,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 9)
             {
-                rw.NodeRef(ref U11Ref);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 15);
             }
 
             if (Version >= 10)
@@ -585,9 +517,24 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U13);
             }
 
-            if (Version == 12)
+            if (Version >= 12)
             {
                 rw.Boolean(ref U14);
+            }
+
+            if (Version >= 13)
+            {
+                rw.Single(ref U15);
+            }
+
+            if (Version >= 14)
+            {
+                rw.Int32(ref U16);
+            }
+
+            if (Version >= 16)
+            {
+                rw.ArrayString(ref U17!);
             }
         }
     }
@@ -596,26 +543,14 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x012 chunk
     /// </summary>
     [Chunk(0x090C9012)]
-    [ChunkGameVersion(GameVersion.MP4, 26)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 26, 28)]
     public partial class Chunk090C9012 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9012;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U01;
+        public PlugCurve? U02;
 
         private NodeRef<CFuncKeysReal>? U03Ref;
         public CFuncKeysReal? U03
@@ -629,13 +564,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U07;
         public int U08;
         public int U09;
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
+        public PlugCurve? U10;
         public float U11;
         public float U12;
 
@@ -652,56 +581,14 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             get => U14Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U14Ref, value);
         }
-
-        private NodeRef<CFuncKeysReal>? U15Ref;
-        public CFuncKeysReal? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U16Ref;
-        public CFuncKeysReal? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U17Ref;
-        public CFuncKeysReal? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U18Ref;
-        public CFuncKeysReal? U18
-        {
-            get => U18Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U18Ref, value);
-        }
+        public PlugCurve? U15;
+        public PlugCurve? U16;
+        public PlugCurve? U17;
+        public PlugCurve? U18;
         public int U19;
-
-        private NodeRef<CMwNod>? U20Ref;
-        public CMwNod? U20
-        {
-            get => U20Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U20Ref, value);
-        }
-
-        private NodeRef<CMwNod>? U21Ref;
-        public CMwNod? U21
-        {
-            get => U21Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
-
-        private NodeRef<CMwNod>? U22Ref;
-        public CMwNod? U22
-        {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
+        public PlugCurve? U20;
+        public PlugCurve? U21;
+        public PlugCurve? U22;
 
         private NodeRef<CMwNod>? U23Ref;
         public CMwNod? U23
@@ -716,43 +603,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             get => U24Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U24Ref, value);
         }
-
-        private NodeRef<CFuncKeysReal>? U25Ref;
-        public CFuncKeysReal? U25
-        {
-            get => U25Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U25Ref, value);
-        }
+        public PlugCurve? U25;
         public bool U26;
-
-        private NodeRef<CFuncKeysReal>? U27Ref;
-        public CFuncKeysReal? U27
-        {
-            get => U27Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U27Ref, value);
-        }
+        public PlugCurve? U27;
         public float U28;
-
-        private NodeRef<CFuncKeysReal>? U29Ref;
-        public CFuncKeysReal? U29
-        {
-            get => U29Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U29Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U30Ref;
-        public CFuncKeysReal? U30
-        {
-            get => U30Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U30Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U31Ref;
-        public CFuncKeysReal? U31
-        {
-            get => U31Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U31Ref, value);
-        }
+        public PlugCurve? U29;
+        public PlugCurve? U30;
+        public PlugCurve? U31;
         public float U32;
         public float U33;
         public float U34;
@@ -767,77 +624,33 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U37;
         public float U38;
         public float U39;
-
-        private NodeRef<CFuncKeysReal>? U40Ref;
-        public CFuncKeysReal? U40
-        {
-            get => U40Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U40Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U41Ref;
-        public CFuncKeysReal? U41
-        {
-            get => U41Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U41Ref, value);
-        }
+        public PlugCurve? U40;
+        public PlugCurve? U41;
         public bool U42;
+        public int U43;
+        public PlugCurve? U44;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090C9012 owner;
             internal NodeRefView(Chunk090C9012 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
             public NodeRef<CFuncKeysReal> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
             public NodeRef<CFuncKeysReal> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
-            public NodeRef<CMwNod> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
-            public NodeRef<CMwNod> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public NodeRef<CMwNod> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
             public NodeRef<CMwNod> U23 => NodeRef.GetOrCreate(ref owner.U23Ref);
             public NodeRef<CMwNod> U24 => NodeRef.GetOrCreate(ref owner.U24Ref);
-            public NodeRef<CFuncKeysReal> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
-            public NodeRef<CFuncKeysReal> U27 => NodeRef.GetOrCreate(ref owner.U27Ref);
-            public NodeRef<CFuncKeysReal> U29 => NodeRef.GetOrCreate(ref owner.U29Ref);
-            public NodeRef<CFuncKeysReal> U30 => NodeRef.GetOrCreate(ref owner.U30Ref);
-            public NodeRef<CFuncKeysReal> U31 => NodeRef.GetOrCreate(ref owner.U31Ref);
             public NodeRef<CMwNod> U35 => NodeRef.GetOrCreate(ref owner.U35Ref);
-            public NodeRef<CFuncKeysReal> U40 => NodeRef.GetOrCreate(ref owner.U40Ref);
-            public NodeRef<CFuncKeysReal> U41 => NodeRef.GetOrCreate(ref owner.U41Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
             yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
             yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
-            yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
-            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
             yield return new("U23", NodeRef.GetOrCreate(ref U23Ref));
             yield return new("U24", NodeRef.GetOrCreate(ref U24Ref));
-            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
-            yield return new("U27", NodeRef.GetOrCreate(ref U27Ref));
-            yield return new("U29", NodeRef.GetOrCreate(ref U29Ref));
-            yield return new("U30", NodeRef.GetOrCreate(ref U30Ref));
-            yield return new("U31", NodeRef.GetOrCreate(ref U31Ref));
             yield return new("U35", NodeRef.GetOrCreate(ref U35Ref));
-            yield return new("U40", NodeRef.GetOrCreate(ref U40Ref));
-            yield return new("U41", NodeRef.GetOrCreate(ref U41Ref));
             yield break;
         }
 
@@ -851,14 +664,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 26;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 28;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C9012)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C9012)clone).U01Ref = context.Clone(this.U01Ref)!;
-            ((Chunk090C9012)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9012)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9012)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9012)clone).U03Ref = context.Clone(this.U03Ref)!;
             ((Chunk090C9012)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9012)clone).U05 = context.Clone(this.U05)!;
@@ -866,28 +683,28 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9012)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C9012)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9012)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C9012)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090C9012)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C9012)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C9012)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9012)clone).U13Ref = context.Clone(this.U13Ref)!;
             ((Chunk090C9012)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090C9012)clone).U15Ref = context.Clone(this.U15Ref)!;
-            ((Chunk090C9012)clone).U16Ref = context.Clone(this.U16Ref)!;
-            ((Chunk090C9012)clone).U17Ref = context.Clone(this.U17Ref)!;
-            ((Chunk090C9012)clone).U18Ref = context.Clone(this.U18Ref)!;
+            ((Chunk090C9012)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C9012)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C9012)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C9012)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090C9012)clone).U19 = context.Clone(this.U19)!;
-            ((Chunk090C9012)clone).U20Ref = context.Clone(this.U20Ref)!;
-            ((Chunk090C9012)clone).U21Ref = context.Clone(this.U21Ref)!;
-            ((Chunk090C9012)clone).U22Ref = context.Clone(this.U22Ref)!;
+            ((Chunk090C9012)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090C9012)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C9012)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090C9012)clone).U23Ref = context.Clone(this.U23Ref)!;
             ((Chunk090C9012)clone).U24Ref = context.Clone(this.U24Ref)!;
-            ((Chunk090C9012)clone).U25Ref = context.Clone(this.U25Ref)!;
+            ((Chunk090C9012)clone).U25 = context.Clone(this.U25)!;
             ((Chunk090C9012)clone).U26 = context.Clone(this.U26)!;
-            ((Chunk090C9012)clone).U27Ref = context.Clone(this.U27Ref)!;
+            ((Chunk090C9012)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090C9012)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090C9012)clone).U29Ref = context.Clone(this.U29Ref)!;
-            ((Chunk090C9012)clone).U30Ref = context.Clone(this.U30Ref)!;
-            ((Chunk090C9012)clone).U31Ref = context.Clone(this.U31Ref)!;
+            ((Chunk090C9012)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090C9012)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090C9012)clone).U31 = context.Clone(this.U31)!;
             ((Chunk090C9012)clone).U32 = context.Clone(this.U32)!;
             ((Chunk090C9012)clone).U33 = context.Clone(this.U33)!;
             ((Chunk090C9012)clone).U34 = context.Clone(this.U34)!;
@@ -896,21 +713,23 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9012)clone).U37 = context.Clone(this.U37)!;
             ((Chunk090C9012)clone).U38 = context.Clone(this.U38)!;
             ((Chunk090C9012)clone).U39 = context.Clone(this.U39)!;
-            ((Chunk090C9012)clone).U40Ref = context.Clone(this.U40Ref)!;
-            ((Chunk090C9012)clone).U41Ref = context.Clone(this.U41Ref)!;
+            ((Chunk090C9012)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090C9012)clone).U41 = context.Clone(this.U41)!;
             ((Chunk090C9012)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090C9012)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090C9012)clone).U44 = context.Clone(this.U44)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 26)
+            if (Version > 28)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 28);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 28);
 
             if (Version <= 10)
             {
@@ -942,7 +761,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 5)
             {
                 rw.Int32(ref U09);
-                rw.NodeRef(ref U10Ref);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 28);
             }
 
             if (Version>= 6 && Version<= 8)
@@ -955,30 +774,30 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref U15Ref);
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 28);
             }
 
             if (Version >= 7)
             {
-                rw.NodeRef(ref U16Ref);
-                rw.NodeRef(ref U17Ref);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 28);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 28);
             }
 
             if (Version >= 8)
             {
-                rw.NodeRef(ref U18Ref);
+                rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 28);
             }
 
             if (Version >= 9)
             {
                 rw.Int32(ref U19);
-                rw.NodeRef(ref U20Ref);
-                rw.NodeRef(ref U21Ref);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 28);
+                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 28);
             }
 
             if (Version >= 10)
             {
-                rw.NodeRef(ref U22Ref);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 28);
             }
 
             if (Version == 12)
@@ -989,7 +808,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 13)
             {
-                rw.NodeRef(ref U25Ref);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 28);
             }
 
             if (Version >= 14)
@@ -999,7 +818,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 15)
             {
-                rw.NodeRef(ref U27Ref);
+                rw.ReadableWritable<PlugCurve>(ref U27, version: Version- 28);
             }
 
             if (Version>= 15 && Version<= 18)
@@ -1009,17 +828,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 19)
             {
-                rw.NodeRef(ref U29Ref);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 28);
             }
 
             if (Version >= 16)
             {
-                rw.NodeRef(ref U30Ref);
+                rw.ReadableWritable<PlugCurve>(ref U30, version: Version- 28);
             }
 
             if (Version >= 18)
             {
-                rw.NodeRef(ref U31Ref);
+                rw.ReadableWritable<PlugCurve>(ref U31, version: Version- 28);
                 rw.Single(ref U32);
             }
 
@@ -1048,17 +867,23 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 24)
             {
-                rw.NodeRef(ref U40Ref);
+                rw.ReadableWritable<PlugCurve>(ref U40, version: Version- 28);
             }
 
             if (Version >= 25)
             {
-                rw.NodeRef(ref U41Ref);
+                rw.ReadableWritable<PlugCurve>(ref U41, version: Version- 28);
             }
 
-            if (Version == 26)
+            if (Version >= 26)
             {
                 rw.Boolean(ref U42);
+            }
+
+            if (Version >= 27)
+            {
+                rw.Int32(ref U43);
+                rw.ReadableWritable<PlugCurve>(ref U44, version: Version- 28);
             }
         }
     }
@@ -1067,11 +892,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x013 chunk
     /// </summary>
     [Chunk(0x090C9013)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C9013 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9013;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -1081,13 +906,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U01Ref, value);
         }
         public float U02;
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
+        public PlugCurve? U03;
         public float U04;
         public float U05;
         public float U06;
@@ -1100,13 +919,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             private readonly Chunk090C9013 owner;
             internal NodeRefView(Chunk090C9013 owner) => this.owner = owner;
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield break;
         }
 
@@ -1120,6 +937,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 6;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1128,7 +949,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9013)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9013)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090C9013)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C9013)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090C9013)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C9013)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9013)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C9013)clone).U06 = context.Clone(this.U06)!;
@@ -1139,7 +960,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1156,7 +977,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U03Ref);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 7);
             }
 
             rw.Single(ref U04);
@@ -1183,11 +1004,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x014 chunk
     /// </summary>
     [Chunk(0x090C9014)]
-    [ChunkGameVersion(GameVersion.MP4, 9)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 9, 10)]
     public partial class Chunk090C9014 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9014;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwNod>? U01Ref;
@@ -1232,22 +1053,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U23;
         public float U24;
         public float U25;
-
-        private NodeRef<CFuncKeysReal>? U26Ref;
-        public CFuncKeysReal? U26
-        {
-            get => U26Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U26Ref, value);
-        }
+        public PlugCurve? U26;
         public bool U27;
         public bool U28;
-
-        private NodeRef<CFuncKeysReal>? U29Ref;
-        public CFuncKeysReal? U29
-        {
-            get => U29Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U29Ref, value);
-        }
+        public PlugCurve? U29;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
@@ -1257,8 +1066,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
             public NodeRef<CMwNod> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public NodeRef<CFuncKeysReal> U26 => NodeRef.GetOrCreate(ref owner.U26Ref);
-            public NodeRef<CFuncKeysReal> U29 => NodeRef.GetOrCreate(ref owner.U29Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
@@ -1266,8 +1073,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
             yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            yield return new("U26", NodeRef.GetOrCreate(ref U26Ref));
-            yield return new("U29", NodeRef.GetOrCreate(ref U29Ref));
             yield break;
         }
 
@@ -1280,6 +1085,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 9;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 10;
             }
         }
 
@@ -1312,16 +1121,16 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9014)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090C9014)clone).U24 = context.Clone(this.U24)!;
             ((Chunk090C9014)clone).U25 = context.Clone(this.U25)!;
-            ((Chunk090C9014)clone).U26Ref = context.Clone(this.U26Ref)!;
+            ((Chunk090C9014)clone).U26 = context.Clone(this.U26)!;
             ((Chunk090C9014)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090C9014)clone).U28 = context.Clone(this.U28)!;
-            ((Chunk090C9014)clone).U29Ref = context.Clone(this.U29Ref)!;
+            ((Chunk090C9014)clone).U29 = context.Clone(this.U29)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 9)
+            if (Version > 10)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1360,7 +1169,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U15);
             }
 
-            if (Version== 0 || Version== 4 || Version== 5 || Version== 6 || Version== 7 || Version== 8 || Version== 9)
+            if (Version== 0 || Version>= 4)
             {
                 rw.Boolean(ref U16);
             }
@@ -1370,7 +1179,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U17);
             }
 
-            if (Version== 0 || Version== 4 || Version== 5 || Version== 6 || Version== 7 || Version== 8 || Version== 9)
+            if (Version== 0 || Version>= 4)
             {
                 rw.Single(ref U18);
                 rw.Single(ref U19);
@@ -1400,7 +1209,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 6)
             {
                 rw.Single(ref U25);
-                rw.NodeRef(ref U26Ref);
+                rw.ReadableWritable<PlugCurve>(ref U26, version: Version- 10);
             }
 
             if (Version >= 7)
@@ -1413,9 +1222,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U28);
             }
 
-            if (Version == 9)
+            if (Version >= 9)
             {
-                rw.NodeRef(ref U29Ref);
+                rw.ReadableWritable<PlugCurve>(ref U29, version: Version- 10);
             }
         }
     }
@@ -1424,43 +1233,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x015 chunk
     /// </summary>
     [Chunk(0x090C9015)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 2)]
     public partial class Chunk090C9015 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9015;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
+        public PlugCurve? U01;
         public float U02;
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9015 owner;
-            internal NodeRefView(Chunk090C9015 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield break;
-        }
+        public PlugCurve? U03;
 
         public Chunk090C9015() : this(GameVersion.Unspecified)
         {
@@ -1472,35 +1253,39 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 1;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C9015)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C9015)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090C9015)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090C9015)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C9015)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090C9015)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > 2)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 2);
 
             if (Version == 0)
             {
                 rw.Single(ref U02);
             }
 
-            if (Version == 1)
+            if (Version >= 1)
             {
-                rw.NodeRef(ref U03Ref);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 2);
             }
         }
     }
@@ -1509,46 +1294,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x016 chunk
     /// </summary>
     [Chunk(0x090C9016)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk090C9016 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9016;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U02;
         public float U03;
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U04;
         public float U05;
         public bool U06;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9016 owner;
-            internal NodeRefView(Chunk090C9016 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield break;
-        }
 
         public Chunk090C9016() : this(GameVersion.Unspecified)
         {
@@ -1560,6 +1317,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 2;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1567,9 +1328,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C9016)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9016)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C9016)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9016)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9016)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C9016)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C9016)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9016)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C9016)clone).U06 = context.Clone(this.U06)!;
         }
@@ -1577,17 +1338,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version == 2)
+            if (Version >= 2)
             {
                 rw.Boolean(ref U01);
             }
 
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 3);
 
             if (Version == 0)
             {
@@ -1596,7 +1357,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U04Ref);
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 3);
             }
 
             rw.Single(ref U05);
@@ -1608,62 +1369,26 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x017 chunk
     /// </summary>
     [Chunk(0x090C9017)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C9017 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9017;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U02;
         public float U03;
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U04;
         public float U05;
         public float U06;
         public float U07;
         public float U08;
         public float U09;
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
+        public PlugCurve? U10;
         public float U11;
         public float U12;
         public float U13;
         public float U14;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9017 owner;
-            internal NodeRefView(Chunk090C9017 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield break;
-        }
 
         public Chunk090C9017() : this(GameVersion.Unspecified)
         {
@@ -1675,6 +1400,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 6;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -1682,15 +1411,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C9017)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9017)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C9017)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9017)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9017)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C9017)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C9017)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9017)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C9017)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C9017)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C9017)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9017)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C9017)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090C9017)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C9017)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C9017)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9017)clone).U13 = context.Clone(this.U13)!;
@@ -1700,17 +1429,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version == 6)
+            if (Version >= 6)
             {
                 rw.Boolean(ref U01);
             }
 
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 7);
 
             if (Version == 0)
             {
@@ -1719,7 +1448,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U04Ref);
+                rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 7);
             }
 
             if (Version <= 4)
@@ -1737,7 +1466,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 rw.Single(ref U08);
                 rw.Single(ref U09);
-                rw.NodeRef(ref U10Ref);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 7);
             }
 
             if (Version >= 5)
@@ -1754,27 +1483,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x018 chunk
     /// </summary>
     [Chunk(0x090C9018)]
-    [ChunkGameVersion(GameVersion.MP4, 3)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 3, 4)]
     public partial class Chunk090C9018 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9018;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
+        public PlugCurve? U01;
         public float U02;
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
+        public PlugCurve? U03;
         public float U04;
         public float U05;
 
@@ -1790,15 +1507,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             private readonly Chunk090C9018 owner;
             internal NodeRefView(Chunk090C9018 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
             public NodeRef<CPlugSurface> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
             yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
             yield break;
         }
@@ -1813,15 +1526,19 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 3;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 4;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C9018)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C9018)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090C9018)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090C9018)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C9018)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090C9018)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C9018)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9018)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C9018)clone).U06Ref = context.Clone(this.U06Ref)!;
@@ -1830,12 +1547,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 3)
+            if (Version > 4)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 4);
 
             if (Version == 0)
             {
@@ -1844,7 +1561,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U03Ref);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 4);
             }
 
             rw.Single(ref U04);
@@ -1854,7 +1571,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U05);
             }
 
-            if (Version == 3)
+            if (Version >= 3)
             {
                 rw.NodeRef(ref U06Ref);
             }
@@ -1865,11 +1582,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x019 chunk
     /// </summary>
     [Chunk(0x090C9019)]
-    [ChunkGameVersion(GameVersion.MP4, 10)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 10, 11)]
     public partial class Chunk090C9019 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9019;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public bool U02;
@@ -1881,52 +1598,16 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public int U08;
         public float U09;
         public int U10;
-
-        private NodeRef<CFuncKeysReal>? U11Ref;
-        public CFuncKeysReal? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
+        public PlugCurve? U11;
         public int U12;
-
-        private NodeRef<CFuncKeysReal>? U13Ref;
-        public CFuncKeysReal? U13
-        {
-            get => U13Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U13Ref, value);
-        }
+        public PlugCurve? U13;
         public int U14;
-
-        private NodeRef<CFuncKeysReal>? U15Ref;
-        public CFuncKeysReal? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
+        public PlugCurve? U15;
         public float U16;
         public bool U17;
         public float U18;
         public bool U19;
         public int U20;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9019 owner;
-            internal NodeRefView(Chunk090C9019 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CFuncKeysReal> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield break;
-        }
 
         public Chunk090C9019() : this(GameVersion.Unspecified)
         {
@@ -1937,6 +1618,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 10;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
             }
         }
 
@@ -1954,11 +1639,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9019)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9019)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090C9019)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090C9019)clone).U11Ref = context.Clone(this.U11Ref)!;
+            ((Chunk090C9019)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C9019)clone).U12 = context.Clone(this.U12)!;
-            ((Chunk090C9019)clone).U13Ref = context.Clone(this.U13Ref)!;
+            ((Chunk090C9019)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090C9019)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090C9019)clone).U15Ref = context.Clone(this.U15Ref)!;
+            ((Chunk090C9019)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090C9019)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090C9019)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090C9019)clone).U18 = context.Clone(this.U18)!;
@@ -1969,7 +1654,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 10)
+            if (Version > 11)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -1995,13 +1680,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 rw.Single(ref U09);
                 rw.Int32(ref U10);
-                rw.NodeRef(ref U11Ref);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 11);
             }
 
             if (Version >= 4)
             {
                 rw.Int32(ref U12);
-                rw.NodeRef(ref U13Ref);
+                rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 11);
             }
 
             if (Version == 5)
@@ -2011,7 +1696,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref U15Ref);
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 11);
             }
 
             if (Version >= 7)
@@ -2029,7 +1714,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U18);
             }
 
-            if (Version == 10)
+            if (Version >= 10)
             {
                 rw.Boolean(ref U19);
                 rw.Int32(ref U20);
@@ -2041,11 +1726,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01A chunk
     /// </summary>
     [Chunk(0x090C901A)]
-    [ChunkGameVersion(GameVersion.MP4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020)]
     public partial class Chunk090C901A : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901A;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -2081,47 +1766,23 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01B chunk
     /// </summary>
     [Chunk(0x090C901B)]
-    [ChunkGameVersion(GameVersion.MP4, 19)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 19, 20)]
     public partial class Chunk090C901B : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901B;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
-
-        private NodeRef<CFuncKeysReal>? U01Ref;
-        public CFuncKeysReal? U01
-        {
-            get => U01Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U01Ref, value);
-        }
+        public PlugCurve? U01;
         public float U02;
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
+        public PlugCurve? U03;
         public float U04;
         public int U05;
         public int U06;
         public float U07;
         public float U08;
-
-        private NodeRef<CFuncKeysReal>? U09Ref;
-        public CFuncKeysReal? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
+        public PlugCurve? U09;
         public float U10;
-
-        private NodeRef<CFuncKeysReal>? U11Ref;
-        public CFuncKeysReal? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
+        public PlugCurve? U11;
 
         private NodeRef<CMwNod>? U12Ref;
         public CMwNod? U12
@@ -2139,20 +1800,8 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U14;
         public bool U15;
         public float U16;
-
-        private NodeRef<CFuncKeysReal>? U17Ref;
-        public CFuncKeysReal? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U18Ref;
-        public CFuncKeysReal? U18
-        {
-            get => U18Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U18Ref, value);
-        }
+        public PlugCurve? U17;
+        public PlugCurve? U18;
         public bool U19;
 
         private NodeRef<CMwNod>? U20Ref;
@@ -2161,13 +1810,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             get => U20Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U20Ref, value);
         }
-
-        private NodeRef<CFuncKeysReal>? U21Ref;
-        public CFuncKeysReal? U21
-        {
-            get => U21Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
+        public PlugCurve? U21;
         public int U22;
         public int U23;
         public float U24;
@@ -2182,30 +1825,16 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             private readonly Chunk090C901B owner;
             internal NodeRefView(Chunk090C901B owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
             public NodeRef<CMwNod> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
             public NodeRef<CMwNod> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CFuncKeysReal> U18 => NodeRef.GetOrCreate(ref owner.U18Ref);
             public NodeRef<CMwNod> U20 => NodeRef.GetOrCreate(ref owner.U20Ref);
-            public NodeRef<CFuncKeysReal> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
             yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
             yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U18", NodeRef.GetOrCreate(ref U18Ref));
             yield return new("U20", NodeRef.GetOrCreate(ref U20Ref));
-            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
             yield break;
         }
 
@@ -2219,33 +1848,37 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 19;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 20;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
             ((Chunk090C901B)clone).Version = context.Clone(this.Version)!;
-            ((Chunk090C901B)clone).U01Ref = context.Clone(this.U01Ref)!;
+            ((Chunk090C901B)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090C901B)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk090C901B)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090C901B)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C901B)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C901B)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C901B)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C901B)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C901B)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090C901B)clone).U09Ref = context.Clone(this.U09Ref)!;
+            ((Chunk090C901B)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090C901B)clone).U10 = context.Clone(this.U10)!;
-            ((Chunk090C901B)clone).U11Ref = context.Clone(this.U11Ref)!;
+            ((Chunk090C901B)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C901B)clone).U12Ref = context.Clone(this.U12Ref)!;
             ((Chunk090C901B)clone).U13Ref = context.Clone(this.U13Ref)!;
             ((Chunk090C901B)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090C901B)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090C901B)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090C901B)clone).U17Ref = context.Clone(this.U17Ref)!;
-            ((Chunk090C901B)clone).U18Ref = context.Clone(this.U18Ref)!;
+            ((Chunk090C901B)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C901B)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090C901B)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090C901B)clone).U20Ref = context.Clone(this.U20Ref)!;
-            ((Chunk090C901B)clone).U21Ref = context.Clone(this.U21Ref)!;
+            ((Chunk090C901B)clone).U21 = context.Clone(this.U21)!;
             ((Chunk090C901B)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090C901B)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090C901B)clone).U24 = context.Clone(this.U24)!;
@@ -2259,12 +1892,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 19)
+            if (Version > 20)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            rw.NodeRef(ref U01Ref);
+            rw.ReadableWritable<PlugCurve>(ref U01, version: Version- 20);
 
             if (Version <= 5)
             {
@@ -2273,7 +1906,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref U03Ref);
+                rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 20);
             }
 
             if (Version >= 1)
@@ -2291,7 +1924,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 rw.Single(ref U07);
                 rw.Single(ref U08);
-                rw.NodeRef(ref U09Ref);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 20);
             }
 
             if (Version >= 5)
@@ -2301,7 +1934,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 7)
             {
-                rw.NodeRef(ref U11Ref);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 20);
             }
 
             if (Version == 8)
@@ -2331,12 +1964,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 13)
             {
-                rw.NodeRef(ref U17Ref);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 20);
             }
 
             if (Version >= 12)
             {
-                rw.NodeRef(ref U18Ref);
+                rw.ReadableWritable<PlugCurve>(ref U18, version: Version- 20);
             }
 
             if (Version >= 14)
@@ -2351,7 +1984,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 15)
             {
-                rw.NodeRef(ref U21Ref);
+                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 20);
             }
 
             if (Version >= 16)
@@ -2372,7 +2005,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Int32(ref U27);
             }
 
-            if (Version == 19)
+            if (Version >= 19)
             {
                 rw.Int32(ref U28);
                 rw.Int32(ref U29);
@@ -2384,23 +2017,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01C chunk
     /// </summary>
     [Chunk(0x090C901C)]
-    [ChunkGameVersion(GameVersion.MP4, 21)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 21, 22)]
     public partial class Chunk090C901C : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901C;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public ushort U01;
         public float U02;
         public float U03;
         public float U04;
-
-        private NodeRef<CFuncKeysReal>? U05Ref;
-        public CFuncKeysReal? U05
-        {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
-        }
+        public PlugCurve? U05;
         public float U06;
 
         private NodeRef<CMwNod>? U07Ref;
@@ -2409,13 +2036,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             get => U07Ref?.Resolve();
             set => NodeRef.SetEmbedded(ref U07Ref, value);
         }
-
-        private NodeRef<CFuncKeysReal>? U08Ref;
-        public CFuncKeysReal? U08
-        {
-            get => U08Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U08Ref, value);
-        }
+        public PlugCurve? U08;
         public float U09;
         public float U10;
 
@@ -2460,21 +2081,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U32;
         public float U33;
         public float U34;
-
-        private NodeRef<CFuncKeysReal>? U35Ref;
-        public CFuncKeysReal? U35
-        {
-            get => U35Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U35Ref, value);
-        }
+        public PlugCurve? U35;
         public float U36;
-
-        private NodeRef<CFuncKeysReal>? U37Ref;
-        public CFuncKeysReal? U37
-        {
-            get => U37Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U37Ref, value);
-        }
+        public PlugCurve? U37;
         public int U38;
         public bool U39;
         public float U40;
@@ -2489,26 +2098,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         {
             private readonly Chunk090C901C owner;
             internal NodeRefView(Chunk090C901C owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
             public NodeRef<CMwNod> U07 => NodeRef.GetOrCreate(ref owner.U07Ref);
-            public NodeRef<CFuncKeysReal> U08 => NodeRef.GetOrCreate(ref owner.U08Ref);
             public NodeRef<CMwNod> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
             public NodeRef<CMwNod> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
             public NodeRef<CMwNod> U13 => NodeRef.GetOrCreate(ref owner.U13Ref);
-            public NodeRef<CFuncKeysReal> U35 => NodeRef.GetOrCreate(ref owner.U35Ref);
-            public NodeRef<CFuncKeysReal> U37 => NodeRef.GetOrCreate(ref owner.U37Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
             yield return new("U07", NodeRef.GetOrCreate(ref U07Ref));
-            yield return new("U08", NodeRef.GetOrCreate(ref U08Ref));
             yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
             yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
             yield return new("U13", NodeRef.GetOrCreate(ref U13Ref));
-            yield return new("U35", NodeRef.GetOrCreate(ref U35Ref));
-            yield return new("U37", NodeRef.GetOrCreate(ref U37Ref));
             yield break;
         }
 
@@ -2522,6 +2123,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 21;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 22;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -2532,10 +2137,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C901C)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C901C)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C901C)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090C901C)clone).U05Ref = context.Clone(this.U05Ref)!;
+            ((Chunk090C901C)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C901C)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C901C)clone).U07Ref = context.Clone(this.U07Ref)!;
-            ((Chunk090C901C)clone).U08Ref = context.Clone(this.U08Ref)!;
+            ((Chunk090C901C)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C901C)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090C901C)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C901C)clone).U11Ref = context.Clone(this.U11Ref)!;
@@ -2562,9 +2167,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C901C)clone).U32 = context.Clone(this.U32)!;
             ((Chunk090C901C)clone).U33 = context.Clone(this.U33)!;
             ((Chunk090C901C)clone).U34 = context.Clone(this.U34)!;
-            ((Chunk090C901C)clone).U35Ref = context.Clone(this.U35Ref)!;
+            ((Chunk090C901C)clone).U35 = context.Clone(this.U35)!;
             ((Chunk090C901C)clone).U36 = context.Clone(this.U36)!;
-            ((Chunk090C901C)clone).U37Ref = context.Clone(this.U37Ref)!;
+            ((Chunk090C901C)clone).U37 = context.Clone(this.U37)!;
             ((Chunk090C901C)clone).U38 = context.Clone(this.U38)!;
             ((Chunk090C901C)clone).U39 = context.Clone(this.U39)!;
             ((Chunk090C901C)clone).U40 = context.Clone(this.U40)!;
@@ -2578,7 +2183,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 21)
+            if (Version > 22)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -2596,7 +2201,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             }
 
             rw.Single(ref U04);
-            rw.NodeRef(ref U05Ref);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 22);
 
             if (Version>= 1 && Version<= 11)
             {
@@ -2610,7 +2215,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version>= 3 && Version<= 11)
             {
-                rw.NodeRef(ref U08Ref);
+                rw.ReadableWritable<PlugCurve>(ref U08, version: Version- 22);
             }
 
             if (Version>= 4 && Version<= 13)
@@ -2677,7 +2282,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 16)
             {
-                rw.NodeRef(ref U35Ref);
+                rw.ReadableWritable<PlugCurve>(ref U35, version: Version- 22);
             }
 
             if (Version == 17)
@@ -2687,7 +2292,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 18)
             {
-                rw.NodeRef(ref U37Ref);
+                rw.ReadableWritable<PlugCurve>(ref U37, version: Version- 22);
             }
 
             if (Version >= 19)
@@ -2700,7 +2305,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U39);
             }
 
-            if (Version == 21)
+            if (Version >= 21)
             {
                 rw.Single(ref U40);
                 rw.Single(ref U41);
@@ -2716,74 +2321,22 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01D chunk
     /// </summary>
     [Chunk(0x090C901D)]
-    [ChunkGameVersion(GameVersion.MP4, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 5)]
     public partial class Chunk090C901D : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901D;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
         public float U05;
         public float U06;
         public int U07;
         public float U08;
-
-        private NodeRef<CFuncKeysReal>? U09Ref;
-        public CFuncKeysReal? U09
-        {
-            get => U09Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U09Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C901D owner;
-            internal NodeRefView(Chunk090C901D owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CFuncKeysReal> U09 => NodeRef.GetOrCreate(ref owner.U09Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield return new("U09", NodeRef.GetOrCreate(ref U09Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield break;
-        }
+        public PlugCurve? U09;
+        public PlugCurve? U10;
 
         public Chunk090C901D() : this(GameVersion.Unspecified)
         {
@@ -2795,6 +2348,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 4;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -2802,35 +2359,35 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C901D)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C901D)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C901D)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090C901D)clone).U03Ref = context.Clone(this.U03Ref)!;
-            ((Chunk090C901D)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C901D)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C901D)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C901D)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C901D)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C901D)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C901D)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C901D)clone).U08 = context.Clone(this.U08)!;
-            ((Chunk090C901D)clone).U09Ref = context.Clone(this.U09Ref)!;
-            ((Chunk090C901D)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090C901D)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C901D)clone).U10 = context.Clone(this.U10)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > 5)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
-            if (Version == 4)
+            if (Version >= 4)
             {
                 rw.Boolean(ref U01);
             }
 
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
-            rw.NodeRef(ref U04Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 5);
 
-            if (Version <= 2)
+            if (Version >= 1 && Version <= 2)
             {
                 rw.Single(ref U05);
                 rw.Single(ref U06);
@@ -2844,8 +2401,8 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 3)
             {
                 rw.Single(ref U08);
-                rw.NodeRef(ref U09Ref);
-                rw.NodeRef(ref U10Ref);
+                rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 5);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 5);
             }
         }
     }
@@ -2854,64 +2411,20 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x01F chunk
     /// </summary>
     [Chunk(0x090C901F)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C901F : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C901F;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
+        public PlugCurve? U02;
+        public PlugCurve? U03;
         public float U04;
-
-        private NodeRef<CFuncKeysReal>? U05Ref;
-        public CFuncKeysReal? U05
-        {
-            get => U05Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U05Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U06Ref;
-        public CFuncKeysReal? U06
-        {
-            get => U06Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U06Ref, value);
-        }
+        public PlugCurve? U05;
+        public PlugCurve? U06;
         public int U07;
         public int U08;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C901F owner;
-            internal NodeRefView(Chunk090C901F owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U05 => NodeRef.GetOrCreate(ref owner.U05Ref);
-            public NodeRef<CFuncKeysReal> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U05", NodeRef.GetOrCreate(ref U05Ref));
-            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
-            yield break;
-        }
 
         public Chunk090C901F() : this(GameVersion.Unspecified)
         {
@@ -2923,6 +2436,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 6;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -2930,11 +2447,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C901F)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C901F)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C901F)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090C901F)clone).U03Ref = context.Clone(this.U03Ref)!;
+            ((Chunk090C901F)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C901F)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C901F)clone).U04 = context.Clone(this.U04)!;
-            ((Chunk090C901F)clone).U05Ref = context.Clone(this.U05Ref)!;
-            ((Chunk090C901F)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk090C901F)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C901F)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C901F)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C901F)clone).U08 = context.Clone(this.U08)!;
         }
@@ -2942,7 +2459,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -2952,8 +2469,8 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U01);
             }
 
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 7);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 7);
 
             if (Version == 1)
             {
@@ -2962,12 +2479,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 2)
             {
-                rw.NodeRef(ref U05Ref);
+                rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 7);
             }
 
             if (Version >= 3)
             {
-                rw.NodeRef(ref U06Ref);
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 7);
             }
 
             if (Version >= 5)
@@ -2982,11 +2499,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x020 chunk
     /// </summary>
     [Chunk(0x090C9020)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 2)]
     public partial class Chunk090C9020 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9020;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public bool U02;
@@ -2997,7 +2514,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C9020(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 2;
             }
@@ -3032,11 +2549,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x022 chunk
     /// </summary>
     [Chunk(0x090C9022)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C9022 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9022;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -3047,13 +2564,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public bool U07;
         public float U08;
         public float U09;
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
+        public PlugCurve? U10;
         public int U11;
         public float U12;
         public float U13;
@@ -3061,20 +2572,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U15;
         public float U16;
         public bool U17;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9022 owner;
-            internal NodeRefView(Chunk090C9022 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield break;
-        }
 
         public Chunk090C9022() : this(GameVersion.Unspecified)
         {
@@ -3085,6 +2582,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 6;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
             }
         }
 
@@ -3101,7 +2602,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9022)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C9022)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9022)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C9022)clone).U10Ref = context.Clone(this.U10Ref)!;
+            ((Chunk090C9022)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C9022)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C9022)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9022)clone).U13 = context.Clone(this.U13)!;
@@ -3114,7 +2615,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -3148,7 +2649,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 2)
             {
                 rw.Single(ref U09);
-                rw.NodeRef(ref U10Ref);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 7);
                 rw.Int32(ref U11);
                 rw.Single(ref U12);
                 rw.Single(ref U13);
@@ -3172,34 +2673,16 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x023 chunk
     /// </summary>
     [Chunk(0x090C9023)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 8)]
     public partial class Chunk090C9023 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9023;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
 
         public NodeRefList<CPlugCharPhyRecoilModel>? U05;
         public bool U06;
@@ -3213,23 +2696,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U14;
         public float U15;
         public float U16;
+        public float U17;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090C9023 owner;
             internal NodeRefView(Chunk090C9023 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
             public IReadOnlyList<NodeRef<CPlugCharPhyRecoilModel>>? U05 => owner.U05?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
             if (U05 is not null)
             {
                 for (var i = 0; i < U05.Count; i++) yield return new("U05" + "[" + i + "]", U05.Get(i));
@@ -3247,6 +2725,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 6;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -3254,9 +2736,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C9023)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9023)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C9023)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090C9023)clone).U03Ref = context.Clone(this.U03Ref)!;
-            ((Chunk090C9023)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C9023)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9023)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9023)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9023)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C9023)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C9023)clone).U07 = context.Clone(this.U07)!;
@@ -3269,20 +2751,21 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9023)clone).U14 = context.Clone(this.U14)!;
             ((Chunk090C9023)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090C9023)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C9023)clone).U17 = context.Clone(this.U17)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 8)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Single(ref U01);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
-            rw.NodeRef(ref U04Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 8);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 8);
 
             if (Version >= 1)
             {
@@ -3317,9 +2800,14 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U15);
             }
 
-            if (Version == 6)
+            if (Version >= 6)
             {
                 rw.Single(ref U16);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Single(ref U17);
             }
         }
     }
@@ -3328,11 +2816,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x024 chunk
     /// </summary>
     [Chunk(0x090C9024)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 2)]
     public partial class Chunk090C9024 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9024;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CMwRefBuffer>? U01Ref;
@@ -3349,6 +2837,8 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U02Ref, value);
         }
 
+        public NodeRefList<CPlugCharPhyMaterial>? U03;
+
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
@@ -3356,12 +2846,17 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             internal NodeRefView(Chunk090C9024 owner) => this.owner = owner;
             public NodeRef<CMwRefBuffer> U01 => NodeRef.GetOrCreate(ref owner.U01Ref);
             public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
+            public IReadOnlyList<NodeRef<CPlugCharPhyMaterial>>? U03 => owner.U03?.References;
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
             yield return new("U01", NodeRef.GetOrCreate(ref U01Ref));
             yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
+            if (U03 is not null)
+            {
+                for (var i = 0; i < U03.Count; i++) yield return new("U03" + "[" + i + "]", U03.Get(i));
+            }
             yield break;
         }
 
@@ -3375,6 +2870,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 1;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 2;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -3383,12 +2882,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9024)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9024)clone).U01Ref = context.Clone(this.U01Ref)!;
             ((Chunk090C9024)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9024)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 1)
+            if (Version > 2)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -3398,9 +2898,14 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.NodeRef(ref U01Ref);
             }
 
-            if (Version == 1)
+            if (Version >= 1)
             {
                 rw.NodeRef(ref U02Ref);
+            }
+
+            if (Version >= 2)
+            {
+                U03 = rw.ListNodeRef<CPlugCharPhyMaterial>(U03);
             }
         }
     }
@@ -3409,11 +2914,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x025 chunk
     /// </summary>
     [Chunk(0x090C9025)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090C9025 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9025;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public int U01;
         public float U02;
@@ -3427,7 +2932,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C9025(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -3468,35 +2973,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x026 chunk
     /// </summary>
     [Chunk(0x090C9026)]
-    [ChunkGameVersion(GameVersion.MP4, 2)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 2, 3)]
     public partial class Chunk090C9026 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9026;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
+        public PlugCurve? U02;
         public float U03;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9026 owner;
-            internal NodeRefView(Chunk090C9026 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield break;
-        }
 
         public Chunk090C9026() : this(GameVersion.Unspecified)
         {
@@ -3508,6 +2993,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 2;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 3;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -3515,20 +3004,20 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C9026)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9026)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C9026)clone).U02Ref = context.Clone(this.U02Ref)!;
+            ((Chunk090C9026)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C9026)clone).U03 = context.Clone(this.U03)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 2)
+            if (Version > 3)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Boolean(ref U01);
-            rw.NodeRef(ref U02Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 3);
 
             if (Version >= 1)
             {
@@ -3541,66 +3030,24 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x027 chunk
     /// </summary>
     [Chunk(0x090C9027)]
-    [ChunkGameVersion(GameVersion.MP4, 10)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 10, 11)]
     public partial class Chunk090C9027 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9027;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
-
-        private NodeRef<CFuncKeysReal>? U02Ref;
-        public CFuncKeysReal? U02
-        {
-            get => U02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U02Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U03Ref;
-        public CFuncKeysReal? U03
-        {
-            get => U03Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U03Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U02;
+        public PlugCurve? U03;
+        public PlugCurve? U04;
         public float U05;
-
-        private NodeRef<CFuncKeysReal>? U06Ref;
-        public CFuncKeysReal? U06
-        {
-            get => U06Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U06Ref, value);
-        }
+        public PlugCurve? U06;
         public int U07;
         public float U08;
         public float U09;
-
-        private NodeRef<CFuncKeysReal>? U10Ref;
-        public CFuncKeysReal? U10
-        {
-            get => U10Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U10Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U11Ref;
-        public CFuncKeysReal? U11
-        {
-            get => U11Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U11Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U12Ref;
-        public CFuncKeysReal? U12
-        {
-            get => U12Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U12Ref, value);
-        }
+        public PlugCurve? U10;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
         public bool U13;
 
         private NodeRef<CMwNod>? U14Ref;
@@ -3610,41 +3057,19 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref U14Ref, value);
         }
         public bool U15;
-
-        private NodeRef<CFuncKeysReal>? U16Ref;
-        public CFuncKeysReal? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
+        public PlugCurve? U16;
 
         public NodeRefView References => new(this);
         public readonly struct NodeRefView
         {
             private readonly Chunk090C9027 owner;
             internal NodeRefView(Chunk090C9027 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U02 => NodeRef.GetOrCreate(ref owner.U02Ref);
-            public NodeRef<CFuncKeysReal> U03 => NodeRef.GetOrCreate(ref owner.U03Ref);
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-            public NodeRef<CFuncKeysReal> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
-            public NodeRef<CFuncKeysReal> U10 => NodeRef.GetOrCreate(ref owner.U10Ref);
-            public NodeRef<CFuncKeysReal> U11 => NodeRef.GetOrCreate(ref owner.U11Ref);
-            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
             public NodeRef<CMwNod> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
         }
         public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
             foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U02", NodeRef.GetOrCreate(ref U02Ref));
-            yield return new("U03", NodeRef.GetOrCreate(ref U03Ref));
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
-            yield return new("U10", NodeRef.GetOrCreate(ref U10Ref));
-            yield return new("U11", NodeRef.GetOrCreate(ref U11Ref));
-            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
             yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
             yield break;
         }
 
@@ -3658,6 +3083,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 10;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 11;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -3665,35 +3094,35 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             base.DeepCloneFields(clone, context);
             ((Chunk090C9027)clone).Version = context.Clone(this.Version)!;
             ((Chunk090C9027)clone).U01 = context.Clone(this.U01)!;
-            ((Chunk090C9027)clone).U02Ref = context.Clone(this.U02Ref)!;
-            ((Chunk090C9027)clone).U03Ref = context.Clone(this.U03Ref)!;
-            ((Chunk090C9027)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C9027)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9027)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9027)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C9027)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090C9027)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk090C9027)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C9027)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C9027)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C9027)clone).U09 = context.Clone(this.U09)!;
-            ((Chunk090C9027)clone).U10Ref = context.Clone(this.U10Ref)!;
-            ((Chunk090C9027)clone).U11Ref = context.Clone(this.U11Ref)!;
-            ((Chunk090C9027)clone).U12Ref = context.Clone(this.U12Ref)!;
+            ((Chunk090C9027)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090C9027)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090C9027)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9027)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090C9027)clone).U14Ref = context.Clone(this.U14Ref)!;
             ((Chunk090C9027)clone).U15 = context.Clone(this.U15)!;
-            ((Chunk090C9027)clone).U16Ref = context.Clone(this.U16Ref)!;
+            ((Chunk090C9027)clone).U16 = context.Clone(this.U16)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 10)
+            if (Version > 11)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
             rw.Boolean(ref U01);
-            rw.NodeRef(ref U02Ref);
-            rw.NodeRef(ref U03Ref);
-            rw.NodeRef(ref U04Ref);
+            rw.ReadableWritable<PlugCurve>(ref U02, version: Version- 11);
+            rw.ReadableWritable<PlugCurve>(ref U03, version: Version- 11);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 11);
 
             if (Version <= 4)
             {
@@ -3702,7 +3131,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 1)
             {
-                rw.NodeRef(ref U06Ref);
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 11);
             }
 
             if (Version>= 2 && Version<= 4)
@@ -3722,13 +3151,13 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
             if (Version >= 4)
             {
-                rw.NodeRef(ref U10Ref);
-                rw.NodeRef(ref U11Ref);
+                rw.ReadableWritable<PlugCurve>(ref U10, version: Version- 11);
+                rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 11);
             }
 
             if (Version >= 6)
             {
-                rw.NodeRef(ref U12Ref);
+                rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 11);
                 rw.Boolean(ref U13);
             }
 
@@ -3742,9 +3171,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U15);
             }
 
-            if (Version == 10)
+            if (Version >= 10)
             {
-                rw.NodeRef(ref U16Ref);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 11);
             }
         }
     }
@@ -3753,11 +3182,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x028 chunk
     /// </summary>
     [Chunk(0x090C9028)]
-    [ChunkGameVersion(GameVersion.MP4, 5)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 5, 6)]
     public partial class Chunk090C9028 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9028;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public float U01;
         public float U02;
@@ -3770,70 +3199,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U09;
         public bool U10;
         public float U11;
-
-        private NodeRef<CFuncKeysReal>? U12Ref;
-        public CFuncKeysReal? U12
-        {
-            get => U12Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U12Ref, value);
-        }
+        public PlugCurve? U12;
         public bool U13;
         public bool U14;
-
-        private NodeRef<CFuncKeysReal>? U15Ref;
-        public CFuncKeysReal? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
+        public PlugCurve? U15;
         public float U16;
-
-        private NodeRef<CFuncKeysReal>? U17Ref;
-        public CFuncKeysReal? U17
-        {
-            get => U17Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U17Ref, value);
-        }
+        public PlugCurve? U17;
         public int U18;
         public int U19;
         public int U20;
-
-        private NodeRef<CFuncKeysReal>? U21Ref;
-        public CFuncKeysReal? U21
-        {
-            get => U21Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U21Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U22Ref;
-        public CFuncKeysReal? U22
-        {
-            get => U22Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U22Ref, value);
-        }
+        public PlugCurve? U21;
+        public PlugCurve? U22;
         public bool U23;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C9028 owner;
-            internal NodeRefView(Chunk090C9028 owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U12 => NodeRef.GetOrCreate(ref owner.U12Ref);
-            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CFuncKeysReal> U17 => NodeRef.GetOrCreate(ref owner.U17Ref);
-            public NodeRef<CFuncKeysReal> U21 => NodeRef.GetOrCreate(ref owner.U21Ref);
-            public NodeRef<CFuncKeysReal> U22 => NodeRef.GetOrCreate(ref owner.U22Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U12", NodeRef.GetOrCreate(ref U12Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield return new("U17", NodeRef.GetOrCreate(ref U17Ref));
-            yield return new("U21", NodeRef.GetOrCreate(ref U21Ref));
-            yield return new("U22", NodeRef.GetOrCreate(ref U22Ref));
-            yield break;
-        }
 
         public Chunk090C9028() : this(GameVersion.Unspecified)
         {
@@ -3844,6 +3221,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 5;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 6;
             }
         }
 
@@ -3862,24 +3243,24 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C9028)clone).U09 = context.Clone(this.U09)!;
             ((Chunk090C9028)clone).U10 = context.Clone(this.U10)!;
             ((Chunk090C9028)clone).U11 = context.Clone(this.U11)!;
-            ((Chunk090C9028)clone).U12Ref = context.Clone(this.U12Ref)!;
+            ((Chunk090C9028)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C9028)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090C9028)clone).U14 = context.Clone(this.U14)!;
-            ((Chunk090C9028)clone).U15Ref = context.Clone(this.U15Ref)!;
+            ((Chunk090C9028)clone).U15 = context.Clone(this.U15)!;
             ((Chunk090C9028)clone).U16 = context.Clone(this.U16)!;
-            ((Chunk090C9028)clone).U17Ref = context.Clone(this.U17Ref)!;
+            ((Chunk090C9028)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090C9028)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090C9028)clone).U19 = context.Clone(this.U19)!;
             ((Chunk090C9028)clone).U20 = context.Clone(this.U20)!;
-            ((Chunk090C9028)clone).U21Ref = context.Clone(this.U21Ref)!;
-            ((Chunk090C9028)clone).U22Ref = context.Clone(this.U22Ref)!;
+            ((Chunk090C9028)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C9028)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090C9028)clone).U23 = context.Clone(this.U23)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 5)
+            if (Version > 6)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -3895,15 +3276,15 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             rw.Single(ref U09);
             rw.Boolean(ref U10);
             rw.Single(ref U11);
-            rw.NodeRef(ref U12Ref);
+            rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 6);
             rw.Boolean(ref U13);
             rw.Boolean(ref U14);
-            rw.NodeRef(ref U15Ref);
+            rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 6);
             rw.Single(ref U16);
 
             if (Version == 2)
             {
-                rw.NodeRef(ref U17Ref);
+                rw.ReadableWritable<PlugCurve>(ref U17, version: Version- 6);
                 rw.Int32(ref U18);
             }
 
@@ -3911,12 +3292,12 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 rw.Int32(ref U19);
                 rw.Int32(ref U20);
-                rw.NodeRef(ref U21Ref);
+                rw.ReadableWritable<PlugCurve>(ref U21, version: Version- 6);
             }
 
             if (Version >= 4)
             {
-                rw.NodeRef(ref U22Ref);
+                rw.ReadableWritable<PlugCurve>(ref U22, version: Version- 6);
             }
 
             if (Version >= 5)
@@ -3930,11 +3311,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x029 chunk
     /// </summary>
     [Chunk(0x090C9029)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090C9029 : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C9029;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
 
         private NodeRef<CPlugSurface>? U01Ref;
@@ -3969,7 +3350,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C9029(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -4012,11 +3393,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x02A chunk
     /// </summary>
     [Chunk(0x090C902A)]
-    [ChunkGameVersion(GameVersion.MP4, 1)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 1, 1)]
     public partial class Chunk090C902A : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902A;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -4029,7 +3410,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
 
         public Chunk090C902A(GameVersion gameVersion)
         {
-            if (gameVersion == GameVersion.MP4)
+            if (gameVersion == GameVersion.MP4 || gameVersion == GameVersion.TM2020)
             {
                 Version = 1;
             }
@@ -4064,11 +3445,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x02B chunk
     /// </summary>
     [Chunk(0x090C902B)]
-    [ChunkGameVersion(GameVersion.MP4, 6)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 6, 7)]
     public partial class Chunk090C902B : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902B;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
@@ -4083,27 +3464,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public bool U11;
         public bool U12;
         public bool U13;
-
-        private NodeRef<CFuncKeysReal>? U14Ref;
-        public CFuncKeysReal? U14
-        {
-            get => U14Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U14Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U15Ref;
-        public CFuncKeysReal? U15
-        {
-            get => U15Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U15Ref, value);
-        }
-
-        private NodeRef<CFuncKeysReal>? U16Ref;
-        public CFuncKeysReal? U16
-        {
-            get => U16Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U16Ref, value);
-        }
+        public PlugCurve? U14;
+        public PlugCurve? U15;
+        public PlugCurve? U16;
         public bool U17;
         public float U18;
         public float U19;
@@ -4112,37 +3475,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public bool U22;
         public bool U23;
         public int U24;
-
-        private NodeRef<CFuncKeysReal>? U25Ref;
-        public CFuncKeysReal? U25
-        {
-            get => U25Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U25Ref, value);
-        }
+        public PlugCurve? U25;
         public float U26;
         public bool U27;
         public bool U28;
         public float U29;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C902B owner;
-            internal NodeRefView(Chunk090C902B owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U14 => NodeRef.GetOrCreate(ref owner.U14Ref);
-            public NodeRef<CFuncKeysReal> U15 => NodeRef.GetOrCreate(ref owner.U15Ref);
-            public NodeRef<CFuncKeysReal> U16 => NodeRef.GetOrCreate(ref owner.U16Ref);
-            public NodeRef<CFuncKeysReal> U25 => NodeRef.GetOrCreate(ref owner.U25Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U14", NodeRef.GetOrCreate(ref U14Ref));
-            yield return new("U15", NodeRef.GetOrCreate(ref U15Ref));
-            yield return new("U16", NodeRef.GetOrCreate(ref U16Ref));
-            yield return new("U25", NodeRef.GetOrCreate(ref U25Ref));
-            yield break;
-        }
 
         public Chunk090C902B() : this(GameVersion.Unspecified)
         {
@@ -4153,6 +3490,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 6;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 7;
             }
         }
 
@@ -4173,9 +3514,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902B)clone).U11 = context.Clone(this.U11)!;
             ((Chunk090C902B)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C902B)clone).U13 = context.Clone(this.U13)!;
-            ((Chunk090C902B)clone).U14Ref = context.Clone(this.U14Ref)!;
-            ((Chunk090C902B)clone).U15Ref = context.Clone(this.U15Ref)!;
-            ((Chunk090C902B)clone).U16Ref = context.Clone(this.U16Ref)!;
+            ((Chunk090C902B)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C902B)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C902B)clone).U16 = context.Clone(this.U16)!;
             ((Chunk090C902B)clone).U17 = context.Clone(this.U17)!;
             ((Chunk090C902B)clone).U18 = context.Clone(this.U18)!;
             ((Chunk090C902B)clone).U19 = context.Clone(this.U19)!;
@@ -4184,7 +3525,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902B)clone).U22 = context.Clone(this.U22)!;
             ((Chunk090C902B)clone).U23 = context.Clone(this.U23)!;
             ((Chunk090C902B)clone).U24 = context.Clone(this.U24)!;
-            ((Chunk090C902B)clone).U25Ref = context.Clone(this.U25Ref)!;
+            ((Chunk090C902B)clone).U25 = context.Clone(this.U25)!;
             ((Chunk090C902B)clone).U26 = context.Clone(this.U26)!;
             ((Chunk090C902B)clone).U27 = context.Clone(this.U27)!;
             ((Chunk090C902B)clone).U28 = context.Clone(this.U28)!;
@@ -4194,7 +3535,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 6)
+            if (Version > 7)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -4219,9 +3560,9 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (Version >= 3)
             {
                 rw.Boolean(ref U13);
-                rw.NodeRef(ref U14Ref);
-                rw.NodeRef(ref U15Ref);
-                rw.NodeRef(ref U16Ref);
+                rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 7);
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 7);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 7);
             }
 
             if (Version >= 4)
@@ -4238,11 +3579,11 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Boolean(ref U22);
                 rw.Boolean(ref U23);
                 rw.Int32(ref U24);
-                rw.NodeRef(ref U25Ref);
+                rw.ReadableWritable<PlugCurve>(ref U25, version: Version- 7);
                 rw.Single(ref U26);
             }
 
-            if (Version == 6)
+            if (Version >= 6)
             {
                 rw.Boolean(ref U27);
                 rw.Boolean(ref U28);
@@ -4252,25 +3593,212 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     }
 
     /// <summary>
+    /// CPlugCharPhyModel 0x02C chunk
+    /// </summary>
+    [Chunk(0x090C902C)]
+    [ChunkGameVersion(GameVersion.TM2020, 13)]
+    public partial class Chunk090C902C : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C902C;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public int U01;
+        public float U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+        public int U07;
+        public int U08;
+        public int U09;
+        public int U10;
+        public int U11;
+        public int U12;
+        public int U13;
+        public int U14;
+        public int U15;
+        public int U16;
+        public int U17;
+        public int U18;
+        public float U19;
+        public float U20;
+        public int U21;
+        public float U22;
+        public float U23;
+        public int U24;
+        public int U25;
+        public int U26;
+        public int U27;
+        public int U28;
+        public float U29;
+        public float U30;
+        public int U31;
+        public float U32;
+        public int U33;
+        public float U34;
+        public float U35;
+
+        public Chunk090C902C() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C902C(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 13;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C902C)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C902C)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C902C)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C902C)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C902C)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C902C)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C902C)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C902C)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C902C)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C902C)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C902C)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090C902C)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090C902C)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090C902C)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090C902C)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C902C)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C902C)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C902C)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C902C)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090C902C)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090C902C)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090C902C)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C902C)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090C902C)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090C902C)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090C902C)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090C902C)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090C902C)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090C902C)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090C902C)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090C902C)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090C902C)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090C902C)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090C902C)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090C902C)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090C902C)clone).U35 = context.Clone(this.U35)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 13)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Int32(ref U01);
+
+            if (Version >= 2)
+            {
+                rw.Single(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Int32(ref U05);
+                rw.Int32(ref U06);
+                rw.Int32(ref U07);
+                rw.Int32(ref U08);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Int32(ref U09);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Int32(ref U10);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Int32(ref U11);
+                rw.Int32(ref U12);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Int32(ref U13);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Int32(ref U14);
+                rw.Int32(ref U15);
+                rw.Int32(ref U16);
+                rw.Int32(ref U17);
+                rw.Int32(ref U18);
+                rw.Single(ref U19);
+                rw.Single(ref U20);
+                rw.Int32(ref U21);
+            }
+
+            if (Version >= 9)
+            {
+                rw.Single(ref U22);
+                rw.Single(ref U23);
+            }
+
+            if (Version >= 10)
+            {
+                rw.Int32(ref U24);
+                rw.Int32(ref U25);
+                rw.Int32(ref U26);
+                rw.Int32(ref U27);
+                rw.Int32(ref U28);
+                rw.Single(ref U29);
+                rw.Single(ref U30);
+                rw.Int32(ref U31);
+                rw.Single(ref U32);
+            }
+
+            if (Version >= 11)
+            {
+                rw.Int32(ref U33);
+            }
+
+            if (Version >= 12)
+            {
+                rw.Single(ref U34);
+            }
+
+            if (Version >= 13)
+            {
+                rw.Single(ref U35);
+            }
+        }
+    }
+
+    /// <summary>
     /// CPlugCharPhyModel 0x02D chunk
     /// </summary>
     [Chunk(0x090C902D)]
-    [ChunkGameVersion(GameVersion.MP4, 7)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 7, 8)]
     public partial class Chunk090C902D : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902D;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public int U02;
         public int U03;
-
-        private NodeRef<CFuncKeysReal>? U04Ref;
-        public CFuncKeysReal? U04
-        {
-            get => U04Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U04Ref, value);
-        }
+        public PlugCurve? U04;
         public bool U05;
         public bool U06;
         public float U07;
@@ -4279,20 +3807,6 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public bool U10;
         public bool U11;
         public bool U12;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C902D owner;
-            internal NodeRefView(Chunk090C902D owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U04 => NodeRef.GetOrCreate(ref owner.U04Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U04", NodeRef.GetOrCreate(ref U04Ref));
-            yield break;
-        }
 
         public Chunk090C902D() : this(GameVersion.Unspecified)
         {
@@ -4304,6 +3818,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 Version = 7;
             }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 8;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -4313,7 +3831,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902D)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090C902D)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090C902D)clone).U03 = context.Clone(this.U03)!;
-            ((Chunk090C902D)clone).U04Ref = context.Clone(this.U04Ref)!;
+            ((Chunk090C902D)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C902D)clone).U05 = context.Clone(this.U05)!;
             ((Chunk090C902D)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C902D)clone).U07 = context.Clone(this.U07)!;
@@ -4327,7 +3845,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 7)
+            if (Version > 8)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -4335,7 +3853,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             rw.Boolean(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
-            rw.NodeRef(ref U04Ref);
+            rw.ReadableWritable<PlugCurve>(ref U04, version: Version- 8);
 
             if (Version >= 2)
             {
@@ -4375,24 +3893,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
     /// CPlugCharPhyModel 0x02E chunk
     /// </summary>
     [Chunk(0x090C902E)]
-    [ChunkGameVersion(GameVersion.MP4, 4)]
+    [ChunkGameVersion(GameVersion.MP4 | GameVersion.TM2020, 4, 9)]
     public partial class Chunk090C902E : Chunk<CPlugCharPhyModel>, IVersionable
     {
         public override uint Id => 0x090C902E;
-        public override GameVersion GameVersion => GameVersion.MP4;
+        public override GameVersion GameVersion => GameVersion.MP4 | GameVersion.TM2020;
         public int Version { get; set; }
         public bool U01;
         public float U02;
         public float U03;
         public float U04;
         public float U05;
-
-        private NodeRef<CFuncKeysReal>? U06Ref;
-        public CFuncKeysReal? U06
-        {
-            get => U06Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref U06Ref, value);
-        }
+        public PlugCurve? U06;
         public bool U07;
         public bool U08;
         public bool U09;
@@ -4401,20 +3913,41 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         public float U12;
         public float U13;
         public float U14;
-
-        public NodeRefView References => new(this);
-        public readonly struct NodeRefView
-        {
-            private readonly Chunk090C902E owner;
-            internal NodeRefView(Chunk090C902E owner) => this.owner = owner;
-            public NodeRef<CFuncKeysReal> U06 => NodeRef.GetOrCreate(ref owner.U06Ref);
-        }
-        public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
-        {
-            foreach (var reference in base.EnumerateReferences()) yield return reference;
-            yield return new("U06", NodeRef.GetOrCreate(ref U06Ref));
-            yield break;
-        }
+        public PlugCurve? U15;
+        public PlugCurve? U16;
+        public float U17;
+        public float U18;
+        public float U19;
+        public float U20;
+        public float U21;
+        public float U22;
+        public float U23;
+        public PlugCurve? U24;
+        public float U25;
+        public float U26;
+        public float U27;
+        public PlugCurve? U28;
+        public float U29;
+        public float U30;
+        public float U31;
+        public float U32;
+        public float U33;
+        public float U34;
+        public float U35;
+        public PlugCurve? U36;
+        public PlugCurve? U37;
+        public float U38;
+        public PlugCurve? U39;
+        public PlugCurve? U40;
+        public PlugCurve? U41;
+        public float U42;
+        public PlugCurve? U43;
+        public float U44;
+        public float U45;
+        public float U46;
+        public ushort U47;
+        public ushort U48;
+        public ushort U49;
 
         public Chunk090C902E() : this(GameVersion.Unspecified)
         {
@@ -4425,6 +3958,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             if (gameVersion == GameVersion.MP4)
             {
                 Version = 4;
+            }
+            else if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 9;
             }
         }
 
@@ -4437,7 +3974,7 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902E)clone).U03 = context.Clone(this.U03)!;
             ((Chunk090C902E)clone).U04 = context.Clone(this.U04)!;
             ((Chunk090C902E)clone).U05 = context.Clone(this.U05)!;
-            ((Chunk090C902E)clone).U06Ref = context.Clone(this.U06Ref)!;
+            ((Chunk090C902E)clone).U06 = context.Clone(this.U06)!;
             ((Chunk090C902E)clone).U07 = context.Clone(this.U07)!;
             ((Chunk090C902E)clone).U08 = context.Clone(this.U08)!;
             ((Chunk090C902E)clone).U09 = context.Clone(this.U09)!;
@@ -4446,12 +3983,47 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             ((Chunk090C902E)clone).U12 = context.Clone(this.U12)!;
             ((Chunk090C902E)clone).U13 = context.Clone(this.U13)!;
             ((Chunk090C902E)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C902E)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C902E)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C902E)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C902E)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090C902E)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090C902E)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090C902E)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C902E)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090C902E)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090C902E)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090C902E)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090C902E)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090C902E)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090C902E)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090C902E)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090C902E)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090C902E)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090C902E)clone).U32 = context.Clone(this.U32)!;
+            ((Chunk090C902E)clone).U33 = context.Clone(this.U33)!;
+            ((Chunk090C902E)clone).U34 = context.Clone(this.U34)!;
+            ((Chunk090C902E)clone).U35 = context.Clone(this.U35)!;
+            ((Chunk090C902E)clone).U36 = context.Clone(this.U36)!;
+            ((Chunk090C902E)clone).U37 = context.Clone(this.U37)!;
+            ((Chunk090C902E)clone).U38 = context.Clone(this.U38)!;
+            ((Chunk090C902E)clone).U39 = context.Clone(this.U39)!;
+            ((Chunk090C902E)clone).U40 = context.Clone(this.U40)!;
+            ((Chunk090C902E)clone).U41 = context.Clone(this.U41)!;
+            ((Chunk090C902E)clone).U42 = context.Clone(this.U42)!;
+            ((Chunk090C902E)clone).U43 = context.Clone(this.U43)!;
+            ((Chunk090C902E)clone).U44 = context.Clone(this.U44)!;
+            ((Chunk090C902E)clone).U45 = context.Clone(this.U45)!;
+            ((Chunk090C902E)clone).U46 = context.Clone(this.U46)!;
+            ((Chunk090C902E)clone).U47 = context.Clone(this.U47)!;
+            ((Chunk090C902E)clone).U48 = context.Clone(this.U48)!;
+            ((Chunk090C902E)clone).U49 = context.Clone(this.U49)!;
         }
 
         public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            if (Version > 4)
+            if (Version > 9)
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -4468,10 +4040,10 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             {
                 rw.Single(ref U04);
                 rw.Single(ref U05);
-                rw.NodeRef(ref U06Ref);
+                rw.ReadableWritable<PlugCurve>(ref U06, version: Version- 9);
             }
 
-            if (Version == 4)
+            if (Version >= 4)
             {
                 rw.Boolean(ref U07);
                 rw.Boolean(ref U08);
@@ -4481,6 +4053,57 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
                 rw.Single(ref U12);
                 rw.Single(ref U13);
                 rw.Single(ref U14);
+            }
+
+            if (Version >= 5)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 9);
+                rw.ReadableWritable<PlugCurve>(ref U16, version: Version- 9);
+                rw.Single(ref U17);
+                rw.Single(ref U18);
+                rw.Single(ref U19);
+                rw.Single(ref U20);
+                rw.Single(ref U21);
+                rw.Single(ref U22);
+                rw.Single(ref U23);
+                rw.ReadableWritable<PlugCurve>(ref U24, version: Version- 9);
+                rw.Single(ref U25);
+                rw.Single(ref U26);
+                rw.Single(ref U27);
+                rw.ReadableWritable<PlugCurve>(ref U28, version: Version- 9);
+                rw.Single(ref U29);
+                rw.Single(ref U30);
+                rw.Single(ref U31);
+                rw.Single(ref U32);
+                rw.Single(ref U33);
+                rw.Single(ref U34);
+                rw.Single(ref U35);
+                rw.ReadableWritable<PlugCurve>(ref U36, version: Version- 9);
+                rw.ReadableWritable<PlugCurve>(ref U37, version: Version- 9);
+                rw.Single(ref U38);
+                rw.ReadableWritable<PlugCurve>(ref U39, version: Version- 9);
+                rw.ReadableWritable<PlugCurve>(ref U40, version: Version- 9);
+            }
+
+            if (Version >= 6)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U41, version: Version- 9);
+                rw.Single(ref U42);
+            }
+
+            if (Version >= 7)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U43, version: Version- 9);
+                rw.Single(ref U44);
+                rw.Single(ref U45);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Single(ref U46);
+                rw.UInt16(ref U47);
+                rw.UInt16(ref U48);
+                rw.UInt16(ref U49);
             }
         }
     }
@@ -4534,6 +4157,576 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
             rw.Int32(ref U02);
             rw.Int32(ref U03);
             rw.UInt16(ref U04);
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x031 chunk
+    /// </summary>
+    [Chunk(0x090C9031)]
+    [ChunkGameVersion(GameVersion.TM2020, 5)]
+    public partial class Chunk090C9031 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9031;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+        public float U08;
+        public float U09;
+        public float U10;
+        public PlugCurve? U11;
+        public PlugCurve? U12;
+        public PlugCurve? U13;
+        public PlugCurve? U14;
+        public PlugCurve? U15;
+        public float U16;
+        public float U17;
+        public float U18;
+        public PlugCurve? U19;
+        public PlugCurve? U20;
+
+        public Chunk090C9031() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9031(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 5;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9031)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9031)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9031)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9031)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9031)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C9031)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C9031)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C9031)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C9031)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C9031)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C9031)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090C9031)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090C9031)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090C9031)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090C9031)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C9031)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C9031)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C9031)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C9031)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090C9031)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090C9031)clone).U20 = context.Clone(this.U20)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 5)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Single(ref U08);
+            rw.Single(ref U09);
+            rw.Single(ref U10);
+            rw.ReadableWritable<PlugCurve>(ref U11, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U12, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U13, version: Version- 5);
+            rw.ReadableWritable<PlugCurve>(ref U14, version: Version- 5);
+
+            if (Version >= 2)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U15, version: Version- 5);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref U16);
+                rw.Single(ref U17);
+                rw.Single(ref U18);
+            }
+
+            if (Version >= 4)
+            {
+                rw.ReadableWritable<PlugCurve>(ref U19, version: Version- 5);
+                rw.ReadableWritable<PlugCurve>(ref U20, version: Version- 5);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x032 chunk
+    /// </summary>
+    [Chunk(0x090C9032)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk090C9032 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9032;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+
+        public Chunk090C9032() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9032(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9032)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9032)clone).U01 = context.Clone(this.U01)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x033 chunk
+    /// </summary>
+    [Chunk(0x090C9033)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk090C9033 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9033;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+
+        public Chunk090C9033() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9033(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9033)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9033)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9033)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9033)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x034 chunk
+    /// </summary>
+    [Chunk(0x090C9034)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk090C9034 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9034;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+
+        public Chunk090C9034() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9034(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9034)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9034)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9034)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9034)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9034)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C9034)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C9034)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C9034)clone).U07 = context.Clone(this.U07)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x035 chunk
+    /// </summary>
+    [Chunk(0x090C9035)]
+    [ChunkGameVersion(GameVersion.TM2020, 10)]
+    public partial class Chunk090C9035 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9035;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public PlugCurve? U05;
+        public float U06;
+        public float U07;
+        public float U08;
+        public PlugCurve? U09;
+        public float U10;
+        public float U11;
+        public float U12;
+        public float U13;
+        public float U14;
+        public float U15;
+        public float U16;
+        public float U17;
+        public float U18;
+        public float U19;
+        public float U20;
+        public float U21;
+        public float U22;
+        public float U23;
+        public float U24;
+        public float U25;
+        public float U26;
+        public float U27;
+        public float U28;
+        public float U29;
+        public float U30;
+        public float U31;
+        public float U32;
+
+        public Chunk090C9035() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9035(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 10;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9035)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9035)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9035)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9035)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9035)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C9035)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C9035)clone).U06 = context.Clone(this.U06)!;
+            ((Chunk090C9035)clone).U07 = context.Clone(this.U07)!;
+            ((Chunk090C9035)clone).U08 = context.Clone(this.U08)!;
+            ((Chunk090C9035)clone).U09 = context.Clone(this.U09)!;
+            ((Chunk090C9035)clone).U10 = context.Clone(this.U10)!;
+            ((Chunk090C9035)clone).U11 = context.Clone(this.U11)!;
+            ((Chunk090C9035)clone).U12 = context.Clone(this.U12)!;
+            ((Chunk090C9035)clone).U13 = context.Clone(this.U13)!;
+            ((Chunk090C9035)clone).U14 = context.Clone(this.U14)!;
+            ((Chunk090C9035)clone).U15 = context.Clone(this.U15)!;
+            ((Chunk090C9035)clone).U16 = context.Clone(this.U16)!;
+            ((Chunk090C9035)clone).U17 = context.Clone(this.U17)!;
+            ((Chunk090C9035)clone).U18 = context.Clone(this.U18)!;
+            ((Chunk090C9035)clone).U19 = context.Clone(this.U19)!;
+            ((Chunk090C9035)clone).U20 = context.Clone(this.U20)!;
+            ((Chunk090C9035)clone).U21 = context.Clone(this.U21)!;
+            ((Chunk090C9035)clone).U22 = context.Clone(this.U22)!;
+            ((Chunk090C9035)clone).U23 = context.Clone(this.U23)!;
+            ((Chunk090C9035)clone).U24 = context.Clone(this.U24)!;
+            ((Chunk090C9035)clone).U25 = context.Clone(this.U25)!;
+            ((Chunk090C9035)clone).U26 = context.Clone(this.U26)!;
+            ((Chunk090C9035)clone).U27 = context.Clone(this.U27)!;
+            ((Chunk090C9035)clone).U28 = context.Clone(this.U28)!;
+            ((Chunk090C9035)clone).U29 = context.Clone(this.U29)!;
+            ((Chunk090C9035)clone).U30 = context.Clone(this.U30)!;
+            ((Chunk090C9035)clone).U31 = context.Clone(this.U31)!;
+            ((Chunk090C9035)clone).U32 = context.Clone(this.U32)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 10)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.ReadableWritable<PlugCurve>(ref U05, version: Version- 10);
+            rw.Single(ref U06);
+            rw.Single(ref U07);
+            rw.Single(ref U08);
+            rw.ReadableWritable<PlugCurve>(ref U09, version: Version- 10);
+            rw.Single(ref U10);
+            rw.Single(ref U11);
+            rw.Single(ref U12);
+            rw.Single(ref U13);
+            rw.Single(ref U14);
+
+            if (Version >= 1)
+            {
+                rw.Single(ref U15);
+                rw.Single(ref U16);
+                rw.Single(ref U17);
+            }
+
+            if (Version >= 2)
+            {
+                rw.Single(ref U18);
+                rw.Single(ref U19);
+            }
+
+            if (Version >= 3)
+            {
+                rw.Single(ref U20);
+            }
+
+            if (Version >= 4)
+            {
+                rw.Single(ref U21);
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single(ref U22);
+                rw.Single(ref U23);
+                rw.Single(ref U24);
+                rw.Single(ref U25);
+            }
+
+            if (Version >= 6)
+            {
+                rw.Single(ref U26);
+            }
+
+            if (Version >= 7)
+            {
+                rw.Single(ref U27);
+                rw.Single(ref U28);
+                rw.Single(ref U29);
+            }
+
+            if (Version >= 8)
+            {
+                rw.Single(ref U30);
+                rw.Single(ref U31);
+            }
+
+            if (Version >= 9)
+            {
+                rw.Single(ref U32);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x036 chunk
+    /// </summary>
+    [Chunk(0x090C9036)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk090C9036 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9036;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9036)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9036)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9036)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9036)clone).U03 = context.Clone(this.U03)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x037 chunk
+    /// </summary>
+    [Chunk(0x090C9037)]
+    [ChunkGameVersion(GameVersion.TM2020, 1)]
+    public partial class Chunk090C9037 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9037;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+
+        public Chunk090C9037() : this(GameVersion.Unspecified)
+        {
+        }
+
+        public Chunk090C9037(GameVersion gameVersion)
+        {
+            if (gameVersion == GameVersion.TM2020)
+            {
+                Version = 1;
+            }
+        }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9037)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9037)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9037)clone).U02 = context.Clone(this.U02)!;
+            ((Chunk090C9037)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090C9037)clone).U04 = context.Clone(this.U04)!;
+            ((Chunk090C9037)clone).U05 = context.Clone(this.U05)!;
+            ((Chunk090C9037)clone).U06 = context.Clone(this.U06)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 1)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+
+            if (Version >= 1)
+            {
+                rw.Single(ref U05);
+                rw.Single(ref U06);
+            }
+        }
+    }
+
+    /// <summary>
+    /// CPlugCharPhyModel 0x038 chunk
+    /// </summary>
+    [Chunk(0x090C9038)]
+    [ChunkGameVersion(GameVersion.TM2020)]
+    public partial class Chunk090C9038 : Chunk<CPlugCharPhyModel>, IVersionable
+    {
+        public override uint Id => 0x090C9038;
+        public override GameVersion GameVersion => GameVersion.TM2020;
+        public int Version { get; set; }
+        public float U01;
+        public float U02;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk090C9038)clone).Version = context.Clone(this.Version)!;
+            ((Chunk090C9038)clone).U01 = context.Clone(this.U01)!;
+            ((Chunk090C9038)clone).U02 = context.Clone(this.U02)!;
+        }
+
+        public override void ReadWrite(CPlugCharPhyModel n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            if (Version > 0)
+            {
+                throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
+            }
+
+            rw.Single(ref U01);
+            rw.Single(ref U02);
         }
     }
 
@@ -4627,9 +4820,18 @@ public partial class CPlugCharPhyModel : CMwNod, IClass
         0x090C9029 => new Chunk090C9029(),
         0x090C902A => new Chunk090C902A(),
         0x090C902B => new Chunk090C902B(),
+        0x090C902C => new Chunk090C902C(),
         0x090C902D => new Chunk090C902D(),
         0x090C902E => new Chunk090C902E(),
         0x090C902F => new Chunk090C902F(),
+        0x090C9031 => new Chunk090C9031(),
+        0x090C9032 => new Chunk090C9032(),
+        0x090C9033 => new Chunk090C9033(),
+        0x090C9034 => new Chunk090C9034(),
+        0x090C9035 => new Chunk090C9035(),
+        0x090C9036 => new Chunk090C9036(),
+        0x090C9037 => new Chunk090C9037(),
+        0x090C9038 => new Chunk090C9038(),
         _ => base.NewChunk(chunkId),
     };
 }

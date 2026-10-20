@@ -192,7 +192,7 @@ public class CGameCtnBlockInfoMobilTests
     {
         CPlugRoadChunk road = version < 23 ? new CPlugRoadChunk() : new CPlugRoadChunkTraffic();
         CPlugRoadChunk citizen = version < 23 ? new CPlugRoadChunk() : new CPlugRoadChunkCitizen();
-        CPlugRoadChunk placement = version <= 23 ? new CPlugRoadChunk() : new CPlugPlacementPatch();
+        CPlugRoadChunk placement = version < 23 ? new CPlugRoadChunk() : new CPlugPlacementPatch();
         foreach (var source in new[] { road, citizen, placement })
         {
             var data = source.Chunks.Create<CPlugRoadChunk.Chunk09128000>();
@@ -226,7 +226,6 @@ public class CGameCtnBlockInfoMobilTests
             new CGameCtnBlockInfoMobil.Chunk03122003 { Version = 23 }.ReadWrite(node, rw);
             writer.Write(Sentinel);
         }
-        // Native version 23 writes placement patches without the legacy prefix that it reads.
         var expected = NativePayload(23, reading: false, scaleType: node.VFXScaleType,
             road: node.RoadChunks![0], citizen: node.CitizenRoadChunks?.FirstOrDefault(),
             placement: node.PlacementPatches?.FirstOrDefault(), recast: node.RecastPolyMeshData);
@@ -311,7 +310,7 @@ public class CGameCtnBlockInfoMobilTests
         }
         if (version >= 20)
         {
-            if (version < 23 || (version == 23 && reading)) writer.Write(10);
+            if (version <= 22) writer.Write(10);
             WriteList(writer, nonemptyLists, placement);
         }
         if (version >= 21) writer.Write(-1); // Additional external asset.
