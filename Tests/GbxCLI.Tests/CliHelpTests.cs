@@ -28,6 +28,7 @@ public class CliHelpTests
     [Arguments("parse", "--interactive", "--output|--resolved|--unresolved")]
     [Arguments("eval", "--interactive", "--output|--resolved|--unresolved")]
     [Arguments("script", "-- args", "--output|--resolved|--unresolved|--interactive")]
+    [Arguments("verify", "", "--resolved|--unresolved|--output|--interactive")]
     [Arguments("pak files", "--resolved|--unresolved", "--output|--interactive")]
     [Arguments("pak verify", "", "--resolved|--unresolved|--output|--interactive")]
     [Arguments("pak extract", "--output", "--resolved|--unresolved|--interactive")]

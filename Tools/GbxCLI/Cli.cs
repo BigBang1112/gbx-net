@@ -53,6 +53,7 @@ internal static class Cli
             "eval" => await EvalCommand.RunAsync(argsEnumerator, output),
             "script" => await ScriptCommand.RunAsync(argsEnumerator, output),
             "pak" => await PakCommand.RunAsync(argsEnumerator, output),
+            "verify" => await VerifyCommand.RunAsync(argsEnumerator, output),
             "compress" or "decompress" => await CompressionCommand.RunAsync(arg, argsEnumerator, output),
             _ when File.Exists(arg) => await ParseCommand.RunAsync(argsEnumerator, output, inputPath: arg),
             _ => throw new ArgumentException($"Unknown command: {arg}. Use --help for usage.")

@@ -52,8 +52,9 @@ internal static class CliHelp
               [cyan]parse[/] <file>                  Inspect a Gbx or PAK file (default).
               [cyan]eval[/] <file> [[code...]]         Evaluate C# against a Gbx or PAK file.
               [cyan]script[/] <file> [[-- args...]]    Run a C# script with GBX.NET available.
+              [cyan]verify[/] <file>                 Fully parse a Gbx file or a folder tree of Gbx files.
               [cyan]pak files[/] <file>              List PAK or ZIP files, resolving known hashes.
-              [cyan]pak verify[/] <file>             Fully parse Gbx entries and list failures.
+              [cyan]pak verify[/] <file>             Fully parse Gbx entries of archives and list failures.
               [cyan]pak extract[/] <file>            Extract all or matching PAK or ZIP entries.
               [cyan]compress[/] <file>               Compress a Gbx body.
               [cyan]decompress[/] <file>             Decompress a Gbx body.
@@ -67,7 +68,7 @@ internal static class CliHelp
         console.WriteLine("""
             [bold]PAK commands:[/]
               [cyan]pak files[/] <file>              List all PAK or ZIP files, resolving known hashes.
-              [cyan]pak verify[/] <file>             Fully parse matching Gbx entries and list failures.
+              [cyan]pak verify[/] <file>             Fully parse matching Gbx entries of one or more archives.
               [cyan]pak extract[/] <file>            Extract all or matching entries without overwriting.
             """);
     }
@@ -112,9 +113,14 @@ internal static class CliHelp
             "gbx pak files \"Resource.pak/Media/Texture/*\" --unresolved"),
         "pak verify" => new(
             "pak verify <file> [options]",
-            "Fully parse matching Gbx entries and list failures. Exit with code 1 if any fail.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",
+            "Fully parse matching Gbx entries and list failures. Exit with code 1 if any fail.\nAppend a path or pattern to the archive to select entries. Matching ignores case.\nPass a folder to verify every PAK and ZIP archive directly inside it.",
             string.Empty,
             "gbx pak verify \"Resource.pak/*.Shader.Gbx\""),
+        "verify" => new(
+            "verify <file> [options]",
+            "Fully parse a Gbx file and report the exception if it fails. Exit with code 1 if any fail.\nPass a folder to verify every Gbx file in it and its subfolders. Other files are skipped.",
+            string.Empty,
+            "gbx verify \"Maps\""),
         "pak extract" => new(
             "pak extract <file> [options]",
             "Extract every matching entry, restoring known filenames and preserving folders.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",

@@ -10,7 +10,8 @@ A command-line interface for inspecting Gbx and PAK files with GBX.NET. Availabl
 | `gbx eval <file> <code...>` | Evaluate C# against a Gbx or PAK object. |
 | `gbx script <file.csx> [-- args...]` | Run a C# script with GBX.NET available. |
 | `gbx pak files <file> [--resolved \| --unresolved]` | List all PAK or ZIP entries, or filter by name resolution. |
-| `gbx pak verify <file>` | Fully parse matching Gbx entries and list files with exceptions. |
+| `gbx verify <file>` | Fully parse a Gbx file, or all Gbx files in a folder and its subfolders. |
+| `gbx pak verify <file>` | Fully parse matching Gbx entries of an archive, or of all archives in a folder. |
 | `gbx pak extract <file> [-o <directory>]` | Extract every file or matching paths from a PAK or ZIP. |
 | `gbx decompress <file> -o <output>` | Write a Gbx with an uncompressed body. |
 | `gbx compress <file> -o <output>` | Write a Gbx with a compressed body. |
@@ -25,6 +26,9 @@ gbx pak files "Resource.pak" --unresolved
 gbx pak files "Resource.pak/Media/Texture/*.gbx"
 gbx pak verify "Resource.pak"
 gbx pak verify "Resource.pak/*.Shader.Gbx"
+gbx pak verify "Packs"
+gbx verify "My Map.Map.Gbx"
+gbx verify "Maps"
 gbx pak extract "Resource.pak" -o "Extracted"
 gbx pak extract "Resource.pak/Media/Texture/WhiteFlare1.Texture.gbx" -o "Extracted"
 gbx pak extract "Resource.pak/Media/Texture/*.gbx" -o "Textures"
@@ -44,11 +48,16 @@ Use `gbx --help` for the command overview, `gbx pak --help` for PAK subcommands,
 | `eval` | `-i, --interactive` | Interactive placeholder. Without it, at least one C# expression is required. |
 | `script` | `--` | Pass remaining arguments to the script, including `--help` and `--version`. |
 | `pak files` | `--resolved` or `--unresolved` | Filter named/resolved files or unresolved hashes. Omit both to list all entries. |
-| `pak verify` | No additional options | Verify all entries or append an entry pattern. |
+| `verify` | No additional options | Verify a Gbx file or a folder tree. |
+| `pak verify` | No additional options | Verify all entries, append an entry pattern, or pass a folder of archives. |
 | `pak extract` | `-o, --output <directory>` | Optional destination. Defaults to `<archive>.extracted`. |
 | `compress`, `decompress` | `-o, --output <file>` | Required destination file. |
 
 Interactive mode is not implemented yet. Built-in output commands never overwrite existing files. Scripts control their own file writes.
+
+## Verification
+
+`verify` fully parses a Gbx file. With a folder, it parses every Gbx file in the folder and its subfolders, detected by `GBX` signature or `.gbx` extension. Other files, including `.Pack.Gbx` archives, are skipped. It continues after exceptions, prints failing paths relative to the folder with their messages, and ends with the number of parsed, failed, and skipped files. The exit code is `1` if any file failed. Unknown root classes are reported as failures.
 
 ## PAK files
 
@@ -63,6 +72,8 @@ Append a resolved path, stored path, hash, filename, or quoted wildcard pattern 
 Wildcard matching supports `*` (any number of characters, including folder separators) and `?` (one character). Patterns can match full paths or paths relative to any parent folder. In `eval` on an archive, `Files` still contains the original stored keys.
 
 `pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed.
+
+Pass a folder to `pak verify` to verify every PAK and ZIP archive directly inside it, such as a game's `Packs` folder. Subfolders are not searched. Archives are detected from their contents. Failing entries are prefixed with the archive name, and a summary line follows each archive. Archives that cannot be opened, for example without a matching key, are reported and the run continues. The last line totals all archives.
 
 `pak extract` preserves stored folder paths, restores known filenames, and extracts file bytes without parsing Gbx contents. Without `-o`, it writes beside the archive to `<archive>.extracted`, for example `Resource.pak.extracted`. No matches, existing destination files, or entries that resolve to the same destination produce an error. Existing files are never overwritten.
 

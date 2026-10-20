@@ -32,6 +32,11 @@ internal static class PakCommand
             return 0;
         }
 
+        if (command == "verify" && Directory.Exists(arguments.InputPath))
+        {
+            return await VerifyDirectoryAsync(arguments.InputPath, output);
+        }
+
         var (archivePath, entryPattern) = ParsedFile.ResolveInputPath(arguments.InputPath);
 
         if (File.Exists(archivePath) && await ZipFileIndex.IsZipAsync(archivePath))
@@ -39,18 +44,8 @@ internal static class PakCommand
             return await RunZipAsync(archivePath, entryPattern, command, arguments, output);
         }
 
-        await using var file = await ParsedFile.OpenAsync(archivePath, fullGbx: false);
-
-        if (file.Value is not Pak pak)
-        {
-            throw new InvalidDataException($"The pak {command} command requires a PAK (NadeoPak) archive.");
-        }
-
-        if (!file.HasPakFileIndex)
-        {
-            throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
-        }
-
+        var (file, pak) = await OpenPakAsync(archivePath, command);
+        await using var _ = file;
         var entries = new PakFileIndex(pak).Select(entryPattern);
 
         if (entryPattern is not null && entries.Length == 0)
@@ -60,7 +55,7 @@ internal static class PakCommand
 
         if (command == "verify")
         {
-            return await VerifyAsync(pak, entries, output);
+            return await WriteVerifyResultAsync(await VerifyAsync(pak, entries, prefix: string.Empty, output), output);
         }
 
         if (command == "extract")
@@ -88,7 +83,7 @@ internal static class PakCommand
 
         if (command == "verify")
         {
-            return await VerifyZipAsync(entries, output);
+            return await WriteVerifyResultAsync(await VerifyZipAsync(entries, prefix: string.Empty, output), output);
         }
 
         if (command == "extract")
@@ -110,7 +105,101 @@ internal static class PakCommand
         return 0;
     }
 
-    private static async Task<int> VerifyZipAsync(ZipFileIndex.Entry[] entries, TextWriter output)
+    private static async Task<(ParsedFile File, Pak Pak)> OpenPakAsync(string archivePath, string command)
+    {
+        var file = await ParsedFile.OpenAsync(archivePath, fullGbx: false);
+
+        try
+        {
+            if (file.Value is not Pak pak)
+            {
+                throw new InvalidDataException($"The pak {command} command requires a PAK (NadeoPak) archive.");
+            }
+
+            if (!file.HasPakFileIndex)
+            {
+                throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
+            }
+
+            return (file, pak);
+        }
+        catch
+        {
+            await file.DisposeAsync();
+            throw;
+        }
+    }
+
+    private static async Task<int> VerifyDirectoryAsync(string directoryPath, TextWriter output)
+    {
+        var archives = 0;
+        var unopened = 0;
+        var total = new VerifyCounts();
+
+        // Subdirectories are not searched, so a game's Packs folder can be verified as a whole.
+        foreach (var path in Directory.EnumerateFiles(directoryPath).Order(StringComparer.OrdinalIgnoreCase))
+        {
+            var isZip = await ZipFileIndex.IsZipAsync(path);
+
+            if (!isZip && !await IsPakAsync(path))
+            {
+                continue;
+            }
+
+            archives++;
+            var name = Path.GetFileName(path);
+
+            try
+            {
+                VerifyCounts counts;
+
+                if (isZip)
+                {
+                    using var zip = new ZipFileIndex(path);
+                    counts = await VerifyZipAsync(zip.Select(null), name + Path.DirectorySeparatorChar, output);
+                }
+                else
+                {
+                    var (file, pak) = await OpenPakAsync(path, "verify");
+                    await using var _ = file;
+                    counts = await VerifyAsync(pak, new PakFileIndex(pak).Select(null), name + Path.DirectorySeparatorChar, output);
+                }
+
+                await output.WriteLineAsync($"{name}: {counts}");
+                total += counts;
+            }
+            catch (Exception exception)
+            {
+                unopened++;
+                await VerifyCommand.WriteFailureAsync(output, name, exception);
+            }
+        }
+
+        if (archives == 0)
+        {
+            throw new FileNotFoundException($"No PAK or ZIP archives were found in '{directoryPath}'.");
+        }
+
+        var unopenedInfo = unopened == 0 ? string.Empty : $" ({unopened} could not be opened)";
+        await output.WriteLineAsync($"Verified {archives} archives{unopenedInfo}. {total}");
+        return total.Failed == 0 && unopened == 0 ? 0 : 1;
+    }
+
+    private static async Task<bool> IsPakAsync(string path)
+    {
+        await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+        var signature = new byte[Pak.Magic.Length];
+        var bytesRead = await stream.ReadAtLeastAsync(signature, signature.Length, throwOnEndOfStream: false);
+        return signature.AsSpan(0, bytesRead).SequenceEqual("NadeoPak"u8);
+    }
+
+    private static async Task<int> WriteVerifyResultAsync(VerifyCounts counts, TextWriter output)
+    {
+        await output.WriteLineAsync(counts.ToString());
+        return counts.Failed == 0 ? 0 : 1;
+    }
+
+    private static async Task<VerifyCounts> VerifyZipAsync(ZipFileIndex.Entry[] entries, string prefix, TextWriter output)
     {
         var parsed = 0;
         var failed = 0;
@@ -139,24 +228,33 @@ internal static class PakCommand
                 }
 
                 data.Position = 0;
-                var gbx = await Gbx.ParseAsync(data);
-
-                if (gbx.Node is null)
+                if (data.Length >= Pak.Magic.Length && data.GetBuffer().AsSpan(0, Pak.Magic.Length).SequenceEqual("NadeoPak"u8))
                 {
-                    throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported; its body was not parsed.");
+                    var (nestedPak, hasKey) = await PakLoader.ParseAsync(data, entry.Path);
+                    using var _ = nestedPak;
+                    if (nestedPak.IsHeaderPrivate && !hasKey)
+                    {
+                        throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
+                    }
+
+                    var counts = await VerifyAsync(nestedPak, new PakFileIndex(nestedPak).Select(null), prefix + entry.Path + Path.DirectorySeparatorChar, output);
+                    parsed += counts.Parsed;
+                    failed += counts.Failed;
+                    skipped += counts.Skipped;
+                    continue;
                 }
 
+                VerifyCommand.EnsureBodyParsed(await Gbx.ParseAsync(data));
                 parsed++;
             }
             catch (Exception exception)
             {
                 failed++;
-                await output.WriteLineAsync($"{entry.Path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}");
+                await VerifyCommand.WriteFailureAsync(output, prefix + entry.Path, exception);
             }
         }
 
-        await output.WriteLineAsync($"Parsed {parsed} Gbx files; {failed} failed; {skipped} non-Gbx files skipped.");
-        return failed == 0 ? 0 : 1;
+        return new(parsed, failed, skipped);
     }
 
     private static async Task<bool> HasGbxSignatureAsync(ZipArchiveEntry file)
@@ -273,7 +371,7 @@ internal static class PakCommand
         return path;
     }
 
-    private static async Task<int> VerifyAsync(Pak pak, PakFileIndex.Entry[] entries, TextWriter output)
+    private static async Task<VerifyCounts> VerifyAsync(Pak pak, PakFileIndex.Entry[] entries, string prefix, TextWriter output)
     {
         var parsed = 0;
         var failed = 0;
@@ -296,24 +394,17 @@ internal static class PakCommand
                     throw new InvalidDataException("The file is too short to contain a Gbx signature.");
                 }
 
-                var gbx = await pak.OpenGbxFileAsync(file);
-
-                if (gbx.Node is null)
-                {
-                    throw new NotSupportedException($"Root class 0x{gbx.Header.ClassId:X8} is not supported; its body was not parsed.");
-                }
-
+                VerifyCommand.EnsureBodyParsed(await pak.OpenGbxFileAsync(file));
                 parsed++;
             }
             catch (Exception exception)
             {
                 failed++;
-                await output.WriteLineAsync($"{entry.Path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}");
+                await VerifyCommand.WriteFailureAsync(output, prefix + entry.Path, exception);
             }
         }
 
-        await output.WriteLineAsync($"Parsed {parsed} Gbx files; {failed} failed; {skipped} non-Gbx files skipped.");
-        return failed == 0 ? 0 : 1;
+        return new(parsed, failed, skipped);
     }
 
     private static async Task<bool> IsGbxAsync(Pak pak, PakFile file, string path)
