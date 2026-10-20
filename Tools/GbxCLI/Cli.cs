@@ -35,7 +35,7 @@ internal static class Cli
 
         if (!argsEnumerator.MoveNext())
         {
-            WriteHelp(output);
+            CliHelp.Write(output, distribution);
             await WaitForExitAsync(output);
             return 0;
         }
@@ -82,13 +82,13 @@ internal static class Cli
         return 0;
     }
 
-    public static bool TryHandleGlobalOption(string arg, TextWriter output)
+    public static bool TryHandleGlobalOption(string arg, TextWriter output, string? command = null)
     {
         switch (arg)
         {
             case "-h":
             case "--help":
-                WriteHelp(output);
+                CliHelp.Write(output, distribution, command);
                 return true;
             case "-v":
             case "--version":
@@ -97,39 +97,5 @@ internal static class Cli
             default:
                 return false;
         }
-    }
-
-    private static void WriteHelp(TextWriter output)
-    {
-        var console = new CliConsole(output);
-        console.WriteLine($"[bold]GBX.NET.CLI[/] [grey]({Markup.Escape(distribution)})[/]");
-        console.WriteLine(string.Empty);
-        console.WriteLine("""
-            [bold]Usage:[/] [cyan]gbx[/] [[command]] <file> [[options]]
-
-            [bold]Commands:[/]
-              [cyan]parse[/] <file>                     Detect and inspect a Gbx or PAK file (default).
-              [cyan]eval[/] <file> [[code...]]            Evaluate C# against a Gbx or PAK file.
-              [cyan]pak files[/] <file>                 List all file paths in a PAK archive.
-              [cyan]pak verify[/] <file>                Fully parse Gbx entries and list failures.
-              [cyan]pak extract[/] <file> [[-o <dir>]]    Extract all or matching PAK entries.
-              [cyan]decompress[/] <file> -o <output>     Decompress a Gbx body.
-              [cyan]compress[/] <file> -o <output>       Compress a Gbx body.
-
-            [bold]Options:[/]
-              [cyan]-i, --interactive[/]      Interactive mode (not implemented yet).
-              [cyan]-o, --output[/] <path>    Output file or extraction directory, without overwriting.
-              [cyan]-h, --help[/]             Show this help.
-              [cyan]-v, --version[/]          Show the CLI version.
-
-            [bold]Examples:[/]
-              gbx parse "My Map.Map.Gbx"
-              gbx parse "My Map.Map.Gbx" --interactive
-              gbx eval "My Map.Map.Gbx" "Node.Chunks.Count"
-              gbx pak files "GameData.pak"
-              gbx pak extract "GameData.pak" -o "Extracted"
-              gbx pak extract "GameData.pak/Media/Texture/*.gbx" -o "Textures"
-              gbx parse "GameData.pak/Media/Texture/WhiteFlare1.Texture.gbx"
-            """);
     }
 }

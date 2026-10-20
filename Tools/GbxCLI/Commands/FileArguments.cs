@@ -8,7 +8,8 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
         TextWriter output,
         bool requiresOutput,
         string? inputPath = null,
-        bool allowsOutput = false)
+        bool allowsOutput = false,
+        Func<string, bool>? tryHandleOption = null)
     {
         string? outputPath = null;
         var interactive = command == "parse" && inputPath is not null;
@@ -17,9 +18,14 @@ internal sealed record FileArguments(string InputPath, string? OutputPath, bool 
         {
             var arg = argsEnumerator.Current;
 
-            if (Cli.TryHandleGlobalOption(arg, output))
+            if (Cli.TryHandleGlobalOption(arg, output, command))
             {
                 return null;
+            }
+
+            if (tryHandleOption?.Invoke(arg) == true)
+            {
+                continue;
             }
 
             switch (arg)

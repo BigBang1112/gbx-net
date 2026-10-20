@@ -12,7 +12,7 @@ internal sealed record EvalArguments(string InputPath, IReadOnlyList<string> Exp
         {
             var arg = argsEnumerator.Current;
 
-            if (Cli.TryHandleGlobalOption(arg, output))
+            if (Cli.TryHandleGlobalOption(arg, output, "eval"))
             {
                 return null;
             }

@@ -1,5 +1,4 @@
 using GBX.NET.PAK;
-using System.IO.Enumeration;
 
 namespace GbxCLI.Commands;
 
@@ -14,7 +13,7 @@ internal static class PakCommand
 
         var command = argsEnumerator.Current;
 
-        if (Cli.TryHandleGlobalOption(command, output))
+        if (Cli.TryHandleGlobalOption(command, output, "pak"))
         {
             return 0;
         }
@@ -24,16 +23,14 @@ internal static class PakCommand
             throw new ArgumentException($"Unknown PAK subcommand: {command}. Use gbx pak files <file>, gbx pak verify <file>, or gbx pak extract <file>.");
         }
 
-        var arguments = FileArguments.Parse(argsEnumerator, $"pak {command}", output, requiresOutput: false, allowsOutput: command == "extract");
+        var arguments = PakArguments.Parse(argsEnumerator, command, output);
 
         if (arguments is null)
         {
             return 0;
         }
 
-        var (archivePath, entryPattern) = command == "extract"
-            ? ParsedFile.ResolveInputPath(arguments.InputPath)
-            : (arguments.InputPath, null);
+        var (archivePath, entryPattern) = ParsedFile.ResolveInputPath(arguments.InputPath);
         await using var file = await ParsedFile.OpenAsync(archivePath, fullGbx: false);
 
         if (file.Value is not Pak pak)
@@ -46,40 +43,45 @@ internal static class PakCommand
             throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
         }
 
+        var entries = new PakFileIndex(pak).Select(entryPattern);
+
+        if (entryPattern is not null && entries.Length == 0)
+        {
+            throw new FileNotFoundException($"No files matching '{entryPattern}' were found in the PAK.");
+        }
+
         if (command == "verify")
         {
-            return await VerifyAsync(pak, output);
+            return await VerifyAsync(pak, entries, output);
         }
 
         if (command == "extract")
         {
-            return await ExtractAsync(pak, entryPattern, arguments.OutputPath ?? archivePath + ".extracted", output);
+            return await ExtractAsync(pak, entries, arguments.OutputPath ?? archivePath + ".extracted", output);
         }
 
-        foreach (var path in pak.Files.Keys.Order(StringComparer.Ordinal))
+        foreach (var entry in entries.Where(entry => arguments.Resolved is null || entry.IsResolved == arguments.Resolved.Value))
         {
-            await output.WriteLineAsync(path);
+            await output.WriteLineAsync(entry.Path);
         }
 
         return 0;
     }
 
-    private static async Task<int> ExtractAsync(Pak pak, string? entryPattern, string outputPath, TextWriter output)
+    private static async Task<int> ExtractAsync(Pak pak, PakFileIndex.Entry[] entries, string outputPath, TextWriter output)
     {
-        var pattern = entryPattern?.Replace('\\', '/');
         var directoryPath = Path.GetFullPath(outputPath);
-        var files = pak.Files.OrderBy(pair => pair.Key, StringComparer.Ordinal)
-            .Where(pair => pattern is null || FileSystemName.MatchesSimpleExpression(pattern, pair.Key.Replace('\\', '/'), ignoreCase: true))
-            .Select(pair => (File: pair.Value, Path: GetExtractionPath(directoryPath, pair.Key)))
+        var files = entries.Select(entry => (entry.File, Path: GetExtractionPath(directoryPath, entry.Path)))
             .ToArray();
-
-        if (pattern is not null && files.Length == 0)
-        {
-            throw new FileNotFoundException($"No files matching '{entryPattern}' were found in the PAK.");
-        }
+        var destinations = new HashSet<string>(OperatingSystem.IsWindows() ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal);
 
         foreach (var (_, path) in files)
         {
+            if (!destinations.Add(path))
+            {
+                throw new InvalidDataException($"Multiple PAK entries resolve to the extraction path '{path}'.");
+            }
+
             if (File.Exists(path) || Directory.Exists(path))
             {
                 throw new IOException($"The extraction path '{path}' already exists.");
@@ -141,17 +143,19 @@ internal static class PakCommand
         return path;
     }
 
-    private static async Task<int> VerifyAsync(Pak pak, TextWriter output)
+    private static async Task<int> VerifyAsync(Pak pak, PakFileIndex.Entry[] entries, TextWriter output)
     {
         var parsed = 0;
         var failed = 0;
         var skipped = 0;
 
-        foreach (var (path, file) in pak.Files.OrderBy(pair => pair.Key, StringComparer.Ordinal))
+        foreach (var entry in entries)
         {
+            var file = entry.File;
+
             try
             {
-                if (!await IsGbxAsync(pak, file))
+                if (!await IsGbxAsync(pak, file, entry.Path))
                 {
                     skipped++;
                     continue;
@@ -174,7 +178,7 @@ internal static class PakCommand
             catch (Exception exception)
             {
                 failed++;
-                await output.WriteLineAsync($"{path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}");
+                await output.WriteLineAsync($"{entry.Path}: {exception.GetType().Name}: {exception.Message.ReplaceLineEndings(" ")}");
             }
         }
 
@@ -182,9 +186,9 @@ internal static class PakCommand
         return failed == 0 ? 0 : 1;
     }
 
-    private static async Task<bool> IsGbxAsync(Pak pak, PakFile file)
+    private static async Task<bool> IsGbxAsync(Pak pak, PakFile file, string path)
     {
-        if (file.Name.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase))
+        if (path.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase))
         {
             return true;
         }

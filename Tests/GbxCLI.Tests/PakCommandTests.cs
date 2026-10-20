@@ -136,6 +136,38 @@ public class PakCommandTests
         await Assert.That(error.ToString()).IsEqualTo(string.Empty);
     }
 
+    [Test]
+    [Arguments("--resolved", "--unresolved")]
+    [Arguments("--unresolved", "--resolved")]
+    public async Task Files_ConflictingResolutionFilters_ReportError(string first, string second)
+    {
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        var exitCode = await Cli.RunAsync(["pak", "files", first, "unused.pak", second], output, error);
+
+        await Assert.That(exitCode).IsEqualTo(1);
+        await Assert.That(output.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(error.ToString()).Contains("cannot be combined");
+    }
+
+    [Test]
+    [Arguments("verify", "--resolved")]
+    [Arguments("verify", "--unresolved")]
+    [Arguments("extract", "--resolved")]
+    [Arguments("extract", "--unresolved")]
+    public async Task Subcommand_ResolutionFiltersOnlyApplyToFiles_ReportError(string command, string option)
+    {
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        var exitCode = await Cli.RunAsync(["pak", command, "unused.pak", option], output, error);
+
+        await Assert.That(exitCode).IsEqualTo(1);
+        await Assert.That(output.ToString()).IsEqualTo(string.Empty);
+        await Assert.That(error.ToString()).Contains($"does not accept {option}");
+    }
+
     private static byte[] CreatePakData(IReadOnlyList<string> names)
     {
         var original = ParseCommandTests.CreatePakData();

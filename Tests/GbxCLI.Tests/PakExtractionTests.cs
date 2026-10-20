@@ -230,7 +230,7 @@ public class PakExtractionTests
         }
     }
 
-    private static byte[] CreatePak(bool compressed, params (string Name, byte[] Contents)[] files)
+    internal static byte[] CreatePak(bool compressed, params (string Name, byte[] Contents)[] files)
     {
         var original = ParseCommandTests.CreatePakData();
         var fileCountOffset = original.Length - (36 + Encoding.UTF8.GetByteCount("sample [blue].txt")) - 4;

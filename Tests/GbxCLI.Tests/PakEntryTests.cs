@@ -135,7 +135,7 @@ public class PakEntryTests
         }
     }
 
-    private static byte[] CreateGbx(bool compressed)
+    internal static byte[] CreateGbx(bool compressed)
     {
         Gbx.LZO = new GBX.NET.LZO.Lzo();
         var node = new CGameCtnMediaBlockTime

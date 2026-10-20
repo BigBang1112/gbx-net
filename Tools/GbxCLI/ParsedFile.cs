@@ -60,12 +60,7 @@ internal sealed class ParsedFile : IAsyncDisposable
                         throw new InvalidDataException("The PAK file index is unavailable because the private header requires a matching key.");
                     }
 
-                    var normalizedPath = entryPath.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar);
-
-                    if (!result.Pak.Files.TryGetValue(normalizedPath, out var pakFile))
-                    {
-                        pakFile = result.Pak.Files.FirstOrDefault(pair => string.Equals(pair.Key, normalizedPath, StringComparison.OrdinalIgnoreCase)).Value;
-                    }
+                    var pakFile = new PakFileIndex(result.Pak).Find(entryPath);
 
                     if (pakFile is null)
                     {
