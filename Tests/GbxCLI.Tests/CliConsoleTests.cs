@@ -55,6 +55,39 @@ public class CliConsoleTests
     }
 
     [Test]
+    [NotInParallel]
+    [Arguments(false)]
+    [Arguments(true)]
+    public async Task PlainOutput_GitHubActions_PreservesLongLiteralValues(bool asynchronous)
+    {
+        var githubActions = Environment.GetEnvironmentVariable("GITHUB_ACTIONS");
+
+        try
+        {
+            Environment.SetEnvironmentVariable("GITHUB_ACTIONS", "true");
+            using var output = new StringWriter();
+            var console = new CliConsole(output);
+            var path = $"{new string('x', 200)} [red] map.Gbx";
+            var markup = $"[grey]File:[/] {Markup.Escape(path)}";
+
+            if (asynchronous)
+            {
+                await console.WriteLineAsync(markup);
+            }
+            else
+            {
+                console.WriteLine(markup);
+            }
+
+            await Assert.That(output.ToString()).IsEqualTo($"File: {path}{Environment.NewLine}");
+        }
+        finally
+        {
+            Environment.SetEnvironmentVariable("GITHUB_ACTIONS", githubActions);
+        }
+    }
+
+    [Test]
     [Arguments(false)]
     [Arguments(true)]
     public async Task AnsiOutput_StylesLabelsWithoutInterpretingLiteralValues(bool asynchronous)

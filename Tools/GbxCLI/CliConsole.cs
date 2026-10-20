@@ -14,7 +14,9 @@ internal sealed class CliConsole
         {
             Out = output,
             Ansi = output.IsTerminal ? AnsiSupport.Detect : AnsiSupport.No,
-            Interactive = InteractionSupport.No
+            Interactive = InteractionSupport.No,
+            // CI enrichers can re-enable ANSI for redirected writers.
+            Enrichment = new ProfileEnrichment { UseDefaultEnrichers = output.IsTerminal }
         });
     }
 
