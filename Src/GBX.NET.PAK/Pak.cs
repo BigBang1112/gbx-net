@@ -419,7 +419,7 @@ public partial class Pak : IDisposable
             var keyForData = key is null ? new byte[16] : (byte[])key.Clone();
             ApplyKeySalt(keyForData);
 
-            var blowfish = new BlowfishStream(newStream, keyForData, iv, Version);
+            var blowfish = new BlowfishStream(newStream, keyForData, iv, Version, counterMode: file.UsesCounterMode && Version >= 11);
 
             encryptionInitializer = new EncryptionInitializer(blowfish, Version);
 

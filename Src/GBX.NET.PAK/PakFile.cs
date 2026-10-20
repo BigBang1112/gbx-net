@@ -26,6 +26,11 @@ public sealed class PakFile
     public bool PublicFile => (Flags & 0x2000000000000) != 0;
     public bool ForceNoCrypt => (Flags & 0x4000000000000) != 0;
     public bool IsCompressed => (Flags & 0x3C) != 0;
+
+    /// <summary>
+    /// Whether encrypted data uses the Blowfish CTR cipher instead of the chained cipher. Applies from Pak version 11.
+    /// </summary>
+    public bool UsesCounterMode => (Flags & 0x40) != 0;
     public bool IsEncrypted => !ForceNoCrypt && !PublicFile;
 
     public PakFile(
