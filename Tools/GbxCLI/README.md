@@ -9,9 +9,9 @@ A command-line interface for inspecting Gbx and PAK files with GBX.NET. Availabl
 | `gbx parse <file>` | Show the header, body, references, and node properties. |
 | `gbx eval <file> <code...>` | Evaluate C# against a Gbx or PAK object. |
 | `gbx script <file.csx> [-- args...]` | Run a C# script with GBX.NET available. |
-| `gbx pak files <file> [--resolved \| --unresolved]` | List all PAK entries, or filter by name resolution. |
+| `gbx pak files <file> [--resolved \| --unresolved]` | List all PAK or ZIP entries, or filter by name resolution. |
 | `gbx pak verify <file>` | Fully parse matching Gbx entries and list files with exceptions. |
-| `gbx pak extract <file> [-o <directory>]` | Extract every file or matching paths from a PAK. |
+| `gbx pak extract <file> [-o <directory>]` | Extract every file or matching paths from a PAK or ZIP. |
 | `gbx decompress <file> -o <output>` | Write a Gbx with an uncompressed body. |
 | `gbx compress <file> -o <output>` | Write a Gbx with a compressed body. |
 
@@ -65,6 +65,10 @@ Wildcard matching supports `*` (any number of characters, including folder separ
 `pak verify` detects Gbx entries by filename or signature, including hashed names. It continues after exceptions, prints failing paths and messages, and exits with code `1` if any files failed. Unknown root classes are reported as failures because their bodies cannot be parsed.
 
 `pak extract` preserves stored folder paths, restores known filenames, and extracts file bytes without parsing Gbx contents. Without `-o`, it writes beside the archive to `<archive>.extracted`, for example `Resource.pak.extracted`. No matches, existing destination files, or entries that resolve to the same destination produce an error. Existing files are never overwritten.
+
+## ZIP files
+
+`pak files`, `pak verify`, and `pak extract` also accept ZIP archives, such as the ZIP files in game `Packs` folders. ZIP archives are detected from their contents. Entry patterns work as they do for PAK files. ZIP entries always have names, so `--unresolved` lists nothing for them. Folder entries are skipped, and `pak extract` rejects entries that would be written outside the destination.
 
 ## Evaluation
 

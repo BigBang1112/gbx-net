@@ -77,7 +77,7 @@ internal sealed class PakFileIndex
         return matches.FirstOrDefault()?.File;
     }
 
-    private static string Normalize(string path) => path.Replace('\\', '/');
+    internal static string Normalize(string path) => path.Replace('\\', '/');
 
     private static IEnumerable<string> PathSuffixes(string path)
     {
@@ -90,12 +90,12 @@ internal sealed class PakFileIndex
         }
     }
 
-    private static bool Equal(string left, string right) => string.Equals(Normalize(left), right, StringComparison.OrdinalIgnoreCase);
+    internal static bool Equal(string left, string right) => string.Equals(Normalize(left), right, StringComparison.OrdinalIgnoreCase);
 
-    private static bool HasSuffix(string path, string suffix) => Equal(path, suffix)
+    internal static bool HasSuffix(string path, string suffix) => Equal(path, suffix)
         || Normalize(path).EndsWith('/' + suffix, StringComparison.OrdinalIgnoreCase);
 
-    private static bool Matches(string pattern, string path) => PathSuffixes(path)
+    internal static bool Matches(string pattern, string path) => PathSuffixes(path)
         .Any(suffix => FileSystemName.MatchesSimpleExpression(pattern, suffix, ignoreCase: true));
 
     internal sealed record Entry(string StoredPath, string Path, PakFile File)

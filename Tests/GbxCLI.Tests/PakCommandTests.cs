@@ -194,6 +194,153 @@ public class PakCommandTests
         return stream.ToArray();
     }
 
+    [Test]
+    [Arguments("", "", "Media/b.txt|a.Gbx|Media/Texture/c.dds")]
+    [Arguments("/Media/*", "", "Media/b.txt|Media/Texture/c.dds")]
+    [Arguments("/c.dds", "", "Media/Texture/c.dds")]
+    [Arguments("", "--resolved", "Media/b.txt|a.Gbx|Media/Texture/c.dds")]
+    [Arguments("", "--unresolved", "")]
+    public async Task Files_ZipArchive_ListsMatchingFileEntries(string selection, string option, string expectedEntries)
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-zip-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "Extras.zip");
+            CreateZip(path, ["a.Gbx", "Media/", "Media/b.txt", "Media/Texture/c.dds"]);
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+            string[] args = option.Length == 0 ? ["pak", "files", path + selection] : ["pak", "files", path + selection, option];
+
+            var exitCode = await Cli.RunAsync(args, output, error);
+            var expected = string.Concat(expectedEntries.Split('|', StringSplitOptions.RemoveEmptyEntries)
+                .Select(entry => entry.Replace('/', Path.DirectorySeparatorChar))
+                .Order(StringComparer.Ordinal)
+                .Select(entry => entry + Environment.NewLine));
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(output.ToString()).IsEqualTo(expected);
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Verify_ZipArchive_ParsesGbxEntriesAndReportsFailures()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-zip-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "Extras.zip");
+            CreateZip(path, new Dictionary<string, byte[]>
+            {
+                ["Valid.Gbx"] = PakEntryTests.CreateGbx(compressed: false),
+                ["Hashed"] = PakEntryTests.CreateGbx(compressed: false),
+                ["Broken.Gbx"] = "GBX"u8.ToArray(),
+                ["Readme.txt"] = "text"u8.ToArray(),
+            });
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["pak", "verify", path], output, error);
+            var lines = output.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+            await Assert.That(exitCode).IsEqualTo(1);
+            await Assert.That(lines.Length).IsEqualTo(2);
+            await Assert.That(lines[0]).StartsWith("Broken.Gbx: ");
+            await Assert.That(lines[1]).IsEqualTo("Parsed 2 Gbx files; 1 failed; 1 non-Gbx files skipped.");
+            await Assert.That(error.ToString()).IsEqualTo(string.Empty);
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Extract_ZipArchive_WritesMatchingEntriesWithoutOverwriting()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-zip-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "Extras.zip");
+            var extracted = Path.Combine(directory.FullName, "out");
+            CreateZip(path, new Dictionary<string, byte[]>
+            {
+                ["Media/"] = [],
+                ["Media/a.txt"] = "first"u8.ToArray(),
+                ["Media/Texture/b.dds"] = "second"u8.ToArray(),
+                ["Other.txt"] = "other"u8.ToArray(),
+            });
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["pak", "extract", path + "/Media/*", "-o", extracted], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(0);
+            await Assert.That(await File.ReadAllTextAsync(Path.Combine(extracted, "Media", "a.txt"))).IsEqualTo("first");
+            await Assert.That(await File.ReadAllTextAsync(Path.Combine(extracted, "Media", "Texture", "b.dds"))).IsEqualTo("second");
+            await Assert.That(File.Exists(Path.Combine(extracted, "Other.txt"))).IsFalse();
+            await Assert.That(output.ToString()).Contains($"Extracted 2 files to {extracted}.");
+
+            using var secondOutput = new StringWriter();
+            using var secondError = new StringWriter();
+            var secondExitCode = await Cli.RunAsync(["pak", "extract", path + "/Media/*", "-o", extracted], secondOutput, secondError);
+
+            await Assert.That(secondExitCode).IsEqualTo(1);
+            await Assert.That(secondError.ToString()).Contains("already exists");
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [Test]
+    public async Task Extract_ZipArchive_RejectsEntriesOutsideOutputDirectory()
+    {
+        var directory = Directory.CreateTempSubdirectory("gbx-cli-pak-zip-");
+
+        try
+        {
+            var path = Path.Combine(directory.FullName, "Evil.zip");
+            CreateZip(path, new Dictionary<string, byte[]> { ["../escape.txt"] = "x"u8.ToArray() });
+            using var output = new StringWriter();
+            using var error = new StringWriter();
+
+            var exitCode = await Cli.RunAsync(["pak", "extract", path, "-o", Path.Combine(directory.FullName, "out")], output, error);
+
+            await Assert.That(exitCode).IsEqualTo(1);
+            await Assert.That(error.ToString()).Contains("The ZIP entry '..");
+            await Assert.That(File.Exists(Path.Combine(directory.FullName, "escape.txt"))).IsFalse();
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    private static void CreateZip(string path, string[] entries)
+    {
+        CreateZip(path, entries.ToDictionary(entry => entry, _ => Array.Empty<byte>()));
+    }
+
+    private static void CreateZip(string path, IReadOnlyDictionary<string, byte[]> entries)
+    {
+        using var archive = System.IO.Compression.ZipFile.Open(path, System.IO.Compression.ZipArchiveMode.Create);
+
+        foreach (var (name, data) in entries)
+        {
+            using var stream = archive.CreateEntry(name).Open();
+            stream.Write(data);
+        }
+    }
+
     private static void WriteString(BinaryWriter writer, string value)
     {
         var bytes = Encoding.UTF8.GetBytes(value);

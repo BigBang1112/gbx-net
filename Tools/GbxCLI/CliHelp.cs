@@ -52,9 +52,9 @@ internal static class CliHelp
               [cyan]parse[/] <file>                  Inspect a Gbx or PAK file (default).
               [cyan]eval[/] <file> [[code...]]         Evaluate C# against a Gbx or PAK file.
               [cyan]script[/] <file> [[-- args...]]    Run a C# script with GBX.NET available.
-              [cyan]pak files[/] <file>              List PAK files, resolving known hashes.
+              [cyan]pak files[/] <file>              List PAK or ZIP files, resolving known hashes.
               [cyan]pak verify[/] <file>             Fully parse Gbx entries and list failures.
-              [cyan]pak extract[/] <file>            Extract all or matching PAK entries.
+              [cyan]pak extract[/] <file>            Extract all or matching PAK or ZIP entries.
               [cyan]compress[/] <file>               Compress a Gbx body.
               [cyan]decompress[/] <file>             Decompress a Gbx body.
             """);
@@ -66,7 +66,7 @@ internal static class CliHelp
     {
         console.WriteLine("""
             [bold]PAK commands:[/]
-              [cyan]pak files[/] <file>              List all files, resolving known hashes.
+              [cyan]pak files[/] <file>              List all PAK or ZIP files, resolving known hashes.
               [cyan]pak verify[/] <file>             Fully parse matching Gbx entries and list failures.
               [cyan]pak extract[/] <file>            Extract all or matching entries without overwriting.
             """);
@@ -102,7 +102,7 @@ internal static class CliHelp
             "gbx script inspect.csx -- \"My Map.Map.Gbx\""),
         "pak files" => new(
             "pak files <file> [options]",
-            "List every matching entry, resolving known hashes and keeping unresolved hashes.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",
+            "List every matching PAK or ZIP entry, resolving known hashes and keeping unresolved hashes.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",
             """
               [cyan]--resolved[/]                   Show named files and hashes with known names.
               [cyan]--unresolved[/]                 Show only hashes without known names.
