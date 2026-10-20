@@ -83,6 +83,7 @@ public class CliTests
     [Arguments("info")]
     [Arguments("eval")]
     [Arguments("parse")]
+    [Arguments("script")]
     [Arguments("compress")]
     [Arguments("decompress")]
     public async Task InvalidArguments_ReportError(string argument)
@@ -103,6 +104,7 @@ public class CliTests
     [Arguments("decompress")]
     [Arguments("eval")]
     [Arguments("pak")]
+    [Arguments("script")]
     public async Task CommandHandler_AcceptsGlobalOptions(string command)
     {
         using var output = new StringWriter();

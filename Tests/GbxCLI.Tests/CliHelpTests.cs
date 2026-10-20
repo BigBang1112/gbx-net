@@ -16,6 +16,7 @@ public class CliHelpTests
         await Assert.That(exitCode).IsEqualTo(0);
         await Assert.That(error.ToString()).IsEqualTo(string.Empty);
         await Assert.That(help).Contains("Commands:");
+        await Assert.That(help).Contains("script <file>");
         await Assert.That(help).Contains("Global options:");
         await Assert.That(help).Contains("gbx <command> --help");
         await Assert.That(help).DoesNotContain("--resolved");
@@ -26,6 +27,7 @@ public class CliHelpTests
     [Test]
     [Arguments("parse", "--interactive", "--output|--resolved|--unresolved")]
     [Arguments("eval", "--interactive", "--output|--resolved|--unresolved")]
+    [Arguments("script", "-- args", "--output|--resolved|--unresolved|--interactive")]
     [Arguments("pak files", "--resolved|--unresolved", "--output|--interactive")]
     [Arguments("pak verify", "", "--resolved|--unresolved|--output|--interactive")]
     [Arguments("pak extract", "--output", "--resolved|--unresolved|--interactive")]

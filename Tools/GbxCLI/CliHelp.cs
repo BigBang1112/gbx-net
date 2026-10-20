@@ -51,6 +51,7 @@ internal static class CliHelp
             [bold]Commands:[/]
               [cyan]parse[/] <file>                  Inspect a Gbx or PAK file (default).
               [cyan]eval[/] <file> [[code...]]         Evaluate C# against a Gbx or PAK file.
+              [cyan]script[/] <file> [[-- args...]]    Run a C# script with GBX.NET available.
               [cyan]pak files[/] <file>              List PAK files, resolving known hashes.
               [cyan]pak verify[/] <file>             Fully parse Gbx entries and list failures.
               [cyan]pak extract[/] <file>            Extract all or matching PAK entries.
@@ -94,6 +95,11 @@ internal static class CliHelp
             "Evaluate quoted C# expressions against a Gbx or PAK object, in order.\nAppend a PAK entry path, filename, hash, or pattern to evaluate exactly one entry.",
             "  [cyan]-i, --interactive[/]            Interactive mode (not implemented yet).",
             "gbx eval \"My Map.Map.Gbx\" \"Node.Chunks.Count\""),
+        "script" => new(
+            "script <file> [-- args...]",
+            "Run a C# script file with GBX.NET references, async support, and Args.\nUse Print(value), Output, or Console.WriteLine for output. Relative #load paths use the script directory.",
+            "  [cyan]--[/]                           Pass remaining arguments to the script, including --help and --version.",
+            "gbx script inspect.csx -- \"My Map.Map.Gbx\""),
         "pak files" => new(
             "pak files <file> [options]",
             "List every matching entry, resolving known hashes and keeping unresolved hashes.\nAppend a path or pattern to the archive to select entries. Matching ignores case.",

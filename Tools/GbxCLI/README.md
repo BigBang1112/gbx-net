@@ -8,6 +8,7 @@ A command-line interface for inspecting Gbx and PAK files with GBX.NET. Availabl
 | --- | --- |
 | `gbx parse <file>` | Show the header, body, references, and node properties. |
 | `gbx eval <file> <code...>` | Evaluate C# against a Gbx or PAK object. |
+| `gbx script <file.csx> [-- args...]` | Run a C# script with GBX.NET available. |
 | `gbx pak files <file> [--resolved \| --unresolved]` | List all PAK entries, or filter by name resolution. |
 | `gbx pak verify <file>` | Fully parse matching Gbx entries and list files with exceptions. |
 | `gbx pak extract <file> [-o <directory>]` | Extract every file or matching paths from a PAK. |
@@ -17,6 +18,7 @@ A command-line interface for inspecting Gbx and PAK files with GBX.NET. Availabl
 ```sh
 gbx parse "My Map.Map.Gbx"
 gbx eval "My Map.Map.Gbx" "Node.Chunks.Count"
+gbx script inspect.csx -- "My Map.Map.Gbx"
 gbx pak files "Resource.pak"
 gbx pak files "Resource.pak" --resolved
 gbx pak files "Resource.pak" --unresolved
@@ -40,12 +42,13 @@ Use `gbx --help` for the command overview, `gbx pak --help` for PAK subcommands,
 | --- | --- | --- |
 | `parse` | `-i, --interactive` | Interactive placeholder. |
 | `eval` | `-i, --interactive` | Interactive placeholder. Without it, at least one C# expression is required. |
+| `script` | `--` | Pass remaining arguments to the script, including `--help` and `--version`. |
 | `pak files` | `--resolved` or `--unresolved` | Filter named/resolved files or unresolved hashes. Omit both to list all entries. |
 | `pak verify` | No additional options | Verify all entries or append an entry pattern. |
 | `pak extract` | `-o, --output <directory>` | Optional destination. Defaults to `<archive>.extracted`. |
 | `compress`, `decompress` | `-o, --output <file>` | Required destination file. |
 
-Interactive mode is not implemented yet. Output paths never overwrite existing files.
+Interactive mode is not implemented yet. Built-in output commands never overwrite existing files. Scripts control their own file writes.
 
 ## PAK files
 
@@ -66,6 +69,26 @@ Wildcard matching supports `*` (any number of characters, including folder separ
 ## Evaluation
 
 In `eval`, expressions use members of the root `Gbx` or `Pak` object. Pass several quoted expressions to run them in order. Output previews are limited, so narrow queries when inspecting large collections. C# runs with the CLI's permissions, so only evaluate trusted code.
+
+## Scripts
+
+`gbx script` runs a C# script without opening an input file automatically. For example, save this as `inspect.csx`:
+
+```cs
+var gbx = await Gbx.ParseAsync(Args[0]);
+Print($"{Path.GetFileName(Args[0])}: {gbx.Node?.GetType().Name}");
+Print(gbx.Node?.Chunks.Count);
+```
+
+Run it with:
+
+```sh
+gbx script inspect.csx -- "My Map.Map.Gbx"
+```
+
+`Args` contains the arguments after the script path. `Print(value)` and `Output` write to standard output, and `Console.WriteLine` also works. Scripts support top-level `await`, relative `#load` and `#r` paths, and the CLI's GBX.NET, PAK, compression, cryptography, hashing, and TmEssentials references. Common system namespaces, `System.IO`, `GBX.NET`, `GBX.NET.PAK`, `GBX.NET.Engines.Game`, and `GBX.NET.Engines.MwFoundations` are imported.
+
+File operations use the current working directory. `#load` and `#r` paths resolve relative to the script. Return values are ignored. Compilation and runtime errors go to standard error and exit with code `1`. Scripts run with the CLI's permissions, so only run trusted code.
 
 ## Build and install
 

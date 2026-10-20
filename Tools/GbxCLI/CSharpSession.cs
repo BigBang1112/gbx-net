@@ -1,5 +1,6 @@
 using GBX.NET;
 using GBX.NET.PAK;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 using System.Collections.Immutable;
@@ -12,7 +13,7 @@ internal sealed class CSharpSession
     private readonly ScriptOptions options;
     private ScriptState<object>? state;
 
-    public CSharpSession(object globals)
+    public CSharpSession(object globals, string? filePath = null)
     {
         var targetType = globals.GetType();
         this.globals = targetType.IsValueType || targetType.IsArray
@@ -27,6 +28,19 @@ internal sealed class CSharpSession
         if (targetType.Namespace is string typeNamespace)
         {
             options = options.AddImports(typeNamespace);
+        }
+
+        if (filePath is not null)
+        {
+            var fullPath = Path.GetFullPath(filePath);
+            var directory = Path.GetDirectoryName(fullPath)!;
+            options = options.WithFilePath(fullPath)
+                .WithSourceResolver(new SourceFileResolver([], directory))
+                .WithMetadataResolver(ScriptMetadataResolver.Default.WithBaseDirectory(directory))
+                .AddReferences(typeof(GBX.NET.LZO.Lzo).Assembly, typeof(GBX.NET.ZLib.ZLib).Assembly,
+                    typeof(GBX.NET.Crypto.Cry).Assembly, typeof(GBX.NET.Hashing.CRC32).Assembly,
+                    typeof(TmEssentials.TimeInt32).Assembly)
+                .AddImports("System.IO", "GBX.NET.Engines.Game", "GBX.NET.Engines.MwFoundations");
         }
     }
 

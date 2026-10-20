@@ -51,6 +51,7 @@ internal static class Cli
         {
             "parse" => await ParseCommand.RunAsync(argsEnumerator, output),
             "eval" => await EvalCommand.RunAsync(argsEnumerator, output),
+            "script" => await ScriptCommand.RunAsync(argsEnumerator, output),
             "pak" => await PakCommand.RunAsync(argsEnumerator, output),
             "compress" or "decompress" => await CompressionCommand.RunAsync(arg, argsEnumerator, output),
             _ when File.Exists(arg) => await ParseCommand.RunAsync(argsEnumerator, output, inputPath: arg),
