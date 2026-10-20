@@ -290,6 +290,7 @@ public partial class CPlugGameSkin : CMwNod, IClass
         public bool U01;
         public string? U02;
         public int U03;
+        public byte U04;
 
         public Chunk090F4004() : this(GameVersion.Unspecified)
         {
@@ -309,6 +310,10 @@ public partial class CPlugGameSkin : CMwNod, IClass
             {
                 Version = 5;
             }
+            else
+            {
+                Version = 8;
+            }
         }
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -318,12 +323,13 @@ public partial class CPlugGameSkin : CMwNod, IClass
             ((Chunk090F4004)clone).U01 = context.Clone(this.U01)!;
             ((Chunk090F4004)clone).U02 = context.Clone(this.U02)!;
             ((Chunk090F4004)clone).U03 = context.Clone(this.U03)!;
+            ((Chunk090F4004)clone).U04 = context.Clone(this.U04)!;
         }
 
         public override void ReadWrite(CPlugGameSkin n, GbxReaderWriter rw)
         {
             rw.VersionByte(this);
-            if (Version > 5)
+            if (Version > global::System.Math.Max(5, 8))
             {
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
@@ -353,6 +359,11 @@ public partial class CPlugGameSkin : CMwNod, IClass
                         if (Version >= 7)
                         {
                             rw.Int32(ref U03);
+
+                            if (Version >= 8)
+                            {
+                                rw.Byte(ref U04);
+                            }
                         }
                     }
                 }

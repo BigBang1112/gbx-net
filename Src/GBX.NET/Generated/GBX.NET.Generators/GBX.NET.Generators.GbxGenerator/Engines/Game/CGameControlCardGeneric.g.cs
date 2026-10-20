@@ -40,9 +40,8 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
     internal override uint GetId() => Id;
 
     private int @type;
-    /// <remarks>Applied with: 0x000, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000 body chunk</remarks>
     [AppliedWithChunk<Chunk030BD000>]
-    [AppliedWithChunk<Chunk030BD002>]
     public int Type
     {
         get => this.@type;
@@ -50,8 +49,9 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
     }
 
     private LocalData? data;
-    /// <remarks>Applied with: 0x001, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003, 0x004, 0x005, 0x006 body chunks</remarks>
     [AppliedWithChunk<Chunk030BD001>]
+    [AppliedWithChunk<Chunk030BD002>]
     [AppliedWithChunk<Chunk030BD003>]
     [AppliedWithChunk<Chunk030BD004>]
     [AppliedWithChunk<Chunk030BD005>]
@@ -112,9 +112,9 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
     }
 
     /// <summary>
-    /// CGameControlCardGeneric 0x002 chunk
+    /// CGameControlCardGeneric 0x002 chunk (legacy own data)
     /// </summary>
-    [Chunk(0x030BD002)]
+    [Chunk(0x030BD002, "legacy own data")]
     public partial class Chunk030BD002 : Chunk<CGameControlCardGeneric>
     {
         public override uint Id => 0x030BD002;
@@ -126,7 +126,7 @@ public partial class CGameControlCardGeneric : CGameControlCard, IClass
 
         public override void ReadWrite(CGameControlCardGeneric n, GbxReaderWriter rw)
         {
-            rw.Int32(ref n.@type);
+            rw.ReadableWritable<LocalData>(ref n.data);
         }
     }
 

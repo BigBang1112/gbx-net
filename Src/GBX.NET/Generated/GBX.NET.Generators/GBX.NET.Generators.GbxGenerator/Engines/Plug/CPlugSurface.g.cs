@@ -179,9 +179,6 @@ public partial class CPlugSurface : CPlug, IClass
         }
 
         private short surfaceIndex;
-        /// <summary>
-        /// Only relevant for TM2+
-        /// </summary>
         public short SurfaceIndex
         {
             get => this.surfaceIndex;
@@ -234,9 +231,6 @@ public partial class CPlugSurface : CPlug, IClass
         }
 
         private short surfaceIndex;
-        /// <summary>
-        /// Only relevant for TM2+
-        /// </summary>
         public short SurfaceIndex
         {
             get => this.surfaceIndex;
@@ -289,9 +283,6 @@ public partial class CPlugSurface : CPlug, IClass
         }
 
         private short surfaceIndex;
-        /// <summary>
-        /// Only relevant for TM2+
-        /// </summary>
         public short SurfaceIndex
         {
             get => this.surfaceIndex;

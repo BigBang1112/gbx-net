@@ -370,6 +370,10 @@ CGameResources 0x0302D000
   version
   CMwNod DefaultEditorSkinFid
 
+0x04B
+  version
+  ResourceData[] ResourceDataEntries
+
 0x04C [TM2020]
   version
   CMwNod
@@ -389,3 +393,6 @@ CGameResources 0x0302D000
 archive NamedNod
   id Name
   CMwNod Node
+
+archive ResourceData
+  string Name

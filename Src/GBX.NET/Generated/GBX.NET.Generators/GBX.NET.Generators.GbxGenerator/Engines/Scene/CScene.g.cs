@@ -39,6 +39,16 @@ public abstract partial class CScene : CMwNod, IClass
 
     internal override uint GetId() => Id;
 
+    private OldSceneMobil[]? oldMobils;
+    /// <remarks>Applied with: 0x002, 0x006 body chunks</remarks>
+    [AppliedWithChunk<Chunk0A001002>]
+    [AppliedWithChunk<Chunk0A001006>]
+    public OldSceneMobil[]? OldMobils
+    {
+        get => this.oldMobils;
+        set => this.oldMobils = value;
+    }
+
     private NodeRef<CSceneConfig>? sceneConfigRef;
     /// <remarks>Applied with: 0x003 body chunk</remarks>
     [AppliedWithChunk<Chunk0A001003>]
@@ -55,15 +65,6 @@ public abstract partial class CScene : CMwNod, IClass
     {
         get => motionManagerModels;
         set => motionManagerModels = value;
-    }
-
-    private OldSceneMobil[]? oldMobils;
-    /// <remarks>Applied with: 0x006 body chunk</remarks>
-    [AppliedWithChunk<Chunk0A001006>]
-    public OldSceneMobil[]? OldMobils
-    {
-        get => this.oldMobils;
-        set => this.oldMobils = value;
     }
 
     public NodeRefView References => new(this);
@@ -88,13 +89,32 @@ public abstract partial class CScene : CMwNod, IClass
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
     {
         base.DeepCloneFields(clone, context);
+        ((CScene)clone).oldMobils = context.CloneArray(this.oldMobils)!;
         ((CScene)clone).sceneConfigRef = context.Clone(this.sceneConfigRef)!;
         ((CScene)clone).motionManagerModels = context.Clone(this.motionManagerModels)!;
-        ((CScene)clone).oldMobils = context.CloneArray(this.oldMobils)!;
     }
 
     public CScene()
     {
+    }
+
+    /// <summary>
+    /// CScene 0x002 chunk (legacy mobils)
+    /// </summary>
+    [Chunk(0x0A001002, "legacy mobils")]
+    public partial class Chunk0A001002 : Chunk<CScene>
+    {
+        public override uint Id => 0x0A001002;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CScene n, GbxReaderWriter rw)
+        {
+            rw.ArrayReadableWritable<OldSceneMobil>(ref n.oldMobils!);
+        }
     }
 
     /// <summary>
@@ -163,14 +183,13 @@ public abstract partial class CScene : CMwNod, IClass
     }
 
     /// <summary>
-    /// CScene 0x006 chunk
+    /// CScene 0x006 chunk (legacy mobils)
     /// </summary>
-    [Chunk(0x0A001006)]
+    [Chunk(0x0A001006, "legacy mobils")]
     [ChunkGameVersion(GameVersion.TMSX | GameVersion.TMNESWC)]
     public partial class Chunk0A001006 : Chunk<CScene>
     {
         public override uint Id => 0x0A001006;
-        public override bool Ignore => true;
         public override GameVersion GameVersion => GameVersion.TMSX | GameVersion.TMNESWC;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
@@ -186,6 +205,13 @@ public abstract partial class CScene : CMwNod, IClass
 
     public partial class OldSceneMobil : IReadableWritable, IReadable, IWritable, IDeepCloneable
     {
+        private NodeRef<CSceneMobil>? mobilRef;
+        public CSceneMobil? Mobil
+        {
+            get => mobilRef?.Resolve();
+            set => NodeRef.SetEmbedded(ref mobilRef, value);
+        }
+
         private NodeRef<CMwNod>? u01Ref;
         public CMwNod? U01
         {
@@ -193,11 +219,11 @@ public abstract partial class CScene : CMwNod, IClass
             set => NodeRef.SetEmbedded(ref u01Ref, value);
         }
 
-        private NodeRef<CMwNod>? u02Ref;
-        public CMwNod? U02
+        private Iso4 location;
+        public Iso4 Location
         {
-            get => u02Ref?.Resolve();
-            set => NodeRef.SetEmbedded(ref u02Ref, value);
+            get => this.location;
+            set => this.location = value;
         }
 
         public NodeRefView References => new(this);
@@ -205,13 +231,13 @@ public abstract partial class CScene : CMwNod, IClass
         {
             private readonly OldSceneMobil owner;
             internal NodeRefView(OldSceneMobil owner) => this.owner = owner;
+            public NodeRef<CSceneMobil> Mobil => NodeRef.GetOrCreate(ref owner.mobilRef);
             public NodeRef<CMwNod> U01 => NodeRef.GetOrCreate(ref owner.u01Ref);
-            public NodeRef<CMwNod> U02 => NodeRef.GetOrCreate(ref owner.u02Ref);
         }
         public virtual IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
         {
+            yield return new("Mobil", NodeRef.GetOrCreate(ref mobilRef));
             yield return new("U01", NodeRef.GetOrCreate(ref u01Ref));
-            yield return new("U02", NodeRef.GetOrCreate(ref u02Ref));
             yield break;
         }
 
@@ -225,14 +251,16 @@ public abstract partial class CScene : CMwNod, IClass
 
         internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
         {
+            ((OldSceneMobil)clone).mobilRef = context.Clone(this.mobilRef)!;
             ((OldSceneMobil)clone).u01Ref = context.Clone(this.u01Ref)!;
-            ((OldSceneMobil)clone).u02Ref = context.Clone(this.u02Ref)!;
+            ((OldSceneMobil)clone).location = context.Clone(this.location)!;
         }
 
         public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
         {
+            rw.NodeRef(ref this.mobilRef);
             rw.NodeRef(ref this.u01Ref);
-            rw.NodeRef(ref this.u02Ref);
+            rw.Iso4(ref this.location);
         }
 
         public virtual void Read(GbxReader r, int v = 0)
@@ -250,6 +278,7 @@ public abstract partial class CScene : CMwNod, IClass
 
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
+        0x0A001002 => new Chunk0A001002(),
         0x0A001003 => new Chunk0A001003(),
         0x0A001004 => new Chunk0A001004(),
         0x0A001005 => new Chunk0A001005(),

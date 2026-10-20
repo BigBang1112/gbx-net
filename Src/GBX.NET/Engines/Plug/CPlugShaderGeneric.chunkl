@@ -5,13 +5,13 @@ CPlugShaderGeneric 0x09004000
   SMaterial Material
 
 0x001 [TM10, TMPU]
-  SMaterial Material
+  SMaterial Material (version: 1)
 
 0x002
-  SMaterial Material
+  SMaterial Material (version: 2)
 
 0x003 [TMSX, TMNESWC, VSK5, TMF, MP3, TMT, MP4, TM2020]
-  SMaterial Material
+  SMaterial Material (version: 3)
 
 archive SMaterial
   vec3 AmbientRGB [TM10 = Vec3.One, TMPU = Vec3.One, TMSX = Vec3.One, TMNESWC = Vec3.One, VSK5 = Vec3.One, TMF = Vec3.One]

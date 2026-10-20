@@ -27,7 +27,7 @@ CPlugGameSkin 0x090F4000
   string PainterSceneId
 
 0x004 [TMSX.v2, TMNESWC.v2, VSK5.v4, TMF.v4, MP3.v5, TMT.v5, MP4.v5]
-  versionb
+  versionb = 8
   string DirName
   v1+
     string PainterTextureName
@@ -41,6 +41,8 @@ CPlugGameSkin 0x090F4000
         string
         v7+
           int
+          v8+
+            byte
 
 0x005 (skippable) [TM2020.v8] // customizable file paths
   versionb = 8

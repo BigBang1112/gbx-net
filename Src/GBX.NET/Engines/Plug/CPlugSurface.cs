@@ -40,13 +40,12 @@ public partial class CPlugSurface
 
             if (rw.Reader is not null)
             {
-                // C003 includes primitive material indices even before storing a surf version.
-                n.Surf = ReadSurf(rw.Reader, Version < 2 ? 1 : Math.Max(1, n.surfVersion));
+                n.Surf = ReadSurf(rw.Reader, Version < 2 ? 0 : n.surfVersion, primitiveMaterialIndices: true);
             }
 
             if (rw.Writer is not null)
             {
-                WriteSurf(n.Surf, rw.Writer, Version < 2 ? 1 : Math.Max(1, n.surfVersion));
+                WriteSurf(n.Surf, rw.Writer, Version < 2 ? 0 : n.surfVersion, primitiveMaterialIndices: true);
             }
 
             rw.ArrayReadableWritable<SurfMaterial>(ref n.materials); // ArchiveMaterials
@@ -98,7 +97,7 @@ public partial class CPlugSurface
     // 18 - Voxel
     // 19 - Diggable
 
-    internal static ISurf ReadSurf(GbxReader r, int surfVersion)
+    internal static ISurf ReadSurf(GbxReader r, int surfVersion, bool primitiveMaterialIndices = false)
     {
         var surfId = r.ReadInt32();
         if (surfId == -1)
@@ -127,7 +126,15 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Unknown surf type: " + surfId)
         };
 
-        surf.Read(r, surfVersion);
+        if (surf is Compound compound)
+        {
+            compound.Read(r, surfVersion, primitiveMaterialIndices);
+        }
+        else
+        {
+            // Modern surface archives store primitive indices even when compound joints are absent.
+            surf.Read(r, primitiveMaterialIndices && surf is Sphere or Ellipsoid or Box ? Math.Max(1, surfVersion) : surfVersion);
+        }
 
         if (surfVersion >= 2)
         {
@@ -137,7 +144,7 @@ public partial class CPlugSurface
         return surf;
     }
 
-    internal static void WriteSurf(ISurf? surf, GbxWriter w, int surfVersion)
+    internal static void WriteSurf(ISurf? surf, GbxWriter w, int surfVersion, bool primitiveMaterialIndices = false)
     {
         if (surf is null)
         {
@@ -166,7 +173,14 @@ public partial class CPlugSurface
             _ => throw new NotSupportedException("Unknown surf type: " + surf.GetType().Name)
         });
 
-        surf.Write(w, surfVersion);
+        if (surf is Compound compound)
+        {
+            compound.Write(w, surfVersion, primitiveMaterialIndices);
+        }
+        else
+        {
+            surf.Write(w, primitiveMaterialIndices && surf is Sphere or Ellipsoid or Box ? Math.Max(1, surfVersion) : surfVersion);
+        }
 
         if (surfVersion >= 2)
         {
@@ -457,12 +471,17 @@ public partial class CPlugSurface
 
         public void Read(GbxReader r, int version = 0)
         {
+            Read(r, version, primitiveMaterialIndices: false);
+        }
+
+        internal void Read(GbxReader r, int version, bool primitiveMaterialIndices)
+        {
             var surfCount = r.ReadInt32();
             Surfs = new ISurf?[surfCount];
 
             for (var i = 0; i < surfCount; i++)
             {
-                Surfs[i] = ReadSurf(r, version);
+                Surfs[i] = ReadSurf(r, version, primitiveMaterialIndices);
             }
 
             SurfLocs = r.ReadArray<Iso4>(surfCount);
@@ -475,11 +494,16 @@ public partial class CPlugSurface
 
         public void Write(GbxWriter w, int version = 0)
         {
+            Write(w, version, primitiveMaterialIndices: false);
+        }
+
+        internal void Write(GbxWriter w, int version, bool primitiveMaterialIndices)
+        {
             w.Write(Surfs.Length);
 
             foreach (var surf in Surfs)
             {
-                WriteSurf(surf, w, version);
+                WriteSurf(surf, w, version, primitiveMaterialIndices);
             }
 
             foreach (var surfLoc in SurfLocs)

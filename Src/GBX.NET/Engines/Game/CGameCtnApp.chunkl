@@ -26,7 +26,7 @@ CGameCtnApp 0x030D3000
   CGameCtnCampaign
 
 0x006 // legacy official campaigns
-  CGameCtnCampaign[] BaseOfficialCampaigns
+  CGameCtnCampaign[] BaseOfficialCampaigns (deprec)
 
 0x007 [MP4] // Advertising
   CMwNod Advertising

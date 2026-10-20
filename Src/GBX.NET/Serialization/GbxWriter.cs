@@ -1052,7 +1052,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
     {
         if (value is null)
         {
-            Write(-1);
+            WriteHexInt32(-1);
             return;
         }
 
@@ -1064,7 +1064,7 @@ public sealed partial class GbxWriter : BinaryWriter, IGbxWriter
             throw new ClassWriteNotSupportedException(classId);
         }
 
-        Write(classId);
+        WriteHexUInt32(classId);
 
         rw ??= new GbxReaderWriter(this);
 

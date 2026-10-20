@@ -7,8 +7,8 @@ CGameControlCardGeneric 0x030BD000
 0x001
   LocalData Data
 
-0x002
-  int Type
+0x002 // legacy own data
+  LocalData Data
 
 0x003
   versionb

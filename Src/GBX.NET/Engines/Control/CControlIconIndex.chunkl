@@ -17,3 +17,7 @@ CControlIconIndex 0x0702B000
   base
   int MarginPercentV
   vec2 MarginSize
+
+0x003 (base: 0x002)
+  base
+  id[6] IconNames

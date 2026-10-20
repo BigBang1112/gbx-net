@@ -49,9 +49,9 @@ public partial class CPlugMaterial : CPlug, IClass
     }
 
     private CPlugSurface.MaterialId surfaceId;
-    /// <remarks>Applied with: 0x00E, 0x017 v1+ body chunks</remarks>
+    /// <remarks>Applied with: 0x00E, 0x017 body chunks</remarks>
     [AppliedWithChunk<Chunk0907900E>]
-    [AppliedWithChunk<Chunk09079017>(1)]
+    [AppliedWithChunk<Chunk09079017>]
     public CPlugSurface.MaterialId SurfaceId
     {
         get => this.surfaceId;
@@ -76,9 +76,27 @@ public partial class CPlugMaterial : CPlug, IClass
         set => NodeRef.SetEmbedded(ref shaderRef, value);
     }
 
+    private LegacyConstant[]? legacyConstants;
+    /// <remarks>Applied with: 0x015 v0-1 body chunk</remarks>
+    [AppliedWithChunk<Chunk09079015>(0, 1)]
+    public LegacyConstant[]? LegacyConstants
+    {
+        get => this.legacyConstants;
+        set => this.legacyConstants = value;
+    }
+
+    private int legacyValue;
+    /// <remarks>Applied with: 0x015 v4-4 body chunk</remarks>
+    [AppliedWithChunk<Chunk09079015>(4, 4)]
+    public int LegacyValue
+    {
+        get => this.legacyValue;
+        set => this.legacyValue = value;
+    }
+
     private CPlugSurface.GameplayId gameplayId;
-    /// <remarks>Applied with: 0x017 v1+ body chunk</remarks>
-    [AppliedWithChunk<Chunk09079017>(1)]
+    /// <remarks>Applied with: 0x017 body chunk</remarks>
+    [AppliedWithChunk<Chunk09079017>]
     public CPlugSurface.GameplayId GameplayId
     {
         get => this.gameplayId;
@@ -108,6 +126,8 @@ public partial class CPlugMaterial : CPlug, IClass
         ((CPlugMaterial)clone).surfaceId = context.Clone(this.surfaceId)!;
         ((CPlugMaterial)clone).shading = context.Clone(this.shading)!;
         ((CPlugMaterial)clone).shaderRef = context.Clone(this.shaderRef)!;
+        ((CPlugMaterial)clone).legacyConstants = context.CloneArray(this.legacyConstants)!;
+        ((CPlugMaterial)clone).legacyValue = context.Clone(this.legacyValue)!;
         ((CPlugMaterial)clone).gameplayId = context.Clone(this.gameplayId)!;
         ((CPlugMaterial)clone).deviceMaterials = context.CloneArray(this.deviceMaterials)!;
     }
@@ -538,15 +558,28 @@ public partial class CPlugMaterial : CPlug, IClass
                 rw.ArrayReadableWritable<DeviceMat>(ref n.deviceMaterials!, version: 0x015);
                 rw.Array<int>(ref U01!);
 
+                if (Version <= 1)
+                {
+                    rw.ArrayReadableWritable<LegacyConstant>(ref n.legacyConstants!, version: Version);
+                }
+
                 if (Version >= 3)
                 {
                     rw.Int32(ref U02);
+                }
+
+                if (Version == 4)
+                {
+                    rw.Int32(ref n.legacyValue);
                 }
             }
 
             if ((n.shaderRef?.Kind ?? NodeRefKind.None) != NodeRefKind.None)
             {
-                U03 = rw.ListNodeRef<CPlugMaterialColorTargetTable>(U03);
+                if (Version >= 6)
+                {
+                    U03 = rw.ListNodeRef<CPlugMaterialColorTargetTable>(U03);
+                }
 
                 if (Version >= 7)
                 {
@@ -597,9 +630,9 @@ public partial class CPlugMaterial : CPlug, IClass
         public override uint Id => 0x09079017;
         public override GameVersion GameVersion => GameVersion.TM2020;
         public int Version { get; set; }
+        public short U03;
         public int U01;
         public int U02;
-        public short U03;
         public string? U04;
 
         public Chunk09079017() : this(GameVersion.Unspecified)
@@ -618,9 +651,9 @@ public partial class CPlugMaterial : CPlug, IClass
         {
             base.DeepCloneFields(clone, context);
             ((Chunk09079017)clone).Version = context.Clone(this.Version)!;
+            ((Chunk09079017)clone).U03 = context.Clone(this.U03)!;
             ((Chunk09079017)clone).U01 = context.Clone(this.U01)!;
             ((Chunk09079017)clone).U02 = context.Clone(this.U02)!;
-            ((Chunk09079017)clone).U03 = context.Clone(this.U03)!;
             ((Chunk09079017)clone).U04 = context.Clone(this.U04)!;
         }
 
@@ -632,13 +665,14 @@ public partial class CPlugMaterial : CPlug, IClass
                 throw new global::GBX.NET.Exceptions.ChunkVersionNotSupportedException(Version);
             }
 
+            rw.EnumByte<CPlugSurface.MaterialId>(ref n.surfaceId);
+            rw.EnumByte<CPlugSurface.GameplayId>(ref n.gameplayId);
+            rw.Int16(ref U03);
+
             if (Version >= 1)
             {
-                rw.EnumByte<CPlugSurface.MaterialId>(ref n.surfaceId);
-                rw.EnumByte<CPlugSurface.GameplayId>(ref n.gameplayId);
                 rw.Int32(ref U01);
                 rw.Int32(ref U02);
-                rw.Int16(ref U03);
                 rw.String(ref U04);
             }
         }
@@ -777,6 +811,68 @@ public partial class CPlugMaterial : CPlug, IClass
             {
                 rw.NodeRef(ref this.shader2Ref);
                 rw.NodeRef(ref this.shader3Ref);
+            }
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
+    public partial class LegacyConstant : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        private float[]? values;
+        public float[]? Values
+        {
+            get => this.values;
+            set => this.values = value;
+        }
+
+        private float[]? additionalValues;
+        public float[]? AdditionalValues
+        {
+            get => this.additionalValues;
+            set => this.additionalValues = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (LegacyConstant)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((LegacyConstant)clone).name = context.Clone(this.name)!;
+            ((LegacyConstant)clone).values = context.CloneArray(this.values)!;
+            ((LegacyConstant)clone).additionalValues = context.CloneArray(this.additionalValues)!;
+        }
+
+        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            rw.Id(ref this.name);
+            rw.Array<float>(ref this.values!);
+
+            if (v >= 1)
+            {
+                rw.Array<float>(ref this.additionalValues!);
             }
         }
 

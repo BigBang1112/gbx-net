@@ -35,7 +35,14 @@ public partial class GbxWriter
 
         if (value is null && descriptor is null)
         {
-            Write(-1);
+            if (encapsulation is null)
+            {
+                Write(-1);
+            }
+            else
+            {
+                WriteHexInt32(-1);
+            }
             return;
         }
 

@@ -93,7 +93,7 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.ReadableWritable<SMaterial>(ref n.material);
+            rw.ReadableWritable<SMaterial>(ref n.material, version: 1);
         }
     }
 
@@ -112,7 +112,7 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.ReadableWritable<SMaterial>(ref n.material);
+            rw.ReadableWritable<SMaterial>(ref n.material, version: 2);
         }
     }
 
@@ -133,7 +133,7 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
 
         public override void ReadWrite(CPlugShaderGeneric n, GbxReaderWriter rw)
         {
-            rw.ReadableWritable<SMaterial>(ref n.material);
+            rw.ReadableWritable<SMaterial>(ref n.material, version: 3);
         }
     }
 
@@ -314,20 +314,6 @@ public partial class CPlugShaderGeneric : CPlugShader, IClass
             ((SMaterial)clone).wireRGB = context.Clone(this.wireRGB)!;
             ((SMaterial)clone).wireAlpha = context.Clone(this.wireAlpha)!;
             ((SMaterial)clone).flags = context.Clone(this.flags)!;
-        }
-
-        public virtual void ReadWrite(GbxReaderWriter rw, int v = 0)
-        {
-            rw.Vec3(ref this.ambientRGB);
-            rw.Vec3(ref this.diffuseRGB);
-            rw.Single(ref this.diffuseAlpha);
-            rw.Vec3(ref this.specularRGB);
-            rw.Single(ref this.specularExp);
-            rw.Vec3(ref this.emissiveRGB);
-            rw.Vec3(ref this.emissiveModifier);
-            rw.Vec3(ref this.wireRGB);
-            rw.Single(ref this.wireAlpha);
-            rw.DataUInt32(ref this.flags);
         }
 
         public virtual void Read(GbxReader r, int v = 0)

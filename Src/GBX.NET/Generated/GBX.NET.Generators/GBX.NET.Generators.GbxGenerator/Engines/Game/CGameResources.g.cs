@@ -1131,6 +1131,15 @@ public partial class CGameResources : CMwNod, IClass
         set => NodeRef.SetEmbedded(ref defaultEditorSkinFidRef, value);
     }
 
+    private ResourceData[]? resourceDataEntries;
+    /// <remarks>Applied with: 0x04B body chunk</remarks>
+    [AppliedWithChunk<Chunk0302D04B>]
+    public ResourceData[]? ResourceDataEntries
+    {
+        get => this.resourceDataEntries;
+        set => this.resourceDataEntries = value;
+    }
+
     private NodeRef<CMwNod>? badWordDictRef;
     /// <remarks>Applied with: 0x04D body chunk</remarks>
     [AppliedWithChunk<Chunk0302D04D>]
@@ -1497,6 +1506,7 @@ public partial class CGameResources : CMwNod, IClass
         ((CGameResources)clone).iconShooterDefaultSettingsFidRef = context.Clone(this.iconShooterDefaultSettingsFidRef)!;
         ((CGameResources)clone).defaultEditorMediaTrackerFidRef = context.Clone(this.defaultEditorMediaTrackerFidRef)!;
         ((CGameResources)clone).defaultEditorSkinFidRef = context.Clone(this.defaultEditorSkinFidRef)!;
+        ((CGameResources)clone).resourceDataEntries = context.CloneArray(this.resourceDataEntries)!;
         ((CGameResources)clone).badWordDictRef = context.Clone(this.badWordDictRef)!;
         ((CGameResources)clone).compiledWordDictionary = context.CloneArray(this.compiledWordDictionary)!;
     }
@@ -4011,6 +4021,28 @@ public partial class CGameResources : CMwNod, IClass
     }
 
     /// <summary>
+    /// CGameResources 0x04B chunk
+    /// </summary>
+    [Chunk(0x0302D04B)]
+    public partial class Chunk0302D04B : Chunk<CGameResources>, IVersionable
+    {
+        public override uint Id => 0x0302D04B;
+        public int Version { get; set; }
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+            ((Chunk0302D04B)clone).Version = context.Clone(this.Version)!;
+        }
+
+        public override void ReadWrite(CGameResources n, GbxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            rw.ArrayReadableWritable<ResourceData>(ref n.resourceDataEntries!, version: Version);
+        }
+    }
+
+    /// <summary>
     /// CGameResources 0x04C chunk
     /// </summary>
     [Chunk(0x0302D04C)]
@@ -4264,6 +4296,42 @@ public partial class CGameResources : CMwNod, IClass
         }
     }
 
+    public partial class ResourceData : IReadableWritable, IReadable, IWritable, IDeepCloneable
+    {
+        private string? name;
+        public string? Name
+        {
+            get => this.name;
+            set => this.name = value;
+        }
+
+        object IDeepCloneable.DeepClone(DeepCloneContext context)
+        {
+            var clone = (ResourceData)MemberwiseClone();
+            context.Register(this, clone);
+            DeepCloneArchiveFields(clone, context);
+            return clone;
+        }
+
+        internal virtual void DeepCloneArchiveFields(object clone, DeepCloneContext context)
+        {
+            ((ResourceData)clone).name = context.Clone(this.name)!;
+            ((ResourceData)clone).Data = context.CloneArray(this.Data)!;
+        }
+
+        public virtual void Read(GbxReader r, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(r);
+            ReadWrite(rw, v);
+        }
+
+        public virtual void Write(GbxWriter w, int v = 0)
+        {
+            using var rw = new GbxReaderWriter(w);
+            ReadWrite(rw, v);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0302D000 => new Chunk0302D000(),
@@ -4328,6 +4396,7 @@ public partial class CGameResources : CMwNod, IClass
         0x0302D048 => new Chunk0302D048(),
         0x0302D049 => new Chunk0302D049(),
         0x0302D04A => new Chunk0302D04A(),
+        0x0302D04B => new Chunk0302D04B(),
         0x0302D04C => new Chunk0302D04C(),
         0x0302D04D => new Chunk0302D04D(),
         0x0302D04E => new Chunk0302D04E(),

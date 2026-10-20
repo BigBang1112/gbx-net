@@ -114,7 +114,8 @@ public class AppliedWithChunkGeneratedTests
         {
             typeof(CControlIconIndex.Chunk0702B000),
             typeof(CControlIconIndex.Chunk0702B001),
-            typeof(CControlIconIndex.Chunk0702B002)
+            typeof(CControlIconIndex.Chunk0702B002),
+            typeof(CControlIconIndex.Chunk0702B003)
         });
         await Assert.That(applied[typeof(CControlIconIndex.Chunk0702B000)]
             .Applies(new CControlIconIndex.Chunk0702B000())).IsTrue();

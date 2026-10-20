@@ -4,19 +4,15 @@ CGameCtnCampaign 0x03090000
   CGameCtnChallengeGroup[] ChallengeGroups (deprec, list)
 
 0x001 [TM10, TMPU, TMSX, TMNESWC]
-  id CollectionId
-  int U01
-  if U01 > 0
-    throw
+  CMwNod[] CollectorUnlockers (deprec, list)
 
 0x002 [TM10, TMPU, TMSX, TMNESWC, VSK5]
-  id IconId
-  int U01
-  int U01
-  int U01
-  int U01
-  int U01
-  int U01
+  int BronzeMedalValue
+  int SilverMedalValue
+  int GoldMedalValue
+  int BronzeCompleteValue
+  int SilverCompleteValue
+  int GoldCompleteValue
 
 0x003
   string Name

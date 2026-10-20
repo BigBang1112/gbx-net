@@ -48,14 +48,67 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         set => challengeGroups = value;
     }
 
-    private string? iconId;
-    /// <remarks>Applied with: 0x002, 0x00C body chunks</remarks>
-    [AppliedWithChunk<Chunk03090002>]
-    [AppliedWithChunk<Chunk0309000C>]
-    public string? IconId
+    private NodeRefList<CMwNod>? collectorUnlockers;
+    /// <remarks>Applied with: 0x001 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090001>]
+    public NodeRefList<CMwNod>? CollectorUnlockers
     {
-        get => this.iconId;
-        set => this.iconId = value;
+        get => collectorUnlockers;
+        set => collectorUnlockers = value;
+    }
+
+    private int bronzeMedalValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int BronzeMedalValue
+    {
+        get => this.bronzeMedalValue;
+        set => this.bronzeMedalValue = value;
+    }
+
+    private int silverMedalValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int SilverMedalValue
+    {
+        get => this.silverMedalValue;
+        set => this.silverMedalValue = value;
+    }
+
+    private int goldMedalValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int GoldMedalValue
+    {
+        get => this.goldMedalValue;
+        set => this.goldMedalValue = value;
+    }
+
+    private int bronzeCompleteValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int BronzeCompleteValue
+    {
+        get => this.bronzeCompleteValue;
+        set => this.bronzeCompleteValue = value;
+    }
+
+    private int silverCompleteValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int SilverCompleteValue
+    {
+        get => this.silverCompleteValue;
+        set => this.silverCompleteValue = value;
+    }
+
+    private int goldCompleteValue;
+    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    [AppliedWithChunk<Chunk03090002>]
+    public int GoldCompleteValue
+    {
+        get => this.goldCompleteValue;
+        set => this.goldCompleteValue = value;
     }
 
     private string? name;
@@ -117,6 +170,15 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         set => this.unlockedByCampaign = value;
     }
 
+    private string? iconId;
+    /// <remarks>Applied with: 0x00C body chunk</remarks>
+    [AppliedWithChunk<Chunk0309000C>]
+    public string? IconId
+    {
+        get => this.iconId;
+        set => this.iconId = value;
+    }
+
     private EUnlockType unlockType;
     /// <remarks>Applied with: 0x00D body chunk</remarks>
     [AppliedWithChunk<Chunk0309000D>]
@@ -168,6 +230,7 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         private readonly CGameCtnCampaign owner;
         internal NodeRefView(CGameCtnCampaign owner) => this.owner = owner;
         public IReadOnlyList<NodeRef<CGameCtnChallengeGroup>>? ChallengeGroups => owner.challengeGroups?.References;
+        public IReadOnlyList<NodeRef<CMwNod>>? CollectorUnlockers => owner.collectorUnlockers?.References;
     }
     public override IEnumerable<KeyValuePair<string, NodeRef>> EnumerateReferences()
     {
@@ -176,6 +239,10 @@ public partial class CGameCtnCampaign : CMwNod, IClass
         {
             for (var i = 0; i < challengeGroups.Count; i++) yield return new("ChallengeGroups" + "[" + i + "]", challengeGroups.Get(i));
         }
+        if (collectorUnlockers is not null)
+        {
+            for (var i = 0; i < collectorUnlockers.Count; i++) yield return new("CollectorUnlockers" + "[" + i + "]", collectorUnlockers.Get(i));
+        }
         yield break;
     }
 
@@ -183,13 +250,20 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         base.DeepCloneFields(clone, context);
         ((CGameCtnCampaign)clone).challengeGroups = context.Clone(this.challengeGroups)!;
-        ((CGameCtnCampaign)clone).iconId = context.Clone(this.iconId)!;
+        ((CGameCtnCampaign)clone).collectorUnlockers = context.Clone(this.collectorUnlockers)!;
+        ((CGameCtnCampaign)clone).bronzeMedalValue = context.Clone(this.bronzeMedalValue)!;
+        ((CGameCtnCampaign)clone).silverMedalValue = context.Clone(this.silverMedalValue)!;
+        ((CGameCtnCampaign)clone).goldMedalValue = context.Clone(this.goldMedalValue)!;
+        ((CGameCtnCampaign)clone).bronzeCompleteValue = context.Clone(this.bronzeCompleteValue)!;
+        ((CGameCtnCampaign)clone).silverCompleteValue = context.Clone(this.silverCompleteValue)!;
+        ((CGameCtnCampaign)clone).goldCompleteValue = context.Clone(this.goldCompleteValue)!;
         ((CGameCtnCampaign)clone).name = context.Clone(this.name)!;
         ((CGameCtnCampaign)clone).@type = context.Clone(this.@type)!;
         ((CGameCtnCampaign)clone).isInternal = context.Clone(this.isInternal)!;
         ((CGameCtnCampaign)clone).campaignId = context.Clone(this.campaignId)!;
         ((CGameCtnCampaign)clone).index = context.Clone(this.index)!;
         ((CGameCtnCampaign)clone).unlockedByCampaign = context.Clone(this.unlockedByCampaign)!;
+        ((CGameCtnCampaign)clone).iconId = context.Clone(this.iconId)!;
         ((CGameCtnCampaign)clone).unlockType = context.Clone(this.unlockType)!;
         ((CGameCtnCampaign)clone).requiredPlayersCount = context.Clone(this.requiredPlayersCount)!;
         ((CGameCtnCampaign)clone).modeScriptName = context.Clone(this.modeScriptName)!;
@@ -232,23 +306,15 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090001;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03090001)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
-            n.CollectionId = rw.Id(n.CollectionId);
-            rw.Int32(ref U01);
-
-            if (U01> 0)
-            {
-                throw new NotSupportedException();
-            }
+            n.collectorUnlockers = rw.ListNodeRef_deprec<CMwNod>(n.collectorUnlockers);
         }
     }
 
@@ -261,23 +327,20 @@ public partial class CGameCtnCampaign : CMwNod, IClass
     {
         public override uint Id => 0x03090002;
         public override GameVersion GameVersion => GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMNESWC | GameVersion.VSK5;
-        public int U01;
 
         internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
         {
             base.DeepCloneFields(clone, context);
-            ((Chunk03090002)clone).U01 = context.Clone(this.U01)!;
         }
 
         public override void ReadWrite(CGameCtnCampaign n, GbxReaderWriter rw)
         {
-            rw.Id(ref n.iconId);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.bronzeMedalValue);
+            rw.Int32(ref n.silverMedalValue);
+            rw.Int32(ref n.goldMedalValue);
+            rw.Int32(ref n.bronzeCompleteValue);
+            rw.Int32(ref n.silverCompleteValue);
+            rw.Int32(ref n.goldCompleteValue);
         }
     }
 

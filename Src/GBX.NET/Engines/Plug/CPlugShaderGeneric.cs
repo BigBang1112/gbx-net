@@ -16,6 +16,32 @@ public partial class CPlugShaderGeneric
 
     public partial class SMaterial
     {
+        public void ReadWrite(GbxReaderWriter rw, int v = 0)
+        {
+            if (v >= 1 && rw.Writer?.Format == GbxFormat.Text)
+            {
+                using var data = new MemoryStream();
+                using var writer = new GbxWriter(data);
+                using var binary = new GbxReaderWriter(writer);
+                ReadWrite(binary, v);
+                rw.Writer.Write(data.ToArray());
+                return;
+            }
+
+            // DoData stores the material as binary data even in text-format Gbx files.
+            using var binaryReader = v >= 1 ? rw.Reader?.ForceBinary() : null;
+            rw.Vec3(ref ambientRGB);
+            rw.Vec3(ref diffuseRGB);
+            rw.Single(ref diffuseAlpha);
+            rw.Vec3(ref specularRGB);
+            rw.Single(ref specularExp);
+            rw.Vec3(ref emissiveRGB);
+            rw.Vec3(ref emissiveModifier);
+            rw.Vec3(ref wireRGB);
+            rw.Single(ref wireAlpha);
+            rw.DataUInt32(ref flags);
+        }
+
         public bool UseAmbient
         {
             get => GetBit(Flags, 0);

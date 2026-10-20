@@ -209,7 +209,9 @@ internal static class PakCommand
         {
             try
             {
-                if (!entry.Path.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase) && !await HasGbxSignatureAsync(entry.File))
+                if (!entry.Path.EndsWith(".gbx", StringComparison.OrdinalIgnoreCase)
+                    && !entry.Path.EndsWith(".pak", StringComparison.OrdinalIgnoreCase)
+                    && !await HasGbxSignatureAsync(entry.File))
                 {
                     skipped++;
                     continue;

@@ -56,7 +56,7 @@ public partial class GbxReader
             }
         }
 
-        var rawClassId = ReadUInt32();
+        var rawClassId = ReadHexUInt32();
 
         if (encapsulation is not null && rawClassId == uint.MaxValue)
         {

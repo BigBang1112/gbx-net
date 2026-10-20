@@ -429,7 +429,7 @@ public partial class CGameCtnApp : CGameApp, IClass
 
         public override void ReadWrite(CGameCtnApp n, GbxReaderWriter rw)
         {
-            n.baseOfficialCampaigns = rw.ListNodeRef<CGameCtnCampaign>(n.baseOfficialCampaigns);
+            n.baseOfficialCampaigns = rw.ListNodeRef_deprec<CGameCtnCampaign>(n.baseOfficialCampaigns);
         }
     }
 

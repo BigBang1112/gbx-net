@@ -164,6 +164,7 @@ Extensions are naming conventions. GBX.NET identifies a class from the Gbx class
 | FxLightning.Gbx | [CPlugFxLightning](Src/GBX.NET/Engines/Plug/CPlugFxLightning.chunkl) | Yes | Yes | N/A |
 | FxWindOnDecal.Gbx | [CPlugFxWindOnDecal](Src/GBX.NET/Engines/Plug/CPlugFxWindOnDecal.chunkl) | Yes | Yes | N/A |
 | GameSkin.Gbx | [CPlugGameSkin](Src/GBX.NET/Engines/Plug/CPlugGameSkin.chunkl) | Yes | Yes | Yes |
+| GpuCache.Gbx | [CPlugGpuCompileCache](Src/GBX.NET/Engines/Plug/CPlugGpuCompileCache.chunkl) | Yes | Yes | N/A |
 | ImageGen.Gbx | [CPlugFileGen](Src/GBX.NET/Engines/Plug/CPlugFileGen.chunkl) | Yes | Yes | N/A |
 | ItemPlacementClass.Gbx | [NPlugItemPlacement_SClass](Src/GBX.NET/Engines/Plug/NPlugItemPlacement_SClass.chunkl) | Yes | Yes | N/A |
 | Light.Gbx | [CPlugLight](Src/GBX.NET/Engines/Plug/CPlugLight.chunkl) | Yes | Yes | N/A |

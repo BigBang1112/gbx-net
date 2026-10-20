@@ -14,17 +14,17 @@ archive SurfMaterial
 archive Sphere
   float Size
   v1+
-    short SurfaceIndex // Only relevant for TM2+
+    short SurfaceIndex
 
 archive Ellipsoid
   vec3 Size
   v1+
-    short SurfaceIndex // Only relevant for TM2+
+    short SurfaceIndex
 
 archive Box
   boxaligned Transform
   v1+
-    short SurfaceIndex // Only relevant for TM2+
+    short SurfaceIndex
 
 archive SphereLocated
   vec3 Center

@@ -26,10 +26,10 @@ public partial class Pak
     /// <returns></returns>
     public global::GBX.NET.Gbx OpenGbxFile(global::GBX.NET.PAK.PakFile file, global::GBX.NET.GbxReadSettings settings = default, bool importExternalNodesFromRefTable = false, global::System.Collections.Generic.IDictionary<string, string>? fileHashes = default)
     {
-        if (Version == 3 && file.ClassId is 0x030C0000 or 0x240B6000 && settings.GameVersion == global::GBX.NET.GameVersion.Unspecified)
+        if (Version == 3 && settings.GameVersion == global::GBX.NET.GameVersion.Unspecified)
         {
-            // This legacy card ID was later reused for a lightmap media block.
-            // TMU stores the same card under its older 0x240B6000 ID.
+            // Legacy card ID 0x030C0000 was later reused for a lightmap media block.
+            // TMU stores the same card under its older 0x240B6000 ID, also inside other files.
             settings = settings with { GameVersion = global::GBX.NET.GameVersion.TMF };
         }
 

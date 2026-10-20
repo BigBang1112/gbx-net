@@ -40,10 +40,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     internal override uint GetId() => Id;
 
     private string? name;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public string? Name
     {
         get => this.name;
@@ -51,10 +52,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOff;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOff
     {
         get => this.indexOff;
@@ -62,10 +64,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOffFocused;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOffFocused
     {
         get => this.indexOffFocused;
@@ -73,10 +76,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOffGrayed;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOffGrayed
     {
         get => this.indexOffGrayed;
@@ -84,10 +88,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOn;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOn
     {
         get => this.indexOn;
@@ -95,10 +100,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOnFocused;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOnFocused
     {
         get => this.indexOnFocused;
@@ -106,10 +112,11 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int indexOnGrayed;
-    /// <remarks>Applied with: 0x000, 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x000, 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B000>]
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int IndexOnGrayed
     {
         get => this.indexOnGrayed;
@@ -117,9 +124,10 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int marginPercentU;
-    /// <remarks>Applied with: 0x001, 0x002 body chunks</remarks>
+    /// <remarks>Applied with: 0x001, 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B001>]
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int MarginPercentU
     {
         get => this.marginPercentU;
@@ -127,8 +135,9 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private int marginPercentV;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public int MarginPercentV
     {
         get => this.marginPercentV;
@@ -136,12 +145,22 @@ public partial class CControlIconIndex : CMwNod, IClass
     }
 
     private Vec2 marginSize;
-    /// <remarks>Applied with: 0x002 body chunk</remarks>
+    /// <remarks>Applied with: 0x002, 0x003 body chunks</remarks>
     [AppliedWithChunk<Chunk0702B002>]
+    [AppliedWithChunk<Chunk0702B003>]
     public Vec2 MarginSize
     {
         get => this.marginSize;
         set => this.marginSize = value;
+    }
+
+    private string[]? iconNames;
+    /// <remarks>Applied with: 0x003 body chunk</remarks>
+    [AppliedWithChunk<Chunk0702B003>]
+    public string[]? IconNames
+    {
+        get => this.iconNames;
+        set => this.iconNames = value;
     }
 
     internal override void DeepCloneFields(CMwNod clone, DeepCloneContext context)
@@ -157,6 +176,7 @@ public partial class CControlIconIndex : CMwNod, IClass
         ((CControlIconIndex)clone).marginPercentU = context.Clone(this.marginPercentU)!;
         ((CControlIconIndex)clone).marginPercentV = context.Clone(this.marginPercentV)!;
         ((CControlIconIndex)clone).marginSize = context.Clone(this.marginSize)!;
+        ((CControlIconIndex)clone).iconNames = context.CloneArray(this.iconNames)!;
     }
 
     public CControlIconIndex()
@@ -233,11 +253,32 @@ public partial class CControlIconIndex : CMwNod, IClass
         }
     }
 
+    /// <summary>
+    /// CControlIconIndex 0x003 chunk
+    /// </summary>
+    [Chunk(0x0702B003)]
+    public partial class Chunk0702B003 : Chunk0702B002
+    {
+        public override uint Id => 0x0702B003;
+
+        internal override void DeepCloneFields(Chunk clone, DeepCloneContext context)
+        {
+            base.DeepCloneFields(clone, context);
+        }
+
+        public override void ReadWrite(CControlIconIndex n, GbxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.ArrayId(ref n.iconNames!, 6);
+        }
+    }
+
     internal override IChunk? NewChunk(uint chunkId) => chunkId switch
     {
         0x0702B000 => new Chunk0702B000(),
         0x0702B001 => new Chunk0702B001(),
         0x0702B002 => new Chunk0702B002(),
+        0x0702B003 => new Chunk0702B003(),
         _ => base.NewChunk(chunkId),
     };
 }

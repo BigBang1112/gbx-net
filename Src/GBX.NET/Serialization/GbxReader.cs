@@ -1105,7 +1105,7 @@ public sealed partial class GbxReader : BinaryReader, IGbxReader
 
     public T? ReadMetaRef<T>() where T : IClass
     {
-        var rawClassId = ReadUInt32();
+        var rawClassId = ReadHexUInt32();
 
         if (rawClassId == uint.MaxValue)
         {

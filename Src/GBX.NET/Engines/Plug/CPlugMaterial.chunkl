@@ -47,13 +47,18 @@ CPlugMaterial 0x09079000
   CPlug Shader
   if Shader == null
     DeviceMat[] DeviceMaterials (version: 0x015)
-    int[]
+    int[] U01
+    v1-
+      LegacyConstant[] LegacyConstants (version: Version)
     v3+
-      int
+      int U02
+    v4=
+      int LegacyValue
   if Shader != null
-    CPlugMaterialColorTargetTable*[]
+    v6+
+      CPlugMaterialColorTargetTable*[] U03
     v7+
-      CMwNod
+      CMwNod U04
 
 0x016 [TM2020]
   version
@@ -61,13 +66,13 @@ CPlugMaterial 0x09079000
 
 0x017 [TM2020.v1]
   version
+  byte<CPlugSurface.MaterialId> SurfaceId
+  byte<CPlugSurface.GameplayId> GameplayId
+  short U03
   v1+
-    byte<CPlugSurface.MaterialId> SurfaceId
-    byte<CPlugSurface.GameplayId> GameplayId
-    int
-    int
-    short
-    string
+    int U01
+    int U02
+    string U04
 
 0x019 (skippable) [TM2020]
   version
@@ -84,6 +89,12 @@ archive DeviceMat
   v9+
     CPlugShader Shader2
     CPlugShader Shader3
+
+archive LegacyConstant
+  id Name
+  float[] Values
+  v1+
+    float[] AdditionalValues
 
 archive ShadingDesc
   int Version
