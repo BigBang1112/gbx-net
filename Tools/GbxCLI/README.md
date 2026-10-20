@@ -51,7 +51,7 @@ Interactive mode is not implemented yet. Output paths never overwrite existing f
 
 Gbx and PAK formats are detected from their contents. PAK keys are selected automatically by archive filename. Private file indexes need a matching built-in key. `.Pack.Gbx` archives are supported too.
 
-The CLI embeds [Resources/FileHashes.txt](../../Resources/FileHashes.txt) directly at build time. Known hashed filenames are resolved automatically for listing, verification messages, and extraction. Stored folders are preserved, and unknown or unresolved hashes keep their stored names. No separate hash file is needed beside the executable.
+The CLI compresses [Resources/FileHashes.txt](../../Resources/FileHashes.txt) with gzip during the build and embeds the compressed catalogue. It decompresses the catalogue when hash lookup is first needed. Known hashed filenames are resolved automatically for listing, verification messages, and extraction. Stored folders are preserved, and unknown or unresolved hashes keep their stored names. No separate hash file is needed beside the executable.
 
 `pak files` lists every matching entry by default, including unresolved hashes. `--resolved` lists files that already have names and hashes with known names. `--unresolved` lists only hashes without known names. The options can appear before or after the archive path and cannot be combined. They also work with entry patterns. A filter with no matching entries prints nothing and succeeds.
 

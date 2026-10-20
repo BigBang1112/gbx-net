@@ -1,4 +1,5 @@
 using System.Collections.Frozen;
+using System.IO.Compression;
 
 namespace GbxCLI;
 
@@ -29,9 +30,10 @@ internal static class PakFileHashes
 
     private static FrozenDictionary<string, string> Load()
     {
-        using var stream = typeof(PakFileHashes).Assembly.GetManifestResourceStream("GbxCLI.FileHashes.txt")
+        using var stream = typeof(PakFileHashes).Assembly.GetManifestResourceStream("GbxCLI.FileHashes.txt.gz")
             ?? throw new InvalidOperationException("The embedded PAK file hash catalogue is missing.");
-        using var reader = new StreamReader(stream);
+        using var decompressed = new GZipStream(stream, CompressionMode.Decompress);
+        using var reader = new StreamReader(decompressed);
         var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         while (reader.ReadLine() is { } line)

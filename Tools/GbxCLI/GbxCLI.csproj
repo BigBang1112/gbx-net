@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>gbx</AssemblyName>
+        <FileHashesSource>$(MSBuildProjectDirectory)/../../Resources/FileHashes.txt</FileHashesSource>
         <IncludeAllContentForSelfExtract Condition="'$(PublishSingleFile)' == 'true'">true</IncludeAllContentForSelfExtract>
 
         <PackAsTool>true</PackAsTool>
@@ -22,7 +23,7 @@
 
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\" />
-        <EmbeddedResource Include="../../Resources/FileHashes.txt" Link="Resources/FileHashes.txt" LogicalName="GbxCLI.FileHashes.txt" />
+        <EmbeddedResource Include="$(FileHashesSource)" Link="Resources/FileHashes.txt" LogicalName="GbxCLI.FileHashes.txt.gz" />
         <InternalsVisibleTo Include="GbxCLI.Tests" />
         <AssemblyMetadata Include="CliDistribution" Value=".NET tool" Condition="'$(PackAsTool)' == 'true'" />
         <AssemblyMetadata Include="CliDistribution" Value="standalone" Condition="'$(PackAsTool)' != 'true'" />
@@ -39,5 +40,7 @@
         <ProjectReference Include="..\..\Src\GBX.NET.ZLib\GBX.NET.ZLib.csproj" />
         <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
     </ItemGroup>
+
+    <Import Project="Build/CompressedFileHashes.targets" />
 
 </Project>
