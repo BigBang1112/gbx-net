@@ -77,8 +77,18 @@ dotnet pack Tools/GbxCLI/GbxCLI.csproj -c Release -o artifacts/packages
 dotnet tool install --global GBX.NET.CLI --version 0.1.0 --add-source artifacts/packages
 ```
 
-To publish a standalone Windows executable:
+Publishing produces a compressed, trimmed, self-contained single executable for the current platform by default:
 
 ```sh
-dotnet publish Tools/GbxCLI/GbxCLI.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:PackAsTool=false -o artifacts/gbx/win-x64
+dotnet publish Tools/GbxCLI/GbxCLI.csproj -o artifacts/gbx
 ```
+
+To target Windows explicitly:
+
+```sh
+dotnet publish Tools/GbxCLI/GbxCLI.csproj -c Release -r win-x64 --self-contained true -o artifacts/gbx/win-x64
+```
+
+Partial trimming preserves the CLI, Gbx models, and core script references for reflection and C# evaluation. Debug symbols are removed from trimmed publishes.
+
+Use `-p:PublishSingleFile=false` to publish separate files instead, `-p:PublishTrimmed=false` to disable trimming, or `-p:EnableCompressionInSingleFile=false` to disable bundle compression. `dotnet pack` continues to produce an untrimmed .NET tool package.
