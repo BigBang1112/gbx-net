@@ -31,6 +31,8 @@ public partial class GenerationTests
             """));
         await Assert.That(result.Diagnostics).IsEmpty();
         await AssertNoErrors(compilation);
+        foreach (var generated in result.GeneratedSources)
+            await Assert.That(generated.SyntaxTree.GetRoot().DescendantNodes().OfType<Microsoft.CodeAnalysis.CSharp.Syntax.UsingDirectiveSyntax>()).IsEmpty();
         var builder = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilder")!;
         var mp4 = builder.GetTypeMembers("MP4").Single();
         var modern = builder.GetTypeMembers("TM2020").Single();

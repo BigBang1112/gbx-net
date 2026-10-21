@@ -9,6 +9,21 @@ namespace GBX.NET.Generators.Tests;
 public partial class GenerationTests
 {
     [Test]
+    public async Task Generate_EngineSource_UsesImplicitImports()
+    {
+        var (result, compilation) = Run("", new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001
+              int Value
+            """), compile: true);
+
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That(Engine(result).GetRoot().DescendantNodes().OfType<UsingDirectiveSyntax>()).IsEmpty();
+        await Assert.That(Engine(result).ToString()).Contains("public int Value");
+    }
+
+    [Test]
     [Arguments(0)]
     [Arguments(1)]
     public async Task Generate_Iso3_UsesValueSerializationForNullableAndRequiredTransforms(int structureKind)
@@ -3751,6 +3766,9 @@ public partial class GenerationTests
         await Assert.That(manager).Contains("0x030C0000 when node is global::GBX.NET.Engines.Game.Legacy");
 
         var support = CSharpSyntaxTree.ParseText("""
+            global using System;
+            global using System.Collections.Generic;
+            global using GBX.NET.Serialization.Chunking;
             namespace GBX.NET
             {
                 public enum GameVersion { Unspecified, TM10 }
@@ -3808,6 +3826,7 @@ public partial class GenerationTests
         await Assert.That(result.Diagnostics).IsEmpty();
         var generated = result.GeneratedSources.Single(x => x.HintName == "Managers/CollectionManager.g.cs").SyntaxTree;
         var handwritten = CSharpSyntaxTree.ParseText("""
+            global using System.Collections.Generic;
             namespace GBX.NET.Managers;
             public static partial class CollectionManager
             {
@@ -3948,7 +3967,15 @@ public partial class GenerationTests
     {
         var options = new CSharpParseOptions(LanguageVersion.Preview);
         var references = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator).Select(x => MetadataReference.CreateFromFile(x));
-        var compilation = CSharpCompilation.Create("Fixture", new[] { CSharpSyntaxTree.ParseText(source, options), CSharpSyntaxTree.ParseText(compile ? Support : "", options), CSharpSyntaxTree.ParseText(extraSupport, options) }, references,
+        // Match the consuming library's implicit imports in standalone compilations.
+        var implicitUsings = compile
+            ? string.Join("\n", files.Where(static file => file.Path.EndsWith(".chunkl", StringComparison.OrdinalIgnoreCase))
+                .Select(static file => file.Path.Replace('\\', '/').Split('/'))
+                .Select(static parts => "GBX.NET.Engines." + parts[parts.Length - 2])
+                .Append("GBX.NET.Engines.Game").Distinct().Select(static ns => "global using " + ns + ";"))
+            : "";
+        if (extraSupport.Length > 0) implicitUsings += "\nglobal using GBX.NET.Builders;";
+        var compilation = CSharpCompilation.Create("Fixture", new[] { CSharpSyntaxTree.ParseText(source, options), CSharpSyntaxTree.ParseText(compile ? Support : "", options), CSharpSyntaxTree.ParseText(extraSupport, options), CSharpSyntaxTree.ParseText(implicitUsings, options) }, references,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
         GeneratorDriver driver = CSharpGeneratorDriver.Create(new[] { new GbxGenerator().AsSourceGenerator() }, additionalTexts: files, parseOptions: options);
         driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var output, out _);
@@ -3962,6 +3989,16 @@ public partial class GenerationTests
     }
 
     private const string Support = """
+        global using System;
+        global using System.Collections.Generic;
+        global using System.IO;
+        global using System.Linq;
+        global using TmEssentials;
+        global using GBX.NET.Attributes;
+        global using GBX.NET.Exceptions;
+        global using GBX.NET.Serialization;
+        global using GBX.NET.Serialization.Chunking;
+
         namespace TmEssentials { }
         namespace GBX.NET.Components { public class GbxRefTableFile { } }
         namespace GBX.NET.Exceptions
