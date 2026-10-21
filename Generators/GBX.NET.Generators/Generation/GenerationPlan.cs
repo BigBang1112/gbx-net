@@ -1,7 +1,5 @@
 using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
-using Microsoft.CodeAnalysis;
-using System.Collections.Immutable;
 
 namespace GBX.NET.Generators.Generation;
 

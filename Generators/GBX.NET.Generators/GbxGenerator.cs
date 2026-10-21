@@ -1,7 +1,6 @@
 using GBX.NET.Generators.Analysis;
 using GBX.NET.Generators.Parsing;
 using GBX.NET.Generators.Generation;
-using Microsoft.CodeAnalysis;
 
 namespace GBX.NET.Generators;
 

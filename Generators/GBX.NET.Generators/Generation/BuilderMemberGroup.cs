@@ -1,5 +1,3 @@
-using GBX.NET.Generators.Analysis;
-
 namespace GBX.NET.Generators.Generation;
 
 internal sealed class BuilderMemberGroup(List<GameMember> members)

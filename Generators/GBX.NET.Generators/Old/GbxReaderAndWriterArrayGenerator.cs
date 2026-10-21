@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis;
-using System.Collections.Immutable;
 using System.Text;
 
 namespace GBX.NET.Generators;

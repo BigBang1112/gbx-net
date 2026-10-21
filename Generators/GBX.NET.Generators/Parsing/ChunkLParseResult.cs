@@ -1,6 +1,3 @@
-using Microsoft.CodeAnalysis;
-using System.Collections.Immutable;
-
 namespace GBX.NET.Generators.Parsing;
 
 internal sealed class ChunkLParseResult(ParsedChunkLFile? file, ImmutableArray<Diagnostic> diagnostics)

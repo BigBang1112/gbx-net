@@ -1,9 +1,5 @@
 using ChunkL;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using System.Collections.Immutable;
-using System.IO;
-using System.Threading;
 using ChunkLSeverity = ChunkL.Diagnostics.DiagnosticSeverity;
 
 namespace GBX.NET.Generators.Parsing;

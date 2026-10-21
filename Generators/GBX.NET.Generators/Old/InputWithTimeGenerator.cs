@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis;
 using System.Text;
 
 namespace GBX.NET.Generators;

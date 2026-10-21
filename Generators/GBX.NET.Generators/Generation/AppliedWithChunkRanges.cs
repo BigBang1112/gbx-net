@@ -1,8 +1,5 @@
 using ChunkL;
 using ChunkL.Syntax;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GBX.NET.Generators.Generation;
 

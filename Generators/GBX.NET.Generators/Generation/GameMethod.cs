@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-
 namespace GBX.NET.Generators.Generation;
 
 internal sealed class GameMethod(LayoutModel owner, MethodDeclarationSyntax declaration, string returnType, string parameters, string arguments)
