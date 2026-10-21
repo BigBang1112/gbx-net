@@ -6,8 +6,16 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionDayTimeMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionDayTime where T0 : class
 {
-    new T0? DayMaterial { get; set; }
-    new T0? NightMaterial { get; set; }
+    new T0? DayMaterial
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionDayTime)this).DayMaterial);
+        set => ((global::GBX.NET.Engines.Motion.CMotionDayTime)this).DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? NightMaterial
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionDayTime)this).NightMaterial);
+        set => ((global::GBX.NET.Engines.Motion.CMotionDayTime)this).NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionDayTime : IClassVersion<global::GBX.NET.Engines.Motion.CMotionDayTime>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
@@ -18,9 +26,17 @@ public partial interface IMotionDayTime : IClassVersion<global::GBX.NET.Engines.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? DayMaterial { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? DayMaterial
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Motion.CMotionDayTime)this).DayMaterial);
+        set => ((global::GBX.NET.Engines.Motion.CMotionDayTime)this).DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? NightMaterial { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? NightMaterial
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Motion.CMotionDayTime)this).NightMaterial);
+        set => ((global::GBX.NET.Engines.Motion.CMotionDayTime)this).NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionDayTimeTM10 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>

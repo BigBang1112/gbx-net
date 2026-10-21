@@ -13,14 +13,34 @@ public interface IPlugAudioBalanceMembers1<T0> : global::GBX.NET.Interfaces.Plug
     float MaxDistFade_Ratio_Others { get; set; }
     float MaxDistFade_Rolloff_Focused { get; set; }
     float MaxDistFade_Rolloff_Others { get; set; }
-    T0? PitchFromDistance_BengsGuns_Focused { get; set; }
-    T0? PitchFromDistance_BengsGuns_Others { get; set; }
-    T0? PitchFromDistance_Player_Focused { get; set; }
-    T0? PitchFromDistance_Player_Others { get; set; }
+    T0? PitchFromDistance_BengsGuns_Focused
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_BengsGuns_Focused);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_BengsGuns_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? PitchFromDistance_BengsGuns_Others
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_BengsGuns_Others);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_BengsGuns_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? PitchFromDistance_Player_Focused
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_Player_Focused);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_Player_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? PitchFromDistance_Player_Others
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_Player_Others);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).PitchFromDistance_Player_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float RefDistanceFactor { get; set; }
     float ReleaseDuration { get; set; }
     float RolloffFactor { get; set; }
-    T0? RolloffFromMusicVolume { get; set; }
+    T0? RolloffFromMusicVolume
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).RolloffFromMusicVolume);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAudioBalance)this).RolloffFromMusicVolume = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float SceneVolume { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]

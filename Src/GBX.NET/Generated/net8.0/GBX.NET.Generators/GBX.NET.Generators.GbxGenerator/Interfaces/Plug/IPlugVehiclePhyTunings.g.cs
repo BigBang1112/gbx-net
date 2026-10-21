@@ -11,11 +11,19 @@ public interface IPlugVehiclePhyTuningsMembers1 : global::GBX.NET.Interfaces.Plu
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehiclePhyTuningsMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings where T0 : class
 {
-    new IReadOnlyList<T0>? Tuning { get; set; }
+    new IReadOnlyList<T0>? Tuning
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).Tuning is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, T0>(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).GetTuningInterfaceReferences, true, "Tuning");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, T0>(value, false));
+    }
 }
 public partial interface IPlugVehiclePhyTunings : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>? Tuning { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>? Tuning
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).Tuning is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).GetTuningInterfaceReferences, true, "Tuning");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings)this).Tuning = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>(value, false));
+    }
     int TuningIndex { get; set; }
 }
 

@@ -6,22 +6,38 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugSound where T0 : class where T1 : class
 {
-    T0? BackingSound { get; set; }
+    T0? BackingSound
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSound)this).BackingSound);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int BalanceGroup { get; set; }
     int DuplicatesIntervalMin { get; set; }
     float FadePlayDuration { get; set; }
     float FadeStopDuration { get; set; }
-    T0? FocusedSound { get; set; }
+    T0? FocusedSound
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSound)this).FocusedSound);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? GroupDuplicate { get; set; }
     int IgnoreSourceProperties { get; set; }
     float MaxDistance { get; set; }
     int MaxDuplicates { get; set; }
     float Pitch { get; set; }
     int PitchFromDistMode { get; set; }
-    T1? PitchFromDistance { get; set; }
+    T1? PitchFromDistance
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSound)this).PitchFromDistance);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int RoomFxSend { get; set; }
     bool UseLowPassFilter { get; set; }
-    T1? VolumeFromDistance { get; set; }
+    T1? VolumeFromDistance
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSound)this).VolumeFromDistance);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSound
@@ -53,7 +69,11 @@ public interface IPlugSoundMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugS
 {
     float PanAngleDeg { get; set; }
     float Radius { get; set; }
-    T0? VolumeFormSpeedKmh { get; set; }
+    T0? VolumeFormSpeedKmh
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSound)this).VolumeFormSpeedKmh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugSound : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSound>, global::GBX.NET.Interfaces.Plug.IPlugAudio
 {
@@ -101,7 +121,11 @@ public partial interface IPlugSoundTMF : IPlugSound, global::GBX.NET.Interfaces.
 
 public partial interface IPlugSoundMP3 : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? OldSubSources { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? OldSubSources
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugSound)this).OldSubSources is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(((global::GBX.NET.Engines.Plug.CPlugSound)this).GetOldSubSourcesInterfaceReferences, true, "OldSubSources");
+        set => ((global::GBX.NET.Engines.Plug.CPlugSound)this).OldSubSources = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(value, false));
+    }
 }
 
 public partial interface IPlugSoundTMT : IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers4, global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>

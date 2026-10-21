@@ -6,14 +6,30 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugLightMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugLight where T0 : class where T1 : class
 {
-    T0? BitmapFlare { get; set; }
-    T0? BitmapProjector { get; set; }
-    T1? FuncLight { get; set; }
+    T0? BitmapFlare
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugLight)this).BitmapFlare);
+        set => ((global::GBX.NET.Engines.Plug.CPlugLight)this).BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? BitmapProjector
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugLight)this).BitmapProjector);
+        set => ((global::GBX.NET.Engines.Plug.CPlugLight)this).BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? FuncLight
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugLight)this).FuncLight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugLight)this).FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugLightMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugLight where T0 : class
 {
-    new T0? Light { get; set; }
+    new T0? Light
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugLight)this).Light);
+        set => ((global::GBX.NET.Engines.Plug.CPlugLight)this).Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugLightMembers3 : global::GBX.NET.Interfaces.Plug.IPlugLight
@@ -22,7 +38,11 @@ public interface IPlugLightMembers3 : global::GBX.NET.Interfaces.Plug.IPlugLight
 }
 public partial interface IPlugLight : IClassVersion<global::GBX.NET.Engines.Plug.CPlugLight>
 {
-    global::GBX.NET.Interfaces.Graphic.IGxLight? Light { get; set; }
+    global::GBX.NET.Interfaces.Graphic.IGxLight? Light
+    {
+        get => (global::GBX.NET.Interfaces.Graphic.IGxLight?)(object?)(((global::GBX.NET.Engines.Plug.CPlugLight)this).Light);
+        set => ((global::GBX.NET.Engines.Plug.CPlugLight)this).Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugLightTM10 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Function.IFuncLightTM10>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTM10>

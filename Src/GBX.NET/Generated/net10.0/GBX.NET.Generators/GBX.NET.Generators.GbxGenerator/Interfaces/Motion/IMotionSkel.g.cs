@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionSkelMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionSkel where T0 : class
 {
-    new T0? KeysSkel { get; set; }
+    new T0? KeysSkel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).KeysSkel);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionSkel : IClassVersion<global::GBX.NET.Engines.Motion.CMotionSkel>, global::GBX.NET.Interfaces.Motion.IMotionSkelSimple
 {
@@ -17,36 +21,64 @@ public partial interface IMotionSkel : IClassVersion<global::GBX.NET.Engines.Mot
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkel? KeysSkel { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkel? KeysSkel
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysSkel?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).KeysSkel);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelTM10 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelTMPU : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelTMSX : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelTMNESWC : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelVSK5 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelTMF : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? SkelValues { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkel)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

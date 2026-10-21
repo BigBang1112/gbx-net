@@ -16,36 +16,80 @@ public interface IPlugTreeMembers2 : global::GBX.NET.Interfaces.Plug.IPlugTree
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugTreeMembers3<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugTree where T0 : class where T1 : class where T2 : class where T3 : class
 {
-    new IReadOnlyList<T0>? Children { get; set; }
-    new T1? FuncTree { get; set; }
-    new T2? ModelSolid { get; set; }
-    new T3? Visual { get; set; }
+    new IReadOnlyList<T0>? Children
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Children is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, T0>(((global::GBX.NET.Engines.Plug.CPlugTree)this).GetChildrenInterfaceReferences, true, "Children");
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, T0>(value, false));
+    }
+    new T1? FuncTree
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).FuncTree);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).FuncTree = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? ModelSolid
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).ModelSolid);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T3? Visual
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).Visual);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugTreeMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugTree where T0 : class
 {
-    T0? RefBuffer { get; set; }
+    T0? RefBuffer
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).RefBuffer);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugTreeMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugTree where T0 : class
 {
-    new T0? Generator { get; set; }
+    new T0? Generator
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).Generator);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Generator = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeGenerator node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugTree : IClassVersion<global::GBX.NET.Engines.Plug.CPlugTree>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTree>? Children { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTree>? Children
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Children is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTree>(((global::GBX.NET.Engines.Plug.CPlugTree)this).GetChildrenInterfaceReferences, true, "Children");
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTree>(value, false));
+    }
     ulong Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncTree? FuncTree { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator? Generator { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncTree? FuncTree
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncTree?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).FuncTree);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).FuncTree = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator? Generator
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).Generator);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Generator = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeGenerator node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool HasModel { get; }
     bool IsCustomBBox { get; set; }
     Iso4? Location { get; set; }
     string? ModelPlugId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? ModelSolid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid? ModelSolid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).ModelSolid);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string PlugId { get; set; }
     global::GBX.NET.Engines.Plug.CPlug? Shader { get; set; }
     global::GBX.NET.Engines.Plug.CPlug? Surface { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVisual? Visual { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVisual? Visual
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVisual?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTree)this).Visual);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTree)this).Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugTreeTM10 : IPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers2, global::GBX.NET.Interfaces.Plug.IPlugTreeMembers3<global::GBX.NET.Interfaces.Plug.IPlugTreeTM10, global::GBX.NET.Interfaces.Function.IFuncTreeTM10, global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualTM10>

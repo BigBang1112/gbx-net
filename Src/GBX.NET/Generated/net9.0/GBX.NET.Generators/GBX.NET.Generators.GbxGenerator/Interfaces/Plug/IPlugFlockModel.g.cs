@@ -12,8 +12,16 @@ public interface IPlugFlockModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.I
     int AnimGlidingStart { get; set; }
     int AnimStandingEnd { get; set; }
     int AnimStandingStart { get; set; }
-    T0? SoundEventTakeOff { get; set; }
-    T0? SoundLoop { get; set; }
+    T0? SoundEventTakeOff
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFlockModel)this).SoundEventTakeOff);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFlockModel)this).SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? SoundLoop
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFlockModel)this).SoundLoop);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFlockModel)this).SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFlockModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugFlockModel

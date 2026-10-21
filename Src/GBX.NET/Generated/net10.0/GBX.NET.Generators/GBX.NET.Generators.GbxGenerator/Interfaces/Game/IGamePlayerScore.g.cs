@@ -40,7 +40,11 @@ public partial interface IGamePlayerScoreVSK5 : IGamePlayerScore, global::GBX.NE
 
 public partial interface IGamePlayerScoreTMF : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>? CampaignPlayerScores { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>? CampaignPlayerScores
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerScore)this).CampaignPlayerScores is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(((global::GBX.NET.Engines.Game.CGamePlayerScore)this).GetCampaignPlayerScoresInterfaceReferences, true, "CampaignPlayerScores");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerScore)this).CampaignPlayerScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(value, false));
+    }
     byte CampaignRecordsStateVersion { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? CampaignRecordsStates { get; set; }
     int FinishCount { get; set; }
@@ -54,7 +58,11 @@ public partial interface IGamePlayerScoreTMF : IGamePlayerScore, global::GBX.NET
     int NetworkRoundsTimeSeconds { get; set; }
     int NetworkStuntsTimeSeconds { get; set; }
     int NetworkTimeAttackTimeSeconds { get; set; }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF? PlayerOfficialScores { get; set; }
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF? PlayerOfficialScores
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerScore)this).PlayerOfficialScores);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerScore)this).PlayerOfficialScores = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int ReplayEditorTimeSeconds { get; set; }
     int ResetCount { get; set; }
     int SkinEditorTimeSeconds { get; set; }

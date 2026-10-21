@@ -11,13 +11,21 @@ public interface IPlugVertexStreamMembers1 : global::GBX.NET.Interfaces.Plug.IPl
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVertexStreamMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVertexStream where T0 : class
 {
-    new T0? StreamModel { get; set; }
+    new T0? StreamModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVertexStream)this).StreamModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVertexStream)this).StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugVertexStream : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVertexStream>
 {
     global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? DataDecls { get; set; }
     uint Flags { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVertexStream? StreamModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVertexStream? StreamModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVertexStream?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVertexStream)this).StreamModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVertexStream)this).StreamModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int VertexCount { get; set; }
 }
 

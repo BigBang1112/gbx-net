@@ -16,16 +16,28 @@ public partial interface IPlugVehicleCameraHelicoModel : IClassVersion<global::G
 
 public partial interface IPlugVehicleCameraHelicoModelTMT : IPlugVehicleCameraHelicoModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugVehicleCameraHelicoModelMP4 : IPlugVehicleCameraHelicoModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugVehicleCameraHelicoModelTM2020 : IPlugVehicleCameraHelicoModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCameraHelicoModel)this).Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

@@ -6,22 +6,38 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehiclePhyModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
 {
-    T0? RefBuffer { get; set; }
+    T0? RefBuffer
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).RefBuffer);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehiclePhyModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
 {
-    new T0? Tunings { get; set; }
+    new T0? Tunings
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).Tunings);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehiclePhyModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
 {
     global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? OccupantSlots { get; set; }
-    T0? PhyShape { get; set; }
+    T0? PhyShape
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).PhyShape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).PhyShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugVehiclePhyModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings? Tunings { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings? Tunings
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).Tunings);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugVehiclePhyModelMP3 : IPlugVehiclePhyModel, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3>
@@ -47,7 +63,11 @@ public partial interface IPlugVehiclePhyModelMP3 : IPlugVehiclePhyModel, global:
     float PlayerAgstTrafficMinRelVelToPhysicallize { get; set; }
     BoxAligned SimplifiedCarShapeBox { get; set; }
     float SmallCollisionSpringStiffness { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? SurfSolid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? SurfSolid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolidMP3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).SurfSolid);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel)this).SurfSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float TrafficAgstTrafficMinRelVelToPhysicallize { get; set; }
     bool UsePenetration_InSpringCompute { get; set; }
     bool UseRelVel_InSpringCompute { get; set; }

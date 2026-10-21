@@ -8,24 +8,52 @@ public interface IGameCtnBlockInfoMembers1<T0> : global::GBX.NET.Interfaces.Game
 {
     Iso4 PrecalcPartLoc { get; set; }
     bool SpawnUnderground { get; set; }
-    T0? WaypointSpecialProperty { get; set; }
+    T0? WaypointSpecialProperty
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).WaypointSpecialProperty);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoMembers2<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
 {
-    IReadOnlyList<T0>? AdditionalVariantsAir { get; set; }
-    IReadOnlyList<T1>? AdditionalVariantsGround { get; set; }
+    IReadOnlyList<T0>? AdditionalVariantsAir
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AdditionalVariantsAir is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, T0>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetAdditionalVariantsAirInterfaceReferences, true, "AdditionalVariantsAir");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AdditionalVariantsAir = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, T0>(value, false));
+    }
+    IReadOnlyList<T1>? AdditionalVariantsGround
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AdditionalVariantsGround is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, T1>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetAdditionalVariantsGroundInterfaceReferences, true, "AdditionalVariantsGround");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AdditionalVariantsGround = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, T1>(value, false));
+    }
     global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType { get; set; }
-    T2? CharPhySpecialProperty { get; set; }
+    T2? CharPhySpecialProperty
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).CharPhySpecialProperty);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).CharPhySpecialProperty = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool CharPhySpecialPropertyCustomizable { get; set; }
     Direction Dir { get; set; }
-    T3? FogVolumeBox { get; set; }
+    T3? FogVolumeBox
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).FogVolumeBox);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).FogVolumeBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IconAutoUseGround { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo { get; set; }
-    T4? Sound1 { get; set; }
+    T4? Sound1
+    {
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Sound1);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Sound1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Iso4 Sound1Loc { get; set; }
-    T4? Sound2 { get; set; }
+    T4? Sound2
+    {
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Sound2);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Sound2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Iso4 Sound2Loc { get; set; }
     string? SymmetricalBlockInfoId { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
@@ -39,14 +67,38 @@ public interface IGameCtnBlockInfoMembers3 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoMembers4<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo where T0 : class where T1 : class where T2 : class
 {
-    IReadOnlyList<T0?>? AirBlockUnitInfos { get; set; }
-    T1? AirHelperMobil { get; set; }
+    IReadOnlyList<T0?>? AirBlockUnitInfos
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetAirBlockUnitInfosInterfaceReferences, false, "AirBlockUnitInfos");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(value, true));
+    }
+    T1? AirHelperMobil
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirHelperMobil);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    T1? ConstructionModeHelperMobil { get; set; }
-    IReadOnlyList<T0?>? GroundBlockUnitInfos { get; set; }
-    T1? GroundHelperMobil { get; set; }
+    T1? ConstructionModeHelperMobil
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).ConstructionModeHelperMobil);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<T0?>? GroundBlockUnitInfos
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GetGroundBlockUnitInfosInterfaceReferences, false, "GroundBlockUnitInfos");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, T0?>(value, true));
+    }
+    T1? GroundHelperMobil
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundHelperMobil);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    T2? Pillar { get; set; }
+    T2? Pillar
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Pillar);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
     int SizeX { get; set; }
     int SizeY { get; set; }
@@ -67,7 +119,11 @@ public interface IGameCtnBlockInfoMembers6 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoMembers7<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo where T0 : class
 {
-    T0? IconMacroBlockInfo { get; set; }
+    T0? IconMacroBlockInfo
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).IconMacroBlockInfo);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).IconMacroBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnBlockInfo : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockInfo>, global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
@@ -113,7 +169,11 @@ public partial interface IGameCtnBlockInfoMP3 : IGameCtnBlockInfo, global::GBX.N
 
 public partial interface IGameCtnBlockInfoTMT : IGameCtnBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMT, global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers7<global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT? PrecalcPartParams { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT? PrecalcPartParams
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).PrecalcPartParams);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).PrecalcPartParams = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnBlockInfoMP4 : IGameCtnBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP4, global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers7<global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4>
@@ -122,10 +182,22 @@ public partial interface IGameCtnBlockInfoMP4 : IGameCtnBlockInfo, global::GBX.N
 
 public partial interface IGameCtnBlockInfoTM2020 : IGameCtnBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTM2020, global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMembers7<global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020? BlockInfoModelFid { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020? BlockInfoModelFid
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).BlockInfoModelFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).BlockInfoModelFid = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsMultiHeightPillarOrVFC { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? MatModifierPlacementTag { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier2 { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).MaterialModifier);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).MaterialModifier = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier2
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).MaterialModifier2);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfo)this).MaterialModifier2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

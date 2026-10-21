@@ -12,7 +12,11 @@ public interface IPlugBitmapRenderCubeMapMembers1 : global::GBX.NET.Interfaces.P
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderCubeMapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMap where T0 : class
 {
-    T0? BitmapImageSpace { get; set; }
+    T0? BitmapImageSpace
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRenderCubeMap)this).BitmapImageSpace);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderCubeMap)this).BitmapImageSpace = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float BitmapImageSpaceDistToCenter { get; set; }
     float BitmapImageSpaceScaleHeight { get; set; }
 }

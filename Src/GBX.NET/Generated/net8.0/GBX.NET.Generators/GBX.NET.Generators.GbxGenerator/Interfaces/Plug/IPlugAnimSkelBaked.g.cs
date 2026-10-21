@@ -8,7 +8,11 @@ public partial interface IPlugAnimSkelBaked : IClassVersion<global::GBX.NET.Engi
     global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags { get; set; }
     int FlagsVersion { get; set; }
     ulong Hash { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? JointGroup { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup? JointGroup
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroup?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked)this).JointGroup);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked)this).JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     byte[]? PackedLocalJointsData { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? RootMotionFrames { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? Timing { get; set; }
@@ -17,6 +21,10 @@ public partial interface IPlugAnimSkelBaked : IClassVersion<global::GBX.NET.Engi
 
 public partial interface IPlugAnimSkelBakedTM2020 : IPlugAnimSkelBaked
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? JointGroup { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020? JointGroup
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimSkelJointGroupTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked)this).JointGroup);
+        set => ((global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked)this).JointGroup = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

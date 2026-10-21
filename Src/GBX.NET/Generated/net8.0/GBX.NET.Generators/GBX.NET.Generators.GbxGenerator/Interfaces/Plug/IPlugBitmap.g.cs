@@ -7,25 +7,41 @@ namespace GBX.NET.Interfaces.Plug;
 public interface IPlugBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class where T1 : class
 {
     global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
-    T0? Decals { get; set; }
+    T0? Decals
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).Decals);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).Decals = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapDecals node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     uint DefaultRenderClearColor { get; set; }
     uint Flags3 { get; set; }
     uint RenderSizeDiv { get; set; }
     uint RenderSizeMul { get; set; }
-    T1? SpriteParam { get; set; }
+    T1? SpriteParam
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).SpriteParam);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).SpriteParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSpriteParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class
 {
     float HeightInMeters { get; set; }
-    T0? ImageArray { get; set; }
+    T0? ImageArray
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).ImageArray);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).ImageArray = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugImageArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? ImageArrayFids { get; set; }
     string ImageArraySuffix { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class
 {
-    new T0? BitmapRender { get; set; }
+    new T0? BitmapRender
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapRender);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapMembers4 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
@@ -58,7 +74,11 @@ public interface IPlugBitmapMembers8 : global::GBX.NET.Interfaces.Plug.IPlugBitm
 }
 public partial interface IPlugBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmap>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRender? BitmapRender { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRender? BitmapRender
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapRender?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapRender);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmap)this).BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugBitmapShader? BitmapShader { get; set; }
     int BorderRGB { get; set; }
     float BumpScaleFactor { get; set; }

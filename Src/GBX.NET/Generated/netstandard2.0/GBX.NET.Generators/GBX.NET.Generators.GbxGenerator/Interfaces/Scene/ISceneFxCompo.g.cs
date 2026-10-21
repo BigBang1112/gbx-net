@@ -14,11 +14,11 @@ public partial interface ISceneFxCompo : IClassVersion<global::GBX.NET.Engines.S
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface ISceneFxCompoTM2020 : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTM2020
+public partial interface ISceneFxCompoTMF : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
 {
 }
 
-public partial interface ISceneFxCompoTMF : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTMF
+public partial interface ISceneFxCompoTM2020 : ISceneFxCompo, global::GBX.NET.Interfaces.Scene.ISceneFxTM2020
 {
 }
 

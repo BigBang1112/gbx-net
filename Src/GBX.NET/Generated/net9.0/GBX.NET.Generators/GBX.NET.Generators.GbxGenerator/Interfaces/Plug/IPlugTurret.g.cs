@@ -6,11 +6,31 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugTurretMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugTurret where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
 {
-    new T0? Mesh { get; set; }
-    new T1? OnFireParticle { get; set; }
-    new T2? Shape { get; set; }
-    new T3? Skel { get; set; }
-    new T4? VisEntFx { get; set; }
+    new T0? Mesh
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Mesh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? OnFireParticle
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).OnFireParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).OnFireParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? Shape
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Shape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T3? Skel
+    {
+        get => (T3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Skel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T4? VisEntFx
+    {
+        get => (T4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).VisEntFx);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).VisEntFx = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugTurret : IClassVersion<global::GBX.NET.Engines.Plug.CPlugTurret>
 {
@@ -23,7 +43,11 @@ public partial interface IPlugTurret : IClassVersion<global::GBX.NET.Engines.Plu
     int AimFireTargetChangeDelayMs { get; set; }
     int AimKeepAimingDurationMs { get; set; }
     float AimMaxTrackDist { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBulletModel? BulletModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBulletModel? BulletModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBulletModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).BulletModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).BulletModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? BulletModelRef { get; set; }
     int FirePeriodMs { get; set; }
     float FixedAngleMaxDeg { get; set; }
@@ -49,22 +73,46 @@ public partial interface IPlugTurret : IClassVersion<global::GBX.NET.Engines.Plu
     int LifeArmorMax { get; set; }
     int LifeDisabledDuration { get; set; }
     global::GBX.NET.Engines.Plug.CPlugTurret.EOnArmorEmtpy LifeOnArmorEmtpy { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? Mesh { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? Mesh
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid2Model?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Mesh);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Mesh = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? MeshRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? OnFireParticle { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? OnFireParticle
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).OnFireParticle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).OnFireParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? RotateSound1 { get; set; }
     string? RotateSound1Ref { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? Shape { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? Shape
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Shape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? ShapeRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSkel? Skel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSkel? Skel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSkel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).Skel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? SkelRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModel? VisEntFx { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModel? VisEntFx
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).VisEntFx);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).VisEntFx = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisEntFxModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? VisEntFxRef { get; set; }
 }
 
 public partial interface IPlugTurretMP4 : IPlugTurret, global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4? BulletModel { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4? BulletModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugTurret)this).BulletModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugTurret)this).BulletModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugTurretTM2020 : IPlugTurret, global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>

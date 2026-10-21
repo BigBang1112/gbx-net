@@ -17,71 +17,191 @@ public partial interface IPlugShaderGeneric : IClassVersion<global::GBX.NET.Engi
 
 public partial interface IPlugShaderGenericTM10 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTM10? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTM10? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTM10?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTMPU : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMPU? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMPU? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMPU?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTMSX : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMSX? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMSX? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMSX?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTMNESWC : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericVSK5 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderVSK5?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTMF : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMF? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMF? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMF?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericMP3 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP3? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderMP3? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderMP3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTMT : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMT? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTMT? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTMT?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericMP4 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP4? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderMP4? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugShaderGenericTM2020 : IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTM2020? FuncShader { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020? SolidWiredApply { get; set; }
+    new global::GBX.NET.Interfaces.Function.IFuncShaderTM2020? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShaderTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderGeneric)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

@@ -11,12 +11,20 @@ public interface IPlugVehicleVisModelSharedMembers1 : global::GBX.NET.Interfaces
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleVisModelSharedMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
 {
-    IReadOnlyList<T0>? VehicleEmitters { get; set; }
+    IReadOnlyList<T0>? VehicleEmitters
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VehicleEmitters is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, T0>(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GetVehicleEmittersInterfaceReferences, true, "VehicleEmitters");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VehicleEmitters = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleVisModelSharedMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
 {
-    IReadOnlyList<T0>? VehicleMaterialGroups { get; set; }
+    IReadOnlyList<T0>? VehicleMaterialGroups
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VehicleMaterialGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, T0>(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).GetVehicleMaterialGroupsInterfaceReferences, true, "VehicleMaterialGroups");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared)this).VehicleMaterialGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup, T0>(value, false));
+    }
 }
 public partial interface IPlugVehicleVisModelShared : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared>
 {

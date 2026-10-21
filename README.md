@@ -495,7 +495,7 @@ Currently, it is split into 3 ideas:
 - Chunk Game Version Specification
   - Every `CMwNod` has a member `GameVersion` that can guess from which game the Gbx file is, or where it could be supported.
 - Generated Game Version Interfaces, based on the layouts' game metadata
-- [Generated Builders](Docs/NodeBuilders.md), available where a supported creation recipe can be established
+- [Generated Builders](Docs/NodeBuilders.md) in the `GBX.NET.Builders` package, available where a supported creation recipe can be established
 
 Since 2.0.1, the experimentation of Game Version Interfaces started on the `CGameCtnChallenge` and `CGameCtnBlock` classes. Example:
 
@@ -513,7 +513,7 @@ foreach (var block in map.GetBlocks())
 }
 ```
 
-Create a node with the selected game's chunks and defaults:
+Create a node with the selected game's chunks and defaults (requires the `GBX.NET.Builders` package):
 
 ```cs
 var clip = CGameCtnMediaClip.Create()
@@ -646,6 +646,7 @@ GBX.NET 2 is licensed under multiple licenses, depending on the part of the proj
 
 - MIT License
   - **Src/GBX.NET**
+  - Src/GBX.NET.Builders
   - Src/GBX.NET.PAK
   - Src/GBX.NET.Crypto
   - Src/GBX.NET.Hashing

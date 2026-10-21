@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleVisModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel where T0 : class
 {
-    new T0? Shared { get; set; }
+    new T0? Shared
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).Shared);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleVisModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel
@@ -17,7 +21,11 @@ public interface IPlugVehicleVisModelMembers2 : global::GBX.NET.Interfaces.Plug.
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleVisModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel where T0 : class
 {
-    T0? AudioEnvironmentForFirstPerson { get; set; }
+    T0? AudioEnvironmentForFirstPerson
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).AudioEnvironmentForFirstPerson);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).AudioEnvironmentForFirstPerson = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel { get; set; }
     float SoundBodyImpact_Hard_ThresholdKmh { get; set; }
     float SoundBodyImpact_Soft_ThresholdKmh { get; set; }
@@ -32,7 +40,11 @@ public partial interface IPlugVehicleVisModel : IClassVersion<global::GBX.NET.En
 {
     float DefaultDamperMinLen { get; set; }
     float DefaultWheelOffsetY { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared? Shared { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared? Shared
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).Shared);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).Shared = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet Sounds { get; set; }
 }
 
@@ -50,6 +62,10 @@ public partial interface IPlugVehicleVisModelMP4 : IPlugVehicleVisModel, global:
 
 public partial interface IPlugVehicleVisModelTM2020 : IPlugVehicleVisModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? FxSystem { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? FxSystem
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).FxSystem);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleVisModel)this).FxSystem = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxSystem node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

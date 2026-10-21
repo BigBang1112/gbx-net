@@ -44,7 +44,11 @@ public partial interface IPlugVisualTMPU : IPlugVisual, global::GBX.NET.Interfac
 
 public partial interface IPlugVisualTMSX : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>(((global::GBX.NET.Engines.Plug.CPlugVisual)this).GetVertexStreamsInterfaceReferences, true, "VertexStreams");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVisual)this).VertexStreams = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>(value, false));
+    }
 }
 
 public partial interface IPlugVisualTMNESWC : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5

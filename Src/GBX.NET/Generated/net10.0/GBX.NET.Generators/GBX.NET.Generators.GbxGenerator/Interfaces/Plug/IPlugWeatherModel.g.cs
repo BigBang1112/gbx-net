@@ -6,20 +6,40 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugWeatherModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugWeatherModel where T0 : class
 {
-    T0? BitmapWaterFog { get; set; }
+    T0? BitmapWaterFog
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapWaterFog);
+        set => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugWeatherModelMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugWeatherModel where T0 : class where T1 : class
 {
-    new T0? BitmapSpecularDir { get; set; }
-    new IReadOnlyList<T1>? Weathers { get; set; }
+    new T0? BitmapSpecularDir
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapSpecularDir);
+        set => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<T1>? Weathers
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).Weathers is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, T1>(((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).GetWeathersInterfaceReferences, true, "Weathers");
+        set => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, T1>(value, false));
+    }
 }
 public partial interface IPlugWeatherModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugWeatherModel>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapSpecularDir { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeather>? Weathers { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapSpecularDir
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapSpecularDir);
+        set => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).BitmapSpecularDir = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeather>? Weathers
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).Weathers is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeather>(((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).GetWeathersInterfaceReferences, true, "Weathers");
+        set => ((global::GBX.NET.Engines.Plug.CPlugWeatherModel)this).Weathers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeather>(value, false));
+    }
 }
 
 public partial interface IPlugWeatherModelTMSX : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>

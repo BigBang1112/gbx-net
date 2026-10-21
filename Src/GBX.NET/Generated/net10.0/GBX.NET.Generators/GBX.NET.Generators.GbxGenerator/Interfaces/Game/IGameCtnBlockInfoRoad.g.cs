@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnBlockInfoRoadMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad where T0 : class
 {
-    new T0? Slope { get; set; }
+    new T0? Slope
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad)this).Slope);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad)this).Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnBlockInfoRoad : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo
 {
@@ -17,7 +21,11 @@ public partial interface IGameCtnBlockInfoRoad : IClassVersion<global::GBX.NET.E
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope? Slope { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope? Slope
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlope?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad)this).Slope);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlockInfoRoad)this).Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnBlockInfoRoadTM10 : IGameCtnBlockInfoRoad, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10>

@@ -35,7 +35,11 @@ public interface IPlugShaderPassMembers4 : global::GBX.NET.Interfaces.Plug.IPlug
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderPassMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugShaderPass where T0 : class
 {
-    IReadOnlyList<T0>? VertexTextures { get; set; }
+    IReadOnlyList<T0>? VertexTextures
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShaderPass)this).VertexTextures is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, T0>(((global::GBX.NET.Engines.Plug.CPlugShaderPass)this).GetVertexTexturesInterfaceReferences, true, "VertexTextures");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShaderPass)this).VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderPassMembers6 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass

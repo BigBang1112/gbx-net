@@ -12,14 +12,22 @@ public interface IGameCtnDecorationSizeMembers1 : global::GBX.NET.Interfaces.Gam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationSizeMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize where T0 : class
 {
-    new T0? Scene { get; set; }
+    new T0? Scene
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationSize)this).Scene);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationSize)this).Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnDecorationSize : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationSize>
 {
     int BaseHeightBase { get; set; }
     Vec2 EditionZoneMax { get; set; }
     Vec2 EditionZoneMin { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneLayout? Scene { get; set; }
+    global::GBX.NET.Interfaces.Scene.ISceneLayout? Scene
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneLayout?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationSize)this).Scene);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationSize)this).Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Int3 Size { get; set; }
 }
 

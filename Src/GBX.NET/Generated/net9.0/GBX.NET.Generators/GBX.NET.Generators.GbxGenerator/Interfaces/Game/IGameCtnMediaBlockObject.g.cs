@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockObjectMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObject where T0 : class
 {
-    new T0? VisData { get; set; }
+    new T0? VisData
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject)this).VisData);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject)this).VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnMediaBlockObject : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
@@ -20,7 +24,11 @@ public partial interface IGameCtnMediaBlockObject : IClassVersion<global::GBX.NE
     TimeSingle End { get; set; }
     bool ShowObjects { get; set; }
     TimeSingle Start { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisData? VisData { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisData? VisData
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameReplayObjectVisData?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject)this).VisData);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject)this).VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnMediaBlockObjectTMT : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT>

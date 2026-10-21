@@ -19,6 +19,14 @@ internal sealed class GameNodeModel(LayoutModel layout)
     public string Interface(string game = "") => "global::" + InterfaceNamespace + "." + InterfaceName + game;
     public IEnumerable<GameMember> Common => Members.Where(m => Games.All(m.Games.Contains));
 
+    // An empty game denotes the common view shared by every game.
+    public IEnumerable<string> Views => new[] { "" }.Concat(Games);
+    public IEnumerable<GameMember> MembersFor(string game) => game.Length == 0 ? Common : Members.Where(m => m.Games.Contains(game));
+    public IEnumerable<GameMethod> MethodsFor(string game) => Methods.Where(m => game.Length == 0 ? Games.All(m.Games.Contains) : m.Games.Contains(game));
+    public bool IsCommon(string member) => Common.Any(m => m.Name == member);
+    public IEnumerable<string> BuildableGames => Games.Where(g => !RecipeErrors.ContainsKey(g));
+    public bool HasBuilder => !Layout.IsAbstract && BuildableGames.Any();
+
     public static Dictionary<string, GameNodeModel> Create(GenerationPlan plan, Compilation compilation)
     {
         var knownGames = compilation.GetTypeByMetadataName("GBX.NET.GameVersion")!.GetMembers()
@@ -92,6 +100,15 @@ internal sealed class GameNodeModel(LayoutModel layout)
                 var parent = nodes[owner.Name];
                 foreach (var game in node.Games.Where(g => !parent.Games.Contains(g))) parent.Games.Add(game);
             }
+        }
+
+        // Nodes are visited in hash order, which varies between builds. Keep
+        // abstract nodes in GameVersion order, like the nodes declaring the games.
+        foreach (var node in nodes.Values.Where(static n => n.Layout.IsAbstract && n.Games.Count > 1))
+        {
+            var ordered = node.Games.OrderBy(game => Array.IndexOf(knownGames, game)).ToArray();
+            node.Games.Clear();
+            node.Games.AddRange(ordered);
         }
 
         foreach (var node in nodes.Values)

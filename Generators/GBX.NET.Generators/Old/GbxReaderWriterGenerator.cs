@@ -9,7 +9,7 @@ public class GbxReaderWriterGenerator : IIncrementalGenerator
     {
         var readAndWriteSymbols = context.CompilationProvider.Select(GetReaderAndWriterMethods);
 
-        context.RegisterSourceOutput(readAndWriteSymbols, GenerateReaderWriterSource);
+        context.RegisterLibraryOutput(readAndWriteSymbols, GenerateReaderWriterSource);
     }
 
     private IEnumerable<(IMethodSymbol ReaderMethod, IMethodSymbol WriterMethod, bool IsNamed)> GetReaderAndWriterMethods(Compilation compilation, CancellationToken token)

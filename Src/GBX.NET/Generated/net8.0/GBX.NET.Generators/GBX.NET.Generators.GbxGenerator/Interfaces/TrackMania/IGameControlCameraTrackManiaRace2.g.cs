@@ -55,11 +55,19 @@ public interface IGameControlCameraTrackManiaRace2Members2<T0> : global::GBX.NET
     int InputSteerDurationBeforeAnticipatingTurnTriggered { get; set; }
     int InputSteerDurationBeforeBurnoutShowView { get; set; }
     int InputSteerDurationBeforeRollTriggered { get; set; }
-    T0? LookAtFactorFromUpSpeedRatio { get; set; }
+    T0? LookAtFactorFromUpSpeedRatio
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).LookAtFactorFromUpSpeedRatio);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float MaxDeltaFovStep { get; set; }
     float MaxDeltaPlaneDistStep { get; set; }
     float MinSpeed { get; set; }
-    T0? RollFromSpeed { get; set; }
+    T0? RollFromSpeed
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).RollFromSpeed);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).RollFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float StateFlyingDistDelta { get; set; }
     int StateFlyingDistTimeDown { get; set; }
     int StateFlyingDistTimeUp { get; set; }
@@ -72,7 +80,11 @@ public interface IGameControlCameraTrackManiaRace2Members2<T0> : global::GBX.NET
     float StateFlyingPlaneDistDelta { get; set; }
     int StateFlyingPlaneDistTimeDown { get; set; }
     int StateFlyingPlaneDistTimeUp { get; set; }
-    T0? YawFromSpeed { get; set; }
+    T0? YawFromSpeed
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).YawFromSpeed);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2)this).YawFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameControlCameraTrackManiaRace2 : IClassVersion<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
 {

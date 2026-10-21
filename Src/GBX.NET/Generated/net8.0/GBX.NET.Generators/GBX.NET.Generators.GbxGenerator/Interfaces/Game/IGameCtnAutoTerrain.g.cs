@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnAutoTerrainMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain where T0 : class
 {
-    new T0? Genealogy { get; set; }
+    new T0? Genealogy
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnAutoTerrain)this).Genealogy);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnAutoTerrain)this).Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnAutoTerrain : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogy? Genealogy { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogy? Genealogy
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogy?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnAutoTerrain)this).Genealogy);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnAutoTerrain)this).Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Int3 Offset { get; set; }
 }
 

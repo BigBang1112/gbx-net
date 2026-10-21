@@ -24,11 +24,19 @@ public interface IPlugParticleEmitterModelMembers2 : global::GBX.NET.Interfaces.
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugParticleEmitterModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel where T0 : class
 {
-    new IReadOnlyList<T0>? ParticleEmitterSubModels { get; set; }
+    new IReadOnlyList<T0>? ParticleEmitterSubModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).ParticleEmitterSubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, T0>(((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).GetParticleEmitterSubModelsInterfaceReferences, true, "ParticleEmitterSubModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, T0>(value, false));
+    }
 }
 public partial interface IPlugParticleEmitterModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>? ParticleEmitterSubModels { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>? ParticleEmitterSubModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).ParticleEmitterSubModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>(((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).GetParticleEmitterSubModelsInterfaceReferences, true, "ParticleEmitterSubModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel)this).ParticleEmitterSubModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>(value, false));
+    }
 }
 
 public partial interface IPlugParticleEmitterModelTMSX : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>

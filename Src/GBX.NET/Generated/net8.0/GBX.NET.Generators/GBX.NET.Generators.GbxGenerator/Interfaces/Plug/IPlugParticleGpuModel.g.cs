@@ -6,18 +6,30 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugParticleGpuModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModel where T0 : class
 {
-    new T0? Bitmap { get; set; }
+    new T0? Bitmap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).Bitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugParticleGpuModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModel where T0 : class
 {
-    T0? BitmapOverLife { get; set; }
+    T0? BitmapOverLife
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).BitmapOverLife);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).BitmapOverLife = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool UseColorOverLife { get; set; }
     bool UseEnergyOverLife { get; set; }
 }
 public partial interface IPlugParticleGpuModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).Bitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugParticleGpuModel)this).Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? BitmapFile { get; set; }
     bool BitmapIsFile { get; set; }
     float Hue { get; set; }

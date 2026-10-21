@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockGhostMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhost where T0 : class
 {
-    new T0? GhostModel { get; set; }
+    new T0? GhostModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost)this).GhostModel);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost)this).GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockGhostMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhost
@@ -25,7 +29,11 @@ public partial interface IGameCtnMediaBlockGhost : IClassVersion<global::GBX.NET
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Game.IGameCtnGhost? GhostModel { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnGhost? GhostModel
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnGhost?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost)this).GhostModel);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost)this).GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float StartOffset { get; set; }
 }
 

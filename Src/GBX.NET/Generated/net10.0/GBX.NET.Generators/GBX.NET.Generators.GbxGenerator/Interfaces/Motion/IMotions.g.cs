@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionsMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotions where T0 : class
 {
-    new IReadOnlyList<T0>? Motions { get; set; }
+    new IReadOnlyList<T0>? Motions
+    {
+        get => ((global::GBX.NET.Engines.Motion.CMotions)this).Motions is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, T0>(((global::GBX.NET.Engines.Motion.CMotions)this).GetMotionsInterfaceReferences, true, "Motions");
+        set => ((global::GBX.NET.Engines.Motion.CMotions)this).Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, T0>(value, false));
+    }
 }
 public partial interface IMotions : IClassVersion<global::GBX.NET.Engines.Motion.CMotions>, global::GBX.NET.Interfaces.Motion.IMotion
 {
@@ -17,7 +21,11 @@ public partial interface IMotions : IClassVersion<global::GBX.NET.Engines.Motion
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotion>? Motions { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotion>? Motions
+    {
+        get => ((global::GBX.NET.Engines.Motion.CMotions)this).Motions is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotion>(((global::GBX.NET.Engines.Motion.CMotions)this).GetMotionsInterfaceReferences, true, "Motions");
+        set => ((global::GBX.NET.Engines.Motion.CMotions)this).Motions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotion>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotion, global::GBX.NET.Interfaces.Motion.IMotion>(value, false));
+    }
 }
 
 public partial interface IMotionsTM10 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTM10, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>

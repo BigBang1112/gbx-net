@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Function;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IFuncShadersMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncShaders where T0 : class
 {
-    new IReadOnlyList<T0>? FuncShaders { get; set; }
+    new IReadOnlyList<T0>? FuncShaders
+    {
+        get => ((global::GBX.NET.Engines.Function.CFuncShaders)this).FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, T0>(((global::GBX.NET.Engines.Function.CFuncShaders)this).GetFuncShadersInterfaceReferences, true, "FuncShaders");
+        set => ((global::GBX.NET.Engines.Function.CFuncShaders)this).FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, T0>(value, false));
+    }
 }
 public partial interface IFuncShaders : IClassVersion<global::GBX.NET.Engines.Function.CFuncShaders>, global::GBX.NET.Interfaces.Function.IFuncShader
 {
@@ -17,7 +21,11 @@ public partial interface IFuncShaders : IClassVersion<global::GBX.NET.Engines.Fu
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader>? FuncShaders { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader>? FuncShaders
+    {
+        get => ((global::GBX.NET.Engines.Function.CFuncShaders)this).FuncShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShader>(((global::GBX.NET.Engines.Function.CFuncShaders)this).GetFuncShadersInterfaceReferences, true, "FuncShaders");
+        set => ((global::GBX.NET.Engines.Function.CFuncShaders)this).FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShader>(value, false));
+    }
 }
 
 public partial interface IFuncShadersTM10 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>

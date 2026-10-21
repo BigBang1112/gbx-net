@@ -15,9 +15,17 @@ public partial interface IGameCommonItemEntityModelMP4 : IGameCommonItemEntityMo
 
 public partial interface IGameCommonItemEntityModelTM2020 : IGameCommonItemEntityModel
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? Actions { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? Actions
+    {
+        get => ((global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel)this).Actions is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(((global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel)this).GetActionsInterfaceReferences, true, "Actions");
+        set => ((global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel)this).Actions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(value, false));
+    }
     global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? LightBallStates { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020?)(object?)(((global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel)this).ParticleEmitterModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel)this).ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Iso4 SoundLocPermanent { get; set; }
     string? SoundRefGrab { get; set; }
     string? SoundRefPermanent { get; set; }

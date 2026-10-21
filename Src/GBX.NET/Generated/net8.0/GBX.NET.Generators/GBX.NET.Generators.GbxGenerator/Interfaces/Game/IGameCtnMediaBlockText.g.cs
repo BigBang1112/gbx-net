@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockTextMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockText where T0 : class
 {
-    new T0? Effect { get; set; }
+    new T0? Effect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockText)this).Effect);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockText)this).Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnMediaBlockText : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockText>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
@@ -18,7 +22,11 @@ public partial interface IGameCtnMediaBlockText : IClassVersion<global::GBX.NET.
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     Vec3 Color { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectSimi? Effect { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlEffectSimi? Effect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffectSimi?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockText)this).Effect);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockText)this).Effect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectSimi node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? Text { get; set; }
 }
 

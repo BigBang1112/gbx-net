@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapApplyArrayMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArray where T0 : class
 {
-    new IReadOnlyList<T0>? BitmapAddresses { get; set; }
+    new IReadOnlyList<T0>? BitmapAddresses
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).BitmapAddresses is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, T0>(((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).GetBitmapAddressesInterfaceReferences, true, "BitmapAddresses");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, T0>(value, false));
+    }
 }
 public partial interface IPlugBitmapApplyArray : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>? BitmapAddresses { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>? BitmapAddresses
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).BitmapAddresses is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).GetBitmapAddressesInterfaceReferences, true, "BitmapAddresses");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray)this).BitmapAddresses = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress>(value, false));
+    }
 }
 
 public partial interface IPlugBitmapApplyArrayTMT : IPlugBitmapApplyArray, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>

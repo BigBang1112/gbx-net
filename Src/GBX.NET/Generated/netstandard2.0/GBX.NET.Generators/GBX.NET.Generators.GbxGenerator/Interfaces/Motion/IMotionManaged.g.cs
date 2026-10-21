@@ -14,6 +14,14 @@ public partial interface IMotionManaged : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
+public partial interface IMotionManagedTM10 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTM10
+{
+}
+
+public partial interface IMotionManagedTMPU : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMPU
+{
+}
+
 public partial interface IMotionManagedTMSX : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMSX
 {
 }
@@ -39,14 +47,6 @@ public partial interface IMotionManagedTMT : IMotionManaged, global::GBX.NET.Int
 }
 
 public partial interface IMotionManagedMP4 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionMP4
-{
-}
-
-public partial interface IMotionManagedTM10 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTM10
-{
-}
-
-public partial interface IMotionManagedTMPU : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMPU
 {
 }
 

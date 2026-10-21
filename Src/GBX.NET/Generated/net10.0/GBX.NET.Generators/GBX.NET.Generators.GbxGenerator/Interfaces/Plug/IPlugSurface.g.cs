@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSurfaceMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugSurface where T0 : class
 {
-    T0? Skel { get; set; }
+    T0? Skel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSurface)this).Skel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSurface)this).Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSurface>
 {
@@ -15,7 +19,11 @@ public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Pl
 
 public partial interface IPlugSurfaceTMF : IPlugSurface
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? Geom { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? Geom
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSurface)this).Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugSurfaceMP3 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP3>

@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockEntityMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntity where T0 : class
 {
-    new T0? RecordData { get; set; }
+    new T0? RecordData
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity)this).RecordData);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity)this).RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnMediaBlockEntity : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
@@ -26,7 +30,11 @@ public partial interface IGameCtnMediaBlockEntity : IClassVersion<global::GBX.NE
     bool NoDamage { get; set; }
     int[]? NoticeRecords { get; set; }
     Ident PlayerModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugEntRecordData? RecordData { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugEntRecordData? RecordData
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugEntRecordData?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity)this).RecordData);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity)this).RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     List<PackDesc>? SkinNames { get; set; }
     TimeSingle StartOffset { get; set; }
 }

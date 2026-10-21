@@ -6,10 +6,26 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
 {
-    T0? BitmapCubeReflectHardSpecA { get; set; }
-    T0? BitmapCubeReflectHdrAlpha2 { get; set; }
-    T0? BitmapWaterFog { get; set; }
-    T1? WeatherModel { get; set; }
+    T0? BitmapCubeReflectHardSpecA
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapCubeReflectHardSpecA);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? BitmapCubeReflectHdrAlpha2
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapCubeReflectHdrAlpha2);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? BitmapWaterFog
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapWaterFog);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).BitmapWaterFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? WeatherModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).WeatherModel);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).WeatherModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugWeatherModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers2 : global::GBX.NET.Interfaces.Scene.ISceneLayout
@@ -26,27 +42,55 @@ public interface ISceneLayoutMembers3 : global::GBX.NET.Interfaces.Scene.ISceneL
 public interface ISceneLayoutMembers4<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? FieldLocations { get; set; }
-    IReadOnlyList<T0>? Fields { get; set; }
+    IReadOnlyList<T0>? Fields
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Fields is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T0>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetFieldsInterfaceReferences, true, "Fields");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Fields = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T0>(value, false));
+    }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
     NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
-    T1? TrafficGraph { get; set; }
+    T1? TrafficGraph
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).TrafficGraph = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneTrafficGraph node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class where T2 : class
 {
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
-    IReadOnlyList<T0>? Lights { get; set; }
+    IReadOnlyList<T0>? Lights
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Lights is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneLight, T0>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetLightsInterfaceReferences, true, "Lights");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Lights = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneLight>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneLight, T0>(value, false));
+    }
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
-    IReadOnlyList<T1>? Locations { get; set; }
-    IReadOnlyList<T2>? Sectors { get; set; }
+    IReadOnlyList<T1>? Locations
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Locations is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T1>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetLocationsInterfaceReferences, true, "Locations");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Locations = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T1>(value, false));
+    }
+    IReadOnlyList<T2>? Sectors
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneSector, T2>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetSectorsInterfaceReferences, true, "Sectors");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sectors = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneSector>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneSector, T2>(value, false));
+    }
     global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
-    IReadOnlyList<T1>? Sounds { get; set; }
+    IReadOnlyList<T1>? Sounds
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, T1>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetSoundsInterfaceReferences, true, "Sounds");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, T1>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneLayoutMembers6<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
 {
-    T0? SceneFxNod { get; set; }
+    T0? SceneFxNod
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).SceneFxNod = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneFxNod node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface ISceneLayout : IClassVersion<global::GBX.NET.Engines.Scene.CSceneLayout>, global::GBX.NET.Interfaces.Scene.IScene
 {
@@ -95,7 +139,11 @@ public partial interface ISceneLayoutTMT : ISceneLayout, global::GBX.NET.Interfa
 public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>
 {
     Iso4[]? ObjectLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>? Objects { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>? Objects
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Objects is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>(((global::GBX.NET.Engines.Scene.CSceneLayout)this).GetObjectsInterfaceReferences, true, "Objects");
+        set => ((global::GBX.NET.Engines.Scene.CSceneLayout)this).Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObject>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>(value, false));
+    }
 }
 
 public partial interface ISceneLayoutTM2020 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>

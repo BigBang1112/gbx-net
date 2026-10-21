@@ -20,7 +20,11 @@ public interface IGameCtnChallengeGroupMembers2 : global::GBX.NET.Interfaces.Gam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeGroupMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup where T0 : class
 {
-    IReadOnlyList<T0>? MapFiles { get; set; }
+    IReadOnlyList<T0>? MapFiles
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).MapFiles is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, T0>(((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).GetMapFilesInterfaceReferences, true, "MapFiles");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeGroupMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup
@@ -30,7 +34,11 @@ public interface IGameCtnChallengeGroupMembers4 : global::GBX.NET.Interfaces.Gam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeGroupMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup where T0 : class
 {
-    T0? LinkedCampaign { get; set; }
+    T0? LinkedCampaign
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).LinkedCampaign);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).LinkedCampaign = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int NbBronzeCupRequired { get; set; }
     int NbBronzeMedalRequired { get; set; }
     int NbGoldCupRequired { get; set; }
@@ -59,7 +67,11 @@ public partial interface IGameCtnChallengeGroupTMPU : IGameCtnChallengeGroup, gl
 
 public partial interface IGameCtnChallengeGroupTMSX : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX? AssociatedCollection { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX? AssociatedCollection
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).AssociatedCollection);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnChallengeGroup)this).AssociatedCollection = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnChallengeGroupTMNESWC : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6

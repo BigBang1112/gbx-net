@@ -12,7 +12,11 @@ public interface IGamePlayerProfileMembers1 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileMembers2<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class
 {
-    T0? BindingsForCompatConfig { get; set; }
+    T0? BindingsForCompatConfig
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsForCompatConfig);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? NickName { get; set; }
     bool UnlockAllCheat { get; set; }
 }
@@ -56,18 +60,34 @@ public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IG
 public interface IGamePlayerProfileMembers7<T0, T1> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class where T1 : class
 {
     bool AutoConnect { get; set; }
-    T0? BindingsConfig { get; set; }
+    T0? BindingsConfig
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsConfig);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).BindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
     bool EnableChat { get; set; }
-    IReadOnlyList<T1>? InboxMessages { get; set; }
+    IReadOnlyList<T1>? InboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).InboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).GetInboxMessagesInterfaceReferences, true, "InboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(value, false));
+    }
     bool IsShowPlayerGhost { get; set; }
     int LadderMode { get; set; }
     byte MaxSpectatorCount { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? MultiLocalProfileHeaders { get; set; }
     int NetworkGameMode { get; set; }
-    IReadOnlyList<T1>? OutboxMessages { get; set; }
-    IReadOnlyList<T1>? ReadMessages { get; set; }
+    IReadOnlyList<T1>? OutboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).OutboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).GetOutboxMessagesInterfaceReferences, true, "OutboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(value, false));
+    }
+    IReadOnlyList<T1>? ReadMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).ReadMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).GetReadMessagesInterfaceReferences, true, "ReadMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T1>(value, false));
+    }
     string? ServerComment { get; set; }
     bool ShowAdvancedServerSettings { get; set; }
     DateTime? UpdatedAt { get; set; }
@@ -109,7 +129,11 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     string? AvatarName { get; set; }
     bool ClickedOnShare { get; set; }
     Checksum128 CryptedPassword { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>? CustomCampaigns { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>? CustomCampaigns
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).CustomCampaigns is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).GetCustomCampaignsInterfaceReferences, true, "CustomCampaigns");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).CustomCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>(value, false));
+    }
     int DynamicLoadScreenIndex { get; set; }
     bool EnableUnlimitedHorns { get; set; }
     byte[]? EncryptedPassword { get; set; }
@@ -121,7 +145,11 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     int LeagueCacheDuration { get; set; }
     DateTime? LeagueCacheUpdatedAt { get; set; }
     string? LeaguePath { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMF>? Leagues { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMF>? Leagues
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).Leagues is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMF>(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).GetLeaguesInterfaceReferences, true, "Leagues");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMF>(value, false));
+    }
     bool LockHigherDifficulties { get; set; }
     int MenuInternetView { get; set; }
     string? MenuLeagueFilter { get; set; }
@@ -133,7 +161,11 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX
     bool ReceiveNews { get; set; }
     DateTime? ReceivedMessagesAt { get; set; }
     float RumbleIntensity { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF? ShootParams { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF? ShootParams
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).ShootParams);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfile)this).ShootParams = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float StereoscopyAdvancedScreenDist { get; set; }
     float StereoscopyAdvancedSeparation { get; set; }
     float StereoscopyStrength01 { get; set; }

@@ -7,10 +7,6 @@ public partial interface IControlEffect : IClassVersion<global::GBX.NET.Engines.
 {
 }
 
-public partial interface IControlEffectTMF : IControlEffect
-{
-}
-
 public partial interface IControlEffectTMSX : IControlEffect
 {
 }
@@ -20,6 +16,10 @@ public partial interface IControlEffectTMNESWC : IControlEffect
 }
 
 public partial interface IControlEffectVSK5 : IControlEffect
+{
+}
+
+public partial interface IControlEffectTMF : IControlEffect
 {
 }
 

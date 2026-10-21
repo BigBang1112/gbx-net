@@ -6,14 +6,30 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFontBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class where T1 : class
 {
-    new T0? CustomMaterialModel { get; set; }
-    new T1? FallbackFont { get; set; }
+    new T0? CustomMaterialModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? FallbackFont
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
 {
     Rect Bounds { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? CustomMaterialModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFontBitmap? FallbackFont { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? CustomMaterialModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugFontBitmap? FallbackFont
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugFontBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFontBitmap)this).FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int FontAscent { get; set; }
     int FontHeight { get; set; }
     bool HasCustomMaterial { get; set; }

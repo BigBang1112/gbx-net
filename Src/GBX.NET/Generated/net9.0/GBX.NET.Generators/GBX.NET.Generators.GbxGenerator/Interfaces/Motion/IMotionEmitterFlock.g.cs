@@ -33,7 +33,11 @@ public partial interface IMotionEmitterFlockTMF : IMotionEmitterFlock, global::G
 
 public partial interface IMotionEmitterFlockMP3 : IMotionEmitterFlock, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3? FlockModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3? FlockModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3?)(object?)(((global::GBX.NET.Engines.Motion.CMotionEmitterFlock)this).FlockModel);
+        set => ((global::GBX.NET.Engines.Motion.CMotionEmitterFlock)this).FlockModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsLandingArea { get; set; }
     bool IsRepulsor { get; set; }
     float Power { get; set; }

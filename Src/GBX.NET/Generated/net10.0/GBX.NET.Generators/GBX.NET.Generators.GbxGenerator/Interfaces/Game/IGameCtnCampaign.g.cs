@@ -32,7 +32,11 @@ public interface IGameCtnCampaignMembers4 : global::GBX.NET.Interfaces.Game.IGam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCampaignMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCampaign where T0 : class
 {
-    new IReadOnlyList<T0>? ChallengeGroups { get; set; }
+    new IReadOnlyList<T0>? ChallengeGroups
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).ChallengeGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, T0>(((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).GetChallengeGroupsInterfaceReferences, true, "ChallengeGroups");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCampaignMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
@@ -61,7 +65,11 @@ public interface IGameCtnCampaignMembers9 : global::GBX.NET.Interfaces.Game.IGam
 }
 public partial interface IGameCtnCampaign : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnCampaign>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>? ChallengeGroups { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>? ChallengeGroups
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).ChallengeGroups is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>(((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).GetChallengeGroupsInterfaceReferences, true, "ChallengeGroups");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCampaign)this).ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>(value, false));
+    }
 }
 
 public partial interface IGameCtnCampaignTM10 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>

@@ -10,6 +10,7 @@ Do not edit generated files directly.
 - Gbx layouts live in `Src/GBX.NET/Engines/<Engine>/<Class>.chunkl`
 - `Generators/GBX.NET.Generators/` reads the layouts
 - A build generates C# into `Src/GBX.NET/Generated/<TargetFramework>/`
+- `Src/GBX.NET.Builders/` contains the node builder runtime and builder partials. Its build generates the builders into `Src/GBX.NET.Builders/Generated/<TargetFramework>/`. Game version interfaces stay in `Src/GBX.NET/`
 - `Templates/` contains code templates
 - `Tests/` contains test projects and Gbx fixtures
 - `Samples/` and `Tools/` contain examples and applications

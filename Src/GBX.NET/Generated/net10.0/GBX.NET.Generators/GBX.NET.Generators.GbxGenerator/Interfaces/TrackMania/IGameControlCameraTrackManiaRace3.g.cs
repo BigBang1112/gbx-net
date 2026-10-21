@@ -23,7 +23,11 @@ public interface IGameControlCameraTrackManiaRace3Members1<T0> : global::GBX.NET
     int EventTurboFovTimeUp { get; set; }
     float Far { get; set; }
     int FlyDurationBeforeFlyingBehavior { get; set; }
-    T0? FlyingLookDownFactorFromSpeedRatio { get; set; }
+    T0? FlyingLookDownFactorFromSpeedRatio
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).FlyingLookDownFactorFromSpeedRatio);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float FlyingLookDownFactorKa { get; set; }
     float FlyingLookDownFactorKi { get; set; }
     float InputBrakeFarDelta { get; set; }
@@ -37,7 +41,11 @@ public interface IGameControlCameraTrackManiaRace3Members1<T0> : global::GBX.NET
     float InputSteerFarDelta { get; set; }
     int InputSteerFarTimeDown { get; set; }
     int InputSteerFarTimeUp { get; set; }
-    T0? LookAtFactorFromUpSpeedRatio { get; set; }
+    T0? LookAtFactorFromUpSpeedRatio
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).LookAtFactorFromUpSpeedRatio);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float MinSpeed { get; set; }
     float MinSpeed2 { get; set; }
     float RadiusDamperKa { get; set; }
@@ -50,7 +58,11 @@ public interface IGameControlCameraTrackManiaRace3Members1<T0> : global::GBX.NET
     int SlerpSpeedCamUpTimeUp { get; set; }
     float SlerpSpeedDelta { get; set; }
     float SlerpSpeedFlyingBehavior { get; set; }
-    T0? SlerpSpeedModulationFromSpeed { get; set; }
+    T0? SlerpSpeedModulationFromSpeed
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).SlerpSpeedModulationFromSpeed);
+        set => ((global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3)this).SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int SlerpSpeedTimeDown { get; set; }
     int SlerpSpeedTimeUp { get; set; }
     float SlerpTargetCamUpDelta { get; set; }

@@ -6,9 +6,17 @@ namespace GBX.NET.Interfaces.Game;
 public partial interface IGameCtnPrecalcPartParams : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams>
 {
     uint CollGroupFlags { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? CollSurf { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? CollSurf
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).CollSurf);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).CollSurf = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float DecalBoxDepth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecalModel? DecalModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugDecalModel? DecalModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugDecalModel?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).DecalModel);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float DecalSizeBase { get; set; }
     float DecalSizeVar { get; set; }
     float FluidFriction { get; set; }
@@ -27,7 +35,15 @@ public partial interface IGameCtnPrecalcPartParams : IClassVersion<global::GBX.N
 
 public partial interface IGameCtnPrecalcPartParamsTMT : IGameCtnPrecalcPartParams
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? CollSurf { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT? DecalModel { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? CollSurf
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).CollSurf);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).CollSurf = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT? DecalModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).DecalModel);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams)this).DecalModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

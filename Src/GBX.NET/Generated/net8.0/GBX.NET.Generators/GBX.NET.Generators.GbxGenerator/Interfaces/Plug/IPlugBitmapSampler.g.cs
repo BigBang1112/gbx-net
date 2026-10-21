@@ -11,7 +11,11 @@ public interface IPlugBitmapSamplerMembers1 : global::GBX.NET.Interfaces.Plug.IP
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapSamplerMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler where T0 : class
 {
-    new T0? Bitmap { get; set; }
+    new T0? Bitmap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapSampler)this).Bitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapSampler)this).Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapSamplerMembers3 : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler
@@ -25,7 +29,11 @@ public interface IPlugBitmapSamplerMembers4 : global::GBX.NET.Interfaces.Plug.IP
 }
 public partial interface IPlugBitmapSampler : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapSampler)this).Bitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapSampler)this).Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float MipMapLodBias { get; set; }
     string? Name { get; set; }
 }

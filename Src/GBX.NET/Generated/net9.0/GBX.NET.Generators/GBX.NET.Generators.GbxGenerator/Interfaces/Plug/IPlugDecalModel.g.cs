@@ -6,19 +6,51 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugDecalModelMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecalModel where T0 : class where T1 : class
 {
-    new T0? DiffuseA { get; set; }
-    new T0? Icon { get; set; }
-    new T0? Normal { get; set; }
-    new T1? Solid { get; set; }
-    new T0? Specular { get; set; }
-    new T0? Sprite3dBitmap { get; set; }
+    new T0? DiffuseA
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DiffuseA);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DiffuseA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? Icon
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Icon);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? Normal
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Normal);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Normal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Solid
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Solid);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? Specular
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Specular);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Specular = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? Sprite3dBitmap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Sprite3dBitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Sprite3dBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugDecalModelMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecalModel where T0 : class where T1 : class
 {
-    IReadOnlyList<T0>? DecalModels { get; set; }
+    IReadOnlyList<T0>? DecalModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DecalModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, T0>(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).GetDecalModelsInterfaceReferences, true, "DecalModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, T0>(value, false));
+    }
     global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets { get; set; }
-    T1? Roughness { get; set; }
+    T1? Roughness
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Roughness);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Roughness = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string RoughnessRef { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -35,18 +67,42 @@ public interface IPlugDecalModelMembers3 : global::GBX.NET.Interfaces.Plug.IPlug
 }
 public partial interface IPlugDecalModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecalModel>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? DiffuseA { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? DiffuseA
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DiffuseA);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).DiffuseA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool FadeNormalAndZ { get; set; }
     uint Flags { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Icon { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Icon
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Icon);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsObsolete { get; set; }
     float MaxAngleN3dCos { get; set; }
     float MaxAngleNCos { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Normal { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Normal
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Normal);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Normal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool RandomInstances { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? Solid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Specular { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Sprite3dBitmap { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid? Solid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Solid);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Specular
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Specular);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Specular = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Sprite3dBitmap
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Sprite3dBitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecalModel)this).Sprite3dBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? Sprite3dGroupId { get; set; }
     float TexelByMeter { get; set; }
 }

@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderSubMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSub where T0 : class
 {
-    T0? ShaderToForce { get; set; }
+    T0? ShaderToForce
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub)this).ShaderToForce);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub)this).ShaderToForce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugBitmapRenderSub : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {

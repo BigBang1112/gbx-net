@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderLightOccMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderLightOcc where T0 : class
 {
-    T0? BitmapToModulate { get; set; }
+    T0? BitmapToModulate
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc)this).BitmapToModulate);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRenderLightOcc)this).BitmapToModulate = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float FovY { get; set; }
     float Opacity { get; set; }
 }

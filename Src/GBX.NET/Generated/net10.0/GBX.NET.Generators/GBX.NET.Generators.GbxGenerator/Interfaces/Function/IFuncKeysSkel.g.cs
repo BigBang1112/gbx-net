@@ -7,7 +7,11 @@ namespace GBX.NET.Interfaces.Function;
 public interface IFuncKeysSkelMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncKeysSkel where T0 : class
 {
     global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    T0? Skel { get; set; }
+    T0? Skel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Function.CFuncKeysSkel)this).Skel);
+        set => ((global::GBX.NET.Engines.Function.CFuncKeysSkel)this).Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IFuncKeysSkel : IClassVersion<global::GBX.NET.Engines.Function.CFuncKeysSkel>, global::GBX.NET.Interfaces.Function.IFuncKeys
 {

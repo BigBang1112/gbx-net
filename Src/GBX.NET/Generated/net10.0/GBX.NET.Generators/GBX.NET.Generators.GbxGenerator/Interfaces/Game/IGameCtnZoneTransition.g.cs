@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnZoneTransitionMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneTransition where T0 : class
 {
-    T0? BlockInfoTransition { get; set; }
+    T0? BlockInfoTransition
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnZoneTransition)this).BlockInfoTransition);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnZoneTransition)this).BlockInfoTransition = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }

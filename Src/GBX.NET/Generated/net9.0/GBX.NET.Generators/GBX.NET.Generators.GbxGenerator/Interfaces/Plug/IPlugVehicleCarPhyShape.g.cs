@@ -6,12 +6,20 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleCarPhyShapeMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShape where T0 : class
 {
-    new T0? MoveShape { get; set; }
+    new T0? MoveShape
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape)this).MoveShape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape)this).MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugVehicleCarPhyShape : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape>
 {
     BoxAligned CarVsCarShapeBox { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? MoveShape { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? MoveShape
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape)this).MoveShape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape)this).MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugVehicleCarPhyShapeMP4 : IPlugVehicleCarPhyShape, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>

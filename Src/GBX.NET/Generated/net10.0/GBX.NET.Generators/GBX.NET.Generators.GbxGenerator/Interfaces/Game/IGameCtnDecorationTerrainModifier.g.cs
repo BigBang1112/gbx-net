@@ -6,13 +6,21 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationTerrainModifierMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier where T0 : class
 {
-    new T0? Remapping { get; set; }
+    new T0? Remapping
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier)this).Remapping);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnDecorationTerrainModifier : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>
 {
     string? IdName { get; set; }
     string? RemapFolder { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? Remapping { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? Remapping
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkin?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier)this).Remapping);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnDecorationTerrainModifierVSK5 : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>

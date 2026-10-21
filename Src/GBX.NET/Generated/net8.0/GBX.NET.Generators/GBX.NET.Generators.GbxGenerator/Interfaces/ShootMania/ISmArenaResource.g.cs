@@ -6,12 +6,20 @@ namespace GBX.NET.Interfaces.ShootMania;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISmArenaResourceMembers1<T0> : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource where T0 : class
 {
-    new T0? RefBuffer { get; set; }
+    new T0? RefBuffer
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.ShootMania.CSmArenaResource)this).RefBuffer);
+        set => ((global::GBX.NET.Engines.ShootMania.CSmArenaResource)this).RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface ISmArenaResource : IClassVersion<global::GBX.NET.Engines.ShootMania.CSmArenaResource>
 {
     float AdditionalListenerDistanceNbSquares { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? RefBuffer { get; set; }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? RefBuffer
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer?)(object?)(((global::GBX.NET.Engines.ShootMania.CSmArenaResource)this).RefBuffer);
+        set => ((global::GBX.NET.Engines.ShootMania.CSmArenaResource)this).RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? Resources { get; set; }
 }
 

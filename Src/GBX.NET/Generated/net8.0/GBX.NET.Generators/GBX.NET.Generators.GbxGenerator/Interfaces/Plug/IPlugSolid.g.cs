@@ -8,11 +8,19 @@ public interface IPlugSolidMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IP
 {
     DateTime? FileWriteTime { get; set; }
     bool HasPreLightGen { get; set; }
-    IReadOnlyList<T0>? ParticleEmitterModels { get; set; }
+    IReadOnlyList<T0>? ParticleEmitterModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).ParticleEmitterModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, T0>(((global::GBX.NET.Engines.Plug.CPlugSolid)this).GetParticleEmitterModelsInterfaceReferences, true, "ParticleEmitterModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, T0>(value, false));
+    }
     global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
-    IReadOnlyList<T1>? Sounds { get; set; }
+    IReadOnlyList<T1>? Sounds
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Sounds is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, T1>(((global::GBX.NET.Engines.Plug.CPlugSolid)this).GetSoundsInterfaceReferences, true, "Sounds");
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, T1>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSolidMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSolid
@@ -32,8 +40,16 @@ public interface IPlugSolidMembers3 : global::GBX.NET.Interfaces.Plug.IPlugSolid
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSolidMembers4<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugSolid where T0 : class where T1 : class
 {
-    new T0? Model { get; set; }
-    new T1? Tree { get; set; }
+    new T0? Model
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSolid)this).Model);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Tree
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSolid)this).Tree);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSolidMembers5 : global::GBX.NET.Interfaces.Plug.IPlugSolid
@@ -47,9 +63,17 @@ public interface IPlugSolidMembers6 : global::GBX.NET.Interfaces.Plug.IPlugSolid
 }
 public partial interface IPlugSolid : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSolid>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? Model { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid? Model
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSolid)this).Model);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int PlugIdCounter { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugTree? Tree { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugTree? Tree
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugTree?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSolid)this).Tree);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool UseModel { get; set; }
 }
 
@@ -91,6 +115,10 @@ public partial interface IPlugSolidMP4 : IPlugSolid, global::GBX.NET.Interfaces.
 
 public partial interface IPlugSolidTM2020 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers2, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? Path { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? Path
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugPathTM2020?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSolid)this).Path);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSolid)this).Path = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

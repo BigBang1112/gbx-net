@@ -6,15 +6,39 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionShaderMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Motion.IMotionShader where T0 : class where T1 : class where T2 : class
 {
-    new T0? FuncShader { get; set; }
-    new T1? Material { get; set; }
-    new T2? Shader { get; set; }
+    new T0? FuncShader
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Material
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).Material);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? Shader
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).Shader);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionShader : IClassVersion<global::GBX.NET.Engines.Motion.CMotionShader>
 {
-    global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShader? Shader { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShader?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).Material);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugShader? Shader
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugShader?)(object?)(((global::GBX.NET.Engines.Motion.CMotionShader)this).Shader);
+        set => ((global::GBX.NET.Engines.Motion.CMotionShader)this).Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionShaderTM10 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>

@@ -7,7 +7,11 @@ namespace GBX.NET.Interfaces.Game;
 public interface IGameCtnZoneFrontierMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier where T0 : class
 {
     int BlockYOffsetFromParent { get; set; }
-    IReadOnlyList<T0>? CompatibleZones { get; set; }
+    IReadOnlyList<T0>? CompatibleZones
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).CompatibleZones is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, T0>(((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).GetCompatibleZonesInterfaceReferences, true, "CompatibleZones");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, T0>(value, false));
+    }
     bool FrontierChildBorder_AcceptPylons { get; set; }
     bool FrontierParentBorder_AcceptPylons { get; set; }
     bool FrontierStraightMiddle_AcceptPylons { get; set; }
@@ -16,7 +20,11 @@ public interface IGameCtnZoneFrontierMembers1<T0> : global::GBX.NET.Interfaces.G
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnZoneFrontierMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier where T0 : class
 {
-    new T0? BlockInfoFrontier { get; set; }
+    new T0? BlockInfoFrontier
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).BlockInfoFrontier);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnZoneFrontier : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier>, global::GBX.NET.Interfaces.Game.IGameCtnZone
 {
@@ -27,7 +35,11 @@ public partial interface IGameCtnZoneFrontier : IClassVersion<global::GBX.NET.En
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier? BlockInfoFrontier { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier? BlockInfoFrontier
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).BlockInfoFrontier);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnZoneFrontier)this).BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? ChildZoneId { get; set; }
     string? ParentZoneId { get; set; }
 }

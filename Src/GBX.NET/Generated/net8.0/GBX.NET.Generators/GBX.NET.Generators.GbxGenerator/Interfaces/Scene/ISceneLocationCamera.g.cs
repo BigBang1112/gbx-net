@@ -16,52 +16,92 @@ public partial interface ISceneLocationCamera : IClassVersion<global::GBX.NET.En
 
 public partial interface ISceneLocationCameraTM10 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTM10
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM10?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTMPU : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMPU
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMPU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTMSX : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMSX
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMSX?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTMNESWC : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMNESWC
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraVSK5 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationVSK5
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionVSK5?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTMF : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMF
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMF?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraMP3 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationMP3
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP3?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTMT : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTMT
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMT?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraMP4 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationMP4
 {
     Rect FovRect { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP4?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface ISceneLocationCameraTM2020 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTM2020
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM2020?)(object?)(((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneLocationCamera)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

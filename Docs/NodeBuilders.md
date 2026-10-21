@@ -2,9 +2,15 @@
 
 GBX.NET generates fluent builders and game version interfaces from node layouts and their game metadata. Ordinary nodes need no handwritten builder, interface, or `Create()` method.
 
+The builders are in the separate `GBX.NET.Builders` package, so an application that only reads and writes Gbx files does not carry them. The game version interfaces, such as `IGameCtnMediaClipTMF`, stay in the main `GBX.NET` package.
+
+```powershell
+dotnet add package GBX.NET.Builders
+```
+
 ## Creating a node
 
-Select a game before building. `Build()` returns the concrete node:
+The package adds a static `Create()` extension member to each node with a builder. It is declared in the node's namespace, so `using GBX.NET.Engines.Game;` is enough. Select a game before building. `Build()` returns the concrete node:
 
 ```cs
 using GBX.NET.Engines.Game;
@@ -59,7 +65,7 @@ Callers are responsible for supplying required values and compatible children. B
 
 ## Customizing generated builders
 
-Add convenience methods or optional customization hooks in partials. For example:
+Add convenience methods or optional customization hooks in partials inside the `GBX.NET.Builders` project. For example:
 
 ```cs
 namespace GBX.NET.Builders.Engines.Game;
@@ -86,7 +92,7 @@ The outer builder and game stages share a generated generic base for common sett
 
 Stages also share bases for overlapping sets of game-specific setters. Assignment descriptors are shared by the property's declaring node, including its derived builders. Matching chunk recipes share creation methods, while game-specific defaults and partial hooks still receive their selected context. Descriptors initialize on demand so an unused setter can be trimmed.
 
-Game interfaces reuse inherited members and shared member contracts. Generic contracts carry each game's child interface types. Collection adapters share projection code, follow collection replacements, and resolve references only on access. Use the named node interfaces, game interfaces, and concrete builder stages in application signatures. Generated member-group type names can change with the metadata.
+Game interfaces reuse inherited members and shared member contracts. Generic contracts carry each game's child interface types. Collection adapters share projection code, follow collection replacements, and resolve references only on access. On .NET 8 and later, the interfaces implement these projections as default interface members, so a generic member group carries one body for all of its games. This keeps the main assembly much smaller. The .NET Standard 2.0 build implements them explicitly on the nodes instead. The game interfaces are meant to be implemented by GBX.NET nodes only. Use the named node interfaces, game interfaces, and concrete builder stages in application signatures. Generated member-group type names can change with the metadata.
 
 If a member stops being common, an obsolete method in the outer builder partial can call `Set<Property>(state, value)` to preserve pending assignments. The generator supplies that helper when a handwritten partial references it, while at least one game supports the member. The same rule applies to `Set<Property>Reference` helpers. Ordinary generated setters call the shared assignment descriptors directly. Building for an unsupported game reports the incompatible member.
 
@@ -108,11 +114,11 @@ public partial class CGameCtnMediaClip;
 
 This example records the clip's existing TMF selection. Use an override only when the default recipe needs correction. Invalid contexts, duplicate declarations, unknown chunk types, and chunks without writable implementations are diagnosed. An override does not add writer support to a chunk that cannot serialize its payload.
 
-Unqualified chunks do not establish support for every game. Nodes with incomplete recipes can have generated interfaces without a callable builder for the affected game. The generated `Builders/NodeBuilderCoverage.g.cs` contains a deterministic summary of missing game metadata and incomplete recipes.
+Unqualified chunks do not establish support for every game. Nodes with incomplete recipes can have generated interfaces without a callable builder for the affected game. The generated `Builders/NodeBuilderCoverage.g.cs` in `GBX.NET.Builders` contains a deterministic summary of missing game metadata and incomplete recipes.
 
 | Diagnostic | Meaning |
 | --- | --- |
-| `GBXNETGEN300` | Invalid game API declaration, recipe metadata, or builder customization. |
+| `GBXNETGEN300` | Invalid game version API declaration, recipe metadata, or builder customization. |
 | `GBXNETGEN301` | A game recipe contains a chunk without a writable implementation. |
 | `GBXNETGEN302` | A generic or version-scoped method needs an explicit game interface contract. |
 

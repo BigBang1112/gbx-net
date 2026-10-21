@@ -6,12 +6,20 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameLeagueManagerMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameLeagueManager where T0 : class
 {
-    new IReadOnlyList<T0>? Leagues { get; set; }
+    new IReadOnlyList<T0>? Leagues
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameLeagueManager)this).Leagues is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, T0>(((global::GBX.NET.Engines.Game.CGameLeagueManager)this).GetLeaguesInterfaceReferences, true, "Leagues");
+        set => ((global::GBX.NET.Engines.Game.CGameLeagueManager)this).Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, T0>(value, false));
+    }
 }
 public partial interface IGameLeagueManager : IClassVersion<global::GBX.NET.Engines.Game.CGameLeagueManager>
 {
     int CacheDuration { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeague>? Leagues { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeague>? Leagues
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameLeagueManager)this).Leagues is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeague>(((global::GBX.NET.Engines.Game.CGameLeagueManager)this).GetLeaguesInterfaceReferences, true, "Leagues");
+        set => ((global::GBX.NET.Engines.Game.CGameLeagueManager)this).Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeague>(value, false));
+    }
     DateTime? Timestamp { get; set; }
     bool Updated { get; set; }
 }

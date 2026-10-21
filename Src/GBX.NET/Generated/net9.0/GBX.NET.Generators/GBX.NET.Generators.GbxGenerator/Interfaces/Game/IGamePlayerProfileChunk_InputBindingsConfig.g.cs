@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileChunk_InputBindingsConfigMembers1<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfig where T0 : class
 {
-    new T0? Config { get; set; }
+    new T0? Config
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig)this).Config);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig)this).Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGamePlayerProfileChunk_InputBindingsConfig : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig>
 {
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfig? Config { get; set; }
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfig? Config
+    {
+        get => (global::GBX.NET.Interfaces.Input.IInputBindingsConfig?)(object?)(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig)this).Config);
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig)this).Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGamePlayerProfileChunk_InputBindingsConfigMP3 : IGamePlayerProfileChunk_InputBindingsConfig, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3>

@@ -6,12 +6,20 @@ namespace GBX.NET.Interfaces.Hms;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsZoneMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsZone where T0 : class
 {
-    T0? BitmapCubeReflectHdrAlpha2 { get; set; }
+    T0? BitmapCubeReflectHdrAlpha2
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsZone)this).BitmapCubeReflectHdrAlpha2);
+        set => ((global::GBX.NET.Engines.Hms.CHmsZone)this).BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsZoneMembers2<T0> : global::GBX.NET.Interfaces.Hms.IHmsZone where T0 : class
 {
-    T0? BitmapCubeReflectHardSpecA { get; set; }
+    T0? BitmapCubeReflectHardSpecA
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsZone)this).BitmapCubeReflectHardSpecA);
+        set => ((global::GBX.NET.Engines.Hms.CHmsZone)this).BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IHmsZone : IClassVersion<global::GBX.NET.Engines.Hms.CHmsZone>
 {

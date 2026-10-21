@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionPlayerMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionPlayer where T0 : class
 {
-    new T0? Base { get; set; }
+    new T0? Base
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionPlayer)this).Base);
+        set => ((global::GBX.NET.Engines.Motion.CMotionPlayer)this).Base = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionPlayer : IClassVersion<global::GBX.NET.Engines.Motion.CMotionPlayer>, global::GBX.NET.Interfaces.Motion.IMotion
 {
@@ -17,7 +21,11 @@ public partial interface IMotionPlayer : IClassVersion<global::GBX.NET.Engines.M
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBase? Base { get; set; }
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBase? Base
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionCmdBase?)(object?)(((global::GBX.NET.Engines.Motion.CMotionPlayer)this).Base);
+        set => ((global::GBX.NET.Engines.Motion.CMotionPlayer)this).Base = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBase node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsPhysics { get; set; }
     uint PlayState { get; set; }
     uint SavePlayState { get; set; }

@@ -10,7 +10,7 @@ internal sealed class BuilderMemberGroup(List<GameMember> members)
         GameNodeModel node, GenerationPlan plan)
     {
         var common = new HashSet<string>(node.Common.Select(static m => m.Name), StringComparer.Ordinal);
-        var games = node.Games.Where(g => !node.RecipeErrors.ContainsKey(g)).ToArray();
+        var games = node.BuildableGames.ToArray();
         var customized = new HashSet<string>(StringComparer.Ordinal);
         foreach (var game in games)
         {

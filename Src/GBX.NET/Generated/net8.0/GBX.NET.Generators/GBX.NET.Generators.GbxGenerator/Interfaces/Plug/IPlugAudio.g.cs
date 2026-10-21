@@ -12,6 +12,14 @@ public partial interface IPlugAudio : IClassVersion<global::GBX.NET.Engines.Plug
 {
 }
 
+public partial interface IPlugAudioTM10 : IPlugAudio
+{
+}
+
+public partial interface IPlugAudioTMPU : IPlugAudio
+{
+}
+
 public partial interface IPlugAudioTMSX : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
 }
@@ -41,14 +49,6 @@ public partial interface IPlugAudioMP4 : IPlugAudio, global::GBX.NET.Interfaces.
 }
 
 public partial interface IPlugAudioTM2020 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
-{
-}
-
-public partial interface IPlugAudioTM10 : IPlugAudio
-{
-}
-
-public partial interface IPlugAudioTMPU : IPlugAudio
 {
 }
 

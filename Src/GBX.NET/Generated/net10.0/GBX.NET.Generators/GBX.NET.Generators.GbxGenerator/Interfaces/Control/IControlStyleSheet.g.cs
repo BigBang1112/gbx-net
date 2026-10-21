@@ -5,22 +5,62 @@ namespace GBX.NET.Interfaces.Control;
 
 public partial interface IControlStyleSheet : IClassVersion<global::GBX.NET.Engines.Control.CControlStyleSheet>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? Buffer { get; set; }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? Buffer
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).Buffer);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).Buffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec3[]? Colors { get; set; }
     float[]? ColorsAlpha { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? MasterStyle { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlStyle? MasterStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyle?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).MasterStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).MasterStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? Overrides { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerIconStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextBackgroundStyle { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextStyle { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlStyle? PagerIconStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyle?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerIconStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerIconStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextBackgroundStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyle?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextBackgroundStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextBackgroundStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyle? PagerTextStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyle?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IControlStyleSheetMP4 : IControlStyleSheet
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? Buffer { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? MasterStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerIconStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextBackgroundStyle { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextStyle { get; set; }
+    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? Buffer
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).Buffer);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).Buffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? MasterStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).MasterStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).MasterStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerIconStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerIconStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerIconStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextBackgroundStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextBackgroundStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextBackgroundStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? PagerTextStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlStyleSheet)this).PagerTextStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

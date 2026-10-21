@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneVehicleEnvironmentMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironment where T0 : class
 {
-    new IReadOnlyList<T0>? Materials { get; set; }
+    new IReadOnlyList<T0>? Materials
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).Materials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, T0>(((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).GetMaterialsInterfaceReferences, true, "Materials");
+        set => ((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, T0>(value, false));
+    }
 }
 public partial interface ISceneVehicleEnvironment : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? Materials { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? Materials
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).Materials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).GetMaterialsInterfaceReferences, true, "Materials");
+        set => ((global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment)this).Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(value, false));
+    }
 }
 
 public partial interface ISceneVehicleEnvironmentTMPU : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>

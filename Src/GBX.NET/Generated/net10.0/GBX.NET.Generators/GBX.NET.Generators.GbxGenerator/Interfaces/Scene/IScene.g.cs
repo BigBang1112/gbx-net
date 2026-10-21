@@ -16,7 +16,11 @@ public interface ISceneMembers2 : global::GBX.NET.Interfaces.Scene.IScene
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneMembers3<T0> : global::GBX.NET.Interfaces.Scene.IScene where T0 : class
 {
-    IReadOnlyList<T0>? MotionManagerModels { get; set; }
+    IReadOnlyList<T0>? MotionManagerModels
+    {
+        get => ((global::GBX.NET.Engines.Scene.CScene)this).MotionManagerModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, T0>(((global::GBX.NET.Engines.Scene.CScene)this).GetMotionManagerModelsInterfaceReferences, true, "MotionManagerModels");
+        set => ((global::GBX.NET.Engines.Scene.CScene)this).MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, T0>(value, false));
+    }
 }
 public partial interface IScene : IClassVersion<global::GBX.NET.Engines.Scene.CScene>
 {

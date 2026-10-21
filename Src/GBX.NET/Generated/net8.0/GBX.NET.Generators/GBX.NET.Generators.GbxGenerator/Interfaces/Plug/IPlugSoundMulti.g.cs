@@ -27,7 +27,11 @@ public interface IPlugSoundMultiMembers3 : global::GBX.NET.Interfaces.Plug.IPlug
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugSoundMultiMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti where T0 : class
 {
-    T0? VolumeFromInput { get; set; }
+    T0? VolumeFromInput
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugSoundMulti)this).VolumeFromInput);
+        set => ((global::GBX.NET.Engines.Plug.CPlugSoundMulti)this).VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugSoundMulti : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSoundMulti>, global::GBX.NET.Interfaces.Plug.IPlugSound
 {

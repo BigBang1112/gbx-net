@@ -10,7 +10,11 @@ public interface IPlugSoundEngineMembers1<T0> : global::GBX.NET.Interfaces.Plug.
     global::GBX.NET.Engines.Function.CFuncKeysReal? Alpha_Distance { get; set; }
     global::GBX.NET.Engines.Function.CFuncKeysReal? Alpha_Rpm { get; set; }
     global::GBX.NET.Engines.Function.CFuncKeysReal? Alpha_Speed { get; set; }
-    IReadOnlyList<T0>? Components { get; set; }
+    IReadOnlyList<T0>? Components
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugSoundEngine)this).Components is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSoundComponent, T0>(((global::GBX.NET.Engines.Plug.CPlugSoundEngine)this).GetComponentsInterfaceReferences, true, "Components");
+        set => ((global::GBX.NET.Engines.Plug.CPlugSoundEngine)this).Components = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSoundComponent>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSoundComponent, T0>(value, false));
+    }
     float MaxRpm { get; set; }
     global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Accel { get; set; }
     global::GBX.NET.Engines.Function.CFuncKeysReal? Volume_Distance { get; set; }

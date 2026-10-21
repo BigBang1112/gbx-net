@@ -64,7 +64,11 @@ CGameCtnMediaClip clip = CGameCtnMediaClip.Create()
 
 ### Builder shape
 
-Emit builders in `GBX.NET.Builders.Engines.<Engine>` with the name `<Node>Builder`. Emit each game stage as a nested `public partial class`, such as `CGameCtnMediaClipBuilder.TMF`. The outer builder and the node's static `Create()` method are generated partial declarations as well.
+Emit builders in `GBX.NET.Builders.Engines.<Engine>` with the name `<Node>Builder`. Emit each game stage as a nested `public partial class`, such as `CGameCtnMediaClipBuilder.TMF`. The outer builder is a generated partial declaration as well.
+
+The builders and their runtime live in the `GBX.NET.Builders` package, while the nodes and game version interfaces stay in `GBX.NET`. The builder package cannot add members to node classes from another assembly, so `Create()` is a generated C# 14 static extension member. Each node gets its own `<Node>BuilderExtensions` class in the node's namespace, because extension members with the same signature cannot share a container. A handwritten parameterless static `Create()` on the node suppresses the extension.
+
+The builder package runs the same generator with `GbxGeneratorTarget` set to `Builders`. It receives the layouts and the handwritten `GBX.NET` sources as additional files and adds those sources to its analysis compilation. The generation model therefore sees the same node, chunk, and interface declarations as the main library, which keeps builder availability consistent with the game interfaces.
 
 The outer builder exposes the intersection of writable members available in every emitted game stage. Each game stage exposes all members for that game, including the common members, and every fluent method returns its exact stage type. A game stage does not inherit the outer builder's game selectors. This avoids inherited methods that lose the selected type or let a caller switch games accidentally.
 
@@ -352,7 +356,7 @@ Implement the feature inside `GBX.NET.Generators` so its outputs consume the sam
 
 1. Extend type inventory to include handwritten builders and interfaces. `ExistingTypeAnalysis` currently filters primarily to engine types and the root namespace, so it does not yet inventory these namespaces.
 2. Build a `GameNodeModel` and per-game creation recipes from the existing `GenerationPlan`, field mappings, and handwritten contracts.
-3. Use `GameApiWriter` to emit partial interfaces and explicit node forwarding implementations.
+3. Use `GameVersionWriter` to emit partial interfaces and explicit node forwarding implementations.
 4. Use the same writer for factories, pending state, common and game stages, and typed construction.
 5. Generate diagnostics and a deterministic coverage summary from the same model.
 

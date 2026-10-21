@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Hms;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsItemMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsItem where T0 : class
 {
-    new T0? Solid { get; set; }
+    new T0? Solid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsItem)this).Solid);
+        set => ((global::GBX.NET.Engines.Hms.CHmsItem)this).Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IHmsItem : IClassVersion<global::GBX.NET.Engines.Hms.CHmsItem>
 {
@@ -25,7 +29,11 @@ public partial interface IHmsItem : IClassVersion<global::GBX.NET.Engines.Hms.CH
     bool LightLensFlareEnable { get; set; }
     uint ShadowCasterGroupMask { get; set; }
     uint ShadowReceiverGroupMask { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? Solid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid? Solid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid?)(object?)(((global::GBX.NET.Engines.Hms.CHmsItem)this).Solid);
+        set => ((global::GBX.NET.Engines.Hms.CHmsItem)this).Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool UseAccurateBBoxTest { get; set; }
     bool VIdBackground { get; set; }
     bool VIdFoliage { get; set; }

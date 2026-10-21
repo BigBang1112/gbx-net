@@ -9,7 +9,11 @@ public interface IGameUserProfileMembers1<T0> : global::GBX.NET.Interfaces.Game.
     uint CamName { get; set; }
     global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile { get; set; }
     global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes { get; set; }
-    T0? InputBindingsConfig { get; set; }
+    T0? InputBindingsConfig
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameUserProfile)this).InputBindingsConfig);
+        set => ((global::GBX.NET.Engines.Game.CGameUserProfile)this).InputBindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings { get; set; }
 }
 public partial interface IGameUserProfile : IClassVersion<global::GBX.NET.Engines.Game.CGameUserProfile>
@@ -48,7 +52,11 @@ public partial interface IGameUserProfileTM2020 : IGameUserProfile
     string? ClubTag { get; set; }
     bool Editor_ShowHelp { get; set; }
     uint GoldMedalCount { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>? InputBindingsConfigs { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>? InputBindingsConfigs
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameUserProfile)this).InputBindingsConfigs is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(((global::GBX.NET.Engines.Game.CGameUserProfile)this).GetInputBindingsConfigsInterfaceReferences, true, "InputBindingsConfigs");
+        set => ((global::GBX.NET.Engines.Game.CGameUserProfile)this).InputBindingsConfigs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(value, false));
+    }
     global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsScreenshot { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnMediaShootParams? ShootParamsVideo { get; set; }
     uint SilverMedalCount { get; set; }

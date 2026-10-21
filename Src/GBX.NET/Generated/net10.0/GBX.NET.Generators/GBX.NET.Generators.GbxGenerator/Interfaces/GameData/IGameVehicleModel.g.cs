@@ -6,14 +6,30 @@ namespace GBX.NET.Interfaces.GameData;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameVehicleModelMembers1<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameVehicleModel where T0 : class where T1 : class
 {
-    new T0? PhyModel { get; set; }
-    new T1? VisModel { get; set; }
+    new T0? PhyModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).PhyModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).PhyModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? VisModel
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).VisModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).VisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameVehicleModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameVehicleModel>
 {
     global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? ItemOccupantSlotModels { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel? PhyModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel? VisModel { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel? PhyModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel?)(object?)(((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).PhyModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).PhyModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel? VisModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel?)(object?)(((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).VisModel);
+        set => ((global::GBX.NET.Engines.GameData.CGameVehicleModel)this).VisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameVehicleModelMP4 : IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4>

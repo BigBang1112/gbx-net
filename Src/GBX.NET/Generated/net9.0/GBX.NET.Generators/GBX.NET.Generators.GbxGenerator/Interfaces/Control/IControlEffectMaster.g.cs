@@ -6,31 +6,119 @@ namespace GBX.NET.Interfaces.Control;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IControlEffectMasterMembers1<T0, T1> : global::GBX.NET.Interfaces.Control.IControlEffectMaster where T0 : class where T1 : class
 {
-    new T0? ActionEffect { get; set; }
-    new T0? FocusEffect { get; set; }
-    new T0? FocusGainedByAnotherEffect { get; set; }
-    new T0? FocusGainedEffect { get; set; }
-    new T0? FocusLostByAnotherEffect { get; set; }
-    new T0? FocusLostEffect { get; set; }
-    new T0? HidingEffect { get; set; }
-    new T0? ManagedEffect { get; set; }
-    new T0? ShowingEffect { get; set; }
-    new T0? SleepingEffect { get; set; }
-    new T1? SpecialEffect { get; set; }
+    new T0? ActionEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ActionEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? FocusEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? FocusGainedByAnotherEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedByAnotherEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? FocusGainedEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? FocusLostByAnotherEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostByAnotherEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? FocusLostEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? HidingEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).HidingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? ManagedEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ManagedEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? ShowingEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ShowingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? SleepingEffect
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SleepingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? SpecialEffect
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SpecialEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IControlEffectMaster : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectMaster>
 {
-    global::GBX.NET.Interfaces.Control.IControlEffect? ActionEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? FocusEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? FocusGainedByAnotherEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? FocusGainedEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? FocusLostByAnotherEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? FocusLostEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? HidingEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? ManagedEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? ShowingEffect { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffect? SleepingEffect { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? SpecialEffect { get; set; }
+    global::GBX.NET.Interfaces.Control.IControlEffect? ActionEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ActionEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? FocusEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? FocusGainedByAnotherEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedByAnotherEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? FocusGainedEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? FocusLostByAnotherEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostByAnotherEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? FocusLostEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? HidingEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).HidingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? ManagedEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ManagedEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? ShowingEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ShowingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlEffect? SleepingEffect
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlEffect?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SleepingEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? SpecialEffect
+    {
+        get => (global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer?)(object?)(((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SpecialEffect);
+        set => ((global::GBX.NET.Engines.Control.CControlEffectMaster)this).SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IControlEffectMasterTMSX : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>

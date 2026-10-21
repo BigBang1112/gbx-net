@@ -16,14 +16,30 @@ public interface IPlugShaderMembers1 : global::GBX.NET.Interfaces.Plug.IPlugShad
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugShader where T0 : class
 {
-    IReadOnlyList<T0>? LegacyCustomShaders { get; set; }
+    IReadOnlyList<T0>? LegacyCustomShaders
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShader)this).LegacyCustomShaders is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, T0>(((global::GBX.NET.Engines.Plug.CPlugShader)this).GetLegacyCustomShadersInterfaceReferences, true, "LegacyCustomShaders");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShader, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderMembers3<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugShader where T0 : class where T1 : class where T2 : class
 {
-    new T0? FuncShader { get; set; }
-    new IReadOnlyList<T1>? Passes { get; set; }
-    new T2? SolidWiredApply { get; set; }
+    new T0? FuncShader
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShader)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<T1>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShader)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, T1>(((global::GBX.NET.Engines.Plug.CPlugShader)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, T1>(value, false));
+    }
+    new T2? SolidWiredApply
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShader)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugShaderMembers4 : global::GBX.NET.Interfaces.Plug.IPlugShader
@@ -32,11 +48,23 @@ public interface IPlugShaderMembers4 : global::GBX.NET.Interfaces.Plug.IPlugShad
 }
 public partial interface IPlugShader : IClassVersion<global::GBX.NET.Engines.Plug.CPlugShader>
 {
-    global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncShader?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShader)this).FuncShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float LightMapQuality { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialFx? MaterialFx { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPass>? Passes { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapApply? SolidWiredApply { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPass>? Passes
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugShader)this).Passes is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPass>(((global::GBX.NET.Engines.Plug.CPlugShader)this).GetPassesInterfaceReferences, true, "Passes");
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPass>(value, false));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapApply? SolidWiredApply
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapApply?)(object?)(((global::GBX.NET.Engines.Plug.CPlugShader)this).SolidWiredApply);
+        set => ((global::GBX.NET.Engines.Plug.CPlugShader)this).SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     ushort VisibleIdFlags { get; set; }
 }
 

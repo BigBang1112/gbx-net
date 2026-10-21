@@ -20,14 +20,26 @@ public interface IGameCtnCollectionMembers3<T0, T1, T2> : global::GBX.NET.Interf
     float BoardSquareBorder { get; set; }
     float BoardSquareHeight { get; set; }
     string[]? DecalsTypesId { get; set; }
-    T0? FidFuncShaderCloudsX2 { get; set; }
-    T1? FidPlugBitmapCloudsX2 { get; set; }
+    T0? FidFuncShaderCloudsX2
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).FidFuncShaderCloudsX2);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).FidFuncShaderCloudsX2 = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShaderLayerUV node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? FidPlugBitmapCloudsX2
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).FidPlugBitmapCloudsX2);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).FidPlugBitmapCloudsX2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? FolderAdditionalItem1 { get; set; }
     string? FolderAdditionalItem2 { get; set; }
     string? FolderDecalModels { get; set; }
     string? FolderMacroDecals { get; set; }
     int LightMapMapper { get; set; }
-    T2? OffZone_FogMatter { get; set; }
+    T2? OffZone_FogMatter
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).OffZone_FogMatter);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).OffZone_FogMatter = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogMatter node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
     float TerrainHeightOffset { get; set; }
     float VisMeshLodDistScale { get; set; }
@@ -37,8 +49,16 @@ public interface IGameCtnCollectionMembers3<T0, T1, T2> : global::GBX.NET.Interf
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers4<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class where T1 : class
 {
-    T0? VehicleStyles { get; set; }
-    T1? WaterG_BitmapNormal { get; set; }
+    T0? VehicleStyles
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).VehicleStyles);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).VehicleStyles = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? WaterG_BitmapNormal
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).WaterG_BitmapNormal);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).WaterG_BitmapNormal = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float WaterG_BumpScale { get; set; }
     float WaterG_BumpScaleUV { get; set; }
     float WaterG_BumpSpeedUV { get; set; }
@@ -47,11 +67,31 @@ public interface IGameCtnCollectionMembers4<T0, T1> : global::GBX.NET.Interfaces
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class where T1 : class where T2 : class
 {
-    new IReadOnlyList<T0>? CompleteZoneList { get; set; }
-    new T1? DefaultDecoration { get; set; }
-    new T0? DefaultZone { get; set; }
-    new T2? IconFid { get; set; }
-    new T2? IconSmallFid { get; set; }
+    new IReadOnlyList<T0>? CompleteZoneList
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, T0>(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, T0>(value, false));
+    }
+    new T1? DefaultDecoration
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultDecoration);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? DefaultZone
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultZone);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? IconFid
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T2? IconSmallFid
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconSmallFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
@@ -87,10 +127,18 @@ public interface IGameCtnCollectionMembers11<T0> : global::GBX.NET.Interfaces.Ga
     float CameraMinHeight { get; set; }
     float ColorVertexMax { get; set; }
     float ColorVertexMin { get; set; }
-    T0? LoadScreenFid { get; set; }
+    T0? LoadScreenFid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).LoadScreenFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).LoadScreenFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec2 MapCoordElem { get; set; }
     Vec2 MapCoordIcon { get; set; }
-    T0? MapFid { get; set; }
+    T0? MapFid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).MapFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).MapFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Rect MapRect { get; set; }
     bool ShadowCastBack { get; set; }
     float ShadowSoftSizeInWorld { get; set; }
@@ -98,7 +146,11 @@ public interface IGameCtnCollectionMembers11<T0> : global::GBX.NET.Interfaces.Ga
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers12<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
 {
-    T0? MarksModel { get; set; }
+    T0? MarksModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).MarksModel);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).MarksModel = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers13 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
@@ -108,7 +160,11 @@ public interface IGameCtnCollectionMembers13 : global::GBX.NET.Interfaces.Game.I
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers14<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
 {
-    IReadOnlyList<T0>? ReplacementTerrainModifiers { get; set; }
+    IReadOnlyList<T0>? ReplacementTerrainModifiers
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ReplacementTerrainModifiers is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, T0>(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GetReplacementTerrainModifiersInterfaceReferences, true, "ReplacementTerrainModifiers");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ReplacementTerrainModifiers = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnCollectionMembers15<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
@@ -118,7 +174,11 @@ public interface IGameCtnCollectionMembers15<T0> : global::GBX.NET.Interfaces.Ga
     string? FolderDecoration { get; set; }
     string? FolderItem { get; set; }
     string? FolderMenusIcons { get; set; }
-    IReadOnlyList<T0>? ParticleEmitterModelsFids { get; set; }
+    IReadOnlyList<T0>? ParticleEmitterModelsFids
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ParticleEmitterModelsFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, T0>(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GetParticleEmitterModelsFidsInterfaceReferences, true, "ParticleEmitterModelsFids");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ParticleEmitterModelsFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, T0>(value, false));
+    }
     global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 public partial interface IGameCtnCollection : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnCollection>
@@ -126,11 +186,31 @@ public partial interface IGameCtnCollection : IClassVersion<global::GBX.NET.Engi
     int BlocksShadow { get; set; }
     global::GBX.NET.Id? Collection { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.ECollectionType CollectionType { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZone>? CompleteZoneList { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecoration? DefaultDecoration { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnZone? DefaultZone { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? IconFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? IconSmallFid { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZone>? CompleteZoneList
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).CompleteZoneList is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZone>(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GetCompleteZoneListInterfaceReferences, true, "CompleteZoneList");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).CompleteZoneList = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZone>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZone>(value, false));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnDecoration? DefaultDecoration
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnDecoration?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultDecoration);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultDecoration = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecoration node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Game.IGameCtnZone? DefaultZone
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnZone?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultZone);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultZone = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? IconFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? IconSmallFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconSmallFid);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).IconSmallFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsEditable { get; set; }
     bool NeedUnlock { get; set; }
     int SortIndex { get; set; }
@@ -182,19 +262,47 @@ public partial interface IGameCtnCollectionMP4 : IGameCtnCollection, global::GBX
 
 public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugFogMatterTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers4<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers12<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020? AdnRandomGenList { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_155 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_2x3 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10A { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10B { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10C { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020? AdnRandomGenList
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).AdnRandomGenList);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).AdnRandomGenList = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_155
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_155);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_155 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_2x3
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_2x3);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_2x3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10A
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10A);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10A = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10B
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10B);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10B = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10C
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10C);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).BitmapDisplayControlDefaultTVProgram_64x10C = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement16x9 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement1x1 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement2x1 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement2x3 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement4x1 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidItemFlag { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? ColorBlindnessModifier { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? ColorBlindnessModifier
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ColorBlindnessModifier);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).ColorBlindnessModifier = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Game.CGameCtnCollection.SCustomizableDeco? CustomDeco { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecalSponsor1x1Big { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecalSponsor4x1 { get; set; }
@@ -202,8 +310,16 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection, global::
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x9 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecorationScreen8x1 { get; set; }
     int DecalFade_cBlock_FullDensity { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? DefaultMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? DefaultSpawnClipList { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? DefaultMaterial
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultMaterial);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? DefaultSpawnClipList
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultSpawnClipList);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).DefaultSpawnClipList = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMediaClipList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float EditorHelperAmbientScale { get; set; }
     global::GBX.NET.Engines.Game.CGameBlockInfoGroups? FidBlockInfoGroups { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? FidBlockInfoInventory { get; set; }
@@ -217,7 +333,11 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection, global::
     string? FolderMaterialModifiers { get; set; }
     string? FolderSpectatorSkins { get; set; }
     string? FolderSpectators { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? GlobalMaterialModifier { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? GlobalMaterialModifier
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GlobalMaterialModifier);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).GlobalMaterialModifier = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Meta.NPlugItemPlacement_SGroups? ItemPlacementGroups { get; set; }
     int LegacyVehicleTransformFlags { get; set; }
     NodeRefList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>? ReplacementTerrainModifiers { get; set; }
@@ -227,7 +347,11 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection, global::
     uint TurboColor_Turbo { get; set; }
     uint TurboColor_Turbo2 { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.EVehicleEnvLayer VehicleEnvLayer { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? VehicleEnvLayer_FidBitmap { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? VehicleEnvLayer_FidBitmap
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnCollection)this).VehicleEnvLayer_FidBitmap);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnCollection)this).VehicleEnvLayer_FidBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Ident? VehicleTransform_CarDesert { get; set; }
     Ident? VehicleTransform_CarRally { get; set; }
     Ident? VehicleTransform_CarSnow { get; set; }

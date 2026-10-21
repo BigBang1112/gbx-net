@@ -20,8 +20,16 @@ public partial interface IGameManiaPlanetTMF : IGameManiaPlanet, global::GBX.NET
 
 public partial interface IGameManiaPlanetMP4 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4
 {
-    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? CoverFlowDesc { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? DefaultStyleSheet { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? CoverFlowDesc
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameManiaPlanet)this).CoverFlowDesc);
+        set => ((global::GBX.NET.Engines.Game.CGameManiaPlanet)this).CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? DefaultStyleSheet
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameManiaPlanet)this).DefaultStyleSheet);
+        set => ((global::GBX.NET.Engines.Game.CGameManiaPlanet)this).DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? ManiaTitlesFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid { get; set; }
 }

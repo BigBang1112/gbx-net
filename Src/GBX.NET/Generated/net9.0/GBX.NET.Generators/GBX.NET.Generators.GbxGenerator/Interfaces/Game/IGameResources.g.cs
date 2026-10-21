@@ -27,12 +27,32 @@ public partial interface IGameResourcesTMF : IGameResources, global::GBX.NET.Int
 
 public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers1, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Base { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Editor { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Menus { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Base
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Base);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Base = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Editor
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Editor);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Editor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Menus
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Menus);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).AudioBalance_Menus = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? BasicDialogsFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeMenuManiaPlanet3d { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapTeamEmblems { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeMenuManiaPlanet3d
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).BitmapCubeMenuManiaPlanet3d);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).BitmapCubeMenuManiaPlanet3d = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapTeamEmblems
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).BitmapTeamEmblems);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).BitmapTeamEmblems = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetMenu1Fid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetMenu2Fid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardPlanetServerMainFid { get; set; }
@@ -123,7 +143,11 @@ public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Int
     global::GBX.NET.Engines.MwFoundations.CMwNod? SceneFxNodRoot { get; set; }
     global::GBX.NET.Engines.Game.CGameResources.NamedNod[]? Sounds { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationBronzeFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? StationGameSkin { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? StationGameSkin
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameResources)this).StationGameSkin);
+        set => ((global::GBX.NET.Engines.Game.CGameResources)this).StationGameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationGoldFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationServerFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? StationSilverFid { get; set; }

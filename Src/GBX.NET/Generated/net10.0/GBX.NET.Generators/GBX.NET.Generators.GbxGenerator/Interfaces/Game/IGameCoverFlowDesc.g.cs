@@ -7,7 +7,11 @@ public partial interface IGameCoverFlowDesc : IClassVersion<global::GBX.NET.Engi
 {
     Iso4 BoxesGroup_RelLoc { get; set; }
     global::GBX.NET.Engines.Game.CGameCoverFlowDesc.Camera[]? Cameras { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? GameSkin { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? GameSkin
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkin?)(object?)(((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).GameSkin);
+        set => ((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? GameSkinFolder { get; set; }
     global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearGroup[]? LinearGroups { get; set; }
     global::GBX.NET.Engines.Game.CGameCoverFlowDesc.LinearSoundSet[]? LinearSounds { get; set; }
@@ -17,7 +21,11 @@ public partial interface IGameCoverFlowDesc : IClassVersion<global::GBX.NET.Engi
     Iso4 StationsGroup_HomeManialinkRelLoc { get; set; }
     Iso4 StationsGroup_ListRelLoc { get; set; }
     Iso4 StationsGroup_MainRelLoc { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameManialink3dStyle? Style { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameManialink3dStyle? Style
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameManialink3dStyle?)(object?)(((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).Style);
+        set => ((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float TimeRemapped { get; set; }
     float TransitionRotateAngleDegNext { get; set; }
     float TransitionRotateAngleDegPrev { get; set; }
@@ -25,7 +33,15 @@ public partial interface IGameCoverFlowDesc : IClassVersion<global::GBX.NET.Engi
 
 public partial interface IGameCoverFlowDescMP4 : IGameCoverFlowDesc
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? GameSkin { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? Style { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? GameSkin
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).GameSkin);
+        set => ((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).GameSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4? Style
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameManialink3dStyleMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).Style);
+        set => ((global::GBX.NET.Engines.Game.CGameCoverFlowDesc)this).Style = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManialink3dStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

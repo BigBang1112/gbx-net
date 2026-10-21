@@ -12,6 +12,14 @@ public partial interface IMotion : IClassVersion<global::GBX.NET.Engines.Motion.
 {
 }
 
+public partial interface IMotionTM10 : IMotion
+{
+}
+
+public partial interface IMotionTMPU : IMotion
+{
+}
+
 public partial interface IMotionTMSX : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
 }
@@ -37,14 +45,6 @@ public partial interface IMotionTMT : IMotion, global::GBX.NET.Interfaces.Motion
 }
 
 public partial interface IMotionMP4 : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
-{
-}
-
-public partial interface IMotionTM10 : IMotion
-{
-}
-
-public partial interface IMotionTMPU : IMotion
 {
 }
 

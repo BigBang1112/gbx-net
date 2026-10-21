@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugFxLightningMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugFxLightning where T0 : class
 {
-    new T0? Sound { get; set; }
+    new T0? Sound
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFxLightning)this).Sound);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFxLightning)this).Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugFxLightning : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFxLightning>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? Sound
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Plug.CPlugFxLightning)this).Sound);
+        set => ((global::GBX.NET.Engines.Plug.CPlugFxLightning)this).Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugFxLightningMP3 : IPlugFxLightning, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>

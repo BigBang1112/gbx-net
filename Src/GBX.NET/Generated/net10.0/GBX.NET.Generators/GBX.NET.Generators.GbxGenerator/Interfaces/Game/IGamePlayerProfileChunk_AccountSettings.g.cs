@@ -12,9 +12,21 @@ public interface IGamePlayerProfileChunk_AccountSettingsMembers1 : global::GBX.N
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGamePlayerProfileChunk_AccountSettingsMembers2<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings where T0 : class
 {
-    new IReadOnlyList<T0>? InboxMessages { get; set; }
-    new IReadOnlyList<T0>? OutboxMessages { get; set; }
-    new IReadOnlyList<T0>? ReadMessages { get; set; }
+    new IReadOnlyList<T0>? InboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).InboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetInboxMessagesInterfaceReferences, true, "InboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(value, false));
+    }
+    new IReadOnlyList<T0>? OutboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).OutboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetOutboxMessagesInterfaceReferences, true, "OutboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(value, false));
+    }
+    new IReadOnlyList<T0>? ReadMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).ReadMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetReadMessagesInterfaceReferences, true, "ReadMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, T0>(value, false));
+    }
 }
 public partial interface IGamePlayerProfileChunk_AccountSettings : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings>
 {
@@ -43,7 +55,11 @@ public partial interface IGamePlayerProfileChunk_AccountSettings : IClassVersion
     byte FameStars { get; set; }
     byte Flags { get; set; }
     byte Flags2 { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? InboxMessages { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? InboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).InboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetInboxMessagesInterfaceReferences, true, "InboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
+    }
     string? LastSessionId { get; set; }
     string? LastUsedMSAddress { get; set; }
     string? LastUsedMSPath { get; set; }
@@ -64,11 +80,19 @@ public partial interface IGamePlayerProfileChunk_AccountSettings : IClassVersion
     int OnlineRemainingNickNamesChangesCount { get; set; }
     string? OnlineSupportKey { get; set; }
     string? OnlineValidationCode { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? OutboxMessages { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? OutboxMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).OutboxMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetOutboxMessagesInterfaceReferences, true, "OutboxMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
+    }
     global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? PlayerTagsConfig { get; set; }
     int PrivacyPolicyVersion { get; set; }
     string? RSAPrivateKey { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? ReadMessages { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? ReadMessages
+    {
+        get => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).ReadMessages is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).GetReadMessagesInterfaceReferences, true, "ReadMessages");
+        set => ((global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings)this).ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
+    }
     bool ReceiveNews { get; set; }
     DateTime? ReceivedMessagesAt { get; set; }
     float RumbleIntensity { get; set; }

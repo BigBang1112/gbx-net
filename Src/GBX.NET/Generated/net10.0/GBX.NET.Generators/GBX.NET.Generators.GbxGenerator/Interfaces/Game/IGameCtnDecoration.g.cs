@@ -9,7 +9,11 @@ public interface IGameCtnDecorationMembers1<T0> : global::GBX.NET.Interfaces.Gam
     string? DecorationZoneFrontierId { get; set; }
     bool IsWaterOutsidePlayField { get; set; }
     string? VehicleFxFolder { get; set; }
-    T0? VehicleFxSkin { get; set; }
+    T0? VehicleFxSkin
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).VehicleFxSkin);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).VehicleFxSkin = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnDecoration
@@ -19,25 +23,53 @@ public interface IGameCtnDecorationMembers2 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
 {
-    T0? DecoratorSolidWarp { get; set; }
+    T0? DecoratorSolidWarp
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoratorSolidWarp);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoratorSolidWarp = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDecoratorSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMembers4<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class where T1 : class where T2 : class
 {
-    T0? DecoAudio { get; set; }
-    T1? DecoMood { get; set; }
-    T2? DecoSize { get; set; }
+    T0? DecoAudio
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoAudio);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoAudio = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationAudio node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? DecoMood
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoMood);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoMood = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationMood node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? DecoSize
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoSize);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoSize = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationSize node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
 {
-    T0? DecoAudioAmbient { get; set; }
+    T0? DecoAudioAmbient
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoAudioAmbient);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoAudioAmbient = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
 {
-    T0? TerrainModifierBase { get; set; }
-    T0? TerrainModifierCovered { get; set; }
+    T0? TerrainModifierBase
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).TerrainModifierBase);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).TerrainModifierBase = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? TerrainModifierCovered
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).TerrainModifierCovered);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).TerrainModifierCovered = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnDecoration : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecoration>, global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
@@ -88,7 +120,11 @@ public partial interface IGameCtnDecorationMP4 : IGameCtnDecoration, global::GBX
 
 public partial interface IGameCtnDecorationTM2020 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020? DecoMap { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020? DecoMap
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoMap);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecoration)this).DecoMap = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DecoMapLightMap { get; set; }
 }
 

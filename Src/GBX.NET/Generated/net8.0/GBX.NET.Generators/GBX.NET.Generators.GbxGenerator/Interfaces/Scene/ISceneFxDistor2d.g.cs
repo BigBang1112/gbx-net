@@ -12,12 +12,20 @@ public partial interface ISceneFxDistor2d : IClassVersion<global::GBX.NET.Engine
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Plug.IPlugShaderApply? BitmapDistor { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugShaderApply? BitmapDistor
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderApply?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor);
+        set => ((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float DistorScale { get; set; }
 }
 
 public partial interface ISceneFxDistor2dTMF : ISceneFxDistor2d, global::GBX.NET.Interfaces.Scene.ISceneFxCompoTMF
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF? BitmapDistor { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF? BitmapDistor
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugShaderApplyTMF?)(object?)(((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor);
+        set => ((global::GBX.NET.Engines.Scene.CSceneFxDistor2d)this).BitmapDistor = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShaderApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

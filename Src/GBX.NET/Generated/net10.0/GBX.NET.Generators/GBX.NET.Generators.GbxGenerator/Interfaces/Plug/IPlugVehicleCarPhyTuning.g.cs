@@ -112,15 +112,31 @@ public interface IPlugVehicleCarPhyTuningMembers1 : global::GBX.NET.Interfaces.P
 public interface IPlugVehicleCarPhyTuningMembers2<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuning where T0 : class where T1 : class where T2 : class
 {
     PlugCurve? AccelCurveTargetSpeedTruck { get; set; }
-    T0? CamModelIronSight { get; set; }
-    T0? CamModelRear { get; set; }
-    T1? GearBox { get; set; }
+    T0? CamModelIronSight
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelIronSight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelIronSight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? CamModelRear
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelRear);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CamModelRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? GearBox
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GearBox);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GearBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float MagneticHackAccelCoef_Val { get; set; }
     bool? MagneticHackDamperForceAllways { get; set; }
     bool MagneticHackEnabled { get; set; }
     float MagneticHackSpeedOffset_Val { get; set; }
     int MagneticKeepContactDuration { get; set; }
-    T2? Shape { get; set; }
+    T2? Shape
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).Shape);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     PlugCurve? TargetSpeedFromSpeedTruck { get; set; }
     PlugCurve? TargetSpeedFromSpeedTruckRear { get; set; }
     float TurboBrakeCoef { get; set; }
@@ -164,13 +180,21 @@ public interface IPlugVehicleCarPhyTuningMembers6 : global::GBX.NET.Interfaces.P
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleCarPhyTuningMembers7<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuning where T0 : class
 {
-    T0? WaterSplashFromSpeed { get; set; }
+    T0? WaterSplashFromSpeed
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).WaterSplashFromSpeed);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).WaterSplashFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleCarPhyTuningMembers8<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuning where T0 : class
 {
     float BrakeCoolingSpeed { get; set; }
-    T0? BrakeHeatSpeedFromFBrake { get; set; }
+    T0? BrakeHeatSpeedFromFBrake
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).BrakeHeatSpeedFromFBrake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).BrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float M6RpmGainCoefOnGearDown { get; set; }
     float M6RpmGainOnTakeOff { get; set; }
     float M6RpmLossCoefOnGearUp { get; set; }
@@ -288,8 +312,16 @@ public interface IPlugVehicleCarPhyTuningMembers11<T0, T1> : global::GBX.NET.Int
     float? BigCarControlCoef { get; set; }
     float? BigCarGravityCoef { get; set; }
     float? BigCarScale { get; set; }
-    IReadOnlyList<T0>? CameraModels { get; set; }
-    IReadOnlyList<T0>? CameraModels_Console { get; set; }
+    IReadOnlyList<T0>? CameraModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, T0>(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GetCameraModelsInterfaceReferences, true, "CameraModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, T0>(value, false));
+    }
+    IReadOnlyList<T0>? CameraModels_Console
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels_Console is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, T0>(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).GetCameraModels_ConsoleInterfaceReferences, true, "CameraModels_Console");
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, T0>(value, false));
+    }
     float? CatchUpAccelFactor0 { get; set; }
     float? CatchUpAccelFactor1 { get; set; }
     float? CatchUpAccelFactor2 { get; set; }
@@ -318,7 +350,11 @@ public interface IPlugVehicleCarPhyTuningMembers11<T0, T1> : global::GBX.NET.Int
     float MagneticForce { get; set; }
     float MagneticGravity { get; set; }
     PlugCurve? MagneticSuperDragForceFromSpeedKmh { get; set; }
-    T1? Materials { get; set; }
+    T1? Materials
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).Materials);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyTuning)this).Materials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     PlugCurve? Normal_InputSteerSensitivityFromSpeed { get; set; }
     float? TurboCheatAccelCoef { get; set; }
     int? TurboCheatAccelCoefDuration { get; set; }

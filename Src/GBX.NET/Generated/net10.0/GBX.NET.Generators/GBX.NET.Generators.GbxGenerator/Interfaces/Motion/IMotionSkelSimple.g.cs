@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionSkelSimpleMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple where T0 : class
 {
-    new T0? SkelValues { get; set; }
+    new T0? SkelValues
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkelSimple)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkelSimple)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionSkelSimple : IClassVersion<global::GBX.NET.Engines.Motion.CMotionSkelSimple>
 {
-    global::GBX.NET.Interfaces.Function.IFuncSkelValues? SkelValues { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncSkelValues? SkelValues
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncSkelValues?)(object?)(((global::GBX.NET.Engines.Motion.CMotionSkelSimple)this).SkelValues);
+        set => ((global::GBX.NET.Engines.Motion.CMotionSkelSimple)this).SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionSkelSimpleTM10 : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10>

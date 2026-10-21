@@ -6,10 +6,18 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameManiaTitleMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameManiaTitle where T0 : class
 {
-    T0? AnimEditor_DefaultChallenge { get; set; }
+    T0? AnimEditor_DefaultChallenge
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameManiaTitle)this).AnimEditor_DefaultChallenge);
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).AnimEditor_DefaultChallenge = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? BoxCaseManialinkUrl { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? EditorMapType { get; set; }
-    IReadOnlyList<T0>? EditorSimpleChallenges { get; set; }
+    IReadOnlyList<T0>? EditorSimpleChallenges
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).EditorSimpleChallenges is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, T0>(((global::GBX.NET.Engines.Game.CGameManiaTitle)this).GetEditorSimpleChallengesInterfaceReferences, true, "EditorSimpleChallenges");
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).EditorSimpleChallenges = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, T0>(value, false));
+    }
     global::GBX.NET.Engines.Plug.CPlugFont? Hud3dFont { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenuBg { get; set; }
     string? MenuBgFolder { get; set; }
@@ -69,7 +77,11 @@ public partial interface IGameManiaTitleMP4 : IGameManiaTitle, global::GBX.NET.I
 {
     global::GBX.NET.Engines.Game.CGameManiaTitle.Campaign[]? Campaigns { get; set; }
     string? CollectionGroup { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>? Collections { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>? Collections
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).Collections is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(((global::GBX.NET.Engines.Game.CGameManiaTitle)this).GetCollectionsInterfaceReferences, true, "Collections");
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).Collections = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCollection>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMP4>(value, false));
+    }
     string? Desc { get; set; }
     string? DownloadUrl { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? HudDefaultModule { get; set; }
@@ -77,7 +89,11 @@ public partial interface IGameManiaTitleMP4 : IGameManiaTitle, global::GBX.NET.I
     global::GBX.NET.Engines.MwFoundations.CMwNod? Logos { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? Mod { get; set; }
     int ModelSkinInit { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? Music { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? Music
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).Music is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(((global::GBX.NET.Engines.Game.CGameManiaTitle)this).GetMusicInterfaceReferences, true, "Music");
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).Music = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(value, false));
+    }
     new string? Name { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? NetMode { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? NetPlaylist { get; set; }
@@ -88,7 +104,11 @@ public partial interface IGameManiaTitleMP4 : IGameManiaTitle, global::GBX.NET.I
     int SortIndex { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenMode { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? SplitScreenPlaylist { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? TitleCore { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4? TitleCore
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameManiaTitle)this).TitleCore);
+        set => ((global::GBX.NET.Engines.Game.CGameManiaTitle)this).TitleCore = value is null ? null : value is global::GBX.NET.Engines.Game.CGameManiaTitleCore node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Ident? VehicleIdent { get; set; }
 }
 

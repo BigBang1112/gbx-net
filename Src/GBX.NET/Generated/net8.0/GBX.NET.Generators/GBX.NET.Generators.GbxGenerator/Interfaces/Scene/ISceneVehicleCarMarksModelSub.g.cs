@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneVehicleCarMarksModelSubMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub where T0 : class
 {
-    new T0? Material { get; set; }
+    new T0? Material
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub)this).Material);
+        set => ((global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface ISceneVehicleCarMarksModelSub : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>
 {
@@ -22,7 +26,11 @@ public partial interface ISceneVehicleCarMarksModelSub : IClassVersion<global::G
     float FadeDist { get; set; }
     float GroundOffset { get; set; }
     bool LegacyFlag { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub)this).Material);
+        set => ((global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float SampleMinDist { get; set; }
     float TexVPerMeter { get; set; }
     float Width { get; set; }

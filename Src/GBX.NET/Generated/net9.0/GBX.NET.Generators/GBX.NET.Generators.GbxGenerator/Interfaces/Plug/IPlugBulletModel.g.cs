@@ -7,17 +7,37 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
 {
     int AmmoCostDuringTriggerDuration { get; set; }
     float BeamMaxLength { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? BeamVisualModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapCrosshair { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapCrosshairTriLaser { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapLasersight { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? BeamVisualModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapCrosshair
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapCrosshairTriLaser
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapLasersight
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float BulletRadius { get; set; }
     int BulletType { get; set; }
     int BulletVsMinAgeMs { get; set; }
     float BulletVsRadiusMargin { get; set; }
     int ChargeDurationFull { get; set; }
     int ChargeDurationStop { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? DamageAttenuationFromDist { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? DamageAttenuationFromDist
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).DamageAttenuationFromDist);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).DamageAttenuationFromDist = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool DamageAttenuationWithDist { get; set; }
     int DefuserFirePeriod { get; set; }
     int DefuserMissAmmoLoss { get; set; }
@@ -29,14 +49,22 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float ExplosionBlowRadiusAttenuation { get; set; }
     float ExplosionBlowValue { get; set; }
     float ExplosionBlowVerticalScale { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ExplosionBullet { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ExplosionBullet
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ExplosionDamageRadius { get; set; }
     float ExplosionDamageRadiusAttenuation { get; set; }
     int ExplosionDamageValue { get; set; }
     float ExplosionDetectionRadius_Flying { get; set; }
     float ExplosionDetectionRadius_Resting { get; set; }
     float ExplosionElectroPulseValue { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionEnergyFromLifeTime { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionEnergyFromLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionEnergyFromLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionEnergyFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ExplosionEnergyWhenOccluded { get; set; }
     int ExplosionOccultationTest { get; set; }
     bool ExplosionOnAllPlayers { get; set; }
@@ -44,8 +72,16 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     int ExplosionOnImpactCount { get; set; }
     byte ExplosionOnImpactCountOnlyOnMaterialId { get; set; }
     byte ExplosionOnSurfaceMaterialId { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionRadiusCoefFromLifeTime { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ExplosionSurface { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? ExplosionRadiusCoefFromLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionRadiusCoefFromLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionRadiusCoefFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ExplosionSurface
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int FireBulletCount { get; set; }
     float FireBulletCountSpeedCoef { get; set; }
     float FireBulletDispersionAngleDeg { get; set; }
@@ -78,8 +114,16 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     int HomingLockDuration { get; set; }
     float HomingMaxAngularSpeed { get; set; }
     float HomingPeriod { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Icon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ImpactBounce { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugBitmap? Icon
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmap?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel? ImpactBounce
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ImpactBouncingN { get; set; }
     float ImpactBouncingT { get; set; }
     bool IsFlare { get; set; }
@@ -90,8 +134,16 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     float Mass { get; set; }
     bool MultiSphereDetection { get; set; }
     string? Name { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? ParticleModelAlive { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? ParticleModelFire { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? ParticleModelAlive
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel? ParticleModelFire
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ProjectileNearMissDelay { get; set; }
     float ProjectileNearMissDist { get; set; }
     float RestSpeed { get; set; }
@@ -114,20 +166,64 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
     string? Sm_SpModelName { get; set; }
     float Sm_ThisHitOtherBulletBonusAmmoCount { get; set; }
     int Sm_ThisHitOtherBulletBonusDuration { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundAlive { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAlivePitchFromRemainingLifeTime { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundFire { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundAlive
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAlivePitchFromRemainingLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlivePitchFromRemainingLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlivePitchFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundAliveVolumeFromRemainingLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAliveVolumeFromRemainingLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAliveVolumeFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundFire
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec3 SoundFireOffset { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFirePitchFromRemainingAmmo { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFireVolumeFromRemainingAmmo { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundGauge { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundReloading { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFirePitchFromRemainingAmmo
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFirePitchFromRemainingAmmo);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFirePitchFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SoundFireVolumeFromRemainingAmmo
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFireVolumeFromRemainingAmmo);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFireVolumeFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundGauge
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? SoundReloading
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float SpearLockDist { get; set; }
     float Speed { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromHorizonAngle { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromTriggerDuration { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpreadCoefFormChargeDuration { get; set; }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromHorizonAngle
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromHorizonAngle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromHorizonAngle = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpeedFromTriggerDuration
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromTriggerDuration);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromTriggerDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Function.IFuncKeysReal? SpreadCoefFormChargeDuration
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysReal?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpreadCoefFormChargeDuration);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpreadCoefFormChargeDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float TrajectoryUTurnDistance { get; set; }
     float TriLaserNearMissDist { get; set; }
     float TriLaserRadiusAtOneMeter_Zoom0 { get; set; }
@@ -139,29 +235,125 @@ public partial interface IPlugBulletModel : IClassVersion<global::GBX.NET.Engine
 
 public partial interface IPlugBulletModelMP4 : IPlugBulletModel
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? BeamVisualModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshair { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshairTriLaser { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapLasersight { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? DamageAttenuationFromDist { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionBullet { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionEnergyFromLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionRadiusCoefFromLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionSurface { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Icon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ImpactBounce { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelAlive { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelFire { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundAlive { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAlivePitchFromRemainingLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAliveVolumeFromRemainingLifeTime { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundFire { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFirePitchFromRemainingAmmo { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFireVolumeFromRemainingAmmo { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundGauge { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundReloading { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromHorizonAngle { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromTriggerDuration { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpreadCoefFormChargeDuration { get; set; }
+    new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? BeamVisualModel
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BeamVisualModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshair
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshair = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCrosshairTriLaser
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapCrosshairTriLaser = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapLasersight
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).BitmapLasersight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? DamageAttenuationFromDist
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).DamageAttenuationFromDist);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).DamageAttenuationFromDist = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionBullet
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionBullet = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionEnergyFromLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionEnergyFromLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionEnergyFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ExplosionRadiusCoefFromLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionRadiusCoefFromLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionRadiusCoefFromLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ExplosionSurface
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ExplosionSurface = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Icon
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).Icon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? ImpactBounce
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ImpactBounce = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelAlive
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleModelFire
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).ParticleModelFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundAlive
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlive = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAlivePitchFromRemainingLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlivePitchFromRemainingLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAlivePitchFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundAliveVolumeFromRemainingLifeTime
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAliveVolumeFromRemainingLifeTime);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundAliveVolumeFromRemainingLifeTime = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundFire
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFirePitchFromRemainingAmmo
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFirePitchFromRemainingAmmo);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFirePitchFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SoundFireVolumeFromRemainingAmmo
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFireVolumeFromRemainingAmmo);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundFireVolumeFromRemainingAmmo = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundGauge
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundGauge = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundReloading
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSoundMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SoundReloading = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromHorizonAngle
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromHorizonAngle);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromHorizonAngle = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpeedFromTriggerDuration
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromTriggerDuration);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpeedFromTriggerDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? SpreadCoefFormChargeDuration
+    {
+        get => (global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpreadCoefFormChargeDuration);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBulletModel)this).SpreadCoefFormChargeDuration = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

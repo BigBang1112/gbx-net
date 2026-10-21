@@ -23,7 +23,11 @@ public partial interface IGameCtnAppMP4 : IGameCtnApp
     NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
     bool MenuBackground_MustLoopIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? Resources { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? Resources
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameResourcesMP4?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnApp)this).Resources);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnApp)this).Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnAppTM2020 : IGameCtnApp, global::GBX.NET.Interfaces.Game.IGameAppTM2020

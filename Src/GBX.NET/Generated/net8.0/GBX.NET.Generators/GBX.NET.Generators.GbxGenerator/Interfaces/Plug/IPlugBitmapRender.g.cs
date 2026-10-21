@@ -11,14 +11,22 @@ public interface IPlugBitmapRenderMembers1 : global::GBX.NET.Interfaces.Plug.IPl
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRender where T0 : class
 {
-    T0? BitmapClear { get; set; }
+    T0? BitmapClear
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRender)this).BitmapClear);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRender)this).BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec2? BitmapClearUV { get; set; }
     uint ClearColor { get; set; }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRender where T0 : class
 {
-    T0? RenderSub { get; set; }
+    T0? RenderSub
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBitmapRender)this).RenderSub);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapRender)this).RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapRenderMembers4 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRender

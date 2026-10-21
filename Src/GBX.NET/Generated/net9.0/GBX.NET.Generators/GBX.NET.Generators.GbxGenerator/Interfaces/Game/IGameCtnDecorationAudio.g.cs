@@ -6,25 +6,101 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationAudioMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class where T1 : class
 {
-    T0? AudioBalance_Overlay_Far { get; set; }
-    T0? AudioBalance_Overlay_Underground { get; set; }
-    T0? AudioBalance_PlaygroundLoud { get; set; }
-    T0? AudioBalance_PlaygroundSoft { get; set; }
-    T0? AudioBalance_Podium { get; set; }
-    T0? AudioBalance_ReplayLoud { get; set; }
-    T0? AudioBalance_ReplaySoft { get; set; }
-    T0? AudioBalance_SM_EvtFire { get; set; }
-    T0? AudioBalance_SM_EvtHit { get; set; }
-    T0? AudioBalance_SM_EvtHitEliminated { get; set; }
-    T0? AudioBalance_SM_EvtSpawn { get; set; }
-    T0? AudioBalance_SM_EvtUnspawn { get; set; }
-    T0? AudioBalance_TM_EvtCheckpoint { get; set; }
-    T0? AudioBalance_TM_EvtCrash { get; set; }
-    T0? AudioBalance_TM_EvtFlying { get; set; }
-    T0? AudioBalance_TM_EvtRespawn { get; set; }
-    T0? AudioBalance_TM_EvtStartLine { get; set; }
-    T1? AudioEnvUndergroundEnclosed { get; set; }
-    T1? AudioEnvUndergroundOpen { get; set; }
+    T0? AudioBalance_Overlay_Far
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Overlay_Far);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Overlay_Far = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_Overlay_Underground
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Overlay_Underground);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Overlay_Underground = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_PlaygroundLoud
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_PlaygroundLoud);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_PlaygroundLoud = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_PlaygroundSoft
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_PlaygroundSoft);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_PlaygroundSoft = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_Podium
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Podium);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_Podium = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_ReplayLoud
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_ReplayLoud);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_ReplayLoud = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_ReplaySoft
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_ReplaySoft);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_ReplaySoft = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_SM_EvtFire
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtFire);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtFire = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_SM_EvtHit
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtHit);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtHit = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_SM_EvtHitEliminated
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtHitEliminated);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtHitEliminated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_SM_EvtSpawn
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtSpawn);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_SM_EvtUnspawn
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtUnspawn);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_TM_EvtCheckpoint
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtCheckpoint);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtCheckpoint = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_TM_EvtCrash
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtCrash);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtCrash = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_TM_EvtFlying
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtFlying);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtFlying = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_TM_EvtRespawn
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtRespawn);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtRespawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T0? AudioBalance_TM_EvtStartLine
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtStartLine);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtStartLine = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? AudioEnvUndergroundEnclosed
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUndergroundEnclosed);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUndergroundEnclosed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? AudioEnvUndergroundOpen
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUndergroundOpen);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUndergroundOpen = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float CameraWooshMinSpeedKmh { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
     float[]? ReverbMaterialGains { get; set; }
@@ -39,18 +115,38 @@ public interface IGameCtnDecorationAudioMembers2 : global::GBX.NET.Interfaces.Ga
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationAudioMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class
 {
-    new T0? AudioEnvOutsideEnclosed { get; set; }
-    new T0? AudioEnvOutsideOpen { get; set; }
+    new T0? AudioEnvOutsideEnclosed
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideEnclosed);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideEnclosed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? AudioEnvOutsideOpen
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideOpen);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideOpen = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationAudioMembers4<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class
 {
-    T0? AudioBalance_TM_EvtSwimming { get; set; }
+    T0? AudioBalance_TM_EvtSwimming
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtSwimming);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_TM_EvtSwimming = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnDecorationAudio : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationAudio>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment? AudioEnvOutsideEnclosed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment? AudioEnvOutsideOpen { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment? AudioEnvOutsideEnclosed
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideEnclosed);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideEnclosed = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment? AudioEnvOutsideOpen
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideOpen);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvOutsideOpen = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::System.Collections.Generic.Dictionary<string, global::GBX.NET.NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? Musics { get; set; }
     global::System.Collections.Generic.Dictionary<string, global::GBX.NET.NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? Sounds { get; set; }
 }
@@ -85,9 +181,21 @@ public partial interface IGameCtnDecorationAudioMP4 : IGameCtnDecorationAudio, g
 
 public partial interface IGameCtnDecorationAudioTM2020 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers4<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBoost { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBulletTime { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvUnderwater { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBoost
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtBoost);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtBoost = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBulletTime
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtBulletTime);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioBalance_SM_EvtBulletTime = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioBalance node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvUnderwater
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUnderwater);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationAudio)this).AudioEnvUnderwater = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugFileText? DefaultWooshDecoItems { get; set; }
 }
 

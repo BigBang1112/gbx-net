@@ -19,7 +19,11 @@ public interface IGameCtnMediaClipMembers2 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaClipMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip where T0 : class
 {
-    new IReadOnlyList<T0> Tracks { get; set; }
+    new IReadOnlyList<T0> Tracks
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, T0>(((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).GetTracksInterfaceReferences, true, "Tracks");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, T0>(value, false));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaClipMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip
@@ -29,12 +33,20 @@ public interface IGameCtnMediaClipMembers4 : global::GBX.NET.Interfaces.Game.IGa
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaClipMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip where T0 : class
 {
-    T0? Scene { get; set; }
+    T0? Scene
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).Scene);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).Scene = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnMediaClip : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaClip>
 {
     string? Name { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack> Tracks { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack> Tracks
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack>(((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).GetTracksInterfaceReferences, true, "Tracks");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaClip)this).Tracks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack>(value, false));
+    }
 }
 
 public partial interface IGameCtnMediaClipTMSX : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>

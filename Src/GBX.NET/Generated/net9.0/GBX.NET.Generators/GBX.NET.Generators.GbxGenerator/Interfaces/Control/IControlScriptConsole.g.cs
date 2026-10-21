@@ -17,80 +17,208 @@ public partial interface IControlScriptConsole : IClassVersion<global::GBX.NET.E
 public partial interface IControlScriptConsoleTM10 : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTM10
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM10?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTMPU : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTMPU
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMPU?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTMSX : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTMSX
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMSX?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTMNESWC : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTMNESWC
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleVSK5 : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseVSK5
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionVSK5?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTMF : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTMF
 {
-    new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTMF?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMF?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMF?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleMP3 : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseMP3
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP3? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP3? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP3?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP3?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTMT : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTMT
 {
     new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMT?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleMP4 : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseMP4
 {
-    new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP4?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
+    }
 }
 
 public partial interface IControlScriptConsoleTM2020 : IControlScriptConsole, global::GBX.NET.Interfaces.Control.IControlBaseTM2020
 {
-    new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlLayoutTM2020?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle
+    {
+        get => (global::GBX.NET.Interfaces.Control.IControlStyleTM2020?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM2020?)(object?)(((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion);
+        set => ((global::GBX.NET.Engines.Control.CControlScriptConsole)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink { get; set; }
 }
 

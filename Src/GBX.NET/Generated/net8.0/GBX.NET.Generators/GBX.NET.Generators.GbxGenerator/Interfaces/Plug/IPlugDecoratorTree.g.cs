@@ -11,8 +11,16 @@ public interface IPlugDecoratorTreeMembers1 : global::GBX.NET.Interfaces.Plug.IP
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugDecoratorTreeMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree where T0 : class where T1 : class
 {
-    new T0? Material { get; set; }
-    new T1? TreeLight { get; set; }
+    new T0? Material
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).Material);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? TreeLight
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).TreeLight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugDecoratorTreeMembers3 : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree
@@ -22,12 +30,20 @@ public interface IPlugDecoratorTreeMembers3 : global::GBX.NET.Interfaces.Plug.IP
 }
 public partial interface IPlugDecoratorTree : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).Material);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool ShadowCasterApplyOnChilds { get; set; }
     int ShadowCasterCond { get; set; }
     bool TransformVisualToSurface { get; set; }
     string? TreeId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLight? TreeLight { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLight? TreeLight
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugTreeLight?)(object?)(((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).TreeLight);
+        set => ((global::GBX.NET.Engines.Plug.CPlugDecoratorTree)this).TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool VisibleApplyOnChilds { get; set; }
     int VisibleCond { get; set; }
 }

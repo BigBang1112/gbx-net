@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugCamControlModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugCamControlModel where T0 : class
 {
-    new T0? Shake { get; set; }
+    new T0? Shake
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugCamControlModel)this).Shake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugCamControlModel)this).Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IPlugCamControlModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCamControlModel>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? Shake { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? Shake
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel?)(object?)(((global::GBX.NET.Engines.Plug.CPlugCamControlModel)this).Shake);
+        set => ((global::GBX.NET.Engines.Plug.CPlugCamControlModel)this).Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IPlugCamControlModelTMT : IPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT>

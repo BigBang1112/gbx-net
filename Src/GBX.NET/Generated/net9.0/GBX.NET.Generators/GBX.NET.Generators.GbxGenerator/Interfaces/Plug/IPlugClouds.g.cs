@@ -13,7 +13,11 @@ public interface IPlugCloudsMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlug
     global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
     int Lighting { get; set; }
-    IReadOnlyList<T0>? SolidFids { get; set; }
+    IReadOnlyList<T0>? SolidFids
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugClouds)this).SolidFids is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, T0>(((global::GBX.NET.Engines.Plug.CPlugClouds)this).GetSolidFidsInterfaceReferences, true, "SolidFids");
+        set => ((global::GBX.NET.Engines.Plug.CPlugClouds)this).SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, T0>(value, false));
+    }
     float SpeedScale { get; set; }
 }
 public partial interface IPlugClouds : IClassVersion<global::GBX.NET.Engines.Plug.CPlugClouds>, global::GBX.NET.Interfaces.Function.IFunc

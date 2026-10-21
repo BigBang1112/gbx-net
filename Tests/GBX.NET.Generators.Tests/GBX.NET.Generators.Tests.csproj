@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -13,7 +13,8 @@
         <ProjectReference Include="../../Generators/GBX.NET.Generators/GBX.NET.Generators.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Include="../../Src/GBX.NET/Builders/NodeBuilderState.cs" LogicalName="NodeBuilderState.cs" />
-        <EmbeddedResource Include="../../Src/GBX.NET/Builders/NodeBuilderProperty.cs" LogicalName="NodeBuilderProperty.cs" />
+        <EmbeddedResource Include="../../Src/GBX.NET.Builders/NodeBuilder.cs" LogicalName="NodeBuilder.cs" />
+        <EmbeddedResource Include="../../Src/GBX.NET.Builders/NodeBuilderState.cs" LogicalName="NodeBuilderState.cs" />
+        <EmbeddedResource Include="../../Src/GBX.NET.Builders/NodeBuilderProperty.cs" LogicalName="NodeBuilderProperty.cs" />
     </ItemGroup>
 </Project>

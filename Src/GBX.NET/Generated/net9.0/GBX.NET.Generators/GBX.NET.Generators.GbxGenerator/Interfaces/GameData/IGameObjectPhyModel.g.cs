@@ -6,9 +6,21 @@ namespace GBX.NET.Interfaces.GameData;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameObjectPhyModelMembers1<T0> : global::GBX.NET.Interfaces.GameData.IGameObjectPhyModel where T0 : class
 {
-    new T0? HitShapeFid { get; set; }
-    new T0? MoveShapeFid { get; set; }
-    new T0? TriggerShapeFid { get; set; }
+    new T0? HitShapeFid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).HitShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? MoveShapeFid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).MoveShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T0? TriggerShapeFid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).TriggerShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameObjectPhyModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameObjectPhyModel
@@ -37,13 +49,25 @@ public partial interface IGameObjectPhyModel : IClassVersion<global::GBX.NET.Eng
     global::GBX.NET.Engines.GameData.CGameActionModel?[]? Actions { get; set; }
     global::GBX.NET.Engines.Plug.CPlugDynaPointModel? DynaPointModel { get; set; }
     string? HitShape { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? HitShapeFid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? HitShapeFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).HitShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? MoveShape { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? MoveShapeFid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? MoveShapeFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).MoveShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EProgram? Program { get; set; }
     int TriggerActionVersion { get; set; }
     string? TriggerShape { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSurface? TriggerShapeFid { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSurface? TriggerShapeFid
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSurface?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).TriggerShapeFid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectPhyModel)this).TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? Triggers { get; set; }
 }
 

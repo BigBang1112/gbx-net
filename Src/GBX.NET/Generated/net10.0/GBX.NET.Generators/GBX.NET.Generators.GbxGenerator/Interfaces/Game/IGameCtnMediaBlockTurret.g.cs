@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaBlockTurretMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurret where T0 : class
 {
-    new T0? DataTape { get; set; }
+    new T0? DataTape
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret)this).DataTape);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret)this).DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnMediaBlockTurret : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
@@ -17,7 +21,11 @@ public partial interface IGameCtnMediaBlockTurret : IClassVersion<global::GBX.NE
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Plug.IPlugDataTape? DataTape { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugDataTape? DataTape
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugDataTape?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret)this).DataTape);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret)this).DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnMediaBlockTurretMP4 : IGameCtnMediaBlockTurret, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>

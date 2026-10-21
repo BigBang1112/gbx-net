@@ -160,7 +160,11 @@ public partial interface IGameCtnGhostTM2020 : IGameCtnGhost, global::GBX.NET.In
     string? GhostCountryPath { get; set; }
     string? GhostTrigram { get; set; }
     int HasInputs { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? RecordData { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? RecordData
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnGhost)this).RecordData);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnGhost)this).RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     int SimulationFlags { get; set; }
     int? SpawnLandmarkId { get; set; }
     string? Validate_GameMode { get; set; }

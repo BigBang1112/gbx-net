@@ -10,7 +10,11 @@ public partial interface IGameCtnBlock : IClassVersion<global::GBX.NET.Engines.G
 
 public partial interface IGameCtnBlockTM10 : IGameCtnBlock
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10? Skin { get; set; }
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10? Skin
+    {
+        get => (global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinTM10?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlock)this).Skin);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlock)this).Skin = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IGameCtnBlockTMSX : IGameCtnBlock
@@ -27,6 +31,10 @@ public partial interface IGameCtnBlockMP4 : IGameCtnBlock
 
 public partial interface IGameCtnBlockTM2020 : IGameCtnBlock
 {
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? WaypointSpecialProperty { get; set; }
+    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? WaypointSpecialProperty
+    {
+        get => (global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnBlock)this).WaypointSpecialProperty);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnBlock)this).WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 

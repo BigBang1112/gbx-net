@@ -6,8 +6,16 @@ namespace GBX.NET.Interfaces.GameData;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameObjectVisModelMembers1<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameObjectVisModel where T0 : class where T1 : class
 {
-    new T0? LocAnim { get; set; }
-    new T1? MeshShaded { get; set; }
+    new T0? LocAnim
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).LocAnim);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? MeshShaded
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).MeshShaded);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameObjectVisModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameObjectVisModel
@@ -19,7 +27,11 @@ public interface IGameObjectVisModelMembers2 : global::GBX.NET.Interfaces.GameDa
 public interface IGameObjectVisModelMembers3<T0> : global::GBX.NET.Interfaces.GameData.IGameObjectVisModel where T0 : class
 {
     global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition.ImageRef[]? Images { get; set; }
-    T0? Solid { get; set; }
+    T0? Solid
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).Solid);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).Solid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? SolidRef { get; set; }
     Iso4 SoundLocPermanent { get; set; }
     string? SoundRefPermanent { get; set; }
@@ -29,9 +41,17 @@ public interface IGameObjectVisModelMembers3<T0> : global::GBX.NET.Interfaces.Ga
 public partial interface IGameObjectVisModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameObjectVisModel>
 {
     global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? LightBallStates { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimple? LocAnim { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimple? LocAnim
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimple?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).LocAnim);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).LocAnim = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? Mesh { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? MeshShaded { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2Model? MeshShaded
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSolid2Model?)(object?)(((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).MeshShaded);
+        set => ((global::GBX.NET.Engines.GameData.CGameObjectVisModel)this).MeshShaded = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? SmashParticleRef { get; set; }
     string? SoundRefGrab { get; set; }
     string? SoundRefSpawn { get; set; }

@@ -13,11 +13,19 @@ public interface IGameCtnMediaTrackMembers1 : global::GBX.NET.Interfaces.Game.IG
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMediaTrackMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack where T0 : class
 {
-    new IReadOnlyList<T0> Blocks { get; set; }
+    new IReadOnlyList<T0> Blocks
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, T0>(((global::GBX.NET.Engines.Game.CGameCtnMediaTrack)this).GetBlocksInterfaceReferences, true, "Blocks");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaTrack)this).Blocks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, T0>(value, false));
+    }
 }
 public partial interface IGameCtnMediaTrack : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock> Blocks { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock> Blocks
+    {
+        get => new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock>(((global::GBX.NET.Engines.Game.CGameCtnMediaTrack)this).GetBlocksInterfaceReferences, true, "Blocks");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMediaTrack)this).Blocks = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaBlock, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock>(value, false));
+    }
     bool IsKeepPlaying { get; set; }
     bool IsReadOnly { get; set; }
     string Name { get; set; }

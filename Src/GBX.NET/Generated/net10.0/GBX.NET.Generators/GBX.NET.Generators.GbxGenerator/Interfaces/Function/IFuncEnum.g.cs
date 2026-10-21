@@ -11,7 +11,11 @@ public interface IFuncEnumMembers1 : global::GBX.NET.Interfaces.Function.IFuncEn
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IFuncEnumMembers2<T0> : global::GBX.NET.Interfaces.Function.IFuncEnum where T0 : class
 {
-    T0? IconIndexs { get; set; }
+    T0? IconIndexs
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Function.CFuncEnum)this).IconIndexs);
+        set => ((global::GBX.NET.Engines.Function.CFuncEnum)this).IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IFuncEnum : IClassVersion<global::GBX.NET.Engines.Function.CFuncEnum>, global::GBX.NET.Interfaces.Function.IFunc
 {

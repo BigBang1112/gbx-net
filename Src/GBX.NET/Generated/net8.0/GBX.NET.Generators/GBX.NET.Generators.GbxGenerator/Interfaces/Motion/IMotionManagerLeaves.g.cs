@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionManagerLeavesMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves where T0 : class
 {
-    new T0? MobilLeaves { get; set; }
+    new T0? MobilLeaves
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionManagerLeaves)this).MobilLeaves);
+        set => ((global::GBX.NET.Engines.Motion.CMotionManagerLeaves)this).MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionManagerLeaves : IClassVersion<global::GBX.NET.Engines.Motion.CMotionManagerLeaves>, global::GBX.NET.Interfaces.Motion.IMotionManager
 {
@@ -17,7 +21,11 @@ public partial interface IMotionManagerLeaves : IClassVersion<global::GBX.NET.En
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves? MobilLeaves { get; set; }
+    global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves? MobilLeaves
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves?)(object?)(((global::GBX.NET.Engines.Motion.CMotionManagerLeaves)this).MobilLeaves);
+        set => ((global::GBX.NET.Engines.Motion.CMotionManagerLeaves)this).MobilLeaves = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobilLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
 public partial interface IMotionManagerLeavesTM10 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10>

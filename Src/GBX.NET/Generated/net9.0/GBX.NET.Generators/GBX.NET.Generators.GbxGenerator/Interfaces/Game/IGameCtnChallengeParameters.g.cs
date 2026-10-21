@@ -9,7 +9,11 @@ public interface IGameCtnChallengeParametersMembers1<T0> : global::GBX.NET.Inter
     bool IsValidatedForScriptModes { get; set; }
     string? MapStyle { get; set; }
     string? MapType { get; set; }
-    T0? RaceValidateGhost { get; set; }
+    T0? RaceValidateGhost
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnChallengeParameters)this).RaceValidateGhost);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnChallengeParameters)this).RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnChallengeParametersMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeParameters

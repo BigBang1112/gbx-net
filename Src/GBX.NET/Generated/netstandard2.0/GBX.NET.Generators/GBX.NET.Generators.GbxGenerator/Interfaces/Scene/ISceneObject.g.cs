@@ -29,6 +29,10 @@ public partial interface ISceneObjectTMNESWC : ISceneObject, global::GBX.NET.Int
 {
 }
 
+public partial interface ISceneObjectTMU : ISceneObject
+{
+}
+
 public partial interface ISceneObjectVSK5 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>
 {
 }
@@ -50,10 +54,6 @@ public partial interface ISceneObjectMP4 : ISceneObject, global::GBX.NET.Interfa
 }
 
 public partial interface ISceneObjectTM2020 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM2020>
-{
-}
-
-public partial interface ISceneObjectTMU : ISceneObject
 {
 }
 

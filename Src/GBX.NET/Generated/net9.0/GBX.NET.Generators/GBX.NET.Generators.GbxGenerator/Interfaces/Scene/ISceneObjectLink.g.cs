@@ -6,8 +6,16 @@ namespace GBX.NET.Interfaces.Scene;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneObjectLinkMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneObjectLink where T0 : class where T1 : class
 {
-    new T0? Mobil { get; set; }
-    new T1? Object { get; set; }
+    new T0? Mobil
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil);
+        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new T1? Object
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object);
+        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface ISceneObjectLinkMembers2 : global::GBX.NET.Interfaces.Scene.ISceneObjectLink
@@ -16,9 +24,17 @@ public interface ISceneObjectLinkMembers2 : global::GBX.NET.Interfaces.Scene.ISc
 }
 public partial interface ISceneObjectLink : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObjectLink>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMobil? Mobil { get; set; }
+    global::GBX.NET.Interfaces.Scene.ISceneMobil? Mobil
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneMobil?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil);
+        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? Name { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneObject? Object { get; set; }
+    global::GBX.NET.Interfaces.Scene.ISceneObject? Object
+    {
+        get => (global::GBX.NET.Interfaces.Scene.ISceneObject?)(object?)(((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object);
+        set => ((global::GBX.NET.Engines.Scene.CSceneObjectLink)this).Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Iso4 RelativeLocation { get; set; }
 }
 

@@ -9,9 +9,21 @@ public interface IGameCtnDecorationMoodMembers1<T0, T1, T2> : global::GBX.NET.In
     global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
     float EditorHelperHdrScale { get; set; }
     bool EnableStars { get; set; }
-    T0? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
-    T1? FxHdrScalesT3 { get; set; }
-    T2? FxLightning { get; set; }
+    T0? FxBloom_FidFuncIntensAtHdrNorm
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxBloom_FidFuncIntensAtHdrNorm);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxBloom_FidFuncIntensAtHdrNorm = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? FxHdrScalesT3
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxHdrScalesT3);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxHdrScalesT3 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T2? FxLightning
+    {
+        get => (T2?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxLightning);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).FxLightning = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
     float LocalLightScale { get; set; }
@@ -20,7 +32,11 @@ public interface IGameCtnDecorationMoodMembers1<T0, T1, T2> : global::GBX.NET.In
     Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
     Vec2 Tech3SpecularLocal { get; set; }
     Vec4 Tech3ToneMapAutoExp { get; set; }
-    T0? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
+    T0? ToneMapAutoExp_FidAvgLumiToKeyValue
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).ToneMapAutoExp_FidAvgLumiToKeyValue);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).ToneMapAutoExp_FidAvgLumiToKeyValue = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ToneMapExposureStaticBase { get; set; }
     int ToneMapFilmCurve { get; set; }
     bool WaterReflectFakeCube { get; set; }
@@ -33,7 +49,11 @@ public interface IGameCtnDecorationMoodMembers2 : global::GBX.NET.Interfaces.Gam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMoodMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
 {
-    T0? HmsAmbientOcc { get; set; }
+    T0? HmsAmbientOcc
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).HmsAmbientOcc);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).HmsAmbientOcc = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMoodMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood
@@ -43,12 +63,20 @@ public interface IGameCtnDecorationMoodMembers4 : global::GBX.NET.Interfaces.Gam
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMoodMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
 {
-    new T0? Remapping { get; set; }
+    new T0? Remapping
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).Remapping);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnDecorationMoodMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
 {
-    T0? HmsLightMap { get; set; }
+    T0? HmsLightMap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).HmsLightMap);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).HmsLightMap = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IGameCtnDecorationMood : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationMood>
 {
@@ -59,7 +87,11 @@ public partial interface IGameCtnDecorationMood : IClassVersion<global::GBX.NET.
     float Longitude { get; set; }
     string? RemapFolder { get; set; }
     float RemappedStartDayTime { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? Remapping { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkin? Remapping
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugGameSkin?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).Remapping);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnDecorationMood)this).Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float ShadowCarIntensity { get; set; }
     int ShadowCountCarHuman { get; set; }
     int ShadowCountCarOpponent { get; set; }

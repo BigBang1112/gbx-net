@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Hms;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsSoundSourceMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsSoundSource where T0 : class
 {
-    new T0? PlugSound { get; set; }
+    new T0? PlugSound
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Hms.CHmsSoundSource)this).PlugSound);
+        set => ((global::GBX.NET.Engines.Hms.CHmsSoundSource)this).PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IHmsSoundSourceMembers2 : global::GBX.NET.Interfaces.Hms.IHmsSoundSource
@@ -23,7 +27,11 @@ public interface IHmsSoundSourceMembers3 : global::GBX.NET.Interfaces.Hms.IHmsSo
 public partial interface IHmsSoundSource : IClassVersion<global::GBX.NET.Engines.Hms.CHmsSoundSource>
 {
     float Pitch { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSound? PlugSound { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugSound? PlugSound
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugSound?)(object?)(((global::GBX.NET.Engines.Hms.CHmsSoundSource)this).PlugSound);
+        set => ((global::GBX.NET.Engines.Hms.CHmsSoundSource)this).PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     float Volume { get; set; }
 }
 

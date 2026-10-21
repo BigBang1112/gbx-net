@@ -6,8 +6,16 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleMaterialMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class where T1 : class
 {
-    T0? TrailManagerModel { get; set; }
-    T1? TrailShader { get; set; }
+    T0? TrailManagerModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).TrailManagerModel);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).TrailManagerModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? TrailShader
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).TrailShader);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleMaterialMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
@@ -28,7 +36,11 @@ public interface IPlugVehicleMaterialMembers3 : global::GBX.NET.Interfaces.Plug.
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugVehicleMaterialMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class
 {
-    T0? MaterialHeightDetailBitmap { get; set; }
+    T0? MaterialHeightDetailBitmap
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).MaterialHeightDetailBitmap);
+        set => ((global::GBX.NET.Engines.Plug.CPlugVehicleMaterial)this).MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec2 MaterialHeightDetailScale { get; set; }
 }
 public partial interface IPlugVehicleMaterial : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial>

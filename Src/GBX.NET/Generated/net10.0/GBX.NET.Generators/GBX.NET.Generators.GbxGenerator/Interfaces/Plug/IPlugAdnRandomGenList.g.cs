@@ -5,11 +5,19 @@ namespace GBX.NET.Interfaces.Plug;
 
 public partial interface IPlugAdnRandomGenList : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>? Datas { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>? Datas
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>(((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).GetDatasInterfaceReferences, true, "Datas");
+        set => ((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>(value, false));
+    }
 }
 
 public partial interface IPlugAdnRandomGenListTM2020 : IPlugAdnRandomGenList
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>? Datas { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>? Datas
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).Datas is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).GetDatasInterfaceReferences, true, "Datas");
+        set => ((global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList)this).Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(value, false));
+    }
 }
 

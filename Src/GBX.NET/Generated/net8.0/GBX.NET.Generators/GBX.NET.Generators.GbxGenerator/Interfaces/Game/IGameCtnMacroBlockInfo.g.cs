@@ -6,12 +6,24 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnMacroBlockInfoMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfo where T0 : class where T1 : class
 {
-    IReadOnlyList<T0>? AutoTerrains { get; set; }
+    IReadOnlyList<T0>? AutoTerrains
+    {
+        get => ((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).AutoTerrains is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, T0>(((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).GetAutoTerrainsInterfaceReferences, true, "AutoTerrains");
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, T0>(value, false));
+    }
     List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
     List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
     List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
-    T1? ClipGroupEndRace { get; set; }
-    T1? ClipGroupInGame { get; set; }
+    T1? ClipGroupEndRace
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).ClipGroupEndRace);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).ClipGroupEndRace = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ClipGroupInGame
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).ClipGroupInGame);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo)this).ClipGroupInGame = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Int2[]? ObjectNeighbourPairsLegacy { get; set; }
     List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
     Int3 OffzoneOffset { get; set; }

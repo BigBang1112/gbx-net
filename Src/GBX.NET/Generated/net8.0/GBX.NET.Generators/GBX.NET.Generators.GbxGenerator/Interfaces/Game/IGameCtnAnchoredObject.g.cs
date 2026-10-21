@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Game;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnAnchoredObjectMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObject where T0 : class
 {
-    new T0? WaypointSpecialProperty { get; set; }
+    new T0? WaypointSpecialProperty
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnAnchoredObject)this).WaypointSpecialProperty);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnAnchoredObject)this).WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IGameCtnAnchoredObjectMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObject
@@ -27,7 +31,11 @@ public partial interface IGameCtnAnchoredObject : IClassVersion<global::GBX.NET.
     short Flags { get; set; }
     Ident ItemModel { get; set; }
     Vec3 PivotPosition { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialProperty? WaypointSpecialProperty { get; set; }
+    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialProperty? WaypointSpecialProperty
+    {
+        get => (global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialProperty?)(object?)(((global::GBX.NET.Engines.Game.CGameCtnAnchoredObject)this).WaypointSpecialProperty);
+        set => ((global::GBX.NET.Engines.Game.CGameCtnAnchoredObject)this).WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec3 YawPitchRoll { get; set; }
 }
 

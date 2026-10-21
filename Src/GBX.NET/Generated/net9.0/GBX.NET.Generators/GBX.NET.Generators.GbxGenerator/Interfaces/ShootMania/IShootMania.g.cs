@@ -6,8 +6,16 @@ namespace GBX.NET.Interfaces.ShootMania;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IShootManiaMembers1<T0, T1> : global::GBX.NET.Interfaces.ShootMania.IShootMania where T0 : class where T1 : class
 {
-    T0? ArenaInterfaceUI { get; set; }
-    T1? ArenaResources { get; set; }
+    T0? ArenaInterfaceUI
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.ShootMania.CShootMania)this).ArenaInterfaceUI);
+        set => ((global::GBX.NET.Engines.ShootMania.CShootMania)this).ArenaInterfaceUI = value is null ? null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    T1? ArenaResources
+    {
+        get => (T1?)(object?)(((global::GBX.NET.Engines.ShootMania.CShootMania)this).ArenaResources);
+        set => ((global::GBX.NET.Engines.ShootMania.CShootMania)this).ArenaResources = value is null ? null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IShootMania : IClassVersion<global::GBX.NET.Engines.ShootMania.CShootMania>, global::GBX.NET.Interfaces.Game.IGameManiaTitleCore
 {

@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionEmitterLeavesMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves where T0 : class
 {
-    T0? ManagerModel { get; set; }
+    T0? ManagerModel
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionEmitterLeaves)this).ManagerModel);
+        set => ((global::GBX.NET.Engines.Motion.CMotionEmitterLeaves)this).ManagerModel = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     Vec3 Pos { get; set; }
     Vec3 Radius { get; set; }
 }

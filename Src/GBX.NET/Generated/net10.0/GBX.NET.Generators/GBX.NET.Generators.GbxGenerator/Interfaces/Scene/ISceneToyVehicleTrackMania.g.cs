@@ -16,61 +16,137 @@ public partial interface ISceneToyVehicleTrackMania : IClassVersion<global::GBX.
 
 public partial interface ISceneToyVehicleTrackManiaTM10 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM10
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM10?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTMPU : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMPU
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMPU?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTMSX : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMSX
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMSX?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTMNESWC : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMNESWC
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMNESWC?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaVSK5 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarVSK5
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionVSK5?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTMF : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMF
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMF?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaMP3 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP3
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP3?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTMT : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTMT
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTMT?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaMP4 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMP4
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionMP4?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink
+    {
+        get => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).GetObjectLinkInterfaceReferences, true, "ObjectLink");
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
+    }
 }
 
 public partial interface ISceneToyVehicleTrackManiaTM2020 : ISceneToyVehicleTrackMania, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarTM2020
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
+    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionTM2020?)(object?)(((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion);
+        set => ((global::GBX.NET.Engines.Scene.CSceneToyVehicleTrackMania)this).Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink { get; set; }
 }
 

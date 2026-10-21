@@ -6,11 +6,19 @@ namespace GBX.NET.Interfaces.Plug;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IPlugBitmapDecalsMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapDecals where T0 : class
 {
-    new IReadOnlyList<T0>? DecalModels { get; set; }
+    new IReadOnlyList<T0>? DecalModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).DecalModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, T0>(((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).GetDecalModelsInterfaceReferences, true, "DecalModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, T0>(value, false));
+    }
 }
 public partial interface IPlugBitmapDecals : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapDecals>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModel>? DecalModels { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModel>? DecalModels
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).DecalModels is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModel>(((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).GetDecalModelsInterfaceReferences, true, "DecalModels");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBitmapDecals)this).DecalModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModel>(value, false));
+    }
     global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? DecalSets { get; set; }
 }
 

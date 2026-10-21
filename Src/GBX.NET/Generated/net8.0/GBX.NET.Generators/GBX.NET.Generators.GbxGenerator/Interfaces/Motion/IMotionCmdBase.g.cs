@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Motion;
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 public interface IMotionCmdBaseMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionCmdBase where T0 : class
 {
-    new T0? CmdBaseParams { get; set; }
+    new T0? CmdBaseParams
+    {
+        get => (T0?)(object?)(((global::GBX.NET.Engines.Motion.CMotionCmdBase)this).CmdBaseParams);
+        set => ((global::GBX.NET.Engines.Motion.CMotionCmdBase)this).CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 public partial interface IMotionCmdBase : IClassVersion<global::GBX.NET.Engines.Motion.CMotionCmdBase>, global::GBX.NET.Interfaces.MwFoundations.IMwCmd
 {
@@ -17,7 +21,11 @@ public partial interface IMotionCmdBase : IClassVersion<global::GBX.NET.Engines.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParams? CmdBaseParams { get; set; }
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParams? CmdBaseParams
+    {
+        get => (global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParams?)(object?)(((global::GBX.NET.Engines.Motion.CMotionCmdBase)this).CmdBaseParams);
+        set => ((global::GBX.NET.Engines.Motion.CMotionCmdBase)this).CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     bool IsAbsolutePhase { get; set; }
     bool IsOnce { get; set; }
     uint Period { get; set; }

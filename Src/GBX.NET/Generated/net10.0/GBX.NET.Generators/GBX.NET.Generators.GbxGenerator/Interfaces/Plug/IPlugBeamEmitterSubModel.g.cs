@@ -6,7 +6,11 @@ namespace GBX.NET.Interfaces.Plug;
 public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>
 {
     string[]? AdditionalMaterialPaths { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? AdditionalMaterials { get; set; }
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? AdditionalMaterials
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).AdditionalMaterials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).GetAdditionalMaterialsInterfaceReferences, true, "AdditionalMaterials");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).AdditionalMaterials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(value, false));
+    }
     bool BackFace { get; set; }
     float BeamWithCylinders_FadeSpeed { get; set; }
     float BeamWithCylinders_HalfWidth { get; set; }
@@ -51,7 +55,11 @@ public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NE
     float LightningJitterRadius { get; set; }
     float LightningLenMax { get; set; }
     float LightningMaxJitterDistPerStep { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material { get; set; }
+    global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterial?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).Material);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
     string? MaterialPath { get; set; }
     bool MaterialsAsStrings { get; set; }
     float Radius { get; set; }
@@ -71,7 +79,15 @@ public partial interface IPlugBeamEmitterSubModel : IClassVersion<global::GBX.NE
 
 public partial interface IPlugBeamEmitterSubModelMP4 : IPlugBeamEmitterSubModel
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? AdditionalMaterials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material { get; set; }
+    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? AdditionalMaterials
+    {
+        get => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).AdditionalMaterials is null ? null : new global::GBX.NET.Interfaces.ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).GetAdditionalMaterialsInterfaceReferences, true, "AdditionalMaterials");
+        set => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).AdditionalMaterials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(global::GBX.NET.Interfaces.NodeInterfaceReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(value, false));
+    }
+    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material
+    {
+        get => (global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4?)(object?)(((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).Material);
+        set => ((global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel)this).Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+    }
 }
 
