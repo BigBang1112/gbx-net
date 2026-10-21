@@ -35,14 +35,6 @@ public partial interface IFunc : IClassVersion<global::GBX.NET.Engines.Function.
 {
 }
 
-public partial interface IFuncTM10 : IFunc
-{
-}
-
-public partial interface IFuncTMPU : IFunc
-{
-}
-
 public partial interface IFuncTMSX : IFunc
 {
 }
@@ -68,6 +60,14 @@ public partial interface IFuncTMT : IFunc
 }
 
 public partial interface IFuncMP4 : IFunc
+{
+}
+
+public partial interface IFuncTM10 : IFunc
+{
+}
+
+public partial interface IFuncTMPU : IFunc
 {
 }
 

@@ -72,11 +72,11 @@ public partial interface IPlugAudioTM2020 : IPlugAudio, global::GBX.NET.Interfac
 {
 }
 
-public partial interface IPlugAudioTM10 : IPlugAudio
+public partial interface IPlugAudioTMPU : IPlugAudio
 {
 }
 
-public partial interface IPlugAudioTMPU : IPlugAudio
+public partial interface IPlugAudioTM10 : IPlugAudio
 {
 }
 
